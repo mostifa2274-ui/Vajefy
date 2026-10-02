@@ -37,6 +37,7 @@ test("Smart Practice preserves FSRS, daily-review evidence and v4 backup through
   await page.goto("/");
   await page.getByRole("link", { name: "Smart Practice", exact: true }).click();
   await expect(page.getByRole("button", { name: /^Smart Practice/ })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("button", { name: "Begin", exact: true })).toBeInViewport();
   const before = await saved(page);
   await page.getByRole("button", { name: "Begin", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Smart Practice", exact: true })).toBeVisible();
@@ -139,4 +140,17 @@ test("unheard listening can be skipped without fabricating a mistake or awarding
   expect(after.state.cards).toEqual(before.state.cards);
   expect(after.state.lifetime).toEqual(before.state.lifetime);
   expect(after.state.reviewHistory).toEqual([]);
+});
+
+test("manual formats remain keyboard-accessible beside the focused Smart Practice entry", async ({ page }) => {
+  await seedSmart(page);
+  await page.goto("/drill?play=smart");
+  const chooser = page.locator("summary").filter({ hasText: "Choose another format" });
+  await chooser.focus();
+  await chooser.press("Enter");
+  await page.getByRole("button", { name: /^Spelling Type / }).click();
+  await expect(page.getByRole("button", { name: /^Spelling Type / })).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: /^Smart Practice/ }).click();
+  await expect(page.locator("details")).not.toHaveAttribute("open");
+  await expect(page.getByRole("button", { name: "Begin", exact: true })).toBeInViewport();
 });

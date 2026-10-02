@@ -3,6 +3,8 @@
 Smart Practice is available from Today and is the default selection on Quiz.
 The existing manual formats remain available. A session requests 10 or 20
 questions and can be shorter when fewer studied words are eligible.
+The default mobile layout keeps Start on the first screen. Manual formats sit
+in a keyboard-accessible disclosure rather than preceding the session controls.
 
 ## Selection and question format
 

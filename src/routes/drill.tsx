@@ -188,27 +188,43 @@ function DrillPage() {
   return (
     <div>
       <PageHeader title={copy.drill} lede={copy.drillLead} />
-      <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        {MODES.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            aria-pressed={mode === item.id}
-            disabled={busy}
-            onClick={() => {
-              setMode(item.id);
-              setError(null);
-            }}
-            className={cn(
-              "min-h-11 rounded-lg p-3 text-start",
-              mode === item.id ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]",
-            )}
-          >
-            <span className="block text-sm font-medium">{copy[item.title]}</span>
-            <span className={cn("mt-1 block text-xs text-pretty", mode === item.id ? "text-paper/70" : "text-muted")}>{copy[item.hint]}</span>
-          </button>
-        ))}
-      </div>
+      <button
+        type="button"
+        aria-pressed={mode === "smart"}
+        disabled={busy}
+        onClick={() => {
+          setMode("smart");
+          setError(null);
+        }}
+        className={cn("w-full min-h-11 rounded-lg p-3 text-start", mode === "smart" ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]")}
+      >
+        <span className="block text-sm font-medium">{copy.smartPractice}</span>
+        <span className={cn("mt-1 block text-xs text-pretty", mode === "smart" ? "text-paper/70" : "text-muted")}>{copy.smartPracticeHint}</span>
+      </button>
+      <details className="mt-3" open={mode !== "smart"}>
+        <summary className="min-h-11 py-3 text-sm font-medium text-accent">{copy.otherPracticeFormats}</summary>
+        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {MODES.filter((item) => item.id !== "smart").map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              aria-pressed={mode === item.id}
+              disabled={busy}
+              onClick={() => {
+                setMode(item.id);
+                setError(null);
+              }}
+              className={cn(
+                "min-h-11 rounded-lg p-3 text-start",
+                mode === item.id ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]",
+              )}
+            >
+              <span className="block text-sm font-medium">{copy[item.title]}</span>
+              <span className={cn("mt-1 block text-xs text-pretty", mode === item.id ? "text-paper/70" : "text-muted")}>{copy[item.hint]}</span>
+            </button>
+          ))}
+        </div>
+      </details>
 
       {mode === "smart" ? (
         <p className="mt-4 max-w-2xl text-sm text-pretty text-muted">{copy.smartPracticeLead}</p>
