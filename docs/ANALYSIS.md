@@ -6,6 +6,54 @@ install / typecheck / lint / tests / production build, served the production
 build and drove it with Playwright (desktop 1280×860 and mobile 390×844), and ran
 the real `srs.ts` / `quiz.ts` / `text.ts` code against the shipped data.
 
+## Status: all findings fixed
+
+The export was imported unchanged in `f382981`; everything below describes that
+baseline. Each finding was then fixed on branch `claude/analysis-in-depth-maqczd`
+and re-checked in the browser against the production build.
+
+| # | Finding | Fix | Commit |
+|---|---|---|---|
+| 3.1 | Intervals inflated to "mastered" in minutes | `schedule()` grows from the time since the card was last graded (new `last` field); a pass never shortens an interval | `a51f930` |
+| 3.2 | Quizzes enrolled words and bypassed the new-word cap | New `practice()`: never creates a card or pushes one later; a miss makes a scheduled card due now. Pairs counts only first-try matches, never the last pair | `a51f930` |
+| 3.3 | Progress only in `localStorage` | Export / import on Progress (zod-validated, migrates older saves); persist `version` + `migrate` | `1e6358b` |
+| 3.4 | Anonymous, unthrottled AI endpoint | Entry id only, prompt built server-side from the dataset; per-client and per-instance caps; LRU cache; 15 s timeout; button hidden without a key | `0809ebe` |
+| 3.5 | Retry never recovered | Failed loads are evicted from the cache | `9864fa2` |
+| 3.6 | Sprint lost focus | Input stays enabled and ignores keys while revealing | `9864fa2` |
+| 3.7 | Broken streak still shown | `liveStreak()` on Home, header and Progress | `9864fa2`, `1e6358b` |
+| 3.8 | Header showed "۳ / ۲۰۱" | Real "·" text between goal and streak | `9864fa2` |
+| 3.9 | Review counter stuck at "1 / N" | Counts answered cards | `9864fa2` |
+| 3.10 | Arabic-keyboard search found nothing | `searchKey()` folds ي/ك, ZWNJ, spaces, diacritics (Words and Notebook) | `9864fa2` |
+| 3.11 | American spellings marked wrong | Accepted variants for the 39 British-spelled headwords | `9864fa2` |
+| 3.12 | Homograph twins as options | Distractors exclude the target's headword | `0c64559` |
+| 3.13 | Orphaned cards counted as due forever | Review drops due ids with no entry; README documents keeping ids stable | `0c64559` |
+| 3.14 | Mixed digit systems | `useFormat()` everywhere numbers and percents appear; localized chart dates | `1e6358b`, `9864fa2`, `0c64559` |
+| 3.15 | Today's entry always A1 | Drawn from the learner's level | `9864fa2` |
+| 3.16 | `/drill` and Words ignored the saved level | Adopted after hydration unless already changed | `0c64559` |
+| 3.17 | Persian POS in the English UI | `posLabel()` for labels and filter chips | `0c64559` |
+| 3.18 | "Reviews" capped at 60 days | Lifetime totals (seeded from logs on migration) | `a51f930`, `1e6358b` |
+| 3.19 | Cloze skipped 11.6 %, one leaked the answer | Regular inflections matched (99.6 % eligible), every occurrence blanked | `0c64559` |
+| 3.20 | ARIA roles | Quiz options `role="group"`; GoalRing `role="img"` | `0c64559`, `1e6358b` |
+| 3.21 | Recharts for one chart | Inline SVG chart, laid out in pixels; Recharts no longer shipped | `1e6358b`, `ab3dafd` |
+| 3.22 | Mislabelled A2 "light" | Relabelled "light (make burn or shine)", id kept | `0c64559` |
+| 3.23 | Dead code | `shouldRequeue` removed; `isMastered` is now the one mastery check | `a51f930` |
+| — | Found while fixing: Common mix-ups had no meaning (no gloss column) | Guide used as the meaning and list subtitle | `0c64559` |
+| — | Found while fixing: a note stayed on screen after selecting another word | Notes keyed by entry | `0809ebe` |
+| — | Found while fixing: `"constructor:x"` resolved as a deck | `Object.hasOwn` for deck prefixes | `0809ebe` |
+| §2 | `npm ci`, lint, 8 failing template tests, no app tests, no CI | Lockfile regenerated; lint clean; PWA tests run from a temp dir; 34 app tests; GitHub Actions CI | `b30c58e` and the fix commits |
+
+After the fixes: `npm ci`, typecheck and lint are clean, all 286 tests pass, and
+the build ships ≈ 600 KB of client JS (was ≈ 1.1 MB).
+
+Left as is, on purpose:
+
+- `src/lib/multiplayer/p2p.ts` and the auth / app-data / db helpers are Grok
+  template code the platform expects to find; nothing imports them.
+- `recharts` stays in `package.json` with the template's preinstalled packages;
+  nothing imports it, so it is not shipped.
+- The source spreadsheet in `attachments/` was not edited; the "light" label is
+  fixed in `public/data/lex-a2.json` only.
+
 ---
 
 ## 1. What the app is
