@@ -1,18 +1,22 @@
-import { defineConfig } from "vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-import { nitro } from "nitro/vite";
+import { defineConfig } from "vite";
 
-export default defineConfig(({ command, isPreview }) => ({
+export default defineConfig({
   server: { port: 8080 },
   preview: { port: 8081 },
   resolve: { tsconfigPaths: true },
   plugins: [
+    // Builds the server for Cloudflare Workers (configured in wrangler.jsonc)
+    // and runs it in the Workers runtime during dev and preview.
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
     tailwindcss(),
+    // No prerendering: Quiz, Words and Notebook read their starting state from
+    // the query string, which static HTML would ignore. Pages are rendered by
+    // the Worker; scripts, data and images are served as static assets.
     tanstackStart(),
-    // Builds (and serves, for `npm run preview`) the Vercel output in .vercel/output.
-    ...(command === "build" || isPreview ? [nitro({ preset: "vercel" })] : []),
     viteReact(),
   ],
-}));
+});

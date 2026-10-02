@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Must match the Worker's name in the Cloudflare dashboard, or Workers Builds
+  // refuses to deploy.
+  "name": "vajefy",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+  "observability": {
+    "enabled": true
+  }
+}

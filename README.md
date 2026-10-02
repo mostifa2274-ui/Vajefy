@@ -28,8 +28,9 @@ npm run dev        # http://localhost:8080
 | Script | What it does |
 |---|---|
 | `npm run dev` | Dev server on port 8080 |
-| `npm run build` | Production build for Vercel (`.vercel/output`) |
-| `npm run preview` | Serves the production build on port 8081 |
+| `npm run build` | Production build for Cloudflare Workers (`dist/`) |
+| `npm run preview` | Runs the built Worker locally on port 8081 |
+| `npm run deploy` | Builds and deploys with Wrangler (needs `npx wrangler login` first) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm test` | Unit tests in `src/lib/learn/**/*.test.ts` |
@@ -75,9 +76,25 @@ and extend `migrateProgress`.
 - Headwords follow the Oxford lists' British spelling. Spelling modes also
   accept the American form for the words listed in `AMERICAN` in `text.ts`.
 
-## Deploying
+## Deploying to Cloudflare
 
-The build targets Vercel through Nitro's `vercel` preset; `vercel.json` sets
-the install command. Set `VITE_SITE_URL` (for example `https://roshana.app`) so
-share cards get an absolute image URL. The web manifest and home-screen icons
-are static files in `public/`.
+The app runs on Cloudflare Workers: the Worker renders pages, and everything in
+`public/` plus the built scripts is served as static assets. `wrangler.jsonc`
+configures the Worker, and `@cloudflare/vite-plugin` builds it.
+
+With the repository connected to Cloudflare (Workers Builds), every push to the
+production branch deploys, and other branches get preview versions. In the
+dashboard, under **Workers & Pages → your Worker → Settings → Build**:
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` (the default) |
+| Root directory | the repository root |
+
+- The Worker's name in the dashboard must match `name` in `wrangler.jsonc`
+  (`vajefy`); otherwise Cloudflare refuses to deploy. Change one of them if
+  they differ.
+- Under **Build → Variables and secrets**, set `VITE_SITE_URL` to the site's
+  address (for example `https://vajefy.<account>.workers.dev` or a custom
+  domain) so share cards get an absolute image URL. It is read at build time.
