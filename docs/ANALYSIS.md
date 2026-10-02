@@ -1,6 +1,6 @@
 # Roshana (روشنا) — in-depth analysis
 
-Source analysed: `grok-workspace.zip` (Grok App Builder export, 2 Oct 2026).
+Source analysed: the original app-builder workspace export (2 Oct 2026).
 Method: read every app file (`src/lib/learn`, `src/components`, `src/routes`), ran
 install / typecheck / lint / tests / production build, served the production
 build and drove it with Playwright (desktop 1280×860 and mobile 390×844), and ran
@@ -78,11 +78,11 @@ lists, with spaced repetition.
 |---|---|
 | Stack | TanStack Start + React 19, Tailwind v4, zustand (persisted to `localStorage`), Vite 8, Nitro → Vercel |
 | Auth / DB | Off. All progress lives in the browser (`localStorage` key `roshana-v1`) |
-| Server code | One server function, `explainWord` (`src/lib/learn/coach.ts`), calls the xAI chat API |
+| Server code | One server function, `explainWord` (`src/lib/learn/coach.ts`), calls an external AI chat API |
 | Data | 18 static JSON files in `public/data`, converted 1:1 from `attachments/Oxford_3000_5000_Clean_Final_RTL_Safe_Global_EN_FA.xlsx` (row counts match sheet by sheet) |
 | Content | 5,322 headwords across A1–C1 (each with Persian gloss, Persian-script pronunciation, IPA, POS, example + translation) and 2,950 reference notes: phrasal verbs, collocations, prepositions, verb patterns, occupations, antonyms, confusing words, synonyms, word families, word formation, irregular verbs |
 | Screens | Today (`/`), Words (`/lexicon`), Review (`/study`), Quiz (`/drill`: 11 modes incl. Pairs and a 45-second spelling sprint), Notebook (`/library`), Progress (`/progress`) |
-| App code size | ≈ 4,800 lines (the rest of `src/` is Grok template: auth, app-data, db, multiplayer — unused because auth/db are off) |
+| App code size | ≈ 4,800 lines (the rest of `src/` is platform template code: auth, app-data, db, multiplayer — unused because auth/db are off) |
 
 ## 2. Health check
 
@@ -91,7 +91,7 @@ lists, with spaced repetition.
 | `npm ci` | **Fails** — `package-lock.json` is out of sync with `package.json` (`ajv@6` vs `ajv@8`, missing `fast-uri`, `require-from-string`). Vercel uses `npm install`, so deploys still work; any CI using `npm ci` will not. |
 | `tsc --noEmit` | Pass |
 | `eslint .` | 1 error (template file `src/lib/app-data/client.server.ts:281`, empty block), 2 warnings — one of them (`setIndex` unused in `study-session.tsx`) is the symptom of bug 3.9 below |
-| `npm test` | 189 / 197 pass. The 8 failures are Grok PWA-plugin tests that read the real workspace's `src/lib/og/site.json` and `public/og.jpg` instead of fixtures; deleting `site.json` makes 6 of them pass. Template test bug, not an app bug. |
+| `npm test` | 189 / 197 pass. The 8 failures are platform PWA-plugin tests that read the real workspace's `src/lib/og/site.json` and `public/og.jpg` instead of fixtures; deleting `site.json` makes 6 of them pass. Template test bug, not an app bug. |
 | Tests for app logic | **None.** `srs.ts`, `store.ts`, `quiz.ts`, `text.ts` have no tests — and that is where most bugs below live. |
 | `vite build` | Pass. Initial JS ≈ 160 KB gzipped; Recharts chunk 124 KB gzipped (lazy, Progress page only) |
 | Browser console (prod build) | No errors on any route |
@@ -170,13 +170,12 @@ window, switching phone, or iOS evicting storage silently wipes months of
 reviews. For a long-horizon SRS app this is the biggest product risk.
 
 Fix: at minimum, add "Export / Import progress" (JSON download/upload) on
-Progress. Longer term, turn on Grok's auth + database so progress follows the
-user.
+Progress. Longer term, add accounts and a database so progress follows the user.
 
 #### 3.4 AI "explain" endpoint is anonymous and unthrottled — confirmed
 
 `explainWord` (`src/lib/learn/coach.ts`) is a public server function that spends
-the app owner's xAI quota:
+the app owner's AI API quota:
 
 - No rate limit, no per-client cap (the template guidance asks for "capped").
 - TanStack's CSRF check blocks other *websites*, but a script passes simply by
@@ -184,8 +183,8 @@ the app owner's xAI quota:
   Origin and arbitrary text in `word` / `meaning` returns 200.
 - The in-memory cache is keyed on the input, so varied inputs bypass it, and the
   cache is unbounded.
-- `fetch` to xAI has no timeout.
-- If `XAI_API_KEY` is not configured, every card still shows the "شرح / A note"
+- `fetch` to the AI API has no timeout.
+- If the API key is not configured, every card still shows the "شرح / A note"
   button, and it always fails. That is what happens in this export's preview.
 
 Fix: add a per-IP and global daily cap (e.g. a small KV/Upstash counter), restrict
