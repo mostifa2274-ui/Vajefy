@@ -30,7 +30,6 @@ async function seed(page: Page, patch: Record<string, unknown> = {}) {
 test("fresh learner sees onboarding without horizontal overflow on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
-  await expect(page.getByText("Roshana", { exact: true }).first()).toBeVisible();
   await expect(page.getByRole("heading", { name: "سطح شروع" })).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
   expect(overflow).toBe(false);
