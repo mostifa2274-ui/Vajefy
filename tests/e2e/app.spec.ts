@@ -48,7 +48,7 @@ test("saved English locale applies before the app becomes interactive", async ({
 test("v2 saved progress migrates to the default FSRS target in the browser", async ({ page }) => {
   await seed(page);
   await page.goto("/progress");
-  await expect(page.getByText("Adaptive FSRS-6", { exact: true })).toBeVisible();
+  await expect(page.getByText("Memory scheduler: Adaptive FSRS-6", { exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "90%" })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByText("Review evidence", { exact: true })).toBeVisible();
 });
