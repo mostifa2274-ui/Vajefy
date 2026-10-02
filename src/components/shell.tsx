@@ -1,4 +1,4 @@
-import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouter, useRouterState } from "@tanstack/react-router";
 import {
   BookOpenText,
   ChartColumn,
@@ -12,6 +12,8 @@ import { cn } from "@/lib/cn";
 import { useCopy } from "@/lib/learn/i18n";
 import { liveStreak, todayLog, useProgress } from "@/lib/learn/store";
 import { Num } from "./ui";
+
+const OFFLINE_ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
 
 const NAV = [
   { to: "/", key: "today", icon: BookOpenText, exact: true },
@@ -34,6 +36,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const copy = useCopy(lang);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const navigate = useNavigate();
+  const router = useRouter();
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -54,8 +57,32 @@ export function Shell({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
-    void navigator.serviceWorker.register("/sw.js").catch(() => undefined);
-  }, []);
+    let alive = true;
+
+    async function prepareOffline() {
+      await navigator.serviceWorker.register("/sw.js");
+      await navigator.serviceWorker.ready;
+      if (!navigator.serviceWorker.controller) {
+        await new Promise<void>((resolve) => {
+          const done = () => resolve();
+          navigator.serviceWorker.addEventListener("controllerchange", done, { once: true });
+          window.setTimeout(done, 5000);
+        });
+      }
+      if (!alive) return;
+
+      // Ask TanStack Router to load every primary route once. Lazy route chunks
+      // then pass through the controlling service worker and are cached, so an
+      // installed learner can navigate to an unvisited screen while offline.
+      await Promise.allSettled(OFFLINE_ROUTES.map((to) => router.preloadRoute({ to })));
+      if (alive) document.documentElement.dataset.offlineReady = "true";
+    }
+
+    void prepareOffline().catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, [router]);
 
   useEffect(() => {
     if (!hydrated || !onboarded || !navigator.storage?.persist) return;
