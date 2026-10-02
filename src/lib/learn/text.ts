@@ -1,0 +1,135 @@
+import type { LevelId } from "./types";
+
+const LEVELS: LevelId[] = ["A1", "A2", "B1", "B2", "B2x", "C1"];
+
+export function isLevel(value: unknown): value is LevelId {
+  return typeof value === "string" && LEVELS.includes(value as LevelId);
+}
+
+export function todayKey(d = new Date()): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+export function yesterdayKey(d = new Date()): string {
+  const copy = new Date(d);
+  copy.setDate(copy.getDate() - 1);
+  return todayKey(copy);
+}
+
+export function dayNumber(): number {
+  const d = new Date();
+  return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
+}
+
+export function levelOf(id: string): LevelId | null {
+  const match = /^lex:([^:]+):/.exec(id);
+  if (!match || !isLevel(match[1])) return null;
+  return match[1];
+}
+
+export function bareHeadword(word: string): string {
+  const stripped = word.replace(/[¹²³⁴⁵⁶⁷⁸⁹]/g, "").replace(/\([^)]*\)/g, " ");
+  const first = stripped.split(/[,/]/)[0] ?? "";
+  return first
+    .replace(/[^A-Za-z' -]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function normEn(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[’‘]/g, "'")
+    .replace(/[^a-z0-9'+ .-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function editDistance(a: string, b: string): number {
+  if (a === b) return 0;
+  if (Math.abs(a.length - b.length) > 2) return 3;
+  const rows = a.length + 1;
+  const cols = b.length + 1;
+  const dp: number[][] = Array.from({ length: rows }, () => Array(cols).fill(0));
+  for (let i = 0; i < rows; i++) dp[i]![0] = i;
+  for (let j = 0; j < cols; j++) dp[0]![j] = j;
+  for (let i = 1; i < rows; i++) {
+    for (let j = 1; j < cols; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i]![j] = Math.min(dp[i - 1]![j]! + 1, dp[i]![j - 1]! + 1, dp[i - 1]![j - 1]! + cost);
+    }
+  }
+  return dp[a.length]![b.length]!;
+}
+
+export function gradeSpelling(input: string, word: string): "exact" | "close" | "wrong" {
+  const targets = [...new Set([word, bareHeadword(word)].map(normEn).filter(Boolean))];
+  const got = normEn(input);
+  if (!got) return "wrong";
+  if (targets.some((target) => target === got)) return "exact";
+  if (targets.some((target) => target.length >= 5 && editDistance(got, target) === 1)) return "close";
+  return "wrong";
+}
+
+export function bestSpelling(input: string, accepts: string[]): "exact" | "close" | "wrong" {
+  let best: "exact" | "close" | "wrong" = "wrong";
+  for (const word of accepts) {
+    const result = gradeSpelling(input, word);
+    if (result === "exact") return "exact";
+    if (result === "close") best = "close";
+  }
+  return best;
+}
+
+
+export function formMatches(input: string, expected: string): boolean {
+  const got = normEn(input);
+  if (!got) return false;
+  return expected
+    .split("/")
+    .map((part) => normEn(part))
+    .filter(Boolean)
+    .some((form) => form === got);
+}
+
+export function escapeReg(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export function cloze(example: string, word: string): string | null {
+  const bare = bareHeadword(word);
+  if (bare.length < 2 || !example) return null;
+  const re = new RegExp(`\\b${escapeReg(bare)}\\b`, "i");
+  if (!re.test(example)) return null;
+  return example.replace(re, "______");
+}
+
+export function shuffle<T>(list: T[]): T[] {
+  const copy = list.slice();
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const a = copy[i]!;
+    const b = copy[j]!;
+    copy[i] = b;
+    copy[j] = a;
+  }
+  return copy;
+}
+
+export function formatDelay(ms: number, lang: "fa" | "en"): string {
+  const min = Math.max(1, Math.round(ms / 60000));
+  if (min < 90) {
+    return lang === "fa" ? `${new Intl.NumberFormat("fa-IR").format(min)} دقیقه` : `${min} min`;
+  }
+  const days = Math.max(1, Math.round(ms / 86400000));
+  if (days < 45) {
+    return lang === "fa" ? `${new Intl.NumberFormat("fa-IR").format(days)} روز` : `${days} d`;
+  }
+  const months = Math.round(days / 30);
+  return lang === "fa" ? `${new Intl.NumberFormat("fa-IR").format(months)} ماه` : `${months} mo`;
+}
+
+export const POS_FILTERS = ["اسم", "فعل", "صفت", "قید", "حرف اضافه", "ضمیر", "عدد", "حرف ربط"] as const;

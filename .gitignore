@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+.node_modules.lock
+
+# Build output
+dist/
+.output/
+.nitro/
+.vercel/
+.tanstack/
+
+# Local env and logs
+.env
+.env.*
+*.log
+
+# Grok sandbox runtime files
+.grok/status
+.grok/og-pending
+.grok/preview.log
+.grok/*.png
+.grok/*.jpg
+.grok/*.html
+
+# Browser QA output
+screenshots/*
+!screenshots/.gitkeep
