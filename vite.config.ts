@@ -15,7 +15,7 @@ export default defineConfig({
     // starts from TanStack Start's server entry.
     cloudflare({
       viteEnvironment: { name: "ssr" },
-      config: { main: "@tanstack/react-start/server-entry" },
+      config: { main: "./src/server.ts" },
     }),
     tailwindcss(),
     // No prerendering: Quiz, Words and Notebook read their starting state from
