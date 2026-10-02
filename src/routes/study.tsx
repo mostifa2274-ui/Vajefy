@@ -19,6 +19,7 @@ function StudyPage() {
   const sessionSize = useProgress((state) => state.sessionSize);
   const newPerDay = useProgress((state) => state.newPerDay);
   const voice = useProgress((state) => state.voice);
+  const requestRetention = useProgress((state) => state.requestRetention);
   const cards = useProgress((state) => state.cards);
   const review = useProgress((state) => state.review);
   const copy = useCopy(lang);
@@ -109,6 +110,7 @@ function StudyPage() {
       cards={cards}
       lang={lang}
       voice={voice}
+      requestRetention={requestRetention}
       onGrade={(id, grade) => {
         review(id, grade);
       }}
