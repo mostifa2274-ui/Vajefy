@@ -21,8 +21,26 @@ const card = z.object({
 // fills the rest, exactly as it does for the browser's own storage.
 const progress = z.object({
   cards: z.record(z.string().max(200), card),
-  logs: z.array(z.object({ date, reviews: count, correct: count, introduced: count })).max(400),
-  lifetime: z.object({ reviews: count, correct: count }).optional(),
+  logs: z
+    .array(
+      z.object({
+        date,
+        reviews: count,
+        correct: count,
+        practice: count.optional(),
+        practiceCorrect: count.optional(),
+        introduced: count,
+      }),
+    )
+    .max(400),
+  lifetime: z
+    .object({
+      reviews: count,
+      correct: count,
+      practice: count.optional(),
+      practiceCorrect: count.optional(),
+    })
+    .optional(),
   streak: count,
   lastStudyDate: date.nullable(),
   xp: count,
@@ -31,6 +49,7 @@ const progress = z.object({
   sessionSize: z.number().int().min(1).max(200),
   newPerDay: z.number().int().min(0).max(200),
   voice: z.boolean(),
+  accent: z.enum(["en-GB", "en-US"]).optional(),
   bookmarks: z.array(z.string().max(200)).max(2000),
   dailyGoal: z.number().int().min(0).max(1000),
   onboarded: z.boolean(),
