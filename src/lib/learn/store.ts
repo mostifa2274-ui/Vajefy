@@ -199,6 +199,17 @@ function lastReviewEvent(history: ReviewEvent[], id: string): ReviewEvent | unde
   return undefined;
 }
 
+function appendReviewEvent(history: ReviewEvent[], event: ReviewEvent): ReviewEvent[] {
+  const next = [...history, event];
+  if (next.length <= MAX_REVIEW_HISTORY) return next;
+
+  const overflow = next.length - MAX_REVIEW_HISTORY;
+  const droppedIds = new Set(next.slice(0, overflow).map((item) => item.id));
+  return next.slice(overflow).map((item) =>
+    item.complete && droppedIds.has(item.id) ? { ...item, complete: false } : item,
+  );
+}
+
 export function todayLog(logs: DayLog[], today = todayKey()): DayLog {
   return (
     logs.find((row) => row.date === today) ?? {
@@ -357,7 +368,7 @@ export const useProgress = create<ProgressState>()(
             introduced: existed ? 0 : 1,
           }),
           lifetime: bumpReviewLifetime(state.lifetime, grade !== "again"),
-          reviewHistory: [...state.reviewHistory, event].slice(-MAX_REVIEW_HISTORY),
+          reviewHistory: appendReviewEvent(state.reviewHistory, event),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
           xp: state.xp + XP[grade],
