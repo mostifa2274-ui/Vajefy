@@ -53,17 +53,60 @@ test("Arabic-keyboard Persian search still finds normalized vocabulary", async (
 
 test("installed app can reopen the lexicon while offline", async ({ page, context }) => {
   await seed(page);
+  const consoleErrors: string[] = [];
+  page.on("console", (message) => {
+    if (message.type() === "error") consoleErrors.push(message.text());
+  });
+
   await page.goto("/");
   await page.waitForFunction(
     () => document.documentElement.dataset.offlineReady === "true" && navigator.serviceWorker.controller !== null,
     undefined,
     { timeout: 20_000 },
   );
+
+  const cachedBeforeOffline = await page.evaluate(async () => {
+    const response = await caches.match("/lexicon", { ignoreSearch: true });
+    if (!response) return { exists: false };
+    const html = await response.clone().text();
+    return {
+      exists: true,
+      status: response.status,
+      contentType: response.headers.get("content-type"),
+      csp: response.headers.get("content-security-policy"),
+      hasDocument: html.includes("<html"),
+      hasNonce: /nonce=["'][^"']+["']/.test(html),
+      bytes: html.length,
+    };
+  });
+  expect(cachedBeforeOffline).toMatchObject({
+    exists: true,
+    status: 200,
+    hasDocument: true,
+    hasNonce: true,
+  });
+
   await context.setOffline(true);
   try {
     await page.goto("/lexicon");
-    await expect(page.getByRole("heading", { name: "Lexicon" })).toBeVisible();
-    await expect(page.getByText("about", { exact: true }).first()).toBeVisible();
+    try {
+      await expect(page.getByRole("heading", { name: "Lexicon" })).toBeVisible();
+      await expect(page.getByText("about", { exact: true }).first()).toBeVisible();
+    } catch (error) {
+      const snapshot = await page.evaluate(() => ({
+        url: location.href,
+        title: document.title,
+        lang: document.documentElement.lang,
+        dir: document.documentElement.dir,
+        offlineReady: document.documentElement.dataset.offlineReady ?? null,
+        controller: Boolean(navigator.serviceWorker?.controller),
+        body: document.body?.innerText.slice(0, 2500) ?? "",
+      }));
+      console.log("OFFLINE_CACHE_BEFORE", JSON.stringify(cachedBeforeOffline));
+      console.log("OFFLINE_PAGE_AFTER", JSON.stringify(snapshot));
+      console.log("OFFLINE_CONSOLE_ERRORS", JSON.stringify(consoleErrors));
+      throw error;
+    }
   } finally {
     await context.setOffline(false);
   }
