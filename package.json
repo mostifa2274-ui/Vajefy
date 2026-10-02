@@ -8,6 +8,8 @@
     "build": "vite build && node scripts/inject-sw-assets.mjs",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy",
+    "postinstall": "node scripts/cloudflare-ci-bootstrap.mjs",
+    "verify:workers-build": "node scripts/verify-workers-build.mjs",
     "typecheck": "tsc --noEmit",
     "validate:data": "node scripts/validate-data.mjs",
     "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts'",
