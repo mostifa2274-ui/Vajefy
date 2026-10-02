@@ -24,6 +24,7 @@ export function knownCard(now: number): CardProg {
     lapses: 0,
     state: "review",
     step: 0,
+    last: now,
   };
 }
 
@@ -31,8 +32,13 @@ export function isMastered(card: CardProg): boolean {
   return card.state === "review" && card.interval >= 21;
 }
 
+/** When the card was last graded; older saves only imply it from due − interval. */
+function lastGraded(card: CardProg): number {
+  return card.last ?? card.due - card.interval * DAY;
+}
+
 export function schedule(card: CardProg, grade: Grade, now: number): CardProg {
-  const next: CardProg = { ...card };
+  const next: CardProg = { ...card, last: now };
 
   if (grade === "again") {
     next.ease = Math.max(MIN_EASE, next.ease - 0.2);
@@ -74,17 +80,16 @@ export function schedule(card: CardProg, grade: Grade, now: number): CardProg {
     return next;
   }
 
-  const base = next.interval || 1;
-  let interval = base;
-  if (grade === "hard") interval = Math.max(1, Math.round(base * 1.2));
-  else if (grade === "good") interval = Math.max(1, Math.round(base * next.ease));
-  else interval = Math.max(1, Math.round(base * next.ease * 1.3));
+  // Grow from the time that actually passed, not the time that was scheduled:
+  // answering minutes after the last grade must not multiply the whole interval.
+  // A pass never shortens the interval, so an early review is simply neutral.
+  const current = card.interval || 1;
+  const elapsed = Math.max(0, (now - lastGraded(card)) / DAY);
+  const base = Math.min(current, elapsed);
+  const factor = grade === "hard" ? 1.2 : grade === "good" ? next.ease : next.ease * 1.3;
+  const interval = Math.max(current, Math.round(base * factor));
   next.interval = interval;
   next.reps += 1;
   next.due = now + interval * DAY;
   return next;
-}
-
-export function shouldRequeue(card: CardProg, now: number): boolean {
-  return card.state === "learning" && card.due - now <= 15 * 60_000;
 }

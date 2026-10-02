@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { freshCard, knownCard, schedule } from "./srs";
+import { freshCard, isMastered, knownCard, schedule } from "./srs";
 import { todayKey, yesterdayKey } from "./text";
 import type { CardProg, Grade, Lang, LevelId } from "./types";
 
@@ -11,9 +11,13 @@ export type DayLog = {
   introduced: number;
 };
 
-type ProgressState = {
+export type Lifetime = { reviews: number; correct: number };
+
+/** Everything saved to the browser and carried by an export file. */
+export type SavedProgress = {
   cards: Record<string, CardProg>;
   logs: DayLog[];
+  lifetime: Lifetime;
   streak: number;
   lastStudyDate: string | null;
   xp: number;
@@ -25,6 +29,9 @@ type ProgressState = {
   bookmarks: string[];
   dailyGoal: number;
   onboarded: boolean;
+};
+
+type ProgressState = SavedProgress & {
   hydrated: boolean;
   setHydrated: () => void;
   setLang: (lang: Lang) => void;
@@ -37,10 +44,16 @@ type ProgressState = {
   toggleBookmark: (id: string) => void;
   completeOnboarding: (focus: LevelId, dailyGoal: number) => void;
   review: (id: string, grade: Grade) => CardProg;
+  practice: (id: string, grade: Grade) => void;
   addToReview: (id: string) => void;
   markKnown: (id: string) => void;
+  forget: (ids: string[]) => void;
+  importProgress: (saved: SavedProgress) => void;
   reset: () => void;
 };
+
+/** Bump when the saved shape changes, and teach `migrate` the old shape. */
+export const PROGRESS_VERSION = 1;
 
 const XP: Record<Grade, number> = { again: 2, hard: 6, good: 10, easy: 14 };
 
@@ -67,6 +80,12 @@ function touchStreak(streak: number, last: string | null, today: string) {
   return { streak: 1, lastStudyDate: today };
 }
 
+/** The streak as of today: it is broken once a whole day passes without study. */
+export function liveStreak(streak: number, lastStudyDate: string | null, now = new Date()): number {
+  if (lastStudyDate === todayKey(now) || lastStudyDate === yesterdayKey(now)) return streak;
+  return 0;
+}
+
 function bumpLog(
   logs: DayLog[],
   today: string,
@@ -91,6 +110,10 @@ function bumpLog(
   return [...next.filter((item) => item.date !== today), updated];
 }
 
+function bumpLifetime(lifetime: Lifetime, correct: boolean): Lifetime {
+  return { reviews: lifetime.reviews + 1, correct: lifetime.correct + (correct ? 1 : 0) };
+}
+
 export function todayLog(logs: DayLog[], today = todayKey()): DayLog {
   return (
     logs.find((row) => row.date === today) ?? {
@@ -109,22 +132,59 @@ export function dueIds(cards: Record<string, CardProg>, now = Date.now()): strin
     .map(([id]) => id);
 }
 
+const DEFAULTS: SavedProgress = {
+  cards: {},
+  logs: [],
+  lifetime: { reviews: 0, correct: 0 },
+  streak: 0,
+  lastStudyDate: null,
+  xp: 0,
+  lang: "fa",
+  focus: "A1",
+  sessionSize: 20,
+  newPerDay: 10,
+  voice: false,
+  bookmarks: [],
+  dailyGoal: 20,
+  onboarded: false,
+};
+
+export function savedProgress(state: SavedProgress): SavedProgress {
+  return {
+    cards: state.cards,
+    logs: state.logs,
+    lifetime: state.lifetime,
+    streak: state.streak,
+    lastStudyDate: state.lastStudyDate,
+    xp: state.xp,
+    lang: state.lang,
+    focus: state.focus,
+    sessionSize: state.sessionSize,
+    newPerDay: state.newPerDay,
+    voice: state.voice,
+    bookmarks: state.bookmarks,
+    dailyGoal: state.dailyGoal,
+    onboarded: state.onboarded,
+  };
+}
+
+/** Upgrade a saved state from any earlier `PROGRESS_VERSION`. */
+export function migrateProgress(persisted: unknown, version: number): SavedProgress {
+  const state = { ...DEFAULTS, ...(persisted as Partial<SavedProgress>) };
+  if (version < 1) {
+    // v0 kept only the last 60 days of logs; seed lifetime totals from them.
+    state.lifetime = (state.logs ?? []).reduce(
+      (sum, row) => ({ reviews: sum.reviews + row.reviews, correct: sum.correct + row.correct }),
+      { reviews: 0, correct: 0 },
+    );
+  }
+  return state;
+}
+
 export const useProgress = create<ProgressState>()(
   persist(
     (set, get) => ({
-      cards: {},
-      logs: [],
-      streak: 0,
-      lastStudyDate: null,
-      xp: 0,
-      lang: "fa",
-      focus: "A1",
-      sessionSize: 20,
-      newPerDay: 10,
-      voice: false,
-      bookmarks: [],
-      dailyGoal: 20,
-      onboarded: false,
+      ...DEFAULTS,
       hydrated: false,
       setHydrated: () => set({ hydrated: true }),
       setLang: (lang) => set({ lang }),
@@ -165,11 +225,32 @@ export const useProgress = create<ProgressState>()(
             correct: grade === "again" ? 0 : 1,
             introduced: existed ? 0 : 1,
           }),
+          lifetime: bumpLifetime(state.lifetime, grade !== "again"),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
           xp: state.xp + XP[grade],
         });
         return next;
+      },
+      // Quiz and timed practice. Recognition under a timer is weaker evidence
+      // than recall in Review, so practice never schedules a card later and
+      // never adds a word to the schedule. A miss on a scheduled card makes it
+      // due now, so the next Review asks it properly.
+      practice: (id, grade) => {
+        const now = Date.now();
+        const today = todayKey();
+        const state = get();
+        const card = state.cards[id];
+        const missed = grade === "again";
+        const streak = touchStreak(state.streak, state.lastStudyDate, today);
+        set({
+          cards: card && missed && card.due > now ? { ...state.cards, [id]: { ...card, due: now } } : state.cards,
+          logs: bumpLog(state.logs, today, { reviews: 1, correct: missed ? 0 : 1 }),
+          lifetime: bumpLifetime(state.lifetime, !missed),
+          streak: streak.streak,
+          lastStudyDate: streak.lastStudyDate,
+          xp: state.xp + XP[grade],
+        });
       },
       addToReview: (id) => {
         const state = get();
@@ -193,15 +274,26 @@ export const useProgress = create<ProgressState>()(
             correct: 1,
             introduced: existed ? 0 : 1,
           }),
+          lifetime: bumpLifetime(state.lifetime, true),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
           xp: state.xp + 10,
         });
       },
+      // Drops cards whose entry no longer exists in the data (e.g. a headword
+      // was renamed); they could never be shown, yet would stay "due" forever.
+      forget: (ids) => {
+        if (!ids.length) return;
+        const cards = { ...get().cards };
+        for (const id of ids) delete cards[id];
+        set({ cards });
+      },
+      importProgress: (saved) => set({ ...savedProgress(saved), onboarded: true }),
       reset: () =>
         set({
           cards: {},
           logs: [],
+          lifetime: { reviews: 0, correct: 0 },
           streak: 0,
           lastStudyDate: null,
           xp: 0,
@@ -209,23 +301,11 @@ export const useProgress = create<ProgressState>()(
     }),
     {
       name: "roshana-v1",
+      version: PROGRESS_VERSION,
+      migrate: migrateProgress,
       skipHydration: true,
       storage: createJSONStorage(() => safeStorage),
-      partialize: (state) => ({
-        cards: state.cards,
-        logs: state.logs,
-        streak: state.streak,
-        lastStudyDate: state.lastStudyDate,
-        xp: state.xp,
-        lang: state.lang,
-        focus: state.focus,
-        sessionSize: state.sessionSize,
-        newPerDay: state.newPerDay,
-        voice: state.voice,
-        bookmarks: state.bookmarks,
-        dailyGoal: state.dailyGoal,
-        onboarded: state.onboarded,
-      }),
+      partialize: (state) => savedProgress(state),
       onRehydrateStorage: () => (state) => {
         state?.setHydrated();
       },
@@ -240,7 +320,7 @@ export function countLevel(cards: Record<string, CardProg>, level: LevelId) {
   for (const [id, card] of Object.entries(cards)) {
     if (!id.startsWith(prefix)) continue;
     seen += 1;
-    if (card.state === "review" && card.interval >= 21) mastered += 1;
+    if (isMastered(card)) mastered += 1;
   }
   return { seen, mastered };
 }
@@ -250,7 +330,7 @@ export function totals(cards: Record<string, CardProg>) {
   let mastered = 0;
   for (const card of Object.values(cards)) {
     seen += 1;
-    if (card.state === "review" && card.interval >= 21) mastered += 1;
+    if (isMastered(card)) mastered += 1;
   }
   return { seen, mastered };
 }

@@ -78,7 +78,7 @@ function DrillPage() {
   const initial = Route.useSearch();
   const lang = useProgress((state) => state.lang);
   const focus = useProgress((state) => state.focus);
-  const review = useProgress((state) => state.review);
+  const practice = useProgress((state) => state.practice);
   const copy = useCopy(lang);
   const [mode, setMode] = useState<Mode>(initial.play === "match" ? "match" : initial.play === "sprint" ? "sprint" : "to-fa");
   const [level, setLevel] = useState<LevelId>(focus);
@@ -89,11 +89,6 @@ function DrillPage() {
   const [arena, setArena] = useState<Arena | null>(null);
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
-
-  function touchKnown(id: string, ok: boolean) {
-    if (!useProgress.getState().cards[id]) return;
-    review(id, ok ? "good" : "again");
-  }
 
   async function start() {
     setBusy(true);
@@ -132,7 +127,7 @@ function DrillPage() {
       <QuizRun
         questions={arena.questions}
         lang={lang}
-        onGrade={(id, grade) => review(id, grade)}
+        onGrade={practice}
         onDone={() => setArena(null)}
       />
     );
@@ -143,7 +138,7 @@ function DrillPage() {
       <MatchBoard
         pairs={arena.pairs}
         lang={lang}
-        onPair={(id) => touchKnown(id, true)}
+        onPair={(id) => practice(id, "good")}
         onExit={() => setArena(null)}
       />
     );
@@ -154,7 +149,7 @@ function DrillPage() {
       <SprintRun
         pairs={arena.pairs}
         lang={lang}
-        onResult={touchKnown}
+        onResult={(id, ok) => practice(id, ok ? "good" : "again")}
         onExit={() => setArena(null)}
       />
     );

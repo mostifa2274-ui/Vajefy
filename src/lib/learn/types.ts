@@ -130,6 +130,8 @@ export type CardProg = {
   lapses: number;
   state: "learning" | "review";
   step: number;
+  /** When the card was last graded (ms). Absent on cards saved before it existed. */
+  last?: number;
 };
 
 export type Mcq = {

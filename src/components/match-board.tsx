@@ -48,6 +48,8 @@ export function MatchBoard({
   const [matched, setMatched] = useState<Set<string>>(() => new Set());
   const [wrong, setWrong] = useState(false);
   const [moves, setMoves] = useState(0);
+  // Pairs that were part of a wrong guess; matching them later proves little.
+  const missed = useRef(new Set<string>());
   const [started, setStarted] = useState<number | null>(null);
   const [now, setNow] = useState(() => Date.now());
   const lock = useRef(false);
@@ -87,8 +89,14 @@ export function MatchBoard({
       });
       setSelected([]);
       setWrong(false);
-      onPair(tile.pairId);
+      // The last pair is solved by elimination, so only earlier clean matches count.
+      const isLast = matched.size + 1 === pairs.length;
+      if (!isLast && !missed.current.has(tile.pairId)) onPair(tile.pairId);
       return;
+    }
+    if (first) {
+      missed.current.add(first.pairId);
+      missed.current.add(tile.pairId);
     }
     setSelected([selected[0]!, key]);
     setWrong(true);
