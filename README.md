@@ -73,6 +73,11 @@ The app is fully client-side: no accounts, no database, no AI service.
   so the next Review asks it properly.
 - Scheduled Review and practice keep **separate counters and accuracy**. Practice
   cannot satisfy the daily review target or inflate measured retention.
+- Scheduled recall also writes a bounded, timestamped **review-evidence log**
+  (grade, elapsed/scheduled interval, before/after state). History starts
+  prospectively: cards reviewed before this feature are explicitly marked
+  partial instead of receiving invented past events. This creates a safe data
+  foundation for future memory-model/FSRS evaluation.
 - A completely unseen word gets a short **teach → hide → recall → grade** flow
   before it joins normal spaced review.
 
