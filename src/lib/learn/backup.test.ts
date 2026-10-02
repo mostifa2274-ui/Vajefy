@@ -45,6 +45,7 @@ const saved: SavedProgress = {
       at: 1_799_740_800_000,
       grade: "good",
       algorithm: "fsrs6",
+      targetRetention: 0.9,
       elapsedDays: 3,
       scheduledDays: 3,
       stability: 4.2,
