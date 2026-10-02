@@ -13,6 +13,7 @@ import type { CardProg, FsrsCardState, Grade } from "./types";
 const DAY = 86_400_000;
 const MIN_EASE = 1.3;
 export const DEFAULT_REQUEST_RETENTION = 0.9;
+const LEGACY_SM2_RETENTION = 0.9;
 
 export type ScheduleMeta = {
   algorithm: "legacy" | "fsrs6";
@@ -114,8 +115,11 @@ function lastGraded(card: CardProg): number {
  * synthesized: this produces only a starting memory state for the next real
  * answer.
  */
-function bridgeLegacyReview(card: CardProg, requestRetention: number): FsrsCardInput {
-  const retention = normalizeRetention(requestRetention);
+function bridgeLegacyReview(card: CardProg): FsrsCardInput {
+  // The bridge parameter describes the legacy scheduler, not the learner's new
+  // FSRS target. Keep it fixed so changing target retention never rewrites the
+  // inferred past memory state of an existing card.
+  const retention = LEGACY_SM2_RETENTION;
   const interval = Math.max(0.001, card.interval || 0.001);
   const w8 = default_w[8]!;
   const w9 = default_w[9]!;
@@ -189,7 +193,7 @@ function scheduleFsrs(
     learning_steps: ["1m", "10m"],
     relearning_steps: ["10m"],
   });
-  const input = bridged ? bridgeLegacyReview(card, retention) : storedFsrsInput(card);
+  const input = bridged ? bridgeLegacyReview(card) : storedFsrsInput(card);
   const result = scheduler.next(input, new Date(now), RATING[grade]);
   return {
     card: fromFsrsCard(card, result.card),
@@ -320,6 +324,6 @@ export function retrievability(
     learning_steps: ["1m", "10m"],
     relearning_steps: ["10m"],
   });
-  const input = card.fsrs ? storedFsrsInput(card) : bridgeLegacyReview(card, retention);
+  const input = card.fsrs ? storedFsrsInput(card) : bridgeLegacyReview(card);
   return scheduler.get_retrievability(input, new Date(now), false);
 }
