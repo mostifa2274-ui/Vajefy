@@ -152,4 +152,7 @@ test("production responses carry the security policy", async ({ request }) => {
   expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");
   expect(headers["content-security-policy"]).toContain("script-src 'self'");
   expect(headers["content-security-policy"]).not.toContain("script-src 'self' 'unsafe-inline'");
+  expect(headers["content-security-policy"]).toContain("style-src-elem 'self'");
+  expect(headers["content-security-policy"]).toContain("style-src-attr 'unsafe-inline'");
+  expect(headers["strict-transport-security"]).toBe("max-age=31536000");
 });
