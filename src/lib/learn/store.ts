@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { freshCard, isMastered, knownCard, schedule } from "./srs";
+import { freshCard, isMastered, schedule } from "./srs";
 import { todayKey, yesterdayKey } from "./text";
 import type { CardProg, Grade, Lang, LevelId } from "./types";
 
@@ -59,7 +59,6 @@ type ProgressState = SavedProgress & {
   review: (id: string, grade: Grade) => CardProg;
   practice: (id: string, grade: Grade) => void;
   addToReview: (id: string) => void;
-  markKnown: (id: string) => void;
   forget: (ids: string[]) => void;
   importProgress: (saved: SavedProgress) => void;
   reset: () => void;
@@ -322,25 +321,6 @@ export const useProgress = create<ProgressState>()(
         set({
           cards: { ...state.cards, [id]: freshCard(Date.now()) },
           logs: bumpLog(state.logs, today, { introduced: 1 }),
-        });
-      },
-      markKnown: (id) => {
-        const now = Date.now();
-        const today = todayKey();
-        const state = get();
-        const existed = Boolean(state.cards[id]);
-        const streak = touchStreak(state.streak, state.lastStudyDate, today);
-        set({
-          cards: { ...state.cards, [id]: knownCard(now) },
-          logs: bumpLog(state.logs, today, {
-            reviews: 1,
-            correct: 1,
-            introduced: existed ? 0 : 1,
-          }),
-          lifetime: bumpReviewLifetime(state.lifetime, true),
-          streak: streak.streak,
-          lastStudyDate: streak.lastStudyDate,
-          xp: state.xp + 10,
         });
       },
       // Drops cards whose entry no longer exists in the data (e.g. a headword
