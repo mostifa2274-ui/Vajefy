@@ -1,4 +1,5 @@
-const CACHE = "vajefy-offline-v3";
+const CACHE_VERSION = /* __VAJEFY_BUILD_VERSION__ */ "dev";
+const CACHE = `vajefy-offline-${CACHE_VERSION}`;
 const BUILD_ASSETS = /* __VAJEFY_BUILD_ASSETS__ */ [];
 const ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"];
 const SHELL = ["/manifest.json", "/favicon.svg", "/early-language.js", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
