@@ -48,6 +48,16 @@ export default tseslint.config(
       "@typescript-eslint/no-explicit-any": "off",
     },
   },
+  {
+    // TanStack file-route modules intentionally combine the exported Route
+    // descriptor with route-local components. TanStack's Vite plugin owns HMR
+    // for these modules, so the generic React Refresh export-shape rule is not
+    // applicable here. It remains enabled for every non-route component file.
+    files: ["src/routes/**/*.{ts,tsx}"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
+  },
   // Disable rules that conflict with Prettier formatting.
   prettier,
 );
