@@ -1,6 +1,6 @@
 const CACHE = "vajefy-offline-v2";
 const ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"];
-const SHELL = ["/manifest.json", "/favicon.svg", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
+const SHELL = ["/manifest.json", "/favicon.svg", "/early-language.js", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
 const DATA = [
   "/data/meta.json",
   "/data/lex-a1.json",
