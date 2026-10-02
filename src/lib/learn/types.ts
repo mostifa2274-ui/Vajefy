@@ -160,6 +160,8 @@ export type ReviewEvent = {
   at: number;
   grade: Grade;
   algorithm: "legacy" | "fsrs6";
+  /** Desired recall probability used for this FSRS scheduling decision. */
+  targetRetention?: number;
   /** True only on the first FSRS review of an older SM-2 review card. */
   bridged?: boolean;
   elapsedDays: number;
