@@ -12,26 +12,27 @@ export function LabeledWords({
   ids: string[];
   meta?: Record<string, number>;
 }) {
-  const [rows, setRows] = useState<{ id: string; w: string; fa: string }[]>([]);
+  const [loaded, setLoaded] = useState<{
+    key: string;
+    rows: { id: string; w: string; fa: string }[];
+  }>({ key: "", rows: [] });
   const key = ids.join("|");
 
   useEffect(() => {
     let alive = true;
     const wanted = ids;
-    if (!wanted.length) {
-      setRows([]);
-      return;
-    }
+    if (!wanted.length) return;
     const levels = [...new Set(wanted.map((id) => levelOf(id)).filter((level): level is LevelId => Boolean(level)))];
     void Promise.all(levels.map((level) => loadLevel(level))).then((lists) => {
       if (!alive) return;
       const byId = new Map(lists.flat().map((word) => [word.id, word]));
-      setRows(
-        wanted.flatMap((id) => {
+      setLoaded({
+        key,
+        rows: wanted.flatMap((id) => {
           const word = byId.get(id);
           return word ? [{ id, w: word.w, fa: word.fa }] : [];
         }),
-      );
+      });
     });
     return () => {
       alive = false;
@@ -40,6 +41,7 @@ export function LabeledWords({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
+  const rows = loaded.key === key ? loaded.rows : [];
   if (!rows.length) return null;
 
   return (
