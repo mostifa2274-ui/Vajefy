@@ -173,6 +173,7 @@ function DrillPage() {
           <button
             key={item.id}
             type="button"
+            aria-pressed={mode === item.id}
             onClick={() => setMode(item.id)}
             className={cn(
               "min-h-11 rounded-lg p-3 text-start",
@@ -259,6 +260,7 @@ function Choice({ active, onClick, children }: { active: boolean; onClick: () =>
   return (
     <button
       type="button"
+      aria-pressed={active}
       onClick={onClick}
       className={cn(
         "min-h-11 shrink-0 rounded-md px-3 text-sm",
