@@ -27,6 +27,8 @@ beforeEach(() => {
     streak: 0,
     lastStudyDate: null,
     xp: 0,
+    requestRetention: 0.9,
+    reviewHistory: [],
   });
 });
 
@@ -103,6 +105,8 @@ test("v0 saves gain lifetime totals from their logs", () => {
   assert.deepEqual(migrated.cards, { a: mature });
   assert.equal(migrated.dailyGoal, 20);
   assert.equal(migrated.accent, "en-GB");
+  assert.equal(migrated.requestRetention, 0.9);
+  assert.deepEqual(migrated.reviewHistory, []);
 });
 
 test("practice cannot satisfy the daily review goal or retention accuracy", () => {
@@ -120,6 +124,40 @@ test("practice cannot satisfy the daily review goal or retention accuracy", () =
   assert.equal(afterReview.lifetime.reviews, 1);
   assert.equal(afterReview.lifetime.correct, 1);
   assert.equal(afterReview.lifetime.practice, 2);
+});
+
+test("scheduled reviews append real FSRS evidence while practice does not", () => {
+  const state = useProgress.getState();
+  state.practice("lex:A1:about", "good");
+  assert.equal(useProgress.getState().reviewHistory.length, 0);
+
+  useProgress.getState().review("lex:A1:about", "good");
+  const event = useProgress.getState().reviewHistory.at(-1);
+  assert.equal(event?.id, "lex:A1:about");
+  assert.equal(event?.grade, "good");
+  assert.equal(event?.algorithm, "fsrs6");
+  assert.equal(event?.targetRetention, 0.9);
+  assert.equal(event?.at, NOW);
+  assert.ok((event?.stability ?? 0) > 0);
+});
+
+test("an older SM-2 review card records a one-time FSRS bridge", () => {
+  useProgress.setState({ cards: { "lex:A1:about": mature } });
+  useProgress.getState().review("lex:A1:about", "good");
+  const state = useProgress.getState();
+  const event = state.reviewHistory.at(-1);
+  assert.equal(event?.algorithm, "fsrs6");
+  assert.equal(event?.bridged, true);
+  assert.equal(state.cards["lex:A1:about"]?.fsrs?.model, "fsrs6");
+});
+
+test("retention target is bounded to the supported FSRS range", () => {
+  useProgress.getState().setRequestRetention(0.99);
+  assert.equal(useProgress.getState().requestRetention, 0.97);
+  useProgress.getState().setRequestRetention(0.5);
+  assert.equal(useProgress.getState().requestRetention, 0.8);
+  useProgress.getState().setRequestRetention(0.95);
+  assert.equal(useProgress.getState().requestRetention, 0.95);
 });
 
 test("there is no self-declared mastery path in progress state", () => {

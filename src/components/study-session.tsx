@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFormat } from "@/lib/learn/format";
 import { posLabel, useCopy } from "@/lib/learn/i18n";
-import { schedule } from "@/lib/learn/srs";
+import { freshCard, schedule } from "@/lib/learn/srs";
 import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
 import { formatDelay } from "@/lib/learn/text";
 import type { CardProg, Grade, Lang, StudyFace } from "@/lib/learn/types";
@@ -15,6 +15,7 @@ export function StudySession({
   cards,
   lang,
   voice,
+  requestRetention,
   onGrade,
   onExit,
 }: {
@@ -23,6 +24,7 @@ export function StudySession({
   cards: Record<string, CardProg>;
   lang: Lang;
   voice: boolean;
+  requestRetention: number;
   onGrade: (id: string, grade: Grade) => void;
   onExit: () => void;
 }) {
@@ -75,17 +77,10 @@ export function StudySession({
     const now = Date.now();
     const prev = cards[current.id];
     const projected = schedule(
-      prev ?? {
-        ease: 2.5,
-        interval: 0,
-        due: now,
-        reps: 0,
-        lapses: 0,
-        state: "learning",
-        step: 0,
-      },
+      prev ?? freshCard(now),
       grade,
       now,
+      requestRetention,
     );
     onGrade(current.id, grade);
     if (grade === "again") {
@@ -144,17 +139,7 @@ export function StudySession({
   }
 
   const now = Date.now();
-  const base =
-    cards[current.id] ??
-    ({
-      ease: 2.5,
-      interval: 0,
-      due: now,
-      reps: 0,
-      lapses: 0,
-      state: "learning" as const,
-      step: 0,
-    } satisfies CardProg);
+  const base: CardProg = cards[current.id] ?? freshCard(now);
   const labels: Record<Grade, string> = {
     again: copy.again,
     hard: copy.hard,
@@ -219,7 +204,7 @@ export function StudySession({
       {!teaching && revealed ? (
         <div className="mt-3 grid grid-cols-4 gap-2">
           {GRADES.map((grade) => {
-            const delay = schedule(base, grade, now).due - now;
+            const delay = schedule(base, grade, now, requestRetention).due - now;
             return (
               <button
                 key={grade}

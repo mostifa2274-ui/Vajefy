@@ -56,7 +56,7 @@ The app is fully client-side: no accounts, no database, no AI service.
 |---|---|
 | `src/routes/` | One file per screen: Today, Words, Review, Quiz, Notebook, Progress |
 | `src/components/` | Shell, review session, quiz runner, Pairs, sprint |
-| `src/lib/learn/srs.ts` | The scheduler (SM-2 style, with learning steps) |
+| `src/lib/learn/srs.ts` | FSRS-6 scheduler, legacy SM-2 bridge, retrievability |
 | `src/lib/learn/store.ts` | Progress state (zustand, persisted to `localStorage` as `roshana-v1`) |
 | `src/lib/learn/quiz.ts` | Question generation for every quiz mode |
 | `src/lib/learn/backup.ts` | Export and import of progress files |
@@ -65,12 +65,21 @@ The app is fully client-side: no accounts, no database, no AI service.
 
 ### Scheduling rules
 
-- Only **Review** moves a card's schedule. Intervals grow from the time that
-  actually passed since the card was last graded, so answering early never
-  inflates them.
-- **Quiz, Pairs and the sprint are practice.** They never add a word to the
-  schedule or push a review later. A miss on a scheduled word makes it due now,
-  so the next Review asks it properly.
+- New cards use **FSRS-6** with the official default 21-parameter model and
+  short learning/relearning steps. The learner can choose an 85%, 90% or 95%
+  target retention; 90% is the default.
+- Existing pre-FSRS review cards keep their saved due date. On the next real
+  review, their existing SM-2 ease/interval pair is converted to an FSRS memory
+  state with the official FSRS-6 SM-2 bridge formula. No historical reviews are
+  invented. Legacy cards already inside a short learning step finish that step
+  unchanged before they can migrate.
+- Every scheduled answer from this version forward appends a compact real review
+  event (rating, actual elapsed time, next interval, and FSRS memory state where
+  available). The history is capped to protect browser storage and can later be
+  used for evidence-based parameter tuning.
+- Only **Review** moves a card's schedule. **Quiz, Pairs and the sprint are
+  practice**: they never push a review later. A miss on a scheduled word makes
+  it due now, so the next Review asks it properly.
 - Scheduled Review and practice keep **separate counters and accuracy**. Practice
   cannot satisfy the daily review target or inflate measured retention.
 - A completely unseen word gets a short **teach → hide → recall → grade** flow
@@ -81,8 +90,10 @@ The app is fully client-side: no accounts, no database, no AI service.
 Progress is local-first. The app asks supporting browsers for persistent
 storage, and **Progress → Backup** exports a dated JSON file that can be restored
 on another device. The saved shape is versioned (`PROGRESS_VERSION` in
-`store.ts`) and migrations preserve older saves. There is intentionally no
-account or remote learner database yet.
+`store.ts`) and migrations preserve older saves. Version 3 adds the FSRS
+memory state, target retention and prospective review evidence while preserving
+older due dates. There is intentionally no account or remote learner database
+yet.
 
 ### Data notes
 
