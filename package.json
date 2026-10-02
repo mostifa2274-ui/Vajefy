@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "deploy": "wrangler deploy",
     "typecheck": "tsc --noEmit",
+    "validate:data": "node scripts/validate-data.mjs",
     "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts'",
     "lint": "eslint .",
     "format": "prettier --write ."
