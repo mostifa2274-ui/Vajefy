@@ -51,6 +51,11 @@ export function Shell({ children }: { children: ReactNode }) {
     document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
   }, [hydrated, lang]);
 
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+    void navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+  }, []);
+
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
 
   return (
