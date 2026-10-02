@@ -75,15 +75,31 @@ const memory = new Map<string, string>();
 const safeStorage = {
   getItem: (key: string) => {
     if (typeof window === "undefined") return memory.get(key) ?? null;
-    return localStorage.getItem(key);
+    try {
+      return localStorage.getItem(key) ?? memory.get(key) ?? null;
+    } catch {
+      return memory.get(key) ?? null;
+    }
   },
   setItem: (key: string, value: string) => {
-    if (typeof window === "undefined") memory.set(key, value);
-    else localStorage.setItem(key, value);
+    // Keep a same-session fallback even when browser persistence is denied or
+    // quota-limited. The UI remains usable and Backup can still export state.
+    memory.set(key, value);
+    if (typeof window === "undefined") return;
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      /* in-memory fallback already holds the latest state */
+    }
   },
   removeItem: (key: string) => {
-    if (typeof window === "undefined") memory.delete(key);
-    else localStorage.removeItem(key);
+    memory.delete(key);
+    if (typeof window === "undefined") return;
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      /* nothing else to remove */
+    }
   },
 };
 
