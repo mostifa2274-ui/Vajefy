@@ -85,8 +85,9 @@ configures the Worker, and `@cloudflare/vite-plugin` builds it.
 With the repository connected to Cloudflare (Workers Builds), every push to the
 production branch deploys, and other branches get preview versions. Cloudflare's
 default settings work as they are: `wrangler.jsonc` has a `build.command`, so
-`npx wrangler deploy` (and `wrangler versions upload` for previews) builds the
-app before uploading it. Setting the dashboard's build command to
+`npx wrangler deploy` (production) and `npx wrangler preview` (other branches)
+build the app before uploading it. `wrangler preview` also requires the
+`previews` block, which is empty so previews use the production settings. Setting the dashboard's build command to
 `npm run build` also works and does not build twice. `.node-version` pins
 Node 22 for Cloudflare's build image.
 
