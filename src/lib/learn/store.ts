@@ -433,10 +433,18 @@ export function totals(cards: Record<string, CardProg>) {
   return { seen, mastered };
 }
 
+function difficultyRank(card: CardProg): number {
+  return card.fsrs?.difficulty ?? 10 - card.ease;
+}
+
 export function weakIds(cards: Record<string, CardProg>, limit = 6) {
   return Object.entries(cards)
     .filter(([, card]) => card.lapses >= 2)
-    .sort((a, b) => b[1].lapses - a[1].lapses || a[1].ease - b[1].ease)
+    .sort(
+      (a, b) =>
+        b[1].lapses - a[1].lapses ||
+        difficultyRank(b[1]) - difficultyRank(a[1]),
+    )
     .slice(0, limit)
     .map(([id, card]) => ({ id, lapses: card.lapses }));
 }
