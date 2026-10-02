@@ -7,13 +7,17 @@ import {
   Search,
   SquareStack,
 } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { useCopy } from "@/lib/learn/i18n";
 import { liveStreak, todayLog, useProgress } from "@/lib/learn/store";
+import type { HeldSave } from "@/lib/learn/recovery";
 import { progressStorage, PROGRESS_STORAGE_KEY } from "@/lib/learn/storage";
+import { RecoveryScreen } from "./recovery-screen";
 import { SaveNotice } from "./save-notice";
 import { Num } from "./ui";
+
+const serverHeld = (): HeldSave | null => null;
 
 const OFFLINE_ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
 
@@ -40,6 +44,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const held = useSyncExternalStore(progressStorage.subscribe, progressStorage.getHeld, serverHeld);
 
   useEffect(() => {
     let alive = true;
@@ -197,8 +202,16 @@ export function Shell({ children }: { children: ReactNode }) {
         </div>
 
         <main className="dock-pad mx-auto w-full min-w-0 max-w-5xl px-4 py-5 md:px-8 md:py-6">
-          {hydrated ? <SaveNotice copy={copy} /> : null}
-          {children}
+          {/* A held save replaces the app, so nothing can be learned into a
+              placeholder state that could never be saved. */}
+          {hydrated && held ? (
+            <RecoveryScreen held={held} copy={copy} />
+          ) : (
+            <>
+              {hydrated ? <SaveNotice copy={copy} /> : null}
+              {children}
+            </>
+          )}
         </main>
       </div>
 

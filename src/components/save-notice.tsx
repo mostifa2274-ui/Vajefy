@@ -8,7 +8,8 @@ const serverStatus = (): SaveStatus => "checking";
 export function SaveNotice({ copy }: { copy: Copy }) {
   const status = useSyncExternalStore(progressStorage.subscribe, progressStorage.getStatus, serverStatus);
   const [confirmLoad, setConfirmLoad] = useState(false);
-  if (status === "checking" || status === "saved") return null;
+  // Held saves have their own recovery screen.
+  if (status !== "session" && status !== "conflict") return null;
   const conflict = status === "conflict";
   const buttonClass = "min-h-11 rounded-md bg-paper px-3 text-sm shadow-[var(--shadow-border)]";
 

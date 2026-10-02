@@ -128,3 +128,54 @@ test("server rendering has no durable-save claim or storage side effect", () => 
   assert.equal(storage.retry(), false);
   assert.equal(storage.getStatus(), "checking");
 });
+
+test("a held save refuses every write, retry and delete until released", () => {
+  const { control, storage } = fixture("unreadable save");
+  assert.equal(storage.getItem(KEY), "unreadable save");
+  storage.hold({ kind: "damaged", raw: "unreadable save" });
+  assert.equal(storage.getStatus(), "damaged");
+  storage.setItem(KEY, "empty progress");
+  storage.removeItem(KEY);
+  assert.equal(storage.retry(), false);
+  assert.equal(control.value, "unreadable save");
+  assert.equal(storage.getStatus(), "damaged");
+  // A placeholder write must not later surface as unsaved session work.
+  assert.equal(storage.shouldRehydrate(), true);
+  storage.release();
+  storage.setItem(KEY, "chosen replacement");
+  assert.equal(control.value, "chosen replacement");
+  assert.equal(storage.getStatus(), "saved");
+});
+
+test("a released hold still cannot replace a copy another tab changed", () => {
+  const { control, storage } = fixture("newer save");
+  storage.getItem(KEY);
+  storage.hold({ kind: "future", raw: "newer save", version: 9 });
+  control.value = "another tab's save";
+  storage.release();
+  storage.setItem(KEY, "chosen replacement");
+  assert.equal(control.value, "another tab's save");
+  assert.equal(storage.getStatus(), "conflict");
+});
+
+test("reading a fresh copy clears an earlier hold", () => {
+  const { control, storage } = fixture("unreadable save");
+  storage.getItem(KEY);
+  storage.hold({ kind: "damaged", raw: "unreadable save" });
+  control.value = "repaired in another tab";
+  assert.equal(storage.getItem(KEY), "repaired in another tab");
+  assert.equal(storage.getHeld(), null);
+  assert.equal(storage.getStatus(), "saved");
+});
+
+test("a different held copy notifies even when the status is unchanged", () => {
+  const { storage } = fixture("first damaged copy");
+  storage.getItem(KEY);
+  storage.hold({ kind: "damaged", raw: "first damaged copy" });
+  let notices = 0;
+  storage.subscribe(() => (notices += 1));
+  const second = { kind: "damaged" as const, raw: "second damaged copy" };
+  storage.hold(second);
+  assert.equal(notices, 1);
+  assert.equal(storage.getHeld(), second);
+});

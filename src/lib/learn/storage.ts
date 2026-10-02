@@ -1,13 +1,17 @@
+import type { HeldSave } from "./recovery";
+
 /** The existing key is retained so every released progress version still loads. */
 export const PROGRESS_STORAGE_KEY = "roshana-v1";
 
-export type SaveStatus = "checking" | "saved" | "session" | "conflict";
+/** `damaged` and `future`: a save the app cannot read is held, never replaced. */
+export type SaveStatus = "checking" | "saved" | "session" | "conflict" | HeldSave["kind"];
 type BrowserStorage = Pick<Storage, "getItem" | "setItem" | "removeItem">;
 
 /**
  * Keep failed writes available for this session without confusing them with a
  * durable save. A changed durable copy must never be overwritten by a retry.
  * Status lives outside the progress document, so it cannot trigger save loops.
+ * A held save blocks every write until the learner chooses how to resolve it.
  */
 export function createProgressStorage(getStorage: () => BrowserStorage | undefined) {
   let current: string | null = null;
@@ -15,16 +19,21 @@ export function createProgressStorage(getStorage: () => BrowserStorage | undefin
   let dirty = false;
   let durable: string | null | undefined;
   let status: SaveStatus = "checking";
+  let held: HeldSave | null = null;
   const listeners = new Set<() => void>();
+
+  function notify() {
+    for (const listener of listeners) listener();
+  }
 
   function report(next: SaveStatus) {
     if (next === status) return;
     status = next;
-    for (const listener of listeners) listener();
+    notify();
   }
 
   function save(key: string): boolean {
-    if (status === "conflict") return false;
+    if (status === "conflict" || held) return false;
     try {
       const storage = getStorage();
       // SSR has no durable storage and must not affect browser save status.
@@ -58,6 +67,7 @@ export function createProgressStorage(getStorage: () => BrowserStorage | undefin
         current = storage.getItem(key);
         hasCurrent = true;
         durable = current;
+        held = null;
         report("saved");
         return current;
       } catch {
@@ -66,12 +76,15 @@ export function createProgressStorage(getStorage: () => BrowserStorage | undefin
       }
     },
     setItem(key: string, value: string) {
+      // While a save is held, the in-memory state is a placeholder, not progress.
+      if (held) return;
       current = value;
       hasCurrent = true;
       dirty = true;
       save(key);
     },
     removeItem(key: string) {
+      if (held) return;
       current = null;
       hasCurrent = true;
       dirty = true;
@@ -91,6 +104,23 @@ export function createProgressStorage(getStorage: () => BrowserStorage | undefin
         if (status !== "conflict") report("session");
       }
       return false;
+    },
+    /** Keep a save that was just read but cannot be used; writes stop until release. */
+    hold(save: HeldSave) {
+      held = save;
+      // A different held copy may share the status, yet must still be shown.
+      status = save.kind;
+      notify();
+    },
+    getHeld: (): HeldSave | null => held,
+    /**
+     * Allow the learner's chosen replacement to be written. The usual check
+     * still applies, so a copy changed by another tab meanwhile is not replaced.
+     */
+    release() {
+      if (!held) return;
+      held = null;
+      report("checking");
     },
     getStatus: (): SaveStatus => status,
     subscribe(listener: () => void) {

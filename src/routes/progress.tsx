@@ -231,15 +231,15 @@ function BackupPanel({ copy }: { copy: Copy }) {
   const importProgress = useProgress((state) => state.importProgress);
   const fileInput = useRef<HTMLInputElement>(null);
   const [pending, setPending] = useState<SavedProgress | null>(null);
-  const [status, setStatus] = useState<"done" | "bad" | null>(null);
+  const [status, setStatus] = useState<"done" | "invalid" | "future" | null>(null);
 
   async function pick(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file) return;
     const parsed = parseBackup(await file.text());
-    setPending(parsed);
-    setStatus(parsed ? null : "bad");
+    setPending(parsed.ok ? parsed.progress : null);
+    setStatus(parsed.ok ? null : parsed.reason);
   }
 
   return (
@@ -281,8 +281,8 @@ function BackupPanel({ copy }: { copy: Copy }) {
         </div>
       ) : null}
       {status ? (
-        <p role="status" className={cn("mt-2 text-sm", status === "bad" ? "text-bad" : "text-good")}>
-          {status === "bad" ? copy.importBad : copy.importDone}
+        <p role="status" className={cn("mt-2 text-sm", status === "done" ? "text-good" : "text-bad")}>
+          {status === "done" ? copy.importDone : status === "future" ? copy.importFuture : copy.importBad}
         </p>
       ) : null}
     </div>
