@@ -54,11 +54,11 @@ test("Arabic-keyboard Persian search still finds normalized vocabulary", async (
 test("installed app can reopen the lexicon while offline", async ({ page, context }) => {
   await seed(page);
   await page.goto("/");
-  await page.evaluate(async () => {
-    if (!("serviceWorker" in navigator)) throw new Error("service worker unavailable");
-    await navigator.serviceWorker.ready;
-  });
-  await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
+  await page.waitForFunction(
+    () => document.documentElement.dataset.offlineReady === "true" && navigator.serviceWorker.controller !== null,
+    undefined,
+    { timeout: 20_000 },
+  );
   await context.setOffline(true);
   try {
     await page.goto("/lexicon");
