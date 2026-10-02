@@ -29,6 +29,7 @@ beforeEach(() => {
     xp: 0,
     requestRetention: 0.9,
     reviewHistory: [],
+    practiceSkills: {},
   });
 });
 
@@ -162,4 +163,42 @@ test("retention target is bounded to the supported FSRS range", () => {
 
 test("there is no self-declared mastery path in progress state", () => {
   assert.equal("markKnown" in useProgress.getState(), false);
+});
+
+test("observed drill skills are independent from recall evidence and from one another", () => {
+  const id = "lex:A1:about";
+  useProgress.setState({ cards: { [id]: mature } });
+  useProgress.getState().practice(id, "good", "listening");
+  useProgress.getState().practice(id, "hard", "spelling");
+  const state = useProgress.getState();
+  assert.equal(state.practiceSkills[id]?.listening?.lastGrade, "good");
+  assert.equal(state.practiceSkills[id]?.spelling?.lastGrade, "hard");
+  assert.equal(state.practiceSkills[id]?.meaning, undefined);
+  assert.deepEqual(state.cards[id], mature);
+  assert.deepEqual(state.reviewHistory, []);
+  assert.equal(state.lifetime.reviews, 0);
+  assert.equal(todayLog(state.logs).reviews, 0);
+});
+
+test("skill misses are observed and escalate to Review without inventing an FSRS lapse", () => {
+  const id = "lex:A1:about";
+  useProgress.setState({ cards: { [id]: mature } });
+  useProgress.getState().practice(id, "again", "spelling");
+  const state = useProgress.getState();
+  assert.deepEqual(state.practiceSkills[id]?.spelling, { attempts: 1, correct: 0, lastAt: NOW, lastGrade: "again" });
+  assert.equal(state.cards[id]?.due, NOW);
+  assert.equal(state.cards[id]?.lapses, mature.lapses);
+  assert.deepEqual(state.reviewHistory, []);
+});
+
+test("reset and forget remove obsolete per-word evidence", () => {
+  const id = "lex:A1:about";
+  useProgress.getState().practice(id, "good", "meaning");
+  useProgress.getState().review(id, "good");
+  useProgress.getState().forget([id]);
+  assert.deepEqual(useProgress.getState().practiceSkills, {});
+  assert.deepEqual(useProgress.getState().reviewHistory, []);
+  useProgress.getState().practice(id, "good", "meaning");
+  useProgress.getState().reset();
+  assert.deepEqual(useProgress.getState().practiceSkills, {});
 });

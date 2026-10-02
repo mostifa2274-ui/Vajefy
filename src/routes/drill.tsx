@@ -1,10 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { MatchBoard } from "@/components/match-board";
 import { QuizRun } from "@/components/quiz-run";
 import { SprintRun } from "@/components/sprint-run";
 import { PageHeader } from "@/components/ui";
 import { cn } from "@/lib/cn";
+import { smartPracticeQuestions } from "@/lib/learn/adaptive";
 import { useFormat } from "@/lib/learn/format";
 import { useCopy, type Copy, type CopyKey } from "@/lib/learn/i18n";
 import { DECK_FILE, loadAntonyms, loadIrregular, loadLevel, loadPairs, loadPatterns } from "@/lib/learn/load";
@@ -19,11 +20,11 @@ import {
 import { useProgress } from "@/lib/learn/store";
 import type { Lang, LevelId, Question } from "@/lib/learn/types";
 
-type DrillSearch = { play?: "match" | "sprint" | "studied" };
+type DrillSearch = { play?: "match" | "sprint" | "studied" | "smart" };
 
 export const Route = createFileRoute("/drill")({
   validateSearch: (search: Record<string, unknown>): DrillSearch => {
-    if (search.play === "match" || search.play === "sprint" || search.play === "studied") {
+    if (search.play === "match" || search.play === "sprint" || search.play === "studied" || search.play === "smart") {
       return { play: search.play };
     }
     return {};
@@ -41,10 +42,11 @@ const LEVEL_LABEL: Record<LevelId, string> = {
   C1: "C1",
 };
 
-type Mode = "match" | "sprint" | "to-fa" | "to-en" | "spell" | "cloze" | "listen" | "irr" | "ant" | "conf" | "chunk";
+type Mode = "smart" | "match" | "sprint" | "to-fa" | "to-en" | "spell" | "cloze" | "listen" | "irr" | "ant" | "conf" | "chunk";
 type Chunk = "pv" | "col" | "prep" | "vp" | "occ";
 
 const MODES: { id: Mode; title: CopyKey; hint: CopyKey }[] = [
+  { id: "smart", title: "smartPractice", hint: "smartPracticeHint" },
   { id: "match", title: "matchMode", hint: "matchHint" },
   { id: "sprint", title: "sprintMode", hint: "sprintHint" },
   { id: "to-fa", title: "modeToFa", hint: "hintToFa" },
@@ -71,7 +73,7 @@ function needsLevel(mode: Mode) {
 }
 
 type Arena =
-  | { kind: "quiz"; questions: Question[] }
+  | { kind: "quiz"; questions: Question[]; smart?: boolean }
   | { kind: "match"; pairs: PlayPair[] }
   | { kind: "sprint"; pairs: PlayPair[] };
 
@@ -83,14 +85,14 @@ function DrillPage() {
   const practice = useProgress((state) => state.practice);
   const copy = useCopy(lang);
   const { num } = useFormat();
-  const [mode, setMode] = useState<Mode>(initial.play === "match" ? "match" : initial.play === "sprint" ? "sprint" : "to-fa");
+  const [mode, setMode] = useState<Mode>(initial.play === "match" ? "match" : initial.play === "sprint" ? "sprint" : initial.play === "studied" ? "to-fa" : "smart");
   const [level, setLevel] = useState<LevelId>(focus);
   const [count, setCount] = useState(10);
   const [chunk, setChunk] = useState<Chunk>("col");
   const [direction, setDirection] = useState<"to-fa" | "to-en">("to-fa");
   const [studiedOnly, setStudiedOnly] = useState(initial.play === "studied");
   const [arena, setArena] = useState<Arena | null>(null);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<"load" | "empty" | null>(null);
   const [busy, setBusy] = useState(false);
 
   // The saved level is only known after hydration; adopt it once, unless the
@@ -102,16 +104,33 @@ function DrillPage() {
 
   async function start() {
     setBusy(true);
-    setError(false);
+    setError(null);
     try {
       const cards = useProgress.getState().cards;
-      if (mode === "match" || mode === "sprint") {
+      if (mode === "smart") {
+        const ids = Object.keys(cards);
+        const levels = LEVELS.filter((id) => ids.some((key) => key.startsWith(`lex:${id}:`)));
+        const words = (await Promise.all(levels.map(loadLevel))).flat();
+        // Read after loading so a review/reset in another tab cannot start a
+        // stale session from the earlier snapshot.
+        const current = useProgress.getState();
+        const built = smartPracticeQuestions(words, current.cards, count, copy, lang, Date.now(), current.requestRetention, {
+          evidence: current.practiceSkills,
+          allowListening: Boolean(window.speechSynthesis),
+        });
+        if (!built.length) {
+          setError("empty");
+          setArena(null);
+        } else {
+          setArena({ kind: "quiz", questions: built, smart: true });
+        }
+      } else if (mode === "match" || mode === "sprint") {
         const words = await loadLevel(level);
         const pool = studiedOnly ? words.filter((word) => cards[word.id]) : words;
         const pairs = playPairs(pool, mode === "match" ? 6 : 40);
         const minimum = mode === "match" ? 4 : 8;
         if (pairs.length < minimum) {
-          setError(true);
+          setError("empty");
           setArena(null);
         } else {
           setArena({ kind: mode, pairs });
@@ -119,14 +138,14 @@ function DrillPage() {
       } else {
         const built = await build(mode, level, count, chunk, direction, copy, lang, studiedOnly, cards);
         if (!built.length) {
-          setError(true);
+          setError("empty");
           setArena(null);
         } else {
           setArena({ kind: "quiz", questions: built });
         }
       }
     } catch {
-      setError(true);
+      setError("load");
     } finally {
       setBusy(false);
     }
@@ -139,6 +158,7 @@ function DrillPage() {
         lang={lang}
         onGrade={practice}
         onDone={() => setArena(null)}
+        title={arena.smart ? copy.smartPractice : undefined}
       />
     );
   }
@@ -148,7 +168,7 @@ function DrillPage() {
       <MatchBoard
         pairs={arena.pairs}
         lang={lang}
-        onPair={(id) => practice(id, "good")}
+        onPair={(id) => practice(id, "good", "meaning")}
         onExit={() => setArena(null)}
       />
     );
@@ -159,7 +179,7 @@ function DrillPage() {
       <SprintRun
         pairs={arena.pairs}
         lang={lang}
-        onResult={(id, ok) => practice(id, ok ? "good" : "again")}
+        onResult={(id, ok) => practice(id, ok ? "good" : "again", "spelling")}
         onExit={() => setArena(null)}
       />
     );
@@ -168,28 +188,52 @@ function DrillPage() {
   return (
     <div>
       <PageHeader title={copy.drill} lede={copy.drillLead} />
-      <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        {MODES.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            aria-pressed={mode === item.id}
-            onClick={() => setMode(item.id)}
-            className={cn(
-              "min-h-11 rounded-lg p-3 text-start",
-              mode === item.id ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]",
-            )}
-          >
-            <span className="block text-sm font-medium">{copy[item.title]}</span>
-            <span className={cn("mt-1 block text-xs text-pretty", mode === item.id ? "text-paper/70" : "text-muted")}>{copy[item.hint]}</span>
-          </button>
-        ))}
-      </div>
+      <button
+        type="button"
+        aria-pressed={mode === "smart"}
+        disabled={busy}
+        onClick={() => {
+          setMode("smart");
+          setError(null);
+        }}
+        className={cn("w-full min-h-11 rounded-lg p-3 text-start", mode === "smart" ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]")}
+      >
+        <span className="block text-sm font-medium">{copy.smartPractice}</span>
+        <span className={cn("mt-1 block text-xs text-pretty", mode === "smart" ? "text-paper/70" : "text-muted")}>{copy.smartPracticeHint}</span>
+      </button>
+      <details className="mt-3" open={mode !== "smart"}>
+        <summary className="min-h-11 py-3 text-sm font-medium text-accent">{copy.otherPracticeFormats}</summary>
+        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {MODES.filter((item) => item.id !== "smart").map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              aria-pressed={mode === item.id}
+              disabled={busy}
+              onClick={() => {
+                setMode(item.id);
+                setError(null);
+              }}
+              className={cn(
+                "min-h-11 rounded-lg p-3 text-start",
+                mode === item.id ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]",
+              )}
+            >
+              <span className="block text-sm font-medium">{copy[item.title]}</span>
+              <span className={cn("mt-1 block text-xs text-pretty", mode === item.id ? "text-paper/70" : "text-muted")}>{copy[item.hint]}</span>
+            </button>
+          ))}
+        </div>
+      </details>
 
-      {needsLevel(mode) && mode !== "match" && mode !== "sprint" ? (
+      {mode === "smart" ? (
+        <p className="mt-4 max-w-2xl text-sm text-pretty text-muted">{copy.smartPracticeLead}</p>
+      ) : null}
+
+      {(mode === "smart" || needsLevel(mode)) && mode !== "match" && mode !== "sprint" ? (
         <div className="mt-5 flex flex-wrap gap-2">
           {[10, 20].map((n) => (
-            <Choice key={n} active={count === n} onClick={() => setCount(n)}>
+            <Choice key={n} active={count === n} disabled={busy} onClick={() => setCount(n)}>
               {num(n)}
             </Choice>
           ))}
@@ -203,6 +247,7 @@ function DrillPage() {
               <Choice
                 key={id}
                 active={level === id}
+                disabled={busy}
                 onClick={() => {
                   levelTouched.current = true;
                   setLevel(id);
@@ -213,10 +258,10 @@ function DrillPage() {
             ))}
           </div>
           <div className="mt-3 flex gap-2">
-            <Choice active={studiedOnly} onClick={() => setStudiedOnly(true)}>
+            <Choice active={studiedOnly} disabled={busy} onClick={() => setStudiedOnly(true)}>
               {copy.studiedOnly}
             </Choice>
-            <Choice active={!studiedOnly} onClick={() => setStudiedOnly(false)}>
+            <Choice active={!studiedOnly} disabled={busy} onClick={() => setStudiedOnly(false)}>
               {copy.wholeLevel}
             </Choice>
           </div>
@@ -227,26 +272,35 @@ function DrillPage() {
         <>
           <div className="mt-3 flex gap-2 overflow-x-auto">
             {CHUNKS.map((item) => (
-              <Choice key={item.id} active={chunk === item.id} onClick={() => setChunk(item.id)}>
+              <Choice key={item.id} active={chunk === item.id} disabled={busy} onClick={() => setChunk(item.id)}>
                 {copy[item.label]}
               </Choice>
             ))}
           </div>
           <div className="mt-3 flex gap-2">
-            <Choice active={direction === "to-fa"} onClick={() => setDirection("to-fa")}>
+            <Choice active={direction === "to-fa"} disabled={busy} onClick={() => setDirection("to-fa")}>
               {copy.toFa}
             </Choice>
-            <Choice active={direction === "to-en"} onClick={() => setDirection("to-en")}>
+            <Choice active={direction === "to-en"} disabled={busy} onClick={() => setDirection("to-en")}>
               {copy.toEn}
             </Choice>
           </div>
         </>
       ) : null}
 
-      {error ? <p className="mt-4 text-sm text-bad">{needsLevel(mode) ? copy.thinPool : copy.noResults}</p> : null}
+      {error ? (
+        <div className="mt-4" role="status">
+          <p className={error === "load" ? "text-sm text-bad" : "text-sm text-muted"}>
+            {error === "load" ? copy.loadFailed : mode === "smart" ? copy.smartPracticeEmpty : needsLevel(mode) ? copy.thinPool : copy.noResults}
+          </p>
+          {mode === "smart" && error === "empty" ? (
+            <Link to="/study" className="mt-2 inline-flex min-h-11 items-center text-sm text-accent">{copy.startSession}</Link>
+          ) : null}
+        </div>
+      ) : null}
       <button
         type="button"
-        disabled={busy}
+        disabled={busy || !hydrated}
         onClick={() => void start()}
         className="mt-5 inline-flex min-h-11 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-fg hover:bg-ink disabled:opacity-40"
       >
@@ -256,11 +310,12 @@ function DrillPage() {
   );
 }
 
-function Choice({ active, onClick, children }: { active: boolean; onClick: () => void; children: string }) {
+function Choice({ active, onClick, children, disabled }: { active: boolean; onClick: () => void; children: string; disabled?: boolean }) {
   return (
     <button
       type="button"
       aria-pressed={active}
+      disabled={disabled}
       onClick={onClick}
       className={cn(
         "min-h-11 shrink-0 rounded-md px-3 text-sm",
@@ -273,7 +328,7 @@ function Choice({ active, onClick, children }: { active: boolean; onClick: () =>
 }
 
 async function build(
-  mode: Mode,
+  mode: Exclude<Mode, "smart">,
   level: LevelId,
   count: number,
   chunk: Chunk,

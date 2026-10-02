@@ -3,7 +3,7 @@ import { useCopy } from "@/lib/learn/i18n";
 import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
 import { formMatches, bestSpelling } from "@/lib/learn/text";
 import { useFormat } from "@/lib/learn/format";
-import type { Grade, Lang, Question } from "@/lib/learn/types";
+import type { Grade, Lang, PracticeSkill, Question } from "@/lib/learn/types";
 import { cn } from "@/lib/cn";
 import { Button, SpeakButton } from "./ui";
 
@@ -14,11 +14,13 @@ export function QuizRun({
   lang,
   onGrade,
   onDone,
+  title,
 }: {
   questions: Question[];
   lang: Lang;
-  onGrade: (id: string, grade: Grade) => void;
+  onGrade: (id: string, grade: Grade, skill?: PracticeSkill) => void;
   onDone: () => void;
+  title?: string;
 }) {
   const copy = useCopy(lang);
   const { num } = useFormat();
@@ -30,6 +32,7 @@ export function QuizRun({
   const [verdict, setVerdict] = useState<"exact" | "close" | "wrong" | null>(null);
   const [misses, setMisses] = useState<Miss[]>([]);
   const [correct, setCorrect] = useState(0);
+  const [skipped, setSkipped] = useState(0);
   const question = questions[index];
 
   useEffect(() => {
@@ -42,8 +45,9 @@ export function QuizRun({
       <section className="mx-auto max-w-xl">
         <p className="text-sm text-accent">{copy.scoreLabel}</p>
         <h1 className="mt-1 text-3xl font-medium">
-          {num(correct)} / {num(questions.length)}
+          {skipped === questions.length ? copy.noPracticeAnswers : `${num(correct)} / ${num(questions.length - skipped)}`}
         </h1>
+        {skipped > 0 ? <p className="mt-2 text-sm text-muted">{num(skipped)} {copy.audioSkipped}</p> : null}
         {misses.length ? (
           <div className="mt-6">
             <h2 className="text-sm text-muted">{copy.missed}</h2>
@@ -69,7 +73,8 @@ export function QuizRun({
   }
 
   function finish(grade: Grade, prompt: string, answer: string) {
-    onGrade(question.id, grade);
+    if (verdict !== null) return;
+    onGrade(question.id, grade, question.practiceSkill);
     if (grade === "again") setMisses((list) => [...list, { prompt, answer }]);
     else setCorrect((count) => count + 1);
     setVerdict(grade === "again" ? "wrong" : grade === "hard" ? "close" : "exact");
@@ -88,6 +93,7 @@ export function QuizRun({
 
   return (
     <section className="mx-auto max-w-xl">
+      {title ? <h1 className="mb-4 text-xl font-medium">{title}</h1> : null}
       <div className="mb-3 flex items-center justify-between text-sm text-muted">
         <span className="tabular-nums">
           {num(index + 1)} / {num(questions.length)}
@@ -173,6 +179,13 @@ export function QuizRun({
             {question.kind === "mcq" && question.speak ? (
               <div className="mt-4">
                 <SpeakButton text={question.speak} label={copy.replay} />
+                {!locked ? (
+                  <button type="button" className="ms-2 min-h-11 px-2 text-sm text-accent" onClick={() => {
+                    setSkipped((count) => count + 1);
+                    advance();
+                  }}>{copy.skipAudio}</button>
+                ) : null}
+                {!locked ? <p className="mt-1 text-xs text-muted">{copy.skipAudioHint}</p> : null}
               </div>
             ) : null}
 
@@ -219,6 +232,7 @@ export function QuizRun({
                 }}
               >
                 <input
+                  aria-label={copy.yourAnswer}
                   value={typed}
                   disabled={locked}
                   onChange={(event) => setTyped(event.target.value)}

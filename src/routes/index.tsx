@@ -136,10 +136,10 @@ function Home() {
           <ButtonLink to="/study">{copy.startSession}</ButtonLink>
           <Link
             to="/drill"
-            search={{ play: "studied" }}
+            search={{ play: "smart" }}
             className="inline-flex min-h-11 items-center justify-center rounded-md bg-paper-2 px-4 text-sm font-medium shadow-[var(--shadow-border)]"
           >
-            {copy.recallStep}
+            {copy.smartPractice}
           </Link>
           <Link to="/drill" search={{ play: "match" }} className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
             {copy.openMatch}

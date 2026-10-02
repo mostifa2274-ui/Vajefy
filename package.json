@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && node scripts/inject-sw-assets.mjs",
+    "build": "node scripts/clean-build.mjs && vite build && node scripts/inject-sw-assets.mjs",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy",
     "postinstall": "node scripts/cloudflare-ci-bootstrap.mjs",

@@ -8,7 +8,8 @@ import {
   scheduleWithMeta,
 } from "./srs";
 import { todayKey, yesterdayKey } from "./text";
-import type { CardProg, Grade, Lang, LevelId, ReviewEvent } from "./types";
+import { boundPracticeEvidence, recordPracticeSkill } from "./practice";
+import type { CardProg, Grade, Lang, LevelId, PracticeEvidence, PracticeSkill, ReviewEvent } from "./types";
 
 export type DayLog = {
   date: string;
@@ -50,6 +51,8 @@ export type SavedProgress = {
   requestRetention: number;
   /** Compact, real review evidence collected prospectively for future tuning. */
   reviewHistory: ReviewEvent[];
+  /** Prospective vocabulary drill evidence, kept separate from retention. */
+  practiceSkills: PracticeEvidence;
   onboarded: boolean;
 };
 
@@ -68,7 +71,7 @@ type ProgressState = SavedProgress & {
   toggleBookmark: (id: string) => void;
   completeOnboarding: (focus: LevelId, dailyGoal: number) => void;
   review: (id: string, grade: Grade) => CardProg;
-  practice: (id: string, grade: Grade) => void;
+  practice: (id: string, grade: Grade, skill?: PracticeSkill) => void;
   addToReview: (id: string) => void;
   forget: (ids: string[]) => void;
   importProgress: (saved: SavedProgress) => void;
@@ -76,7 +79,7 @@ type ProgressState = SavedProgress & {
 };
 
 /** Bump when the saved shape changes, and teach `migrate` the old shape. */
-export const PROGRESS_VERSION = 3;
+export const PROGRESS_VERSION = 4;
 
 const XP: Record<Grade, number> = { again: 2, hard: 6, good: 10, easy: 14 };
 const PRACTICE_XP: Record<Grade, number> = { again: 0, hard: 1, good: 2, easy: 3 };
@@ -214,6 +217,7 @@ const DEFAULTS: SavedProgress = {
   dailyGoal: 20,
   requestRetention: DEFAULT_REQUEST_RETENTION,
   reviewHistory: [],
+  practiceSkills: {},
   onboarded: false,
 };
 
@@ -235,6 +239,7 @@ export function savedProgress(state: SavedProgress): SavedProgress {
     dailyGoal: state.dailyGoal,
     requestRetention: state.requestRetention,
     reviewHistory: state.reviewHistory,
+    practiceSkills: state.practiceSkills,
     onboarded: state.onboarded,
   };
 }
@@ -259,6 +264,7 @@ export function migrateProgress(persisted: unknown, version: number): SavedProgr
     accent: input.accent === "en-US" ? "en-US" : "en-GB",
     requestRetention: normalizeRetention(input.requestRetention ?? DEFAULT_REQUEST_RETENTION),
     reviewHistory: Array.isArray(input.reviewHistory) ? input.reviewHistory.slice(-MAX_REVIEW_HISTORY) : [],
+    practiceSkills: boundPracticeEvidence(input.practiceSkills ?? {}),
   };
   if (version < 1) {
     // v0 kept only the last 60 days of logs; seed the legacy aggregate as
@@ -350,7 +356,7 @@ export const useProgress = create<ProgressState>()(
       // than recall in Review, so practice never schedules a card later and
       // never adds a word to the schedule. A miss on a scheduled card makes it
       // due now, so the next Review asks it properly.
-      practice: (id, grade) => {
+      practice: (id, grade, skill) => {
         const now = Date.now();
         const today = todayKey();
         const state = get();
@@ -364,6 +370,7 @@ export const useProgress = create<ProgressState>()(
             practiceCorrect: missed ? 0 : 1,
           }),
           lifetime: bumpPracticeLifetime(state.lifetime, !missed),
+          practiceSkills: recordPracticeSkill(state.practiceSkills, id, skill, grade, now),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
           xp: state.xp + PRACTICE_XP[grade],
@@ -383,8 +390,13 @@ export const useProgress = create<ProgressState>()(
       forget: (ids) => {
         if (!ids.length) return;
         const cards = { ...get().cards };
-        for (const id of ids) delete cards[id];
-        set({ cards });
+        const practiceSkills = { ...get().practiceSkills };
+        for (const id of ids) {
+          delete cards[id];
+          delete practiceSkills[id];
+        }
+        const forgotten = new Set(ids);
+        set({ cards, practiceSkills, reviewHistory: get().reviewHistory.filter((event) => !forgotten.has(event.id)) });
       },
       importProgress: (saved) => set({ ...savedProgress(saved), onboarded: true }),
       reset: () =>
@@ -393,6 +405,7 @@ export const useProgress = create<ProgressState>()(
           logs: [],
           lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
           reviewHistory: [],
+          practiceSkills: {},
           streak: 0,
           lastStudyDate: null,
           xp: 0,

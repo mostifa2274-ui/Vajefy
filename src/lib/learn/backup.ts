@@ -1,10 +1,25 @@
 import { z } from "zod";
 import { migrateProgress, PROGRESS_VERSION, savedProgress, type SavedProgress } from "./store";
+import { MAX_PRACTICE_WORDS } from "./practice";
 
 export const BACKUP_KIND = "roshana-progress";
 
 const count = z.number().int().min(0);
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+
+const practiceObservation = z.object({
+  attempts: count,
+  correct: count,
+  lastAt: z.number().int().min(0),
+  lastGrade: z.enum(["again", "hard", "good", "easy"]),
+}).refine((value) => value.attempts > 0 && value.correct <= value.attempts);
+
+const practiceSkills = z.record(z.string().min(1).max(200), z.object({
+  meaning: practiceObservation.optional(),
+  spelling: practiceObservation.optional(),
+  listening: practiceObservation.optional(),
+  context: practiceObservation.optional(),
+})).refine((value) => Object.keys(value).length <= MAX_PRACTICE_WORDS);
 
 const fsrsCard = z.object({
   model: z.literal("fsrs6"),
@@ -78,6 +93,7 @@ const progress = z.object({
   dailyGoal: z.number().int().min(0).max(1000),
   requestRetention: z.number().min(0.8).max(0.97).optional(),
   reviewHistory: z.array(reviewEvent).max(12000).optional(),
+  practiceSkills: practiceSkills.optional(),
   onboarded: z.boolean(),
 });
 

@@ -12,7 +12,9 @@ and 5000 lists, with spaced repetition.
   then active recall; scheduled cards use recall first and grade Again / Hard /
   Good / Easy.
 - **Quiz** (`/drill`): eleven practice modes, including Pairs and a 45-second
-  spelling sprint. Practice is measured separately from retention evidence.
+  spelling sprint, plus **Smart Practice**. Smart Practice selects studied words
+  using FSRS memory estimates and real skill mistakes, then mixes spelling,
+  listening, meaning and context. Practice is measured separately from retention.
 - **Offline-first PWA**: the app shell and all learning datasets are cached for
   offline study after the first successful load.
 - Persian or English interface, right-to-left aware throughout, with selectable
@@ -59,6 +61,8 @@ The app is fully client-side: no accounts, no database, no AI service.
 | `src/lib/learn/srs.ts` | FSRS-6 scheduler, legacy SM-2 bridge, retrievability |
 | `src/lib/learn/store.ts` | Progress state (zustand, persisted to `localStorage` as `roshana-v1`) |
 | `src/lib/learn/quiz.ts` | Question generation for every quiz mode |
+| `src/lib/learn/adaptive.ts` | FSRS-aware Smart Practice selection and skill targeting |
+| `src/lib/learn/practice.ts` | Bounded prospective vocabulary skill evidence |
 | `src/lib/learn/backup.ts` | Export and import of progress files |
 | `public/data/*.json` | The dataset, fetched by the browser on demand |
 | `attachments/*.xlsx` | The spreadsheet the dataset was converted from |
@@ -92,8 +96,23 @@ storage, and **Progress → Backup** exports a dated JSON file that can be resto
 on another device. The saved shape is versioned (`PROGRESS_VERSION` in
 `store.ts`) and migrations preserve older saves. Version 3 adds the FSRS
 memory state, target retention and prospective review evidence while preserving
-older due dates. There is intentionally no account or remote learner database
+older due dates. Version 4 adds per-word drill skills without reconstructing
+past attempts or changing due dates. There is intentionally no account or remote learner database
 yet.
+
+### Smart Practice
+
+Today → **Smart Practice** opens a short optional session across studied levels.
+It prioritizes fragile words and observed spelling, listening, meaning or context
+mistakes. Words in learning/relearning, due within six hours, or practised within
+the past 30 minutes remain outside this session. These are explicit product
+guardrails, not a fitted forgetting model.
+
+A correct practice answer preserves the exact FSRS state and due date. A miss
+uses the existing due-now policy so Review can schedule it. If audio cannot be
+heard, **Skip listening** records no answer, XP, skill observation or review.
+Skill observations survive reload and JSON backup/restore; older saves start
+with empty skill evidence. See [docs/SMART_PRACTICE.md](docs/SMART_PRACTICE.md).
 
 ### Data notes
 
