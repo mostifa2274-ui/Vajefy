@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFormat } from "@/lib/learn/format";
 import { posLabel, useCopy } from "@/lib/learn/i18n";
-import { schedule } from "@/lib/learn/srs";
+import { freshCard, schedule } from "@/lib/learn/srs";
 import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
 import { formatDelay } from "@/lib/learn/text";
 import type { CardProg, Grade, Lang, StudyFace } from "@/lib/learn/types";
@@ -77,15 +77,7 @@ export function StudySession({
     const now = Date.now();
     const prev = cards[current.id];
     const projected = schedule(
-      prev ?? {
-        ease: 2.5,
-        interval: 0,
-        due: now,
-        reps: 0,
-        lapses: 0,
-        state: "learning",
-        step: 0,
-      },
+      prev ?? freshCard(now),
       grade,
       now,
       requestRetention,
@@ -147,17 +139,7 @@ export function StudySession({
   }
 
   const now = Date.now();
-  const base =
-    cards[current.id] ??
-    ({
-      ease: 2.5,
-      interval: 0,
-      due: now,
-      reps: 0,
-      lapses: 0,
-      state: "learning" as const,
-      step: 0,
-    } satisfies CardProg);
+  const base: CardProg = cards[current.id] ?? freshCard(now);
   const labels: Record<Grade, string> = {
     again: copy.again,
     hard: copy.hard,
