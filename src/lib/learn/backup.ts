@@ -17,6 +17,20 @@ const card = z.object({
   last: z.number().optional(),
 });
 
+const reviewEvent = z.object({
+  t: z.number().int().min(0),
+  id: z.string().min(1).max(200),
+  grade: z.enum(["again", "hard", "good", "easy"]),
+  state: z.enum(["learning", "review"]),
+  step: count,
+  scheduledDays: z.number().min(0).max(36500),
+  elapsedDays: z.number().min(0).max(36500),
+  nextState: z.enum(["learning", "review"]),
+  nextStep: count,
+  nextDays: z.number().min(0).max(36500),
+  complete: z.boolean(),
+});
+
 // Only the fields present in every saved version are required; migrateProgress
 // fills the rest, exactly as it does for the browser's own storage.
 const progress = z.object({
@@ -41,6 +55,7 @@ const progress = z.object({
       practiceCorrect: count.optional(),
     })
     .optional(),
+  reviewHistory: z.array(reviewEvent).max(8000).optional(),
   streak: count,
   lastStudyDate: date.nullable(),
   xp: count,
