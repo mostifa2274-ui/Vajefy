@@ -229,6 +229,7 @@ function Home() {
               <button
                 key={level.id}
                 type="button"
+                aria-pressed={active}
                 onClick={() => setFocus(level.id)}
                 className={
                   active
