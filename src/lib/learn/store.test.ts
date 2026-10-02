@@ -24,6 +24,7 @@ beforeEach(() => {
     cards: {},
     logs: [],
     lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
+    reviewHistory: [],
     streak: 0,
     lastStudyDate: null,
     xp: 0,
@@ -103,6 +104,7 @@ test("v0 saves gain lifetime totals from their logs", () => {
   assert.deepEqual(migrated.cards, { a: mature });
   assert.equal(migrated.dailyGoal, 20);
   assert.equal(migrated.accent, "en-GB");
+  assert.deepEqual(migrated.reviewHistory, []);
 });
 
 test("practice cannot satisfy the daily review goal or retention accuracy", () => {
@@ -120,6 +122,63 @@ test("practice cannot satisfy the daily review goal or retention accuracy", () =
   assert.equal(afterReview.lifetime.reviews, 1);
   assert.equal(afterReview.lifetime.correct, 1);
   assert.equal(afterReview.lifetime.practice, 2);
+});
+
+test("scheduled review records prospective evidence but practice does not", () => {
+  const state = useProgress.getState();
+  state.practice("lex:A1:about", "good");
+  assert.deepEqual(useProgress.getState().reviewHistory, []);
+
+  state.review("lex:A1:about", "good");
+  const first = useProgress.getState().reviewHistory[0]!;
+  assert.deepEqual(first, {
+    t: NOW,
+    id: "lex:A1:about",
+    grade: "good",
+    state: "learning",
+    step: 0,
+    scheduledDays: 0,
+    elapsedDays: 0,
+    nextState: "learning",
+    nextStep: 1,
+    nextDays: 0,
+    complete: true,
+  });
+});
+
+test("a pre-existing reviewed card starts an explicitly partial history", () => {
+  useProgress.setState({ cards: { "lex:A1:about": mature }, reviewHistory: [] });
+  useProgress.getState().review("lex:A1:about", "good");
+  const event = useProgress.getState().reviewHistory[0]!;
+  assert.equal(event.complete, false);
+  assert.equal(event.state, "review");
+  assert.equal(event.scheduledDays, 30);
+  assert.equal(event.elapsedDays, 10);
+  assert.equal(event.nextState, "review");
+  assert.equal(event.nextDays, 30);
+});
+
+test("review-history completeness persists for subsequent logged reviews", () => {
+  useProgress.setState({ cards: { "lex:A1:about": mature }, reviewHistory: [] });
+  useProgress.getState().review("lex:A1:about", "good");
+  mock.timers.tick(30 * DAY);
+  useProgress.getState().review("lex:A1:about", "easy");
+  const events = useProgress.getState().reviewHistory;
+  assert.equal(events.length, 2);
+  assert.equal(events[0]?.complete, false);
+  assert.equal(events[1]?.complete, false);
+});
+
+test("forget removes review evidence for removed cards only", () => {
+  useProgress.setState({
+    cards: { a: mature, b: mature },
+    reviewHistory: [
+      { t: NOW, id: "a", grade: "good", state: "review", step: 0, scheduledDays: 30, elapsedDays: 10, nextState: "review", nextStep: 0, nextDays: 30, complete: false },
+      { t: NOW, id: "b", grade: "good", state: "review", step: 0, scheduledDays: 30, elapsedDays: 10, nextState: "review", nextStep: 0, nextDays: 30, complete: false },
+    ],
+  });
+  useProgress.getState().forget(["a"]);
+  assert.deepEqual(useProgress.getState().reviewHistory.map((event) => event.id), ["b"]);
 });
 
 test("there is no self-declared mastery path in progress state", () => {
