@@ -51,12 +51,15 @@ function ProgressPage() {
   const voice = useProgress((state) => state.voice);
   const accent = useProgress((state) => state.accent);
   const dailyGoal = useProgress((state) => state.dailyGoal);
+  const requestRetention = useProgress((state) => state.requestRetention);
+  const reviewHistory = useProgress((state) => state.reviewHistory);
   const bookmarks = useProgress((state) => state.bookmarks);
   const setSessionSize = useProgress((state) => state.setSessionSize);
   const setNewPerDay = useProgress((state) => state.setNewPerDay);
   const setVoice = useProgress((state) => state.setVoice);
   const setAccent = useProgress((state) => state.setAccent);
   const setDailyGoal = useProgress((state) => state.setDailyGoal);
+  const setRequestRetention = useProgress((state) => state.setRequestRetention);
   const setLang = useProgress((state) => state.setLang);
   const reset = useProgress((state) => state.reset);
   const copy = useCopy(lang);
@@ -79,11 +82,12 @@ function ProgressPage() {
   return (
     <div>
       <PageHeader title={copy.progress} lede={copy.accuracyHint} />
-      <section className="panel grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+      <section className="panel grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
         <Stat label={copy.streakLabel} value={<Num value={hydrated ? liveStreak(streak, lastStudyDate) : 0} />} />
         <Stat label={copy.masteredLabel} value={<Num value={hydrated ? all.mastered : 0} />} />
         <Stat label={copy.reviewsLabel} value={<Num value={hydrated ? lifetime.reviews : 0} />} />
         <Stat label={copy.practiceLabel} value={<Num value={hydrated ? lifetime.practice : 0} />} />
+        <Stat label={copy.reviewEvidence} value={<Num value={hydrated ? reviewHistory.length : 0} />} />
         <Stat label={copy.xpLabel} value={<Num value={hydrated ? xp : 0} />} />
       </section>
       <p className="mt-3 text-sm text-muted">
@@ -159,6 +163,17 @@ function ProgressPage() {
             </Toggle>
           ))}
         </Setting>
+        <Setting label={copy.retentionTarget}>
+          {[0.85, 0.9, 0.95].map((n) => (
+            <Toggle key={n} active={requestRetention === n} onClick={() => setRequestRetention(n)}>
+              {pct(n)}
+            </Toggle>
+          ))}
+        </Setting>
+        <p className="mt-1 text-xs text-pretty text-muted">{copy.retentionHint}</p>
+        <p className="mt-3 text-xs text-muted">
+          {copy.schedulerLabel}: {copy.schedulerFsrs}
+        </p>
         <Setting label={copy.accent}>
           <Toggle active={accent === "en-GB"} onClick={() => setAccent("en-GB")}>
             {copy.accentBritish}
