@@ -62,6 +62,7 @@ export function lexQuestion(
   if (mode === "spell") {
     return {
       kind: "type",
+      practiceSkill: "spelling",
       id: word.id,
       prompt: word.fa,
       promptDir: "rtl",
@@ -86,6 +87,7 @@ export function lexQuestion(
     );
     return {
       kind: "mcq",
+      practiceSkill: "context",
       id: word.id,
       prompt: blank,
       promptDir: "ltr",
@@ -104,6 +106,7 @@ export function lexQuestion(
     ]);
     return {
       kind: "mcq",
+      practiceSkill: "meaning",
       id: word.id,
       prompt: word.fa,
       promptDir: "rtl",
@@ -121,9 +124,10 @@ export function lexQuestion(
   ]);
   return {
     kind: "mcq",
+    practiceSkill: mode === "listen" ? "listening" : "meaning",
     id: word.id,
     prompt: mode === "listen" ? copy.listenPrompt : word.w,
-    promptDir: mode === "listen" ? "rtl" : "ltr",
+    promptDir: mode === "listen" && lang === "fa" ? "rtl" : "ltr",
     hint: mode === "listen" ? undefined : pos,
     speak: mode === "listen" ? bareHeadword(word.w) || word.w : undefined,
     options,

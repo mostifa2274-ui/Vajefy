@@ -124,6 +124,18 @@ export type LibDeckId =
 
 export type Grade = "again" | "hard" | "good" | "easy";
 
+export type PracticeSkill = "meaning" | "spelling" | "listening" | "context";
+
+/** Observed drill answers only; these never become FSRS review evidence. */
+export type PracticeObservation = {
+  attempts: number;
+  correct: number;
+  lastAt: number;
+  lastGrade: Grade;
+};
+
+export type PracticeEvidence = Record<string, Partial<Record<PracticeSkill, PracticeObservation>>>;
+
 export type FsrsCardState = {
   model: "fsrs6";
   stability: number;
@@ -204,4 +216,4 @@ export type IrrQ = {
   guide?: string;
 };
 
-export type Question = Mcq | TypeQ | IrrQ;
+export type Question = (Mcq | TypeQ | IrrQ) & { practiceSkill?: PracticeSkill };

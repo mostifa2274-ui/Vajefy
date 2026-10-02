@@ -52,6 +52,12 @@ const saved: SavedProgress = {
       difficulty: 5.1,
     },
   ],
+  practiceSkills: {
+    "lex:A1:about": {
+      spelling: { attempts: 3, correct: 2, lastAt: 1_799_740_800_000, lastGrade: "good" },
+      listening: { attempts: 1, correct: 0, lastAt: 1_799_740_700_000, lastGrade: "again" },
+    },
+  },
   onboarded: true,
 };
 
@@ -65,6 +71,7 @@ test("a raw v0 localStorage entry imports and is migrated", () => {
     accent: _accent,
     requestRetention: _requestRetention,
     reviewHistory: _reviewHistory,
+    practiceSkills: _practiceSkills,
     ...v0
   } = saved;
   const legacyLogs = v0.logs.map(({ practice: _practice, practiceCorrect: _practiceCorrect, ...row }) => row);
@@ -73,6 +80,7 @@ test("a raw v0 localStorage entry imports and is migrated", () => {
   assert.deepEqual(parsed?.cards, saved.cards);
   assert.equal(parsed?.requestRetention, 0.9);
   assert.deepEqual(parsed?.reviewHistory, []);
+  assert.deepEqual(parsed?.practiceSkills, {});
 });
 
 test("malformed, foreign or future files are rejected", () => {
@@ -88,4 +96,25 @@ test("malformed, foreign or future files are rejected", () => {
 
 test("backup files are named by date", () => {
   assert.equal(backupFileName(new Date("2026-10-02T09:00:00Z")), "roshana-progress-2026-10-02.json");
+});
+
+test("impossible or unbounded skill evidence is rejected during restore", () => {
+  const invalid = JSON.parse(makeBackup(saved));
+  invalid.progress.practiceSkills["lex:A1:about"].spelling.correct = 99;
+  assert.equal(parseBackup(JSON.stringify(invalid)), null);
+  invalid.progress.practiceSkills["lex:A1:about"].spelling.correct = 2;
+  invalid.progress.practiceSkills["lex:A1:about"].listening.lastGrade = "invented";
+  assert.equal(parseBackup(JSON.stringify(invalid)), null);
+  invalid.progress.practiceSkills = Object.fromEntries(Array.from({ length: 6001 }, (_, i) => [`lex:A1:${i}`, {}]));
+  assert.equal(parseBackup(JSON.stringify(invalid)), null);
+});
+
+test("v3 backups retain their exact due dates and gain no invented skill evidence", () => {
+  const previous = JSON.parse(makeBackup(saved));
+  previous.version = 3;
+  delete previous.progress.practiceSkills;
+  const restored = parseBackup(JSON.stringify(previous));
+  assert.deepEqual(restored?.cards, saved.cards);
+  assert.deepEqual(restored?.reviewHistory, saved.reviewHistory);
+  assert.deepEqual(restored?.practiceSkills, {});
 });

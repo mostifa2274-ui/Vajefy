@@ -1,7 +1,8 @@
 import { lexQuestion } from "./quiz";
 import { retrievability } from "./srs";
+import { latestPractice, PRACTICE_SKILLS } from "./practice";
 import type { Copy } from "./i18n";
-import type { CardProg, Lang, LexWord, Question } from "./types";
+import type { CardProg, Lang, LexWord, PracticeEvidence, PracticeSkill, Question } from "./types";
 
 const HOUR = 3_600_000;
 /**
@@ -9,6 +10,13 @@ const HOUR = 3_600_000;
  * Smart Practice never selects cards due now or within the next six hours.
  */
 export const SMART_PRACTICE_GUARD_MS = 6 * HOUR;
+/** Avoid repeating the same optional prompts immediately after a session. */
+export const SMART_PRACTICE_COOLDOWN_MS = 30 * 60_000;
+
+export type SmartPracticeOptions = {
+  evidence?: PracticeEvidence;
+  allowListening?: boolean;
+};
 
 export type SmartPracticeCandidate = {
   id: string;
@@ -27,6 +35,20 @@ const MODE_CYCLE: readonly SmartLexMode[] = [
   "spell",
   "to-en",
 ];
+
+const SKILL_MODE: Record<PracticeSkill, SmartLexMode> = {
+  meaning: "to-en",
+  spelling: "spell",
+  listening: "listen",
+  context: "cloze",
+};
+
+function skillWeakness(skills: PracticeEvidence[string] = {}, skill: PracticeSkill): number {
+  const observed = skills[skill];
+  if (!observed?.attempts) return 0;
+  const missRate = clamp(1 - observed.correct / observed.attempts, 0, 1);
+  return missRate * 40 + (observed.lastGrade === "again" ? 60 : observed.lastGrade === "hard" ? 20 : 0);
+}
 
 function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
@@ -52,9 +74,13 @@ export function smartPracticeCandidate(
   card: CardProg,
   now: number,
   requestRetention: number,
+  skills: PracticeEvidence[string] = {},
 ): SmartPracticeCandidate | null {
   if (card.state !== "review") return null;
+  if (card.fsrs && card.fsrs.state !== "review") return null;
   if (card.due <= now + SMART_PRACTICE_GUARD_MS) return null;
+  const recent = latestPractice(skills);
+  if (recent > 0 && now - recent < SMART_PRACTICE_COOLDOWN_MS) return null;
 
   const recall = retrievability(card, now, requestRetention);
   if (recall == null || !Number.isFinite(recall)) return null;
@@ -63,7 +89,8 @@ export function smartPracticeCandidate(
   const score =
     (1 - clamp(recall, 0, 1)) * 100 +
     Math.min(card.lapses, 10) * 8 +
-    difficulty;
+    difficulty +
+    Math.max(...PRACTICE_SKILLS.map((skill) => skillWeakness(skills, skill))) * 0.5;
 
   return {
     id,
@@ -78,10 +105,11 @@ export function rankSmartPractice(
   cards: Record<string, CardProg>,
   now: number,
   requestRetention: number,
+  evidence: PracticeEvidence = {},
 ): SmartPracticeCandidate[] {
   return Object.entries(cards)
     .flatMap(([id, card]) => {
-      const candidate = smartPracticeCandidate(id, card, now, requestRetention);
+      const candidate = smartPracticeCandidate(id, card, now, requestRetention, evidence[id]);
       return candidate ? [candidate] : [];
     })
     .sort(
@@ -94,8 +122,14 @@ export function rankSmartPractice(
     );
 }
 
-function modeAt(index: number): SmartLexMode {
-  return MODE_CYCLE[index % MODE_CYCLE.length] ?? "spell";
+function modeAt(index: number, skills: PracticeEvidence[string] = {}, allowListening = true): SmartLexMode {
+  const weak = PRACTICE_SKILLS
+    .filter((skill) => allowListening || skill !== "listening")
+    .map((skill) => ({ mode: SKILL_MODE[skill], score: skillWeakness(skills, skill) }))
+    .sort((a, b) => b.score - a.score)[0];
+  if (weak && weak.score > 0) return weak.mode;
+  const cycle = allowListening ? MODE_CYCLE : MODE_CYCLE.filter((mode) => mode !== "listen");
+  return cycle[index % cycle.length] ?? "spell";
 }
 
 /**
@@ -111,17 +145,19 @@ export function smartPracticeQuestions(
   lang: Lang,
   now = Date.now(),
   requestRetention = 0.9,
+  options: SmartPracticeOptions = {},
 ): Question[] {
   const byId = new Map(words.map((word) => [word.id, word]));
-  const ranked = rankSmartPractice(cards, now, requestRetention);
+  const ranked = rankSmartPractice(cards, now, requestRetention, options.evidence);
   const questions: Question[] = [];
+  const limit = Number.isFinite(count) ? clamp(Math.floor(count), 0, 20) : 0;
 
   for (const candidate of ranked) {
-    if (questions.length >= count) break;
+    if (questions.length >= limit) break;
     const word = byId.get(candidate.id);
     if (!word) continue;
 
-    const preferred = modeAt(questions.length);
+    const preferred = modeAt(questions.length, options.evidence?.[candidate.id], options.allowListening);
     const question =
       lexQuestion(word, words, preferred, copy, lang) ??
       // Spelling is generative and does not require distractors, so it is a

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { smartPracticeCandidate, smartPracticeQuestions, SMART_PRACTICE_GUARD_MS } from "./adaptive";
+import { smartPracticeCandidate, smartPracticeQuestions, SMART_PRACTICE_COOLDOWN_MS, SMART_PRACTICE_GUARD_MS } from "./adaptive";
 import { useCopy } from "./i18n";
 import { freshCard, schedule } from "./srs";
 import type { CardProg, LexWord } from "./types";
@@ -77,4 +77,42 @@ test("learning cards are never pulled into optional smart practice", () => {
   const card = freshCard(T0);
   assert.equal(card.state, "learning");
   assert.equal(smartPracticeCandidate("new", card, T0, 0.9), null);
+});
+
+test("a listening weakness selects listening while unavailable audio falls back to recall", () => {
+  const words = Array.from({ length: 6 }, (_, index) => word(index));
+  const id = words[0]!.id;
+  const cards = { [id]: reviewCard() };
+  const evidence = { [id]: { listening: { attempts: 3, correct: 1, lastAt: T0 - 60 * MIN, lastGrade: "again" as const } } };
+  const withAudio = smartPracticeQuestions(words, cards, 1, useCopy("en"), "en", T0, 0.9, { evidence });
+  assert.equal(withAudio[0]?.practiceSkill, "listening");
+  const silent = smartPracticeQuestions(words, cards, 1, useCopy("en"), "en", T0, 0.9, { evidence, allowListening: false });
+  assert.equal(silent[0]?.practiceSkill, "spelling");
+  assert.deepEqual(cards[id], reviewCard());
+});
+
+test("recent optional practice rests a word until the cooldown expires", () => {
+  const skills = { spelling: { attempts: 1, correct: 1, lastAt: T0, lastGrade: "good" as const } };
+  const card = reviewCard();
+  assert.equal(smartPracticeCandidate("resting", card, T0 + SMART_PRACTICE_COOLDOWN_MS - 1, 0.9, skills), null);
+  assert.ok(smartPracticeCandidate("rested", card, T0 + SMART_PRACTICE_COOLDOWN_MS, 0.9, skills));
+});
+
+test("native relearning state cannot be selected even with an inconsistent legacy field", () => {
+  const card = reviewCard();
+  assert.ok(card.fsrs);
+  const relearning: CardProg = { ...card, fsrs: { ...card.fsrs, state: "relearning" } };
+  assert.equal(smartPracticeCandidate("relearning", relearning, T0, 0.9), null);
+});
+
+test("incompatible context uses spelling and a tiny pool cannot block a safe session", () => {
+  const target = { ...word(0), ex: "No matching headword in this sentence." };
+  const evidence = { [target.id]: { context: { attempts: 2, correct: 0, lastAt: T0 - 60 * MIN, lastGrade: "again" as const } } };
+  const cards = { [target.id]: reviewCard(), "lex:A1:removed": reviewCard() };
+  const questions = smartPracticeQuestions([target], cards, 10, useCopy("fa"), "fa", T0, 0.9, { evidence });
+  assert.equal(questions.length, 1);
+  assert.equal(questions[0]?.kind, "type");
+  assert.equal(questions[0]?.practiceSkill, "spelling");
+  assert.equal(questions[0]?.id, target.id);
+  assert.deepEqual(smartPracticeQuestions([target], cards, NaN, useCopy("fa"), "fa", T0), []);
 });
