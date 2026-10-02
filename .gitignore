@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+.node_modules.lock
+
+# Build output
+dist/
+.output/
+.nitro/
+.vercel/
+.tanstack/
+
+# Local env and logs
+.env
+.env.*
+*.log
+
+# Cloudflare
+.wrangler/
+.dev.vars*

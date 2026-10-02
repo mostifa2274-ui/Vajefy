@@ -1,0 +1,68 @@
+import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { loadLevel } from "@/lib/learn/load";
+import { levelOf } from "@/lib/learn/text";
+import type { LevelId } from "@/lib/learn/types";
+import { Num } from "./ui";
+
+export function LabeledWords({
+  ids,
+  meta,
+}: {
+  ids: string[];
+  meta?: Record<string, number>;
+}) {
+  const [rows, setRows] = useState<{ id: string; w: string; fa: string }[]>([]);
+  const key = ids.join("|");
+
+  useEffect(() => {
+    let alive = true;
+    const wanted = ids;
+    if (!wanted.length) {
+      setRows([]);
+      return;
+    }
+    const levels = [...new Set(wanted.map((id) => levelOf(id)).filter((level): level is LevelId => Boolean(level)))];
+    void Promise.all(levels.map((level) => loadLevel(level))).then((lists) => {
+      if (!alive) return;
+      const byId = new Map(lists.flat().map((word) => [word.id, word]));
+      setRows(
+        wanted.flatMap((id) => {
+          const word = byId.get(id);
+          return word ? [{ id, w: word.w, fa: word.fa }] : [];
+        }),
+      );
+    });
+    return () => {
+      alive = false;
+    };
+    // key captures the id list; the array identity changes every render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
+
+  if (!rows.length) return null;
+
+  return (
+    <ul className="divide-y divide-line border-y border-line">
+      {rows.map((row) => (
+        <li key={row.id}>
+          <Link to="/lexicon" search={{ q: row.w }} className="flex min-h-14 items-center justify-between gap-3 py-2">
+            <span className="min-w-0">
+              <span lang="en" dir="ltr" className="lex-word block text-lg">
+                {row.w}
+              </span>
+              <span lang="fa" dir="rtl" className="block truncate text-sm text-muted">
+                {row.fa}
+              </span>
+            </span>
+            {meta?.[row.id] != null ? (
+              <span className="text-sm text-bad">
+                <Num value={meta[row.id] ?? 0} />
+              </span>
+            ) : null}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
