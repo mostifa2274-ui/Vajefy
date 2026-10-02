@@ -10,7 +10,7 @@ import {
 import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { useCopy } from "@/lib/learn/i18n";
-import { todayLog, useProgress } from "@/lib/learn/store";
+import { liveStreak, todayLog, useProgress } from "@/lib/learn/store";
 import { Num } from "./ui";
 
 const NAV = [
@@ -27,6 +27,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const setLang = useProgress((state) => state.setLang);
   const setHydrated = useProgress((state) => state.setHydrated);
   const streak = useProgress((state) => state.streak);
+  const lastStudyDate = useProgress((state) => state.lastStudyDate);
   const logs = useProgress((state) => state.logs);
   const dailyGoal = useProgress((state) => state.dailyGoal);
   const copy = useCopy(lang);
@@ -106,14 +107,17 @@ export function Shell({ children }: { children: ReactNode }) {
         <div className="hidden h-16 items-center justify-between gap-4 px-8 md:flex">
           <p className="text-sm text-muted">{copy.tagline}</p>
           <div className="flex items-center gap-4">
+            {/* The "·" must be real text: a CSS gap alone let the bidi algorithm
+                read the goal and the streak as one number (20 + 1 → ۲۰۱). */}
             <span className="text-sm text-muted">
               <Num value={reviewsToday} />
               <span className="mx-1">/</span>
               <Num value={dailyGoal} />
-              <span className="ms-2">
-                <Num value={hydrated ? streak : 0} />
-                <span className="ms-1">{copy.streakLabel}</span>
+              <span className="mx-2" aria-hidden>
+                ·
               </span>
+              <Num value={hydrated ? liveStreak(streak, lastStudyDate) : 0} />
+              <span className="ms-1">{copy.streakLabel}</span>
             </span>
             <form
               className="flex items-center gap-2"

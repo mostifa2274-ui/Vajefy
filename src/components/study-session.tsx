@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useFormat } from "@/lib/learn/format";
 import { useCopy } from "@/lib/learn/i18n";
 import { schedule } from "@/lib/learn/srs";
 import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
@@ -27,12 +28,13 @@ export function StudySession({
   onExit: () => void;
 }) {
   const copy = useCopy(lang);
+  const { num, pct } = useFormat();
+  // The queue: answered cards leave it, missed ones go back in a little later.
   const [order, setOrder] = useState(items);
-  const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [stats, setStats] = useState({ reviews: 0, correct: 0 });
   const [misses, setMisses] = useState<{ id: string; title: string }[]>([]);
-  const current = order[index];
+  const current = order[0];
   const face = current ? faces.get(current.id) : undefined;
 
   useEffect(() => {
@@ -89,11 +91,9 @@ export function StudySession({
       correct: state.correct + (grade === "again" ? 0 : 1),
     }));
     setOrder((queue) => {
-      const next = queue.slice();
-      next.splice(index, 1);
+      const next = queue.slice(1);
       if (grade === "again" || (grade === "hard" && projected.state === "learning")) {
-        const at = Math.min(next.length, index + 2);
-        next.splice(at, 0, current);
+        next.splice(Math.min(next.length, 2), 0, current);
       }
       return next;
     });
@@ -101,13 +101,13 @@ export function StudySession({
   }
 
   if (!current || !face) {
-    const accuracy = stats.reviews ? Math.round((100 * stats.correct) / stats.reviews) : 0;
+    const accuracy = stats.reviews ? stats.correct / stats.reviews : 0;
     return (
       <section className="mx-auto max-w-xl">
         <h1 className="text-3xl font-medium text-balance">{copy.sessionDone}</h1>
         <p className="mt-3 text-muted">
-          {stats.reviews} {copy.reviewed}
-          {stats.reviews ? ` · ${accuracy}%` : ""}
+          {num(stats.reviews)} {copy.reviewed}
+          {stats.reviews ? ` · ${pct(accuracy)}` : ""}
         </p>
         {misses.length ? (
           <div className="mt-6">
@@ -155,7 +155,7 @@ export function StudySession({
         <div
           className="h-1 rounded-full bg-accent"
           style={{
-            width: `${Math.round((100 * stats.reviews) / Math.max(1, stats.reviews + order.length - index))}%`,
+            width: `${Math.round((100 * stats.reviews) / Math.max(1, stats.reviews + order.length))}%`,
           }}
         />
       </div>
@@ -167,7 +167,7 @@ export function StudySession({
             {face.pos ? ` · ${face.pos}` : ""}
           </span>
           <span className="tabular-nums">
-            {index + 1} / {order.length}
+            {num(stats.reviews + 1)} / {num(stats.reviews + order.length)}
           </span>
         </div>
         <div className="px-2 py-8 text-center">

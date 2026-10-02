@@ -66,6 +66,7 @@ export function patternRef(item: PatternItem, kicker: string, copy: Copy): RefEn
     title: item.w,
     subtitle: item.fa,
     kicker: `${kicker} · ${bandName(item.band, copy)}`,
+    band: item.band,
     blocks: [
       ...block(copy.pron, item.pr, "rtl"),
       ...block("IPA", item.ipa ?? "", "ltr"),
@@ -96,6 +97,7 @@ export function antonymRef(item: Antonym, copy: Copy): RefEntry {
     title: `${item.a}  /  ${item.b}`,
     subtitle: item.fa,
     kicker: `${copy.antonyms} · ${bandName(item.band, copy)}`,
+    band: item.band,
     blocks: [
       ...block(copy.pron, item.pr, "rtl"),
       ...block("IPA", item.ipa, "ltr"),
@@ -123,6 +125,7 @@ export function irregularRef(item: Irregular, copy: Copy): RefEntry {
     title: item.base,
     subtitle: item.fa,
     kicker: `${copy.irregular} · ${bandName(item.band, copy)}`,
+    band: item.band,
     blocks: [
       ...block(copy.past, item.past, "ltr"),
       ...block(copy.participle, item.pp, "ltr"),
@@ -139,6 +142,7 @@ export function pairRef(item: PairNote, kicker: string, copy: Copy): RefEntry {
     title: item.title,
     subtitle: item.fa,
     kicker: `${kicker} · ${bandName(item.band, copy)}`,
+    band: item.band,
     blocks: [
       ...block(copy.pron, item.pr, "rtl"),
       ...block("IPA", item.ipa, "ltr"),
@@ -163,6 +167,7 @@ export function familyRef(item: Family, copy: Copy): RefEntry {
       .slice(0, 3)
       .join(" · "),
     kicker: `${copy.families} · ${bandName(item.band, copy)}`,
+    band: item.band,
     blocks: [
       ...block(copy.members, members, "ltr"),
       ...block(copy.guide, item.guide, "rtl"),
@@ -179,6 +184,7 @@ export function formationRef(item: Formation, copy: Copy): RefEntry {
     title: item.affix,
     subtitle: item.fa,
     kicker: `${copy.formation} · ${bandName(item.band, copy)}`,
+    band: item.band,
     blocks: [
       ...block(copy.samples, item.samples, "ltr"),
       ...block(copy.meaning, item.samplesFa, "rtl"),

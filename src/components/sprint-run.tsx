@@ -131,11 +131,15 @@ export function SprintRun({
           <p lang="fa" dir="rtl" className="text-center text-3xl font-medium text-balance">
             {current.fa}
           </p>
+          {/* Never disabled: a disabled input drops focus and, with it, the
+              learner's typing between words. Keys are ignored while revealing. */}
           <input
             ref={inputRef}
             value={value}
-            disabled={Boolean(reveal)}
-            onChange={(event) => setValue(event.target.value)}
+            aria-readonly={Boolean(reveal)}
+            onChange={(event) => {
+              if (!reveal) setValue(event.target.value);
+            }}
             autoCapitalize="none"
             autoCorrect="off"
             spellCheck={false}

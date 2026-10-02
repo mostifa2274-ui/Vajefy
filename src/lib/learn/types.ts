@@ -103,6 +103,8 @@ export type RefEntry = {
   title: string;
   subtitle: string;
   kicker: string;
+  /** 1 core, 2 middle, 3 upper. */
+  band: number;
   blocks: { label: string; text: string; dir: "ltr" | "rtl" }[];
   search: string;
 };

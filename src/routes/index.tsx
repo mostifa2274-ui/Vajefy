@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { LabeledWords } from "@/components/labeled-words";
 import { Onboard } from "@/components/onboard";
 import { GoalRing, Num, SpeakButton, ButtonLink } from "@/components/ui";
+import { useFormat } from "@/lib/learn/format";
 import { Explain } from "@/components/explain";
 import { useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta, loadPairs } from "@/lib/learn/load";
-import { countLevel, dueIds, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
+import { countLevel, dueIds, liveStreak, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
 import { dayNumber } from "@/lib/learn/text";
 import type { LexWord, Meta, PairNote } from "@/lib/learn/types";
 
@@ -20,6 +21,8 @@ function Home() {
   const focus = useProgress((state) => state.focus);
   const setFocus = useProgress((state) => state.setFocus);
   const streak = useProgress((state) => state.streak);
+  const lastStudyDate = useProgress((state) => state.lastStudyDate);
+  const lifetime = useProgress((state) => state.lifetime);
   const sessionSize = useProgress((state) => state.sessionSize);
   const newPerDay = useProgress((state) => state.newPerDay);
   const dailyGoal = useProgress((state) => state.dailyGoal);
@@ -28,6 +31,7 @@ function Home() {
   const setOnboarded = useProgress((state) => state.setOnboarded);
   const addToReview = useProgress((state) => state.addToReview);
   const copy = useCopy(lang);
+  const { pct } = useFormat();
   const [meta, setMeta] = useState<Meta | null>(null);
   const [word, setWord] = useState<LexWord | null>(null);
   const [nuance, setNuance] = useState<PairNote | null>(null);
@@ -40,14 +44,20 @@ function Home() {
   }, [hasHistory, onboarded, setOnboarded]);
 
   useEffect(() => {
+    void loadMeta()
+      .then(setMeta)
+      .catch(() => undefined);
+  }, []);
+
+  // Today's entry comes from the learner's own level, once it is known.
+  useEffect(() => {
+    if (!hydrated) return;
     let alive = true;
     void (async () => {
       try {
-        const nextMeta = await loadMeta();
-        const [a1, notes] = await Promise.all([loadLevel("A1"), loadPairs("synonyms.json")]);
+        const [words, notes] = await Promise.all([loadLevel(focus), loadPairs("synonyms.json")]);
         if (!alive) return;
-        setMeta(nextMeta);
-        setWord(a1[dayNumber() % a1.length] ?? null);
+        setWord(words[dayNumber() % words.length] ?? null);
         setNuance(notes[dayNumber() % notes.length] ?? null);
       } catch {
         /* home still works without the daily cards */
@@ -56,7 +66,7 @@ function Home() {
     return () => {
       alive = false;
     };
-  }, []);
+  }, [hydrated, focus]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -79,11 +89,7 @@ function Home() {
   const remainingNew = focusMeta ? Math.max(0, focusMeta.count - focusCounts.seen) : 0;
   const willIntroduce = Math.min(roomForNew, remainingNew, Math.max(0, sessionSize - Math.min(due, sessionSize)));
   const all = totals(cards);
-  const log = logs.reduce(
-    (sum, row) => ({ reviews: sum.reviews + row.reviews, correct: sum.correct + row.correct }),
-    { reviews: 0, correct: 0 },
-  );
-  const accuracy = log.reviews ? Math.round((100 * log.correct) / log.reviews) : null;
+  const accuracy = lifetime.reviews ? lifetime.correct / lifetime.reviews : null;
   const totalWords = meta?.levels.reduce((sum, level) => sum + level.count, 0) ?? 0;
   const inReview = Boolean(word && cards[word.id]);
   const weak = hydrated ? weakIds(cards, 5) : [];
@@ -143,11 +149,11 @@ function Home() {
         <p className="mt-5 text-sm text-muted">
           <Num value={due} /> {copy.dueLabel}
           <span className="mx-2">·</span>
-          <Num value={hydrated ? streak : 0} /> {copy.streakLabel}
+          <Num value={hydrated ? liveStreak(streak, lastStudyDate) : 0} /> {copy.streakLabel}
           <span className="mx-2">·</span>
           <Num value={hydrated ? all.mastered : 0} /> {copy.masteredLabel}
           <span className="mx-2">·</span>
-          {accuracy === null ? "–" : `${accuracy}%`}
+          {accuracy === null ? "–" : pct(accuracy)}
         </p>
       </section>
 

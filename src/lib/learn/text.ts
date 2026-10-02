@@ -65,8 +65,61 @@ export function editDistance(a: string, b: string): number {
   return dp[a.length]![b.length]!;
 }
 
+/**
+ * The data follows the Oxford lists' British spelling; the app speaks and
+ * transcribes General American. Both spellings of these headwords are right.
+ */
+const AMERICAN: Record<string, string> = {
+  aluminium: "aluminum",
+  analyse: "analyze",
+  behaviour: "behavior",
+  catalogue: "catalog",
+  centre: "center",
+  colour: "color",
+  coloured: "colored",
+  counselling: "counseling",
+  defence: "defense",
+  dialogue: "dialog",
+  endeavour: "endeavor",
+  enrol: "enroll",
+  favour: "favor",
+  favourable: "favorable",
+  favourite: "favorite",
+  fibre: "fiber",
+  flavour: "flavor",
+  fulfil: "fulfill",
+  grey: "gray",
+  harbour: "harbor",
+  honour: "honor",
+  humour: "humor",
+  jewellery: "jewelry",
+  kilometre: "kilometer",
+  labour: "labor",
+  licence: "license",
+  litre: "liter",
+  metre: "meter",
+  mum: "mom",
+  neighbour: "neighbor",
+  neighbouring: "neighboring",
+  offence: "offense",
+  practise: "practice",
+  programme: "program",
+  rumour: "rumor",
+  sceptical: "skeptical",
+  theatre: "theater",
+  traveller: "traveler",
+  tyre: "tire",
+};
+
+/** Every accepted spelling of a headword: as written, bare, and American. */
+export function spellings(word: string): string[] {
+  const bare = normEn(bareHeadword(word));
+  const american = AMERICAN[bare];
+  return [...new Set([normEn(word), bare, american ?? ""].filter(Boolean))];
+}
+
 export function gradeSpelling(input: string, word: string): "exact" | "close" | "wrong" {
-  const targets = [...new Set([word, bareHeadword(word)].map(normEn).filter(Boolean))];
+  const targets = spellings(word);
   const got = normEn(input);
   if (!got) return "wrong";
   if (targets.some((target) => target === got)) return "exact";
@@ -84,7 +137,6 @@ export function bestSpelling(input: string, accepts: string[]): "exact" | "close
   return best;
 }
 
-
 export function formMatches(input: string, expected: string): boolean {
   const got = normEn(input);
   if (!got) return false;
@@ -93,6 +145,23 @@ export function formMatches(input: string, expected: string): boolean {
     .map((part) => normEn(part))
     .filter(Boolean)
     .some((form) => form === got);
+}
+
+/**
+ * A forgiving key for search: lowercase, Arabic-keyboard letters mapped to
+ * Persian (ي→ی, ك→ک), and diacritics, tatweel, bidi marks, ZWNJ and spaces
+ * dropped, so «دست‌دوم», «دست دوم» and «دستدوم» all match.
+ */
+export function searchKey(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[يى]/g, "ی")
+    .replace(/ك/g, "ک")
+    .replace(/ة/g, "ه")
+    .replace(/[أإٱ]/g, "ا")
+    .replace(/ؤ/g, "و")
+    .replace(/[\u064B-\u065F\u0670\u0640]/g, "")
+    .replace(/[\u200B-\u200F\u2066-\u2069\s]/g, "");
 }
 
 export function escapeReg(value: string): string {

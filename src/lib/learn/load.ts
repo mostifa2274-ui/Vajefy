@@ -16,10 +16,16 @@ const cache = new Map<string, Promise<unknown>>();
 export function loadJson<T>(file: string): Promise<T> {
   const hit = cache.get(file) as Promise<T> | undefined;
   if (hit) return hit;
-  const pending = fetch(`/data/${file}`).then((response) => {
-    if (!response.ok) throw new Error(file);
-    return response.json() as Promise<T>;
-  });
+  const pending = fetch(`/data/${file}`)
+    .then((response) => {
+      if (!response.ok) throw new Error(file);
+      return response.json() as Promise<T>;
+    })
+    .catch((error: unknown) => {
+      // Forget the failure so "Try again" fetches afresh instead of replaying it.
+      cache.delete(file);
+      throw error;
+    });
   cache.set(file, pending);
   return pending;
 }

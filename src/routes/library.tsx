@@ -3,8 +3,9 @@ import { useEffect, useMemo, useState } from "react";
 import { PageHeader, SpeakButton } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { loadDeckEntries } from "@/lib/learn/faces";
-import { bandName, useCopy, type CopyKey } from "@/lib/learn/i18n";
+import { useCopy, type CopyKey } from "@/lib/learn/i18n";
 import { loadMeta } from "@/lib/learn/load";
+import { searchKey } from "@/lib/learn/text";
 import { useProgress } from "@/lib/learn/store";
 import type { LibDeckId, Meta, RefEntry } from "@/lib/learn/types";
 
@@ -69,7 +70,8 @@ function LibraryPage() {
         if (!alive) return;
         setEntries(rows);
         if (search.q) {
-          const hit = rows.find((row) => row.title === search.q || row.search.includes(search.q!.toLowerCase()));
+          const wanted = searchKey(search.q);
+          const hit = rows.find((row) => row.title === search.q || searchKey(row.search).includes(wanted));
           if (hit) setSelectedId(hit.id);
         }
       })
@@ -85,14 +87,16 @@ function LibraryPage() {
     setLimit(40);
   }, [q, band, deck]);
 
+  const keys = useMemo(() => new Map((entries ?? []).map((entry) => [entry.id, searchKey(`${entry.title} ${entry.search}`)])), [entries]);
+
   const filtered = useMemo(() => {
-    const query = q.trim().toLowerCase();
+    const query = searchKey(q);
     return (entries ?? []).filter((entry) => {
-      if (band && !entry.kicker.includes(bandName(band, copy))) return false;
+      if (band && entry.band !== band) return false;
       if (!query) return true;
-      return entry.search.includes(query) || entry.title.toLowerCase().includes(query);
+      return keys.get(entry.id)?.includes(query) ?? false;
     });
-  }, [entries, q, band, copy]);
+  }, [entries, keys, q, band]);
 
   const selected = filtered.find((entry) => entry.id === selectedId) ?? entries?.find((entry) => entry.id === selectedId) ?? null;
 

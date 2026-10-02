@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 import { useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta } from "@/lib/learn/load";
 import { useProgress } from "@/lib/learn/store";
-import { levelOf, POS_FILTERS } from "@/lib/learn/text";
+import { levelOf, POS_FILTERS, searchKey } from "@/lib/learn/text";
 import type { LevelId, LexWord, Meta } from "@/lib/learn/types";
 
 export const Route = createFileRoute("/lexicon")({
@@ -79,31 +79,43 @@ function LexiconPage() {
     setLimit(40);
   }, [q, pos, scope, savedOnly]);
 
+  // Normalised once per word list, so typing only compares prepared keys.
+  const keyed = useMemo(
+    () =>
+      (words ?? []).map((word) => ({
+        word,
+        head: searchKey(word.w),
+        fa: searchKey(word.fa),
+        ipa: searchKey(word.ipa),
+        ex: searchKey(word.ex),
+      })),
+    [words],
+  );
+
   const filtered = useMemo(() => {
-    const query = q.trim().toLowerCase();
-    const raw = q.trim();
-    const list = (words ?? []).filter((word) => {
-      if (savedOnly && !bookmarks.includes(word.id)) return false;
-      if (pos && !word.pos.includes(pos)) return false;
+    const query = searchKey(q);
+    const saved = new Set(bookmarks);
+    const list = keyed.filter((item) => {
+      if (savedOnly && !saved.has(item.word.id)) return false;
+      if (pos && !item.word.pos.includes(pos)) return false;
       if (!query) return true;
       return (
-        word.w.toLowerCase().includes(query) ||
-        word.fa.includes(raw) ||
-        word.ipa.toLowerCase().includes(query) ||
-        (query.length >= 3 && word.ex.toLowerCase().includes(query))
+        item.head.includes(query) ||
+        item.fa.includes(query) ||
+        item.ipa.includes(query) ||
+        (query.length >= 3 && item.ex.includes(query))
       );
     });
-    if (!query) return list;
-    const rank = (word: LexWord) => {
-      const head = word.w.toLowerCase();
-      if (head === query) return 0;
-      if (head.startsWith(query)) return 1;
-      if (head.includes(query)) return 2;
-      if (word.fa.includes(raw)) return 3;
+    const rank = (item: (typeof keyed)[number]) => {
+      if (item.head === query) return 0;
+      if (item.head.startsWith(query)) return 1;
+      if (item.head.includes(query)) return 2;
+      if (item.fa.includes(query)) return 3;
       return 4;
     };
-    return list.slice().sort((a, b) => rank(a) - rank(b));
-  }, [words, q, pos, savedOnly, bookmarks]);
+    const ranked = query ? list.slice().sort((a, b) => rank(a) - rank(b)) : list;
+    return ranked.map((item) => item.word);
+  }, [keyed, q, pos, savedOnly, bookmarks]);
 
   const selected = filtered.find((word) => word.id === selectedId) ?? null;
   const shown = filtered.slice(0, limit);
