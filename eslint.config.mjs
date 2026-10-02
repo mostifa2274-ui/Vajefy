@@ -34,7 +34,12 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": [
         "warn",
-        { allowConstantExport: true },
+        {
+          allowConstantExport: true,
+          // TanStack file routes intentionally export the route descriptor
+          // alongside the route component; Vite/TanStack handles this safely.
+          allowExportNames: ["Route"],
+        },
       ],
       "@typescript-eslint/no-unused-vars": [
         "warn",
