@@ -45,6 +45,14 @@ test("saved English locale applies before the app becomes interactive", async ({
   await expect(page.getByText("British", { exact: true })).toBeVisible();
 });
 
+test("v2 saved progress migrates to the default FSRS target in the browser", async ({ page }) => {
+  await seed(page);
+  await page.goto("/progress");
+  await expect(page.getByText("Adaptive FSRS-6", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "90%" })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByText("Review evidence", { exact: true })).toBeVisible();
+});
+
 test("Arabic-keyboard Persian search still finds normalized vocabulary", async ({ page }) => {
   await seed(page);
   await page.goto("/lexicon?q=كتاب");
