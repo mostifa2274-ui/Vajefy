@@ -1,4 +1,5 @@
-const CACHE = "vajefy-offline-v2";
+const CACHE = "vajefy-offline-v3";
+const BUILD_ASSETS = /* __VAJEFY_BUILD_ASSETS__ */ [];
 const ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"];
 const SHELL = ["/manifest.json", "/favicon.svg", "/early-language.js", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
 const DATA = [
@@ -70,6 +71,9 @@ self.addEventListener("install", (event) => {
       const cache = await caches.open(CACHE);
       await Promise.all(SHELL.map((url) => cache.add(url).catch(() => undefined)));
       await Promise.all(DATA.map((url) => cache.add(url).catch(() => undefined)));
+      // Generated after Vite builds, so every hashed lazy route/runtime chunk is
+      // guaranteed to exist offline even if the learner never visited it online.
+      await Promise.all(BUILD_ASSETS.map((url) => cache.add(url).catch(() => undefined)));
       await Promise.all(ROUTES.map((route) => warmRoute(cache, route)));
       await self.skipWaiting();
     })(),
