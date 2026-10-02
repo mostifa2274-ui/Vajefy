@@ -49,11 +49,13 @@ function ProgressPage() {
   const sessionSize = useProgress((state) => state.sessionSize);
   const newPerDay = useProgress((state) => state.newPerDay);
   const voice = useProgress((state) => state.voice);
+  const accent = useProgress((state) => state.accent);
   const dailyGoal = useProgress((state) => state.dailyGoal);
   const bookmarks = useProgress((state) => state.bookmarks);
   const setSessionSize = useProgress((state) => state.setSessionSize);
   const setNewPerDay = useProgress((state) => state.setNewPerDay);
   const setVoice = useProgress((state) => state.setVoice);
+  const setAccent = useProgress((state) => state.setAccent);
   const setDailyGoal = useProgress((state) => state.setDailyGoal);
   const setLang = useProgress((state) => state.setLang);
   const reset = useProgress((state) => state.reset);
@@ -68,6 +70,7 @@ function ProgressPage() {
 
   const all = totals(cards);
   const accuracy = lifetime.reviews ? lifetime.correct / lifetime.reviews : null;
+  const practiceAccuracy = lifetime.practice ? lifetime.practiceCorrect / lifetime.practice : null;
   const data = hydrated ? lastDays(logs) : [];
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
   const weak = hydrated ? weakIds(cards, 8) : [];
@@ -76,14 +79,17 @@ function ProgressPage() {
   return (
     <div>
       <PageHeader title={copy.progress} lede={copy.accuracyHint} />
-      <section className="panel grid grid-cols-2 sm:grid-cols-4">
+      <section className="panel grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
         <Stat label={copy.streakLabel} value={<Num value={hydrated ? liveStreak(streak, lastStudyDate) : 0} />} />
         <Stat label={copy.masteredLabel} value={<Num value={hydrated ? all.mastered : 0} />} />
         <Stat label={copy.reviewsLabel} value={<Num value={hydrated ? lifetime.reviews : 0} />} />
+        <Stat label={copy.practiceLabel} value={<Num value={hydrated ? lifetime.practice : 0} />} />
         <Stat label={copy.xpLabel} value={<Num value={hydrated ? xp : 0} />} />
       </section>
       <p className="mt-3 text-sm text-muted">
         {copy.accuracyLabel}: {accuracy === null ? "–" : pct(accuracy)}
+        <span className="mx-2">·</span>
+        {copy.practiceAccuracyLabel}: {practiceAccuracy === null ? "–" : pct(practiceAccuracy)}
         <span className="mx-2">·</span>
         {copy.goalCaption}: <Num value={reviewsToday} /> / <Num value={dailyGoal} />
       </p>
@@ -152,6 +158,14 @@ function ProgressPage() {
               {num(n)}
             </Toggle>
           ))}
+        </Setting>
+        <Setting label={copy.accent}>
+          <Toggle active={accent === "en-GB"} onClick={() => setAccent("en-GB")}>
+            {copy.accentBritish}
+          </Toggle>
+          <Toggle active={accent === "en-US"} onClick={() => setAccent("en-US")}>
+            {copy.accentAmerican}
+          </Toggle>
         </Setting>
         <label className="mt-4 flex min-h-11 items-center justify-between gap-3 text-sm">
           <span>
