@@ -121,3 +121,7 @@ test("practice cannot satisfy the daily review goal or retention accuracy", () =
   assert.equal(afterReview.lifetime.correct, 1);
   assert.equal(afterReview.lifetime.practice, 2);
 });
+
+test("there is no self-declared mastery path in progress state", () => {
+  assert.equal("markKnown" in useProgress.getState(), false);
+});
