@@ -303,7 +303,6 @@ function Toggle({ active, onClick, children }: { active: boolean; onClick: () =>
   );
 }
 
-const CHART_W = 560;
 const CHART_H = 168;
 const AXIS_H = 22;
 const TOP_PAD = 18;
@@ -312,12 +311,25 @@ const TOP_PAD = 18;
 function ReviewsChart({ data, lang, label }: { data: Day[]; lang: Lang; label: string }) {
   const { num } = useFormat();
   const [active, setActive] = useState<number | null>(null);
+  // Laid out in real pixels (not a scaled viewBox) so bars and 12px labels
+  // keep their size on a phone and on a wide screen alike.
+  const box = useRef<HTMLElement>(null);
+  const [width, setWidth] = useState(560);
+  useEffect(() => {
+    const element = box.current;
+    if (!element) return;
+    const measure = () => setWidth(Math.max(240, Math.round(element.clientWidth)));
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
   const locale = lang === "fa" ? "fa-IR" : "en-GB";
   const dayOfMonth = new Intl.DateTimeFormat(locale, { day: "numeric" });
   const fullDate = new Intl.DateTimeFormat(locale, { weekday: "short", day: "numeric", month: "short" });
   const max = Math.max(1, ...data.map((day) => day.reviews));
   const peak = data.reduce((best, day, index) => (day.reviews > data[best]!.reviews ? index : best), 0);
-  const slot = CHART_W / data.length;
+  const slot = width / data.length;
   const barW = Math.min(24, slot - 2);
   const plotH = CHART_H - AXIS_H - TOP_PAD;
   const baseline = CHART_H - AXIS_H;
@@ -326,9 +338,9 @@ function ReviewsChart({ data, lang, label }: { data: Day[]; lang: Lang; label: s
   const tipShift = active === null ? 0 : active < 2 ? 0 : active > data.length - 3 ? -100 : -50;
 
   return (
-    <figure className="relative" dir="ltr">
-      <svg viewBox={`0 0 ${CHART_W} ${CHART_H}`} className="block h-auto w-full" role="group" aria-label={label}>
-        <line x1={0} x2={CHART_W} y1={baseline + 0.5} y2={baseline + 0.5} stroke="var(--color-line)" strokeWidth={1} />
+    <figure ref={box} className="relative" dir="ltr">
+      <svg width={width} height={CHART_H} viewBox={`0 0 ${width} ${CHART_H}`} className="block" role="group" aria-label={label}>
+        <line x1={0} x2={width} y1={baseline + 0.5} y2={baseline + 0.5} stroke="var(--color-line)" strokeWidth={1} />
         {data.map((day, index) => {
           const h = day.reviews ? Math.max(4, (day.reviews / max) * plotH) : 0;
           const x = index * slot + (slot - barW) / 2;
