@@ -1,7 +1,7 @@
 name: CI
 
 permissions:
-  contents: write
+  contents: read
 
 on:
   push:
@@ -60,28 +60,3 @@ jobs:
       - run: npm ci
       - run: npm run verify:workers-build
 
-
-  regenerate-tooling-lockfile:
-    if: github.event_name == 'pull_request' && github.head_ref == 'chatgpt/eslint10-accessibility-20261002'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          ref: chatgpt/eslint10-accessibility-20261002
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm install --package-lock-only --ignore-scripts
-      - name: Commit canonical lockfile if changed
-        shell: bash
-        run: |
-          if git diff --quiet -- package-lock.json; then
-            echo "Lockfile already canonical."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package-lock.json
-          git commit -m "Regenerate lockfile for ESLint 10 and axe"
-          git push origin HEAD:chatgpt/eslint10-accessibility-20261002
