@@ -1,9 +1,13 @@
-import type { Copy } from "./i18n";
+import { posLabel, type Copy } from "./i18n";
 import { bareHeadword, cloze, escapeReg, shuffle } from "./text";
-import type { Antonym, Irregular, LexWord, PairNote, PatternItem, Question } from "./types";
+import type { Antonym, Irregular, Lang, LexWord, PairNote, PatternItem, Question } from "./types";
 
 function option(key: string, text: string, dir: "ltr" | "rtl") {
   return { key, text, dir };
+}
+
+function headKey(word: LexWord): string {
+  return (bareHeadword(word.w) || word.w).toLowerCase();
 }
 
 function distinct<T>(items: T[], same: (a: T, b: T) => boolean, count: number): T[] {
@@ -21,28 +25,36 @@ export function lexQuestions(
   mode: "to-fa" | "to-en" | "spell" | "cloze" | "listen",
   count: number,
   copy: Copy,
+  lang: Lang = "fa",
 ): Question[] {
   const questions: Question[] = [];
   for (const word of shuffle(words)) {
     if (questions.length >= count) break;
-    const made = makeLex(word, words, mode, copy);
+    const made = lexQuestion(word, words, mode, copy, lang);
     if (made) questions.push(made);
   }
   return questions;
 }
 
-function makeLex(
+export function lexQuestion(
   word: LexWord,
   pool: LexWord[],
   mode: "to-fa" | "to-en" | "spell" | "cloze" | "listen",
   copy: Copy,
+  lang: Lang = "fa",
 ): Question | null {
   if (!word.fa || !word.w) return null;
-  const others = shuffle(pool.filter((item) => item.id !== word.id && item.fa && item.fa !== word.fa));
+  const pos = posLabel(word.pos, lang);
+  // Homographs (like "similar" / like "enjoy") share a spelling and a sound,
+  // so one can never be a wrong option for the other.
+  const target = headKey(word);
+  const others = shuffle(
+    pool.filter((item) => item.id !== word.id && item.fa && item.fa !== word.fa && headKey(item) !== target),
+  );
   const samePos = others.filter((item) => word.pos && item.pos === word.pos);
   const distractors = distinct(
     [...samePos, ...others],
-    (a, b) => a.fa === b.fa || a.w === b.w,
+    (a, b) => a.fa === b.fa || headKey(a) === headKey(b),
     3,
   );
   if (mode !== "spell" && distractors.length < 3) return null;
@@ -53,7 +65,7 @@ function makeLex(
       id: word.id,
       prompt: word.fa,
       promptDir: "rtl",
-      hint: [word.pos, word.ipa].filter(Boolean).join(" · "),
+      hint: [pos, word.ipa].filter(Boolean).join(" · "),
       answer: bareHeadword(word.w) || word.w,
       accept: [word.w, bareHeadword(word.w)].filter(Boolean),
       explain: word.ex,
@@ -65,7 +77,7 @@ function makeLex(
     if (!blank) return null;
     const choices = distinct(
       [word, ...shuffle(pool.filter((item) => item.id !== word.id))],
-      (a, b) => (bareHeadword(a.w) || a.w) === (bareHeadword(b.w) || b.w),
+      (a, b) => headKey(a) === headKey(b),
       4,
     );
     if (choices.length < 4) return null;
@@ -95,7 +107,7 @@ function makeLex(
       id: word.id,
       prompt: word.fa,
       promptDir: "rtl",
-      hint: word.pos,
+      hint: pos,
       options,
       answerKey: word.id,
       explain: word.ex,
@@ -112,12 +124,12 @@ function makeLex(
     id: word.id,
     prompt: mode === "listen" ? copy.listenPrompt : word.w,
     promptDir: mode === "listen" ? "rtl" : "ltr",
-    hint: mode === "listen" ? undefined : word.pos,
+    hint: mode === "listen" ? undefined : pos,
     speak: mode === "listen" ? bareHeadword(word.w) || word.w : undefined,
     options,
     answerKey: word.id,
     explain: word.ex,
-    reveal: mode === "listen" ? word.w : word.fa,
+    reveal: word.fa,
   };
 }
 

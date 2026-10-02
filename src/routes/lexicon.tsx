@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { PageHeader, SpeakButton } from "@/components/ui";
 import { Explain } from "@/components/explain";
 import { cn } from "@/lib/cn";
-import { useCopy } from "@/lib/learn/i18n";
+import { posLabel, useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta } from "@/lib/learn/load";
 import { useProgress } from "@/lib/learn/store";
 import { levelOf, POS_FILTERS, searchKey } from "@/lib/learn/text";
@@ -35,6 +35,7 @@ function LexiconPage() {
   const toggleBookmark = useProgress((state) => state.toggleBookmark);
   const addToReview = useProgress((state) => state.addToReview);
   const markKnown = useProgress((state) => state.markKnown);
+  const focus = useProgress((state) => state.focus);
   const copy = useCopy(lang);
   const [meta, setMeta] = useState<Meta | null>(null);
   const [scope, setScope] = useState<LevelId | "all">(initial.q || initial.saved ? "all" : "A1");
@@ -45,6 +46,17 @@ function LexiconPage() {
   const [error, setError] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [limit, setLimit] = useState(40);
+
+  // Open on the learner's level once it is known, unless the URL asked for
+  // a search or saved words, or a level was already picked here.
+  const scopeTouched = useRef(Boolean(initial.q || initial.saved));
+  useEffect(() => {
+    if (hydrated && !scopeTouched.current) setScope(focus);
+  }, [hydrated, focus]);
+  const pickScope = (next: LevelId | "all") => {
+    scopeTouched.current = true;
+    setScope(next);
+  };
 
   useEffect(() => {
     void loadMeta()
@@ -131,11 +143,11 @@ function LexiconPage() {
         className="field h-12 w-full px-3 text-base outline-none"
       />
       <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-        <Chip active={scope === "all"} onClick={() => setScope("all")}>
+        <Chip active={scope === "all"} onClick={() => pickScope("all")}>
           {copy.bandAll}
         </Chip>
         {(meta?.levels ?? []).map((level) => (
-          <Chip key={level.id} active={scope === level.id} onClick={() => setScope(level.id)}>
+          <Chip key={level.id} active={scope === level.id} onClick={() => pickScope(level.id)}>
             {level.label}
           </Chip>
         ))}
@@ -144,10 +156,8 @@ function LexiconPage() {
         <Chip
           active={savedOnly}
           onClick={() => {
-            setSavedOnly((value) => {
-              if (!value) setScope("all");
-              return !value;
-            });
+            if (!savedOnly) pickScope("all");
+            setSavedOnly(!savedOnly);
           }}
         >
           {copy.savedFilter}
@@ -157,7 +167,7 @@ function LexiconPage() {
         </Chip>
         {POS_FILTERS.map((item) => (
           <Chip key={item} active={pos === item} onClick={() => setPos(item)}>
-            {item}
+            {posLabel(item, lang)}
           </Chip>
         ))}
       </div>
@@ -219,7 +229,7 @@ function LexiconPage() {
               </button>
               <p className="text-xs text-muted">
                 {levelLabel(selected.id)}
-                {selected.pos ? ` · ${selected.pos}` : ""}
+                {selected.pos ? ` · ${posLabel(selected.pos, lang)}` : ""}
               </p>
               <h2 lang="en" dir="ltr" className="lex-word mt-2 text-4xl text-balance">
                 {selected.w}

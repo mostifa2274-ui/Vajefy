@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { PageHeader, SpeakButton } from "@/components/ui";
+import { Num, PageHeader, SpeakButton } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { loadDeckEntries } from "@/lib/learn/faces";
 import { useCopy, type CopyKey } from "@/lib/learn/i18n";
@@ -114,7 +114,9 @@ function LibraryPage() {
             >
               <span className="flex items-baseline justify-between gap-3">
                 <span className="font-medium">{copy[item.title]}</span>
-                <span className="text-sm text-muted tabular-nums">{meta?.counts[item.countKey] ?? ""}</span>
+                <span className="text-sm text-muted tabular-nums">
+                  {meta?.counts[item.countKey] != null ? <Num value={meta.counts[item.countKey]!} /> : null}
+                </span>
               </span>
               <span className="mt-1 block text-sm text-pretty text-muted">{copy[item.hint]}</span>
             </button>

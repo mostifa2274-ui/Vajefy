@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFormat } from "@/lib/learn/format";
-import { useCopy } from "@/lib/learn/i18n";
+import { posLabel, useCopy } from "@/lib/learn/i18n";
 import { schedule } from "@/lib/learn/srs";
 import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
 import { formatDelay } from "@/lib/learn/text";
@@ -164,7 +164,7 @@ export function StudySession({
           <span>
             {current.isNew ? copy.newCard : copy.reviewCard}
             {face.level ? ` · ${face.level}` : ""}
-            {face.pos ? ` · ${face.pos}` : ""}
+            {face.pos ? ` · ${posLabel(face.pos, lang)}` : ""}
           </span>
           <span className="tabular-nums">
             {num(stats.reviews + 1)} / {num(stats.reviews + order.length)}

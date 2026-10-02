@@ -75,7 +75,7 @@ export function loadPairs(file: "confusing.json" | "synonyms.json") {
       group?: string;
       pr: string;
       ipa: string;
-      fa: string;
+      fa?: string;
       guide: string;
       band: number;
       ex: string;
@@ -88,7 +88,8 @@ export function loadPairs(file: "confusing.json" | "synonyms.json") {
         title: row.pair ?? row.group ?? "",
         pr: row.pr,
         ipa: row.ipa,
-        fa: row.fa,
+        // confusing.json has no gloss column; its guide is the meaning.
+        fa: row.fa ?? "",
         guide: row.guide,
         band: row.band,
         ex: row.ex,

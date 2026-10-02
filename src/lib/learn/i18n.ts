@@ -86,7 +86,7 @@ const fa = {
   hintToFa: "واژه را ببینید و معنی فارسی را به یاد بیاورید.",
   hintToEn: "معنی را ببینید و واژهٔ انگلیسی را انتخاب کنید.",
   hintSpell: "از روی معنی، املا را بنویسید.",
-  hintCloze: "واژه‌ای را که از جمله حذف شده پیدا کنید.",
+  hintCloze: "واژه‌ای را که از جمله حذف شده پیدا کنید؛ شکلش ممکن است تغییر کرده باشد.",
   hintListen: "بشنوید و معنی را انتخاب کنید.",
   hintIrr: "گذشته و شکل سوم را بنویسید.",
   hintAnt: "متضاد را انتخاب کنید.",
@@ -291,7 +291,7 @@ const en: typeof fa = {
   hintToFa: "Read the word and recall the Persian meaning.",
   hintToEn: "Read the meaning and choose the English word.",
   hintSpell: "Type the English spelling from the meaning.",
-  hintCloze: "Find the word removed from the sentence.",
+  hintCloze: "Find the word removed from the sentence. Its form may change.",
   hintListen: "Listen, then choose the meaning.",
   hintIrr: "Type the past and the past participle.",
   hintAnt: "Choose the opposite.",
@@ -421,4 +421,31 @@ export function bandName(band: number, copy: Copy): string {
   if (band === 1) return copy.bandEssential;
   if (band === 2) return copy.bandMid;
   return copy.bandAdv;
+}
+
+const POS_EN: Record<string, string> = {
+  "اسم": "noun",
+  "فعل": "verb",
+  "صفت": "adjective",
+  "قید": "adverb",
+  "ضمیر": "pronoun",
+  "حرف اضافه": "preposition",
+  "تعیین‌کننده": "determiner",
+  "عدد": "number",
+  "حرف ربط": "conjunction",
+  "عبارت ندایی": "exclamation",
+  "فعل وجهی": "modal verb",
+  "فعل کمکی": "auxiliary verb",
+  "حرف تعریف نامعین": "indefinite article",
+  "حرف تعریف معین": "definite article",
+  "نشانهٔ مصدر": "infinitive marker",
+};
+
+/** Part-of-speech labels are Persian in the data; translate them for the English UI. */
+export function posLabel(pos: string, lang: Lang): string {
+  if (lang === "fa" || !pos) return pos;
+  return pos
+    .split(/\s*([،,/])\s*/)
+    .map((part) => (part === "،" || part === "," ? ", " : part === "/" ? " / " : (POS_EN[part] ?? part)))
+    .join("");
 }

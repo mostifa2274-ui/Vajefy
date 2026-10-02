@@ -41,6 +41,10 @@ function StudyPage() {
         const due = dueIds(state.cards);
         const faces = await loadStudyFaces(state.focus, due, meta, copy);
         if (!alive) return;
+        // Every file these ids point to loaded, so a due id still missing has
+        // no entry any more (renamed in the data). It could never be shown and
+        // would keep Home's due count wrong, so let it go.
+        state.forget(due.filter((id) => !faces.has(id)));
         const known = new Set(Object.keys(state.cards));
         const dueTake = due.filter((id) => faces.has(id)).slice(0, state.sessionSize);
         const room = state.sessionSize - dueTake.length;

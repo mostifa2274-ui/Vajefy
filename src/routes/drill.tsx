@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MatchBoard } from "@/components/match-board";
 import { QuizRun } from "@/components/quiz-run";
 import { SprintRun } from "@/components/sprint-run";
 import { PageHeader } from "@/components/ui";
 import { cn } from "@/lib/cn";
+import { useFormat } from "@/lib/learn/format";
 import { useCopy, type Copy, type CopyKey } from "@/lib/learn/i18n";
 import { DECK_FILE, loadAntonyms, loadIrregular, loadLevel, loadPairs, loadPatterns } from "@/lib/learn/load";
 import { playPairs, type PlayPair } from "@/lib/learn/play";
@@ -16,7 +17,7 @@ import {
   lexQuestions,
 } from "@/lib/learn/quiz";
 import { useProgress } from "@/lib/learn/store";
-import type { LevelId, Question } from "@/lib/learn/types";
+import type { Lang, LevelId, Question } from "@/lib/learn/types";
 
 type DrillSearch = { play?: "match" | "sprint" | "studied" };
 
@@ -78,8 +79,10 @@ function DrillPage() {
   const initial = Route.useSearch();
   const lang = useProgress((state) => state.lang);
   const focus = useProgress((state) => state.focus);
+  const hydrated = useProgress((state) => state.hydrated);
   const practice = useProgress((state) => state.practice);
   const copy = useCopy(lang);
+  const { num } = useFormat();
   const [mode, setMode] = useState<Mode>(initial.play === "match" ? "match" : initial.play === "sprint" ? "sprint" : "to-fa");
   const [level, setLevel] = useState<LevelId>(focus);
   const [count, setCount] = useState(10);
@@ -89,6 +92,13 @@ function DrillPage() {
   const [arena, setArena] = useState<Arena | null>(null);
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
+
+  // The saved level is only known after hydration; adopt it once, unless the
+  // learner already picked a level on this page.
+  const levelTouched = useRef(false);
+  useEffect(() => {
+    if (hydrated && !levelTouched.current) setLevel(focus);
+  }, [hydrated, focus]);
 
   async function start() {
     setBusy(true);
@@ -107,7 +117,7 @@ function DrillPage() {
           setArena({ kind: mode, pairs });
         }
       } else {
-        const built = await build(mode, level, count, chunk, direction, copy, studiedOnly, cards);
+        const built = await build(mode, level, count, chunk, direction, copy, lang, studiedOnly, cards);
         if (!built.length) {
           setError(true);
           setArena(null);
@@ -179,7 +189,7 @@ function DrillPage() {
         <div className="mt-5 flex flex-wrap gap-2">
           {[10, 20].map((n) => (
             <Choice key={n} active={count === n} onClick={() => setCount(n)}>
-              {String(n)}
+              {num(n)}
             </Choice>
           ))}
         </div>
@@ -189,7 +199,14 @@ function DrillPage() {
         <>
           <div className="mt-3 flex gap-2 overflow-x-auto">
             {LEVELS.map((id) => (
-              <Choice key={id} active={level === id} onClick={() => setLevel(id)}>
+              <Choice
+                key={id}
+                active={level === id}
+                onClick={() => {
+                  levelTouched.current = true;
+                  setLevel(id);
+                }}
+              >
                 {LEVEL_LABEL[id]}
               </Choice>
             ))}
@@ -260,6 +277,7 @@ async function build(
   chunk: Chunk,
   direction: "to-fa" | "to-en",
   copy: Copy,
+  lang: Lang,
   studiedOnly: boolean,
   cards: Record<string, unknown>,
 ): Promise<Question[]> {
@@ -270,5 +288,5 @@ async function build(
   if (mode === "match" || mode === "sprint") return [];
   const words = await loadLevel(level);
   const pool = studiedOnly ? words.filter((word) => cards[word.id]) : words;
-  return lexQuestions(pool, mode, count, copy);
+  return lexQuestions(pool, mode, count, copy, lang);
 }

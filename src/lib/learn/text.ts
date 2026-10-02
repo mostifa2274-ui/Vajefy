@@ -168,12 +168,40 @@ export function escapeReg(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+/**
+ * Regular inflections of a one-word headword (plural / third person, past,
+ * -ing), so a cloze can find "begins" or "dollars" in the example. Extra
+ * forms that are not real words are harmless: they never occur in a sentence.
+ */
+export function wordForms(bare: string): string[] {
+  const w = bare.toLowerCase();
+  if (w.includes(" ") || w.length < 3) return [w];
+  const forms = new Set([w]);
+  const consonantY = /[^aeiou]y$/.test(w);
+  const doubled = /[^aeiou][aeiou][bdgklmnprt]$/.test(w) ? w + w.slice(-1) : null;
+  if (/(s|x|z|ch|sh|o)$/.test(w)) forms.add(`${w}es`);
+  else if (consonantY) forms.add(`${w.slice(0, -1)}ies`);
+  else forms.add(`${w}s`);
+  if (w.endsWith("e")) forms.add(`${w}d`);
+  else if (consonantY) forms.add(`${w.slice(0, -1)}ied`);
+  else forms.add(`${w}ed`);
+  if (w.endsWith("ie")) forms.add(`${w.slice(0, -2)}ying`);
+  else if (/[^e]e$/.test(w)) forms.add(`${w.slice(0, -1)}ing`);
+  else forms.add(`${w}ing`);
+  if (doubled) {
+    forms.add(`${doubled}ed`);
+    forms.add(`${doubled}ing`);
+  }
+  return [...forms];
+}
+
+/** The example with every form of the headword blanked, or null if none occurs. */
 export function cloze(example: string, word: string): string | null {
   const bare = bareHeadword(word);
   if (bare.length < 2 || !example) return null;
-  const re = new RegExp(`\\b${escapeReg(bare)}\\b`, "i");
-  if (!re.test(example)) return null;
-  return example.replace(re, "______");
+  const re = new RegExp(`\\b(?:${wordForms(bare).map(escapeReg).join("|")})\\b`, "gi");
+  const blanked = example.replace(re, "______");
+  return blanked === example ? null : blanked;
 }
 
 export function shuffle<T>(list: T[]): T[] {

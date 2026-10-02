@@ -56,6 +56,10 @@ export function patternFace(item: PatternItem, kicker: string, copy: Copy): Stud
   };
 }
 
+function firstLine(text: string): string {
+  return text.split("\n")[0] ?? "";
+}
+
 function block(label: string, text: string, dir: "ltr" | "rtl") {
   return text ? [{ label, text, dir }] : [];
 }
@@ -140,7 +144,7 @@ export function pairRef(item: PairNote, kicker: string, copy: Copy): RefEntry {
   return {
     id: item.id,
     title: item.title,
-    subtitle: item.fa,
+    subtitle: item.fa || firstLine(item.guide),
     kicker: `${kicker} · ${bandName(item.band, copy)}`,
     band: item.band,
     blocks: [
@@ -264,10 +268,11 @@ async function deckFaces(deck: LibDeckId, copy: Copy): Promise<StudyFace[]> {
       title: item.title,
       ipa: item.ipa,
       pron: item.pr,
-      meaning: item.fa,
+      // Confusing pairs have no gloss: their guide is the meaning, not a note.
+      meaning: item.fa || item.guide,
       example: item.ex,
       exampleFa: item.tr,
-      note: item.guide,
+      note: item.fa ? item.guide : undefined,
       speak: item.title.split("/")[0]?.trim() || item.title,
     }));
   }

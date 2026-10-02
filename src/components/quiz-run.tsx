@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useCopy } from "@/lib/learn/i18n";
 import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
 import { formMatches, bestSpelling } from "@/lib/learn/text";
+import { useFormat } from "@/lib/learn/format";
 import type { Grade, Lang, Question } from "@/lib/learn/types";
 import { cn } from "@/lib/cn";
 import { Button, SpeakButton } from "./ui";
@@ -20,6 +21,7 @@ export function QuizRun({
   onDone: () => void;
 }) {
   const copy = useCopy(lang);
+  const { num } = useFormat();
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
   const [typed, setTyped] = useState("");
@@ -40,7 +42,7 @@ export function QuizRun({
       <section className="mx-auto max-w-xl">
         <p className="text-sm text-accent">{copy.scoreLabel}</p>
         <h1 className="mt-1 text-3xl font-medium">
-          {correct} / {questions.length}
+          {num(correct)} / {num(questions.length)}
         </h1>
         {misses.length ? (
           <div className="mt-6">
@@ -87,11 +89,11 @@ export function QuizRun({
   return (
     <section className="mx-auto max-w-xl">
       <div className="mb-3 flex items-center justify-between text-sm text-muted">
-        <span>
-          {index + 1} / {questions.length}
+        <span className="tabular-nums">
+          {num(index + 1)} / {num(questions.length)}
         </span>
         <span className="tabular-nums">
-          {correct} {copy.correct}
+          {num(correct)} {copy.correct}
         </span>
       </div>
       <div className="panel p-4 sm:p-6">
@@ -175,7 +177,7 @@ export function QuizRun({
             ) : null}
 
             {question.kind === "mcq" ? (
-              <div className="mt-5 grid gap-2" role="listbox" aria-label={copy.meaning}>
+              <div className="mt-5 grid gap-2" role="group" aria-label={copy.meaning}>
                 {question.options.map((option) => {
                   const chosen = picked === option.key;
                   const right = locked && option.key === question.answerKey;
@@ -190,7 +192,8 @@ export function QuizRun({
                       onClick={() => {
                         setPicked(option.key);
                         const ok = option.key === question.answerKey;
-                        finish(ok ? "good" : "again", question.prompt, question.reveal || "");
+                        // A listening prompt is only "What did you hear?"; list the word instead.
+                        finish(ok ? "good" : "again", question.speak ?? question.prompt, question.reveal || "");
                       }}
                       className={cn(
                         "min-h-11 rounded-md border px-3 py-2 text-start text-pretty",
