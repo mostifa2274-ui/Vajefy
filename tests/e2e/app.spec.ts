@@ -81,3 +81,32 @@ test("critical pages stay free of runtime console errors", async ({ page }) => {
   }
   expect(errors).toEqual([]);
 });
+
+
+test("progress changes propagate across open tabs", async ({ browser }) => {
+  const context = await browser.newContext();
+  const first = await context.newPage();
+  const second = await context.newPage();
+  await seed(first);
+  await first.goto("/progress");
+  await second.goto("/progress");
+  await expect(first.getByRole("heading", { name: "Progress" })).toBeVisible();
+  await expect(second.getByRole("heading", { name: "Progress" })).toBeVisible();
+
+  await first.getByRole("button", { name: "فارسی" }).click();
+  await expect(first.locator("html")).toHaveAttribute("dir", "rtl");
+  await expect(second.locator("html")).toHaveAttribute("dir", "rtl");
+  await expect(second.getByRole("heading", { name: "پیشرفت" })).toBeVisible();
+  await context.close();
+});
+
+test("production responses carry the security policy", async ({ request }) => {
+  const response = await request.get("/");
+  expect(response.ok()).toBe(true);
+  const headers = response.headers();
+  expect(headers["x-content-type-options"]).toBe("nosniff");
+  expect(headers["x-frame-options"]).toBe("DENY");
+  expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");
+  expect(headers["content-security-policy"]).toContain("script-src 'self'");
+  expect(headers["content-security-policy"]).not.toContain("script-src 'self' 'unsafe-inline'");
+});
