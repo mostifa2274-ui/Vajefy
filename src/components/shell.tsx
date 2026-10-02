@@ -30,6 +30,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const lastStudyDate = useProgress((state) => state.lastStudyDate);
   const logs = useProgress((state) => state.logs);
   const dailyGoal = useProgress((state) => state.dailyGoal);
+  const onboarded = useProgress((state) => state.onboarded);
   const copy = useCopy(lang);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const navigate = useNavigate();
@@ -55,6 +56,13 @@ export function Shell({ children }: { children: ReactNode }) {
     if (!("serviceWorker" in navigator)) return;
     void navigator.serviceWorker.register("/sw.js").catch(() => undefined);
   }, []);
+
+  useEffect(() => {
+    if (!hydrated || !onboarded || !navigator.storage?.persist) return;
+    // Ask supporting browsers to protect the small local learning database from
+    // opportunistic eviction. Denial is harmless because export/import remains.
+    void navigator.storage.persist().catch(() => undefined);
+  }, [hydrated, onboarded]);
 
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
 
