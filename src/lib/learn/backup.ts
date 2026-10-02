@@ -33,6 +33,7 @@ const reviewEvent = z.object({
   at: z.number(),
   grade: z.enum(["again", "hard", "good", "easy"]),
   algorithm: z.enum(["legacy", "fsrs6"]),
+  targetRetention: z.number().min(0.8).max(0.97).optional(),
   bridged: z.boolean().optional(),
   elapsedDays: z.number().min(0).max(36500),
   scheduledDays: z.number().min(0).max(36500),
