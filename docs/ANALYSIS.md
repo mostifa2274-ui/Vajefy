@@ -47,12 +47,25 @@ the build ships ≈ 600 KB of client JS (was ≈ 1.1 MB).
 
 Left as is, on purpose:
 
-- `src/lib/multiplayer/p2p.ts` and the auth / app-data / db helpers are Grok
-  template code the platform expects to find; nothing imports them.
 - `recharts` stays in `package.json` with the template's preinstalled packages;
   nothing imports it, so it is not shipped.
 - The source spreadsheet in `attachments/` was not edited; the "light" label is
   fixed in `public/data/lex-a2.json` only.
+
+### Later: platform and AI removal
+
+After the fixes above, the project was made independent of the platform it was
+built on:
+
+- **AI notes removed** (`637462f`). Finding 3.4 no longer applies: the app calls
+  no AI service and has no server functions.
+- **Platform code removed** (`cf0c82b`): the branding script injector and
+  install page, the preview bridge, sandbox scripts, agent docs, and the unused
+  sign-in, connector, database and multiplayer modules with their packages. The
+  app now ships its own web manifest, home-screen icons and share-card meta.
+
+The project now has 28 unit tests (the template's own tests left with its code),
+and the only third-party request the app makes is for Google Fonts.
 
 ---
 
