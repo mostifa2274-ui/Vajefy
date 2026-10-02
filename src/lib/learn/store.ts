@@ -324,6 +324,7 @@ export const useProgress = create<ProgressState>()(
           at: now,
           grade,
           algorithm: result.meta.algorithm,
+          ...(result.meta.algorithm === "fsrs6" ? { targetRetention: state.requestRetention } : {}),
           ...(result.meta.bridged ? { bridged: true } : {}),
           elapsedDays: result.meta.elapsedDays,
           scheduledDays: result.meta.scheduledDays,
