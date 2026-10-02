@@ -178,7 +178,7 @@ function Home() {
                 {inReview ? copy.added : copy.learnThis}
               </button>
             </div>
-            <Explain word={word.w} meaning={word.fa} example={word.ex} pos={word.pos} />
+            <Explain id={word.id} />
           </article>
         ) : null}
         {nuance ? (

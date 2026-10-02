@@ -1,57 +1,78 @@
-import { useState } from "react";
-import { explainWord } from "@/lib/learn/coach";
+import { useEffect, useState } from "react";
+import { explainStatus, explainWord } from "@/lib/learn/coach";
 import { useCopy } from "@/lib/learn/i18n";
 import { useProgress } from "@/lib/learn/store";
 
-export function Explain({
-  word,
-  meaning,
-  example,
-  pos,
-}: {
-  word: string;
-  meaning: string;
-  example?: string;
-  pos?: string;
-}) {
+let availability: Promise<boolean> | null = null;
+
+/** Asked once per page load; a failed check is retried next time. */
+function notesAvailable(): Promise<boolean> {
+  availability ??= explainStatus()
+    .then((status) => status.available)
+    .catch(() => {
+      availability = null;
+      return false;
+    });
+  return availability;
+}
+
+export function Explain({ id }: { id: string }) {
   const lang = useProgress((state) => state.lang);
   const copy = useCopy(lang);
-  const [text, setText] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [available, setAvailable] = useState(false);
+  // Keyed by entry, so a note never lingers when the entry beside it changes.
+  const [note, setNote] = useState<{ key: string; text: string } | null>(null);
+  const [busyKey, setBusyKey] = useState<string | null>(null);
+  const [failure, setFailure] = useState<{ key: string; busy: boolean } | null>(null);
+  const key = `${lang}:${id}`;
+
+  useEffect(() => {
+    let alive = true;
+    void notesAvailable().then((value) => {
+      if (alive) setAvailable(value);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  if (!available) return null;
+
+  const text = note?.key === key ? note.text : null;
+  const busy = busyKey === key;
+  const failed = failure?.key === key ? failure : null;
 
   async function ask() {
     if (busy || text) return;
-    const cacheKey = `roshana-coach:${lang}:${word}:${meaning}`;
+    const cacheKey = `roshana-coach:${key}`;
     try {
       const saved = sessionStorage.getItem(cacheKey);
       if (saved) {
-        setText(saved);
+        setNote({ key, text: saved });
         return;
       }
     } catch {
       /* private mode */
     }
-    setBusy(true);
-    setFailed(false);
+    setBusyKey(key);
+    setFailure(null);
     try {
-      const result = await explainWord({
-        data: { word, meaning, example: example ?? "", pos: pos ?? "", lang },
-      });
+      const result = await explainWord({ data: { id, lang } });
       if (!result.ok) {
-        setFailed(true);
+        if (result.error === "unavailable") setAvailable(false);
+        else setFailure({ key, busy: result.error === "busy" });
         return;
       }
-      setText(result.text);
+      setNote({ key, text: result.text });
       try {
         sessionStorage.setItem(cacheKey, result.text);
       } catch {
         /* ignore quota */
       }
     } catch {
-      setFailed(true);
+      setFailure({ key, busy: false });
     } finally {
-      setBusy(false);
+      setBusyKey((current) => (current === key ? null : current));
     }
   }
 
@@ -66,7 +87,7 @@ export function Explain({
           {busy ? copy.explaining : copy.explain}
         </button>
       )}
-      {failed ? <p className="mt-1 text-sm text-bad">{copy.explainFail}</p> : null}
+      {failed ? <p className="mt-1 text-sm text-bad">{failed.busy ? copy.explainBusy : copy.explainFail}</p> : null}
     </div>
   );
 }

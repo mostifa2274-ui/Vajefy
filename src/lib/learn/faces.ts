@@ -228,7 +228,7 @@ export async function loadStudyFaces(
     if (level) levels.add(level);
     else {
       const prefix = id.split(":")[0] as LibDeckId;
-      if (prefix in DECK_FILE) decks.add(prefix);
+      if (Object.hasOwn(DECK_FILE, prefix)) decks.add(prefix);
     }
   }
 

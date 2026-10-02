@@ -230,7 +230,7 @@ function LexiconPage() {
               <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
                 {selected.tr}
               </p>
-              <Explain word={selected.w} meaning={selected.fa} example={selected.ex} pos={selected.pos} />
+              <Explain id={selected.id} />
               <div className="mt-4 flex flex-wrap gap-2">
                 <button
                   type="button"

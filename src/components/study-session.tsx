@@ -211,7 +211,7 @@ export function StudySession({
                 </p>
               </details>
             ) : null}
-            <Explain word={face.title} meaning={face.meaning} example={face.example} pos={face.pos} />
+            <Explain id={face.id} />
           </div>
         ) : (
           <Button variant="secondary" className="w-full" onClick={() => setRevealed(true)}>
