@@ -24,11 +24,35 @@ export type Lifetime = {
   practiceCorrect: number;
 };
 
+/**
+ * Prospective scheduled-recall evidence. We intentionally do not invent rows
+ * for reviews that happened before this log existed.
+ */
+export type ReviewEvent = {
+  /** Epoch milliseconds of the grade. */
+  t: number;
+  id: string;
+  grade: Grade;
+  state: CardProg["state"];
+  step: number;
+  scheduledDays: number;
+  elapsedDays: number;
+  nextState: CardProg["state"];
+  nextStep: number;
+  nextDays: number;
+  /**
+   * True only when Vajefy has observed this card from its first scheduled
+   * recall. Existing pre-v3 cards remain explicitly partial.
+   */
+  complete: boolean;
+};
+
 /** Everything saved to the browser and carried by an export file. */
 export type SavedProgress = {
   cards: Record<string, CardProg>;
   logs: DayLog[];
   lifetime: Lifetime;
+  reviewHistory: ReviewEvent[];
   streak: number;
   lastStudyDate: string | null;
   xp: number;
@@ -65,10 +89,12 @@ type ProgressState = SavedProgress & {
 };
 
 /** Bump when the saved shape changes, and teach `migrate` the old shape. */
-export const PROGRESS_VERSION = 2;
+export const PROGRESS_VERSION = 3;
 
 const XP: Record<Grade, number> = { again: 2, hard: 6, good: 10, easy: 14 };
 const PRACTICE_XP: Record<Grade, number> = { again: 0, hard: 1, good: 2, easy: 3 };
+const MAX_REVIEW_HISTORY = 8000;
+const DAY = 86_400_000;
 
 const memory = new Map<string, string>();
 
@@ -189,6 +215,7 @@ const DEFAULTS: SavedProgress = {
   cards: {},
   logs: [],
   lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
+  reviewHistory: [],
   streak: 0,
   lastStudyDate: null,
   xp: 0,
@@ -208,6 +235,7 @@ export function savedProgress(state: SavedProgress): SavedProgress {
     cards: state.cards,
     logs: state.logs,
     lifetime: state.lifetime,
+    reviewHistory: state.reviewHistory,
     streak: state.streak,
     lastStudyDate: state.lastStudyDate,
     xp: state.xp,
@@ -240,6 +268,7 @@ export function migrateProgress(persisted: unknown, version: number): SavedProgr
     ...input,
     logs,
     lifetime,
+    reviewHistory: Array.isArray(input.reviewHistory) ? input.reviewHistory.slice(-MAX_REVIEW_HISTORY) : [],
     accent: input.accent === "en-US" ? "en-US" : "en-GB",
   };
   if (version < 1) {
@@ -290,8 +319,27 @@ export const useProgress = create<ProgressState>()(
         const now = Date.now();
         const today = todayKey();
         const state = get();
-        const existed = Boolean(state.cards[id]);
-        const next = schedule(state.cards[id] ?? freshCard(now), grade, now);
+        const card = state.cards[id];
+        const existed = Boolean(card);
+        const before = card ?? freshCard(now);
+        const next = schedule(before, grade, now);
+        const priorLogged = state.reviewHistory.findLast((event) => event.id === id);
+        const complete =
+          priorLogged?.complete ??
+          (!card || (card.last == null && card.reps === 0 && card.lapses === 0 && card.interval === 0));
+        const event: ReviewEvent = {
+          t: now,
+          id,
+          grade,
+          state: before.state,
+          step: before.step,
+          scheduledDays: before.interval,
+          elapsedDays: before.last == null ? 0 : Math.max(0, (now - before.last) / DAY),
+          nextState: next.state,
+          nextStep: next.step,
+          nextDays: next.interval,
+          complete,
+        };
         const streak = touchStreak(state.streak, state.lastStudyDate, today);
         set({
           cards: { ...state.cards, [id]: next },
@@ -301,6 +349,7 @@ export const useProgress = create<ProgressState>()(
             introduced: existed ? 0 : 1,
           }),
           lifetime: bumpReviewLifetime(state.lifetime, grade !== "again"),
+          reviewHistory: [...state.reviewHistory, event].slice(-MAX_REVIEW_HISTORY),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
           xp: state.xp + XP[grade],
@@ -343,9 +392,14 @@ export const useProgress = create<ProgressState>()(
       // was renamed); they could never be shown, yet would stay "due" forever.
       forget: (ids) => {
         if (!ids.length) return;
-        const cards = { ...get().cards };
+        const state = get();
+        const cards = { ...state.cards };
+        const removed = new Set(ids);
         for (const id of ids) delete cards[id];
-        set({ cards });
+        set({
+          cards,
+          reviewHistory: state.reviewHistory.filter((event) => !removed.has(event.id)),
+        });
       },
       importProgress: (saved) => set({ ...savedProgress(saved), onboarded: true }),
       reset: () =>
@@ -353,6 +407,7 @@ export const useProgress = create<ProgressState>()(
           cards: {},
           logs: [],
           lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
+          reviewHistory: [],
           streak: 0,
           lastStudyDate: null,
           xp: 0,
