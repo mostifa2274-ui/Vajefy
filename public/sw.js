@@ -1,5 +1,6 @@
-const CACHE = "vajefy-offline-v1";
-const SHELL = ["/", "/manifest.json", "/favicon.svg", "/icon-192.png", "/icon-512.png"];
+const CACHE = "vajefy-offline-v2";
+const ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"];
+const SHELL = ["/manifest.json", "/favicon.svg", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
 const DATA = [
   "/data/meta.json",
   "/data/lex-a1.json",
@@ -21,14 +22,55 @@ const DATA = [
   "/data/families.json",
 ];
 
+function sameOriginAsset(value) {
+  try {
+    const url = new URL(value, self.location.origin);
+    if (url.origin !== self.location.origin) return null;
+    if (!["http:", "https:"].includes(url.protocol)) return null;
+    return url.href;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Cache each primary SSR document and the CSS/JS/images it references.
+ * This closes the common PWA gap where "/" is cached but a route-specific
+ * bundle is unavailable on the first offline navigation.
+ */
+async function warmRoute(cache, path) {
+  try {
+    const response = await fetch(path, { cache: "reload" });
+    if (!response.ok) return;
+    await cache.put(path, response.clone());
+    const html = await response.text();
+    const urls = new Set();
+    for (const match of html.matchAll(/(?:src|href)=["']([^"'#]+)["']/g)) {
+      const asset = sameOriginAsset(match[1]);
+      if (asset) urls.add(asset);
+    }
+    await Promise.all(
+      [...urls].map(async (url) => {
+        try {
+          const asset = await fetch(url, { cache: "reload" });
+          if (asset.ok) await cache.put(url, asset);
+        } catch {
+          // One optional asset must not make the entire PWA uninstallable.
+        }
+      }),
+    );
+  } catch {
+    // The online app still works; a later service-worker update can retry.
+  }
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE);
-      await cache.addAll(SHELL);
-      // A single optional dataset failure must not prevent the service worker
-      // from installing; successful datasets still become available offline.
+      await Promise.all(SHELL.map((url) => cache.add(url).catch(() => undefined)));
       await Promise.all(DATA.map((url) => cache.add(url).catch(() => undefined)));
+      await Promise.all(ROUTES.map((route) => warmRoute(cache, route)));
       await self.skipWaiting();
     })(),
   );
@@ -44,20 +86,24 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-async function networkFirst(request) {
+async function navigationFallback(request) {
   const cache = await caches.open(CACHE);
   try {
     const response = await fetch(request);
     if (response.ok) await cache.put(request, response.clone());
     return response;
   } catch {
-    return (await cache.match(request)) ?? (request.mode === "navigate" ? cache.match("/") : undefined);
+    return (
+      (await cache.match(request, { ignoreSearch: true })) ??
+      (await cache.match(new URL(request.url).pathname, { ignoreSearch: true })) ??
+      (await cache.match("/"))
+    );
   }
 }
 
 async function cacheFirst(request) {
   const cache = await caches.open(CACHE);
-  const cached = await cache.match(request);
+  const cached = await cache.match(request, { ignoreSearch: false });
   if (cached) return cached;
   const response = await fetch(request);
   if (response.ok) await cache.put(request, response.clone());
@@ -71,12 +117,15 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (request.mode === "navigate") {
-    event.respondWith(networkFirst(request));
+    event.respondWith(navigationFallback(request));
     return;
   }
-  if (url.pathname.startsWith("/data/") || url.pathname.startsWith("/assets/")) {
+
+  if (
+    url.pathname.startsWith("/data/") ||
+    url.pathname.startsWith("/assets/") ||
+    ["script", "style", "font", "image"].includes(request.destination)
+  ) {
     event.respondWith(cacheFirst(request));
-    return;
   }
-  event.respondWith(networkFirst(request));
 });
