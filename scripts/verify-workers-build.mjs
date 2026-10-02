@@ -29,6 +29,12 @@ const builtServiceWorker = fs.readFileSync(sw, "utf8");
 if (/__VAJEFY_BUILD_ASSETS__ \*\/ \[\]/.test(builtServiceWorker)) {
   throw new Error("Built service worker still contains an empty build asset manifest.");
 }
+if (builtServiceWorker.includes('/* __VAJEFY_BUILD_VERSION__ */ "dev"')) {
+  throw new Error("Built service worker still contains the development cache version.");
+}
+if (!/vajefy-offline-/.test(builtServiceWorker)) {
+  throw new Error("Built service worker is missing its versioned offline cache.");
+}
 
 const npx = process.platform === "win32" ? "npx.cmd" : "npx";
 run(npx, ["wrangler", "deploy", "--dry-run", "--outdir", dryRunDir]);
