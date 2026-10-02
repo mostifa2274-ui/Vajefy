@@ -146,6 +146,23 @@ if (meta) {
   }
 }
 
+// The pilot list names learning targets by their stable entry IDs. Removing
+// or renaming one of them would orphan editorial work and learner progress.
+try {
+  const pilot = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "pilot-a1.json"), "utf8"));
+  const entries = Array.isArray(pilot.entries) ? pilot.entries : [];
+  const seen = new Set();
+  if (entries.length !== 150) fail(`content/pilot-a1.json: expected 150 entries, found ${entries.length}`);
+  for (const entry of entries) {
+    if (globalIds.get(entry.id) !== "lex-a1.json") fail(`content/pilot-a1.json: ${entry.id} is not an A1 entry`);
+    if (seen.has(entry.id)) fail(`content/pilot-a1.json: duplicate ${entry.id}`);
+    seen.add(entry.id);
+    if (!pilot.groups?.[entry.group]) fail(`content/pilot-a1.json: ${entry.id} has unknown group ${entry.group}`);
+  }
+} catch (error) {
+  fail(`content/pilot-a1.json: ${error instanceof Error ? error.message : String(error)}`);
+}
+
 if (failures.length) {
   console.error(`Data validation failed with ${failures.length} issue(s):\n- ${failures.join("\n- ")}`);
   process.exit(1);
