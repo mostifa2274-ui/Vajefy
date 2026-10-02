@@ -5,7 +5,25 @@ import { PROGRESS_VERSION, type SavedProgress } from "./store";
 
 const saved: SavedProgress = {
   cards: {
-    "lex:A1:about": { ease: 2.5, interval: 3, due: 1_800_000_000_000, reps: 2, lapses: 0, state: "review", step: 0, last: 1_799_740_800_000 },
+    "lex:A1:about": {
+      ease: 2.5,
+      interval: 3,
+      due: 1_800_000_000_000,
+      reps: 2,
+      lapses: 0,
+      state: "review",
+      step: 0,
+      last: 1_799_740_800_000,
+      fsrs: {
+        model: "fsrs6",
+        stability: 4.2,
+        difficulty: 5.1,
+        scheduledDays: 3,
+        learningSteps: 0,
+        state: "review",
+        lastReview: 1_799_740_800_000,
+      },
+    },
   },
   logs: [{ date: "2026-10-01", reviews: 12, correct: 10, practice: 7, practiceCorrect: 6, introduced: 4 }],
   lifetime: { reviews: 40, correct: 33, practice: 19, practiceCorrect: 16 },
@@ -20,6 +38,19 @@ const saved: SavedProgress = {
   accent: "en-GB",
   bookmarks: ["lex:A1:about"],
   dailyGoal: 20,
+  requestRetention: 0.9,
+  reviewHistory: [
+    {
+      id: "lex:A1:about",
+      at: 1_799_740_800_000,
+      grade: "good",
+      algorithm: "fsrs6",
+      elapsedDays: 3,
+      scheduledDays: 3,
+      stability: 4.2,
+      difficulty: 5.1,
+    },
+  ],
   onboarded: true,
 };
 
@@ -28,11 +59,19 @@ test("an export file reads back to the same progress", () => {
 });
 
 test("a raw v0 localStorage entry imports and is migrated", () => {
-  const { lifetime: _lifetime, accent: _accent, ...v0 } = saved;
+  const {
+    lifetime: _lifetime,
+    accent: _accent,
+    requestRetention: _requestRetention,
+    reviewHistory: _reviewHistory,
+    ...v0
+  } = saved;
   const legacyLogs = v0.logs.map(({ practice: _practice, practiceCorrect: _practiceCorrect, ...row }) => row);
   const parsed = parseBackup(JSON.stringify({ state: { ...v0, logs: legacyLogs }, version: 0 }));
   assert.deepEqual(parsed?.lifetime, { reviews: 12, correct: 10, practice: 0, practiceCorrect: 0 });
   assert.deepEqual(parsed?.cards, saved.cards);
+  assert.equal(parsed?.requestRetention, 0.9);
+  assert.deepEqual(parsed?.reviewHistory, []);
 });
 
 test("malformed, foreign or future files are rejected", () => {
