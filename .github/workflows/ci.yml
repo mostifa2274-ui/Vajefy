@@ -1,7 +1,7 @@
 name: CI
 
 permissions:
-  contents: read
+  contents: write
 
 on:
   push:
@@ -61,3 +61,29 @@ jobs:
       - run: npm run verify:workers-build
 
 
+
+
+  regenerate-fsrs-lockfile:
+    if: github.event_name == 'pull_request' && github.head_ref == 'chatgpt/fsrs6-review-history-20261002'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: chatgpt/fsrs6-review-history-20261002
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install --package-lock-only --ignore-scripts
+      - name: Commit canonical lockfile if changed
+        shell: bash
+        run: |
+          if git diff --quiet -- package-lock.json; then
+            echo "Lockfile already canonical."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "Regenerate lockfile for FSRS-6"
+          git push origin HEAD:chatgpt/fsrs6-review-history-20261002
