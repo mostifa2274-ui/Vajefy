@@ -15,19 +15,6 @@ export function freshCard(now: number): CardProg {
   };
 }
 
-export function knownCard(now: number): CardProg {
-  return {
-    ease: 2.6,
-    interval: 21,
-    due: now + 21 * DAY,
-    reps: 3,
-    lapses: 0,
-    state: "review",
-    step: 0,
-    last: now,
-  };
-}
-
 export function isMastered(card: CardProg): boolean {
   return card.state === "review" && card.interval >= 21;
 }
