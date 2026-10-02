@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PageHeader, SpeakButton } from "@/components/ui";
-import { Explain } from "@/components/explain";
 import { cn } from "@/lib/cn";
 import { posLabel, useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta } from "@/lib/learn/load";
@@ -252,7 +251,6 @@ function LexiconPage() {
               <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
                 {selected.tr}
               </p>
-              <Explain id={selected.id} />
               <div className="mt-4 flex flex-wrap gap-2">
                 <button
                   type="button"

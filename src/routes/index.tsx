@@ -4,7 +4,6 @@ import { LabeledWords } from "@/components/labeled-words";
 import { Onboard } from "@/components/onboard";
 import { GoalRing, Num, SpeakButton, ButtonLink } from "@/components/ui";
 import { useFormat } from "@/lib/learn/format";
-import { Explain } from "@/components/explain";
 import { useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta, loadPairs } from "@/lib/learn/load";
 import { countLevel, dueIds, liveStreak, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
@@ -184,7 +183,6 @@ function Home() {
                 {inReview ? copy.added : copy.learnThis}
               </button>
             </div>
-            <Explain id={word.id} />
           </article>
         ) : null}
         {nuance ? (

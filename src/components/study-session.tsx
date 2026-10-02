@@ -6,7 +6,6 @@ import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
 import { formatDelay } from "@/lib/learn/text";
 import type { CardProg, Grade, Lang, StudyFace } from "@/lib/learn/types";
 import { Button, SpeakButton } from "./ui";
-import { Explain } from "./explain";
 
 const GRADES: Grade[] = ["again", "hard", "good", "easy"];
 
@@ -211,7 +210,6 @@ export function StudySession({
                 </p>
               </details>
             ) : null}
-            <Explain id={face.id} />
           </div>
         ) : (
           <Button variant="secondary" className="w-full" onClick={() => setRevealed(true)}>
