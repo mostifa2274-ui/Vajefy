@@ -8,10 +8,15 @@ and 5000 lists, with spaced repetition.
 - **2,950 reference notes**: phrasal verbs, collocations, prepositions, verb
   patterns, occupations, antonyms, common mix-ups, synonyms, word families,
   word formation and irregular verbs.
-- **Review** (`/study`): recall first, then grade Again / Hard / Good / Easy.
+- **Learn + Review** (`/study`): unseen words get a deliberate encoding pass,
+  then active recall; scheduled cards use recall first and grade Again / Hard /
+  Good / Easy.
 - **Quiz** (`/drill`): eleven practice modes, including Pairs and a 45-second
-  spelling sprint.
-- Persian or English interface, right-to-left aware throughout.
+  spelling sprint. Practice is measured separately from retention evidence.
+- **Offline-first PWA**: the app shell and all learning datasets are cached for
+  offline study after the first successful load.
+- Persian or English interface, right-to-left aware throughout, with selectable
+  British or American system pronunciation.
 
 [docs/ANALYSIS.md](docs/ANALYSIS.md) records an in-depth review of the original
 code and how each finding was fixed.
@@ -31,12 +36,15 @@ npm run dev        # http://localhost:8080
 | `npm run build` | Production build for Cloudflare Workers (`dist/`) |
 | `npm run preview` | Runs the built Worker locally on port 8081 |
 | `npm run deploy` | Builds and deploys with Wrangler (needs `npx wrangler login` first) |
+| `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm test` | Unit tests in `src/lib/learn/**/*.test.ts` |
+| `npx playwright test` | Critical browser, RTL/mobile and offline regression tests (CI installs the pinned runner) |
 
-CI (`.github/workflows/ci.yml`) runs install, typecheck, lint, tests and build
-on pull requests and on pushes to `main`.
+CI (`.github/workflows/ci.yml`) runs install, the 8,272-record data contract,
+typecheck, lint, unit tests and the production build, then drives critical paths
+in Chromium. It runs on pull requests and pushes to `main`.
 
 ## How it works
 
@@ -58,21 +66,27 @@ The app is fully client-side: no accounts, no database, no AI service.
 - Only **Review** moves a card's schedule. Intervals grow from the time that
   actually passed since the card was last graded, so answering early never
   inflates them.
-- **Quiz, Pairs and the sprint are practice.** They log activity but never add
-  a word to the schedule or push a review later. A miss on a scheduled word
-  makes it due now, so the next Review asks it properly.
+- **Quiz, Pairs and the sprint are practice.** They never add a word to the
+  schedule or push a review later. A miss on a scheduled word makes it due now,
+  so the next Review asks it properly.
+- Scheduled Review and practice keep **separate counters and accuracy**. Practice
+  cannot satisfy the daily review target or inflate measured retention.
+- A completely unseen word gets a short **teach → hide → recall → grade** flow
+  before it joins normal spaced review.
 
 ### Progress and backups
 
-Progress is stored only in the browser. **Progress → Backup** exports a dated
-JSON file and imports it again, on this device or another. The saved shape is
-versioned (`PROGRESS_VERSION` in `store.ts`); when it changes, bump the version
-and extend `migrateProgress`.
+Progress is local-first. The app asks supporting browsers for persistent
+storage, and **Progress → Backup** exports a dated JSON file that can be restored
+on another device. The saved shape is versioned (`PROGRESS_VERSION` in
+`store.ts`) and migrations preserve older saves. There is intentionally no
+account or remote learner database yet.
 
 ### Data notes
 
-- Card ids are slugs of the headword text (`lex:A1:about`). If you edit a
-  headword in the data, **keep its `id`**, or saved progress for it is lost.
+- Card ids are persistent learner-data keys. `npm run validate:data` hashes
+  each dataset's id set, so accidental renames or deletions fail CI. If an id
+  must change intentionally, plan a progress migration and update the contract.
 - Headwords follow the Oxford lists' British spelling. Spelling modes also
   accept the American form for the words listed in `AMERICAN` in `text.ts`.
 
@@ -97,3 +111,21 @@ Node 22 for Cloudflare's build image.
 - Under **Build → Variables and secrets**, set `VITE_SITE_URL` to the site's
   address (for example `https://vajefy.<account>.workers.dev` or a custom
   domain) so share cards get an absolute image URL. It is read at build time.
+
+
+## Privacy and offline behavior
+
+The production app makes no application API or AI-service request. Fonts use
+system stacks, so the core UI, vocabulary data and pronunciation do not depend
+on Google Fonts or another web-font host. Browser speech synthesis is local to
+the user's device; available voice quality depends on the operating system.
+
+The service worker is deliberately limited to same-origin GET requests. Learning
+data and hashed assets are cached; navigations prefer the network and fall back
+to the cached app when offline.
+
+## Content provenance
+
+See [docs/CONTENT_PROVENANCE.md](docs/CONTENT_PROVENANCE.md). Code/data integrity
+checks establish what ships; they do not establish third-party redistribution
+rights.
