@@ -86,18 +86,27 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+async function cachedNavigation(cache, request) {
+  return (
+    (await cache.match(request, { ignoreSearch: true })) ??
+    (await cache.match(new URL(request.url).pathname, { ignoreSearch: true })) ??
+    (await cache.match("/"))
+  );
+}
+
 async function navigationFallback(request) {
   const cache = await caches.open(CACHE);
   try {
     const response = await fetch(request);
-    if (response.ok) await cache.put(request, response.clone());
-    return response;
+    if (response.ok) {
+      await cache.put(request, response.clone());
+      return response;
+    }
+    // Chromium and some embedded browsers may resolve an offline navigation
+    // with a synthetic non-OK response rather than rejecting fetch().
+    return (await cachedNavigation(cache, request)) ?? response;
   } catch {
-    return (
-      (await cache.match(request, { ignoreSearch: true })) ??
-      (await cache.match(new URL(request.url).pathname, { ignoreSearch: true })) ??
-      (await cache.match("/"))
-    );
+    return cachedNavigation(cache, request);
   }
 }
 
