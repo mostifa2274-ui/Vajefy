@@ -11,6 +11,8 @@ import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { useCopy } from "@/lib/learn/i18n";
 import { liveStreak, todayLog, useProgress } from "@/lib/learn/store";
+import { progressStorage, PROGRESS_STORAGE_KEY } from "@/lib/learn/storage";
+import { SaveNotice } from "./save-notice";
 import { Num } from "./ui";
 
 const OFFLINE_ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
@@ -93,8 +95,14 @@ export function Shell({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     function syncFromOtherTab(event: StorageEvent) {
-      if (event.key !== "roshana-v1" || event.storageArea !== localStorage) return;
-      void useProgress.persist.rehydrate();
+      if (event.key !== PROGRESS_STORAGE_KEY) return;
+      try {
+        if (event.storageArea !== window.localStorage) return;
+      } catch {
+        // A blocked storage getter is already reported by progressStorage.
+        return;
+      }
+      if (progressStorage.shouldRehydrate()) void useProgress.persist.rehydrate();
     }
     window.addEventListener("storage", syncFromOtherTab);
     return () => window.removeEventListener("storage", syncFromOtherTab);
@@ -188,7 +196,10 @@ export function Shell({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        <main className="dock-pad mx-auto w-full min-w-0 max-w-5xl px-4 py-5 md:px-8 md:py-6">{children}</main>
+        <main className="dock-pad mx-auto w-full min-w-0 max-w-5xl px-4 py-5 md:px-8 md:py-6">
+          {hydrated ? <SaveNotice copy={copy} /> : null}
+          {children}
+        </main>
       </div>
 
       <nav className="dock md:hidden">

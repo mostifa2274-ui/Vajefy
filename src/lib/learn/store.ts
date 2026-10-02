@@ -9,6 +9,7 @@ import {
 } from "./srs";
 import { todayKey, yesterdayKey } from "./text";
 import { boundPracticeEvidence, recordPracticeSkill } from "./practice";
+import { progressStorage, PROGRESS_STORAGE_KEY } from "./storage";
 import type { CardProg, Grade, Lang, LevelId, PracticeEvidence, PracticeSkill, ReviewEvent } from "./types";
 
 export type DayLog = {
@@ -84,39 +85,6 @@ export const PROGRESS_VERSION = 4;
 const XP: Record<Grade, number> = { again: 2, hard: 6, good: 10, easy: 14 };
 const PRACTICE_XP: Record<Grade, number> = { again: 0, hard: 1, good: 2, easy: 3 };
 const MAX_REVIEW_HISTORY = 12_000;
-
-const memory = new Map<string, string>();
-
-const safeStorage = {
-  getItem: (key: string) => {
-    if (typeof window === "undefined") return memory.get(key) ?? null;
-    try {
-      return localStorage.getItem(key) ?? memory.get(key) ?? null;
-    } catch {
-      return memory.get(key) ?? null;
-    }
-  },
-  setItem: (key: string, value: string) => {
-    // Keep a same-session fallback even when browser persistence is denied or
-    // quota-limited. The UI remains usable and Backup can still export state.
-    memory.set(key, value);
-    if (typeof window === "undefined") return;
-    try {
-      localStorage.setItem(key, value);
-    } catch {
-      /* in-memory fallback already holds the latest state */
-    }
-  },
-  removeItem: (key: string) => {
-    memory.delete(key);
-    if (typeof window === "undefined") return;
-    try {
-      localStorage.removeItem(key);
-    } catch {
-      /* nothing else to remove */
-    }
-  },
-};
 
 function touchStreak(streak: number, last: string | null, today: string) {
   if (last === today) return { streak, lastStudyDate: last };
@@ -412,11 +380,11 @@ export const useProgress = create<ProgressState>()(
         }),
     }),
     {
-      name: "roshana-v1",
+      name: PROGRESS_STORAGE_KEY,
       version: PROGRESS_VERSION,
       migrate: migrateProgress,
       skipHydration: true,
-      storage: createJSONStorage(() => safeStorage),
+      storage: createJSONStorage(() => progressStorage),
       partialize: (state) => savedProgress(state),
       onRehydrateStorage: () => (state) => {
         state?.setHydrated();
