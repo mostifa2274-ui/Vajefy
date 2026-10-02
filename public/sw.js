@@ -116,7 +116,10 @@ async function navigationFallback(request) {
 
 async function cacheFirst(request) {
   const cache = await caches.open(CACHE);
-  const cached = await cache.match(request, { ignoreSearch: false });
+  // Cloudflare preview/static assets include `Vary: Origin`. The install-time
+  // precache request has no Origin header, while browser module requests do,
+  // so strict Vary matching would miss a byte-identical same-origin asset.
+  const cached = await cache.match(request, { ignoreSearch: false, ignoreVary: true });
   if (cached) return cached;
   const response = await fetch(request);
   if (response.ok) await cache.put(request, response.clone());
