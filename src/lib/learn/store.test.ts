@@ -136,6 +136,7 @@ test("scheduled reviews append real FSRS evidence while practice does not", () =
   assert.equal(event?.id, "lex:A1:about");
   assert.equal(event?.grade, "good");
   assert.equal(event?.algorithm, "fsrs6");
+  assert.equal(event?.targetRetention, 0.9);
   assert.equal(event?.at, NOW);
   assert.ok((event?.stability ?? 0) > 0);
 });
