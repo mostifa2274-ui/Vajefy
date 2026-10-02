@@ -29,7 +29,9 @@ function csp(nonce: string): string {
     "worker-src 'self'",
     "manifest-src 'self'",
     `script-src 'self' 'nonce-${nonce}'`,
-    "style-src 'self' 'unsafe-inline'",
+    "style-src 'self'",
+    "style-src-elem 'self'",
+    "style-src-attr 'unsafe-inline'",
     "font-src 'self' data:",
     "upgrade-insecure-requests",
   ].join("; ");
@@ -44,6 +46,7 @@ function harden(response: Response, nonce: string): Response {
   headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=()");
   headers.set("Cross-Origin-Opener-Policy", "same-origin");
   headers.set("Cross-Origin-Resource-Policy", "same-origin");
+  headers.set("Strict-Transport-Security", "max-age=31536000");
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
