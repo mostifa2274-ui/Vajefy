@@ -194,6 +194,14 @@ const fa = {
   explain: "شرح",
   explaining: "در حال نوشتن",
   explainFail: "شرح نوشته نشد.",
+  backupTitle: "نسخهٔ پشتیبان",
+  backupHint: "پیشرفت فقط در همین مرورگر ذخیره می‌شود. برای نگه‌داشتن یا بردن آن به دستگاه دیگر، فایل پشتیبان بگیرید.",
+  exportProgress: "دریافت فایل پشتیبان",
+  importProgress: "بازیابی از فایل",
+  importWarn: "پیشرفت فعلی این مرورگر با محتوای فایل جایگزین می‌شود.",
+  importYes: "بله، جایگزین شود",
+  importDone: "پیشرفت از فایل بازیابی شد.",
+  importBad: "این فایل، پشتیبان روشنا نیست یا آسیب دیده است.",
 };
 
 const en: typeof fa = {
@@ -390,6 +398,14 @@ const en: typeof fa = {
   explain: "A note",
   explaining: "Writing",
   explainFail: "The note could not be written.",
+  backupTitle: "Backup",
+  backupHint: "Progress is saved only in this browser. Export a backup to keep it or move it to another device.",
+  exportProgress: "Export progress",
+  importProgress: "Import from file",
+  importWarn: "The progress in this browser will be replaced by the file.",
+  importYes: "Yes, replace it",
+  importDone: "Progress restored from the file.",
+  importBad: "This is not a Roshana backup, or it is damaged.",
 };
 
 export type Copy = typeof fa;

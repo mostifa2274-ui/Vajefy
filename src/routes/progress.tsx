@@ -1,24 +1,37 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type ReactNode } from "react";
 import { LabeledWords } from "@/components/labeled-words";
 import { Num, PageHeader } from "@/components/ui";
 import { cn } from "@/lib/cn";
-import { useCopy } from "@/lib/learn/i18n";
+import { backupFileName, makeBackup, parseBackup } from "@/lib/learn/backup";
+import { useFormat } from "@/lib/learn/format";
+import { useCopy, type Copy } from "@/lib/learn/i18n";
 import { loadMeta } from "@/lib/learn/load";
-import { countLevel, todayLog, totals, useProgress, weakIds, type DayLog } from "@/lib/learn/store";
+import {
+  countLevel,
+  liveStreak,
+  todayLog,
+  totals,
+  useProgress,
+  weakIds,
+  type DayLog,
+  type SavedProgress,
+} from "@/lib/learn/store";
 import { todayKey } from "@/lib/learn/text";
-import type { Meta } from "@/lib/learn/types";
+import type { Lang, Meta } from "@/lib/learn/types";
 
 export const Route = createFileRoute("/progress")({ component: ProgressPage });
 
-function lastDays(logs: DayLog[], n = 14) {
-  const rows: { date: string; reviews: number }[] = [];
+type Day = { date: Date; reviews: number };
+
+function lastDays(logs: DayLog[], n = 14): Day[] {
+  const rows: Day[] = [];
   const today = new Date();
   for (let offset = n - 1; offset >= 0; offset--) {
     const date = new Date(today);
     date.setDate(today.getDate() - offset);
     const key = todayKey(date);
-    rows.push({ date: key.slice(5), reviews: logs.find((row) => row.date === key)?.reviews ?? 0 });
+    rows.push({ date, reviews: logs.find((row) => row.date === key)?.reviews ?? 0 });
   }
   return rows;
 }
@@ -28,8 +41,10 @@ function ProgressPage() {
   const hydrated = useProgress((state) => state.hydrated);
   const cards = useProgress((state) => state.cards);
   const logs = useProgress((state) => state.logs);
+  const lifetime = useProgress((state) => state.lifetime);
   const xp = useProgress((state) => state.xp);
   const streak = useProgress((state) => state.streak);
+  const lastStudyDate = useProgress((state) => state.lastStudyDate);
   const focus = useProgress((state) => state.focus);
   const sessionSize = useProgress((state) => state.sessionSize);
   const newPerDay = useProgress((state) => state.newPerDay);
@@ -43,21 +58,16 @@ function ProgressPage() {
   const setLang = useProgress((state) => state.setLang);
   const reset = useProgress((state) => state.reset);
   const copy = useCopy(lang);
+  const { num, pct } = useFormat();
   const [meta, setMeta] = useState<Meta | null>(null);
   const [confirm, setConfirm] = useState(false);
-  const [chartOn, setChartOn] = useState(false);
 
   useEffect(() => {
     void loadMeta().then(setMeta).catch(() => undefined);
-    setChartOn(true);
   }, []);
 
   const all = totals(cards);
-  const summed = logs.reduce(
-    (sum, row) => ({ reviews: sum.reviews + row.reviews, correct: sum.correct + row.correct }),
-    { reviews: 0, correct: 0 },
-  );
-  const accuracy = summed.reviews ? Math.round((100 * summed.correct) / summed.reviews) : null;
+  const accuracy = lifetime.reviews ? lifetime.correct / lifetime.reviews : null;
   const data = hydrated ? lastDays(logs) : [];
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
   const weak = hydrated ? weakIds(cards, 8) : [];
@@ -67,13 +77,13 @@ function ProgressPage() {
     <div>
       <PageHeader title={copy.progress} lede={copy.accuracyHint} />
       <section className="panel grid grid-cols-2 sm:grid-cols-4">
-        <Stat label={copy.streakLabel} value={<Num value={hydrated ? streak : 0} />} />
+        <Stat label={copy.streakLabel} value={<Num value={hydrated ? liveStreak(streak, lastStudyDate) : 0} />} />
         <Stat label={copy.masteredLabel} value={<Num value={hydrated ? all.mastered : 0} />} />
-        <Stat label={copy.reviewsLabel} value={<Num value={hydrated ? summed.reviews : 0} />} />
+        <Stat label={copy.reviewsLabel} value={<Num value={hydrated ? lifetime.reviews : 0} />} />
         <Stat label={copy.xpLabel} value={<Num value={hydrated ? xp : 0} />} />
       </section>
       <p className="mt-3 text-sm text-muted">
-        {copy.accuracyLabel}: {accuracy === null ? "–" : `${accuracy}%`}
+        {copy.accuracyLabel}: {accuracy === null ? "–" : pct(accuracy)}
         <span className="mx-2">·</span>
         {copy.goalCaption}: <Num value={reviewsToday} /> / <Num value={dailyGoal} />
       </p>
@@ -98,21 +108,19 @@ function ProgressPage() {
 
       <section className="mt-8">
         <h2 className="text-lg font-medium">{copy.chartTitle}</h2>
-        <div className="mt-3 h-48">
-          {chartOn ? <ReviewsChart data={data} /> : null}
-        </div>
+        <div className="mt-3">{data.length ? <ReviewsChart data={data} lang={lang} label={copy.reviewsLabel} /> : null}</div>
       </section>
 
       <section className="mt-8 grid gap-2">
         <h2 className="text-lg font-medium">{copy.pathTitle}</h2>
         {(meta?.levels ?? []).map((level) => {
           const counts = countLevel(cards, level.id);
-          const pct = level.count ? Math.round((100 * counts.mastered) / level.count) : 0;
+          const width = level.count ? Math.round((100 * counts.mastered) / level.count) : 0;
           return (
             <div key={level.id} className="grid grid-cols-[4rem_minmax(0,1fr)_auto] items-center gap-3">
               <span className={cn("lex-word text-lg", focus === level.id && "text-accent")}>{level.label}</span>
               <div className="h-1 rounded-full bg-line">
-                <div className="h-1 rounded-full bg-accent" style={{ width: `${pct}%` }} />
+                <div className="h-1 rounded-full bg-accent" style={{ width: `${width}%` }} />
               </div>
               <span className="text-xs text-muted tabular-nums">
                 <Num value={counts.seen} /> / <Num value={level.count} />
@@ -127,21 +135,21 @@ function ProgressPage() {
         <Setting label={copy.dailyGoal}>
           {[10, 20, 40].map((n) => (
             <Toggle key={n} active={dailyGoal === n} onClick={() => setDailyGoal(n)}>
-              {String(n)}
+              {num(n)}
             </Toggle>
           ))}
         </Setting>
         <Setting label={copy.sessionSize}>
           {[10, 20, 30].map((n) => (
             <Toggle key={n} active={sessionSize === n} onClick={() => setSessionSize(n)}>
-              {String(n)}
+              {num(n)}
             </Toggle>
           ))}
         </Setting>
         <Setting label={copy.newPerDay}>
           {[5, 10, 20].map((n) => (
             <Toggle key={n} active={newPerDay === n} onClick={() => setNewPerDay(n)}>
-              {String(n)}
+              {num(n)}
             </Toggle>
           ))}
         </Setting>
@@ -155,6 +163,9 @@ function ProgressPage() {
         <button type="button" className="mt-2 min-h-11 text-sm text-muted" onClick={() => setLang(lang === "fa" ? "en" : "fa")}>
           {lang === "fa" ? "English" : "فارسی"}
         </button>
+
+        <BackupPanel copy={copy} />
+
         <div className="mt-6">
           {confirm ? (
             <div className="rounded-lg border border-line p-3">
@@ -186,6 +197,78 @@ function ProgressPage() {
   );
 }
 
+function BackupPanel({ copy }: { copy: Copy }) {
+  const importProgress = useProgress((state) => state.importProgress);
+  const fileInput = useRef<HTMLInputElement>(null);
+  const [pending, setPending] = useState<SavedProgress | null>(null);
+  const [status, setStatus] = useState<"done" | "bad" | null>(null);
+
+  function exportNow() {
+    const blob = new Blob([makeBackup(useProgress.getState())], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = backupFileName();
+    link.click();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  async function pick(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    const parsed = parseBackup(await file.text());
+    setPending(parsed);
+    setStatus(parsed ? null : "bad");
+  }
+
+  return (
+    <div className="mt-6 rounded-lg border border-line p-3">
+      <h3 className="text-sm font-medium">{copy.backupTitle}</h3>
+      <p className="mt-1 text-xs text-pretty text-muted">{copy.backupHint}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <button type="button" onClick={exportNow} className="min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)]">
+          {copy.exportProgress}
+        </button>
+        <button
+          type="button"
+          onClick={() => fileInput.current?.click()}
+          className="min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)]"
+        >
+          {copy.importProgress}
+        </button>
+        <input ref={fileInput} type="file" accept="application/json,.json" className="hidden" onChange={(event) => void pick(event)} />
+      </div>
+      {pending ? (
+        <div className="mt-3">
+          <p className="text-sm text-pretty">{copy.importWarn}</p>
+          <div className="mt-2 flex gap-2">
+            <button
+              type="button"
+              className="min-h-11 rounded-md bg-accent px-3 text-sm text-accent-fg"
+              onClick={() => {
+                importProgress(pending);
+                setPending(null);
+                setStatus("done");
+              }}
+            >
+              {copy.importYes}
+            </button>
+            <button type="button" className="min-h-11 px-3 text-sm" onClick={() => setPending(null)}>
+              {copy.resetNo}
+            </button>
+          </div>
+        </div>
+      ) : null}
+      {status ? (
+        <p role="status" className={cn("mt-2 text-sm", status === "bad" ? "text-bad" : "text-good")}>
+          {status === "bad" ? copy.importBad : copy.importDone}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 function Stat({ label, value }: { label: string; value: ReactNode }) {
   return (
     <div className="p-3">
@@ -209,6 +292,7 @@ function Toggle({ active, onClick, children }: { active: boolean; onClick: () =>
     <button
       type="button"
       onClick={onClick}
+      aria-pressed={active}
       className={cn(
         "min-h-11 rounded-md px-3 text-sm",
         active ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]",
@@ -219,20 +303,83 @@ function Toggle({ active, onClick, children }: { active: boolean; onClick: () =>
   );
 }
 
-function ReviewsChart({ data }: { data: { date: string; reviews: number }[] }) {
-  const [mod, setMod] = useState<typeof import("recharts") | null>(null);
-  useEffect(() => {
-    void import("recharts").then(setMod);
-  }, []);
-  if (!mod) return null;
-  const { ResponsiveContainer, BarChart, Bar, XAxis, Tooltip } = mod;
+const CHART_W = 560;
+const CHART_H = 168;
+const AXIS_H = 22;
+const TOP_PAD = 18;
+
+/** Fourteen daily review counts. Time runs left to right in both languages. */
+function ReviewsChart({ data, lang, label }: { data: Day[]; lang: Lang; label: string }) {
+  const { num } = useFormat();
+  const [active, setActive] = useState<number | null>(null);
+  const locale = lang === "fa" ? "fa-IR" : "en-GB";
+  const dayOfMonth = new Intl.DateTimeFormat(locale, { day: "numeric" });
+  const fullDate = new Intl.DateTimeFormat(locale, { weekday: "short", day: "numeric", month: "short" });
+  const max = Math.max(1, ...data.map((day) => day.reviews));
+  const peak = data.reduce((best, day, index) => (day.reviews > data[best]!.reviews ? index : best), 0);
+  const slot = CHART_W / data.length;
+  const barW = Math.min(24, slot - 2);
+  const plotH = CHART_H - AXIS_H - TOP_PAD;
+  const baseline = CHART_H - AXIS_H;
+  const tip = active === null ? null : data[active];
+  // Centre the tooltip on its bar, but pin it to the edge near either end.
+  const tipShift = active === null ? 0 : active < 2 ? 0 : active > data.length - 3 ? -100 : -50;
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart data={data}>
-        <XAxis dataKey="date" tick={{ fill: "var(--color-muted)", fontSize: 12 }} axisLine={false} tickLine={false} />
-        <Tooltip cursor={false} />
-        <Bar dataKey="reviews" fill="var(--color-accent)" radius={[4, 4, 0, 0]} isAnimationActive={false} />
-      </BarChart>
-    </ResponsiveContainer>
+    <figure className="relative" dir="ltr">
+      <svg viewBox={`0 0 ${CHART_W} ${CHART_H}`} className="block h-auto w-full" role="group" aria-label={label}>
+        <line x1={0} x2={CHART_W} y1={baseline + 0.5} y2={baseline + 0.5} stroke="var(--color-line)" strokeWidth={1} />
+        {data.map((day, index) => {
+          const h = day.reviews ? Math.max(4, (day.reviews / max) * plotH) : 0;
+          const x = index * slot + (slot - barW) / 2;
+          const y = baseline - h;
+          const r = Math.min(4, h);
+          return (
+            <g
+              key={day.date.toISOString()}
+              tabIndex={0}
+              role="img"
+              aria-label={`${fullDate.format(day.date)}: ${num(day.reviews)} ${label}`}
+              onPointerEnter={() => setActive(index)}
+              onPointerLeave={() => setActive(null)}
+              onFocus={() => setActive(index)}
+              onBlur={() => setActive(null)}
+              className="outline-none"
+            >
+              <rect x={index * slot} y={0} width={slot} height={CHART_H} fill="transparent" />
+              {h ? (
+                <path
+                  d={`M${x},${baseline} V${y + r} Q${x},${y} ${x + r},${y} H${x + barW - r} Q${x + barW},${y} ${x + barW},${y + r} V${baseline} Z`}
+                  fill="var(--color-accent)"
+                  opacity={active === null || active === index ? 1 : 0.45}
+                />
+              ) : null}
+              {index === peak && day.reviews ? (
+                <text x={x + barW / 2} y={y - 6} textAnchor="middle" fontSize={12} fill="var(--color-ink)">
+                  {num(day.reviews)}
+                </text>
+              ) : null}
+              {index % 2 === (data.length - 1) % 2 ? (
+                <text x={index * slot + slot / 2} y={CHART_H - 6} textAnchor="middle" fontSize={12} fill="var(--color-muted)">
+                  {dayOfMonth.format(day.date)}
+                </text>
+              ) : null}
+            </g>
+          );
+        })}
+      </svg>
+      {tip && active !== null ? (
+        <figcaption
+          dir={lang === "fa" ? "rtl" : "ltr"}
+          className="pointer-events-none absolute top-0 rounded-md bg-ink px-2 py-1 text-xs whitespace-nowrap text-paper"
+          style={{
+            left: `${((active + (tipShift === 0 ? 0 : tipShift === -100 ? 1 : 0.5)) / data.length) * 100}%`,
+            transform: `translateX(${tipShift}%)`,
+          }}
+        >
+          <strong className="font-medium">{num(tip.reviews)}</strong> {label} · {fullDate.format(tip.date)}
+        </figcaption>
+      ) : null}
+    </figure>
   );
 }

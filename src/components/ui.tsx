@@ -2,7 +2,7 @@ import { Link, type RegisteredRouter, type ValidateLinkOptions } from "@tanstack
 import { AudioLines } from "lucide-react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
-import { useProgress } from "@/lib/learn/store";
+import { useFormat } from "@/lib/learn/format";
 import { speakEnglish } from "@/lib/learn/speech";
 
 const buttonClass = {
@@ -58,12 +58,8 @@ export function ButtonLink({
 }
 
 export function Num({ value }: { value: number }) {
-  const lang = useProgress((state) => state.lang);
-  const hydrated = useProgress((state) => state.hydrated);
-  const text = hydrated
-    ? new Intl.NumberFormat(lang === "fa" ? "fa-IR" : "en-US").format(value)
-    : String(value);
-  return <span className="tabular-nums">{text}</span>;
+  const { num } = useFormat();
+  return <span className="tabular-nums">{num(value)}</span>;
 }
 
 export function SpeakButton({ text, label }: { text: string; label: string }) {
@@ -87,7 +83,7 @@ export function GoalRing({ value, goal, label }: { value: number; goal: number; 
   const turn = 2 * Math.PI * radius;
   const filled = turn * pct;
   return (
-    <div className="relative size-20 shrink-0" aria-label={label}>
+    <div className="relative size-20 shrink-0" role="img" aria-label={`${label}: ${value} / ${goal}`}>
       <svg viewBox="0 0 72 72" className="size-20 -rotate-90" aria-hidden>
         <circle cx="36" cy="36" r={radius} fill="none" stroke="var(--color-line)" strokeWidth="6" />
         <circle
@@ -101,7 +97,7 @@ export function GoalRing({ value, goal, label }: { value: number; goal: number; 
           strokeDasharray={`${filled} ${turn - filled}`}
         />
       </svg>
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
+      <div className="absolute inset-0 flex flex-col items-center justify-center" aria-hidden>
         <span className="text-sm font-medium">
           <Num value={value} />
         </span>
