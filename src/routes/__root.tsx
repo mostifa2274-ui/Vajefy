@@ -4,9 +4,30 @@ import appCss from "../styles.css?url";
 
 const TITLE = "Roshana";
 const DESCRIPTION = "Oxford English for Persian speakers — recall, spacing, and real sentences.";
-// Share cards need an absolute image URL; set VITE_SITE_URL (e.g. https://roshana.app) when deploying.
 const SITE_URL = String(import.meta.env.VITE_SITE_URL ?? "").replace(/\/+$/, "");
-const CARD = `${SITE_URL}/og.jpg`;
+const SOCIAL_META = SITE_URL
+  ? [
+      { property: "og:image", content: `${SITE_URL}/og.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: `${SITE_URL}/og.jpg` },
+    ]
+  : [];
+
+/**
+ * Zustand hydrates after the first render. Apply the saved document direction
+ * before body paint so returning English learners never see an RTL flash.
+ */
+const EARLY_LANGUAGE = `
+try {
+  const raw = localStorage.getItem("roshana-v1");
+  const lang = raw ? JSON.parse(raw)?.state?.lang : null;
+  if (lang === "en") {
+    document.documentElement.lang = "en";
+    document.documentElement.dir = "ltr";
+  }
+} catch {}
+`;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -21,16 +42,14 @@ export const Route = createRootRoute({
       { property: "og:site_name", content: TITLE },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
-      { property: "og:image", content: CARD },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: CARD },
+      ...SOCIAL_META,
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/manifest.json" },
+      ...(SITE_URL ? [{ rel: "canonical", href: SITE_URL }] : []),
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -43,6 +62,7 @@ export const Route = createRootRoute({
   component: () => (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: EARLY_LANGUAGE }} />
         <HeadContent />
       </head>
       <body>
