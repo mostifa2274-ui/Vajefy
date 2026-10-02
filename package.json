@@ -7,12 +7,13 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "wrangler deploy",
+    "deploy": "npm run build && wrangler deploy",
     "typecheck": "tsc --noEmit",
     "validate:data": "node scripts/validate-data.mjs",
     "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts'",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
