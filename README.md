@@ -37,6 +37,7 @@ npm run dev        # http://localhost:8080
 | `npm run preview` | Runs the built Worker locally on port 8081 |
 | `npm run deploy` | Builds, then deploys with Wrangler (needs `npx wrangler login` first) |
 | `npm run cf-typegen` | Generate Cloudflare binding types from Wrangler config |
+| `npm run verify:workers-build` | Emulate Cloudflare's deploy-only pipeline from a clean build and run Wrangler dry-run |
 | `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
@@ -97,19 +98,29 @@ The app runs on Cloudflare Workers: the Worker renders pages, and everything in
 `public/` plus the built scripts is served as static assets. `wrangler.jsonc`
 configures the Worker, and `@cloudflare/vite-plugin` builds it.
 
-With the repository connected to Cloudflare Workers Builds, configure the two
-steps explicitly:
+With the repository connected to Cloudflare Workers Builds, the recommended
+dashboard settings are:
 
 - **Build command:** `npm run build`
 - **Deploy command:** `npx wrangler deploy`
 - **Preview command:** `npx wrangler preview`
 
-The Cloudflare Vite plugin writes the deployment-ready output Wrangler
-configuration during `vite build`; `wrangler deploy` then discovers that
-output. The checked-in `wrangler.jsonc` is the source configuration and points
-at `src/server.ts`, where response hardening is applied. `.node-version`
-pins Node 22 for Cloudflare's build image. For manual deployment,
-`npm run deploy` performs the build before invoking Wrangler.
+The Cloudflare Vite plugin writes the deployment-ready Wrangler configuration
+during `vite build`; `wrangler deploy` then discovers that generated output.
+The checked-in `wrangler.jsonc` remains the source configuration and points at
+`src/server.ts`, where response hardening is applied.
+
+For existing Workers Builds connections whose Build command is still blank,
+`postinstall` runs `scripts/cloudflare-ci-bootstrap.mjs` only when Cloudflare's
+documented `WORKERS_CI=1` environment variable is present. That generates the
+same Vite output before the dashboard's existing deploy-only
+`npx wrangler deploy` command. Normal local and GitHub installs skip the
+bootstrap. CI also runs `npm run verify:workers-build`, which starts from a
+clean build directory and proves the deploy-only Wrangler command can consume
+the generated configuration without Cloudflare credentials.
+
+`.node-version` pins Node 22 for Cloudflare's build image. For manual
+deployment, `npm run deploy` performs the build before invoking Wrangler.
 
 - The Worker's name in the dashboard must match `name` in `wrangler.jsonc`
   (`vajefy`); otherwise Cloudflare refuses to deploy. Change one of them if
