@@ -14,21 +14,6 @@ const SOCIAL_META = SITE_URL
     ]
   : [];
 
-/**
- * Zustand hydrates after the first render. Apply the saved document direction
- * before body paint so returning English learners never see an RTL flash.
- */
-const EARLY_LANGUAGE = `
-try {
-  const raw = localStorage.getItem("roshana-v1");
-  const lang = raw ? JSON.parse(raw)?.state?.lang : null;
-  if (lang === "en") {
-    document.documentElement.lang = "en";
-    document.documentElement.dir = "ltr";
-  }
-} catch {}
-`;
-
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -56,7 +41,7 @@ export const Route = createRootRoute({
   component: () => (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: EARLY_LANGUAGE }} />
+        <script src="/early-language.js" />
         <HeadContent />
       </head>
       <body>
