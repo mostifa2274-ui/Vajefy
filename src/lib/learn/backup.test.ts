@@ -28,9 +28,10 @@ test("an export file reads back to the same progress", () => {
 });
 
 test("a raw v0 localStorage entry imports and is migrated", () => {
-  const { lifetime: _lifetime, ...v0 } = saved;
-  const parsed = parseBackup(JSON.stringify({ state: v0, version: 0 }));
-  assert.deepEqual(parsed?.lifetime, { reviews: 12, correct: 10, practice: 7, practiceCorrect: 6 });
+  const { lifetime: _lifetime, accent: _accent, ...v0 } = saved;
+  const legacyLogs = v0.logs.map(({ practice: _practice, practiceCorrect: _practiceCorrect, ...row }) => row);
+  const parsed = parseBackup(JSON.stringify({ state: { ...v0, logs: legacyLogs }, version: 0 }));
+  assert.deepEqual(parsed?.lifetime, { reviews: 12, correct: 10, practice: 0, practiceCorrect: 0 });
   assert.deepEqual(parsed?.cards, saved.cards);
 });
 
