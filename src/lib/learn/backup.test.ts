@@ -9,6 +9,21 @@ const saved: SavedProgress = {
   },
   logs: [{ date: "2026-10-01", reviews: 12, correct: 10, practice: 7, practiceCorrect: 6, introduced: 4 }],
   lifetime: { reviews: 40, correct: 33, practice: 19, practiceCorrect: 16 },
+  reviewHistory: [
+    {
+      t: 1_799_740_800_000,
+      id: "lex:A1:about",
+      grade: "good",
+      state: "learning",
+      step: 1,
+      scheduledDays: 0,
+      elapsedDays: 0,
+      nextState: "review",
+      nextStep: 0,
+      nextDays: 3,
+      complete: true,
+    },
+  ],
   streak: 4,
   lastStudyDate: "2026-10-01",
   xp: 420,
@@ -28,11 +43,12 @@ test("an export file reads back to the same progress", () => {
 });
 
 test("a raw v0 localStorage entry imports and is migrated", () => {
-  const { lifetime: _lifetime, accent: _accent, ...v0 } = saved;
+  const { lifetime: _lifetime, accent: _accent, reviewHistory: _reviewHistory, ...v0 } = saved;
   const legacyLogs = v0.logs.map(({ practice: _practice, practiceCorrect: _practiceCorrect, ...row }) => row);
   const parsed = parseBackup(JSON.stringify({ state: { ...v0, logs: legacyLogs }, version: 0 }));
   assert.deepEqual(parsed?.lifetime, { reviews: 12, correct: 10, practice: 0, practiceCorrect: 0 });
   assert.deepEqual(parsed?.cards, saved.cards);
+  assert.deepEqual(parsed?.reviewHistory, []);
 });
 
 test("malformed, foreign or future files are rejected", () => {
