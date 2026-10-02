@@ -15,6 +15,7 @@ export function StudySession({
   cards,
   lang,
   voice,
+  requestRetention,
   onGrade,
   onExit,
 }: {
@@ -23,6 +24,7 @@ export function StudySession({
   cards: Record<string, CardProg>;
   lang: Lang;
   voice: boolean;
+  requestRetention: number;
   onGrade: (id: string, grade: Grade) => void;
   onExit: () => void;
 }) {
@@ -86,6 +88,7 @@ export function StudySession({
       },
       grade,
       now,
+      requestRetention,
     );
     onGrade(current.id, grade);
     if (grade === "again") {
@@ -219,7 +222,7 @@ export function StudySession({
       {!teaching && revealed ? (
         <div className="mt-3 grid grid-cols-4 gap-2">
           {GRADES.map((grade) => {
-            const delay = schedule(base, grade, now).due - now;
+            const delay = schedule(base, grade, now, requestRetention).due - now;
             return (
               <button
                 key={grade}
