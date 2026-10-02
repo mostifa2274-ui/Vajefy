@@ -11,7 +11,7 @@ const CSP = [
   "connect-src 'self'",
   "worker-src 'self'",
   "manifest-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self'",
   "style-src 'self' 'unsafe-inline'",
   "font-src 'self' data:",
   "upgrade-insecure-requests",
