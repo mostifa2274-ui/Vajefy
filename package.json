@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "validate:data": "node scripts/validate-data.mjs",
     "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts'",
-    "lint": "eslint .",
+    "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "cf-typegen": "wrangler types"
   },
