@@ -191,6 +191,14 @@ function bumpPracticeLifetime(lifetime: Lifetime, correct: boolean): Lifetime {
   };
 }
 
+function lastReviewEvent(history: ReviewEvent[], id: string): ReviewEvent | undefined {
+  for (let index = history.length - 1; index >= 0; index--) {
+    const event = history[index];
+    if (event?.id === id) return event;
+  }
+  return undefined;
+}
+
 export function todayLog(logs: DayLog[], today = todayKey()): DayLog {
   return (
     logs.find((row) => row.date === today) ?? {
@@ -323,7 +331,7 @@ export const useProgress = create<ProgressState>()(
         const existed = Boolean(card);
         const before = card ?? freshCard(now);
         const next = schedule(before, grade, now);
-        const priorLogged = state.reviewHistory.findLast((event) => event.id === id);
+        const priorLogged = lastReviewEvent(state.reviewHistory, id);
         const complete =
           priorLogged?.complete ??
           (!card || (card.last == null && card.reps === 0 && card.lapses === 0 && card.interval === 0));
