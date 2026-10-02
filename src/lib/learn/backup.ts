@@ -6,6 +6,16 @@ export const BACKUP_KIND = "roshana-progress";
 const count = z.number().int().min(0);
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 
+const fsrsCard = z.object({
+  model: z.literal("fsrs6"),
+  stability: z.number().positive().max(36500).or(z.literal(0)),
+  difficulty: z.number().min(0).max(10),
+  scheduledDays: z.number().min(0).max(36500),
+  learningSteps: count,
+  state: z.enum(["new", "learning", "review", "relearning"]),
+  lastReview: z.number().optional(),
+});
+
 const card = z.object({
   ease: z.number().min(1).max(10),
   interval: z.number().min(0).max(36500),
@@ -15,6 +25,19 @@ const card = z.object({
   state: z.enum(["learning", "review"]),
   step: count,
   last: z.number().optional(),
+  fsrs: fsrsCard.optional(),
+});
+
+const reviewEvent = z.object({
+  id: z.string().min(1).max(200),
+  at: z.number(),
+  grade: z.enum(["again", "hard", "good", "easy"]),
+  algorithm: z.enum(["legacy", "fsrs6"]),
+  bridged: z.boolean().optional(),
+  elapsedDays: z.number().min(0).max(36500),
+  scheduledDays: z.number().min(0).max(36500),
+  stability: z.number().min(0).max(36500).optional(),
+  difficulty: z.number().min(0).max(10).optional(),
 });
 
 // Only the fields present in every saved version are required; migrateProgress
@@ -52,6 +75,8 @@ const progress = z.object({
   accent: z.enum(["en-GB", "en-US"]).optional(),
   bookmarks: z.array(z.string().max(200)).max(2000),
   dailyGoal: z.number().int().min(0).max(1000),
+  requestRetention: z.number().min(0.8).max(0.97).optional(),
+  reviewHistory: z.array(reviewEvent).max(12000).optional(),
   onboarded: z.boolean(),
 });
 
