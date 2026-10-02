@@ -70,8 +70,11 @@ test("legacy review cards bridge at their next real review", () => {
   };
 
   const before = retrievability(legacy, legacy.due, 0.9);
+  const beforeAtHigherFutureTarget = retrievability(legacy, legacy.due, 0.95);
   assert.ok(before != null);
+  assert.ok(beforeAtHigherFutureTarget != null);
   assert.ok(Math.abs(before - 0.9) < 0.000001);
+  assert.ok(Math.abs(beforeAtHigherFutureTarget - 0.9) < 0.000001);
 
   const result = scheduleWithMeta(legacy, "good", legacy.due, 0.9);
   assert.equal(result.meta.algorithm, "fsrs6");
