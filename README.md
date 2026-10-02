@@ -35,7 +35,8 @@ npm run dev        # http://localhost:8080
 | `npm run dev` | Dev server on port 8080 |
 | `npm run build` | Production build for Cloudflare Workers (`dist/`) |
 | `npm run preview` | Runs the built Worker locally on port 8081 |
-| `npm run deploy` | Builds and deploys with Wrangler (needs `npx wrangler login` first) |
+| `npm run deploy` | Builds, then deploys with Wrangler (needs `npx wrangler login` first) |
+| `npm run cf-typegen` | Generate Cloudflare binding types from Wrangler config |
 | `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
@@ -96,14 +97,19 @@ The app runs on Cloudflare Workers: the Worker renders pages, and everything in
 `public/` plus the built scripts is served as static assets. `wrangler.jsonc`
 configures the Worker, and `@cloudflare/vite-plugin` builds it.
 
-With the repository connected to Cloudflare (Workers Builds), every push to the
-production branch deploys, and other branches get preview versions. Cloudflare's
-default settings work as they are: `wrangler.jsonc` has a `build.command`, so
-`npx wrangler deploy` (production) and `npx wrangler preview` (other branches)
-build the app before uploading it. `wrangler preview` also requires the
-`previews` block, which is empty so previews use the production settings. Setting the dashboard's build command to
-`npm run build` also works and does not build twice. `.node-version` pins
-Node 22 for Cloudflare's build image.
+With the repository connected to Cloudflare Workers Builds, configure the two
+steps explicitly:
+
+- **Build command:** `npm run build`
+- **Deploy command:** `npx wrangler deploy`
+- **Preview command:** `npx wrangler preview`
+
+The Cloudflare Vite plugin writes the deployment-ready output Wrangler
+configuration during `vite build`; `wrangler deploy` then discovers that
+output. The checked-in `wrangler.jsonc` is the source configuration and points
+at `src/server.ts`, where response hardening is applied. `.node-version`
+pins Node 22 for Cloudflare's build image. For manual deployment,
+`npm run deploy` performs the build before invoking Wrangler.
 
 - The Worker's name in the dashboard must match `name` in `wrangler.jsonc`
   (`vajefy`); otherwise Cloudflare refuses to deploy. Change one of them if
