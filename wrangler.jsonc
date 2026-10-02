@@ -5,7 +5,15 @@
   "name": "vajefy",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry",
+  // `wrangler deploy` builds first, so Cloudflare's default deploy command
+  // works without a build command set in the dashboard.
+  "build": { "command": "npm run build" },
+  // The Worker as built by @cloudflare/vite-plugin (vite.config.ts, where the
+  // source entry is set): pre-bundled ES modules plus static assets.
+  "main": "dist/server/index.js",
+  "no_bundle": true,
+  "rules": [{ "type": "ESModule", "globs": ["**/*.js", "**/*.mjs"] }],
+  "assets": { "directory": "dist/client" },
   "observability": {
     "enabled": true
   }

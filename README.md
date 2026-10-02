@@ -83,14 +83,12 @@ The app runs on Cloudflare Workers: the Worker renders pages, and everything in
 configures the Worker, and `@cloudflare/vite-plugin` builds it.
 
 With the repository connected to Cloudflare (Workers Builds), every push to the
-production branch deploys, and other branches get preview versions. In the
-dashboard, under **Workers & Pages → your Worker → Settings → Build**:
-
-| Setting | Value |
-|---|---|
-| Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` (the default) |
-| Root directory | the repository root |
+production branch deploys, and other branches get preview versions. Cloudflare's
+default settings work as they are: `wrangler.jsonc` has a `build.command`, so
+`npx wrangler deploy` (and `wrangler versions upload` for previews) builds the
+app before uploading it. Setting the dashboard's build command to
+`npm run build` also works and does not build twice. `.node-version` pins
+Node 22 for Cloudflare's build image.
 
 - The Worker's name in the dashboard must match `name` in `wrangler.jsonc`
   (`vajefy`); otherwise Cloudflare refuses to deploy. Change one of them if

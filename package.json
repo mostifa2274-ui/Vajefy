@@ -7,7 +7,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "wrangler deploy",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts'",
     "lint": "eslint .",
