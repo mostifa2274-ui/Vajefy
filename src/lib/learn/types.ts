@@ -124,8 +124,25 @@ export type LibDeckId =
 
 export type Grade = "again" | "hard" | "good" | "easy";
 
+export type FsrsCardState = {
+  model: "fsrs6";
+  stability: number;
+  difficulty: number;
+  scheduledDays: number;
+  learningSteps: number;
+  state: "new" | "learning" | "review" | "relearning";
+  /** Actual time of the previous FSRS review, in ms since epoch. */
+  lastReview?: number;
+};
+
 export type CardProg = {
+  /**
+   * Legacy SM-2 ease. Retained for backwards compatibility and for the
+   * one-time FSRS bridge of older cards; FSRS-native cards no longer schedule
+   * from this value.
+   */
   ease: number;
+  /** Current scheduled interval in whole days (0 while in short learning steps). */
   interval: number;
   due: number;
   reps: number;
@@ -134,6 +151,21 @@ export type CardProg = {
   step: number;
   /** When the card was last graded (ms). Absent on cards saved before it existed. */
   last?: number;
+  /** Present once a card is scheduled natively by FSRS-6. */
+  fsrs?: FsrsCardState;
+};
+
+export type ReviewEvent = {
+  id: string;
+  at: number;
+  grade: Grade;
+  algorithm: "legacy" | "fsrs6";
+  /** True only on the first FSRS review of an older SM-2 review card. */
+  bridged?: boolean;
+  elapsedDays: number;
+  scheduledDays: number;
+  stability?: number;
+  difficulty?: number;
 };
 
 export type Mcq = {
