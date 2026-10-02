@@ -91,6 +91,15 @@ export function Shell({ children }: { children: ReactNode }) {
     void navigator.storage.persist().catch(() => undefined);
   }, [hydrated, onboarded]);
 
+  useEffect(() => {
+    function syncFromOtherTab(event: StorageEvent) {
+      if (event.key !== "roshana-v1" || event.storageArea !== localStorage) return;
+      void useProgress.persist.rehydrate();
+    }
+    window.addEventListener("storage", syncFromOtherTab);
+    return () => window.removeEventListener("storage", syncFromOtherTab);
+  }, []);
+
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
 
   return (
