@@ -1,25 +1,43 @@
 import handler, { createServerEntry } from "@tanstack/react-start/server-entry";
 
-const CSP = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  "frame-ancestors 'none'",
-  "form-action 'self'",
-  "img-src 'self' data: blob:",
-  "media-src 'self' blob:",
-  "connect-src 'self'",
-  "worker-src 'self'",
-  "manifest-src 'self'",
-  "script-src 'self'",
-  "style-src 'self' 'unsafe-inline'",
-  "font-src 'self' data:",
-  "upgrade-insecure-requests",
-].join("; ");
+type RequestContext = { nonce: string };
 
-function harden(response: Response): Response {
+declare module "@tanstack/react-router" {
+  interface Register {
+    server: {
+      requestContext: RequestContext;
+    };
+  }
+}
+
+function createNonce(): string {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function csp(nonce: string): string {
+  return [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "frame-ancestors 'none'",
+    "form-action 'self'",
+    "img-src 'self' data: blob:",
+    "media-src 'self' blob:",
+    "connect-src 'self'",
+    "worker-src 'self'",
+    "manifest-src 'self'",
+    `script-src 'self' 'nonce-${nonce}'`,
+    "style-src 'self' 'unsafe-inline'",
+    "font-src 'self' data:",
+    "upgrade-insecure-requests",
+  ].join("; ");
+}
+
+function harden(response: Response, nonce: string): Response {
   const headers = new Headers(response.headers);
-  headers.set("Content-Security-Policy", CSP);
+  headers.set("Content-Security-Policy", csp(nonce));
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("X-Frame-Options", "DENY");
@@ -34,7 +52,9 @@ function harden(response: Response): Response {
 }
 
 export default createServerEntry({
-  async fetch(request, options) {
-    return harden(await handler.fetch(request, options));
+  async fetch(request) {
+    const nonce = createNonce();
+    const response = await handler.fetch(request, { context: { nonce } });
+    return harden(response, nonce);
   },
 });
