@@ -1,35 +1,64 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { freshCard, isMastered, schedule } from "./srs";
+import {
+  freshCard,
+  isMastered,
+  retrievability,
+  schedule,
+  scheduleWithMeta,
+} from "./srs";
 import type { CardProg } from "./types";
 
-const DAY = 86400000;
+const DAY = 86_400_000;
 const MIN = 60_000;
 const T0 = Date.UTC(2026, 9, 2, 9);
 
-test("answering again and again within minutes cannot reach mastered", () => {
+function nativeReviewCard(): CardProg {
   let card = freshCard(T0);
-  for (let i = 1; i <= 12; i++) card = schedule(card, "good", T0 + i * MIN);
+  card = schedule(card, "good", T0);
+  card = schedule(card, "good", card.due);
   assert.equal(card.state, "review");
-  assert.equal(card.interval, 1);
+  assert.equal(card.fsrs?.state, "review");
+  return card;
+}
+
+test("new cards enter FSRS-6 immediately", () => {
+  const card = freshCard(T0);
+  assert.equal(card.fsrs?.model, "fsrs6");
+  assert.equal(card.fsrs?.state, "new");
+
+  const first = schedule(card, "good", T0);
+  assert.equal(first.state, "learning");
+  assert.equal(first.fsrs?.state, "learning");
+  assert.equal(first.due, T0 + 10 * MIN);
+
+  const second = schedule(first, "good", first.due);
+  assert.equal(second.state, "review");
+  assert.equal(second.fsrs?.state, "review");
+  assert.ok(second.interval >= 1);
+});
+
+test("rapid early answers cannot fake mastery", () => {
+  let card = nativeReviewCard();
+  const start = card.last ?? T0;
+  for (let i = 1; i <= 12; i++) {
+    card = schedule(card, "good", start + i * MIN);
+  }
+  assert.equal(card.state, "review");
   assert.equal(isMastered(card), false);
 });
 
-test("on-time reviews still grow by ease", () => {
-  let card = freshCard(T0);
-  card = schedule(card, "good", T0);
-  card = schedule(card, "good", T0 + 10 * MIN);
-  const seen: number[] = [card.interval];
-  for (let i = 0; i < 4; i++) {
-    card = schedule(card, "good", card.due);
-    seen.push(card.interval);
-  }
-  assert.deepEqual(seen, [1, 3, 8, 20, 50]);
-  assert.equal(isMastered(card), true);
+test("target retention changes future workload in the expected direction", () => {
+  const card = nativeReviewCard();
+  const when = card.due;
+  const lower = schedule(card, "good", when, 0.85);
+  const higher = schedule(card, "good", when, 0.95);
+  assert.ok(higher.interval <= lower.interval);
+  assert.ok(higher.due <= lower.due);
 });
 
-test("an early pass on a mature card keeps its interval", () => {
-  const mature: CardProg = {
+test("legacy review cards bridge at their next real review", () => {
+  const legacy: CardProg = {
     ease: 2.5,
     interval: 30,
     due: T0 + 30 * DAY,
@@ -39,44 +68,64 @@ test("an early pass on a mature card keeps its interval", () => {
     step: 0,
     last: T0,
   };
-  const next = schedule(mature, "good", T0 + DAY);
-  assert.equal(next.interval, 30);
-  assert.equal(next.due, T0 + DAY + 30 * DAY);
-  assert.equal(next.last, T0 + DAY);
+
+  const before = retrievability(legacy, legacy.due, 0.9);
+  assert.ok(before != null);
+  assert.ok(Math.abs(before - 0.9) < 0.000001);
+
+  const result = scheduleWithMeta(legacy, "good", legacy.due, 0.9);
+  assert.equal(result.meta.algorithm, "fsrs6");
+  assert.equal(result.meta.bridged, true);
+  assert.equal(result.card.fsrs?.model, "fsrs6");
+  assert.equal(result.card.last, legacy.due);
+  assert.ok(result.card.due > legacy.due);
 });
 
-test("a late review grows from the scheduled interval, not the delay", () => {
-  const card: CardProg = { ease: 2.5, interval: 10, due: T0 + 10 * DAY, reps: 2, lapses: 0, state: "review", step: 0, last: T0 };
-  assert.equal(schedule(card, "good", T0 + 40 * DAY).interval, 25);
-});
-
-test("cards saved before `last` existed infer it from due and interval", () => {
-  const legacy: CardProg = { ease: 2.5, interval: 8, due: T0 + 8 * DAY, reps: 3, lapses: 0, state: "review", step: 0 };
-  assert.equal(schedule(legacy, "good", T0 + 8 * DAY).interval, 20);
-  assert.equal(schedule(legacy, "good", T0 + MIN).interval, 8);
-});
-
-test("hard on time grows by 1.2 and lowers ease", () => {
-  const card: CardProg = { ease: 2.5, interval: 10, due: T0 + 10 * DAY, reps: 2, lapses: 0, state: "review", step: 0, last: T0 };
-  const next = schedule(card, "hard", T0 + 10 * DAY);
-  assert.equal(next.interval, 12);
-  assert.equal(next.ease, 2.45);
-});
-
-test("again sends a review card back to learning", () => {
-  const mature: CardProg = {
-    ease: 2.6,
-    interval: 21,
-    due: T0 + 21 * DAY,
+test("legacy cards without an explicit last review infer it from due minus interval", () => {
+  const legacy: CardProg = {
+    ease: 2.5,
+    interval: 8,
+    due: T0 + 8 * DAY,
     reps: 3,
     lapses: 0,
     state: "review",
     step: 0,
-    last: T0,
   };
-  const next = schedule(mature, "again", T0 + 21 * DAY);
+  const r = retrievability(legacy, legacy.due, 0.9);
+  assert.ok(r != null);
+  assert.ok(Math.abs(r - 0.9) < 0.000001);
+});
+
+test("legacy cards already inside a short learning step are not reinterpreted", () => {
+  const legacyLearning: CardProg = {
+    ease: 2.5,
+    interval: 0,
+    due: T0,
+    reps: 0,
+    lapses: 0,
+    state: "learning",
+    step: 0,
+  };
+  const result = scheduleWithMeta(legacyLearning, "good", T0);
+  assert.equal(result.meta.algorithm, "legacy");
+  assert.equal(result.card.fsrs, undefined);
+  assert.equal(result.card.step, 1);
+  assert.equal(result.card.due, T0 + 10 * MIN);
+});
+
+test("again sends an FSRS review card through relearning and increments lapses", () => {
+  const card = nativeReviewCard();
+  const before = card.lapses;
+  const now = card.due;
+  const next = schedule(card, "again", now);
   assert.equal(next.state, "learning");
+  assert.equal(next.fsrs?.state, "relearning");
   assert.equal(next.interval, 0);
-  assert.equal(next.lapses, 1);
-  assert.equal(next.due, T0 + 21 * DAY + MIN);
+  assert.equal(next.lapses, before + 1);
+  assert.equal(next.due, now + 10 * MIN);
+});
+
+test("mastery uses FSRS stability rather than a legacy ease heuristic", () => {
+  const card = nativeReviewCard();
+  assert.equal(isMastered(card), (card.fsrs?.stability ?? 0) >= 21);
 });
