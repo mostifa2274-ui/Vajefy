@@ -299,6 +299,7 @@ function Chip({
   return (
     <button
       type="button"
+      aria-pressed={active}
       onClick={onClick}
       className={cn(
         "min-h-11 shrink-0 rounded-md px-3 text-sm",
