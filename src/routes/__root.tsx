@@ -4,9 +4,15 @@ import appCss from "../styles.css?url";
 
 const TITLE = "Roshana";
 const DESCRIPTION = "Oxford English for Persian speakers — recall, spacing, and real sentences.";
-// Share cards need an absolute image URL; set VITE_SITE_URL (e.g. https://roshana.app) when deploying.
 const SITE_URL = String(import.meta.env.VITE_SITE_URL ?? "").replace(/\/+$/, "");
-const CARD = `${SITE_URL}/og.jpg`;
+const SOCIAL_META = SITE_URL
+  ? [
+      { property: "og:image", content: `${SITE_URL}/og.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: `${SITE_URL}/og.jpg` },
+    ]
+  : [];
 
 export const Route = createRootRoute({
   head: () => ({
@@ -21,28 +27,21 @@ export const Route = createRootRoute({
       { property: "og:site_name", content: TITLE },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
-      { property: "og:image", content: CARD },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: CARD },
+      ...SOCIAL_META,
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/manifest.json" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Vazirmatn:wght@400;500;600&display=swap",
-      },
+      ...(SITE_URL ? [{ rel: "canonical", href: SITE_URL }] : []),
       { rel: "stylesheet", href: appCss },
     ],
   }),
   component: () => (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
+        <script src="/early-language.js" />
         <HeadContent />
       </head>
       <body>

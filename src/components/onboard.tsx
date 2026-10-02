@@ -35,6 +35,7 @@ export function Onboard() {
               <button
                 key={item.id}
                 type="button"
+                aria-pressed={active}
                 onClick={() => setLevel(item.id)}
                 className={cn(
                   "min-h-20 rounded-lg p-3 text-start",
@@ -56,6 +57,7 @@ export function Onboard() {
           <button
             key={item}
             type="button"
+            aria-pressed={goal === item}
             onClick={() => setGoal(item)}
             className={cn(
               "min-h-11 min-w-16 rounded-md px-3 text-sm",

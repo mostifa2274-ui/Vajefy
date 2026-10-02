@@ -31,10 +31,13 @@ export function StudySession({
   // The queue: answered cards leave it, missed ones go back in a little later.
   const [order, setOrder] = useState(items);
   const [revealed, setRevealed] = useState(false);
+  // A new card gets an encoding pass before its first retrieval attempt.
+  const [previewed, setPreviewed] = useState<Set<string>>(() => new Set());
   const [stats, setStats] = useState({ reviews: 0, correct: 0 });
   const [misses, setMisses] = useState<{ id: string; title: string }[]>([]);
   const current = order[0];
   const face = current ? faces.get(current.id) : undefined;
+  const teaching = Boolean(current?.isNew && current && !previewed.has(current.id));
 
   useEffect(() => {
     if (!voice || !face) return;
@@ -48,10 +51,15 @@ export function StudySession({
       if (tag === "INPUT" || tag === "TEXTAREA") return;
       if (event.key === " ") {
         event.preventDefault();
-        setRevealed(true);
+        if (teaching && current) {
+          setPreviewed((seen) => new Set(seen).add(current.id));
+          setRevealed(false);
+        } else {
+          setRevealed(true);
+        }
         return;
       }
-      if (!revealed || !current) return;
+      if (teaching || !revealed || !current) return;
       const grade = ({ "1": "again", "2": "hard", "3": "good", "4": "easy" } as const)[event.key];
       if (grade) {
         event.preventDefault();
@@ -96,6 +104,12 @@ export function StudySession({
       }
       return next;
     });
+    setRevealed(false);
+  }
+
+  function beginRecall() {
+    if (!current) return;
+    setPreviewed((seen) => new Set(seen).add(current.id));
     setRevealed(false);
   }
 
@@ -158,10 +172,10 @@ export function StudySession({
           }}
         />
       </div>
-      <div key={current.id + String(revealed)} className="panel rise p-4 sm:p-6">
+      <div key={current.id + String(revealed) + String(teaching)} className="panel rise p-4 sm:p-6">
         <div className="flex items-center justify-between gap-3 text-sm text-muted">
           <span>
-            {current.isNew ? copy.newCard : copy.reviewCard}
+            {teaching ? copy.teachNew : current.isNew ? copy.newCard : copy.reviewCard}
             {face.level ? ` · ${face.level}` : ""}
             {face.pos ? ` · ${posLabel(face.pos, lang)}` : ""}
           </span>
@@ -169,6 +183,7 @@ export function StudySession({
             {num(stats.reviews + 1)} / {num(stats.reviews + order.length)}
           </span>
         </div>
+        {teaching ? <p className="mt-3 text-sm text-pretty text-muted">{copy.teachNewHint}</p> : null}
         <div className="px-2 py-8 text-center">
           <h2 lang="en" dir="ltr" className="lex-word text-5xl text-balance text-ink sm:text-6xl">
             {face.title}
@@ -187,38 +202,21 @@ export function StudySession({
             <SpeakButton text={face.speak} label={copy.listen} />
           </div>
         </div>
-        {revealed ? (
-          <div className="border-t border-line pt-4">
-            <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">
-              {face.meaning}
-            </p>
-            {face.example ? (
-              <blockquote lang="en" dir="ltr" className="mt-4 border-s-2 border-accent ps-3 text-pretty">
-                {face.example}
-              </blockquote>
-            ) : null}
-            {face.exampleFa ? (
-              <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
-                {face.exampleFa}
-              </p>
-            ) : null}
-            {face.note ? (
-              <details className="mt-3">
-                <summary className="text-sm text-muted">{copy.note}</summary>
-                <p lang="fa" dir="rtl" className="mt-2 text-sm whitespace-pre-wrap text-pretty text-muted">
-                  {face.note}
-                </p>
-              </details>
-            ) : null}
-          </div>
-        ) : (
+
+        {teaching || revealed ? <Meaning face={face} noteLabel={copy.note} /> : null}
+
+        {teaching ? (
+          <Button className="mt-5 w-full" onClick={beginRecall}>
+            {copy.tryRecall}
+          </Button>
+        ) : !revealed ? (
           <Button variant="secondary" className="w-full" onClick={() => setRevealed(true)}>
             {copy.reveal}
           </Button>
-        )}
+        ) : null}
       </div>
 
-      {revealed ? (
+      {!teaching && revealed ? (
         <div className="mt-3 grid grid-cols-4 gap-2">
           {GRADES.map((grade) => {
             const delay = schedule(base, grade, now).due - now;
@@ -233,16 +231,56 @@ export function StudySession({
                     : "flex min-h-14 flex-col items-center justify-center rounded-md bg-paper-2 px-1 py-2 text-sm shadow-[var(--shadow-border)]"
                 }
               >
-                <span className={grade === "again" ? "text-bad" : grade === "easy" ? "text-good" : grade === "good" ? "text-accent-fg" : "text-ink"}>
+                <span
+                  className={
+                    grade === "again"
+                      ? "text-bad"
+                      : grade === "easy"
+                        ? "text-good"
+                        : grade === "good"
+                          ? "text-accent-fg"
+                          : "text-ink"
+                  }
+                >
                   {labels[grade]}
                 </span>
-                <span className={grade === "good" ? "text-xs text-accent-fg" : "text-xs text-muted"}>{formatDelay(delay, lang)}</span>
+                <span className={grade === "good" ? "text-xs text-accent-fg" : "text-xs text-muted"}>
+                  {formatDelay(delay, lang)}
+                </span>
               </button>
             );
           })}
         </div>
       ) : null}
-      <p className="mt-4 text-center text-xs text-muted">{copy.keyboardHint}</p>
+      <p className="mt-4 text-center text-xs text-muted">{teaching ? copy.teachNewHint : copy.keyboardHint}</p>
     </section>
+  );
+}
+
+function Meaning({ face, noteLabel }: { face: StudyFace; noteLabel: string }) {
+  return (
+    <div className="border-t border-line pt-4">
+      <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">
+        {face.meaning}
+      </p>
+      {face.example ? (
+        <blockquote lang="en" dir="ltr" className="mt-4 border-s-2 border-accent ps-3 text-pretty">
+          {face.example}
+        </blockquote>
+      ) : null}
+      {face.exampleFa ? (
+        <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
+          {face.exampleFa}
+        </p>
+      ) : null}
+      {face.note ? (
+        <details className="mt-3">
+          <summary className="text-sm text-muted">{noteLabel}</summary>
+          <p lang="fa" dir="rtl" className="mt-2 text-sm whitespace-pre-wrap text-pretty text-muted">
+            {face.note}
+          </p>
+        </details>
+      ) : null}
+    </div>
   );
 }

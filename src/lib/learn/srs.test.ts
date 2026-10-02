@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { freshCard, isMastered, knownCard, schedule } from "./srs";
+import { freshCard, isMastered, schedule } from "./srs";
 import type { CardProg } from "./types";
 
 const DAY = 86400000;
@@ -64,7 +64,17 @@ test("hard on time grows by 1.2 and lowers ease", () => {
 });
 
 test("again sends a review card back to learning", () => {
-  const next = schedule(knownCard(T0), "again", T0 + 21 * DAY);
+  const mature: CardProg = {
+    ease: 2.6,
+    interval: 21,
+    due: T0 + 21 * DAY,
+    reps: 3,
+    lapses: 0,
+    state: "review",
+    step: 0,
+    last: T0,
+  };
+  const next = schedule(mature, "again", T0 + 21 * DAY);
   assert.equal(next.state, "learning");
   assert.equal(next.interval, 0);
   assert.equal(next.lapses, 1);

@@ -1,4 +1,4 @@
-import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouter, useRouterState } from "@tanstack/react-router";
 import {
   BookOpenText,
   ChartColumn,
@@ -12,6 +12,8 @@ import { cn } from "@/lib/cn";
 import { useCopy } from "@/lib/learn/i18n";
 import { liveStreak, todayLog, useProgress } from "@/lib/learn/store";
 import { Num } from "./ui";
+
+const OFFLINE_ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
 
 const NAV = [
   { to: "/", key: "today", icon: BookOpenText, exact: true },
@@ -30,9 +32,11 @@ export function Shell({ children }: { children: ReactNode }) {
   const lastStudyDate = useProgress((state) => state.lastStudyDate);
   const logs = useProgress((state) => state.logs);
   const dailyGoal = useProgress((state) => state.dailyGoal);
+  const onboarded = useProgress((state) => state.onboarded);
   const copy = useCopy(lang);
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const navigate = useNavigate();
+  const router = useRouter();
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -50,6 +54,51 @@ export function Shell({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang === "fa" ? "fa" : "en";
     document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
   }, [hydrated, lang]);
+
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+    let alive = true;
+
+    async function prepareOffline() {
+      await navigator.serviceWorker.register("/sw.js");
+      await navigator.serviceWorker.ready;
+      if (!navigator.serviceWorker.controller) {
+        await new Promise<void>((resolve) => {
+          const done = () => resolve();
+          navigator.serviceWorker.addEventListener("controllerchange", done, { once: true });
+          window.setTimeout(done, 5000);
+        });
+      }
+      if (!alive) return;
+
+      // Ask TanStack Router to load every primary route once. Lazy route chunks
+      // then pass through the controlling service worker and are cached, so an
+      // installed learner can navigate to an unvisited screen while offline.
+      await Promise.allSettled(OFFLINE_ROUTES.map((to) => router.preloadRoute({ to })));
+      if (alive) document.documentElement.dataset.offlineReady = "true";
+    }
+
+    void prepareOffline().catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, [router]);
+
+  useEffect(() => {
+    if (!hydrated || !onboarded || !navigator.storage?.persist) return;
+    // Ask supporting browsers to protect the small local learning database from
+    // opportunistic eviction. Denial is harmless because export/import remains.
+    void navigator.storage.persist().catch(() => undefined);
+  }, [hydrated, onboarded]);
+
+  useEffect(() => {
+    function syncFromOtherTab(event: StorageEvent) {
+      if (event.key !== "roshana-v1" || event.storageArea !== localStorage) return;
+      void useProgress.persist.rehydrate();
+    }
+    window.addEventListener("storage", syncFromOtherTab);
+    return () => window.removeEventListener("storage", syncFromOtherTab);
+  }, []);
 
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
 

@@ -33,7 +33,6 @@ function LexiconPage() {
   const bookmarks = useProgress((state) => state.bookmarks);
   const toggleBookmark = useProgress((state) => state.toggleBookmark);
   const addToReview = useProgress((state) => state.addToReview);
-  const markKnown = useProgress((state) => state.markKnown);
   const focus = useProgress((state) => state.focus);
   const copy = useCopy(lang);
   const [meta, setMeta] = useState<Meta | null>(null);
@@ -268,14 +267,6 @@ function LexiconPage() {
                 >
                   {cards[selected.id] ? copy.added : copy.learnThis}
                 </button>
-                <button
-                  type="button"
-                  disabled={!hydrated || (cards[selected.id]?.interval ?? 0) >= 21}
-                  onClick={() => markKnown(selected.id)}
-                  className="min-h-11 rounded-md border border-line px-3 text-sm disabled:opacity-40"
-                >
-                  {(cards[selected.id]?.interval ?? 0) >= 21 ? copy.known : copy.know}
-                </button>
               </div>
             </article>
           ) : (
@@ -299,6 +290,7 @@ function Chip({
   return (
     <button
       type="button"
+      aria-pressed={active}
       onClick={onClick}
       className={cn(
         "min-h-11 shrink-0 rounded-md px-3 text-sm",

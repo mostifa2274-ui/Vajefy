@@ -9,14 +9,9 @@ export default defineConfig({
   preview: { port: 8081 },
   resolve: { tsconfigPaths: true },
   plugins: [
-    // Builds the server for Cloudflare Workers (configured in wrangler.jsonc)
-    // and runs it in the Workers runtime during dev and preview. wrangler.jsonc
-    // points `main` at the built output for `wrangler deploy`; the build itself
-    // starts from TanStack Start's server entry.
-    cloudflare({
-      viteEnvironment: { name: "ssr" },
-      config: { main: "@tanstack/react-start/server-entry" },
-    }),
+    // Runs TanStack Start's SSR environment in the Workers runtime during
+    // development and emits standard Cloudflare Build Output for deployment.
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
     tailwindcss(),
     // No prerendering: Quiz, Words and Notebook read their starting state from
     // the query string, which static HTML would ignore. Pages are rendered by

@@ -23,7 +23,7 @@ beforeEach(() => {
   useProgress.setState({
     cards: {},
     logs: [],
-    lifetime: { reviews: 0, correct: 0 },
+    lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
     streak: 0,
     lastStudyDate: null,
     xp: 0,
@@ -36,8 +36,15 @@ test("practice never adds a word to the schedule", () => {
   practice("lex:A1:above", "again");
   const state = useProgress.getState();
   assert.deepEqual(state.cards, {});
-  assert.deepEqual(todayLog(state.logs), { date: todayLog([]).date, reviews: 2, correct: 1, introduced: 0 });
-  assert.deepEqual(state.lifetime, { reviews: 2, correct: 1 });
+  assert.deepEqual(todayLog(state.logs), {
+    date: todayLog([]).date,
+    reviews: 0,
+    correct: 0,
+    practice: 2,
+    practiceCorrect: 1,
+    introduced: 0,
+  });
+  assert.deepEqual(state.lifetime, { reviews: 0, correct: 0, practice: 2, practiceCorrect: 1 });
   assert.equal(state.streak, 1);
 });
 
@@ -91,8 +98,30 @@ test("v0 saves gain lifetime totals from their logs", () => {
     focus: "B1",
   };
   const migrated = migrateProgress(v0, 0);
-  assert.deepEqual(migrated.lifetime, { reviews: 30, correct: 25 });
+  assert.deepEqual(migrated.lifetime, { reviews: 30, correct: 25, practice: 0, practiceCorrect: 0 });
   assert.equal(migrated.focus, "B1");
   assert.deepEqual(migrated.cards, { a: mature });
   assert.equal(migrated.dailyGoal, 20);
+  assert.equal(migrated.accent, "en-GB");
+});
+
+test("practice cannot satisfy the daily review goal or retention accuracy", () => {
+  const state = useProgress.getState();
+  state.practice("lex:A1:about", "good");
+  state.practice("lex:A1:above", "good");
+  const afterPractice = useProgress.getState();
+  assert.equal(todayLog(afterPractice.logs).reviews, 0);
+  assert.equal(afterPractice.lifetime.reviews, 0);
+  assert.equal(afterPractice.lifetime.practice, 2);
+
+  afterPractice.review("lex:A1:about", "good");
+  const afterReview = useProgress.getState();
+  assert.equal(todayLog(afterReview.logs).reviews, 1);
+  assert.equal(afterReview.lifetime.reviews, 1);
+  assert.equal(afterReview.lifetime.correct, 1);
+  assert.equal(afterReview.lifetime.practice, 2);
+});
+
+test("there is no self-declared mastery path in progress state", () => {
+  assert.equal("markKnown" in useProgress.getState(), false);
 });
