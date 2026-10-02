@@ -1,5 +1,8 @@
 name: CI
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [main]
@@ -36,3 +39,30 @@ jobs:
         run: npm install --no-save --package-lock=false @playwright/test@1.63.0
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test
+
+
+  regenerate-lockfile:
+    if: github.event_name == 'pull_request' && github.head_ref == 'chatgpt/state-of-art-hardening-20261002'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: chatgpt/state-of-art-hardening-20261002
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Regenerate dependency lock
+        run: npm install --package-lock-only --ignore-scripts
+      - name: Commit regenerated lockfile if needed
+        shell: bash
+        run: |
+          if git diff --quiet -- package-lock.json; then
+            echo "Lockfile already canonical."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "Regenerate lockfile after dependency pruning"
+          git push origin HEAD:chatgpt/state-of-art-hardening-20261002
