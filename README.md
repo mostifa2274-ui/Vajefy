@@ -100,6 +100,13 @@ older due dates. Version 4 adds per-word drill skills without reconstructing
 past attempts or changing due dates. There is intentionally no account or remote learner database
 yet.
 
+If browser storage is full or blocked, a warning explains that new answers
+exist only in the current session. **Export progress** includes these unsaved
+answers; **Retry saving** persists the latest state when storage becomes
+available. A different saved copy from another tab is protected from being
+silently overwritten. See [docs/PROGRESS_STORAGE.md](docs/PROGRESS_STORAGE.md)
+for the recovery behavior and remaining local-storage limits.
+
 ### Smart Practice
 
 Today → **Smart Practice** opens a short optional session across studied levels.

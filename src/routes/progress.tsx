@@ -3,7 +3,8 @@ import { useEffect, useRef, useState, type ChangeEvent, type ReactNode } from "r
 import { LabeledWords } from "@/components/labeled-words";
 import { Num, PageHeader } from "@/components/ui";
 import { cn } from "@/lib/cn";
-import { backupFileName, makeBackup, parseBackup } from "@/lib/learn/backup";
+import { parseBackup } from "@/lib/learn/backup";
+import { downloadProgressBackup } from "@/lib/learn/download-backup";
 import { useFormat } from "@/lib/learn/format";
 import { useCopy, type Copy } from "@/lib/learn/i18n";
 import { loadMeta } from "@/lib/learn/load";
@@ -232,16 +233,6 @@ function BackupPanel({ copy }: { copy: Copy }) {
   const [pending, setPending] = useState<SavedProgress | null>(null);
   const [status, setStatus] = useState<"done" | "bad" | null>(null);
 
-  function exportNow() {
-    const blob = new Blob([makeBackup(useProgress.getState())], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = backupFileName();
-    link.click();
-    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-
   async function pick(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     event.target.value = "";
@@ -256,7 +247,7 @@ function BackupPanel({ copy }: { copy: Copy }) {
       <h3 className="text-sm font-medium">{copy.backupTitle}</h3>
       <p className="mt-1 text-xs text-pretty text-muted">{copy.backupHint}</p>
       <div className="mt-3 flex flex-wrap gap-2">
-        <button type="button" onClick={exportNow} className="min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)]">
+        <button type="button" onClick={downloadProgressBackup} className="min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)]">
           {copy.exportProgress}
         </button>
         <button
