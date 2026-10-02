@@ -169,6 +169,37 @@ test("review-history completeness persists for subsequent logged reviews", () =>
   assert.equal(events[1]?.complete, false);
 });
 
+test("rolling history marks a card partial once its earliest evidence is dropped", () => {
+  const template = {
+    t: NOW,
+    grade: "good" as const,
+    state: "review" as const,
+    step: 0,
+    scheduledDays: 1,
+    elapsedDays: 1,
+    nextState: "review" as const,
+    nextStep: 0,
+    nextDays: 2,
+    complete: true,
+  };
+  const reviewHistory = Array.from({ length: 8000 }, (_, index) => ({
+    ...template,
+    t: NOW - (8000 - index) * 1000,
+    id: index === 0 ? "lex:A1:about" : `other:${index}`,
+  }));
+  useProgress.setState({
+    cards: { "lex:A1:about": mature },
+    reviewHistory,
+  });
+
+  useProgress.getState().review("lex:A1:about", "good");
+  const history = useProgress.getState().reviewHistory;
+  assert.equal(history.length, 8000);
+  const kept = history.filter((event) => event.id === "lex:A1:about");
+  assert.equal(kept.length, 1);
+  assert.equal(kept[0]?.complete, false);
+});
+
 test("forget removes review evidence for removed cards only", () => {
   useProgress.setState({
     cards: { a: mature, b: mature },
