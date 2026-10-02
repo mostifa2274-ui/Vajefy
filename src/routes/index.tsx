@@ -69,12 +69,15 @@ function Home() {
 
   useEffect(() => {
     if (!hydrated) return;
-    const formatted = new Intl.DateTimeFormat(lang === "fa" ? "fa-IR" : "en-GB", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-    }).format(new Date());
-    setWhen(formatted);
+    const id = window.setTimeout(() => {
+      const formatted = new Intl.DateTimeFormat(lang === "fa" ? "fa-IR" : "en-GB", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+      }).format(new Date());
+      setWhen(formatted);
+    }, 0);
+    return () => window.clearTimeout(id);
   }, [hydrated, lang]);
 
   if (hydrated && !onboarded && !hasHistory) return <Onboard />;

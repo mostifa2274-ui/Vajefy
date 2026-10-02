@@ -22,18 +22,20 @@ function StudyPage() {
   const cards = useProgress((state) => state.cards);
   const review = useProgress((state) => state.review);
   const copy = useCopy(lang);
-  const [ready, setReady] = useState<{
+  type ReadySession = {
     items: { id: string; isNew: boolean }[];
     faces: Map<string, StudyFace>;
-  } | null>(null);
-  const [error, setError] = useState(false);
+  };
+  const [loaded, setLoaded] = useState<{ key: string; ready: ReadySession } | null>(null);
+  const [errorKey, setErrorKey] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
+  const sessionKey = `${focus}\u0000${sessionSize}\u0000${newPerDay}\u0000${nonce}\u0000${lang}`;
+  const ready = loaded?.key === sessionKey ? loaded.ready : null;
+  const error = errorKey === sessionKey;
 
   useEffect(() => {
     if (!hydrated) return;
     let alive = true;
-    setReady(null);
-    setError(false);
     void (async () => {
       try {
         const meta = await loadMeta();
@@ -52,18 +54,22 @@ function StudyPage() {
         const fresh = shuffle(
           [...faces.keys()].filter((id) => id.startsWith(`lex:${state.focus}:`) && !known.has(id)),
         ).slice(0, Math.min(room, budget));
-        setReady({
-          faces,
-          items: [...dueTake.map((id) => ({ id, isNew: false })), ...fresh.map((id) => ({ id, isNew: true }))],
+        setLoaded({
+          key: sessionKey,
+          ready: {
+            faces,
+            items: [...dueTake.map((id) => ({ id, isNew: false })), ...fresh.map((id) => ({ id, isNew: true }))],
+          },
         });
+        setErrorKey((failed) => (failed === sessionKey ? null : failed));
       } catch {
-        if (alive) setError(true);
+        if (alive) setErrorKey(sessionKey);
       }
     })();
     return () => {
       alive = false;
     };
-  }, [hydrated, focus, sessionSize, newPerDay, nonce, copy]);
+  }, [hydrated, sessionKey, copy]);
 
   if (error) {
     return (

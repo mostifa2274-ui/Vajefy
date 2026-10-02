@@ -51,14 +51,14 @@ export function MatchBoard({
   // Pairs that were part of a wrong guess; matching them later proves little.
   const missed = useRef(new Set<string>());
   const [started, setStarted] = useState<number | null>(null);
-  const [now, setNow] = useState(() => Date.now());
+  const [now, setNow] = useState(0);
   const lock = useRef(false);
   const timer = useRef<number | null>(null);
   const done = matched.size === pairs.length;
 
   useEffect(() => {
     if (started == null || done) return;
-    const id = window.setInterval(() => setNow(Date.now()), 250);
+    const id = window.setInterval(() => setNow(performance.now()), 250);
     return () => window.clearInterval(id);
   }, [started, done]);
 
@@ -69,11 +69,12 @@ export function MatchBoard({
     [],
   );
 
-  function pick(key: string) {
+  function pick(key: string, eventTime: number) {
     if (lock.current || done) return;
     const tile = tiles.find((item) => item.key === key);
     if (!tile || matched.has(tile.pairId) || selected.includes(key)) return;
-    if (started == null) setStarted(Date.now());
+    if (started == null) setStarted(eventTime);
+    setNow(eventTime);
     if (selected.length === 0) {
       setSelected([key]);
       setWrong(false);
@@ -143,7 +144,7 @@ export function MatchBoard({
               key={tile.key}
               type="button"
               disabled={isMatched}
-              onClick={() => pick(tile.key)}
+              onClick={(event) => pick(tile.key, event.timeStamp)}
               aria-pressed={isOn}
               lang={tile.dir === "ltr" ? "en" : "fa"}
               dir={tile.dir}

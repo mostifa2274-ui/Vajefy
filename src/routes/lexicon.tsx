@@ -40,10 +40,10 @@ function LexiconPage() {
   const [q, setQ] = useState(initial.q ?? "");
   const [pos, setPos] = useState<string | null>(null);
   const [savedOnly, setSavedOnly] = useState(Boolean(initial.saved));
-  const [words, setWords] = useState<LexWord[] | null>(null);
-  const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState<{ scope: LevelId | "all"; words: LexWord[] } | null>(null);
+  const [errorScope, setErrorScope] = useState<LevelId | "all" | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [limit, setLimit] = useState(40);
+  const [page, setPage] = useState({ key: "", limit: 40 });
 
   // Open on the learner's level once it is known, unless the URL asked for
   // a search or saved words, or a level was already picked here.
@@ -59,25 +59,26 @@ function LexiconPage() {
   useEffect(() => {
     void loadMeta()
       .then(setMeta)
-      .catch(() => setError(true));
+      .catch(() => undefined);
   }, []);
 
   useEffect(() => {
     let alive = true;
-    setError(false);
-    setWords(null);
     void (async () => {
       try {
+        let next: LexWord[];
         if (scope === "all") {
           const info = meta ?? (await loadMeta());
           const lists = await Promise.all(info.levels.map((level) => loadLevel(level.id)));
-          if (alive) setWords(lists.flat());
+          next = lists.flat();
         } else {
-          const list = await loadLevel(scope);
-          if (alive) setWords(list);
+          next = await loadLevel(scope);
         }
+        if (!alive) return;
+        setLoaded({ scope, words: next });
+        setErrorScope((failed) => (failed === scope ? null : failed));
       } catch {
-        if (alive) setError(true);
+        if (alive) setErrorScope(scope);
       }
     })();
     return () => {
@@ -85,9 +86,10 @@ function LexiconPage() {
     };
   }, [scope, meta]);
 
-  useEffect(() => {
-    setLimit(40);
-  }, [q, pos, scope, savedOnly]);
+  const words = loaded?.scope === scope ? loaded.words : null;
+  const error = errorScope === scope;
+  const pageKey = `${scope}\u0000${q}\u0000${pos ?? ""}\u0000${savedOnly ? "1" : "0"}`;
+  const limit = page.key === pageKey ? page.limit : 40;
 
   // Normalised once per word list, so typing only compares prepared keys.
   const keyed = useMemo(
@@ -214,7 +216,11 @@ function LexiconPage() {
             })}
           </ul>
           {filtered.length > limit ? (
-            <button type="button" className="mt-3 min-h-11 text-sm text-accent" onClick={() => setLimit((n) => n + 40)}>
+            <button
+              type="button"
+              className="mt-3 min-h-11 text-sm text-accent"
+              onClick={() => setPage({ key: pageKey, limit: limit + 40 })}
+            >
               {copy.loadMore}
             </button>
           ) : null}

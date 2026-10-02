@@ -46,29 +46,27 @@ function LibraryPage() {
   const copy = useCopy(lang);
   const [meta, setMeta] = useState<Meta | null>(null);
   const [deck, setDeck] = useState<LibDeckId | null>(isDeck(search.d) ? search.d : null);
-  const [entries, setEntries] = useState<RefEntry[] | null>(null);
-  const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState<{ deck: LibDeckId; entries: RefEntry[] } | null>(null);
+  const [errorDeck, setErrorDeck] = useState<LibDeckId | null>(null);
   const [q, setQ] = useState(search.q ?? "");
   const [band, setBand] = useState<number | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [limit, setLimit] = useState(40);
+  const [page, setPage] = useState({ key: "", limit: 40 });
 
   useEffect(() => {
     void loadMeta()
       .then(setMeta)
-      .catch(() => setError(true));
+      .catch(() => undefined);
   }, []);
 
   useEffect(() => {
     if (!deck) return;
     let alive = true;
-    setEntries(null);
-    setError(false);
-    setSelectedId(null);
     void loadDeckEntries(deck, copy)
       .then((rows) => {
         if (!alive) return;
-        setEntries(rows);
+        setLoaded({ deck, entries: rows });
+        setErrorDeck((failed) => (failed === deck ? null : failed));
         if (search.q) {
           const wanted = searchKey(search.q);
           const hit = rows.find((row) => row.title === search.q || searchKey(row.search).includes(wanted));
@@ -76,16 +74,17 @@ function LibraryPage() {
         }
       })
       .catch(() => {
-        if (alive) setError(true);
+        if (alive) setErrorDeck(deck);
       });
     return () => {
       alive = false;
     };
   }, [deck, copy, search.q]);
 
-  useEffect(() => {
-    setLimit(40);
-  }, [q, band, deck]);
+  const entries = deck && loaded?.deck === deck ? loaded.entries : null;
+  const error = Boolean(deck && errorDeck === deck);
+  const pageKey = `${deck ?? ""}\u0000${q}\u0000${band ?? ""}`;
+  const limit = page.key === pageKey ? page.limit : 40;
 
   const keys = useMemo(() => new Map((entries ?? []).map((entry) => [entry.id, searchKey(`${entry.title} ${entry.search}`)])), [entries]);
 
@@ -109,7 +108,10 @@ function LibraryPage() {
             <button
               key={item.id}
               type="button"
-              onClick={() => setDeck(item.id)}
+              onClick={() => {
+                setDeck(item.id);
+                setSelectedId(null);
+              }}
               className="panel p-4 text-start"
             >
               <span className="flex items-baseline justify-between gap-3">
@@ -130,7 +132,14 @@ function LibraryPage() {
 
   return (
     <div>
-      <button type="button" className="mb-3 min-h-11 text-sm text-muted" onClick={() => setDeck(null)}>
+      <button
+        type="button"
+        className="mb-3 min-h-11 text-sm text-muted"
+        onClick={() => {
+          setDeck(null);
+          setSelectedId(null);
+        }}
+      >
         {copy.back}
       </button>
       <PageHeader title={current ? copy[current.title] : copy.library} lede={current ? copy[current.hint] : undefined} />
@@ -175,7 +184,11 @@ function LibraryPage() {
             ))}
           </ul>
           {filtered.length > limit ? (
-            <button type="button" className="mt-3 min-h-11 text-sm text-accent" onClick={() => setLimit((n) => n + 40)}>
+            <button
+              type="button"
+              className="mt-3 min-h-11 text-sm text-accent"
+              onClick={() => setPage({ key: pageKey, limit: limit + 40 })}
+            >
               {copy.loadMore}
             </button>
           ) : null}
