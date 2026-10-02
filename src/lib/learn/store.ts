@@ -6,12 +6,23 @@ import type { CardProg, Grade, Lang, LevelId } from "./types";
 
 export type DayLog = {
   date: string;
+  /** Scheduled recall attempts only. Practice is deliberately separate. */
   reviews: number;
   correct: number;
+  /** Quiz/game attempts. These never satisfy the daily review goal. */
+  practice: number;
+  practiceCorrect: number;
   introduced: number;
 };
 
-export type Lifetime = { reviews: number; correct: number };
+export type Lifetime = {
+  /** Scheduled recall attempts only. */
+  reviews: number;
+  correct: number;
+  /** Quiz/game attempts, tracked independently from retention evidence. */
+  practice: number;
+  practiceCorrect: number;
+};
 
 /** Everything saved to the browser and carried by an export file. */
 export type SavedProgress = {
@@ -26,6 +37,7 @@ export type SavedProgress = {
   sessionSize: number;
   newPerDay: number;
   voice: boolean;
+  accent: "en-GB" | "en-US";
   bookmarks: string[];
   dailyGoal: number;
   onboarded: boolean;
@@ -39,6 +51,7 @@ type ProgressState = SavedProgress & {
   setSessionSize: (sessionSize: number) => void;
   setNewPerDay: (newPerDay: number) => void;
   setVoice: (voice: boolean) => void;
+  setAccent: (accent: "en-GB" | "en-US") => void;
   setDailyGoal: (dailyGoal: number) => void;
   setOnboarded: () => void;
   toggleBookmark: (id: string) => void;
@@ -53,9 +66,10 @@ type ProgressState = SavedProgress & {
 };
 
 /** Bump when the saved shape changes, and teach `migrate` the old shape. */
-export const PROGRESS_VERSION = 1;
+export const PROGRESS_VERSION = 2;
 
 const XP: Record<Grade, number> = { again: 2, hard: 6, good: 10, easy: 14 };
+const PRACTICE_XP: Record<Grade, number> = { again: 0, hard: 1, good: 2, easy: 3 };
 
 const memory = new Map<string, string>();
 
@@ -89,7 +103,13 @@ export function liveStreak(streak: number, lastStudyDate: string | null, now = n
 function bumpLog(
   logs: DayLog[],
   today: string,
-  delta: { reviews?: number; correct?: number; introduced?: number },
+  delta: {
+    reviews?: number;
+    correct?: number;
+    practice?: number;
+    practiceCorrect?: number;
+    introduced?: number;
+  },
 ) {
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - 60);
@@ -99,19 +119,35 @@ function bumpLog(
     date: today,
     reviews: 0,
     correct: 0,
+    practice: 0,
+    practiceCorrect: 0,
     introduced: 0,
   };
   const updated: DayLog = {
     date: today,
     reviews: row.reviews + (delta.reviews ?? 0),
     correct: row.correct + (delta.correct ?? 0),
+    practice: row.practice + (delta.practice ?? 0),
+    practiceCorrect: row.practiceCorrect + (delta.practiceCorrect ?? 0),
     introduced: row.introduced + (delta.introduced ?? 0),
   };
   return [...next.filter((item) => item.date !== today), updated];
 }
 
-function bumpLifetime(lifetime: Lifetime, correct: boolean): Lifetime {
-  return { reviews: lifetime.reviews + 1, correct: lifetime.correct + (correct ? 1 : 0) };
+function bumpReviewLifetime(lifetime: Lifetime, correct: boolean): Lifetime {
+  return {
+    ...lifetime,
+    reviews: lifetime.reviews + 1,
+    correct: lifetime.correct + (correct ? 1 : 0),
+  };
+}
+
+function bumpPracticeLifetime(lifetime: Lifetime, correct: boolean): Lifetime {
+  return {
+    ...lifetime,
+    practice: lifetime.practice + 1,
+    practiceCorrect: lifetime.practiceCorrect + (correct ? 1 : 0),
+  };
 }
 
 export function todayLog(logs: DayLog[], today = todayKey()): DayLog {
@@ -120,6 +156,8 @@ export function todayLog(logs: DayLog[], today = todayKey()): DayLog {
       date: today,
       reviews: 0,
       correct: 0,
+      practice: 0,
+      practiceCorrect: 0,
       introduced: 0,
     }
   );
@@ -135,7 +173,7 @@ export function dueIds(cards: Record<string, CardProg>, now = Date.now()): strin
 const DEFAULTS: SavedProgress = {
   cards: {},
   logs: [],
-  lifetime: { reviews: 0, correct: 0 },
+  lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
   streak: 0,
   lastStudyDate: null,
   xp: 0,
@@ -144,6 +182,7 @@ const DEFAULTS: SavedProgress = {
   sessionSize: 20,
   newPerDay: 10,
   voice: false,
+  accent: "en-GB",
   bookmarks: [],
   dailyGoal: 20,
   onboarded: false,
@@ -162,6 +201,7 @@ export function savedProgress(state: SavedProgress): SavedProgress {
     sessionSize: state.sessionSize,
     newPerDay: state.newPerDay,
     voice: state.voice,
+    accent: state.accent,
     bookmarks: state.bookmarks,
     dailyGoal: state.dailyGoal,
     onboarded: state.onboarded,
@@ -170,13 +210,32 @@ export function savedProgress(state: SavedProgress): SavedProgress {
 
 /** Upgrade a saved state from any earlier `PROGRESS_VERSION`. */
 export function migrateProgress(persisted: unknown, version: number): SavedProgress {
-  const state = { ...DEFAULTS, ...(persisted as Partial<SavedProgress>) };
+  const input = (persisted ?? {}) as Partial<SavedProgress>;
+  const logs = (input.logs ?? []).map((row) => ({
+    ...row,
+    practice: row.practice ?? 0,
+    practiceCorrect: row.practiceCorrect ?? 0,
+  }));
+  const lifetime: Lifetime = {
+    ...DEFAULTS.lifetime,
+    ...(input.lifetime ?? {}),
+  };
+  const state: SavedProgress = {
+    ...DEFAULTS,
+    ...input,
+    logs,
+    lifetime,
+    accent: input.accent === "en-US" ? "en-US" : "en-GB",
+  };
   if (version < 1) {
-    // v0 kept only the last 60 days of logs; seed lifetime totals from them.
-    state.lifetime = (state.logs ?? []).reduce(
-      (sum, row) => ({ reviews: sum.reviews + row.reviews, correct: sum.correct + row.correct }),
-      { reviews: 0, correct: 0 },
-    );
+    // v0 kept only the last 60 days of logs; seed the legacy aggregate as
+    // scheduled reviews. v2 separates practice prospectively; old mixed history
+    // cannot be reconstructed without inventing evidence.
+    state.lifetime = {
+      ...state.lifetime,
+      reviews: logs.reduce((sum, row) => sum + row.reviews, 0),
+      correct: logs.reduce((sum, row) => sum + row.correct, 0),
+    };
   }
   return state;
 }
@@ -192,6 +251,7 @@ export const useProgress = create<ProgressState>()(
       setSessionSize: (sessionSize) => set({ sessionSize }),
       setNewPerDay: (newPerDay) => set({ newPerDay }),
       setVoice: (voice) => set({ voice }),
+      setAccent: (accent) => set({ accent }),
       setDailyGoal: (dailyGoal) => set({ dailyGoal }),
       setOnboarded: () => set({ onboarded: true }),
       toggleBookmark: (id) => {
@@ -225,7 +285,7 @@ export const useProgress = create<ProgressState>()(
             correct: grade === "again" ? 0 : 1,
             introduced: existed ? 0 : 1,
           }),
-          lifetime: bumpLifetime(state.lifetime, grade !== "again"),
+          lifetime: bumpReviewLifetime(state.lifetime, grade !== "again"),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
           xp: state.xp + XP[grade],
@@ -245,11 +305,14 @@ export const useProgress = create<ProgressState>()(
         const streak = touchStreak(state.streak, state.lastStudyDate, today);
         set({
           cards: card && missed && card.due > now ? { ...state.cards, [id]: { ...card, due: now } } : state.cards,
-          logs: bumpLog(state.logs, today, { reviews: 1, correct: missed ? 0 : 1 }),
-          lifetime: bumpLifetime(state.lifetime, !missed),
+          logs: bumpLog(state.logs, today, {
+            practice: 1,
+            practiceCorrect: missed ? 0 : 1,
+          }),
+          lifetime: bumpPracticeLifetime(state.lifetime, !missed),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
-          xp: state.xp + XP[grade],
+          xp: state.xp + PRACTICE_XP[grade],
         });
       },
       addToReview: (id) => {
@@ -274,7 +337,7 @@ export const useProgress = create<ProgressState>()(
             correct: 1,
             introduced: existed ? 0 : 1,
           }),
-          lifetime: bumpLifetime(state.lifetime, true),
+          lifetime: bumpReviewLifetime(state.lifetime, true),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
           xp: state.xp + 10,
@@ -293,7 +356,7 @@ export const useProgress = create<ProgressState>()(
         set({
           cards: {},
           logs: [],
-          lifetime: { reviews: 0, correct: 0 },
+          lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
           streak: 0,
           lastStudyDate: null,
           xp: 0,
