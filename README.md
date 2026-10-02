@@ -139,7 +139,10 @@ the user's device; available voice quality depends on the operating system.
 
 The service worker is deliberately limited to same-origin GET requests. Learning
 data and hashed assets are cached; navigations prefer the network and fall back
-to the cached app when offline.
+to the cached app when offline. The production build fingerprints every deployed
+client/data file into the service-worker cache version, so a data-only release
+also activates a fresh cache instead of leaving installed learners on stale
+vocabulary.
 
 ## Content provenance
 
