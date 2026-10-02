@@ -1,8 +1,14 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { freshCard, isMastered, schedule } from "./srs";
+import {
+  DEFAULT_REQUEST_RETENTION,
+  freshCard,
+  isMastered,
+  normalizeRetention,
+  scheduleWithMeta,
+} from "./srs";
 import { todayKey, yesterdayKey } from "./text";
-import type { CardProg, Grade, Lang, LevelId } from "./types";
+import type { CardProg, Grade, Lang, LevelId, ReviewEvent } from "./types";
 
 export type DayLog = {
   date: string;
@@ -40,6 +46,10 @@ export type SavedProgress = {
   accent: "en-GB" | "en-US";
   bookmarks: string[];
   dailyGoal: number;
+  /** Desired recall probability used by FSRS-6 for future intervals. */
+  requestRetention: number;
+  /** Compact, real review evidence collected prospectively for future tuning. */
+  reviewHistory: ReviewEvent[];
   onboarded: boolean;
 };
 
@@ -53,6 +63,7 @@ type ProgressState = SavedProgress & {
   setVoice: (voice: boolean) => void;
   setAccent: (accent: "en-GB" | "en-US") => void;
   setDailyGoal: (dailyGoal: number) => void;
+  setRequestRetention: (requestRetention: number) => void;
   setOnboarded: () => void;
   toggleBookmark: (id: string) => void;
   completeOnboarding: (focus: LevelId, dailyGoal: number) => void;
@@ -65,10 +76,11 @@ type ProgressState = SavedProgress & {
 };
 
 /** Bump when the saved shape changes, and teach `migrate` the old shape. */
-export const PROGRESS_VERSION = 2;
+export const PROGRESS_VERSION = 3;
 
 const XP: Record<Grade, number> = { again: 2, hard: 6, good: 10, easy: 14 };
 const PRACTICE_XP: Record<Grade, number> = { again: 0, hard: 1, good: 2, easy: 3 };
+const MAX_REVIEW_HISTORY = 12_000;
 
 const memory = new Map<string, string>();
 
@@ -200,6 +212,8 @@ const DEFAULTS: SavedProgress = {
   accent: "en-GB",
   bookmarks: [],
   dailyGoal: 20,
+  requestRetention: DEFAULT_REQUEST_RETENTION,
+  reviewHistory: [],
   onboarded: false,
 };
 
@@ -219,6 +233,8 @@ export function savedProgress(state: SavedProgress): SavedProgress {
     accent: state.accent,
     bookmarks: state.bookmarks,
     dailyGoal: state.dailyGoal,
+    requestRetention: state.requestRetention,
+    reviewHistory: state.reviewHistory,
     onboarded: state.onboarded,
   };
 }
@@ -241,6 +257,8 @@ export function migrateProgress(persisted: unknown, version: number): SavedProgr
     logs,
     lifetime,
     accent: input.accent === "en-US" ? "en-US" : "en-GB",
+    requestRetention: normalizeRetention(input.requestRetention ?? DEFAULT_REQUEST_RETENTION),
+    reviewHistory: Array.isArray(input.reviewHistory) ? input.reviewHistory.slice(-MAX_REVIEW_HISTORY) : [],
   };
   if (version < 1) {
     // v0 kept only the last 60 days of logs; seed the legacy aggregate as
@@ -268,6 +286,8 @@ export const useProgress = create<ProgressState>()(
       setVoice: (voice) => set({ voice }),
       setAccent: (accent) => set({ accent }),
       setDailyGoal: (dailyGoal) => set({ dailyGoal }),
+      setRequestRetention: (requestRetention) =>
+        set({ requestRetention: normalizeRetention(requestRetention) }),
       setOnboarded: () => set({ onboarded: true }),
       toggleBookmark: (id) => {
         const bookmarks = get().bookmarks;
@@ -291,8 +311,25 @@ export const useProgress = create<ProgressState>()(
         const today = todayKey();
         const state = get();
         const existed = Boolean(state.cards[id]);
-        const next = schedule(state.cards[id] ?? freshCard(now), grade, now);
+        const result = scheduleWithMeta(
+          state.cards[id] ?? freshCard(now),
+          grade,
+          now,
+          state.requestRetention,
+        );
+        const next = result.card;
         const streak = touchStreak(state.streak, state.lastStudyDate, today);
+        const event: ReviewEvent = {
+          id,
+          at: now,
+          grade,
+          algorithm: result.meta.algorithm,
+          ...(result.meta.bridged ? { bridged: true } : {}),
+          elapsedDays: result.meta.elapsedDays,
+          scheduledDays: result.meta.scheduledDays,
+          ...(result.meta.stability == null ? {} : { stability: result.meta.stability }),
+          ...(result.meta.difficulty == null ? {} : { difficulty: result.meta.difficulty }),
+        };
         set({
           cards: { ...state.cards, [id]: next },
           logs: bumpLog(state.logs, today, {
@@ -301,6 +338,7 @@ export const useProgress = create<ProgressState>()(
             introduced: existed ? 0 : 1,
           }),
           lifetime: bumpReviewLifetime(state.lifetime, grade !== "again"),
+          reviewHistory: [...state.reviewHistory, event].slice(-MAX_REVIEW_HISTORY),
           streak: streak.streak,
           lastStudyDate: streak.lastStudyDate,
           xp: state.xp + XP[grade],
@@ -353,6 +391,7 @@ export const useProgress = create<ProgressState>()(
           cards: {},
           logs: [],
           lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
+          reviewHistory: [],
           streak: 0,
           lastStudyDate: null,
           xp: 0,
