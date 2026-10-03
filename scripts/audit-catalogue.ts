@@ -84,7 +84,8 @@ function uses(text: string, phrase: string): boolean {
     .replace(/’/g, "'")
     .replace(/&/g, "and")
     .replace(/\(.*?\)/g, "")
-    .split(/\s*[,/]\s*/)
+    // "Talent Agent or Business Manager" names two jobs; either will do.
+    .split(/\s*[,/]\s*|\s+or\s+/)
     .map((form) => form.trim())
     .filter(Boolean)
     .some(
