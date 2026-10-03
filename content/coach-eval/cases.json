@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "bf6c3d2ce0c5",
+ "contentVersion": "72555d954521",
  "cases": [
   {
    "id": "7aa02ebefb",
@@ -26511,25 +26511,25 @@
    ]
   },
   {
-   "id": "b1747fcf91",
-   "split": "dev",
+   "id": "10c0600a74",
+   "split": "test",
    "source": "mistake-right",
    "senses": [
     "lex:A1:black"
    ],
-   "text": "He has dark eyes and black hair.",
+   "text": "I bought a black car.",
    "expect": [
     "natural"
    ]
   },
   {
-   "id": "dc240c64d0",
+   "id": "704d62e4a1",
    "split": "dev",
    "source": "mistake-wrong",
    "senses": [
     "lex:A1:black"
    ],
-   "text": "He has black eyes and black hair.",
+   "text": "I bought a car black.",
    "expect": [
     "needs-change"
    ]
