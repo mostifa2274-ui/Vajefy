@@ -28,6 +28,9 @@ type Saved = { code: string; cursor: number; epoch: number; lastSync: number | n
 /** `id` is the operation's own id; `wire` the opaque id it is stored under on the server. */
 type Outgoing = { id: string; wire: string; epoch: number; reset: boolean; at: number; op: Op };
 type Remote = { seq: number; id: string; epoch: number; reset: boolean; iv: string; data: string };
+type Page = { epoch: number; ops: Remote[]; more: boolean };
+/** An operation this device uploaded; `seen` once it has come back down. */
+type Marker = { id: string; seen?: number };
 /** What is encrypted: the operation and the progress version that wrote it. */
 type Payload = { v: number; op: Op };
 
@@ -35,9 +38,11 @@ export const SYNC_KEY = "vajefy-sync";
 const DB_NAME = "vajefy-sync";
 const PUSH_BATCH = 50;
 const PUSH_BYTES = 2_500_000;
+/** How long markers are kept after they come back down, for tabs mid-download. */
+const MARKER_DAYS = 7;
 
 export type SyncDeps = {
-  persistence: { dispatch(op: Op): void; setAfterCommit(hook: ((op: Op) => Promise<void>) | null): void; isHeld(): boolean };
+  persistence: { dispatch(op: Op): void; flush(): Promise<boolean>; setAfterCommit(hook: ((op: Op) => Promise<void>) | null): void; isHeld(): boolean };
   memory: () => Memory;
   storage: () => Storage | undefined;
   idb: () => IDBFactory | undefined;
@@ -51,6 +56,14 @@ function request<T>(req: IDBRequest<T>): Promise<T> {
   return new Promise((resolve, reject) => {
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
+  });
+}
+
+function complete(tx: IDBTransaction): Promise<void> {
+  return new Promise((resolve, reject) => {
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+    tx.onabort = () => reject(tx.error);
   });
 }
 
@@ -121,22 +134,52 @@ export function createSync(deps: SyncDeps) {
     const tx = db.transaction(["outbox", "sent"], "readwrite");
     for (const entry of entries) {
       tx.objectStore("outbox").delete(entry.id);
-      if (sent) tx.objectStore("sent").put({ id: entry.wire });
+      if (sent) tx.objectStore("sent").put({ id: entry.wire } satisfies Marker);
     }
-    await new Promise<void>((resolve, reject) => {
-      tx.oncomplete = () => resolve();
-      tx.onerror = () => reject(tx.error);
-    });
+    await complete(tx);
+  }
+
+  /**
+   * Whether a downloaded operation is one this device uploaded. Every tab
+   * shares the markers, so they stay after one tab sees its operation come
+   * back: another tab may be downloading the same page.
+   */
+  async function ownOperation(id: string): Promise<boolean> {
+    const db = await openOutbox();
+    const marker = (await request(db.transaction("sent").objectStore("sent").get(id))) as Marker | undefined;
+    if (!marker) return false;
+    if (!marker.seen) {
+      const tx = db.transaction("sent", "readwrite");
+      tx.objectStore("sent").put({ id, seen: deps.now() } satisfies Marker);
+      await complete(tx);
+    }
+    return true;
+  }
+
+  /** Forget markers seen long ago: by then every tab's cursor has passed them. */
+  async function pruneMarkers() {
+    const db = await openOutbox();
+    const tx = db.transaction("sent", "readwrite");
+    const markers = (await request(tx.objectStore("sent").getAll())) as Marker[];
+    const before = deps.now() - MARKER_DAYS * 86_400_000;
+    for (const marker of markers) if (marker.seen && marker.seen < before) tx.objectStore("sent").delete(marker.id);
+    await complete(tx);
+  }
+
+  /** Empty the outbox and the markers, when this device stops syncing. */
+  async function forget() {
+    const db = await openOutbox();
+    const tx = db.transaction(["outbox", "sent"], "readwrite");
+    tx.objectStore("outbox").clear();
+    tx.objectStore("sent").clear();
+    await complete(tx);
   }
 
   async function enqueue(entry: Outgoing) {
     const db = await openOutbox();
     const tx = db.transaction("outbox", "readwrite");
     tx.objectStore("outbox").put(entry);
-    await new Promise<void>((resolve, reject) => {
-      tx.oncomplete = () => resolve();
-      tx.onerror = () => reject(tx.error);
-    });
+    await complete(tx);
     pending++;
     notify();
   }
@@ -183,21 +226,26 @@ export function createSync(deps: SyncDeps) {
     write();
   }
 
+  /** Take up a cursor another tab moved on: it has stored what it passed. */
+  function catchUp() {
+    const stored = read();
+    if (stored?.code === saved!.code) saved!.cursor = Math.max(saved!.cursor, stored.cursor);
+  }
+
   /** Download and apply what other devices uploaded. */
   async function pull() {
     for (;;) {
+      catchUp();
       const response = await call("GET", undefined, saved!.cursor);
       if (response.status === 410) throw new Gone();
       if (!response.ok) throw new Error(`pull ${response.status}`);
-      const page = (await response.json()) as { epoch: number; ops: Remote[]; more: boolean };
+      const page = (await response.json()) as Page;
+      let cursor = saved!.cursor;
       for (const item of page.ops) {
-        const db = await openOutbox();
-        if (await request(db.transaction("sent").objectStore("sent").get(item.id))) {
-          // This device's own operation, already applied here.
+        if (await ownOperation(item.id)) {
+          // Already applied here.
           if (item.reset) await dropBefore(item.epoch + 1, item.id);
-          await request(db.transaction("sent", "readwrite").objectStore("sent").delete(item.id));
-          saved!.cursor = item.seq;
-          write();
+          cursor = item.seq;
           continue;
         }
         const payload = await unseal<Payload>(keys!.key, item);
@@ -209,13 +257,34 @@ export function createSync(deps: SyncDeps) {
         const op: Op = { ...payload.op, origin: "sync" };
         if (op.type === "replace" && !currentProgress.safeParse(op.progress).success) throw new Error("invalid progress");
         deps.persistence.dispatch(op);
-        // Saved after each operation: a crash cannot apply one twice.
-        saved!.cursor = item.seq;
-        write();
+        cursor = item.seq;
       }
+      // The cursor passes operations only once they are stored. If storing
+      // fails, or the tab closes first, they are downloaded again, and an
+      // operation's id makes sure it applies once.
+      if (!(await deps.persistence.flush())) throw new Error("not saved");
+      catchUp();
+      saved!.cursor = Math.max(saved!.cursor, cursor);
       saved!.epoch = Math.max(saved!.epoch, page.epoch);
       write();
       if (!page.more) return;
+    }
+  }
+
+  /** The last operation on the server, and its epoch, reading every page. */
+  async function latest(derived: SyncKeys): Promise<{ seq: number; epoch: number } | "offline" | "deleted"> {
+    let seq = 0;
+    try {
+      for (;;) {
+        const response = await deps.fetch(`/api/sync/${derived.space}?after=${seq}`, { headers: { authorization: `Bearer ${derived.token}` } });
+        if (response.status === 410) return "deleted";
+        if (!response.ok) return "offline";
+        const page = (await response.json()) as Page;
+        seq = page.ops.at(-1)?.seq ?? seq;
+        if (!page.more) return { seq, epoch: page.epoch };
+      }
+    } catch {
+      return "offline";
     }
   }
 
@@ -261,6 +330,7 @@ export function createSync(deps: SyncDeps) {
     try {
       await pull();
       await push();
+      await pruneMarkers();
       await queued();
       saved.lastSync = deps.now();
       write();
@@ -286,7 +356,7 @@ export function createSync(deps: SyncDeps) {
     if (timer) clearTimeout(timer);
     timer = null;
     deps.persistence.setAfterCommit(null);
-    await remove(await queued().catch(() => [] as Outgoing[])).catch(() => undefined);
+    await forget().catch(() => undefined);
     saved = null;
     keys = null;
     pending = 0;
@@ -403,7 +473,7 @@ export function createSync(deps: SyncDeps) {
         const probe = await deps.fetch(`/api/sync/${derived.space}?after=0`, { headers: { authorization: `Bearer ${derived.token}` } });
         if (probe.status === 410) return "deleted";
         if (!probe.ok) return probe.status === 401 ? "invalid" : "offline";
-        const page = (await probe.json()) as { epoch: number; ops: Remote[] };
+        const page = (await probe.json()) as Page;
         epoch = page.epoch;
         remoteHasData = page.ops.length > 0;
       } catch {
@@ -419,23 +489,27 @@ export function createSync(deps: SyncDeps) {
       await sync();
       return "joined";
     },
-    /** Finish a join: adopt the synced progress, or replace it with this device's. */
-    async choose(keep: "synced" | "this-device") {
-      if (!choice) return;
-      const { code, keys: derived, epoch } = choice;
-      choice = null;
-      await activate({ code, cursor: 0, epoch, lastSync: null, dropped: 0 }, derived);
+    /**
+     * Finish a join: adopt the synced progress, or replace it with this
+     * device's. Keeping this device's needs the server, to skip the whole
+     * synced history; unreachable, the choice waits to be made again.
+     */
+    async choose(keep: "synced" | "this-device"): Promise<"done" | "offline" | "deleted"> {
+      if (!choice) return "done";
+      const { code, keys: derived } = choice;
+      let { epoch } = choice;
+      let cursor = 0;
       if (keep === "this-device") {
-        // Skip the synced history: this device's progress replaces it.
-        await afterCommit(snapshot());
-        const latest = await deps.fetch(`/api/sync/${derived.space}?after=0`, { headers: { authorization: `Bearer ${derived.token}` } }).catch(() => null);
-        if (latest?.ok) {
-          const page = (await latest.json()) as { ops: Remote[] };
-          saved!.cursor = page.ops.at(-1)?.seq ?? 0;
-          write();
-        }
+        const end = await latest(derived);
+        if (end === "deleted") choice = null;
+        if (typeof end === "string") return end;
+        ({ seq: cursor, epoch } = end);
       }
+      choice = null;
+      await activate({ code, cursor, epoch, lastSync: null, dropped: 0 }, derived);
+      if (keep === "this-device") await afterCommit(snapshot());
       await sync();
+      return "done";
     },
     cancelChoice() {
       choice = null;

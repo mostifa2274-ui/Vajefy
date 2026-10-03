@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import { beforeEach, test } from "node:test";
 import { sqliteD1 } from "../../api/d1-sqlite";
 import { handleSync } from "../../api/sync";
+import type { CommitHooks } from "./db";
 import type { Op } from "./ops";
 import { createPersistence, emptyMemory, type Memory } from "./persistence";
 import { createSync, type Sync } from "./sync";
@@ -51,8 +52,11 @@ const serverFetch: typeof fetch = async (input, init) => {
 
 type Device = { memory: () => Memory; persistence: ReturnType<typeof createPersistence>; sync: Sync; settle: () => Promise<void>; idb: IDBFactory; storage: MemoryStorage };
 
-/** A device, or the same device reopened when given its browser storage. */
-async function device(browser: { idb?: IDBFactory; storage?: MemoryStorage } = {}): Promise<Device> {
+/**
+ * A device, or another tab of the same browser when given its storage.
+ * `fetch` and `hooks` stand in for the network and for failing writes.
+ */
+async function device(browser: { idb?: IDBFactory; storage?: MemoryStorage; fetch?: typeof fetch; hooks?: CommitHooks } = {}): Promise<Device> {
   let memory: Memory = emptyMemory();
   const idb = browser.idb ?? new IDBFactory();
   const storage = browser.storage ?? new MemoryStorage();
@@ -65,8 +69,9 @@ async function device(browser: { idb?: IDBFactory; storage?: MemoryStorage } = {
     idb: () => idb,
     localStorage: () => storage,
     now: () => clock,
+    hooks: browser.hooks,
   });
-  const sync = createSync({ persistence, memory: () => memory, storage: () => storage as unknown as Storage, idb: () => idb, fetch: serverFetch, now: () => clock });
+  const sync = createSync({ persistence, memory: () => memory, storage: () => storage as unknown as Storage, idb: () => idb, fetch: browser.fetch ?? serverFetch, now: () => clock });
   // As the app does: a stored pairing is taken up before progress loads.
   await sync.prepare();
   await persistence.start();
@@ -238,6 +243,121 @@ test("an answer the server will never accept, after a reset elsewhere, is droppe
   await answer(tablet, review("lex:A1:above"));
   await syncBoth(tablet, phone);
   assert.equal(phone.memory().lifetime.reviews, 1, "answers after the reset sync normally");
+});
+
+test("answers downloaded but not yet stored are downloaded again", async () => {
+  const phone = await device();
+  const code = await phone.sync.create();
+  await phone.settle();
+  let full = false;
+  const hooks = {
+    afterWrites: () => {
+      if (full) throw new Error("storage full");
+    },
+  };
+  const tablet = await device({ hooks });
+  await tablet.sync.join(code);
+  await tablet.settle();
+  await answer(phone, review("lex:A1:about"));
+  await syncBoth(phone);
+
+  const cursor = () => (JSON.parse(tablet.storage.getItem("vajefy-sync")!) as { cursor: number }).cursor;
+  const before = cursor();
+  full = true;
+  await tablet.sync.sync();
+  assert.equal(tablet.sync.status().state, "error");
+  assert.equal(cursor(), before, "the cursor waits for the answer to be stored");
+
+  // The tab closes, and the answer was not kept anywhere else either.
+  for (const key of [...journal().map.keys()]) if (key.startsWith("vajefy-op:")) journal().removeItem(key);
+  full = false;
+  const reopened = await device({ idb: tablet.idb, storage: tablet.storage, hooks });
+  await syncBoth(reopened);
+  assert.equal(reopened.memory().lifetime.reviews, 1, "so it comes down again");
+  assert.ok(cursor() > before);
+});
+
+test("a tab still downloading does not re-apply this device's own snapshot after another tab saw it", async () => {
+  const phone = await device();
+  await answer(phone, review("lex:A1:about"));
+  await phone.sync.create();
+  await phone.settle();
+
+  // A second tab starts downloading and waits on a slow network, before the
+  // first tab moves the cursor on.
+  let release!: () => void;
+  const slow = new Promise<void>((resolve) => (release = resolve));
+  const tab = await device({
+    idb: phone.idb,
+    storage: phone.storage,
+    fetch: async (input, init) => {
+      await slow;
+      return serverFetch(input, init);
+    },
+  });
+  const downloading = tab.sync.sync();
+  await phone.sync.sync();
+  // An answer stored here, not uploaded yet.
+  online = false;
+  await answer(phone, review("lex:A1:above"));
+  online = true;
+  release();
+  await downloading;
+  await tab.settle();
+
+  const reopened = await device({ idb: phone.idb, storage: phone.storage });
+  await reopened.settle();
+  assert.equal(reopened.memory().lifetime.reviews, 2, "the later answer was not rolled back by the snapshot");
+  assert.ok(reopened.memory().cards["lex:A1:above"]);
+
+  // The markers go a week after they came back down, and when sync stops.
+  const markers = async () => {
+    const open = phone.idb.open("vajefy-sync", 1);
+    const db = await new Promise<IDBDatabase>((resolve) => (open.onsuccess = () => resolve(open.result)));
+    const all = db.transaction("sent").objectStore("sent").getAll();
+    const found = await new Promise<{ seen?: number }[]>((resolve) => (all.onsuccess = () => resolve(all.result)));
+    db.close();
+    return found;
+  };
+  await syncBoth(phone);
+  assert.equal((await markers()).filter((marker) => marker.seen).length, 2);
+  clock += 8 * 86_400_000;
+  await answer(phone, review("lex:A1:across"));
+  await syncBoth(phone);
+  assert.deepEqual(
+    (await markers()).map((marker) => marker.seen),
+    [undefined],
+    "only the answer just uploaded, not yet seen coming back, is left",
+  );
+  await phone.sync.stop();
+  assert.equal((await markers()).length, 0);
+});
+
+test("keeping this device's progress skips the whole synced history, however long", async () => {
+  const phone = await device();
+  const code = await phone.sync.create();
+  await phone.settle();
+  // More than one page of history.
+  for (let i = 0; i < 205; i++) phone.persistence.dispatch(review("lex:A1:about"));
+  await phone.settle();
+  await syncBoth(phone);
+  const { results } = await server.prepare("SELECT COUNT(*) AS n FROM sync_ops").all<{ n: number }>();
+  assert.ok(results[0]!.n > 200);
+
+  const tablet = await device();
+  await answer(tablet, review("lex:A1:above"));
+  await answer(tablet, review("lex:A1:across"));
+  assert.equal(await tablet.sync.join(code), "needs-choice");
+  online = false;
+  assert.equal(await tablet.sync.choose("this-device"), "offline");
+  assert.equal(tablet.sync.status().state, "off", "unreachable, nothing changes and the choice can be made again");
+  online = true;
+  assert.equal(await tablet.sync.choose("this-device"), "done");
+  await tablet.settle();
+  assert.equal(tablet.memory().lifetime.reviews, 2, "none of the synced answers came down");
+  assert.equal(tablet.memory().cards["lex:A1:about"], undefined);
+  await syncBoth(phone);
+  assert.equal(phone.memory().lifetime.reviews, 2, "the tablet's progress replaced the synced copy");
 });
 
 test("joining with progress on both sides asks which to keep", async () => {

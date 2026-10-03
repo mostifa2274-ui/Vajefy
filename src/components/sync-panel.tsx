@@ -70,9 +70,13 @@ export function SyncPanel({ copy }: { copy: Copy }) {
 
   const choose = (keep: "synced" | "this-device") =>
     act(async () => {
-      await sync.choose(keep);
-      setStep("idle");
-      setTyped("");
+      const result = await sync.choose(keep);
+      // Unreachable, the choice stays on screen to be made again.
+      if (result !== "offline") {
+        setStep("idle");
+        setTyped("");
+      }
+      if (result !== "done") setNotice(result);
     });
 
   const remove = () =>
