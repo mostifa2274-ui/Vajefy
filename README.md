@@ -59,10 +59,15 @@ The app is fully client-side: no accounts, no database, no AI service.
 | `src/routes/` | One file per screen: Today, Words, Review, Quiz, Notebook, Progress |
 | `src/components/` | Shell, review session, quiz runner, Pairs, sprint |
 | `src/lib/learn/srs.ts` | FSRS-6 scheduler, legacy SM-2 bridge, retrievability |
-| `src/lib/learn/store.ts` | Progress state (zustand, persisted to `localStorage` as `roshana-v1`) |
+| `src/lib/learn/store.ts` | Progress state (zustand) whose actions dispatch operations |
+| `src/lib/learn/ops.ts` | Every progress change as a pure, deduplicated operation |
+| `src/lib/learn/db.ts` | IndexedDB stores and one transaction per operation |
+| `src/lib/learn/persistence.ts` | Migration, journal replay, cross-tab updates, failures and recovery |
+| `src/lib/learn/journal.ts` | Write-ahead journal that replays interrupted answers once |
+| `src/lib/learn/session.ts` | Resumable review and practice sessions |
 | `src/lib/learn/progress.ts` | Saved-progress shape, defaults and version migrations |
 | `src/lib/learn/schema.ts` | Validation shared by browser saves and backup files |
-| `src/lib/learn/recovery.ts` | Startup checks of the browser save and recovery of readable parts |
+| `src/lib/learn/recovery.ts` | Startup checks of saved progress and recovery of readable parts |
 | `src/lib/learn/quiz.ts` | Question generation for every quiz mode |
 | `src/lib/learn/adaptive.ts` | FSRS-aware Smart Practice selection and skill targeting |
 | `src/lib/learn/practice.ts` | Bounded prospective vocabulary skill evidence |
@@ -103,16 +108,19 @@ older due dates. Version 4 adds per-word drill skills without reconstructing
 past attempts or changing due dates. There is intentionally no account or remote learner database
 yet.
 
-If browser storage is full or blocked, a warning explains that new answers
-exist only in the current session. **Export progress** includes these unsaved
-answers; **Retry saving** persists the latest state when storage becomes
-available. A different saved copy from another tab is protected from being
-silently overwritten. A save that cannot be read, or that a newer version
-wrote, is checked before the app loads and is never replaced automatically: a
-recovery screen offers the untouched original as a download, the readable parts,
-or a fresh start, each only after confirmation. See
-[docs/PROGRESS_STORAGE.md](docs/PROGRESS_STORAGE.md) for the recovery behavior
-and remaining local-storage limits.
+Progress is stored in IndexedDB. Each answer is saved in one transaction with
+its progress update and the session state, and has a unique id, so a retry,
+replay or second tab can never count it twice. Leaving midway and returning
+resumes the same session. Missed cards come back at their real relearning
+time, and an accidental grade can be undone.
+
+A small journal replays answers interrupted by a closed tab. If saving fails, a
+warning offers **Export progress** and **Retry saving**. A save that cannot be
+read, or that a newer version wrote, is never replaced automatically: a
+recovery screen offers the untouched original as a download, the readable
+parts, or a fresh start. The original localStorage save is copied once and
+verified before IndexedDB takes over. See
+[docs/PROGRESS_STORAGE.md](docs/PROGRESS_STORAGE.md).
 
 ### Smart Practice
 

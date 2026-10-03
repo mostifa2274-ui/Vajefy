@@ -1,53 +1,138 @@
 import { useEffect, useState } from "react";
+import { useActiveTime } from "@/lib/learn/active-time";
 import { useCopy } from "@/lib/learn/i18n";
+import { advanceQuiz, answerQuiz, newId, quizAnswerFor, quizStats, type QuizAnswer, type QuizSession } from "@/lib/learn/session";
 import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
+import { useProgress } from "@/lib/learn/store";
 import { formMatches, bestSpelling } from "@/lib/learn/text";
 import { useFormat } from "@/lib/learn/format";
-import type { Grade, Lang, PracticeSkill, Question } from "@/lib/learn/types";
+import type { Grade, Lang, Question } from "@/lib/learn/types";
 import { cn } from "@/lib/cn";
 import { Button, SpeakButton } from "./ui";
 
 type Miss = { prompt: string; answer: string };
 
+/** Event handlers read the clock through this, outside render. */
+function timestamp() {
+  return Date.now();
+}
+
+function missOf(question: Question): Miss {
+  if (question.kind === "irregular") return { prompt: question.base, answer: `${question.past} · ${question.pp}` };
+  if (question.kind === "type") return { prompt: question.prompt, answer: question.answer };
+  // A listening prompt is only "What did you hear?"; list the word instead.
+  return { prompt: question.speak ?? question.prompt, answer: question.reveal || "" };
+}
+
+function verdictOf(answer: QuizAnswer | undefined): "exact" | "close" | "wrong" | null {
+  if (!answer || answer.grade === "skipped") return null;
+  return answer.grade === "again" ? "wrong" : answer.grade === "hard" ? "close" : "exact";
+}
+
+/**
+ * A practice round saved with every answer: leaving midway resumes at the same
+ * question, an answered question shows its result again instead of being
+ * re-asked, and the score is rebuilt from the saved answers.
+ */
 export function QuizRun({
-  questions,
+  initial,
   lang,
-  onGrade,
   onDone,
   title,
 }: {
-  questions: Question[];
+  initial: QuizSession;
   lang: Lang;
-  onGrade: (id: string, grade: Grade, skill?: PracticeSkill) => void;
   onDone: () => void;
   title?: string;
 }) {
   const copy = useCopy(lang);
   const { num } = useFormat();
-  const [index, setIndex] = useState(0);
-  const [picked, setPicked] = useState<string | null>(null);
-  const [typed, setTyped] = useState("");
-  const [past, setPast] = useState("");
-  const [pp, setPp] = useState("");
-  const [verdict, setVerdict] = useState<"exact" | "close" | "wrong" | null>(null);
-  const [misses, setMisses] = useState<Miss[]>([]);
-  const [correct, setCorrect] = useState(0);
-  const [skipped, setSkipped] = useState(0);
+  const practice = useProgress((state) => state.practice);
+  const skip = useProgress((state) => state.skip);
+  const saveSession = useProgress((state) => state.saveSession);
+  const [session, setSession] = useState(initial);
+  const questions = session.questions;
+  const index = session.index;
   const question = questions[index];
+  const answered = quizAnswerFor(session);
+  const [draft, setDraft] = useState<{ index: number; picked: string | null; typed: string; past: string; pp: string }>({
+    index,
+    picked: null,
+    typed: "",
+    past: "",
+    pp: "",
+  });
+  // Inputs belong to one question; a saved answer wins over an unsent draft.
+  const current = draft.index === index ? draft : { index, picked: null, typed: "", past: "", pp: "" };
+  const picked = answered?.picked ?? current.picked;
+  const typed = answered?.typed ?? current.typed;
+  const past = answered?.past ?? current.past;
+  const pp = answered?.pp ?? current.pp;
+  const verdict = verdictOf(answered);
+  const stats = quizStats(session);
+  const elapsed = useActiveTime(question ? `${session.id}:${index}` : undefined);
+  const setPicked = (value: string) => setDraft({ ...current, picked: value });
+  const setTyped = (value: string) => setDraft({ ...current, typed: value });
+  const setPast = (value: string) => setDraft({ ...current, past: value });
+  const setPp = (value: string) => setDraft({ ...current, pp: value });
 
   useEffect(() => {
-    if (question?.kind === "mcq" && question.speak) speakEnglish(question.speak);
+    if (question?.kind === "mcq" && question.speak && !answered) speakEnglish(question.speak);
     return () => cancelSpeech();
+    // Speak once per question, not again when its answer is saved.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question]);
 
+  function finish(grade: Grade, inputs: Partial<Pick<QuizAnswer, "picked" | "typed" | "past" | "pp">>) {
+    const active = question;
+    if (answered || !active) return;
+    const at = timestamp();
+    const op = newId();
+    const next = answerQuiz(session, { op, grade, at, ...inputs });
+    practice(active.id, grade, active.practiceSkill, {
+      id: op,
+      at,
+      session: session.id,
+      prompt: `${session.mode}:${active.kind}`,
+      responseMs: elapsed(),
+      sessionState: next,
+    });
+    setSession(next);
+  }
+
+  function skipQuestion() {
+    const active = question;
+    if (answered || !active) return;
+    const at = timestamp();
+    const op = newId();
+    const next = advanceQuiz(answerQuiz(session, { op, grade: "skipped", at }), at);
+    skip(active.id, active.practiceSkill, {
+      id: op,
+      at,
+      session: session.id,
+      prompt: `${session.mode}:${active.kind}`,
+      sessionState: next,
+    });
+    setSession(next);
+  }
+
+  function advance() {
+    const next = advanceQuiz(session, Date.now());
+    saveSession(next);
+    setSession(next);
+  }
+
   if (!question) {
+    const misses = session.answers
+      .filter((entry) => entry.grade === "again")
+      .map((entry) => missOf(questions[entry.question]!));
     return (
       <section className="mx-auto max-w-xl">
         <p className="text-sm text-accent">{copy.scoreLabel}</p>
         <h1 className="mt-1 text-3xl font-medium">
-          {skipped === questions.length ? copy.noPracticeAnswers : `${num(correct)} / ${num(questions.length - skipped)}`}
+          {stats.answered === 0 ? copy.noPracticeAnswers : `${num(stats.correct)} / ${num(stats.answered)}`}
         </h1>
-        {skipped > 0 ? <p className="mt-2 text-sm text-muted">{num(skipped)} {copy.audioSkipped}</p> : null}
+        {stats.skipped > 0 ? <p className="mt-2 text-sm text-muted">{num(stats.skipped)} {copy.audioSkipped}</p> : null}
         {misses.length ? (
           <div className="mt-6">
             <h2 className="text-sm text-muted">{copy.missed}</h2>
@@ -72,23 +157,6 @@ export function QuizRun({
     );
   }
 
-  function finish(grade: Grade, prompt: string, answer: string) {
-    if (verdict !== null) return;
-    onGrade(question.id, grade, question.practiceSkill);
-    if (grade === "again") setMisses((list) => [...list, { prompt, answer }]);
-    else setCorrect((count) => count + 1);
-    setVerdict(grade === "again" ? "wrong" : grade === "hard" ? "close" : "exact");
-  }
-
-  function advance() {
-    setIndex((value) => value + 1);
-    setPicked(null);
-    setTyped("");
-    setPast("");
-    setPp("");
-    setVerdict(null);
-  }
-
   const locked = verdict !== null;
 
   return (
@@ -99,7 +167,7 @@ export function QuizRun({
           {num(index + 1)} / {num(questions.length)}
         </span>
         <span className="tabular-nums">
-          {num(correct)} {copy.correct}
+          {num(stats.correct)} {copy.correct}
         </span>
       </div>
       <div className="panel p-4 sm:p-6">
@@ -147,7 +215,7 @@ export function QuizRun({
                   const pastOk = formMatches(past, question.past);
                   const ppOk = formMatches(pp, question.pp);
                   const grade: Grade = pastOk && ppOk ? "good" : pastOk || ppOk ? "hard" : "again";
-                  finish(grade, question.base, `${question.past} · ${question.pp}`);
+                  finish(grade, { past, pp });
                 }}
               >
                 {copy.check}
@@ -180,10 +248,7 @@ export function QuizRun({
               <div className="mt-4">
                 <SpeakButton text={question.speak} label={copy.replay} />
                 {!locked ? (
-                  <button type="button" className="ms-2 min-h-11 px-2 text-sm text-accent" onClick={() => {
-                    setSkipped((count) => count + 1);
-                    advance();
-                  }}>{copy.skipAudio}</button>
+                  <button type="button" className="ms-2 min-h-11 px-2 text-sm text-accent" onClick={skipQuestion}>{copy.skipAudio}</button>
                 ) : null}
                 {!locked ? <p className="mt-1 text-xs text-muted">{copy.skipAudioHint}</p> : null}
               </div>
@@ -204,9 +269,7 @@ export function QuizRun({
                       lang={option.dir === "ltr" ? "en" : "fa"}
                       onClick={() => {
                         setPicked(option.key);
-                        const ok = option.key === question.answerKey;
-                        // A listening prompt is only "What did you hear?"; list the word instead.
-                        finish(ok ? "good" : "again", question.speak ?? question.prompt, question.reveal || "");
+                        finish(option.key === question.answerKey ? "good" : "again", { picked: option.key });
                       }}
                       className={cn(
                         "min-h-11 rounded-md border px-3 py-2 text-start text-pretty",
@@ -228,7 +291,7 @@ export function QuizRun({
                   if (locked) return;
                   const result = bestSpelling(typed, question.accept);
                   const grade: Grade = result === "exact" ? "good" : result === "close" ? "hard" : "again";
-                  finish(grade, question.prompt, question.answer);
+                  finish(grade, { typed });
                 }}
               >
                 <input

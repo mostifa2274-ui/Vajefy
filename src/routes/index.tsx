@@ -7,6 +7,7 @@ import { useFormat } from "@/lib/learn/format";
 import { useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta, loadPairs } from "@/lib/learn/load";
 import { countLevel, dueIds, liveStreak, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
+import { resumable } from "@/lib/learn/session";
 import { dayNumber } from "@/lib/learn/text";
 import type { LexWord, Meta, PairNote } from "@/lib/learn/types";
 
@@ -29,7 +30,11 @@ function Home() {
   const bookmarks = useProgress((state) => state.bookmarks);
   const setOnboarded = useProgress((state) => state.setOnboarded);
   const addToReview = useProgress((state) => state.addToReview);
+  const sessions = useProgress((state) => state.sessions);
   const copy = useCopy(lang);
+  const [opened] = useState(() => Date.now());
+  const unfinishedReview = hydrated ? resumable(sessions, "review", opened) : undefined;
+  const unfinishedQuiz = hydrated ? resumable(sessions, "quiz", opened) : undefined;
   const { pct } = useFormat();
   const [meta, setMeta] = useState<Meta | null>(null);
   const [word, setWord] = useState<LexWord | null>(null);
@@ -133,7 +138,20 @@ function Home() {
           <GoalRing value={reviewsToday} goal={dailyGoal} label={copy.goalCaption} />
         </div>
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <ButtonLink to="/study">{copy.startSession}</ButtonLink>
+          <ButtonLink to="/study">
+            {unfinishedReview ? (
+              <>
+                {copy.resumeReview} · <Num value={unfinishedReview.queue.length} /> {copy.leftLabel}
+              </>
+            ) : (
+              copy.startSession
+            )}
+          </ButtonLink>
+          {unfinishedQuiz ? (
+            <ButtonLink to="/drill" variant="secondary">
+              {copy.resumeQuiz} · <Num value={unfinishedQuiz.questions.length - unfinishedQuiz.index} /> {copy.leftLabel}
+            </ButtonLink>
+          ) : null}
           <Link
             to="/drill"
             search={{ play: "smart" }}

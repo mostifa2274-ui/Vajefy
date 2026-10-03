@@ -114,5 +114,5 @@ export const currentProgress = progress.required().extend({
   lifetime: lifetime.required(),
 });
 
-/** The envelope zustand writes to the `roshana-v1` localStorage entry. */
+/** The envelope earlier releases wrote to the `roshana-v1` localStorage entry. */
 export const storedEnvelope = z.object({ state: z.unknown(), version: z.number().int().min(0) });

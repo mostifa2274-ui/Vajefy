@@ -1,45 +1,77 @@
 import { useEffect, useState } from "react";
+import { useActiveTime } from "@/lib/learn/active-time";
 import { useFormat } from "@/lib/learn/format";
 import { posLabel, useCopy } from "@/lib/learn/i18n";
+import {
+  answerReview,
+  lastUndoable,
+  newId,
+  nextReview,
+  reviewStats,
+  undoReview,
+  type ReviewSession,
+} from "@/lib/learn/session";
 import { freshCard, schedule } from "@/lib/learn/srs";
 import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
+import { useProgress } from "@/lib/learn/store";
 import { formatDelay } from "@/lib/learn/text";
 import type { CardProg, Grade, Lang, StudyFace } from "@/lib/learn/types";
 import { Button, SpeakButton } from "./ui";
 
 const GRADES: Grade[] = ["again", "hard", "good", "easy"];
 
+/**
+ * One review sitting. Every change is saved with the session, so leaving and
+ * returning resumes at the same card; each grade is saved together with it.
+ */
 export function StudySession({
-  items,
+  initial,
   faces,
   cards,
   lang,
   voice,
   requestRetention,
-  onGrade,
+  resumed,
   onExit,
+  onNewSession,
 }: {
-  items: { id: string; isNew: boolean }[];
+  initial: ReviewSession;
   faces: Map<string, StudyFace>;
   cards: Record<string, CardProg>;
   lang: Lang;
   voice: boolean;
   requestRetention: number;
-  onGrade: (id: string, grade: Grade) => void;
+  resumed: boolean;
   onExit: () => void;
+  onNewSession: () => void;
 }) {
   const copy = useCopy(lang);
   const { num, pct } = useFormat();
-  // The queue: answered cards leave it, missed ones go back in a little later.
-  const [order, setOrder] = useState(items);
-  const [revealed, setRevealed] = useState(false);
-  // A new card gets an encoding pass before its first retrieval attempt.
-  const [previewed, setPreviewed] = useState<Set<string>>(() => new Set());
-  const [stats, setStats] = useState({ reviews: 0, correct: 0 });
-  const [misses, setMisses] = useState<{ id: string; title: string }[]>([]);
-  const current = order[0];
+  const review = useProgress((state) => state.review);
+  const undo = useProgress((state) => state.undo);
+  const saveSession = useProgress((state) => state.saveSession);
+  const [session, setSession] = useState(initial);
+  const [now, setNow] = useState(() => Date.now());
+  const next = nextReview(session, now);
+  const current = "item" in next ? next.item : undefined;
   const face = current ? faces.get(current.id) : undefined;
-  const teaching = Boolean(current?.isNew && current && !previewed.has(current.id));
+  const teaching = Boolean(current?.isNew && !session.taught.includes(current.id));
+  const elapsed = useActiveTime(current ? `${current.id}:${session.answers.length}` : undefined);
+  const stats = reviewStats(session);
+  const undoable = lastUndoable(session);
+
+  function update(changed: ReviewSession) {
+    setSession(changed);
+    saveSession(changed);
+  }
+
+  // While only cards that are not yet due again remain, count down to the next.
+  const waitUntil = "waitUntil" in next ? next.waitUntil : 0;
+  useEffect(() => {
+    if (!waitUntil) return;
+    const id = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, [waitUntil]);
 
   useEffect(() => {
     if (!voice || !face) return;
@@ -47,21 +79,57 @@ export function StudySession({
     return () => cancelSpeech();
   }, [face, voice]);
 
+  function reveal() {
+    if (session.revealed) return;
+    update({ ...session, revealed: true, updatedAt: Date.now() });
+  }
+
+  function beginRecall() {
+    if (!current) return;
+    update({ ...session, taught: [...session.taught, current.id], revealed: false, updatedAt: Date.now() });
+  }
+
+  function answer(grade: Grade) {
+    if (!current) return;
+    const at = Date.now();
+    const op = newId();
+    const card = schedule(cards[current.id] ?? freshCard(at), grade, at, requestRetention);
+    const changed = answerReview(session, current.id, grade, card, op, at);
+    review(current.id, grade, {
+      id: op,
+      at,
+      session: session.id,
+      prompt: current.isNew ? "recall-new" : "recall",
+      responseMs: elapsed(),
+      sessionState: changed,
+    });
+    setSession(changed);
+    setNow(at);
+  }
+
+  function undoLast() {
+    if (!undoable) return;
+    const changed = undoReview(session, undoable.op, Date.now());
+    undo(undoable.op, changed);
+    setSession(changed);
+    setNow(Date.now());
+  }
+
+  function finish() {
+    update({ ...session, status: "done", updatedAt: Date.now() });
+  }
+
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
       const tag = (event.target as HTMLElement | null)?.tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      if (tag === "INPUT" || tag === "TEXTAREA" || !current) return;
       if (event.key === " ") {
         event.preventDefault();
-        if (teaching && current) {
-          setPreviewed((seen) => new Set(seen).add(current.id));
-          setRevealed(false);
-        } else {
-          setRevealed(true);
-        }
+        if (teaching) beginRecall();
+        else reveal();
         return;
       }
-      if (teaching || !revealed || !current) return;
+      if (teaching || !session.revealed) return;
       const grade = ({ "1": "again", "2": "hard", "3": "good", "4": "easy" } as const)[event.key];
       if (grade) {
         event.preventDefault();
@@ -72,43 +140,13 @@ export function StudySession({
     return () => window.removeEventListener("keydown", onKey);
   });
 
-  function answer(grade: Grade) {
-    if (!current) return;
-    const now = Date.now();
-    const prev = cards[current.id];
-    const projected = schedule(
-      prev ?? freshCard(now),
-      grade,
-      now,
-      requestRetention,
-    );
-    onGrade(current.id, grade);
-    if (grade === "again") {
-      setMisses((list) =>
-        list.some((item) => item.id === current.id) ? list : [...list, { id: current.id, title: face?.title ?? current.id }],
-      );
-    }
-    setStats((state) => ({
-      reviews: state.reviews + 1,
-      correct: state.correct + (grade === "again" ? 0 : 1),
-    }));
-    setOrder((queue) => {
-      const next = queue.slice(1);
-      if (grade === "again" || (grade === "hard" && projected.state === "learning")) {
-        next.splice(Math.min(next.length, 2), 0, current);
-      }
-      return next;
-    });
-    setRevealed(false);
-  }
+  const undoButton = undoable ? (
+    <button type="button" onClick={undoLast} className="min-h-11 px-1 text-sm text-accent">
+      {copy.undoGrade}
+    </button>
+  ) : null;
 
-  function beginRecall() {
-    if (!current) return;
-    setPreviewed((seen) => new Set(seen).add(current.id));
-    setRevealed(false);
-  }
-
-  if (!current || !face) {
+  if ("done" in next || session.status === "done") {
     const accuracy = stats.reviews ? stats.correct / stats.reviews : 0;
     return (
       <section className="mx-auto max-w-xl">
@@ -117,13 +155,13 @@ export function StudySession({
           {num(stats.reviews)} {copy.reviewed}
           {stats.reviews ? ` · ${pct(accuracy)}` : ""}
         </p>
-        {misses.length ? (
+        {stats.misses.length ? (
           <div className="mt-6">
             <h2 className="text-sm text-muted">{copy.missesTitle}</h2>
             <ul className="mt-2 divide-y divide-line border-y border-line">
-              {misses.map((miss) => (
-                <li key={miss.id} lang="en" dir="ltr" className="lex-word py-2 text-lg">
-                  {miss.title}
+              {stats.misses.map((id) => (
+                <li key={id} lang="en" dir="ltr" className="lex-word py-2 text-lg">
+                  {faces.get(id)?.title ?? id}
                 </li>
               ))}
             </ul>
@@ -131,14 +169,58 @@ export function StudySession({
         ) : (
           <p className="mt-4 text-sm text-muted">{copy.cleanSession}</p>
         )}
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap items-center gap-3">
           <Button onClick={onExit}>{copy.backHome}</Button>
+          {undoButton}
         </div>
       </section>
     );
   }
 
-  const now = Date.now();
+  const done = stats.reviews;
+  const remaining = session.queue.length;
+  const progressBar = (
+    <div className="mb-3 h-1 rounded-full bg-line">
+      <div className="h-1 rounded-full bg-accent" style={{ width: `${Math.round((100 * done) / Math.max(1, done + remaining))}%` }} />
+    </div>
+  );
+
+  if ("waitUntil" in next) {
+    const seconds = Math.max(0, Math.ceil((next.waitUntil - now) / 1000));
+    return (
+      <section className="mx-auto max-w-xl">
+        {progressBar}
+        <div className="panel p-4 sm:p-6" role="status">
+          <h1 className="text-2xl font-medium">
+            {copy.waitingTitle}{" "}
+            <span className="tabular-nums" dir="ltr">
+              {num(Math.floor(seconds / 60))}:{String(seconds % 60).padStart(2, "0")}
+            </span>
+          </h1>
+          <p className="mt-2 text-sm text-pretty text-muted">{copy.waitingHint}</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Button onClick={finish}>{copy.finishNow}</Button>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                const soonest = [...session.queue].sort((a, b) => a.dueAt - b.dueAt)[0]!;
+                update({
+                  ...session,
+                  queue: [{ ...soonest, dueAt: 0 }, ...session.queue.filter((item) => item !== soonest)],
+                  updatedAt: Date.now(),
+                });
+              }}
+            >
+              {copy.showNow}
+            </Button>
+          </div>
+        </div>
+        <div className="mt-2">{undoButton}</div>
+      </section>
+    );
+  }
+
+  if (!current || !face) return null;
   const base: CardProg = cards[current.id] ?? freshCard(now);
   const labels: Record<Grade, string> = {
     again: copy.again,
@@ -149,15 +231,16 @@ export function StudySession({
 
   return (
     <section className="mx-auto max-w-xl">
-      <div className="mb-3 h-1 rounded-full bg-line">
-        <div
-          className="h-1 rounded-full bg-accent"
-          style={{
-            width: `${Math.round((100 * stats.reviews) / Math.max(1, stats.reviews + order.length))}%`,
-          }}
-        />
-      </div>
-      <div key={current.id + String(revealed) + String(teaching)} className="panel rise p-4 sm:p-6">
+      {resumed ? (
+        <p className="mb-2 flex flex-wrap items-center justify-between gap-2 text-sm text-muted" role="status">
+          <span>{copy.resumed}</span>
+          <button type="button" onClick={onNewSession} className="min-h-11 text-accent">
+            {copy.newSessionInstead}
+          </button>
+        </p>
+      ) : null}
+      {progressBar}
+      <div key={current.id + String(session.revealed) + String(teaching)} className="panel rise p-4 sm:p-6">
         <div className="flex items-center justify-between gap-3 text-sm text-muted">
           <span>
             {teaching ? copy.teachNew : current.isNew ? copy.newCard : copy.reviewCard}
@@ -165,7 +248,7 @@ export function StudySession({
             {face.pos ? ` · ${posLabel(face.pos, lang)}` : ""}
           </span>
           <span className="tabular-nums">
-            {num(stats.reviews + 1)} / {num(stats.reviews + order.length)}
+            {num(done + 1)} / {num(done + remaining)}
           </span>
         </div>
         {teaching ? <p className="mt-3 text-sm text-pretty text-muted">{copy.teachNewHint}</p> : null}
@@ -188,20 +271,20 @@ export function StudySession({
           </div>
         </div>
 
-        {teaching || revealed ? <Meaning face={face} noteLabel={copy.note} /> : null}
+        {teaching || session.revealed ? <Meaning face={face} noteLabel={copy.note} /> : null}
 
         {teaching ? (
           <Button className="mt-5 w-full" onClick={beginRecall}>
             {copy.tryRecall}
           </Button>
-        ) : !revealed ? (
-          <Button variant="secondary" className="w-full" onClick={() => setRevealed(true)}>
+        ) : !session.revealed ? (
+          <Button variant="secondary" className="w-full" onClick={reveal}>
             {copy.reveal}
           </Button>
         ) : null}
       </div>
 
-      {!teaching && revealed ? (
+      {!teaching && session.revealed ? (
         <div className="mt-3 grid grid-cols-4 gap-2">
           {GRADES.map((grade) => {
             const delay = schedule(base, grade, now, requestRetention).due - now;
@@ -237,7 +320,10 @@ export function StudySession({
           })}
         </div>
       ) : null}
-      <p className="mt-4 text-center text-xs text-muted">{teaching ? copy.teachNewHint : copy.keyboardHint}</p>
+      <div className="mt-3 flex min-h-11 items-center justify-between gap-3">
+        <p className="text-xs text-muted">{teaching ? copy.teachNewHint : copy.keyboardHint}</p>
+        {undoButton}
+      </div>
     </section>
   );
 }

@@ -17,6 +17,7 @@ import {
   irregularQuestions,
   lexQuestions,
 } from "@/lib/learn/quiz";
+import { resumable, startQuiz, type QuizSession } from "@/lib/learn/session";
 import { useProgress } from "@/lib/learn/store";
 import type { Lang, LevelId, Question } from "@/lib/learn/types";
 
@@ -73,7 +74,7 @@ function needsLevel(mode: Mode) {
 }
 
 type Arena =
-  | { kind: "quiz"; questions: Question[]; smart?: boolean }
+  | { kind: "quiz"; session: QuizSession }
   | { kind: "match"; pairs: PlayPair[] }
   | { kind: "sprint"; pairs: PlayPair[] };
 
@@ -83,6 +84,8 @@ function DrillPage() {
   const focus = useProgress((state) => state.focus);
   const hydrated = useProgress((state) => state.hydrated);
   const practice = useProgress((state) => state.practice);
+  const saveSession = useProgress((state) => state.saveSession);
+  const sessions = useProgress((state) => state.sessions);
   const copy = useCopy(lang);
   const { num } = useFormat();
   const [mode, setMode] = useState<Mode>(initial.play === "match" ? "match" : initial.play === "sprint" ? "sprint" : initial.play === "studied" ? "to-fa" : "smart");
@@ -101,6 +104,18 @@ function DrillPage() {
   useEffect(() => {
     if (hydrated && !levelTouched.current) setLevel(focus);
   }, [hydrated, focus]);
+
+  // Opened once per page view; a round finished elsewhere drops out by itself.
+  const [now] = useState(() => Date.now());
+  const unfinished = hydrated ? resumable(sessions, "quiz", now) : undefined;
+
+  function begin(questions: Question[], smart: boolean) {
+    const at = Date.now();
+    if (unfinished) saveSession({ ...unfinished, status: "done", updatedAt: at });
+    const session = startQuiz(questions, mode, smart, at);
+    saveSession(session);
+    setArena({ kind: "quiz", session });
+  }
 
   async function start() {
     setBusy(true);
@@ -122,7 +137,7 @@ function DrillPage() {
           setError("empty");
           setArena(null);
         } else {
-          setArena({ kind: "quiz", questions: built, smart: true });
+          begin(built, true);
         }
       } else if (mode === "match" || mode === "sprint") {
         const words = await loadLevel(level);
@@ -141,7 +156,7 @@ function DrillPage() {
           setError("empty");
           setArena(null);
         } else {
-          setArena({ kind: "quiz", questions: built });
+          begin(built, false);
         }
       }
     } catch {
@@ -154,11 +169,11 @@ function DrillPage() {
   if (arena?.kind === "quiz") {
     return (
       <QuizRun
-        questions={arena.questions}
+        key={arena.session.id}
+        initial={arena.session}
         lang={lang}
-        onGrade={practice}
         onDone={() => setArena(null)}
-        title={arena.smart ? copy.smartPractice : undefined}
+        title={arena.session.smart ? copy.smartPractice : undefined}
       />
     );
   }
@@ -185,9 +200,29 @@ function DrillPage() {
     );
   }
 
+  const unfinishedLeft = unfinished ? unfinished.questions.length - unfinished.index : 0;
+
   return (
     <div>
       <PageHeader title={copy.drill} lede={copy.drillLead} />
+      {unfinished ? (
+        <div className="panel mb-4 flex flex-wrap items-center justify-between gap-3 p-4">
+          <p className="text-sm">
+            <span className="font-medium">{copy.resumeQuiz}</span>
+            <span className="text-muted">
+              {" · "}
+              {unfinished.smart ? copy.smartPractice : copy.drill} · {num(unfinishedLeft)} {copy.leftLabel}
+            </span>
+          </p>
+          <button
+            type="button"
+            onClick={() => setArena({ kind: "quiz", session: unfinished })}
+            className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-fg"
+          >
+            {copy.resumeQuiz}
+          </button>
+        </div>
+      ) : null}
       <button
         type="button"
         aria-pressed={mode === "smart"}

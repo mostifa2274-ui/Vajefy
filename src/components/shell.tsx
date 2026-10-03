@@ -10,9 +10,8 @@ import {
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { useCopy } from "@/lib/learn/i18n";
-import { liveStreak, todayLog, useProgress } from "@/lib/learn/store";
+import { liveStreak, persistence, todayLog, useProgress } from "@/lib/learn/store";
 import type { HeldSave } from "@/lib/learn/recovery";
-import { progressStorage, PROGRESS_STORAGE_KEY } from "@/lib/learn/storage";
 import { RecoveryScreen } from "./recovery-screen";
 import { SaveNotice } from "./save-notice";
 import { Num } from "./ui";
@@ -33,7 +32,6 @@ export function Shell({ children }: { children: ReactNode }) {
   const lang = useProgress((state) => state.lang);
   const hydrated = useProgress((state) => state.hydrated);
   const setLang = useProgress((state) => state.setLang);
-  const setHydrated = useProgress((state) => state.setHydrated);
   const streak = useProgress((state) => state.streak);
   const lastStudyDate = useProgress((state) => state.lastStudyDate);
   const logs = useProgress((state) => state.logs);
@@ -44,17 +42,16 @@ export function Shell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const router = useRouter();
   const [query, setQuery] = useState("");
-  const held = useSyncExternalStore(progressStorage.subscribe, progressStorage.getHeld, serverHeld);
+  const held = useSyncExternalStore(persistence.subscribe, persistence.getHeld, serverHeld);
 
   useEffect(() => {
-    let alive = true;
-    void Promise.resolve(useProgress.persist.rehydrate()).finally(() => {
-      if (alive) setHydrated();
-    });
-    return () => {
-      alive = false;
-    };
-  }, [setHydrated]);
+    void persistence.start();
+  }, []);
+
+  useEffect(() => {
+    // Lets automated checks wait until saved progress has been loaded.
+    if (hydrated) document.documentElement.dataset.progressReady = "true";
+  }, [hydrated]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -97,21 +94,6 @@ export function Shell({ children }: { children: ReactNode }) {
     // opportunistic eviction. Denial is harmless because export/import remains.
     void navigator.storage.persist().catch(() => undefined);
   }, [hydrated, onboarded]);
-
-  useEffect(() => {
-    function syncFromOtherTab(event: StorageEvent) {
-      if (event.key !== PROGRESS_STORAGE_KEY) return;
-      try {
-        if (event.storageArea !== window.localStorage) return;
-      } catch {
-        // A blocked storage getter is already reported by progressStorage.
-        return;
-      }
-      if (progressStorage.shouldRehydrate()) void useProgress.persist.rehydrate();
-    }
-    window.addEventListener("storage", syncFromOtherTab);
-    return () => window.removeEventListener("storage", syncFromOtherTab);
-  }, []);
 
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
 

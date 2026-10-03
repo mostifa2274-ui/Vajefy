@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
 import { expect, test, type Locator, type Page } from "@playwright/test";
+import { readProgress } from "./progress-db";
 
 const KEY = "roshana-v1";
 const DAY = 86_400_000;
@@ -72,10 +73,14 @@ test("an unreadable save is never replaced at startup and can be downloaded exac
   await expect(title).toHaveCount(0);
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "سطح شروع", exact: true })).toBeVisible();
-  const fresh = JSON.parse((await stored(page))!);
+  const fresh = await readProgress(page);
   expect(fresh.version).toBe(4);
   expect(fresh.state.cards).toEqual({});
   expect(fresh.state.onboarded).toBe(false);
+  // The unreadable original is still there, untouched, but no longer in use.
+  expect(await stored(page)).toBe(raw);
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "سطح شروع", exact: true })).toBeVisible();
 });
 
 test("readable parts of a damaged save are recovered only after confirmation", async ({ page }) => {
@@ -100,11 +105,12 @@ test("readable parts of a damaged save are recovered only after confirmation", a
   await readable.getByRole("button", { name: "Yes, replace it", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Saved progress could not be read" })).toHaveCount(0);
   await expect(page.getByRole("alert")).toHaveCount(0);
-  const saved = JSON.parse((await stored(page))!);
+  await expect.poll(async () => (await readProgress(page)).state?.xp).toBe(60);
+  const saved = await readProgress(page);
   expect(saved.version).toBe(4);
   expect(Object.keys(saved.state.cards)).toEqual(["lex:A1:about"]);
   expect(saved.state.logs).toEqual([]);
-  expect(saved.state.xp).toBe(60);
+  expect(await stored(page)).toBe(raw);
   await page.reload();
   await page.goto("/progress");
   await expect(page.getByRole("heading", { name: "Progress", exact: true })).toBeVisible();
@@ -132,7 +138,7 @@ test("importing a backup from a newer version explains why it was refused", asyn
   await seedRaw(page, JSON.stringify({ state: progress(now), version: 4 }));
   await page.goto("/progress");
   await expect(page.getByRole("heading", { name: "Progress", exact: true })).toBeVisible();
-  const before = await stored(page);
+  const before = await readProgress(page);
   const backup = { kind: "roshana-progress", version: 99, exportedAt: new Date(now).toISOString(), progress: progress(now) };
   await page.locator('input[type="file"]').setInputFiles({
     name: "newer.json",
@@ -143,5 +149,5 @@ test("importing a backup from a newer version explains why it was refused", asyn
     page.getByText("This backup comes from a newer version of Roshana. Reload the page to update the app, then import it again.", { exact: true }),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: "Yes, replace it", exact: true })).toHaveCount(0);
-  expect(await stored(page)).toBe(before);
+  expect((await readProgress(page)).state).toEqual(before.state);
 });

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { downloadText } from "@/lib/learn/download-backup";
 import type { Copy } from "@/lib/learn/i18n";
 import { recoverProgress, savedCopyFileName, type HeldSave } from "@/lib/learn/recovery";
-import { progressStorage } from "@/lib/learn/storage";
 import { useProgress } from "@/lib/learn/store";
 import { Num } from "./ui";
 
@@ -45,7 +44,6 @@ export function RecoveryScreen({ held, copy }: { held: HeldSave; copy: Copy }) {
   }, [recovery, setLang]);
 
   function replace(apply: () => void) {
-    progressStorage.release();
     apply();
   }
 
