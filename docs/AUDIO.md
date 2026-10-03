@@ -118,3 +118,20 @@ The service worker keeps clips in their own cache, `vajefy-audio-v1`, which
 survives app updates. A clip played once is cached. **Progress → Pronunciation
 offline** downloads every clip for the selected accent: about 4.4 MB for
 British, 4.1 MB for American. Each accent can also be removed again.
+
+## Speaking practice
+
+Lessons and the Words page offer **Say it yourself**: the learner records the
+word (up to six seconds), plays it back and plays the model clip, to compare by
+ear. This is the first stage of speaking practice in the roadmap.
+
+- **Recordings never leave the device.** They are held in the page's memory
+  only: never uploaded, never stored, and gone when the learner leaves the
+  page. The site's Permissions-Policy allows the microphone for this origin
+  only (`microphone=(self)`).
+- **There is no automatic score.** Pronunciation assessment has phonemic and
+  prosodic dimensions, and a transcript match alone says little. Automated
+  feedback on targeted sounds and stress comes only after it has been
+  calibrated against human judgements.
+- When the browser cannot record, the control is not shown. When access is
+  refused, it says so and how to allow it.

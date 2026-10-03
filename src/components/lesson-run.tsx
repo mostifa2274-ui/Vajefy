@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import type { CoachRequest } from "@/api/coach-core";
 import { useActiveTime } from "@/lib/learn/active-time";
 import { useFormat } from "@/lib/learn/format";
 import { posLabel, useCopy, type Copy } from "@/lib/learn/i18n";
@@ -24,7 +25,10 @@ import { newId } from "@/lib/learn/session";
 import { useProgress } from "@/lib/learn/store";
 import { cn } from "@/lib/cn";
 import { useKeepFocus } from "@/lib/focus";
+import { report } from "@/lib/telemetry";
 import { AnswerFeedback, Mark, ProgressMeter, WrongRight } from "./feedback";
+import { CoachPanel } from "./coach-panel";
+import { SayIt } from "./say-it";
 import { Button, Sep, SpeakButton } from "./ui";
 
 /** Event handlers read the clock through this, outside render. */
@@ -194,12 +198,12 @@ function StepView({
 }) {
   if (step.kind === "teach") {
     const target = index.bySense.get(step.target);
-    if (!target) return <Skip copy={copy} onNext={onNext} />;
+    if (!target) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
     return <Teach target={target} index={index} copy={copy} accent={accent} lang={lang} onDone={() => onTeachDone(step.target)} />;
   }
   if (step.kind === "contrast") {
     const contrast = index.pilot.contrasts.find((item) => item.id === step.contrast);
-    if (!contrast) return <Skip copy={copy} onNext={onNext} />;
+    if (!contrast) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
     return (
       <div className="panel p-4 sm:p-6">
         <p className="text-sm text-accent">{copy.compareLabel}</p>
@@ -224,27 +228,36 @@ function StepView({
             </li>
           ))}
         </ul>
+        <CoachPanel
+          request={{ task: "difference", senses: contrast.entries.slice(0, 3), contrast: contrast.id }}
+          label={copy.coachAskDifference}
+          copy={copy}
+          lang={lang}
+        />
         <Button className="mt-6 w-full" onClick={onNext}>{copy.continueLabel}</Button>
       </div>
     );
   }
   if (step.kind === "scene") {
     const scene = index.pilot.scenes.find((item) => item.id === step.scene);
-    if (!scene) return <Skip copy={copy} onNext={onNext} />;
+    if (!scene) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
     return <SceneRead scene={scene} copy={copy} lang={lang} onNext={onNext} />;
   }
   if (step.kind === "write") {
     const scene = index.pilot.scenes.find((item) => item.id === step.scene);
-    if (!scene) return <Skip copy={copy} onNext={onNext} />;
-    return <WriteTask scene={scene} copy={copy} answered={answered} onAnswer={onAnswer} onNext={onNext} />;
+    if (!scene) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
+    return <WriteTask scene={scene} copy={copy} lang={lang} answered={answered} onAnswer={onAnswer} onNext={onNext} />;
   }
   const item = resolveItem(index, step.ref);
-  if (!item) return <Skip copy={copy} onNext={onNext} />;
+  if (!item) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
   return (
     <Check
       item={item}
       role={step.role}
       copy={copy}
+      lang={lang}
+      // The coach explains taught items, never check-up items.
+      coach={step.ref.from === "sense" && !step.role.startsWith("checkup") ? { task: "fit", senses: [step.ref.target], text: filled(item) } : undefined}
       answered={answered}
       onAnswer={(result, given) => onAnswer(step.ref, item, step.role, result, given)}
       onNext={onNext}
@@ -252,7 +265,25 @@ function StepView({
   );
 }
 
-function Skip({ copy, onNext }: { copy: Copy; onNext: () => void }) {
+/** The sentence an item is about, with its answer in place, for the coach. */
+function filled(item: ResolvedItem): string {
+  if (item.type === "cloze") return item.text.replace("___", item.answer).slice(0, 300);
+  if (item.type === "produce") return item.frame.replace("___", item.answer).slice(0, 300);
+  const right = item.options.find((option) => option.ok)?.text ?? "";
+  return `${item.prompt} — ${right}`.slice(0, 300);
+}
+
+/** What a step points at, for reporting content that could not be shown. */
+function stepCode(step: LessonStep): string {
+  if (step.kind === "teach") return step.target;
+  if (step.kind === "contrast") return step.contrast;
+  if (step.kind === "scene" || step.kind === "write") return step.scene;
+  return step.ref.from === "generated" ? step.ref.target : `${step.ref.target}/${step.ref.item}`;
+}
+
+/** A step whose content is missing: say so, report it, and let the learner go on. */
+function Skip({ copy, onNext, code }: { copy: Copy; onNext: () => void; code: string }) {
+  useEffect(() => report("exercise-broken", code), [code]);
   return (
     <div className="panel p-4">
       <p className="text-sm text-muted">{copy.loadFailed}</p>
@@ -295,6 +326,7 @@ function Teach({
           <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow item={sense.id} />
         </div>
       </div>
+      <SayIt text={entry.headword} clip={clips.word} copy={copy} />
       <div className="mt-5 border-t border-line pt-4">
         <p lang="fa" dir="rtl" className="text-xl font-medium">{sense.gloss}</p>
         <p lang="fa" dir="rtl" className="mt-2 text-pretty">{sense.meaning}</p>
@@ -342,6 +374,8 @@ function Check({
   item,
   role,
   copy,
+  lang,
+  coach,
   answered,
   onAnswer,
   onNext,
@@ -349,6 +383,8 @@ function Check({
   item: ResolvedItem;
   role: Role;
   copy: Copy;
+  lang: "fa" | "en";
+  coach?: Omit<CoachRequest, "lang">;
   answered: LessonAnswer | undefined;
   onAnswer: (result: LessonAnswer["result"], given: string) => void;
   onNext: () => void;
@@ -429,12 +465,28 @@ function Check({
           ) : null}
         </form>
       )}
-      {answered ? <Feedback item={item} answered={answered} copy={copy} onNext={onNext} /> : null}
+      {answered ? (
+        <Feedback item={item} answered={answered} copy={copy} onNext={onNext}>
+          {coach ? <CoachPanel request={coach} label={copy.coachAskFit} copy={copy} lang={lang} /> : null}
+        </Feedback>
+      ) : null}
     </div>
   );
 }
 
-function Feedback({ item, answered, copy, onNext }: { item: ResolvedItem; answered: LessonAnswer; copy: Copy; onNext: () => void }) {
+function Feedback({
+  item,
+  answered,
+  copy,
+  onNext,
+  children,
+}: {
+  item: ResolvedItem;
+  answered: LessonAnswer;
+  copy: Copy;
+  onNext: () => void;
+  children?: ReactNode;
+}) {
   return (
     <AnswerFeedback
       ok={answered.result !== "wrong"}
@@ -465,6 +517,7 @@ function Feedback({ item, answered, copy, onNext }: { item: ResolvedItem; answer
           <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty">{item.why}</p>
         </>
       )}
+      {children}
     </AnswerFeedback>
   );
 }
@@ -501,12 +554,14 @@ function SceneRead({ scene, copy, lang, onNext }: { scene: PilotIndex["pilot"]["
 function WriteTask({
   scene,
   copy,
+  lang,
   answered,
   onAnswer,
   onNext,
 }: {
   scene: PilotIndex["pilot"]["scenes"][number];
   copy: Copy;
+  lang: "fa" | "en";
   answered: LessonAnswer | undefined;
   onAnswer: (ref: ItemRef, item: ResolvedItem, role: Role, result: LessonAnswer["result"], given: string) => void;
   onNext: () => void;
@@ -557,6 +612,9 @@ function WriteTask({
         <div className="mt-4 border-t border-line pt-4">
           <p className="text-sm text-muted">{copy.modelAnswer}</p>
           <p lang="en" dir="ltr" className="mt-1 text-pretty">{scene.write.model}</p>
+          {written.trim() ? (
+            <CoachPanel request={{ task: "sentence", senses: scene.targets.slice(0, 3), text: written.slice(0, 300) }} label={copy.coachAskSentence} copy={copy} lang={lang} />
+          ) : null}
           {!answered ? (
             <div className="mt-4 flex flex-wrap gap-2">
               <Button onClick={() => assess(true)}>{copy.selfWorks}</Button>

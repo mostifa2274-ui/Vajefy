@@ -1,0 +1,23 @@
+name: Production smoke checks
+
+permissions:
+  contents: read
+
+# Checks the deployed site, set as the repository variable SITE_URL
+# (docs/OPERATIONS.md). Cloudflare deploys main itself, so this runs on a
+# schedule and on demand, and is skipped until the variable exists.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+jobs:
+  smoke:
+    if: vars.SITE_URL != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - run: node scripts/smoke.mjs "${{ vars.SITE_URL }}"

@@ -36,6 +36,12 @@ practice), **Words** (search, saved entries and reference) and **Progress**
   measures what was retained, learners can export their data for the pilot
   study, and an analysis compares the active scheduler with personalised FSRS-6
   and FSRS-7 ([docs/EVALUATION.md](docs/EVALUATION.md)).
+- **Speaking practice**: record yourself and compare with the model, on the
+  device only.
+- **An AI coach, behind its gate**: grounded answers about sentences, fit and
+  differences, off until configured and evaluated ([docs/COACH.md](docs/COACH.md)).
+  Operational monitoring and the optional services are in
+  [docs/OPERATIONS.md](docs/OPERATIONS.md).
 - **Accessible and fast on phones**: tested against WCAG 2.2 AA
   ([docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and Core Web Vitals budgets on
   a throttled phone ([docs/PERFORMANCE.md](docs/PERFORMANCE.md)).
@@ -66,6 +72,8 @@ npm run dev        # http://localhost:8080
 | `npm run content:status` | Editorial progress across the A1 batches, and what to draft next |
 | `npm run content:lint` | Authoring checks: level of vocabulary, reused examples, ambiguous items |
 | `npm run content:scaffold` / `content:drafts` / `content:promote` | Start, check and finish drafts for the next A1 batch |
+| `npm run coach:cases` / `coach:eval` | Build the coach's evaluation set; run its release gate against a model |
+| `node scripts/smoke.mjs <url>` | Check a deployed site ([docs/OPERATIONS.md](docs/OPERATIONS.md)) |
 | `npm run evaluate` | Analyse pilot-study exports: scheduler comparison and the 30-day measure ([docs/EVALUATION.md](docs/EVALUATION.md)) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
@@ -231,12 +239,18 @@ deployment, `npm run deploy` performs the build before invoking Wrangler.
 
 ## Privacy and offline behavior
 
-The production app makes no application API or AI-service request. Fonts use
+The production app makes no application API or AI-service request unless the
+optional coach or sync is configured ([docs/OPERATIONS.md](docs/OPERATIONS.md)).
+The coach sends a learner's sentence to an AI service only after they confirm. Fonts use
 system stacks, so the core UI and vocabulary data do not depend on Google Fonts
 or another web-font host. Pilot pronunciation is recorded audio served by the app
 itself. For other words, the browser's speech synthesis is used; depending on
 the browser and voice, it may run on the device or send the text to the browser
 vendor's speech service.
+
+Speaking practice records with the microphone only when the learner presses
+Record. The recording stays in the page's memory and is never uploaded or saved
+([docs/AUDIO.md](docs/AUDIO.md#speaking-practice)).
 
 The service worker is deliberately limited to same-origin GET requests. Learning
 data and hashed assets are cached; navigations prefer the network and fall back

@@ -221,3 +221,53 @@ test("the 30-day check-up measures retention without touching the schedule, and 
   expect(data.events.filter((event: { type: string }) => event.type === "assessment")).toHaveLength(8);
   expect(data.sessions.find((session: { mode?: string }) => session.mode === "checkup").answers.every((answer: object) => !("given" in answer))).toBe(true);
 });
+
+test("a learner can record themselves and compare with the model, and nothing is saved", async ({ page, context }) => {
+  await context.grantPermissions(["microphone"]);
+  await seedNewLearner(page);
+  await page.goto("/learn");
+  await page.getByRole("button", { name: /Start lesson/ }).click();
+  const before = await readProgress(page);
+  await page.getByRole("button", { name: "Record myself", exact: true }).click();
+  await expect(page.getByText("Recording…", { exact: true })).toBeVisible();
+  await page.waitForTimeout(800);
+  await page.getByRole("button", { name: "Stop recording", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Play mine", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Play the model", exact: true })).toBeVisible();
+  await expect(page.getByText("Your recording stays on this device and is gone when you leave this page.")).toBeVisible();
+  await page.getByRole("button", { name: "Play mine", exact: true }).click();
+  await accessible(page);
+  expect((await readProgress(page)).events.length).toBe(before.events.length);
+});
+
+test("the coach appears only when its service is on, explains, and changes no progress", async ({ page }) => {
+  test.setTimeout(90_000);
+  await seedNewLearner(page);
+  await page.goto("/learn");
+  await page.getByRole("button", { name: /Start lesson/ }).click();
+  // Off by default: no coach anywhere.
+  for (let i = 0; i < 8 && (await step(page)); i++);
+  await expect(page.getByRole("button", { name: /Ask the coach/ })).toHaveCount(0);
+
+  const asked: unknown[] = [];
+  await page.route("**/api/coach/status", (route) => route.fulfill({ json: { enabled: true } }));
+  await page.route("**/api/coach", async (route) => {
+    asked.push(route.request().postDataJSON());
+    await route.fulfill({
+      json: { reply: { verdict: "unsure", issue: "", explanation: "It depends on the situation.", corrected: "She brought the book.", next: "Try another sentence.", confidence: "low" } },
+    });
+  });
+  await page.reload();
+  await page.getByRole("button", { name: /Continue lesson/ }).click();
+  const coach = page.getByRole("button", { name: "Ask the coach: why does this word fit here?", exact: true });
+  for (let i = 0; i < 30 && !(await coach.isVisible()) && (await step(page)); i++);
+  await expect(coach).toBeVisible();
+  const before = (await readProgress(page)).events.length;
+  await coach.click();
+  await expect(page.getByText(/The coach is not sure/)).toBeVisible();
+  await expect(page.getByText("An AI answer, which can be wrong. It does not count towards your progress.")).toBeVisible();
+  expect(asked).toHaveLength(1);
+  expect(asked[0]).toMatchObject({ task: "fit", lang: "en" });
+  expect((await readProgress(page)).events.length).toBe(before);
+  await accessible(page);
+});

@@ -4,6 +4,7 @@ import { LabeledWords } from "@/components/labeled-words";
 import { LearningSummary, OfflineAudio, StudyPanel } from "@/components/progress-extras";
 import { Num, PageHeader, Sep } from "@/components/ui";
 import { cn } from "@/lib/cn";
+import { report } from "@/lib/telemetry";
 import { parseBackup } from "@/lib/learn/backup";
 import { downloadProgressBackup } from "@/lib/learn/download-backup";
 import { useFormat } from "@/lib/learn/format";
@@ -252,6 +253,7 @@ function BackupPanel({ copy }: { copy: Copy }) {
     const parsed = parseBackup(await file.text());
     setPending(parsed.ok ? parsed.progress : null);
     setStatus(parsed.ok ? null : parsed.reason);
+    if (!parsed.ok) report("import-failed", parsed.reason);
   }
 
   return (

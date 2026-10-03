@@ -1,6 +1,7 @@
 import { posLabel, type Copy } from "@/lib/learn/i18n";
 import { POS_FA, pronunciationFor, senseAudio, type PilotEntry, type PilotIndex } from "@/lib/learn/pilot";
 import { WrongRight } from "./feedback";
+import { SayIt } from "./say-it";
 import { Sep, SpeakButton } from "./ui";
 
 /** Every sense of an enhanced pilot entry, as reference in the Words page. */
@@ -32,6 +33,7 @@ export function PilotEntryDetail({
             <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty">{sense.meaning}</p>
             <div className="mt-2">
               <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow item={sense.id} />
+              <SayIt text={entry.headword} clip={clips.word} copy={copy} />
             </div>
             <ul className="mt-3 grid gap-1 text-sm">
               {sense.grammar.map((item) => (

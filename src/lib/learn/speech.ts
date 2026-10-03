@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from "react";
+import { report } from "@/lib/telemetry";
 import { useProgress } from "./store";
 
 /**
@@ -140,6 +141,7 @@ export async function play(source: Source, accent: Accent = useProgress.getState
   if (source.clip) ok = await playClip(source.clip, Boolean(source.slow), mine);
   if (!ok && mine === token) ok = await speak(source.text, accent, Boolean(source.slow), mine);
   if (mine === token) set({ key: source.key, state: ok ? "idle" : "unavailable" });
+  if (mine === token && !ok) report("audio-failed", source.clip ? "clip" : "speech");
   return ok;
 }
 

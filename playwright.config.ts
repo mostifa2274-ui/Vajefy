@@ -12,6 +12,8 @@ export default defineConfig({
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     serviceWorkers: "allow",
+    // A fake microphone, so speaking practice can be tested without hardware.
+    launchOptions: { args: ["--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream"] },
   },
   projects: [
     { name: "app", testIgnore: /performance\.spec\.ts/ },

@@ -2,6 +2,7 @@ import { Link, useNavigate, useRouter, useRouterState } from "@tanstack/react-ro
 import { BookOpenText, ChartColumn, GraduationCap, Search } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { report, reportCrashes } from "@/lib/telemetry";
 import { useCopy } from "@/lib/learn/i18n";
 import { liveStreak, persistence, todayLog, useProgress } from "@/lib/learn/store";
 import type { HeldSave } from "@/lib/learn/recovery";
@@ -42,6 +43,18 @@ export function Shell({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     void persistence.start();
+    // Save failures are reported by kind only, when the build enables reporting.
+    const watch = () => {
+      const status = persistence.getStatus();
+      if (status === "session") report("save-failed");
+      if (status === "unavailable") report("storage-unavailable");
+    };
+    const unsubscribe = persistence.subscribe(watch);
+    const stopCrashes = reportCrashes();
+    return () => {
+      unsubscribe();
+      stopCrashes();
+    };
   }, []);
 
   useEffect(() => {

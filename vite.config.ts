@@ -5,6 +5,8 @@ import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  // Which deployment an error report came from (Cloudflare Workers Builds sets the commit).
+  define: { "import.meta.env.VITE_APP_VERSION": JSON.stringify((process.env.WORKERS_CI_COMMIT_SHA ?? "local").slice(0, 12)) },
   server: { port: 8080 },
   preview: { port: 8081 },
   resolve: { tsconfigPaths: true },
