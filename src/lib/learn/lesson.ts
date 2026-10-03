@@ -144,10 +144,14 @@ function distractors(index: PilotIndex, target: PilotTarget, random: () => numbe
     (other) => entryIdOf(other.sense.id) !== entryIdOf(target.sense.id) && other.sense.gloss !== target.sense.gloss,
   );
   const same = pool.filter((other) => other.sense.pos === target.sense.pos);
-  const picked = [...shuffleWith(same, random), ...shuffleWith(pool, random)]
-    .filter((item, position, list) => list.findIndex((other) => other.sense.id === item.sense.id) === position)
-    .slice(0, 3)
-    .map((item) => item.sense.id);
+  // The first three distinct senses, same part of speech first. This runs
+  // several times per word while a lesson is built, so it must not grow with
+  // the square of the catalogue.
+  const picked: string[] = [];
+  for (const item of [...shuffleWith(same, random), ...shuffleWith(pool, random)]) {
+    if (!picked.includes(item.sense.id)) picked.push(item.sense.id);
+    if (picked.length === 3) break;
+  }
   return shuffleWith([target.sense.id, ...picked], random);
 }
 

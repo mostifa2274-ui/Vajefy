@@ -93,6 +93,15 @@ export function Shell({ children }: { children: ReactNode }) {
     let alive = true;
 
     async function prepareOffline() {
+      // Installing downloads every data file. On a slow connection that would
+      // compete with the first screen's own requests, so it waits until the
+      // page has loaded and the browser is idle.
+      await new Promise<void>((resolve) => {
+        const idle = () => ("requestIdleCallback" in window ? window.requestIdleCallback(() => resolve(), { timeout: 3000 }) : setTimeout(resolve, 1000));
+        if (document.readyState === "complete") idle();
+        else window.addEventListener("load", idle, { once: true });
+      });
+      if (!alive) return;
       await navigator.serviceWorker.register("/sw.js");
       await navigator.serviceWorker.ready;
       if (!navigator.serviceWorker.controller) {
