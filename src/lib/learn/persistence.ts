@@ -613,6 +613,14 @@ export function createPersistence(env: Environment) {
       }
       listen();
     },
+    /**
+     * Wait until every operation dispatched so far is stored. False when one
+     * could not be, or when nothing is stored in this browser.
+     */
+    async flush(): Promise<boolean> {
+      if (mode === "idb") await pump();
+      return mode === "idb" && !pending.length;
+    },
     getStatus: (): SaveStatus => status,
     getHeld: (): HeldSave | null => held,
     pendingCount: () => pending.length,

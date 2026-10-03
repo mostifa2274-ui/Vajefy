@@ -16,7 +16,9 @@ Under **Progress → Sync between devices**:
   spaces, dashes and the look-alike letters O, I, L and U are accepted.
   - If only one side has progress, it is used.
   - If both have progress, the learner chooses which to keep, and the other is
-    replaced on every device. Nothing changes until they choose.
+    replaced on every device. Nothing changes until they choose. Keeping this
+    device's progress needs the server, to skip the whole synced history; if
+    it cannot be reached, the choice stays open to be made again.
 - After that, every answer, setting, bookmark, undo, reset and import made on
   one device reaches the others, usually within seconds. The panel shows when
   the device last synced and how many changes are waiting.
@@ -63,9 +65,13 @@ Sync uses the same operations that are saved locally:
 - **Nothing is lost on the way.** A committed operation goes into an outbox in
   IndexedDB (`vajefy-sync`) and leaves the crash journal only after that. If
   the page closes in between, the journal hands it to sync on the next start.
-  The download position is saved after each applied operation.
+  The download position moves past operations only once they are stored, so
+  if storing fails, or the page closes first, they are downloaded again.
 - **A device does not re-apply its own uploads.** It records what it sent, so
   its starting snapshot coming back down does not roll back later answers.
+  Every tab shares these records. They are kept for a week after the upload
+  comes back down, since another tab may still be downloading it, and cleared
+  when the device stops syncing.
 - **Resets win.** Clearing progress, importing a backup, or keeping one device's
   progress when pairing starts a new *epoch*. The server drops everything
   before it, so a new device starts from it, and refuses operations from an
@@ -88,7 +94,8 @@ speaking-practice recordings (which are never stored).
 
 Sync runs a few seconds after a change, when the page becomes visible, when the
 device comes back online and on **Sync now**; after a failure it tries again a
-minute later. Tabs share one outbox and follow each other's pairing.
+minute later. Tabs share one outbox and download position, and follow each
+other's pairing.
 
 ## The server
 
@@ -130,9 +137,10 @@ reporting is on ([OPERATIONS.md](OPERATIONS.md#error-reports)).
 
 - `src/lib/learn/sync.test.ts` runs devices with their own databases against
   the real server code over SQLite: adopting progress, offline answers, resets,
-  the choice when both sides have progress, a crash between saving and
-  queueing, operations the server will never accept, deletion, and that the
-  server holds only opaque ids and ciphertext.
+  the choice when both sides have progress (with more than a page of
+  history), a crash between saving and queueing, a download that could not be
+  stored, two tabs downloading at once, operations the server will never
+  accept, deletion, and that the server holds only opaque ids and ciphertext.
 - `src/api/sync.test.ts` covers the server: once-only storage, epochs,
   deletion, validation and the migration file.
 - `tests/e2e/sync.spec.ts` pairs three browser contexts through the interface.

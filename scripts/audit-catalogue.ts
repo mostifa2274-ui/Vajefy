@@ -53,7 +53,13 @@ function text(id: string, value: unknown, field = "") {
     else if (char === "⁩") depth--;
     if (depth < 0) break;
   }
+  // "مبلمان مبلمان": a word typed twice. Pronunciation respellings repeat syllables on purpose.
+  if (!PRONUNCIATION.has(name)) {
+    const twice = /(?<![\p{L}\p{M}\u200c])([\p{L}\p{M}\u200c]{2,}) \1(?![\p{L}\p{M}\u200c])/u.exec(value);
+    if (twice) add("doubled-word", "warning", id, field, `"${twice[1]} ${twice[1]}": a word twice in a row`);
+  }
   if (depth !== 0) add("isolates", "error", id, field, "an unbalanced direction isolate (⁦…⁩)");
+  else if (/[\u2066-\u2068]{2}/.test(value)) add("isolates", "error", id, field, "an isolate opened directly inside another (⁦⁦…⁩⁩)");
   // English inside Persian text is isolated so it keeps its order in a right-to-left line.
   if (PERSIAN.test(value) && !PRONUNCIATION.has(name)) {
     const outside = value.replace(/⁦[^⁩]*⁩/g, "").replace(OPEN, "");
@@ -83,7 +89,8 @@ function uses(text: string, phrase: string): boolean {
     .replace(/’/g, "'")
     .replace(/&/g, "and")
     .replace(/\(.*?\)/g, "")
-    .split(/\s*[,/]\s*/)
+    // "Talent Agent or Business Manager" names two jobs; either will do.
+    .split(/\s*[,/]\s*|\s+or\s+/)
     .map((form) => form.trim())
     .filter(Boolean)
     .some(
@@ -134,10 +141,13 @@ for (const level of LEVELS) {
 // The reference notes.
 /** An example with its subject left out, to find one sentence reused with only the subject changed. */
 const shape = (example: string, title: string) => {
-  const own = new Set(title.toLowerCase().split(/[^a-z]+/));
-  return words(example.toLowerCase())
-    .filter((word) => !own.has(word) && !["a", "an", "the"].includes(word))
-    .join(" ");
+  const own = new Set([...title.toLowerCase().split(/[^a-z]+/), "a", "an", "the", "and", "or"]);
+  // "An assembler / fabricator (other) makes …": the subject's alternatives and asides go too.
+  const rest = words(example.toLowerCase().replace(/\(.*?\)/g, " ").replace(/\s*\/\s*[a-z]+/g, " "));
+  // The subject is the title at the start of the sentence: "A crane operator …".
+  let start = 0;
+  while (start < rest.length && own.has(rest[start]!)) start++;
+  return rest.slice(start).join(" ");
 };
 const shapes = new Map<string, string[]>();
 
@@ -179,11 +189,11 @@ for (const collection of COLLECTIONS) {
   }
 }
 
-// One sentence shared by several notes describes none of them: a learner
-// cannot tell a crane operator from a conveyor operator by it.
+// One sentence shared by two notes describes neither: a learner cannot tell
+// a crane operator from a conveyor operator by it.
 for (const ids of shapes.values()) {
-  if (ids.length < 4) continue;
-  for (const id of ids) add("example-template", "warning", id, "ex", `a generic sentence shared with ${ids.length - 1} other notes; say what this one involves`);
+  if (ids.length < 2) continue;
+  for (const id of ids) add("example-template", "warning", id, "ex", `a generic sentence shared with ${ids.length - 1} other note${ids.length > 2 ? "s" : ""}; say what this one involves`);
 }
 
 // Report against the baseline.
