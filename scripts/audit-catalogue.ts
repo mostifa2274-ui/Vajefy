@@ -54,6 +54,7 @@ function text(id: string, value: unknown, field = "") {
     if (depth < 0) break;
   }
   if (depth !== 0) add("isolates", "error", id, field, "an unbalanced direction isolate (⁦…⁩)");
+  else if (/[\u2066-\u2068]{2}/.test(value)) add("isolates", "error", id, field, "an isolate opened directly inside another (⁦⁦…⁩⁩)");
   // English inside Persian text is isolated so it keeps its order in a right-to-left line.
   if (PERSIAN.test(value) && !PRONUNCIATION.has(name)) {
     const outside = value.replace(/⁦[^⁩]*⁩/g, "").replace(OPEN, "");

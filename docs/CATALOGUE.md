@@ -100,7 +100,7 @@ as part of `validate:data`:
 | Rule | Severity | Finds |
 |---|---|---|
 | `spacing` | error | Stray or doubled spaces |
-| `isolates` | error | A direction isolate (⁦…⁩) left open, which disorders the rest of the line |
+| `isolates` | error | A direction isolate (⁦…⁩) left open, which disorders the rest of the line, or one doubled |
 | `ipa` | error | Pronunciation not written `/…/` (or `noun /…/; verb /…/`) |
 | `latin-in-persian` | warning | English inside Persian text without an isolate, so it can render out of order |
 | `example-headword` | warning | An entry's example that never uses its word, in any form |
