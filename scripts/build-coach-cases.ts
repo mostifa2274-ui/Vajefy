@@ -15,7 +15,7 @@ import type { Pilot } from "../src/lib/learn/content.ts";
 
 const ROOT = process.cwd();
 const OUT = path.join(ROOT, "content", "coach-eval", "cases.json");
-const pilot = JSON.parse(fs.readFileSync(path.join(ROOT, "public", "data", "enhanced.json"), "utf8")) as Pilot;
+const pilot = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "compiled", "enhanced.json"), "utf8")) as Pilot;
 const ambiguous = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "coach-eval", "ambiguous.json"), "utf8")) as { senses: string[]; text: string; note: string }[];
 
 type Case = { id: string; split: "dev" | "test"; source: string; senses: string[]; text: string; expect: ("natural" | "needs-change" | "unsure")[] };

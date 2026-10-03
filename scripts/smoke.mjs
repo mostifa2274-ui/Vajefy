@@ -47,17 +47,26 @@ for (const path of ["/", "/learn", "/study", "/drill", "/lexicon", "/library", "
   });
 }
 
-let pilot = null;
-for (const file of ["meta.json", "enhanced-order.json", "enhanced.json", "lex-a1.json", "usefulness.json"]) {
+let catalogue = null;
+let pack = null;
+for (const file of ["meta.json", "enhanced-order.json", "enhanced/index.json", "enhanced/audio-pack.json", "lex-a1.json", "usefulness.json"]) {
   await check(`data ${file}`, async () => {
     const data = await (await get(`/data/${file}`, "json")).json();
-    if (file === "enhanced.json") pilot = data;
+    if (file === "enhanced/index.json") catalogue = data;
+    if (file === "enhanced/audio-pack.json") pack = data;
     if (file === "meta.json" && !Array.isArray(data.levels)) throw new Error("no levels");
   });
 }
 
+await check("enhanced content part", async () => {
+  const file = catalogue?.parts?.[0];
+  if (!file) throw new Error("the index lists no parts");
+  const part = await (await get(`/data/${file}`, "json")).json();
+  if (!Array.isArray(part.entries) || !part.entries.length) throw new Error("the part holds no entries");
+});
+
 await check("pronunciation clip", async () => {
-  const file = pilot?.audioPack?.gb?.files?.[0];
+  const file = pack?.gb?.files?.[0];
   if (!file) throw new Error("the pilot lists no clips");
   const response = await get(`/audio/${file}`, "audio/mpeg");
   if ((await response.arrayBuffer()).byteLength < 1000) throw new Error("the clip is empty");

@@ -69,7 +69,7 @@ npm run dev        # http://localhost:8080
 | `npm run cf-typegen` | Generate Cloudflare binding types from Wrangler config |
 | `npm run verify:workers-build` | Emulate Cloudflare's deploy-only pipeline from a clean build and run Wrangler dry-run |
 | `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data; that the plans, compiled content and reviewed notes are current; and the catalogue audit |
-| `npm run content:build` | Compile the enhanced content in `content/pilot/` into `public/data/enhanced.json` |
+| `npm run content:build` | Compile the enhanced content in `content/pilot/` into `content/compiled/enhanced.json` and the files the app loads, `public/data/enhanced/` ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)) |
 | `npm run content:approve` | Record a bilingual or pronunciation review of an entry ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)) |
 | `npm run content:status` | Editorial progress across the levels, or one level's batches, and what to draft next |
 | `npm run content:lint` | Authoring checks: level of vocabulary, reused examples, ambiguous items |

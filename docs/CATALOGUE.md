@@ -50,9 +50,10 @@ The workflow is the pilot's, with a level:
 2. `npm run content:drafts [-- --level A2]` lists what each draft still needs.
 3. `npm run content:promote -- --entry lex:A2:ability` validates the entry and
    adds it to `content/pilot/entries/A2-batch-01.json`.
-4. `npm run content:build` compiles every level's entries into
-   `public/data/enhanced.json`, in curriculum order (A1's plan, then A2's, and
-   so on), with `public/data/enhanced-order.json` for Today.
+4. `npm run content:build` compiles every level's entries, in curriculum order
+   (A1's plan, then A2's, and so on), into the files the app loads
+   (`public/data/enhanced/`, [PILOT_CONTENT.md](PILOT_CONTENT.md)), with
+   `public/data/enhanced-order.json` for Today.
 5. Audio ([AUDIO.md](AUDIO.md#regenerating)) and review with
    `npm run content:approve` ([PILOT_CONTENT.md](PILOT_CONTENT.md#reviewing)),
    exactly as for A1.

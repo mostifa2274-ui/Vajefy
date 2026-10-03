@@ -6,7 +6,7 @@ import { checkupResult, type LessonSession } from "@/lib/learn/lesson";
 import { measures } from "@/lib/learn/measures";
 import { CONTENT_CHANNEL } from "@/lib/learn/channel";
 import { downloadText } from "@/lib/learn/download-backup";
-import { loadPilot, loadPilotOrder } from "@/lib/learn/pilot";
+import { loadAudioPack, loadPilotOrder } from "@/lib/learn/pilot";
 import { persistence, useProgress } from "@/lib/learn/store";
 import { buildStudyExport, studyFileName, validParticipant } from "@/lib/learn/study";
 import type { PracticeSkill } from "@/lib/learn/types";
@@ -85,9 +85,9 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
 
   useEffect(() => {
     let alive = true;
-    void loadPilot()
-      .then(async (index) => {
-        const chosen = index.pilot.audioPack[accent === "en-US" ? "us" : "gb"];
+    void loadAudioPack()
+      .then(async (audioPack) => {
+        const chosen = audioPack[accent === "en-US" ? "us" : "gb"];
         if (!alive) return;
         setPack(chosen);
         setStatus(await packStatus(chosen.files));

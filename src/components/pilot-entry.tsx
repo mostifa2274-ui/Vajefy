@@ -21,7 +21,7 @@ export function PilotEntryDetail({
   return (
     <div className="mt-4 grid gap-5">
       {entry.senses.map((sense, position) => {
-        const clips = senseAudio(index.pilot.audio, sense.id, accent);
+        const clips = senseAudio(index.audio, sense.id, accent);
         return (
           <section key={sense.id} className="border-t border-line pt-4" aria-label={`${entry.headword} ${position + 1}`}>
             <p className="text-xs text-muted">

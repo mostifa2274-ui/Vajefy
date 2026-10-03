@@ -4,9 +4,16 @@ Enhanced entries teach A1 vocabulary at the level of individual senses. The
 first 150 form the pilot (`content/pilot-a1.json`), which the pilot study
 measures. The rest of A1 follows in batches, as fast as editorial review allows
 ([Expanding across A1](#expanding-across-a1)). The source lives in
-`content/pilot/`, and `npm run content:build` compiles it into
-`public/data/enhanced.json`, the file the app loads, and
-`public/data/enhanced-order.json`, the introduction order Today reads.
+`content/pilot/`, and `npm run content:build` compiles it into:
+
+- `content/compiled/enhanced.json`, all of it in one file, which the scripts,
+  the tests and the coach read;
+- `public/data/enhanced/`, what the app loads: `index.json` lists every entry
+  with its senses' meanings and parts of speech, plus the contrasts and
+  scenes; each part file (named by its content) holds the full content and
+  audio of 25 entries in curriculum order, so a screen loads only the entries
+  it shows; `audio-pack.json` lists the clips for offline download;
+- `public/data/enhanced-order.json`, the introduction order Today reads.
 
 | File | Contents |
 |---|---|
@@ -66,13 +73,14 @@ bilingual reviewer has approved it yet.
 
 1. Edit the entry, contrast or scene in `content/pilot/`.
 2. Run `npm run content:build`. It validates every entry, cross-reference and
-   review record, then writes `public/data/enhanced.json`. It reports how many
-   entries are released and how many senses have current audio.
+   review record, then writes the compiled files, removing parts left from
+   earlier builds. It reports how many entries are released and how many
+   senses have current audio.
 3. If the change touches an example, a headword or `tts` phonemes, regenerate
    audio ([AUDIO.md](AUDIO.md)); until then that clip is not attached and the app
    falls back to browser speech.
-4. Commit the source and the compiled file together. `npm run validate:data` runs
-   `content:build --check` in CI and fails if the compiled file is out of date.
+4. Commit the source and the compiled files together. `npm run validate:data` runs
+   `content:build --check` in CI and fails if any compiled file is out of date.
 
 The build also checks that:
 

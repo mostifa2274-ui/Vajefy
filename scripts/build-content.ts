@@ -1,20 +1,46 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
-import { contrast, entry, GOALS, orderForGoal, review, scene, type Entry, type Pilot, type PilotOrder, type SenseAudio } from "../src/lib/learn/content.ts";
+import {
+  contrast,
+  entry,
+  GOALS,
+  orderForGoal,
+  review,
+  scene,
+  type Entry,
+  type Pilot,
+  type PilotCatalogue,
+  type PilotOrder,
+  type PilotPart,
+  type SenseAudio,
+} from "../src/lib/learn/content.ts";
 import { catalogueOrder, levelOfId, rowsOf, versionOf } from "./catalogue.ts";
 
 /**
  * Compile the enhanced content in `content/pilot/` (the A1 pilot first, then
- * any level's entries as they are written, docs/CATALOGUE.md) into
- * `public/data/enhanced.json`, validating every entry, cross-reference and
- * review record. With `--check`, fail instead of writing when the compiled
- * file is out of date, so CI catches edits that were not rebuilt.
+ * any level's entries as they are written, docs/CATALOGUE.md), validating
+ * every entry, cross-reference and review record, into:
+ *
+ * - `content/compiled/enhanced.json`, everything in one file, for scripts,
+ *   tests and the coach;
+ * - `public/data/enhanced/`, what the app loads: `index.json` lists every
+ *   entry, and each part file holds the teaching content and audio of a run
+ *   of entries in curriculum order, so a screen loads only the entries it
+ *   shows; `audio-pack.json` lists the clips for offline use;
+ * - `public/data/enhanced-order.json`, the introduction order for Today.
+ *
+ * With `--check`, fail instead of writing when any of these is out of date,
+ * so CI catches edits that were not rebuilt.
  */
 
 const ROOT = process.cwd();
 const SOURCE = path.join(ROOT, "content", "pilot");
-const OUT = path.join(ROOT, "public", "data", "enhanced.json");
+const OUT = path.join(ROOT, "content", "compiled", "enhanced.json");
+const PUBLIC_DIR = path.join(ROOT, "public", "data", "enhanced");
 const ORDER_OUT = path.join(ROOT, "public", "data", "enhanced-order.json");
+/** Entries per part: a lesson's few new words usually need one part. */
+const PART_SIZE = 25;
 const AUDIO = path.join(SOURCE, "audio-manifest.json");
 const failures: string[] = [];
 
@@ -175,22 +201,65 @@ const pilotOrder: PilotOrder = {
   released: compiled.entries.filter((item) => item.released).flatMap((item) => item.senses.map((sense) => sense.id)),
 };
 
-for (const [file, output] of [
+// The app's files. A part is named by its content, so a list can never point
+// at a part from another build.
+const hashOf = (text: string) => createHash("sha256").update(text).digest("hex").slice(0, 12);
+const parts: [string, string][] = [];
+const listed: PilotCatalogue["entries"] = [];
+for (let start = 0; start < compiled.entries.length; start += PART_SIZE) {
+  const run = compiled.entries.slice(start, start + PART_SIZE);
+  const part: PilotPart = {
+    entries: run.map(({ review: _review, ...item }) => item),
+    audio: Object.fromEntries(run.flatMap((item) => item.senses.flatMap((sense) => (compiled.audio[sense.id] ? [[sense.id, compiled.audio[sense.id]!]] : [])))),
+  };
+  const output = `${JSON.stringify(part)}\n`;
+  const file = `enhanced/${hashOf(output)}.json`;
+  for (const item of run) {
+    listed.push({
+      id: item.id,
+      headword: item.headword,
+      goals: item.goals,
+      version: item.version,
+      released: item.released,
+      part: parts.length,
+      senses: item.senses.map((sense) => ({ id: sense.id, pos: sense.pos, gloss: sense.gloss })),
+    });
+  }
+  parts.push([file, output]);
+}
+const catalogue: PilotCatalogue = { version: compiled.version, parts: parts.map(([file]) => file), entries: listed, contrasts, scenes };
+
+const outputs = new Map<string, string>([
   [OUT, `${JSON.stringify(compiled)}\n`],
+  [path.join(PUBLIC_DIR, "index.json"), `${JSON.stringify(catalogue)}\n`],
+  [path.join(PUBLIC_DIR, "audio-pack.json"), `${JSON.stringify(compiled.audioPack)}\n`],
+  ...parts.map(([file, output]): [string, string] => [path.join(ROOT, "public", "data", file), output]),
   [ORDER_OUT, `${JSON.stringify(pilotOrder)}\n`],
-] as const) {
-  if (process.argv.includes("--check")) {
+]);
+// Parts of earlier builds are removed, so the app ships only current files.
+const stale = fs.existsSync(PUBLIC_DIR)
+  ? fs.readdirSync(PUBLIC_DIR).map((name) => path.join(PUBLIC_DIR, name)).filter((file) => !outputs.has(file))
+  : [];
+if (process.argv.includes("--check")) {
+  for (const [file, output] of outputs) {
     const existing = fs.existsSync(file) ? fs.readFileSync(file, "utf8") : "";
     if (existing !== output) {
       console.error(`${path.relative(ROOT, file)} is out of date; run npm run content:build`);
       process.exit(1);
     }
-  } else {
-    fs.writeFileSync(file, output);
   }
+  if (stale.length) {
+    console.error(`${stale.map((file) => path.relative(ROOT, file)).join(", ")} no longer built; run npm run content:build`);
+    process.exit(1);
+  }
+} else {
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
+  fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+  for (const file of stale) fs.rmSync(file);
+  for (const [file, output] of outputs) fs.writeFileSync(file, output);
 }
 const released = compiled.entries.filter((item) => item.released).length;
 const senses = compiled.entries.reduce((sum, item) => sum + item.senses.length, 0);
 console.log(
-  `Pilot content OK: ${compiled.entries.length} entries, ${senses} senses, ${contrasts.length} contrasts, ${scenes.length} scenes; ${released} released, ${Object.keys(compiled.audio).length} senses with current audio.`,
+  `Pilot content OK: ${compiled.entries.length} entries in ${parts.length} parts, ${senses} senses, ${contrasts.length} contrasts, ${scenes.length} scenes; ${released} released, ${Object.keys(compiled.audio).length} senses with current audio.`,
 );
