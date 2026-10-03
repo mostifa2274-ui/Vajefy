@@ -22,8 +22,9 @@ const DATA = [
   "/data/formation.json",
   "/data/synonyms.json",
   "/data/families.json",
-  "/data/pilot-a1.json",
-  "/data/pilot-order.json",
+  "/data/enhanced.json",
+  "/data/enhanced-order.json",
+  "/data/reference-reviewed.json",
   "/data/usefulness.json",
 ];
 // Pronunciation clips are named by their content hash, so they never change

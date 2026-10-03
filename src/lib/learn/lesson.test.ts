@@ -3,9 +3,9 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
 import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, lessonSize, nextTargets, resolveItem, seenPrompts } from "./lesson";
-import { indexPilot, introducible, introductionOrder } from "./pilot";
+import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace } from "./pilot";
 
-const index = indexPilot(JSON.parse(readFileSync("public/data/pilot-a1.json", "utf8")) as Pilot);
+const index = indexPilot(JSON.parse(readFileSync("public/data/enhanced.json", "utf8")) as Pilot);
 let seed = 7;
 const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
 const T0 = 1_800_000_000_000;
@@ -69,6 +69,27 @@ test("introduction order serves the goal and keeps further senses after first me
   assert.deepEqual(nextTargets(work, known, 2).map((target) => target.sense.id), work.slice(4, 6).map((target) => target.sense.id));
 });
 
+test("enhanced content at another level is taught first to learners at that level", () => {
+  // The A1 content, plus one entry written for A2 (docs/CATALOGUE.md).
+  const compiled = JSON.parse(readFileSync("public/data/enhanced.json", "utf8")) as Pilot;
+  const source = compiled.entries.find((entry) => entry.id === "lex:A1:time")!;
+  const a2 = {
+    ...source,
+    id: "lex:A2:ability",
+    headword: "ability",
+    order: compiled.entries.length,
+    senses: source.senses.map((sense, position) => ({ ...sense, id: position === 0 ? "lex:A2:ability" : `lex:A2:ability#${sense.id.split("#")[1]}` })),
+  };
+  const both = indexPilot({ ...compiled, entries: [...compiled.entries, a2] });
+  const ordered = introductionOrder(both.targets, "general");
+  assert.equal(focusFirst(ordered, "A1")[0]!.sense.id, ordered[0]!.sense.id, "an A1 learner's order is unchanged");
+  const forA2 = focusFirst(ordered, "A2");
+  assert.deepEqual(forA2.slice(0, a2.senses.length).map((target) => target.entry.id), a2.senses.map(() => "lex:A2:ability"));
+  assert.equal(forA2.length, ordered.length, "and the other levels' lessons follow");
+  assert.equal(pilotFace(both.bySense.get("lex:A2:ability")!, {}, "en-GB").level, "A2");
+  assert.equal(pilotFace(both.bySense.get("lex:A1:time")!, {}, "en-GB").level, "A1");
+});
+
 test("contrasts and scenes can be practised on their own", () => {
   const contrast = buildApplication(index, "contrast", "contrast:bring-take", T0);
   assert.equal(contrast?.steps[0]?.kind, "contrast");
@@ -80,7 +101,7 @@ test("contrasts and scenes can be practised on their own", () => {
 });
 
 test("the small introduction-order file matches the full pilot for every goal", () => {
-  const compiled = JSON.parse(readFileSync("public/data/pilot-order.json", "utf8")) as PilotOrder;
+  const compiled = JSON.parse(readFileSync("public/data/enhanced-order.json", "utf8")) as PilotOrder;
   assert.equal(compiled.version, index.pilot.version);
   for (const goal of GOALS) {
     assert.deepEqual(

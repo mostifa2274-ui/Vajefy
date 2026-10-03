@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Check } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Num, PageHeader, SpeakButton } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { loadDeckEntries } from "@/lib/learn/faces";
 import { useCopy, type CopyKey } from "@/lib/learn/i18n";
-import { loadMeta } from "@/lib/learn/load";
+import { loadJson, loadMeta } from "@/lib/learn/load";
 import { searchKey } from "@/lib/learn/text";
 import { useProgress } from "@/lib/learn/store";
 import type { LibDeckId, Meta, RefEntry } from "@/lib/learn/types";
@@ -58,9 +59,15 @@ function LibraryPage() {
   }, [selectedId, expose]);
   const [page, setPage] = useState({ key: "", limit: 40 });
 
+  // Notes a bilingual reviewer approved in their current form (docs/CATALOGUE.md).
+  const [reviewed, setReviewed] = useState<Set<string>>(() => new Set());
+
   useEffect(() => {
     void loadMeta()
       .then(setMeta)
+      .catch(() => undefined);
+    void loadJson<{ reviewed: string[] }>("reference-reviewed.json")
+      .then((list) => setReviewed(new Set(list.reviewed)))
       .catch(() => undefined);
   }, []);
 
@@ -204,7 +211,15 @@ function LibraryPage() {
               <button type="button" className="mb-2 text-sm text-muted lg:hidden" onClick={() => setSelectedId(null)}>
                 {copy.back}
               </button>
-              <p className="text-xs text-muted">{selected.kicker}</p>
+              <p className="text-xs text-muted">
+                {selected.kicker}
+                {reviewed.has(selected.id) ? (
+                  <span className="ms-2 inline-flex items-center gap-1 text-good" title={copy.reviewedNoteHint}>
+                    <Check className="size-3" aria-hidden="true" />
+                    {copy.reviewedNote}
+                  </span>
+                ) : null}
+              </p>
               <h2 lang="en" dir="ltr" className="lex-word mt-2 text-3xl text-balance">
                 {selected.title}
               </h2>

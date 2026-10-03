@@ -8,9 +8,10 @@ import { loadMeta } from "@/lib/learn/load";
 import { resumable, startReview, type ReviewSession } from "@/lib/learn/session";
 import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
 import { loadJson } from "@/lib/learn/load";
-import { CONTENT_CHANNEL } from "@/lib/learn/channel";
-import { introducible, introductionOrder, loadPilot } from "@/lib/learn/pilot";
-import { shuffle } from "@/lib/learn/text";
+import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
+import { introductionOrder, loadPilot, loadPilotOrder } from "@/lib/learn/pilot";
+import { entryIdOf } from "@/lib/learn/content";
+import { levelOf, shuffle } from "@/lib/learn/text";
 import type { CardProg, LevelId, StudyFace } from "@/lib/learn/types";
 
 export const Route = createFileRoute("/study")({ component: StudyPage });
@@ -19,8 +20,9 @@ type Ready = { session: ReviewSession; faces: Map<string, StudyFace>; resumed: b
 
 /**
  * New words for Review, in a purposeful order: the most useful entries of the
- * level first. While the A1 pilot still has words to teach, those come through
- * guided lessons instead. Fewer new words are added when reviews are piling up.
+ * level first. While the level's enhanced content still has words to teach,
+ * those come through guided lessons instead. Fewer new words are added when
+ * reviews are piling up.
  */
 async function newWords(
   focus: LevelId,
@@ -48,12 +50,14 @@ async function newWords(
     const ordered = [...first, ...levelIds.filter((id) => !first.includes(id))];
     return ordered.filter((id) => faces.has(id) && !known.has(id)).slice(0, budget);
   }
-  if (focus === "A1") {
-    const pilot = introducible(await loadPilot());
-    if (introductionOrder(pilot.targets, state.goal).some((target) => !known.has(target.sense.id))) {
-      excluded = new Set(pilot.byEntry.keys());
-    }
-  }
+  // The small order file says which senses have lessons, without the content itself.
+  const lessons = await loadPilotOrder()
+    .then((compiled) => {
+      const released = new Set(compiled.released);
+      return compiled.order.general.filter((id) => levelOf(id) === focus && introducibleIn(CONTENT_CHANNEL, released.has(id)));
+    })
+    .catch(() => [] as string[]);
+  if (lessons.some((id) => !known.has(id))) excluded = new Set(lessons.map(entryIdOf));
   return levelIds.filter((id) => faces.has(id) && !known.has(id) && !excluded.has(id)).slice(0, budget);
 }
 

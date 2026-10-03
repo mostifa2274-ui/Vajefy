@@ -24,7 +24,7 @@ function bare(word) {
 }
 
 const sentences = [];
-for (const file of fs.readdirSync(DATA).filter((name) => name.endsWith(".json") && !["meta.json", "usefulness.json", "pilot-a1.json", "pilot-order.json", "occupations.json"].includes(name))) {
+for (const file of fs.readdirSync(DATA).filter((name) => name.endsWith(".json") && !["meta.json", "usefulness.json", "enhanced.json", "enhanced-order.json", "reference-reviewed.json", "occupations.json"].includes(name))) {
   const rows = read(file);
   if (!Array.isArray(rows)) continue;
   for (const row of rows) if (typeof row?.ex === "string") sentences.push(row.ex.toLowerCase());

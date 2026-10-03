@@ -63,7 +63,7 @@ is adjusted, not the thresholds.
   and everything below them appear together, in space held for them. Learn
   draws its heading at once and its lesson card in place when ready.
 - **Small first data.** Today counts upcoming lesson words from
-  `pilot-order.json` (about 1 KB compressed), not the 125 KB pilot, and preloads
+  `enhanced-order.json` (about 1 KB compressed), not the 125 KB pilot, and preloads
   it with `meta.json`.
 - **No blocking requests in `<head>`.** The script that applies the saved
   language before the first paint is inline, carrying the page's CSP nonce.

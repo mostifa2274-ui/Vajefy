@@ -68,18 +68,20 @@ npm run dev        # http://localhost:8080
 | `npm run deploy` | Builds, then deploys with Wrangler (needs `npx wrangler login` first) |
 | `npm run cf-typegen` | Generate Cloudflare binding types from Wrangler config |
 | `npm run verify:workers-build` | Emulate Cloudflare's deploy-only pipeline from a clean build and run Wrangler dry-run |
-| `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data, and that the compiled pilot is current |
-| `npm run content:build` | Compile the pilot content in `content/pilot/` into `public/data/pilot-a1.json` |
-| `npm run content:approve` | Record a bilingual or pronunciation review ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)) |
-| `npm run content:status` | Editorial progress across the A1 batches, and what to draft next |
+| `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data; that the plans, compiled content and reviewed notes are current; and the catalogue audit |
+| `npm run content:build` | Compile the enhanced content in `content/pilot/` into `public/data/enhanced.json` |
+| `npm run content:approve` | Record a bilingual or pronunciation review of an entry ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)) |
+| `npm run content:status` | Editorial progress across the levels, or one level's batches, and what to draft next |
 | `npm run content:lint` | Authoring checks: level of vocabulary, reused examples, ambiguous items |
-| `npm run content:scaffold` / `content:drafts` / `content:promote` | Start, check and finish drafts for the next A1 batch |
+| `npm run content:scaffold` / `content:drafts` / `content:promote` | Start, check and finish drafts for a level's next batch ([docs/CATALOGUE.md](docs/CATALOGUE.md)) |
+| `npm run content:notes` | Review status of the reference notes; record a review |
+| `npm run content:audit` | The catalogue audit over every entry and reference note |
 | `npm run coach:cases` / `coach:eval` | Build the coach's evaluation set; run its release gate against a model |
 | `node scripts/smoke.mjs <url>` | Check a deployed site ([docs/OPERATIONS.md](docs/OPERATIONS.md)) |
 | `npm run evaluate` | Analyse pilot-study exports: scheduler comparison and the 30-day measure ([docs/EVALUATION.md](docs/EVALUATION.md)) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
-| `npm test` | Unit tests in `src/lib/learn/**/*.test.ts` |
+| `npm test` | Unit tests in `src/lib/learn/**` and `src/api/**` |
 | `npx playwright test` | Critical browser, RTL/mobile, offline, accessibility and performance-budget tests (CI installs the pinned runner) |
 
 CI (`.github/workflows/ci.yml`) runs install, the 8,272-record data contract,
@@ -198,6 +200,10 @@ with empty skill evidence. See [docs/SMART_PRACTICE.md](docs/SMART_PRACTICE.md).
   must change intentionally, plan a progress migration and update the contract.
 - Headwords follow the Oxford lists' British spelling. Spelling modes also
   accept the American form for the words listed in `AMERICAN` in `text.ts`.
+- The whole catalogue is improved with the process the A1 pilot validated:
+  plans per level, drafting, authoring checks, bilingual review and release.
+  Reference notes have their own review ledger, and a catalogue audit in CI
+  keeps fixed problems fixed ([docs/CATALOGUE.md](docs/CATALOGUE.md)).
 
 ## Deploying to Cloudflare
 
@@ -271,5 +277,6 @@ vocabulary.
 
 See [docs/CONTENT_PROVENANCE.md](docs/CONTENT_PROVENANCE.md). Code/data integrity
 checks establish what ships; they do not establish third-party redistribution
-rights. The pilot's teaching content is shown as a draft until a bilingual
-reviewer approves it ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)).
+rights. Enhanced teaching content is shown as a draft until a bilingual
+reviewer approves it ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)), and a
+reference note is marked as reviewed once one has ([docs/CATALOGUE.md](docs/CATALOGUE.md)).

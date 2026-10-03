@@ -1,0 +1,6389 @@
+{
+ "level": "C1",
+ "batchSize": 100,
+ "batches": [
+  {
+   "id": "batch-01",
+   "entries": [
+    {
+     "id": "lex:C1:novel",
+     "headword": "novel",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:C1:well",
+     "headword": "well",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:badly-well",
+      "ant:ill-well",
+      "ant:well-sick"
+     ]
+    },
+    {
+     "id": "lex:C1:remains",
+     "headword": "remains"
+    },
+    {
+     "id": "lex:C1:top",
+     "headword": "top",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:bottom-top"
+     ]
+    },
+    {
+     "id": "lex:C1:driving",
+     "headword": "driving",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:C1:just",
+     "headword": "just",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "syn:fair-just-reasonable"
+     ]
+    },
+    {
+     "id": "lex:C1:dispute",
+     "headword": "dispute",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:minute",
+     "headword": "minute²",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:C1:noon",
+     "headword": "noon",
+     "refs": [
+      "ant:midnight-noon"
+     ]
+    },
+    {
+     "id": "lex:C1:total",
+     "headword": "total",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "col:total-cost",
+      "col:total-failure"
+     ]
+    },
+    {
+     "id": "lex:C1:accessible",
+     "headword": "accessible",
+     "refs": [
+      "ant:accessible-inaccessible",
+      "fam:access"
+     ]
+    },
+    {
+     "id": "lex:C1:arm",
+     "headword": "arm",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:C1:coastal",
+     "headword": "coastal"
+    },
+    {
+     "id": "lex:C1:efficiency",
+     "headword": "efficiency",
+     "refs": [
+      "fam:efficient"
+     ]
+    },
+    {
+     "id": "lex:C1:fit",
+     "headword": "fit",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:fit-unfit",
+      "conf:fit-suit"
+     ]
+    },
+    {
+     "id": "lex:C1:supportive",
+     "headword": "supportive",
+     "refs": [
+      "fam:support"
+     ]
+    },
+    {
+     "id": "lex:C1:transparency",
+     "headword": "transparency"
+    },
+    {
+     "id": "lex:C1:vulnerable",
+     "headword": "vulnerable",
+     "refs": [
+      "ant:vulnerable-secure",
+      "prep:vulnerable-to",
+      "syn:weak-fragile-vulnerable"
+     ]
+    },
+    {
+     "id": "lex:C1:accused",
+     "headword": "accused"
+    },
+    {
+     "id": "lex:C1:admission",
+     "headword": "admission",
+     "refs": [
+      "fam:admit"
+     ]
+    },
+    {
+     "id": "lex:C1:attendance",
+     "headword": "attendance",
+     "refs": [
+      "fam:attend"
+     ]
+    },
+    {
+     "id": "lex:C1:discrimination",
+     "headword": "discrimination"
+    },
+    {
+     "id": "lex:C1:equality",
+     "headword": "equality",
+     "refs": [
+      "ant:equality-inequality",
+      "fam:equal"
+     ]
+    },
+    {
+     "id": "lex:C1:exit",
+     "headword": "exit",
+     "flags": [
+      "also-B2x"
+     ],
+     "refs": [
+      "ant:enter-exit"
+     ]
+    },
+    {
+     "id": "lex:C1:frustration",
+     "headword": "frustration"
+    },
+    {
+     "id": "lex:C1:identification",
+     "headword": "identification",
+     "refs": [
+      "fam:identify"
+     ]
+    },
+    {
+     "id": "lex:C1:maintenance",
+     "headword": "maintenance",
+     "refs": [
+      "fam:maintain"
+     ]
+    },
+    {
+     "id": "lex:C1:merger",
+     "headword": "merger"
+    },
+    {
+     "id": "lex:C1:prevention",
+     "headword": "prevention",
+     "refs": [
+      "fam:prevent"
+     ]
+    },
+    {
+     "id": "lex:C1:say",
+     "headword": "say",
+     "flags": [
+      "also-A1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "conf:say-tell",
+      "irr:say",
+      "vp:say-that-clause"
+     ]
+    },
+    {
+     "id": "lex:C1:acquisition",
+     "headword": "acquisition",
+     "refs": [
+      "fam:acquire"
+     ]
+    },
+    {
+     "id": "lex:C1:adaptation",
+     "headword": "adaptation",
+     "refs": [
+      "fam:adapt"
+     ]
+    },
+    {
+     "id": "lex:C1:administer",
+     "headword": "administer",
+     "refs": [
+      "fam:administer"
+     ]
+    },
+    {
+     "id": "lex:C1:calculation",
+     "headword": "calculation",
+     "refs": [
+      "fam:calculate"
+     ]
+    },
+    {
+     "id": "lex:C1:capability",
+     "headword": "capability",
+     "refs": [
+      "fam:capable"
+     ]
+    },
+    {
+     "id": "lex:C1:cautious",
+     "headword": "cautious",
+     "refs": [
+      "ant:cautious-careless",
+      "ant:cautious-reckless",
+      "syn:careful-cautious"
+     ]
+    },
+    {
+     "id": "lex:C1:classification",
+     "headword": "classification",
+     "refs": [
+      "fam:classify"
+     ]
+    },
+    {
+     "id": "lex:C1:closure",
+     "headword": "closure"
+    },
+    {
+     "id": "lex:C1:confirmation",
+     "headword": "confirmation"
+    },
+    {
+     "id": "lex:C1:conserve",
+     "headword": "conserve",
+     "refs": [
+      "ant:conserve-waste",
+      "fam:conserve"
+     ]
+    },
+    {
+     "id": "lex:C1:constitution",
+     "headword": "constitution"
+    },
+    {
+     "id": "lex:C1:constitutional",
+     "headword": "constitutional"
+    },
+    {
+     "id": "lex:C1:content",
+     "headword": "content²",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:C1:conversion",
+     "headword": "conversion",
+     "refs": [
+      "fam:convert"
+     ]
+    },
+    {
+     "id": "lex:C1:dawn",
+     "headword": "dawn"
+    },
+    {
+     "id": "lex:C1:emergence",
+     "headword": "emergence",
+     "refs": [
+      "fam:emerge"
+     ]
+    },
+    {
+     "id": "lex:C1:encouragement",
+     "headword": "encouragement",
+     "refs": [
+      "fam:encourage"
+     ]
+    },
+    {
+     "id": "lex:C1:exceptional",
+     "headword": "exceptional",
+     "refs": [
+      "syn:rare-exceptional"
+     ]
+    },
+    {
+     "id": "lex:C1:fine",
+     "headword": "fine",
+     "flags": [
+      "split-senses",
+      "also-A1"
+     ],
+     "refs": [
+      "col:pay-a-fine"
+     ]
+    },
+    {
+     "id": "lex:C1:flexibility",
+     "headword": "flexibility",
+     "refs": [
+      "ant:flexibility-rigidity",
+      "fam:flexible"
+     ]
+    },
+    {
+     "id": "lex:C1:foster",
+     "headword": "foster",
+     "refs": [
+      "col:foster-cooperation",
+      "col:foster-growth"
+     ]
+    },
+    {
+     "id": "lex:C1:hardware",
+     "headword": "hardware"
+    },
+    {
+     "id": "lex:C1:hopeful",
+     "headword": "hopeful",
+     "refs": [
+      "ant:desperate-hopeful",
+      "fam:hope"
+     ]
+    },
+    {
+     "id": "lex:C1:humanity",
+     "headword": "humanity",
+     "refs": [
+      "fam:human"
+     ]
+    },
+    {
+     "id": "lex:C1:influential",
+     "headword": "influential",
+     "refs": [
+      "fam:influence"
+     ]
+    },
+    {
+     "id": "lex:C1:inspiration",
+     "headword": "inspiration",
+     "refs": [
+      "fam:inspire"
+     ]
+    },
+    {
+     "id": "lex:C1:insufficient",
+     "headword": "insufficient",
+     "refs": [
+      "ant:insufficient-sufficient",
+      "fam:sufficient"
+     ]
+    },
+    {
+     "id": "lex:C1:invisible",
+     "headword": "invisible",
+     "refs": [
+      "ant:visible-invisible",
+      "fam:visible"
+     ]
+    },
+    {
+     "id": "lex:C1:justification",
+     "headword": "justification",
+     "refs": [
+      "fam:justify"
+     ]
+    },
+    {
+     "id": "lex:C1:likelihood",
+     "headword": "likelihood",
+     "refs": [
+      "fam:likely"
+     ]
+    },
+    {
+     "id": "lex:C1:march",
+     "headword": "march",
+     "flags": [
+      "split-senses",
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:C1:medieval",
+     "headword": "medieval"
+    },
+    {
+     "id": "lex:C1:memorial",
+     "headword": "memorial"
+    },
+    {
+     "id": "lex:C1:net",
+     "headword": "net",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:gross-net"
+     ]
+    },
+    {
+     "id": "lex:C1:occurrence",
+     "headword": "occurrence",
+     "refs": [
+      "fam:occur"
+     ]
+    },
+    {
+     "id": "lex:C1:precision",
+     "headword": "precision",
+     "refs": [
+      "fam:precise"
+     ]
+    },
+    {
+     "id": "lex:C1:principal",
+     "headword": "principal",
+     "flags": [
+      "also-B2x"
+     ],
+     "refs": [
+      "conf:principal-principle"
+     ]
+    },
+    {
+     "id": "lex:C1:processing",
+     "headword": "processing"
+    },
+    {
+     "id": "lex:C1:protective",
+     "headword": "protective",
+     "refs": [
+      "fam:protect"
+     ]
+    },
+    {
+     "id": "lex:C1:rejection",
+     "headword": "rejection",
+     "refs": [
+      "ant:acceptance-rejection",
+      "ant:approval-rejection",
+      "fam:reject"
+     ]
+    },
+    {
+     "id": "lex:C1:representation",
+     "headword": "representation",
+     "refs": [
+      "fam:represent"
+     ]
+    },
+    {
+     "id": "lex:C1:resistance",
+     "headword": "resistance",
+     "refs": [
+      "ant:compliance-resistance",
+      "fam:resist"
+     ]
+    },
+    {
+     "id": "lex:C1:rock",
+     "headword": "rock",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:C1:ruling",
+     "headword": "ruling"
+    },
+    {
+     "id": "lex:C1:sound",
+     "headword": "sound",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "conf:sound-noise"
+     ]
+    },
+    {
+     "id": "lex:C1:spare",
+     "headword": "spare",
+     "flags": [
+      "also-B2x"
+     ],
+     "refs": [
+      "col:spare-time"
+     ]
+    },
+    {
+     "id": "lex:C1:spell",
+     "headword": "spell",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:C1:stability",
+     "headword": "stability",
+     "refs": [
+      "ant:stability-instability",
+      "fam:stable"
+     ]
+    },
+    {
+     "id": "lex:C1:standing",
+     "headword": "standing"
+    },
+    {
+     "id": "lex:C1:strategic",
+     "headword": "strategic",
+     "refs": [
+      "fam:strategy"
+     ]
+    },
+    {
+     "id": "lex:C1:transformation",
+     "headword": "transformation",
+     "refs": [
+      "fam:transform"
+     ]
+    },
+    {
+     "id": "lex:C1:absent",
+     "headword": "absent",
+     "refs": [
+      "ant:absent-present"
+     ]
+    },
+    {
+     "id": "lex:C1:acceptance",
+     "headword": "acceptance",
+     "refs": [
+      "ant:acceptance-rejection",
+      "fam:accept"
+     ]
+    },
+    {
+     "id": "lex:C1:accountability",
+     "headword": "accountability"
+    },
+    {
+     "id": "lex:C1:acid",
+     "headword": "acid",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:adjustment",
+     "headword": "adjustment"
+    },
+    {
+     "id": "lex:C1:administrative",
+     "headword": "administrative",
+     "refs": [
+      "fam:administer"
+     ]
+    },
+    {
+     "id": "lex:C1:alien",
+     "headword": "alien",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:archive",
+     "headword": "archive"
+    },
+    {
+     "id": "lex:C1:audit",
+     "headword": "audit"
+    },
+    {
+     "id": "lex:C1:behalf",
+     "headword": "behalf"
+    },
+    {
+     "id": "lex:C1:breakthrough",
+     "headword": "breakthrough"
+    },
+    {
+     "id": "lex:C1:burden",
+     "headword": "burden"
+    },
+    {
+     "id": "lex:C1:capitalist",
+     "headword": "capitalist"
+    },
+    {
+     "id": "lex:C1:cargo",
+     "headword": "cargo"
+    },
+    {
+     "id": "lex:C1:cemetery",
+     "headword": "cemetery"
+    },
+    {
+     "id": "lex:C1:comply",
+     "headword": "comply",
+     "refs": [
+      "prep:comply-with"
+     ]
+    },
+    {
+     "id": "lex:C1:congregation",
+     "headword": "congregation"
+    },
+    {
+     "id": "lex:C1:cooperate",
+     "headword": "cooperate"
+    },
+    {
+     "id": "lex:C1:damaging",
+     "headword": "damaging",
+     "refs": [
+      "syn:harmful-damaging-destructive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-02",
+   "entries": [
+    {
+     "id": "lex:C1:deposit",
+     "headword": "deposit",
+     "flags": [
+      "also-B2x"
+     ],
+     "refs": [
+      "ant:deposit-withdraw"
+     ]
+    },
+    {
+     "id": "lex:C1:destructive",
+     "headword": "destructive",
+     "refs": [
+      "syn:harmful-damaging-destructive"
+     ]
+    },
+    {
+     "id": "lex:C1:detention",
+     "headword": "detention"
+    },
+    {
+     "id": "lex:C1:dynamic",
+     "headword": "dynamic",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:eligible",
+     "headword": "eligible",
+     "refs": [
+      "ant:eligible-ineligible",
+      "prep:eligible-for"
+     ]
+    },
+    {
+     "id": "lex:C1:engaging",
+     "headword": "engaging"
+    },
+    {
+     "id": "lex:C1:exclusive",
+     "headword": "exclusive",
+     "refs": [
+      "col:mutually-exclusive"
+     ]
+    },
+    {
+     "id": "lex:C1:exert",
+     "headword": "exert",
+     "refs": [
+      "col:exert-influence",
+      "col:exert-pressure"
+     ]
+    },
+    {
+     "id": "lex:C1:experimental",
+     "headword": "experimental"
+    },
+    {
+     "id": "lex:C1:fairness",
+     "headword": "fairness"
+    },
+    {
+     "id": "lex:C1:formula",
+     "headword": "formula"
+    },
+    {
+     "id": "lex:C1:fragile",
+     "headword": "fragile",
+     "refs": [
+      "ant:fragile-durable",
+      "ant:fragile-robust",
+      "syn:weak-fragile-vulnerable"
+     ]
+    },
+    {
+     "id": "lex:C1:frustrated",
+     "headword": "frustrated"
+    },
+    {
+     "id": "lex:C1:grave-for-dead-person",
+     "headword": "grave (for dead person)"
+    },
+    {
+     "id": "lex:C1:grave-serious",
+     "headword": "grave (serious)"
+    },
+    {
+     "id": "lex:C1:guidance",
+     "headword": "guidance"
+    },
+    {
+     "id": "lex:C1:harsh",
+     "headword": "harsh",
+     "refs": [
+      "ant:gentle-harsh",
+      "ant:harsh-mild"
+     ]
+    },
+    {
+     "id": "lex:C1:heritage",
+     "headword": "heritage"
+    },
+    {
+     "id": "lex:C1:hostile",
+     "headword": "hostile",
+     "refs": [
+      "ant:hostile-friendly",
+      "prep:hostile-to"
+     ]
+    },
+    {
+     "id": "lex:C1:inequality",
+     "headword": "inequality",
+     "refs": [
+      "ant:equality-inequality"
+     ]
+    },
+    {
+     "id": "lex:C1:inspection",
+     "headword": "inspection"
+    },
+    {
+     "id": "lex:C1:interfere",
+     "headword": "interfere",
+     "refs": [
+      "prep:interfere-with"
+     ]
+    },
+    {
+     "id": "lex:C1:landlord",
+     "headword": "landlord"
+    },
+    {
+     "id": "lex:C1:legislation",
+     "headword": "legislation"
+    },
+    {
+     "id": "lex:C1:lesbian",
+     "headword": "lesbian"
+    },
+    {
+     "id": "lex:C1:log",
+     "headword": "log",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "pv:log-in",
+      "pv:log-out"
+     ]
+    },
+    {
+     "id": "lex:C1:meditation",
+     "headword": "meditation"
+    },
+    {
+     "id": "lex:C1:misleading",
+     "headword": "misleading"
+    },
+    {
+     "id": "lex:C1:neighbouring",
+     "headword": "neighbouring"
+    },
+    {
+     "id": "lex:C1:newsletter",
+     "headword": "newsletter"
+    },
+    {
+     "id": "lex:C1:offering",
+     "headword": "offering"
+    },
+    {
+     "id": "lex:C1:pond",
+     "headword": "pond"
+    },
+    {
+     "id": "lex:C1:profitable",
+     "headword": "profitable"
+    },
+    {
+     "id": "lex:C1:prosecutor",
+     "headword": "prosecutor"
+    },
+    {
+     "id": "lex:C1:provision",
+     "headword": "provision"
+    },
+    {
+     "id": "lex:C1:pump",
+     "headword": "pump",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:rear",
+     "headword": "rear",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:front-rear",
+      "ant:head-rear"
+     ]
+    },
+    {
+     "id": "lex:C1:rumour",
+     "headword": "rumour"
+    },
+    {
+     "id": "lex:C1:screw",
+     "headword": "screw",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:separation",
+     "headword": "separation",
+     "refs": [
+      "ant:separation-union"
+     ]
+    },
+    {
+     "id": "lex:C1:settlement",
+     "headword": "settlement"
+    },
+    {
+     "id": "lex:C1:shipping",
+     "headword": "shipping"
+    },
+    {
+     "id": "lex:C1:specialized",
+     "headword": "specialized"
+    },
+    {
+     "id": "lex:C1:stem",
+     "headword": "stem",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "prep:stem-from"
+     ]
+    },
+    {
+     "id": "lex:C1:summit",
+     "headword": "summit"
+    },
+    {
+     "id": "lex:C1:superior",
+     "headword": "superior",
+     "refs": [
+      "ant:inferior-superior",
+      "prep:superior-to"
+     ]
+    },
+    {
+     "id": "lex:C1:tackle",
+     "headword": "tackle",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:terminal",
+     "headword": "terminal",
+     "flags": [
+      "also-B2x"
+     ],
+     "refs": [
+      "ant:intermediate-terminal"
+     ]
+    },
+    {
+     "id": "lex:C1:tighten",
+     "headword": "tighten",
+     "refs": [
+      "ant:tighten-loosen"
+     ]
+    },
+    {
+     "id": "lex:C1:transaction",
+     "headword": "transaction"
+    },
+    {
+     "id": "lex:C1:treaty",
+     "headword": "treaty"
+    },
+    {
+     "id": "lex:C1:violation",
+     "headword": "violation"
+    },
+    {
+     "id": "lex:C1:virtue",
+     "headword": "virtue",
+     "refs": [
+      "ant:virtue-vice"
+     ]
+    },
+    {
+     "id": "lex:C1:warehouse",
+     "headword": "warehouse"
+    },
+    {
+     "id": "lex:C1:worthwhile",
+     "headword": "worthwhile",
+     "refs": [
+      "conf:worth-worthwhile"
+     ]
+    },
+    {
+     "id": "lex:C1:abolish",
+     "headword": "abolish",
+     "refs": [
+      "ant:abolish-establish"
+     ]
+    },
+    {
+     "id": "lex:C1:abortion",
+     "headword": "abortion"
+    },
+    {
+     "id": "lex:C1:absence",
+     "headword": "absence",
+     "refs": [
+      "ant:presence-absence"
+     ]
+    },
+    {
+     "id": "lex:C1:absurd",
+     "headword": "absurd"
+    },
+    {
+     "id": "lex:C1:abundance",
+     "headword": "abundance",
+     "refs": [
+      "ant:abundance-lack",
+      "ant:abundance-scarcity"
+     ]
+    },
+    {
+     "id": "lex:C1:abuse",
+     "headword": "abuse",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:academy",
+     "headword": "academy"
+    },
+    {
+     "id": "lex:C1:accelerate",
+     "headword": "accelerate",
+     "refs": [
+      "ant:accelerate-decelerate"
+     ]
+    },
+    {
+     "id": "lex:C1:accomplishment",
+     "headword": "accomplishment"
+    },
+    {
+     "id": "lex:C1:accordance",
+     "headword": "accordance"
+    },
+    {
+     "id": "lex:C1:accordingly",
+     "headword": "accordingly"
+    },
+    {
+     "id": "lex:C1:accountable",
+     "headword": "accountable"
+    },
+    {
+     "id": "lex:C1:accumulate",
+     "headword": "accumulate"
+    },
+    {
+     "id": "lex:C1:accumulation",
+     "headword": "accumulation"
+    },
+    {
+     "id": "lex:C1:accusation",
+     "headword": "accusation"
+    },
+    {
+     "id": "lex:C1:activation",
+     "headword": "activation"
+    },
+    {
+     "id": "lex:C1:activist",
+     "headword": "activist"
+    },
+    {
+     "id": "lex:C1:acute",
+     "headword": "acute"
+    },
+    {
+     "id": "lex:C1:adhere",
+     "headword": "adhere"
+    },
+    {
+     "id": "lex:C1:adjacent",
+     "headword": "adjacent"
+    },
+    {
+     "id": "lex:C1:administrator",
+     "headword": "administrator"
+    },
+    {
+     "id": "lex:C1:adoption",
+     "headword": "adoption"
+    },
+    {
+     "id": "lex:C1:adverse",
+     "headword": "adverse"
+    },
+    {
+     "id": "lex:C1:advocate",
+     "headword": "advocate",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:aesthetic",
+     "headword": "aesthetic"
+    },
+    {
+     "id": "lex:C1:affection",
+     "headword": "affection"
+    },
+    {
+     "id": "lex:C1:aftermath",
+     "headword": "aftermath"
+    },
+    {
+     "id": "lex:C1:aggression",
+     "headword": "aggression"
+    },
+    {
+     "id": "lex:C1:agricultural",
+     "headword": "agricultural"
+    },
+    {
+     "id": "lex:C1:aide",
+     "headword": "aide"
+    },
+    {
+     "id": "lex:C1:albeit",
+     "headword": "albeit"
+    },
+    {
+     "id": "lex:C1:alert",
+     "headword": "alert",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:align",
+     "headword": "align"
+    },
+    {
+     "id": "lex:C1:alignment",
+     "headword": "alignment"
+    },
+    {
+     "id": "lex:C1:alike",
+     "headword": "alike",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:alike-different"
+     ]
+    },
+    {
+     "id": "lex:C1:allegation",
+     "headword": "allegation"
+    },
+    {
+     "id": "lex:C1:allegedly",
+     "headword": "allegedly"
+    },
+    {
+     "id": "lex:C1:alliance",
+     "headword": "alliance"
+    },
+    {
+     "id": "lex:C1:allocation",
+     "headword": "allocation"
+    },
+    {
+     "id": "lex:C1:allowance",
+     "headword": "allowance"
+    },
+    {
+     "id": "lex:C1:ally",
+     "headword": "ally"
+    },
+    {
+     "id": "lex:C1:aluminium",
+     "headword": "aluminium"
+    },
+    {
+     "id": "lex:C1:amateur",
+     "headword": "amateur",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:professional-amateur"
+     ]
+    },
+    {
+     "id": "lex:C1:ambassador",
+     "headword": "ambassador"
+    },
+    {
+     "id": "lex:C1:amend",
+     "headword": "amend"
+    }
+   ]
+  },
+  {
+   "id": "batch-03",
+   "entries": [
+    {
+     "id": "lex:C1:amendment",
+     "headword": "amendment"
+    },
+    {
+     "id": "lex:C1:amid",
+     "headword": "amid"
+    },
+    {
+     "id": "lex:C1:analogy",
+     "headword": "analogy"
+    },
+    {
+     "id": "lex:C1:anchor",
+     "headword": "anchor"
+    },
+    {
+     "id": "lex:C1:angel",
+     "headword": "angel"
+    },
+    {
+     "id": "lex:C1:anonymous",
+     "headword": "anonymous"
+    },
+    {
+     "id": "lex:C1:apparatus",
+     "headword": "apparatus"
+    },
+    {
+     "id": "lex:C1:appealing",
+     "headword": "appealing"
+    },
+    {
+     "id": "lex:C1:appetite",
+     "headword": "appetite"
+    },
+    {
+     "id": "lex:C1:applicable",
+     "headword": "applicable"
+    },
+    {
+     "id": "lex:C1:appreciation",
+     "headword": "appreciation"
+    },
+    {
+     "id": "lex:C1:arbitrary",
+     "headword": "arbitrary"
+    },
+    {
+     "id": "lex:C1:architectural",
+     "headword": "architectural"
+    },
+    {
+     "id": "lex:C1:arena",
+     "headword": "arena"
+    },
+    {
+     "id": "lex:C1:arguably",
+     "headword": "arguably"
+    },
+    {
+     "id": "lex:C1:array",
+     "headword": "array"
+    },
+    {
+     "id": "lex:C1:articulate",
+     "headword": "articulate"
+    },
+    {
+     "id": "lex:C1:ash",
+     "headword": "ash"
+    },
+    {
+     "id": "lex:C1:aspiration",
+     "headword": "aspiration"
+    },
+    {
+     "id": "lex:C1:aspire",
+     "headword": "aspire"
+    },
+    {
+     "id": "lex:C1:assassination",
+     "headword": "assassination"
+    },
+    {
+     "id": "lex:C1:assault",
+     "headword": "assault",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:assembly",
+     "headword": "assembly"
+    },
+    {
+     "id": "lex:C1:assertion",
+     "headword": "assertion"
+    },
+    {
+     "id": "lex:C1:assurance",
+     "headword": "assurance"
+    },
+    {
+     "id": "lex:C1:asylum",
+     "headword": "asylum"
+    },
+    {
+     "id": "lex:C1:attorney",
+     "headword": "attorney"
+    },
+    {
+     "id": "lex:C1:attribute",
+     "headword": "attribute",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "prep:attribute-to"
+     ]
+    },
+    {
+     "id": "lex:C1:authentic",
+     "headword": "authentic",
+     "refs": [
+      "ant:authentic-counterfeit",
+      "ant:authentic-fake"
+     ]
+    },
+    {
+     "id": "lex:C1:authorize",
+     "headword": "authorize"
+    },
+    {
+     "id": "lex:C1:auto",
+     "headword": "auto"
+    },
+    {
+     "id": "lex:C1:autonomy",
+     "headword": "autonomy"
+    },
+    {
+     "id": "lex:C1:availability",
+     "headword": "availability"
+    },
+    {
+     "id": "lex:C1:await",
+     "headword": "await"
+    },
+    {
+     "id": "lex:C1:backdrop",
+     "headword": "backdrop"
+    },
+    {
+     "id": "lex:C1:backing",
+     "headword": "backing"
+    },
+    {
+     "id": "lex:C1:backup",
+     "headword": "backup"
+    },
+    {
+     "id": "lex:C1:bail",
+     "headword": "bail"
+    },
+    {
+     "id": "lex:C1:ballot",
+     "headword": "ballot"
+    },
+    {
+     "id": "lex:C1:banner",
+     "headword": "banner"
+    },
+    {
+     "id": "lex:C1:bare",
+     "headword": "bare",
+     "refs": [
+      "ant:bare-covered"
+     ]
+    },
+    {
+     "id": "lex:C1:bass",
+     "headword": "bass¹"
+    },
+    {
+     "id": "lex:C1:bat",
+     "headword": "bat",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:battlefield",
+     "headword": "battlefield"
+    },
+    {
+     "id": "lex:C1:bay",
+     "headword": "bay"
+    },
+    {
+     "id": "lex:C1:beam",
+     "headword": "beam"
+    },
+    {
+     "id": "lex:C1:beast",
+     "headword": "beast"
+    },
+    {
+     "id": "lex:C1:beloved",
+     "headword": "beloved"
+    },
+    {
+     "id": "lex:C1:bench",
+     "headword": "bench"
+    },
+    {
+     "id": "lex:C1:benchmark",
+     "headword": "benchmark"
+    },
+    {
+     "id": "lex:C1:beneath",
+     "headword": "beneath"
+    },
+    {
+     "id": "lex:C1:biography",
+     "headword": "biography"
+    },
+    {
+     "id": "lex:C1:bishop",
+     "headword": "bishop"
+    },
+    {
+     "id": "lex:C1:bizarre",
+     "headword": "bizarre"
+    },
+    {
+     "id": "lex:C1:blade",
+     "headword": "blade"
+    },
+    {
+     "id": "lex:C1:blast",
+     "headword": "blast",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:bleed",
+     "headword": "bleed",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:bleed"
+     ]
+    },
+    {
+     "id": "lex:C1:bless",
+     "headword": "bless"
+    },
+    {
+     "id": "lex:C1:blessing",
+     "headword": "blessing"
+    },
+    {
+     "id": "lex:C1:bonus",
+     "headword": "bonus"
+    },
+    {
+     "id": "lex:C1:boom",
+     "headword": "boom"
+    },
+    {
+     "id": "lex:C1:boundary",
+     "headword": "boundary"
+    },
+    {
+     "id": "lex:C1:breach",
+     "headword": "breach",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:breakdown",
+     "headword": "breakdown"
+    },
+    {
+     "id": "lex:C1:broadband",
+     "headword": "broadband"
+    },
+    {
+     "id": "lex:C1:browser",
+     "headword": "browser"
+    },
+    {
+     "id": "lex:C1:brutal",
+     "headword": "brutal"
+    },
+    {
+     "id": "lex:C1:buddy",
+     "headword": "buddy"
+    },
+    {
+     "id": "lex:C1:buffer",
+     "headword": "buffer"
+    },
+    {
+     "id": "lex:C1:bulk",
+     "headword": "bulk"
+    },
+    {
+     "id": "lex:C1:bureaucracy",
+     "headword": "bureaucracy"
+    },
+    {
+     "id": "lex:C1:burial",
+     "headword": "burial"
+    },
+    {
+     "id": "lex:C1:burst",
+     "headword": "burst",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:burst"
+     ]
+    },
+    {
+     "id": "lex:C1:cabinet",
+     "headword": "cabinet"
+    },
+    {
+     "id": "lex:C1:canvas",
+     "headword": "canvas"
+    },
+    {
+     "id": "lex:C1:capitalism",
+     "headword": "capitalism"
+    },
+    {
+     "id": "lex:C1:carriage",
+     "headword": "carriage"
+    },
+    {
+     "id": "lex:C1:casino",
+     "headword": "casino"
+    },
+    {
+     "id": "lex:C1:catalogue",
+     "headword": "catalogue"
+    },
+    {
+     "id": "lex:C1:cattle",
+     "headword": "cattle"
+    },
+    {
+     "id": "lex:C1:caution",
+     "headword": "caution"
+    },
+    {
+     "id": "lex:C1:cease",
+     "headword": "cease"
+    },
+    {
+     "id": "lex:C1:chamber",
+     "headword": "chamber"
+    },
+    {
+     "id": "lex:C1:chaos",
+     "headword": "chaos",
+     "refs": [
+      "ant:order-chaos"
+     ]
+    },
+    {
+     "id": "lex:C1:charm",
+     "headword": "charm"
+    },
+    {
+     "id": "lex:C1:charter",
+     "headword": "charter"
+    },
+    {
+     "id": "lex:C1:chronic",
+     "headword": "chronic"
+    },
+    {
+     "id": "lex:C1:circulation",
+     "headword": "circulation"
+    },
+    {
+     "id": "lex:C1:citizenship",
+     "headword": "citizenship"
+    },
+    {
+     "id": "lex:C1:civic",
+     "headword": "civic"
+    },
+    {
+     "id": "lex:C1:civilian",
+     "headword": "civilian",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "fam:civil"
+     ]
+    },
+    {
+     "id": "lex:C1:clarity",
+     "headword": "clarity",
+     "refs": [
+      "ant:clarity-ambiguity"
+     ]
+    },
+    {
+     "id": "lex:C1:clash",
+     "headword": "clash"
+    },
+    {
+     "id": "lex:C1:clinical",
+     "headword": "clinical"
+    },
+    {
+     "id": "lex:C1:cluster",
+     "headword": "cluster"
+    },
+    {
+     "id": "lex:C1:coalition",
+     "headword": "coalition"
+    },
+    {
+     "id": "lex:C1:cognitive",
+     "headword": "cognitive"
+    },
+    {
+     "id": "lex:C1:coincide",
+     "headword": "coincide"
+    },
+    {
+     "id": "lex:C1:collaboration",
+     "headword": "collaboration"
+    },
+    {
+     "id": "lex:C1:collective",
+     "headword": "collective"
+    }
+   ]
+  },
+  {
+   "id": "batch-04",
+   "entries": [
+    {
+     "id": "lex:C1:collision",
+     "headword": "collision"
+    },
+    {
+     "id": "lex:C1:colonial",
+     "headword": "colonial"
+    },
+    {
+     "id": "lex:C1:columnist",
+     "headword": "columnist"
+    },
+    {
+     "id": "lex:C1:combat",
+     "headword": "combat",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:commence",
+     "headword": "commence"
+    },
+    {
+     "id": "lex:C1:commentary",
+     "headword": "commentary"
+    },
+    {
+     "id": "lex:C1:commentator",
+     "headword": "commentator"
+    },
+    {
+     "id": "lex:C1:commerce",
+     "headword": "commerce"
+    },
+    {
+     "id": "lex:C1:commissioner",
+     "headword": "commissioner"
+    },
+    {
+     "id": "lex:C1:commodity",
+     "headword": "commodity"
+    },
+    {
+     "id": "lex:C1:communist",
+     "headword": "communist"
+    },
+    {
+     "id": "lex:C1:companion",
+     "headword": "companion"
+    },
+    {
+     "id": "lex:C1:comparable",
+     "headword": "comparable"
+    },
+    {
+     "id": "lex:C1:compassion",
+     "headword": "compassion"
+    },
+    {
+     "id": "lex:C1:compelling",
+     "headword": "compelling"
+    },
+    {
+     "id": "lex:C1:compensate",
+     "headword": "compensate"
+    },
+    {
+     "id": "lex:C1:compensation",
+     "headword": "compensation"
+    },
+    {
+     "id": "lex:C1:competence",
+     "headword": "competence",
+     "refs": [
+      "ant:competence-incompetence"
+     ]
+    },
+    {
+     "id": "lex:C1:competent",
+     "headword": "competent",
+     "refs": [
+      "ant:competent-incompetent"
+     ]
+    },
+    {
+     "id": "lex:C1:complexity",
+     "headword": "complexity",
+     "refs": [
+      "ant:complexity-simplicity"
+     ]
+    },
+    {
+     "id": "lex:C1:compliance",
+     "headword": "compliance",
+     "refs": [
+      "ant:compliance-resistance"
+     ]
+    },
+    {
+     "id": "lex:C1:composition",
+     "headword": "composition"
+    },
+    {
+     "id": "lex:C1:compromise",
+     "headword": "compromise",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:compute",
+     "headword": "compute"
+    },
+    {
+     "id": "lex:C1:conceive",
+     "headword": "conceive"
+    },
+    {
+     "id": "lex:C1:conception",
+     "headword": "conception"
+    },
+    {
+     "id": "lex:C1:concession",
+     "headword": "concession"
+    },
+    {
+     "id": "lex:C1:confession",
+     "headword": "confession"
+    },
+    {
+     "id": "lex:C1:confine",
+     "headword": "confine",
+     "refs": [
+      "ant:confine-free"
+     ]
+    },
+    {
+     "id": "lex:C1:confront",
+     "headword": "confront",
+     "refs": [
+      "ant:avoid-confront"
+     ]
+    },
+    {
+     "id": "lex:C1:confrontation",
+     "headword": "confrontation"
+    },
+    {
+     "id": "lex:C1:congratulate",
+     "headword": "congratulate",
+     "refs": [
+      "prep:congratulate-on"
+     ]
+    },
+    {
+     "id": "lex:C1:congressional",
+     "headword": "congressional"
+    },
+    {
+     "id": "lex:C1:conquer",
+     "headword": "conquer"
+    },
+    {
+     "id": "lex:C1:conscience",
+     "headword": "conscience"
+    },
+    {
+     "id": "lex:C1:consciousness",
+     "headword": "consciousness",
+     "refs": [
+      "ant:consciousness-unconsciousness"
+     ]
+    },
+    {
+     "id": "lex:C1:consecutive",
+     "headword": "consecutive"
+    },
+    {
+     "id": "lex:C1:consensus",
+     "headword": "consensus"
+    },
+    {
+     "id": "lex:C1:consent",
+     "headword": "consent",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:consent-refusal"
+     ]
+    },
+    {
+     "id": "lex:C1:consistency",
+     "headword": "consistency"
+    },
+    {
+     "id": "lex:C1:consolidate",
+     "headword": "consolidate"
+    },
+    {
+     "id": "lex:C1:constituency",
+     "headword": "constituency"
+    },
+    {
+     "id": "lex:C1:constitute",
+     "headword": "constitute"
+    },
+    {
+     "id": "lex:C1:consultation",
+     "headword": "consultation",
+     "refs": [
+      "fam:consult"
+     ]
+    },
+    {
+     "id": "lex:C1:contempt",
+     "headword": "contempt"
+    },
+    {
+     "id": "lex:C1:contend",
+     "headword": "contend"
+    },
+    {
+     "id": "lex:C1:contender",
+     "headword": "contender"
+    },
+    {
+     "id": "lex:C1:contention",
+     "headword": "contention"
+    },
+    {
+     "id": "lex:C1:continually",
+     "headword": "continually"
+    },
+    {
+     "id": "lex:C1:contractor",
+     "headword": "contractor"
+    },
+    {
+     "id": "lex:C1:contradiction",
+     "headword": "contradiction"
+    },
+    {
+     "id": "lex:C1:contrary",
+     "headword": "contrary",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:contributor",
+     "headword": "contributor"
+    },
+    {
+     "id": "lex:C1:conviction",
+     "headword": "conviction"
+    },
+    {
+     "id": "lex:C1:cooperative",
+     "headword": "cooperative"
+    },
+    {
+     "id": "lex:C1:coordinate",
+     "headword": "coordinate"
+    },
+    {
+     "id": "lex:C1:coordination",
+     "headword": "coordination"
+    },
+    {
+     "id": "lex:C1:coordinator",
+     "headword": "coordinator"
+    },
+    {
+     "id": "lex:C1:cop",
+     "headword": "cop"
+    },
+    {
+     "id": "lex:C1:copper",
+     "headword": "copper"
+    },
+    {
+     "id": "lex:C1:copyright",
+     "headword": "copyright"
+    },
+    {
+     "id": "lex:C1:correction",
+     "headword": "correction"
+    },
+    {
+     "id": "lex:C1:correlate",
+     "headword": "correlate"
+    },
+    {
+     "id": "lex:C1:correlation",
+     "headword": "correlation"
+    },
+    {
+     "id": "lex:C1:correspond",
+     "headword": "correspond"
+    },
+    {
+     "id": "lex:C1:correspondence",
+     "headword": "correspondence"
+    },
+    {
+     "id": "lex:C1:correspondent",
+     "headword": "correspondent"
+    },
+    {
+     "id": "lex:C1:corresponding",
+     "headword": "corresponding"
+    },
+    {
+     "id": "lex:C1:corrupt",
+     "headword": "corrupt"
+    },
+    {
+     "id": "lex:C1:corruption",
+     "headword": "corruption"
+    },
+    {
+     "id": "lex:C1:costly",
+     "headword": "costly"
+    },
+    {
+     "id": "lex:C1:councillor",
+     "headword": "councillor"
+    },
+    {
+     "id": "lex:C1:counselling",
+     "headword": "counselling"
+    },
+    {
+     "id": "lex:C1:counsellor",
+     "headword": "counsellor"
+    },
+    {
+     "id": "lex:C1:counter-argue-against",
+     "headword": "counter (argue against)",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:counterpart",
+     "headword": "counterpart"
+    },
+    {
+     "id": "lex:C1:countless",
+     "headword": "countless"
+    },
+    {
+     "id": "lex:C1:coup",
+     "headword": "coup"
+    },
+    {
+     "id": "lex:C1:courtesy",
+     "headword": "courtesy"
+    },
+    {
+     "id": "lex:C1:craft",
+     "headword": "craft",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:creator",
+     "headword": "creator",
+     "refs": [
+      "fam:create"
+     ]
+    },
+    {
+     "id": "lex:C1:credibility",
+     "headword": "credibility"
+    },
+    {
+     "id": "lex:C1:credible",
+     "headword": "credible",
+     "refs": [
+      "ant:credible-incredible"
+     ]
+    },
+    {
+     "id": "lex:C1:creep",
+     "headword": "creep",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:creep"
+     ]
+    },
+    {
+     "id": "lex:C1:critique",
+     "headword": "critique"
+    },
+    {
+     "id": "lex:C1:crown",
+     "headword": "crown"
+    },
+    {
+     "id": "lex:C1:crude",
+     "headword": "crude"
+    },
+    {
+     "id": "lex:C1:crush",
+     "headword": "crush"
+    },
+    {
+     "id": "lex:C1:cult",
+     "headword": "cult",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:cultivate",
+     "headword": "cultivate"
+    },
+    {
+     "id": "lex:C1:curiosity",
+     "headword": "curiosity"
+    },
+    {
+     "id": "lex:C1:custody",
+     "headword": "custody"
+    },
+    {
+     "id": "lex:C1:cutting",
+     "headword": "cutting"
+    },
+    {
+     "id": "lex:C1:cynical",
+     "headword": "cynical"
+    },
+    {
+     "id": "lex:C1:dam",
+     "headword": "dam"
+    },
+    {
+     "id": "lex:C1:debris",
+     "headword": "debris"
+    },
+    {
+     "id": "lex:C1:debut",
+     "headword": "debut"
+    },
+    {
+     "id": "lex:C1:decisive",
+     "headword": "decisive"
+    },
+    {
+     "id": "lex:C1:declaration",
+     "headword": "declaration"
+    },
+    {
+     "id": "lex:C1:dedicated",
+     "headword": "dedicated"
+    }
+   ]
+  },
+  {
+   "id": "batch-05",
+   "entries": [
+    {
+     "id": "lex:C1:dedication",
+     "headword": "dedication"
+    },
+    {
+     "id": "lex:C1:deed",
+     "headword": "deed"
+    },
+    {
+     "id": "lex:C1:default",
+     "headword": "default"
+    },
+    {
+     "id": "lex:C1:defect",
+     "headword": "defect"
+    },
+    {
+     "id": "lex:C1:defensive",
+     "headword": "defensive",
+     "refs": [
+      "ant:defensive-offensive"
+     ]
+    },
+    {
+     "id": "lex:C1:deficiency",
+     "headword": "deficiency"
+    },
+    {
+     "id": "lex:C1:deficit",
+     "headword": "deficit",
+     "refs": [
+      "ant:deficit-surplus"
+     ]
+    },
+    {
+     "id": "lex:C1:defy",
+     "headword": "defy"
+    },
+    {
+     "id": "lex:C1:delegate",
+     "headword": "delegate"
+    },
+    {
+     "id": "lex:C1:delegation",
+     "headword": "delegation"
+    },
+    {
+     "id": "lex:C1:delicate",
+     "headword": "delicate"
+    },
+    {
+     "id": "lex:C1:demon",
+     "headword": "demon"
+    },
+    {
+     "id": "lex:C1:denial",
+     "headword": "denial"
+    },
+    {
+     "id": "lex:C1:dense",
+     "headword": "dense",
+     "refs": [
+      "ant:dense-sparse"
+     ]
+    },
+    {
+     "id": "lex:C1:density",
+     "headword": "density"
+    },
+    {
+     "id": "lex:C1:dependence",
+     "headword": "dependence",
+     "refs": [
+      "ant:independence-dependence",
+      "fam:depend"
+     ]
+    },
+    {
+     "id": "lex:C1:deployment",
+     "headword": "deployment"
+    },
+    {
+     "id": "lex:C1:deprive",
+     "headword": "deprive",
+     "refs": [
+      "ant:deprive-enrich"
+     ]
+    },
+    {
+     "id": "lex:C1:deputy",
+     "headword": "deputy"
+    },
+    {
+     "id": "lex:C1:descent",
+     "headword": "descent"
+    },
+    {
+     "id": "lex:C1:desirable",
+     "headword": "desirable",
+     "refs": [
+      "ant:desirable-undesirable"
+     ]
+    },
+    {
+     "id": "lex:C1:desktop",
+     "headword": "desktop"
+    },
+    {
+     "id": "lex:C1:detain",
+     "headword": "detain"
+    },
+    {
+     "id": "lex:C1:detection",
+     "headword": "detection"
+    },
+    {
+     "id": "lex:C1:devil",
+     "headword": "devil"
+    },
+    {
+     "id": "lex:C1:diagnosis",
+     "headword": "diagnosis"
+    },
+    {
+     "id": "lex:C1:dictate",
+     "headword": "dictate"
+    },
+    {
+     "id": "lex:C1:dictator",
+     "headword": "dictator"
+    },
+    {
+     "id": "lex:C1:differentiate",
+     "headword": "differentiate",
+     "refs": [
+      "ant:differentiate-integrate"
+     ]
+    },
+    {
+     "id": "lex:C1:dignity",
+     "headword": "dignity"
+    },
+    {
+     "id": "lex:C1:dilemma",
+     "headword": "dilemma"
+    },
+    {
+     "id": "lex:C1:dimension",
+     "headword": "dimension"
+    },
+    {
+     "id": "lex:C1:diplomat",
+     "headword": "diplomat"
+    },
+    {
+     "id": "lex:C1:diplomatic",
+     "headword": "diplomatic"
+    },
+    {
+     "id": "lex:C1:directory",
+     "headword": "directory"
+    },
+    {
+     "id": "lex:C1:disastrous",
+     "headword": "disastrous"
+    },
+    {
+     "id": "lex:C1:discard",
+     "headword": "discard",
+     "refs": [
+      "ant:retain-discard"
+     ]
+    },
+    {
+     "id": "lex:C1:disclose",
+     "headword": "disclose"
+    },
+    {
+     "id": "lex:C1:disclosure",
+     "headword": "disclosure"
+    },
+    {
+     "id": "lex:C1:discourse",
+     "headword": "discourse"
+    },
+    {
+     "id": "lex:C1:discretion",
+     "headword": "discretion"
+    },
+    {
+     "id": "lex:C1:dismissal",
+     "headword": "dismissal"
+    },
+    {
+     "id": "lex:C1:disposal",
+     "headword": "disposal"
+    },
+    {
+     "id": "lex:C1:dispose",
+     "headword": "dispose"
+    },
+    {
+     "id": "lex:C1:disruption",
+     "headword": "disruption"
+    },
+    {
+     "id": "lex:C1:distinction",
+     "headword": "distinction"
+    },
+    {
+     "id": "lex:C1:distinctive",
+     "headword": "distinctive"
+    },
+    {
+     "id": "lex:C1:distort",
+     "headword": "distort"
+    },
+    {
+     "id": "lex:C1:distress",
+     "headword": "distress",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:disturbing",
+     "headword": "disturbing"
+    },
+    {
+     "id": "lex:C1:divine",
+     "headword": "divine"
+    },
+    {
+     "id": "lex:C1:doctrine",
+     "headword": "doctrine"
+    },
+    {
+     "id": "lex:C1:documentation",
+     "headword": "documentation"
+    },
+    {
+     "id": "lex:C1:domain",
+     "headword": "domain"
+    },
+    {
+     "id": "lex:C1:dominance",
+     "headword": "dominance"
+    },
+    {
+     "id": "lex:C1:dose",
+     "headword": "dose"
+    },
+    {
+     "id": "lex:C1:drain",
+     "headword": "drain"
+    },
+    {
+     "id": "lex:C1:drift",
+     "headword": "drift"
+    },
+    {
+     "id": "lex:C1:dual",
+     "headword": "dual"
+    },
+    {
+     "id": "lex:C1:dumb",
+     "headword": "dumb"
+    },
+    {
+     "id": "lex:C1:duo",
+     "headword": "duo"
+    },
+    {
+     "id": "lex:C1:eager",
+     "headword": "eager"
+    },
+    {
+     "id": "lex:C1:earnings",
+     "headword": "earnings"
+    },
+    {
+     "id": "lex:C1:ease",
+     "headword": "ease",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:difficulty-ease"
+     ]
+    },
+    {
+     "id": "lex:C1:ecological",
+     "headword": "ecological"
+    },
+    {
+     "id": "lex:C1:effectiveness",
+     "headword": "effectiveness"
+    },
+    {
+     "id": "lex:C1:ego",
+     "headword": "ego"
+    },
+    {
+     "id": "lex:C1:elaborate",
+     "headword": "elaborate",
+     "refs": [
+      "ant:elaborate-simple"
+     ]
+    },
+    {
+     "id": "lex:C1:electoral",
+     "headword": "electoral"
+    },
+    {
+     "id": "lex:C1:elevate",
+     "headword": "elevate"
+    },
+    {
+     "id": "lex:C1:elite",
+     "headword": "elite"
+    },
+    {
+     "id": "lex:C1:embark",
+     "headword": "embark"
+    },
+    {
+     "id": "lex:C1:embarrassment",
+     "headword": "embarrassment"
+    },
+    {
+     "id": "lex:C1:embassy",
+     "headword": "embassy"
+    },
+    {
+     "id": "lex:C1:empirical",
+     "headword": "empirical",
+     "refs": [
+      "ant:empirical-theoretical"
+     ]
+    },
+    {
+     "id": "lex:C1:empower",
+     "headword": "empower"
+    },
+    {
+     "id": "lex:C1:encouraging",
+     "headword": "encouraging"
+    },
+    {
+     "id": "lex:C1:endeavour",
+     "headword": "endeavour"
+    },
+    {
+     "id": "lex:C1:endless",
+     "headword": "endless"
+    },
+    {
+     "id": "lex:C1:endorsement",
+     "headword": "endorsement"
+    },
+    {
+     "id": "lex:C1:endure",
+     "headword": "endure"
+    },
+    {
+     "id": "lex:C1:enforce",
+     "headword": "enforce"
+    },
+    {
+     "id": "lex:C1:enforcement",
+     "headword": "enforcement"
+    },
+    {
+     "id": "lex:C1:engagement",
+     "headword": "engagement"
+    },
+    {
+     "id": "lex:C1:enquire",
+     "headword": "enquire"
+    },
+    {
+     "id": "lex:C1:enrich",
+     "headword": "enrich",
+     "refs": [
+      "ant:deprive-enrich"
+     ]
+    },
+    {
+     "id": "lex:C1:epidemic",
+     "headword": "epidemic"
+    },
+    {
+     "id": "lex:C1:equation",
+     "headword": "equation"
+    },
+    {
+     "id": "lex:C1:essence",
+     "headword": "essence"
+    },
+    {
+     "id": "lex:C1:establishment",
+     "headword": "establishment"
+    },
+    {
+     "id": "lex:C1:eternal",
+     "headword": "eternal"
+    },
+    {
+     "id": "lex:C1:evolutionary",
+     "headword": "evolutionary"
+    },
+    {
+     "id": "lex:C1:exaggerate",
+     "headword": "exaggerate"
+    },
+    {
+     "id": "lex:C1:excellence",
+     "headword": "excellence"
+    },
+    {
+     "id": "lex:C1:excess",
+     "headword": "excess",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:exclusion",
+     "headword": "exclusion",
+     "refs": [
+      "ant:inclusion-exclusion"
+     ]
+    },
+    {
+     "id": "lex:C1:exclusively",
+     "headword": "exclusively"
+    },
+    {
+     "id": "lex:C1:execution",
+     "headword": "execution"
+    },
+    {
+     "id": "lex:C1:exile",
+     "headword": "exile"
+    },
+    {
+     "id": "lex:C1:expenditure",
+     "headword": "expenditure"
+    }
+   ]
+  },
+  {
+   "id": "batch-06",
+   "entries": [
+    {
+     "id": "lex:C1:expire",
+     "headword": "expire"
+    },
+    {
+     "id": "lex:C1:explicit",
+     "headword": "explicit",
+     "refs": [
+      "ant:explicit-implicit"
+     ]
+    },
+    {
+     "id": "lex:C1:explicitly",
+     "headword": "explicitly"
+    },
+    {
+     "id": "lex:C1:exploitation",
+     "headword": "exploitation"
+    },
+    {
+     "id": "lex:C1:explosive",
+     "headword": "explosive",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:extract",
+     "headword": "extract",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:extremist",
+     "headword": "extremist"
+    },
+    {
+     "id": "lex:C1:faction",
+     "headword": "faction"
+    },
+    {
+     "id": "lex:C1:faculty",
+     "headword": "faculty"
+    },
+    {
+     "id": "lex:C1:fade",
+     "headword": "fade"
+    },
+    {
+     "id": "lex:C1:fatal",
+     "headword": "fatal"
+    },
+    {
+     "id": "lex:C1:fate",
+     "headword": "fate"
+    },
+    {
+     "id": "lex:C1:favourable",
+     "headword": "favourable"
+    },
+    {
+     "id": "lex:C1:feat",
+     "headword": "feat"
+    },
+    {
+     "id": "lex:C1:feminist",
+     "headword": "feminist",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:fibre",
+     "headword": "fibre"
+    },
+    {
+     "id": "lex:C1:fierce",
+     "headword": "fierce",
+     "refs": [
+      "ant:fierce-gentle"
+     ]
+    },
+    {
+     "id": "lex:C1:filter",
+     "headword": "filter",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:flaw",
+     "headword": "flaw"
+    },
+    {
+     "id": "lex:C1:flawed",
+     "headword": "flawed"
+    },
+    {
+     "id": "lex:C1:fleet",
+     "headword": "fleet"
+    },
+    {
+     "id": "lex:C1:flesh",
+     "headword": "flesh"
+    },
+    {
+     "id": "lex:C1:flourish",
+     "headword": "flourish"
+    },
+    {
+     "id": "lex:C1:fluid",
+     "headword": "fluid"
+    },
+    {
+     "id": "lex:C1:footage",
+     "headword": "footage"
+    },
+    {
+     "id": "lex:C1:forth",
+     "headword": "forth"
+    },
+    {
+     "id": "lex:C1:forthcoming",
+     "headword": "forthcoming"
+    },
+    {
+     "id": "lex:C1:franchise",
+     "headword": "franchise"
+    },
+    {
+     "id": "lex:C1:frankly",
+     "headword": "frankly"
+    },
+    {
+     "id": "lex:C1:frustrating",
+     "headword": "frustrating"
+    },
+    {
+     "id": "lex:C1:functional",
+     "headword": "functional"
+    },
+    {
+     "id": "lex:C1:fundraising",
+     "headword": "fundraising"
+    },
+    {
+     "id": "lex:C1:funeral",
+     "headword": "funeral"
+    },
+    {
+     "id": "lex:C1:gambling",
+     "headword": "gambling"
+    },
+    {
+     "id": "lex:C1:gathering",
+     "headword": "gathering"
+    },
+    {
+     "id": "lex:C1:gear",
+     "headword": "gear"
+    },
+    {
+     "id": "lex:C1:generic",
+     "headword": "generic"
+    },
+    {
+     "id": "lex:C1:genocide",
+     "headword": "genocide"
+    },
+    {
+     "id": "lex:C1:glimpse",
+     "headword": "glimpse"
+    },
+    {
+     "id": "lex:C1:glorious",
+     "headword": "glorious"
+    },
+    {
+     "id": "lex:C1:glory",
+     "headword": "glory"
+    },
+    {
+     "id": "lex:C1:governance",
+     "headword": "governance"
+    },
+    {
+     "id": "lex:C1:grace",
+     "headword": "grace"
+    },
+    {
+     "id": "lex:C1:gravity",
+     "headword": "gravity"
+    },
+    {
+     "id": "lex:C1:grid",
+     "headword": "grid"
+    },
+    {
+     "id": "lex:C1:grief",
+     "headword": "grief",
+     "refs": [
+      "ant:grief-joy"
+     ]
+    },
+    {
+     "id": "lex:C1:grip",
+     "headword": "grip",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:gross",
+     "headword": "gross",
+     "refs": [
+      "ant:gross-net"
+     ]
+    },
+    {
+     "id": "lex:C1:guerrilla",
+     "headword": "guerrilla"
+    },
+    {
+     "id": "lex:C1:guilt",
+     "headword": "guilt"
+    },
+    {
+     "id": "lex:C1:gut",
+     "headword": "gut"
+    },
+    {
+     "id": "lex:C1:halfway",
+     "headword": "halfway"
+    },
+    {
+     "id": "lex:C1:halt",
+     "headword": "halt",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:handful",
+     "headword": "handful"
+    },
+    {
+     "id": "lex:C1:handling",
+     "headword": "handling"
+    },
+    {
+     "id": "lex:C1:handy",
+     "headword": "handy"
+    },
+    {
+     "id": "lex:C1:harassment",
+     "headword": "harassment"
+    },
+    {
+     "id": "lex:C1:harmony",
+     "headword": "harmony"
+    },
+    {
+     "id": "lex:C1:harvest",
+     "headword": "harvest",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:hatred",
+     "headword": "hatred"
+    },
+    {
+     "id": "lex:C1:haunt",
+     "headword": "haunt"
+    },
+    {
+     "id": "lex:C1:hazard",
+     "headword": "hazard"
+    },
+    {
+     "id": "lex:C1:hierarchy",
+     "headword": "hierarchy"
+    },
+    {
+     "id": "lex:C1:homeland",
+     "headword": "homeland"
+    },
+    {
+     "id": "lex:C1:hook",
+     "headword": "hook",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:horizon",
+     "headword": "horizon"
+    },
+    {
+     "id": "lex:C1:horn",
+     "headword": "horn"
+    },
+    {
+     "id": "lex:C1:hostility",
+     "headword": "hostility",
+     "refs": [
+      "ant:friendship-hostility"
+     ]
+    },
+    {
+     "id": "lex:C1:humanitarian",
+     "headword": "humanitarian"
+    },
+    {
+     "id": "lex:C1:humble",
+     "headword": "humble",
+     "refs": [
+      "ant:arrogant-humble",
+      "ant:humble-proud"
+     ]
+    },
+    {
+     "id": "lex:C1:hydrogen",
+     "headword": "hydrogen"
+    },
+    {
+     "id": "lex:C1:ideological",
+     "headword": "ideological"
+    },
+    {
+     "id": "lex:C1:ideology",
+     "headword": "ideology"
+    },
+    {
+     "id": "lex:C1:idiot",
+     "headword": "idiot"
+    },
+    {
+     "id": "lex:C1:ignorance",
+     "headword": "ignorance",
+     "refs": [
+      "ant:knowledge-ignorance"
+     ]
+    },
+    {
+     "id": "lex:C1:imagery",
+     "headword": "imagery"
+    },
+    {
+     "id": "lex:C1:immense",
+     "headword": "immense"
+    },
+    {
+     "id": "lex:C1:imminent",
+     "headword": "imminent"
+    },
+    {
+     "id": "lex:C1:implementation",
+     "headword": "implementation"
+    },
+    {
+     "id": "lex:C1:imprisonment",
+     "headword": "imprisonment"
+    },
+    {
+     "id": "lex:C1:inability",
+     "headword": "inability",
+     "refs": [
+      "ant:ability-inability"
+     ]
+    },
+    {
+     "id": "lex:C1:inadequate",
+     "headword": "inadequate",
+     "refs": [
+      "ant:adequate-inadequate"
+     ]
+    },
+    {
+     "id": "lex:C1:inappropriate",
+     "headword": "inappropriate",
+     "refs": [
+      "ant:appropriate-inappropriate"
+     ]
+    },
+    {
+     "id": "lex:C1:incidence",
+     "headword": "incidence"
+    },
+    {
+     "id": "lex:C1:inclined",
+     "headword": "inclined"
+    },
+    {
+     "id": "lex:C1:inclusion",
+     "headword": "inclusion",
+     "refs": [
+      "ant:inclusion-exclusion",
+      "fam:include"
+     ]
+    },
+    {
+     "id": "lex:C1:incur",
+     "headword": "incur"
+    },
+    {
+     "id": "lex:C1:indicator",
+     "headword": "indicator",
+     "refs": [
+      "fam:indicate"
+     ]
+    },
+    {
+     "id": "lex:C1:indictment",
+     "headword": "indictment"
+    },
+    {
+     "id": "lex:C1:indigenous",
+     "headword": "indigenous"
+    },
+    {
+     "id": "lex:C1:induce",
+     "headword": "induce"
+    },
+    {
+     "id": "lex:C1:infamous",
+     "headword": "infamous"
+    },
+    {
+     "id": "lex:C1:infect",
+     "headword": "infect"
+    },
+    {
+     "id": "lex:C1:inherent",
+     "headword": "inherent"
+    },
+    {
+     "id": "lex:C1:inhibit",
+     "headword": "inhibit"
+    },
+    {
+     "id": "lex:C1:injection",
+     "headword": "injection"
+    },
+    {
+     "id": "lex:C1:injustice",
+     "headword": "injustice",
+     "refs": [
+      "ant:injustice-justice"
+     ]
+    },
+    {
+     "id": "lex:C1:insertion",
+     "headword": "insertion"
+    },
+    {
+     "id": "lex:C1:insider",
+     "headword": "insider"
+    },
+    {
+     "id": "lex:C1:instinct",
+     "headword": "instinct"
+    }
+   ]
+  },
+  {
+   "id": "batch-07",
+   "entries": [
+    {
+     "id": "lex:C1:institutional",
+     "headword": "institutional"
+    },
+    {
+     "id": "lex:C1:instrumental",
+     "headword": "instrumental"
+    },
+    {
+     "id": "lex:C1:insult",
+     "headword": "insult",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:compliment-insult"
+     ]
+    },
+    {
+     "id": "lex:C1:intact",
+     "headword": "intact"
+    },
+    {
+     "id": "lex:C1:intake",
+     "headword": "intake"
+    },
+    {
+     "id": "lex:C1:integral",
+     "headword": "integral"
+    },
+    {
+     "id": "lex:C1:integrated",
+     "headword": "integrated"
+    },
+    {
+     "id": "lex:C1:integration",
+     "headword": "integration"
+    },
+    {
+     "id": "lex:C1:integrity",
+     "headword": "integrity"
+    },
+    {
+     "id": "lex:C1:intellectual",
+     "headword": "intellectual",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:intensify",
+     "headword": "intensify"
+    },
+    {
+     "id": "lex:C1:intensity",
+     "headword": "intensity"
+    },
+    {
+     "id": "lex:C1:intensive",
+     "headword": "intensive"
+    },
+    {
+     "id": "lex:C1:intent",
+     "headword": "intent"
+    },
+    {
+     "id": "lex:C1:interactive",
+     "headword": "interactive"
+    },
+    {
+     "id": "lex:C1:interface",
+     "headword": "interface"
+    },
+    {
+     "id": "lex:C1:interference",
+     "headword": "interference"
+    },
+    {
+     "id": "lex:C1:interim",
+     "headword": "interim"
+    },
+    {
+     "id": "lex:C1:interior",
+     "headword": "interior",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:intermediate",
+     "headword": "intermediate",
+     "refs": [
+      "ant:intermediate-terminal"
+     ]
+    },
+    {
+     "id": "lex:C1:intervention",
+     "headword": "intervention"
+    },
+    {
+     "id": "lex:C1:intimate",
+     "headword": "intimate"
+    },
+    {
+     "id": "lex:C1:intriguing",
+     "headword": "intriguing"
+    },
+    {
+     "id": "lex:C1:involvement",
+     "headword": "involvement"
+    },
+    {
+     "id": "lex:C1:ironic",
+     "headword": "ironic"
+    },
+    {
+     "id": "lex:C1:ironically",
+     "headword": "ironically"
+    },
+    {
+     "id": "lex:C1:irony",
+     "headword": "irony"
+    },
+    {
+     "id": "lex:C1:irrelevant",
+     "headword": "irrelevant",
+     "refs": [
+      "ant:relevant-irrelevant"
+     ]
+    },
+    {
+     "id": "lex:C1:isolation",
+     "headword": "isolation"
+    },
+    {
+     "id": "lex:C1:judicial",
+     "headword": "judicial"
+    },
+    {
+     "id": "lex:C1:junction",
+     "headword": "junction"
+    },
+    {
+     "id": "lex:C1:jurisdiction",
+     "headword": "jurisdiction"
+    },
+    {
+     "id": "lex:C1:kingdom",
+     "headword": "kingdom"
+    },
+    {
+     "id": "lex:C1:lad",
+     "headword": "lad"
+    },
+    {
+     "id": "lex:C1:landmark",
+     "headword": "landmark"
+    },
+    {
+     "id": "lex:C1:lap",
+     "headword": "lap"
+    },
+    {
+     "id": "lex:C1:laser",
+     "headword": "laser"
+    },
+    {
+     "id": "lex:C1:latter",
+     "headword": "latter",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:former-latter"
+     ]
+    },
+    {
+     "id": "lex:C1:lawn",
+     "headword": "lawn"
+    },
+    {
+     "id": "lex:C1:lawsuit",
+     "headword": "lawsuit"
+    },
+    {
+     "id": "lex:C1:layout",
+     "headword": "layout"
+    },
+    {
+     "id": "lex:C1:leak",
+     "headword": "leak",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:leap",
+     "headword": "leap",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:legacy",
+     "headword": "legacy"
+    },
+    {
+     "id": "lex:C1:legendary",
+     "headword": "legendary"
+    },
+    {
+     "id": "lex:C1:legislative",
+     "headword": "legislative"
+    },
+    {
+     "id": "lex:C1:legislature",
+     "headword": "legislature"
+    },
+    {
+     "id": "lex:C1:legitimate",
+     "headword": "legitimate",
+     "refs": [
+      "ant:legitimate-illegitimate"
+     ]
+    },
+    {
+     "id": "lex:C1:lengthy",
+     "headword": "lengthy"
+    },
+    {
+     "id": "lex:C1:lesser",
+     "headword": "lesser"
+    },
+    {
+     "id": "lex:C1:lethal",
+     "headword": "lethal"
+    },
+    {
+     "id": "lex:C1:liable",
+     "headword": "liable"
+    },
+    {
+     "id": "lex:C1:liberal",
+     "headword": "liberal",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:conservative-liberal"
+     ]
+    },
+    {
+     "id": "lex:C1:liberation",
+     "headword": "liberation"
+    },
+    {
+     "id": "lex:C1:liberty",
+     "headword": "liberty"
+    },
+    {
+     "id": "lex:C1:license",
+     "headword": "license"
+    },
+    {
+     "id": "lex:C1:lifelong",
+     "headword": "lifelong"
+    },
+    {
+     "id": "lex:C1:limb",
+     "headword": "limb"
+    },
+    {
+     "id": "lex:C1:linear",
+     "headword": "linear",
+     "refs": [
+      "ant:linear-nonlinear"
+     ]
+    },
+    {
+     "id": "lex:C1:listing",
+     "headword": "listing"
+    },
+    {
+     "id": "lex:C1:literacy",
+     "headword": "literacy"
+    },
+    {
+     "id": "lex:C1:liver",
+     "headword": "liver"
+    },
+    {
+     "id": "lex:C1:logic",
+     "headword": "logic"
+    },
+    {
+     "id": "lex:C1:loop",
+     "headword": "loop"
+    },
+    {
+     "id": "lex:C1:loyalty",
+     "headword": "loyalty",
+     "refs": [
+      "ant:disloyalty-loyalty"
+     ]
+    },
+    {
+     "id": "lex:C1:machinery",
+     "headword": "machinery"
+    },
+    {
+     "id": "lex:C1:magical",
+     "headword": "magical"
+    },
+    {
+     "id": "lex:C1:magistrate",
+     "headword": "magistrate"
+    },
+    {
+     "id": "lex:C1:magnetic",
+     "headword": "magnetic"
+    },
+    {
+     "id": "lex:C1:magnitude",
+     "headword": "magnitude"
+    },
+    {
+     "id": "lex:C1:mainland",
+     "headword": "mainland"
+    },
+    {
+     "id": "lex:C1:mainstream",
+     "headword": "mainstream",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:mandate",
+     "headword": "mandate"
+    },
+    {
+     "id": "lex:C1:mandatory",
+     "headword": "mandatory",
+     "refs": [
+      "ant:mandatory-optional"
+     ]
+    },
+    {
+     "id": "lex:C1:manifest",
+     "headword": "manifest"
+    },
+    {
+     "id": "lex:C1:manipulation",
+     "headword": "manipulation"
+    },
+    {
+     "id": "lex:C1:manuscript",
+     "headword": "manuscript"
+    },
+    {
+     "id": "lex:C1:marginal",
+     "headword": "marginal"
+    },
+    {
+     "id": "lex:C1:marine",
+     "headword": "marine"
+    },
+    {
+     "id": "lex:C1:marketplace",
+     "headword": "marketplace"
+    },
+    {
+     "id": "lex:C1:mask",
+     "headword": "mask"
+    },
+    {
+     "id": "lex:C1:massacre",
+     "headword": "massacre"
+    },
+    {
+     "id": "lex:C1:mathematical",
+     "headword": "mathematical"
+    },
+    {
+     "id": "lex:C1:maximize",
+     "headword": "maximize",
+     "refs": [
+      "ant:maximize-minimize"
+     ]
+    },
+    {
+     "id": "lex:C1:meaningful",
+     "headword": "meaningful",
+     "refs": [
+      "ant:meaningful-meaningless",
+      "fam:mean"
+     ]
+    },
+    {
+     "id": "lex:C1:meantime",
+     "headword": "meantime"
+    },
+    {
+     "id": "lex:C1:melody",
+     "headword": "melody"
+    },
+    {
+     "id": "lex:C1:memo",
+     "headword": "memo"
+    },
+    {
+     "id": "lex:C1:memoir",
+     "headword": "memoir"
+    },
+    {
+     "id": "lex:C1:mentor",
+     "headword": "mentor"
+    },
+    {
+     "id": "lex:C1:mercy",
+     "headword": "mercy"
+    },
+    {
+     "id": "lex:C1:mere",
+     "headword": "mere"
+    },
+    {
+     "id": "lex:C1:merely",
+     "headword": "merely"
+    },
+    {
+     "id": "lex:C1:merge",
+     "headword": "merge"
+    },
+    {
+     "id": "lex:C1:merit",
+     "headword": "merit"
+    },
+    {
+     "id": "lex:C1:methodology",
+     "headword": "methodology"
+    },
+    {
+     "id": "lex:C1:midst",
+     "headword": "midst"
+    },
+    {
+     "id": "lex:C1:migration",
+     "headword": "migration"
+    },
+    {
+     "id": "lex:C1:militant",
+     "headword": "militant",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:militia",
+     "headword": "militia"
+    }
+   ]
+  },
+  {
+   "id": "batch-08",
+   "entries": [
+    {
+     "id": "lex:C1:mill",
+     "headword": "mill"
+    },
+    {
+     "id": "lex:C1:minimal",
+     "headword": "minimal"
+    },
+    {
+     "id": "lex:C1:minimize",
+     "headword": "minimize",
+     "refs": [
+      "ant:maximize-minimize"
+     ]
+    },
+    {
+     "id": "lex:C1:mining",
+     "headword": "mining"
+    },
+    {
+     "id": "lex:C1:ministry",
+     "headword": "ministry"
+    },
+    {
+     "id": "lex:C1:miracle",
+     "headword": "miracle"
+    },
+    {
+     "id": "lex:C1:misery",
+     "headword": "misery"
+    },
+    {
+     "id": "lex:C1:missile",
+     "headword": "missile"
+    },
+    {
+     "id": "lex:C1:mob",
+     "headword": "mob"
+    },
+    {
+     "id": "lex:C1:mobility",
+     "headword": "mobility"
+    },
+    {
+     "id": "lex:C1:moderate",
+     "headword": "moderate",
+     "refs": [
+      "ant:extreme-moderate"
+     ]
+    },
+    {
+     "id": "lex:C1:modification",
+     "headword": "modification"
+    },
+    {
+     "id": "lex:C1:momentum",
+     "headword": "momentum"
+    },
+    {
+     "id": "lex:C1:monk",
+     "headword": "monk"
+    },
+    {
+     "id": "lex:C1:monopoly",
+     "headword": "monopoly"
+    },
+    {
+     "id": "lex:C1:morality",
+     "headword": "morality"
+    },
+    {
+     "id": "lex:C1:motive",
+     "headword": "motive"
+    },
+    {
+     "id": "lex:C1:municipal",
+     "headword": "municipal"
+    },
+    {
+     "id": "lex:C1:mutual",
+     "headword": "mutual"
+    },
+    {
+     "id": "lex:C1:namely",
+     "headword": "namely"
+    },
+    {
+     "id": "lex:C1:nationwide",
+     "headword": "nationwide"
+    },
+    {
+     "id": "lex:C1:naval",
+     "headword": "naval"
+    },
+    {
+     "id": "lex:C1:neglect",
+     "headword": "neglect",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:care-neglect"
+     ]
+    },
+    {
+     "id": "lex:C1:nest",
+     "headword": "nest"
+    },
+    {
+     "id": "lex:C1:niche",
+     "headword": "niche"
+    },
+    {
+     "id": "lex:C1:noble",
+     "headword": "noble"
+    },
+    {
+     "id": "lex:C1:nomination",
+     "headword": "nomination"
+    },
+    {
+     "id": "lex:C1:nominee",
+     "headword": "nominee"
+    },
+    {
+     "id": "lex:C1:nonetheless",
+     "headword": "nonetheless"
+    },
+    {
+     "id": "lex:C1:nonsense",
+     "headword": "nonsense"
+    },
+    {
+     "id": "lex:C1:notable",
+     "headword": "notable"
+    },
+    {
+     "id": "lex:C1:notably",
+     "headword": "notably"
+    },
+    {
+     "id": "lex:C1:notify",
+     "headword": "notify"
+    },
+    {
+     "id": "lex:C1:notorious",
+     "headword": "notorious"
+    },
+    {
+     "id": "lex:C1:nursery",
+     "headword": "nursery"
+    },
+    {
+     "id": "lex:C1:objection",
+     "headword": "objection",
+     "refs": [
+      "prep:objection-to"
+     ]
+    },
+    {
+     "id": "lex:C1:obsess",
+     "headword": "obsess"
+    },
+    {
+     "id": "lex:C1:obsession",
+     "headword": "obsession"
+    },
+    {
+     "id": "lex:C1:occasional",
+     "headword": "occasional",
+     "refs": [
+      "ant:frequent-occasional"
+     ]
+    },
+    {
+     "id": "lex:C1:odds",
+     "headword": "odds"
+    },
+    {
+     "id": "lex:C1:offspring",
+     "headword": "offspring"
+    },
+    {
+     "id": "lex:C1:operational",
+     "headword": "operational"
+    },
+    {
+     "id": "lex:C1:opt",
+     "headword": "opt"
+    },
+    {
+     "id": "lex:C1:optical",
+     "headword": "optical"
+    },
+    {
+     "id": "lex:C1:optimism",
+     "headword": "optimism",
+     "refs": [
+      "ant:optimism-pessimism"
+     ]
+    },
+    {
+     "id": "lex:C1:oral",
+     "headword": "oral"
+    },
+    {
+     "id": "lex:C1:organizational",
+     "headword": "organizational"
+    },
+    {
+     "id": "lex:C1:orientation",
+     "headword": "orientation"
+    },
+    {
+     "id": "lex:C1:outbreak",
+     "headword": "outbreak"
+    },
+    {
+     "id": "lex:C1:outing",
+     "headword": "outing"
+    },
+    {
+     "id": "lex:C1:outlook",
+     "headword": "outlook"
+    },
+    {
+     "id": "lex:C1:outrage",
+     "headword": "outrage",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:outsider",
+     "headword": "outsider"
+    },
+    {
+     "id": "lex:C1:overly",
+     "headword": "overly"
+    },
+    {
+     "id": "lex:C1:oversee",
+     "headword": "oversee",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:oversee"
+     ]
+    },
+    {
+     "id": "lex:C1:overwhelm",
+     "headword": "overwhelm"
+    },
+    {
+     "id": "lex:C1:overwhelming",
+     "headword": "overwhelming"
+    },
+    {
+     "id": "lex:C1:pad",
+     "headword": "pad"
+    },
+    {
+     "id": "lex:C1:parental",
+     "headword": "parental"
+    },
+    {
+     "id": "lex:C1:parish",
+     "headword": "parish"
+    },
+    {
+     "id": "lex:C1:parliamentary",
+     "headword": "parliamentary"
+    },
+    {
+     "id": "lex:C1:partial",
+     "headword": "partial",
+     "refs": [
+      "ant:partial-complete"
+     ]
+    },
+    {
+     "id": "lex:C1:partially",
+     "headword": "partially"
+    },
+    {
+     "id": "lex:C1:passing",
+     "headword": "passing"
+    },
+    {
+     "id": "lex:C1:passive",
+     "headword": "passive",
+     "refs": [
+      "ant:active-passive"
+     ]
+    },
+    {
+     "id": "lex:C1:pastor",
+     "headword": "pastor"
+    },
+    {
+     "id": "lex:C1:patch",
+     "headword": "patch"
+    },
+    {
+     "id": "lex:C1:patent",
+     "headword": "patent"
+    },
+    {
+     "id": "lex:C1:pathway",
+     "headword": "pathway"
+    },
+    {
+     "id": "lex:C1:patrol",
+     "headword": "patrol",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:peak",
+     "headword": "peak"
+    },
+    {
+     "id": "lex:C1:peasant",
+     "headword": "peasant"
+    },
+    {
+     "id": "lex:C1:peculiar",
+     "headword": "peculiar"
+    },
+    {
+     "id": "lex:C1:persistent",
+     "headword": "persistent"
+    },
+    {
+     "id": "lex:C1:personnel",
+     "headword": "personnel"
+    },
+    {
+     "id": "lex:C1:petition",
+     "headword": "petition"
+    },
+    {
+     "id": "lex:C1:philosopher",
+     "headword": "philosopher"
+    },
+    {
+     "id": "lex:C1:philosophical",
+     "headword": "philosophical"
+    },
+    {
+     "id": "lex:C1:physician",
+     "headword": "physician"
+    },
+    {
+     "id": "lex:C1:pioneer",
+     "headword": "pioneer",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:pipeline",
+     "headword": "pipeline"
+    },
+    {
+     "id": "lex:C1:pirate",
+     "headword": "pirate"
+    },
+    {
+     "id": "lex:C1:pit",
+     "headword": "pit"
+    },
+    {
+     "id": "lex:C1:plea",
+     "headword": "plea"
+    },
+    {
+     "id": "lex:C1:plug",
+     "headword": "plug",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:pole",
+     "headword": "pole"
+    },
+    {
+     "id": "lex:C1:poll",
+     "headword": "poll"
+    },
+    {
+     "id": "lex:C1:pop",
+     "headword": "pop",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:C1:portfolio",
+     "headword": "portfolio"
+    },
+    {
+     "id": "lex:C1:precedent",
+     "headword": "precedent"
+    },
+    {
+     "id": "lex:C1:predecessor",
+     "headword": "predecessor"
+    },
+    {
+     "id": "lex:C1:predominantly",
+     "headword": "predominantly"
+    },
+    {
+     "id": "lex:C1:pregnancy",
+     "headword": "pregnancy"
+    },
+    {
+     "id": "lex:C1:prejudice",
+     "headword": "prejudice"
+    },
+    {
+     "id": "lex:C1:preliminary",
+     "headword": "preliminary"
+    },
+    {
+     "id": "lex:C1:premier",
+     "headword": "premier"
+    },
+    {
+     "id": "lex:C1:premise",
+     "headword": "premise"
+    },
+    {
+     "id": "lex:C1:prescription",
+     "headword": "prescription"
+    },
+    {
+     "id": "lex:C1:presently",
+     "headword": "presently"
+    },
+    {
+     "id": "lex:C1:preservation",
+     "headword": "preservation"
+    }
+   ]
+  },
+  {
+   "id": "batch-09",
+   "entries": [
+    {
+     "id": "lex:C1:presidency",
+     "headword": "presidency"
+    },
+    {
+     "id": "lex:C1:presidential",
+     "headword": "presidential"
+    },
+    {
+     "id": "lex:C1:prestigious",
+     "headword": "prestigious"
+    },
+    {
+     "id": "lex:C1:presumably",
+     "headword": "presumably"
+    },
+    {
+     "id": "lex:C1:presume",
+     "headword": "presume"
+    },
+    {
+     "id": "lex:C1:prevail",
+     "headword": "prevail"
+    },
+    {
+     "id": "lex:C1:prevalence",
+     "headword": "prevalence"
+    },
+    {
+     "id": "lex:C1:prey",
+     "headword": "prey"
+    },
+    {
+     "id": "lex:C1:privatization",
+     "headword": "privatization"
+    },
+    {
+     "id": "lex:C1:privilege",
+     "headword": "privilege"
+    },
+    {
+     "id": "lex:C1:probe",
+     "headword": "probe",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:problematic",
+     "headword": "problematic"
+    },
+    {
+     "id": "lex:C1:proceedings",
+     "headword": "proceedings"
+    },
+    {
+     "id": "lex:C1:proceeds",
+     "headword": "proceeds"
+    },
+    {
+     "id": "lex:C1:processor",
+     "headword": "processor"
+    },
+    {
+     "id": "lex:C1:productive",
+     "headword": "productive",
+     "refs": [
+      "ant:productive-unproductive"
+     ]
+    },
+    {
+     "id": "lex:C1:productivity",
+     "headword": "productivity",
+     "refs": [
+      "ant:productivity-inefficiency"
+     ]
+    },
+    {
+     "id": "lex:C1:profound",
+     "headword": "profound"
+    },
+    {
+     "id": "lex:C1:projection",
+     "headword": "projection"
+    },
+    {
+     "id": "lex:C1:prominent",
+     "headword": "prominent"
+    },
+    {
+     "id": "lex:C1:pronounced",
+     "headword": "pronounced"
+    },
+    {
+     "id": "lex:C1:propaganda",
+     "headword": "propaganda"
+    },
+    {
+     "id": "lex:C1:proposition",
+     "headword": "proposition"
+    },
+    {
+     "id": "lex:C1:prosecute",
+     "headword": "prosecute",
+     "refs": [
+      "ant:defend-prosecute"
+     ]
+    },
+    {
+     "id": "lex:C1:prosecution",
+     "headword": "prosecution"
+    },
+    {
+     "id": "lex:C1:prospective",
+     "headword": "prospective"
+    },
+    {
+     "id": "lex:C1:prosperity",
+     "headword": "prosperity",
+     "refs": [
+      "ant:prosperity-poverty"
+     ]
+    },
+    {
+     "id": "lex:C1:protocol",
+     "headword": "protocol"
+    },
+    {
+     "id": "lex:C1:province",
+     "headword": "province"
+    },
+    {
+     "id": "lex:C1:provincial",
+     "headword": "provincial"
+    },
+    {
+     "id": "lex:C1:psychiatric",
+     "headword": "psychiatric"
+    },
+    {
+     "id": "lex:C1:pulse",
+     "headword": "pulse"
+    },
+    {
+     "id": "lex:C1:quest",
+     "headword": "quest"
+    },
+    {
+     "id": "lex:C1:quota",
+     "headword": "quota"
+    },
+    {
+     "id": "lex:C1:radar",
+     "headword": "radar"
+    },
+    {
+     "id": "lex:C1:radical",
+     "headword": "radical"
+    },
+    {
+     "id": "lex:C1:rage",
+     "headword": "rage"
+    },
+    {
+     "id": "lex:C1:raid",
+     "headword": "raid",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:rally",
+     "headword": "rally",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:ranking",
+     "headword": "ranking"
+    },
+    {
+     "id": "lex:C1:rape",
+     "headword": "rape",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:ratio",
+     "headword": "ratio"
+    },
+    {
+     "id": "lex:C1:rational",
+     "headword": "rational",
+     "refs": [
+      "ant:rational-irrational"
+     ]
+    },
+    {
+     "id": "lex:C1:ray",
+     "headword": "ray"
+    },
+    {
+     "id": "lex:C1:readily",
+     "headword": "readily"
+    },
+    {
+     "id": "lex:C1:realization",
+     "headword": "realization"
+    },
+    {
+     "id": "lex:C1:realm",
+     "headword": "realm"
+    },
+    {
+     "id": "lex:C1:reasoning",
+     "headword": "reasoning"
+    },
+    {
+     "id": "lex:C1:rebel",
+     "headword": "rebel"
+    },
+    {
+     "id": "lex:C1:rebellion",
+     "headword": "rebellion"
+    },
+    {
+     "id": "lex:C1:recipient",
+     "headword": "recipient"
+    },
+    {
+     "id": "lex:C1:reconstruction",
+     "headword": "reconstruction"
+    },
+    {
+     "id": "lex:C1:referendum",
+     "headword": "referendum"
+    },
+    {
+     "id": "lex:C1:reflection",
+     "headword": "reflection"
+    },
+    {
+     "id": "lex:C1:reform",
+     "headword": "reform",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:refuge",
+     "headword": "refuge"
+    },
+    {
+     "id": "lex:C1:refusal",
+     "headword": "refusal",
+     "refs": [
+      "ant:consent-refusal"
+     ]
+    },
+    {
+     "id": "lex:C1:regardless",
+     "headword": "regardless"
+    },
+    {
+     "id": "lex:C1:regime",
+     "headword": "regime"
+    },
+    {
+     "id": "lex:C1:regulator",
+     "headword": "regulator"
+    },
+    {
+     "id": "lex:C1:regulatory",
+     "headword": "regulatory"
+    },
+    {
+     "id": "lex:C1:rehabilitation",
+     "headword": "rehabilitation"
+    },
+    {
+     "id": "lex:C1:reign",
+     "headword": "reign",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:relevance",
+     "headword": "relevance"
+    },
+    {
+     "id": "lex:C1:reliability",
+     "headword": "reliability",
+     "refs": [
+      "ant:reliability-unreliability",
+      "fam:rely"
+     ]
+    },
+    {
+     "id": "lex:C1:reluctant",
+     "headword": "reluctant"
+    },
+    {
+     "id": "lex:C1:remainder",
+     "headword": "remainder"
+    },
+    {
+     "id": "lex:C1:remedy",
+     "headword": "remedy"
+    },
+    {
+     "id": "lex:C1:reminder",
+     "headword": "reminder"
+    },
+    {
+     "id": "lex:C1:removal",
+     "headword": "removal"
+    },
+    {
+     "id": "lex:C1:renew",
+     "headword": "renew"
+    },
+    {
+     "id": "lex:C1:renowned",
+     "headword": "renowned"
+    },
+    {
+     "id": "lex:C1:rental",
+     "headword": "rental"
+    },
+    {
+     "id": "lex:C1:replacement",
+     "headword": "replacement"
+    },
+    {
+     "id": "lex:C1:reportedly",
+     "headword": "reportedly"
+    },
+    {
+     "id": "lex:C1:reproduce",
+     "headword": "reproduce"
+    },
+    {
+     "id": "lex:C1:reproduction",
+     "headword": "reproduction"
+    },
+    {
+     "id": "lex:C1:republic",
+     "headword": "republic"
+    },
+    {
+     "id": "lex:C1:reside",
+     "headword": "reside"
+    },
+    {
+     "id": "lex:C1:residence",
+     "headword": "residence"
+    },
+    {
+     "id": "lex:C1:residential",
+     "headword": "residential"
+    },
+    {
+     "id": "lex:C1:residue",
+     "headword": "residue"
+    },
+    {
+     "id": "lex:C1:resignation",
+     "headword": "resignation"
+    },
+    {
+     "id": "lex:C1:respective",
+     "headword": "respective"
+    },
+    {
+     "id": "lex:C1:respectively",
+     "headword": "respectively"
+    },
+    {
+     "id": "lex:C1:restoration",
+     "headword": "restoration"
+    },
+    {
+     "id": "lex:C1:restraint",
+     "headword": "restraint"
+    },
+    {
+     "id": "lex:C1:retreat",
+     "headword": "retreat",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:advance-retreat"
+     ]
+    },
+    {
+     "id": "lex:C1:retrieve",
+     "headword": "retrieve"
+    },
+    {
+     "id": "lex:C1:revelation",
+     "headword": "revelation"
+    },
+    {
+     "id": "lex:C1:revenge",
+     "headword": "revenge"
+    },
+    {
+     "id": "lex:C1:revival",
+     "headword": "revival"
+    },
+    {
+     "id": "lex:C1:revive",
+     "headword": "revive"
+    },
+    {
+     "id": "lex:C1:revolutionary",
+     "headword": "revolutionary"
+    },
+    {
+     "id": "lex:C1:rhetoric",
+     "headword": "rhetoric"
+    },
+    {
+     "id": "lex:C1:rifle",
+     "headword": "rifle"
+    },
+    {
+     "id": "lex:C1:riot",
+     "headword": "riot"
+    },
+    {
+     "id": "lex:C1:rip",
+     "headword": "rip"
+    },
+    {
+     "id": "lex:C1:ritual",
+     "headword": "ritual"
+    },
+    {
+     "id": "lex:C1:robust",
+     "headword": "robust",
+     "refs": [
+      "ant:fragile-robust"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-10",
+   "entries": [
+    {
+     "id": "lex:C1:rod",
+     "headword": "rod"
+    },
+    {
+     "id": "lex:C1:rotate",
+     "headword": "rotate"
+    },
+    {
+     "id": "lex:C1:rotation",
+     "headword": "rotation"
+    },
+    {
+     "id": "lex:C1:sacred",
+     "headword": "sacred",
+     "refs": [
+      "ant:sacred-profane"
+     ]
+    },
+    {
+     "id": "lex:C1:saint",
+     "headword": "saint"
+    },
+    {
+     "id": "lex:C1:sake",
+     "headword": "sake"
+    },
+    {
+     "id": "lex:C1:scattered",
+     "headword": "scattered"
+    },
+    {
+     "id": "lex:C1:sceptical",
+     "headword": "sceptical"
+    },
+    {
+     "id": "lex:C1:scope",
+     "headword": "scope"
+    },
+    {
+     "id": "lex:C1:scrutiny",
+     "headword": "scrutiny"
+    },
+    {
+     "id": "lex:C1:seal",
+     "headword": "seal",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:secular",
+     "headword": "secular",
+     "refs": [
+      "ant:religious-secular"
+     ]
+    },
+    {
+     "id": "lex:C1:seemingly",
+     "headword": "seemingly"
+    },
+    {
+     "id": "lex:C1:segment",
+     "headword": "segment"
+    },
+    {
+     "id": "lex:C1:seldom",
+     "headword": "seldom",
+     "refs": [
+      "ant:often-seldom"
+     ]
+    },
+    {
+     "id": "lex:C1:selective",
+     "headword": "selective",
+     "refs": [
+      "fam:select"
+     ]
+    },
+    {
+     "id": "lex:C1:senator",
+     "headword": "senator"
+    },
+    {
+     "id": "lex:C1:sensation",
+     "headword": "sensation"
+    },
+    {
+     "id": "lex:C1:sensitivity",
+     "headword": "sensitivity"
+    },
+    {
+     "id": "lex:C1:sentiment",
+     "headword": "sentiment"
+    },
+    {
+     "id": "lex:C1:serial",
+     "headword": "serial"
+    },
+    {
+     "id": "lex:C1:sexuality",
+     "headword": "sexuality"
+    },
+    {
+     "id": "lex:C1:shed",
+     "headword": "shed"
+    },
+    {
+     "id": "lex:C1:sheer",
+     "headword": "sheer"
+    },
+    {
+     "id": "lex:C1:shoot",
+     "headword": "shoot",
+     "flags": [
+      "also-B1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:shoot"
+     ]
+    },
+    {
+     "id": "lex:C1:shrink",
+     "headword": "shrink",
+     "refs": [
+      "ant:shrink-stretch"
+     ]
+    },
+    {
+     "id": "lex:C1:simulation",
+     "headword": "simulation"
+    },
+    {
+     "id": "lex:C1:simultaneously",
+     "headword": "simultaneously"
+    },
+    {
+     "id": "lex:C1:sin",
+     "headword": "sin"
+    },
+    {
+     "id": "lex:C1:situated",
+     "headword": "situated"
+    },
+    {
+     "id": "lex:C1:sketch",
+     "headword": "sketch"
+    },
+    {
+     "id": "lex:C1:skip",
+     "headword": "skip"
+    },
+    {
+     "id": "lex:C1:slavery",
+     "headword": "slavery",
+     "refs": [
+      "ant:freedom-slavery"
+     ]
+    },
+    {
+     "id": "lex:C1:slot",
+     "headword": "slot"
+    },
+    {
+     "id": "lex:C1:soak",
+     "headword": "soak"
+    },
+    {
+     "id": "lex:C1:socialist",
+     "headword": "socialist"
+    },
+    {
+     "id": "lex:C1:sole",
+     "headword": "sole"
+    },
+    {
+     "id": "lex:C1:solely",
+     "headword": "solely"
+    },
+    {
+     "id": "lex:C1:solicitor",
+     "headword": "solicitor"
+    },
+    {
+     "id": "lex:C1:solidarity",
+     "headword": "solidarity"
+    },
+    {
+     "id": "lex:C1:solo",
+     "headword": "solo",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:sovereignty",
+     "headword": "sovereignty"
+    },
+    {
+     "id": "lex:C1:spam",
+     "headword": "spam"
+    },
+    {
+     "id": "lex:C1:specification",
+     "headword": "specification"
+    },
+    {
+     "id": "lex:C1:specimen",
+     "headword": "specimen"
+    },
+    {
+     "id": "lex:C1:spectacle",
+     "headword": "spectacle"
+    },
+    {
+     "id": "lex:C1:spectrum",
+     "headword": "spectrum"
+    },
+    {
+     "id": "lex:C1:sphere",
+     "headword": "sphere"
+    },
+    {
+     "id": "lex:C1:spin",
+     "headword": "spin",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:spin"
+     ]
+    },
+    {
+     "id": "lex:C1:spine",
+     "headword": "spine"
+    },
+    {
+     "id": "lex:C1:spotlight",
+     "headword": "spotlight"
+    },
+    {
+     "id": "lex:C1:spouse",
+     "headword": "spouse"
+    },
+    {
+     "id": "lex:C1:spy",
+     "headword": "spy",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:squad",
+     "headword": "squad"
+    },
+    {
+     "id": "lex:C1:squeeze",
+     "headword": "squeeze"
+    },
+    {
+     "id": "lex:C1:stabilize",
+     "headword": "stabilize",
+     "refs": [
+      "ant:stabilize-destabilize"
+     ]
+    },
+    {
+     "id": "lex:C1:stake",
+     "headword": "stake"
+    },
+    {
+     "id": "lex:C1:stark",
+     "headword": "stark"
+    },
+    {
+     "id": "lex:C1:stimulus",
+     "headword": "stimulus"
+    },
+    {
+     "id": "lex:C1:stir",
+     "headword": "stir"
+    },
+    {
+     "id": "lex:C1:storage",
+     "headword": "storage"
+    },
+    {
+     "id": "lex:C1:straightforward",
+     "headword": "straightforward"
+    },
+    {
+     "id": "lex:C1:strain",
+     "headword": "strain"
+    },
+    {
+     "id": "lex:C1:strand",
+     "headword": "strand"
+    },
+    {
+     "id": "lex:C1:striking",
+     "headword": "striking"
+    },
+    {
+     "id": "lex:C1:strip-long-narrow-piece",
+     "headword": "strip (long narrow piece)"
+    },
+    {
+     "id": "lex:C1:strip-remove-clothes-a-layer",
+     "headword": "strip (remove clothes/a layer)",
+     "flags": [
+      "several-forms"
+     ]
+    },
+    {
+     "id": "lex:C1:structural",
+     "headword": "structural"
+    },
+    {
+     "id": "lex:C1:submission",
+     "headword": "submission"
+    },
+    {
+     "id": "lex:C1:subscription",
+     "headword": "subscription"
+    },
+    {
+     "id": "lex:C1:subsidy",
+     "headword": "subsidy"
+    },
+    {
+     "id": "lex:C1:substantial",
+     "headword": "substantial"
+    },
+    {
+     "id": "lex:C1:substantially",
+     "headword": "substantially"
+    },
+    {
+     "id": "lex:C1:substitute",
+     "headword": "substitute",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:substitution",
+     "headword": "substitution"
+    },
+    {
+     "id": "lex:C1:subtle",
+     "headword": "subtle"
+    },
+    {
+     "id": "lex:C1:suburban",
+     "headword": "suburban"
+    },
+    {
+     "id": "lex:C1:succession",
+     "headword": "succession"
+    },
+    {
+     "id": "lex:C1:successive",
+     "headword": "successive"
+    },
+    {
+     "id": "lex:C1:successor",
+     "headword": "successor"
+    },
+    {
+     "id": "lex:C1:sue",
+     "headword": "sue"
+    },
+    {
+     "id": "lex:C1:suicide",
+     "headword": "suicide"
+    },
+    {
+     "id": "lex:C1:suite",
+     "headword": "suite"
+    },
+    {
+     "id": "lex:C1:superb",
+     "headword": "superb"
+    },
+    {
+     "id": "lex:C1:supervise",
+     "headword": "supervise"
+    },
+    {
+     "id": "lex:C1:supervision",
+     "headword": "supervision"
+    },
+    {
+     "id": "lex:C1:supervisor",
+     "headword": "supervisor"
+    },
+    {
+     "id": "lex:C1:supposedly",
+     "headword": "supposedly"
+    },
+    {
+     "id": "lex:C1:suppress",
+     "headword": "suppress"
+    },
+    {
+     "id": "lex:C1:supreme",
+     "headword": "supreme"
+    },
+    {
+     "id": "lex:C1:surge",
+     "headword": "surge",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:surgical",
+     "headword": "surgical"
+    },
+    {
+     "id": "lex:C1:surplus",
+     "headword": "surplus",
+     "refs": [
+      "ant:deficit-surplus"
+     ]
+    },
+    {
+     "id": "lex:C1:surrender",
+     "headword": "surrender",
+     "refs": [
+      "ant:resist-surrender"
+     ]
+    },
+    {
+     "id": "lex:C1:surveillance",
+     "headword": "surveillance"
+    },
+    {
+     "id": "lex:C1:suspension",
+     "headword": "suspension"
+    },
+    {
+     "id": "lex:C1:suspicion",
+     "headword": "suspicion"
+    },
+    {
+     "id": "lex:C1:suspicious",
+     "headword": "suspicious"
+    },
+    {
+     "id": "lex:C1:sustain",
+     "headword": "sustain"
+    },
+    {
+     "id": "lex:C1:swing",
+     "headword": "swing",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:swing"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-11",
+   "entries": [
+    {
+     "id": "lex:C1:sword",
+     "headword": "sword"
+    },
+    {
+     "id": "lex:C1:symbolic",
+     "headword": "symbolic"
+    },
+    {
+     "id": "lex:C1:syndrome",
+     "headword": "syndrome"
+    },
+    {
+     "id": "lex:C1:synthesis",
+     "headword": "synthesis"
+    },
+    {
+     "id": "lex:C1:systematic",
+     "headword": "systematic"
+    },
+    {
+     "id": "lex:C1:tactic",
+     "headword": "tactic"
+    },
+    {
+     "id": "lex:C1:tactical",
+     "headword": "tactical"
+    },
+    {
+     "id": "lex:C1:tempt",
+     "headword": "tempt"
+    },
+    {
+     "id": "lex:C1:tenant",
+     "headword": "tenant"
+    },
+    {
+     "id": "lex:C1:tender",
+     "headword": "tender",
+     "refs": [
+      "ant:tender-tough"
+     ]
+    },
+    {
+     "id": "lex:C1:tenure",
+     "headword": "tenure"
+    },
+    {
+     "id": "lex:C1:terminate",
+     "headword": "terminate"
+    },
+    {
+     "id": "lex:C1:terrain",
+     "headword": "terrain"
+    },
+    {
+     "id": "lex:C1:terrific",
+     "headword": "terrific"
+    },
+    {
+     "id": "lex:C1:testimony",
+     "headword": "testimony"
+    },
+    {
+     "id": "lex:C1:texture",
+     "headword": "texture"
+    },
+    {
+     "id": "lex:C1:thankfully",
+     "headword": "thankfully"
+    },
+    {
+     "id": "lex:C1:theatrical",
+     "headword": "theatrical"
+    },
+    {
+     "id": "lex:C1:theology",
+     "headword": "theology"
+    },
+    {
+     "id": "lex:C1:theoretical",
+     "headword": "theoretical",
+     "refs": [
+      "ant:empirical-theoretical",
+      "ant:practical-theoretical"
+     ]
+    },
+    {
+     "id": "lex:C1:thereafter",
+     "headword": "thereafter"
+    },
+    {
+     "id": "lex:C1:thereby",
+     "headword": "thereby"
+    },
+    {
+     "id": "lex:C1:thoughtful",
+     "headword": "thoughtful",
+     "refs": [
+      "ant:thoughtful-thoughtless"
+     ]
+    },
+    {
+     "id": "lex:C1:thread",
+     "headword": "thread"
+    },
+    {
+     "id": "lex:C1:threshold",
+     "headword": "threshold"
+    },
+    {
+     "id": "lex:C1:thrilled",
+     "headword": "thrilled"
+    },
+    {
+     "id": "lex:C1:thrive",
+     "headword": "thrive"
+    },
+    {
+     "id": "lex:C1:tide",
+     "headword": "tide"
+    },
+    {
+     "id": "lex:C1:timber",
+     "headword": "timber"
+    },
+    {
+     "id": "lex:C1:timely",
+     "headword": "timely"
+    },
+    {
+     "id": "lex:C1:tobacco",
+     "headword": "tobacco"
+    },
+    {
+     "id": "lex:C1:tolerance",
+     "headword": "tolerance"
+    },
+    {
+     "id": "lex:C1:tolerate",
+     "headword": "tolerate"
+    },
+    {
+     "id": "lex:C1:toll",
+     "headword": "toll"
+    },
+    {
+     "id": "lex:C1:torture",
+     "headword": "torture",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:toxic",
+     "headword": "toxic"
+    },
+    {
+     "id": "lex:C1:trademark",
+     "headword": "trademark"
+    },
+    {
+     "id": "lex:C1:trail",
+     "headword": "trail",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:trailer",
+     "headword": "trailer"
+    },
+    {
+     "id": "lex:C1:transcript",
+     "headword": "transcript"
+    },
+    {
+     "id": "lex:C1:transit",
+     "headword": "transit"
+    },
+    {
+     "id": "lex:C1:transmission",
+     "headword": "transmission"
+    },
+    {
+     "id": "lex:C1:transparent",
+     "headword": "transparent",
+     "refs": [
+      "ant:transparent-opaque"
+     ]
+    },
+    {
+     "id": "lex:C1:trauma",
+     "headword": "trauma"
+    },
+    {
+     "id": "lex:C1:tremendous",
+     "headword": "tremendous"
+    },
+    {
+     "id": "lex:C1:tribal",
+     "headword": "tribal"
+    },
+    {
+     "id": "lex:C1:tribunal",
+     "headword": "tribunal"
+    },
+    {
+     "id": "lex:C1:tribute",
+     "headword": "tribute"
+    },
+    {
+     "id": "lex:C1:trigger",
+     "headword": "trigger",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:trio",
+     "headword": "trio"
+    },
+    {
+     "id": "lex:C1:triumph",
+     "headword": "triumph",
+     "refs": [
+      "ant:triumph-defeat"
+     ]
+    },
+    {
+     "id": "lex:C1:trophy",
+     "headword": "trophy"
+    },
+    {
+     "id": "lex:C1:troubled",
+     "headword": "troubled"
+    },
+    {
+     "id": "lex:C1:tuition",
+     "headword": "tuition"
+    },
+    {
+     "id": "lex:C1:turnout",
+     "headword": "turnout"
+    },
+    {
+     "id": "lex:C1:turnover",
+     "headword": "turnover"
+    },
+    {
+     "id": "lex:C1:twist",
+     "headword": "twist",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:undergraduate",
+     "headword": "undergraduate"
+    },
+    {
+     "id": "lex:C1:underlying",
+     "headword": "underlying"
+    },
+    {
+     "id": "lex:C1:undermine",
+     "headword": "undermine"
+    },
+    {
+     "id": "lex:C1:undoubtedly",
+     "headword": "undoubtedly"
+    },
+    {
+     "id": "lex:C1:unify",
+     "headword": "unify",
+     "refs": [
+      "ant:unify-divide"
+     ]
+    },
+    {
+     "id": "lex:C1:unprecedented",
+     "headword": "unprecedented"
+    },
+    {
+     "id": "lex:C1:upcoming",
+     "headword": "upcoming"
+    },
+    {
+     "id": "lex:C1:upgrade",
+     "headword": "upgrade",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:downgrade-upgrade"
+     ]
+    },
+    {
+     "id": "lex:C1:utterly",
+     "headword": "utterly"
+    },
+    {
+     "id": "lex:C1:vacuum",
+     "headword": "vacuum"
+    },
+    {
+     "id": "lex:C1:vague",
+     "headword": "vague",
+     "refs": [
+      "ant:precise-vague",
+      "ant:vague-definite"
+     ]
+    },
+    {
+     "id": "lex:C1:validity",
+     "headword": "validity"
+    },
+    {
+     "id": "lex:C1:variable",
+     "headword": "variable",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:constant-variable",
+      "ant:invariable-variable"
+     ]
+    },
+    {
+     "id": "lex:C1:varied",
+     "headword": "varied"
+    },
+    {
+     "id": "lex:C1:vein",
+     "headword": "vein"
+    },
+    {
+     "id": "lex:C1:venture",
+     "headword": "venture",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:verbal",
+     "headword": "verbal"
+    },
+    {
+     "id": "lex:C1:verdict",
+     "headword": "verdict"
+    },
+    {
+     "id": "lex:C1:verify",
+     "headword": "verify"
+    },
+    {
+     "id": "lex:C1:verse",
+     "headword": "verse"
+    },
+    {
+     "id": "lex:C1:versus",
+     "headword": "versus"
+    },
+    {
+     "id": "lex:C1:vessel",
+     "headword": "vessel"
+    },
+    {
+     "id": "lex:C1:viable",
+     "headword": "viable"
+    },
+    {
+     "id": "lex:C1:vibrant",
+     "headword": "vibrant"
+    },
+    {
+     "id": "lex:C1:vice",
+     "headword": "vice",
+     "refs": [
+      "ant:virtue-vice"
+     ]
+    },
+    {
+     "id": "lex:C1:vicious",
+     "headword": "vicious"
+    },
+    {
+     "id": "lex:C1:violate",
+     "headword": "violate"
+    },
+    {
+     "id": "lex:C1:vocal",
+     "headword": "vocal"
+    },
+    {
+     "id": "lex:C1:vulnerability",
+     "headword": "vulnerability"
+    },
+    {
+     "id": "lex:C1:ward",
+     "headword": "ward"
+    },
+    {
+     "id": "lex:C1:warfare",
+     "headword": "warfare"
+    },
+    {
+     "id": "lex:C1:warrant",
+     "headword": "warrant",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:warrior",
+     "headword": "warrior"
+    },
+    {
+     "id": "lex:C1:whatsoever",
+     "headword": "whatsoever"
+    },
+    {
+     "id": "lex:C1:whereby",
+     "headword": "whereby"
+    },
+    {
+     "id": "lex:C1:whilst",
+     "headword": "whilst"
+    },
+    {
+     "id": "lex:C1:whip",
+     "headword": "whip"
+    },
+    {
+     "id": "lex:C1:wholly",
+     "headword": "wholly",
+     "refs": [
+      "ant:partly-wholly"
+     ]
+    },
+    {
+     "id": "lex:C1:width",
+     "headword": "width",
+     "refs": [
+      "fam:wide"
+     ]
+    },
+    {
+     "id": "lex:C1:willingness",
+     "headword": "willingness"
+    },
+    {
+     "id": "lex:C1:wipe",
+     "headword": "wipe"
+    },
+    {
+     "id": "lex:C1:wit",
+     "headword": "wit"
+    },
+    {
+     "id": "lex:C1:withdrawal",
+     "headword": "withdrawal"
+    }
+   ]
+  },
+  {
+   "id": "batch-12",
+   "entries": [
+    {
+     "id": "lex:C1:workout",
+     "headword": "workout"
+    },
+    {
+     "id": "lex:C1:worship",
+     "headword": "worship",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:worthy",
+     "headword": "worthy",
+     "refs": [
+      "ant:worthy-unworthy",
+      "ant:worthy-worthless"
+     ]
+    },
+    {
+     "id": "lex:C1:yield",
+     "headword": "yield",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:acre",
+     "headword": "acre"
+    },
+    {
+     "id": "lex:C1:adolescent",
+     "headword": "adolescent"
+    },
+    {
+     "id": "lex:C1:allege",
+     "headword": "allege"
+    },
+    {
+     "id": "lex:C1:allocate",
+     "headword": "allocate"
+    },
+    {
+     "id": "lex:C1:applaud",
+     "headword": "applaud"
+    },
+    {
+     "id": "lex:C1:appoint",
+     "headword": "appoint"
+    },
+    {
+     "id": "lex:C1:assemble",
+     "headword": "assemble",
+     "refs": [
+      "ant:assemble-disassemble"
+     ]
+    },
+    {
+     "id": "lex:C1:assert",
+     "headword": "assert"
+    },
+    {
+     "id": "lex:C1:atrocity",
+     "headword": "atrocity"
+    },
+    {
+     "id": "lex:C1:attain",
+     "headword": "attain"
+    },
+    {
+     "id": "lex:C1:barrel",
+     "headword": "barrel"
+    },
+    {
+     "id": "lex:C1:beneficiary",
+     "headword": "beneficiary"
+    },
+    {
+     "id": "lex:C1:betray",
+     "headword": "betray"
+    },
+    {
+     "id": "lex:C1:bind",
+     "headword": "bind",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:bind"
+     ]
+    },
+    {
+     "id": "lex:C1:blend",
+     "headword": "blend",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:boast",
+     "headword": "boast"
+    },
+    {
+     "id": "lex:C1:bounce",
+     "headword": "bounce"
+    },
+    {
+     "id": "lex:C1:bow",
+     "headword": "bow¹",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:breed",
+     "headword": "breed",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:breed"
+     ]
+    },
+    {
+     "id": "lex:C1:buck",
+     "headword": "buck"
+    },
+    {
+     "id": "lex:C1:carve",
+     "headword": "carve"
+    },
+    {
+     "id": "lex:C1:casualty",
+     "headword": "casualty"
+    },
+    {
+     "id": "lex:C1:cater",
+     "headword": "cater"
+    },
+    {
+     "id": "lex:C1:characterize",
+     "headword": "characterize"
+    },
+    {
+     "id": "lex:C1:chunk",
+     "headword": "chunk"
+    },
+    {
+     "id": "lex:C1:circulate",
+     "headword": "circulate"
+    },
+    {
+     "id": "lex:C1:cling",
+     "headword": "cling",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:cling"
+     ]
+    },
+    {
+     "id": "lex:C1:cocktail",
+     "headword": "cocktail"
+    },
+    {
+     "id": "lex:C1:collaborate",
+     "headword": "collaborate",
+     "refs": [
+      "prep:collaborate-with"
+     ]
+    },
+    {
+     "id": "lex:C1:compel",
+     "headword": "compel"
+    },
+    {
+     "id": "lex:C1:compile",
+     "headword": "compile"
+    },
+    {
+     "id": "lex:C1:complement",
+     "headword": "complement"
+    },
+    {
+     "id": "lex:C1:complication",
+     "headword": "complication"
+    },
+    {
+     "id": "lex:C1:conceal",
+     "headword": "conceal",
+     "refs": [
+      "ant:conceal-reveal",
+      "ant:expose-conceal"
+     ]
+    },
+    {
+     "id": "lex:C1:concede",
+     "headword": "concede"
+    },
+    {
+     "id": "lex:C1:condemn",
+     "headword": "condemn",
+     "refs": [
+      "ant:condemn-praise"
+     ]
+    },
+    {
+     "id": "lex:C1:confer",
+     "headword": "confer"
+    },
+    {
+     "id": "lex:C1:configuration",
+     "headword": "configuration"
+    },
+    {
+     "id": "lex:C1:constraint",
+     "headword": "constraint"
+    },
+    {
+     "id": "lex:C1:contemplate",
+     "headword": "contemplate"
+    },
+    {
+     "id": "lex:C1:convict",
+     "headword": "convict"
+    },
+    {
+     "id": "lex:C1:crawl",
+     "headword": "crawl"
+    },
+    {
+     "id": "lex:C1:crystal",
+     "headword": "crystal"
+    },
+    {
+     "id": "lex:C1:decision-making",
+     "headword": "decision-making"
+    },
+    {
+     "id": "lex:C1:deem",
+     "headword": "deem"
+    },
+    {
+     "id": "lex:C1:denounce",
+     "headword": "denounce"
+    },
+    {
+     "id": "lex:C1:depict",
+     "headword": "depict"
+    },
+    {
+     "id": "lex:C1:deploy",
+     "headword": "deploy"
+    },
+    {
+     "id": "lex:C1:descend",
+     "headword": "descend",
+     "refs": [
+      "ant:ascend-descend"
+     ]
+    },
+    {
+     "id": "lex:C1:designate",
+     "headword": "designate"
+    },
+    {
+     "id": "lex:C1:deteriorate",
+     "headword": "deteriorate",
+     "refs": [
+      "ant:deteriorate-improve"
+     ]
+    },
+    {
+     "id": "lex:C1:devastate",
+     "headword": "devastate"
+    },
+    {
+     "id": "lex:C1:devise",
+     "headword": "devise"
+    },
+    {
+     "id": "lex:C1:diagnose",
+     "headword": "diagnose"
+    },
+    {
+     "id": "lex:C1:diminish",
+     "headword": "diminish",
+     "refs": [
+      "ant:diminish-increase"
+     ]
+    },
+    {
+     "id": "lex:C1:dip",
+     "headword": "dip"
+    },
+    {
+     "id": "lex:C1:discharge",
+     "headword": "discharge"
+    },
+    {
+     "id": "lex:C1:displace",
+     "headword": "displace"
+    },
+    {
+     "id": "lex:C1:disrupt",
+     "headword": "disrupt"
+    },
+    {
+     "id": "lex:C1:dissolve",
+     "headword": "dissolve"
+    },
+    {
+     "id": "lex:C1:divert",
+     "headword": "divert"
+    },
+    {
+     "id": "lex:C1:donor",
+     "headword": "donor"
+    },
+    {
+     "id": "lex:C1:drown",
+     "headword": "drown"
+    },
+    {
+     "id": "lex:C1:dub",
+     "headword": "dub"
+    },
+    {
+     "id": "lex:C1:echo",
+     "headword": "echo",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:educator",
+     "headword": "educator"
+    },
+    {
+     "id": "lex:C1:embed",
+     "headword": "embed"
+    },
+    {
+     "id": "lex:C1:embody",
+     "headword": "embody"
+    },
+    {
+     "id": "lex:C1:enact",
+     "headword": "enact"
+    },
+    {
+     "id": "lex:C1:encompass",
+     "headword": "encompass"
+    },
+    {
+     "id": "lex:C1:endorse",
+     "headword": "endorse",
+     "refs": [
+      "ant:endorse-oppose"
+     ]
+    },
+    {
+     "id": "lex:C1:enrol",
+     "headword": "enrol"
+    },
+    {
+     "id": "lex:C1:ensue",
+     "headword": "ensue"
+    },
+    {
+     "id": "lex:C1:enterprise",
+     "headword": "enterprise"
+    },
+    {
+     "id": "lex:C1:enthusiast",
+     "headword": "enthusiast"
+    },
+    {
+     "id": "lex:C1:entitle",
+     "headword": "entitle"
+    },
+    {
+     "id": "lex:C1:entity",
+     "headword": "entity"
+    },
+    {
+     "id": "lex:C1:erect",
+     "headword": "erect"
+    },
+    {
+     "id": "lex:C1:escalate",
+     "headword": "escalate"
+    },
+    {
+     "id": "lex:C1:evacuate",
+     "headword": "evacuate"
+    },
+    {
+     "id": "lex:C1:evoke",
+     "headword": "evoke"
+    },
+    {
+     "id": "lex:C1:execute",
+     "headword": "execute"
+    },
+    {
+     "id": "lex:C1:facilitate",
+     "headword": "facilitate"
+    },
+    {
+     "id": "lex:C1:film-maker",
+     "headword": "film-maker"
+    },
+    {
+     "id": "lex:C1:firearm",
+     "headword": "firearm"
+    },
+    {
+     "id": "lex:C1:fixture",
+     "headword": "fixture"
+    },
+    {
+     "id": "lex:C1:flee",
+     "headword": "flee",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:flee"
+     ]
+    },
+    {
+     "id": "lex:C1:foreigner",
+     "headword": "foreigner",
+     "refs": [
+      "ant:foreigner-native"
+     ]
+    },
+    {
+     "id": "lex:C1:forge",
+     "headword": "forge"
+    },
+    {
+     "id": "lex:C1:formulate",
+     "headword": "formulate"
+    },
+    {
+     "id": "lex:C1:gallon",
+     "headword": "gallon"
+    },
+    {
+     "id": "lex:C1:gaze",
+     "headword": "gaze",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:glance",
+     "headword": "glance",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:grasp",
+     "headword": "grasp",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:grin",
+     "headword": "grin",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:grind",
+     "headword": "grind"
+    }
+   ]
+  },
+  {
+   "id": "batch-13",
+   "entries": [
+    {
+     "id": "lex:C1:hail",
+     "headword": "hail"
+    },
+    {
+     "id": "lex:C1:heighten",
+     "headword": "heighten"
+    },
+    {
+     "id": "lex:C1:high-profile",
+     "headword": "high-profile"
+    },
+    {
+     "id": "lex:C1:hint",
+     "headword": "hint",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:hostage",
+     "headword": "hostage"
+    },
+    {
+     "id": "lex:C1:imprison",
+     "headword": "imprison"
+    },
+    {
+     "id": "lex:C1:indulge",
+     "headword": "indulge"
+    },
+    {
+     "id": "lex:C1:infant",
+     "headword": "infant"
+    },
+    {
+     "id": "lex:C1:inflict",
+     "headword": "inflict"
+    },
+    {
+     "id": "lex:C1:initiate",
+     "headword": "initiate"
+    },
+    {
+     "id": "lex:C1:inject",
+     "headword": "inject"
+    },
+    {
+     "id": "lex:C1:inmate",
+     "headword": "inmate"
+    },
+    {
+     "id": "lex:C1:inspect",
+     "headword": "inspect"
+    },
+    {
+     "id": "lex:C1:instruct",
+     "headword": "instruct"
+    },
+    {
+     "id": "lex:C1:intervene",
+     "headword": "intervene"
+    },
+    {
+     "id": "lex:C1:investigator",
+     "headword": "investigator",
+     "refs": [
+      "fam:investigate"
+     ]
+    },
+    {
+     "id": "lex:C1:invoke",
+     "headword": "invoke"
+    },
+    {
+     "id": "lex:C1:kidnap",
+     "headword": "kidnap"
+    },
+    {
+     "id": "lex:C1:kidney",
+     "headword": "kidney"
+    },
+    {
+     "id": "lex:C1:large-scale",
+     "headword": "large-scale"
+    },
+    {
+     "id": "lex:C1:line-up",
+     "headword": "line-up"
+    },
+    {
+     "id": "lex:C1:linger",
+     "headword": "linger",
+     "refs": [
+      "ant:linger-rush"
+     ]
+    },
+    {
+     "id": "lex:C1:lobby",
+     "headword": "lobby",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:long-standing",
+     "headword": "long-standing"
+    },
+    {
+     "id": "lex:C1:long-time",
+     "headword": "long-time"
+    },
+    {
+     "id": "lex:C1:loom",
+     "headword": "loom"
+    },
+    {
+     "id": "lex:C1:manipulate",
+     "headword": "manipulate"
+    },
+    {
+     "id": "lex:C1:mature",
+     "headword": "mature",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:immature-mature"
+     ]
+    },
+    {
+     "id": "lex:C1:merchant",
+     "headword": "merchant"
+    },
+    {
+     "id": "lex:C1:mobilize",
+     "headword": "mobilize"
+    },
+    {
+     "id": "lex:C1:motorist",
+     "headword": "motorist"
+    },
+    {
+     "id": "lex:C1:nod",
+     "headword": "nod"
+    },
+    {
+     "id": "lex:C1:nominate",
+     "headword": "nominate"
+    },
+    {
+     "id": "lex:C1:non-profit",
+     "headword": "non-profit"
+    },
+    {
+     "id": "lex:C1:oblige",
+     "headword": "oblige"
+    },
+    {
+     "id": "lex:C1:originate",
+     "headword": "originate"
+    },
+    {
+     "id": "lex:C1:outlet",
+     "headword": "outlet"
+    },
+    {
+     "id": "lex:C1:overlook",
+     "headword": "overlook"
+    },
+    {
+     "id": "lex:C1:overturn",
+     "headword": "overturn"
+    },
+    {
+     "id": "lex:C1:parameter",
+     "headword": "parameter"
+    },
+    {
+     "id": "lex:C1:patron",
+     "headword": "patron"
+    },
+    {
+     "id": "lex:C1:persist",
+     "headword": "persist",
+     "refs": [
+      "prep:persist-in"
+     ]
+    },
+    {
+     "id": "lex:C1:plead",
+     "headword": "plead"
+    },
+    {
+     "id": "lex:C1:pledge",
+     "headword": "pledge",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:plunge",
+     "headword": "plunge"
+    },
+    {
+     "id": "lex:C1:portray",
+     "headword": "portray"
+    },
+    {
+     "id": "lex:C1:postpone",
+     "headword": "postpone",
+     "refs": [
+      "vp:postpone-ing"
+     ]
+    },
+    {
+     "id": "lex:C1:post-war",
+     "headword": "post-war"
+    },
+    {
+     "id": "lex:C1:practitioner",
+     "headword": "practitioner"
+    },
+    {
+     "id": "lex:C1:preach",
+     "headword": "preach"
+    },
+    {
+     "id": "lex:C1:predator",
+     "headword": "predator"
+    },
+    {
+     "id": "lex:C1:premium",
+     "headword": "premium"
+    },
+    {
+     "id": "lex:C1:prescribe",
+     "headword": "prescribe"
+    },
+    {
+     "id": "lex:C1:preside",
+     "headword": "preside"
+    },
+    {
+     "id": "lex:C1:proclaim",
+     "headword": "proclaim"
+    },
+    {
+     "id": "lex:C1:provoke",
+     "headword": "provoke"
+    },
+    {
+     "id": "lex:C1:punch",
+     "headword": "punch",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:query",
+     "headword": "query"
+    },
+    {
+     "id": "lex:C1:reassure",
+     "headword": "reassure",
+     "refs": [
+      "ant:reassure-worry"
+     ]
+    },
+    {
+     "id": "lex:C1:recount",
+     "headword": "recount¹"
+    },
+    {
+     "id": "lex:C1:regain",
+     "headword": "regain"
+    },
+    {
+     "id": "lex:C1:render",
+     "headword": "render"
+    },
+    {
+     "id": "lex:C1:resemble",
+     "headword": "resemble"
+    },
+    {
+     "id": "lex:C1:resume",
+     "headword": "resume"
+    },
+    {
+     "id": "lex:C1:reverse",
+     "headword": "reverse",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:forward-reverse"
+     ]
+    },
+    {
+     "id": "lex:C1:sack",
+     "headword": "sack"
+    },
+    {
+     "id": "lex:C1:sacrifice",
+     "headword": "sacrifice",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:sanction",
+     "headword": "sanction"
+    },
+    {
+     "id": "lex:C1:seize",
+     "headword": "seize"
+    },
+    {
+     "id": "lex:C1:set-up",
+     "headword": "set-up"
+    },
+    {
+     "id": "lex:C1:shareholder",
+     "headword": "shareholder"
+    },
+    {
+     "id": "lex:C1:shatter",
+     "headword": "shatter"
+    },
+    {
+     "id": "lex:C1:shrug",
+     "headword": "shrug"
+    },
+    {
+     "id": "lex:C1:sigh",
+     "headword": "sigh",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:simulate",
+     "headword": "simulate"
+    },
+    {
+     "id": "lex:C1:slam",
+     "headword": "slam"
+    },
+    {
+     "id": "lex:C1:slap",
+     "headword": "slap"
+    },
+    {
+     "id": "lex:C1:slash",
+     "headword": "slash"
+    },
+    {
+     "id": "lex:C1:smash",
+     "headword": "smash"
+    },
+    {
+     "id": "lex:C1:snap",
+     "headword": "snap"
+    },
+    {
+     "id": "lex:C1:soar",
+     "headword": "soar"
+    },
+    {
+     "id": "lex:C1:span",
+     "headword": "span",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:spark",
+     "headword": "spark"
+    },
+    {
+     "id": "lex:C1:stab",
+     "headword": "stab"
+    },
+    {
+     "id": "lex:C1:statistical",
+     "headword": "statistical"
+    },
+    {
+     "id": "lex:C1:steer",
+     "headword": "steer"
+    },
+    {
+     "id": "lex:C1:stereotype",
+     "headword": "stereotype"
+    },
+    {
+     "id": "lex:C1:strive",
+     "headword": "strive"
+    },
+    {
+     "id": "lex:C1:stumble",
+     "headword": "stumble"
+    },
+    {
+     "id": "lex:C1:stun",
+     "headword": "stun"
+    },
+    {
+     "id": "lex:C1:subscriber",
+     "headword": "subscriber"
+    },
+    {
+     "id": "lex:C1:suck",
+     "headword": "suck"
+    },
+    {
+     "id": "lex:C1:supplement",
+     "headword": "supplement",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:C1:taxpayer",
+     "headword": "taxpayer"
+    },
+    {
+     "id": "lex:C1:testify",
+     "headword": "testify"
+    },
+    {
+     "id": "lex:C1:thought-provoking",
+     "headword": "thought-provoking"
+    },
+    {
+     "id": "lex:C1:toss",
+     "headword": "toss"
+    },
+    {
+     "id": "lex:C1:trace",
+     "headword": "trace",
+     "flags": [
+      "also-B2x"
+     ]
+    },
+    {
+     "id": "lex:C1:trustee",
+     "headword": "trustee"
+    },
+    {
+     "id": "lex:C1:unveil",
+     "headword": "unveil"
+    }
+   ]
+  },
+  {
+   "id": "batch-14",
+   "entries": [
+    {
+     "id": "lex:C1:uphold",
+     "headword": "uphold"
+    },
+    {
+     "id": "lex:C1:utility",
+     "headword": "utility"
+    },
+    {
+     "id": "lex:C1:utilize",
+     "headword": "utilize"
+    },
+    {
+     "id": "lex:C1:vanish",
+     "headword": "vanish"
+    },
+    {
+     "id": "lex:C1:veteran",
+     "headword": "veteran"
+    },
+    {
+     "id": "lex:C1:villager",
+     "headword": "villager"
+    },
+    {
+     "id": "lex:C1:vow",
+     "headword": "vow"
+    },
+    {
+     "id": "lex:C1:weaken",
+     "headword": "weaken",
+     "refs": [
+      "ant:strengthen-weaken"
+     ]
+    },
+    {
+     "id": "lex:C1:weave",
+     "headword": "weave"
+    },
+    {
+     "id": "lex:C1:weed",
+     "headword": "weed"
+    },
+    {
+     "id": "lex:C1:well-being",
+     "headword": "well-being"
+    },
+    {
+     "id": "lex:C1:widen",
+     "headword": "widen"
+    },
+    {
+     "id": "lex:C1:widow",
+     "headword": "widow"
+    },
+    {
+     "id": "lex:C1:yell",
+     "headword": "yell"
+    },
+    {
+     "id": "lex:C1:youngster",
+     "headword": "youngster"
+    }
+   ]
+  }
+ ]
+}

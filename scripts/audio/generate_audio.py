@@ -1,6 +1,6 @@
 """Generate the controlled pronunciation library for the enhanced pilot.
 
-Reads the compiled pilot (public/data/pilot-a1.json) and, for every sense and
+Reads the compiled pilot (public/data/enhanced.json) and, for every sense and
 both accents, synthesises the word and each teaching example with Kokoro
 (open weights, Apache 2.0). Each clip is named by the hash of everything that
 produced it (model, voice, speed and the exact text or phonemes), so a content
@@ -32,7 +32,7 @@ import soundfile as sf
 from kokoro_onnx import Kokoro
 
 ROOT = Path(__file__).resolve().parents[2]
-PILOT = ROOT / "public" / "data" / "pilot-a1.json"
+PILOT = ROOT / "public" / "data" / "enhanced.json"
 OUT = ROOT / "public" / "audio" / "pilot"
 MANIFEST = ROOT / "content" / "pilot" / "audio-manifest.json"
 REPORT = ROOT / "content" / "pilot" / "audio-report.json"

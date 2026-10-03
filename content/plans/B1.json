@@ -1,0 +1,5503 @@
+{
+ "level": "B1",
+ "batchSize": 100,
+ "batches": [
+  {
+   "id": "batch-01",
+   "entries": [
+    {
+     "id": "lex:B1:this",
+     "headword": "this",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:it",
+     "headword": "IT",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:that",
+     "headword": "that",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:need",
+     "headword": "need",
+     "flags": [
+      "also-A1-A2"
+     ],
+     "refs": [
+      "prep:need-for",
+      "syn:need-require",
+      "vp:need-ing",
+      "vp:need-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:will",
+     "headword": "will",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:by",
+     "headword": "by",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:water",
+     "headword": "water",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:local",
+     "headword": "local",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:local-national"
+     ]
+    },
+    {
+     "id": "lex:B1:next",
+     "headword": "next",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:safety",
+     "headword": "safety",
+     "refs": [
+      "ant:danger-safety",
+      "fam:safe"
+     ]
+    },
+    {
+     "id": "lex:B1:like-find-sb-sth-pleasant",
+     "headword": "like (find sb/sth pleasant)",
+     "flags": [
+      "also-A1",
+      "several-forms"
+     ],
+     "refs": [
+      "ant:like-dislike",
+      "conf:as-like",
+      "vp:like-ing",
+      "vp:like-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:clear",
+     "headword": "clear",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:clear-unclear",
+      "col:clear-evidence",
+      "col:clear-message",
+      "col:perfectly-clear",
+      "syn:clear-obvious-apparent"
+     ]
+    },
+    {
+     "id": "lex:B1:go",
+     "headword": "go",
+     "flags": [
+      "also-A1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:come-go",
+      "ant:stop-go",
+      "conf:come-go",
+      "conf:get-go",
+      "irr:go",
+      "pv:go-after",
+      "pv:go-against",
+      "pv:go-ahead",
+      "pv:go-back",
+      "pv:go-out",
+      "pv:go-over",
+      "pv:go-without",
+      "vp:go-on-ing",
+      "vp:go-on-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:while",
+     "headword": "while",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:centre",
+     "headword": "centre",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:centre-edge"
+     ]
+    },
+    {
+     "id": "lex:B1:market",
+     "headword": "market",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:still",
+     "headword": "still",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:moving-still",
+      "conf:already-still-yet"
+     ]
+    },
+    {
+     "id": "lex:B1:better",
+     "headword": "better",
+     "flags": [
+      "also-A1-A2"
+     ],
+     "refs": [
+      "ant:better-worse"
+     ]
+    },
+    {
+     "id": "lex:B1:experience",
+     "headword": "experience",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:experience-inexperience",
+      "col:gain-experience",
+      "col:valuable-experience"
+     ]
+    },
+    {
+     "id": "lex:B1:policy",
+     "headword": "policy"
+    },
+    {
+     "id": "lex:B1:essential",
+     "headword": "essential",
+     "refs": [
+      "ant:essential-nonessential",
+      "fam:essential",
+      "syn:basic-fundamental-essential"
+     ]
+    },
+    {
+     "id": "lex:B1:result",
+     "headword": "result",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "prep:result-in",
+      "syn:result-outcome-consequence"
+     ]
+    },
+    {
+     "id": "lex:B1:damage",
+     "headword": "damage",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:repair-damage"
+     ]
+    },
+    {
+     "id": "lex:B1:staff",
+     "headword": "staff"
+    },
+    {
+     "id": "lex:B1:young",
+     "headword": "young",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:old-young",
+      "fam:young"
+     ]
+    },
+    {
+     "id": "lex:B1:expected",
+     "headword": "expected",
+     "refs": [
+      "ant:expected-unexpected"
+     ]
+    },
+    {
+     "id": "lex:B1:financial",
+     "headword": "financial",
+     "refs": [
+      "fam:finance"
+     ]
+    },
+    {
+     "id": "lex:B1:now",
+     "headword": "now",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:now-then"
+     ]
+    },
+    {
+     "id": "lex:B1:used",
+     "headword": "used¹",
+     "refs": [
+      "col:widely-used"
+     ]
+    },
+    {
+     "id": "lex:B1:used-2",
+     "headword": "used²",
+     "refs": [
+      "col:widely-used"
+     ]
+    },
+    {
+     "id": "lex:B1:agreement",
+     "headword": "agreement",
+     "refs": [
+      "ant:agreement-disagreement",
+      "col:reach-an-agreement",
+      "fam:agree"
+     ]
+    },
+    {
+     "id": "lex:B1:close",
+     "headword": "close²",
+     "flags": [
+      "also-A1-A2-B2"
+     ],
+     "refs": [
+      "ant:open-close",
+      "col:close-a-deal",
+      "col:close-friend",
+      "conf:closed-close",
+      "prep:close-to"
+     ]
+    },
+    {
+     "id": "lex:B1:live",
+     "headword": "live²",
+     "flags": [
+      "split-senses",
+      "also-A1"
+     ],
+     "refs": [
+      "ant:die-live"
+     ]
+    },
+    {
+     "id": "lex:B1:software",
+     "headword": "software"
+    },
+    {
+     "id": "lex:B1:treatment",
+     "headword": "treatment"
+    },
+    {
+     "id": "lex:B1:campaign",
+     "headword": "campaign",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:launch-a-campaign"
+     ]
+    },
+    {
+     "id": "lex:B1:cut",
+     "headword": "cut",
+     "flags": [
+      "also-A1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:cut",
+      "pv:cut-down-on",
+      "pv:cut-in",
+      "pv:cut-off",
+      "pv:cut-out"
+     ]
+    },
+    {
+     "id": "lex:B1:access",
+     "headword": "access",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "fam:access",
+      "prep:access-to"
+     ]
+    },
+    {
+     "id": "lex:B1:court",
+     "headword": "court"
+    },
+    {
+     "id": "lex:B1:place",
+     "headword": "place",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "syn:place-location-site"
+     ]
+    },
+    {
+     "id": "lex:B1:economic",
+     "headword": "economic",
+     "refs": [
+      "conf:economic-economical",
+      "fam:economy"
+     ]
+    },
+    {
+     "id": "lex:B1:fire",
+     "headword": "fire",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:hire-fire"
+     ]
+    },
+    {
+     "id": "lex:B1:original",
+     "headword": "original",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "fam:origin"
+     ]
+    },
+    {
+     "id": "lex:B1:growth",
+     "headword": "growth",
+     "refs": [
+      "col:foster-growth",
+      "col:rapid-growth",
+      "col:steady-growth",
+      "fam:grow"
+     ]
+    },
+    {
+     "id": "lex:B1:issue",
+     "headword": "issue",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:address-an-issue",
+      "syn:problem-issue-difficulty"
+     ]
+    },
+    {
+     "id": "lex:B1:presentation",
+     "headword": "presentation",
+     "refs": [
+      "fam:present"
+     ]
+    },
+    {
+     "id": "lex:B1:bank-river",
+     "headword": "bank (river)",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:experienced",
+     "headword": "experienced",
+     "refs": [
+      "ant:experienced-inexperienced"
+     ]
+    },
+    {
+     "id": "lex:B1:performance",
+     "headword": "performance",
+     "refs": [
+      "fam:perform"
+     ]
+    },
+    {
+     "id": "lex:B1:security",
+     "headword": "security",
+     "refs": [
+      "ant:insecurity-security",
+      "fam:secure"
+     ]
+    },
+    {
+     "id": "lex:B1:set-put",
+     "headword": "set (put)",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:rise-set",
+      "col:set-a-date",
+      "col:set-a-goal",
+      "col:set-a-standard",
+      "col:set-an-example",
+      "irr:set",
+      "pv:set-out",
+      "pv:set-up"
+     ]
+    },
+    {
+     "id": "lex:B1:set-group",
+     "headword": "set (group)",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:rise-set",
+      "col:set-a-date",
+      "col:set-a-goal",
+      "col:set-a-standard",
+      "col:set-an-example",
+      "irr:set",
+      "pv:set-out",
+      "pv:set-up"
+     ]
+    },
+    {
+     "id": "lex:B1:warm",
+     "headword": "warm",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:warm-cool",
+      "pv:warm-up"
+     ]
+    },
+    {
+     "id": "lex:B1:key",
+     "headword": "key",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "col:key-factor",
+      "col:key-point",
+      "col:play-a-key-role"
+     ]
+    },
+    {
+     "id": "lex:B1:once",
+     "headword": "once",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:private",
+     "headword": "private",
+     "refs": [
+      "ant:private-public",
+      "fam:private"
+     ]
+    },
+    {
+     "id": "lex:B1:store",
+     "headword": "store",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:valuable",
+     "headword": "valuable",
+     "refs": [
+      "ant:valuable-worthless",
+      "col:valuable-experience",
+      "fam:value",
+      "syn:useful-valuable-beneficial"
+     ]
+    },
+    {
+     "id": "lex:B1:whole",
+     "headword": "whole",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:half-whole",
+      "ant:whole-part",
+      "conf:all-whole"
+     ]
+    },
+    {
+     "id": "lex:B1:deep",
+     "headword": "deep",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:deep-shallow",
+      "col:deep-concern",
+      "col:deep-sleep",
+      "col:deep-understanding",
+      "fam:deep"
+     ]
+    },
+    {
+     "id": "lex:B1:injured",
+     "headword": "injured",
+     "refs": [
+      "col:seriously-injured"
+     ]
+    },
+    {
+     "id": "lex:B1:repair",
+     "headword": "repair",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:repair-damage"
+     ]
+    },
+    {
+     "id": "lex:B1:sudden",
+     "headword": "sudden",
+     "refs": [
+      "ant:gradual-sudden"
+     ]
+    },
+    {
+     "id": "lex:B1:within",
+     "headword": "within"
+    },
+    {
+     "id": "lex:B1:age",
+     "headword": "age",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:announcement",
+     "headword": "announcement",
+     "refs": [
+      "fam:announce"
+     ]
+    },
+    {
+     "id": "lex:B1:laboratory",
+     "headword": "laboratory"
+    },
+    {
+     "id": "lex:B1:remain",
+     "headword": "remain"
+    },
+    {
+     "id": "lex:B1:rise",
+     "headword": "rise",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:rise-fall",
+      "ant:rise-set",
+      "conf:arise-rise",
+      "conf:raise-rise",
+      "irr:rise"
+     ]
+    },
+    {
+     "id": "lex:B1:view",
+     "headword": "view",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:waste",
+     "headword": "waste",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:conserve-waste",
+      "ant:save-waste",
+      "col:waste-time"
+     ]
+    },
+    {
+     "id": "lex:B1:application",
+     "headword": "application",
+     "refs": [
+      "fam:apply"
+     ]
+    },
+    {
+     "id": "lex:B1:communication",
+     "headword": "communication",
+     "refs": [
+      "fam:communicate"
+     ]
+    },
+    {
+     "id": "lex:B1:documentary",
+     "headword": "documentary"
+    },
+    {
+     "id": "lex:B1:economy",
+     "headword": "economy",
+     "refs": [
+      "fam:economy"
+     ]
+    },
+    {
+     "id": "lex:B1:entrance",
+     "headword": "entrance"
+    },
+    {
+     "id": "lex:B1:experiment",
+     "headword": "experiment",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:hand",
+     "headword": "hand",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "pv:hand-down",
+      "pv:hand-in",
+      "pv:hand-out",
+      "pv:hand-over"
+     ]
+    },
+    {
+     "id": "lex:B1:highly",
+     "headword": "highly",
+     "refs": [
+      "col:highly-likely",
+      "col:highly-successful",
+      "col:highly-unlikely"
+     ]
+    },
+    {
+     "id": "lex:B1:operation",
+     "headword": "operation",
+     "refs": [
+      "fam:operate"
+     ]
+    },
+    {
+     "id": "lex:B1:planning",
+     "headword": "planning"
+    },
+    {
+     "id": "lex:B1:rule",
+     "headword": "rule",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "syn:rule-regulation"
+     ]
+    },
+    {
+     "id": "lex:B1:scientific",
+     "headword": "scientific",
+     "refs": [
+      "fam:science"
+     ]
+    },
+    {
+     "id": "lex:B1:award",
+     "headword": "award",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:conclusion",
+     "headword": "conclusion",
+     "refs": [
+      "col:draw-a-conclusion",
+      "col:reach-a-conclusion",
+      "fam:conclude"
+     ]
+    },
+    {
+     "id": "lex:B1:face",
+     "headword": "face",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "col:face-a-problem"
+     ]
+    },
+    {
+     "id": "lex:B1:improvement",
+     "headword": "improvement",
+     "refs": [
+      "col:significant-improvement",
+      "fam:improve"
+     ]
+    },
+    {
+     "id": "lex:B1:legal",
+     "headword": "legal",
+     "refs": [
+      "ant:legal-illegal",
+      "fam:legal"
+     ]
+    },
+    {
+     "id": "lex:B1:practical",
+     "headword": "practical",
+     "refs": [
+      "ant:impractical-practical",
+      "ant:practical-theoretical",
+      "col:practical-advice"
+     ]
+    },
+    {
+     "id": "lex:B1:since",
+     "headword": "since",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:as-because-since",
+      "conf:for-since"
+     ]
+    },
+    {
+     "id": "lex:B1:transport",
+     "headword": "transport",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:claim",
+     "headword": "claim",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "vp:claim-that-clause",
+      "vp:claim-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:covered",
+     "headword": "covered",
+     "refs": [
+      "ant:bare-covered"
+     ]
+    },
+    {
+     "id": "lex:B1:current",
+     "headword": "current",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "conf:actual-current"
+     ]
+    },
+    {
+     "id": "lex:B1:daily",
+     "headword": "daily",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "col:daily-life",
+      "col:daily-routine"
+     ]
+    },
+    {
+     "id": "lex:B1:effective",
+     "headword": "effective",
+     "refs": [
+      "ant:effective-ineffective",
+      "fam:effect"
+     ]
+    },
+    {
+     "id": "lex:B1:further",
+     "headword": "further",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:farther-further"
+     ]
+    },
+    {
+     "id": "lex:B1:historical",
+     "headword": "historical",
+     "refs": [
+      "conf:historic-historical",
+      "fam:history"
+     ]
+    },
+    {
+     "id": "lex:B1:production",
+     "headword": "production",
+     "refs": [
+      "fam:produce"
+     ]
+    },
+    {
+     "id": "lex:B1:race-people",
+     "headword": "race (people)",
+     "flags": [
+      "also-A2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-02",
+   "entries": [
+    {
+     "id": "lex:B1:tax",
+     "headword": "tax",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:warning",
+     "headword": "warning"
+    },
+    {
+     "id": "lex:B1:cream",
+     "headword": "cream",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:emergency",
+     "headword": "emergency"
+    },
+    {
+     "id": "lex:B1:goods",
+     "headword": "goods"
+    },
+    {
+     "id": "lex:B1:historic",
+     "headword": "historic",
+     "refs": [
+      "conf:historic-historical"
+     ]
+    },
+    {
+     "id": "lex:B1:living",
+     "headword": "living",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:dead-living"
+     ]
+    },
+    {
+     "id": "lex:B1:move",
+     "headword": "move",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:move-stay",
+      "ant:move-stop",
+      "fam:move"
+     ]
+    },
+    {
+     "id": "lex:B1:powerful",
+     "headword": "powerful",
+     "refs": [
+      "ant:powerful-weak",
+      "syn:strong-powerful-intense"
+     ]
+    },
+    {
+     "id": "lex:B1:reliable",
+     "headword": "reliable",
+     "refs": [
+      "ant:reliable-unreliable",
+      "col:reliable-information",
+      "fam:rely"
+     ]
+    },
+    {
+     "id": "lex:B1:sample",
+     "headword": "sample",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:sharp",
+     "headword": "sharp",
+     "refs": [
+      "ant:blunt-sharp",
+      "ant:sharp-dull"
+     ]
+    },
+    {
+     "id": "lex:B1:slow",
+     "headword": "slow",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:fast-slow",
+      "ant:quick-slow",
+      "ant:rapid-slow"
+     ]
+    },
+    {
+     "id": "lex:B1:strongly",
+     "headword": "strongly",
+     "refs": [
+      "col:strongly-believe",
+      "col:strongly-recommend"
+     ]
+    },
+    {
+     "id": "lex:B1:throughout",
+     "headword": "throughout",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:truth",
+     "headword": "truth",
+     "refs": [
+      "ant:falsity-truth",
+      "ant:lie-truth",
+      "col:tell-the-truth",
+      "fam:true"
+     ]
+    },
+    {
+     "id": "lex:B1:basic",
+     "headword": "basic",
+     "refs": [
+      "syn:basic-fundamental-essential"
+     ]
+    },
+    {
+     "id": "lex:B1:despite",
+     "headword": "despite"
+    },
+    {
+     "id": "lex:B1:development",
+     "headword": "development",
+     "refs": [
+      "fam:develop"
+     ]
+    },
+    {
+     "id": "lex:B1:direct",
+     "headword": "direct",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:direct-indirect",
+      "col:direct-effect",
+      "fam:direct"
+     ]
+    },
+    {
+     "id": "lex:B1:exhibition",
+     "headword": "exhibition"
+    },
+    {
+     "id": "lex:B1:file",
+     "headword": "file",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:heavily",
+     "headword": "heavily",
+     "refs": [
+      "col:heavily-dependent",
+      "col:heavily-involved"
+     ]
+    },
+    {
+     "id": "lex:B1:location",
+     "headword": "location",
+     "refs": [
+      "fam:locate",
+      "syn:place-location-site"
+     ]
+    },
+    {
+     "id": "lex:B1:path",
+     "headword": "path"
+    },
+    {
+     "id": "lex:B1:range",
+     "headword": "range",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:broad-range",
+      "col:wide-range"
+     ]
+    },
+    {
+     "id": "lex:B1:rare",
+     "headword": "rare",
+     "refs": [
+      "ant:common-rare",
+      "ant:frequent-rare",
+      "syn:rare-exceptional"
+     ]
+    },
+    {
+     "id": "lex:B1:responsible",
+     "headword": "responsible",
+     "refs": [
+      "ant:responsible-irresponsible",
+      "col:largely-responsible",
+      "fam:responsible",
+      "prep:responsible-for"
+     ]
+    },
+    {
+     "id": "lex:B1:surface",
+     "headword": "surface"
+    },
+    {
+     "id": "lex:B1:value",
+     "headword": "value",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "fam:value"
+     ]
+    },
+    {
+     "id": "lex:B1:version",
+     "headword": "version"
+    },
+    {
+     "id": "lex:B1:wrong",
+     "headword": "wrong",
+     "flags": [
+      "also-A1-B2"
+     ],
+     "refs": [
+      "ant:correct-wrong",
+      "ant:right-wrong",
+      "col:completely-wrong",
+      "syn:wrong-incorrect"
+     ]
+    },
+    {
+     "id": "lex:B1:account",
+     "headword": "account",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "prep:account-for"
+     ]
+    },
+    {
+     "id": "lex:B1:act",
+     "headword": "act",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "fam:act"
+     ]
+    },
+    {
+     "id": "lex:B1:apart",
+     "headword": "apart",
+     "refs": [
+      "ant:together-apart"
+     ]
+    },
+    {
+     "id": "lex:B1:ceremony",
+     "headword": "ceremony"
+    },
+    {
+     "id": "lex:B1:contact",
+     "headword": "contact",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:maintain-contact"
+     ]
+    },
+    {
+     "id": "lex:B1:cultural",
+     "headword": "cultural",
+     "refs": [
+      "fam:culture"
+     ]
+    },
+    {
+     "id": "lex:B1:deal",
+     "headword": "deal",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:close-a-deal",
+      "irr:deal",
+      "prep:deal-with"
+     ]
+    },
+    {
+     "id": "lex:B1:empty",
+     "headword": "empty",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:empty-fill",
+      "ant:empty-full"
+     ]
+    },
+    {
+     "id": "lex:B1:extra",
+     "headword": "extra",
+     "flags": [
+      "split-senses",
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:global",
+     "headword": "global"
+    },
+    {
+     "id": "lex:B1:heating",
+     "headword": "heating"
+    },
+    {
+     "id": "lex:B1:illegal",
+     "headword": "illegal",
+     "refs": [
+      "ant:legal-illegal",
+      "fam:legal"
+     ]
+    },
+    {
+     "id": "lex:B1:importance",
+     "headword": "importance",
+     "refs": [
+      "fam:important"
+     ]
+    },
+    {
+     "id": "lex:B1:normal",
+     "headword": "normal",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "col:perfectly-normal",
+      "fam:normal"
+     ]
+    },
+    {
+     "id": "lex:B1:official",
+     "headword": "official",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:official-unofficial"
+     ]
+    },
+    {
+     "id": "lex:B1:pan",
+     "headword": "pan"
+    },
+    {
+     "id": "lex:B1:pass",
+     "headword": "pass",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:fail-pass",
+      "pv:pass-away",
+      "pv:pass-out",
+      "pv:pass-up"
+     ]
+    },
+    {
+     "id": "lex:B1:peaceful",
+     "headword": "peaceful"
+    },
+    {
+     "id": "lex:B1:photography",
+     "headword": "photography"
+    },
+    {
+     "id": "lex:B1:regularly",
+     "headword": "regularly",
+     "refs": [
+      "fam:regular"
+     ]
+    },
+    {
+     "id": "lex:B1:remote",
+     "headword": "remote"
+    },
+    {
+     "id": "lex:B1:responsibility",
+     "headword": "responsibility",
+     "refs": [
+      "col:full-responsibility",
+      "col:take-responsibility",
+      "fam:responsible"
+     ]
+    },
+    {
+     "id": "lex:B1:ring",
+     "headword": "ring²",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:ring"
+     ]
+    },
+    {
+     "id": "lex:B1:risk",
+     "headword": "risk",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:pose-a-risk",
+      "syn:danger-risk-threat",
+      "vp:risk-ing"
+     ]
+    },
+    {
+     "id": "lex:B1:share",
+     "headword": "share",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:total",
+     "headword": "total",
+     "flags": [
+      "split-senses",
+      "also-C1"
+     ],
+     "refs": [
+      "col:total-cost",
+      "col:total-failure"
+     ]
+    },
+    {
+     "id": "lex:B1:written",
+     "headword": "written",
+     "refs": [
+      "ant:spoken-written"
+     ]
+    },
+    {
+     "id": "lex:B1:ahead",
+     "headword": "ahead",
+     "refs": [
+      "ant:ahead-back",
+      "ant:ahead-behind"
+     ]
+    },
+    {
+     "id": "lex:B1:analysis",
+     "headword": "analysis",
+     "refs": [
+      "fam:analysis"
+     ]
+    },
+    {
+     "id": "lex:B1:aware",
+     "headword": "aware",
+     "refs": [
+      "ant:aware-unaware",
+      "col:fully-aware",
+      "fam:aware",
+      "prep:aware-of"
+     ]
+    },
+    {
+     "id": "lex:B1:benefit",
+     "headword": "benefit",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:benefit-harm",
+      "fam:benefit",
+      "prep:benefit-from"
+     ]
+    },
+    {
+     "id": "lex:B1:cheap",
+     "headword": "cheap",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:cheap-expensive"
+     ]
+    },
+    {
+     "id": "lex:B1:collection",
+     "headword": "collection",
+     "refs": [
+      "fam:collect"
+     ]
+    },
+    {
+     "id": "lex:B1:complaint",
+     "headword": "complaint"
+    },
+    {
+     "id": "lex:B1:connection",
+     "headword": "connection",
+     "refs": [
+      "col:establish-a-connection",
+      "fam:connect"
+     ]
+    },
+    {
+     "id": "lex:B1:directly",
+     "headword": "directly",
+     "refs": [
+      "col:directly-involved",
+      "col:directly-related",
+      "fam:direct"
+     ]
+    },
+    {
+     "id": "lex:B1:earthquake",
+     "headword": "earthquake"
+    },
+    {
+     "id": "lex:B1:engineering",
+     "headword": "engineering"
+    },
+    {
+     "id": "lex:B1:equal",
+     "headword": "equal",
+     "flags": [
+      "split-senses",
+      "also-B2"
+     ],
+     "refs": [
+      "ant:differ-equal",
+      "ant:equal-unequal",
+      "col:roughly-equal",
+      "fam:equal"
+     ]
+    },
+    {
+     "id": "lex:B1:expand",
+     "headword": "expand",
+     "refs": [
+      "ant:compress-expand",
+      "ant:expand-contract",
+      "fam:expand"
+     ]
+    },
+    {
+     "id": "lex:B1:function",
+     "headword": "function",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:grateful",
+     "headword": "grateful",
+     "refs": [
+      "ant:grateful-ungrateful",
+      "conf:grateful-thankful",
+      "prep:grateful-for",
+      "prep:grateful-to"
+     ]
+    },
+    {
+     "id": "lex:B1:identity",
+     "headword": "identity",
+     "refs": [
+      "fam:identify"
+     ]
+    },
+    {
+     "id": "lex:B1:indicate",
+     "headword": "indicate",
+     "refs": [
+      "fam:indicate"
+     ]
+    },
+    {
+     "id": "lex:B1:influence",
+     "headword": "influence",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:exert-influence",
+      "fam:influence",
+      "prep:influence-on"
+     ]
+    },
+    {
+     "id": "lex:B1:judge",
+     "headword": "judge",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "occ:judge"
+     ]
+    },
+    {
+     "id": "lex:B1:kind-caring",
+     "headword": "kind (caring)",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:cruel-kind",
+      "ant:kind-unkind",
+      "prep:kind-to"
+     ]
+    },
+    {
+     "id": "lex:B1:latest",
+     "headword": "latest",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:level",
+     "headword": "level",
+     "flags": [
+      "also-A2-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:limit",
+     "headword": "limit",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "fam:limit"
+     ]
+    },
+    {
+     "id": "lex:B1:mine-hole-in-the-ground",
+     "headword": "mine (hole in the ground)",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:musical",
+     "headword": "musical",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:organized",
+     "headword": "organized"
+    },
+    {
+     "id": "lex:B1:package",
+     "headword": "package",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:point",
+     "headword": "point",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "col:key-point",
+      "pv:point-out"
+     ]
+    },
+    {
+     "id": "lex:B1:political",
+     "headword": "political",
+     "refs": [
+      "fam:politics"
+     ]
+    },
+    {
+     "id": "lex:B1:prepared",
+     "headword": "prepared",
+     "refs": [
+      "ant:prepared-unprepared"
+     ]
+    },
+    {
+     "id": "lex:B1:press",
+     "headword": "press",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:pressure",
+     "headword": "pressure",
+     "refs": [
+      "col:exert-pressure"
+     ]
+    },
+    {
+     "id": "lex:B1:previous",
+     "headword": "previous"
+    },
+    {
+     "id": "lex:B1:profit",
+     "headword": "profit",
+     "refs": [
+      "ant:profit-loss",
+      "col:make-a-profit"
+     ]
+    },
+    {
+     "id": "lex:B1:reaction",
+     "headword": "reaction",
+     "refs": [
+      "fam:react"
+     ]
+    },
+    {
+     "id": "lex:B1:relaxed",
+     "headword": "relaxed",
+     "refs": [
+      "fam:relax"
+     ]
+    },
+    {
+     "id": "lex:B1:seriously",
+     "headword": "seriously",
+     "refs": [
+      "col:seriously-ill",
+      "col:seriously-injured"
+     ]
+    },
+    {
+     "id": "lex:B1:soil",
+     "headword": "soil"
+    },
+    {
+     "id": "lex:B1:spread",
+     "headword": "spread",
+     "flags": [
+      "also-B2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:gather-spread",
+      "irr:spread"
+     ]
+    },
+    {
+     "id": "lex:B1:spring",
+     "headword": "spring",
+     "flags": [
+      "also-A1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:spring"
+     ]
+    },
+    {
+     "id": "lex:B1:survive",
+     "headword": "survive",
+     "refs": [
+      "fam:survive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-03",
+   "entries": [
+    {
+     "id": "lex:B1:switch",
+     "headword": "switch",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "pv:switch-off",
+      "pv:switch-on"
+     ]
+    },
+    {
+     "id": "lex:B1:technical",
+     "headword": "technical"
+    },
+    {
+     "id": "lex:B1:update",
+     "headword": "update",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:worst",
+     "headword": "worst",
+     "flags": [
+      "also-A2-B2"
+     ],
+     "refs": [
+      "ant:best-worst"
+     ]
+    },
+    {
+     "id": "lex:B1:worth",
+     "headword": "worth",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "conf:worth-worthwhile"
+     ]
+    },
+    {
+     "id": "lex:B1:achievement",
+     "headword": "achievement",
+     "refs": [
+      "fam:achieve"
+     ]
+    },
+    {
+     "id": "lex:B1:alarm",
+     "headword": "alarm",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:appointment",
+     "headword": "appointment"
+    },
+    {
+     "id": "lex:B1:balance",
+     "headword": "balance",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:achieve-a-balance"
+     ]
+    },
+    {
+     "id": "lex:B1:base",
+     "headword": "base",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:brand",
+     "headword": "brand",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:calm",
+     "headword": "calm",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:calm-agitated",
+      "ant:calm-nervous",
+      "ant:panic-calm",
+      "pv:calm-down"
+     ]
+    },
+    {
+     "id": "lex:B1:childhood",
+     "headword": "childhood"
+    },
+    {
+     "id": "lex:B1:client",
+     "headword": "client"
+    },
+    {
+     "id": "lex:B1:comment",
+     "headword": "comment",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:complex",
+     "headword": "complex",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:simple-complex",
+      "syn:complex-complicated-sophisticated"
+     ]
+    },
+    {
+     "id": "lex:B1:concentrate",
+     "headword": "concentrate",
+     "refs": [
+      "fam:concentrate",
+      "prep:concentrate-on"
+     ]
+    },
+    {
+     "id": "lex:B1:countryside",
+     "headword": "countryside"
+    },
+    {
+     "id": "lex:B1:cover",
+     "headword": "cover",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:cover-uncover"
+     ]
+    },
+    {
+     "id": "lex:B1:criminal",
+     "headword": "criminal",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:disappointed",
+     "headword": "disappointed",
+     "refs": [
+      "ant:excited-disappointed",
+      "col:bitterly-disappointed",
+      "col:deeply-disappointed",
+      "prep:disappointed-with"
+     ]
+    },
+    {
+     "id": "lex:B1:drop",
+     "headword": "drop",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "pv:drop-in",
+      "pv:drop-off",
+      "pv:drop-out"
+     ]
+    },
+    {
+     "id": "lex:B1:employment",
+     "headword": "employment",
+     "refs": [
+      "ant:employment-unemployment",
+      "fam:employ"
+     ]
+    },
+    {
+     "id": "lex:B1:environmental",
+     "headword": "environmental",
+     "refs": [
+      "fam:environment"
+     ]
+    },
+    {
+     "id": "lex:B1:eventually",
+     "headword": "eventually"
+    },
+    {
+     "id": "lex:B1:fear",
+     "headword": "fear",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:flood",
+     "headword": "flood",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:flour",
+     "headword": "flour"
+    },
+    {
+     "id": "lex:B1:friendship",
+     "headword": "friendship",
+     "refs": [
+      "ant:friendship-hostility",
+      "fam:friend"
+     ]
+    },
+    {
+     "id": "lex:B1:honest",
+     "headword": "honest",
+     "refs": [
+      "ant:honest-dishonest",
+      "fam:honest",
+      "syn:honest-sincere-genuine"
+     ]
+    },
+    {
+     "id": "lex:B1:impression",
+     "headword": "impression",
+     "refs": [
+      "fam:impress"
+     ]
+    },
+    {
+     "id": "lex:B1:impressive",
+     "headword": "impressive",
+     "refs": [
+      "fam:impress"
+     ]
+    },
+    {
+     "id": "lex:B1:intend",
+     "headword": "intend",
+     "refs": [
+      "fam:intend",
+      "vp:intend-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:lack",
+     "headword": "lack",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:abundance-lack"
+     ]
+    },
+    {
+     "id": "lex:B1:layer",
+     "headword": "layer"
+    },
+    {
+     "id": "lex:B1:lead",
+     "headword": "lead¹",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:follow-lead",
+      "irr:lead"
+     ]
+    },
+    {
+     "id": "lex:B1:located",
+     "headword": "located"
+    },
+    {
+     "id": "lex:B1:management",
+     "headword": "management",
+     "refs": [
+      "fam:manage"
+     ]
+    },
+    {
+     "id": "lex:B1:measure",
+     "headword": "measure",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "fam:measure"
+     ]
+    },
+    {
+     "id": "lex:B1:mental",
+     "headword": "mental",
+     "refs": [
+      "ant:mental-physical"
+     ]
+    },
+    {
+     "id": "lex:B1:mention",
+     "headword": "mention",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "vp:mention-ing"
+     ]
+    },
+    {
+     "id": "lex:B1:mixture",
+     "headword": "mixture"
+    },
+    {
+     "id": "lex:B1:northern",
+     "headword": "northern",
+     "refs": [
+      "ant:northern-southern"
+     ]
+    },
+    {
+     "id": "lex:B1:obvious",
+     "headword": "obvious",
+     "refs": [
+      "syn:clear-obvious-apparent"
+     ]
+    },
+    {
+     "id": "lex:B1:particularly",
+     "headword": "particularly",
+     "refs": [
+      "col:particularly-important",
+      "col:particularly-useful"
+     ]
+    },
+    {
+     "id": "lex:B1:perfectly",
+     "headword": "perfectly",
+     "refs": [
+      "col:perfectly-clear",
+      "col:perfectly-normal"
+     ]
+    },
+    {
+     "id": "lex:B1:plenty",
+     "headword": "plenty"
+    },
+    {
+     "id": "lex:B1:poem",
+     "headword": "poem"
+    },
+    {
+     "id": "lex:B1:port",
+     "headword": "port"
+    },
+    {
+     "id": "lex:B1:prediction",
+     "headword": "prediction",
+     "refs": [
+      "fam:predict"
+     ]
+    },
+    {
+     "id": "lex:B1:program",
+     "headword": "program",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:reference",
+     "headword": "reference",
+     "refs": [
+      "fam:refer"
+     ]
+    },
+    {
+     "id": "lex:B1:repeat",
+     "headword": "repeat",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:request",
+     "headword": "request",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "syn:ask-request"
+     ]
+    },
+    {
+     "id": "lex:B1:separate",
+     "headword": "separate",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:combine-separate",
+      "ant:join-separate",
+      "ant:joint-separate",
+      "ant:mix-separate"
+     ]
+    },
+    {
+     "id": "lex:B1:signal",
+     "headword": "signal",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:spending",
+     "headword": "spending"
+    },
+    {
+     "id": "lex:B1:stick-push-into-attach",
+     "headword": "stick (push into/attach)",
+     "flags": [
+      "irregular-verb",
+      "several-forms"
+     ],
+     "refs": [
+      "irr:stick",
+      "pv:stick-to"
+     ]
+    },
+    {
+     "id": "lex:B1:stick-piece-of-wood",
+     "headword": "stick (piece of wood)",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:stick",
+      "pv:stick-to"
+     ]
+    },
+    {
+     "id": "lex:B1:strength",
+     "headword": "strength",
+     "refs": [
+      "ant:strength-weakness",
+      "fam:strong"
+     ]
+    },
+    {
+     "id": "lex:B1:substance",
+     "headword": "substance"
+    },
+    {
+     "id": "lex:B1:suit",
+     "headword": "suit",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:fit-suit"
+     ]
+    },
+    {
+     "id": "lex:B1:swim",
+     "headword": "swim",
+     "flags": [
+      "also-A1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:swim"
+     ]
+    },
+    {
+     "id": "lex:B1:talent",
+     "headword": "talent",
+     "refs": [
+      "syn:skill-ability-talent"
+     ]
+    },
+    {
+     "id": "lex:B1:touch",
+     "headword": "touch",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "col:keep-in-touch"
+     ]
+    },
+    {
+     "id": "lex:B1:unnecessary",
+     "headword": "unnecessary",
+     "refs": [
+      "ant:necessary-unnecessary",
+      "fam:necessary"
+     ]
+    },
+    {
+     "id": "lex:B1:upset",
+     "headword": "upset",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "syn:sad-unhappy-upset"
+     ]
+    },
+    {
+     "id": "lex:B1:whether",
+     "headword": "whether",
+     "refs": [
+      "conf:if-whether"
+     ]
+    },
+    {
+     "id": "lex:B1:worry",
+     "headword": "worry",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:reassure-worry",
+      "prep:worry-about"
+     ]
+    },
+    {
+     "id": "lex:B1:worse",
+     "headword": "worse",
+     "flags": [
+      "also-A2-B2"
+     ],
+     "refs": [
+      "ant:better-worse"
+     ]
+    },
+    {
+     "id": "lex:B1:academic",
+     "headword": "academic",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:addition",
+     "headword": "addition",
+     "refs": [
+      "fam:add"
+     ]
+    },
+    {
+     "id": "lex:B1:admire",
+     "headword": "admire"
+    },
+    {
+     "id": "lex:B1:advise",
+     "headword": "advise",
+     "refs": [
+      "conf:advice-advise",
+      "fam:advise",
+      "vp:advise-ing",
+      "vp:advise-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:afford",
+     "headword": "afford",
+     "refs": [
+      "vp:afford-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:aim",
+     "headword": "aim",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "syn:goal-aim-objective"
+     ]
+    },
+    {
+     "id": "lex:B1:alternative",
+     "headword": "alternative",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:atmosphere",
+     "headword": "atmosphere"
+    },
+    {
+     "id": "lex:B1:attraction",
+     "headword": "attraction",
+     "refs": [
+      "fam:attract"
+     ]
+    },
+    {
+     "id": "lex:B1:beauty",
+     "headword": "beauty",
+     "refs": [
+      "fam:beauty"
+     ]
+    },
+    {
+     "id": "lex:B1:belief",
+     "headword": "belief",
+     "refs": [
+      "fam:believe"
+     ]
+    },
+    {
+     "id": "lex:B1:border",
+     "headword": "border",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:breathing",
+     "headword": "breathing"
+    },
+    {
+     "id": "lex:B1:celebration",
+     "headword": "celebration",
+     "refs": [
+      "fam:celebrate"
+     ]
+    },
+    {
+     "id": "lex:B1:central",
+     "headword": "central"
+    },
+    {
+     "id": "lex:B1:click",
+     "headword": "click",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:climb",
+     "headword": "climb",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:cloth",
+     "headword": "cloth"
+    },
+    {
+     "id": "lex:B1:combine",
+     "headword": "combine",
+     "refs": [
+      "ant:combine-divide",
+      "ant:combine-separate",
+      "fam:combine"
+     ]
+    },
+    {
+     "id": "lex:B1:comparison",
+     "headword": "comparison",
+     "refs": [
+      "fam:compare"
+     ]
+    },
+    {
+     "id": "lex:B1:conclude",
+     "headword": "conclude",
+     "refs": [
+      "fam:conclude"
+     ]
+    },
+    {
+     "id": "lex:B1:confident",
+     "headword": "confident",
+     "refs": [
+      "fam:confident"
+     ]
+    },
+    {
+     "id": "lex:B1:confuse",
+     "headword": "confuse",
+     "refs": [
+      "fam:confuse"
+     ]
+    },
+    {
+     "id": "lex:B1:confused",
+     "headword": "confused",
+     "refs": [
+      "fam:confuse"
+     ]
+    },
+    {
+     "id": "lex:B1:consume",
+     "headword": "consume",
+     "refs": [
+      "fam:consume"
+     ]
+    },
+    {
+     "id": "lex:B1:container",
+     "headword": "container"
+    },
+    {
+     "id": "lex:B1:content",
+     "headword": "content¹",
+     "flags": [
+      "also-C1"
+     ]
+    },
+    {
+     "id": "lex:B1:cool",
+     "headword": "cool",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:warm-cool"
+     ]
+    },
+    {
+     "id": "lex:B1:count",
+     "headword": "count",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "pv:count-on"
+     ]
+    },
+    {
+     "id": "lex:B1:define",
+     "headword": "define",
+     "refs": [
+      "fam:define"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-04",
+   "entries": [
+    {
+     "id": "lex:B1:definition",
+     "headword": "definition",
+     "refs": [
+      "fam:define"
+     ]
+    },
+    {
+     "id": "lex:B1:determine",
+     "headword": "determine",
+     "refs": [
+      "fam:determine"
+     ]
+    },
+    {
+     "id": "lex:B1:diagram",
+     "headword": "diagram"
+    },
+    {
+     "id": "lex:B1:educate",
+     "headword": "educate",
+     "refs": [
+      "fam:educate"
+     ]
+    },
+    {
+     "id": "lex:B1:effectively",
+     "headword": "effectively",
+     "refs": [
+      "fam:effect"
+     ]
+    },
+    {
+     "id": "lex:B1:effort",
+     "headword": "effort",
+     "refs": [
+      "col:make-an-effort"
+     ]
+    },
+    {
+     "id": "lex:B1:entertainment",
+     "headword": "entertainment",
+     "refs": [
+      "fam:entertain"
+     ]
+    },
+    {
+     "id": "lex:B1:except",
+     "headword": "except",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:far",
+     "headword": "far",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:near-far"
+     ]
+    },
+    {
+     "id": "lex:B1:following",
+     "headword": "following",
+     "flags": [
+      "also-A2-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:frightened",
+     "headword": "frightened",
+     "refs": [
+      "syn:afraid-scared-frightened"
+     ]
+    },
+    {
+     "id": "lex:B1:generally",
+     "headword": "generally",
+     "refs": [
+      "col:generally-accepted",
+      "col:generally-available"
+     ]
+    },
+    {
+     "id": "lex:B1:generation",
+     "headword": "generation",
+     "refs": [
+      "fam:generate"
+     ]
+    },
+    {
+     "id": "lex:B1:hang",
+     "headword": "hang",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:hang",
+      "pv:hang-in",
+      "pv:hang-out",
+      "pv:hang-up"
+     ]
+    },
+    {
+     "id": "lex:B1:happiness",
+     "headword": "happiness",
+     "refs": [
+      "fam:happy"
+     ]
+    },
+    {
+     "id": "lex:B1:hate",
+     "headword": "hate",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:love-hate",
+      "vp:hate-ing-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:host",
+     "headword": "host",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:host-guest"
+     ]
+    },
+    {
+     "id": "lex:B1:ignore",
+     "headword": "ignore",
+     "refs": [
+      "ant:ignore-notice"
+     ]
+    },
+    {
+     "id": "lex:B1:impact",
+     "headword": "impact",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:intelligence",
+     "headword": "intelligence",
+     "refs": [
+      "fam:intelligent"
+     ]
+    },
+    {
+     "id": "lex:B1:intention",
+     "headword": "intention",
+     "refs": [
+      "fam:intend"
+     ]
+    },
+    {
+     "id": "lex:B1:invest",
+     "headword": "invest",
+     "refs": [
+      "fam:invest"
+     ]
+    },
+    {
+     "id": "lex:B1:involved",
+     "headword": "involved",
+     "refs": [
+      "col:directly-involved",
+      "col:heavily-involved"
+     ]
+    },
+    {
+     "id": "lex:B1:journal",
+     "headword": "journal"
+    },
+    {
+     "id": "lex:B1:lie-tell-a-lie",
+     "headword": "lie² (tell a lie)",
+     "flags": [
+      "split-senses",
+      "also-A1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:lie-truth",
+      "conf:lay-lie",
+      "irr:lie"
+     ]
+    },
+    {
+     "id": "lex:B1:locate",
+     "headword": "locate",
+     "refs": [
+      "fam:locate"
+     ]
+    },
+    {
+     "id": "lex:B1:loss",
+     "headword": "loss",
+     "refs": [
+      "ant:gain-loss",
+      "ant:profit-loss",
+      "col:make-a-loss"
+     ]
+    },
+    {
+     "id": "lex:B1:marketing",
+     "headword": "marketing"
+    },
+    {
+     "id": "lex:B1:marriage",
+     "headword": "marriage",
+     "refs": [
+      "ant:divorce-marriage",
+      "fam:marry"
+     ]
+    },
+    {
+     "id": "lex:B1:mix",
+     "headword": "mix",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:mix-separate",
+      "pv:mix-up"
+     ]
+    },
+    {
+     "id": "lex:B1:mood",
+     "headword": "mood"
+    },
+    {
+     "id": "lex:B1:necessarily",
+     "headword": "necessarily",
+     "refs": [
+      "ant:necessarily-unnecessarily",
+      "fam:necessary"
+     ]
+    },
+    {
+     "id": "lex:B1:neighbourhood",
+     "headword": "neighbourhood"
+    },
+    {
+     "id": "lex:B1:neither",
+     "headword": "neither",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:net",
+     "headword": "net",
+     "flags": [
+      "also-C1"
+     ],
+     "refs": [
+      "ant:gross-net"
+     ]
+    },
+    {
+     "id": "lex:B1:pack",
+     "headword": "pack",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:payment",
+     "headword": "payment"
+    },
+    {
+     "id": "lex:B1:photographer",
+     "headword": "photographer",
+     "refs": [
+      "occ:photographer"
+     ]
+    },
+    {
+     "id": "lex:B1:pipe",
+     "headword": "pipe"
+    },
+    {
+     "id": "lex:B1:politics",
+     "headword": "politics",
+     "refs": [
+      "fam:politics"
+     ]
+    },
+    {
+     "id": "lex:B1:profession",
+     "headword": "profession",
+     "refs": [
+      "fam:profession"
+     ]
+    },
+    {
+     "id": "lex:B1:property",
+     "headword": "property"
+    },
+    {
+     "id": "lex:B1:proud",
+     "headword": "proud",
+     "refs": [
+      "ant:humble-proud",
+      "ant:proud-ashamed",
+      "prep:proud-of"
+     ]
+    },
+    {
+     "id": "lex:B1:qualified",
+     "headword": "qualified",
+     "refs": [
+      "ant:qualified-unqualified",
+      "fam:qualify"
+     ]
+    },
+    {
+     "id": "lex:B1:qualify",
+     "headword": "qualify",
+     "refs": [
+      "fam:qualify"
+     ]
+    },
+    {
+     "id": "lex:B1:reality",
+     "headword": "reality",
+     "refs": [
+      "fam:real"
+     ]
+    },
+    {
+     "id": "lex:B1:receipt",
+     "headword": "receipt"
+    },
+    {
+     "id": "lex:B1:relate",
+     "headword": "relate",
+     "refs": [
+      "fam:relate"
+     ]
+    },
+    {
+     "id": "lex:B1:related",
+     "headword": "related",
+     "refs": [
+      "col:closely-related",
+      "col:directly-related"
+     ]
+    },
+    {
+     "id": "lex:B1:relation",
+     "headword": "relation",
+     "refs": [
+      "fam:relate"
+     ]
+    },
+    {
+     "id": "lex:B1:remind",
+     "headword": "remind",
+     "refs": [
+      "conf:remember-remind",
+      "vp:remind-object-that-clause",
+      "vp:remind-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:repeated",
+     "headword": "repeated"
+    },
+    {
+     "id": "lex:B1:require",
+     "headword": "require",
+     "refs": [
+      "fam:require",
+      "syn:need-require",
+      "vp:require-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:setting",
+     "headword": "setting"
+    },
+    {
+     "id": "lex:B1:shelf",
+     "headword": "shelf"
+    },
+    {
+     "id": "lex:B1:silent",
+     "headword": "silent"
+    },
+    {
+     "id": "lex:B1:slightly",
+     "headword": "slightly"
+    },
+    {
+     "id": "lex:B1:smooth",
+     "headword": "smooth",
+     "refs": [
+      "ant:smooth-rough"
+     ]
+    },
+    {
+     "id": "lex:B1:sort",
+     "headword": "sort",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "pv:sort-out"
+     ]
+    },
+    {
+     "id": "lex:B1:spicy",
+     "headword": "spicy"
+    },
+    {
+     "id": "lex:B1:state",
+     "headword": "state",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:stranger",
+     "headword": "stranger",
+     "refs": [
+      "ant:neighbour-stranger"
+     ]
+    },
+    {
+     "id": "lex:B1:supporter",
+     "headword": "supporter"
+    },
+    {
+     "id": "lex:B1:trade",
+     "headword": "trade",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:unfair",
+     "headword": "unfair",
+     "refs": [
+      "ant:fair-unfair"
+     ]
+    },
+    {
+     "id": "lex:B1:win",
+     "headword": "win",
+     "flags": [
+      "also-A1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:lose-win",
+      "irr:win"
+     ]
+    },
+    {
+     "id": "lex:B1:yard",
+     "headword": "yard"
+    },
+    {
+     "id": "lex:B1:youth",
+     "headword": "youth",
+     "refs": [
+      "fam:young"
+     ]
+    },
+    {
+     "id": "lex:B1:absolutely",
+     "headword": "absolutely"
+    },
+    {
+     "id": "lex:B1:admit",
+     "headword": "admit",
+     "refs": [
+      "ant:admit-reject",
+      "ant:deny-admit",
+      "fam:admit",
+      "vp:admit-ing",
+      "vp:admit-that-clause"
+     ]
+    },
+    {
+     "id": "lex:B1:advanced",
+     "headword": "advanced",
+     "refs": [
+      "ant:advanced-elementary"
+     ]
+    },
+    {
+     "id": "lex:B1:album",
+     "headword": "album"
+    },
+    {
+     "id": "lex:B1:alcohol",
+     "headword": "alcohol"
+    },
+    {
+     "id": "lex:B1:amazed",
+     "headword": "amazed"
+    },
+    {
+     "id": "lex:B1:ambition",
+     "headword": "ambition"
+    },
+    {
+     "id": "lex:B1:analyse",
+     "headword": "analyse"
+    },
+    {
+     "id": "lex:B1:annoyed",
+     "headword": "annoyed",
+     "refs": [
+      "syn:angry-annoyed"
+     ]
+    },
+    {
+     "id": "lex:B1:apologize",
+     "headword": "apologize",
+     "refs": [
+      "prep:apologize-for"
+     ]
+    },
+    {
+     "id": "lex:B1:appreciate",
+     "headword": "appreciate",
+     "refs": [
+      "vp:appreciate-ing"
+     ]
+    },
+    {
+     "id": "lex:B1:arrival",
+     "headword": "arrival",
+     "refs": [
+      "ant:arrival-departure"
+     ]
+    },
+    {
+     "id": "lex:B1:assist",
+     "headword": "assist",
+     "refs": [
+      "fam:assist",
+      "syn:help-assist"
+     ]
+    },
+    {
+     "id": "lex:B1:attitude",
+     "headword": "attitude",
+     "refs": [
+      "prep:attitude-to"
+     ]
+    },
+    {
+     "id": "lex:B1:basis",
+     "headword": "basis"
+    },
+    {
+     "id": "lex:B1:battle",
+     "headword": "battle",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:board",
+     "headword": "board",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:branch",
+     "headword": "branch"
+    },
+    {
+     "id": "lex:B1:candidate",
+     "headword": "candidate"
+    },
+    {
+     "id": "lex:B1:cap",
+     "headword": "cap"
+    },
+    {
+     "id": "lex:B1:challenge",
+     "headword": "challenge",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:chemical",
+     "headword": "chemical",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:coach",
+     "headword": "coach",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:coal",
+     "headword": "coal"
+    },
+    {
+     "id": "lex:B1:coloured",
+     "headword": "coloured"
+    },
+    {
+     "id": "lex:B1:competitive",
+     "headword": "competitive",
+     "refs": [
+      "fam:compete"
+     ]
+    },
+    {
+     "id": "lex:B1:consumer",
+     "headword": "consumer",
+     "refs": [
+      "fam:consume"
+     ]
+    },
+    {
+     "id": "lex:B1:contrast",
+     "headword": "contrast",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:convenient",
+     "headword": "convenient",
+     "refs": [
+      "ant:convenient-inconvenient"
+     ]
+    },
+    {
+     "id": "lex:B1:departure",
+     "headword": "departure",
+     "refs": [
+      "ant:arrival-departure"
+     ]
+    },
+    {
+     "id": "lex:B1:difficulty",
+     "headword": "difficulty",
+     "refs": [
+      "ant:difficulty-ease",
+      "syn:problem-issue-difficulty"
+     ]
+    },
+    {
+     "id": "lex:B1:discount",
+     "headword": "discount",
+     "flags": [
+      "also-B2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-05",
+   "entries": [
+    {
+     "id": "lex:B1:dislike",
+     "headword": "dislike",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:like-dislike",
+      "vp:dislike-ing"
+     ]
+    },
+    {
+     "id": "lex:B1:divide",
+     "headword": "divide",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:combine-divide",
+      "ant:unify-divide",
+      "ant:unite-divide"
+     ]
+    },
+    {
+     "id": "lex:B1:doubt",
+     "headword": "doubt",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:dressed",
+     "headword": "dressed"
+    },
+    {
+     "id": "lex:B1:due",
+     "headword": "due"
+    },
+    {
+     "id": "lex:B1:dust",
+     "headword": "dust"
+    },
+    {
+     "id": "lex:B1:editor",
+     "headword": "editor",
+     "refs": [
+      "occ:editor"
+     ]
+    },
+    {
+     "id": "lex:B1:educational",
+     "headword": "educational",
+     "refs": [
+      "fam:educate"
+     ]
+    },
+    {
+     "id": "lex:B1:election",
+     "headword": "election"
+    },
+    {
+     "id": "lex:B1:engaged",
+     "headword": "engaged"
+    },
+    {
+     "id": "lex:B1:entry",
+     "headword": "entry"
+    },
+    {
+     "id": "lex:B1:episode",
+     "headword": "episode"
+    },
+    {
+     "id": "lex:B1:expedition",
+     "headword": "expedition"
+    },
+    {
+     "id": "lex:B1:explosion",
+     "headword": "explosion"
+    },
+    {
+     "id": "lex:B1:fairly",
+     "headword": "fairly"
+    },
+    {
+     "id": "lex:B1:familiar",
+     "headword": "familiar",
+     "refs": [
+      "ant:strange-familiar",
+      "prep:familiar-with"
+     ]
+    },
+    {
+     "id": "lex:B1:fascinating",
+     "headword": "fascinating"
+    },
+    {
+     "id": "lex:B1:favour",
+     "headword": "favour",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:feature",
+     "headword": "feature",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:fixed",
+     "headword": "fixed"
+    },
+    {
+     "id": "lex:B1:flag",
+     "headword": "flag"
+    },
+    {
+     "id": "lex:B1:fold",
+     "headword": "fold",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:fold-unfold"
+     ]
+    },
+    {
+     "id": "lex:B1:force",
+     "headword": "force",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "vp:force-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:fuel",
+     "headword": "fuel",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:generous",
+     "headword": "generous",
+     "refs": [
+      "ant:generous-selfish",
+      "ant:generous-stingy"
+     ]
+    },
+    {
+     "id": "lex:B1:gentle",
+     "headword": "gentle",
+     "refs": [
+      "ant:fierce-gentle",
+      "ant:gentle-harsh",
+      "ant:gentle-rough",
+      "ant:gentle-violent"
+     ]
+    },
+    {
+     "id": "lex:B1:glad",
+     "headword": "glad",
+     "refs": [
+      "ant:glad-sad",
+      "syn:happy-pleased-glad"
+     ]
+    },
+    {
+     "id": "lex:B1:guard",
+     "headword": "guard",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:guilty",
+     "headword": "guilty",
+     "refs": [
+      "ant:guilty-innocent"
+     ]
+    },
+    {
+     "id": "lex:B1:headline",
+     "headword": "headline"
+    },
+    {
+     "id": "lex:B1:hire",
+     "headword": "hire",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:hire-fire"
+     ]
+    },
+    {
+     "id": "lex:B1:hunt",
+     "headword": "hunt",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:hurry",
+     "headword": "hurry",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:indoors",
+     "headword": "indoors",
+     "refs": [
+      "ant:indoors-outdoors"
+     ]
+    },
+    {
+     "id": "lex:B1:innocent",
+     "headword": "innocent",
+     "refs": [
+      "ant:guilty-innocent"
+     ]
+    },
+    {
+     "id": "lex:B1:investigate",
+     "headword": "investigate",
+     "refs": [
+      "fam:investigate"
+     ]
+    },
+    {
+     "id": "lex:B1:keyboard",
+     "headword": "keyboard"
+    },
+    {
+     "id": "lex:B1:label",
+     "headword": "label",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:leading",
+     "headword": "leading"
+    },
+    {
+     "id": "lex:B1:leaf",
+     "headword": "leaf"
+    },
+    {
+     "id": "lex:B1:lonely",
+     "headword": "lonely",
+     "refs": [
+      "conf:alone-lonely"
+     ]
+    },
+    {
+     "id": "lex:B1:mainly",
+     "headword": "mainly"
+    },
+    {
+     "id": "lex:B1:mall",
+     "headword": "mall"
+    },
+    {
+     "id": "lex:B1:medium",
+     "headword": "medium",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:note",
+     "headword": "note",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:nuclear",
+     "headword": "nuclear"
+    },
+    {
+     "id": "lex:B1:odd",
+     "headword": "odd",
+     "refs": [
+      "ant:even-odd",
+      "syn:strange-unusual-odd"
+     ]
+    },
+    {
+     "id": "lex:B1:ours",
+     "headword": "ours"
+    },
+    {
+     "id": "lex:B1:outdoors",
+     "headword": "outdoors",
+     "refs": [
+      "ant:indoors-outdoors"
+     ]
+    },
+    {
+     "id": "lex:B1:pleasant",
+     "headword": "pleasant",
+     "refs": [
+      "ant:pleasant-unpleasant",
+      "syn:nice-friendly-pleasant"
+     ]
+    },
+    {
+     "id": "lex:B1:plus",
+     "headword": "plus¹",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:powder",
+     "headword": "powder"
+    },
+    {
+     "id": "lex:B1:priest",
+     "headword": "priest"
+    },
+    {
+     "id": "lex:B1:promote",
+     "headword": "promote",
+     "refs": [
+      "ant:demote-promote",
+      "fam:promote"
+     ]
+    },
+    {
+     "id": "lex:B1:properly",
+     "headword": "properly"
+    },
+    {
+     "id": "lex:B1:prove",
+     "headword": "prove",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "fam:prove",
+      "irr:prove"
+     ]
+    },
+    {
+     "id": "lex:B1:pull",
+     "headword": "pull",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:push-pull"
+     ]
+    },
+    {
+     "id": "lex:B1:push",
+     "headword": "push",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:push-pull"
+     ]
+    },
+    {
+     "id": "lex:B1:queue",
+     "headword": "queue",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:quit",
+     "headword": "quit",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:quit",
+      "vp:quit-ing"
+     ]
+    },
+    {
+     "id": "lex:B1:release",
+     "headword": "release",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:capture-release"
+     ]
+    },
+    {
+     "id": "lex:B1:resource",
+     "headword": "resource"
+    },
+    {
+     "id": "lex:B1:rope",
+     "headword": "rope"
+    },
+    {
+     "id": "lex:B1:rough",
+     "headword": "rough",
+     "refs": [
+      "ant:gentle-rough",
+      "ant:smooth-rough"
+     ]
+    },
+    {
+     "id": "lex:B1:royal",
+     "headword": "royal"
+    },
+    {
+     "id": "lex:B1:sail",
+     "headword": "sail",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:scan",
+     "headword": "scan"
+    },
+    {
+     "id": "lex:B1:shake",
+     "headword": "shake",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:shake"
+     ]
+    },
+    {
+     "id": "lex:B1:smart",
+     "headword": "smart",
+     "refs": [
+      "ant:smart-stupid",
+      "syn:smart-clever-intelligent"
+     ]
+    },
+    {
+     "id": "lex:B1:stadium",
+     "headword": "stadium"
+    },
+    {
+     "id": "lex:B1:standard",
+     "headword": "standard",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:set-a-standard"
+     ]
+    },
+    {
+     "id": "lex:B1:statue",
+     "headword": "statue"
+    },
+    {
+     "id": "lex:B1:string",
+     "headword": "string"
+    },
+    {
+     "id": "lex:B1:summary",
+     "headword": "summary"
+    },
+    {
+     "id": "lex:B1:supply",
+     "headword": "supply",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:demand-supply",
+      "syn:give-provide-supply"
+     ]
+    },
+    {
+     "id": "lex:B1:talented",
+     "headword": "talented"
+    },
+    {
+     "id": "lex:B1:technique",
+     "headword": "technique",
+     "refs": [
+      "syn:method-approach-technique"
+     ]
+    },
+    {
+     "id": "lex:B1:theory",
+     "headword": "theory"
+    },
+    {
+     "id": "lex:B1:tour",
+     "headword": "tour",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:translate",
+     "headword": "translate",
+     "refs": [
+      "prep:translate-from",
+      "prep:translate-into"
+     ]
+    },
+    {
+     "id": "lex:B1:trend",
+     "headword": "trend"
+    },
+    {
+     "id": "lex:B1:type",
+     "headword": "type",
+     "flags": [
+      "also-A1"
+     ]
+    },
+    {
+     "id": "lex:B1:unable",
+     "headword": "unable",
+     "refs": [
+      "ant:able-unable",
+      "fam:able"
+     ]
+    },
+    {
+     "id": "lex:B1:unemployment",
+     "headword": "unemployment",
+     "refs": [
+      "ant:employment-unemployment",
+      "fam:employ"
+     ]
+    },
+    {
+     "id": "lex:B1:unlikely",
+     "headword": "unlikely",
+     "refs": [
+      "ant:likely-unlikely",
+      "col:highly-unlikely",
+      "fam:likely"
+     ]
+    },
+    {
+     "id": "lex:B1:violent",
+     "headword": "violent",
+     "refs": [
+      "ant:gentle-violent"
+     ]
+    },
+    {
+     "id": "lex:B1:vote",
+     "headword": "vote",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:wonder",
+     "headword": "wonder",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "vp:wonder-whether-if-clause"
+     ]
+    },
+    {
+     "id": "lex:B1:wool",
+     "headword": "wool"
+    },
+    {
+     "id": "lex:B1:worldwide",
+     "headword": "worldwide",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:accommodation",
+     "headword": "accommodation"
+    },
+    {
+     "id": "lex:B1:ad",
+     "headword": "ad"
+    },
+    {
+     "id": "lex:B1:aged",
+     "headword": "aged"
+    },
+    {
+     "id": "lex:B1:agent",
+     "headword": "agent"
+    },
+    {
+     "id": "lex:B1:alcoholic",
+     "headword": "alcoholic"
+    },
+    {
+     "id": "lex:B1:ambitious",
+     "headword": "ambitious"
+    },
+    {
+     "id": "lex:B1:announce",
+     "headword": "announce",
+     "refs": [
+      "fam:announce"
+     ]
+    },
+    {
+     "id": "lex:B1:annoy",
+     "headword": "annoy"
+    },
+    {
+     "id": "lex:B1:annoying",
+     "headword": "annoying"
+    },
+    {
+     "id": "lex:B1:approximately",
+     "headword": "approximately"
+    }
+   ]
+  },
+  {
+   "id": "batch-06",
+   "entries": [
+    {
+     "id": "lex:B1:assignment",
+     "headword": "assignment"
+    },
+    {
+     "id": "lex:B1:attach",
+     "headword": "attach",
+     "refs": [
+      "ant:attach-detach"
+     ]
+    },
+    {
+     "id": "lex:B1:attract",
+     "headword": "attract",
+     "refs": [
+      "fam:attract"
+     ]
+    },
+    {
+     "id": "lex:B1:authority",
+     "headword": "authority"
+    },
+    {
+     "id": "lex:B1:average",
+     "headword": "average",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:backwards",
+     "headword": "backwards"
+    },
+    {
+     "id": "lex:B1:ban",
+     "headword": "ban",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:battery",
+     "headword": "battery"
+    },
+    {
+     "id": "lex:B1:bee",
+     "headword": "bee"
+    },
+    {
+     "id": "lex:B1:bell",
+     "headword": "bell"
+    },
+    {
+     "id": "lex:B1:bend",
+     "headword": "bend",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:bend"
+     ]
+    },
+    {
+     "id": "lex:B1:bite",
+     "headword": "bite",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:bite"
+     ]
+    },
+    {
+     "id": "lex:B1:block",
+     "headword": "block",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:bomb",
+     "headword": "bomb",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:bother",
+     "headword": "bother"
+    },
+    {
+     "id": "lex:B1:brave",
+     "headword": "brave",
+     "refs": [
+      "ant:brave-afraid",
+      "ant:brave-cowardly"
+     ]
+    },
+    {
+     "id": "lex:B1:breath",
+     "headword": "breath"
+    },
+    {
+     "id": "lex:B1:breathe",
+     "headword": "breathe"
+    },
+    {
+     "id": "lex:B1:bride",
+     "headword": "bride"
+    },
+    {
+     "id": "lex:B1:campus",
+     "headword": "campus"
+    },
+    {
+     "id": "lex:B1:captain",
+     "headword": "captain"
+    },
+    {
+     "id": "lex:B1:careless",
+     "headword": "careless",
+     "refs": [
+      "ant:careful-careless",
+      "ant:cautious-careless",
+      "fam:care"
+     ]
+    },
+    {
+     "id": "lex:B1:category",
+     "headword": "category"
+    },
+    {
+     "id": "lex:B1:ceiling",
+     "headword": "ceiling",
+     "refs": [
+      "ant:floor-ceiling"
+     ]
+    },
+    {
+     "id": "lex:B1:chain",
+     "headword": "chain",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:champion",
+     "headword": "champion"
+    },
+    {
+     "id": "lex:B1:channel",
+     "headword": "channel"
+    },
+    {
+     "id": "lex:B1:chapter",
+     "headword": "chapter"
+    },
+    {
+     "id": "lex:B1:cheerful",
+     "headword": "cheerful",
+     "refs": [
+      "ant:cheerful-depressing",
+      "ant:gloomy-cheerful"
+     ]
+    },
+    {
+     "id": "lex:B1:chest",
+     "headword": "chest"
+    },
+    {
+     "id": "lex:B1:clause",
+     "headword": "clause"
+    },
+    {
+     "id": "lex:B1:clue",
+     "headword": "clue"
+    },
+    {
+     "id": "lex:B1:coin",
+     "headword": "coin"
+    },
+    {
+     "id": "lex:B1:commercial",
+     "headword": "commercial",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:commit",
+     "headword": "commit",
+     "refs": [
+      "fam:commit"
+     ]
+    },
+    {
+     "id": "lex:B1:competitor",
+     "headword": "competitor",
+     "refs": [
+      "fam:compete"
+     ]
+    },
+    {
+     "id": "lex:B1:confirm",
+     "headword": "confirm",
+     "refs": [
+      "ant:confirm-deny"
+     ]
+    },
+    {
+     "id": "lex:B1:consequence",
+     "headword": "consequence",
+     "refs": [
+      "syn:result-outcome-consequence"
+     ]
+    },
+    {
+     "id": "lex:B1:continuous",
+     "headword": "continuous"
+    },
+    {
+     "id": "lex:B1:convince",
+     "headword": "convince",
+     "refs": [
+      "fam:convince",
+      "vp:convince-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:costume",
+     "headword": "costume"
+    },
+    {
+     "id": "lex:B1:cottage",
+     "headword": "cottage"
+    },
+    {
+     "id": "lex:B1:cotton",
+     "headword": "cotton"
+    },
+    {
+     "id": "lex:B1:cruel",
+     "headword": "cruel",
+     "refs": [
+      "ant:cruel-kind"
+     ]
+    },
+    {
+     "id": "lex:B1:currency",
+     "headword": "currency"
+    },
+    {
+     "id": "lex:B1:currently",
+     "headword": "currently"
+    },
+    {
+     "id": "lex:B1:custom",
+     "headword": "custom"
+    },
+    {
+     "id": "lex:B1:decade",
+     "headword": "decade"
+    },
+    {
+     "id": "lex:B1:decorate",
+     "headword": "decorate",
+     "refs": [
+      "fam:decorate"
+     ]
+    },
+    {
+     "id": "lex:B1:definite",
+     "headword": "definite",
+     "refs": [
+      "ant:vague-definite"
+     ]
+    },
+    {
+     "id": "lex:B1:deliver",
+     "headword": "deliver"
+    },
+    {
+     "id": "lex:B1:destination",
+     "headword": "destination"
+    },
+    {
+     "id": "lex:B1:determined",
+     "headword": "determined"
+    },
+    {
+     "id": "lex:B1:diamond",
+     "headword": "diamond"
+    },
+    {
+     "id": "lex:B1:dirt",
+     "headword": "dirt"
+    },
+    {
+     "id": "lex:B1:disadvantage",
+     "headword": "disadvantage",
+     "refs": [
+      "ant:advantage-disadvantage"
+     ]
+    },
+    {
+     "id": "lex:B1:disappointing",
+     "headword": "disappointing"
+    },
+    {
+     "id": "lex:B1:double",
+     "headword": "double",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:double-single"
+     ]
+    },
+    {
+     "id": "lex:B1:drunk",
+     "headword": "drunk",
+     "refs": [
+      "ant:drunk-sober"
+     ]
+    },
+    {
+     "id": "lex:B1:duty",
+     "headword": "duty"
+    },
+    {
+     "id": "lex:B1:eastern",
+     "headword": "eastern",
+     "refs": [
+      "ant:eastern-western"
+     ]
+    },
+    {
+     "id": "lex:B1:edge",
+     "headword": "edge",
+     "refs": [
+      "ant:center-edge",
+      "ant:centre-edge"
+     ]
+    },
+    {
+     "id": "lex:B1:educated",
+     "headword": "educated",
+     "refs": [
+      "ant:educated-uneducated"
+     ]
+    },
+    {
+     "id": "lex:B1:element",
+     "headword": "element"
+    },
+    {
+     "id": "lex:B1:embarrassed",
+     "headword": "embarrassed"
+    },
+    {
+     "id": "lex:B1:embarrassing",
+     "headword": "embarrassing"
+    },
+    {
+     "id": "lex:B1:emotion",
+     "headword": "emotion",
+     "refs": [
+      "fam:emotion"
+     ]
+    },
+    {
+     "id": "lex:B1:encourage",
+     "headword": "encourage",
+     "refs": [
+      "ant:encourage-discourage",
+      "fam:encourage",
+      "vp:encourage-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:entertain",
+     "headword": "entertain",
+     "refs": [
+      "fam:entertain"
+     ]
+    },
+    {
+     "id": "lex:B1:equally",
+     "headword": "equally",
+     "refs": [
+      "fam:equal"
+     ]
+    },
+    {
+     "id": "lex:B1:examine",
+     "headword": "examine",
+     "refs": [
+      "fam:examine"
+     ]
+    },
+    {
+     "id": "lex:B1:exchange",
+     "headword": "exchange",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:excitement",
+     "headword": "excitement"
+    },
+    {
+     "id": "lex:B1:explode",
+     "headword": "explode"
+    },
+    {
+     "id": "lex:B1:explore",
+     "headword": "explore"
+    },
+    {
+     "id": "lex:B1:fancy",
+     "headword": "fancy",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:fancy-plain"
+     ]
+    },
+    {
+     "id": "lex:B1:fashionable",
+     "headword": "fashionable"
+    },
+    {
+     "id": "lex:B1:fasten",
+     "headword": "fasten"
+    },
+    {
+     "id": "lex:B1:fence",
+     "headword": "fence"
+    },
+    {
+     "id": "lex:B1:fighting",
+     "headword": "fighting"
+    },
+    {
+     "id": "lex:B1:fitness",
+     "headword": "fitness"
+    },
+    {
+     "id": "lex:B1:folk",
+     "headword": "folk",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:forever",
+     "headword": "forever"
+    },
+    {
+     "id": "lex:B1:frame",
+     "headword": "frame",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:frequently",
+     "headword": "frequently",
+     "refs": [
+      "ant:frequently-occasionally",
+      "fam:frequent"
+     ]
+    },
+    {
+     "id": "lex:B1:frightening",
+     "headword": "frightening"
+    },
+    {
+     "id": "lex:B1:frozen",
+     "headword": "frozen"
+    },
+    {
+     "id": "lex:B1:fry",
+     "headword": "fry"
+    },
+    {
+     "id": "lex:B1:fur",
+     "headword": "fur"
+    },
+    {
+     "id": "lex:B1:garage",
+     "headword": "garage"
+    },
+    {
+     "id": "lex:B1:gentleman",
+     "headword": "gentleman"
+    },
+    {
+     "id": "lex:B1:ghost",
+     "headword": "ghost"
+    },
+    {
+     "id": "lex:B1:giant",
+     "headword": "giant",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:grade",
+     "headword": "grade",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:grain",
+     "headword": "grain"
+    },
+    {
+     "id": "lex:B1:hardly",
+     "headword": "hardly"
+    },
+    {
+     "id": "lex:B1:head",
+     "headword": "head",
+     "flags": [
+      "also-A1"
+     ],
+     "refs": [
+      "ant:head-rear"
+     ]
+    },
+    {
+     "id": "lex:B1:helicopter",
+     "headword": "helicopter"
+    },
+    {
+     "id": "lex:B1:horrible",
+     "headword": "horrible"
+    },
+    {
+     "id": "lex:B1:horror",
+     "headword": "horror"
+    }
+   ]
+  },
+  {
+   "id": "batch-07",
+   "entries": [
+    {
+     "id": "lex:B1:hurricane",
+     "headword": "hurricane"
+    },
+    {
+     "id": "lex:B1:imaginary",
+     "headword": "imaginary"
+    },
+    {
+     "id": "lex:B1:immediate",
+     "headword": "immediate"
+    },
+    {
+     "id": "lex:B1:immigrant",
+     "headword": "immigrant",
+     "refs": [
+      "fam:immigration"
+     ]
+    },
+    {
+     "id": "lex:B1:incredibly",
+     "headword": "incredibly"
+    },
+    {
+     "id": "lex:B1:indeed",
+     "headword": "indeed"
+    },
+    {
+     "id": "lex:B1:indirect",
+     "headword": "indirect",
+     "refs": [
+      "ant:direct-indirect"
+     ]
+    },
+    {
+     "id": "lex:B1:indoor",
+     "headword": "indoor",
+     "refs": [
+      "ant:indoor-outdoor"
+     ]
+    },
+    {
+     "id": "lex:B1:iron",
+     "headword": "iron",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:keen",
+     "headword": "keen"
+    },
+    {
+     "id": "lex:B1:killing",
+     "headword": "killing"
+    },
+    {
+     "id": "lex:B1:knock",
+     "headword": "knock",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:lay",
+     "headword": "lay",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "conf:lay-lie",
+      "irr:lay"
+     ]
+    },
+    {
+     "id": "lex:B1:leather",
+     "headword": "leather"
+    },
+    {
+     "id": "lex:B1:leisure",
+     "headword": "leisure"
+    },
+    {
+     "id": "lex:B1:length",
+     "headword": "length"
+    },
+    {
+     "id": "lex:B1:lip",
+     "headword": "lip"
+    },
+    {
+     "id": "lex:B1:liquid",
+     "headword": "liquid",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:liquid-solid"
+     ]
+    },
+    {
+     "id": "lex:B1:literature",
+     "headword": "literature"
+    },
+    {
+     "id": "lex:B1:luxury",
+     "headword": "luxury"
+    },
+    {
+     "id": "lex:B1:mad",
+     "headword": "mad"
+    },
+    {
+     "id": "lex:B1:magic",
+     "headword": "magic",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:meanwhile",
+     "headword": "meanwhile"
+    },
+    {
+     "id": "lex:B1:mess",
+     "headword": "mess"
+    },
+    {
+     "id": "lex:B1:mild",
+     "headword": "mild",
+     "refs": [
+      "ant:harsh-mild",
+      "ant:intense-mild"
+     ]
+    },
+    {
+     "id": "lex:B1:mud",
+     "headword": "mud"
+    },
+    {
+     "id": "lex:B1:murder",
+     "headword": "murder",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:muscle",
+     "headword": "muscle"
+    },
+    {
+     "id": "lex:B1:mystery",
+     "headword": "mystery"
+    },
+    {
+     "id": "lex:B1:nail",
+     "headword": "nail"
+    },
+    {
+     "id": "lex:B1:narrative",
+     "headword": "narrative",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:nation",
+     "headword": "nation",
+     "refs": [
+      "fam:nation"
+     ]
+    },
+    {
+     "id": "lex:B1:native",
+     "headword": "native",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:foreign-native",
+      "ant:foreigner-native"
+     ]
+    },
+    {
+     "id": "lex:B1:naturally",
+     "headword": "naturally",
+     "refs": [
+      "fam:nature"
+     ]
+    },
+    {
+     "id": "lex:B1:needle",
+     "headword": "needle"
+    },
+    {
+     "id": "lex:B1:nor",
+     "headword": "nor",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:obviously",
+     "headword": "obviously"
+    },
+    {
+     "id": "lex:B1:occur",
+     "headword": "occur",
+     "refs": [
+      "fam:occur",
+      "syn:happen-occur"
+     ]
+    },
+    {
+     "id": "lex:B1:organizer",
+     "headword": "organizer",
+     "refs": [
+      "fam:organize"
+     ]
+    },
+    {
+     "id": "lex:B1:originally",
+     "headword": "originally",
+     "refs": [
+      "fam:origin"
+     ]
+    },
+    {
+     "id": "lex:B1:ought",
+     "headword": "ought"
+    },
+    {
+     "id": "lex:B1:outdoor",
+     "headword": "outdoor",
+     "refs": [
+      "ant:indoor-outdoor"
+     ]
+    },
+    {
+     "id": "lex:B1:painful",
+     "headword": "painful",
+     "refs": [
+      "ant:painful-painless"
+     ]
+    },
+    {
+     "id": "lex:B1:pale",
+     "headword": "pale"
+    },
+    {
+     "id": "lex:B1:participate",
+     "headword": "participate",
+     "refs": [
+      "fam:participate",
+      "prep:participate-in"
+     ]
+    },
+    {
+     "id": "lex:B1:passion",
+     "headword": "passion"
+    },
+    {
+     "id": "lex:B1:percentage",
+     "headword": "percentage"
+    },
+    {
+     "id": "lex:B1:personally",
+     "headword": "personally",
+     "refs": [
+      "fam:person"
+     ]
+    },
+    {
+     "id": "lex:B1:pleasure",
+     "headword": "pleasure",
+     "refs": [
+      "ant:pain-pleasure"
+     ]
+    },
+    {
+     "id": "lex:B1:plot",
+     "headword": "plot",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:poet",
+     "headword": "poet"
+    },
+    {
+     "id": "lex:B1:poetry",
+     "headword": "poetry"
+    },
+    {
+     "id": "lex:B1:poison",
+     "headword": "poison",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:poisonous",
+     "headword": "poisonous"
+    },
+    {
+     "id": "lex:B1:politician",
+     "headword": "politician",
+     "refs": [
+      "fam:politics"
+     ]
+    },
+    {
+     "id": "lex:B1:portrait",
+     "headword": "portrait"
+    },
+    {
+     "id": "lex:B1:possibly",
+     "headword": "possibly",
+     "refs": [
+      "fam:possible"
+     ]
+    },
+    {
+     "id": "lex:B1:pot",
+     "headword": "pot"
+    },
+    {
+     "id": "lex:B1:poverty",
+     "headword": "poverty",
+     "refs": [
+      "ant:prosperity-poverty",
+      "ant:wealth-poverty"
+     ]
+    },
+    {
+     "id": "lex:B1:prayer",
+     "headword": "prayer"
+    },
+    {
+     "id": "lex:B1:previously",
+     "headword": "previously"
+    },
+    {
+     "id": "lex:B1:primary",
+     "headword": "primary",
+     "refs": [
+      "ant:primary-secondary"
+     ]
+    },
+    {
+     "id": "lex:B1:prince",
+     "headword": "prince"
+    },
+    {
+     "id": "lex:B1:princess",
+     "headword": "princess"
+    },
+    {
+     "id": "lex:B1:printing",
+     "headword": "printing"
+    },
+    {
+     "id": "lex:B1:prisoner",
+     "headword": "prisoner"
+    },
+    {
+     "id": "lex:B1:producer",
+     "headword": "producer",
+     "refs": [
+      "fam:produce"
+     ]
+    },
+    {
+     "id": "lex:B1:proper",
+     "headword": "proper"
+    },
+    {
+     "id": "lex:B1:protest",
+     "headword": "protest",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:punish",
+     "headword": "punish",
+     "refs": [
+      "ant:punish-reward"
+     ]
+    },
+    {
+     "id": "lex:B1:punishment",
+     "headword": "punishment",
+     "refs": [
+      "ant:reward-punishment"
+     ]
+    },
+    {
+     "id": "lex:B1:qualification",
+     "headword": "qualification",
+     "refs": [
+      "fam:qualify"
+     ]
+    },
+    {
+     "id": "lex:B1:quotation",
+     "headword": "quotation"
+    },
+    {
+     "id": "lex:B1:racing",
+     "headword": "racing"
+    },
+    {
+     "id": "lex:B1:rarely",
+     "headword": "rarely",
+     "refs": [
+      "ant:often-rarely"
+     ]
+    },
+    {
+     "id": "lex:B1:recommendation",
+     "headword": "recommendation"
+    },
+    {
+     "id": "lex:B1:reject",
+     "headword": "reject",
+     "refs": [
+      "ant:accept-reject",
+      "ant:admit-reject",
+      "ant:embrace-reject",
+      "ant:reject-approve",
+      "fam:reject",
+      "syn:reject-decline"
+     ]
+    },
+    {
+     "id": "lex:B1:relative",
+     "headword": "relative",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:absolute-relative",
+      "fam:relate"
+     ]
+    },
+    {
+     "id": "lex:B1:relaxing",
+     "headword": "relaxing",
+     "refs": [
+      "fam:relax"
+     ]
+    },
+    {
+     "id": "lex:B1:religion",
+     "headword": "religion"
+    },
+    {
+     "id": "lex:B1:religious",
+     "headword": "religious",
+     "refs": [
+      "ant:religious-secular"
+     ]
+    },
+    {
+     "id": "lex:B1:rent",
+     "headword": "rent",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:represent",
+     "headword": "represent",
+     "refs": [
+      "fam:represent"
+     ]
+    },
+    {
+     "id": "lex:B1:reservation",
+     "headword": "reservation"
+    },
+    {
+     "id": "lex:B1:respect",
+     "headword": "respect",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:retire",
+     "headword": "retire"
+    },
+    {
+     "id": "lex:B1:retired",
+     "headword": "retired"
+    },
+    {
+     "id": "lex:B1:revise",
+     "headword": "revise"
+    },
+    {
+     "id": "lex:B1:robot",
+     "headword": "robot"
+    },
+    {
+     "id": "lex:B1:roll",
+     "headword": "roll",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:romantic",
+     "headword": "romantic"
+    },
+    {
+     "id": "lex:B1:row",
+     "headword": "row¹"
+    },
+    {
+     "id": "lex:B1:rugby",
+     "headword": "rugby"
+    },
+    {
+     "id": "lex:B1:sailor",
+     "headword": "sailor"
+    },
+    {
+     "id": "lex:B1:sand",
+     "headword": "sand"
+    },
+    {
+     "id": "lex:B1:script",
+     "headword": "script"
+    },
+    {
+     "id": "lex:B1:sculpture",
+     "headword": "sculpture"
+    },
+    {
+     "id": "lex:B1:secondary",
+     "headword": "secondary",
+     "refs": [
+      "ant:primary-secondary"
+     ]
+    },
+    {
+     "id": "lex:B1:sensible",
+     "headword": "sensible"
+    },
+    {
+     "id": "lex:B1:servant",
+     "headword": "servant"
+    }
+   ]
+  },
+  {
+   "id": "batch-08",
+   "entries": [
+    {
+     "id": "lex:B1:sex",
+     "headword": "sex"
+    },
+    {
+     "id": "lex:B1:sexual",
+     "headword": "sexual"
+    },
+    {
+     "id": "lex:B1:shell",
+     "headword": "shell"
+    },
+    {
+     "id": "lex:B1:shift",
+     "headword": "shift",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:shiny",
+     "headword": "shiny"
+    },
+    {
+     "id": "lex:B1:shoot",
+     "headword": "shoot",
+     "flags": [
+      "also-C1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:shoot"
+     ]
+    },
+    {
+     "id": "lex:B1:shy",
+     "headword": "shy"
+    },
+    {
+     "id": "lex:B1:sight",
+     "headword": "sight"
+    },
+    {
+     "id": "lex:B1:silly",
+     "headword": "silly",
+     "refs": [
+      "ant:intelligent-silly"
+     ]
+    },
+    {
+     "id": "lex:B1:similarity",
+     "headword": "similarity"
+    },
+    {
+     "id": "lex:B1:similarly",
+     "headword": "similarly"
+    },
+    {
+     "id": "lex:B1:simply",
+     "headword": "simply"
+    },
+    {
+     "id": "lex:B1:solid",
+     "headword": "solid",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:hollow-solid",
+      "ant:liquid-solid"
+     ]
+    },
+    {
+     "id": "lex:B1:southern",
+     "headword": "southern",
+     "refs": [
+      "ant:northern-southern"
+     ]
+    },
+    {
+     "id": "lex:B1:specifically",
+     "headword": "specifically",
+     "refs": [
+      "fam:specify"
+     ]
+    },
+    {
+     "id": "lex:B1:spirit",
+     "headword": "spirit"
+    },
+    {
+     "id": "lex:B1:spoken",
+     "headword": "spoken",
+     "refs": [
+      "ant:spoken-written"
+     ]
+    },
+    {
+     "id": "lex:B1:spot",
+     "headword": "spot",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:statistic",
+     "headword": "statistic"
+    },
+    {
+     "id": "lex:B1:studio",
+     "headword": "studio"
+    },
+    {
+     "id": "lex:B1:stuff",
+     "headword": "stuff",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:B1:successfully",
+     "headword": "successfully",
+     "refs": [
+      "fam:succeed"
+     ]
+    },
+    {
+     "id": "lex:B1:suffer",
+     "headword": "suffer",
+     "refs": [
+      "ant:enjoy-suffer",
+      "prep:suffer-from"
+     ]
+    },
+    {
+     "id": "lex:B1:suitable",
+     "headword": "suitable",
+     "refs": [
+      "ant:suitable-unsuitable"
+     ]
+    },
+    {
+     "id": "lex:B1:summarize",
+     "headword": "summarize"
+    },
+    {
+     "id": "lex:B1:surely",
+     "headword": "surely"
+    },
+    {
+     "id": "lex:B1:symptom",
+     "headword": "symptom"
+    },
+    {
+     "id": "lex:B1:tail",
+     "headword": "tail"
+    },
+    {
+     "id": "lex:B1:tape",
+     "headword": "tape"
+    },
+    {
+     "id": "lex:B1:tend",
+     "headword": "tend"
+    },
+    {
+     "id": "lex:B1:tent",
+     "headword": "tent"
+    },
+    {
+     "id": "lex:B1:theirs",
+     "headword": "theirs"
+    },
+    {
+     "id": "lex:B1:theme",
+     "headword": "theme"
+    },
+    {
+     "id": "lex:B1:therefore",
+     "headword": "therefore"
+    },
+    {
+     "id": "lex:B1:though",
+     "headword": "though",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:throat",
+     "headword": "throat"
+    },
+    {
+     "id": "lex:B1:tight",
+     "headword": "tight",
+     "refs": [
+      "ant:loose-tight"
+     ]
+    },
+    {
+     "id": "lex:B1:till",
+     "headword": "till",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:tin",
+     "headword": "tin"
+    },
+    {
+     "id": "lex:B1:tiny",
+     "headword": "tiny",
+     "refs": [
+      "ant:huge-tiny"
+     ]
+    },
+    {
+     "id": "lex:B1:tip",
+     "headword": "tip",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:toe",
+     "headword": "toe"
+    },
+    {
+     "id": "lex:B1:tongue",
+     "headword": "tongue"
+    },
+    {
+     "id": "lex:B1:totally",
+     "headword": "totally"
+    },
+    {
+     "id": "lex:B1:translation",
+     "headword": "translation"
+    },
+    {
+     "id": "lex:B1:treat",
+     "headword": "treat"
+    },
+    {
+     "id": "lex:B1:trick",
+     "headword": "trick",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:tube",
+     "headword": "tube"
+    },
+    {
+     "id": "lex:B1:typically",
+     "headword": "typically"
+    },
+    {
+     "id": "lex:B1:tyre",
+     "headword": "tyre"
+    },
+    {
+     "id": "lex:B1:ugly",
+     "headword": "ugly",
+     "refs": [
+      "ant:beautiful-ugly"
+     ]
+    },
+    {
+     "id": "lex:B1:uncomfortable",
+     "headword": "uncomfortable",
+     "refs": [
+      "ant:comfortable-uncomfortable",
+      "fam:comfort"
+     ]
+    },
+    {
+     "id": "lex:B1:underwear",
+     "headword": "underwear"
+    },
+    {
+     "id": "lex:B1:unemployed",
+     "headword": "unemployed",
+     "refs": [
+      "fam:employ"
+     ]
+    },
+    {
+     "id": "lex:B1:union",
+     "headword": "union",
+     "refs": [
+      "ant:separation-union"
+     ]
+    },
+    {
+     "id": "lex:B1:unless",
+     "headword": "unless"
+    },
+    {
+     "id": "lex:B1:unlike",
+     "headword": "unlike"
+    },
+    {
+     "id": "lex:B1:unpleasant",
+     "headword": "unpleasant",
+     "refs": [
+      "ant:pleasant-unpleasant"
+     ]
+    },
+    {
+     "id": "lex:B1:upon",
+     "headword": "upon"
+    },
+    {
+     "id": "lex:B1:various",
+     "headword": "various",
+     "refs": [
+      "fam:vary"
+     ]
+    },
+    {
+     "id": "lex:B1:victim",
+     "headword": "victim"
+    },
+    {
+     "id": "lex:B1:volunteer",
+     "headword": "volunteer",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "fam:volunteer"
+     ]
+    },
+    {
+     "id": "lex:B1:wave",
+     "headword": "wave",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:B1:weapon",
+     "headword": "weapon"
+    },
+    {
+     "id": "lex:B1:western",
+     "headword": "western",
+     "refs": [
+      "ant:eastern-western"
+     ]
+    },
+    {
+     "id": "lex:B1:whatever",
+     "headword": "whatever",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:whenever",
+     "headword": "whenever"
+    },
+    {
+     "id": "lex:B1:arrest",
+     "headword": "arrest",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:bake",
+     "headword": "bake"
+    },
+    {
+     "id": "lex:B1:bubble",
+     "headword": "bubble"
+    },
+    {
+     "id": "lex:B1:bury",
+     "headword": "bury"
+    },
+    {
+     "id": "lex:B1:charge",
+     "headword": "charge",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:cheat",
+     "headword": "cheat",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:consist",
+     "headword": "consist",
+     "refs": [
+      "prep:consist-of"
+     ]
+    },
+    {
+     "id": "lex:B1:curtain",
+     "headword": "curtain"
+    },
+    {
+     "id": "lex:B1:donate",
+     "headword": "donate"
+    },
+    {
+     "id": "lex:B1:drum",
+     "headword": "drum"
+    },
+    {
+     "id": "lex:B1:enemy",
+     "headword": "enemy",
+     "refs": [
+      "ant:friend-enemy"
+     ]
+    },
+    {
+     "id": "lex:B1:escape",
+     "headword": "escape",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:export",
+     "headword": "export",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:export-import"
+     ]
+    },
+    {
+     "id": "lex:B1:flow",
+     "headword": "flow",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:freeze",
+     "headword": "freeze",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:boil-freeze",
+      "ant:freeze-melt",
+      "irr:freeze"
+     ]
+    },
+    {
+     "id": "lex:B1:frighten",
+     "headword": "frighten"
+    },
+    {
+     "id": "lex:B1:gather",
+     "headword": "gather",
+     "refs": [
+      "ant:gather-spread"
+     ]
+    },
+    {
+     "id": "lex:B1:glove",
+     "headword": "glove"
+    },
+    {
+     "id": "lex:B1:graduate",
+     "headword": "graduate",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:highlight",
+     "headword": "highlight",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:import",
+     "headword": "import",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:export-import"
+     ]
+    },
+    {
+     "id": "lex:B1:ingredient",
+     "headword": "ingredient"
+    },
+    {
+     "id": "lex:B1:injure",
+     "headword": "injure"
+    },
+    {
+     "id": "lex:B1:kick",
+     "headword": "kick",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:kiss",
+     "headword": "kiss",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:occasion",
+     "headword": "occasion"
+    },
+    {
+     "id": "lex:B1:old-fashioned",
+     "headword": "old-fashioned"
+    },
+    {
+     "id": "lex:B1:persuade",
+     "headword": "persuade",
+     "refs": [
+      "vp:persuade-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:pin",
+     "headword": "pin",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:pour",
+     "headword": "pour"
+    },
+    {
+     "id": "lex:B1:pray",
+     "headword": "pray"
+    },
+    {
+     "id": "lex:B1:pretend",
+     "headword": "pretend",
+     "refs": [
+      "vp:pretend-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:quote",
+     "headword": "quote",
+     "flags": [
+      "split-senses"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-09",
+   "entries": [
+    {
+     "id": "lex:B1:reflect",
+     "headword": "reflect"
+    },
+    {
+     "id": "lex:B1:seed",
+     "headword": "seed"
+    },
+    {
+     "id": "lex:B1:shine",
+     "headword": "shine",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:shine"
+     ]
+    },
+    {
+     "id": "lex:B1:sink",
+     "headword": "sink",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:float-sink",
+      "irr:sink"
+     ]
+    },
+    {
+     "id": "lex:B1:slice",
+     "headword": "slice",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:B1:viewer",
+     "headword": "viewer"
+    },
+    {
+     "id": "lex:B1:warn",
+     "headword": "warn",
+     "refs": [
+      "vp:warn-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:B1:weigh",
+     "headword": "weigh"
+    },
+    {
+     "id": "lex:B1:wing",
+     "headword": "wing"
+    }
+   ]
+  }
+ ]
+}

@@ -1,19 +1,20 @@
-import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { contrast, entry, GOALS, orderForGoal, review, scene, type Entry, type Pilot, type PilotOrder, type SenseAudio } from "../src/lib/learn/content.ts";
+import { catalogueOrder, levelOfId, rowsOf, versionOf } from "./catalogue.ts";
 
 /**
- * Compile the enhanced A1 pilot from `content/pilot/` into
- * `public/data/pilot-a1.json`, validating every entry, cross-reference and
+ * Compile the enhanced content in `content/pilot/` (the A1 pilot first, then
+ * any level's entries as they are written, docs/CATALOGUE.md) into
+ * `public/data/enhanced.json`, validating every entry, cross-reference and
  * review record. With `--check`, fail instead of writing when the compiled
  * file is out of date, so CI catches edits that were not rebuilt.
  */
 
 const ROOT = process.cwd();
 const SOURCE = path.join(ROOT, "content", "pilot");
-const OUT = path.join(ROOT, "public", "data", "pilot-a1.json");
-const ORDER_OUT = path.join(ROOT, "public", "data", "pilot-order.json");
+const OUT = path.join(ROOT, "public", "data", "enhanced.json");
+const ORDER_OUT = path.join(ROOT, "public", "data", "enhanced-order.json");
 const AUDIO = path.join(SOURCE, "audio-manifest.json");
 const failures: string[] = [];
 
@@ -21,30 +22,10 @@ function read(file: string): unknown {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
-function stable(value: unknown): string {
-  if (Array.isArray(value)) return `[${value.map(stable).join(",")}]`;
-  if (value && typeof value === "object") {
-    return `{${Object.keys(value)
-      .sort()
-      .map((key) => `${JSON.stringify(key)}:${stable((value as Record<string, unknown>)[key])}`)
-      .join(",")}}`;
-  }
-  return JSON.stringify(value);
-}
-
-/** A content version: the hash of the entry's teaching content. */
-export function versionOf(value: unknown): string {
-  return createHash("sha256").update(stable(value)).digest("hex").slice(0, 12);
-}
-
-// The pilot study's 150 entries must all have content; any other A1 entry may
-// be added batch by batch, in the order of the expansion plan.
+// The pilot study's 150 entries must all have content; any other entry may be
+// added batch by batch, in the order of its level's plan (content/plans/).
 const selection = read(path.join(ROOT, "content", "pilot-a1.json")) as { entries: { id: string; group: string }[] };
-const plan = read(path.join(ROOT, "content", "a1-plan.json")) as { batches: { id: string; entries: { id: string }[] }[] };
-const order = new Map(plan.batches.flatMap((batch) => batch.entries.map((item) => item.id)).map((id, index) => [id, index]));
-const lexA1 = new Map(
-  (read(path.join(ROOT, "public", "data", "lex-a1.json")) as { id: string; w: string }[]).map((row) => [row.id, row]),
-);
+const order = catalogueOrder();
 
 const entries: Entry[] = [];
 const entryDir = path.join(SOURCE, "entries");
@@ -67,9 +48,9 @@ const seenEntries = new Set<string>();
 for (const item of entries) {
   if (seenEntries.has(item.id)) failures.push(`${item.id}: duplicate entry`);
   seenEntries.add(item.id);
-  if (!order.has(item.id)) failures.push(`${item.id}: not in content/a1-plan.json`);
-  const lex = lexA1.get(item.id);
-  if (!lex) failures.push(`${item.id}: not an existing A1 entry`);
+  const level = levelOfId(item.id);
+  if (!order.has(item.id)) failures.push(`${item.id}: not in content/plans/${level ?? "<level>"}.json`);
+  if (!level || !rowsOf(level).some((row) => row.id === item.id)) failures.push(`${item.id}: not an existing ${level ?? ""} entry`);
   if (item.senses[0]?.id !== item.id) failures.push(`${item.id}: the first sense must keep the entry id`);
   for (const [index, sense] of item.senses.entries()) {
     if (index > 0 && !new RegExp(`^${item.id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}#[a-z0-9-]+$`).test(sense.id)) {

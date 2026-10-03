@@ -33,11 +33,18 @@
     },
     {
      "id": "lex:A1:because",
-     "headword": "because"
+     "headword": "because",
+     "refs": [
+      "conf:as-because-since"
+     ]
     },
     {
      "id": "lex:A1:if",
-     "headword": "if"
+     "headword": "if",
+     "refs": [
+      "conf:if-when",
+      "conf:if-whether"
+     ]
     },
     {
      "id": "lex:A1:so",
@@ -89,6 +96,9 @@
      "headword": "when",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "conf:if-when"
      ]
     },
     {
@@ -136,7 +146,10 @@
     },
     {
      "id": "lex:A1:your",
-     "headword": "your"
+     "headword": "your",
+     "refs": [
+      "col:do-your-best"
+     ]
     },
     {
      "id": "lex:A1:some",
@@ -158,6 +171,9 @@
      "headword": "no",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:yes-no"
      ]
     },
     {
@@ -169,6 +185,9 @@
      "headword": "can¹",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "conf:can-could-may"
      ]
     },
     {
@@ -256,6 +275,18 @@
      "flags": [
       "also-A2",
       "irregular-verb"
+     ],
+     "refs": [
+      "col:have-a-chance",
+      "col:have-a-conversation",
+      "col:have-a-good-time",
+      "col:have-a-problem",
+      "col:have-a-rest",
+      "col:have-an-idea",
+      "col:have-breakfast",
+      "col:have-dinner",
+      "col:have-lunch",
+      "irr:have"
      ]
     },
     {
@@ -272,6 +303,26 @@
      "flags": [
       "also-B2",
       "irregular-verb"
+     ],
+     "refs": [
+      "col:make-a-choice",
+      "col:make-a-decision",
+      "col:make-a-difference",
+      "col:make-a-list",
+      "col:make-a-loss",
+      "col:make-a-mistake",
+      "col:make-a-noise",
+      "col:make-a-phone-call",
+      "col:make-a-plan",
+      "col:make-a-profit",
+      "col:make-a-promise",
+      "col:make-an-effort",
+      "col:make-money",
+      "col:make-progress",
+      "conf:do-make",
+      "irr:make",
+      "pv:make-up",
+      "vp:make-object-bare-infinitive"
      ]
     },
     {
@@ -280,6 +331,22 @@
      "flags": [
       "also-B1",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:come-go",
+      "ant:stop-go",
+      "conf:come-go",
+      "conf:get-go",
+      "irr:go",
+      "pv:go-after",
+      "pv:go-against",
+      "pv:go-ahead",
+      "pv:go-back",
+      "pv:go-out",
+      "pv:go-over",
+      "pv:go-without",
+      "vp:go-on-ing",
+      "vp:go-on-to-infinitive"
      ]
     },
     {
@@ -287,6 +354,18 @@
      "headword": "come",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:come-go",
+      "conf:come-go",
+      "irr:come",
+      "prep:come-from",
+      "pv:come-across",
+      "pv:come-apart",
+      "pv:come-back",
+      "pv:come-down-with",
+      "pv:come-forward",
+      "pv:come-up-with"
      ]
     },
     {
@@ -294,6 +373,35 @@
      "headword": "get",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "col:get-a-job",
+      "col:get-angry",
+      "col:get-lost",
+      "col:get-married",
+      "col:get-permission",
+      "col:get-ready",
+      "col:get-the-message",
+      "col:get-worried",
+      "conf:get-go",
+      "irr:get",
+      "pv:get-across",
+      "pv:get-along",
+      "pv:get-around",
+      "pv:get-around-to",
+      "pv:get-away",
+      "pv:get-away-with",
+      "pv:get-back",
+      "pv:get-back-at",
+      "pv:get-back-into",
+      "pv:get-on",
+      "pv:get-on-with",
+      "pv:get-over",
+      "pv:get-rid-of",
+      "pv:get-round-to",
+      "pv:get-together",
+      "pv:get-up",
+      "syn:get-obtain-acquire"
      ]
     },
     {
@@ -301,6 +409,27 @@
      "headword": "take",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:give-take",
+      "col:take-a-break",
+      "col:take-a-chance",
+      "col:take-a-look",
+      "col:take-a-seat",
+      "col:take-a-taxi",
+      "col:take-action",
+      "col:take-care",
+      "col:take-notes",
+      "col:take-part",
+      "col:take-responsibility",
+      "conf:bring-take-fetch",
+      "irr:take",
+      "pv:take-after",
+      "pv:take-apart",
+      "pv:take-back",
+      "pv:take-off",
+      "pv:take-out",
+      "pv:take-over"
      ]
     },
     {
@@ -308,6 +437,21 @@
      "headword": "give",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:give-receive",
+      "ant:give-take",
+      "col:give-a-speech",
+      "col:give-advice",
+      "col:give-an-example",
+      "col:give-permission",
+      "irr:give",
+      "pv:give-away",
+      "pv:give-back",
+      "pv:give-in",
+      "pv:give-out",
+      "pv:give-up",
+      "syn:give-provide-supply"
      ]
     },
     {
@@ -315,6 +459,12 @@
      "headword": "bring",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "conf:bring-take-fetch",
+      "irr:bring",
+      "pv:bring-down",
+      "pv:bring-up"
      ]
     },
     {
@@ -323,6 +473,11 @@
      "flags": [
       "also-C1",
       "irregular-verb"
+     ],
+     "refs": [
+      "conf:say-tell",
+      "irr:say",
+      "vp:say-that-clause"
      ]
     },
     {
@@ -330,6 +485,15 @@
      "headword": "tell",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "col:tell-a-story",
+      "col:tell-the-truth",
+      "conf:say-tell",
+      "irr:tell",
+      "vp:tell-object-that-clause",
+      "vp:tell-object-to-infinitive",
+      "vp:tell-object-wh-word-to-infinitive"
      ]
     },
     {
@@ -337,6 +501,12 @@
      "headword": "speak",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "conf:speak-talk",
+      "irr:speak",
+      "prep:speak-about",
+      "prep:speak-to"
      ]
     },
     {
@@ -344,6 +514,11 @@
      "headword": "talk",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "conf:speak-talk",
+      "prep:talk-about",
+      "prep:talk-to"
      ]
     },
     {
@@ -351,6 +526,12 @@
      "headword": "see",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "conf:look-at-see-watch",
+      "irr:see",
+      "vp:see-object-bare-infinitive",
+      "vp:see-object-ing"
      ]
     },
     {
@@ -358,6 +539,20 @@
      "headword": "look",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "col:take-a-look",
+      "pv:look-after",
+      "pv:look-down-on",
+      "pv:look-for",
+      "pv:look-forward-to",
+      "pv:look-into",
+      "pv:look-out",
+      "pv:look-out-for",
+      "pv:look-over",
+      "pv:look-up",
+      "pv:look-up-to",
+      "vp:look-forward-to-ing"
      ]
     },
     {
@@ -365,6 +560,9 @@
      "headword": "watch",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "conf:look-at-see-watch"
      ]
     },
     {
@@ -372,17 +570,33 @@
      "headword": "hear",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "conf:hear-listen-to",
+      "irr:hear",
+      "prep:hear-about",
+      "prep:hear-from",
+      "vp:hear-object-bare-infinitive",
+      "vp:hear-object-ing"
      ]
     },
     {
      "id": "lex:A1:listen",
-     "headword": "listen"
+     "headword": "listen",
+     "refs": [
+      "prep:listen-to"
+     ]
     },
     {
      "id": "lex:A1:know",
      "headword": "know",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "fam:know",
+      "irr:know",
+      "vp:know-how-to-infinitive"
      ]
     },
     {
@@ -390,17 +604,35 @@
      "headword": "think",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "fam:think",
+      "irr:think",
+      "prep:think-about",
+      "prep:think-of",
+      "pv:think-back",
+      "pv:think-over"
      ]
     },
     {
      "id": "lex:A1:want",
-     "headword": "want"
+     "headword": "want",
+     "refs": [
+      "vp:want-object-to-infinitive",
+      "vp:want-to-infinitive"
+     ]
     },
     {
      "id": "lex:A1:need",
      "headword": "need",
      "flags": [
       "also-A2-B1"
+     ],
+     "refs": [
+      "prep:need-for",
+      "syn:need-require",
+      "vp:need-ing",
+      "vp:need-to-infinitive"
      ]
     },
     {
@@ -409,6 +641,12 @@
      "flags": [
       "also-B1",
       "several-forms"
+     ],
+     "refs": [
+      "ant:like-dislike",
+      "conf:as-like",
+      "vp:like-ing",
+      "vp:like-to-infinitive"
      ]
     },
     {
@@ -416,6 +654,10 @@
      "headword": "love",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:love-hate",
+      "vp:love-ing-to-infinitive"
      ]
     },
     {
@@ -423,6 +665,13 @@
      "headword": "help",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:help-hurt",
+      "col:offer-help",
+      "fam:help",
+      "syn:help-assist",
+      "vp:help-object-to-infinitive"
      ]
     },
     {
@@ -430,6 +679,14 @@
      "headword": "work",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:hard-work",
+      "conf:job-work",
+      "fam:work",
+      "prep:work-for",
+      "prep:work-on",
+      "pv:work-out"
      ]
     },
     {
@@ -437,6 +694,9 @@
      "headword": "live¹",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:die-live"
      ]
     },
     {
@@ -444,6 +704,10 @@
      "headword": "eat",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:eat",
+      "pv:eat-out"
      ]
     },
     {
@@ -451,6 +715,11 @@
      "headword": "buy",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:buy-sell",
+      "irr:buy",
+      "syn:buy-purchase"
      ]
     },
     {
@@ -458,11 +727,23 @@
      "headword": "time",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "col:free-time",
+      "col:have-a-good-time",
+      "col:long-time",
+      "col:save-time",
+      "col:spare-time",
+      "col:spend-time",
+      "col:waste-time"
      ]
     },
     {
      "id": "lex:A1:day",
-     "headword": "day"
+     "headword": "day",
+     "refs": [
+      "ant:day-night"
+     ]
     },
     {
      "id": "lex:A1:week",
@@ -495,11 +776,17 @@
     },
     {
      "id": "lex:A1:morning",
-     "headword": "morning"
+     "headword": "morning",
+     "refs": [
+      "ant:morning-evening"
+     ]
     },
     {
      "id": "lex:A1:night",
-     "headword": "night"
+     "headword": "night",
+     "refs": [
+      "ant:day-night"
+     ]
     },
     {
      "id": "lex:A1:family",
@@ -510,19 +797,36 @@
     },
     {
      "id": "lex:A1:friend",
-     "headword": "friend"
+     "headword": "friend",
+     "refs": [
+      "ant:friend-enemy",
+      "col:best-friend",
+      "col:close-friend",
+      "col:meet-a-friend",
+      "fam:friend"
+     ]
     },
     {
      "id": "lex:A1:mother",
-     "headword": "mother"
+     "headword": "mother",
+     "refs": [
+      "ant:father-mother"
+     ]
     },
     {
      "id": "lex:A1:father",
-     "headword": "father"
+     "headword": "father",
+     "refs": [
+      "ant:father-mother"
+     ]
     },
     {
      "id": "lex:A1:child",
-     "headword": "child"
+     "headword": "child",
+     "refs": [
+      "ant:adult-child",
+      "ant:child-parent"
+     ]
     },
     {
      "id": "lex:A1:name",
@@ -537,6 +841,9 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "conf:house-home"
      ]
     },
     {
@@ -544,6 +851,9 @@
      "headword": "house",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "conf:house-home"
      ]
     },
     {
@@ -556,11 +866,20 @@
     },
     {
      "id": "lex:A1:job",
-     "headword": "job"
+     "headword": "job",
+     "refs": [
+      "col:get-a-job",
+      "conf:job-work"
+     ]
     },
     {
      "id": "lex:A1:money",
-     "headword": "money"
+     "headword": "money",
+     "refs": [
+      "col:make-money",
+      "col:save-money",
+      "col:spend-money"
+     ]
     },
     {
      "id": "lex:A1:food",
@@ -575,7 +894,10 @@
     },
     {
      "id": "lex:A1:coffee",
-     "headword": "coffee"
+     "headword": "coffee",
+     "refs": [
+      "col:strong-coffee"
+     ]
     },
     {
      "id": "lex:A1:bread",
@@ -593,6 +915,9 @@
      "headword": "phone",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:make-a-phone-call"
      ]
     },
     {
@@ -601,7 +926,10 @@
     },
     {
      "id": "lex:A1:bus",
-     "headword": "bus"
+     "headword": "bus",
+     "refs": [
+      "col:catch-a-bus"
+     ]
     },
     {
      "id": "lex:A1:city",
@@ -612,19 +940,45 @@
      "headword": "good",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:bad-good",
+      "ant:evil-good",
+      "col:good-idea",
+      "col:have-a-good-time",
+      "prep:good-at",
+      "syn:good-great-excellent"
      ]
     },
     {
      "id": "lex:A1:bad",
-     "headword": "bad"
+     "headword": "bad",
+     "refs": [
+      "ant:bad-good",
+      "col:bad-habit",
+      "prep:bad-at",
+      "syn:bad-poor-terrible"
+     ]
     },
     {
      "id": "lex:A1:big",
-     "headword": "big"
+     "headword": "big",
+     "refs": [
+      "ant:big-little",
+      "ant:big-small",
+      "col:big-mistake",
+      "syn:big-large"
+     ]
     },
     {
      "id": "lex:A1:small",
-     "headword": "small"
+     "headword": "small",
+     "refs": [
+      "ant:big-small",
+      "ant:large-small",
+      "col:small-number",
+      "syn:small-little"
+     ]
     },
     {
      "id": "lex:A1:little",
@@ -632,23 +986,45 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "ant:big-little",
+      "ant:little-much",
+      "conf:few-little",
+      "syn:small-little"
      ]
     },
     {
      "id": "lex:A1:new",
-     "headword": "new"
+     "headword": "new",
+     "refs": [
+      "ant:new-old"
+     ]
     },
     {
      "id": "lex:A1:old",
-     "headword": "old"
+     "headword": "old",
+     "refs": [
+      "ant:new-old",
+      "ant:old-young"
+     ]
     },
     {
      "id": "lex:A1:happy",
-     "headword": "happy"
+     "headword": "happy",
+     "refs": [
+      "ant:happy-sad",
+      "ant:happy-unhappy",
+      "fam:happy",
+      "syn:happy-pleased-glad"
+     ]
     },
     {
      "id": "lex:A1:tired",
-     "headword": "tired"
+     "headword": "tired",
+     "refs": [
+      "prep:tired-of"
+     ]
     },
     {
      "id": "lex:A1:hungry",
@@ -659,29 +1035,55 @@
      "headword": "cheap",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:cheap-expensive"
      ]
     },
     {
      "id": "lex:A1:expensive",
-     "headword": "expensive"
+     "headword": "expensive",
+     "refs": [
+      "ant:cheap-expensive"
+     ]
     },
     {
      "id": "lex:A1:easy",
-     "headword": "easy"
+     "headword": "easy",
+     "refs": [
+      "ant:difficult-easy",
+      "ant:easy-hard",
+      "syn:easy-simple"
+     ]
     },
     {
      "id": "lex:A1:difficult",
-     "headword": "difficult"
+     "headword": "difficult",
+     "refs": [
+      "ant:difficult-easy",
+      "syn:hard-difficult-challenging"
+     ]
     },
     {
      "id": "lex:A1:beautiful",
-     "headword": "beautiful"
+     "headword": "beautiful",
+     "refs": [
+      "ant:beautiful-ugly",
+      "fam:beauty",
+      "syn:beautiful-pretty-attractive"
+     ]
     },
     {
      "id": "lex:A1:like-similar",
      "headword": "like (similar)",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:like-dislike",
+      "conf:as-like",
+      "vp:like-ing",
+      "vp:like-to-infinitive"
      ]
     },
     {
@@ -689,6 +1091,11 @@
      "headword": "kind (type)",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:cruel-kind",
+      "ant:kind-unkind",
+      "prep:kind-to"
      ]
     },
     {
@@ -697,6 +1104,9 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "ant:first-second"
      ]
     },
     {
@@ -704,6 +1114,9 @@
      "headword": "second¹ (unit of time)",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:first-second"
      ]
     },
     {
@@ -711,6 +1124,9 @@
      "headword": "last¹ (final)",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:first-last"
      ]
     },
     {
@@ -721,6 +1137,11 @@
       "also-A2",
       "irregular-verb",
       "several-forms"
+     ],
+     "refs": [
+      "ant:dark-light",
+      "ant:heavy-light",
+      "irr:light"
      ]
     },
     {
@@ -743,6 +1164,13 @@
      "headword": "close¹",
      "flags": [
       "also-A2-B1-B2"
+     ],
+     "refs": [
+      "ant:open-close",
+      "col:close-a-deal",
+      "col:close-friend",
+      "conf:closed-close",
+      "prep:close-to"
      ]
     },
     {
@@ -751,6 +1179,11 @@
      "flags": [
       "split-senses",
       "also-C1"
+     ],
+     "refs": [
+      "ant:badly-well",
+      "ant:ill-well",
+      "ant:well-sick"
      ]
     },
     {
@@ -758,6 +1191,11 @@
      "headword": "right",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:left-right",
+      "ant:right-wrong",
+      "syn:right-correct"
      ]
     },
     {
@@ -765,6 +1203,9 @@
      "headword": "fine",
      "flags": [
       "also-C1"
+     ],
+     "refs": [
+      "col:pay-a-fine"
      ]
     },
     {
@@ -772,6 +1213,12 @@
      "headword": "mean",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "fam:mean",
+      "irr:mean",
+      "vp:mean-ing",
+      "vp:mean-to-infinitive"
      ]
     },
     {
@@ -779,6 +1226,11 @@
      "headword": "play",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:play-a-key-role",
+      "col:play-a-role",
+      "conf:play-game"
      ]
     },
     {
@@ -787,6 +1239,11 @@
      "flags": [
       "split-senses",
       "also-A2-B2"
+     ],
+     "refs": [
+      "ant:ahead-back",
+      "ant:back-front",
+      "pv:back-up"
      ]
     },
     {
@@ -794,6 +1251,10 @@
      "headword": "still",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:moving-still",
+      "conf:already-still-yet"
      ]
     },
     {
@@ -801,11 +1262,19 @@
      "headword": "just",
      "flags": [
       "also-C1"
+     ],
+     "refs": [
+      "syn:fair-just-reasonable"
      ]
     },
     {
      "id": "lex:A1:miss",
-     "headword": "miss"
+     "headword": "miss",
+     "refs": [
+      "ant:catch-miss",
+      "ant:hit-miss",
+      "vp:miss-ing"
+     ]
     },
     {
      "id": "lex:A1:leave",
@@ -813,6 +1282,13 @@
      "flags": [
       "also-B2",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:arrive-leave",
+      "ant:join-leave",
+      "ant:stay-leave",
+      "conf:forget-leave",
+      "irr:leave"
      ]
     },
     {
@@ -821,6 +1297,11 @@
      "flags": [
       "also-B1",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:lie-truth",
+      "conf:lay-lie",
+      "irr:lie"
      ]
     },
     {
@@ -829,6 +1310,10 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "ant:absent-present",
+      "fam:present"
      ]
     },
     {
@@ -836,6 +1321,11 @@
      "headword": "order",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:disorder-order",
+      "ant:order-chaos",
+      "vp:order-object-to-infinitive"
      ]
     },
     {
@@ -843,6 +1333,10 @@
      "headword": "check",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "pv:check-in",
+      "pv:check-out"
      ]
     },
     {
@@ -850,6 +1344,11 @@
      "headword": "change",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:major-change",
+      "col:rapid-change",
+      "syn:change-alter-modify"
      ]
     },
     {
@@ -857,6 +1356,13 @@
      "headword": "free",
      "flags": [
       "also-A2-B2"
+     ],
+     "refs": [
+      "ant:bound-free",
+      "ant:busy-free",
+      "ant:confine-free",
+      "col:free-time",
+      "fam:free"
      ]
     },
     {
@@ -864,11 +1370,21 @@
      "headword": "hard",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:easy-hard",
+      "ant:hard-soft",
+      "col:hard-question",
+      "col:hard-work",
+      "syn:hard-difficult-challenging"
      ]
     },
     {
      "id": "lex:A1:too",
-     "headword": "too"
+     "headword": "too",
+     "refs": [
+      "conf:also-as-well-too"
+     ]
     },
     {
      "id": "lex:A1:two",
@@ -883,7 +1399,10 @@
     },
     {
      "id": "lex:A1:quite",
-     "headword": "quite"
+     "headword": "quite",
+     "refs": [
+      "conf:quiet-quite"
+     ]
     }
    ]
   },
@@ -902,6 +1421,9 @@
      "headword": "please",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:offend-please"
      ]
     },
     {
@@ -909,11 +1431,17 @@
      "headword": "after",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:after-before"
      ]
     },
     {
      "id": "lex:A1:company",
-     "headword": "company"
+     "headword": "company",
+     "refs": [
+      "syn:company-business-firm"
+     ]
     },
     {
      "id": "lex:A1:me",
@@ -921,13 +1449,20 @@
     },
     {
      "id": "lex:A1:there",
-     "headword": "there"
+     "headword": "there",
+     "refs": [
+      "ant:here-there",
+      "conf:there-their-they-re"
+     ]
     },
     {
      "id": "lex:A1:before",
      "headword": "before",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:after-before"
      ]
     },
     {
@@ -946,15 +1481,27 @@
     },
     {
      "id": "lex:A1:its",
-     "headword": "its"
+     "headword": "its",
+     "refs": [
+      "conf:it-s-its"
+     ]
     },
     {
      "id": "lex:A1:people",
-     "headword": "people"
+     "headword": "people",
+     "refs": [
+      "conf:person-people"
+     ]
     },
     {
      "id": "lex:A1:important",
-     "headword": "important"
+     "headword": "important",
+     "refs": [
+      "ant:important-unimportant",
+      "col:particularly-important",
+      "fam:important",
+      "syn:important-significant-crucial"
+     ]
     },
     {
      "id": "lex:A1:project",
@@ -968,6 +1515,9 @@
      "headword": "report",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "col:annual-report"
      ]
     },
     {
@@ -979,6 +1529,9 @@
      "headword": "more",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:more-less"
      ]
     },
     {
@@ -997,11 +1550,26 @@
      "headword": "local",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:local-national"
      ]
     },
     {
      "id": "lex:A1:problem",
-     "headword": "problem"
+     "headword": "problem",
+     "refs": [
+      "col:address-a-problem",
+      "col:cause-a-problem",
+      "col:common-problem",
+      "col:face-a-problem",
+      "col:have-a-problem",
+      "col:major-problem",
+      "col:serious-problem",
+      "col:solve-a-problem",
+      "prep:problem-with",
+      "syn:problem-issue-difficulty"
+     ]
     },
     {
      "id": "lex:A1:during",
@@ -1012,6 +1580,9 @@
      "headword": "many",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:few-many"
      ]
     },
     {
@@ -1019,6 +1590,11 @@
      "headword": "plan",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:make-a-plan",
+      "syn:plan-arrange-organize",
+      "vp:plan-to-infinitive"
      ]
     },
     {
@@ -1027,6 +1603,11 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "ant:all-none",
+      "conf:all-every",
+      "conf:all-whole"
      ]
     },
     {
@@ -1035,7 +1616,11 @@
     },
     {
      "id": "lex:A1:every",
-     "headword": "every"
+     "headword": "every",
+     "refs": [
+      "conf:all-every",
+      "conf:every-each"
+     ]
     },
     {
      "id": "lex:A1:up",
@@ -1057,7 +1642,10 @@
     },
     {
      "id": "lex:A1:their",
-     "headword": "their"
+     "headword": "their",
+     "refs": [
+      "conf:there-their-they-re"
+     ]
     },
     {
      "id": "lex:A1:building",
@@ -1068,6 +1656,10 @@
      "headword": "as",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "conf:as-because-since",
+      "conf:as-like"
      ]
     },
     {
@@ -1079,6 +1671,12 @@
      "headword": "answer",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:ask-answer",
+      "col:answer-a-question",
+      "prep:answer-to",
+      "syn:answer-reply-respond"
      ]
     },
     {
@@ -1099,15 +1697,34 @@
     },
     {
      "id": "lex:A1:strong",
-     "headword": "strong"
+     "headword": "strong",
+     "refs": [
+      "ant:strong-weak",
+      "col:strong-argument",
+      "col:strong-coffee",
+      "col:strong-evidence",
+      "col:strong-relationship",
+      "col:strong-tea",
+      "fam:strong",
+      "syn:strong-powerful-intense"
+     ]
     },
     {
      "id": "lex:A1:meeting",
-     "headword": "meeting"
+     "headword": "meeting",
+     "refs": [
+      "col:chair-a-meeting",
+      "col:hold-a-meeting"
+     ]
     },
     {
      "id": "lex:A1:teacher",
-     "headword": "teacher"
+     "headword": "teacher",
+     "refs": [
+      "ant:student-teacher",
+      "fam:teach",
+      "occ:teacher"
+     ]
     },
     {
      "id": "lex:A1:us",
@@ -1118,6 +1735,9 @@
      "headword": "between",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "conf:between-among"
      ]
     },
     {
@@ -1125,6 +1745,10 @@
      "headword": "near",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:distant-near",
+      "ant:near-far"
      ]
     },
     {
@@ -1133,15 +1757,27 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "ant:first-last",
+      "ant:first-second"
      ]
     },
     {
      "id": "lex:A1:here",
-     "headword": "here"
+     "headword": "here",
+     "refs": [
+      "ant:here-there"
+     ]
     },
     {
      "id": "lex:A1:large",
-     "headword": "large"
+     "headword": "large",
+     "refs": [
+      "ant:large-small",
+      "col:large-number",
+      "syn:big-large"
+     ]
     },
     {
      "id": "lex:A1:final",
@@ -1155,6 +1791,11 @@
      "headword": "long¹",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:brief-long",
+      "ant:long-short",
+      "col:long-time"
      ]
     },
     {
@@ -1162,6 +1803,9 @@
      "headword": "May",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "conf:can-could-may"
      ]
     },
     {
@@ -1170,7 +1814,14 @@
     },
     {
      "id": "lex:A1:information",
-     "headword": "information"
+     "headword": "information",
+     "refs": [
+      "col:accurate-information",
+      "col:provide-information",
+      "col:reliable-information",
+      "col:useful-information",
+      "fam:inform"
+     ]
     },
     {
      "id": "lex:A1:online",
@@ -1203,6 +1854,10 @@
      "headword": "use",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "fam:use",
+      "pv:use-up"
      ]
     },
     {
@@ -1222,6 +1877,12 @@
      "headword": "question",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "col:answer-a-question",
+      "col:ask-a-question",
+      "col:hard-question",
+      "col:raise-a-question"
      ]
     },
     {
@@ -1233,7 +1894,10 @@
     },
     {
      "id": "lex:A1:doctor",
-     "headword": "doctor"
+     "headword": "doctor",
+     "refs": [
+      "occ:doctor"
+     ]
     },
     {
      "id": "lex:A1:exercise",
@@ -1248,13 +1912,19 @@
     },
     {
      "id": "lex:A1:dinner",
-     "headword": "dinner"
+     "headword": "dinner",
+     "refs": [
+      "col:have-dinner"
+     ]
     },
     {
      "id": "lex:A1:through",
      "headword": "through",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "conf:across-over-through"
      ]
     },
     {
@@ -1267,15 +1937,25 @@
      "flags": [
       "split-senses",
       "irregular-verb"
+     ],
+     "refs": [
+      "col:total-cost",
+      "irr:cost"
      ]
     },
     {
      "id": "lex:A1:could",
-     "headword": "could"
+     "headword": "could",
+     "refs": [
+      "conf:can-could-may"
+     ]
     },
     {
      "id": "lex:A1:main",
-     "headword": "main"
+     "headword": "main",
+     "refs": [
+      "col:main-reason"
+     ]
     },
     {
      "id": "lex:A1:weather",
@@ -1290,6 +1970,9 @@
      "headword": "each",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "conf:every-each"
      ]
     },
     {
@@ -1297,6 +1980,13 @@
      "headword": "high",
      "flags": [
       "also-A2-B2"
+     ],
+     "refs": [
+      "ant:high-low",
+      "col:high-price",
+      "col:high-quality",
+      "col:high-temperature",
+      "conf:high-tall"
      ]
     },
     {
@@ -1304,6 +1994,16 @@
      "headword": "put",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:put",
+      "pv:put-down",
+      "pv:put-forward",
+      "pv:put-off",
+      "pv:put-on",
+      "pv:put-out",
+      "pv:put-together",
+      "pv:put-up-with"
      ]
     },
     {
@@ -1311,6 +2011,9 @@
      "headword": "early",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:early-late"
      ]
     },
     {
@@ -1322,11 +2025,20 @@
      "headword": "over",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:under-over",
+      "conf:above-over",
+      "conf:across-over-through"
      ]
     },
     {
      "id": "lex:A1:short",
-     "headword": "short"
+     "headword": "short",
+     "refs": [
+      "ant:long-short",
+      "ant:tall-short"
+     ]
     },
     {
      "id": "lex:A1:station",
@@ -1334,7 +2046,10 @@
     },
     {
      "id": "lex:A1:story",
-     "headword": "story"
+     "headword": "story",
+     "refs": [
+      "col:tell-a-story"
+     ]
     },
     {
      "id": "lex:A1:three",
@@ -1342,11 +2057,24 @@
     },
     {
      "id": "lex:A1:different",
-     "headword": "different"
+     "headword": "different",
+     "refs": [
+      "ant:alike-different",
+      "ant:different-similar",
+      "ant:identical-different",
+      "ant:same-different",
+      "col:completely-different",
+      "fam:differ",
+      "prep:different-from"
+     ]
     },
     {
      "id": "lex:A1:health",
-     "headword": "health"
+     "headword": "health",
+     "refs": [
+      "ant:disease-health",
+      "fam:health"
+     ]
     },
     {
      "id": "lex:A1:only",
@@ -1357,22 +2085,39 @@
     },
     {
      "id": "lex:A1:quickly",
-     "headword": "quickly"
+     "headword": "quickly",
+     "refs": [
+      "ant:quickly-slowly"
+     ]
     },
     {
      "id": "lex:A1:train",
      "headword": "train",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "col:catch-a-train"
      ]
     },
     {
      "id": "lex:A1:useful",
-     "headword": "useful"
+     "headword": "useful",
+     "refs": [
+      "ant:useful-useless",
+      "col:particularly-useful",
+      "col:potentially-useful",
+      "col:useful-information",
+      "fam:use",
+      "syn:useful-valuable-beneficial"
+     ]
     },
     {
      "id": "lex:A1:area",
-     "headword": "area"
+     "headword": "area",
+     "refs": [
+      "syn:area-region-zone"
+     ]
     },
     {
      "id": "lex:A1:event",
@@ -1387,7 +2132,11 @@
     },
     {
      "id": "lex:A1:part",
-     "headword": "part"
+     "headword": "part",
+     "refs": [
+      "ant:whole-part",
+      "col:take-part"
+     ]
     },
     {
      "id": "lex:A1:programme",
@@ -1398,6 +2147,9 @@
      "headword": "under",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:under-over"
      ]
     },
     {
@@ -1405,6 +2157,9 @@
      "headword": "centre",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:centre-edge"
      ]
     },
     {
@@ -1412,6 +2167,9 @@
      "headword": "much",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:little-much"
      ]
     },
     {
@@ -1423,6 +2181,9 @@
      "headword": "outside",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:inside-outside"
      ]
     },
     {
@@ -1443,7 +2204,13 @@
     },
     {
      "id": "lex:A1:improve",
-     "headword": "improve"
+     "headword": "improve",
+     "refs": [
+      "ant:deteriorate-improve",
+      "ant:improve-worsen",
+      "fam:improve",
+      "syn:improve-enhance"
+     ]
     },
     {
      "id": "lex:A1:market",
@@ -1457,6 +2224,11 @@
      "headword": "price",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "col:high-price",
+      "col:low-price",
+      "conf:price-prize"
      ]
     },
     {
@@ -1464,6 +2236,9 @@
      "headword": "better",
      "flags": [
       "also-A2-B1"
+     ],
+     "refs": [
+      "ant:better-worse"
      ]
     },
     {
@@ -1472,6 +2247,13 @@
      "flags": [
       "also-B2",
       "irregular-verb"
+     ],
+     "refs": [
+      "col:big-mistake",
+      "col:common-mistake",
+      "col:make-a-mistake",
+      "irr:mistake",
+      "syn:mistake-error-fault"
      ]
     },
     {
@@ -1479,6 +2261,9 @@
      "headword": "read",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:read"
      ]
     },
     {
@@ -1486,6 +2271,14 @@
      "headword": "call",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:make-a-phone-call",
+      "pv:call-around",
+      "pv:call-back",
+      "pv:call-off",
+      "pv:call-on",
+      "pv:call-up"
      ]
     },
     {
@@ -1497,6 +2290,11 @@
      "headword": "open",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:closed-open",
+      "ant:open-close",
+      "ant:open-shut"
      ]
     },
     {
@@ -1504,6 +2302,10 @@
      "headword": "result",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "prep:result-in",
+      "syn:result-outcome-consequence"
      ]
     },
     {
@@ -1511,6 +2313,9 @@
      "headword": "down",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:down-up"
      ]
     },
     {
@@ -1526,6 +2331,19 @@
      "headword": "keep",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:keep-lose",
+      "col:keep-a-promise",
+      "col:keep-a-secret",
+      "col:keep-in-touch",
+      "irr:keep",
+      "pv:keep-from",
+      "pv:keep-on",
+      "pv:keep-out",
+      "pv:keep-up",
+      "syn:keep-maintain-preserve",
+      "vp:keep-ing"
      ]
     },
     {
@@ -1534,7 +2352,11 @@
     },
     {
      "id": "lex:A1:often",
-     "headword": "often"
+     "headword": "often",
+     "refs": [
+      "ant:often-rarely",
+      "ant:often-seldom"
+     ]
     },
     {
      "id": "lex:A1:sleep",
@@ -1542,6 +2364,12 @@
      "flags": [
       "also-A2",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:sleep-wake",
+      "col:deep-sleep",
+      "irr:sleep",
+      "pv:sleep-over"
      ]
     },
     {
@@ -1549,6 +2377,10 @@
      "headword": "young",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:old-young",
+      "fam:young"
      ]
     },
     {
@@ -1560,6 +2392,10 @@
      "headword": "cold",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:hot-cold",
+      "col:catch-a-cold"
      ]
     },
     {
@@ -1578,6 +2414,11 @@
      "headword": "late",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:early-late",
+      "conf:late-lately",
+      "prep:late-for"
      ]
     },
     {
@@ -1585,6 +2426,9 @@
      "headword": "rain",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:heavy-rain"
      ]
     },
     {
@@ -1593,18 +2437,27 @@
     },
     {
      "id": "lex:A1:tea",
-     "headword": "tea"
+     "headword": "tea",
+     "refs": [
+      "col:strong-tea"
+     ]
     },
     {
      "id": "lex:A1:across",
      "headword": "across",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "conf:across-over-through"
      ]
     },
     {
      "id": "lex:A1:lunch",
-     "headword": "lunch"
+     "headword": "lunch",
+     "refs": [
+      "col:have-lunch"
+     ]
     },
     {
      "id": "lex:A1:machine",
@@ -1615,11 +2468,21 @@
      "headword": "now",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:now-then"
      ]
     },
     {
      "id": "lex:A1:success",
-     "headword": "success"
+     "headword": "success",
+     "refs": [
+      "ant:success-failure",
+      "col:achieve-success",
+      "col:great-success",
+      "fam:succeed",
+      "prep:success-in"
+     ]
     },
     {
      "id": "lex:A1:tonight",
@@ -1634,7 +2497,10 @@
     },
     {
      "id": "lex:A1:brother",
-     "headword": "brother"
+     "headword": "brother",
+     "refs": [
+      "ant:brother-sister"
+     ]
     },
     {
      "id": "lex:A1:exam",
@@ -1642,7 +2508,11 @@
     },
     {
      "id": "lex:A1:modern",
-     "headword": "modern"
+     "headword": "modern",
+     "refs": [
+      "ant:ancient-modern",
+      "ant:modern-traditional"
+     ]
     },
     {
      "id": "lex:A1:travel",
@@ -1671,11 +2541,21 @@
      "headword": "wear",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:wear",
+      "pv:wear-off"
      ]
     },
     {
      "id": "lex:A1:advice",
-     "headword": "advice"
+     "headword": "advice",
+     "refs": [
+      "col:give-advice",
+      "col:practical-advice",
+      "conf:advice-advise",
+      "fam:advise"
+     ]
     },
     {
      "id": "lex:A1:cut",
@@ -1683,6 +2563,13 @@
      "flags": [
       "also-B1",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:cut",
+      "pv:cut-down-on",
+      "pv:cut-in",
+      "pv:cut-off",
+      "pv:cut-out"
      ]
     },
     {
@@ -1690,6 +2577,12 @@
      "headword": "finish",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:begin-finish",
+      "ant:start-finish",
+      "syn:end-finish",
+      "vp:finish-ing"
      ]
     },
     {
@@ -1697,11 +2590,19 @@
      "headword": "most",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:least-most"
      ]
     },
     {
      "id": "lex:A1:quiet",
-     "headword": "quiet"
+     "headword": "quiet",
+     "refs": [
+      "ant:noisy-quiet",
+      "ant:quiet-loud",
+      "conf:quiet-quite"
+     ]
     },
     {
      "id": "lex:A1:soup",
@@ -1712,11 +2613,21 @@
      "headword": "write",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "fam:write",
+      "irr:write",
+      "prep:write-about",
+      "prep:write-to"
      ]
     },
     {
      "id": "lex:A1:business",
-     "headword": "business"
+     "headword": "business",
+     "refs": [
+      "col:do-business",
+      "syn:company-business-firm"
+     ]
     },
     {
      "id": "lex:A1:computer",
@@ -1727,6 +2638,13 @@
      "headword": "end",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:begin-end",
+      "ant:beginning-end",
+      "ant:start-end",
+      "pv:end-up",
+      "syn:end-finish"
      ]
     },
     {
@@ -1734,6 +2652,14 @@
      "headword": "meet",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "col:meet-a-deadline",
+      "col:meet-a-friend",
+      "col:meet-a-requirement",
+      "col:meet-demand",
+      "col:meet-expectations",
+      "irr:meet"
      ]
     },
     {
@@ -1748,6 +2674,9 @@
      "headword": "place",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "syn:place-location-site"
      ]
     },
     {
@@ -1759,6 +2688,11 @@
      "headword": "stay",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:depart-stay",
+      "ant:move-stay",
+      "ant:stay-leave"
      ]
     },
     {
@@ -1767,7 +2701,10 @@
     },
     {
      "id": "lex:A1:without",
-     "headword": "without"
+     "headword": "without",
+     "refs": [
+      "ant:with-without"
+     ]
     },
     {
      "id": "lex:A1:around",
@@ -1785,6 +2722,9 @@
      "headword": "chair",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "col:chair-a-meeting"
      ]
     },
     {
@@ -1792,6 +2732,10 @@
      "headword": "clean",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:clean-dirty",
+      "pv:clean-up"
      ]
     },
     {
@@ -1800,6 +2744,9 @@
      "flags": [
       "split-senses",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:drink"
      ]
     },
     {
@@ -1807,6 +2754,9 @@
      "headword": "fire",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:hire-fire"
      ]
     },
     {
@@ -1818,13 +2768,21 @@
     },
     {
      "id": "lex:A1:idea",
-     "headword": "idea"
+     "headword": "idea",
+     "refs": [
+      "col:good-idea",
+      "col:have-an-idea",
+      "syn:idea-concept-notion"
+     ]
     },
     {
      "id": "lex:A1:left",
      "headword": "left",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:left-right"
      ]
     },
     {
@@ -1847,6 +2805,10 @@
      "headword": "few",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:few-many",
+      "conf:few-little"
      ]
     },
     {
@@ -1855,13 +2817,23 @@
     },
     {
      "id": "lex:A1:great",
-     "headword": "great"
+     "headword": "great",
+     "refs": [
+      "col:great-opportunity",
+      "col:great-success",
+      "syn:good-great-excellent"
+     ]
     },
     {
      "id": "lex:A1:number",
      "headword": "number",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "col:large-number",
+      "col:small-number",
+      "conf:amount-number-quantity"
      ]
     },
     {
@@ -1869,6 +2841,9 @@
      "headword": "other",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "conf:another-other-the-other"
      ]
     },
     {
@@ -1881,13 +2856,20 @@
     },
     {
      "id": "lex:A1:product",
-     "headword": "product"
+     "headword": "product",
+     "refs": [
+      "col:launch-a-product",
+      "fam:produce"
+     ]
     },
     {
      "id": "lex:A1:same",
      "headword": "same",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:same-different"
      ]
     },
     {
@@ -1895,6 +2877,9 @@
      "headword": "shop",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "pv:shop-around"
      ]
     },
     {
@@ -1903,13 +2888,21 @@
     },
     {
      "id": "lex:A1:traffic",
-     "headword": "traffic"
+     "headword": "traffic",
+     "refs": [
+      "col:heavy-traffic"
+     ]
     },
     {
      "id": "lex:A1:understand",
      "headword": "understand",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "col:fully-understand",
+      "fam:understand",
+      "irr:understand"
      ]
     },
     {
@@ -1921,6 +2914,10 @@
      "headword": "address",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "col:address-a-problem",
+      "col:address-an-issue"
      ]
     },
     {
@@ -1928,6 +2925,9 @@
      "headword": "another",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "conf:another-other-the-other"
      ]
     },
     {
@@ -1940,7 +2940,10 @@
     },
     {
      "id": "lex:A1:breakfast",
-     "headword": "breakfast"
+     "headword": "breakfast",
+     "refs": [
+      "col:have-breakfast"
+     ]
     },
     {
      "id": "lex:A1:feel",
@@ -1948,6 +2951,9 @@
      "flags": [
       "also-B2",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:feel"
      ]
     },
     {
@@ -1963,11 +2969,22 @@
      "headword": "let",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "conf:allow-permit-let",
+      "irr:let",
+      "pv:let-down",
+      "pv:let-in",
+      "vp:let-object-bare-infinitive"
      ]
     },
     {
      "id": "lex:A1:life",
-     "headword": "life"
+     "headword": "life",
+     "refs": [
+      "ant:life-death",
+      "col:daily-life"
+     ]
     },
     {
      "id": "lex:A1:monday",
@@ -1982,13 +2999,23 @@
     },
     {
      "id": "lex:A1:practice",
-     "headword": "practice"
+     "headword": "practice",
+     "refs": [
+      "vp:practice-ing"
+     ]
     },
     {
      "id": "lex:A1:start",
      "headword": "start",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:start-end",
+      "ant:start-finish",
+      "ant:start-stop",
+      "conf:begin-start",
+      "vp:start-ing-to-infinitive"
      ]
     },
     {
@@ -1996,6 +3023,12 @@
      "headword": "try",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "pv:try-on",
+      "pv:try-out",
+      "vp:try-ing",
+      "vp:try-to-infinitive"
      ]
     }
    ]
@@ -2008,6 +3041,13 @@
      "headword": "turn",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "pv:turn-down",
+      "pv:turn-into",
+      "pv:turn-off",
+      "pv:turn-on",
+      "pv:turn-up"
      ]
     },
     {
@@ -2015,17 +3055,30 @@
      "headword": "warm",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:warm-cool",
+      "pv:warm-up"
      ]
     },
     {
      "id": "lex:A1:always",
-     "headword": "always"
+     "headword": "always",
+     "refs": [
+      "ant:always-never"
+     ]
     },
     {
      "id": "lex:A1:complete",
      "headword": "complete",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:complete-incomplete",
+      "ant:partial-complete",
+      "col:complete-silence",
+      "fam:complete"
      ]
     },
     {
@@ -2044,7 +3097,13 @@
     },
     {
      "id": "lex:A1:full",
-     "headword": "full"
+     "headword": "full",
+     "refs": [
+      "ant:empty-full",
+      "col:full-details",
+      "col:full-responsibility",
+      "prep:full-of"
+     ]
     },
     {
      "id": "lex:A1:garden",
@@ -2052,7 +3111,10 @@
     },
     {
      "id": "lex:A1:hot",
-     "headword": "hot"
+     "headword": "hot",
+     "refs": [
+      "ant:hot-cold"
+     ]
     },
     {
      "id": "lex:A1:interview",
@@ -2067,6 +3129,11 @@
      "flags": [
       "split-senses",
       "also-B1"
+     ],
+     "refs": [
+      "col:key-factor",
+      "col:key-point",
+      "col:play-a-key-role"
      ]
     },
     {
@@ -2078,11 +3145,20 @@
     },
     {
      "id": "lex:A1:poor",
-     "headword": "poor"
+     "headword": "poor",
+     "refs": [
+      "ant:rich-poor",
+      "col:poor-quality",
+      "syn:bad-poor-terrible"
+     ]
     },
     {
      "id": "lex:A1:popular",
-     "headword": "popular"
+     "headword": "popular",
+     "refs": [
+      "fam:popular",
+      "syn:famous-popular"
+     ]
     },
     {
      "id": "lex:A1:show",
@@ -2090,6 +3166,13 @@
      "flags": [
       "split-senses",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:hide-show",
+      "irr:show",
+      "pv:show-off",
+      "syn:show-display-demonstrate",
+      "vp:show-object-how-to-infinitive"
      ]
     },
     {
@@ -2101,7 +3184,10 @@
     },
     {
      "id": "lex:A1:together",
-     "headword": "together"
+     "headword": "together",
+     "refs": [
+      "ant:together-apart"
+     ]
     },
     {
      "id": "lex:A1:tree",
@@ -2112,6 +3198,10 @@
      "headword": "wait",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "conf:wait-wait-for",
+      "prep:wait-for"
      ]
     },
     {
@@ -2126,6 +3216,9 @@
      "headword": "become",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:become"
      ]
     },
     {
@@ -2134,7 +3227,13 @@
     },
     {
      "id": "lex:A1:difference",
-     "headword": "difference"
+     "headword": "difference",
+     "refs": [
+      "col:make-a-difference",
+      "col:significant-difference",
+      "fam:differ",
+      "prep:difference-between"
+     ]
     },
     {
      "id": "lex:A1:farm",
@@ -2145,7 +3244,10 @@
     },
     {
      "id": "lex:A1:floor",
-     "headword": "floor"
+     "headword": "floor",
+     "refs": [
+      "ant:floor-ceiling"
+     ]
     },
     {
      "id": "lex:A1:fruit",
@@ -2160,11 +3262,19 @@
      "headword": "positive",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "ant:positive-negative",
+      "col:positive-effect"
      ]
     },
     {
      "id": "lex:A1:real",
-     "headword": "real"
+     "headword": "real",
+     "refs": [
+      "ant:real-fake",
+      "fam:real"
+     ]
     },
     {
      "id": "lex:A1:restaurant",
@@ -2172,7 +3282,10 @@
     },
     {
      "id": "lex:A1:student",
-     "headword": "student"
+     "headword": "student",
+     "refs": [
+      "ant:student-teacher"
+     ]
     },
     {
      "id": "lex:A1:way",
@@ -2191,7 +3304,12 @@
     },
     {
      "id": "lex:A1:add",
-     "headword": "add"
+     "headword": "add",
+     "refs": [
+      "ant:add-subtract",
+      "fam:add",
+      "pv:add-up-to"
+     ]
     },
     {
      "id": "lex:A1:age",
@@ -2205,15 +3323,29 @@
      "headword": "behind",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:ahead-behind"
      ]
     },
     {
      "id": "lex:A1:famous",
-     "headword": "famous"
+     "headword": "famous",
+     "refs": [
+      "ant:famous-unknown",
+      "prep:famous-for",
+      "syn:famous-popular"
+     ]
     },
     {
      "id": "lex:A1:healthy",
-     "headword": "healthy"
+     "headword": "healthy",
+     "refs": [
+      "ant:healthy-ill",
+      "ant:healthy-sick",
+      "ant:healthy-unhealthy",
+      "fam:health"
+     ]
     },
     {
      "id": "lex:A1:journey",
@@ -2232,7 +3364,11 @@
     },
     {
      "id": "lex:A1:natural",
-     "headword": "natural"
+     "headword": "natural",
+     "refs": [
+      "ant:natural-artificial",
+      "fam:nature"
+     ]
     },
     {
      "id": "lex:A1:own",
@@ -2240,11 +3376,20 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "fam:own"
      ]
     },
     {
      "id": "lex:A1:remember",
-     "headword": "remember"
+     "headword": "remember",
+     "refs": [
+      "ant:forget-remember",
+      "conf:remember-remind",
+      "vp:remember-ing",
+      "vp:remember-to-infinitive"
+     ]
     },
     {
      "id": "lex:A1:seven",
@@ -2255,6 +3400,9 @@
      "headword": "snow",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:heavy-snow"
      ]
     },
     {
@@ -2275,11 +3423,24 @@
     },
     {
      "id": "lex:A1:agree",
-     "headword": "agree"
+     "headword": "agree",
+     "refs": [
+      "ant:agree-disagree",
+      "conf:accept-agree",
+      "fam:agree",
+      "prep:agree-with",
+      "vp:agree-to-infinitive"
+     ]
     },
     {
      "id": "lex:A1:arrive",
-     "headword": "arrive"
+     "headword": "arrive",
+     "refs": [
+      "ant:arrive-depart",
+      "ant:arrive-leave",
+      "prep:arrive-at",
+      "prep:arrive-in"
+     ]
     },
     {
      "id": "lex:A1:bed",
@@ -2298,50 +3459,98 @@
     },
     {
      "id": "lex:A1:busy",
-     "headword": "busy"
+     "headword": "busy",
+     "refs": [
+      "ant:busy-free",
+      "ant:busy-idle"
+     ]
     },
     {
      "id": "lex:A1:common",
-     "headword": "common"
+     "headword": "common",
+     "refs": [
+      "ant:common-rare",
+      "ant:unique-common",
+      "col:common-mistake",
+      "col:common-problem",
+      "col:common-sense",
+      "syn:common-ordinary-conventional"
+     ]
     },
     {
      "id": "lex:A1:correct",
      "headword": "correct",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:correct-incorrect",
+      "ant:correct-wrong",
+      "syn:right-correct"
      ]
     },
     {
      "id": "lex:A1:dangerous",
-     "headword": "dangerous"
+     "headword": "dangerous",
+     "refs": [
+      "ant:safe-dangerous",
+      "col:potentially-dangerous",
+      "fam:danger"
+     ]
     },
     {
      "id": "lex:A1:dark",
      "headword": "dark",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:bright-dark",
+      "ant:dark-light"
      ]
     },
     {
      "id": "lex:A1:explain",
-     "headword": "explain"
+     "headword": "explain",
+     "refs": [
+      "col:clearly-explain",
+      "fam:explain",
+      "prep:explain-to",
+      "syn:explain-clarify",
+      "vp:explain-that-clause"
+     ]
     },
     {
      "id": "lex:A1:find",
      "headword": "find",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:find-lose",
+      "irr:find",
+      "pv:find-out",
+      "syn:find-discover"
      ]
     },
     {
      "id": "lex:A1:friendly",
-     "headword": "friendly"
+     "headword": "friendly",
+     "refs": [
+      "ant:friendly-unfriendly",
+      "ant:hostile-friendly",
+      "fam:friend",
+      "syn:nice-friendly-pleasant"
+     ]
     },
     {
      "id": "lex:A1:future",
      "headword": "future",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:future-past"
      ]
     },
     {
@@ -2349,6 +3558,12 @@
      "headword": "hand",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "pv:hand-down",
+      "pv:hand-in",
+      "pv:hand-out",
+      "pv:hand-over"
      ]
     },
     {
@@ -2357,11 +3572,20 @@
     },
     {
      "id": "lex:A1:learn",
-     "headword": "learn"
+     "headword": "learn",
+     "refs": [
+      "ant:teach-learn",
+      "prep:learn-about",
+      "prep:learn-from",
+      "vp:learn-to-infinitive"
+     ]
     },
     {
      "id": "lex:A1:man",
-     "headword": "man"
+     "headword": "man",
+     "refs": [
+      "ant:man-woman"
+     ]
     },
     {
      "id": "lex:A1:mountain",
@@ -2377,6 +3601,14 @@
      "flags": [
       "also-A2",
       "irregular-verb"
+     ],
+     "refs": [
+      "col:pay-a-bill",
+      "col:pay-a-fine",
+      "col:pay-attention",
+      "irr:pay",
+      "prep:pay-for",
+      "pv:pay-back"
      ]
     },
     {
@@ -2392,6 +3624,9 @@
      "headword": "rule",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "syn:rule-regulation"
      ]
     },
     {
@@ -2399,6 +3634,10 @@
      "headword": "sit",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:sit-stand",
+      "irr:sit"
      ]
     },
     {
@@ -2407,7 +3646,10 @@
     },
     {
      "id": "lex:A1:thank",
-     "headword": "thank"
+     "headword": "thank",
+     "refs": [
+      "prep:thank-for"
+     ]
     },
     {
      "id": "lex:A1:usually",
@@ -2439,13 +3681,19 @@
     },
     {
      "id": "lex:A1:evening",
-     "headword": "evening"
+     "headword": "evening",
+     "refs": [
+      "ant:morning-evening"
+     ]
     },
     {
      "id": "lex:A1:face",
      "headword": "face",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "col:face-a-problem"
      ]
     },
     {
@@ -2454,7 +3702,10 @@
     },
     {
      "id": "lex:A1:game",
-     "headword": "game"
+     "headword": "game",
+     "refs": [
+      "conf:play-game"
+     ]
     },
     {
      "id": "lex:A1:half",
@@ -2462,15 +3713,24 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "ant:half-whole"
      ]
     },
     {
      "id": "lex:A1:history",
-     "headword": "history"
+     "headword": "history",
+     "refs": [
+      "fam:history"
+     ]
     },
     {
      "id": "lex:A1:homework",
-     "headword": "homework"
+     "headword": "homework",
+     "refs": [
+      "col:do-homework"
+     ]
     },
     {
      "id": "lex:A1:hundred",
@@ -2481,11 +3741,20 @@
      "headword": "interest",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:lose-interest",
+      "fam:interest",
+      "prep:interest-in"
      ]
     },
     {
      "id": "lex:A1:message",
-     "headword": "message"
+     "headword": "message",
+     "refs": [
+      "col:clear-message",
+      "col:get-the-message"
+     ]
     },
     {
      "id": "lex:A1:page",
@@ -2493,15 +3762,27 @@
     },
     {
      "id": "lex:A1:personal",
-     "headword": "personal"
+     "headword": "personal",
+     "refs": [
+      "fam:person"
+     ]
     },
     {
      "id": "lex:A1:prefer",
-     "headword": "prefer"
+     "headword": "prefer",
+     "refs": [
+      "fam:prefer",
+      "vp:prefer-ing-to-ing",
+      "vp:prefer-to-infinitive-rather-than-bare-infinitive"
+     ]
     },
     {
      "id": "lex:A1:ready",
-     "headword": "ready"
+     "headword": "ready",
+     "refs": [
+      "col:get-ready",
+      "prep:ready-for"
+     ]
     },
     {
      "id": "lex:A1:red",
@@ -2520,15 +3801,25 @@
      "headword": "send",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:receive-send",
+      "irr:send"
      ]
     },
     {
      "id": "lex:A1:shopping",
-     "headword": "shopping"
+     "headword": "shopping",
+     "refs": [
+      "col:do-the-shopping"
+     ]
     },
     {
      "id": "lex:A1:sister",
-     "headword": "sister"
+     "headword": "sister",
+     "refs": [
+      "ant:brother-sister"
+     ]
     },
     {
      "id": "lex:A1:situation",
@@ -2540,11 +3831,27 @@
     },
     {
      "id": "lex:A1:action",
-     "headword": "action"
+     "headword": "action",
+     "refs": [
+      "ant:action-inaction",
+      "col:take-action",
+      "fam:act"
+     ]
     },
     {
      "id": "lex:A1:ask",
-     "headword": "ask"
+     "headword": "ask",
+     "refs": [
+      "ant:ask-answer",
+      "col:ask-a-question",
+      "prep:ask-about",
+      "prep:ask-for",
+      "pv:ask-around",
+      "pv:ask-out",
+      "syn:ask-request",
+      "vp:ask-object-to-infinitive",
+      "vp:ask-wh-word-to-infinitive"
+     ]
     },
     {
      "id": "lex:A1:baby",
@@ -2563,6 +3870,9 @@
      "headword": "black",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:black-white"
      ]
     },
     {
@@ -2574,6 +3884,12 @@
      "headword": "choose",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "fam:choose",
+      "irr:choose",
+      "syn:choose-select",
+      "vp:choose-to-infinitive"
      ]
     },
     {
@@ -2589,11 +3905,20 @@
      "headword": "front",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:back-front",
+      "ant:front-rear"
      ]
     },
     {
      "id": "lex:A1:funny",
-     "headword": "funny"
+     "headword": "funny",
+     "refs": [
+      "ant:funny-serious",
+      "conf:fun-funny",
+      "syn:funny-amusing"
+     ]
     },
     {
      "id": "lex:A1:holiday",
@@ -2604,6 +3929,11 @@
      "headword": "hope",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:hope-despair",
+      "fam:hope",
+      "vp:hope-to-infinitive"
      ]
     },
     {
@@ -2623,7 +3953,11 @@
     },
     {
      "id": "lex:A1:person",
-     "headword": "person"
+     "headword": "person",
+     "refs": [
+      "conf:person-people",
+      "fam:person"
+     ]
     },
     {
      "id": "lex:A1:picture",
@@ -2653,11 +3987,18 @@
      "headword": "above",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:above-below",
+      "conf:above-over"
      ]
     },
     {
      "id": "lex:A1:art",
-     "headword": "art"
+     "headword": "art",
+     "refs": [
+      "fam:art"
+     ]
     },
     {
      "id": "lex:A1:beach",
@@ -2668,6 +4009,11 @@
      "headword": "best",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:best-worst",
+      "col:best-friend",
+      "col:do-your-best"
      ]
     },
     {
@@ -2676,6 +4022,19 @@
      "flags": [
       "split-senses",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:break-fix",
+      "col:break-a-habit",
+      "col:break-a-promise",
+      "col:break-the-law",
+      "col:take-a-break",
+      "irr:break",
+      "pv:break-down",
+      "pv:break-in",
+      "pv:break-into",
+      "pv:break-out",
+      "pv:break-up"
      ]
     },
     {
@@ -2707,6 +4066,9 @@
      "flags": [
       "also-A2",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:drive"
      ]
     },
     {
@@ -2715,6 +4077,13 @@
      "flags": [
       "also-A2",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:rise-fall",
+      "irr:fall",
+      "pv:fall-apart",
+      "pv:fall-down",
+      "pv:fall-out"
      ]
     },
     {
@@ -2722,6 +4091,10 @@
      "headword": "fast",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:fast-slow",
+      "syn:fast-quick"
      ]
     },
     {
@@ -2756,6 +4129,11 @@
      "headword": "move",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:move-stay",
+      "ant:move-stop",
+      "fam:move"
      ]
     },
     {
@@ -2768,15 +4146,28 @@
     },
     {
      "id": "lex:A1:possible",
-     "headword": "possible"
+     "headword": "possible",
+     "refs": [
+      "ant:possible-impossible",
+      "fam:possible"
+     ]
     },
     {
      "id": "lex:A1:quick",
-     "headword": "quick"
+     "headword": "quick",
+     "refs": [
+      "ant:quick-slow",
+      "syn:fast-quick"
+     ]
     },
     {
      "id": "lex:A1:reason",
-     "headword": "reason"
+     "headword": "reason",
+     "refs": [
+      "col:main-reason",
+      "fam:reason",
+      "prep:reason-for"
+     ]
     },
     {
      "id": "lex:A1:sea",
@@ -2787,6 +4178,11 @@
      "headword": "slow",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:fast-slow",
+      "ant:quick-slow",
+      "ant:rapid-slow"
      ]
     },
     {
@@ -2802,6 +4198,9 @@
      "headword": "sure",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:sure-unsure"
      ]
     },
     {
@@ -2816,11 +4215,18 @@
      "headword": "white",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:black-white"
      ]
     },
     {
      "id": "lex:A1:writer",
-     "headword": "writer"
+     "headword": "writer",
+     "refs": [
+      "fam:write",
+      "occ:writer"
+     ]
     },
     {
      "id": "lex:A1:band",
@@ -2851,6 +4257,9 @@
      "headword": "date",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "col:set-a-date"
      ]
     },
     {
@@ -2874,11 +4283,20 @@
     },
     {
      "id": "lex:A1:include",
-     "headword": "include"
+     "headword": "include",
+     "refs": [
+      "ant:include-exclude",
+      "fam:include"
+     ]
     },
     {
      "id": "lex:A1:interested",
-     "headword": "interested"
+     "headword": "interested",
+     "refs": [
+      "ant:bored-interested",
+      "fam:interest",
+      "prep:interested-in"
+     ]
     },
     {
      "id": "lex:A1:letter",
@@ -2909,11 +4327,22 @@
      "flags": [
       "also-A2",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:run",
+      "pv:run-away",
+      "pv:run-into",
+      "pv:run-out-of",
+      "pv:run-over",
+      "pv:run-through"
      ]
     },
     {
      "id": "lex:A1:science",
-     "headword": "science"
+     "headword": "science",
+     "refs": [
+      "fam:science"
+     ]
     },
     {
      "id": "lex:A1:shirt",
@@ -2921,13 +4350,20 @@
     },
     {
      "id": "lex:A1:skill",
-     "headword": "skill"
+     "headword": "skill",
+     "refs": [
+      "syn:skill-ability-talent"
+     ]
     },
     {
      "id": "lex:A1:sorry",
      "headword": "sorry",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "prep:sorry-about",
+      "prep:sorry-for"
      ]
     },
     {
@@ -2951,18 +4387,31 @@
     },
     {
      "id": "lex:A1:writing",
-     "headword": "writing"
+     "headword": "writing",
+     "refs": [
+      "fam:write"
+     ]
     },
     {
      "id": "lex:A1:wrong",
      "headword": "wrong",
      "flags": [
       "also-B1-B2"
+     ],
+     "refs": [
+      "ant:correct-wrong",
+      "ant:right-wrong",
+      "col:completely-wrong",
+      "syn:wrong-incorrect"
      ]
     },
     {
      "id": "lex:A1:actor",
-     "headword": "actor"
+     "headword": "actor",
+     "refs": [
+      "fam:act",
+      "occ:actor"
+     ]
     },
     {
      "id": "lex:A1:air",
@@ -2970,7 +4419,13 @@
     },
     {
      "id": "lex:A1:angry",
-     "headword": "angry"
+     "headword": "angry",
+     "refs": [
+      "col:get-angry",
+      "prep:angry-about",
+      "prep:angry-with",
+      "syn:angry-annoyed"
+     ]
     },
     {
      "id": "lex:A1:animal",
@@ -2978,17 +4433,31 @@
     },
     {
      "id": "lex:A1:artist",
-     "headword": "artist"
+     "headword": "artist",
+     "refs": [
+      "fam:art",
+      "occ:artist"
+     ]
     },
     {
      "id": "lex:A1:believe",
-     "headword": "believe"
+     "headword": "believe",
+     "refs": [
+      "col:firmly-believe",
+      "col:strongly-believe",
+      "fam:believe",
+      "prep:believe-in",
+      "vp:believe-object-to-be"
+     ]
     },
     {
      "id": "lex:A1:below",
      "headword": "below",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:above-below"
      ]
     },
     {
@@ -3010,7 +4479,10 @@
    "entries": [
     {
      "id": "lex:A1:discuss",
-     "headword": "discuss"
+     "headword": "discuss",
+     "refs": [
+      "fam:discuss"
+     ]
     },
     {
      "id": "lex:A1:dish",
@@ -3052,7 +4524,10 @@
     },
     {
      "id": "lex:A1:nurse",
-     "headword": "nurse"
+     "headword": "nurse",
+     "refs": [
+      "occ:nurse"
+     ]
     },
     {
      "id": "lex:A1:pen",
@@ -3067,7 +4542,10 @@
     },
     {
      "id": "lex:A1:scientist",
-     "headword": "scientist"
+     "headword": "scientist",
+     "refs": [
+      "fam:science"
+     ]
     },
     {
      "id": "lex:A1:share",
@@ -3078,17 +4556,31 @@
     },
     {
      "id": "lex:A1:similar",
-     "headword": "similar"
+     "headword": "similar",
+     "refs": [
+      "ant:different-similar",
+      "col:roughly-similar",
+      "prep:similar-to"
+     ]
     },
     {
      "id": "lex:A1:sometimes",
-     "headword": "sometimes"
+     "headword": "sometimes",
+     "refs": [
+      "conf:sometimes-sometime-some-time"
+     ]
     },
     {
      "id": "lex:A1:spend",
      "headword": "spend",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:spend-earn",
+      "col:spend-money",
+      "col:spend-time",
+      "irr:spend"
      ]
     },
     {
@@ -3097,11 +4589,20 @@
      "flags": [
       "also-B2",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:sit-stand",
+      "irr:stand",
+      "pv:stand-for"
      ]
     },
     {
      "id": "lex:A1:tall",
-     "headword": "tall"
+     "headword": "tall",
+     "refs": [
+      "ant:tall-short",
+      "conf:high-tall"
+     ]
     },
     {
      "id": "lex:A1:thirty",
@@ -3109,18 +4610,28 @@
     },
     {
      "id": "lex:A1:true",
-     "headword": "true"
+     "headword": "true",
+     "refs": [
+      "ant:true-false",
+      "fam:true"
+     ]
     },
     {
      "id": "lex:A1:visit",
      "headword": "visit",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "fam:visit"
      ]
     },
     {
      "id": "lex:A1:activity",
-     "headword": "activity"
+     "headword": "activity",
+     "refs": [
+      "fam:act"
+     ]
     },
     {
      "id": "lex:A1:arm",
@@ -3134,6 +4645,11 @@
      "headword": "build",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:build-destroy",
+      "irr:build",
+      "syn:build-construct-develop"
      ]
     },
     {
@@ -3142,7 +4658,11 @@
     },
     {
      "id": "lex:A1:compare",
-     "headword": "compare"
+     "headword": "compare",
+     "refs": [
+      "fam:compare",
+      "prep:compare-with"
+     ]
     },
     {
      "id": "lex:A1:concert",
@@ -3150,7 +4670,10 @@
     },
     {
      "id": "lex:A1:conversation",
-     "headword": "conversation"
+     "headword": "conversation",
+     "refs": [
+      "col:have-a-conversation"
+     ]
     },
     {
      "id": "lex:A1:cousin",
@@ -3158,11 +4681,19 @@
     },
     {
      "id": "lex:A1:create",
-     "headword": "create"
+     "headword": "create",
+     "refs": [
+      "ant:create-destroy",
+      "fam:create",
+      "syn:create-produce-generate"
+     ]
     },
     {
      "id": "lex:A1:culture",
-     "headword": "culture"
+     "headword": "culture",
+     "refs": [
+      "fam:culture"
+     ]
     },
     {
      "id": "lex:A1:cup",
@@ -3173,15 +4704,26 @@
      "headword": "dress",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "pv:dress-up"
      ]
     },
     {
      "id": "lex:A1:example",
-     "headword": "example"
+     "headword": "example",
+     "refs": [
+      "col:give-an-example",
+      "col:set-an-example"
+     ]
     },
     {
      "id": "lex:A1:follow",
-     "headword": "follow"
+     "headword": "follow",
+     "refs": [
+      "ant:follow-lead",
+      "ant:follow-precede"
+     ]
     },
     {
      "id": "lex:A1:green",
@@ -3192,11 +4734,18 @@
     },
     {
      "id": "lex:A1:interesting",
-     "headword": "interesting"
+     "headword": "interesting",
+     "refs": [
+      "ant:interesting-uninteresting",
+      "fam:interest"
+     ]
     },
     {
      "id": "lex:A1:meaning",
-     "headword": "meaning"
+     "headword": "meaning",
+     "refs": [
+      "fam:mean"
+     ]
     },
     {
      "id": "lex:A1:million",
@@ -3208,7 +4757,11 @@
     },
     {
      "id": "lex:A1:never",
-     "headword": "never"
+     "headword": "never",
+     "refs": [
+      "ant:always-never",
+      "ant:ever-never"
+     ]
     },
     {
      "id": "lex:A1:opinion",
@@ -3220,6 +4773,9 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "ant:future-past"
      ]
     },
     {
@@ -3227,15 +4783,25 @@
      "headword": "point",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "col:key-point",
+      "pv:point-out"
      ]
     },
     {
      "id": "lex:A1:really",
-     "headword": "really"
+     "headword": "really",
+     "refs": [
+      "fam:real"
+     ]
     },
     {
      "id": "lex:A1:relax",
-     "headword": "relax"
+     "headword": "relax",
+     "refs": [
+      "fam:relax"
+     ]
     },
     {
      "id": "lex:A1:return",
@@ -3269,6 +4835,9 @@
      "flags": [
       "also-B1",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:spring"
      ]
     },
     {
@@ -3276,6 +4845,14 @@
      "headword": "stop",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:continue-stop",
+      "ant:move-stop",
+      "ant:start-stop",
+      "ant:stop-go",
+      "vp:stop-ing",
+      "vp:stop-to-infinitive"
      ]
     },
     {
@@ -3284,7 +4861,10 @@
     },
     {
      "id": "lex:A1:terrible",
-     "headword": "terrible"
+     "headword": "terrible",
+     "refs": [
+      "syn:bad-poor-terrible"
+     ]
     },
     {
      "id": "lex:A1:text",
@@ -3307,7 +4887,12 @@
     },
     {
      "id": "lex:A1:afraid",
-     "headword": "afraid"
+     "headword": "afraid",
+     "refs": [
+      "ant:brave-afraid",
+      "prep:afraid-of",
+      "syn:afraid-scared-frightened"
+     ]
     },
     {
      "id": "lex:A1:ago",
@@ -3330,6 +4915,13 @@
      "headword": "begin",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:begin-end",
+      "ant:begin-finish",
+      "conf:begin-start",
+      "irr:begin",
+      "vp:begin-ing-to-infinitive"
      ]
     },
     {
@@ -3350,7 +4942,13 @@
     },
     {
      "id": "lex:A1:decide",
-     "headword": "decide"
+     "headword": "decide",
+     "refs": [
+      "fam:decide",
+      "prep:decide-on",
+      "vp:decide-to-infinitive",
+      "vp:decide-wh-word-to-infinitive"
+     ]
     },
     {
      "id": "lex:A1:delicious",
@@ -3358,11 +4956,17 @@
     },
     {
      "id": "lex:A1:describe",
-     "headword": "describe"
+     "headword": "describe",
+     "refs": [
+      "fam:describe"
+     ]
     },
     {
      "id": "lex:A1:description",
-     "headword": "description"
+     "headword": "description",
+     "refs": [
+      "fam:describe"
+     ]
     },
     {
      "id": "lex:A1:diet",
@@ -3373,19 +4977,37 @@
      "headword": "draw",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "col:draw-a-conclusion",
+      "irr:draw"
      ]
     },
     {
      "id": "lex:A1:enjoy",
-     "headword": "enjoy"
+     "headword": "enjoy",
+     "refs": [
+      "ant:enjoy-suffer",
+      "fam:enjoy",
+      "vp:enjoy-ing"
+     ]
     },
     {
      "id": "lex:A1:false",
-     "headword": "false"
+     "headword": "false",
+     "refs": [
+      "ant:true-false"
+     ]
     },
     {
      "id": "lex:A1:fill",
-     "headword": "fill"
+     "headword": "fill",
+     "refs": [
+      "ant:empty-fill",
+      "pv:fill-in",
+      "pv:fill-out",
+      "pv:fill-up"
+     ]
     },
     {
      "id": "lex:A1:fish",
@@ -3414,6 +5036,9 @@
      "headword": "fun",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "conf:fun-funny"
      ]
     },
     {
@@ -3422,7 +5047,11 @@
     },
     {
      "id": "lex:A1:imagine",
-     "headword": "imagine"
+     "headword": "imagine",
+     "refs": [
+      "fam:imagine",
+      "vp:imagine-ing"
+     ]
     },
     {
      "id": "lex:A1:juice",
@@ -3444,11 +5073,28 @@
      "headword": "lose",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:earn-lose",
+      "ant:find-lose",
+      "ant:keep-lose",
+      "ant:lose-win",
+      "col:lose-control",
+      "col:lose-interest",
+      "col:lose-weight",
+      "irr:lose"
      ]
     },
     {
      "id": "lex:A1:married",
-     "headword": "married"
+     "headword": "married",
+     "refs": [
+      "ant:divorced-married",
+      "ant:married-single",
+      "col:get-married",
+      "fam:marry",
+      "prep:married-to"
+     ]
     },
     {
      "id": "lex:A1:meat",
@@ -3456,13 +5102,19 @@
     },
     {
      "id": "lex:A1:midnight",
-     "headword": "midnight"
+     "headword": "midnight",
+     "refs": [
+      "ant:midnight-noon"
+     ]
     },
     {
      "id": "lex:A1:north",
      "headword": "north",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:north-south"
      ]
     },
     {
@@ -3499,7 +5151,12 @@
    "entries": [
     {
      "id": "lex:A1:prepare",
-     "headword": "prepare"
+     "headword": "prepare",
+     "refs": [
+      "fam:prepare",
+      "prep:prepare-for",
+      "vp:prepare-to-infinitive"
+     ]
     },
     {
      "id": "lex:A1:radio",
@@ -3514,13 +5171,19 @@
     },
     {
      "id": "lex:A1:rich",
-     "headword": "rich"
+     "headword": "rich",
+     "refs": [
+      "ant:rich-poor"
+     ]
     },
     {
      "id": "lex:A1:routine",
      "headword": "routine",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "col:daily-routine"
      ]
     },
     {
@@ -3532,11 +5195,18 @@
      "headword": "sell",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:buy-sell",
+      "irr:sell"
      ]
     },
     {
      "id": "lex:A1:special",
-     "headword": "special"
+     "headword": "special",
+     "refs": [
+      "fam:special"
+     ]
     },
     {
      "id": "lex:A1:sport",
@@ -3548,11 +5218,17 @@
      "flags": [
       "also-B1",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:swim"
      ]
     },
     {
      "id": "lex:A1:taxi",
-     "headword": "taxi"
+     "headword": "taxi",
+     "refs": [
+      "col:take-a-taxi"
+     ]
     },
     {
      "id": "lex:A1:telephone",
@@ -3563,7 +5239,10 @@
     },
     {
      "id": "lex:A1:then",
-     "headword": "then"
+     "headword": "then",
+     "refs": [
+      "ant:now-then"
+     ]
     },
     {
      "id": "lex:A1:tuesday",
@@ -3578,11 +5257,18 @@
      "headword": "upstairs",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:upstairs-downstairs"
      ]
     },
     {
      "id": "lex:A1:visitor",
-     "headword": "visitor"
+     "headword": "visitor",
+     "refs": [
+      "ant:resident-visitor",
+      "fam:visit"
+     ]
     },
     {
      "id": "lex:A1:which",
@@ -3605,7 +5291,10 @@
     },
     {
      "id": "lex:A1:aunt",
-     "headword": "aunt"
+     "headword": "aunt",
+     "refs": [
+      "ant:aunt-uncle"
+     ]
     },
     {
      "id": "lex:A1:autumn",
@@ -3616,11 +5305,17 @@
      "headword": "bill",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "col:pay-a-bill"
      ]
     },
     {
      "id": "lex:A1:boy",
-     "headword": "boy"
+     "headword": "boy",
+     "refs": [
+      "ant:boy-girl"
+     ]
     },
     {
      "id": "lex:A1:cafe",
@@ -3642,6 +5337,9 @@
      "headword": "cook",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "occ:cook"
      ]
     },
     {
@@ -3649,6 +5347,9 @@
      "headword": "cool",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:warm-cool"
      ]
     },
     {
@@ -3664,6 +5365,9 @@
      "headword": "even",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "ant:even-odd"
      ]
     },
     {
@@ -3671,6 +5375,9 @@
      "headword": "far",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:near-far"
      ]
     },
     {
@@ -3678,6 +5385,14 @@
      "headword": "grow",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "fam:grow",
+      "irr:grow",
+      "pv:grow-apart",
+      "pv:grow-back",
+      "pv:grow-out-of",
+      "pv:grow-up"
      ]
     },
     {
@@ -3685,11 +5400,18 @@
      "headword": "hate",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:love-hate",
+      "vp:hate-ing-to-infinitive"
      ]
     },
     {
      "id": "lex:A1:introduce",
-     "headword": "introduce"
+     "headword": "introduce",
+     "refs": [
+      "fam:introduce"
+     ]
     },
     {
      "id": "lex:A1:later",
@@ -3722,15 +5444,26 @@
      "headword": "negative",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "ant:positive-negative",
+      "col:negative-effect"
      ]
     },
     {
      "id": "lex:A1:neighbour",
-     "headword": "neighbour"
+     "headword": "neighbour",
+     "refs": [
+      "ant:neighbour-stranger"
+     ]
     },
     {
      "id": "lex:A1:nice",
-     "headword": "nice"
+     "headword": "nice",
+     "refs": [
+      "ant:nasty-nice",
+      "syn:nice-friendly-pleasant"
+     ]
     },
     {
      "id": "lex:A1:post",
@@ -3753,6 +5486,9 @@
      "flags": [
       "also-A2",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:ride"
      ]
     },
     {
@@ -3765,6 +5501,9 @@
      "flags": [
       "split-senses",
       "also-C1"
+     ],
+     "refs": [
+      "conf:sound-noise"
      ]
     },
     {
@@ -3783,6 +5522,12 @@
      "headword": "teach",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:teach-learn",
+      "fam:teach",
+      "irr:teach",
+      "vp:teach-object-to-infinitive"
      ]
     },
     {
@@ -3795,7 +5540,10 @@
     },
     {
      "id": "lex:A1:uncle",
-     "headword": "uncle"
+     "headword": "uncle",
+     "refs": [
+      "ant:aunt-uncle"
+     ]
     },
     {
      "id": "lex:A1:video",
@@ -3810,6 +5558,11 @@
      "headword": "wake",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:sleep-wake",
+      "irr:wake",
+      "pv:wake-up"
      ]
     },
     {
@@ -3818,11 +5571,18 @@
      "flags": [
       "also-B1",
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:lose-win",
+      "irr:win"
      ]
     },
     {
      "id": "lex:A1:worker",
-     "headword": "worker"
+     "headword": "worker",
+     "refs": [
+      "fam:work"
+     ]
     },
     {
      "id": "lex:A1:yourself",
@@ -3833,11 +5593,17 @@
      "headword": "adult",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:adult-child"
      ]
     },
     {
      "id": "lex:A1:also",
-     "headword": "also"
+     "headword": "also",
+     "refs": [
+      "conf:also-as-well-too"
+     ]
     },
     {
      "id": "lex:A1:amazing",
@@ -3853,11 +5619,18 @@
     },
     {
      "id": "lex:A1:beginning",
-     "headword": "beginning"
+     "headword": "beginning",
+     "refs": [
+      "ant:beginning-end"
+     ]
     },
     {
      "id": "lex:A1:bored",
-     "headword": "bored"
+     "headword": "bored",
+     "refs": [
+      "ant:bored-interested",
+      "prep:bored-with"
+     ]
     },
     {
      "id": "lex:A1:brown",
@@ -3920,6 +5693,9 @@
      "headword": "downstairs",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:upstairs-downstairs"
      ]
     },
     {
@@ -3927,6 +5703,9 @@
      "headword": "east",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:east-west"
      ]
     },
     {
@@ -3939,19 +5718,32 @@
     },
     {
      "id": "lex:A1:ever",
-     "headword": "ever"
+     "headword": "ever",
+     "refs": [
+      "ant:ever-never"
+     ]
     },
     {
      "id": "lex:A1:everything",
-     "headword": "everything"
+     "headword": "everything",
+     "refs": [
+      "ant:everything-nothing"
+     ]
     },
     {
      "id": "lex:A1:excited",
-     "headword": "excited"
+     "headword": "excited",
+     "refs": [
+      "ant:excited-disappointed",
+      "prep:excited-about"
+     ]
     },
     {
      "id": "lex:A1:exciting",
-     "headword": "exciting"
+     "headword": "exciting",
+     "refs": [
+      "ant:exciting-boring"
+     ]
     },
     {
      "id": "lex:A1:fact",
@@ -3959,13 +5751,19 @@
     },
     {
      "id": "lex:A1:farmer",
-     "headword": "farmer"
+     "headword": "farmer",
+     "refs": [
+      "occ:farmer"
+     ]
     },
     {
      "id": "lex:A1:fat",
      "headword": "fat",
      "flags": [
       "also-A2"
+     ],
+     "refs": [
+      "ant:fat-thin"
      ]
     },
     {
@@ -3982,6 +5780,9 @@
      "flags": [
       "also-A2",
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:fly"
      ]
     },
     {
@@ -3993,6 +5794,13 @@
      "headword": "forget",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "ant:forget-remember",
+      "conf:forget-leave",
+      "irr:forget",
+      "vp:forget-ing",
+      "vp:forget-to-infinitive"
      ]
     },
     {
@@ -4042,6 +5850,10 @@
      "headword": "laugh",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:cry-laugh",
+      "prep:laugh-at"
      ]
     },
     {
@@ -4049,6 +5861,9 @@
      "headword": "list",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "col:make-a-list"
      ]
     },
     {
@@ -4057,7 +5872,10 @@
     },
     {
      "id": "lex:A1:maybe",
-     "headword": "maybe"
+     "headword": "maybe",
+     "refs": [
+      "conf:maybe-may-be"
+     ]
     },
     {
      "id": "lex:A1:metre",
@@ -4080,13 +5898,20 @@
     },
     {
      "id": "lex:A1:nothing",
-     "headword": "nothing"
+     "headword": "nothing",
+     "refs": [
+      "ant:everything-nothing",
+      "ant:nothing-something"
+     ]
     },
     {
      "id": "lex:A1:object",
      "headword": "object",
      "flags": [
       "also-B2"
+     ],
+     "refs": [
+      "prep:object-to"
      ]
     },
     {
@@ -4117,7 +5942,10 @@
     },
     {
      "id": "lex:A1:partner",
-     "headword": "partner"
+     "headword": "partner",
+     "refs": [
+      "ant:partner-rival"
+     ]
     },
     {
      "id": "lex:A1:piano",
@@ -4132,11 +5960,19 @@
      "headword": "pretty",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "syn:beautiful-pretty-attractive"
      ]
     },
     {
      "id": "lex:A1:sad",
-     "headword": "sad"
+     "headword": "sad",
+     "refs": [
+      "ant:glad-sad",
+      "ant:happy-sad",
+      "syn:sad-unhappy-upset"
+     ]
     },
     {
      "id": "lex:A1:section",
@@ -4152,7 +5988,12 @@
     },
     {
      "id": "lex:A1:sick",
-     "headword": "sick"
+     "headword": "sick",
+     "refs": [
+      "ant:healthy-sick",
+      "ant:well-sick",
+      "conf:ill-sick"
+     ]
     },
     {
      "id": "lex:A1:sixty",
@@ -4172,7 +6013,10 @@
     },
     {
      "id": "lex:A1:son",
-     "headword": "son"
+     "headword": "son",
+     "refs": [
+      "ant:daughter-son"
+     ]
     },
     {
      "id": "lex:A1:star",
@@ -4244,11 +6088,17 @@
      "flags": [
       "split-senses",
       "also-A2"
+     ],
+     "refs": [
+      "ant:welcome-unwelcome"
      ]
     },
     {
      "id": "lex:A1:woman",
-     "headword": "woman"
+     "headword": "woman",
+     "refs": [
+      "ant:man-woman"
+     ]
     },
     {
      "id": "lex:A1:wonderful",
@@ -4267,7 +6117,10 @@
     },
     {
      "id": "lex:A1:actress",
-     "headword": "actress"
+     "headword": "actress",
+     "refs": [
+      "fam:act"
+     ]
     },
     {
      "id": "lex:A1:banana",
@@ -4291,7 +6144,10 @@
     },
     {
      "id": "lex:A1:boring",
-     "headword": "boring"
+     "headword": "boring",
+     "refs": [
+      "ant:exciting-boring"
+     ]
     },
     {
      "id": "lex:A1:born",
@@ -4330,11 +6186,17 @@
     },
     {
      "id": "lex:A1:dancer",
-     "headword": "dancer"
+     "headword": "dancer",
+     "refs": [
+      "occ:dancer"
+     ]
     },
     {
      "id": "lex:A1:daughter",
-     "headword": "daughter"
+     "headword": "daughter",
+     "refs": [
+      "ant:daughter-son"
+     ]
     },
     {
      "id": "lex:A1:december",
@@ -4346,11 +6208,17 @@
     },
     {
      "id": "lex:A1:die",
-     "headword": "die"
+     "headword": "die",
+     "refs": [
+      "ant:die-live"
+     ]
     },
     {
      "id": "lex:A1:dirty",
-     "headword": "dirty"
+     "headword": "dirty",
+     "refs": [
+      "ant:clean-dirty"
+     ]
     },
     {
      "id": "lex:A1:dvd",
@@ -4410,7 +6278,10 @@
     },
     {
      "id": "lex:A1:girl",
-     "headword": "girl"
+     "headword": "girl",
+     "refs": [
+      "ant:boy-girl"
+     ]
     },
     {
      "id": "lex:A1:girlfriend",
@@ -4429,7 +6300,12 @@
     },
     {
      "id": "lex:A1:happen",
-     "headword": "happen"
+     "headword": "happen",
+     "refs": [
+      "prep:happen-to",
+      "syn:happen-occur",
+      "vp:happen-to-infinitive"
+     ]
     },
     {
      "id": "lex:A1:hat",
@@ -4440,6 +6316,9 @@
      "headword": "head",
      "flags": [
       "also-B1"
+     ],
+     "refs": [
+      "ant:head-rear"
      ]
     },
     {
@@ -4460,7 +6339,10 @@
     },
     {
      "id": "lex:A1:husband",
-     "headword": "husband"
+     "headword": "husband",
+     "refs": [
+      "ant:husband-wife"
+     ]
     },
     {
      "id": "lex:A1:january",
@@ -4477,7 +6359,11 @@
    "entries": [
     {
      "id": "lex:A1:join",
-     "headword": "join"
+     "headword": "join",
+     "refs": [
+      "ant:join-leave",
+      "ant:join-separate"
+     ]
     },
     {
      "id": "lex:A1:kilometre",
@@ -4531,7 +6417,10 @@
     },
     {
      "id": "lex:A1:parent",
-     "headword": "parent"
+     "headword": "parent",
+     "refs": [
+      "ant:child-parent"
+     ]
     },
     {
      "id": "lex:A1:pencil",
@@ -4600,6 +6489,9 @@
      "headword": "sing",
      "flags": [
       "irregular-verb"
+     ],
+     "refs": [
+      "irr:sing"
      ]
     },
     {
@@ -4615,6 +6507,9 @@
      "headword": "south",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:north-south"
      ]
     },
     {
@@ -4669,11 +6564,17 @@
      "headword": "west",
      "flags": [
       "split-senses"
+     ],
+     "refs": [
+      "ant:east-west"
      ]
     },
     {
      "id": "lex:A1:wife",
-     "headword": "wife"
+     "headword": "wife",
+     "refs": [
+      "ant:husband-wife"
+     ]
     },
     {
      "id": "lex:A1:wine",
@@ -4685,7 +6586,10 @@
     },
     {
      "id": "lex:A1:yes",
-     "headword": "yes"
+     "headword": "yes",
+     "refs": [
+      "ant:yes-no"
+     ]
     },
     {
      "id": "lex:A1:dollar",

@@ -48,10 +48,10 @@ for (const path of ["/", "/learn", "/study", "/drill", "/lexicon", "/library", "
 }
 
 let pilot = null;
-for (const file of ["meta.json", "pilot-order.json", "pilot-a1.json", "lex-a1.json", "usefulness.json"]) {
+for (const file of ["meta.json", "enhanced-order.json", "enhanced.json", "lex-a1.json", "usefulness.json"]) {
   await check(`data ${file}`, async () => {
     const data = await (await get(`/data/${file}`, "json")).json();
-    if (file === "pilot-a1.json") pilot = data;
+    if (file === "enhanced.json") pilot = data;
     if (file === "meta.json" && !Array.isArray(data.levels)) throw new Error("no levels");
   });
 }

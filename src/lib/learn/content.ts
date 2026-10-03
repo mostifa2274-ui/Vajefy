@@ -46,7 +46,7 @@ export function orderForGoal<T>(targets: T[], goal: Goal | undefined, describe: 
 }
 
 /**
- * Introduction order per goal, compiled to `public/data/pilot-order.json`,
+ * Introduction order per goal, compiled to `public/data/enhanced-order.json`,
  * with the sense ids whose entries are released.
  */
 export type PilotOrder = { version: string; order: Record<Goal, string[]>; released: string[] };
@@ -121,7 +121,7 @@ export const sense = z.object({
 });
 
 export const entry = z.object({
-  id: text.regex(/^lex:A1:[a-z0-9-]+$/),
+  id: text.regex(/^lex:(A1|A2|B1|B2|B2x|C1):[a-z0-9-]+$/),
   headword: text,
   goals: z.array(z.enum(GOALS)).min(1),
   senses: z.array(sense).min(1),
@@ -180,7 +180,7 @@ export type SenseAudio = {
   us?: { word?: string; examples: (string | null)[] };
 };
 
-/** The compiled file the app loads: `public/data/pilot-a1.json`. */
+/** The compiled file the app loads: `public/data/enhanced.json`. */
 export type Pilot = {
   version: string;
   entries: (Entry & { version: string; order: number; released: boolean; review: Review | null })[];

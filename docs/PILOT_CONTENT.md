@@ -5,8 +5,8 @@ first 150 form the pilot (`content/pilot-a1.json`), which the pilot study
 measures. The rest of A1 follows in batches, as fast as editorial review allows
 ([Expanding across A1](#expanding-across-a1)). The source lives in
 `content/pilot/`, and `npm run content:build` compiles it into
-`public/data/pilot-a1.json`, the file the app loads, and
-`public/data/pilot-order.json`, the introduction order Today reads.
+`public/data/enhanced.json`, the file the app loads, and
+`public/data/enhanced-order.json`, the introduction order Today reads.
 
 | File | Contents |
 |---|---|
@@ -65,7 +65,7 @@ has passed the automated checks, but no bilingual reviewer has approved it yet.
 
 1. Edit the entry, contrast or scene in `content/pilot/`.
 2. Run `npm run content:build`. It validates every entry, cross-reference and
-   review record, then writes `public/data/pilot-a1.json`. It reports how many
+   review record, then writes `public/data/enhanced.json`. It reports how many
    entries are released and how many senses have current audio.
 3. If the change touches an example, a headword or `tts` phonemes, regenerate
    audio ([AUDIO.md](AUDIO.md)); until then that clip is not attached and the app
@@ -112,39 +112,30 @@ What reviewers check:
 
 ## Expanding across A1
 
-`content/a1-plan.json` places every one of the 900 A1 entries in one batch:
-the pilot first, then `batch-02` … `batch-09`, 100 entries each, in order of
-usefulness. Batches never reshuffle once written. `node scripts/plan-a1.mjs`
-appends any A1 entry that is new to the data, and CI checks the plan still
-covers A1 exactly. Each planned entry carries flags for the editor:
-
-| Flag | Meaning |
-|---|---|
-| `split-senses` | The dataset gives several parts of speech; probably several learning targets |
-| `also-B1` (etc.) | The same word is taught again at a higher level, usually with another meaning |
-| `irregular-verb` | Teach the irregular forms in the grammar notes and checks |
-| `several-forms` | The headword lists variants (`a, an`) |
-
-The workflow for a batch:
+The same process continues across A1 and then the rest of the catalogue
+([CATALOGUE.md](CATALOGUE.md)). `content/plans/A1.json` places every one of the
+900 A1 entries in one batch: the pilot first, then `batch-02` … `batch-09`,
+100 entries each, in order of usefulness. The workflow for a batch:
 
 1. **Scaffold.** `npm run content:scaffold -- --batch batch-02 --limit 20`
-   writes drafts to `content/drafts/batch-02/`. A draft is prefilled with the
-   headword, gloss, IPA and the dataset's example, starts one sense per part
-   of speech, and lists what is left to write. Drafts are not compiled.
+   writes drafts to `content/drafts/A1/batch-02/`. A draft is prefilled with
+   the headword, gloss, IPA and the dataset's example, starts one sense per
+   part of speech, and lists what is left to write. Drafts are not compiled.
 2. **Draft.** Fill in each draft. `npm run content:drafts` lists what each one
    still needs, by the same schema the build uses.
 3. **Promote.** `npm run content:promote -- --entry lex:A1:her` validates the
-   whole entry, adds it to `content/pilot/entries/batch-02.json` and deletes
-   the draft.
+   whole entry, adds it to `content/pilot/entries/A1-batch-02.json` and
+   deletes the draft.
 4. **Build and check.** `npm run content:build` compiles the content and runs
    the authoring checks (below).
 5. **Record audio** ([AUDIO.md](AUDIO.md#regenerating)) and **review**
    ([Reviewing](#reviewing)).
 
-`npm run content:status` shows each batch: drafts in progress, entries with
-content, released entries, approvals made stale by later edits, entries with
-complete audio and audio still to be heard. It also lists the next entries to
-draft.
+`npm run content:status -- --level A1` shows each batch: drafts in progress,
+entries with content, released entries, approvals made stale by later edits,
+entries with complete audio and audio still to be heard. It also lists the
+next entries to draft, with the flags and reference notes described in
+[CATALOGUE.md](CATALOGUE.md#plans).
 
 ### Authoring checks
 
@@ -156,9 +147,9 @@ enhanced content.
 | Two options in a choice are the same | error |
 | A scene never uses one of its target words | error |
 | A writing task's model answer does not use a word it asks for | error |
-| Words above A2 in an example, a check or a scene line | warning |
+| Words above the next level in an example, a check or a scene line (above A2 for A1 content) | warning |
 | Words not in the Oxford lists (names, *pizza*) | warning |
-| A scene where more than 5% of words are above A2 | warning |
+| A scene where more than 5% of words are above the next level | warning |
 | A check that nearly repeats a teaching example (assessment needs new sentences) | warning |
 | A cloze whose answer already appears in its sentence | warning |
 | Accepted answers that repeat each other | warning |

@@ -151,7 +151,7 @@ test("recorded pronunciation downloads for offline use and plays from the cache"
 
   await context.setOffline(true);
   const offline = await page.evaluate(async () => {
-    const pilot = await (await fetch("/data/pilot-a1.json")).json();
+    const pilot = await (await fetch("/data/enhanced.json")).json();
     const file = pilot.audioPack.gb.files[0];
     const response = await fetch(`/audio/${file}`);
     return { ok: response.ok, type: response.headers.get("content-type"), bytes: (await response.arrayBuffer()).byteLength };

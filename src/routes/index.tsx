@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     links: [
       { rel: "preload", href: "/data/meta.json", as: "fetch", crossOrigin: "anonymous" },
-      { rel: "preload", href: "/data/pilot-order.json", as: "fetch", crossOrigin: "anonymous" },
+      { rel: "preload", href: "/data/enhanced-order.json", as: "fetch", crossOrigin: "anonymous" },
     ],
   }),
   component: Home,
@@ -120,12 +120,12 @@ function Home() {
   const due = hydrated ? dueIds(cards).length : 0;
   const released = new Set(order ? order.released : []);
   const checkupReady = order && !unfinishedLesson ? checkupCandidates(order.order.general, reviewHistory, Object.values(sessions), opened).length : 0;
-  const lessonCount =
-    order && focus === "A1"
-      ? order.order[goal ?? "general"]
-          .filter((id) => !cards[id] && introducibleIn(CONTENT_CHANNEL, released.has(id)))
-          .slice(0, lessonSize(minutes, due, sessionSize)).length
-      : 0;
+  // Lessons for the learner's own level, as Learn will offer them first.
+  const lessonCount = order
+    ? order.order[goal ?? "general"]
+        .filter((id) => id.startsWith(`lex:${focus}:`) && !cards[id] && introducibleIn(CONTENT_CHANNEL, released.has(id)))
+        .slice(0, lessonSize(minutes, due, sessionSize)).length
+    : 0;
   // Rough time: a review takes about 8 seconds, a guided new word about 90.
   const planMinutes = Math.max(1, Math.ceil((Math.min(due, sessionSize) * 8 + lessonCount * 90) / 60));
   const introducedToday = hydrated ? todayLog(logs).introduced : 0;

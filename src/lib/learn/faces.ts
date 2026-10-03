@@ -10,7 +10,7 @@ import {
   loadPatterns,
 } from "./load";
 import { CONTENT_CHANNEL } from "./channel";
-import { loadPilot, pilotFace } from "./pilot";
+import { loadPilot, loadPilotOrder, pilotFace } from "./pilot";
 import { useProgress } from "./store";
 import { bareHeadword, levelOf } from "./text";
 import type {
@@ -245,10 +245,16 @@ export async function loadStudyFaces(
     }
   }
 
-  // Sense-level targets exist only in the pilot. If it cannot load, this
-  // rejects, so the caller shows an error rather than dropping those cards.
-  // The study's comparison arm keeps the original cards for pilot words.
-  const needsPilot = extraIds.some((id) => id.includes("#")) || (levels.has("A1") && CONTENT_CHANNEL !== "none");
+  // Sense-level targets exist only in the enhanced content. If it cannot load,
+  // this rejects, so the caller shows an error rather than dropping those
+  // cards. The study's comparison arm keeps the original cards for pilot words.
+  const enhancedLevels =
+    CONTENT_CHANNEL === "none"
+      ? new Set<LevelId | null>()
+      : await loadPilotOrder()
+          .then((order) => new Set(order.order.general.map(levelOf)))
+          .catch(() => new Set<LevelId | null>(["A1"]));
+  const needsPilot = extraIds.some((id) => id.includes("#")) || [...levels].some((level) => enhancedLevels.has(level));
   await Promise.all([
     ...[...levels].map(async (level) => {
       const label = meta.levels.find((item) => item.id === level)?.label ?? level;
@@ -264,7 +270,7 @@ export async function loadStudyFaces(
     const pilot = await loadPilot();
     const accent = useProgress.getState().accent;
     for (const target of pilot.targets) {
-      // Enhanced pilot content replaces the original card for the same id.
+      // Enhanced content replaces the original card for the same id.
       map.set(target.sense.id, pilotFace(target, pilot.pilot.audio, accent, map.get(target.entry.id)?.pron));
     }
   }

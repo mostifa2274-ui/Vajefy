@@ -30,7 +30,7 @@ const limit = Number(option("--limit") ?? Infinity);
 const dryRun = args.includes("--dry-run");
 
 const set = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "coach-eval", "cases.json"), "utf8")) as { status: string; cases: Case[] };
-const content = indexContent(JSON.parse(fs.readFileSync(path.join(ROOT, "public", "data", "pilot-a1.json"), "utf8")) as Pilot);
+const content = indexContent(JSON.parse(fs.readFileSync(path.join(ROOT, "public", "data", "enhanced.json"), "utf8")) as Pilot);
 
 // Balance the split: as many natural as need-a-change cases, plus every context-dependent one.
 const pool = set.cases.filter((item) => item.split === split);

@@ -16,7 +16,7 @@ import {
   seenPrompts,
   type LessonSession,
 } from "@/lib/learn/lesson";
-import { introducible, introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
+import { focusFirst, introducible, introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
 import { resumable } from "@/lib/learn/session";
 import { dueIds, useProgress } from "@/lib/learn/store";
 
@@ -31,6 +31,7 @@ function LearnPage() {
   const hydrated = useProgress((state) => state.hydrated);
   const cards = useProgress((state) => state.cards);
   const goal = useProgress((state) => state.goal);
+  const focus = useProgress((state) => state.focus);
   const minutes = useProgress((state) => state.minutes);
   const sessionSize = useProgress((state) => state.sessionSize);
   const sessions = useProgress((state) => state.sessions);
@@ -98,7 +99,8 @@ function LearnPage() {
 
   const unfinished = resumable(sessions, "lesson", opened);
   const due = dueIds(cards, opened).length;
-  const ordered = introductionOrder(index.targets, goal);
+  // Lessons at the learner's level first, then the other levels' lessons.
+  const ordered = focusFirst(introductionOrder(index.targets, goal), focus);
   const size = lessonSize(minutes, due, sessionSize);
   const upcoming = nextTargets(ordered, cards, size);
   const met = index.targets.filter((target) => cards[target.sense.id]).length;

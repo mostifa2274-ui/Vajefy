@@ -4,7 +4,7 @@ import test from "node:test";
 import type { Pilot } from "../lib/learn/content";
 import { anthropicBody, coachPrompt, coachRequest, COACH_TOOL, indexContent, readReply } from "./coach-core";
 
-const content = indexContent(JSON.parse(readFileSync("public/data/pilot-a1.json", "utf8")) as Pilot);
+const content = indexContent(JSON.parse(readFileSync("public/data/enhanced.json", "utf8")) as Pilot);
 
 test("a coach question is grounded in the word's own teaching content", () => {
   const request = coachRequest.parse({ task: "sentence", senses: ["lex:A1:bring"], text: "Can you bring me the book?", lang: "fa" });

@@ -2,6 +2,8 @@ import type { Contrast, Entry, Goal, Pilot, PilotOrder, Scene, Sense, SenseAudio
 import { entryIdOf, orderForGoal } from "./content";
 import { CONTENT_CHANNEL, introducibleIn, type Channel } from "./channel";
 import { loadJson } from "./load";
+import { levelOf } from "./text";
+import type { LevelId } from "./types";
 
 export type PilotEntry = Pilot["entries"][number];
 
@@ -59,7 +61,7 @@ export function indexPilot(pilot: Pilot): PilotIndex {
 }
 
 export function loadPilot(): Promise<PilotIndex> {
-  index ??= loadJson<Pilot>("pilot-a1.json")
+  index ??= loadJson<Pilot>("enhanced.json")
     .then(indexPilot)
     .catch((error: unknown) => {
       index = null;
@@ -104,12 +106,26 @@ export function introductionOrder(targets: PilotTarget[], goal: Goal | undefined
   return orderForGoal(targets, goal, (target) => ({ goals: target.entry.goals, sense: target.index }));
 }
 
+/** Targets at one level of the catalogue. */
+export function atLevel<T extends { sense: Sense }>(targets: T[], level: LevelId): T[] {
+  return targets.filter((target) => levelOf(target.sense.id) === level);
+}
+
+/**
+ * The guided curriculum for a learner: lessons at their focus level first,
+ * then the enhanced content of the other levels, lowest first.
+ */
+export function focusFirst<T extends { sense: Sense }>(ordered: T[], focus: LevelId): T[] {
+  const here = atLevel(ordered, focus);
+  return [...here, ...ordered.filter((target) => !here.includes(target))];
+}
+
 /**
  * Only the introduction order, a few kilobytes, for screens that need to count
  * upcoming lesson words without loading the whole pilot.
  */
 export function loadPilotOrder(): Promise<PilotOrder> {
-  return loadJson<PilotOrder>("pilot-order.json");
+  return loadJson<PilotOrder>("enhanced-order.json");
 }
 
 export function isPilotEntry(index: PilotIndex, id: string): boolean {
@@ -123,7 +139,7 @@ export function pilotFace(target: PilotTarget, audio: Record<string, SenseAudio>
   const grammar = sense.grammar.map((item) => `${item.pattern} — ${item.note}`).join("\n");
   return {
     id: sense.id,
-    level: "A1",
+    level: levelLabel(levelOf(sense.id)),
     title: entry.headword,
     ipa: pronunciationFor(sense, accent),
     ...(pron ? { pron } : {}),
@@ -142,5 +158,10 @@ export function pilotFace(target: PilotTarget, audio: Record<string, SenseAudio>
 }
 
 type StudyFaceLike = import("./types").StudyFace;
+
+/** How a level is written: B2x is shown as B2+. */
+function levelLabel(level: LevelId | null): string {
+  return level === "B2x" ? "B2+" : (level ?? "");
+}
 
 export type { Contrast, Entry, Scene, Sense };
