@@ -79,6 +79,10 @@ is adjusted, not the thresholds.
   pronunciation and its sound with the press; the rest of the card follows
   in a background render, so the press does not wait for a page of mixed
   Persian and English text to be laid out (about 50 ms on the test phone).
+- **Startup does only what the first screen needs.** Number formats are built
+  once per language rather than for every number drawn (they took about 90 ms
+  on the test phone), and the content schemas, which only the authoring
+  scripts use, are kept out of the app bundle.
 - **Audio is fetched on demand** and cached separately, never on page load.
 - **System fonts.** No web fonts to download.
 

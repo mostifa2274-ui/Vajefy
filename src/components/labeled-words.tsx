@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { entryIdOf } from "@/lib/learn/content";
+import { entryIdOf } from "@/lib/learn/targets";
 import { loadLevel } from "@/lib/learn/load";
 import { loadPilot } from "@/lib/learn/pilot";
 import { levelOf } from "@/lib/learn/text";

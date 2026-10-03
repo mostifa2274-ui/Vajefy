@@ -1,4 +1,7 @@
 import { z } from "zod";
+import { GOALS } from "./targets";
+
+export { GOALS, entryIdOf, headwordOf, isSenseId, orderForGoal, type Goal, type PilotOrder } from "./targets";
 
 /**
  * Sense-level teaching content for the enhanced pilot. Each sense is its own
@@ -26,30 +29,6 @@ export const POS = [
   "particle",
 ] as const;
 
-export const GOALS = ["everyday", "work", "study", "general"] as const;
-export type Goal = (typeof GOALS)[number];
-
-/**
- * The order in which to introduce targets: curriculum order, with targets that
- * serve the learner's goal brought forward. A further sense of a word waits
- * until the first sense has been met.
- */
-export function orderForGoal<T>(targets: T[], goal: Goal | undefined, describe: (target: T) => { goals: readonly Goal[]; sense: number }): T[] {
-  return targets
-    .map((target, position) => {
-      const { goals, sense } = describe(target);
-      const serves = !goal || goal === "general" || goals.includes(goal);
-      return { target, rank: position + (sense > 0 ? 1000 : 0) + (serves ? 0 : 400) };
-    })
-    .sort((a, b) => a.rank - b.rank)
-    .map((item) => item.target);
-}
-
-/**
- * Introduction order per goal, compiled to `public/data/enhanced-order.json`,
- * with the sense ids whose entries are released.
- */
-export type PilotOrder = { version: string; order: Record<Goal, string[]>; released: string[] };
 
 const example = z.object({ en: text, fa });
 
@@ -119,18 +98,6 @@ export const sense = z.object({
   tts: z.object({ gb: text, us: text }).partial().optional(),
   check: z.array(checkItem).min(2),
 });
-
-/**
- * The headword as learners see and hear it. The dataset numbers homographs
- * and qualifies senses (last¹ (final), lie² (tell a lie), bank (money)); an
- * enhanced entry teaches one word, so both are dropped.
- */
-export function headwordOf(dataset: string): string {
-  return dataset
-    .replace(/\s*\([^)]*\)\s*$/u, "")
-    .replace(/[¹²³⁴⁵⁶⁷⁸⁹⁰]+$/u, "")
-    .trim();
-}
 
 export const entry = z.object({
   id: text.regex(/^lex:(A1|A2|B1|B2|B2x|C1):[a-z0-9-]+$/),
@@ -202,13 +169,3 @@ export type Pilot = {
   /** Every current clip per accent, for downloading pronunciation for offline use. */
   audioPack: Record<"gb" | "us", { files: string[]; bytes: number }>;
 };
-
-export function isSenseId(id: string) {
-  return id.includes("#");
-}
-
-/** The entry a learning target belongs to. */
-export function entryIdOf(id: string) {
-  const hash = id.indexOf("#");
-  return hash < 0 ? id : id.slice(0, hash);
-}
