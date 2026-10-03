@@ -91,7 +91,9 @@ test("failed database writes keep answers in the session, export them, and retry
   await accessible(page);
 
   await notice.getByRole("button", { name: "Retry saving", exact: true }).click();
-  await expect(notice).toBeVisible();
+  // The retry has finished, and failed, before writes are allowed again.
+  await expect(notice.getByRole("status")).toHaveText("Still not saved. Free some browser storage, then try again.");
+  await expect(notice.getByRole("button", { name: "Retry saving", exact: true })).toBeEnabled();
   await page.evaluate(() => {
     (window as ControlledWindow).denyProgressWrites = false;
   });

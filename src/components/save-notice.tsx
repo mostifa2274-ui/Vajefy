@@ -1,4 +1,4 @@
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { downloadProgressBackup } from "@/lib/learn/download-backup";
 import type { Copy } from "@/lib/learn/i18n";
 import type { SaveStatus } from "@/lib/learn/persistence";
@@ -8,7 +8,16 @@ const serverStatus = (): SaveStatus => "checking";
 
 export function SaveNotice({ copy }: { copy: Copy }) {
   const status = useSyncExternalStore(persistence.subscribe, persistence.getStatus, serverStatus);
+  // A retry takes a moment; until it ends the button waits, and a failed one says so.
+  const [attempt, setAttempt] = useState<"idle" | "trying" | "failed">("idle");
+  // Once saving works again, a later failure starts afresh.
+  if (status !== "session" && attempt === "failed") setAttempt("idle");
   if (status !== "session" && status !== "unavailable") return null;
+
+  async function retry() {
+    setAttempt("trying");
+    setAttempt((await persistence.retry()) ? "idle" : "failed");
+  }
   const unavailable = status === "unavailable";
   const buttonClass = "min-h-11 rounded-md bg-paper px-3 text-sm shadow-[var(--shadow-border)]";
 
@@ -23,11 +32,16 @@ export function SaveNotice({ copy }: { copy: Copy }) {
           {copy.exportProgress}
         </button>
         {unavailable ? null : (
-          <button type="button" onClick={() => void persistence.retry()} className={buttonClass}>
+          <button type="button" onClick={() => void retry()} disabled={attempt === "trying"} aria-busy={attempt === "trying"} className={`${buttonClass} disabled:opacity-60`}>
             {copy.retrySave}
           </button>
         )}
       </div>
+      {attempt === "failed" ? (
+        <p role="status" className="mt-2 text-sm text-pretty">
+          {copy.retryFailed}
+        </p>
+      ) : null}
     </section>
   );
 }
