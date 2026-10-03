@@ -1,7 +1,11 @@
-# Vajefy — Roshana (روشنا)
+# Vajefy
 
 An English-vocabulary trainer for Persian speakers, built on the Oxford 3000
-and 5000 lists, with spaced repetition.
+and 5000 lists, with spaced repetition. It is organised around four
+destinations: **Today** (the next step), **Learn** (lessons, review and
+practice), **Words** (search, saved entries and reference) and **Progress**
+(retention, skills, workload and settings). See
+[docs/INTERFACE.md](docs/INTERFACE.md).
 
 - **5,322 headwords** from A1 to C1, each with a Persian gloss, Persian-script
   pronunciation, IPA, part of speech, and an example with its translation.
@@ -20,14 +24,17 @@ and 5000 lists, with spaced repetition.
 - **One-screen setup**: a learning goal, a starting level (with an optional
   two-minute placement check) and 5, 10 or 15 minutes a day, which set the daily
   plan.
-- **Quiz** (`/drill`): eleven practice modes, including Pairs and a 45-second
+- **Practice** (`/drill`): eleven practice modes, including Pairs and a 45-second
   spelling sprint, plus **Smart Practice**. Smart Practice selects studied words
   using FSRS memory estimates and real skill mistakes, then mixes spelling,
   listening, meaning and context. Practice is measured separately from retention.
 - **Offline-first PWA**: the app shell and all learning datasets are cached for
   offline study after the first successful load.
 - Persian or English interface, right-to-left aware throughout, with selectable
-  British or American system pronunciation.
+  British or American pronunciation.
+- **Accessible and fast on phones**: tested against WCAG 2.2 AA
+  ([docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and Core Web Vitals budgets on
+  a throttled phone ([docs/PERFORMANCE.md](docs/PERFORMANCE.md)).
 
 [docs/ANALYSIS.md](docs/ANALYSIS.md) records an in-depth review of the original
 code and how each finding was fixed.
@@ -55,7 +62,7 @@ npm run dev        # http://localhost:8080
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm test` | Unit tests in `src/lib/learn/**/*.test.ts` |
-| `npx playwright test` | Critical browser, RTL/mobile and offline regression tests (CI installs the pinned runner) |
+| `npx playwright test` | Critical browser, RTL/mobile, offline, accessibility and performance-budget tests (CI installs the pinned runner) |
 
 CI (`.github/workflows/ci.yml`) runs install, the 8,272-record data contract,
 typecheck, lint, unit tests and the production build, then drives critical paths
@@ -67,8 +74,10 @@ The app is fully client-side: no accounts, no server database, no AI service.
 
 | Path | Contents |
 |---|---|
-| `src/routes/` | One file per screen: Today, Learn, Words, Review, Quiz, Notebook, Progress |
-| `src/components/` | Shell, setup, guided lesson, review session, quiz runner, Pairs, sprint |
+| `src/routes/` | One file per screen: Today, Lessons, Review, Practice, Lexicon, Reference, Progress |
+| `src/components/` | Shell, section tabs, setup, guided lesson, review session, practice runner, Pairs, sprint |
+| `src/components/feedback.tsx` | Shared answer feedback, progress meter and right/wrong markers |
+| `src/lib/sections.ts`, `src/lib/focus.ts` | Which destination a screen belongs to; keeping focus in the task |
 | `src/lib/learn/srs.ts` | FSRS-6 scheduler, legacy SM-2 bridge, retrievability |
 | `src/lib/learn/store.ts` | Progress state (zustand) whose actions dispatch operations |
 | `src/lib/learn/ops.ts` | Every progress change as a pure, deduplicated operation |
@@ -109,7 +118,7 @@ The app is fully client-side: no accounts, no server database, no AI service.
   event (rating, actual elapsed time, next interval, and FSRS memory state where
   available). The history is capped to protect browser storage and can later be
   used for evidence-based parameter tuning.
-- Only **Review** moves a card's schedule. **Quiz, Pairs and the sprint are
+- Only **Review** moves a card's schedule. **Practice, Pairs and the sprint are
   practice**: they never push a review later. A miss on a scheduled word makes
   it due now, so the next Review asks it properly.
 - Scheduled Review and practice keep **separate counters and accuracy**. Practice

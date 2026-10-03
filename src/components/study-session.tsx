@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useActiveTime } from "@/lib/learn/active-time";
 import { useFormat } from "@/lib/learn/format";
 import { posLabel, useCopy } from "@/lib/learn/i18n";
@@ -16,6 +16,8 @@ import { cancelSpeech, speakEnglish } from "@/lib/learn/speech";
 import { useProgress } from "@/lib/learn/store";
 import { formatDelay } from "@/lib/learn/text";
 import type { CardProg, Grade, Lang, StudyFace } from "@/lib/learn/types";
+import { useKeepFocus } from "@/lib/focus";
+import { ProgressMeter } from "./feedback";
 import { Button, SpeakButton } from "./ui";
 
 const GRADES: Grade[] = ["again", "hard", "good", "easy"];
@@ -46,7 +48,7 @@ export function StudySession({
   onNewSession: () => void;
 }) {
   const copy = useCopy(lang);
-  const { num, pct } = useFormat();
+  const { num, pct, sep } = useFormat();
   const review = useProgress((state) => state.review);
   const undo = useProgress((state) => state.undo);
   const saveSession = useProgress((state) => state.saveSession);
@@ -58,6 +60,8 @@ export function StudySession({
   const teaching = Boolean(current?.isNew && !session.taught.includes(current.id));
   const elapsed = useActiveTime(current ? `${current.id}:${session.answers.length}` : undefined);
   const stats = reviewStats(session);
+  const word = useRef<HTMLHeadingElement>(null);
+  useKeepFocus(word, `${stats.reviews}:${current?.id ?? ""}:${session.revealed}:${teaching}`);
   const undoable = lastUndoable(session);
 
   function update(changed: ReviewSession) {
@@ -153,7 +157,7 @@ export function StudySession({
         <h1 className="text-3xl font-medium text-balance">{copy.sessionDone}</h1>
         <p className="mt-3 text-muted">
           {num(stats.reviews)} {copy.reviewed}
-          {stats.reviews ? ` · ${pct(accuracy)}` : ""}
+          {stats.reviews ? `${sep}${pct(accuracy)}` : ""}
         </p>
         {stats.misses.length ? (
           <div className="mt-6">
@@ -179,11 +183,7 @@ export function StudySession({
 
   const done = stats.reviews;
   const remaining = session.queue.length;
-  const progressBar = (
-    <div className="mb-3 h-1 rounded-full bg-line">
-      <div className="h-1 rounded-full bg-accent" style={{ width: `${Math.round((100 * done) / Math.max(1, done + remaining))}%` }} />
-    </div>
-  );
+  const progressBar = <ProgressMeter value={done} max={done + remaining} label={copy.sessionProgress} count={false} />;
 
   if ("waitUntil" in next) {
     const seconds = Math.max(0, Math.ceil((next.waitUntil - now) / 1000));
@@ -244,8 +244,8 @@ export function StudySession({
         <div className="flex items-center justify-between gap-3 text-sm text-muted">
           <span>
             {teaching ? copy.teachNew : current.isNew ? copy.newCard : copy.reviewCard}
-            {face.level ? ` · ${face.level}` : ""}
-            {face.pos ? ` · ${posLabel(face.pos, lang)}` : ""}
+            {face.level ? `${sep}${face.level}` : ""}
+            {face.pos ? `${sep}${posLabel(face.pos, lang)}` : ""}
           </span>
           <span className="tabular-nums">
             {num(done + 1)} / {num(done + remaining)}
@@ -253,7 +253,7 @@ export function StudySession({
         </div>
         {teaching ? <p className="mt-3 text-sm text-pretty text-muted">{copy.teachNewHint}</p> : null}
         <div className="px-2 py-8 text-center">
-          <h2 lang="en" dir="ltr" className="lex-word text-5xl text-balance text-ink sm:text-6xl">
+          <h2 ref={word} tabIndex={-1} lang="en" dir="ltr" className="lex-word text-5xl text-balance text-ink outline-none sm:text-6xl">
             {face.title}
           </h2>
           {face.ipa ? (

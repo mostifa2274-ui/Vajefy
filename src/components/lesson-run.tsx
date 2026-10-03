@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useActiveTime } from "@/lib/learn/active-time";
 import { useFormat } from "@/lib/learn/format";
 import { posLabel, useCopy, type Copy } from "@/lib/learn/i18n";
@@ -22,7 +22,9 @@ import { POS_FA, pronunciationFor, senseAudio, type PilotIndex, type PilotTarget
 import { newId } from "@/lib/learn/session";
 import { useProgress } from "@/lib/learn/store";
 import { cn } from "@/lib/cn";
-import { Button, SpeakButton } from "./ui";
+import { useKeepFocus } from "@/lib/focus";
+import { AnswerFeedback, Mark, ProgressMeter, WrongRight } from "./feedback";
+import { Button, Sep, SpeakButton } from "./ui";
 
 /** Event handlers read the clock through this, outside render. */
 function timestamp() {
@@ -55,6 +57,8 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
   const step = session.steps[session.index];
   const answered = answerFor(session);
   const elapsed = useActiveTime(step ? `${session.id}:${session.index}` : undefined);
+  const stepTop = useRef<HTMLDivElement>(null);
+  useKeepFocus(stepTop, `${session.index}:${Boolean(answered)}`);
 
   function advance() {
     const next = advanceLesson(session, timestamp());
@@ -119,18 +123,10 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
     );
   }
 
-  const progress = Math.round((100 * session.index) / Math.max(1, session.steps.length));
-
   return (
     <section className="mx-auto max-w-xl">
-      <div className="mb-3 flex items-center gap-3">
-        <div className="h-1 flex-1 rounded-full bg-line">
-          <div className="h-1 rounded-full bg-accent" style={{ width: `${progress}%` }} />
-        </div>
-        <span className="text-xs text-muted tabular-nums">
-          {num(session.index + 1)} / {num(session.steps.length)}
-        </span>
-      </div>
+      <ProgressMeter value={session.index + 1} max={session.steps.length} label={copy.sessionProgress} />
+      <div ref={stepTop} tabIndex={-1} className="outline-none">
       <StepView
         key={`${session.id}:${session.index}`}
         step={step}
@@ -143,6 +139,7 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
         onAnswer={record}
         onNext={advance}
       />
+      </div>
     </section>
   );
 }
@@ -195,10 +192,8 @@ function StepView({
         <h3 className="mt-4 text-sm font-medium">{copy.unnaturalLabel}</h3>
         <ul className="mt-2 grid gap-3">
           {contrast.unnatural.map((item) => (
-            <li key={item.wrong} className="text-sm">
-              <p lang="en" dir="ltr" className="text-bad"><span aria-hidden>✗ </span>{item.wrong}</p>
-              <p lang="en" dir="ltr" className="text-good"><span aria-hidden>✓ </span>{item.right}</p>
-              <p lang="fa" dir="rtl" className="mt-1 text-muted text-pretty">{item.why}</p>
+            <li key={item.wrong}>
+              <WrongRight wrong={item.wrong} right={item.right} why={item.why} copy={copy} />
             </li>
           ))}
         </ul>
@@ -259,7 +254,11 @@ function Teach({
   return (
     <article className="panel p-4 sm:p-6">
       <p className="text-sm text-muted">
-        {copy.teachNew} · A1 · {posLabel(POS_FA[sense.pos], lang)}
+        {copy.teachNew}
+        <Sep />
+        A1
+        <Sep />
+        {posLabel(POS_FA[sense.pos], lang)}
       </p>
       <div className="mt-4 text-center">
         <h2 lang="en" dir="ltr" className="lex-word text-5xl text-balance">{entry.headword}</h2>
@@ -303,10 +302,8 @@ function Teach({
         </>
       ) : null}
       <h3 className="mt-5 text-sm font-medium">{copy.mistakeLabel}</h3>
-      <div className="mt-1 text-sm">
-        <p lang="en" dir="ltr" className="text-bad"><span aria-hidden>✗ </span>{sense.mistake.wrong}</p>
-        <p lang="en" dir="ltr" className="text-good"><span aria-hidden>✓ </span>{sense.mistake.right}</p>
-        <p lang="fa" dir="rtl" className="mt-1 text-muted text-pretty">{sense.mistake.why}</p>
+      <div className="mt-1">
+        <WrongRight wrong={sense.mistake.wrong} right={sense.mistake.right} why={sense.mistake.why} copy={copy} />
       </div>
       {!entry.released ? <p className="mt-4 text-xs text-muted">{copy.draftContent}</p> : null}
       <Button className="mt-6 w-full" onClick={onDone}>{copy.tryRecall}</Button>
@@ -357,7 +354,9 @@ function Check({
                     locked && option.ok ? "border-good" : chosen ? "border-bad" : "border-line bg-paper",
                   )}
                 >
+                  {locked && (option.ok || chosen) ? <Mark ok={option.ok} copy={copy} /> : null}
                   {option.text}
+                  {chosen ? <span className="sr-only"> ({copy.yourAnswer})</span> : null}
                 </button>
               );
             })}
@@ -409,12 +408,13 @@ function Check({
 }
 
 function Feedback({ item, answered, copy, onNext }: { item: ResolvedItem; answered: LessonAnswer; copy: Copy; onNext: () => void }) {
-  const right = answered.result !== "wrong";
   return (
-    <div className="mt-4 border-t border-line pt-4" aria-live="polite">
-      <p className={right ? "text-good" : "text-bad"}>
-        {answered.result === "correct" ? copy.correct : answered.result === "close" ? copy.closeTypo : copy.incorrect}
-      </p>
+    <AnswerFeedback
+      ok={answered.result !== "wrong"}
+      title={answered.result === "correct" ? copy.correct : answered.result === "close" ? copy.closeTypo : copy.incorrect}
+      nextLabel={copy.next}
+      onNext={onNext}
+    >
       {item.type === "choice" ? (
         <ul className="mt-2 grid gap-2 text-sm">
           {item.options
@@ -422,7 +422,7 @@ function Feedback({ item, answered, copy, onNext }: { item: ResolvedItem; answer
             .map((option) => (
               <li key={option.text}>
                 <span lang={option.lang} dir={option.lang === "fa" ? "rtl" : "ltr"} className={option.ok ? "text-good" : "text-bad"}>
-                  {option.ok ? "✓ " : "✗ "}
+                  <Mark ok={option.ok} copy={copy} />
                   {option.text}
                 </span>
                 <p dir="auto" className="text-muted text-pretty">{option.why}</p>
@@ -438,10 +438,7 @@ function Feedback({ item, answered, copy, onNext }: { item: ResolvedItem; answer
           <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty">{item.why}</p>
         </>
       )}
-      <Button className="mt-4 w-full" onClick={onNext}>
-        {copy.next}
-      </Button>
-    </div>
+    </AnswerFeedback>
   );
 }
 

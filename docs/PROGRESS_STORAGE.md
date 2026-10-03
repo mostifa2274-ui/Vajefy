@@ -80,7 +80,7 @@ A review or practice session is saved with every answer and every step:
 - the answers so far;
 - the cards already taught.
 
-Reopening Review, or choosing **Continue** on Today or Quiz, resumes the
+Reopening Review, or choosing **Continue** on Today or Practice, resumes the
 session where it stopped:
 
 - A question that was answered but not yet followed by **Next** shows its result

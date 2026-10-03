@@ -6,7 +6,7 @@ import { measures } from "@/lib/learn/measures";
 import { loadPilot } from "@/lib/learn/pilot";
 import { useProgress } from "@/lib/learn/store";
 import type { PracticeSkill } from "@/lib/learn/types";
-import { Num } from "./ui";
+import { Num, Sep } from "./ui";
 
 const SKILL_LABEL: Record<PracticeSkill, keyof Copy> = {
   meaning: "skillMeaning",
@@ -20,7 +20,7 @@ export function LearningSummary({ copy }: { copy: Copy }) {
   const cards = useProgress((state) => state.cards);
   const reviewHistory = useProgress((state) => state.reviewHistory);
   const practiceSkills = useProgress((state) => state.practiceSkills);
-  const { pct } = useFormat();
+  const { pct, sep } = useFormat();
   const result = measures({ cards, reviewHistory, practiceSkills });
   return (
     <section className="mt-8" aria-labelledby="measures-title">
@@ -43,10 +43,13 @@ export function LearningSummary({ copy }: { copy: Copy }) {
           <li key={item.skill} className="flex items-center justify-between gap-3">
             <span>
               {copy[SKILL_LABEL[item.skill]]}
-              {result.weakest === item.skill ? <span className="ms-2 text-bad">· {copy.skillNeedsWork}</span> : null}
+              {result.weakest === item.skill ? <span className="text-bad">
+                  <Sep />
+                  {copy.skillNeedsWork}
+                </span> : null}
             </span>
             <span className="tabular-nums text-muted">
-              {item.accuracy === null ? copy.notEnoughEvidence : `${pct(item.accuracy)} · `}
+              {item.accuracy === null ? copy.notEnoughEvidence : `${pct(item.accuracy)}${sep}`}
               {item.accuracy === null ? null : <Num value={item.attempts} />}
             </span>
           </li>
@@ -59,7 +62,7 @@ export function LearningSummary({ copy }: { copy: Copy }) {
 /** Download the pilot's recorded pronunciation for the learner's accent. */
 export function OfflineAudio({ copy }: { copy: Copy }) {
   const accent = useProgress((state) => state.accent);
-  const { num } = useFormat();
+  const { num, sep } = useFormat();
   const [pack, setPack] = useState<{ files: string[]; bytes: number } | null>(null);
   const [status, setStatus] = useState<PackStatus | null>(null);
   const [busy, setBusy] = useState(false);
@@ -107,7 +110,9 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
       <div className="mt-3 flex flex-wrap items-center gap-3">
         {complete ? (
           <>
-            <span className="text-sm text-good">✓ {copy.downloaded} · {num(Number(megabytes))} MB</span>
+            <span className="text-sm text-good">✓ {copy.downloaded}
+              {sep}
+              {num(Number(megabytes))} MB</span>
             <button
               type="button"
               className="min-h-11 text-sm text-muted"
@@ -123,7 +128,7 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
             onClick={() => void download()}
             className="min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)] disabled:opacity-60"
           >
-            {busy ? copy.downloading : `${copy.downloadAudio} · ${num(Number(megabytes))} MB`}
+            {busy ? copy.downloading : `${copy.downloadAudio}${sep}${num(Number(megabytes))} MB`}
           </button>
         )}
         {busy || (!complete && status.cached > 0) ? (

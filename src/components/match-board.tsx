@@ -4,7 +4,7 @@ import type { PlayPair } from "@/lib/learn/play";
 import { shuffle } from "@/lib/learn/text";
 import type { Lang } from "@/lib/learn/types";
 import { cn } from "@/lib/cn";
-import { Button, Num } from "./ui";
+import { Button, Num, Sep } from "./ui";
 
 type Tile = {
   key: string;
@@ -116,7 +116,12 @@ export function MatchBoard({
         <h1 className="mt-1 text-3xl font-medium text-balance">{copy.matchClear}</h1>
         <p className="mt-3 text-muted">
           {copy.movesLabel} <Num value={moves} />
-          {started != null ? ` · ${clock(now - started, lang)}` : ""}
+          {started != null ? (
+            <>
+              <Sep />
+              {clock(now - started, lang)}
+            </>
+          ) : null}
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button onClick={onExit}>{copy.roundAgain}</Button>
@@ -131,7 +136,7 @@ export function MatchBoard({
         <span>{copy.matchMode}</span>
         <span className="tabular-nums">
           <Num value={matched.size} /> / <Num value={pairs.length} />
-          <span className="mx-2">·</span>
+          <Sep />
           {started == null ? "0:00" : clock(now - started, lang)}
         </span>
       </div>

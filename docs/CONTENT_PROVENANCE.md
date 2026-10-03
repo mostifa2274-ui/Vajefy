@@ -1,6 +1,6 @@
 # Content provenance and release gate
 
-Vajefy/Roshana ships a derived English-learning dataset in `public/data/`.
+Vajefy ships a derived English-learning dataset in `public/data/`.
 The repository also contains the source workbook used for the current conversion:
 
 `attachments/Oxford_3000_5000_Clean_Final_RTL_Safe_Global_EN_FA.xlsx`

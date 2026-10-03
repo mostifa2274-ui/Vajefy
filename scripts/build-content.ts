@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
-import { contrast, entry, review, scene, type Entry, type Pilot, type SenseAudio } from "../src/lib/learn/content.ts";
+import { contrast, entry, GOALS, orderForGoal, review, scene, type Entry, type Pilot, type PilotOrder, type SenseAudio } from "../src/lib/learn/content.ts";
 
 /**
  * Compile the enhanced A1 pilot from `content/pilot/` into
@@ -13,6 +13,7 @@ import { contrast, entry, review, scene, type Entry, type Pilot, type SenseAudio
 const ROOT = process.cwd();
 const SOURCE = path.join(ROOT, "content", "pilot");
 const OUT = path.join(ROOT, "public", "data", "pilot-a1.json");
+const ORDER_OUT = path.join(ROOT, "public", "data", "pilot-order.json");
 const AUDIO = path.join(SOURCE, "audio-manifest.json");
 const failures: string[] = [];
 
@@ -182,15 +183,26 @@ if (failures.length) {
   process.exit(1);
 }
 
-const output = `${JSON.stringify(compiled)}\n`;
-if (process.argv.includes("--check")) {
-  const existing = fs.existsSync(OUT) ? fs.readFileSync(OUT, "utf8") : "";
-  if (existing !== output) {
-    console.error("public/data/pilot-a1.json is out of date; run npm run content:build");
-    process.exit(1);
+// The introduction order per goal, small enough for Today to load at once.
+const targets = compiled.entries.flatMap((item) => item.senses.map((sense, position) => ({ id: sense.id, goals: item.goals, sense: position })));
+const pilotOrder: PilotOrder = {
+  version: compiled.version,
+  order: Object.fromEntries(GOALS.map((goal) => [goal, orderForGoal(targets, goal, (target) => target).map((target) => target.id)])) as PilotOrder["order"],
+};
+
+for (const [file, output] of [
+  [OUT, `${JSON.stringify(compiled)}\n`],
+  [ORDER_OUT, `${JSON.stringify(pilotOrder)}\n`],
+] as const) {
+  if (process.argv.includes("--check")) {
+    const existing = fs.existsSync(file) ? fs.readFileSync(file, "utf8") : "";
+    if (existing !== output) {
+      console.error(`${path.relative(ROOT, file)} is out of date; run npm run content:build`);
+      process.exit(1);
+    }
+  } else {
+    fs.writeFileSync(file, output);
   }
-} else {
-  fs.writeFileSync(OUT, output);
 }
 const released = compiled.entries.filter((item) => item.released).length;
 const senses = compiled.entries.reduce((sum, item) => sum + item.senses.length, 0);

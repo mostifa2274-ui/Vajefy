@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import type { Pilot } from "./content";
+import { GOALS, type Pilot, type PilotOrder } from "./content";
 import { advanceLesson, answerLesson, buildApplication, buildLesson, gradeTyped, lessonSize, nextTargets, resolveItem } from "./lesson";
 import { indexPilot, introductionOrder } from "./pilot";
 
@@ -76,5 +76,17 @@ test("contrasts and scenes can be practised on their own", () => {
   assert.equal(scene?.steps.at(-1)?.kind, "write");
   for (const step of [...(contrast?.steps ?? []), ...(scene?.steps ?? [])]) {
     if (step.kind === "check") assert.ok(resolveItem(index, step.ref));
+  }
+});
+
+test("the small introduction-order file matches the full pilot for every goal", () => {
+  const compiled = JSON.parse(readFileSync("public/data/pilot-order.json", "utf8")) as PilotOrder;
+  assert.equal(compiled.version, index.pilot.version);
+  for (const goal of GOALS) {
+    assert.deepEqual(
+      compiled.order[goal],
+      introductionOrder(index.targets, goal).map((target) => target.sense.id),
+      goal,
+    );
   }
 });

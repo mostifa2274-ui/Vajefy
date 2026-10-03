@@ -4,7 +4,7 @@ import type { PlayPair } from "@/lib/learn/play";
 import { gradeSpelling } from "@/lib/learn/text";
 import type { Lang } from "@/lib/learn/types";
 import { cn } from "@/lib/cn";
-import { Button, Num } from "./ui";
+import { Button, Num, Sep } from "./ui";
 
 const SECONDS = 45;
 
@@ -81,7 +81,7 @@ export function SprintRun({
         <h1 className="mt-1 text-3xl font-medium text-balance">{copy.sprintOver}</h1>
         <p className="mt-3 text-muted">
           {copy.typedLabel} <Num value={correct} />
-          <span className="mx-2">·</span>
+          <Sep />
           {copy.bestCombo} <Num value={best} />
         </p>
         {misses.length ? (

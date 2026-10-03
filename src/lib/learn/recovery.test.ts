@@ -128,5 +128,5 @@ test("nothing is recovered from unreadable text", () => {
 });
 
 test("the saved copy is named apart from backups", () => {
-  assert.equal(savedCopyFileName(new Date("2026-10-02T09:00:00Z")), "roshana-saved-copy-2026-10-02.json");
+  assert.equal(savedCopyFileName(new Date("2026-10-02T09:00:00Z")), "vajefy-saved-copy-2026-10-02.json");
 });

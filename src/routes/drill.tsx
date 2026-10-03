@@ -87,7 +87,7 @@ function DrillPage() {
   const saveSession = useProgress((state) => state.saveSession);
   const sessions = useProgress((state) => state.sessions);
   const copy = useCopy(lang);
-  const { num } = useFormat();
+  const { num, sep } = useFormat();
   const [mode, setMode] = useState<Mode>(initial.play === "match" ? "match" : initial.play === "sprint" ? "sprint" : initial.play === "studied" ? "to-fa" : "smart");
   const [level, setLevel] = useState<LevelId>(focus);
   const [count, setCount] = useState(10);
@@ -210,8 +210,10 @@ function DrillPage() {
           <p className="text-sm">
             <span className="font-medium">{copy.resumeQuiz}</span>
             <span className="text-muted">
-              {" · "}
-              {unfinished.smart ? copy.smartPractice : copy.drill} · {num(unfinishedLeft)} {copy.leftLabel}
+              {sep}
+              {unfinished.smart ? copy.smartPractice : copy.drill}
+              {sep}
+              {num(unfinishedLeft)} {copy.leftLabel}
             </span>
           </p>
           <button

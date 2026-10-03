@@ -52,7 +52,7 @@ export function Onboard() {
 
   return (
     <div className="panel mx-auto max-w-xl p-5 sm:p-8">
-      <p className="lex-word text-3xl leading-none">Roshana</p>
+      <p className="lex-word text-3xl leading-none">Vajefy</p>
       <p className="mt-2 text-sm text-muted">Oxford 3000 · 5000</p>
       <h1 className="mt-6 text-2xl font-medium text-balance">{copy.setupTitle}</h1>
 

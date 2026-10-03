@@ -64,7 +64,7 @@ test("an unreadable save is never replaced at startup and can be downloaded exac
   expect(await stored(page)).toBe(raw);
   const copy = await download(page, page.getByRole("button", { name: "دریافت نسخهٔ ذخیره‌شده", exact: true }));
   expect(copy.text).toBe(raw);
-  expect(copy.name).toMatch(/^roshana-saved-copy-\d{4}-\d{2}-\d{2}\.json$/);
+  expect(copy.name).toMatch(/^vajefy-saved-copy-\d{4}-\d{2}-\d{2}\.json$/);
   await page.getByRole("button", { name: "شروع از نو", exact: true }).click();
   await page.getByRole("button", { name: "انصراف", exact: true }).click();
   expect(await stored(page)).toBe(raw);
@@ -146,7 +146,7 @@ test("importing a backup from a newer version explains why it was refused", asyn
     buffer: Buffer.from(JSON.stringify(backup)),
   });
   await expect(
-    page.getByText("This backup comes from a newer version of Roshana. Reload the page to update the app, then import it again.", { exact: true }),
+    page.getByText("This backup comes from a newer version of Vajefy. Reload the page to update the app, then import it again.", { exact: true }),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: "Yes, replace it", exact: true })).toHaveCount(0);
   expect((await readProgress(page)).state).toEqual(before.state);

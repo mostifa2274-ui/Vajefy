@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PilotEntryDetail } from "@/components/pilot-entry";
-import { PageHeader, SpeakButton } from "@/components/ui";
+import { PageHeader, Sep, SpeakButton } from "@/components/ui";
 import { loadPilot, type PilotIndex } from "@/lib/learn/pilot";
 import { cn } from "@/lib/cn";
 import { posLabel, useCopy } from "@/lib/learn/i18n";
@@ -243,7 +243,12 @@ function LexiconPage() {
               </button>
               <p className="text-xs text-muted">
                 {levelLabel(selected.id)}
-                {selected.pos ? ` · ${posLabel(selected.pos, lang)}` : ""}
+                {selected.pos ? (
+                  <>
+                    <Sep />
+                    {posLabel(selected.pos, lang)}
+                  </>
+                ) : null}
               </p>
               <h2 lang="en" dir="ltr" className="lex-word mt-2 text-4xl text-balance">
                 {selected.w}

@@ -2,6 +2,7 @@ import { z } from "zod";
 import { migrateProgress, PROGRESS_VERSION, savedProgress, type SavedProgress } from "./progress";
 import { currentProgress, progress, storedEnvelope } from "./schema";
 
+/** The format id from the first release, kept so every backup stays importable. */
 export const BACKUP_KIND = "roshana-progress";
 
 const backupFile = z.object({
@@ -26,7 +27,7 @@ export function makeBackup(state: SavedProgress, now = new Date()): string {
 }
 
 export function backupFileName(now = new Date()): string {
-  return `roshana-progress-${now.toISOString().slice(0, 10)}.json`;
+  return `vajefy-progress-${now.toISOString().slice(0, 10)}.json`;
 }
 
 /**

@@ -1,6 +1,7 @@
 import { posLabel, type Copy } from "@/lib/learn/i18n";
 import { POS_FA, pronunciationFor, senseAudio, type PilotEntry, type PilotIndex } from "@/lib/learn/pilot";
-import { SpeakButton } from "./ui";
+import { WrongRight } from "./feedback";
+import { Sep, SpeakButton } from "./ui";
 
 /** Every sense of an enhanced pilot entry, as reference in the Words page. */
 export function PilotEntryDetail({
@@ -23,7 +24,9 @@ export function PilotEntryDetail({
         return (
           <section key={sense.id} className="border-t border-line pt-4" aria-label={`${entry.headword} ${position + 1}`}>
             <p className="text-xs text-muted">
-              {position + 1}. {posLabel(POS_FA[sense.pos], lang)} · <span lang="en" dir="ltr">{pronunciationFor(sense, accent)}</span>
+              {position + 1}. {posLabel(POS_FA[sense.pos], lang)}
+              <Sep />
+              <span lang="en" dir="ltr">{pronunciationFor(sense, accent)}</span>
             </p>
             <p lang="fa" dir="rtl" className="mt-1 text-lg font-medium">{sense.gloss}</p>
             <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty">{sense.meaning}</p>
@@ -54,9 +57,7 @@ export function PilotEntryDetail({
             {sense.usage ? <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty">{sense.usage}</p> : null}
             <div className="mt-3 rounded-md bg-paper-2 p-3 text-sm">
               <p className="text-xs text-muted">{copy.mistakeLabel}</p>
-              <p lang="en" dir="ltr" className="text-bad"><span aria-hidden>✗ </span>{sense.mistake.wrong}</p>
-              <p lang="en" dir="ltr" className="text-good"><span aria-hidden>✓ </span>{sense.mistake.right}</p>
-              <p lang="fa" dir="rtl" className="mt-1 text-muted text-pretty">{sense.mistake.why}</p>
+              <WrongRight wrong={sense.mistake.wrong} right={sense.mistake.right} why={sense.mistake.why} copy={copy} />
             </div>
           </section>
         );

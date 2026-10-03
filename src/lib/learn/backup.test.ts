@@ -113,7 +113,7 @@ test("files from a newer version are rejected with their version, not misread", 
 });
 
 test("backup files are named by date", () => {
-  assert.equal(backupFileName(new Date("2026-10-02T09:00:00Z")), "roshana-progress-2026-10-02.json");
+  assert.equal(backupFileName(new Date("2026-10-02T09:00:00Z")), "vajefy-progress-2026-10-02.json");
 });
 
 test("impossible or unbounded skill evidence is rejected during restore", () => {

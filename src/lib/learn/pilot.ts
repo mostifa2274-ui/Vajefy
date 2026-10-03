@@ -1,5 +1,5 @@
-import type { Contrast, Entry, Goal, Pilot, Scene, Sense, SenseAudio } from "./content";
-import { entryIdOf } from "./content";
+import type { Contrast, Entry, Goal, Pilot, PilotOrder, Scene, Sense, SenseAudio } from "./content";
+import { entryIdOf, orderForGoal } from "./content";
 import { loadJson } from "./load";
 
 export type PilotEntry = Pilot["entries"][number];
@@ -78,21 +78,17 @@ export function pronunciationFor(sense: Sense, accent: "en-GB" | "en-US") {
   return accent === "en-US" ? sense.pronunciation.us : sense.pronunciation.gb;
 }
 
-/**
- * The order in which to introduce pilot targets: curriculum order, with
- * targets that serve the learner's goal brought forward. Function words and
- * the first sense of each entry come before further senses of the same word.
- */
+/** Pilot targets in the order to introduce them for the learner's goal. */
 export function introductionOrder(targets: PilotTarget[], goal: Goal | undefined): PilotTarget[] {
-  return targets
-    .map((target, position) => {
-      const serves = !goal || goal === "general" || target.entry.goals.includes(goal);
-      // A further sense waits until the first sense of its word has been met.
-      const later = target.index > 0 ? 1000 : 0;
-      return { target, rank: position + later + (serves ? 0 : 400) };
-    })
-    .sort((a, b) => a.rank - b.rank)
-    .map((item) => item.target);
+  return orderForGoal(targets, goal, (target) => ({ goals: target.entry.goals, sense: target.index }));
+}
+
+/**
+ * Only the introduction order, a few kilobytes, for screens that need to count
+ * upcoming lesson words without loading the whole pilot.
+ */
+export function loadPilotOrder(): Promise<PilotOrder> {
+  return loadJson<PilotOrder>("pilot-order.json");
 }
 
 export function isPilotEntry(index: PilotIndex, id: string): boolean {

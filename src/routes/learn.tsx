@@ -2,6 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { LessonRun } from "@/components/lesson-run";
 import { Button, Num, PageHeader } from "@/components/ui";
+import { useFormat } from "@/lib/learn/format";
 import { useCopy } from "@/lib/learn/i18n";
 import { buildApplication, buildLesson, lessonSize, nextTargets, type LessonSession } from "@/lib/learn/lesson";
 import { introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
@@ -21,6 +22,7 @@ function LearnPage() {
   const sessions = useProgress((state) => state.sessions);
   const saveSession = useProgress((state) => state.saveSession);
   const copy = useCopy(lang);
+  const { sep } = useFormat();
   const [index, setIndex] = useState<PilotIndex | null>(null);
   const [failed, setFailed] = useState(false);
   const [active, setActive] = useState<LessonSession | null>(null);
@@ -38,15 +40,30 @@ function LearnPage() {
 
   if (failed) {
     return (
-      <p className="text-sm text-bad">
-        {copy.loadFailed}{" "}
-        <button type="button" className="text-accent" onClick={() => window.location.reload()}>
-          {copy.retry}
-        </button>
-      </p>
+      <div>
+        <PageHeader title={copy.learnTitle} lede={copy.learnLede} />
+        <p className="text-sm text-bad">
+          {copy.loadFailed}{" "}
+          <button type="button" className="min-h-11 text-accent" onClick={() => window.location.reload()}>
+            {copy.retry}
+          </button>
+        </p>
+      </div>
     );
   }
-  if (!index || !hydrated) return <p className="text-sm text-muted">{copy.loading}</p>;
+  // The heading is drawn at once; the lesson card takes its place when ready.
+  if (!index || !hydrated) {
+    return (
+      <div>
+        <PageHeader title={copy.learnTitle} lede={copy.learnLede} />
+        <section className="panel min-h-48 p-4 sm:p-6" aria-busy="true">
+          <p role="status" className="text-sm text-muted">
+            {copy.loading}
+          </p>
+        </section>
+      </div>
+    );
+  }
   if (active) return <LessonRun key={active.id} initial={active} index={index} onExit={() => void navigate({ to: "/" })} />;
 
   const unfinished = resumable(sessions, "lesson", opened);
@@ -69,20 +86,20 @@ function LearnPage() {
       <section className="panel p-4 sm:p-6">
         {unfinished ? (
           <Button onClick={() => setActive(unfinished)}>
-            {copy.resumeLesson} · <Num value={unfinished.steps.length - unfinished.index} /> {copy.leftLabel}
+            {copy.resumeLesson}{sep}<Num value={unfinished.steps.length - unfinished.index} /> {copy.leftLabel}
           </Button>
         ) : upcoming.length ? (
           <>
             <ul className="flex flex-wrap gap-2" lang="en" dir="ltr">
               {upcoming.map((target) => (
-                <li key={target.sense.id} className="rounded-md bg-paper-2 px-3 py-1 text-sm shadow-[var(--shadow-border)]">
+                <li key={target.sense.id} className="inline-flex items-baseline gap-2 rounded-md bg-paper-2 px-3 py-1 text-sm shadow-[var(--shadow-border)]">
                   <span className="lex-word">{target.entry.headword}</span>
-                  <span lang="fa" dir="rtl" className="ms-2 text-muted">{target.sense.gloss}</span>
+                  <span lang="fa" dir="rtl" className="text-muted">{target.sense.gloss}</span>
                 </li>
               ))}
             </ul>
             <Button className="mt-4" onClick={() => start(buildLesson(index, upcoming, new Set(Object.keys(cards)), Date.now()))}>
-              {copy.startLesson} · <Num value={upcoming.length} /> {copy.lessonNewWords}
+              {copy.startLesson}{sep}<Num value={upcoming.length} /> {copy.lessonNewWords}
             </Button>
           </>
         ) : remaining ? (

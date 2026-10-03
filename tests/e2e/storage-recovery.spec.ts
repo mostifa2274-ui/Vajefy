@@ -100,7 +100,7 @@ test("failed database writes keep answers in the session, export them, and retry
   await expect.poll(async () => (await readProgress(page)).state.lifetime.practice).toBe(1);
   expect(await journal(page)).toBe(0);
   await page.reload();
-  await expect(page.getByRole("heading", { name: "Quiz", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Practice", exact: true })).toBeVisible();
   const after = await readProgress(page);
   expect(after.state.lifetime).toEqual({ reviews: 4, correct: 3, practice: 1, practiceCorrect: 1 });
   expect(after.events.filter((event) => event.type === "practice")).toHaveLength(1);

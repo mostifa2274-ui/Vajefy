@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useActiveTime } from "@/lib/learn/active-time";
 import { useCopy } from "@/lib/learn/i18n";
 import { advanceQuiz, answerQuiz, newId, quizAnswerFor, quizStats, type QuizAnswer, type QuizSession } from "@/lib/learn/session";
@@ -8,6 +8,8 @@ import { formMatches, bestSpelling } from "@/lib/learn/text";
 import { useFormat } from "@/lib/learn/format";
 import type { Grade, Lang, Question } from "@/lib/learn/types";
 import { cn } from "@/lib/cn";
+import { useKeepFocus } from "@/lib/focus";
+import { AnswerFeedback, Mark, ProgressMeter } from "./feedback";
 import { Button, SpeakButton } from "./ui";
 
 type Miss = { prompt: string; answer: string };
@@ -71,6 +73,8 @@ export function QuizRun({
   const verdict = verdictOf(answered);
   const stats = quizStats(session);
   const elapsed = useActiveTime(question ? `${session.id}:${index}` : undefined);
+  const card = useRef<HTMLDivElement>(null);
+  useKeepFocus(card, `${index}:${Boolean(answered)}`);
   const setPicked = (value: string) => setDraft({ ...current, picked: value });
   const setTyped = (value: string) => setDraft({ ...current, typed: value });
   const setPast = (value: string) => setDraft({ ...current, past: value });
@@ -162,15 +166,11 @@ export function QuizRun({
   return (
     <section className="mx-auto max-w-xl">
       {title ? <h1 className="mb-4 text-xl font-medium">{title}</h1> : null}
-      <div className="mb-3 flex items-center justify-between text-sm text-muted">
-        <span className="tabular-nums">
-          {num(index + 1)} / {num(questions.length)}
-        </span>
-        <span className="tabular-nums">
-          {num(stats.correct)} {copy.correct}
-        </span>
-      </div>
-      <div className="panel p-4 sm:p-6">
+      <ProgressMeter value={index + 1} max={questions.length} label={copy.sessionProgress} />
+      <p className="mb-3 text-end text-xs text-muted tabular-nums">
+        {num(stats.correct)} {copy.correct}
+      </p>
+      <div ref={card} tabIndex={-1} className="panel p-4 outline-none sm:p-6">
         {question.kind === "irregular" ? (
           <div>
             <h2 lang="en" dir="ltr" className="lex-word text-4xl">
@@ -276,7 +276,9 @@ export function QuizRun({
                         right ? "border-good" : wrong ? "border-bad" : "border-line bg-paper",
                       )}
                     >
+                      {right || wrong ? <Mark ok={right} copy={copy} /> : null}
                       {option.text}
+                      {chosen && locked ? <span className="sr-only"> ({copy.yourAnswer})</span> : null}
                     </button>
                   );
                 })}
@@ -318,14 +320,12 @@ export function QuizRun({
         )}
 
         {locked ? (
-          <div className="mt-4 border-t border-line pt-4" aria-live="polite">
-            <p className={verdict === "wrong" ? "text-bad" : "text-good"}>
-              {verdict === "wrong"
-                ? copy.incorrect
-                : verdict === "close" && question.kind === "type"
-                  ? copy.closeTypo
-                  : copy.correct}
-            </p>
+          <AnswerFeedback
+            ok={verdict !== "wrong"}
+            title={verdict === "wrong" ? copy.incorrect : verdict === "close" && question.kind === "type" ? copy.closeTypo : copy.correct}
+            nextLabel={copy.next}
+            onNext={advance}
+          >
             {question.kind !== "mcq" ? (
               <p dir="ltr" lang="en" className="mt-1">
                 {question.kind === "irregular" ? `${question.past} · ${question.pp}` : question.answer}
@@ -336,10 +336,7 @@ export function QuizRun({
                 {question.explain}
               </p>
             ) : null}
-            <Button className="mt-4 w-full" onClick={advance}>
-              {copy.next}
-            </Button>
-          </div>
+          </AnswerFeedback>
         ) : null}
       </div>
     </section>

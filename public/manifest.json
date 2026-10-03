@@ -1,26 +1,76 @@
 {
   "id": "/",
-  "name": "Roshana",
-  "short_name": "Roshana",
-  "description": "Oxford English for Persian speakers — recall, spacing, and real sentences.",
+  "name": "Vajefy",
+  "short_name": "Vajefy",
+  "description": "English vocabulary for Persian speakers: guided lessons, recorded pronunciation and spaced review.",
   "lang": "fa",
   "dir": "rtl",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
   "background_color": "#f6f3ec",
   "theme_color": "#f6f3ec",
-  "categories": ["education", "productivity"],
+  "categories": [
+    "education",
+    "productivity"
+  ],
   "prefer_related_applications": false,
   "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "Review", "short_name": "Review", "url": "/study", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Quiz", "short_name": "Quiz", "url": "/drill", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
-    { "name": "Words", "short_name": "Words", "url": "/lexicon", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+    {
+      "name": "Learn",
+      "short_name": "Learn",
+      "url": "/learn",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Review",
+      "short_name": "Review",
+      "url": "/study",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Words",
+      "short_name": "Words",
+      "url": "/lexicon",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
   ]
 }

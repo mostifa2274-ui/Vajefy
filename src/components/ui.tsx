@@ -1,6 +1,6 @@
 import { Link, type RegisteredRouter, type ValidateLinkOptions } from "@tanstack/react-router";
 import { AudioLines } from "lucide-react";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { useFormat } from "@/lib/learn/format";
 import { useCopy } from "@/lib/learn/i18n";
@@ -21,7 +21,7 @@ export function Button({
   className,
   type = "button",
   ...props
-}: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant }) {
+}: ComponentProps<"button"> & { variant?: Variant }) {
   return (
     <button
       type={type}
@@ -56,6 +56,18 @@ export function ButtonLink({
     >
       {children}
     </Link>
+  );
+}
+
+/** A separator between items in a line: the Persian comma, or a middle dot in English. */
+export function Sep() {
+  const lang = useProgress((state) => state.lang);
+  return lang === "fa" ? (
+    <span>، </span>
+  ) : (
+    <span className="mx-2" aria-hidden>
+      ·
+    </span>
   );
 }
 

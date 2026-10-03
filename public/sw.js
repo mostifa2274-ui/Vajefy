@@ -2,7 +2,7 @@ const CACHE_VERSION = /* __VAJEFY_BUILD_VERSION__ */ "dev";
 const CACHE = `vajefy-offline-${CACHE_VERSION}`;
 const BUILD_ASSETS = /* __VAJEFY_BUILD_ASSETS__ */ [];
 const ROUTES = ["/", "/learn", "/lexicon", "/study", "/drill", "/library", "/progress"];
-const SHELL = ["/manifest.json", "/favicon.svg", "/early-language.js", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
+const SHELL = ["/manifest.json", "/favicon.svg", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
 const DATA = [
   "/data/meta.json",
   "/data/lex-a1.json",
@@ -23,6 +23,7 @@ const DATA = [
   "/data/synonyms.json",
   "/data/families.json",
   "/data/pilot-a1.json",
+  "/data/pilot-order.json",
   "/data/usefulness.json",
 ];
 // Pronunciation clips are named by their content hash, so they never change

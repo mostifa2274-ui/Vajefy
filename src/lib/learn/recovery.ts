@@ -188,5 +188,5 @@ export function recoverProgress(raw: string): Recovery | null {
 
 /** The untouched saved copy is offered under its own name, never as a backup. */
 export function savedCopyFileName(now = new Date()): string {
-  return `roshana-saved-copy-${now.toISOString().slice(0, 10)}.json`;
+  return `vajefy-saved-copy-${now.toISOString().slice(0, 10)}.json`;
 }
