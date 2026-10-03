@@ -27,6 +27,8 @@ const reach = (level: Level) => LEVELS[Math.min(LEVELS.length - 1, LEVELS.indexO
 const allowedAt = (level: Level) => new Set(LEVELS.slice(0, LEVELS.indexOf(reach(level)) + 1));
 const levelOfId = (id: string): Level => (/^lex:([A-Za-z0-9]+):/.exec(id)?.[1] as Level | undefined) ?? "A1";
 const highest = (levels: Level[]): Level => levels.reduce((top, level) => (LEVELS.indexOf(level) > LEVELS.indexOf(top) ? level : top), "A1" as Level);
+/** Titles before a name, which the vocabulary lists leave out. */
+const TITLES = new Set(["mr", "mrs", "ms", "dr"]);
 /** A scene is too hard when more than this share of its words is beyond its learners' reach. */
 const SCENE_LIMIT = 0.05;
 
@@ -42,7 +44,7 @@ function hardWords(text: string, allow: Set<string>, level: Level): string[] {
     // A capitalised word inside a sentence is a name (Ali, London, Monday is A1 anyway).
     if (index > 0 && /^[A-Z]/.test(token) && token !== "I") return;
     const word = token.toLowerCase().replace("’", "'");
-    if (allow.has(word)) return;
+    if (allow.has(word) || TITLES.has(word)) return;
     const found = lookup(word);
     if (!found) hard.push(`${token} (not in the lists)`);
     else if (!allowed.has(found)) hard.push(`${token} (${found})`);
