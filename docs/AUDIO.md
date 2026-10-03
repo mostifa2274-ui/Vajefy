@@ -1,8 +1,8 @@
 # Pronunciation audio
 
-Every enhanced sense (the pilot and A1 batches 2–6) has recorded clips in
+Every enhanced sense (the pilot and A1 batches 2–7) has recorded clips in
 British and American English: the word itself and each teaching example. There
-are 4,286 clips (2,143 per accent), 36.8 MB in total, in `public/audio/pilot/`.
+are 4,918 clips (2,459 per accent), 42.3 MB in total, in `public/audio/pilot/`.
 
 ## How clips are made
 
@@ -72,7 +72,7 @@ The comparison ignores stress, length and syllable marks, and maps notation
 differences such as Kokoro's /a/ for the British TRAP vowel to /æ/.
 
 Clips with a fault or a mismatch are listed in `content/pilot/audio-report.json`.
-The current report flags 211 word clips and no technical faults. Most are
+The current report flags 241 word clips and no technical faults. Most are
 expected:
 
 - function words said in isolation use their strong form (*a* /eɪ/, *that*
@@ -123,8 +123,8 @@ unavailable with a reason.
 
 The service worker keeps clips in their own cache, `vajefy-audio-v1`, which
 survives app updates. A clip played once is cached. **Progress → Pronunciation
-offline** downloads every clip for the selected accent: about 19.0 MB for
-British, 17.8 MB for American. Each accent can also be removed again.
+offline** downloads every clip for the selected accent: about 21.8 MB for
+British, 20.5 MB for American. Each accent can also be removed again.
 
 ## Speaking practice
 
