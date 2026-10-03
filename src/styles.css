@@ -65,6 +65,9 @@
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.15;
+  /* A long word in display size, with text enlarged, wraps instead of running off a narrow screen. */
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .panel {

@@ -63,12 +63,18 @@ is adjusted, not the thresholds.
   and everything below them appear together, in space held for them. Learn
   draws its heading at once and its lesson card in place when ready.
 - **Small first data.** Today counts upcoming lesson words from
-  `enhanced-order.json` (about 1 KB compressed), not the 125 KB pilot, and preloads
-  it with `meta.json`.
+  `enhanced-order.json` (about 2 KB compressed), not the 200 KB of enhanced
+  content, and preloads it with `meta.json`.
 - **No blocking requests in `<head>`.** The script that applies the saved
   language before the first paint is inline, carrying the page's CSP nonce.
 - **Route code is split.** Each screen loads its own chunk; the service worker
   then caches all of them for offline use.
+- **Offline caching waits.** The service worker registers only after the page
+  has loaded and the browser is idle, so caching every data file never
+  competes with the first screen on a slow connection.
+- **Lesson building stays linear.** Starting a lesson picks distractors for
+  every word; it stops at the first three, so the cost grows with the number
+  of senses, not with its square.
 - **Audio is fetched on demand** and cached separately, never on page load.
 - **System fonts.** No web fonts to download.
 
