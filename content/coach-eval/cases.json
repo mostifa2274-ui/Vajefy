@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "53a772377217",
+ "contentVersion": "ebf86ef44f2c",
  "cases": [
   {
    "id": "7aa02ebefb",
@@ -35859,25 +35859,25 @@
    ]
   },
   {
-   "id": "e6cfcff1b3",
+   "id": "73c3761c95",
    "split": "dev",
    "source": "mistake-right",
    "senses": [
     "lex:A1:meat"
    ],
-   "text": "I bought some meat.",
+   "text": "How much meat do we need?",
    "expect": [
     "natural"
    ]
   },
   {
-   "id": "fa19d53e99",
-   "split": "dev",
+   "id": "4c44736cbb",
+   "split": "test",
    "source": "mistake-wrong",
    "senses": [
     "lex:A1:meat"
    ],
-   "text": "I bought two meats.",
+   "text": "How many meat do we need?",
    "expect": [
     "needs-change"
    ]
