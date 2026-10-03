@@ -1,5 +1,4 @@
 import type { CheckItem, Contrast, Scene, Sense } from "./content";
-import { entryIdOf } from "./content";
 import type { PilotIndex, PilotTarget } from "./pilot";
 import { newId } from "./session";
 import { bestSpelling, shuffle } from "./text";
@@ -138,19 +137,37 @@ export function gradeOf(result: LessonAnswer["result"]): Grade {
   return result === "correct" ? "good" : result === "close" ? "hard" : "again";
 }
 
+/** The targets of each part of speech, built once per catalogue. */
+const byPos = new WeakMap<PilotTarget[], Map<Sense["pos"], PilotTarget[]>>();
+function targetsOfPos(index: PilotIndex, pos: Sense["pos"]): PilotTarget[] {
+  let groups = byPos.get(index.targets);
+  if (!groups) {
+    groups = new Map();
+    for (const target of index.targets) {
+      const group = groups.get(target.sense.pos);
+      if (group) group.push(target);
+      else groups.set(target.sense.pos, [target]);
+    }
+    byPos.set(index.targets, groups);
+  }
+  return groups.get(pos) ?? [];
+}
+
 /** Options for a generated choice: the target and three other meanings, preferring the same part of speech. */
 function distractors(index: PilotIndex, target: PilotTarget, random: () => number): string[] {
-  const pool = index.targets.filter(
-    (other) => entryIdOf(other.sense.id) !== entryIdOf(target.sense.id) && other.sense.gloss !== target.sense.gloss,
-  );
-  const same = pool.filter((other) => other.sense.pos === target.sense.pos);
-  // The first three distinct senses, same part of speech first. This runs
-  // several times per word while a lesson is built, so it must not grow with
-  // the square of the catalogue.
+  const fits = (other: PilotTarget) => other.entry.id !== target.entry.id && other.sense.gloss !== target.sense.gloss;
   const picked: string[] = [];
-  for (const item of [...shuffleWith(same, random), ...shuffleWith(pool, random)]) {
-    if (!picked.includes(item.sense.id)) picked.push(item.sense.id);
-    if (picked.length === 3) break;
+  // Three random senses of other words, same part of speech first. This runs
+  // several times per word as the learner starts a lesson, so it shuffles only
+  // until three are found instead of the whole catalogue.
+  for (const pool of [targetsOfPos(index, target.sense.pos), index.targets]) {
+    const order = [...pool];
+    for (let i = order.length - 1; i >= 0 && picked.length < 3; i--) {
+      const j = Math.floor(random() * (i + 1));
+      [order[i], order[j]] = [order[j]!, order[i]!];
+      const item = order[i]!;
+      if (fits(item) && !picked.includes(item.sense.id)) picked.push(item.sense.id);
+    }
   }
   return shuffleWith([target.sense.id, ...picked], random);
 }

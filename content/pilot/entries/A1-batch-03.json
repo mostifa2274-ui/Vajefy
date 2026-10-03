@@ -1083,22 +1083,22 @@
           {
             "type": "choice",
             "id": "q1",
-            "prompt": "We visited Grandma in ___ hospital yesterday.",
+            "prompt": "My aunt is a nurse. She works ___ the hospital in our town.",
             "options": [
               {
-                "text": "the",
+                "text": "at",
                 "ok": true,
-                "why": "بیمارستانی مشخص."
+                "why": "work at the hospital = در بیمارستان کار کردن."
               },
               {
-                "text": "a",
+                "text": "on",
                 "ok": false,
-                "why": "a hospital یعنی یک بیمارستانِ نامشخص؛ اینجا معلوم است کدام."
+                "why": "on the hospital غلط است."
               },
               {
-                "text": "an",
+                "text": "to",
                 "ok": false,
-                "why": "hospital با صدای «ه» شروع می‌شود، پس an نمی‌گیرد."
+                "why": "to جهتِ رفتن را نشان می‌دهد، نه محل کار."
               }
             ]
           },
@@ -6247,7 +6247,7 @@
           {
             "type": "choice",
             "id": "q1",
-            "prompt": "Is there ___ for one more person at the table?",
+            "prompt": "There isn't enough ___ in my bag for these books.",
             "options": [
               {
                 "text": "room",
@@ -6257,12 +6257,12 @@
               {
                 "text": "place",
                 "ok": false,
-                "why": "place یعنی مکان، نه فضای خالی."
+                "why": "برای فضای خالی place نمی‌گوییم؛ room یا space."
               },
               {
-                "text": "a place",
+                "text": "places",
                 "ok": false,
-                "why": "برای فضای خالی room می‌گوییم."
+                "why": "برای فضای خالی place و places نمی‌گوییم."
               }
             ]
           },

@@ -32,6 +32,26 @@ test("a lesson teaches, retrieves, uses in context and retrieves again after a d
   assert.equal(item?.type === "choice" && item.options.filter((option) => option.ok).length, 1);
 });
 
+test("generated choices offer three other words' meanings, of the same part of speech when there are enough", () => {
+  const targets = introductionOrder(index.targets, "general").slice(0, 5);
+  const lesson = buildLesson(index, targets, new Set(), T0, random);
+  const generated = lesson.steps.flatMap((step) => (step.kind === "check" && step.ref.from === "generated" ? [step.ref] : []));
+  assert.ok(generated.length >= targets.length);
+  for (const ref of generated) {
+    const target = index.bySense.get(ref.target)!;
+    const others = ref.options.filter((id) => id !== ref.target).map((id) => index.bySense.get(id)!);
+    assert.equal(ref.options.length, 4);
+    assert.equal(new Set(ref.options).size, 4);
+    assert.ok(ref.options.includes(ref.target));
+    for (const other of others) {
+      assert.notEqual(other.entry.id, target.entry.id, "never another sense of the same word");
+      assert.notEqual(other.sense.gloss, target.sense.gloss, "never the same meaning");
+    }
+    const samePos = index.targets.filter((item) => item.sense.pos === target.sense.pos && item.entry.id !== target.entry.id).length;
+    if (samePos >= 10) assert.ok(others.every((other) => other.sense.pos === target.sense.pos), ref.target);
+  }
+});
+
 test("a wrong retrieval earns one more, different opportunity, but only once", () => {
   const targets = introductionOrder(index.targets, "general").slice(0, 2);
   let lesson = buildLesson(index, targets, new Set(), T0, random);

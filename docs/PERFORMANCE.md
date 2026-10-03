@@ -44,7 +44,7 @@ first visit unless stated):
 | Returning learner, Review | 0.82 s | 0 | |
 | Learn | 0.6–0.9 s | 0 | |
 | Words | 0.7–0.9 s | 0.02 | |
-| Lesson answers | | 0 | 32–120 ms |
+| Lesson start and answers | | 0 | ≤ 136 ms |
 | Words search typing | | 0.02 | ≤ 104 ms |
 
 A learner whose progress is still in the original localStorage save, on the
@@ -72,9 +72,13 @@ is adjusted, not the thresholds.
 - **Offline caching waits.** The service worker registers only after the page
   has loaded and the browser is idle, so caching every data file never
   competes with the first screen on a slow connection.
-- **Lesson building stays linear.** Starting a lesson picks distractors for
-  every word; it stops at the first three, so the cost grows with the number
-  of senses, not with its square.
+- **Starting a lesson stays quick as content grows.** Building a lesson picks
+  three distractors for each word by shuffling only until three are found,
+  from part-of-speech groups built once: under 25 ms on the test phone even
+  the first time, and barely more as senses are added. The teaching card draws the word, its
+  pronunciation and its sound with the press; the rest of the card follows
+  in a background render, so the press does not wait for a page of mixed
+  Persian and English text to be laid out (about 50 ms on the test phone).
 - **Audio is fetched on demand** and cached separately, never on page load.
 - **System fonts.** No web fonts to download.
 
