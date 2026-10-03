@@ -107,9 +107,10 @@ as part of `validate:data`:
 | `example-item` | warning | A note's example that never uses what the note teaches |
 | `example-repeated` | warning | Two entries with the same example, so assessment cannot tell them apart |
 | `example-level` | warning | Words more than one level above the entry in its example |
-| `example-template` | warning | One generic sentence reused, with only its subject changed, by four or more notes |
+| `example-template` | warning | One generic sentence reused, with only its subject changed, by two or more notes |
 | `example-sentence`, `translation-sentence` | warning | Not a full sentence (capital letter, final punctuation) |
 | `article` | warning | *an utility*, *a apple* |
+| `doubled-word` | warning | The same word twice in a row (some are right: «پس از از دست دادن») |
 | `note-word` | warning | A compared word (confusing words, synonyms, irregular verbs) that is not in the vocabulary lists |
 
 Words are matched to their dictionary forms (*upheld* → *uphold*, *closest* →
@@ -128,14 +129,19 @@ shrinks: after fixing something, run `npm run content:audit -- --update`.
   *The clock is on the wall* (clock and wall).
 - Six A1 examples that relied on words far above A1 (*noon*, *yard*,
   *password*, *mall*) rewritten.
-- 28 occupations whose example and usage line were a generic sentence for
-  their category, and wrong for the job, rewritten in English and Persian:
+- Every occupation note whose example and usage line were a generic sentence
+  for its category, 866 in all, rewritten in English and Persian to say what
+  the job involves. Some of the old sentences were wrong for the job:
   - a fashion model "helped customers complete sales";
   - a legislator "coordinated day-to-day operations";
   - an embalmer "provided recreation services".
-  
-  Two of their Persian titles were in the plural. *A clergy* became *a
-  cleric*, and *an urologist* became *a urologist*.
+
+  Each note's guide now opens with that use and names the right field. 79
+  Persian titles that were plural, garbled or inexact were corrected, and the
+  example for *hospital orderly* uses the full title. *A clergy* became
+  *a cleric*, and *an urologist* became *a urologist*.
+- 36 examples in A2–B2 that relied on a word more than one level higher
+  (*pond*, *logo*, *grocery*) rewritten with a simpler word.
 - The word forms the checks know were extended with irregular verbs missing
   from the irregular-verb collection.
 
@@ -143,16 +149,12 @@ shrinks: after fixing something, run `npm run content:audit -- --update`.
 
 The baseline lists what remains (`npm run content:audit -- --all`):
 
-- **796 occupations** whose examples are still one of a few dozen category
-  templates. These are vague rather than wrong, for example *operates
-  equipment safely and monitors it during work*. Each needs a sentence about
-  what the job involves, and the matching line in its guide.
-- **38 examples in A2–B2** that use a word more than one level higher (*pond*,
-  *logo*, *grocery*). An editor decides whether each word is the natural one.
+- **2 A2 examples** that use a harder word on purpose (*human*, *sir*), since
+  the example would be unnatural without it. An editor confirms each.
 - **4 confusing-word notes** about words outside the lists (*fetch*,
   *economical*, *farther*, *thankful*). This is intended: the note teaches the
   contrast.
-- **1 occupation** whose example shortens the title (*an orderly* for
-  *hospital orderly*).
+- **2 Persian translations** with a word that is correctly written twice
+  («پس از از دست دادن», «را کند کند»).
 
 These are editorial work, done note by note and reviewed like the rest.
