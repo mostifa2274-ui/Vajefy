@@ -10,7 +10,7 @@ import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
 import { loadJson } from "@/lib/learn/load";
 import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
 import { introductionOrder, loadPilot, loadPilotOrder } from "@/lib/learn/pilot";
-import { entryIdOf } from "@/lib/learn/content";
+import { entryIdOf } from "@/lib/learn/targets";
 import { levelOf, shuffle } from "@/lib/learn/text";
 import type { CardProg, LevelId, StudyFace } from "@/lib/learn/types";
 

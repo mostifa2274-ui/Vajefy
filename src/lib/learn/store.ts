@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { entryIdOf } from "./content";
+import { entryIdOf } from "./targets";
 import type { AnswerContext, AssessmentPart, ExposureKind, Op, SettingsPatch } from "./ops";
 import { CHANNEL, createPersistence, emptyMemory, type Memory } from "./persistence";
 import { DEFAULT_PROGRESS, savedProgress, type DayLog, type LearningGoal, type SavedProgress } from "./progress";

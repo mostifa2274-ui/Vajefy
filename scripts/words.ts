@@ -51,9 +51,11 @@ const CONTRACTED: Record<string, string> = { "'d": "would", "'ll": "will", "'re"
 
 /** Possible dictionary forms of a word, by simple English inflection rules. */
 export function basesOf(token: string): Set<string> {
-  const word = token.toLowerCase().replace("’", "'");
+  // Accents are dropped: café is listed as cafe.
+  const word = token.toLowerCase().replace("’", "'").normalize("NFD").replace(/\p{M}/gu, "");
   const candidates = new Set([word]);
-  if (word.endsWith("n't")) candidates.add(irregular.get(word.slice(0, -3)) ?? word.slice(0, -3));
+  // doesn't → does → do, isn't → is → be.
+  if (word.endsWith("n't")) for (const base of basesOf(word.slice(0, -3))) candidates.add(base);
   const apostrophe = word.indexOf("'");
   if (apostrophe > 0) {
     candidates.add(word.slice(0, apostrophe));

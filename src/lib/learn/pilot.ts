@@ -1,5 +1,5 @@
 import type { Contrast, Entry, Goal, Pilot, PilotOrder, Scene, Sense, SenseAudio } from "./content";
-import { entryIdOf, orderForGoal } from "./content";
+import { entryIdOf, orderForGoal } from "./targets";
 import { CONTENT_CHANNEL, introducibleIn, type Channel } from "./channel";
 import { loadJson } from "./load";
 import { levelOf } from "./text";

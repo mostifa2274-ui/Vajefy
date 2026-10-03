@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useDeferredValue, useEffect, useRef, useState, type ReactNode } from "react";
 import type { CoachRequest } from "@/api/coach-core";
 import { useActiveTime } from "@/lib/learn/active-time";
 import { useFormat } from "@/lib/learn/format";
@@ -309,8 +309,12 @@ function Teach({
 }) {
   const { sense, entry } = target;
   const clips = senseAudio(index.pilot.audio, sense.id, accent);
+  // The word and its sound are drawn at once; the rest of the card follows in
+  // a background render, so the press that starts a lesson answers quickly
+  // instead of waiting for the whole card's text to be laid out.
+  const full = useDeferredValue(target, null) === target;
   return (
-    <article className="panel p-4 sm:p-6">
+    <article className="panel p-4 sm:p-6" aria-busy={!full}>
       <p className="text-sm text-muted">
         {copy.teachNew}
         <Sep />
@@ -326,46 +330,50 @@ function Teach({
           <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow item={sense.id} />
         </div>
       </div>
-      <SayIt text={entry.headword} clip={clips.word} copy={copy} />
-      <div className="mt-5 border-t border-line pt-4">
-        <p lang="fa" dir="rtl" className="text-xl font-medium">{sense.gloss}</p>
-        <p lang="fa" dir="rtl" className="mt-2 text-pretty">{sense.meaning}</p>
-      </div>
-      <h3 className="mt-5 text-sm font-medium">{copy.grammarLabel}</h3>
-      <ul className="mt-2 grid gap-2">
-        {sense.grammar.map((item) => (
-          <li key={item.pattern} className="text-sm">
-            <p lang="en" dir="ltr" className="font-medium">{item.pattern}</p>
-            <p lang="fa" dir="rtl" className="text-muted text-pretty">{item.note}</p>
-          </li>
-        ))}
-      </ul>
-      <h3 className="mt-5 text-sm font-medium">{copy.examplesLabel}</h3>
-      <ul className="mt-2 grid gap-3">
-        {sense.examples.map((example, position) => (
-          <li key={example.en} className="border-s-2 border-accent ps-3">
-            <p lang="en" dir="ltr" className="text-pretty">{example.en}</p>
-            <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty">{example.fa}</p>
-            <div className="mt-1">
-              <SpeakButton text={example.en} label={copy.listenExample} clip={clips.examples[position]} item={sense.id} exposure="example" />
-            </div>
-          </li>
-        ))}
-      </ul>
-      <h3 className="mt-5 text-sm font-medium">{copy.collocationsLabel}</h3>
-      <p lang="en" dir="ltr" className="mt-1 text-sm text-pretty">{sense.collocations.join(" · ")}</p>
-      {sense.usage ? (
+      {full ? (
         <>
-          <h3 className="mt-5 text-sm font-medium">{copy.usageLabel}</h3>
-          <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty">{sense.usage}</p>
+          <SayIt text={entry.headword} clip={clips.word} copy={copy} />
+          <div className="mt-5 border-t border-line pt-4">
+            <p lang="fa" dir="rtl" className="text-xl font-medium">{sense.gloss}</p>
+            <p lang="fa" dir="rtl" className="mt-2 text-pretty">{sense.meaning}</p>
+          </div>
+          <h3 className="mt-5 text-sm font-medium">{copy.grammarLabel}</h3>
+          <ul className="mt-2 grid gap-2">
+            {sense.grammar.map((item) => (
+              <li key={item.pattern} className="text-sm">
+                <p lang="en" dir="ltr" className="font-medium">{item.pattern}</p>
+                <p lang="fa" dir="rtl" className="text-muted text-pretty">{item.note}</p>
+              </li>
+            ))}
+          </ul>
+          <h3 className="mt-5 text-sm font-medium">{copy.examplesLabel}</h3>
+          <ul className="mt-2 grid gap-3">
+            {sense.examples.map((example, position) => (
+              <li key={example.en} className="border-s-2 border-accent ps-3">
+                <p lang="en" dir="ltr" className="text-pretty">{example.en}</p>
+                <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty">{example.fa}</p>
+                <div className="mt-1">
+                  <SpeakButton text={example.en} label={copy.listenExample} clip={clips.examples[position]} item={sense.id} exposure="example" />
+                </div>
+              </li>
+            ))}
+          </ul>
+          <h3 className="mt-5 text-sm font-medium">{copy.collocationsLabel}</h3>
+          <p lang="en" dir="ltr" className="mt-1 text-sm text-pretty">{sense.collocations.join(" · ")}</p>
+          {sense.usage ? (
+            <>
+              <h3 className="mt-5 text-sm font-medium">{copy.usageLabel}</h3>
+              <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty">{sense.usage}</p>
+            </>
+          ) : null}
+          <h3 className="mt-5 text-sm font-medium">{copy.mistakeLabel}</h3>
+          <div className="mt-1">
+            <WrongRight wrong={sense.mistake.wrong} right={sense.mistake.right} why={sense.mistake.why} copy={copy} />
+          </div>
+          {!entry.released ? <p className="mt-4 text-xs text-muted">{copy.draftContent}</p> : null}
+          <Button className="mt-6 w-full" onClick={onDone}>{copy.tryRecall}</Button>
         </>
       ) : null}
-      <h3 className="mt-5 text-sm font-medium">{copy.mistakeLabel}</h3>
-      <div className="mt-1">
-        <WrongRight wrong={sense.mistake.wrong} right={sense.mistake.right} why={sense.mistake.why} copy={copy} />
-      </div>
-      {!entry.released ? <p className="mt-4 text-xs text-muted">{copy.draftContent}</p> : null}
-      <Button className="mt-6 w-full" onClick={onDone}>{copy.tryRecall}</Button>
     </article>
   );
 }
