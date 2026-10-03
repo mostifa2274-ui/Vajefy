@@ -2612,7 +2612,7 @@
         "id": "lex:A1:dish#food",
         "pos": "noun",
         "gloss": "غذا (یک نوع غذا)",
-        "meaning": "یک نوع غذا که آماده می‌شود: Rice with chicken is a popular dish. food معمولاً غیرقابل‌شمارش است؛ برای «یک غذا» dish می‌گوییم.",
+        "meaning": "یک غذای مشخص که آماده می‌شود: Rice with chicken is a popular dish. food کلی‌تر است و به هر خوردنی‌ای گفته می‌شود.",
         "grammar": [
           {
             "pattern": "a + adjective + dish",
@@ -2624,7 +2624,7 @@
           },
           {
             "pattern": "dish / food",
-            "note": "dish قابل‌شمارش است؛ food معمولاً نه"
+            "note": "dish = یک غذای مشخص؛ food = خوراک به‌طور کلی"
           }
         ],
         "examples": [
@@ -2644,9 +2644,9 @@
           "a rice dish"
         ],
         "mistake": {
-          "wrong": "This is a very delicious food.",
-          "right": "This is a very delicious dish.",
-          "why": "برای «یک غذا» dish می‌گوییم؛ food معمولاً با a نمی‌آید."
+          "wrong": "Rice with chicken is a popular dishes.",
+          "right": "Rice with chicken is a popular dish.",
+          "why": "بعد از a اسم مفرد می‌آید."
         },
         "pronunciation": {
           "gb": "/dɪʃ/",
@@ -3554,7 +3554,6 @@
             "text": "I don't eat meat, but I eat ___.",
             "answer": "fish",
             "accept": [
-              "chicken",
               "eggs",
               "vegetables"
             ],

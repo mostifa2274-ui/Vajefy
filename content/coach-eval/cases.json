@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "6ee3ef55641d",
+ "contentVersion": "53a772377217",
  "cases": [
   {
    "id": "7aa02ebefb",
@@ -31119,25 +31119,25 @@
    ]
   },
   {
-   "id": "611b02863e",
-   "split": "dev",
+   "id": "3db0f8faaf",
+   "split": "test",
    "source": "mistake-right",
    "senses": [
     "lex:A1:dish#food"
    ],
-   "text": "This is a very delicious dish.",
+   "text": "Rice with chicken is a popular dish.",
    "expect": [
     "natural"
    ]
   },
   {
-   "id": "e938633a26",
+   "id": "b35ee7d341",
    "split": "dev",
    "source": "mistake-wrong",
    "senses": [
     "lex:A1:dish#food"
    ],
-   "text": "This is a very delicious food.",
+   "text": "Rice with chicken is a popular dishes.",
    "expect": [
     "needs-change"
    ]
