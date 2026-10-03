@@ -40,7 +40,9 @@ practice), **Words** (search, saved entries and reference) and **Progress**
   device only.
 - **An AI coach, behind its gate**: grounded answers about sentences, fit and
   differences, off until configured and evaluated ([docs/COACH.md](docs/COACH.md)).
-  Operational monitoring and the optional services are in
+- **Optional sync between devices**, end-to-end encrypted with a code only the
+  learner has, and no account ([docs/SYNC.md](docs/SYNC.md)). Operational
+  monitoring and the optional services are in
   [docs/OPERATIONS.md](docs/OPERATIONS.md).
 - **Accessible and fast on phones**: tested against WCAG 2.2 AA
   ([docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and Core Web Vitals budgets on
@@ -157,7 +159,9 @@ on another device. The saved shape is versioned (`PROGRESS_VERSION` in
 memory state, target retention and prospective review evidence while preserving
 older due dates. Version 4 adds per-word drill skills without reconstructing
 past attempts or changing due dates. Version 5 adds the learning goal and daily
-minutes. There is intentionally no account or remote learner database yet.
+minutes. There is intentionally no account. Where a deployment turns sync on,
+learners can pair devices with a code; the server stores only encrypted
+operations it cannot read ([docs/SYNC.md](docs/SYNC.md)).
 
 Progress is stored in IndexedDB. Each answer is saved in one transaction with
 its progress update and the session state, and has a unique id, so a retry,
@@ -241,7 +245,10 @@ deployment, `npm run deploy` performs the build before invoking Wrangler.
 
 The production app makes no application API or AI-service request unless the
 optional coach or sync is configured ([docs/OPERATIONS.md](docs/OPERATIONS.md)).
-The coach sends a learner's sentence to an AI service only after they confirm. Fonts use
+The coach sends a learner's sentence to an AI service only after they confirm.
+Sync uploads progress only after the learner turns it on, encrypted on the
+device with a key the server never receives; the server can see how many
+changes arrive and when, not what they are ([docs/SYNC.md](docs/SYNC.md#what-the-server-can-see)). Fonts use
 system stacks, so the core UI and vocabulary data do not depend on Google Fonts
 or another web-font host. Pilot pronunciation is recorded audio served by the app
 itself. For other words, the browser's speech synthesis is used; depending on

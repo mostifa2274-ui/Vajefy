@@ -14,7 +14,7 @@ offline without any of them.
 | `TELEMETRY` | Worker variable | `on` to log received reports |
 | `AUDIO` | R2 binding | Serve pronunciation clips from R2 |
 | `ANTHROPIC_API_KEY`, `COACH`, `COACH_MODEL`, `COACH_LIMITER` | secret, variables, rate-limit binding | The AI coach ([COACH.md](COACH.md#turning-it-on)) |
-| `SYNC_DB`, `SYNC` | D1 binding, variable | Optional sync ([SYNC.md](SYNC.md)) |
+| `SYNC_DB`, `SYNC`, `SYNC_LIMITER` | D1 binding, variable, optional rate-limit binding | Optional sync ([SYNC.md](SYNC.md#turning-it-on)) |
 
 Build variables are read when the app is built, under **Workers Builds →
 Variables**. Worker variables, secrets and bindings are set under **Workers →
@@ -34,6 +34,7 @@ learners' devices report operational failures:
 | `import-failed` | A backup file was refused (`bad` or `future`) |
 | `audio-failed` | A clip or speech could not play (`clip` or `speech`) |
 | `exercise-broken` | A lesson step whose content is missing (its id) |
+| `sync-failed` | Sync failed (`error`), or another device runs a newer version (`update`) |
 | `crash` | An uncaught error or a page error (the error's type only) |
 
 A report holds the kind, a short code, the screen (`/learn`, never ids or query

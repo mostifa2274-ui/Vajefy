@@ -194,6 +194,38 @@ test("an answer and its progress are committed together and counted once", async
   assert.equal(browser.storage.getItem(JOURNAL_PREFIX + op.id), null);
 });
 
+test("a retry with nothing waiting does not stop later answers being saved", async () => {
+  const app = tab();
+  await app.persistence.start();
+  await app.persistence.retry();
+  app.persistence.dispatch(review("lex:A1:about"));
+  await settle(app);
+  assert.equal(app.persistence.pendingCount(), 0);
+  assert.equal((await stored()).progress.lifetime.reviews, 1);
+});
+
+test("an answer leaves the journal only once the sync hook has it", async () => {
+  const app = tab();
+  await app.persistence.start();
+  const handed: string[] = [];
+  let fail = true;
+  app.persistence.setAfterCommit(async (op) => {
+    if (fail) throw new Error("outbox unavailable");
+    handed.push(op.id);
+  });
+  const first = review("lex:A1:about");
+  app.persistence.dispatch(first);
+  await settle(app);
+  assert.equal((await stored()).progress.lifetime.reviews, 1, "the answer is saved either way");
+  assert.ok(browser.storage.getItem(JOURNAL_PREFIX + first.id), "and stays journaled for sync to pick up on the next start");
+  fail = false;
+  const second = review("lex:A1:above");
+  app.persistence.dispatch(second);
+  await settle(app);
+  assert.deepEqual(handed, [second.id]);
+  assert.equal(browser.storage.getItem(JOURNAL_PREFIX + second.id), null);
+});
+
 test("an interrupted write keeps the answer in the session and replays it exactly once", async () => {
   let fail = true;
   const app = tab({

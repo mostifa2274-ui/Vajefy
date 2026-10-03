@@ -5,6 +5,7 @@ import { cn } from "@/lib/cn";
 import { report, reportCrashes } from "@/lib/telemetry";
 import { useCopy } from "@/lib/learn/i18n";
 import { liveStreak, persistence, todayLog, useProgress } from "@/lib/learn/store";
+import { startWithSync } from "@/lib/learn/sync-client";
 import type { HeldSave } from "@/lib/learn/recovery";
 import { RecoveryScreen } from "./recovery-screen";
 import { SaveNotice } from "./save-notice";
@@ -42,7 +43,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const dock = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    void persistence.start();
+    const stopSync = startWithSync();
     // Save failures are reported by kind only, when the build enables reporting.
     const watch = () => {
       const status = persistence.getStatus();
@@ -54,6 +55,7 @@ export function Shell({ children }: { children: ReactNode }) {
     return () => {
       unsubscribe();
       stopCrashes();
+      stopSync();
     };
   }, []);
 

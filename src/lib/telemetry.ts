@@ -5,7 +5,7 @@
  * sent at most once per page load, and at most twenty reports in all.
  */
 
-export type TelemetryKind = "save-failed" | "storage-unavailable" | "import-failed" | "audio-failed" | "exercise-broken" | "crash";
+export type TelemetryKind = "save-failed" | "storage-unavailable" | "import-failed" | "audio-failed" | "exercise-broken" | "sync-failed" | "crash";
 
 type Report = { kind: TelemetryKind; code?: string; route?: string; app?: string };
 

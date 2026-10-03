@@ -48,6 +48,8 @@ interface WorkerEnv {
   /** Optional sync: a D1 database, and "on" to enable it. */
   SYNC_DB?: D1DatabaseLike;
   SYNC?: string;
+  /** An optional rate limit on sync requests per address. */
+  SYNC_LIMITER?: RateLimitLike;
 }
 
 declare module "cloudflare:workers" {

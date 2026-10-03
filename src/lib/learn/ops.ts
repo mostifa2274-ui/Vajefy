@@ -53,9 +53,11 @@ type OpBase = {
   at: number;
   /** The session as it stands after this operation, saved in the same transaction. */
   sessionState?: SessionRecord;
+  /** Received from another device through sync, so it is not uploaded again. */
+  origin?: "sync";
 };
 
-export type ReplaceReason = "import" | "restore" | "start-over" | "migrate";
+export type ReplaceReason = "import" | "restore" | "start-over" | "migrate" | "sync";
 
 /**
  * Meeting a word outside an answer: hearing it, seeing its examples or reading

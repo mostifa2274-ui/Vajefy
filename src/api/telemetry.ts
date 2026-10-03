@@ -6,7 +6,7 @@ import { z } from "zod";
  * only when TELEMETRY is "on"; no address or identifier is recorded.
  */
 
-export const TELEMETRY_KINDS = ["save-failed", "storage-unavailable", "import-failed", "audio-failed", "exercise-broken", "crash"] as const;
+export const TELEMETRY_KINDS = ["save-failed", "storage-unavailable", "import-failed", "audio-failed", "exercise-broken", "sync-failed", "crash"] as const;
 
 const report = z.object({
   kind: z.enum(TELEMETRY_KINDS),

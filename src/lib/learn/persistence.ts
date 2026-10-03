@@ -107,6 +107,8 @@ export function createPersistence(env: Environment) {
   /** Operations this tab has dispatched, so a repeated submission is ignored at once. */
   const dispatched = new Set<string>();
   let channel: Channel | undefined;
+  /** Optional sync: told about every committed operation (docs/SYNC.md). */
+  let afterCommit: ((op: Op) => Promise<void>) | null = null;
 
   function notify() {
     for (const listener of listeners) listener();
@@ -258,36 +260,49 @@ export function createPersistence(env: Environment) {
 
   async function pump(): Promise<void> {
     if (pumping) return pumping;
-    pumping = (async () => {
-      try {
-        while (pending.length && db) {
-          const op = pending[0]!;
-          let result;
-          try {
-            result = await commit(db, op, env.hooks);
-          } catch {
-            report("session");
-            return;
-          }
-          pending.shift();
-          journalRemove(op.id);
-          if (!result.duplicate) {
-            applyToMemory(result.writes, op.id);
-            applyPending();
-            broadcast(op, result.writes);
-          } else {
-            // Applied already, for example replayed from the journal by another
-            // tab: drop the optimistic copy by reading the stored records.
-            await refresh(op);
-          }
-          if (op.type === "settings" && op.patch.lang) mirrorLanguage(op.patch.lang);
-        }
-        if (!pending.length && mode === "idb") report("saved");
-      } finally {
-        pumping = null;
-      }
-    })();
+    // Cleared in a callback, which always runs after the assignment: clearing
+    // it inside the body would run first when there is nothing to commit,
+    // leaving a finished promise that stops every later commit.
+    pumping = drain().finally(() => {
+      pumping = null;
+    });
     return pumping;
+  }
+
+  async function drain(): Promise<void> {
+    while (pending.length && db) {
+      const op = pending[0]!;
+      let result;
+      try {
+        result = await commit(db, op, env.hooks);
+      } catch {
+        report("session");
+        return;
+      }
+      pending.shift();
+      // The operation leaves the crash journal only once sync has it too, so
+      // a crash in between offers it to sync again on the next start.
+      let handedOver = true;
+      if (afterCommit) {
+        try {
+          await afterCommit(op);
+        } catch {
+          handedOver = false;
+        }
+      }
+      if (handedOver) journalRemove(op.id);
+      if (!result.duplicate) {
+        applyToMemory(result.writes, op.id);
+        applyPending();
+        broadcast(op, result.writes);
+      } else {
+        // Applied already, for example replayed from the journal by another
+        // tab: drop the optimistic copy by reading the stored records.
+        await refresh(op);
+      }
+      if (op.type === "settings" && op.patch.lang) mirrorLanguage(op.patch.lang);
+    }
+    if (!pending.length && mode === "idb") report("saved");
   }
 
   async function refresh(op: Op) {
@@ -414,6 +429,8 @@ export function createPersistence(env: Environment) {
       try {
         const result = await commit(db, op, env.hooks);
         if (!result.duplicate) replayed += 1;
+        // Committed before a crash but perhaps never handed to sync.
+        if (afterCommit) await afterCommit(op);
         journalRemove(op.id);
       } catch {
         // Leave it journaled; a later start retries.
@@ -607,6 +624,16 @@ export function createPersistence(env: Environment) {
     },
     /** For tests: the operation ids behind memory's review history. */
     historyIds: () => historyIds,
+    /**
+     * Called with every committed operation, before it leaves the journal; null
+     * to stop. Set it before start, so operations replayed from the journal
+     * are handed over too.
+     */
+    setAfterCommit(hook: ((op: Op) => Promise<void>) | null) {
+      afterCommit = hook;
+    },
+    /** Whether a save is held for recovery, when nothing may be changed. */
+    isHeld: () => mode === "held",
     /** All stored evidence, for the study export; null when nothing is stored in this browser. */
     async evidence() {
       return db ? readEvidence(db) : null;

@@ -69,6 +69,11 @@ Before its transaction, each operation is written to its own localStorage key,
   learner.
 - Session-only changes are not journaled either. Each answer carries its
   session state with it.
+- With sync on, a committed operation leaves the journal only once it is in
+  sync's outbox. Sync takes up its pairing before progress loads, so a replayed
+  operation is queued for upload too ([SYNC.md](SYNC.md#how-progress-stays-consistent)).
+  Operations that came from another device are marked as such and never sent
+  back.
 
 ## Sessions survive leaving
 
