@@ -20,7 +20,7 @@ import {
   type ResolvedItem,
   type Role,
 } from "@/lib/learn/lesson";
-import { POS_FA, pronunciationFor, senseAudio, type PilotIndex, type PilotTarget } from "@/lib/learn/pilot";
+import { POS_FA, pronunciationFor, senseAudio, type PilotIndex, type Scene, type TargetContent } from "@/lib/learn/pilot";
 import { newId } from "@/lib/learn/session";
 import { useProgress } from "@/lib/learn/store";
 import { cn } from "@/lib/cn";
@@ -197,12 +197,12 @@ function StepView({
   onNext: () => void;
 }) {
   if (step.kind === "teach") {
-    const target = index.bySense.get(step.target);
+    const target = index.content.get(step.target);
     if (!target) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
     return <Teach target={target} index={index} copy={copy} accent={accent} lang={lang} onDone={() => onTeachDone(step.target)} />;
   }
   if (step.kind === "contrast") {
-    const contrast = index.pilot.contrasts.find((item) => item.id === step.contrast);
+    const contrast = index.contrasts.find((item) => item.id === step.contrast);
     if (!contrast) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
     return (
       <div className="panel p-4 sm:p-6">
@@ -239,12 +239,12 @@ function StepView({
     );
   }
   if (step.kind === "scene") {
-    const scene = index.pilot.scenes.find((item) => item.id === step.scene);
+    const scene = index.scenes.find((item) => item.id === step.scene);
     if (!scene) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
     return <SceneRead scene={scene} copy={copy} lang={lang} onNext={onNext} />;
   }
   if (step.kind === "write") {
-    const scene = index.pilot.scenes.find((item) => item.id === step.scene);
+    const scene = index.scenes.find((item) => item.id === step.scene);
     if (!scene) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
     return <WriteTask scene={scene} copy={copy} lang={lang} answered={answered} onAnswer={onAnswer} onNext={onNext} />;
   }
@@ -300,7 +300,7 @@ function Teach({
   lang,
   onDone,
 }: {
-  target: PilotTarget;
+  target: TargetContent;
   index: PilotIndex;
   copy: Copy;
   accent: "en-GB" | "en-US";
@@ -308,7 +308,7 @@ function Teach({
   onDone: () => void;
 }) {
   const { sense, entry } = target;
-  const clips = senseAudio(index.pilot.audio, sense.id, accent);
+  const clips = senseAudio(index.audio, sense.id, accent);
   // The word and its sound are drawn at once; the rest of the card follows in
   // a background render, so the press that starts a lesson answers quickly
   // instead of waiting for the whole card's text to be laid out.
@@ -530,7 +530,7 @@ function Feedback({
   );
 }
 
-function SceneRead({ scene, copy, lang, onNext }: { scene: PilotIndex["pilot"]["scenes"][number]; copy: Copy; lang: "fa" | "en"; onNext: () => void }) {
+function SceneRead({ scene, copy, lang, onNext }: { scene: Scene; copy: Copy; lang: "fa" | "en"; onNext: () => void }) {
   const [translate, setTranslate] = useState(lang === "fa");
   return (
     <div className="panel p-4 sm:p-6">
@@ -567,7 +567,7 @@ function WriteTask({
   onAnswer,
   onNext,
 }: {
-  scene: PilotIndex["pilot"]["scenes"][number];
+  scene: Scene;
   copy: Copy;
   lang: "fa" | "en";
   answered: LessonAnswer | undefined;

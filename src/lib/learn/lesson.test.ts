@@ -5,7 +5,8 @@ import { GOALS, type Pilot, type PilotOrder } from "./content";
 import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, lessonSize, nextTargets, resolveItem, seenPrompts } from "./lesson";
 import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace } from "./pilot";
 
-const index = indexPilot(JSON.parse(readFileSync("public/data/enhanced.json", "utf8")) as Pilot);
+const pilot = JSON.parse(readFileSync("content/compiled/enhanced.json", "utf8")) as Pilot;
+const index = indexPilot(pilot);
 let seed = 7;
 const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
 const T0 = 1_800_000_000_000;
@@ -91,7 +92,7 @@ test("introduction order serves the goal and keeps further senses after first me
 
 test("enhanced content at another level is taught first to learners at that level", () => {
   // The A1 content, plus one entry written for A2 (docs/CATALOGUE.md).
-  const compiled = JSON.parse(readFileSync("public/data/enhanced.json", "utf8")) as Pilot;
+  const compiled = pilot;
   const source = compiled.entries.find((entry) => entry.id === "lex:A1:time")!;
   const a2 = {
     ...source,
@@ -106,8 +107,8 @@ test("enhanced content at another level is taught first to learners at that leve
   const forA2 = focusFirst(ordered, "A2");
   assert.deepEqual(forA2.slice(0, a2.senses.length).map((target) => target.entry.id), a2.senses.map(() => "lex:A2:ability"));
   assert.equal(forA2.length, ordered.length, "and the other levels' lessons follow");
-  assert.equal(pilotFace(both.bySense.get("lex:A2:ability")!, {}, "en-GB").level, "A2");
-  assert.equal(pilotFace(both.bySense.get("lex:A1:time")!, {}, "en-GB").level, "A1");
+  assert.equal(pilotFace(both.content.get("lex:A2:ability")!, {}, "en-GB").level, "A2");
+  assert.equal(pilotFace(both.content.get("lex:A1:time")!, {}, "en-GB").level, "A1");
 });
 
 test("contrasts and scenes can be practised on their own", () => {
@@ -122,7 +123,7 @@ test("contrasts and scenes can be practised on their own", () => {
 
 test("the small introduction-order file matches the full pilot for every goal", () => {
   const compiled = JSON.parse(readFileSync("public/data/enhanced-order.json", "utf8")) as PilotOrder;
-  assert.equal(compiled.version, index.pilot.version);
+  assert.equal(compiled.version, index.version);
   for (const goal of GOALS) {
     assert.deepEqual(
       compiled.order[goal],
@@ -133,15 +134,14 @@ test("the small introduction-order file matches the full pilot for every goal", 
 });
 
 test("the released channel introduces only reviewed entries, but keeps every sense for existing cards", () => {
-  const releasedId = index.pilot.entries[0]!.id;
-  const pilot = { ...index.pilot, entries: index.pilot.entries.map((entry) => ({ ...entry, released: entry.id === releasedId })) };
-  const full = indexPilot(pilot);
+  const releasedId = pilot.entries[0]!.id;
+  const full = indexPilot({ ...pilot, entries: pilot.entries.map((entry) => ({ ...entry, released: entry.id === releasedId })) });
   const view = introducible(full, "released");
   assert.ok(view.targets.length > 0);
   assert.ok(view.targets.every((target) => target.entry.id === releasedId));
   assert.deepEqual([...view.byEntry.keys()], [releasedId]);
   assert.equal(view.bySense.size, full.bySense.size);
-  assert.ok(view.pilot.contrasts.every((contrast) => contrast.entries.every((id) => view.bySense.get(id)?.entry.released)));
+  assert.ok(view.contrasts.every((contrast) => contrast.entries.every((id) => view.bySense.get(id)?.entry.released)));
   assert.equal(introducible(full, "draft"), full);
 });
 

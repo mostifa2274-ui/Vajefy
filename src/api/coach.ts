@@ -1,6 +1,6 @@
 import { env } from "cloudflare:workers";
 import type { Pilot } from "../lib/learn/content";
-import pilotJson from "../../public/data/enhanced.json?raw";
+import pilotJson from "../../content/compiled/enhanced.json?raw";
 import { anthropicBody, coachPrompt, coachRequest, indexContent, readReply } from "./coach-core";
 
 /**

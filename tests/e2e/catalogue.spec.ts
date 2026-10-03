@@ -22,10 +22,12 @@ function seed(page: Page, focus: string) {
 }
 
 test("an A2 learner's lessons start with the A2 entries that have enhanced content", async ({ page }) => {
-  // The compiled content, plus one entry written for A2 (docs/CATALOGUE.md).
-  const compiled = JSON.parse(readFileSync("public/data/enhanced.json", "utf8"));
+  // The compiled content, plus one entry written for A2 (docs/CATALOGUE.md),
+  // listed in the app's index with its own part.
+  const compiled = JSON.parse(readFileSync("content/compiled/enhanced.json", "utf8"));
+  const catalogue = JSON.parse(readFileSync("public/data/enhanced/index.json", "utf8"));
   const order = JSON.parse(readFileSync("public/data/enhanced-order.json", "utf8"));
-  const source = compiled.entries.find((entry: { id: string }) => entry.id === "lex:A1:time");
+  const { review: _review, ...source } = compiled.entries.find((entry: { id: string }) => entry.id === "lex:A1:time");
   const a2 = {
     ...source,
     id: "lex:A2:ability",
@@ -38,7 +40,19 @@ test("an A2 learner's lessons start with the A2 entries that have enhanced conte
     })),
   };
   const ids = a2.senses.map((sense: { id: string }) => sense.id);
-  await page.route("**/data/enhanced.json", (route) => route.fulfill({ json: { ...compiled, entries: [...compiled.entries, a2] } }));
+  const listed = {
+    id: a2.id,
+    headword: a2.headword,
+    goals: a2.goals,
+    version: a2.version,
+    released: a2.released,
+    part: catalogue.parts.length,
+    senses: a2.senses.map(({ id, pos, gloss }: { id: string; pos: string; gloss: string }) => ({ id, pos, gloss })),
+  };
+  await page.route("**/data/enhanced/index.json", (route) =>
+    route.fulfill({ json: { ...catalogue, parts: [...catalogue.parts, "enhanced/a2-test.json"], entries: [...catalogue.entries, listed] } }),
+  );
+  await page.route("**/data/enhanced/a2-test.json", (route) => route.fulfill({ json: { entries: [a2], audio: {} } }));
   await page.route("**/data/enhanced-order.json", (route) =>
     route.fulfill({ json: { ...order, order: Object.fromEntries(Object.entries(order.order).map(([goal, list]) => [goal, [...(list as string[]), ...ids]])) } }),
   );

@@ -1,11 +1,26 @@
-import type { Contrast, Entry, Goal, Pilot, PilotOrder, Scene, Sense, SenseAudio } from "./content";
+import type {
+  AudioPack,
+  Contrast,
+  Entry,
+  Goal,
+  ListedEntry,
+  ListedSense,
+  Pilot,
+  PilotCatalogue,
+  PilotEntry,
+  PilotOrder,
+  PilotPart,
+  Scene,
+  Sense,
+  SenseAudio,
+} from "./content";
 import { entryIdOf, orderForGoal } from "./targets";
 import { CONTENT_CHANNEL, introducibleIn, type Channel } from "./channel";
 import { loadJson } from "./load";
 import { levelOf } from "./text";
 import type { LevelId } from "./types";
 
-export type PilotEntry = Pilot["entries"][number];
+export type { PilotEntry };
 
 /** Persian part-of-speech labels, matching the original dataset's wording. */
 export const POS_FA: Record<Sense["pos"], string> = {
@@ -23,25 +38,35 @@ export const POS_FA: Record<Sense["pos"], string> = {
   number: "عدد",
   particle: "نشانهٔ مصدر",
 };
-export type PilotTarget = { sense: Sense; entry: PilotEntry; index: number };
+/** A learning target as listed: its word, meaning and part of speech. */
+export type PilotTarget = { sense: ListedSense; entry: ListedEntry; index: number };
+/** A learning target with everything needed to teach and check it. */
+export type TargetContent = { sense: Sense; entry: PilotEntry; index: number };
 
 export type PilotIndex = {
-  pilot: Pilot;
+  version: string;
   /** Every learning target in curriculum order. */
   targets: PilotTarget[];
   bySense: Map<string, PilotTarget>;
-  byEntry: Map<string, PilotEntry>;
-  contrastsBySense: Map<string, Contrast[]>;
-  scenesBySense: Map<string, Scene[]>;
+  byEntry: Map<string, ListedEntry>;
+  contrasts: Contrast[];
+  scenes: Scene[];
+  /**
+   * Teaching content and audio of the entries loaded so far: `loadPilot(ids)`
+   * resolves once the given targets are here. They only ever grow.
+   */
+  content: Map<string, TargetContent>;
+  entries: Map<string, PilotEntry>;
+  audio: Record<string, SenseAudio>;
+  /** The part file holding each entry's content. */
+  parts: Map<string, string>;
 };
 
-let index: Promise<PilotIndex> | null = null;
-
-export function indexPilot(pilot: Pilot): PilotIndex {
+function listIndex(version: string, entries: ListedEntry[], contrasts: Contrast[], scenes: Scene[], parts: Map<string, string>): PilotIndex {
   const targets: PilotTarget[] = [];
   const bySense = new Map<string, PilotTarget>();
-  const byEntry = new Map<string, PilotEntry>();
-  for (const entry of pilot.entries) {
+  const byEntry = new Map<string, ListedEntry>();
+  for (const entry of entries) {
     byEntry.set(entry.id, entry);
     entry.senses.forEach((sense, position) => {
       const target = { sense, entry, index: position };
@@ -49,25 +74,80 @@ export function indexPilot(pilot: Pilot): PilotIndex {
       bySense.set(sense.id, target);
     });
   }
-  const contrastsBySense = new Map<string, Contrast[]>();
-  for (const contrast of pilot.contrasts) {
-    for (const id of contrast.entries) contrastsBySense.set(id, [...(contrastsBySense.get(id) ?? []), contrast]);
-  }
-  const scenesBySense = new Map<string, Scene[]>();
-  for (const scene of pilot.scenes) {
-    for (const id of scene.targets) scenesBySense.set(id, [...(scenesBySense.get(id) ?? []), scene]);
-  }
-  return { pilot, targets, bySense, byEntry, contrastsBySense, scenesBySense };
+  return { version, targets, bySense, byEntry, contrasts, scenes, content: new Map(), entries: new Map(), audio: {}, parts };
 }
 
-export function loadPilot(): Promise<PilotIndex> {
-  index ??= loadJson<Pilot>("enhanced.json")
-    .then(indexPilot)
+function addPart(index: PilotIndex, part: PilotPart) {
+  for (const entry of part.entries) {
+    index.entries.set(entry.id, entry);
+    entry.senses.forEach((sense, position) => index.content.set(sense.id, { sense, entry, index: position }));
+  }
+  Object.assign(index.audio, part.audio);
+}
+
+/** An index with all the content loaded, from the single compiled file (scripts and tests). */
+export function indexPilot(pilot: Pilot): PilotIndex {
+  const index = listIndex(pilot.version, pilot.entries, pilot.contrasts, pilot.scenes, new Map());
+  addPart(index, { entries: pilot.entries, audio: pilot.audio });
+  return index;
+}
+
+let listing: Promise<PilotIndex> | null = null;
+/** The index as last loaded: replaced, never changed, when content is added. */
+let latest: PilotIndex | null = null;
+const loading = new Map<string, Promise<void>>();
+
+/**
+ * The enhanced content: every target listed, and the teaching content of at
+ * least the given targets (sense or entry ids). Content loads a part at a
+ * time and stays loaded. The result is a new object only when content was
+ * added, so a screen holding it in state renders again only then.
+ */
+export function loadPilot(ids: Iterable<string> = []): Promise<PilotIndex> {
+  listing ??= loadJson<PilotCatalogue>("enhanced/index.json")
+    .then((catalogue) => {
+      const parts = new Map(catalogue.entries.map((entry) => [entry.id, catalogue.parts[entry.part]!]));
+      latest = listIndex(catalogue.version, catalogue.entries, catalogue.contrasts, catalogue.scenes, parts);
+      return latest;
+    })
     .catch((error: unknown) => {
-      index = null;
+      listing = null;
       throw error;
     });
-  return index;
+  const wanted = [...ids];
+  return listing.then(async (index) => {
+    const files = new Set<string>();
+    for (const id of wanted) {
+      const file = index.parts.get(entryIdOf(id));
+      if (file && !index.entries.has(entryIdOf(id))) files.add(file);
+    }
+    await Promise.all(
+      [...files].map((file) => {
+        let pending = loading.get(file);
+        if (!pending) {
+          pending = loadJson<PilotPart>(file).then((part) => {
+            addPart(index, part);
+            latest = { ...index };
+          });
+          // A part that failed is fetched afresh next time.
+          pending.catch(() => loading.delete(file));
+          loading.set(file, pending);
+        }
+        return pending;
+      }),
+    );
+    return latest ?? index;
+  });
+}
+
+/** Whether the content of every given target's entry is loaded (or it has none). */
+export function hasContent(index: PilotIndex, ids: readonly string[]): boolean {
+  return ids.every((id) => index.entries.has(entryIdOf(id)) || !index.parts.has(entryIdOf(id)));
+}
+
+/** Every current clip per accent, for downloading pronunciation for offline use. */
+export function loadAudioPack(): Promise<AudioPack> {
+  return loadJson<AudioPack>("enhanced/audio-pack.json");
 }
 
 /** Controlled audio for a sense, for the learner's accent. */
@@ -93,11 +173,8 @@ export function introducible(index: PilotIndex, channel: Channel = CONTENT_CHANN
     ...index,
     targets: index.targets.filter((target) => introducibleIn(channel, target.entry.released)),
     byEntry: new Map([...index.byEntry].filter(([, entry]) => introducibleIn(channel, entry.released))),
-    pilot: {
-      ...index.pilot,
-      contrasts: index.pilot.contrasts.filter((contrast) => contrast.entries.every(released)),
-      scenes: index.pilot.scenes.filter((scene) => scene.targets.every(released)),
-    },
+    contrasts: index.contrasts.filter((contrast) => contrast.entries.every(released)),
+    scenes: index.scenes.filter((scene) => scene.targets.every(released)),
   };
 }
 
@@ -107,7 +184,7 @@ export function introductionOrder(targets: PilotTarget[], goal: Goal | undefined
 }
 
 /** Targets at one level of the catalogue. */
-export function atLevel<T extends { sense: Sense }>(targets: T[], level: LevelId): T[] {
+export function atLevel<T extends { sense: { id: string } }>(targets: T[], level: LevelId): T[] {
   return targets.filter((target) => levelOf(target.sense.id) === level);
 }
 
@@ -115,7 +192,7 @@ export function atLevel<T extends { sense: Sense }>(targets: T[], level: LevelId
  * The guided curriculum for a learner: lessons at their focus level first,
  * then the enhanced content of the other levels, lowest first.
  */
-export function focusFirst<T extends { sense: Sense }>(ordered: T[], focus: LevelId): T[] {
+export function focusFirst<T extends { sense: { id: string } }>(ordered: T[], focus: LevelId): T[] {
   const here = atLevel(ordered, focus);
   return [...here, ...ordered.filter((target) => !here.includes(target))];
 }
@@ -133,7 +210,7 @@ export function isPilotEntry(index: PilotIndex, id: string): boolean {
 }
 
 /** A Review card for a pilot target: the precise sense, its example and its audio. */
-export function pilotFace(target: PilotTarget, audio: Record<string, SenseAudio>, accent: "en-GB" | "en-US", pron?: string): StudyFaceLike {
+export function pilotFace(target: TargetContent, audio: Record<string, SenseAudio>, accent: "en-GB" | "en-US", pron?: string): StudyFaceLike {
   const { sense, entry } = target;
   const clips = senseAudio(audio, sense.id, accent);
   const grammar = sense.grammar.map((item) => `${item.pattern} — ${item.note}`).join("\n");

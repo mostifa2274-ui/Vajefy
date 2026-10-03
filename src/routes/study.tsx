@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { StudySession } from "@/components/study-session";
 import { ButtonLink } from "@/components/ui";
-import { loadStudyFaces } from "@/lib/learn/faces";
+import { addPilotFaces, loadStudyFaces } from "@/lib/learn/faces";
 import { useCopy } from "@/lib/learn/i18n";
 import { loadMeta } from "@/lib/learn/load";
 import { resumable, startReview, type ReviewSession } from "@/lib/learn/session";
@@ -124,6 +124,8 @@ function StudyPage() {
         const dueTake = due.filter((id) => faces.has(id)).slice(0, state.sessionSize);
         const room = state.sessionSize - dueTake.length;
         const fresh = (await newWords(state.focus, faces, known, due.length, state)).slice(0, room);
+        // A new word with enhanced content is shown with it.
+        await addPilotFaces(faces, fresh);
         if (!alive) return;
         const session = startReview(
           [...dueTake.map((id) => ({ id, isNew: false })), ...fresh.map((id) => ({ id, isNew: true }))],

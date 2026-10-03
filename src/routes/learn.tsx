@@ -11,12 +11,13 @@ import {
   buildLesson,
   CHECKUP_SIZE,
   checkupCandidates,
+  contentIds,
   lessonSize,
   nextTargets,
   seenPrompts,
   type LessonSession,
 } from "@/lib/learn/lesson";
-import { focusFirst, introducible, introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
+import { focusFirst, hasContent, introducible, introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
 import { resumable } from "@/lib/learn/session";
 import { dueIds, useProgress } from "@/lib/learn/store";
 
@@ -24,6 +25,11 @@ export const Route = createFileRoute("/learn")({ component: LearnPage });
 
 /** A check-up is offered once this many words are ready: fewer say little. */
 const MIN_CHECKUP = 3;
+
+/** Event handlers read the clock through this, outside render. */
+function timestamp() {
+  return Date.now();
+}
 
 function LearnPage() {
   const navigate = useNavigate();
@@ -39,7 +45,7 @@ function LearnPage() {
   const reviewHistory = useProgress((state) => state.reviewHistory);
   const copy = useCopy(lang);
   const { sep } = useFormat();
-  // The whole pilot resolves every lesson and check-up item; what this
+  // Every target is listed and resolves lesson and check-up items; what this
   // build's channel may introduce is the `index` view of it.
   const [full, setFull] = useState<PilotIndex | null>(null);
   const index = useMemo(() => (full ? introducible(full) : null), [full]);
@@ -47,15 +53,43 @@ function LearnPage() {
   const [active, setActive] = useState<LessonSession | null>(null);
   const [opened] = useState(() => Date.now());
 
+  const unfinished = resumable(sessions, "lesson", opened);
+  const due = dueIds(cards, opened).length;
+  // Lessons at the learner's level first, then the other levels' lessons.
+  const ordered = index ? focusFirst(introductionOrder(index.targets, goal), focus) : [];
+  const size = lessonSize(minutes, due, sessionSize);
+  const upcoming = nextTargets(ordered, cards, size);
+  const checkup =
+    unfinished || !full
+      ? []
+      : checkupCandidates(
+          full.targets.map((target) => target.sense.id),
+          reviewHistory,
+          Object.values(sessions),
+          opened,
+        );
+  // The content of what is on offer loads before it is shown, so starting a
+  // lesson or check-up never waits; a session in progress needs its own words.
+  const wanted = !hydrated
+    ? []
+    : active
+      ? contentIds(active)
+      : [
+          ...upcoming.map((target) => target.sense.id),
+          ...(unfinished ? contentIds(unfinished) : []),
+          ...(checkup.length >= MIN_CHECKUP ? checkup.slice(0, CHECKUP_SIZE).map((candidate) => candidate.id) : []),
+        ];
+  const wantedKey = wanted.join("\u0000");
+
   useEffect(() => {
     let alive = true;
-    void loadPilot()
+    void loadPilot(wantedKey ? wantedKey.split("\u0000") : [])
       .then((loaded) => alive && setFull(loaded))
       .catch(() => alive && setFailed(true));
     return () => {
       alive = false;
     };
-  }, []);
+  }, [wantedKey]);
 
   if (failed) {
     return (
@@ -75,7 +109,7 @@ function LearnPage() {
     );
   }
   // The heading is drawn at once; the lesson card takes its place when ready.
-  if (!index || !full || !hydrated) {
+  if (!index || !full || !hydrated || !hasContent(full, wanted)) {
     return (
       <div>
         <PageHeader title={copy.learnTitle} lede={copy.learnLede} />
@@ -97,25 +131,11 @@ function LearnPage() {
       />
     );
 
-  const unfinished = resumable(sessions, "lesson", opened);
-  const due = dueIds(cards, opened).length;
-  // Lessons at the learner's level first, then the other levels' lessons.
-  const ordered = focusFirst(introductionOrder(index.targets, goal), focus);
-  const size = lessonSize(minutes, due, sessionSize);
-  const upcoming = nextTargets(ordered, cards, size);
   const met = index.targets.filter((target) => cards[target.sense.id]).length;
   const remaining = nextTargets(ordered, cards, 1).length;
-  const checkup = unfinished
-    ? []
-    : checkupCandidates(
-        full.targets.map((target) => target.sense.id),
-        reviewHistory,
-        Object.values(sessions),
-        opened,
-      );
 
   function start(session: LessonSession) {
-    if (unfinished) saveSession({ ...unfinished, status: "done", updatedAt: Date.now() });
+    if (unfinished) saveSession({ ...unfinished, status: "done", updatedAt: timestamp() });
     saveSession(session);
     setActive(session);
   }
@@ -203,7 +223,7 @@ function LearnPage() {
           <section className="mt-8">
             <h2 className="text-lg font-medium">{copy.contrastsTitle}</h2>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {index.pilot.contrasts.map((contrast) => (
+              {index.contrasts.map((contrast) => (
                 <li key={contrast.id} className="panel flex items-center justify-between gap-3 p-3">
                   <span lang="en" dir="ltr" className="lex-word text-lg">
                     {contrast.title}
@@ -226,7 +246,7 @@ function LearnPage() {
           <section className="mt-8">
             <h2 className="text-lg font-medium">{copy.scenesTitle}</h2>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {index.pilot.scenes.map((scene) => (
+              {index.scenes.map((scene) => (
                 <li key={scene.id} className="panel flex items-center justify-between gap-3 p-3">
                   <span>
                     <span lang="en" dir="ltr" className="block">

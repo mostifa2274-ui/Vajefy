@@ -14,7 +14,7 @@ import { review } from "../src/lib/learn/content.ts";
  */
 
 const ROOT = process.cwd();
-const PILOT = path.join(ROOT, "public", "data", "enhanced.json");
+const PILOT = path.join(ROOT, "content", "compiled", "enhanced.json");
 const LEDGER = path.join(ROOT, "content", "pilot", "review.json");
 
 const args = process.argv.slice(2);

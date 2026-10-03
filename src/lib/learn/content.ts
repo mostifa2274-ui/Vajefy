@@ -159,7 +159,11 @@ export type SenseAudio = {
   us?: { word?: string; examples: (string | null)[] };
 };
 
-/** The compiled file the app loads: `public/data/enhanced.json`. */
+/**
+ * All the compiled content in one file, `content/compiled/enhanced.json`, for
+ * scripts, tests and the coach. The app loads it in pieces instead:
+ * `PilotCatalogue`, `PilotPart` and `AudioPack`.
+ */
 export type Pilot = {
   version: string;
   entries: (Entry & { version: string; order: number; released: boolean; review: Review | null })[];
@@ -167,5 +171,27 @@ export type Pilot = {
   scenes: Scene[];
   audio: Record<string, SenseAudio>;
   /** Every current clip per accent, for downloading pronunciation for offline use. */
-  audioPack: Record<"gb" | "us", { files: string[]; bytes: number }>;
+  audioPack: AudioPack;
 };
+export type AudioPack = Record<"gb" | "us", { files: string[]; bytes: number }>;
+
+/** An entry as the app needs it for teaching, without its review record. */
+export type PilotEntry = Omit<Pilot["entries"][number], "review">;
+/** A sense as it is listed: enough to order, count, label and offer it as an option. */
+export type ListedSense = Pick<Sense, "id" | "pos" | "gloss">;
+export type ListedEntry = Pick<PilotEntry, "id" | "headword" | "goals" | "version" | "released"> & { senses: ListedSense[] };
+
+/**
+ * `public/data/enhanced/index.json`: every entry listed, with the contrasts
+ * and scenes, and which part holds each entry's teaching content.
+ */
+export type PilotCatalogue = {
+  version: string;
+  /** Part files under `public/data/`, named by their content. */
+  parts: string[];
+  entries: (ListedEntry & { part: number })[];
+  contrasts: Contrast[];
+  scenes: Scene[];
+};
+/** A run of entries in curriculum order, with their audio. */
+export type PilotPart = { entries: PilotEntry[]; audio: Record<string, SenseAudio> };

@@ -79,7 +79,7 @@ function fromContent(item: CheckItem): ResolvedItem {
 
 export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | null {
   if (ref.from === "generated") {
-    const target = index.bySense.get(ref.target);
+    const target = index.content.get(ref.target);
     if (!target) return null;
     const options = ref.options.map((id) => index.bySense.get(id)).filter((option): option is PilotTarget => Boolean(option));
     if (ref.mode === "meaning") {
@@ -108,14 +108,14 @@ export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | nul
     };
   }
   if (ref.from === "sense") {
-    const item = findItem(index.bySense.get(ref.target)?.sense.check ?? [], ref.item);
+    const item = findItem(index.content.get(ref.target)?.sense.check ?? [], ref.item);
     return item ? fromContent(item) : null;
   }
   if (ref.from === "contrast") {
-    const item = findItem(index.pilot.contrasts.find((contrast) => contrast.id === ref.contrast)?.check ?? [], ref.item);
+    const item = findItem(index.contrasts.find((contrast) => contrast.id === ref.contrast)?.check ?? [], ref.item);
     return item ? fromContent(item) : null;
   }
-  const item = findItem(index.pilot.scenes.find((scene) => scene.id === ref.scene)?.check ?? [], ref.item);
+  const item = findItem(index.scenes.find((scene) => scene.id === ref.scene)?.check ?? [], ref.item);
   return item ? fromContent(item) : null;
 }
 
@@ -181,9 +181,9 @@ function shuffleWith<T>(items: T[], random: () => number): T[] {
   return copy;
 }
 
-function contentItem(sense: Sense, types: CheckItem["type"][], used: Set<string>): CheckItem | undefined {
+function contentItem(sense: Sense | undefined, types: CheckItem["type"][], used: Set<string>): CheckItem | undefined {
   for (const type of types) {
-    const found = sense.check.find((item) => item.type === type && !used.has(item.id));
+    const found = sense?.check.find((item) => item.type === type && !used.has(item.id));
     if (found) return found;
   }
   return undefined;
@@ -216,6 +216,10 @@ function applySteps(kind: "contrast" | "scene", item: Contrast | Scene, index: P
   return steps;
 }
 
+/**
+ * A lesson for these targets. Their content must be loaded (`loadPilot`); the
+ * other words it offers as options need only be listed.
+ */
 export function buildLesson(
   index: PilotIndex,
   targets: PilotTarget[],
@@ -225,8 +229,9 @@ export function buildLesson(
 ): LessonSession {
   const steps: LessonStep[] = [];
   const used = new Map<string, Set<string>>(targets.map((target) => [target.sense.id, new Set<string>()]));
+  const senseOf = (target: PilotTarget) => index.content.get(target.sense.id)?.sense;
   const contextStep = (target: PilotTarget): LessonStep => {
-    const item = contentItem(target.sense, ["cloze", "choice", "produce"], used.get(target.sense.id)!);
+    const item = contentItem(senseOf(target), ["cloze", "choice", "produce"], used.get(target.sense.id)!);
     if (item) {
       used.get(target.sense.id)!.add(item.id);
       return { kind: "check", role: "context", ref: { from: "sense", target: target.sense.id, item: item.id } };
@@ -249,7 +254,7 @@ export function buildLesson(
   if (last) steps.push(contextStep(last));
 
   for (const target of targets) {
-    const item = contentItem(target.sense, ["produce", "cloze", "choice"], used.get(target.sense.id)!);
+    const item = contentItem(senseOf(target), ["produce", "cloze", "choice"], used.get(target.sense.id)!);
     steps.push({
       kind: "check",
       role: "delayed",
@@ -262,10 +267,10 @@ export function buildLesson(
   // Apply the words: a contrast all of whose words are now met, else the scene that reuses the most.
   const met = new Set([...known, ...targets.map((target) => target.sense.id)]);
   const ids = new Set(targets.map((target) => target.sense.id));
-  const contrast = index.pilot.contrasts.find((item) => item.entries.some((id) => ids.has(id)) && item.entries.every((id) => met.has(id)));
+  const contrast = index.contrasts.find((item) => item.entries.some((id) => ids.has(id)) && item.entries.every((id) => met.has(id)));
   if (contrast) steps.push(...applySteps("contrast", contrast, index));
   else {
-    const scene = [...index.pilot.scenes]
+    const scene = [...index.scenes]
       .map((item) => ({ item, overlap: item.targets.filter((id) => met.has(id)).length, fresh: item.targets.some((id) => ids.has(id)) }))
       .filter((candidate) => candidate.fresh && candidate.overlap >= 2)
       .sort((a, b) => b.overlap - a.overlap)[0]?.item;
@@ -288,7 +293,7 @@ export function buildLesson(
 
 /** A contrast or scene on its own, for practice from the Learn page. */
 export function buildApplication(index: PilotIndex, kind: "contrast" | "scene", id: string, now: number): LessonSession | null {
-  const item = kind === "contrast" ? index.pilot.contrasts.find((contrast) => contrast.id === id) : index.pilot.scenes.find((scene) => scene.id === id);
+  const item = kind === "contrast" ? index.contrasts.find((contrast) => contrast.id === id) : index.scenes.find((scene) => scene.id === id);
   if (!item) return null;
   const steps = applySteps(kind, item, index);
   return {
@@ -303,6 +308,16 @@ export function buildApplication(index: PilotIndex, kind: "contrast" | "scene", 
     index: 0,
     answers: [],
   };
+}
+
+/** The targets whose content a session's steps show: the rest need only be listed. */
+export function contentIds(session: LessonSession): string[] {
+  const ids = new Set<string>();
+  for (const step of session.steps) {
+    if (step.kind === "teach") ids.add(step.target);
+    else if (step.kind === "check" && (step.ref.from === "sense" || step.ref.from === "generated")) ids.add(step.ref.target);
+  }
+  return [...ids];
 }
 
 export function answerFor(session: LessonSession, step = session.index): LessonAnswer | undefined {
@@ -422,6 +437,7 @@ export function checkupCandidates(
  * been seen in (a content item never answered before, else choosing the word
  * for its meaning), then recognising its meaning. Use comes first so the
  * meaning question cannot cue it. Answers are recorded as assessments only.
+ * The first CHECKUP_SIZE candidates need their content loaded.
  */
 export function buildCheckup(
   index: PilotIndex,
@@ -439,10 +455,11 @@ export function buildCheckup(
   const use: LessonStep[] = [];
   const meaning: LessonStep[] = [];
   for (const { target } of chosen) {
+    const sense = index.content.get(target.sense.id)?.sense;
     const fresh = contentItem(
-      target.sense,
+      sense,
       ["produce", "cloze", "choice"],
-      new Set(target.sense.check.filter((item) => seen.has(`${target.sense.id}/${item.id}`)).map((item) => item.id)),
+      new Set((sense?.check ?? []).filter((item) => seen.has(`${target.sense.id}/${item.id}`)).map((item) => item.id)),
     );
     use.push({
       kind: "check",

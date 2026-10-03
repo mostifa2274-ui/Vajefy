@@ -58,6 +58,19 @@ function LexiconPage() {
   useEffect(() => {
     if (selectedId) expose(selectedId, "detail");
   }, [selectedId, expose]);
+  // An enhanced word's teaching content loads when it is opened; if it cannot,
+  // the word shows its original detail.
+  const [unloadable, setUnloadable] = useState<string | null>(null);
+  useEffect(() => {
+    if (!selectedId || !pilot?.byEntry.has(selectedId) || pilot.entries.has(selectedId)) return;
+    let alive = true;
+    void loadPilot([selectedId])
+      .then((loaded) => alive && setPilot(introducible(loaded)))
+      .catch(() => alive && setUnloadable(selectedId));
+    return () => {
+      alive = false;
+    };
+  }, [selectedId, pilot]);
   const [page, setPage] = useState({ key: "", limit: 40 });
 
   // Open on the learner's level once it is known, unless the URL asked for
@@ -264,8 +277,14 @@ function LexiconPage() {
               <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted">
                 {copy.pron}: {selected.pr}
               </p>
-              {pilot?.byEntry.get(selected.id) ? (
-                <PilotEntryDetail entry={pilot.byEntry.get(selected.id)!} index={pilot} copy={copy} lang={lang} accent={accent} />
+              {pilot?.byEntry.has(selected.id) && unloadable !== selected.id ? (
+                pilot.entries.get(selected.id) ? (
+                  <PilotEntryDetail entry={pilot.entries.get(selected.id)!} index={pilot} copy={copy} lang={lang} accent={accent} />
+                ) : (
+                  <p role="status" className="mt-4 text-sm text-muted">
+                    {copy.loading}
+                  </p>
+                )
               ) : (
                 <>
                   <div className="mt-3">

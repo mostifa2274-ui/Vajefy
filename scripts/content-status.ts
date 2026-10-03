@@ -28,7 +28,7 @@ if (levelOption !== undefined && !isLevel(levelOption)) {
   process.exit(1);
 }
 
-const pilot = read<Pilot>(path.join(ROOT, "public", "data", "enhanced.json"));
+const pilot = read<Pilot>(path.join(ROOT, "content", "compiled", "enhanced.json"));
 const ledgerFile = path.join(ROOT, "content", "pilot", "review.json");
 const ledger = fs.existsSync(ledgerFile) ? read<Record<string, { version: string }>>(ledgerFile) : {};
 const reportFile = path.join(ROOT, "content", "pilot", "audio-report.json");

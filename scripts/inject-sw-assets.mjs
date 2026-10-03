@@ -23,7 +23,10 @@ if (!fs.existsSync(assetsDir)) {
   throw new Error(`Missing Vite client assets directory: ${assetsDir}`);
 }
 
-const assets = walk(assetsDir)
+// The enhanced content's parts are named by their content, like the assets,
+// so the list is generated too.
+const enhancedDir = path.join(clientDir, "data", "enhanced");
+const assets = [...walk(assetsDir), ...(fs.existsSync(enhancedDir) ? walk(enhancedDir) : [])]
   .map((file) => "/" + path.relative(clientDir, file).split(path.sep).join("/"))
   .sort();
 
@@ -63,5 +66,5 @@ const output = original
 fs.writeFileSync(swPath, output);
 
 console.log(
-  `Injected ${assets.length} generated client assets and cache version ${buildVersion} into dist/client/sw.js.`,
+  `Injected ${assets.length} generated client assets and content parts, and cache version ${buildVersion}, into dist/client/sw.js.`,
 );

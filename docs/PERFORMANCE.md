@@ -63,8 +63,16 @@ is adjusted, not the thresholds.
   and everything below them appear together, in space held for them. Learn
   draws its heading at once and its lesson card in place when ready.
 - **Small first data.** Today counts upcoming lesson words from
-  `enhanced-order.json` (about 2 KB compressed), not the 200 KB of enhanced
-  content, and preloads it with `meta.json`.
+  `enhanced-order.json` (about 2 KB compressed), not the enhanced content, and
+  preloads it with `meta.json`.
+- **Screens load only the enhanced entries they show.** The enhanced content
+  is published as a list of every entry (word, meaning, part of speech; about
+  33 KB compressed) and parts of 25 entries each, in curriculum order (about
+  16 KB each). Learn loads the list and the parts holding the words it offers,
+  usually one: about 50 KB instead of all 335 KB, and a sixth of the JSON to
+  parse. The Words page loads a part when an enhanced word is opened, Review
+  only the parts for the cards in the session, and Progress only the list of
+  audio files. The total no longer grows with every batch of content.
 - **No blocking requests in `<head>`.** The script that applies the saved
   language before the first paint is inline, carrying the page's CSP nonce.
 - **Route code is split.** Each screen loads its own chunk; the service worker
