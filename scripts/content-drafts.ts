@@ -75,7 +75,8 @@ function scaffold(row: Row, item: PlanItem) {
   const ipa = row.ipa ?? "";
   return {
     id: row.id,
-    headword: row.w,
+    // The dataset numbers homographs (long¹, can²); the headword is shown and spoken without the number.
+    headword: row.w.replace(/[¹²³⁴⁵⁶⁷⁸⁹⁰]+$/u, ""),
     goals: ["general"],
     senses: kinds.map((pos, index) => ({
       id: index === 0 ? row.id : `${row.id}#${pos}`,
