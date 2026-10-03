@@ -1,8 +1,8 @@
 # Pronunciation audio
 
-Every enhanced sense (the pilot and A1 batches 2 and 3) has recorded clips in
+Every enhanced sense (the pilot and A1 batches 2–4) has recorded clips in
 British and American English: the word itself and each teaching example. There
-are 2,410 clips (1,205 per accent), 20.2 MB in total, in `public/audio/pilot/`.
+are 3,044 clips (1,522 per accent), 25.8 MB in total, in `public/audio/pilot/`.
 
 ## How clips are made
 
@@ -49,8 +49,8 @@ adjective /kləʊs/), *present* (noun and adjective vs. verb), *live* (verb vs.
 adjective), *have to* (/hæf tə/), the verb *use* (/juːz/) and *of course*.
 
 Kokoro's British voice also uses northern vowels in a few words: a short *a*
-in *last*, *after*, *answer*, *class* and *glass*, and /wɒn/ in *one*, *everyone* and
-*no one*. Those senses give phonemes too, so their clips follow the
+in *last*, *after*, *afternoon*, *answer*, *class*, *glass* and *half*, and /wɒn/
+in *one*, *once*, *everyone* and *no one*. Those senses give phonemes too, so their clips follow the
 dictionary.
 
 ## Automatic checks
@@ -70,7 +70,7 @@ The comparison ignores stress, length and syllable marks, and maps notation
 differences such as Kokoro's /a/ for the British TRAP vowel to /æ/.
 
 Clips with a fault or a mismatch are listed in `content/pilot/audio-report.json`.
-The current report flags 78 word clips and no technical faults. Most are
+The current report flags 129 word clips and no technical faults. Most are
 expected:
 
 - function words said in isolation use their strong form (*a* /eɪ/, *that*
@@ -121,8 +121,8 @@ unavailable with a reason.
 
 The service worker keeps clips in their own cache, `vajefy-audio-v1`, which
 survives app updates. A clip played once is cached. **Progress → Pronunciation
-offline** downloads every clip for the selected accent: about 10.5 MB for
-British, 9.8 MB for American. Each accent can also be removed again.
+offline** downloads every clip for the selected accent: about 13.3 MB for
+British, 12.5 MB for American. Each accent can also be removed again.
 
 ## Speaking practice
 

@@ -62,7 +62,7 @@ regression to roll back in Cloudflare's **Deployments** tab.
 
 ## Pronunciation audio in R2
 
-Clips ship as static assets (20.2 MB today). If the library grows past what
+Clips ship as static assets (25.8 MB today). If the library grows past what
 static assets should hold, move it to R2:
 
 1. Create a bucket, upload `public/audio/pilot/` to the key prefix `pilot/`,
