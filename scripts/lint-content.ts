@@ -43,6 +43,8 @@ function hardWords(text: string, allow: Set<string>, level: Level): string[] {
   tokens.forEach((token, index) => {
     // A capitalised word inside a sentence is a name (Ali, London, Monday is A1 anyway).
     if (index > 0 && /^[A-Z]/.test(token) && token !== "I") return;
+    // Single letters are initials and abbreviations (p.m.); "a" and "I" are A1.
+    if (token.length === 1) return;
     const word = token.toLowerCase().replace("’", "'");
     if (allow.has(word) || TITLES.has(word)) return;
     const found = lookup(word);
