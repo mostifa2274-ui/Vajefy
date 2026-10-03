@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { smartPracticeCandidate, smartPracticeQuestions, SMART_PRACTICE_COOLDOWN_MS, SMART_PRACTICE_GUARD_MS } from "./adaptive";
+import { DEFAULT_PRACTICE_POLICY, skillWeakness, smartPracticeCandidate, smartPracticeQuestions, SMART_PRACTICE_COOLDOWN_MS, SMART_PRACTICE_GUARD_MS } from "./adaptive";
 import { useCopy } from "./i18n";
 import { freshCard, schedule } from "./srs";
 import type { CardProg, LexWord } from "./types";
@@ -115,4 +115,29 @@ test("incompatible context uses spelling and a tiny pool cannot block a safe ses
   assert.equal(questions[0]?.practiceSkill, "spelling");
   assert.equal(questions[0]?.id, target.id);
   assert.deepEqual(smartPracticeQuestions([target], cards, NaN, useCopy("fa"), "fa", T0), []);
+});
+
+test("a single miss gets prompt support that fades, and later success reduces it", () => {
+  const DAY = 24 * 60 * MIN;
+  const missed = { spelling: { attempts: 1, correct: 0, lastAt: T0, lastGrade: "again" as const } };
+  const fresh = skillWeakness(missed, "spelling", T0);
+  const week = skillWeakness(missed, "spelling", T0 + 7 * DAY);
+  assert.ok(fresh > week && week > 0, "the latest miss fades over the half-life");
+  assert.ok(Math.abs(week - (fresh - 30)) < 1e-9, "after one half-life the miss weighs half as much");
+  const recovered = { spelling: { attempts: 2, correct: 1, lastAt: T0 + MIN, lastGrade: "good" as const } };
+  assert.ok(skillWeakness(recovered, "spelling", T0 + MIN) < week, "a later success outweighs a week of fading");
+  assert.equal(skillWeakness({}, "spelling", T0), 0, "no evidence is not weakness");
+});
+
+test("more evidence of the same miss rate counts for more than one answer", () => {
+  const one = { context: { attempts: 1, correct: 0, lastAt: T0 - 60 * 24 * 60 * MIN, lastGrade: "good" as const } };
+  const many = { context: { attempts: 6, correct: 0, lastAt: T0 - 60 * 24 * 60 * MIN, lastGrade: "good" as const } };
+  assert.ok(skillWeakness(many, "context", T0) > skillWeakness(one, "context", T0));
+});
+
+test("the policy's guard and cooldown are configuration, not constants", () => {
+  const card = { ...reviewCard(), due: T0 + 3 * 60 * MIN };
+  assert.equal(smartPracticeCandidate("near", card, T0, 0.9), null, "the default six-hour guard protects it");
+  const relaxed = { ...DEFAULT_PRACTICE_POLICY, guardMs: 60 * MIN };
+  assert.ok(smartPracticeCandidate("near", card, T0, 0.9, {}, relaxed), "a shorter guard admits it");
 });

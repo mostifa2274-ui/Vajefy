@@ -1,0 +1,6609 @@
+{
+ "level": "A1",
+ "batchSize": 100,
+ "batches": [
+  {
+   "id": "pilot",
+   "entries": [
+    {
+     "id": "lex:A1:a-an",
+     "headword": "a, an",
+     "flags": [
+      "several-forms"
+     ]
+    },
+    {
+     "id": "lex:A1:the",
+     "headword": "the"
+    },
+    {
+     "id": "lex:A1:and",
+     "headword": "and"
+    },
+    {
+     "id": "lex:A1:but",
+     "headword": "but",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:or",
+     "headword": "or"
+    },
+    {
+     "id": "lex:A1:because",
+     "headword": "because",
+     "refs": [
+      "conf:as-because-since"
+     ]
+    },
+    {
+     "id": "lex:A1:if",
+     "headword": "if",
+     "refs": [
+      "conf:if-when",
+      "conf:if-whether"
+     ]
+    },
+    {
+     "id": "lex:A1:so",
+     "headword": "so",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:than",
+     "headword": "than"
+    },
+    {
+     "id": "lex:A1:this",
+     "headword": "this",
+     "flags": [
+      "split-senses",
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:that",
+     "headword": "that",
+     "flags": [
+      "split-senses",
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:what",
+     "headword": "what",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:who",
+     "headword": "who"
+    },
+    {
+     "id": "lex:A1:where",
+     "headword": "where",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:when",
+     "headword": "when",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "conf:if-when"
+     ]
+    },
+    {
+     "id": "lex:A1:why",
+     "headword": "why"
+    },
+    {
+     "id": "lex:A1:how",
+     "headword": "how"
+    },
+    {
+     "id": "lex:A1:i",
+     "headword": "I"
+    },
+    {
+     "id": "lex:A1:you",
+     "headword": "you"
+    },
+    {
+     "id": "lex:A1:he",
+     "headword": "he"
+    },
+    {
+     "id": "lex:A1:she",
+     "headword": "she"
+    },
+    {
+     "id": "lex:A1:it",
+     "headword": "it",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:we",
+     "headword": "we"
+    },
+    {
+     "id": "lex:A1:they",
+     "headword": "they"
+    },
+    {
+     "id": "lex:A1:my",
+     "headword": "my"
+    },
+    {
+     "id": "lex:A1:your",
+     "headword": "your",
+     "refs": [
+      "col:do-your-best"
+     ]
+    },
+    {
+     "id": "lex:A1:some",
+     "headword": "some",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:any",
+     "headword": "any",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:no",
+     "headword": "no",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:yes-no"
+     ]
+    },
+    {
+     "id": "lex:A1:not",
+     "headword": "not"
+    },
+    {
+     "id": "lex:A1:can",
+     "headword": "can¹",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:can-could-may"
+     ]
+    },
+    {
+     "id": "lex:A1:will",
+     "headword": "will",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:would",
+     "headword": "would"
+    },
+    {
+     "id": "lex:A1:should",
+     "headword": "should"
+    },
+    {
+     "id": "lex:A1:must",
+     "headword": "must"
+    },
+    {
+     "id": "lex:A1:have-to",
+     "headword": "have to"
+    },
+    {
+     "id": "lex:A1:in",
+     "headword": "in",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:on",
+     "headword": "on",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:at",
+     "headword": "at"
+    },
+    {
+     "id": "lex:A1:to",
+     "headword": "to",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:from",
+     "headword": "from"
+    },
+    {
+     "id": "lex:A1:with",
+     "headword": "with"
+    },
+    {
+     "id": "lex:A1:for",
+     "headword": "for"
+    },
+    {
+     "id": "lex:A1:of",
+     "headword": "of"
+    },
+    {
+     "id": "lex:A1:about",
+     "headword": "about",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:be",
+     "headword": "be",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ]
+    },
+    {
+     "id": "lex:A1:have",
+     "headword": "have",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:have-a-chance",
+      "col:have-a-conversation",
+      "col:have-a-good-time",
+      "col:have-a-problem",
+      "col:have-a-rest",
+      "col:have-an-idea",
+      "col:have-breakfast",
+      "col:have-dinner",
+      "col:have-lunch",
+      "irr:have"
+     ]
+    },
+    {
+     "id": "lex:A1:do",
+     "headword": "do¹",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ]
+    },
+    {
+     "id": "lex:A1:make",
+     "headword": "make",
+     "flags": [
+      "also-B2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:make-a-choice",
+      "col:make-a-decision",
+      "col:make-a-difference",
+      "col:make-a-list",
+      "col:make-a-loss",
+      "col:make-a-mistake",
+      "col:make-a-noise",
+      "col:make-a-phone-call",
+      "col:make-a-plan",
+      "col:make-a-profit",
+      "col:make-a-promise",
+      "col:make-an-effort",
+      "col:make-money",
+      "col:make-progress",
+      "conf:do-make",
+      "irr:make",
+      "pv:make-up",
+      "vp:make-object-bare-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:go",
+     "headword": "go",
+     "flags": [
+      "also-B1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:come-go",
+      "ant:stop-go",
+      "conf:come-go",
+      "conf:get-go",
+      "irr:go",
+      "pv:go-after",
+      "pv:go-against",
+      "pv:go-ahead",
+      "pv:go-back",
+      "pv:go-out",
+      "pv:go-over",
+      "pv:go-without",
+      "vp:go-on-ing",
+      "vp:go-on-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:come",
+     "headword": "come",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:come-go",
+      "conf:come-go",
+      "irr:come",
+      "prep:come-from",
+      "pv:come-across",
+      "pv:come-apart",
+      "pv:come-back",
+      "pv:come-down-with",
+      "pv:come-forward",
+      "pv:come-up-with"
+     ]
+    },
+    {
+     "id": "lex:A1:get",
+     "headword": "get",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:get-a-job",
+      "col:get-angry",
+      "col:get-lost",
+      "col:get-married",
+      "col:get-permission",
+      "col:get-ready",
+      "col:get-the-message",
+      "col:get-worried",
+      "conf:get-go",
+      "irr:get",
+      "pv:get-across",
+      "pv:get-along",
+      "pv:get-around",
+      "pv:get-around-to",
+      "pv:get-away",
+      "pv:get-away-with",
+      "pv:get-back",
+      "pv:get-back-at",
+      "pv:get-back-into",
+      "pv:get-on",
+      "pv:get-on-with",
+      "pv:get-over",
+      "pv:get-rid-of",
+      "pv:get-round-to",
+      "pv:get-together",
+      "pv:get-up",
+      "syn:get-obtain-acquire"
+     ]
+    },
+    {
+     "id": "lex:A1:take",
+     "headword": "take",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:give-take",
+      "col:take-a-break",
+      "col:take-a-chance",
+      "col:take-a-look",
+      "col:take-a-seat",
+      "col:take-a-taxi",
+      "col:take-action",
+      "col:take-care",
+      "col:take-notes",
+      "col:take-part",
+      "col:take-responsibility",
+      "conf:bring-take-fetch",
+      "irr:take",
+      "pv:take-after",
+      "pv:take-apart",
+      "pv:take-back",
+      "pv:take-off",
+      "pv:take-out",
+      "pv:take-over"
+     ]
+    },
+    {
+     "id": "lex:A1:give",
+     "headword": "give",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:give-receive",
+      "ant:give-take",
+      "col:give-a-speech",
+      "col:give-advice",
+      "col:give-an-example",
+      "col:give-permission",
+      "irr:give",
+      "pv:give-away",
+      "pv:give-back",
+      "pv:give-in",
+      "pv:give-out",
+      "pv:give-up",
+      "syn:give-provide-supply"
+     ]
+    },
+    {
+     "id": "lex:A1:bring",
+     "headword": "bring",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "conf:bring-take-fetch",
+      "irr:bring",
+      "pv:bring-down",
+      "pv:bring-up"
+     ]
+    },
+    {
+     "id": "lex:A1:say",
+     "headword": "say",
+     "flags": [
+      "also-C1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "conf:say-tell",
+      "irr:say",
+      "vp:say-that-clause"
+     ]
+    },
+    {
+     "id": "lex:A1:tell",
+     "headword": "tell",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:tell-a-story",
+      "col:tell-the-truth",
+      "conf:say-tell",
+      "irr:tell",
+      "vp:tell-object-that-clause",
+      "vp:tell-object-to-infinitive",
+      "vp:tell-object-wh-word-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:speak",
+     "headword": "speak",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "conf:speak-talk",
+      "irr:speak",
+      "prep:speak-about",
+      "prep:speak-to"
+     ]
+    },
+    {
+     "id": "lex:A1:talk",
+     "headword": "talk",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:speak-talk",
+      "prep:talk-about",
+      "prep:talk-to"
+     ]
+    },
+    {
+     "id": "lex:A1:see",
+     "headword": "see",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "conf:look-at-see-watch",
+      "irr:see",
+      "vp:see-object-bare-infinitive",
+      "vp:see-object-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:look",
+     "headword": "look",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "col:take-a-look",
+      "pv:look-after",
+      "pv:look-down-on",
+      "pv:look-for",
+      "pv:look-forward-to",
+      "pv:look-into",
+      "pv:look-out",
+      "pv:look-out-for",
+      "pv:look-over",
+      "pv:look-up",
+      "pv:look-up-to",
+      "vp:look-forward-to-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:watch",
+     "headword": "watch",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "conf:look-at-see-watch"
+     ]
+    },
+    {
+     "id": "lex:A1:hear",
+     "headword": "hear",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "conf:hear-listen-to",
+      "irr:hear",
+      "prep:hear-about",
+      "prep:hear-from",
+      "vp:hear-object-bare-infinitive",
+      "vp:hear-object-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:listen",
+     "headword": "listen",
+     "refs": [
+      "prep:listen-to"
+     ]
+    },
+    {
+     "id": "lex:A1:know",
+     "headword": "know",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "fam:know",
+      "irr:know",
+      "vp:know-how-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:think",
+     "headword": "think",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "fam:think",
+      "irr:think",
+      "prep:think-about",
+      "prep:think-of",
+      "pv:think-back",
+      "pv:think-over"
+     ]
+    },
+    {
+     "id": "lex:A1:want",
+     "headword": "want",
+     "refs": [
+      "vp:want-object-to-infinitive",
+      "vp:want-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:need",
+     "headword": "need",
+     "flags": [
+      "also-A2-B1"
+     ],
+     "refs": [
+      "prep:need-for",
+      "syn:need-require",
+      "vp:need-ing",
+      "vp:need-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:like-find-sb-sth-pleasant",
+     "headword": "like (find sb/sth pleasant)",
+     "flags": [
+      "also-B1",
+      "several-forms"
+     ],
+     "refs": [
+      "ant:like-dislike",
+      "conf:as-like",
+      "vp:like-ing",
+      "vp:like-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:love",
+     "headword": "love",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:love-hate",
+      "vp:love-ing-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:help",
+     "headword": "help",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:help-hurt",
+      "col:offer-help",
+      "fam:help",
+      "syn:help-assist",
+      "vp:help-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:work",
+     "headword": "work",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:hard-work",
+      "conf:job-work",
+      "fam:work",
+      "prep:work-for",
+      "prep:work-on",
+      "pv:work-out"
+     ]
+    },
+    {
+     "id": "lex:A1:live",
+     "headword": "live¹",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:die-live"
+     ]
+    },
+    {
+     "id": "lex:A1:eat",
+     "headword": "eat",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:eat",
+      "pv:eat-out"
+     ]
+    },
+    {
+     "id": "lex:A1:buy",
+     "headword": "buy",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:buy-sell",
+      "irr:buy",
+      "syn:buy-purchase"
+     ]
+    },
+    {
+     "id": "lex:A1:time",
+     "headword": "time",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:free-time",
+      "col:have-a-good-time",
+      "col:long-time",
+      "col:save-time",
+      "col:spare-time",
+      "col:spend-time",
+      "col:waste-time"
+     ]
+    },
+    {
+     "id": "lex:A1:day",
+     "headword": "day",
+     "refs": [
+      "ant:day-night"
+     ]
+    },
+    {
+     "id": "lex:A1:week",
+     "headword": "week"
+    },
+    {
+     "id": "lex:A1:year",
+     "headword": "year"
+    },
+    {
+     "id": "lex:A1:today",
+     "headword": "today",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:tomorrow",
+     "headword": "tomorrow",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:yesterday",
+     "headword": "yesterday",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:morning",
+     "headword": "morning",
+     "refs": [
+      "ant:morning-evening"
+     ]
+    },
+    {
+     "id": "lex:A1:night",
+     "headword": "night",
+     "refs": [
+      "ant:day-night"
+     ]
+    },
+    {
+     "id": "lex:A1:family",
+     "headword": "family",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:friend",
+     "headword": "friend",
+     "refs": [
+      "ant:friend-enemy",
+      "col:best-friend",
+      "col:close-friend",
+      "col:meet-a-friend",
+      "fam:friend"
+     ]
+    },
+    {
+     "id": "lex:A1:mother",
+     "headword": "mother",
+     "refs": [
+      "ant:father-mother"
+     ]
+    },
+    {
+     "id": "lex:A1:father",
+     "headword": "father",
+     "refs": [
+      "ant:father-mother"
+     ]
+    },
+    {
+     "id": "lex:A1:child",
+     "headword": "child",
+     "refs": [
+      "ant:adult-child",
+      "ant:child-parent"
+     ]
+    },
+    {
+     "id": "lex:A1:name",
+     "headword": "name",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:home",
+     "headword": "home",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "conf:house-home"
+     ]
+    },
+    {
+     "id": "lex:A1:house",
+     "headword": "house",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "conf:house-home"
+     ]
+    },
+    {
+     "id": "lex:A1:room",
+     "headword": "room"
+    },
+    {
+     "id": "lex:A1:school",
+     "headword": "school"
+    },
+    {
+     "id": "lex:A1:job",
+     "headword": "job",
+     "refs": [
+      "col:get-a-job",
+      "conf:job-work"
+     ]
+    },
+    {
+     "id": "lex:A1:money",
+     "headword": "money",
+     "refs": [
+      "col:make-money",
+      "col:save-money",
+      "col:spend-money"
+     ]
+    },
+    {
+     "id": "lex:A1:food",
+     "headword": "food"
+    },
+    {
+     "id": "lex:A1:water",
+     "headword": "water",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:coffee",
+     "headword": "coffee",
+     "refs": [
+      "col:strong-coffee"
+     ]
+    },
+    {
+     "id": "lex:A1:bread",
+     "headword": "bread"
+    },
+    {
+     "id": "lex:A1:book",
+     "headword": "book",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:phone",
+     "headword": "phone",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:make-a-phone-call"
+     ]
+    },
+    {
+     "id": "lex:A1:car",
+     "headword": "car"
+    },
+    {
+     "id": "lex:A1:bus",
+     "headword": "bus",
+     "refs": [
+      "col:catch-a-bus"
+     ]
+    },
+    {
+     "id": "lex:A1:city",
+     "headword": "city"
+    },
+    {
+     "id": "lex:A1:good",
+     "headword": "good",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:bad-good",
+      "ant:evil-good",
+      "col:good-idea",
+      "col:have-a-good-time",
+      "prep:good-at",
+      "syn:good-great-excellent"
+     ]
+    },
+    {
+     "id": "lex:A1:bad",
+     "headword": "bad",
+     "refs": [
+      "ant:bad-good",
+      "col:bad-habit",
+      "prep:bad-at",
+      "syn:bad-poor-terrible"
+     ]
+    },
+    {
+     "id": "lex:A1:big",
+     "headword": "big",
+     "refs": [
+      "ant:big-little",
+      "ant:big-small",
+      "col:big-mistake",
+      "syn:big-large"
+     ]
+    },
+    {
+     "id": "lex:A1:small",
+     "headword": "small",
+     "refs": [
+      "ant:big-small",
+      "ant:large-small",
+      "col:small-number",
+      "syn:small-little"
+     ]
+    },
+    {
+     "id": "lex:A1:little",
+     "headword": "little",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:big-little",
+      "ant:little-much",
+      "conf:few-little",
+      "syn:small-little"
+     ]
+    },
+    {
+     "id": "lex:A1:new",
+     "headword": "new",
+     "refs": [
+      "ant:new-old"
+     ]
+    },
+    {
+     "id": "lex:A1:old",
+     "headword": "old",
+     "refs": [
+      "ant:new-old",
+      "ant:old-young"
+     ]
+    },
+    {
+     "id": "lex:A1:happy",
+     "headword": "happy",
+     "refs": [
+      "ant:happy-sad",
+      "ant:happy-unhappy",
+      "fam:happy",
+      "syn:happy-pleased-glad"
+     ]
+    },
+    {
+     "id": "lex:A1:tired",
+     "headword": "tired",
+     "refs": [
+      "prep:tired-of"
+     ]
+    },
+    {
+     "id": "lex:A1:hungry",
+     "headword": "hungry"
+    },
+    {
+     "id": "lex:A1:cheap",
+     "headword": "cheap",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:cheap-expensive"
+     ]
+    },
+    {
+     "id": "lex:A1:expensive",
+     "headword": "expensive",
+     "refs": [
+      "ant:cheap-expensive"
+     ]
+    },
+    {
+     "id": "lex:A1:easy",
+     "headword": "easy",
+     "refs": [
+      "ant:difficult-easy",
+      "ant:easy-hard",
+      "syn:easy-simple"
+     ]
+    },
+    {
+     "id": "lex:A1:difficult",
+     "headword": "difficult",
+     "refs": [
+      "ant:difficult-easy",
+      "syn:hard-difficult-challenging"
+     ]
+    },
+    {
+     "id": "lex:A1:beautiful",
+     "headword": "beautiful",
+     "refs": [
+      "ant:beautiful-ugly",
+      "fam:beauty",
+      "syn:beautiful-pretty-attractive"
+     ]
+    },
+    {
+     "id": "lex:A1:like-similar",
+     "headword": "like (similar)",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:like-dislike",
+      "conf:as-like",
+      "vp:like-ing",
+      "vp:like-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:kind-type",
+     "headword": "kind (type)",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:cruel-kind",
+      "ant:kind-unkind",
+      "prep:kind-to"
+     ]
+    },
+    {
+     "id": "lex:A1:second-next-after-the-first",
+     "headword": "second¹ (next after the first)",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:first-second"
+     ]
+    },
+    {
+     "id": "lex:A1:second-unit-of-time",
+     "headword": "second¹ (unit of time)",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:first-second"
+     ]
+    },
+    {
+     "id": "lex:A1:last-final",
+     "headword": "last¹ (final)",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:first-last"
+     ]
+    },
+    {
+     "id": "lex:A1:light-from-the-sun-a-lamp",
+     "headword": "light (from the sun/a lamp)",
+     "flags": [
+      "split-senses",
+      "also-A2",
+      "irregular-verb",
+      "several-forms"
+     ],
+     "refs": [
+      "ant:dark-light",
+      "ant:heavy-light",
+      "irr:light"
+     ]
+    },
+    {
+     "id": "lex:A1:match-contest-correspond",
+     "headword": "match (contest/correspond)",
+     "flags": [
+      "split-senses",
+      "several-forms"
+     ]
+    },
+    {
+     "id": "lex:A1:bank-money",
+     "headword": "bank (money)",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:close",
+     "headword": "close¹",
+     "flags": [
+      "also-A2-B1-B2"
+     ],
+     "refs": [
+      "ant:open-close",
+      "col:close-a-deal",
+      "col:close-friend",
+      "conf:closed-close",
+      "prep:close-to"
+     ]
+    },
+    {
+     "id": "lex:A1:well",
+     "headword": "well",
+     "flags": [
+      "split-senses",
+      "also-C1"
+     ],
+     "refs": [
+      "ant:badly-well",
+      "ant:ill-well",
+      "ant:well-sick"
+     ]
+    },
+    {
+     "id": "lex:A1:right",
+     "headword": "right",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:left-right",
+      "ant:right-wrong",
+      "syn:right-correct"
+     ]
+    },
+    {
+     "id": "lex:A1:fine",
+     "headword": "fine",
+     "flags": [
+      "also-C1"
+     ],
+     "refs": [
+      "col:pay-a-fine"
+     ]
+    },
+    {
+     "id": "lex:A1:mean",
+     "headword": "mean",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "fam:mean",
+      "irr:mean",
+      "vp:mean-ing",
+      "vp:mean-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:play",
+     "headword": "play",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:play-a-key-role",
+      "col:play-a-role",
+      "conf:play-game"
+     ]
+    },
+    {
+     "id": "lex:A1:back",
+     "headword": "back",
+     "flags": [
+      "split-senses",
+      "also-A2-B2"
+     ],
+     "refs": [
+      "ant:ahead-back",
+      "ant:back-front",
+      "pv:back-up"
+     ]
+    },
+    {
+     "id": "lex:A1:still",
+     "headword": "still",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:moving-still",
+      "conf:already-still-yet"
+     ]
+    },
+    {
+     "id": "lex:A1:just",
+     "headword": "just",
+     "flags": [
+      "also-C1"
+     ],
+     "refs": [
+      "syn:fair-just-reasonable"
+     ]
+    },
+    {
+     "id": "lex:A1:miss",
+     "headword": "miss",
+     "refs": [
+      "ant:catch-miss",
+      "ant:hit-miss",
+      "vp:miss-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:leave",
+     "headword": "leave",
+     "flags": [
+      "also-B2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:arrive-leave",
+      "ant:join-leave",
+      "ant:stay-leave",
+      "conf:forget-leave",
+      "irr:leave"
+     ]
+    },
+    {
+     "id": "lex:A1:lie",
+     "headword": "lie¹",
+     "flags": [
+      "also-B1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:lie-truth",
+      "conf:lay-lie",
+      "irr:lie"
+     ]
+    },
+    {
+     "id": "lex:A1:present",
+     "headword": "present",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:absent-present",
+      "fam:present"
+     ]
+    },
+    {
+     "id": "lex:A1:order",
+     "headword": "order",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:disorder-order",
+      "ant:order-chaos",
+      "vp:order-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:check",
+     "headword": "check",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "pv:check-in",
+      "pv:check-out"
+     ]
+    },
+    {
+     "id": "lex:A1:change",
+     "headword": "change",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:major-change",
+      "col:rapid-change",
+      "syn:change-alter-modify"
+     ]
+    },
+    {
+     "id": "lex:A1:free",
+     "headword": "free",
+     "flags": [
+      "also-A2-B2"
+     ],
+     "refs": [
+      "ant:bound-free",
+      "ant:busy-free",
+      "ant:confine-free",
+      "col:free-time",
+      "fam:free"
+     ]
+    },
+    {
+     "id": "lex:A1:hard",
+     "headword": "hard",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:easy-hard",
+      "ant:hard-soft",
+      "col:hard-question",
+      "col:hard-work",
+      "syn:hard-difficult-challenging"
+     ]
+    },
+    {
+     "id": "lex:A1:too",
+     "headword": "too",
+     "refs": [
+      "conf:also-as-well-too"
+     ]
+    },
+    {
+     "id": "lex:A1:two",
+     "headword": "two"
+    },
+    {
+     "id": "lex:A1:very",
+     "headword": "very",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:quite",
+     "headword": "quite",
+     "refs": [
+      "conf:quiet-quite"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-02",
+   "entries": [
+    {
+     "id": "lex:A1:her",
+     "headword": "her",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:please",
+     "headword": "please",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:offend-please"
+     ]
+    },
+    {
+     "id": "lex:A1:after",
+     "headword": "after",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:after-before"
+     ]
+    },
+    {
+     "id": "lex:A1:company",
+     "headword": "company",
+     "refs": [
+      "syn:company-business-firm"
+     ]
+    },
+    {
+     "id": "lex:A1:me",
+     "headword": "me"
+    },
+    {
+     "id": "lex:A1:there",
+     "headword": "there",
+     "refs": [
+      "ant:here-there",
+      "conf:there-their-they-re"
+     ]
+    },
+    {
+     "id": "lex:A1:before",
+     "headword": "before",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:after-before"
+     ]
+    },
+    {
+     "id": "lex:A1:by",
+     "headword": "by",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:his",
+     "headword": "his",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:its",
+     "headword": "its",
+     "refs": [
+      "conf:it-s-its"
+     ]
+    },
+    {
+     "id": "lex:A1:people",
+     "headword": "people",
+     "refs": [
+      "conf:person-people"
+     ]
+    },
+    {
+     "id": "lex:A1:important",
+     "headword": "important",
+     "refs": [
+      "ant:important-unimportant",
+      "col:particularly-important",
+      "fam:important",
+      "syn:important-significant-crucial"
+     ]
+    },
+    {
+     "id": "lex:A1:project",
+     "headword": "project",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:report",
+     "headword": "report",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "col:annual-report"
+     ]
+    },
+    {
+     "id": "lex:A1:our",
+     "headword": "our"
+    },
+    {
+     "id": "lex:A1:more",
+     "headword": "more",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:more-less"
+     ]
+    },
+    {
+     "id": "lex:A1:one",
+     "headword": "one",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:team",
+     "headword": "team"
+    },
+    {
+     "id": "lex:A1:local",
+     "headword": "local",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:local-national"
+     ]
+    },
+    {
+     "id": "lex:A1:problem",
+     "headword": "problem",
+     "refs": [
+      "col:address-a-problem",
+      "col:cause-a-problem",
+      "col:common-problem",
+      "col:face-a-problem",
+      "col:have-a-problem",
+      "col:major-problem",
+      "col:serious-problem",
+      "col:solve-a-problem",
+      "prep:problem-with",
+      "syn:problem-issue-difficulty"
+     ]
+    },
+    {
+     "id": "lex:A1:during",
+     "headword": "during"
+    },
+    {
+     "id": "lex:A1:many",
+     "headword": "many",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:few-many"
+     ]
+    },
+    {
+     "id": "lex:A1:plan",
+     "headword": "plan",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:make-a-plan",
+      "syn:plan-arrange-organize",
+      "vp:plan-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:all",
+     "headword": "all",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:all-none",
+      "conf:all-every",
+      "conf:all-whole"
+     ]
+    },
+    {
+     "id": "lex:A1:course",
+     "headword": "course"
+    },
+    {
+     "id": "lex:A1:every",
+     "headword": "every",
+     "refs": [
+      "conf:all-every",
+      "conf:every-each"
+     ]
+    },
+    {
+     "id": "lex:A1:up",
+     "headword": "up",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:out",
+     "headword": "out",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:road",
+     "headword": "road"
+    },
+    {
+     "id": "lex:A1:their",
+     "headword": "their",
+     "refs": [
+      "conf:there-their-they-re"
+     ]
+    },
+    {
+     "id": "lex:A1:building",
+     "headword": "building"
+    },
+    {
+     "id": "lex:A1:as",
+     "headword": "as",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:as-because-since",
+      "conf:as-like"
+     ]
+    },
+    {
+     "id": "lex:A1:into",
+     "headword": "into"
+    },
+    {
+     "id": "lex:A1:answer",
+     "headword": "answer",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:ask-answer",
+      "col:answer-a-question",
+      "prep:answer-to",
+      "syn:answer-reply-respond"
+     ]
+    },
+    {
+     "id": "lex:A1:hotel",
+     "headword": "hotel"
+    },
+    {
+     "id": "lex:A1:next",
+     "headword": "next",
+     "flags": [
+      "split-senses",
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:next-to",
+     "headword": "next to"
+    },
+    {
+     "id": "lex:A1:strong",
+     "headword": "strong",
+     "refs": [
+      "ant:strong-weak",
+      "col:strong-argument",
+      "col:strong-coffee",
+      "col:strong-evidence",
+      "col:strong-relationship",
+      "col:strong-tea",
+      "fam:strong",
+      "syn:strong-powerful-intense"
+     ]
+    },
+    {
+     "id": "lex:A1:meeting",
+     "headword": "meeting",
+     "refs": [
+      "col:chair-a-meeting",
+      "col:hold-a-meeting"
+     ]
+    },
+    {
+     "id": "lex:A1:teacher",
+     "headword": "teacher",
+     "refs": [
+      "ant:student-teacher",
+      "fam:teach",
+      "occ:teacher"
+     ]
+    },
+    {
+     "id": "lex:A1:us",
+     "headword": "us"
+    },
+    {
+     "id": "lex:A1:between",
+     "headword": "between",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:between-among"
+     ]
+    },
+    {
+     "id": "lex:A1:near",
+     "headword": "near",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:distant-near",
+      "ant:near-far"
+     ]
+    },
+    {
+     "id": "lex:A1:first",
+     "headword": "first",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:first-last",
+      "ant:first-second"
+     ]
+    },
+    {
+     "id": "lex:A1:here",
+     "headword": "here",
+     "refs": [
+      "ant:here-there"
+     ]
+    },
+    {
+     "id": "lex:A1:large",
+     "headword": "large",
+     "refs": [
+      "ant:large-small",
+      "col:large-number",
+      "syn:big-large"
+     ]
+    },
+    {
+     "id": "lex:A1:final",
+     "headword": "final",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:long",
+     "headword": "long¹",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:brief-long",
+      "ant:long-short",
+      "col:long-time"
+     ]
+    },
+    {
+     "id": "lex:A1:may",
+     "headword": "May",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:can-could-may"
+     ]
+    },
+    {
+     "id": "lex:A1:police",
+     "headword": "police"
+    },
+    {
+     "id": "lex:A1:information",
+     "headword": "information",
+     "refs": [
+      "col:accurate-information",
+      "col:provide-information",
+      "col:reliable-information",
+      "col:useful-information",
+      "fam:inform"
+     ]
+    },
+    {
+     "id": "lex:A1:online",
+     "headword": "online",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:door",
+     "headword": "door"
+    },
+    {
+     "id": "lex:A1:him",
+     "headword": "him"
+    },
+    {
+     "id": "lex:A1:museum",
+     "headword": "museum"
+    },
+    {
+     "id": "lex:A1:study",
+     "headword": "study",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:use",
+     "headword": "use",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "fam:use",
+      "pv:use-up"
+     ]
+    },
+    {
+     "id": "lex:A1:country",
+     "headword": "country"
+    },
+    {
+     "id": "lex:A1:everyone",
+     "headword": "everyone"
+    },
+    {
+     "id": "lex:A1:month",
+     "headword": "month"
+    },
+    {
+     "id": "lex:A1:question",
+     "headword": "question",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "col:answer-a-question",
+      "col:ask-a-question",
+      "col:hard-question",
+      "col:raise-a-question"
+     ]
+    },
+    {
+     "id": "lex:A1:test",
+     "headword": "test",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:doctor",
+     "headword": "doctor",
+     "refs": [
+      "occ:doctor"
+     ]
+    },
+    {
+     "id": "lex:A1:exercise",
+     "headword": "exercise",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:table",
+     "headword": "table"
+    },
+    {
+     "id": "lex:A1:dinner",
+     "headword": "dinner",
+     "refs": [
+      "col:have-dinner"
+     ]
+    },
+    {
+     "id": "lex:A1:through",
+     "headword": "through",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "conf:across-over-through"
+     ]
+    },
+    {
+     "id": "lex:A1:bag",
+     "headword": "bag"
+    },
+    {
+     "id": "lex:A1:cost",
+     "headword": "cost",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:total-cost",
+      "irr:cost"
+     ]
+    },
+    {
+     "id": "lex:A1:could",
+     "headword": "could",
+     "refs": [
+      "conf:can-could-may"
+     ]
+    },
+    {
+     "id": "lex:A1:main",
+     "headword": "main",
+     "refs": [
+      "col:main-reason"
+     ]
+    },
+    {
+     "id": "lex:A1:weather",
+     "headword": "weather"
+    },
+    {
+     "id": "lex:A1:class",
+     "headword": "class"
+    },
+    {
+     "id": "lex:A1:each",
+     "headword": "each",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "conf:every-each"
+     ]
+    },
+    {
+     "id": "lex:A1:high",
+     "headword": "high",
+     "flags": [
+      "also-A2-B2"
+     ],
+     "refs": [
+      "ant:high-low",
+      "col:high-price",
+      "col:high-quality",
+      "col:high-temperature",
+      "conf:high-tall"
+     ]
+    },
+    {
+     "id": "lex:A1:put",
+     "headword": "put",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:put",
+      "pv:put-down",
+      "pv:put-forward",
+      "pv:put-off",
+      "pv:put-on",
+      "pv:put-out",
+      "pv:put-together",
+      "pv:put-up-with"
+     ]
+    },
+    {
+     "id": "lex:A1:early",
+     "headword": "early",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:early-late"
+     ]
+    },
+    {
+     "id": "lex:A1:music",
+     "headword": "music"
+    },
+    {
+     "id": "lex:A1:over",
+     "headword": "over",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:under-over",
+      "conf:above-over",
+      "conf:across-over-through"
+     ]
+    },
+    {
+     "id": "lex:A1:short",
+     "headword": "short",
+     "refs": [
+      "ant:long-short",
+      "ant:tall-short"
+     ]
+    },
+    {
+     "id": "lex:A1:station",
+     "headword": "station"
+    },
+    {
+     "id": "lex:A1:story",
+     "headword": "story",
+     "refs": [
+      "col:tell-a-story"
+     ]
+    },
+    {
+     "id": "lex:A1:three",
+     "headword": "three"
+    },
+    {
+     "id": "lex:A1:different",
+     "headword": "different",
+     "refs": [
+      "ant:alike-different",
+      "ant:different-similar",
+      "ant:identical-different",
+      "ant:same-different",
+      "col:completely-different",
+      "fam:differ",
+      "prep:different-from"
+     ]
+    },
+    {
+     "id": "lex:A1:health",
+     "headword": "health",
+     "refs": [
+      "ant:disease-health",
+      "fam:health"
+     ]
+    },
+    {
+     "id": "lex:A1:only",
+     "headword": "only",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:quickly",
+     "headword": "quickly",
+     "refs": [
+      "ant:quickly-slowly"
+     ]
+    },
+    {
+     "id": "lex:A1:train",
+     "headword": "train",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "col:catch-a-train"
+     ]
+    },
+    {
+     "id": "lex:A1:useful",
+     "headword": "useful",
+     "refs": [
+      "ant:useful-useless",
+      "col:particularly-useful",
+      "col:potentially-useful",
+      "col:useful-information",
+      "fam:use",
+      "syn:useful-valuable-beneficial"
+     ]
+    },
+    {
+     "id": "lex:A1:area",
+     "headword": "area",
+     "refs": [
+      "syn:area-region-zone"
+     ]
+    },
+    {
+     "id": "lex:A1:event",
+     "headword": "event"
+    },
+    {
+     "id": "lex:A1:film",
+     "headword": "film",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:part",
+     "headword": "part",
+     "refs": [
+      "ant:whole-part",
+      "col:take-part"
+     ]
+    },
+    {
+     "id": "lex:A1:programme",
+     "headword": "programme"
+    },
+    {
+     "id": "lex:A1:under",
+     "headword": "under",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:under-over"
+     ]
+    },
+    {
+     "id": "lex:A1:centre",
+     "headword": "centre",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:centre-edge"
+     ]
+    },
+    {
+     "id": "lex:A1:much",
+     "headword": "much",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:little-much"
+     ]
+    },
+    {
+     "id": "lex:A1:no-one",
+     "headword": "no one"
+    },
+    {
+     "id": "lex:A1:outside",
+     "headword": "outside",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:inside-outside"
+     ]
+    },
+    {
+     "id": "lex:A1:ten",
+     "headword": "ten"
+    }
+   ]
+  },
+  {
+   "id": "batch-03",
+   "entries": [
+    {
+     "id": "lex:A1:email",
+     "headword": "email",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:improve",
+     "headword": "improve",
+     "refs": [
+      "ant:deteriorate-improve",
+      "ant:improve-worsen",
+      "fam:improve",
+      "syn:improve-enhance"
+     ]
+    },
+    {
+     "id": "lex:A1:market",
+     "headword": "market",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:price",
+     "headword": "price",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:high-price",
+      "col:low-price",
+      "conf:price-prize"
+     ]
+    },
+    {
+     "id": "lex:A1:better",
+     "headword": "better",
+     "flags": [
+      "also-A2-B1"
+     ],
+     "refs": [
+      "ant:better-worse"
+     ]
+    },
+    {
+     "id": "lex:A1:mistake",
+     "headword": "mistake",
+     "flags": [
+      "also-B2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:big-mistake",
+      "col:common-mistake",
+      "col:make-a-mistake",
+      "irr:mistake",
+      "syn:mistake-error-fault"
+     ]
+    },
+    {
+     "id": "lex:A1:read",
+     "headword": "read",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:read"
+     ]
+    },
+    {
+     "id": "lex:A1:call",
+     "headword": "call",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:make-a-phone-call",
+      "pv:call-around",
+      "pv:call-back",
+      "pv:call-off",
+      "pv:call-on",
+      "pv:call-up"
+     ]
+    },
+    {
+     "id": "lex:A1:hospital",
+     "headword": "hospital"
+    },
+    {
+     "id": "lex:A1:open",
+     "headword": "open",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:closed-open",
+      "ant:open-close",
+      "ant:open-shut"
+     ]
+    },
+    {
+     "id": "lex:A1:result",
+     "headword": "result",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "prep:result-in",
+      "syn:result-outcome-consequence"
+     ]
+    },
+    {
+     "id": "lex:A1:down",
+     "headword": "down",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:down-up"
+     ]
+    },
+    {
+     "id": "lex:A1:five",
+     "headword": "five"
+    },
+    {
+     "id": "lex:A1:hour",
+     "headword": "hour"
+    },
+    {
+     "id": "lex:A1:keep",
+     "headword": "keep",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:keep-lose",
+      "col:keep-a-promise",
+      "col:keep-a-secret",
+      "col:keep-in-touch",
+      "irr:keep",
+      "pv:keep-from",
+      "pv:keep-on",
+      "pv:keep-out",
+      "pv:keep-up",
+      "syn:keep-maintain-preserve",
+      "vp:keep-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:news",
+     "headword": "news"
+    },
+    {
+     "id": "lex:A1:often",
+     "headword": "often",
+     "refs": [
+      "ant:often-rarely",
+      "ant:often-seldom"
+     ]
+    },
+    {
+     "id": "lex:A1:sleep",
+     "headword": "sleep",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:sleep-wake",
+      "col:deep-sleep",
+      "irr:sleep",
+      "pv:sleep-over"
+     ]
+    },
+    {
+     "id": "lex:A1:young",
+     "headword": "young",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:old-young",
+      "fam:young"
+     ]
+    },
+    {
+     "id": "lex:A1:cannot",
+     "headword": "cannot"
+    },
+    {
+     "id": "lex:A1:cold",
+     "headword": "cold",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:hot-cold",
+      "col:catch-a-cold"
+     ]
+    },
+    {
+     "id": "lex:A1:design",
+     "headword": "design",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:friday",
+     "headword": "Friday"
+    },
+    {
+     "id": "lex:A1:late",
+     "headword": "late",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:early-late",
+      "conf:late-lately",
+      "prep:late-for"
+     ]
+    },
+    {
+     "id": "lex:A1:rain",
+     "headword": "rain",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:heavy-rain"
+     ]
+    },
+    {
+     "id": "lex:A1:six",
+     "headword": "six"
+    },
+    {
+     "id": "lex:A1:tea",
+     "headword": "tea",
+     "refs": [
+      "col:strong-tea"
+     ]
+    },
+    {
+     "id": "lex:A1:across",
+     "headword": "across",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "conf:across-over-through"
+     ]
+    },
+    {
+     "id": "lex:A1:lunch",
+     "headword": "lunch",
+     "refs": [
+      "col:have-lunch"
+     ]
+    },
+    {
+     "id": "lex:A1:machine",
+     "headword": "machine"
+    },
+    {
+     "id": "lex:A1:now",
+     "headword": "now",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:now-then"
+     ]
+    },
+    {
+     "id": "lex:A1:success",
+     "headword": "success",
+     "refs": [
+      "ant:success-failure",
+      "col:achieve-success",
+      "col:great-success",
+      "fam:succeed",
+      "prep:success-in"
+     ]
+    },
+    {
+     "id": "lex:A1:tonight",
+     "headword": "tonight",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:winter",
+     "headword": "winter"
+    },
+    {
+     "id": "lex:A1:brother",
+     "headword": "brother",
+     "refs": [
+      "ant:brother-sister"
+     ]
+    },
+    {
+     "id": "lex:A1:exam",
+     "headword": "exam"
+    },
+    {
+     "id": "lex:A1:modern",
+     "headword": "modern",
+     "refs": [
+      "ant:ancient-modern",
+      "ant:modern-traditional"
+     ]
+    },
+    {
+     "id": "lex:A1:travel",
+     "headword": "travel",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:trip",
+     "headword": "trip",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:twenty",
+     "headword": "twenty"
+    },
+    {
+     "id": "lex:A1:village",
+     "headword": "village"
+    },
+    {
+     "id": "lex:A1:wear",
+     "headword": "wear",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:wear",
+      "pv:wear-off"
+     ]
+    },
+    {
+     "id": "lex:A1:advice",
+     "headword": "advice",
+     "refs": [
+      "col:give-advice",
+      "col:practical-advice",
+      "conf:advice-advise",
+      "fam:advise"
+     ]
+    },
+    {
+     "id": "lex:A1:cut",
+     "headword": "cut",
+     "flags": [
+      "also-B1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:cut",
+      "pv:cut-down-on",
+      "pv:cut-in",
+      "pv:cut-off",
+      "pv:cut-out"
+     ]
+    },
+    {
+     "id": "lex:A1:finish",
+     "headword": "finish",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:begin-finish",
+      "ant:start-finish",
+      "syn:end-finish",
+      "vp:finish-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:most",
+     "headword": "most",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:least-most"
+     ]
+    },
+    {
+     "id": "lex:A1:quiet",
+     "headword": "quiet",
+     "refs": [
+      "ant:noisy-quiet",
+      "ant:quiet-loud",
+      "conf:quiet-quite"
+     ]
+    },
+    {
+     "id": "lex:A1:soup",
+     "headword": "soup"
+    },
+    {
+     "id": "lex:A1:write",
+     "headword": "write",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "fam:write",
+      "irr:write",
+      "prep:write-about",
+      "prep:write-to"
+     ]
+    },
+    {
+     "id": "lex:A1:business",
+     "headword": "business",
+     "refs": [
+      "col:do-business",
+      "syn:company-business-firm"
+     ]
+    },
+    {
+     "id": "lex:A1:computer",
+     "headword": "computer"
+    },
+    {
+     "id": "lex:A1:end",
+     "headword": "end",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:begin-end",
+      "ant:beginning-end",
+      "ant:start-end",
+      "pv:end-up",
+      "syn:end-finish"
+     ]
+    },
+    {
+     "id": "lex:A1:meet",
+     "headword": "meet",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:meet-a-deadline",
+      "col:meet-a-friend",
+      "col:meet-a-requirement",
+      "col:meet-demand",
+      "col:meet-expectations",
+      "irr:meet"
+     ]
+    },
+    {
+     "id": "lex:A1:park",
+     "headword": "park",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:place",
+     "headword": "place",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "syn:place-location-site"
+     ]
+    },
+    {
+     "id": "lex:A1:river",
+     "headword": "river"
+    },
+    {
+     "id": "lex:A1:stay",
+     "headword": "stay",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:depart-stay",
+      "ant:move-stay",
+      "ant:stay-leave"
+     ]
+    },
+    {
+     "id": "lex:A1:university",
+     "headword": "university"
+    },
+    {
+     "id": "lex:A1:without",
+     "headword": "without",
+     "refs": [
+      "ant:with-without"
+     ]
+    },
+    {
+     "id": "lex:A1:around",
+     "headword": "around",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:box",
+     "headword": "box"
+    },
+    {
+     "id": "lex:A1:chair",
+     "headword": "chair",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:chair-a-meeting"
+     ]
+    },
+    {
+     "id": "lex:A1:clean",
+     "headword": "clean",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:clean-dirty",
+      "pv:clean-up"
+     ]
+    },
+    {
+     "id": "lex:A1:drink",
+     "headword": "drink",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:drink"
+     ]
+    },
+    {
+     "id": "lex:A1:fire",
+     "headword": "fire",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:hire-fire"
+     ]
+    },
+    {
+     "id": "lex:A1:form",
+     "headword": "form",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:idea",
+     "headword": "idea",
+     "refs": [
+      "col:good-idea",
+      "col:have-an-idea",
+      "syn:idea-concept-notion"
+     ]
+    },
+    {
+     "id": "lex:A1:left",
+     "headword": "left",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:left-right"
+     ]
+    },
+    {
+     "id": "lex:A1:office",
+     "headword": "office"
+    },
+    {
+     "id": "lex:A1:wall",
+     "headword": "wall"
+    },
+    {
+     "id": "lex:A1:both",
+     "headword": "both",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:few",
+     "headword": "few",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:few-many",
+      "conf:few-little"
+     ]
+    },
+    {
+     "id": "lex:A1:glass",
+     "headword": "glass"
+    },
+    {
+     "id": "lex:A1:great",
+     "headword": "great",
+     "refs": [
+      "col:great-opportunity",
+      "col:great-success",
+      "syn:good-great-excellent"
+     ]
+    },
+    {
+     "id": "lex:A1:number",
+     "headword": "number",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "col:large-number",
+      "col:small-number",
+      "conf:amount-number-quantity"
+     ]
+    },
+    {
+     "id": "lex:A1:other",
+     "headword": "other",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "conf:another-other-the-other"
+     ]
+    },
+    {
+     "id": "lex:A1:paper",
+     "headword": "paper"
+    },
+    {
+     "id": "lex:A1:photo",
+     "headword": "photo"
+    },
+    {
+     "id": "lex:A1:product",
+     "headword": "product",
+     "refs": [
+      "col:launch-a-product",
+      "fam:produce"
+     ]
+    },
+    {
+     "id": "lex:A1:same",
+     "headword": "same",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:same-different"
+     ]
+    },
+    {
+     "id": "lex:A1:shop",
+     "headword": "shop",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "pv:shop-around"
+     ]
+    },
+    {
+     "id": "lex:A1:town",
+     "headword": "town"
+    },
+    {
+     "id": "lex:A1:traffic",
+     "headword": "traffic",
+     "refs": [
+      "col:heavy-traffic"
+     ]
+    },
+    {
+     "id": "lex:A1:understand",
+     "headword": "understand",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:fully-understand",
+      "fam:understand",
+      "irr:understand"
+     ]
+    },
+    {
+     "id": "lex:A1:window",
+     "headword": "window"
+    },
+    {
+     "id": "lex:A1:address",
+     "headword": "address",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:address-a-problem",
+      "col:address-an-issue"
+     ]
+    },
+    {
+     "id": "lex:A1:another",
+     "headword": "another",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "conf:another-other-the-other"
+     ]
+    },
+    {
+     "id": "lex:A1:article",
+     "headword": "article"
+    },
+    {
+     "id": "lex:A1:away",
+     "headword": "away"
+    },
+    {
+     "id": "lex:A1:breakfast",
+     "headword": "breakfast",
+     "refs": [
+      "col:have-breakfast"
+     ]
+    },
+    {
+     "id": "lex:A1:feel",
+     "headword": "feel",
+     "flags": [
+      "also-B2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:feel"
+     ]
+    },
+    {
+     "id": "lex:A1:fifty",
+     "headword": "fifty"
+    },
+    {
+     "id": "lex:A1:language",
+     "headword": "language"
+    },
+    {
+     "id": "lex:A1:let",
+     "headword": "let",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "conf:allow-permit-let",
+      "irr:let",
+      "pv:let-down",
+      "pv:let-in",
+      "vp:let-object-bare-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:life",
+     "headword": "life",
+     "refs": [
+      "ant:life-death",
+      "col:daily-life"
+     ]
+    },
+    {
+     "id": "lex:A1:monday",
+     "headword": "Monday"
+    },
+    {
+     "id": "lex:A1:off",
+     "headword": "off",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:practice",
+     "headword": "practice",
+     "refs": [
+      "vp:practice-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:start",
+     "headword": "start",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:start-end",
+      "ant:start-finish",
+      "ant:start-stop",
+      "conf:begin-start",
+      "vp:start-ing-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:try",
+     "headword": "try",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "pv:try-on",
+      "pv:try-out",
+      "vp:try-ing",
+      "vp:try-to-infinitive"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-04",
+   "entries": [
+    {
+     "id": "lex:A1:turn",
+     "headword": "turn",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "pv:turn-down",
+      "pv:turn-into",
+      "pv:turn-off",
+      "pv:turn-on",
+      "pv:turn-up"
+     ]
+    },
+    {
+     "id": "lex:A1:warm",
+     "headword": "warm",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:warm-cool",
+      "pv:warm-up"
+     ]
+    },
+    {
+     "id": "lex:A1:always",
+     "headword": "always",
+     "refs": [
+      "ant:always-never"
+     ]
+    },
+    {
+     "id": "lex:A1:complete",
+     "headword": "complete",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:complete-incomplete",
+      "ant:partial-complete",
+      "col:complete-silence",
+      "fam:complete"
+     ]
+    },
+    {
+     "id": "lex:A1:enough",
+     "headword": "enough",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:favourite",
+     "headword": "favourite",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:full",
+     "headword": "full",
+     "refs": [
+      "ant:empty-full",
+      "col:full-details",
+      "col:full-responsibility",
+      "prep:full-of"
+     ]
+    },
+    {
+     "id": "lex:A1:garden",
+     "headword": "garden"
+    },
+    {
+     "id": "lex:A1:hot",
+     "headword": "hot",
+     "refs": [
+      "ant:hot-cold"
+     ]
+    },
+    {
+     "id": "lex:A1:interview",
+     "headword": "interview",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:key",
+     "headword": "key",
+     "flags": [
+      "split-senses",
+      "also-B1"
+     ],
+     "refs": [
+      "col:key-factor",
+      "col:key-point",
+      "col:play-a-key-role"
+     ]
+    },
+    {
+     "id": "lex:A1:once",
+     "headword": "once",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:poor",
+     "headword": "poor",
+     "refs": [
+      "ant:rich-poor",
+      "col:poor-quality",
+      "syn:bad-poor-terrible"
+     ]
+    },
+    {
+     "id": "lex:A1:popular",
+     "headword": "popular",
+     "refs": [
+      "fam:popular",
+      "syn:famous-popular"
+     ]
+    },
+    {
+     "id": "lex:A1:show",
+     "headword": "show",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:hide-show",
+      "irr:show",
+      "pv:show-off",
+      "syn:show-display-demonstrate",
+      "vp:show-object-how-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:subject",
+     "headword": "subject",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:together",
+     "headword": "together",
+     "refs": [
+      "ant:together-apart"
+     ]
+    },
+    {
+     "id": "lex:A1:tree",
+     "headword": "tree"
+    },
+    {
+     "id": "lex:A1:wait",
+     "headword": "wait",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:wait-wait-for",
+      "prep:wait-for"
+     ]
+    },
+    {
+     "id": "lex:A1:walk",
+     "headword": "walk",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:become",
+     "headword": "become",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:become"
+     ]
+    },
+    {
+     "id": "lex:A1:customer",
+     "headword": "customer"
+    },
+    {
+     "id": "lex:A1:difference",
+     "headword": "difference",
+     "refs": [
+      "col:make-a-difference",
+      "col:significant-difference",
+      "fam:differ",
+      "prep:difference-between"
+     ]
+    },
+    {
+     "id": "lex:A1:farm",
+     "headword": "farm",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:floor",
+     "headword": "floor",
+     "refs": [
+      "ant:floor-ceiling"
+     ]
+    },
+    {
+     "id": "lex:A1:fruit",
+     "headword": "fruit"
+    },
+    {
+     "id": "lex:A1:nine",
+     "headword": "nine"
+    },
+    {
+     "id": "lex:A1:positive",
+     "headword": "positive",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:positive-negative",
+      "col:positive-effect"
+     ]
+    },
+    {
+     "id": "lex:A1:real",
+     "headword": "real",
+     "refs": [
+      "ant:real-fake",
+      "fam:real"
+     ]
+    },
+    {
+     "id": "lex:A1:restaurant",
+     "headword": "restaurant"
+    },
+    {
+     "id": "lex:A1:student",
+     "headword": "student",
+     "refs": [
+      "ant:student-teacher"
+     ]
+    },
+    {
+     "id": "lex:A1:way",
+     "headword": "way",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:website",
+     "headword": "website"
+    },
+    {
+     "id": "lex:A1:word",
+     "headword": "word"
+    },
+    {
+     "id": "lex:A1:add",
+     "headword": "add",
+     "refs": [
+      "ant:add-subtract",
+      "fam:add",
+      "pv:add-up-to"
+     ]
+    },
+    {
+     "id": "lex:A1:age",
+     "headword": "age",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:behind",
+     "headword": "behind",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:ahead-behind"
+     ]
+    },
+    {
+     "id": "lex:A1:famous",
+     "headword": "famous",
+     "refs": [
+      "ant:famous-unknown",
+      "prep:famous-for",
+      "syn:famous-popular"
+     ]
+    },
+    {
+     "id": "lex:A1:healthy",
+     "headword": "healthy",
+     "refs": [
+      "ant:healthy-ill",
+      "ant:healthy-sick",
+      "ant:healthy-unhealthy",
+      "fam:health"
+     ]
+    },
+    {
+     "id": "lex:A1:journey",
+     "headword": "journey"
+    },
+    {
+     "id": "lex:A1:lesson",
+     "headword": "lesson"
+    },
+    {
+     "id": "lex:A1:lot",
+     "headword": "lot",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:natural",
+     "headword": "natural",
+     "refs": [
+      "ant:natural-artificial",
+      "fam:nature"
+     ]
+    },
+    {
+     "id": "lex:A1:own",
+     "headword": "own",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "fam:own"
+     ]
+    },
+    {
+     "id": "lex:A1:remember",
+     "headword": "remember",
+     "refs": [
+      "ant:forget-remember",
+      "conf:remember-remind",
+      "vp:remember-ing",
+      "vp:remember-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:seven",
+     "headword": "seven"
+    },
+    {
+     "id": "lex:A1:snow",
+     "headword": "snow",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:heavy-snow"
+     ]
+    },
+    {
+     "id": "lex:A1:summer",
+     "headword": "summer"
+    },
+    {
+     "id": "lex:A1:sun",
+     "headword": "sun"
+    },
+    {
+     "id": "lex:A1:afternoon",
+     "headword": "afternoon"
+    },
+    {
+     "id": "lex:A1:again",
+     "headword": "again"
+    },
+    {
+     "id": "lex:A1:agree",
+     "headword": "agree",
+     "refs": [
+      "ant:agree-disagree",
+      "conf:accept-agree",
+      "fam:agree",
+      "prep:agree-with",
+      "vp:agree-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:arrive",
+     "headword": "arrive",
+     "refs": [
+      "ant:arrive-depart",
+      "ant:arrive-leave",
+      "prep:arrive-at",
+      "prep:arrive-in"
+     ]
+    },
+    {
+     "id": "lex:A1:bed",
+     "headword": "bed"
+    },
+    {
+     "id": "lex:A1:blue",
+     "headword": "blue",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:bottle",
+     "headword": "bottle"
+    },
+    {
+     "id": "lex:A1:busy",
+     "headword": "busy",
+     "refs": [
+      "ant:busy-free",
+      "ant:busy-idle"
+     ]
+    },
+    {
+     "id": "lex:A1:common",
+     "headword": "common",
+     "refs": [
+      "ant:common-rare",
+      "ant:unique-common",
+      "col:common-mistake",
+      "col:common-problem",
+      "col:common-sense",
+      "syn:common-ordinary-conventional"
+     ]
+    },
+    {
+     "id": "lex:A1:correct",
+     "headword": "correct",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:correct-incorrect",
+      "ant:correct-wrong",
+      "syn:right-correct"
+     ]
+    },
+    {
+     "id": "lex:A1:dangerous",
+     "headword": "dangerous",
+     "refs": [
+      "ant:safe-dangerous",
+      "col:potentially-dangerous",
+      "fam:danger"
+     ]
+    },
+    {
+     "id": "lex:A1:dark",
+     "headword": "dark",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:bright-dark",
+      "ant:dark-light"
+     ]
+    },
+    {
+     "id": "lex:A1:explain",
+     "headword": "explain",
+     "refs": [
+      "col:clearly-explain",
+      "fam:explain",
+      "prep:explain-to",
+      "syn:explain-clarify",
+      "vp:explain-that-clause"
+     ]
+    },
+    {
+     "id": "lex:A1:find",
+     "headword": "find",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:find-lose",
+      "irr:find",
+      "pv:find-out",
+      "syn:find-discover"
+     ]
+    },
+    {
+     "id": "lex:A1:friendly",
+     "headword": "friendly",
+     "refs": [
+      "ant:friendly-unfriendly",
+      "ant:hostile-friendly",
+      "fam:friend",
+      "syn:nice-friendly-pleasant"
+     ]
+    },
+    {
+     "id": "lex:A1:future",
+     "headword": "future",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:future-past"
+     ]
+    },
+    {
+     "id": "lex:A1:hand",
+     "headword": "hand",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "pv:hand-down",
+      "pv:hand-in",
+      "pv:hand-out",
+      "pv:hand-over"
+     ]
+    },
+    {
+     "id": "lex:A1:kitchen",
+     "headword": "kitchen"
+    },
+    {
+     "id": "lex:A1:learn",
+     "headword": "learn",
+     "refs": [
+      "ant:teach-learn",
+      "prep:learn-about",
+      "prep:learn-from",
+      "vp:learn-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:man",
+     "headword": "man",
+     "refs": [
+      "ant:man-woman"
+     ]
+    },
+    {
+     "id": "lex:A1:mountain",
+     "headword": "mountain"
+    },
+    {
+     "id": "lex:A1:painting",
+     "headword": "painting"
+    },
+    {
+     "id": "lex:A1:pay",
+     "headword": "pay",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:pay-a-bill",
+      "col:pay-a-fine",
+      "col:pay-attention",
+      "irr:pay",
+      "prep:pay-for",
+      "pv:pay-back"
+     ]
+    },
+    {
+     "id": "lex:A1:plane",
+     "headword": "plane"
+    },
+    {
+     "id": "lex:A1:reading",
+     "headword": "reading"
+    },
+    {
+     "id": "lex:A1:rule",
+     "headword": "rule",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "syn:rule-regulation"
+     ]
+    },
+    {
+     "id": "lex:A1:sit",
+     "headword": "sit",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:sit-stand",
+      "irr:sit"
+     ]
+    },
+    {
+     "id": "lex:A1:song",
+     "headword": "song"
+    },
+    {
+     "id": "lex:A1:thank",
+     "headword": "thank",
+     "refs": [
+      "prep:thank-for"
+     ]
+    },
+    {
+     "id": "lex:A1:usually",
+     "headword": "usually"
+    },
+    {
+     "id": "lex:A1:weekend",
+     "headword": "weekend"
+    },
+    {
+     "id": "lex:A1:airport",
+     "headword": "airport"
+    },
+    {
+     "id": "lex:A1:apartment",
+     "headword": "apartment"
+    },
+    {
+     "id": "lex:A1:ball",
+     "headword": "ball"
+    },
+    {
+     "id": "lex:A1:bird",
+     "headword": "bird"
+    },
+    {
+     "id": "lex:A1:dog",
+     "headword": "dog"
+    },
+    {
+     "id": "lex:A1:evening",
+     "headword": "evening",
+     "refs": [
+      "ant:morning-evening"
+     ]
+    },
+    {
+     "id": "lex:A1:face",
+     "headword": "face",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "col:face-a-problem"
+     ]
+    },
+    {
+     "id": "lex:A1:festival",
+     "headword": "festival"
+    },
+    {
+     "id": "lex:A1:game",
+     "headword": "game",
+     "refs": [
+      "conf:play-game"
+     ]
+    },
+    {
+     "id": "lex:A1:half",
+     "headword": "half",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:half-whole"
+     ]
+    },
+    {
+     "id": "lex:A1:history",
+     "headword": "history",
+     "refs": [
+      "fam:history"
+     ]
+    },
+    {
+     "id": "lex:A1:homework",
+     "headword": "homework",
+     "refs": [
+      "col:do-homework"
+     ]
+    },
+    {
+     "id": "lex:A1:hundred",
+     "headword": "hundred"
+    },
+    {
+     "id": "lex:A1:interest",
+     "headword": "interest",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:lose-interest",
+      "fam:interest",
+      "prep:interest-in"
+     ]
+    },
+    {
+     "id": "lex:A1:message",
+     "headword": "message",
+     "refs": [
+      "col:clear-message",
+      "col:get-the-message"
+     ]
+    },
+    {
+     "id": "lex:A1:page",
+     "headword": "page"
+    },
+    {
+     "id": "lex:A1:personal",
+     "headword": "personal",
+     "refs": [
+      "fam:person"
+     ]
+    },
+    {
+     "id": "lex:A1:prefer",
+     "headword": "prefer",
+     "refs": [
+      "fam:prefer",
+      "vp:prefer-ing-to-ing",
+      "vp:prefer-to-infinitive-rather-than-bare-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:ready",
+     "headword": "ready",
+     "refs": [
+      "col:get-ready",
+      "prep:ready-for"
+     ]
+    },
+    {
+     "id": "lex:A1:red",
+     "headword": "red",
+     "flags": [
+      "split-senses"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "batch-05",
+   "entries": [
+    {
+     "id": "lex:A1:send",
+     "headword": "send",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:receive-send",
+      "irr:send"
+     ]
+    },
+    {
+     "id": "lex:A1:shopping",
+     "headword": "shopping",
+     "refs": [
+      "col:do-the-shopping"
+     ]
+    },
+    {
+     "id": "lex:A1:sister",
+     "headword": "sister",
+     "refs": [
+      "ant:brother-sister"
+     ]
+    },
+    {
+     "id": "lex:A1:situation",
+     "headword": "situation"
+    },
+    {
+     "id": "lex:A1:ticket",
+     "headword": "ticket"
+    },
+    {
+     "id": "lex:A1:action",
+     "headword": "action",
+     "refs": [
+      "ant:action-inaction",
+      "col:take-action",
+      "fam:act"
+     ]
+    },
+    {
+     "id": "lex:A1:ask",
+     "headword": "ask",
+     "refs": [
+      "ant:ask-answer",
+      "col:ask-a-question",
+      "prep:ask-about",
+      "prep:ask-for",
+      "pv:ask-around",
+      "pv:ask-out",
+      "syn:ask-request",
+      "vp:ask-object-to-infinitive",
+      "vp:ask-wh-word-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:baby",
+     "headword": "baby"
+    },
+    {
+     "id": "lex:A1:bike",
+     "headword": "bike"
+    },
+    {
+     "id": "lex:A1:birthday",
+     "headword": "birthday"
+    },
+    {
+     "id": "lex:A1:black",
+     "headword": "black",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:black-white"
+     ]
+    },
+    {
+     "id": "lex:A1:card",
+     "headword": "card"
+    },
+    {
+     "id": "lex:A1:choose",
+     "headword": "choose",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "fam:choose",
+      "irr:choose",
+      "syn:choose-select",
+      "vp:choose-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:clothes",
+     "headword": "clothes"
+    },
+    {
+     "id": "lex:A1:eight",
+     "headword": "eight"
+    },
+    {
+     "id": "lex:A1:front",
+     "headword": "front",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:back-front",
+      "ant:front-rear"
+     ]
+    },
+    {
+     "id": "lex:A1:funny",
+     "headword": "funny",
+     "refs": [
+      "ant:funny-serious",
+      "conf:fun-funny",
+      "syn:funny-amusing"
+     ]
+    },
+    {
+     "id": "lex:A1:holiday",
+     "headword": "holiday"
+    },
+    {
+     "id": "lex:A1:hope",
+     "headword": "hope",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:hope-despair",
+      "fam:hope",
+      "vp:hope-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:island",
+     "headword": "island"
+    },
+    {
+     "id": "lex:A1:map",
+     "headword": "map",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:milk",
+     "headword": "milk"
+    },
+    {
+     "id": "lex:A1:person",
+     "headword": "person",
+     "refs": [
+      "conf:person-people",
+      "fam:person"
+     ]
+    },
+    {
+     "id": "lex:A1:picture",
+     "headword": "picture",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:saturday",
+     "headword": "Saturday"
+    },
+    {
+     "id": "lex:A1:soon",
+     "headword": "soon"
+    },
+    {
+     "id": "lex:A1:sugar",
+     "headword": "sugar"
+    },
+    {
+     "id": "lex:A1:swimming",
+     "headword": "swimming"
+    },
+    {
+     "id": "lex:A1:above",
+     "headword": "above",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:above-below",
+      "conf:above-over"
+     ]
+    },
+    {
+     "id": "lex:A1:art",
+     "headword": "art",
+     "refs": [
+      "fam:art"
+     ]
+    },
+    {
+     "id": "lex:A1:beach",
+     "headword": "beach"
+    },
+    {
+     "id": "lex:A1:best",
+     "headword": "best",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:best-worst",
+      "col:best-friend",
+      "col:do-your-best"
+     ]
+    },
+    {
+     "id": "lex:A1:break",
+     "headword": "break",
+     "flags": [
+      "split-senses",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:break-fix",
+      "col:break-a-habit",
+      "col:break-a-promise",
+      "col:break-the-law",
+      "col:take-a-break",
+      "irr:break",
+      "pv:break-down",
+      "pv:break-in",
+      "pv:break-into",
+      "pv:break-out",
+      "pv:break-up"
+     ]
+    },
+    {
+     "id": "lex:A1:carry",
+     "headword": "carry"
+    },
+    {
+     "id": "lex:A1:cat",
+     "headword": "cat"
+    },
+    {
+     "id": "lex:A1:coat",
+     "headword": "coat"
+    },
+    {
+     "id": "lex:A1:cream",
+     "headword": "cream",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:desk",
+     "headword": "desk"
+    },
+    {
+     "id": "lex:A1:drive",
+     "headword": "drive",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:drive"
+     ]
+    },
+    {
+     "id": "lex:A1:fall",
+     "headword": "fall",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:rise-fall",
+      "irr:fall",
+      "pv:fall-apart",
+      "pv:fall-down",
+      "pv:fall-out"
+     ]
+    },
+    {
+     "id": "lex:A1:fast",
+     "headword": "fast",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:fast-slow",
+      "syn:fast-quick"
+     ]
+    },
+    {
+     "id": "lex:A1:group",
+     "headword": "group"
+    },
+    {
+     "id": "lex:A1:ice",
+     "headword": "ice"
+    },
+    {
+     "id": "lex:A1:ice-cream",
+     "headword": "ice cream"
+    },
+    {
+     "id": "lex:A1:internet",
+     "headword": "internet"
+    },
+    {
+     "id": "lex:A1:jacket",
+     "headword": "jacket"
+    },
+    {
+     "id": "lex:A1:line",
+     "headword": "line",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:move",
+     "headword": "move",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:move-stay",
+      "ant:move-stop",
+      "fam:move"
+     ]
+    },
+    {
+     "id": "lex:A1:nobody",
+     "headword": "nobody"
+    },
+    {
+     "id": "lex:A1:pool",
+     "headword": "pool"
+    },
+    {
+     "id": "lex:A1:possible",
+     "headword": "possible",
+     "refs": [
+      "ant:possible-impossible",
+      "fam:possible"
+     ]
+    },
+    {
+     "id": "lex:A1:quick",
+     "headword": "quick",
+     "refs": [
+      "ant:quick-slow",
+      "syn:fast-quick"
+     ]
+    },
+    {
+     "id": "lex:A1:reason",
+     "headword": "reason",
+     "refs": [
+      "col:main-reason",
+      "fam:reason",
+      "prep:reason-for"
+     ]
+    },
+    {
+     "id": "lex:A1:sea",
+     "headword": "sea"
+    },
+    {
+     "id": "lex:A1:slow",
+     "headword": "slow",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:fast-slow",
+      "ant:quick-slow",
+      "ant:rapid-slow"
+     ]
+    },
+    {
+     "id": "lex:A1:someone",
+     "headword": "someone"
+    },
+    {
+     "id": "lex:A1:street",
+     "headword": "street"
+    },
+    {
+     "id": "lex:A1:sure",
+     "headword": "sure",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:sure-unsure"
+     ]
+    },
+    {
+     "id": "lex:A1:until",
+     "headword": "until",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:white",
+     "headword": "white",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:black-white"
+     ]
+    },
+    {
+     "id": "lex:A1:writer",
+     "headword": "writer",
+     "refs": [
+      "fam:write",
+      "occ:writer"
+     ]
+    },
+    {
+     "id": "lex:A1:band",
+     "headword": "band"
+    },
+    {
+     "id": "lex:A1:cake",
+     "headword": "cake"
+    },
+    {
+     "id": "lex:A1:camera",
+     "headword": "camera"
+    },
+    {
+     "id": "lex:A1:classroom",
+     "headword": "classroom"
+    },
+    {
+     "id": "lex:A1:clock",
+     "headword": "clock"
+    },
+    {
+     "id": "lex:A1:colour",
+     "headword": "colour"
+    },
+    {
+     "id": "lex:A1:date",
+     "headword": "date",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:set-a-date"
+     ]
+    },
+    {
+     "id": "lex:A1:detail",
+     "headword": "detail",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:driver",
+     "headword": "driver"
+    },
+    {
+     "id": "lex:A1:football",
+     "headword": "football"
+    },
+    {
+     "id": "lex:A1:hair",
+     "headword": "hair"
+    },
+    {
+     "id": "lex:A1:include",
+     "headword": "include",
+     "refs": [
+      "ant:include-exclude",
+      "fam:include"
+     ]
+    },
+    {
+     "id": "lex:A1:interested",
+     "headword": "interested",
+     "refs": [
+      "ant:bored-interested",
+      "fam:interest",
+      "prep:interested-in"
+     ]
+    },
+    {
+     "id": "lex:A1:letter",
+     "headword": "letter"
+    },
+    {
+     "id": "lex:A1:library",
+     "headword": "library"
+    },
+    {
+     "id": "lex:A1:minute",
+     "headword": "minute¹",
+     "flags": [
+      "also-C1"
+     ]
+    },
+    {
+     "id": "lex:A1:movie",
+     "headword": "movie"
+    },
+    {
+     "id": "lex:A1:passport",
+     "headword": "passport"
+    },
+    {
+     "id": "lex:A1:run",
+     "headword": "run",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:run",
+      "pv:run-away",
+      "pv:run-into",
+      "pv:run-out-of",
+      "pv:run-over",
+      "pv:run-through"
+     ]
+    },
+    {
+     "id": "lex:A1:science",
+     "headword": "science",
+     "refs": [
+      "fam:science"
+     ]
+    },
+    {
+     "id": "lex:A1:shirt",
+     "headword": "shirt"
+    },
+    {
+     "id": "lex:A1:skill",
+     "headword": "skill",
+     "refs": [
+      "syn:skill-ability-talent"
+     ]
+    },
+    {
+     "id": "lex:A1:sorry",
+     "headword": "sorry",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "prep:sorry-about",
+      "prep:sorry-for"
+     ]
+    },
+    {
+     "id": "lex:A1:sunday",
+     "headword": "Sunday"
+    },
+    {
+     "id": "lex:A1:them",
+     "headword": "them"
+    },
+    {
+     "id": "lex:A1:tv",
+     "headword": "TV"
+    },
+    {
+     "id": "lex:A1:wash",
+     "headword": "wash",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:writing",
+     "headword": "writing",
+     "refs": [
+      "fam:write"
+     ]
+    },
+    {
+     "id": "lex:A1:wrong",
+     "headword": "wrong",
+     "flags": [
+      "also-B1-B2"
+     ],
+     "refs": [
+      "ant:correct-wrong",
+      "ant:right-wrong",
+      "col:completely-wrong",
+      "syn:wrong-incorrect"
+     ]
+    },
+    {
+     "id": "lex:A1:actor",
+     "headword": "actor",
+     "refs": [
+      "fam:act",
+      "occ:actor"
+     ]
+    },
+    {
+     "id": "lex:A1:air",
+     "headword": "air"
+    },
+    {
+     "id": "lex:A1:angry",
+     "headword": "angry",
+     "refs": [
+      "col:get-angry",
+      "prep:angry-about",
+      "prep:angry-with",
+      "syn:angry-annoyed"
+     ]
+    },
+    {
+     "id": "lex:A1:animal",
+     "headword": "animal"
+    },
+    {
+     "id": "lex:A1:artist",
+     "headword": "artist",
+     "refs": [
+      "fam:art",
+      "occ:artist"
+     ]
+    },
+    {
+     "id": "lex:A1:believe",
+     "headword": "believe",
+     "refs": [
+      "col:firmly-believe",
+      "col:strongly-believe",
+      "fam:believe",
+      "prep:believe-in",
+      "vp:believe-object-to-be"
+     ]
+    },
+    {
+     "id": "lex:A1:below",
+     "headword": "below",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:above-below"
+     ]
+    },
+    {
+     "id": "lex:A1:body",
+     "headword": "body"
+    },
+    {
+     "id": "lex:A1:cooking",
+     "headword": "cooking"
+    },
+    {
+     "id": "lex:A1:dictionary",
+     "headword": "dictionary"
+    }
+   ]
+  },
+  {
+   "id": "batch-06",
+   "entries": [
+    {
+     "id": "lex:A1:discuss",
+     "headword": "discuss",
+     "refs": [
+      "fam:discuss"
+     ]
+    },
+    {
+     "id": "lex:A1:dish",
+     "headword": "dish"
+    },
+    {
+     "id": "lex:A1:extra",
+     "headword": "extra",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:flight",
+     "headword": "flight"
+    },
+    {
+     "id": "lex:A1:grandfather",
+     "headword": "grandfather"
+    },
+    {
+     "id": "lex:A1:june",
+     "headword": "June"
+    },
+    {
+     "id": "lex:A1:meal",
+     "headword": "meal"
+    },
+    {
+     "id": "lex:A1:model",
+     "headword": "model",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:newspaper",
+     "headword": "newspaper"
+    },
+    {
+     "id": "lex:A1:nurse",
+     "headword": "nurse",
+     "refs": [
+      "occ:nurse"
+     ]
+    },
+    {
+     "id": "lex:A1:pen",
+     "headword": "pen"
+    },
+    {
+     "id": "lex:A1:plant",
+     "headword": "plant",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:scientist",
+     "headword": "scientist",
+     "refs": [
+      "fam:science"
+     ]
+    },
+    {
+     "id": "lex:A1:share",
+     "headword": "share",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:similar",
+     "headword": "similar",
+     "refs": [
+      "ant:different-similar",
+      "col:roughly-similar",
+      "prep:similar-to"
+     ]
+    },
+    {
+     "id": "lex:A1:sometimes",
+     "headword": "sometimes",
+     "refs": [
+      "conf:sometimes-sometime-some-time"
+     ]
+    },
+    {
+     "id": "lex:A1:spend",
+     "headword": "spend",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:spend-earn",
+      "col:spend-money",
+      "col:spend-time",
+      "irr:spend"
+     ]
+    },
+    {
+     "id": "lex:A1:stand",
+     "headword": "stand",
+     "flags": [
+      "also-B2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:sit-stand",
+      "irr:stand",
+      "pv:stand-for"
+     ]
+    },
+    {
+     "id": "lex:A1:tall",
+     "headword": "tall",
+     "refs": [
+      "ant:tall-short",
+      "conf:high-tall"
+     ]
+    },
+    {
+     "id": "lex:A1:thirty",
+     "headword": "thirty"
+    },
+    {
+     "id": "lex:A1:true",
+     "headword": "true",
+     "refs": [
+      "ant:true-false",
+      "fam:true"
+     ]
+    },
+    {
+     "id": "lex:A1:visit",
+     "headword": "visit",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "fam:visit"
+     ]
+    },
+    {
+     "id": "lex:A1:activity",
+     "headword": "activity",
+     "refs": [
+      "fam:act"
+     ]
+    },
+    {
+     "id": "lex:A1:arm",
+     "headword": "arm",
+     "flags": [
+      "also-C1"
+     ]
+    },
+    {
+     "id": "lex:A1:build",
+     "headword": "build",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:build-destroy",
+      "irr:build",
+      "syn:build-construct-develop"
+     ]
+    },
+    {
+     "id": "lex:A1:career",
+     "headword": "career"
+    },
+    {
+     "id": "lex:A1:compare",
+     "headword": "compare",
+     "refs": [
+      "fam:compare",
+      "prep:compare-with"
+     ]
+    },
+    {
+     "id": "lex:A1:concert",
+     "headword": "concert"
+    },
+    {
+     "id": "lex:A1:conversation",
+     "headword": "conversation",
+     "refs": [
+      "col:have-a-conversation"
+     ]
+    },
+    {
+     "id": "lex:A1:cousin",
+     "headword": "cousin"
+    },
+    {
+     "id": "lex:A1:create",
+     "headword": "create",
+     "refs": [
+      "ant:create-destroy",
+      "fam:create",
+      "syn:create-produce-generate"
+     ]
+    },
+    {
+     "id": "lex:A1:culture",
+     "headword": "culture",
+     "refs": [
+      "fam:culture"
+     ]
+    },
+    {
+     "id": "lex:A1:cup",
+     "headword": "cup"
+    },
+    {
+     "id": "lex:A1:dress",
+     "headword": "dress",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "pv:dress-up"
+     ]
+    },
+    {
+     "id": "lex:A1:example",
+     "headword": "example",
+     "refs": [
+      "col:give-an-example",
+      "col:set-an-example"
+     ]
+    },
+    {
+     "id": "lex:A1:follow",
+     "headword": "follow",
+     "refs": [
+      "ant:follow-lead",
+      "ant:follow-precede"
+     ]
+    },
+    {
+     "id": "lex:A1:green",
+     "headword": "green",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:interesting",
+     "headword": "interesting",
+     "refs": [
+      "ant:interesting-uninteresting",
+      "fam:interest"
+     ]
+    },
+    {
+     "id": "lex:A1:meaning",
+     "headword": "meaning",
+     "refs": [
+      "fam:mean"
+     ]
+    },
+    {
+     "id": "lex:A1:million",
+     "headword": "million"
+    },
+    {
+     "id": "lex:A1:moment",
+     "headword": "moment"
+    },
+    {
+     "id": "lex:A1:never",
+     "headword": "never",
+     "refs": [
+      "ant:always-never",
+      "ant:ever-never"
+     ]
+    },
+    {
+     "id": "lex:A1:opinion",
+     "headword": "opinion"
+    },
+    {
+     "id": "lex:A1:past",
+     "headword": "past",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:future-past"
+     ]
+    },
+    {
+     "id": "lex:A1:point",
+     "headword": "point",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "col:key-point",
+      "pv:point-out"
+     ]
+    },
+    {
+     "id": "lex:A1:really",
+     "headword": "really",
+     "refs": [
+      "fam:real"
+     ]
+    },
+    {
+     "id": "lex:A1:relax",
+     "headword": "relax",
+     "refs": [
+      "fam:relax"
+     ]
+    },
+    {
+     "id": "lex:A1:return",
+     "headword": "return",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:salad",
+     "headword": "salad"
+    },
+    {
+     "id": "lex:A1:sandwich",
+     "headword": "sandwich"
+    },
+    {
+     "id": "lex:A1:sentence",
+     "headword": "sentence",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:singer",
+     "headword": "singer"
+    },
+    {
+     "id": "lex:A1:spring",
+     "headword": "spring",
+     "flags": [
+      "also-B1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:spring"
+     ]
+    },
+    {
+     "id": "lex:A1:stop",
+     "headword": "stop",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:continue-stop",
+      "ant:move-stop",
+      "ant:start-stop",
+      "ant:stop-go",
+      "vp:stop-ing",
+      "vp:stop-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:television",
+     "headword": "television"
+    },
+    {
+     "id": "lex:A1:terrible",
+     "headword": "terrible",
+     "refs": [
+      "syn:bad-poor-terrible"
+     ]
+    },
+    {
+     "id": "lex:A1:text",
+     "headword": "text",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:theatre",
+     "headword": "theatre"
+    },
+    {
+     "id": "lex:A1:thousand",
+     "headword": "thousand"
+    },
+    {
+     "id": "lex:A1:twice",
+     "headword": "twice"
+    },
+    {
+     "id": "lex:A1:afraid",
+     "headword": "afraid",
+     "refs": [
+      "ant:brave-afraid",
+      "prep:afraid-of",
+      "syn:afraid-scared-frightened"
+     ]
+    },
+    {
+     "id": "lex:A1:ago",
+     "headword": "ago"
+    },
+    {
+     "id": "lex:A1:anything",
+     "headword": "anything"
+    },
+    {
+     "id": "lex:A1:apple",
+     "headword": "apple"
+    },
+    {
+     "id": "lex:A1:bathroom",
+     "headword": "bathroom"
+    },
+    {
+     "id": "lex:A1:begin",
+     "headword": "begin",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:begin-end",
+      "ant:begin-finish",
+      "conf:begin-start",
+      "irr:begin",
+      "vp:begin-ing-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:bicycle",
+     "headword": "bicycle"
+    },
+    {
+     "id": "lex:A1:boat",
+     "headword": "boat"
+    },
+    {
+     "id": "lex:A1:century",
+     "headword": "century"
+    },
+    {
+     "id": "lex:A1:club",
+     "headword": "club"
+    },
+    {
+     "id": "lex:A1:decide",
+     "headword": "decide",
+     "refs": [
+      "fam:decide",
+      "prep:decide-on",
+      "vp:decide-to-infinitive",
+      "vp:decide-wh-word-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:delicious",
+     "headword": "delicious"
+    },
+    {
+     "id": "lex:A1:describe",
+     "headword": "describe",
+     "refs": [
+      "fam:describe"
+     ]
+    },
+    {
+     "id": "lex:A1:description",
+     "headword": "description",
+     "refs": [
+      "fam:describe"
+     ]
+    },
+    {
+     "id": "lex:A1:diet",
+     "headword": "diet"
+    },
+    {
+     "id": "lex:A1:draw",
+     "headword": "draw",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "col:draw-a-conclusion",
+      "irr:draw"
+     ]
+    },
+    {
+     "id": "lex:A1:enjoy",
+     "headword": "enjoy",
+     "refs": [
+      "ant:enjoy-suffer",
+      "fam:enjoy",
+      "vp:enjoy-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:false",
+     "headword": "false",
+     "refs": [
+      "ant:true-false"
+     ]
+    },
+    {
+     "id": "lex:A1:fill",
+     "headword": "fill",
+     "refs": [
+      "ant:empty-fill",
+      "pv:fill-in",
+      "pv:fill-out",
+      "pv:fill-up"
+     ]
+    },
+    {
+     "id": "lex:A1:fish",
+     "headword": "fish",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:flat",
+     "headword": "flat",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:flower",
+     "headword": "flower"
+    },
+    {
+     "id": "lex:A1:four",
+     "headword": "four"
+    },
+    {
+     "id": "lex:A1:fun",
+     "headword": "fun",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "conf:fun-funny"
+     ]
+    },
+    {
+     "id": "lex:A1:grandmother",
+     "headword": "grandmother"
+    },
+    {
+     "id": "lex:A1:imagine",
+     "headword": "imagine",
+     "refs": [
+      "fam:imagine",
+      "vp:imagine-ing"
+     ]
+    },
+    {
+     "id": "lex:A1:juice",
+     "headword": "juice"
+    },
+    {
+     "id": "lex:A1:land",
+     "headword": "land",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:leg",
+     "headword": "leg"
+    },
+    {
+     "id": "lex:A1:lose",
+     "headword": "lose",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:earn-lose",
+      "ant:find-lose",
+      "ant:keep-lose",
+      "ant:lose-win",
+      "col:lose-control",
+      "col:lose-interest",
+      "col:lose-weight",
+      "irr:lose"
+     ]
+    },
+    {
+     "id": "lex:A1:married",
+     "headword": "married",
+     "refs": [
+      "ant:divorced-married",
+      "ant:married-single",
+      "col:get-married",
+      "fam:marry",
+      "prep:married-to"
+     ]
+    },
+    {
+     "id": "lex:A1:meat",
+     "headword": "meat"
+    },
+    {
+     "id": "lex:A1:midnight",
+     "headword": "midnight",
+     "refs": [
+      "ant:midnight-noon"
+     ]
+    },
+    {
+     "id": "lex:A1:north",
+     "headword": "north",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:north-south"
+     ]
+    },
+    {
+     "id": "lex:A1:party",
+     "headword": "party"
+    },
+    {
+     "id": "lex:A1:perfect",
+     "headword": "perfect"
+    },
+    {
+     "id": "lex:A1:period",
+     "headword": "period"
+    },
+    {
+     "id": "lex:A1:photograph",
+     "headword": "photograph",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:piece",
+     "headword": "piece"
+    },
+    {
+     "id": "lex:A1:player",
+     "headword": "player"
+    }
+   ]
+  },
+  {
+   "id": "batch-07",
+   "entries": [
+    {
+     "id": "lex:A1:prepare",
+     "headword": "prepare",
+     "refs": [
+      "fam:prepare",
+      "prep:prepare-for",
+      "vp:prepare-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:radio",
+     "headword": "radio"
+    },
+    {
+     "id": "lex:A1:repeat",
+     "headword": "repeat",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:rich",
+     "headword": "rich",
+     "refs": [
+      "ant:rich-poor"
+     ]
+    },
+    {
+     "id": "lex:A1:routine",
+     "headword": "routine",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:daily-routine"
+     ]
+    },
+    {
+     "id": "lex:A1:salt",
+     "headword": "salt"
+    },
+    {
+     "id": "lex:A1:sell",
+     "headword": "sell",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:buy-sell",
+      "irr:sell"
+     ]
+    },
+    {
+     "id": "lex:A1:special",
+     "headword": "special",
+     "refs": [
+      "fam:special"
+     ]
+    },
+    {
+     "id": "lex:A1:sport",
+     "headword": "sport"
+    },
+    {
+     "id": "lex:A1:swim",
+     "headword": "swim",
+     "flags": [
+      "also-B1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:swim"
+     ]
+    },
+    {
+     "id": "lex:A1:taxi",
+     "headword": "taxi",
+     "refs": [
+      "col:take-a-taxi"
+     ]
+    },
+    {
+     "id": "lex:A1:telephone",
+     "headword": "telephone",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:then",
+     "headword": "then",
+     "refs": [
+      "ant:now-then"
+     ]
+    },
+    {
+     "id": "lex:A1:tuesday",
+     "headword": "Tuesday"
+    },
+    {
+     "id": "lex:A1:twelve",
+     "headword": "twelve"
+    },
+    {
+     "id": "lex:A1:upstairs",
+     "headword": "upstairs",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:upstairs-downstairs"
+     ]
+    },
+    {
+     "id": "lex:A1:visitor",
+     "headword": "visitor",
+     "refs": [
+      "ant:resident-visitor",
+      "fam:visit"
+     ]
+    },
+    {
+     "id": "lex:A1:which",
+     "headword": "which",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:anyone",
+     "headword": "anyone"
+    },
+    {
+     "id": "lex:A1:april",
+     "headword": "April"
+    },
+    {
+     "id": "lex:A1:august",
+     "headword": "August"
+    },
+    {
+     "id": "lex:A1:aunt",
+     "headword": "aunt",
+     "refs": [
+      "ant:aunt-uncle"
+     ]
+    },
+    {
+     "id": "lex:A1:autumn",
+     "headword": "autumn"
+    },
+    {
+     "id": "lex:A1:bill",
+     "headword": "bill",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "col:pay-a-bill"
+     ]
+    },
+    {
+     "id": "lex:A1:boy",
+     "headword": "boy",
+     "refs": [
+      "ant:boy-girl"
+     ]
+    },
+    {
+     "id": "lex:A1:cafe",
+     "headword": "cafe"
+    },
+    {
+     "id": "lex:A1:chicken",
+     "headword": "chicken"
+    },
+    {
+     "id": "lex:A1:climb",
+     "headword": "climb",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:cook",
+     "headword": "cook",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "occ:cook"
+     ]
+    },
+    {
+     "id": "lex:A1:cool",
+     "headword": "cool",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:warm-cool"
+     ]
+    },
+    {
+     "id": "lex:A1:eighty",
+     "headword": "eighty"
+    },
+    {
+     "id": "lex:A1:else",
+     "headword": "else"
+    },
+    {
+     "id": "lex:A1:even",
+     "headword": "even",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:even-odd"
+     ]
+    },
+    {
+     "id": "lex:A1:far",
+     "headword": "far",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:near-far"
+     ]
+    },
+    {
+     "id": "lex:A1:grow",
+     "headword": "grow",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "fam:grow",
+      "irr:grow",
+      "pv:grow-apart",
+      "pv:grow-back",
+      "pv:grow-out-of",
+      "pv:grow-up"
+     ]
+    },
+    {
+     "id": "lex:A1:hate",
+     "headword": "hate",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:love-hate",
+      "vp:hate-ing-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:introduce",
+     "headword": "introduce",
+     "refs": [
+      "fam:introduce"
+     ]
+    },
+    {
+     "id": "lex:A1:later",
+     "headword": "later",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:march",
+     "headword": "March",
+     "flags": [
+      "also-C1"
+     ]
+    },
+    {
+     "id": "lex:A1:member",
+     "headword": "member"
+    },
+    {
+     "id": "lex:A1:menu",
+     "headword": "menu"
+    },
+    {
+     "id": "lex:A1:mum",
+     "headword": "mum"
+    },
+    {
+     "id": "lex:A1:negative",
+     "headword": "negative",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "ant:positive-negative",
+      "col:negative-effect"
+     ]
+    },
+    {
+     "id": "lex:A1:neighbour",
+     "headword": "neighbour",
+     "refs": [
+      "ant:neighbour-stranger"
+     ]
+    },
+    {
+     "id": "lex:A1:nice",
+     "headword": "nice",
+     "refs": [
+      "ant:nasty-nice",
+      "syn:nice-friendly-pleasant"
+     ]
+    },
+    {
+     "id": "lex:A1:post",
+     "headword": "post",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:quarter",
+     "headword": "quarter"
+    },
+    {
+     "id": "lex:A1:rice",
+     "headword": "rice"
+    },
+    {
+     "id": "lex:A1:ride",
+     "headword": "ride",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:ride"
+     ]
+    },
+    {
+     "id": "lex:A1:shoe",
+     "headword": "shoe"
+    },
+    {
+     "id": "lex:A1:sound",
+     "headword": "sound",
+     "flags": [
+      "split-senses",
+      "also-C1"
+     ],
+     "refs": [
+      "conf:sound-noise"
+     ]
+    },
+    {
+     "id": "lex:A1:space",
+     "headword": "space"
+    },
+    {
+     "id": "lex:A1:spell",
+     "headword": "spell",
+     "flags": [
+      "also-C1"
+     ]
+    },
+    {
+     "id": "lex:A1:teach",
+     "headword": "teach",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:teach-learn",
+      "fam:teach",
+      "irr:teach",
+      "vp:teach-object-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:topic",
+     "headword": "topic"
+    },
+    {
+     "id": "lex:A1:tourist",
+     "headword": "tourist"
+    },
+    {
+     "id": "lex:A1:uncle",
+     "headword": "uncle",
+     "refs": [
+      "ant:aunt-uncle"
+     ]
+    },
+    {
+     "id": "lex:A1:video",
+     "headword": "video"
+    },
+    {
+     "id": "lex:A1:waiter",
+     "headword": "waiter"
+    },
+    {
+     "id": "lex:A1:wake",
+     "headword": "wake",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:sleep-wake",
+      "irr:wake",
+      "pv:wake-up"
+     ]
+    },
+    {
+     "id": "lex:A1:win",
+     "headword": "win",
+     "flags": [
+      "also-B1",
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:lose-win",
+      "irr:win"
+     ]
+    },
+    {
+     "id": "lex:A1:worker",
+     "headword": "worker",
+     "refs": [
+      "fam:work"
+     ]
+    },
+    {
+     "id": "lex:A1:yourself",
+     "headword": "yourself"
+    },
+    {
+     "id": "lex:A1:adult",
+     "headword": "adult",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:adult-child"
+     ]
+    },
+    {
+     "id": "lex:A1:also",
+     "headword": "also",
+     "refs": [
+      "conf:also-as-well-too"
+     ]
+    },
+    {
+     "id": "lex:A1:amazing",
+     "headword": "amazing"
+    },
+    {
+     "id": "lex:A1:bedroom",
+     "headword": "bedroom"
+    },
+    {
+     "id": "lex:A1:beer",
+     "headword": "beer"
+    },
+    {
+     "id": "lex:A1:beginning",
+     "headword": "beginning",
+     "refs": [
+      "ant:beginning-end"
+     ]
+    },
+    {
+     "id": "lex:A1:bored",
+     "headword": "bored",
+     "refs": [
+      "ant:bored-interested",
+      "prep:bored-with"
+     ]
+    },
+    {
+     "id": "lex:A1:brown",
+     "headword": "brown",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:butter",
+     "headword": "butter"
+    },
+    {
+     "id": "lex:A1:capital",
+     "headword": "capital",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:carrot",
+     "headword": "carrot"
+    },
+    {
+     "id": "lex:A1:cent",
+     "headword": "cent"
+    },
+    {
+     "id": "lex:A1:chart",
+     "headword": "chart",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:chocolate",
+     "headword": "chocolate"
+    },
+    {
+     "id": "lex:A1:cinema",
+     "headword": "cinema"
+    },
+    {
+     "id": "lex:A1:college",
+     "headword": "college"
+    },
+    {
+     "id": "lex:A1:dancing",
+     "headword": "dancing"
+    },
+    {
+     "id": "lex:A1:dear",
+     "headword": "dear",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:downstairs",
+     "headword": "downstairs",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:upstairs-downstairs"
+     ]
+    },
+    {
+     "id": "lex:A1:east",
+     "headword": "east",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:east-west"
+     ]
+    },
+    {
+     "id": "lex:A1:eighteen",
+     "headword": "eighteen"
+    },
+    {
+     "id": "lex:A1:euro",
+     "headword": "euro"
+    },
+    {
+     "id": "lex:A1:ever",
+     "headword": "ever",
+     "refs": [
+      "ant:ever-never"
+     ]
+    },
+    {
+     "id": "lex:A1:everything",
+     "headword": "everything",
+     "refs": [
+      "ant:everything-nothing"
+     ]
+    },
+    {
+     "id": "lex:A1:excited",
+     "headword": "excited",
+     "refs": [
+      "ant:excited-disappointed",
+      "prep:excited-about"
+     ]
+    },
+    {
+     "id": "lex:A1:exciting",
+     "headword": "exciting",
+     "refs": [
+      "ant:exciting-boring"
+     ]
+    },
+    {
+     "id": "lex:A1:fact",
+     "headword": "fact"
+    },
+    {
+     "id": "lex:A1:farmer",
+     "headword": "farmer",
+     "refs": [
+      "occ:farmer"
+     ]
+    },
+    {
+     "id": "lex:A1:fat",
+     "headword": "fat",
+     "flags": [
+      "also-A2"
+     ],
+     "refs": [
+      "ant:fat-thin"
+     ]
+    },
+    {
+     "id": "lex:A1:february",
+     "headword": "February"
+    },
+    {
+     "id": "lex:A1:fifteen",
+     "headword": "fifteen"
+    },
+    {
+     "id": "lex:A1:fly",
+     "headword": "fly",
+     "flags": [
+      "also-A2",
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:fly"
+     ]
+    },
+    {
+     "id": "lex:A1:foot",
+     "headword": "foot"
+    },
+    {
+     "id": "lex:A1:forget",
+     "headword": "forget",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "ant:forget-remember",
+      "conf:forget-leave",
+      "irr:forget",
+      "vp:forget-ing",
+      "vp:forget-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:goodbye",
+     "headword": "goodbye",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:guess",
+     "headword": "guess",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:guitar",
+     "headword": "guitar"
+    }
+   ]
+  },
+  {
+   "id": "batch-08",
+   "entries": [
+    {
+     "id": "lex:A1:gym",
+     "headword": "gym"
+    },
+    {
+     "id": "lex:A1:hello",
+     "headword": "hello",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:hobby",
+     "headword": "hobby"
+    },
+    {
+     "id": "lex:A1:july",
+     "headword": "July"
+    },
+    {
+     "id": "lex:A1:laugh",
+     "headword": "laugh",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:cry-laugh",
+      "prep:laugh-at"
+     ]
+    },
+    {
+     "id": "lex:A1:list",
+     "headword": "list",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "col:make-a-list"
+     ]
+    },
+    {
+     "id": "lex:A1:magazine",
+     "headword": "magazine"
+    },
+    {
+     "id": "lex:A1:maybe",
+     "headword": "maybe",
+     "refs": [
+      "conf:maybe-may-be"
+     ]
+    },
+    {
+     "id": "lex:A1:metre",
+     "headword": "metre"
+    },
+    {
+     "id": "lex:A1:mouth",
+     "headword": "mouth"
+    },
+    {
+     "id": "lex:A1:ninety",
+     "headword": "ninety"
+    },
+    {
+     "id": "lex:A1:note",
+     "headword": "note",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:nothing",
+     "headword": "nothing",
+     "refs": [
+      "ant:everything-nothing",
+      "ant:nothing-something"
+     ]
+    },
+    {
+     "id": "lex:A1:object",
+     "headword": "object",
+     "flags": [
+      "also-B2"
+     ],
+     "refs": [
+      "prep:object-to"
+     ]
+    },
+    {
+     "id": "lex:A1:oh",
+     "headword": "oh"
+    },
+    {
+     "id": "lex:A1:orange",
+     "headword": "orange",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:paint",
+     "headword": "paint",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:pair",
+     "headword": "pair"
+    },
+    {
+     "id": "lex:A1:paragraph",
+     "headword": "paragraph"
+    },
+    {
+     "id": "lex:A1:partner",
+     "headword": "partner",
+     "refs": [
+      "ant:partner-rival"
+     ]
+    },
+    {
+     "id": "lex:A1:piano",
+     "headword": "piano"
+    },
+    {
+     "id": "lex:A1:practise",
+     "headword": "practise"
+    },
+    {
+     "id": "lex:A1:pretty",
+     "headword": "pretty",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "syn:beautiful-pretty-attractive"
+     ]
+    },
+    {
+     "id": "lex:A1:sad",
+     "headword": "sad",
+     "refs": [
+      "ant:glad-sad",
+      "ant:happy-sad",
+      "syn:sad-unhappy-upset"
+     ]
+    },
+    {
+     "id": "lex:A1:section",
+     "headword": "section"
+    },
+    {
+     "id": "lex:A1:september",
+     "headword": "September"
+    },
+    {
+     "id": "lex:A1:sheep",
+     "headword": "sheep"
+    },
+    {
+     "id": "lex:A1:sick",
+     "headword": "sick",
+     "refs": [
+      "ant:healthy-sick",
+      "ant:well-sick",
+      "conf:ill-sick"
+     ]
+    },
+    {
+     "id": "lex:A1:sixty",
+     "headword": "sixty"
+    },
+    {
+     "id": "lex:A1:skirt",
+     "headword": "skirt"
+    },
+    {
+     "id": "lex:A1:snake",
+     "headword": "snake"
+    },
+    {
+     "id": "lex:A1:something",
+     "headword": "something"
+    },
+    {
+     "id": "lex:A1:son",
+     "headword": "son",
+     "refs": [
+      "ant:daughter-son"
+     ]
+    },
+    {
+     "id": "lex:A1:star",
+     "headword": "star",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:statement",
+     "headword": "statement"
+    },
+    {
+     "id": "lex:A1:supermarket",
+     "headword": "supermarket"
+    },
+    {
+     "id": "lex:A1:sweater",
+     "headword": "sweater"
+    },
+    {
+     "id": "lex:A1:tennis",
+     "headword": "tennis"
+    },
+    {
+     "id": "lex:A1:thanks",
+     "headword": "thanks",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:thing",
+     "headword": "thing"
+    },
+    {
+     "id": "lex:A1:third",
+     "headword": "third",
+     "flags": [
+      "also-A2"
+     ]
+    },
+    {
+     "id": "lex:A1:tomato",
+     "headword": "tomato"
+    },
+    {
+     "id": "lex:A1:trousers",
+     "headword": "trousers"
+    },
+    {
+     "id": "lex:A1:type",
+     "headword": "type",
+     "flags": [
+      "also-B1"
+     ]
+    },
+    {
+     "id": "lex:A1:umbrella",
+     "headword": "umbrella"
+    },
+    {
+     "id": "lex:A1:wednesday",
+     "headword": "Wednesday"
+    },
+    {
+     "id": "lex:A1:welcome",
+     "headword": "welcome",
+     "flags": [
+      "split-senses",
+      "also-A2"
+     ],
+     "refs": [
+      "ant:welcome-unwelcome"
+     ]
+    },
+    {
+     "id": "lex:A1:woman",
+     "headword": "woman",
+     "refs": [
+      "ant:man-woman"
+     ]
+    },
+    {
+     "id": "lex:A1:wonderful",
+     "headword": "wonderful"
+    },
+    {
+     "id": "lex:A1:world",
+     "headword": "world"
+    },
+    {
+     "id": "lex:A1:yellow",
+     "headword": "yellow",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:actress",
+     "headword": "actress",
+     "refs": [
+      "fam:act"
+     ]
+    },
+    {
+     "id": "lex:A1:banana",
+     "headword": "banana"
+    },
+    {
+     "id": "lex:A1:bath",
+     "headword": "bath"
+    },
+    {
+     "id": "lex:A1:blog",
+     "headword": "blog"
+    },
+    {
+     "id": "lex:A1:blonde",
+     "headword": "blonde"
+    },
+    {
+     "id": "lex:A1:boot",
+     "headword": "boot"
+    },
+    {
+     "id": "lex:A1:boring",
+     "headword": "boring",
+     "refs": [
+      "ant:exciting-boring"
+     ]
+    },
+    {
+     "id": "lex:A1:born",
+     "headword": "born"
+    },
+    {
+     "id": "lex:A1:boyfriend",
+     "headword": "boyfriend"
+    },
+    {
+     "id": "lex:A1:bye",
+     "headword": "bye"
+    },
+    {
+     "id": "lex:A1:cd",
+     "headword": "CD"
+    },
+    {
+     "id": "lex:A1:cheese",
+     "headword": "cheese"
+    },
+    {
+     "id": "lex:A1:cow",
+     "headword": "cow"
+    },
+    {
+     "id": "lex:A1:dad",
+     "headword": "dad"
+    },
+    {
+     "id": "lex:A1:dance",
+     "headword": "dance",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:dancer",
+     "headword": "dancer",
+     "refs": [
+      "occ:dancer"
+     ]
+    },
+    {
+     "id": "lex:A1:daughter",
+     "headword": "daughter",
+     "refs": [
+      "ant:daughter-son"
+     ]
+    },
+    {
+     "id": "lex:A1:december",
+     "headword": "December"
+    },
+    {
+     "id": "lex:A1:dialogue",
+     "headword": "dialogue"
+    },
+    {
+     "id": "lex:A1:die",
+     "headword": "die",
+     "refs": [
+      "ant:die-live"
+     ]
+    },
+    {
+     "id": "lex:A1:dirty",
+     "headword": "dirty",
+     "refs": [
+      "ant:clean-dirty"
+     ]
+    },
+    {
+     "id": "lex:A1:dvd",
+     "headword": "DVD"
+    },
+    {
+     "id": "lex:A1:ear",
+     "headword": "ear"
+    },
+    {
+     "id": "lex:A1:egg",
+     "headword": "egg"
+    },
+    {
+     "id": "lex:A1:elephant",
+     "headword": "elephant"
+    },
+    {
+     "id": "lex:A1:eleven",
+     "headword": "eleven"
+    },
+    {
+     "id": "lex:A1:everybody",
+     "headword": "everybody"
+    },
+    {
+     "id": "lex:A1:eye",
+     "headword": "eye"
+    },
+    {
+     "id": "lex:A1:fantastic",
+     "headword": "fantastic"
+    },
+    {
+     "id": "lex:A1:feeling",
+     "headword": "feeling"
+    },
+    {
+     "id": "lex:A1:fifth",
+     "headword": "fifth"
+    },
+    {
+     "id": "lex:A1:forty",
+     "headword": "forty"
+    },
+    {
+     "id": "lex:A1:fourteen",
+     "headword": "fourteen"
+    },
+    {
+     "id": "lex:A1:fourth",
+     "headword": "fourth"
+    },
+    {
+     "id": "lex:A1:geography",
+     "headword": "geography"
+    },
+    {
+     "id": "lex:A1:girl",
+     "headword": "girl",
+     "refs": [
+      "ant:boy-girl"
+     ]
+    },
+    {
+     "id": "lex:A1:girlfriend",
+     "headword": "girlfriend"
+    },
+    {
+     "id": "lex:A1:grandparent",
+     "headword": "grandparent"
+    },
+    {
+     "id": "lex:A1:grey",
+     "headword": "grey",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:happen",
+     "headword": "happen",
+     "refs": [
+      "prep:happen-to",
+      "syn:happen-occur",
+      "vp:happen-to-infinitive"
+     ]
+    },
+    {
+     "id": "lex:A1:hat",
+     "headword": "hat"
+    },
+    {
+     "id": "lex:A1:head",
+     "headword": "head",
+     "flags": [
+      "also-B1"
+     ],
+     "refs": [
+      "ant:head-rear"
+     ]
+    },
+    {
+     "id": "lex:A1:hey",
+     "headword": "hey"
+    },
+    {
+     "id": "lex:A1:hi",
+     "headword": "hi"
+    },
+    {
+     "id": "lex:A1:horse",
+     "headword": "horse"
+    },
+    {
+     "id": "lex:A1:however",
+     "headword": "however"
+    },
+    {
+     "id": "lex:A1:husband",
+     "headword": "husband",
+     "refs": [
+      "ant:husband-wife"
+     ]
+    },
+    {
+     "id": "lex:A1:january",
+     "headword": "January"
+    },
+    {
+     "id": "lex:A1:jeans",
+     "headword": "jeans"
+    }
+   ]
+  },
+  {
+   "id": "batch-09",
+   "entries": [
+    {
+     "id": "lex:A1:join",
+     "headword": "join",
+     "refs": [
+      "ant:join-leave",
+      "ant:join-separate"
+     ]
+    },
+    {
+     "id": "lex:A1:kilometre",
+     "headword": "kilometre"
+    },
+    {
+     "id": "lex:A1:lion",
+     "headword": "lion"
+    },
+    {
+     "id": "lex:A1:mile",
+     "headword": "mile"
+    },
+    {
+     "id": "lex:A1:mouse",
+     "headword": "mouse"
+    },
+    {
+     "id": "lex:A1:nineteen",
+     "headword": "nineteen"
+    },
+    {
+     "id": "lex:A1:nose",
+     "headword": "nose"
+    },
+    {
+     "id": "lex:A1:november",
+     "headword": "November"
+    },
+    {
+     "id": "lex:A1:october",
+     "headword": "October"
+    },
+    {
+     "id": "lex:A1:ok",
+     "headword": "OK",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:onion",
+     "headword": "onion"
+    },
+    {
+     "id": "lex:A1:opposite",
+     "headword": "opposite",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:parent",
+     "headword": "parent",
+     "refs": [
+      "ant:child-parent"
+     ]
+    },
+    {
+     "id": "lex:A1:pencil",
+     "headword": "pencil"
+    },
+    {
+     "id": "lex:A1:pepper",
+     "headword": "pepper"
+    },
+    {
+     "id": "lex:A1:phrase",
+     "headword": "phrase"
+    },
+    {
+     "id": "lex:A1:pig",
+     "headword": "pig"
+    },
+    {
+     "id": "lex:A1:pink",
+     "headword": "pink",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:policeman",
+     "headword": "policeman"
+    },
+    {
+     "id": "lex:A1:potato",
+     "headword": "potato"
+    },
+    {
+     "id": "lex:A1:pound",
+     "headword": "pound"
+    },
+    {
+     "id": "lex:A1:probably",
+     "headword": "probably"
+    },
+    {
+     "id": "lex:A1:purple",
+     "headword": "purple",
+     "flags": [
+      "split-senses"
+     ]
+    },
+    {
+     "id": "lex:A1:reader",
+     "headword": "reader"
+    },
+    {
+     "id": "lex:A1:seventeen",
+     "headword": "seventeen"
+    },
+    {
+     "id": "lex:A1:seventy",
+     "headword": "seventy"
+    },
+    {
+     "id": "lex:A1:shower",
+     "headword": "shower"
+    },
+    {
+     "id": "lex:A1:sing",
+     "headword": "sing",
+     "flags": [
+      "irregular-verb"
+     ],
+     "refs": [
+      "irr:sing"
+     ]
+    },
+    {
+     "id": "lex:A1:sixteen",
+     "headword": "sixteen"
+    },
+    {
+     "id": "lex:A1:somebody",
+     "headword": "somebody"
+    },
+    {
+     "id": "lex:A1:south",
+     "headword": "south",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:north-south"
+     ]
+    },
+    {
+     "id": "lex:A1:spelling",
+     "headword": "spelling"
+    },
+    {
+     "id": "lex:A1:style",
+     "headword": "style"
+    },
+    {
+     "id": "lex:A1:teenager",
+     "headword": "teenager"
+    },
+    {
+     "id": "lex:A1:thirsty",
+     "headword": "thirsty"
+    },
+    {
+     "id": "lex:A1:thirteen",
+     "headword": "thirteen"
+    },
+    {
+     "id": "lex:A1:thursday",
+     "headword": "Thursday"
+    },
+    {
+     "id": "lex:A1:title",
+     "headword": "title",
+     "flags": [
+      "also-B2"
+     ]
+    },
+    {
+     "id": "lex:A1:toilet",
+     "headword": "toilet"
+    },
+    {
+     "id": "lex:A1:tooth",
+     "headword": "tooth"
+    },
+    {
+     "id": "lex:A1:vacation",
+     "headword": "vacation"
+    },
+    {
+     "id": "lex:A1:vegetable",
+     "headword": "vegetable"
+    },
+    {
+     "id": "lex:A1:west",
+     "headword": "west",
+     "flags": [
+      "split-senses"
+     ],
+     "refs": [
+      "ant:east-west"
+     ]
+    },
+    {
+     "id": "lex:A1:wife",
+     "headword": "wife",
+     "refs": [
+      "ant:husband-wife"
+     ]
+    },
+    {
+     "id": "lex:A1:wine",
+     "headword": "wine"
+    },
+    {
+     "id": "lex:A1:yeah",
+     "headword": "yeah"
+    },
+    {
+     "id": "lex:A1:yes",
+     "headword": "yes",
+     "refs": [
+      "ant:yes-no"
+     ]
+    },
+    {
+     "id": "lex:A1:dollar",
+     "headword": "dollar"
+    },
+    {
+     "id": "lex:A1:o-clock",
+     "headword": "o’clock"
+    },
+    {
+     "id": "lex:A1:t-shirt",
+     "headword": "T-shirt"
+    }
+   ]
+  }
+ ]
+}

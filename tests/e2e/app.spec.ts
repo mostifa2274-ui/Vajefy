@@ -164,3 +164,17 @@ test("production responses carry the security policy", async ({ request }) => {
   expect(headers["content-security-policy"]).toContain("style-src-attr 'unsafe-inline'");
   expect(headers["strict-transport-security"]).toBe("max-age=31536000");
 });
+
+test("the Worker's own endpoints validate input and report optional services as off until configured", async ({ request }) => {
+  const valid = await request.post("/api/telemetry", { data: { reports: [{ kind: "audio-failed", code: "clip", route: "/learn" }] } });
+  expect(valid.status()).toBe(204);
+  const invalid = await request.post("/api/telemetry", { data: { reports: [{ kind: "anything", code: "<script>" }] } });
+  expect(invalid.status()).toBe(400);
+  expect((await request.get("/api/telemetry")).status()).toBe(405);
+  for (const service of ["coach", "sync"]) {
+    const status = await request.get(`/api/${service}/status`);
+    expect(status.status()).toBe(200);
+    expect(await status.json()).toEqual({ enabled: false });
+  }
+  expect((await request.get("/api/unknown")).status()).toBe(404);
+});

@@ -1,15 +1,70 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StudySession } from "@/components/study-session";
 import { ButtonLink } from "@/components/ui";
 import { loadStudyFaces } from "@/lib/learn/faces";
 import { useCopy } from "@/lib/learn/i18n";
 import { loadMeta } from "@/lib/learn/load";
+import { resumable, startReview, type ReviewSession } from "@/lib/learn/session";
 import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
-import { shuffle } from "@/lib/learn/text";
-import type { StudyFace } from "@/lib/learn/types";
+import { loadJson } from "@/lib/learn/load";
+import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
+import { introductionOrder, loadPilot, loadPilotOrder } from "@/lib/learn/pilot";
+import { entryIdOf } from "@/lib/learn/content";
+import { levelOf, shuffle } from "@/lib/learn/text";
+import type { CardProg, LevelId, StudyFace } from "@/lib/learn/types";
 
 export const Route = createFileRoute("/study")({ component: StudyPage });
+
+type Ready = { session: ReviewSession; faces: Map<string, StudyFace>; resumed: boolean };
+
+/**
+ * New words for Review, in a purposeful order: the most useful entries of the
+ * level first. While the level's enhanced content still has words to teach,
+ * those come through guided lessons instead. Fewer new words are added when
+ * reviews are piling up.
+ */
+async function newWords(
+  focus: LevelId,
+  faces: Map<string, StudyFace>,
+  known: Set<string>,
+  dueCount: number,
+  state: { newPerDay: number; sessionSize: number; logs: Parameters<typeof todayLog>[0]; goal: Parameters<typeof introductionOrder>[1] },
+): Promise<string[]> {
+  let budget = Math.max(0, state.newPerDay - todayLog(state.logs).introduced);
+  if (dueCount >= state.sessionSize) budget = 0;
+  else if (dueCount >= state.sessionSize / 2) budget = Math.floor(budget / 2);
+  if (!budget) return [];
+  const order = await loadJson<Partial<Record<LevelId, string[]>>>("usefulness.json")
+    .then((lists) => lists[focus])
+    .catch(() => undefined);
+  const levelIds = order ?? shuffle([...faces.keys()].filter((id) => id.startsWith(`lex:${focus}:`) && !id.includes("#")));
+  let excluded = new Set<string>();
+  if (focus === "A1" && CONTENT_CHANNEL === "none") {
+    // The study's comparison arm meets the same pilot words, here in Review,
+    // in the order the guided lessons would introduce them.
+    const pilot = await loadPilot();
+    const first = introductionOrder(pilot.targets, state.goal)
+      .filter((target) => target.index === 0)
+      .map((target) => target.entry.id);
+    const ordered = [...first, ...levelIds.filter((id) => !first.includes(id))];
+    return ordered.filter((id) => faces.has(id) && !known.has(id)).slice(0, budget);
+  }
+  // The small order file says which senses have lessons, without the content itself.
+  const lessons = await loadPilotOrder()
+    .then((compiled) => {
+      const released = new Set(compiled.released);
+      return compiled.order.general.filter((id) => levelOf(id) === focus && introducibleIn(CONTENT_CHANNEL, released.has(id)));
+    })
+    .catch(() => [] as string[]);
+  if (lessons.some((id) => !known.has(id))) excluded = new Set(lessons.map(entryIdOf));
+  return levelIds.filter((id) => faces.has(id) && !known.has(id) && !excluded.has(id)).slice(0, budget);
+}
+
+/** A card graded after the session was last saved was answered elsewhere. */
+function answeredElsewhere(card: CardProg | undefined, session: ReviewSession): boolean {
+  return Boolean(card?.last && card.last > session.updatedAt);
+}
 
 function StudyPage() {
   const navigate = useNavigate();
@@ -21,15 +76,13 @@ function StudyPage() {
   const voice = useProgress((state) => state.voice);
   const requestRetention = useProgress((state) => state.requestRetention);
   const cards = useProgress((state) => state.cards);
-  const review = useProgress((state) => state.review);
+  const saveSession = useProgress((state) => state.saveSession);
   const copy = useCopy(lang);
-  type ReadySession = {
-    items: { id: string; isNew: boolean }[];
-    faces: Map<string, StudyFace>;
-  };
-  const [loaded, setLoaded] = useState<{ key: string; ready: ReadySession } | null>(null);
+  const [loaded, setLoaded] = useState<{ key: string; ready: Ready } | null>(null);
   const [errorKey, setErrorKey] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
+  // A ref, not state: clearing it must not rebuild the session it just made.
+  const startNew = useRef(false);
   const sessionKey = `${focus}\u0000${sessionSize}\u0000${newPerDay}\u0000${nonce}\u0000${lang}`;
   const ready = loaded?.key === sessionKey ? loaded.ready : null;
   const error = errorKey === sessionKey;
@@ -41,6 +94,25 @@ function StudyPage() {
       try {
         const meta = await loadMeta();
         const state = useProgress.getState();
+        const now = Date.now();
+        const existing = resumable(state.sessions, "review", now);
+        if (existing && !startNew.current) {
+          const faces = await loadStudyFaces(existing.focus, existing.queue.map((item) => item.id), meta, copy);
+          if (!alive) return;
+          const queue = existing.queue.filter(
+            (item) => faces.has(item.id) && !answeredElsewhere(useProgress.getState().cards[item.id], existing),
+          );
+          let session = existing;
+          if (queue.length !== existing.queue.length) {
+            session = { ...existing, queue, status: queue.length ? "active" : "done", updatedAt: now };
+            saveSession(session);
+          }
+          setLoaded({ key: sessionKey, ready: { session, faces, resumed: true } });
+          setErrorKey((failed) => (failed === sessionKey ? null : failed));
+          return;
+        }
+        if (existing) saveSession({ ...existing, status: "done", updatedAt: now });
+
         const due = dueIds(state.cards);
         const faces = await loadStudyFaces(state.focus, due, meta, copy);
         if (!alive) return;
@@ -51,17 +123,16 @@ function StudyPage() {
         const known = new Set(Object.keys(state.cards));
         const dueTake = due.filter((id) => faces.has(id)).slice(0, state.sessionSize);
         const room = state.sessionSize - dueTake.length;
-        const budget = Math.max(0, state.newPerDay - todayLog(state.logs).introduced);
-        const fresh = shuffle(
-          [...faces.keys()].filter((id) => id.startsWith(`lex:${state.focus}:`) && !known.has(id)),
-        ).slice(0, Math.min(room, budget));
-        setLoaded({
-          key: sessionKey,
-          ready: {
-            faces,
-            items: [...dueTake.map((id) => ({ id, isNew: false })), ...fresh.map((id) => ({ id, isNew: true }))],
-          },
-        });
+        const fresh = (await newWords(state.focus, faces, known, due.length, state)).slice(0, room);
+        if (!alive) return;
+        const session = startReview(
+          [...dueTake.map((id) => ({ id, isNew: false })), ...fresh.map((id) => ({ id, isNew: true }))],
+          state.focus,
+          now,
+        );
+        if (session.total) saveSession(session);
+        startNew.current = false;
+        setLoaded({ key: sessionKey, ready: { session, faces, resumed: false } });
         setErrorKey((failed) => (failed === sessionKey ? null : failed));
       } catch {
         if (alive) setErrorKey(sessionKey);
@@ -70,7 +141,7 @@ function StudyPage() {
     return () => {
       alive = false;
     };
-  }, [hydrated, sessionKey, copy]);
+  }, [hydrated, sessionKey, copy, saveSession]);
 
   if (error) {
     return (
@@ -85,7 +156,7 @@ function StudyPage() {
 
   if (!ready) return <p className="text-sm text-muted">{copy.loading}</p>;
 
-  if (ready.items.length === 0) {
+  if (ready.session.total === 0) {
     return (
       <div className="max-w-xl">
         <h1 className="text-2xl font-medium">{copy.emptySession}</h1>
@@ -104,17 +175,19 @@ function StudyPage() {
 
   return (
     <StudySession
-      key={nonce}
-      items={ready.items}
+      key={ready.session.id}
+      initial={ready.session}
       faces={ready.faces}
       cards={cards}
       lang={lang}
       voice={voice}
       requestRetention={requestRetention}
-      onGrade={(id, grade) => {
-        review(id, grade);
-      }}
+      resumed={ready.resumed}
       onExit={() => void navigate({ to: "/" })}
+      onNewSession={() => {
+        startNew.current = true;
+        setNonce((n) => n + 1);
+      }}
     />
   );
 }

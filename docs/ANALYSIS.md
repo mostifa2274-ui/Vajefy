@@ -1,5 +1,7 @@
 # Roshana (روشنا) — in-depth analysis
 
+The app was called Roshana when this analysis was written; it is now Vajefy.
+
 Source analysed: the original app-builder workspace export (2 Oct 2026).
 Method: read every app file (`src/lib/learn`, `src/components`, `src/routes`), ran
 install / typecheck / lint / tests / production build, served the production

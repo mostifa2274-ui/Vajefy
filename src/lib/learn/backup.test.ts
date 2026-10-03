@@ -1,7 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { backupFileName, makeBackup, parseBackup } from "./backup";
-import { PROGRESS_VERSION, type SavedProgress } from "./store";
+import { PROGRESS_VERSION, type SavedProgress } from "./progress";
+
+function restored(text: string): SavedProgress | undefined {
+  const result = parseBackup(text);
+  return result.ok ? result.progress : undefined;
+}
 
 const saved: SavedProgress = {
   cards: {
@@ -59,10 +64,12 @@ const saved: SavedProgress = {
     },
   },
   onboarded: true,
+  goal: "work",
+  minutes: 15,
 };
 
 test("an export file reads back to the same progress", () => {
-  assert.deepEqual(parseBackup(makeBackup(saved)), saved);
+  assert.deepEqual(parseBackup(makeBackup(saved)), { ok: true, progress: saved });
 });
 
 test("a raw v0 localStorage entry imports and is migrated", () => {
@@ -75,7 +82,7 @@ test("a raw v0 localStorage entry imports and is migrated", () => {
     ...v0
   } = saved;
   const legacyLogs = v0.logs.map(({ practice: _practice, practiceCorrect: _practiceCorrect, ...row }) => row);
-  const parsed = parseBackup(JSON.stringify({ state: { ...v0, logs: legacyLogs }, version: 0 }));
+  const parsed = restored(JSON.stringify({ state: { ...v0, logs: legacyLogs }, version: 0 }));
   assert.deepEqual(parsed?.lifetime, { reviews: 12, correct: 10, practice: 0, practiceCorrect: 0 });
   assert.deepEqual(parsed?.cards, saved.cards);
   assert.equal(parsed?.requestRetention, 0.9);
@@ -83,38 +90,49 @@ test("a raw v0 localStorage entry imports and is migrated", () => {
   assert.deepEqual(parsed?.practiceSkills, {});
 });
 
-test("malformed, foreign or future files are rejected", () => {
-  assert.equal(parseBackup("not json"), null);
-  assert.equal(parseBackup(JSON.stringify({ kind: "something-else", progress: saved })), null);
+test("malformed or foreign files are rejected as invalid", () => {
+  const invalid = { ok: false, reason: "invalid" };
+  assert.deepEqual(parseBackup("not json"), invalid);
+  assert.deepEqual(parseBackup(JSON.stringify({ kind: "something-else", progress: saved })), invalid);
   const broken = JSON.parse(makeBackup(saved));
   broken.progress.cards["lex:A1:about"].state = "unknown";
-  assert.equal(parseBackup(JSON.stringify(broken)), null);
+  assert.deepEqual(parseBackup(JSON.stringify(broken)), invalid);
+});
+
+test("files from a newer version are rejected with their version, not misread", () => {
   const future = JSON.parse(makeBackup(saved));
   future.version = PROGRESS_VERSION + 1;
-  assert.equal(parseBackup(JSON.stringify(future)), null);
+  future.progress.newerField = { kept: true };
+  const expected = { ok: false, reason: "future", version: PROGRESS_VERSION + 1 };
+  assert.deepEqual(parseBackup(JSON.stringify(future)), expected);
+  // A newer save may not match today's shape at all; it is still "future".
+  future.progress.cards = "a newer card format";
+  assert.deepEqual(parseBackup(JSON.stringify(future)), expected);
+  const dump = { state: future.progress, version: PROGRESS_VERSION + 1 };
+  assert.deepEqual(parseBackup(JSON.stringify(dump)), expected);
 });
 
 test("backup files are named by date", () => {
-  assert.equal(backupFileName(new Date("2026-10-02T09:00:00Z")), "roshana-progress-2026-10-02.json");
+  assert.equal(backupFileName(new Date("2026-10-02T09:00:00Z")), "vajefy-progress-2026-10-02.json");
 });
 
 test("impossible or unbounded skill evidence is rejected during restore", () => {
   const invalid = JSON.parse(makeBackup(saved));
   invalid.progress.practiceSkills["lex:A1:about"].spelling.correct = 99;
-  assert.equal(parseBackup(JSON.stringify(invalid)), null);
+  assert.equal(parseBackup(JSON.stringify(invalid)).ok, false);
   invalid.progress.practiceSkills["lex:A1:about"].spelling.correct = 2;
   invalid.progress.practiceSkills["lex:A1:about"].listening.lastGrade = "invented";
-  assert.equal(parseBackup(JSON.stringify(invalid)), null);
+  assert.equal(parseBackup(JSON.stringify(invalid)).ok, false);
   invalid.progress.practiceSkills = Object.fromEntries(Array.from({ length: 6001 }, (_, i) => [`lex:A1:${i}`, {}]));
-  assert.equal(parseBackup(JSON.stringify(invalid)), null);
+  assert.equal(parseBackup(JSON.stringify(invalid)).ok, false);
 });
 
 test("v3 backups retain their exact due dates and gain no invented skill evidence", () => {
   const previous = JSON.parse(makeBackup(saved));
   previous.version = 3;
   delete previous.progress.practiceSkills;
-  const restored = parseBackup(JSON.stringify(previous));
-  assert.deepEqual(restored?.cards, saved.cards);
-  assert.deepEqual(restored?.reviewHistory, saved.reviewHistory);
-  assert.deepEqual(restored?.practiceSkills, {});
+  const progress = restored(JSON.stringify(previous));
+  assert.deepEqual(progress?.cards, saved.cards);
+  assert.deepEqual(progress?.reviewHistory, saved.reviewHistory);
+  assert.deepEqual(progress?.practiceSkills, {});
 });

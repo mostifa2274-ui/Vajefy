@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ChangeEvent, type ReactNode } from "react";
 import { LabeledWords } from "@/components/labeled-words";
-import { Num, PageHeader } from "@/components/ui";
+import { LearningSummary, OfflineAudio, StudyPanel } from "@/components/progress-extras";
+import { SyncPanel } from "@/components/sync-panel";
+import { Num, PageHeader, Sep } from "@/components/ui";
 import { cn } from "@/lib/cn";
+import { report } from "@/lib/telemetry";
 import { parseBackup } from "@/lib/learn/backup";
 import { downloadProgressBackup } from "@/lib/learn/download-backup";
 import { useFormat } from "@/lib/learn/format";
@@ -93,11 +96,13 @@ function ProgressPage() {
       </section>
       <p className="mt-3 text-sm text-muted">
         {copy.accuracyLabel}: {accuracy === null ? "–" : pct(accuracy)}
-        <span className="mx-2">·</span>
+        <Sep />
         {copy.practiceAccuracyLabel}: {practiceAccuracy === null ? "–" : pct(practiceAccuracy)}
-        <span className="mx-2">·</span>
+        <Sep />
         {copy.goalCaption}: <Num value={reviewsToday} /> / <Num value={dailyGoal} />
       </p>
+
+      {hydrated ? <LearningSummary copy={copy} /> : null}
 
       {weak.length ? (
         <section className="mt-8">
@@ -119,7 +124,13 @@ function ProgressPage() {
 
       <section className="mt-8">
         <h2 className="text-lg font-medium">{copy.chartTitle}</h2>
-        <div className="mt-3">{data.length ? <ReviewsChart data={data} lang={lang} label={copy.reviewsLabel} /> : null}</div>
+        <div className="mt-3">
+          {data.some((day) => day.reviews > 0) ? (
+            <ReviewsChart data={data} lang={lang} label={copy.reviewsLabel} />
+          ) : (
+            <p className="text-sm text-muted text-pretty">{copy.chartEmpty}</p>
+          )}
+        </div>
       </section>
 
       <section className="mt-8 grid gap-2">
@@ -194,7 +205,11 @@ function ProgressPage() {
           {lang === "fa" ? "English" : "فارسی"}
         </button>
 
+        <OfflineAudio copy={copy} />
+
+        <SyncPanel copy={copy} />
         <BackupPanel copy={copy} />
+        <StudyPanel copy={copy} />
 
         <div className="mt-6">
           {confirm ? (
@@ -231,15 +246,16 @@ function BackupPanel({ copy }: { copy: Copy }) {
   const importProgress = useProgress((state) => state.importProgress);
   const fileInput = useRef<HTMLInputElement>(null);
   const [pending, setPending] = useState<SavedProgress | null>(null);
-  const [status, setStatus] = useState<"done" | "bad" | null>(null);
+  const [status, setStatus] = useState<"done" | "invalid" | "future" | null>(null);
 
   async function pick(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     event.target.value = "";
     if (!file) return;
     const parsed = parseBackup(await file.text());
-    setPending(parsed);
-    setStatus(parsed ? null : "bad");
+    setPending(parsed.ok ? parsed.progress : null);
+    setStatus(parsed.ok ? null : parsed.reason);
+    if (!parsed.ok) report("import-failed", parsed.reason);
   }
 
   return (
@@ -281,8 +297,8 @@ function BackupPanel({ copy }: { copy: Copy }) {
         </div>
       ) : null}
       {status ? (
-        <p role="status" className={cn("mt-2 text-sm", status === "bad" ? "text-bad" : "text-good")}>
-          {status === "bad" ? copy.importBad : copy.importDone}
+        <p role="status" className={cn("mt-2 text-sm", status === "done" ? "text-good" : "text-bad")}>
+          {status === "done" ? copy.importDone : status === "future" ? copy.importFuture : copy.importBad}
         </p>
       ) : null}
     </div>
@@ -329,7 +345,7 @@ const TOP_PAD = 18;
 
 /** Fourteen daily review counts. Time runs left to right in both languages. */
 function ReviewsChart({ data, lang, label }: { data: Day[]; lang: Lang; label: string }) {
-  const { num } = useFormat();
+  const { num, sep } = useFormat();
   const [active, setActive] = useState<number | null>(null);
   // Laid out in real pixels (not a scaled viewBox) so bars and 12px labels
   // keep their size on a phone and on a wide screen alike.
@@ -409,7 +425,9 @@ function ReviewsChart({ data, lang, label }: { data: Day[]; lang: Lang; label: s
             transform: `translateX(${tipShift}%)`,
           }}
         >
-          <strong className="font-medium">{num(tip.reviews)}</strong> {label} · {fullDate.format(tip.date)}
+          <strong className="font-medium">{num(tip.reviews)}</strong> {label}
+          {sep}
+          {fullDate.format(tip.date)}
         </figcaption>
       ) : null}
     </figure>

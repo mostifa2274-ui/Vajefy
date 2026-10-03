@@ -1,11 +1,15 @@
 import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
 import { expect, test, type Page } from "@playwright/test";
+import { readProgress } from "./progress-db";
 
 const ID = "lex:A1:about";
 const DAY = 86_400_000;
 
-async function seedSmart(page: Page, options: { dueSoon?: boolean; lang?: "en" | "fa" } = {}) {
+async function seedSmart(
+  page: Page,
+  options: { dueSoon?: boolean; lang?: "en" | "fa"; skills?: Record<string, unknown> } = {},
+) {
   await page.addInitScript(({ day, id, options }) => {
     if (localStorage.getItem("roshana-v1")) return;
     const now = Date.now();
@@ -23,12 +27,13 @@ async function seedSmart(page: Page, options: { dueSoon?: boolean; lang?: "en" |
       streak: 0, lastStudyDate: null, xp: 40, lang: options.lang ?? "en", focus: "A1",
       sessionSize: 20, newPerDay: 10, voice: false, accent: "en-GB", bookmarks: [],
       dailyGoal: 20, requestRetention: 0.9, reviewHistory: [], onboarded: true,
+      ...(options.skills ? { practiceSkills: options.skills } : {}),
     } }));
   }, { day: DAY, id: ID, options });
 }
 
 async function saved(page: Page) {
-  return page.evaluate(() => JSON.parse(localStorage.getItem("roshana-v1")!));
+  return readProgress(page);
 }
 
 test("Smart Practice preserves FSRS, daily-review evidence and v4 backup through reload/restore", async ({ page }) => {
@@ -48,7 +53,7 @@ test("Smart Practice preserves FSRS, daily-review evidence and v4 backup through
   await page.getByRole("button", { name: "Check", exact: true }).click();
   await expect.poll(async () => (await saved(page)).state.practiceSkills[ID]?.spelling?.attempts).toBe(1);
   const after = await saved(page);
-  expect(after.version).toBe(4);
+  expect(after.version).toBe(5);
   expect(after.state.cards).toEqual(before.state.cards);
   expect(after.state.reviewHistory).toEqual(before.state.reviewHistory);
   expect(after.state.lifetime).toEqual({ reviews: 4, correct: 3, practice: 1, practiceCorrect: 1 });
@@ -56,6 +61,8 @@ test("Smart Practice preserves FSRS, daily-review evidence and v4 backup through
 
   await page.reload();
   expect((await saved(page)).state.practiceSkills).toEqual(after.state.practiceSkills);
+  // The finished round is not offered for resuming.
+  await expect(page.getByRole("button", { name: "Continue your practice", exact: true })).toHaveCount(0);
   // A completed word gets a short break instead of being farmed repeatedly.
   await page.getByRole("button", { name: "Begin", exact: true }).click();
   await expect(page.getByRole("status")).toContainText("recently practised words get a short break");
@@ -66,15 +73,15 @@ test("Smart Practice preserves FSRS, daily-review evidence and v4 backup through
   const download = await pendingDownload;
   const text = await readFile((await download.path())!, "utf8");
   const backup = JSON.parse(text);
-  expect(backup.version).toBe(4);
+  expect(backup.version).toBe(5);
   expect(backup.progress.practiceSkills).toEqual(after.state.practiceSkills);
   await page.getByRole("button", { name: "Clear progress", exact: true }).click();
   await page.getByRole("button", { name: "Yes, clear it", exact: true }).click();
-  expect((await saved(page)).state.practiceSkills).toEqual({});
+  await expect.poll(async () => (await saved(page)).state.practiceSkills).toEqual({});
   await page.locator('input[type="file"]').setInputFiles({ name: "progress.json", mimeType: "application/json", buffer: Buffer.from(text) });
   await page.getByRole("button", { name: "Yes, replace it", exact: true }).click();
   await expect(page.getByText("Progress restored from the file.", { exact: true })).toBeVisible();
-  expect((await saved(page)).state.practiceSkills).toEqual(after.state.practiceSkills);
+  await expect.poll(async () => (await saved(page)).state.practiceSkills).toEqual(after.state.practiceSkills);
   expect((await saved(page)).state.cards).toEqual(before.state.cards);
 });
 
@@ -122,14 +129,10 @@ test("Smart Practice distinguishes a failed load from an empty pool and supports
 });
 
 test("unheard listening can be skipped without fabricating a mistake or awarding practice credit", async ({ page }) => {
-  await seedSmart(page);
+  await seedSmart(page, {
+    skills: { [ID]: { listening: { attempts: 2, correct: 1, lastAt: Date.now() - 3_600_000, lastGrade: "hard" } } },
+  });
   await page.goto("/drill?play=smart");
-  await page.evaluate(({ id }) => {
-    const saved = JSON.parse(localStorage.getItem("roshana-v1")!);
-    saved.state.practiceSkills = { [id]: { listening: { attempts: 2, correct: 1, lastAt: Date.now() - 3_600_000, lastGrade: "hard" } } };
-    localStorage.setItem("roshana-v1", JSON.stringify(saved));
-  }, { id: ID });
-  await page.reload();
   const before = await saved(page);
   await page.getByRole("button", { name: "Begin", exact: true }).click();
   await expect(page.getByText("What did you hear?", { exact: true })).toBeVisible();

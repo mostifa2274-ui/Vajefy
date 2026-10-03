@@ -1,9 +1,10 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { Shell } from "@/components/shell";
+import { EARLY_LANGUAGE } from "@/lib/early-language";
 import appCss from "../styles.css?url";
 
-const TITLE = "Roshana";
-const DESCRIPTION = "Oxford English for Persian speakers — recall, spacing, and real sentences.";
+const TITLE = "Vajefy";
+const DESCRIPTION = "English vocabulary for Persian speakers: guided lessons, recorded pronunciation and spaced review.";
 const SITE_URL = String(import.meta.env.VITE_SITE_URL ?? "").replace(/\/+$/, "");
 const SOCIAL_META = SITE_URL
   ? [
@@ -18,7 +19,9 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      // Android shrinks the layout when the on-screen keyboard opens, so the
+      // answer field and its Check button stay in view above it.
+      { name: "viewport", content: "width=device-width, initial-scale=1, interactive-widget=resizes-content" },
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
       { name: "theme-color", content: "#f6f3ec" },
@@ -37,11 +40,11 @@ export const Route = createRootRoute({
       ...(SITE_URL ? [{ rel: "canonical", href: SITE_URL }] : []),
       { rel: "stylesheet", href: appCss },
     ],
+    scripts: [{ children: EARLY_LANGUAGE }],
   }),
   component: () => (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
-        <script src="/early-language.js" />
         <HeadContent />
       </head>
       <body>

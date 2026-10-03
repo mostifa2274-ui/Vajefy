@@ -1,35 +1,34 @@
 import { Link, useNavigate, useRouter, useRouterState } from "@tanstack/react-router";
-import {
-  BookOpenText,
-  ChartColumn,
-  Library,
-  PenLine,
-  Search,
-  SquareStack,
-} from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { BookOpenText, ChartColumn, GraduationCap, Search } from "lucide-react";
+import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { report, reportCrashes } from "@/lib/telemetry";
 import { useCopy } from "@/lib/learn/i18n";
-import { liveStreak, todayLog, useProgress } from "@/lib/learn/store";
-import { progressStorage, PROGRESS_STORAGE_KEY } from "@/lib/learn/storage";
+import { liveStreak, persistence, todayLog, useProgress } from "@/lib/learn/store";
+import { startWithSync } from "@/lib/learn/sync-client";
+import type { HeldSave } from "@/lib/learn/recovery";
+import { RecoveryScreen } from "./recovery-screen";
 import { SaveNotice } from "./save-notice";
-import { Num } from "./ui";
+import { LEARN_HOME, sectionOf } from "@/lib/sections";
+import { SectionTabs } from "./section-tabs";
+import { Num, Sep } from "./ui";
 
-const OFFLINE_ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
+const serverHeld = (): HeldSave | null => null;
 
+const OFFLINE_ROUTES = ["/", "/learn", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
+
+/** The four destinations. Learn and Words each group several screens. */
 const NAV = [
-  { to: "/", key: "today", icon: BookOpenText, exact: true },
-  { to: "/lexicon", key: "lexicon", icon: Search, exact: false },
-  { to: "/study", key: "study", icon: SquareStack, exact: false },
-  { to: "/drill", key: "drill", icon: PenLine, exact: false },
-  { to: "/library", key: "library", icon: Library, exact: false },
+  { to: "/", key: "today", icon: BookOpenText, section: "today" },
+  { to: LEARN_HOME, key: "learn", icon: GraduationCap, section: "learn" },
+  { to: "/lexicon", key: "navLexicon", icon: Search, section: "words" },
+  { to: "/progress", key: "progress", icon: ChartColumn, section: "progress" },
 ] as const;
 
 export function Shell({ children }: { children: ReactNode }) {
   const lang = useProgress((state) => state.lang);
   const hydrated = useProgress((state) => state.hydrated);
   const setLang = useProgress((state) => state.setLang);
-  const setHydrated = useProgress((state) => state.setHydrated);
   const streak = useProgress((state) => state.streak);
   const lastStudyDate = useProgress((state) => state.lastStudyDate);
   const logs = useProgress((state) => state.logs);
@@ -40,22 +39,54 @@ export function Shell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const held = useSyncExternalStore(persistence.subscribe, persistence.getHeld, serverHeld);
+  const dock = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    let alive = true;
-    void Promise.resolve(useProgress.persist.rehydrate()).finally(() => {
-      if (alive) setHydrated();
-    });
-    return () => {
-      alive = false;
+    const stopSync = startWithSync();
+    // Save failures are reported by kind only, when the build enables reporting.
+    const watch = () => {
+      const status = persistence.getStatus();
+      if (status === "session") report("save-failed");
+      if (status === "unavailable") report("storage-unavailable");
     };
-  }, [setHydrated]);
+    const unsubscribe = persistence.subscribe(watch);
+    const stopCrashes = reportCrashes();
+    return () => {
+      unsubscribe();
+      stopCrashes();
+      stopSync();
+    };
+  }, []);
+
+  useEffect(() => {
+    // Lets automated checks wait until saved progress has been loaded.
+    if (hydrated) document.documentElement.dataset.progressReady = "true";
+  }, [hydrated]);
 
   useEffect(() => {
     if (!hydrated) return;
     document.documentElement.lang = lang === "fa" ? "fa" : "en";
     document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
   }, [hydrated, lang]);
+
+  // Content keeps clear of the dock whatever its height, for example when
+  // enlarged text wraps its labels onto two rows.
+  useEffect(() => {
+    const element = dock.current;
+    if (!element || typeof ResizeObserver === "undefined") return;
+    const measure = () => {
+      const top = element.getBoundingClientRect().top;
+      if (element.offsetHeight > 0) document.documentElement.style.setProperty("--dock-space", `${Math.ceil(window.innerHeight - top)}px`);
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    window.addEventListener("resize", measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [lang]);
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
@@ -93,45 +124,30 @@ export function Shell({ children }: { children: ReactNode }) {
     void navigator.storage.persist().catch(() => undefined);
   }, [hydrated, onboarded]);
 
-  useEffect(() => {
-    function syncFromOtherTab(event: StorageEvent) {
-      if (event.key !== PROGRESS_STORAGE_KEY) return;
-      try {
-        if (event.storageArea !== window.localStorage) return;
-      } catch {
-        // A blocked storage getter is already reported by progressStorage.
-        return;
-      }
-      if (progressStorage.shouldRehydrate()) void useProgress.persist.rehydrate();
-    }
-    window.addEventListener("storage", syncFromOtherTab);
-    return () => window.removeEventListener("storage", syncFromOtherTab);
-  }, []);
-
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
+  const section = sectionOf(pathname);
 
   return (
-    <div className="min-h-dvh text-ink">
+    // Keyed by language: Chrome can keep the old bidirectional layout of text
+    // that React rewrites from Persian to English in place (for example
+    // "Accuracy: –" drawn as "Accuracy :–"), so a language change rebuilds the
+    // page instead. Persian, the server's language, never needs the rebuild.
+    <div key={lang} className="min-h-dvh text-ink">
+      <a href="#main" className="skip-link">
+        {copy.skipToContent}
+      </a>
       <aside className="fixed inset-y-0 start-0 z-20 hidden w-60 flex-col bg-ink px-4 py-6 text-paper md:flex">
         <Link to="/" className="mb-8 flex items-center gap-3 px-2">
           <Mark />
           <span>
-            <span className="lex-word block text-2xl leading-none">Roshana</span>
-            <span className="mt-1 block text-sm text-paper/70">روشنا</span>
+            <span className="lex-word block text-2xl leading-none">Vajefy</span>
+            <span className="mt-1 block text-xs text-paper/70">{copy.brandLine}</span>
           </span>
         </Link>
-        <nav className="flex flex-col gap-1">
+        <nav aria-label={copy.mainNav} className="flex flex-col gap-1">
           {NAV.map((item) => (
-            <NavItem
-              key={item.to}
-              to={item.to}
-              exact={item.exact}
-              icon={item.icon}
-              label={copy[item.key]}
-              pathname={pathname}
-            />
+            <NavItem key={item.to} to={item.to} icon={item.icon} label={copy[item.key]} active={section === item.section} />
           ))}
-          <NavItem to="/progress" exact={false} icon={ChartColumn} label={copy.progress} pathname={pathname} />
         </nav>
         <div className="mt-auto px-2">
           <button
@@ -146,33 +162,27 @@ export function Shell({ children }: { children: ReactNode }) {
 
       <div className="md:ps-60">
         <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-3 bg-paper/95 px-4 md:hidden">
-          <Link to="/" className="lex-word text-xl leading-none">
-            Roshana
+          <Link to="/" className="lex-word inline-flex min-h-11 items-center text-xl leading-none">
+            Vajefy
           </Link>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-muted tabular-nums">
-              <Num value={reviewsToday} />
-              <span className="mx-0.5">/</span>
-              <Num value={dailyGoal} />
-            </span>
-            <Link to="/progress" aria-label={copy.progress} className="inline-flex size-11 items-center justify-center">
-              <ChartColumn className="size-5" />
-            </Link>
-          </div>
+          <span className="text-sm text-muted tabular-nums">
+            <Num value={reviewsToday} />
+            <span className="mx-0.5">/</span>
+            <Num value={dailyGoal} />
+            <span className="sr-only"> {copy.reviewsLabel}</span>
+          </span>
         </header>
 
-        <div className="hidden h-16 items-center justify-between gap-4 px-8 md:flex">
-          <p className="text-sm text-muted">{copy.tagline}</p>
+        <div className="hidden h-16 items-center justify-end gap-4 px-8 md:flex lg:justify-between">
+          <p className="hidden text-sm text-muted lg:block">{copy.tagline}</p>
           <div className="flex items-center gap-4">
-            {/* The "·" must be real text: a CSS gap alone let the bidi algorithm
-                read the goal and the streak as one number (20 + 1 → ۲۰۱). */}
-            <span className="text-sm text-muted">
+            {/* The separator must be real text: a CSS gap alone let the bidi
+                algorithm read the goal and the streak as one number (20 + 1 → ۲۰۱). */}
+            <span className="whitespace-nowrap text-sm text-muted">
               <Num value={reviewsToday} />
               <span className="mx-1">/</span>
               <Num value={dailyGoal} />
-              <span className="mx-2" aria-hidden>
-                ·
-              </span>
+              <Sep />
               <Num value={hydrated ? liveStreak(streak, lastStudyDate) : 0} />
               <span className="ms-1">{copy.streakLabel}</span>
             </span>
@@ -196,27 +206,39 @@ export function Shell({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        <main className="dock-pad mx-auto w-full min-w-0 max-w-5xl px-4 py-5 md:px-8 md:py-6">
-          {hydrated ? <SaveNotice copy={copy} /> : null}
-          {children}
+        <main id="main" tabIndex={-1} className="dock-pad mx-auto w-full min-w-0 max-w-5xl px-4 py-5 outline-none md:px-8 md:py-6">
+          {/* A held save replaces the app, so nothing can be learned into a
+              placeholder state that could never be saved. */}
+          {hydrated && held ? (
+            <RecoveryScreen held={held} copy={copy} />
+          ) : (
+            <>
+              {hydrated ? <SaveNotice copy={copy} /> : null}
+              {section === "learn" || section === "words" ? (
+                <SectionTabs section={section} pathname={pathname} copy={copy} />
+              ) : null}
+              {children}
+            </>
+          )}
         </main>
       </div>
 
-      <nav className="dock md:hidden">
+      <nav ref={dock} aria-label={copy.mainNav} className="dock md:hidden">
         {NAV.map((item) => {
-          const active = item.exact ? pathname === item.to : pathname.startsWith(item.to);
+          const active = section === item.section;
           const Icon = item.icon;
           return (
             <Link
               key={item.to}
               to={item.to}
+              aria-current={active ? "page" : undefined}
               className={cn(
-                "flex min-h-16 flex-col items-center justify-center gap-1 text-xs",
-                active ? "text-paper" : "text-paper/50",
+                "flex min-h-16 flex-col items-center justify-center gap-1 rounded-lg text-xs",
+                active ? "text-paper" : "text-paper/60",
               )}
             >
               <Icon className="size-5" aria-hidden />
-              <span className="whitespace-nowrap">{item.key === "lexicon" ? copy.navLexicon : copy[item.key]}</span>
+              <span className="whitespace-nowrap">{copy[item.key]}</span>
             </Link>
           );
         })}
@@ -227,21 +249,19 @@ export function Shell({ children }: { children: ReactNode }) {
 
 function NavItem({
   to,
-  exact,
   icon: Icon,
   label,
-  pathname,
+  active,
 }: {
-  to: "/" | "/lexicon" | "/study" | "/drill" | "/library" | "/progress";
-  exact: boolean;
+  to: (typeof NAV)[number]["to"];
   icon: typeof Search;
   label: string;
-  pathname: string;
+  active: boolean;
 }) {
-  const active = exact ? pathname === to : pathname.startsWith(to);
   return (
     <Link
       to={to}
+      aria-current={active ? "page" : undefined}
       className={cn(
         "flex min-h-11 items-center gap-3 rounded-md px-3 text-sm",
         active ? "bg-paper/10 text-paper" : "text-paper/70 hover:bg-paper/10 hover:text-paper",
@@ -255,11 +275,9 @@ function NavItem({
 
 function Mark() {
   return (
-    <svg viewBox="0 0 32 32" className="size-9 shrink-0 text-paper" aria-hidden>
-      <circle cx="16" cy="16" r="5" fill="currentColor" />
-      <g stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-        <path d="M16 3.5v3.5M16 25v3.5M3.5 16h3.5M25 16h3.5M7.2 7.2l2.4 2.4M22.4 22.4l2.4 2.4M24.8 7.2l-2.4 2.4M9.6 22.4l-2.4 2.4" />
-      </g>
+    <svg viewBox="0 0 32 32" className="size-9 shrink-0" aria-hidden>
+      <rect x="1" y="1" width="30" height="30" rx="6" fill="var(--color-paper)" />
+      <path fill="var(--color-ink)" d="M8.4 7.6h3.75L16 19.5l3.85-11.9h3.75L18 23.4h-4z" />
     </svg>
   );
 }

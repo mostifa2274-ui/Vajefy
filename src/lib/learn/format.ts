@@ -15,6 +15,8 @@ export function useFormat() {
     return {
       num: (value: number) => (hydrated ? number.format(value) : String(value)),
       pct: (ratio: number) => (hydrated ? percent.format(ratio) : `${Math.round(ratio * 100)}%`),
+      /** Between items in a line. A middle dot beside Persian digits reads as zero (۰). */
+      sep: lang === "fa" ? "، " : " · ",
     };
   }, [lang, hydrated]);
 }

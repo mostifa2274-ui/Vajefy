@@ -85,7 +85,9 @@
   inset-inline: 0.75rem;
   bottom: max(0.75rem, env(safe-area-inset-bottom));
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  /* One row normally; with enlarged text the labels wrap to a second row
+     instead of being clipped. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.25rem), 1fr));
   border-radius: var(--radius-xl);
   background: var(--color-ink);
   color: var(--color-paper);
@@ -101,12 +103,56 @@
   }
 }
 
+/* Keep focused controls clear of the sticky header and the dock (WCAG 2.4.11). */
+html {
+  scroll-padding-top: 4.5rem;
+  scroll-padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--dock-space, 5.25rem) + 1.25rem);
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 1rem;
+    scroll-padding-bottom: 1rem;
+  }
+}
+
+/* While the on-screen keyboard is likely open, the dock would cover the answer
+   field and its button, so it steps aside until typing ends. */
+@media (max-width: 767px) {
+  :root:has(:is(input:not([type="checkbox"], [type="radio"], [type="range"], [type="button"], [type="submit"]), textarea, select):focus) .dock {
+    display: none;
+  }
+}
+
+/* On the dark dock and sidebar the default accent outline would vanish. */
+.dock :focus-visible,
+aside :focus-visible {
+  outline-color: var(--color-paper);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 50;
+  top: 0.75rem;
+  inset-inline-start: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
 p {
   text-wrap: pretty;
 }
 
+/* --dock-space is the dock's measured height above the bottom edge. */
 .dock-pad {
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 7.5rem);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + var(--dock-space, 5.25rem) + 2.25rem);
 }
 
 @media (min-width: 768px) {
@@ -137,5 +183,22 @@ p {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Windows high-contrast themes replace backgrounds, which would hide progress
+   fills and the dock's edge. */
+@media (forced-colors: active) {
+  [role="progressbar"] {
+    border: 1px solid CanvasText;
+  }
+
+  [role="progressbar"] > div {
+    background: Highlight;
+    forced-color-adjust: none;
+  }
+
+  .dock {
+    border: 1px solid CanvasText;
   }
 }

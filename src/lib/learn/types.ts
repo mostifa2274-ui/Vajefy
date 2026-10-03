@@ -96,6 +96,15 @@ export type StudyFace = {
   exampleFa?: string;
   note?: string;
   speak: string;
+  /** Pilot content: the precise explanation shown under the short meaning. */
+  detail?: string;
+  /** Controlled audio for the word and the example, when generated. */
+  clip?: string;
+  exampleClip?: string;
+  /** Enhanced content that has not completed bilingual review yet. */
+  draft?: boolean;
+  /** Content version of enhanced content, recorded with each answer. */
+  version?: string;
 };
 
 export type RefEntry = {

@@ -12,7 +12,15 @@ export default defineConfig({
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     serviceWorkers: "allow",
+    // A fake microphone, so speaking practice can be tested without hardware.
+    launchOptions: { args: ["--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream"] },
   },
+  projects: [
+    { name: "app", testIgnore: /performance\.spec\.ts/ },
+    // Timing budgets run alone, after everything else, so no other test
+    // competes for the CPU while they measure.
+    { name: "performance", testMatch: /performance\.spec\.ts/, dependencies: ["app"] },
+  ],
   webServer: {
     command: "npm run build && npm run preview -- --host 127.0.0.1",
     url: "http://127.0.0.1:8081",

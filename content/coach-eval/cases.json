@@ -1,0 +1,10018 @@
+{
+ "status": "draft",
+ "contentVersion": "12aa26da62b2",
+ "cases": [
+  {
+   "id": "7aa02ebefb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:a-an"
+   ],
+   "text": "I have a sister and an older brother.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7e5ef829df",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:a-an"
+   ],
+   "text": "She is an engineer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cf1bc74a7b",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:a-an"
+   ],
+   "text": "He is a teacher.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d001a28fc5",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:a-an"
+   ],
+   "text": "He is teacher.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "56ef860f21",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:the"
+   ],
+   "text": "Can you open the window, please?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e9348dadcc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:the"
+   ],
+   "text": "The bus to the city centre is late.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "05abe8190f",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:the"
+   ],
+   "text": "Coffee is good for you.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "14948452dd",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:the"
+   ],
+   "text": "The coffee is good for you.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "5a2182e17b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:and"
+   ],
+   "text": "My brother and I play football on Fridays.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9d6dc33d12",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:and"
+   ],
+   "text": "I opened the door and went in.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0fcd65e891",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:and"
+   ],
+   "text": "My sister and I went to the park.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "73e5880a6c",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:and"
+   ],
+   "text": "I and my sister went to the park.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "45e7f0e532",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:but"
+   ],
+   "text": "The room is small, but it is very clean.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8bbdc97761",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:but"
+   ],
+   "text": "I called him, but he didn't answer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7c7303bef8",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:but"
+   ],
+   "text": "It was late, but we went out.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9d577c044a",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:but"
+   ],
+   "text": "Although it was late, but we went out.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "56b9dfcb68",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:or"
+   ],
+   "text": "Do you want tea or coffee?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "857006e3ce",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:or"
+   ],
+   "text": "You can pay by card or in cash.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a31bdb6a8a",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:or"
+   ],
+   "text": "I don't like tea or coffee.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "755b9000d1",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:or"
+   ],
+   "text": "I don't like tea and coffee.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d1354e433a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:because"
+   ],
+   "text": "I'm hungry because I didn't eat breakfast.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f011ebfbbf",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:because"
+   ],
+   "text": "We stayed home because of the snow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "178e67958c",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:because"
+   ],
+   "text": "We stayed home because of the rain.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ca4ff871a3",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:because"
+   ],
+   "text": "We stayed home because the rain.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c708bdc548",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:if"
+   ],
+   "text": "If you are tired, go to bed.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5adeaee461",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:if"
+   ],
+   "text": "Can you ask her if she wants coffee?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "33370e9bbf",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:if"
+   ],
+   "text": "If it rains, we will stay home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0d332f20ca",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:if"
+   ],
+   "text": "If it will rain, we will stay home.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2a6a72e09a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:so"
+   ],
+   "text": "It was late, so we took a taxi.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1010a2f230",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:so"
+   ],
+   "text": "I was hungry, so I made a sandwich.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ea8864a121",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:so"
+   ],
+   "text": "Because it was late, so we took a taxi.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "66266baacc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:so#very"
+   ],
+   "text": "Thank you so much!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "05745c40db",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:so#very"
+   ],
+   "text": "The film was so funny.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b935439149",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:so#very"
+   ],
+   "text": "The city is so beautiful. / It is such a beautiful city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c495fa0acd",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:so#very"
+   ],
+   "text": "It is a so beautiful city.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ae46cb7a82",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:than"
+   ],
+   "text": "My brother is taller than me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ae56963d58",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:than"
+   ],
+   "text": "The train is faster than the bus.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "74bf0b4a6e",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:than"
+   ],
+   "text": "Tehran is bigger than Shiraz.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "50c2624f4b",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:than"
+   ],
+   "text": "Tehran is bigger from Shiraz.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "50d0c3db72",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:this"
+   ],
+   "text": "This is my sister, Mina.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0ee1402e29",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:this"
+   ],
+   "text": "I'm very busy this week.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a6d9943267",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:this"
+   ],
+   "text": "These shoes are new.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "948281d790",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:this"
+   ],
+   "text": "This shoes are new.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8bb9b1ae4d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:that"
+   ],
+   "text": "Who is that man near the door?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "22296c816f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:that"
+   ],
+   "text": "That's a good idea!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "045512d72d",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:that"
+   ],
+   "text": "That car is mine.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "43a0d33215",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:that"
+   ],
+   "text": "Those car is mine.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "e00c2a5829",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:that#conjunction"
+   ],
+   "text": "I think that he is right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "327457bba2",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:that#conjunction"
+   ],
+   "text": "This is the bus that goes to the airport.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ef6742a440",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:that#conjunction"
+   ],
+   "text": "I know (that) he is busy.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "71e408589c",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:that#conjunction"
+   ],
+   "text": "I know what he is busy.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "71e3a451d3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:what"
+   ],
+   "text": "What is your name?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5c35bc7991",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:what"
+   ],
+   "text": "What time does the film start?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0eb19c08d4",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:what"
+   ],
+   "text": "What do you want?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f6829cc123",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:what"
+   ],
+   "text": "What you want?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2d22594a45",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:who"
+   ],
+   "text": "Who is your English teacher?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "47375f4682",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:who"
+   ],
+   "text": "The woman who lives next door is a doctor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "71ab5a34e5",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:who"
+   ],
+   "text": "Who called you?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c531b691be",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:who"
+   ],
+   "text": "Who did call you?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "fcb135badf",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:where"
+   ],
+   "text": "Where is the nearest bank?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "77beb019a0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:where"
+   ],
+   "text": "This is the café where we met.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1f7c35f1b5",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:where"
+   ],
+   "text": "Where do you live?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e9dc545717",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:where"
+   ],
+   "text": "Where you live?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "de15e3c96f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:when"
+   ],
+   "text": "When is your birthday?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1c69420e3c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:when"
+   ],
+   "text": "I was tired when I got home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a7622468d6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:when"
+   ],
+   "text": "When I finish, I'll call you.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "852403db8f",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:when"
+   ],
+   "text": "When I will finish, I'll call you.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "4c967cc368",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:why"
+   ],
+   "text": "Why are you late?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cd25794adc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:why"
+   ],
+   "text": "Why don't we eat out tonight?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "da53ec3108",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:why"
+   ],
+   "text": "Why are you sad?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bc54504cf6",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:why"
+   ],
+   "text": "Why you are sad?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "293f40d24b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:how"
+   ],
+   "text": "How are you today?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7c6a684d10",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:how"
+   ],
+   "text": "How much is this jacket?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e5785dcdde",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:how"
+   ],
+   "text": "How much money do you have?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "aa670748eb",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:how"
+   ],
+   "text": "How many money do you have?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2b1078906b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:i"
+   ],
+   "text": "I am a student.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bfefb7a9cd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:i"
+   ],
+   "text": "I live with my parents.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0f74fc89e1",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:i"
+   ],
+   "text": "I like tea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "472697fc13",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:i"
+   ],
+   "text": "i like tea.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c482e15e12",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:you"
+   ],
+   "text": "Are you ready?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7a833a9922",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:you"
+   ],
+   "text": "Nice to meet you.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "34e6492223",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:you"
+   ],
+   "text": "You are my friend.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e3dfd51206",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:you"
+   ],
+   "text": "You is my friend.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "a33499416f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:he"
+   ],
+   "text": "He is my uncle.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d19ecac4fd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:he"
+   ],
+   "text": "My brother works in a bank. He likes his job.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "89c030403b",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:he"
+   ],
+   "text": "My sister is a doctor. She works at a hospital.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5d20abd305",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:he"
+   ],
+   "text": "My sister is a doctor. He works at a hospital.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "fa22722498",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:she"
+   ],
+   "text": "She is my best friend.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ce774c10a9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:she"
+   ],
+   "text": "My mother? She is at work.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f346fa1149",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:she"
+   ],
+   "text": "She lives in Mashhad.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "23e69d7057",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:she"
+   ],
+   "text": "She live in Mashhad.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "f977283497",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:it"
+   ],
+   "text": "It's very hot today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9898a745a8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:it"
+   ],
+   "text": "Where is my phone? I can't find it.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "03a5edffce",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:it"
+   ],
+   "text": "It is very cold today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0676cdc4e5",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:it"
+   ],
+   "text": "Is very cold today.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "9e0aecdf8a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:we"
+   ],
+   "text": "We are from Iran.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "99b47413da",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:we"
+   ],
+   "text": "We usually have dinner at eight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fd049ec1f7",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:we"
+   ],
+   "text": "We are ready.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "207303d30e",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:we"
+   ],
+   "text": "Us are ready.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "85b9563b84",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:they"
+   ],
+   "text": "My grandparents live in Yazd. They have a big garden.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8c8f906626",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:they"
+   ],
+   "text": "Someone called, but they didn't leave a message.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b2dc9e8763",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:they"
+   ],
+   "text": "My shoes are old. They are very old.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "33a71f18a7",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:they"
+   ],
+   "text": "My shoes are old. It is very old.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c332d216ce",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:my"
+   ],
+   "text": "My name is Ali.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e894306d8e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:my"
+   ],
+   "text": "I left my keys at home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cc2f13d3e1",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:my"
+   ],
+   "text": "This is my book.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cb446ed829",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:my"
+   ],
+   "text": "This is the book of me.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ba07f22198",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:your"
+   ],
+   "text": "What's your phone number?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "75909f609a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:your"
+   ],
+   "text": "Please write your name here.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "82cedb5b17",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:your"
+   ],
+   "text": "You're welcome.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bd7654f94b",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:your"
+   ],
+   "text": "Your welcome.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "66e76740e3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:some"
+   ],
+   "text": "I bought some eggs and some milk.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e1dd5f65bd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:some"
+   ],
+   "text": "Would you like some cake?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5a22c0a475",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:some"
+   ],
+   "text": "I don't have any money.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d8af70d2e4",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:some"
+   ],
+   "text": "I don't have some money.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "11da12e31d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:any"
+   ],
+   "text": "Do you have any brothers or sisters?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2f045847ce",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:any"
+   ],
+   "text": "There isn't any milk in the fridge.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e3aa6a5cfa",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:any"
+   ],
+   "text": "I don't have any time.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b54c31e8a6",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:any"
+   ],
+   "text": "I don't have no time.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "833ef49613",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:no"
+   ],
+   "text": "A: Are you hungry? B: No, I'm not.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8614c0b1b4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:no"
+   ],
+   "text": "No, thank you. I'm fine.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5a0d5d71b6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:no"
+   ],
+   "text": "A: Don't you like tea? B: Yes, I do. / No, I don't.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7b475ef35d",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:no"
+   ],
+   "text": "A: Don't you like tea? B: No, I like it.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "eab15306e3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:no#none"
+   ],
+   "text": "There are no buses after midnight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7bba84951f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:no#none"
+   ],
+   "text": "I have no idea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "85768d439c",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:no#none"
+   ],
+   "text": "There is no water. / There isn't any water.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "737360f13c",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:no#none"
+   ],
+   "text": "There isn't no water.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "bd30274871",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:not"
+   ],
+   "text": "I'm not hungry.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "60b4e17145",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:not"
+   ],
+   "text": "He doesn't eat meat.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cbaef9843d",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:not"
+   ],
+   "text": "I don't like this film.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "df7fa43767",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:not"
+   ],
+   "text": "I not like this film.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3f2a6a907a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:can"
+   ],
+   "text": "Can you speak French?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "81c3d54550",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:can"
+   ],
+   "text": "You can park here after six.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "470e41686f",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:can"
+   ],
+   "text": "I can swim.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2bdf8b2253",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:can"
+   ],
+   "text": "I can to swim.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8ff3249379",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:will"
+   ],
+   "text": "I'll help you with your bags.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5bc3a11b15",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:will"
+   ],
+   "text": "I think it will be sunny tomorrow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bfbb5d58e9",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:will"
+   ],
+   "text": "I will go.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a6820439aa",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:will"
+   ],
+   "text": "I will to go.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "035b17ab28",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:would"
+   ],
+   "text": "Would you like a cup of tea?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f8591fb52c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:would"
+   ],
+   "text": "I'd like a table for two, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3daafc599e",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:would"
+   ],
+   "text": "Would you like to come with us?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5fe2f0b7ba",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:would"
+   ],
+   "text": "Would you like coming with us?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "73c4b1b17c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:should"
+   ],
+   "text": "You should see a doctor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0a6b12d3bc",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:should"
+   ],
+   "text": "We shouldn't be late for the meeting.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6017cf67db",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:should"
+   ],
+   "text": "You should drink more water.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fb738aab97",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:should"
+   ],
+   "text": "You should to drink more water.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "1848ad4f02",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:must"
+   ],
+   "text": "I must call my mother tonight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "26783cacfa",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:must"
+   ],
+   "text": "You mustn't use your phone in the exam.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "950c136b16",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:must"
+   ],
+   "text": "You don't have to come tomorrow, it's a holiday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bd8aa30b8f",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:must"
+   ],
+   "text": "You mustn't come tomorrow, it's a holiday.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "00681d8577",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:have-to"
+   ],
+   "text": "I have to get up at six for work.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9efc6ac7f0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:have-to"
+   ],
+   "text": "You don't have to bring anything.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c497fc09a3",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:have-to"
+   ],
+   "text": "She has to work today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "42aecb65ea",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:have-to"
+   ],
+   "text": "She have to work today.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3b2e69355d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:in"
+   ],
+   "text": "My parents live in Kerman.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b76702358c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:in"
+   ],
+   "text": "I was born in 2005.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3580add931",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:in"
+   ],
+   "text": "I'll see you on Monday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ad1caf45cd",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:in"
+   ],
+   "text": "I'll see you in Monday.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "f9fe41b8f9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:on"
+   ],
+   "text": "Your keys are on the table.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a8ef98943e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:on"
+   ],
+   "text": "The shop is closed on Fridays.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4fe9ef130e",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:on"
+   ],
+   "text": "I read a book on the bus.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3b410609d9",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:on"
+   ],
+   "text": "I read a book in the bus.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "bc9a9e16f0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:at"
+   ],
+   "text": "The film starts at half past eight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "10e5d1fd94",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:at"
+   ],
+   "text": "I'm at home all day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d5d0fa7ad9",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:at"
+   ],
+   "text": "I'll meet you at 6 o'clock.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "992a501814",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:at"
+   ],
+   "text": "I'll meet you in 6 o'clock.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "23ae30ce98",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:to"
+   ],
+   "text": "I go to work by bus.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c667cfbdb0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:to"
+   ],
+   "text": "Give this letter to your teacher.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1a7d95de62",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:to"
+   ],
+   "text": "I go home at five.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fc91d42d68",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:to"
+   ],
+   "text": "I go to home at five.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "eb32ceb66f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:to#infinitive"
+   ],
+   "text": "I want to learn English.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4a2974d29d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:to#infinitive"
+   ],
+   "text": "She went out to buy some milk.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "767bf4c923",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:to#infinitive"
+   ],
+   "text": "I came here to learn English.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c41850a32f",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:to#infinitive"
+   ],
+   "text": "I came here for learn English.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "18d58fc813",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:from"
+   ],
+   "text": "Where are you from?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1e711dbb98",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:from"
+   ],
+   "text": "I work from nine to five.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "115b8de471",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:from"
+   ],
+   "text": "I got a message from my friend.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6599c90142",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:from"
+   ],
+   "text": "I got a message of my friend.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "f69322987f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:with"
+   ],
+   "text": "I went to the park with my children.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9269f3d15a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:with"
+   ],
+   "text": "He cut the bread with a knife.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c08f0a97ff",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:with"
+   ],
+   "text": "I go to work by bus.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d2e5a46131",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:with"
+   ],
+   "text": "I go to work with bus.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "dbcaee2b1a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:for"
+   ],
+   "text": "I bought flowers for my mother.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3887142008",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:for"
+   ],
+   "text": "We waited for twenty minutes.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "30663d35b7",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:for"
+   ],
+   "text": "I went out to buy bread.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "81047ce8e3",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:for"
+   ],
+   "text": "I went out for buy bread.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3e20c37e8b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:of"
+   ],
+   "text": "Can I have a glass of water?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5d3f8324fa",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:of"
+   ],
+   "text": "She is one of my best friends.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "956f26bf06",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:of"
+   ],
+   "text": "one of my friends",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "343d9115c1",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:of"
+   ],
+   "text": "one of my friend",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "10cd2e9c54",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:about"
+   ],
+   "text": "This film is about a family in Tabriz.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "721863b2e2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:about"
+   ],
+   "text": "We talked about our holiday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a454b7227b",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:about"
+   ],
+   "text": "We talked about the plan. / We discussed the plan.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ff5ee47438",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:about"
+   ],
+   "text": "We discussed about the plan.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "b4d1094977",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:about#approximately"
+   ],
+   "text": "The trip takes about two hours.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3bfad0c7ec",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:about#approximately"
+   ],
+   "text": "There were about thirty students in the class.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8ed42f85e1",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:about#approximately"
+   ],
+   "text": "It costs about ten dollars.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "76cc814122",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:about#approximately"
+   ],
+   "text": "It costs about of ten dollars.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "e8613b485c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:be"
+   ],
+   "text": "I'm twenty years old.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "86a46c0fe4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:be"
+   ],
+   "text": "There is a good café near the station.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6dedddf00a",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:be"
+   ],
+   "text": "I am twenty years old. / I'm twenty.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7221f0d161",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:be"
+   ],
+   "text": "I have twenty years.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "88e2f2cd1a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:have"
+   ],
+   "text": "We have two children.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e1538cd853",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:have"
+   ],
+   "text": "Do you have a pen?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f6408606b6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:have"
+   ],
+   "text": "I don't have a car.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2405a3e83b",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:have"
+   ],
+   "text": "I have not a car.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c1513abf7f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:have#activity"
+   ],
+   "text": "We usually have dinner at eight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "432f6a6671",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:have#activity"
+   ],
+   "text": "Have a good weekend!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "59bfff19c3",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:have#activity"
+   ],
+   "text": "I have breakfast at seven.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "83ace31cf1",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:have#activity"
+   ],
+   "text": "I eat my breakfast at seven.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "0a432cd2bd",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:do"
+   ],
+   "text": "I do my homework after dinner.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "806e72b6b0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:do"
+   ],
+   "text": "What do you do? — I'm a nurse.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5076fecfb2",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:do"
+   ],
+   "text": "I do my homework every day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3bf45ecf4b",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:do"
+   ],
+   "text": "I make my homework every day.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "274c0b8fe3",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:do#auxiliary"
+   ],
+   "text": "Do you live near here?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d4a15201cc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:do#auxiliary"
+   ],
+   "text": "I didn't sleep well last night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7544cca19c",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:do#auxiliary"
+   ],
+   "text": "Does she like coffee?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4649706ae9",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:do#auxiliary"
+   ],
+   "text": "Does she likes coffee?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "b9e464143f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:make"
+   ],
+   "text": "I'll make some tea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d4070042b3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:make"
+   ],
+   "text": "Everyone makes mistakes.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9b98e9f55d",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:make"
+   ],
+   "text": "I made a mistake in the test.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6595217e38",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:make"
+   ],
+   "text": "I did a mistake in the test.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "a7bb01dd66",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:go"
+   ],
+   "text": "I go to the gym three times a week.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9206d18ad1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:go"
+   ],
+   "text": "Let's go shopping on Saturday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3ed99fd82e",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:go"
+   ],
+   "text": "I go shopping.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7044d7ad96",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:go"
+   ],
+   "text": "I go to shopping.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "07dcba1d6e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:come"
+   ],
+   "text": "Can you come to my party on Friday?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8fd6838b9a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:come"
+   ],
+   "text": "Come here, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c0a5c9c2d4",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:come"
+   ],
+   "text": "A: Dinner is ready! B: I'm coming!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "913e8f45a8",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:come"
+   ],
+   "text": "A: Dinner is ready! B: I'm going!",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "1f15be8a07",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:get"
+   ],
+   "text": "I got a message from my boss.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5aec90b8fc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:get"
+   ],
+   "text": "Where can I get a bus ticket?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b367bf3856",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:get"
+   ],
+   "text": "I got a present.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4c46059533",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:get"
+   ],
+   "text": "I getted a present.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "250e8eaa2a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:get#arrive"
+   ],
+   "text": "How do you get to work?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "18cffd33a8",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:get#arrive"
+   ],
+   "text": "I got home at midnight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "443872a5f4",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:get#arrive"
+   ],
+   "text": "I got home late.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "493de6dffe",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:get#arrive"
+   ],
+   "text": "I got to home late.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "31c84aaa67",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:get#become"
+   ],
+   "text": "It's getting cold. Close the window.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bf05db8e9f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:get#become"
+   ],
+   "text": "I hope you get better soon.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5993660432",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:get#become"
+   ],
+   "text": "It's getting dark.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7b7553ef0b",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:get#become"
+   ],
+   "text": "It is becoming dark.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "610ce6ca16",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:take"
+   ],
+   "text": "Don't forget to take your umbrella.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2dcb7a7eb4",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:take"
+   ],
+   "text": "I take my daughter to school every morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "aeed97ad3c",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:take"
+   ],
+   "text": "Take this letter to the post office.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "62091ec8fe",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:take"
+   ],
+   "text": "Bring this letter to the post office.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "1a61592d44",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:take#transport"
+   ],
+   "text": "Let's take a taxi. It's late.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fdbf5ea2be",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:take#transport"
+   ],
+   "text": "It takes ten minutes to walk to the station.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ca6395f224",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:take#transport"
+   ],
+   "text": "I take a taxi. / I go by taxi.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "83bf4ef2f3",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:take#transport"
+   ],
+   "text": "I go with taxi.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ed7bcda282",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:give"
+   ],
+   "text": "Can you give me your phone number?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "759680638c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:give"
+   ],
+   "text": "I gave my old bike to my cousin.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "93b77eb45a",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:give"
+   ],
+   "text": "Give me the book. / Give the book to me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "38fc99f5c5",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:give"
+   ],
+   "text": "Give to me the book.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "33f2dd4517",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:bring"
+   ],
+   "text": "Can you bring some bread when you come?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9a370a5e2f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bring"
+   ],
+   "text": "Bring your passport to the interview.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b55a3ba343",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:bring"
+   ],
+   "text": "Please bring me a glass of water.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "614d7f4581",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:bring"
+   ],
+   "text": "Please take me a glass of water.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "06e6c07fd4",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:say"
+   ],
+   "text": "What did the teacher say?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b3fdd7f30b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:say"
+   ],
+   "text": "She said she was busy.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "087db15197",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:say"
+   ],
+   "text": "He told me the answer. / He said the answer to me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "271769b889",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:say"
+   ],
+   "text": "He said me the answer.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "835cd4adc9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:tell"
+   ],
+   "text": "Can you tell me the time?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9b72f689bf",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:tell"
+   ],
+   "text": "My grandfather tells great stories.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6aa9719e20",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:tell"
+   ],
+   "text": "Tell me your address.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d1ca21284e",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:tell"
+   ],
+   "text": "Tell to me your address.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "0db5c1b6ad",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:speak"
+   ],
+   "text": "Do you speak English?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9f2a755dda",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:speak"
+   ],
+   "text": "Could I speak to Ms Ahmadi, please?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "552a513a43",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:speak"
+   ],
+   "text": "I can speak English.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f8561c0b50",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:speak"
+   ],
+   "text": "I can talk English.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ec6963e2a0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:talk"
+   ],
+   "text": "We talked for hours last night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e873135674",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:talk"
+   ],
+   "text": "Can I talk to you for a minute?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7cd1c314bc",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:talk"
+   ],
+   "text": "We talked about our plans.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7bd3311f02",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:talk"
+   ],
+   "text": "We talked our plans.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "1539e7c23e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:see"
+   ],
+   "text": "I can't see the board. Can I sit at the front?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0f879fb6d3",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:see"
+   ],
+   "text": "See you tomorrow!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5035511116",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:see"
+   ],
+   "text": "I can see a bird in the tree.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "05c1fb3393",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:see"
+   ],
+   "text": "I am seeing a bird in the tree.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "aec487d828",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:look"
+   ],
+   "text": "Look at the board, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "96740be1f9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:look"
+   ],
+   "text": "You look very happy today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "33d95a319b",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:look"
+   ],
+   "text": "Look at this picture!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "772c06ed20",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:look"
+   ],
+   "text": "Look this picture!",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d7fb41a46c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:watch"
+   ],
+   "text": "Do you want to watch the football match tonight?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7ef4c26c9f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:watch"
+   ],
+   "text": "I watch the news every evening.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e193ceb47f",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:watch"
+   ],
+   "text": "I watched TV all evening.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "556872222a",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:watch"
+   ],
+   "text": "I saw TV all evening.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "7e7830f9f4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:watch#noun"
+   ],
+   "text": "My watch is five minutes fast.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bff8ae6660",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:watch#noun"
+   ],
+   "text": "She bought her father a new watch.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1f90aa8bd1",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:watch#noun"
+   ],
+   "text": "There is a big clock on the wall.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8c86b48e4d",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:watch#noun"
+   ],
+   "text": "There is a big watch on the wall.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d367c672b4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hear"
+   ],
+   "text": "Can you hear me?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "217b6d1694",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:hear"
+   ],
+   "text": "I heard a strange noise last night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5b8b47d4b7",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:hear"
+   ],
+   "text": "I can hear a noise outside.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "73788fc1ed",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:hear"
+   ],
+   "text": "I am listening a noise outside.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c4ee7c54fe",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:listen"
+   ],
+   "text": "I listen to the radio in the car.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "833c36c88a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:listen"
+   ],
+   "text": "Please listen carefully.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cf7aba52b8",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:listen"
+   ],
+   "text": "I like listening to music.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "81507db268",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:listen"
+   ],
+   "text": "I like listening music.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2422a3c10d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:know"
+   ],
+   "text": "Do you know the way to the station?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a19a98c5df",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:know"
+   ],
+   "text": "I've known her since school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a16c903044",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:know"
+   ],
+   "text": "I know the answer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5ef731719f",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:know"
+   ],
+   "text": "I am knowing the answer.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3aff2ebf2d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:think"
+   ],
+   "text": "I think she's right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4a8998c7cc",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:think"
+   ],
+   "text": "What do you think about the new teacher?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c2a5e41013",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:think"
+   ],
+   "text": "I don't think he is at home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f44f0e46ae",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:think"
+   ],
+   "text": "I think he isn't at home.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "e4ee0fe958",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:want"
+   ],
+   "text": "Do you want something to drink?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bb270843bb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:want"
+   ],
+   "text": "She wants to be a doctor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ce42ff1259",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:want"
+   ],
+   "text": "I want you to come.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4fadd5a31b",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:want"
+   ],
+   "text": "I want that you come.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "56f08aec18",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:need"
+   ],
+   "text": "I need some help with this form.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a544acd284",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:need"
+   ],
+   "text": "We need to leave at seven.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "843fe1f862",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:need"
+   ],
+   "text": "I need a taxi.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ba3f2827af",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:need"
+   ],
+   "text": "I am needing a taxi.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "472ea090f3",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:like-find-sb-sth-pleasant"
+   ],
+   "text": "Do you like Persian music?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bc3669269b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:like-find-sb-sth-pleasant"
+   ],
+   "text": "My son likes playing football.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a894559921",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:like-find-sb-sth-pleasant"
+   ],
+   "text": "I like tea very much. / I really like tea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bf6c65c460",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:like-find-sb-sth-pleasant"
+   ],
+   "text": "I very like tea.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "9c108b3381",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:love"
+   ],
+   "text": "I love my grandparents very much.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8ba1cfbb57",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:love"
+   ],
+   "text": "A: Would you like to come? B: I'd love to!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "281f20e728",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:love"
+   ],
+   "text": "A: Would you like to come? B: Yes, I'd love to.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7ece70b21b",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:love"
+   ],
+   "text": "A: Would you like to come? B: Yes, I'd love.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8af5b67be6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:help"
+   ],
+   "text": "Can I help you?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "449a06a1e3",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:help"
+   ],
+   "text": "My brother helps me with maths.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "67a8292283",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:help"
+   ],
+   "text": "Can you help me?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a86acf89f4",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:help"
+   ],
+   "text": "Can you help to me?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "61e551c355",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:work"
+   ],
+   "text": "My father works in a hospital.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "37fdd0da43",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:work"
+   ],
+   "text": "The lift doesn't work.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "48397d6809",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:work"
+   ],
+   "text": "She works as a teacher.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7ba2bf6784",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:work"
+   ],
+   "text": "She works like a teacher.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "cd1d08e2be",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:work#noun"
+   ],
+   "text": "I go to work by bus.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "db08951635",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:work#noun"
+   ],
+   "text": "I have a lot of work today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4b1fde5147",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:work#noun"
+   ],
+   "text": "I'm looking for a job. / I'm looking for work.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ca4e9a4c44",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:work#noun"
+   ],
+   "text": "I'm looking for a work.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "73b4c3164f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:live"
+   ],
+   "text": "Where do you live?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "518d29537a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:live"
+   ],
+   "text": "My grandmother lives alone.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "64a04d0441",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:live"
+   ],
+   "text": "I have lived in Tehran since 2010.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "254fadc56f",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:live"
+   ],
+   "text": "I am living in Tehran since 2010.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "15f56aca1b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:eat"
+   ],
+   "text": "What do you usually eat for lunch?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "88e8ee9d2c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:eat"
+   ],
+   "text": "Let's eat out tonight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f0d3c3f941",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:eat"
+   ],
+   "text": "I drink tea every morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "af313d0278",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:eat"
+   ],
+   "text": "I eat tea every morning.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "10337752d1",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:buy"
+   ],
+   "text": "Where did you buy that jacket?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "83228f7b24",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:buy"
+   ],
+   "text": "I need to buy some bread.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0bf08c8004",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:buy"
+   ],
+   "text": "I bought a book.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ac55ba9403",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:buy"
+   ],
+   "text": "I buyed a book.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "995f202600",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:time"
+   ],
+   "text": "What time is it?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b7a0d963dd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:time"
+   ],
+   "text": "Sorry, I don't have time today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4f40b9e99b",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:time"
+   ],
+   "text": "I don't have much time.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2762f0d318",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:time"
+   ],
+   "text": "I don't have many times.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "e21bfcc253",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:time#occasion"
+   ],
+   "text": "I go swimming three times a week.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4137fbda24",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:time#occasion"
+   ],
+   "text": "This is my first time in London.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4be7ff8f66",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:time#occasion"
+   ],
+   "text": "I saw him twice.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "26dfe75fc3",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:time#occasion"
+   ],
+   "text": "I saw him two times.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "917c450b59",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:day"
+   ],
+   "text": "I work eight hours a day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "680eecce92",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:day"
+   ],
+   "text": "Have a nice day!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d636f067cf",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:day"
+   ],
+   "text": "I study every day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c26db3aa35",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:day"
+   ],
+   "text": "I study in every day.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "478b1ea71b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:week"
+   ],
+   "text": "I go to the gym twice a week.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0743f672e6",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:week"
+   ],
+   "text": "See you next week!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0dda968087",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:week"
+   ],
+   "text": "I'll call you next week.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7539db03f0",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:week"
+   ],
+   "text": "I'll call you in next week.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c3e76e87bb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:year"
+   ],
+   "text": "My son is six years old.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9f9c658861",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:year"
+   ],
+   "text": "We moved here last year.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a49b8c0bd1",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:year"
+   ],
+   "text": "He is ten years old. / He is ten.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8204c4829e",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:year"
+   ],
+   "text": "He is ten years.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "72ee042a9d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:today"
+   ],
+   "text": "What day is it today?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c61784faf3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:today"
+   ],
+   "text": "I'm working from home today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "857624e6d3",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:today"
+   ],
+   "text": "I have a test today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "67d174f330",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:today"
+   ],
+   "text": "I have a test in today.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "cbf1dff1d2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:tomorrow"
+   ],
+   "text": "See you tomorrow!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "678ad0d533",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:tomorrow"
+   ],
+   "text": "I'll call you tomorrow morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "88811e2a13",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:tomorrow"
+   ],
+   "text": "I will go tomorrow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f1807b6cda",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:tomorrow"
+   ],
+   "text": "I will go in tomorrow.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "522484fd54",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:yesterday"
+   ],
+   "text": "I was very tired yesterday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c18c82b774",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:yesterday"
+   ],
+   "text": "We met yesterday afternoon.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "593cd4d8d4",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:yesterday"
+   ],
+   "text": "I watched TV last night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "36e2d15f0f",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:yesterday"
+   ],
+   "text": "I watched TV yesterday night.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "a6108059a7",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:morning"
+   ],
+   "text": "I drink coffee every morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3ef504061c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:morning"
+   ],
+   "text": "Good morning, everyone!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ad850de7ae",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:morning"
+   ],
+   "text": "I go to work in the morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0a7a594b63",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:morning"
+   ],
+   "text": "I go to work at the morning.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d7daf218d3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:night"
+   ],
+   "text": "I work at night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "230eb892c0",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:night"
+   ],
+   "text": "Good night! Sleep well.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1681fdd13a",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:night"
+   ],
+   "text": "Good evening!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "77f880e053",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:night"
+   ],
+   "text": "Good night! (when you meet someone in the evening)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c5cf884ecb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:family"
+   ],
+   "text": "There are five people in my family.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "de63e83078",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:family"
+   ],
+   "text": "I spend the weekends with my family.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6019b5c721",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:family"
+   ],
+   "text": "We are five persons in our family.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8a44cbc049",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:friend"
+   ],
+   "text": "Sara is my best friend.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "83943e142c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:friend"
+   ],
+   "text": "I met an old friend in the street.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "08b6025da9",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:friend"
+   ],
+   "text": "He is my childhood friend.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "141cbcc04a",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:friend"
+   ],
+   "text": "He is my friend from childhood.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "0f2f8cb72e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:mother"
+   ],
+   "text": "My mother is a nurse.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4be7738642",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:mother"
+   ],
+   "text": "I call my mother every day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b4656a620b",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:mother"
+   ],
+   "text": "My mother's car is red.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "20fb67bc96",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:mother"
+   ],
+   "text": "The car of my mother is red.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "06467ad36a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:father"
+   ],
+   "text": "My father works in a bank.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "967018e1cb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:father"
+   ],
+   "text": "My father's name is Hassan.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c385aa46d3",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:father"
+   ],
+   "text": "My father is a doctor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d6a48e799d",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:father"
+   ],
+   "text": "My father he is a doctor.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3ca1220ef8",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:child"
+   ],
+   "text": "They have two children.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a807a2f779",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:child"
+   ],
+   "text": "When I was a child, I lived in Rasht.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d8c6374d7a",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:child"
+   ],
+   "text": "I have three children.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6a39acf094",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:child"
+   ],
+   "text": "I have three childs.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "f176389ce0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:name"
+   ],
+   "text": "What's your name?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6f4c0be9e8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:name"
+   ],
+   "text": "Please write your first name and last name.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "47992dda00",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:name"
+   ],
+   "text": "My name is Ali. / My name's Ali.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3035f2efc9",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:name"
+   ],
+   "text": "My name's is Ali.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "92e9bd44bc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:home"
+   ],
+   "text": "I usually get home at seven.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b03df3ca99",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:home"
+   ],
+   "text": "Make yourself at home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c89a564f1e",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:home"
+   ],
+   "text": "I'm going home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "eee1c20acd",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:home"
+   ],
+   "text": "I'm going to home.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8d277a374a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:house"
+   ],
+   "text": "They live in a big house near the park.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a8176e4f67",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:house"
+   ],
+   "text": "Let's meet at my house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f5cf6e6b18",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:house"
+   ],
+   "text": "Let's go home. / Let's go to my house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c2e6352b00",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:house"
+   ],
+   "text": "Let's go to house.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c833079d29",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:room"
+   ],
+   "text": "My room is small but bright.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3c938d16d0",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:room"
+   ],
+   "text": "We booked a room for two nights.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "84f43d2434",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:room"
+   ],
+   "text": "There isn't room for my bag.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "15923a1442",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:room"
+   ],
+   "text": "There isn't place for my bag.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "315d868e50",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:school"
+   ],
+   "text": "My children walk to school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5c027a1cdd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:school"
+   ],
+   "text": "What did you learn at school today?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "756dcd96c4",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:school"
+   ],
+   "text": "My daughter goes to school by bus.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "db7d663f11",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:school"
+   ],
+   "text": "My daughter goes to the school by bus.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "a3670798e6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:job"
+   ],
+   "text": "My brother is looking for a new job.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8e56f30c85",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:job"
+   ],
+   "text": "You did a great job!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8193edcdb4",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:job"
+   ],
+   "text": "I have a lot of work today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c29ab5f917",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:job"
+   ],
+   "text": "I have a lot of jobs today.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "36ee0f32ab",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:money"
+   ],
+   "text": "I don't have much money with me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "60109d952f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:money"
+   ],
+   "text": "She saves some money every month.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "182e3e3dea",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:money"
+   ],
+   "text": "How much money do you need?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a8be8e57a9",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:money"
+   ],
+   "text": "How many money do you need?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8e61c716e4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:food"
+   ],
+   "text": "I love Persian food.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ac551ffd52",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:food"
+   ],
+   "text": "Is there any food in the fridge?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d6ae3f2865",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:food"
+   ],
+   "text": "I ate some delicious food. / I had a delicious meal.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2593736427",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:food"
+   ],
+   "text": "I ate a delicious food.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ebad453353",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:water"
+   ],
+   "text": "Can I have a glass of water, please?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bea125d4d7",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:water"
+   ],
+   "text": "Drink more water when it's hot.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7341558d22",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:water"
+   ],
+   "text": "Give me a water.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "34f404fff2",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:coffee"
+   ],
+   "text": "Would you like a coffee?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cba1e39d9f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:coffee"
+   ],
+   "text": "I drink my coffee without sugar.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "61e7d4c9e2",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:coffee"
+   ],
+   "text": "I drink coffee in the morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cc22beb01d",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:coffee"
+   ],
+   "text": "I eat coffee in the morning.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ef141cc55a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bread"
+   ],
+   "text": "I buy fresh bread every morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6ac36d5897",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bread"
+   ],
+   "text": "Can I have a piece of bread?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5692c6640f",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:bread"
+   ],
+   "text": "I bought two loaves of bread.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f83e7498a1",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:bread"
+   ],
+   "text": "I bought two breads.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ff71d69b7a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:book"
+   ],
+   "text": "I read a book every month.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3cacf4f2e4",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:book"
+   ],
+   "text": "This book is by a famous Iranian writer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "219f456787",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:book"
+   ],
+   "text": "I'm reading a book by Saadi.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b070f26a60",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:book"
+   ],
+   "text": "I'm reading a book of Saadi.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "77b145a79b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:phone"
+   ],
+   "text": "What's your phone number?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a21edc3006",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:phone"
+   ],
+   "text": "He's on the phone right now.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "74b71b77b4",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:phone"
+   ],
+   "text": "He is talking on the phone.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0e281f9279",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:phone"
+   ],
+   "text": "He is talking in the phone.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "9104ce9833",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:phone#verb"
+   ],
+   "text": "I'll phone you later.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f4b3d74e34",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:phone#verb"
+   ],
+   "text": "Did anyone phone?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fc11daaff4",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:phone#verb"
+   ],
+   "text": "I'll phone you tomorrow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cd538bb411",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:phone#verb"
+   ],
+   "text": "I'll phone to you tomorrow.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c0ac153454",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:car"
+   ],
+   "text": "My father drives an old car.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2cb5cf2ef0",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:car"
+   ],
+   "text": "We went to the north by car.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d659a26910",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:car"
+   ],
+   "text": "I came by car.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b241d4f396",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:car"
+   ],
+   "text": "I came with car.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "eeaab00e17",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bus"
+   ],
+   "text": "I take the bus to work.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c515ba58fc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bus"
+   ],
+   "text": "I missed the bus this morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c33b7c38f6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:bus"
+   ],
+   "text": "I go to work by bus.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0280b97697",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:bus"
+   ],
+   "text": "I go to work with the bus.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2f45ffd6df",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:city"
+   ],
+   "text": "Isfahan is a beautiful city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "35d831ac6c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:city"
+   ],
+   "text": "The city centre is busy at night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "22abc308d2",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:city"
+   ],
+   "text": "I live in the city of Mashhad. / I live in Mashhad.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "62c1c0a673",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:city"
+   ],
+   "text": "I live in the city of Mashhad city.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "1d20139c2a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:good"
+   ],
+   "text": "That's a good idea!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d92b4a24fd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:good"
+   ],
+   "text": "My brother is good at football.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "069a0e701b",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:good"
+   ],
+   "text": "She speaks English very well.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d8dc850969",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:good"
+   ],
+   "text": "She speaks English very good.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "e5f9e05db1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bad"
+   ],
+   "text": "The weather was bad, so we stayed home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c6de67c8d9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bad"
+   ],
+   "text": "Smoking is bad for you.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9c49017dff",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:bad"
+   ],
+   "text": "Today is worse than yesterday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0a7b93e4a1",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:bad"
+   ],
+   "text": "Today is badder than yesterday.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "23eff38308",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:big"
+   ],
+   "text": "They live in a big house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "40491afeea",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:big"
+   ],
+   "text": "It's a big day for us.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "54b7c36985",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:big"
+   ],
+   "text": "This shirt is too big.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c7f49e3794",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:big"
+   ],
+   "text": "This shirt is too much big.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "bf9bdba73d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:small"
+   ],
+   "text": "Our flat is small but nice.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a3aaaaaca5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:small"
+   ],
+   "text": "Can I have a small coffee, please?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e4ac42a7f4",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:small"
+   ],
+   "text": "These shoes are a little small for me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9a70965841",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:small"
+   ],
+   "text": "These shoes are small for me a little.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "712d8f115e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:little"
+   ],
+   "text": "They have a little dog.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1107077d64",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:little"
+   ],
+   "text": "My little brother is seven.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "02d3e52495",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:little"
+   ],
+   "text": "My room is small.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "67a29dc155",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:little"
+   ],
+   "text": "My room is little.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "9ee873474b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:little#quantity"
+   ],
+   "text": "Can I have a little sugar in my tea?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1c982f7181",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:little#quantity"
+   ],
+   "text": "I'm a little tired today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a40880bf38",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:little#quantity"
+   ],
+   "text": "I have a few books.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1e94ffc3ca",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:little#quantity"
+   ],
+   "text": "I have a little books.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "4ba710e290",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:new"
+   ],
+   "text": "I bought a new phone yesterday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d4389570b0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:new"
+   ],
+   "text": "Happy New Year!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fea33f3cb6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:new"
+   ],
+   "text": "I have a new bike.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f471dd939d",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:new"
+   ],
+   "text": "I have new a bike.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8a3b53e3ec",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:old"
+   ],
+   "text": "My grandfather is very old.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c349d0c622",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:old"
+   ],
+   "text": "How old is your son?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5419380544",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:old"
+   ],
+   "text": "How old are you?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "526ac45c90",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:old"
+   ],
+   "text": "How many years do you have?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "5ddcface8c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:old#not-new"
+   ],
+   "text": "I wear my old shoes at home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3199d07ffe",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:old#not-new"
+   ],
+   "text": "This is the old part of the city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5d6e1915ab",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:old#not-new"
+   ],
+   "text": "This is an old house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6318f8e9f6",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:old#not-new"
+   ],
+   "text": "This is an oldy house.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "81aa048c8c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:happy"
+   ],
+   "text": "The children look very happy.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8cefee5d88",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:happy"
+   ],
+   "text": "Happy birthday, Mina!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "79345ec923",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:happy"
+   ],
+   "text": "I'm happy with my new job.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e2b7968c7b",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:happy"
+   ],
+   "text": "I'm happy for my new job.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "a7dc7596a0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:tired"
+   ],
+   "text": "I'm too tired to cook tonight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f5c2037937",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:tired"
+   ],
+   "text": "You look tired. Go to bed.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9eddd177af",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:tired"
+   ],
+   "text": "I am tired after work.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9b9182300f",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:tired"
+   ],
+   "text": "I am tiring after work.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "616c57818b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hungry"
+   ],
+   "text": "Are you hungry? I can make a sandwich.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f5dc3633bc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hungry"
+   ],
+   "text": "The baby is hungry again.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6b61b86ce6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:hungry"
+   ],
+   "text": "I'm hungry.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "963653da28",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:hungry"
+   ],
+   "text": "I have hunger.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "9dcfc414eb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cheap"
+   ],
+   "text": "The bus is cheaper than a taxi.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f1754a2552",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cheap"
+   ],
+   "text": "We stayed in a cheap hotel near the station.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a1cb2959e2",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:cheap"
+   ],
+   "text": "The price is low.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e9f9bc136d",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:cheap"
+   ],
+   "text": "The price is cheap.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c9b138b4b5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:expensive"
+   ],
+   "text": "Restaurants in the city centre are expensive.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e66053aa16",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:expensive"
+   ],
+   "text": "This is the most expensive car in the shop.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f2f059e0fd",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:expensive"
+   ],
+   "text": "This phone is more expensive than that one.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5a1d469bf6",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:expensive"
+   ],
+   "text": "This phone is expensiver than that one.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "cb2328911e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:easy"
+   ],
+   "text": "This exercise is easy.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b88c13b1b8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:easy"
+   ],
+   "text": "It's easy to find the hotel.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ef7f2aac8a",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:easy"
+   ],
+   "text": "It is easy to learn.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f8032f2f5e",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:easy"
+   ],
+   "text": "It is easy for learn.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "7fbed37b7f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:difficult"
+   ],
+   "text": "This word is difficult to say.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7ec5f7c61c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:difficult"
+   ],
+   "text": "The test was more difficult than I thought.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "731fd71ee2",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:difficult"
+   ],
+   "text": "It's difficult for me to understand.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "46ae9b83a9",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:difficult"
+   ],
+   "text": "It's difficult for me understand.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "5e5b6b7633",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:beautiful"
+   ],
+   "text": "Shiraz is beautiful in spring.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0a65edc7c5",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:beautiful"
+   ],
+   "text": "What a beautiful day!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "86db98e99a",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:beautiful"
+   ],
+   "text": "She is a very beautiful woman.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c7be19929a",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:beautiful"
+   ],
+   "text": "She is very beautiful woman.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3ef342b207",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:like-similar"
+   ],
+   "text": "My son looks like his grandfather.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cda33f8569",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:like-similar"
+   ],
+   "text": "What's the weather like in Tabriz?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "931908b1c0",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:like-similar"
+   ],
+   "text": "A: What is your city like? B: It's big and beautiful.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "490ad24b93",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:like-similar"
+   ],
+   "text": "A: What is your city like? B: I like it very much.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "68c01c8314",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:kind-type"
+   ],
+   "text": "What kind of films do you like?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "974f9d078e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:kind-type"
+   ],
+   "text": "This shop sells all kinds of fruit.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ea3ca1a1aa",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:kind-type"
+   ],
+   "text": "What kind of music do you like?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4e4d5125fb",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:kind-type"
+   ],
+   "text": "What kind of music you like?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3f944bef8f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:second-next-after-the-first"
+   ],
+   "text": "We live on the second floor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6e96f0dc31",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:second-next-after-the-first"
+   ],
+   "text": "This is my second visit to Kish.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e53b584131",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:second-next-after-the-first"
+   ],
+   "text": "I'm in my second year at university.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "da31871e6a",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:second-next-after-the-first"
+   ],
+   "text": "I'm in the two year at university.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "cd4e8c75d8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:second-unit-of-time"
+   ],
+   "text": "The video is thirty seconds long.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0f7e82cefe",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:second-unit-of-time"
+   ],
+   "text": "Just a second, I'm coming!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "01296ddf97",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:second-unit-of-time"
+   ],
+   "text": "Wait a second. / Wait a minute.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e866a46b24",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:second-unit-of-time"
+   ],
+   "text": "Wait a second minute.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "f13d8f371e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:last-final"
+   ],
+   "text": "The last bus leaves at midnight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d616456d6b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:last-final"
+   ],
+   "text": "Read the last page first.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "92a17b3e6d",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:last-final"
+   ],
+   "text": "She was the last person to arrive.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "54b641d97e",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:last-final"
+   ],
+   "text": "She was the last person who arrive.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3bd68f6858",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:last-final#previous"
+   ],
+   "text": "Where were you last night?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4325b97126",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:last-final#previous"
+   ],
+   "text": "We moved here last year.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "44976ad114",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:last-final#previous"
+   ],
+   "text": "I went to Shiraz last month.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b265563715",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:last-final#previous"
+   ],
+   "text": "I went to Shiraz the last month.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "39f23f8adf",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:light-from-the-sun-a-lamp"
+   ],
+   "text": "Can you turn on the light? It's dark.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a7acdd1648",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:light-from-the-sun-a-lamp"
+   ],
+   "text": "Plants need light to grow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7a5623d337",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:light-from-the-sun-a-lamp"
+   ],
+   "text": "Please turn on the light.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7f057e963f",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:light-from-the-sun-a-lamp"
+   ],
+   "text": "Please open the light.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "aca6691fd6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:light-from-the-sun-a-lamp#bright"
+   ],
+   "text": "She's wearing a light blue dress.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0979a9f23b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:light-from-the-sun-a-lamp#bright"
+   ],
+   "text": "It gets light at six in summer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a96a0772a1",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:light-from-the-sun-a-lamp#bright"
+   ],
+   "text": "I want a light blue shirt.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ae65949b43",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:light-from-the-sun-a-lamp#bright"
+   ],
+   "text": "I want a bright blue shirt (meaning pale).",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "203a39341b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:match-contest-correspond"
+   ],
+   "text": "Did you watch the match last night?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "33aaf74204",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:match-contest-correspond"
+   ],
+   "text": "Our team won the match 2–1.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2e99713b3d",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:match-contest-correspond"
+   ],
+   "text": "We won the football match yesterday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "83505bcffb",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:match-contest-correspond"
+   ],
+   "text": "We won the game of football yesterday. (British: unnatural)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "621a131ea3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:match-contest-correspond#go-together"
+   ],
+   "text": "These colours don't match.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d95a0b9db6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:match-contest-correspond#go-together"
+   ],
+   "text": "Match each word with its meaning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ede14cdb00",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:match-contest-correspond#go-together"
+   ],
+   "text": "Your bag matches your shoes.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ce84d25a65",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:match-contest-correspond#go-together"
+   ],
+   "text": "Your bag is matching with your shoes.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c76f1a84cb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bank-money"
+   ],
+   "text": "I need to go to the bank.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "33ece85dfb",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:bank-money"
+   ],
+   "text": "Do you have a bank account?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "66cfc4df04",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:bank-money"
+   ],
+   "text": "I put my money in the bank.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "62b95aba8d",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:bank-money"
+   ],
+   "text": "I put my money in the bench.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d4e0beabb1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:close"
+   ],
+   "text": "Please close the door.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e549a04ab1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:close"
+   ],
+   "text": "What time does the shop close?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f945bbd539",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:close"
+   ],
+   "text": "Turn off the light.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0af7c0bb35",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:close"
+   ],
+   "text": "Close the light.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "7972e9f259",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:close#near"
+   ],
+   "text": "The hotel is close to the beach.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bc127ac7dd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:close#near"
+   ],
+   "text": "She's one of my close friends.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fedae4ad46",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:close#near"
+   ],
+   "text": "My school is close to my house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "86d3bbf6c6",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:close#near"
+   ],
+   "text": "My school is close from my house.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2e3b2850a6",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:well"
+   ],
+   "text": "You did very well in the test.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "037bb472d1",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:well"
+   ],
+   "text": "I didn't sleep well last night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cc400c7c17",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:well"
+   ],
+   "text": "She cooks very well.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "08522e9a49",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:well"
+   ],
+   "text": "She cooks very good.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "16e2516b70",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:well#healthy"
+   ],
+   "text": "A: How are you? B: I'm very well, thanks.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "44f6d69fe8",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:well#healthy"
+   ],
+   "text": "Get well soon!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "403c55cf6d",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:well#healthy"
+   ],
+   "text": "I'm not feeling well, I have a cold.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6054bd0a23",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:well#healthy"
+   ],
+   "text": "I'm not feeling good, I have a cold.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "5584b83c48",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:well#discourse"
+   ],
+   "text": "Well, I think it's a good idea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e9b8a4e957",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:well#discourse"
+   ],
+   "text": "Well, what do you want to do?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a18ce7c7c0",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:well#discourse"
+   ],
+   "text": "Well, I don't know.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4f9584176b",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:well#discourse"
+   ],
+   "text": "Good, I don't know. (as a pause word)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "82c0e6b6cb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:right"
+   ],
+   "text": "That's the right answer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6f978ca422",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:right"
+   ],
+   "text": "You're right, it's too late.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dc3b665230",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:right"
+   ],
+   "text": "You're right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "54c01413b9",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:right"
+   ],
+   "text": "You have right.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8591702fce",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:right#direction"
+   ],
+   "text": "Turn right at the traffic lights.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6ce70e4e5e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:right#direction"
+   ],
+   "text": "The pharmacy is on your right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "99d0792917",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:right#direction"
+   ],
+   "text": "Turn right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "68c802d3b9",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:right#direction"
+   ],
+   "text": "Turn to the right side.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c2e96a5a5a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:right#now"
+   ],
+   "text": "I'm busy right now. Can I call you back?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0843e146ac",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:right#now"
+   ],
+   "text": "Wait for me right here.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "de1c360ff9",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:right#now"
+   ],
+   "text": "I'm coming right now.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "81e8c78da2",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:right#now"
+   ],
+   "text": "I'm coming exactly now.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "a20344fb56",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:fine"
+   ],
+   "text": "A: How are you? B: Fine, thanks. And you?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "05dd41faa3",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fine"
+   ],
+   "text": "Is Friday OK? — Yes, that's fine.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c9fcdc526f",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:fine"
+   ],
+   "text": "A: Sorry I'm late. B: That's fine. / It's fine.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ad8706e941",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:fine"
+   ],
+   "text": "A: Sorry I'm late. B: It's fine for me.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "b6c5e921e2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:fine#weather"
+   ],
+   "text": "It's a fine day. Let's go for a walk.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "215f716ac3",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fine#weather"
+   ],
+   "text": "The weather will be fine tomorrow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f56717ba87",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:fine#weather"
+   ],
+   "text": "The weather is fine and sunny.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4e39c05abb",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:fine#weather"
+   ],
+   "text": "The weather is fine and rainy.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "568445a788",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:mean"
+   ],
+   "text": "What does this sign mean?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1c5745e53e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:mean"
+   ],
+   "text": "Sorry, I don't understand. What do you mean?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "68b8e56d6b",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:mean"
+   ],
+   "text": "What does «tired» mean?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "66138db656",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:mean"
+   ],
+   "text": "What means «tired»?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "90ed3346b1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:mean#unkind"
+   ],
+   "text": "Don't be mean to your little brother.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e42e9b28e9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:mean#unkind"
+   ],
+   "text": "That was a mean thing to say.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f831eca110",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:mean#unkind"
+   ],
+   "text": "He was mean to me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f5205850bd",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:mean#unkind"
+   ],
+   "text": "He meant to me.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "0fe8e23e22",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:play"
+   ],
+   "text": "Do you play any sports?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fc4e1df9f2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:play"
+   ],
+   "text": "The children are playing in the garden.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "adde11c974",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:play"
+   ],
+   "text": "I play football on Fridays.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "56ac722107",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:play"
+   ],
+   "text": "I play the football on Fridays.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "eda327e51b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:play#instrument"
+   ],
+   "text": "My daughter plays the violin.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "32c0ed1568",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:play#instrument"
+   ],
+   "text": "Can you play the guitar?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bf34d3b133",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:play#instrument"
+   ],
+   "text": "He plays the tar very well.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0e9b14f02e",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:play#instrument"
+   ],
+   "text": "He plays tar very well. (as an instrument)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "4585f970cd",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:play#theatre"
+   ],
+   "text": "We saw a play at the city theatre.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0dbd2d6298",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:play#theatre"
+   ],
+   "text": "This play is very funny.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "727a9ffff6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:play#theatre"
+   ],
+   "text": "We saw a play.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "46bc51b723",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:play#theatre"
+   ],
+   "text": "We watched a show of theatre.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "84ce1f8cac",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:back"
+   ],
+   "text": "When will you come back?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "58d050441d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:back"
+   ],
+   "text": "I'll call you back in five minutes.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "46364a4369",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:back"
+   ],
+   "text": "Please give my book back. / Please return my book.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8a85da119f",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:back"
+   ],
+   "text": "Please return back my book.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "6d27c4b217",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:back#body"
+   ],
+   "text": "My back hurts after a long day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "47640bedca",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:back#body"
+   ],
+   "text": "Let's sit at the back of the bus.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "760349538a",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:back#body"
+   ],
+   "text": "My back hurts.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0b78cc25b3",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:back#body"
+   ],
+   "text": "My back is paining.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "71b9ffb9c9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:still"
+   ],
+   "text": "Are you still at the office?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0c86d148ce",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:still"
+   ],
+   "text": "I still remember my first day at school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "770e62e40c",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:still"
+   ],
+   "text": "I still live in Qom.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4de1adf91b",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:still"
+   ],
+   "text": "I live still in Qom.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3ce3da9dd4",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:just"
+   ],
+   "text": "Just a coffee, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "70c9304563",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:just"
+   ],
+   "text": "It's just a small problem.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "407726b17d",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:just"
+   ],
+   "text": "I just want a tea. / I only want a tea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4c4390de36",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:just"
+   ],
+   "text": "I want only just a tea.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "bacea4013b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:just#recently"
+   ],
+   "text": "I've just finished my homework.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1f7bda970a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:just#recently"
+   ],
+   "text": "The bus has just left.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "600b119dcb",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:just#recently"
+   ],
+   "text": "I've just finished.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "07384630d3",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:just#recently"
+   ],
+   "text": "I just now have finished.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "60638c131c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:miss"
+   ],
+   "text": "Hurry up or we'll miss the train!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7c92e6a296",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:miss"
+   ],
+   "text": "I missed the class because I was ill.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2f85201ba2",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:miss"
+   ],
+   "text": "I missed the bus this morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4942b37c53",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:miss"
+   ],
+   "text": "I lost the bus this morning.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "44bda08c14",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:miss#feel-sad"
+   ],
+   "text": "I miss you a lot.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3e758ff7eb",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:miss#feel-sad"
+   ],
+   "text": "I miss my mother's cooking.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5da29f49c5",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:miss#feel-sad"
+   ],
+   "text": "I miss you.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e08984cd58",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:miss#feel-sad"
+   ],
+   "text": "You miss me. (meaning «دلم برایت تنگ شده»)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "29fed96d3d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:leave"
+   ],
+   "text": "What time do you leave work?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "487fafb2e1",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:leave"
+   ],
+   "text": "The train leaves at 6:15.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c285295420",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:leave"
+   ],
+   "text": "I left the house early.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0d339fd332",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:leave"
+   ],
+   "text": "I left from the house early.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c0b28aca7b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:leave#somewhere"
+   ],
+   "text": "Oh no, I left my phone at home!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4ab63b770a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:leave#somewhere"
+   ],
+   "text": "You can leave your coat here.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c6df5e02e9",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:leave#somewhere"
+   ],
+   "text": "I left my keys at home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f57526abd3",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:leave#somewhere"
+   ],
+   "text": "I forgot my keys at home.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2279ed1fda",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:lie"
+   ],
+   "text": "I'm tired. I'm going to lie down.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9ebde3b14c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:lie"
+   ],
+   "text": "We lay on the beach all afternoon.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "26e5b59390",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:lie"
+   ],
+   "text": "I'm lying on the sofa.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "06da455ed4",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:lie"
+   ],
+   "text": "I'm laying on the sofa.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "698c1a87ca",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:lie#untrue"
+   ],
+   "text": "He lied about his age.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dc923d9c0e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:lie#untrue"
+   ],
+   "text": "Please don't lie to me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8759e6c1e9",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:lie#untrue"
+   ],
+   "text": "He lied to his teacher.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "00d5dac275",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:lie#untrue"
+   ],
+   "text": "He lay to his teacher.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "9524cbe7e2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:present"
+   ],
+   "text": "I bought a birthday present for my father.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "66122a6547",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:present"
+   ],
+   "text": "Thank you for the lovely present!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "53c0977657",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:present"
+   ],
+   "text": "I gave him a present for his birthday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cbd624babf",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:present"
+   ],
+   "text": "I gave him a present to his birthday.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "8542a13bbd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:present#now"
+   ],
+   "text": "Twenty students were present at the meeting.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a253559b54",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:present#now"
+   ],
+   "text": "I'm living with my parents at present.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1f4459e492",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:present#now"
+   ],
+   "text": "She was present in the class.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3edd931444",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:present#now"
+   ],
+   "text": "She was presented in the class.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "abd6e790ed",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:present#verb"
+   ],
+   "text": "He presents a TV programme about food.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7a6250e6b4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:present#verb"
+   ],
+   "text": "Each student will present a short project.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "57190871c6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:present#verb"
+   ],
+   "text": "I will pre-SENT my project.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3481fbf3fc",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:present#verb"
+   ],
+   "text": "I will PRE-sent my project. (stress)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "5b544670c9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:order"
+   ],
+   "text": "We ordered two pizzas and a salad.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a1c5969567",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:order"
+   ],
+   "text": "I ordered a new phone online.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "36511d76fe",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:order"
+   ],
+   "text": "I'd like to order a coffee.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "370ed0bd79",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:order"
+   ],
+   "text": "I want to give an order for a coffee.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ef097684d1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:order#arrangement"
+   ],
+   "text": "Put the words in the right order.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7c68ea6d63",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:order#arrangement"
+   ],
+   "text": "The lift is out of order.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ee1224143c",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:order#arrangement"
+   ],
+   "text": "Write the names in alphabetical order.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "01ef86184b",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:order#arrangement"
+   ],
+   "text": "Write the names with alphabet order.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "987a545e77",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:check"
+   ],
+   "text": "Please check your answers before you finish.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0ea42ab35b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:check"
+   ],
+   "text": "We checked in at the hotel at three.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "72faa132af",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:check"
+   ],
+   "text": "I check my email every hour.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "20179ccaec",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:check"
+   ],
+   "text": "I control my email every hour.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "6d853cc93f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:check#bill"
+   ],
+   "text": "Excuse me, could we have the check, please?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "10473ba158",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:check#bill"
+   ],
+   "text": "He paid the check and left.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1d58ef3e7f",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:check#bill"
+   ],
+   "text": "Can I have the bill/check, please?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c179f734de",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:check#bill"
+   ],
+   "text": "Can I have the account, please?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "1556c33994",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:change"
+   ],
+   "text": "The weather changes quickly in spring.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "276c44e4f4",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:change"
+   ],
+   "text": "I need to change my clothes before dinner.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "20bb1e0b69",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:change"
+   ],
+   "text": "I changed my mind.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f73c6b2dcd",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:change"
+   ],
+   "text": "I changed my opinion. (fixed phrase)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "fd83b61ba6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:change#money"
+   ],
+   "text": "Here's your change.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "35797f395c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:change#money"
+   ],
+   "text": "Do you have change for a 50?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "64ac731c5c",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:change#money"
+   ],
+   "text": "Here are your changes.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "5b1f73aa0d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:free"
+   ],
+   "text": "The museum is free on Mondays.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "033804ded6",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:free"
+   ],
+   "text": "Is there free Wi-Fi here?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7d79cb9867",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:free"
+   ],
+   "text": "I got this book for free. / It was free of charge.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c55c4be14e",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:free"
+   ],
+   "text": "I got this book for free of charge.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "9ce09d0adb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:free#not-busy"
+   ],
+   "text": "Are you free this evening?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "02bd254ed1",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:free#not-busy"
+   ],
+   "text": "What do you do in your free time?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c930ba5f37",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:free#not-busy"
+   ],
+   "text": "Are you free tonight?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "50ceb74905",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:free#not-busy"
+   ],
+   "text": "Are you empty tonight?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "3cbe4401fc",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:hard"
+   ],
+   "text": "This question is too hard for me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "789a09dff6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hard"
+   ],
+   "text": "It's hard to find a cheap flat here.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4527944855",
+   "split": "test",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:hard"
+   ],
+   "text": "It is hard to find a job.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "62a53ac2f2",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:hard"
+   ],
+   "text": "It is hard for find a job.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "485413609c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:hard#solid"
+   ],
+   "text": "This bread is old and hard.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e4626c539e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hard#solid"
+   ],
+   "text": "I can't sleep on a hard bed.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4d13b762c6",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:hard#solid"
+   ],
+   "text": "The cake is hard.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8441ccf013",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:hard#solid"
+   ],
+   "text": "The cake is strong. (meaning «سفت»)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2ee8da9175",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:hard#adverb"
+   ],
+   "text": "He works hard every day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "75a7b0e02e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hard#adverb"
+   ],
+   "text": "Study hard for your exam.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "66f1719669",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:hard#adverb"
+   ],
+   "text": "She works hard.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "df34880def",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:hard#adverb"
+   ],
+   "text": "She works hardly.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "f4c4909465",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:too"
+   ],
+   "text": "A: I'm hungry. B: Me too!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0aba921454",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:too"
+   ],
+   "text": "My sister speaks French too.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b187a6b0a1",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:too"
+   ],
+   "text": "I don't like it either.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d092e52424",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:too"
+   ],
+   "text": "I don't like it too.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "b806cf7b82",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:too#excess"
+   ],
+   "text": "This coffee is too hot to drink.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "02ed035123",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:too#excess"
+   ],
+   "text": "There are too many people here.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a0e3527f96",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:too#excess"
+   ],
+   "text": "This city is very beautiful!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ab808c6988",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:too#excess"
+   ],
+   "text": "This city is too beautiful! (meaning «خیلی»)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "0244c715d2",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:two"
+   ],
+   "text": "I have two sisters.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0e9597adbf",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:two"
+   ],
+   "text": "The shop is two minutes from here.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "678b36c317",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:two"
+   ],
+   "text": "I have two brothers.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a3d136640f",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:two"
+   ],
+   "text": "I have two brother.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d781a544a0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:very"
+   ],
+   "text": "It's very cold today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a47c58a038",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:very"
+   ],
+   "text": "Thank you very much.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e153470ce0",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:very"
+   ],
+   "text": "I like this song very much.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "15c4157b2a",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:very"
+   ],
+   "text": "I very like this song.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "17e20ccbb1",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:quite"
+   ],
+   "text": "The film was quite good, but not great.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bed5f2407e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:quite"
+   ],
+   "text": "It's quite cold today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9a1ba592fb",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:quite"
+   ],
+   "text": "It's quite a good film.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6ca437dc6e",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:quite"
+   ],
+   "text": "It's a quite good film.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "927507b642",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:quite#completely"
+   ],
+   "text": "You're quite right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5a9a0e90bd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:quite#completely"
+   ],
+   "text": "I'm not quite sure.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "572a4348d3",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:quite#completely"
+   ],
+   "text": "I'm quite sure.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0bcf97d541",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:quite#completely"
+   ],
+   "text": "I'm quiet sure.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "66117f12e6",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:bring",
+    "lex:A1:take"
+   ],
+   "text": "Bring me a coffee, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7a37b10cb8",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:bring",
+    "lex:A1:take"
+   ],
+   "text": "Take me a coffee, please.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "b37fec1ac5",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:bring",
+    "lex:A1:take"
+   ],
+   "text": "Take these books to the library.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bf640be176",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:bring",
+    "lex:A1:take"
+   ],
+   "text": "Bring these books to the library. (you are at home)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "b40216bb8c",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:come",
+    "lex:A1:go"
+   ],
+   "text": "A: Ali, come here! B: I'm coming!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "28bd8c6c7e",
+   "split": "test",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:come",
+    "lex:A1:go"
+   ],
+   "text": "A: Ali, come here! B: I'm going!",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "2bacf2fe5b",
+   "split": "test",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:say",
+    "lex:A1:tell"
+   ],
+   "text": "He told me the answer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c7db1bb07b",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:say",
+    "lex:A1:tell"
+   ],
+   "text": "He said me the answer.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "fd2f892441",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:say",
+    "lex:A1:tell"
+   ],
+   "text": "Say hello to your mother.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e58c2efad2",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:say",
+    "lex:A1:tell"
+   ],
+   "text": "Tell hello to your mother.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "205cedbb35",
+   "split": "test",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:speak",
+    "lex:A1:talk"
+   ],
+   "text": "She speaks three languages.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7c64c3fdbb",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:speak",
+    "lex:A1:talk"
+   ],
+   "text": "She talks three languages.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "dca3c5a6b5",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:see",
+    "lex:A1:look",
+    "lex:A1:watch"
+   ],
+   "text": "I watched TV last night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "63864467eb",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:see",
+    "lex:A1:look",
+    "lex:A1:watch"
+   ],
+   "text": "I saw TV last night.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "aa2a162a0f",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:see",
+    "lex:A1:look",
+    "lex:A1:watch"
+   ],
+   "text": "Look at this!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b9e2b19f8d",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:see",
+    "lex:A1:look",
+    "lex:A1:watch"
+   ],
+   "text": "Look this!",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d3b7f14091",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:hear",
+    "lex:A1:listen"
+   ],
+   "text": "I can hear a strange noise.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "75df7795d6",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:hear",
+    "lex:A1:listen"
+   ],
+   "text": "I'm listening a strange noise.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d10aacb377",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:hear",
+    "lex:A1:listen"
+   ],
+   "text": "Listen to me!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4145108f6c",
+   "split": "test",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:hear",
+    "lex:A1:listen"
+   ],
+   "text": "Listen me!",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "b5c2a83d81",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:make",
+    "lex:A1:do"
+   ],
+   "text": "I made a mistake.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1251872b1a",
+   "split": "test",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:make",
+    "lex:A1:do"
+   ],
+   "text": "I did a mistake.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "45eba3978d",
+   "split": "test",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:make",
+    "lex:A1:do"
+   ],
+   "text": "Can you do the dishes?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "79a7fe7d67",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:make",
+    "lex:A1:do"
+   ],
+   "text": "Can you make the dishes?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "981f509a73",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:must",
+    "lex:A1:have-to"
+   ],
+   "text": "You don't have to come tomorrow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5b6f7900ac",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:must",
+    "lex:A1:have-to"
+   ],
+   "text": "You mustn't come tomorrow. (meaning it isn't necessary)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "312ea89bdb",
+   "split": "test",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:must",
+    "lex:A1:have-to"
+   ],
+   "text": "She must go. / She has to go.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5eddccfca1",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:must",
+    "lex:A1:have-to"
+   ],
+   "text": "She must to go.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "b86fd8182a",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:very",
+    "lex:A1:too#excess",
+    "lex:A1:quite"
+   ],
+   "text": "Your house is very beautiful!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7d38ff1264",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:very",
+    "lex:A1:too#excess",
+    "lex:A1:quite"
+   ],
+   "text": "Your house is too beautiful! (as a compliment)",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "9a30e77fdf",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:in",
+    "lex:A1:on",
+    "lex:A1:at"
+   ],
+   "text": "I'll see you on Monday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c03045192d",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:in",
+    "lex:A1:on",
+    "lex:A1:at"
+   ],
+   "text": "I'll see you in Monday.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "63af05f7b0",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:in",
+    "lex:A1:on",
+    "lex:A1:at"
+   ],
+   "text": "I wake up at 7 o'clock.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8f689c6829",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:in",
+    "lex:A1:on",
+    "lex:A1:at"
+   ],
+   "text": "I wake up in 7 o'clock.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "e3882c805f",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:some",
+    "lex:A1:any"
+   ],
+   "text": "I don't have any money.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "297b000edd",
+   "split": "test",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:some",
+    "lex:A1:any"
+   ],
+   "text": "I don't have some money.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "7eaca4eb36",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:this",
+    "lex:A1:that"
+   ],
+   "text": "These shoes are new.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7f4690a2f3",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:this",
+    "lex:A1:that"
+   ],
+   "text": "This shoes are new.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "ee8f5ab2e4",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:a-an",
+    "lex:A1:the"
+   ],
+   "text": "Life is beautiful.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a3e87f5204",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:a-an",
+    "lex:A1:the"
+   ],
+   "text": "The life is beautiful.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "75b76790a8",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:a-an",
+    "lex:A1:the"
+   ],
+   "text": "She is a doctor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "240ca4ca0e",
+   "split": "test",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:a-an",
+    "lex:A1:the"
+   ],
+   "text": "She is doctor.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "e6dbd55533",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:to",
+    "lex:A1:too",
+    "lex:A1:two"
+   ],
+   "text": "I'm going to the shop.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "80641abfd6",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:to",
+    "lex:A1:too",
+    "lex:A1:two"
+   ],
+   "text": "I'm going too the shop.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "0c231c98c7",
+   "split": "test",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:to",
+    "lex:A1:too",
+    "lex:A1:two"
+   ],
+   "text": "Me too!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5cbc81c19b",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:to",
+    "lex:A1:too",
+    "lex:A1:two"
+   ],
+   "text": "Me to!",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "c1d6d611af",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:good",
+    "lex:A1:well"
+   ],
+   "text": "He speaks English very well.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0f6939e212",
+   "split": "test",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:good",
+    "lex:A1:well"
+   ],
+   "text": "He speaks English very good.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "d72f11d312",
+   "split": "dev",
+   "source": "contrast-right",
+   "senses": [
+    "lex:A1:big",
+    "lex:A1:small",
+    "lex:A1:little"
+   ],
+   "text": "The room is small.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "514bb0f8ea",
+   "split": "dev",
+   "source": "contrast-wrong",
+   "senses": [
+    "lex:A1:big",
+    "lex:A1:small",
+    "lex:A1:little"
+   ],
+   "text": "The room is little.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "7e983c0645",
+   "split": "dev",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:live"
+   ],
+   "text": "I'm living with my aunt this year.",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "eb58e8fc14",
+   "split": "dev",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:bring"
+   ],
+   "text": "Bring your dictionary to class tomorrow.",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "1d45345169",
+   "split": "test",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:come"
+   ],
+   "text": "I'll come to your party on Friday.",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "a7b8fad1c5",
+   "split": "dev",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:some"
+   ],
+   "text": "Do you have some questions?",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "625a6b143b",
+   "split": "dev",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:look"
+   ],
+   "text": "Look at the TV, it's on fire!",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "e74a7e634f",
+   "split": "dev",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:very"
+   ],
+   "text": "The film was very good.",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "ee7c4f53a7",
+   "split": "dev",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:little"
+   ],
+   "text": "I have a little time after lunch.",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "2975c5b0d8",
+   "split": "test",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:go"
+   ],
+   "text": "We go to the park on Fridays.",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "682abdd620",
+   "split": "dev",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:tell"
+   ],
+   "text": "Tell me about your weekend.",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  },
+  {
+   "id": "fe179dd15f",
+   "split": "dev",
+   "source": "ambiguous",
+   "senses": [
+    "lex:A1:make"
+   ],
+   "text": "Can you make me a cup of tea?",
+   "expect": [
+    "natural",
+    "unsure"
+   ]
+  }
+ ]
+}

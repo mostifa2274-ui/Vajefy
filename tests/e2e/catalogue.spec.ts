@@ -1,0 +1,66 @@
+import { readFileSync } from "node:fs";
+import { expect, test, type Page } from "@playwright/test";
+import { LEGACY_KEY } from "./progress-db";
+
+// Fixtures are served in place of the real data files, so service workers are
+// blocked to let every request reach the route.
+test.use({ serviceWorkers: "block" });
+
+function seed(page: Page, focus: string) {
+  const progress = {
+    cards: {}, logs: [], lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
+    streak: 0, lastStudyDate: null, xp: 0, lang: "en", focus, sessionSize: 20, newPerDay: 10,
+    voice: false, accent: "en-GB", bookmarks: [], dailyGoal: 20, requestRetention: 0.9,
+    reviewHistory: [], practiceSkills: {}, onboarded: true,
+  };
+  return page.addInitScript(({ key, raw }) => {
+    if (!sessionStorage.getItem("seeded")) {
+      localStorage.setItem(key, raw);
+      sessionStorage.setItem("seeded", "1");
+    }
+  }, { key: LEGACY_KEY, raw: JSON.stringify({ state: progress, version: 5 }) });
+}
+
+test("an A2 learner's lessons start with the A2 entries that have enhanced content", async ({ page }) => {
+  // The compiled content, plus one entry written for A2 (docs/CATALOGUE.md).
+  const compiled = JSON.parse(readFileSync("public/data/enhanced.json", "utf8"));
+  const order = JSON.parse(readFileSync("public/data/enhanced-order.json", "utf8"));
+  const source = compiled.entries.find((entry: { id: string }) => entry.id === "lex:A1:time");
+  const a2 = {
+    ...source,
+    id: "lex:A2:ability",
+    headword: "ability",
+    order: compiled.entries.length,
+    senses: source.senses.map((sense: { id: string }, position: number) => ({
+      ...sense,
+      id: position === 0 ? "lex:A2:ability" : `lex:A2:ability#${sense.id.split("#")[1]}`,
+      gloss: position === 0 ? "توانایی" : (sense as { gloss: string }).gloss,
+    })),
+  };
+  const ids = a2.senses.map((sense: { id: string }) => sense.id);
+  await page.route("**/data/enhanced.json", (route) => route.fulfill({ json: { ...compiled, entries: [...compiled.entries, a2] } }));
+  await page.route("**/data/enhanced-order.json", (route) =>
+    route.fulfill({ json: { ...order, order: Object.fromEntries(Object.entries(order.order).map(([goal, list]) => [goal, [...(list as string[]), ...ids]])) } }),
+  );
+  await seed(page, "A2");
+  await page.goto("/learn");
+  const upcoming = page.locator("main ul[lang=en] li");
+  await expect(upcoming.first()).toContainText("ability");
+  await expect(upcoming.first()).toContainText("توانایی");
+  // Today offers the same lesson, for this level's words only.
+  await page.goto("/");
+  await expect(page.getByRole("link", { name: `Start lesson · ${ids.length} new words`, exact: true })).toBeVisible();
+});
+
+test("reference notes a bilingual reviewer approved are marked as reviewed", async ({ page }) => {
+  await page.route("**/data/reference-reviewed.json", (route) => route.fulfill({ json: { version: "test", reviewed: ["conf:do-make"] } }));
+  await seed(page, "A1");
+  await page.goto("/library?d=conf");
+  await page.getByRole("button", { name: /do \/ make/ }).first().click();
+  const detail = page.locator("article");
+  await expect(detail.getByText("Reviewed", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Back", exact: true }).first().click();
+  await page.goto("/library?d=conf");
+  await page.getByRole("button", { name: /raise \/ rise/ }).first().click();
+  await expect(page.locator("article").getByText("Reviewed", { exact: true })).toHaveCount(0);
+});
