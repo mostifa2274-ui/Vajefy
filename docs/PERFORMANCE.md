@@ -82,7 +82,10 @@ is adjusted, not the thresholds.
 - **Startup does only what the first screen needs.** Number formats are built
   once per language rather than for every number drawn (they took about 90 ms
   on the test phone), and the content schemas, which only the authoring
-  scripts use, are kept out of the app bundle.
+  scripts use, are kept out of the app bundle. The progress schema (zod) loads
+  only when there is a saved copy to check, the recovery screen only when a
+  save cannot be read, and the sync engine after the first screen. A new
+  learner's first visit downloads about 40 KB less compressed script.
 - **Audio is fetched on demand** and cached separately, never on page load.
 - **System fonts.** No web fonts to download.
 

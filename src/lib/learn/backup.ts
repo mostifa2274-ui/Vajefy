@@ -1,9 +1,9 @@
 import { z } from "zod";
-import { migrateProgress, PROGRESS_VERSION, savedProgress, type SavedProgress } from "./progress";
+import { BACKUP_KIND } from "./backup-file";
+import { migrateProgress, PROGRESS_VERSION, type SavedProgress } from "./progress";
 import { currentProgress, progress, storedEnvelope } from "./schema";
 
-/** The format id from the first release, kept so every backup stays importable. */
-export const BACKUP_KIND = "roshana-progress";
+export { BACKUP_KIND, backupFileName, makeBackup } from "./backup-file";
 
 const backupFile = z.object({
   kind: z.literal(BACKUP_KIND),
@@ -16,19 +16,6 @@ export type ParsedBackup =
   | { ok: true; progress: SavedProgress }
   /** `future`: written by a newer release, which this one cannot read safely. */
   | { ok: false; reason: "invalid" | "future"; version?: number };
-
-export function makeBackup(state: SavedProgress, now = new Date()): string {
-  return JSON.stringify({
-    kind: BACKUP_KIND,
-    version: PROGRESS_VERSION,
-    exportedAt: now.toISOString(),
-    progress: savedProgress(state),
-  });
-}
-
-export function backupFileName(now = new Date()): string {
-  return `vajefy-progress-${now.toISOString().slice(0, 10)}.json`;
-}
 
 /**
  * Validate saved progress of a known version, migrate it, and verify the
