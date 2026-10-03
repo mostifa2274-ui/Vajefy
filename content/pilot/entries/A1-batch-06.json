@@ -8062,5 +8062,2853 @@
         ]
       }
     ]
+  },
+  {
+    "id": "lex:A1:relax",
+    "headword": "relax",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:relax",
+        "pos": "verb",
+        "gloss": "استراحت کردن؛ آرام شدن",
+        "meaning": "کار نکردن و آسوده بودن، یا آرام شدن وقتی نگرانی. relaxed = آرام (احساس)؛ relaxing = آرامش‌بخش.",
+        "grammar": [
+          {
+            "pattern": "relax at home / on the beach",
+            "note": "در خانه / ساحل استراحت کردن"
+          },
+          {
+            "pattern": "Relax!",
+            "note": "آرام باش!"
+          },
+          {
+            "pattern": "relaxed / relaxing",
+            "note": "آرام / آرامش‌بخش"
+          }
+        ],
+        "examples": [
+          {
+            "en": "On Fridays I relax at home with my family.",
+            "fa": "جمعه‌ها در خانه با خانواده‌ام استراحت می‌کنم."
+          },
+          {
+            "en": "Relax! The test isn't difficult.",
+            "fa": "آرام باش! امتحان سخت نیست."
+          }
+        ],
+        "collocations": [
+          "relax at home",
+          "relax on the beach",
+          "try to relax",
+          "just relax"
+        ],
+        "mistake": {
+          "wrong": "I relax myself on Fridays.",
+          "right": "I relax on Fridays.",
+          "why": "relax معمولاً بدون myself می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/rɪˈlæks/",
+          "us": "/rɪˈlæks/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "After work, I like to sit down and ___ with a cup of tea.",
+            "answer": "relax",
+            "accept": [
+              "rest"
+            ],
+            "fa": "بعد از کار دوست دارم بنشینم و با یک فنجان چای استراحت کنم.",
+            "why": "relax = استراحت کردن."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Sit down and ___. Everything is OK.",
+            "options": [
+              {
+                "text": "relax",
+                "ok": true,
+                "why": "فعل امری: relax."
+              },
+              {
+                "text": "relaxing",
+                "ok": false,
+                "why": "بعد از Sit down and فعل امری لازم است."
+              },
+              {
+                "text": "relaxed",
+                "ok": false,
+                "why": "اینجا فعل امری لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "آخر هفته استراحت کردم.",
+            "frame": "I ___ at the weekend.",
+            "answer": "relaxed",
+            "accept": [
+              "rested"
+            ],
+            "why": "گذشته: relaxed."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:return",
+    "headword": "return",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:return",
+        "pos": "verb",
+        "gloss": "برگشتن",
+        "meaning": "به جایی برگشتن. return to + جا؛ return home بدون to. کمی رسمی‌تر از come back و go back است.",
+        "grammar": [
+          {
+            "pattern": "return to + place",
+            "note": "به … برگشتن"
+          },
+          {
+            "pattern": "return home",
+            "note": "به خانه برگشتن؛ بدون to"
+          },
+          {
+            "pattern": "return from + place",
+            "note": "از … برگشتن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "We returned home late at night.",
+            "fa": "دیروقتِ شب به خانه برگشتیم."
+          },
+          {
+            "en": "When did you return from your trip?",
+            "fa": "کِی از سفرت برگشتی؟"
+          }
+        ],
+        "collocations": [
+          "return home",
+          "return to work",
+          "return from a trip",
+          "return later"
+        ],
+        "mistake": {
+          "wrong": "I returned back to my country.",
+          "right": "I returned to my country.",
+          "why": "return خودش یعنی برگشتن؛ back لازم نیست."
+        },
+        "pronunciation": {
+          "gb": "/rɪˈtɜːn/",
+          "us": "/rɪˈtɜːrn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "He left Iran ten years ago and never ___.",
+            "answer": "returned",
+            "accept": [
+              "came back"
+            ],
+            "fa": "او ده سال پیش از ایران رفت و هرگز برنگشت.",
+            "why": "گذشته: returned."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "After the holiday, we returned ___ work.",
+            "options": [
+              {
+                "text": "to",
+                "ok": true,
+                "why": "return to + جا."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "return at غلط است."
+              },
+              {
+                "text": "in",
+                "ok": false,
+                "why": "return in work غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "ساعت شش به خانه برگشتم.",
+            "frame": "I ___ home at six.",
+            "answer": "returned",
+            "accept": [
+              "came",
+              "got",
+              "went"
+            ],
+            "why": "return home."
+          }
+        ]
+      },
+      {
+        "id": "lex:A1:return#give",
+        "pos": "verb",
+        "gloss": "پس دادن؛ برگرداندن",
+        "meaning": "چیزی را به صاحبش یا سرِ جایش برگرداندن: return a book to the library. return + چیز + to + شخص.",
+        "grammar": [
+          {
+            "pattern": "return + thing + to + person / place",
+            "note": "چیزی را به … برگرداندن"
+          },
+          {
+            "pattern": "return a book",
+            "note": "کتاب را پس دادن"
+          },
+          {
+            "pattern": "give back",
+            "note": "هم‌معنی، غیررسمی‌تر"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Please return the books by Friday.",
+            "fa": "لطفاً کتاب‌ها را تا جمعه پس بدهید."
+          },
+          {
+            "en": "I returned the shoes because they were too small.",
+            "fa": "کفش‌ها را پس دادم چون خیلی کوچک بودند."
+          }
+        ],
+        "collocations": [
+          "return a book",
+          "return a call",
+          "return money",
+          "return something to a shop"
+        ],
+        "mistake": {
+          "wrong": "I returned him the book.",
+          "right": "I returned the book to him.",
+          "why": "return + چیز + to + شخص."
+        },
+        "pronunciation": {
+          "gb": "/rɪˈtɜːn/",
+          "us": "/rɪˈtɜːrn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Did you ___ the library books? You had them for a month.",
+            "answer": "return",
+            "accept": [
+              "take back",
+              "give back"
+            ],
+            "fa": "کتاب‌های کتابخانه را پس دادی؟ یک ماه دستت بودند.",
+            "why": "return a book."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Please return the pen ___ me after class.",
+            "options": [
+              {
+                "text": "to",
+                "ok": true,
+                "why": "return + چیز + to + شخص."
+              },
+              {
+                "text": "for",
+                "ok": false,
+                "why": "return for me غلط است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "return at me غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "پولت را فردا پس می‌دهم.",
+            "frame": "I'll ___ your money tomorrow.",
+            "answer": "return",
+            "accept": [
+              "give back",
+              "pay back"
+            ],
+            "why": "return = پس دادن."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:salad",
+    "headword": "salad",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:salad",
+        "pos": "noun",
+        "gloss": "سالاد",
+        "meaning": "غذایی از سبزی‌های خام، مثل کاهو، گوجه و خیار. make a salad = سالاد درست کردن.",
+        "grammar": [
+          {
+            "pattern": "a + type + salad",
+            "note": "a green salad"
+          },
+          {
+            "pattern": "make a salad",
+            "note": "سالاد درست کردن"
+          },
+          {
+            "pattern": "salad with + food",
+            "note": "salad with chicken"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I'd like a salad with my lunch.",
+            "fa": "با ناهارم سالاد می‌خواهم."
+          },
+          {
+            "en": "My mother makes a great salad with tomatoes.",
+            "fa": "مادرم با گوجه سالاد عالی درست می‌کند."
+          }
+        ],
+        "collocations": [
+          "a green salad",
+          "a fruit salad",
+          "make a salad",
+          "a big salad"
+        ],
+        "mistake": {
+          "wrong": "I'm doing a salad.",
+          "right": "I'm making a salad.",
+          "why": "درست کردنِ غذا: make."
+        },
+        "pronunciation": {
+          "gb": "/ˈsæləd/",
+          "us": "/ˈsæləd/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "For lunch I had soup and a ___.",
+            "answer": "salad",
+            "accept": [
+              "sandwich"
+            ],
+            "fa": "ناهار سوپ و سالاد خوردم.",
+            "why": "a salad."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Can you help me ___ a salad?",
+            "options": [
+              {
+                "text": "make",
+                "ok": true,
+                "why": "make a salad."
+              },
+              {
+                "text": "do",
+                "ok": false,
+                "why": "do a salad غلط است."
+              },
+              {
+                "text": "cook",
+                "ok": false,
+                "why": "سالاد پخته نمی‌شود."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "سالاد میوه دوست دارم.",
+            "frame": "I love fruit ___.",
+            "answer": "salad",
+            "accept": [],
+            "why": "fruit salad."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:sandwich",
+    "headword": "sandwich",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:sandwich",
+        "pos": "noun",
+        "gloss": "ساندویچ",
+        "meaning": "دو تکه نان با چیزی وسطش، مثل پنیر یا مرغ. جمعش sandwiches است.",
+        "grammar": [
+          {
+            "pattern": "a + filling + sandwich",
+            "note": "a cheese sandwich"
+          },
+          {
+            "pattern": "make a sandwich",
+            "note": "ساندویچ درست کردن"
+          },
+          {
+            "pattern": "sandwiches",
+            "note": "جمع با es"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I had a cheese sandwich for lunch.",
+            "fa": "ناهار یک ساندویچ پنیر خوردم."
+          },
+          {
+            "en": "She makes sandwiches for the children every morning.",
+            "fa": "او هر صبح برای بچه‌ها ساندویچ درست می‌کند."
+          }
+        ],
+        "collocations": [
+          "a cheese sandwich",
+          "a chicken sandwich",
+          "make a sandwich",
+          "eat a sandwich"
+        ],
+        "mistake": {
+          "wrong": "Two sandwichs, please.",
+          "right": "Two sandwiches, please.",
+          "why": "جمعِ sandwich با es."
+        },
+        "pronunciation": {
+          "gb": "/ˈsænwɪdʒ/",
+          "us": "/ˈsænwɪtʃ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I'm hungry. Can you make me a chicken ___?",
+            "answer": "sandwich",
+            "accept": [
+              "salad"
+            ],
+            "fa": "گرسنه‌ام. می‌توانی برایم ساندویچ مرغ درست کنی؟",
+            "why": "a chicken sandwich."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "We bought three ___ for the trip.",
+            "options": [
+              {
+                "text": "sandwiches",
+                "ok": true,
+                "why": "جمع: sandwiches."
+              },
+              {
+                "text": "sandwichs",
+                "ok": false,
+                "why": "بعد از ch، es می‌آید."
+              },
+              {
+                "text": "sandwich",
+                "ok": false,
+                "why": "بعد از three اسم جمع لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "این ساندویچ خیلی بزرگ است!",
+            "frame": "This ___ is very big!",
+            "answer": "sandwich",
+            "accept": [],
+            "why": "sandwich = ساندویچ."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:scientist",
+    "headword": "scientist",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:scientist",
+        "pos": "noun",
+        "gloss": "دانشمند",
+        "meaning": "کسی که در علم، مثل فیزیک، شیمی یا زیست، کار و تحقیق می‌کند. science = علم.",
+        "grammar": [
+          {
+            "pattern": "a scientist",
+            "note": "با a"
+          },
+          {
+            "pattern": "work as a scientist",
+            "note": "دانشمند بودن"
+          },
+          {
+            "pattern": "science → scientist",
+            "note": "علم → دانشمند"
+          }
+        ],
+        "examples": [
+          {
+            "en": "My cousin is a scientist. She studies plants.",
+            "fa": "دخترعمویم دانشمند است. گیاه‌ها را مطالعه می‌کند."
+          },
+          {
+            "en": "Scientists say the weather is getting hotter.",
+            "fa": "دانشمندان می‌گویند هوا دارد گرم‌تر می‌شود."
+          }
+        ],
+        "collocations": [
+          "a young scientist",
+          "a famous scientist",
+          "a computer scientist",
+          "scientists say"
+        ],
+        "mistake": {
+          "wrong": "He is a science.",
+          "right": "He is a scientist.",
+          "why": "شخص: scientist؛ science یعنی علم."
+        },
+        "pronunciation": {
+          "gb": "/ˈsaɪəntɪst/",
+          "us": "/ˈsaɪəntɪst/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "A ___ studies the world and finds out new things.",
+            "answer": "scientist",
+            "accept": [],
+            "fa": "دانشمند جهان را مطالعه می‌کند و چیزهای تازه کشف می‌کند.",
+            "why": "scientist = دانشمند."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "She wants to be a ___ when she grows up.",
+            "options": [
+              {
+                "text": "scientist",
+                "ok": true,
+                "why": "شخص: scientist."
+              },
+              {
+                "text": "science",
+                "ok": false,
+                "why": "science یعنی علم."
+              },
+              {
+                "text": "sciences",
+                "ok": false,
+                "why": "بعد از a اسم مفرد؛ و science شغل نیست."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "پدرم دانشمند است.",
+            "frame": "My father is a ___.",
+            "answer": "scientist",
+            "accept": [],
+            "why": "a scientist."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:sentence",
+    "headword": "sentence",
+    "goals": [
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:sentence",
+        "pos": "noun",
+        "gloss": "جمله",
+        "meaning": "گروهی از کلمه‌ها با فعل که یک فکرِ کامل را می‌گوید. با حرف بزرگ شروع و با نقطه تمام می‌شود.",
+        "grammar": [
+          {
+            "pattern": "write a sentence",
+            "note": "جمله نوشتن"
+          },
+          {
+            "pattern": "a sentence about + topic",
+            "note": "جمله‌ای دربارهٔ …"
+          },
+          {
+            "pattern": "in a sentence",
+            "note": "در یک جمله"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Write a sentence with the word 'happy'.",
+            "fa": "یک جمله با کلمهٔ «happy» بنویس."
+          },
+          {
+            "en": "This sentence is too long.",
+            "fa": "این جمله خیلی طولانی است."
+          }
+        ],
+        "collocations": [
+          "write a sentence",
+          "a short sentence",
+          "a long sentence",
+          "the first sentence"
+        ],
+        "mistake": {
+          "wrong": "Every sentence start with a capital letter.",
+          "right": "Every sentence starts with a capital letter.",
+          "why": "فاعلِ مفرد: starts."
+        },
+        "pronunciation": {
+          "gb": "/ˈsentəns/",
+          "us": "/ˈsentəns/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "A ___ starts with a capital letter and ends with a full stop.",
+            "answer": "sentence",
+            "accept": [],
+            "fa": "جمله با حرف بزرگ شروع می‌شود و با نقطه تمام می‌شود.",
+            "why": "sentence = جمله."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Write three ___ about your family.",
+            "options": [
+              {
+                "text": "sentences",
+                "ok": true,
+                "why": "بعد از three جمع."
+              },
+              {
+                "text": "sentence",
+                "ok": false,
+                "why": "بعد از three اسم جمع لازم است."
+              },
+              {
+                "text": "sentense",
+                "ok": false,
+                "why": "املای درست: sentence."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "این جمله را دوباره بخوان.",
+            "frame": "Read this ___ again.",
+            "answer": "sentence",
+            "accept": [],
+            "why": "sentence = جمله."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:share",
+    "headword": "share",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:share",
+        "pos": "verb",
+        "gloss": "شریک شدن؛ با هم استفاده کردن",
+        "meaning": "چیزی را با دیگران تقسیم کردن یا با هم استفاده کردن: share a room. share + چیز + with + شخص.",
+        "grammar": [
+          {
+            "pattern": "share + thing + with + person",
+            "note": "با کسی شریک شدن"
+          },
+          {
+            "pattern": "share a room / a flat",
+            "note": "اتاق / آپارتمان مشترک داشتن"
+          },
+          {
+            "pattern": "share photos",
+            "note": "عکس به اشتراک گذاشتن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I share a room with my brother.",
+            "fa": "با برادرم یک اتاق مشترک دارم."
+          },
+          {
+            "en": "We shared the cake between six people.",
+            "fa": "کیک را بین شش نفر تقسیم کردیم."
+          }
+        ],
+        "collocations": [
+          "share a room",
+          "share with",
+          "share photos",
+          "share an idea"
+        ],
+        "mistake": {
+          "wrong": "I share my room to my sister.",
+          "right": "I share my room with my sister.",
+          "why": "share with، نه to."
+        },
+        "pronunciation": {
+          "gb": "/ʃeə/",
+          "us": "/ʃer/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "There's only one book, so you two need to ___ it.",
+            "answer": "share",
+            "accept": [],
+            "fa": "فقط یک کتاب هست، پس شما دو نفر باید با هم از آن استفاده کنید.",
+            "why": "share = با هم استفاده کردن."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "She shares a flat ___ two friends.",
+            "options": [
+              {
+                "text": "with",
+                "ok": true,
+                "why": "share with."
+              },
+              {
+                "text": "to",
+                "ok": false,
+                "why": "share to غلط است."
+              },
+              {
+                "text": "for",
+                "ok": false,
+                "why": "share for غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "غذایم را با تو شریک می‌شوم.",
+            "frame": "I'll ___ my food with you.",
+            "answer": "share",
+            "accept": [],
+            "why": "share … with."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:similar",
+    "headword": "similar",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:similar",
+        "pos": "adjective",
+        "gloss": "مشابه؛ شبیه",
+        "meaning": "تقریباً مثل هم، اما نه دقیقاً یکی. similar to + اسم، نه with. the same = دقیقاً یکی.",
+        "grammar": [
+          {
+            "pattern": "similar to + noun",
+            "note": "شبیهِ …"
+          },
+          {
+            "pattern": "A and B are similar",
+            "note": "A و B شبیه‌اند"
+          },
+          {
+            "pattern": "similar / the same",
+            "note": "the same = دقیقاً یکی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Your bag is similar to mine.",
+            "fa": "کیفت شبیه کیف من است."
+          },
+          {
+            "en": "My brother and I have similar ideas.",
+            "fa": "من و برادرم افکار مشابهی داریم."
+          }
+        ],
+        "collocations": [
+          "similar to",
+          "very similar",
+          "a similar idea",
+          "look similar"
+        ],
+        "mistake": {
+          "wrong": "Your phone is similar with mine.",
+          "right": "Your phone is similar to mine.",
+          "why": "similar to، نه with."
+        },
+        "pronunciation": {
+          "gb": "/ˈsɪmələ/",
+          "us": "/ˈsɪmələr/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "These two words look ___, but they have different meanings.",
+            "answer": "similar",
+            "accept": [
+              "alike"
+            ],
+            "fa": "این دو کلمه شبیه به نظر می‌رسند، ولی معنی‌شان فرق دارد.",
+            "why": "look similar."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "This city is similar ___ Tehran.",
+            "options": [
+              {
+                "text": "to",
+                "ok": true,
+                "why": "similar to."
+              },
+              {
+                "text": "with",
+                "ok": false,
+                "why": "similar with غلط است."
+              },
+              {
+                "text": "as",
+                "ok": false,
+                "why": "similar as غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "خانهٔ آن‌ها شبیه خانهٔ ماست.",
+            "frame": "Their house is ___ to ours.",
+            "answer": "similar",
+            "accept": [],
+            "why": "similar to."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:singer",
+    "headword": "singer",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:singer",
+        "pos": "noun",
+        "gloss": "خواننده",
+        "meaning": "کسی که آواز می‌خواند، مخصوصاً به‌عنوان شغل. sing = آواز خواندن؛ song = آهنگ.",
+        "grammar": [
+          {
+            "pattern": "a + type + singer",
+            "note": "a pop singer"
+          },
+          {
+            "pattern": "a good singer",
+            "note": "خوانندهٔ خوب"
+          },
+          {
+            "pattern": "sing → singer",
+            "note": "فعل → شخص"
+          }
+        ],
+        "examples": [
+          {
+            "en": "She's my favourite singer.",
+            "fa": "او خوانندهٔ مورد علاقهٔ من است."
+          },
+          {
+            "en": "My uncle was a singer in a band.",
+            "fa": "عمویم خوانندهٔ یک گروه موسیقی بود."
+          }
+        ],
+        "collocations": [
+          "a pop singer",
+          "a famous singer",
+          "a good singer",
+          "a lead singer"
+        ],
+        "mistake": {
+          "wrong": "He is a good song.",
+          "right": "He is a good singer.",
+          "why": "شخص: singer؛ song یعنی آهنگ."
+        },
+        "pronunciation": {
+          "gb": "/ˈsɪŋə/",
+          "us": "/ˈsɪŋər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Who is the ___ of this song?",
+            "answer": "singer",
+            "accept": [],
+            "fa": "خوانندهٔ این آهنگ کیست؟",
+            "why": "singer = خواننده."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "She sings beautifully. She's a great ___.",
+            "options": [
+              {
+                "text": "singer",
+                "ok": true,
+                "why": "شخص: singer."
+              },
+              {
+                "text": "song",
+                "ok": false,
+                "why": "song یعنی آهنگ."
+              },
+              {
+                "text": "sing",
+                "ok": false,
+                "why": "sing فعل است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "می‌خواهد خواننده شود.",
+            "frame": "He wants to be a ___.",
+            "answer": "singer",
+            "accept": [],
+            "why": "a singer."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:sometimes",
+    "headword": "sometimes",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:sometimes",
+        "pos": "adverb",
+        "gloss": "گاهی",
+        "meaning": "بعضی وقت‌ها، نه همیشه. معمولاً قبل از فعلِ اصلی، یا اول یا آخر جمله. sometime (یک وقتی) و some time (مقداری وقت) فرق دارند.",
+        "grammar": [
+          {
+            "pattern": "sometimes + verb",
+            "note": "I sometimes walk."
+          },
+          {
+            "pattern": "Sometimes, …",
+            "note": "اول جمله"
+          },
+          {
+            "pattern": "sometimes / sometime",
+            "note": "گاهی / یک وقتی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I sometimes walk to work.",
+            "fa": "گاهی پیاده سر کار می‌روم."
+          },
+          {
+            "en": "Sometimes it snows in March.",
+            "fa": "گاهی در مارس برف می‌بارد."
+          }
+        ],
+        "collocations": [
+          "sometimes late",
+          "only sometimes",
+          "sometimes … sometimes",
+          "and sometimes"
+        ],
+        "mistake": {
+          "wrong": "I go sometimes to the cinema.",
+          "right": "I sometimes go to the cinema.",
+          "why": "sometimes معمولاً قبل از فعلِ اصلی می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/ˈsʌmtaɪmz/",
+          "us": "/ˈsʌmtaɪmz/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I usually take the bus, but ___ I walk.",
+            "answer": "sometimes",
+            "accept": [],
+            "fa": "معمولاً با اتوبوس می‌روم، ولی گاهی پیاده.",
+            "why": "sometimes = گاهی."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "She ___ eats meat, but not often.",
+            "options": [
+              {
+                "text": "sometimes",
+                "ok": true,
+                "why": "sometimes = گاهی."
+              },
+              {
+                "text": "sometime",
+                "ok": false,
+                "why": "sometime یعنی یک وقتی."
+              },
+              {
+                "text": "some times",
+                "ok": false,
+                "why": "جدا نوشته معنی دیگری دارد."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "گاهی دیر می‌خوابم.",
+            "frame": "I ___ go to bed late.",
+            "answer": "sometimes",
+            "accept": [],
+            "why": "sometimes + فعل."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:spend",
+    "headword": "spend",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:spend",
+        "pos": "verb",
+        "gloss": "خرج کردن (پول)",
+        "meaning": "پول دادن برای خریدِ چیزی. بی‌قاعده: spent، spent. spend + پول + on + چیز.",
+        "grammar": [
+          {
+            "pattern": "spend + money + on + thing",
+            "note": "پول را خرجِ … کردن"
+          },
+          {
+            "pattern": "spend – spent – spent",
+            "note": "بی‌قاعده"
+          },
+          {
+            "pattern": "spend a lot / too much",
+            "note": "زیاد خرج کردن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I spent all my money on books.",
+            "fa": "همهٔ پولم را خرج کتاب کردم."
+          },
+          {
+            "en": "Try not to spend too much money.",
+            "fa": "سعی کن زیاد پول خرج نکنی."
+          }
+        ],
+        "collocations": [
+          "spend money",
+          "spend a lot",
+          "spend too much",
+          "spend on"
+        ],
+        "mistake": {
+          "wrong": "I spent a lot of money for clothes.",
+          "right": "I spent a lot of money on clothes.",
+          "why": "spend … on، نه for."
+        },
+        "pronunciation": {
+          "gb": "/spend/",
+          "us": "/spend/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "How much money did you ___ at the shops?",
+            "answer": "spend",
+            "accept": [],
+            "fa": "در مغازه‌ها چقدر پول خرج کردی؟",
+            "why": "did + spend."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "He spends a lot of money ___ games.",
+            "options": [
+              {
+                "text": "on",
+                "ok": true,
+                "why": "spend … on."
+              },
+              {
+                "text": "of",
+                "ok": false,
+                "why": "spend … of غلط است."
+              },
+              {
+                "text": "to",
+                "ok": false,
+                "why": "spend … to غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "دیروز زیاد پول خرج کردم.",
+            "frame": "I ___ a lot of money yesterday.",
+            "answer": "spent",
+            "accept": [],
+            "why": "گذشتهٔ spend: spent."
+          }
+        ]
+      },
+      {
+        "id": "lex:A1:spend#time",
+        "pos": "verb",
+        "gloss": "گذراندن (وقت)",
+        "meaning": "زمانی را جایی یا با کسی گذراندن. spend + زمان + -ing؛ spend time with + شخص.",
+        "grammar": [
+          {
+            "pattern": "spend + time + with + person",
+            "note": "با کسی وقت گذراندن"
+          },
+          {
+            "pattern": "spend + time + -ing",
+            "note": "spend hours reading"
+          },
+          {
+            "pattern": "spend the weekend / a holiday",
+            "note": "آخر هفته / تعطیلات را گذراندن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I like to spend time with my family.",
+            "fa": "دوست دارم با خانواده‌ام وقت بگذرانم."
+          },
+          {
+            "en": "We spent the summer at my grandmother's house.",
+            "fa": "تابستان را در خانهٔ مادربزرگم گذراندیم."
+          }
+        ],
+        "collocations": [
+          "spend time",
+          "spend the day",
+          "spend the weekend",
+          "spend hours"
+        ],
+        "mistake": {
+          "wrong": "I spent two hours to do my homework.",
+          "right": "I spent two hours doing my homework.",
+          "why": "spend + زمان + -ing."
+        },
+        "pronunciation": {
+          "gb": "/spend/",
+          "us": "/spend/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Where did you ___ your holiday?",
+            "answer": "spend",
+            "accept": [],
+            "fa": "تعطیلاتت را کجا گذراندی؟",
+            "why": "spend a holiday."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "She spends hours ___ on the phone.",
+            "options": [
+              {
+                "text": "talking",
+                "ok": true,
+                "why": "spend + زمان + -ing."
+              },
+              {
+                "text": "to talk",
+                "ok": false,
+                "why": "بعد از spend + زمان، to نمی‌آید."
+              },
+              {
+                "text": "talk",
+                "ok": false,
+                "why": "شکل -ing لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "آخر هفته را در شمال گذراندیم.",
+            "frame": "We ___ the weekend in the north.",
+            "answer": "spent",
+            "accept": [],
+            "why": "گذشتهٔ spend: spent."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:spring",
+    "headword": "spring",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:spring",
+        "pos": "noun",
+        "gloss": "بهار",
+        "meaning": "فصلِ بینِ زمستان و تابستان. in spring یا in the spring؛ با next و last، in نمی‌آید.",
+        "grammar": [
+          {
+            "pattern": "in (the) spring",
+            "note": "در بهار"
+          },
+          {
+            "pattern": "spring + noun",
+            "note": "spring flowers"
+          },
+          {
+            "pattern": "last / next spring",
+            "note": "بهار گذشته / آینده؛ بدون in"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The trees are full of flowers in spring.",
+            "fa": "در بهار درخت‌ها پر از شکوفه‌اند."
+          },
+          {
+            "en": "The weather is lovely in the spring.",
+            "fa": "هوا در بهار عالی است."
+          }
+        ],
+        "collocations": [
+          "in spring",
+          "early spring",
+          "last spring",
+          "spring flowers"
+        ],
+        "mistake": {
+          "wrong": "I'll see you in next spring.",
+          "right": "I'll see you next spring.",
+          "why": "با next و last، in نمی‌آید."
+        },
+        "pronunciation": {
+          "gb": "/sprɪŋ/",
+          "us": "/sprɪŋ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Winter, ___, summer, autumn.",
+            "answer": "spring",
+            "accept": [],
+            "fa": "زمستان، بهار، تابستان، پاییز.",
+            "why": "فصلِ بعد از winter: spring."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Many flowers open ___ spring.",
+            "options": [
+              {
+                "text": "in",
+                "ok": true,
+                "why": "با فصل‌ها in می‌آید."
+              },
+              {
+                "text": "on",
+                "ok": false,
+                "why": "on برای روزهاست."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "at spring غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "بهار را دوست دارم.",
+            "frame": "I love ___.",
+            "answer": "spring",
+            "accept": [],
+            "why": "spring = بهار."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:stand",
+    "headword": "stand",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:stand",
+        "pos": "verb",
+        "gloss": "ایستادن",
+        "meaning": "روی پاها بودن، نه نشسته. بی‌قاعده: stood، stood. stand up = بلند شدن.",
+        "grammar": [
+          {
+            "pattern": "stand – stood – stood",
+            "note": "بی‌قاعده"
+          },
+          {
+            "pattern": "stand up",
+            "note": "بلند شدن"
+          },
+          {
+            "pattern": "stand + place",
+            "note": "stand near the door"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Please stand up when the teacher comes in.",
+            "fa": "وقتی معلم وارد می‌شود، لطفاً بلند شوید."
+          },
+          {
+            "en": "We stood in the rain for an hour.",
+            "fa": "یک ساعت زیر باران ایستادیم."
+          }
+        ],
+        "collocations": [
+          "stand up",
+          "stand still",
+          "stand in line",
+          "stand near"
+        ],
+        "mistake": {
+          "wrong": "He standed by the door.",
+          "right": "He stood by the door.",
+          "why": "stand بی‌قاعده است: stood."
+        },
+        "pronunciation": {
+          "gb": "/stænd/",
+          "us": "/stænd/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "There were no chairs, so we had to ___.",
+            "answer": "stand",
+            "accept": [],
+            "fa": "صندلی نبود، برای همین مجبور شدیم بایستیم.",
+            "why": "had to + stand."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Yesterday I ___ at the bus stop for half an hour.",
+            "options": [
+              {
+                "text": "stood",
+                "ok": true,
+                "why": "گذشتهٔ stand: stood."
+              },
+              {
+                "text": "standed",
+                "ok": false,
+                "why": "stand بی‌قاعده است."
+              },
+              {
+                "text": "stand",
+                "ok": false,
+                "why": "yesterday فعل گذشته می‌خواهد."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "لطفاً بلند شو.",
+            "frame": "Please ___ up.",
+            "answer": "stand",
+            "accept": [
+              "get"
+            ],
+            "why": "stand up."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:stop",
+    "headword": "stop",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:stop",
+        "pos": "verb",
+        "gloss": "ایستادن؛ متوقف کردن",
+        "meaning": "حرکت نکردن یا کاری را ادامه ندادن. stop + -ing = دست کشیدن از کاری؛ stop to + فعل = ایستادن برای کارِ دیگری. گذشته: stopped، با دو p.",
+        "grammar": [
+          {
+            "pattern": "stop + -ing",
+            "note": "Stop talking."
+          },
+          {
+            "pattern": "stop to + verb",
+            "note": "We stopped to eat."
+          },
+          {
+            "pattern": "stop – stopped",
+            "note": "با دو p"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The bus stops in front of our house.",
+            "fa": "اتوبوس جلوی خانهٔ ما می‌ایستد."
+          },
+          {
+            "en": "Please stop talking and listen.",
+            "fa": "لطفاً حرف نزنید و گوش کنید."
+          }
+        ],
+        "collocations": [
+          "stop talking",
+          "stop the car",
+          "stop for lunch",
+          "stop working"
+        ],
+        "mistake": {
+          "wrong": "He stoped the car.",
+          "right": "He stopped the car.",
+          "why": "در گذشته p دو تا می‌شود: stopped."
+        },
+        "pronunciation": {
+          "gb": "/stɒp/",
+          "us": "/stɑːp/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "It ___ raining, so we went out.",
+            "answer": "stopped",
+            "accept": [],
+            "fa": "باران بند آمد، پس بیرون رفتیم.",
+            "why": "گذشته: stopped."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "The baby didn't stop ___ all night.",
+            "options": [
+              {
+                "text": "crying",
+                "ok": true,
+                "why": "stop + -ing."
+              },
+              {
+                "text": "cried",
+                "ok": false,
+                "why": "بعد از stop، -ing لازم است."
+              },
+              {
+                "text": "cry",
+                "ok": false,
+                "why": "بعد از stop، -ing لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "لطفاً دیگر گوشی‌ات را نگاه نکن.",
+            "frame": "Please ___ looking at your phone.",
+            "answer": "stop",
+            "accept": [],
+            "why": "stop + -ing."
+          }
+        ]
+      },
+      {
+        "id": "lex:A1:stop#noun",
+        "pos": "noun",
+        "gloss": "ایستگاه (اتوبوس)",
+        "meaning": "جایی که اتوبوس یا قطار برای سوار و پیاده کردنِ مسافر می‌ایستد: a bus stop. at the stop = در ایستگاه.",
+        "grammar": [
+          {
+            "pattern": "a bus stop",
+            "note": "ایستگاه اتوبوس"
+          },
+          {
+            "pattern": "at the stop",
+            "note": "در ایستگاه"
+          },
+          {
+            "pattern": "the next stop",
+            "note": "ایستگاه بعدی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Wait for me at the bus stop.",
+            "fa": "در ایستگاه اتوبوس منتظرم بمان."
+          },
+          {
+            "en": "I get off at the next stop.",
+            "fa": "در ایستگاه بعدی پیاده می‌شوم."
+          }
+        ],
+        "collocations": [
+          "a bus stop",
+          "the next stop",
+          "the last stop",
+          "get off at the stop"
+        ],
+        "mistake": {
+          "wrong": "Get off on the next stop.",
+          "right": "Get off at the next stop.",
+          "why": "در ایستگاه: at."
+        },
+        "pronunciation": {
+          "gb": "/stɒp/",
+          "us": "/stɑːp/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Is there a bus ___ near here?",
+            "answer": "stop",
+            "accept": [
+              "station"
+            ],
+            "fa": "این نزدیکی ایستگاه اتوبوس هست؟",
+            "why": "a bus stop."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "This is my ___. I'm getting off.",
+            "options": [
+              {
+                "text": "stop",
+                "ok": true,
+                "why": "my stop = ایستگاهِ من."
+              },
+              {
+                "text": "stopping",
+                "ok": false,
+                "why": "stopping فعل است."
+              },
+              {
+                "text": "stops",
+                "ok": false,
+                "why": "This is my … مفرد می‌خواهد."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "ایستگاه بعدی کجاست؟",
+            "frame": "Where's the next ___?",
+            "answer": "stop",
+            "accept": [],
+            "why": "the next stop."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:tall",
+    "headword": "tall",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:tall",
+        "pos": "adjective",
+        "gloss": "قدبلند؛ بلند",
+        "meaning": "برای آدم، درخت و ساختمانِ بلند. برای دیوار، کوه و قیمت high می‌گوییم. How tall are you? = قدت چقدر است؟",
+        "grammar": [
+          {
+            "pattern": "tall + person / tree / building",
+            "note": "آدم / درخت / ساختمانِ بلند"
+          },
+          {
+            "pattern": "How tall …?",
+            "note": "قدِ … چقدر است؟"
+          },
+          {
+            "pattern": "tall / high",
+            "note": "high برای دیوار، کوه و قیمت"
+          }
+        ],
+        "examples": [
+          {
+            "en": "My brother is very tall.",
+            "fa": "برادرم خیلی قدبلند است."
+          },
+          {
+            "en": "There are many tall buildings in the city centre.",
+            "fa": "در مرکز شهر ساختمان‌های بلند زیادی هست."
+          }
+        ],
+        "collocations": [
+          "a tall man",
+          "a tall tree",
+          "a tall building",
+          "very tall"
+        ],
+        "mistake": {
+          "wrong": "He is a high man.",
+          "right": "He is a tall man.",
+          "why": "برای قدِ آدم tall می‌گوییم."
+        },
+        "pronunciation": {
+          "gb": "/tɔːl/",
+          "us": "/tɔːl/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "She's only ten, but she's very ___ for her age.",
+            "answer": "tall",
+            "accept": [],
+            "fa": "فقط ده سالش است، ولی برای سنش خیلی قدبلند است.",
+            "why": "tall = قدبلند."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How ___ are you? — I'm 1.80 metres.",
+            "options": [
+              {
+                "text": "tall",
+                "ok": true,
+                "why": "قد: How tall."
+              },
+              {
+                "text": "high",
+                "ok": false,
+                "why": "برای قدِ آدم high نمی‌گوییم."
+              },
+              {
+                "text": "long",
+                "ok": false,
+                "why": "long برای طولِ چیزهاست."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "پدرم قدبلند است.",
+            "frame": "My father is ___.",
+            "answer": "tall",
+            "accept": [],
+            "why": "tall = قدبلند."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:television",
+    "headword": "television",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:television",
+        "pos": "noun",
+        "gloss": "تلویزیون",
+        "meaning": "دستگاهی برای دیدنِ برنامه‌ها، یا خودِ برنامه‌ها. در گفتار TV. on television = در تلویزیون؛ watch television بدون the.",
+        "grammar": [
+          {
+            "pattern": "watch television",
+            "note": "تلویزیون تماشا کردن؛ بدون the"
+          },
+          {
+            "pattern": "on television",
+            "note": "در تلویزیون"
+          },
+          {
+            "pattern": "television = TV",
+            "note": "هم‌معنی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "We watched a football match on television.",
+            "fa": "یک مسابقهٔ فوتبال در تلویزیون دیدیم."
+          },
+          {
+            "en": "Turn off the television, please.",
+            "fa": "لطفاً تلویزیون را خاموش کن."
+          }
+        ],
+        "collocations": [
+          "watch television",
+          "on television",
+          "a television programme",
+          "turn on the television"
+        ],
+        "mistake": {
+          "wrong": "I watched it in television.",
+          "right": "I watched it on television.",
+          "why": "در تلویزیون: on television."
+        },
+        "pronunciation": {
+          "gb": "/ˈtelɪvɪʒn/",
+          "us": "/ˈtelɪvɪʒn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "My children watch too much ___.",
+            "answer": "television",
+            "accept": [
+              "TV"
+            ],
+            "fa": "بچه‌هایم خیلی تلویزیون تماشا می‌کنند.",
+            "why": "watch television."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "What's ___ television tonight?",
+            "options": [
+              {
+                "text": "on",
+                "ok": true,
+                "why": "on television."
+              },
+              {
+                "text": "in",
+                "ok": false,
+                "why": "in television غلط است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "at television غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "تلویزیون را روشن کن.",
+            "frame": "Turn on the ___.",
+            "answer": "television",
+            "accept": [
+              "TV"
+            ],
+            "why": "turn on the television."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:terrible",
+    "headword": "terrible",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:terrible",
+        "pos": "adjective",
+        "gloss": "وحشتناک؛ افتضاح",
+        "meaning": "خیلی بد. خودش قوی است. بعد از feel و be صفت می‌آید: I feel terrible.",
+        "grammar": [
+          {
+            "pattern": "terrible + noun",
+            "note": "terrible weather"
+          },
+          {
+            "pattern": "feel terrible",
+            "note": "حالِ خیلی بدی داشتن"
+          },
+          {
+            "pattern": "terrible / terribly",
+            "note": "صفت / قید"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The food at that hotel was terrible.",
+            "fa": "غذای آن هتل افتضاح بود."
+          },
+          {
+            "en": "I feel terrible. I think I have a cold.",
+            "fa": "حالم خیلی بد است. فکر کنم سرما خورده‌ام."
+          }
+        ],
+        "collocations": [
+          "terrible weather",
+          "a terrible mistake",
+          "feel terrible",
+          "a terrible day"
+        ],
+        "mistake": {
+          "wrong": "I feel terribly.",
+          "right": "I feel terrible.",
+          "why": "بعد از feel صفت می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/ˈterəbl/",
+          "us": "/ˈterəbl/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "It rained all week. The weather was ___.",
+            "answer": "terrible",
+            "accept": [
+              "bad",
+              "awful",
+              "horrible"
+            ],
+            "fa": "تمام هفته باران بارید. هوا افتضاح بود.",
+            "why": "terrible = خیلی بد."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "The film was ___. I didn't like it at all.",
+            "options": [
+              {
+                "text": "terrible",
+                "ok": true,
+                "why": "بعد از was صفت."
+              },
+              {
+                "text": "terribly",
+                "ok": false,
+                "why": "بعد از was قید نمی‌آید."
+              },
+              {
+                "text": "terribles",
+                "ok": false,
+                "why": "صفت s نمی‌گیرد."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "اشتباه وحشتناکی کردم.",
+            "frame": "I made a ___ mistake.",
+            "answer": "terrible",
+            "accept": [
+              "bad",
+              "big",
+              "awful",
+              "horrible"
+            ],
+            "why": "a terrible mistake."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:text",
+    "headword": "text",
+    "goals": [
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:text",
+        "pos": "noun",
+        "gloss": "متن",
+        "meaning": "نوشته‌ای که می‌خوانیم: Read the text and answer the questions. in the text = در متن.",
+        "grammar": [
+          {
+            "pattern": "read a text",
+            "note": "متن خواندن"
+          },
+          {
+            "pattern": "a short / long text",
+            "note": "متن کوتاه / بلند"
+          },
+          {
+            "pattern": "in the text",
+            "note": "در متن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Read the text and answer the questions.",
+            "fa": "متن را بخوان و به سؤال‌ها جواب بده."
+          },
+          {
+            "en": "The text is about a family in London.",
+            "fa": "متن دربارهٔ خانواده‌ای در لندن است."
+          }
+        ],
+        "collocations": [
+          "read the text",
+          "a short text",
+          "in the text",
+          "the text below"
+        ],
+        "mistake": {
+          "wrong": "I read it on the text.",
+          "right": "I read it in the text.",
+          "why": "در متن: in the text."
+        },
+        "pronunciation": {
+          "gb": "/tekst/",
+          "us": "/tekst/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Find three new words in the ___.",
+            "answer": "text",
+            "accept": [
+              "story"
+            ],
+            "fa": "سه کلمهٔ جدید در متن پیدا کن.",
+            "why": "in the text."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "The answer is ___ the text.",
+            "options": [
+              {
+                "text": "in",
+                "ok": true,
+                "why": "in the text."
+              },
+              {
+                "text": "on",
+                "ok": false,
+                "why": "on the text غلط است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "at the text غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "این متن خیلی سخت است.",
+            "frame": "This ___ is very difficult.",
+            "answer": "text",
+            "accept": [],
+            "why": "text = متن."
+          }
+        ]
+      },
+      {
+        "id": "lex:A1:text#message",
+        "pos": "noun",
+        "gloss": "پیامک",
+        "meaning": "پیامی که با گوشی می‌فرستیم: send a text. فعل هم هست: text someone = به کسی پیامک دادن، بدون to.",
+        "grammar": [
+          {
+            "pattern": "send / get a text",
+            "note": "پیامک فرستادن / گرفتن"
+          },
+          {
+            "pattern": "a text from + person",
+            "note": "پیامکی از …"
+          },
+          {
+            "pattern": "text + person (verb)",
+            "note": "Text me later."
+          }
+        ],
+        "examples": [
+          {
+            "en": "I got a text from my sister.",
+            "fa": "از خواهرم پیامک گرفتم."
+          },
+          {
+            "en": "Send me a text when you arrive.",
+            "fa": "وقتی رسیدی برایم پیامک بفرست."
+          }
+        ],
+        "collocations": [
+          "send a text",
+          "get a text",
+          "a text message",
+          "read a text"
+        ],
+        "mistake": {
+          "wrong": "Text to me later.",
+          "right": "Text me later.",
+          "why": "فعلِ text بدون to می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/tekst/",
+          "us": "/tekst/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I'll send you a ___ when the film finishes.",
+            "answer": "text",
+            "accept": [
+              "message"
+            ],
+            "fa": "وقتی فیلم تمام شد برایت پیامک می‌فرستم.",
+            "why": "send a text."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "I got a ___ from my mum: 'Come home now!'",
+            "options": [
+              {
+                "text": "text",
+                "ok": true,
+                "why": "a text = یک پیامک."
+              },
+              {
+                "text": "texts",
+                "ok": false,
+                "why": "بعد از a اسم مفرد."
+              },
+              {
+                "text": "texting",
+                "ok": false,
+                "why": "a texting غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "وقتی رسیدی به من پیام بده.",
+            "frame": "Please ___ me when you get there.",
+            "answer": "text",
+            "accept": [
+              "call",
+              "message"
+            ],
+            "why": "text + شخص."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:theatre",
+    "headword": "theatre",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:theatre",
+        "pos": "noun",
+        "gloss": "تئاتر",
+        "meaning": "ساختمانی که در آن نمایش اجرا می‌شود. go to the theatre = به تئاتر رفتن. املای آمریکایی: theater.",
+        "grammar": [
+          {
+            "pattern": "go to the theatre",
+            "note": "به تئاتر رفتن"
+          },
+          {
+            "pattern": "at the theatre",
+            "note": "در تئاتر"
+          },
+          {
+            "pattern": "theatre / theater",
+            "note": "بریتانیایی / آمریکایی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "We went to the theatre last night.",
+            "fa": "دیشب به تئاتر رفتیم."
+          },
+          {
+            "en": "There's a new play at the city theatre.",
+            "fa": "در تئاتر شهر نمایش جدیدی هست."
+          }
+        ],
+        "collocations": [
+          "go to the theatre",
+          "a theatre ticket",
+          "the city theatre",
+          "at the theatre"
+        ],
+        "mistake": {
+          "wrong": "We went to theatre.",
+          "right": "We went to the theatre.",
+          "why": "go to the theatre با the."
+        },
+        "pronunciation": {
+          "gb": "/ˈθɪətə/",
+          "us": "/ˈθiːətər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I love plays, so I often go to the ___.",
+            "answer": "theatre",
+            "accept": [
+              "theater"
+            ],
+            "fa": "نمایش دوست دارم، برای همین زیاد به تئاتر می‌روم.",
+            "why": "go to the theatre."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Let's meet ___ the theatre at seven.",
+            "options": [
+              {
+                "text": "at",
+                "ok": true,
+                "why": "at the theatre."
+              },
+              {
+                "text": "on",
+                "ok": false,
+                "why": "on the theatre غلط است."
+              },
+              {
+                "text": "to",
+                "ok": false,
+                "why": "meet to the theatre غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "تئاتر رفتن را دوست دارم.",
+            "frame": "I like going to the ___.",
+            "answer": "theatre",
+            "accept": [
+              "theater"
+            ],
+            "why": "going to the theatre."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:thirty",
+    "headword": "thirty",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:thirty",
+        "pos": "number",
+        "gloss": "سی",
+        "meaning": "عدد ۳۰. thirteen = ۱۳ (تکیه روی بخش دوم)؛ thirty = ۳۰ (تکیه روی بخش اول). thirty-one, thirty-two … با خط تیره.",
+        "grammar": [
+          {
+            "pattern": "thirty + plural noun",
+            "note": "thirty days"
+          },
+          {
+            "pattern": "thirty-one, thirty-two …",
+            "note": "با خط تیره"
+          },
+          {
+            "pattern": "thirty / thirteen",
+            "note": "۳۰ / ۱۳"
+          }
+        ],
+        "examples": [
+          {
+            "en": "My father is thirty-five years old.",
+            "fa": "پدرم سی‌وپنج سال دارد."
+          },
+          {
+            "en": "There are thirty students in my class.",
+            "fa": "در کلاسم سی دانش‌آموز هست."
+          }
+        ],
+        "collocations": [
+          "thirty minutes",
+          "thirty years old",
+          "thirty-one",
+          "about thirty"
+        ],
+        "mistake": {
+          "wrong": "He is thirty five.",
+          "right": "He is thirty-five.",
+          "why": "عددهای دوبخشی با خط تیره نوشته می‌شوند."
+        },
+        "pronunciation": {
+          "gb": "/ˈθɜːti/",
+          "us": "/ˈθɜːrti/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Ten, twenty, ___, forty.",
+            "answer": "thirty",
+            "accept": [
+              "30"
+            ],
+            "fa": "ده، بیست، سی، چهل.",
+            "why": "۳۰ = thirty."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How do you write 30 in words?",
+            "options": [
+              {
+                "text": "thirty",
+                "ok": true,
+                "why": "۳۰ = thirty."
+              },
+              {
+                "text": "thirteen",
+                "ok": false,
+                "why": "thirteen = ۱۳."
+              },
+              {
+                "text": "threety",
+                "ok": false,
+                "why": "املای درست: thirty."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "سی دقیقه منتظر ماندم.",
+            "frame": "I waited ___ minutes.",
+            "answer": "thirty",
+            "accept": [
+              "30"
+            ],
+            "why": "thirty = سی."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:thousand",
+    "headword": "thousand",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:thousand",
+        "pos": "number",
+        "gloss": "هزار",
+        "meaning": "عدد ۱٬۰۰۰. بعد از عدد s نمی‌گیرد: two thousand. thousands of = هزاران.",
+        "grammar": [
+          {
+            "pattern": "number + thousand",
+            "note": "two thousand"
+          },
+          {
+            "pattern": "thousands of + noun",
+            "note": "thousands of people"
+          },
+          {
+            "pattern": "a thousand",
+            "note": "یک هزار"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The city has about fifty thousand people.",
+            "fa": "شهر حدود پنجاه هزار نفر جمعیت دارد."
+          },
+          {
+            "en": "Thousands of people came to the concert.",
+            "fa": "هزاران نفر به کنسرت آمدند."
+          }
+        ],
+        "collocations": [
+          "a thousand",
+          "two thousand",
+          "thousands of",
+          "a thousand years"
+        ],
+        "mistake": {
+          "wrong": "Three thousands people live here.",
+          "right": "Three thousand people live here.",
+          "why": "بعد از عدد، thousand بدون s است."
+        },
+        "pronunciation": {
+          "gb": "/ˈθaʊznd/",
+          "us": "/ˈθaʊznd/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "One ___ is 1,000.",
+            "answer": "thousand",
+            "accept": [],
+            "fa": "یک هزار یعنی ۱٬۰۰۰.",
+            "why": "thousand = هزار."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "This phone costs two ___ dollars.",
+            "options": [
+              {
+                "text": "thousand",
+                "ok": true,
+                "why": "بعد از عدد: thousand بدون s."
+              },
+              {
+                "text": "thousands",
+                "ok": false,
+                "why": "بعد از two، thousand s نمی‌گیرد."
+              },
+              {
+                "text": "thousands of",
+                "ok": false,
+                "why": "two thousands of غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "هزاران پرنده آنجا هستند.",
+            "frame": "There are ___ of birds there.",
+            "answer": "thousands",
+            "accept": [],
+            "why": "thousands of."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:true",
+    "headword": "true",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:true",
+        "pos": "adjective",
+        "gloss": "درست؛ واقعی",
+        "meaning": "درست، نه غلط؛ یا واقعی، نه خیالی: a true story. truth = حقیقت (اسم).",
+        "grammar": [
+          {
+            "pattern": "be true",
+            "note": "درست بودن"
+          },
+          {
+            "pattern": "a true story",
+            "note": "داستان واقعی"
+          },
+          {
+            "pattern": "true or false",
+            "note": "درست یا غلط"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Is it true that you're moving to Canada?",
+            "fa": "راست است که داری به کانادا می‌روی؟"
+          },
+          {
+            "en": "The film tells a true story.",
+            "fa": "این فیلم یک داستان واقعی را تعریف می‌کند."
+          }
+        ],
+        "collocations": [
+          "a true story",
+          "true or false",
+          "that's true",
+          "come true"
+        ],
+        "mistake": {
+          "wrong": "It's truth.",
+          "right": "It's true.",
+          "why": "صفت: true؛ truth اسم است."
+        },
+        "pronunciation": {
+          "gb": "/truː/",
+          "us": "/truː/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "'Water is wet.' — Yes, that's ___.",
+            "answer": "true",
+            "accept": [
+              "right",
+              "correct"
+            ],
+            "fa": "«آب خیس است.» — بله، درست است.",
+            "why": "that's true."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "I can't believe it! Is it ___?",
+            "options": [
+              {
+                "text": "true",
+                "ok": true,
+                "why": "بعد از is صفت: true."
+              },
+              {
+                "text": "truth",
+                "ok": false,
+                "why": "truth اسم است."
+              },
+              {
+                "text": "truly",
+                "ok": false,
+                "why": "truly قید است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "آن داستان واقعی است.",
+            "frame": "That story is ___.",
+            "answer": "true",
+            "accept": [],
+            "why": "true = واقعی."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:twice",
+    "headword": "twice",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:twice",
+        "pos": "adverb",
+        "gloss": "دو بار",
+        "meaning": "دو بار. once = یک بار؛ three times = سه بار. twice a week = هفته‌ای دو بار، بدون in.",
+        "grammar": [
+          {
+            "pattern": "twice a day / week",
+            "note": "روزی / هفته‌ای دو بار"
+          },
+          {
+            "pattern": "twice as + adjective",
+            "note": "twice as big = دو برابر بزرگ"
+          },
+          {
+            "pattern": "once, twice, three times",
+            "note": "یک، دو، سه بار"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I go to the gym twice a week.",
+            "fa": "هفته‌ای دو بار به باشگاه می‌روم."
+          },
+          {
+            "en": "I've seen this film twice.",
+            "fa": "این فیلم را دو بار دیده‌ام."
+          }
+        ],
+        "collocations": [
+          "twice a week",
+          "twice a day",
+          "once or twice",
+          "twice as much"
+        ],
+        "mistake": {
+          "wrong": "I brush my teeth twice in a day.",
+          "right": "I brush my teeth twice a day.",
+          "why": "بار در روز: twice a day، بدون in."
+        },
+        "pronunciation": {
+          "gb": "/twaɪs/",
+          "us": "/twaɪs/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I water the plants ___ a week, on Mondays and Thursdays.",
+            "answer": "twice",
+            "accept": [],
+            "fa": "هفته‌ای دو بار، دوشنبه‌ها و پنج‌شنبه‌ها، به گیاه‌ها آب می‌دهم.",
+            "why": "دو روز در هفته: twice a week."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How often do you eat fish? — ___ a week.",
+            "options": [
+              {
+                "text": "Twice",
+                "ok": true,
+                "why": "دو بار: twice."
+              },
+              {
+                "text": "Two",
+                "ok": false,
+                "why": "two a week غلط است."
+              },
+              {
+                "text": "Second",
+                "ok": false,
+                "why": "second یعنی دوم."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "دو بار به او زنگ زدم.",
+            "frame": "I called her ___.",
+            "answer": "twice",
+            "accept": [],
+            "why": "twice = دو بار."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:visit",
+    "headword": "visit",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:visit",
+        "pos": "verb",
+        "gloss": "دیدن کردن؛ بازدید کردن",
+        "meaning": "به دیدنِ کسی یا جایی رفتن. visit + شخص یا جا، بدون to. visitor = بازدیدکننده.",
+        "grammar": [
+          {
+            "pattern": "visit + person / place",
+            "note": "visit my aunt"
+          },
+          {
+            "pattern": "visit – visited",
+            "note": "باقاعده"
+          },
+          {
+            "pattern": "visitor",
+            "note": "بازدیدکننده"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I want to visit Japan one day.",
+            "fa": "می‌خواهم یک روز به ژاپن بروم."
+          },
+          {
+            "en": "She visited her aunt in hospital.",
+            "fa": "او به عیادت خاله‌اش در بیمارستان رفت."
+          }
+        ],
+        "collocations": [
+          "visit a friend",
+          "visit a museum",
+          "visit a country",
+          "come and visit"
+        ],
+        "mistake": {
+          "wrong": "I visited to my uncle.",
+          "right": "I visited my uncle.",
+          "why": "بعد از visit، to نمی‌آید."
+        },
+        "pronunciation": {
+          "gb": "/ˈvɪzɪt/",
+          "us": "/ˈvɪzɪt/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "When you come to Tehran, please ___ us.",
+            "answer": "visit",
+            "accept": [],
+            "fa": "وقتی به تهران آمدی، لطفاً به دیدن ما بیا.",
+            "why": "visit + شخص."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Every summer we visit ___.",
+            "options": [
+              {
+                "text": "my grandparents",
+                "ok": true,
+                "why": "visit + شخص، بدون حرف اضافه."
+              },
+              {
+                "text": "to my grandparents",
+                "ok": false,
+                "why": "visit to غلط است."
+              },
+              {
+                "text": "at my grandparents",
+                "ok": false,
+                "why": "visit at غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "دیروز به دیدن دوستم رفتم.",
+            "frame": "Yesterday I ___ my friend.",
+            "answer": "visited",
+            "accept": [],
+            "why": "گذشته: visited."
+          }
+        ]
+      },
+      {
+        "id": "lex:A1:visit#noun",
+        "pos": "noun",
+        "gloss": "دیدار؛ بازدید",
+        "meaning": "رفتن به دیدنِ کسی یا جایی: a visit to the museum. on a visit = در سفر یا دیداری کوتاه.",
+        "grammar": [
+          {
+            "pattern": "a visit to + place",
+            "note": "بازدیدی از …"
+          },
+          {
+            "pattern": "on a visit",
+            "note": "برای دیدار"
+          },
+          {
+            "pattern": "a short / long visit",
+            "note": "دیدار کوتاه / طولانی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Our visit to the museum was very interesting.",
+            "fa": "بازدیدمان از موزه خیلی جالب بود."
+          },
+          {
+            "en": "My aunt is here on a short visit.",
+            "fa": "خاله‌ام برای دیدارِ کوتاهی اینجاست."
+          }
+        ],
+        "collocations": [
+          "a short visit",
+          "a visit to",
+          "first visit",
+          "on a visit"
+        ],
+        "mistake": {
+          "wrong": "Our visit of the museum was great.",
+          "right": "Our visit to the museum was great.",
+          "why": "a visit to، نه of."
+        },
+        "pronunciation": {
+          "gb": "/ˈvɪzɪt/",
+          "us": "/ˈvɪzɪt/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "This is my first ___ to London.",
+            "answer": "visit",
+            "accept": [
+              "trip"
+            ],
+            "fa": "این اولین سفرم به لندن است.",
+            "why": "a visit to."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "They came ___ a visit last month.",
+            "options": [
+              {
+                "text": "for",
+                "ok": true,
+                "why": "come for a visit."
+              },
+              {
+                "text": "to",
+                "ok": false,
+                "why": "come to a visit غلط است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "come at a visit غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "دیدارت کوتاه بود.",
+            "frame": "Your ___ was short.",
+            "answer": "visit",
+            "accept": [],
+            "why": "visit = دیدار."
+          }
+        ]
+      }
+    ]
   }
 ]
