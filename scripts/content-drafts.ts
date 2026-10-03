@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { entry, type Entry, type Sense } from "../src/lib/learn/content.ts";
+import { entry, headwordOf, type Entry, type Sense } from "../src/lib/learn/content.ts";
 import { batchOf as plannedBatches, isLevel, LEVELS, levelOfId, planOf, read, ROOT, rowsOf, slugOf, type Level, type PlanItem, type Row } from "./catalogue.ts";
 
 /**
@@ -75,8 +75,7 @@ function scaffold(row: Row, item: PlanItem) {
   const ipa = row.ipa ?? "";
   return {
     id: row.id,
-    // The dataset numbers homographs (long¹, can²); the headword is shown and spoken without the number.
-    headword: row.w.replace(/[¹²³⁴⁵⁶⁷⁸⁹⁰]+$/u, ""),
+    headword: headwordOf(row.w),
     goals: ["general"],
     senses: kinds.map((pos, index) => ({
       id: index === 0 ? row.id : `${row.id}#${pos}`,

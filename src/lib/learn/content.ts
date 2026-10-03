@@ -120,6 +120,18 @@ export const sense = z.object({
   check: z.array(checkItem).min(2),
 });
 
+/**
+ * The headword as learners see and hear it. The dataset numbers homographs
+ * and qualifies senses (last¹ (final), lie² (tell a lie), bank (money)); an
+ * enhanced entry teaches one word, so both are dropped.
+ */
+export function headwordOf(dataset: string): string {
+  return dataset
+    .replace(/\s*\([^)]*\)\s*$/u, "")
+    .replace(/[¹²³⁴⁵⁶⁷⁸⁹⁰]+$/u, "")
+    .trim();
+}
+
 export const entry = z.object({
   id: text.regex(/^lex:(A1|A2|B1|B2|B2x|C1):[a-z0-9-]+$/),
   headword: text,
