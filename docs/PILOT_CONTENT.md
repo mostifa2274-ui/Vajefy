@@ -18,7 +18,7 @@ measures. The rest of A1 follows in batches, as fast as editorial review allows
 | File | Contents |
 |---|---|
 | `entries/1-function.json` … `4-ambiguous.json` | The pilot: 150 entries, 193 senses, one file per pilot group |
-| `entries/<LEVEL>-batch-NN.json` | Later batches, added by `content:promote`: `A1-batch-02.json`, `A1-batch-03.json` and `A1-batch-04.json` (100 entries each; 120, 119 and 112 senses) |
+| `entries/<LEVEL>-batch-NN.json` | Later batches, added by `content:promote`: `A1-batch-02.json` to `A1-batch-05.json` (100 entries each; 120, 119, 112 and 104 senses) |
 | `contrasts.json` | 16 comparison lessons for words learners confuse (say/tell, bring/take, a/an/the …) |
 | `scenes.json` | 14 short dialogues and passages that reuse learned words in a new situation |
 | `review.json` | The editorial ledger: one review record per entry (created by the first approval) |
@@ -65,7 +65,7 @@ reviewed again. Unreleased content is still taught, with a visible
 **Draft: awaiting bilingual review** label on the card, the lesson and the Words
 page.
 
-All 450 entries (the pilot and A1 batches 2–4) are currently drafts. Their
+All 550 entries (the pilot and A1 batches 2–5) are currently drafts. Their
 content was drafted for review and has passed the automated checks, but no
 bilingual reviewer has approved it yet.
 
