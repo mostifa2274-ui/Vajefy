@@ -125,7 +125,10 @@ test("a save from a newer version is kept until the app updates", async ({ page 
   await expectAccessible(page);
   const copy = await download(page, page.getByRole("button", { name: "Download the saved copy", exact: true }));
   expect(copy.text).toBe(raw);
+  // Wait for the reload itself: the old page still shows the same title.
+  const reloaded = page.waitForEvent("load");
   await page.getByRole("button", { name: "Reload to update", exact: true }).click();
+  await reloaded;
   await expect(title).toBeVisible();
   expect(await stored(page)).toBe(raw);
   await page.getByRole("button", { name: "Continue with readable progress", exact: true }).click();

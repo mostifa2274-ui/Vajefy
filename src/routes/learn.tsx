@@ -5,7 +5,7 @@ import { Button, Num, PageHeader } from "@/components/ui";
 import { useFormat } from "@/lib/learn/format";
 import { useCopy } from "@/lib/learn/i18n";
 import { buildApplication, buildLesson, lessonSize, nextTargets, type LessonSession } from "@/lib/learn/lesson";
-import { introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
+import { introducible, introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
 import { resumable } from "@/lib/learn/session";
 import { dueIds, useProgress } from "@/lib/learn/store";
 
@@ -31,7 +31,7 @@ function LearnPage() {
   useEffect(() => {
     let alive = true;
     void loadPilot()
-      .then((loaded) => alive && setIndex(loaded))
+      .then((loaded) => alive && setIndex(introducible(loaded)))
       .catch(() => alive && setFailed(true));
     return () => {
       alive = false;

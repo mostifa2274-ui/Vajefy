@@ -23,6 +23,9 @@ throttled mid-range phone:
 The local Worker preview serves files uncompressed, while Cloudflare compresses
 them. The test therefore runs through a small gzip proxy
 (`tests/e2e/support/compressing-proxy.ts`), so transfer times match production.
+These tests form their own Playwright project, `performance`, which starts only
+after every other browser test has finished, so nothing else competes for the
+CPU while they measure.
 
 | Scenario | Checks |
 |---|---|

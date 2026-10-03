@@ -13,6 +13,12 @@ export default defineConfig({
     screenshot: "only-on-failure",
     serviceWorkers: "allow",
   },
+  projects: [
+    { name: "app", testIgnore: /performance\.spec\.ts/ },
+    // Timing budgets run alone, after everything else, so no other test
+    // competes for the CPU while they measure.
+    { name: "performance", testMatch: /performance\.spec\.ts/, dependencies: ["app"] },
+  ],
   webServer: {
     command: "npm run build && npm run preview -- --host 127.0.0.1",
     url: "http://127.0.0.1:8081",

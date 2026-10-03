@@ -45,8 +45,11 @@ export function orderForGoal<T>(targets: T[], goal: Goal | undefined, describe: 
     .map((item) => item.target);
 }
 
-/** Introduction order per goal, compiled to `public/data/pilot-order.json`. */
-export type PilotOrder = { version: string; order: Record<Goal, string[]> };
+/**
+ * Introduction order per goal, compiled to `public/data/pilot-order.json`,
+ * with the sense ids whose entries are released.
+ */
+export type PilotOrder = { version: string; order: Record<Goal, string[]>; released: string[] };
 
 const example = z.object({ en: text, fa });
 

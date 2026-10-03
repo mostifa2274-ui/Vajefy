@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
 import { advanceLesson, answerLesson, buildApplication, buildLesson, gradeTyped, lessonSize, nextTargets, resolveItem } from "./lesson";
-import { indexPilot, introductionOrder } from "./pilot";
+import { indexPilot, introducible, introductionOrder } from "./pilot";
 
 const index = indexPilot(JSON.parse(readFileSync("public/data/pilot-a1.json", "utf8")) as Pilot);
 let seed = 7;
@@ -89,4 +89,17 @@ test("the small introduction-order file matches the full pilot for every goal", 
       goal,
     );
   }
+});
+
+test("the released channel introduces only reviewed entries, but keeps every sense for existing cards", () => {
+  const releasedId = index.pilot.entries[0]!.id;
+  const pilot = { ...index.pilot, entries: index.pilot.entries.map((entry) => ({ ...entry, released: entry.id === releasedId })) };
+  const full = indexPilot(pilot);
+  const view = introducible(full, "released");
+  assert.ok(view.targets.length > 0);
+  assert.ok(view.targets.every((target) => target.entry.id === releasedId));
+  assert.deepEqual([...view.byEntry.keys()], [releasedId]);
+  assert.equal(view.bySense.size, full.bySense.size);
+  assert.ok(view.pilot.contrasts.every((contrast) => contrast.entries.every((id) => view.bySense.get(id)?.entry.released)));
+  assert.equal(introducible(full, "draft"), full);
 });

@@ -1,13 +1,17 @@
-# Pilot content and editorial workflow
+# Enhanced content and editorial workflow
 
-The enhanced A1 pilot teaches the 150 entries in `content/pilot-a1.json` at the
-level of individual senses. Its source lives in `content/pilot/`, and
-`npm run content:build` compiles it into `public/data/pilot-a1.json`, the file
-the app loads.
+Enhanced entries teach A1 vocabulary at the level of individual senses. The
+first 150 form the pilot (`content/pilot-a1.json`), which the pilot study
+measures. The rest of A1 follows in batches, as fast as editorial review allows
+([Expanding across A1](#expanding-across-a1)). The source lives in
+`content/pilot/`, and `npm run content:build` compiles it into
+`public/data/pilot-a1.json`, the file the app loads, and
+`public/data/pilot-order.json`, the introduction order Today reads.
 
 | File | Contents |
 |---|---|
-| `entries/1-function.json` … `4-ambiguous.json` | 150 entries, 193 senses, one file per pilot group |
+| `entries/1-function.json` … `4-ambiguous.json` | The pilot: 150 entries, 193 senses, one file per pilot group |
+| `entries/batch-NN.json` | Later batches, added by `content:promote` |
 | `contrasts.json` | 16 comparison lessons for words learners confuse (say/tell, bring/take, a/an/the …) |
 | `scenes.json` | 14 short dialogues and passages that reuse learned words in a new situation |
 | `review.json` | The editorial ledger: one review record per entry (created by the first approval) |
@@ -105,3 +109,76 @@ What reviewers check:
 - **Pronunciation:** the IPA matches each accent, the word clip and every example
   clip sound right, and the clips in `audio-report.json` for this entry have been
   heard and accepted or fixed.
+
+## Expanding across A1
+
+`content/a1-plan.json` places every one of the 900 A1 entries in one batch:
+the pilot first, then `batch-02` … `batch-09`, 100 entries each, in order of
+usefulness. Batches never reshuffle once written. `node scripts/plan-a1.mjs`
+appends any A1 entry that is new to the data, and CI checks the plan still
+covers A1 exactly. Each planned entry carries flags for the editor:
+
+| Flag | Meaning |
+|---|---|
+| `split-senses` | The dataset gives several parts of speech; probably several learning targets |
+| `also-B1` (etc.) | The same word is taught again at a higher level, usually with another meaning |
+| `irregular-verb` | Teach the irregular forms in the grammar notes and checks |
+| `several-forms` | The headword lists variants (`a, an`) |
+
+The workflow for a batch:
+
+1. **Scaffold.** `npm run content:scaffold -- --batch batch-02 --limit 20`
+   writes drafts to `content/drafts/batch-02/`. A draft is prefilled with the
+   headword, gloss, IPA and the dataset's example, starts one sense per part
+   of speech, and lists what is left to write. Drafts are not compiled.
+2. **Draft.** Fill in each draft. `npm run content:drafts` lists what each one
+   still needs, by the same schema the build uses.
+3. **Promote.** `npm run content:promote -- --entry lex:A1:her` validates the
+   whole entry, adds it to `content/pilot/entries/batch-02.json` and deletes
+   the draft.
+4. **Build and check.** `npm run content:build` compiles the content and runs
+   the authoring checks (below).
+5. **Record audio** ([AUDIO.md](AUDIO.md#regenerating)) and **review**
+   ([Reviewing](#reviewing)).
+
+`npm run content:status` shows each batch: drafts in progress, entries with
+content, released entries, approvals made stale by later edits, entries with
+complete audio and audio still to be heard. It also lists the next entries to
+draft.
+
+### Authoring checks
+
+`npm run content:lint` (part of `content:build`; errors fail CI) reads all
+enhanced content.
+
+| Check | Severity |
+|---|---|
+| Two options in a choice are the same | error |
+| A scene never uses one of its target words | error |
+| A writing task's model answer does not use a word it asks for | error |
+| Words above A2 in an example, a check or a scene line | warning |
+| Words not in the Oxford lists (names, *pizza*) | warning |
+| A scene where more than 5% of words are above A2 | warning |
+| A check that nearly repeats a teaching example (assessment needs new sentences) | warning |
+| A cloze whose answer already appears in its sentence | warning |
+| Accepted answers that repeat each other | warning |
+
+Words are matched to their dictionary form (*left* → *leave*, *children* →
+*child*, *don't* → *do*), and an entry's own headword is never flagged.
+Warnings are for an editor to judge: sometimes a B1 word is the natural one.
+
+### Releasing at the pace of review
+
+The app's build chooses which content learners meet, with
+`VITE_CONTENT_CHANNEL` (`src/lib/learn/channel.ts`):
+
+- `draft` (default): every entry with content, unreviewed ones labelled as
+  drafts. Use it for the pilot study and for reviewers.
+- `released`: only entries whose bilingual and pronunciation reviews are both
+  approved for their current content are introduced in lessons, counted on
+  Today and shown in detail on Words. Contrasts and scenes appear once all
+  their words are released. Cards a learner already has keep their content.
+
+A public deployment set to `released` therefore grows exactly as fast as
+entries are approved, with no other change.
+

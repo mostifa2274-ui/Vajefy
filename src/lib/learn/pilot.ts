@@ -1,5 +1,6 @@
 import type { Contrast, Entry, Goal, Pilot, PilotOrder, Scene, Sense, SenseAudio } from "./content";
 import { entryIdOf, orderForGoal } from "./content";
+import { CONTENT_CHANNEL, type Channel } from "./channel";
 import { loadJson } from "./load";
 
 export type PilotEntry = Pilot["entries"][number];
@@ -76,6 +77,26 @@ export function senseAudio(audio: Record<string, SenseAudio>, senseId: string, a
 
 export function pronunciationFor(sense: Sense, accent: "en-GB" | "en-US") {
   return accent === "en-US" ? sense.pronunciation.us : sense.pronunciation.gb;
+}
+
+/**
+ * The part of the pilot that may be introduced in this build's channel: new
+ * targets, Words-page detail, contrasts and scenes. Sense lookups stay
+ * complete, so cards a learner already has keep their content.
+ */
+export function introducible(index: PilotIndex, channel: Channel = CONTENT_CHANNEL): PilotIndex {
+  if (channel === "draft") return index;
+  const released = (senseId: string) => index.bySense.get(senseId)?.entry.released ?? false;
+  return {
+    ...index,
+    targets: index.targets.filter((target) => target.entry.released),
+    byEntry: new Map([...index.byEntry].filter(([, entry]) => entry.released)),
+    pilot: {
+      ...index.pilot,
+      contrasts: index.pilot.contrasts.filter((contrast) => contrast.entries.every(released)),
+      scenes: index.pilot.scenes.filter((scene) => scene.targets.every(released)),
+    },
+  };
 }
 
 /** Pilot targets in the order to introduce them for the learner's goal. */

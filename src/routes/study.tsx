@@ -8,7 +8,7 @@ import { loadMeta } from "@/lib/learn/load";
 import { resumable, startReview, type ReviewSession } from "@/lib/learn/session";
 import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
 import { loadJson } from "@/lib/learn/load";
-import { introductionOrder, loadPilot } from "@/lib/learn/pilot";
+import { introducible, introductionOrder, loadPilot } from "@/lib/learn/pilot";
 import { shuffle } from "@/lib/learn/text";
 import type { CardProg, LevelId, StudyFace } from "@/lib/learn/types";
 
@@ -38,7 +38,7 @@ async function newWords(
   const levelIds = order ?? shuffle([...faces.keys()].filter((id) => id.startsWith(`lex:${focus}:`) && !id.includes("#")));
   let excluded = new Set<string>();
   if (focus === "A1") {
-    const pilot = await loadPilot();
+    const pilot = introducible(await loadPilot());
     if (introductionOrder(pilot.targets, state.goal).some((target) => !known.has(target.sense.id))) {
       excluded = new Set(pilot.byEntry.keys());
     }

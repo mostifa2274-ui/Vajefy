@@ -88,6 +88,9 @@ chosen for. Phase 2 adds the content for each of these entries:
 An entry counts as *released* only when its editorial record shows completed
 bilingual review and approved pronunciation.
 
+The pilot stays these 150 entries even as enhanced content grows across A1 in
+later batches, so the study measures a fixed set.
+
 The content now exists for all 150 entries and is compiled from `content/pilot/`.
 None is released yet: every entry carries a visible draft label until a reviewer
 approves it. See [PILOT_CONTENT.md](PILOT_CONTENT.md) for the editorial workflow

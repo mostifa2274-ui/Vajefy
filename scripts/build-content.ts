@@ -37,8 +37,11 @@ export function versionOf(value: unknown): string {
   return createHash("sha256").update(stable(value)).digest("hex").slice(0, 12);
 }
 
+// The pilot study's 150 entries must all have content; any other A1 entry may
+// be added batch by batch, in the order of the expansion plan.
 const selection = read(path.join(ROOT, "content", "pilot-a1.json")) as { entries: { id: string; group: string }[] };
-const order = new Map(selection.entries.map((item, index) => [item.id, index]));
+const plan = read(path.join(ROOT, "content", "a1-plan.json")) as { batches: { id: string; entries: { id: string }[] }[] };
+const order = new Map(plan.batches.flatMap((batch) => batch.entries.map((item) => item.id)).map((id, index) => [id, index]));
 const lexA1 = new Map(
   (read(path.join(ROOT, "public", "data", "lex-a1.json")) as { id: string; w: string }[]).map((row) => [row.id, row]),
 );
@@ -64,7 +67,7 @@ const seenEntries = new Set<string>();
 for (const item of entries) {
   if (seenEntries.has(item.id)) failures.push(`${item.id}: duplicate entry`);
   seenEntries.add(item.id);
-  if (!order.has(item.id)) failures.push(`${item.id}: not in content/pilot-a1.json`);
+  if (!order.has(item.id)) failures.push(`${item.id}: not in content/a1-plan.json`);
   const lex = lexA1.get(item.id);
   if (!lex) failures.push(`${item.id}: not an existing A1 entry`);
   if (item.senses[0]?.id !== item.id) failures.push(`${item.id}: the first sense must keep the entry id`);
@@ -88,7 +91,7 @@ for (const item of entries) {
     }
   }
 }
-for (const id of order.keys()) if (!seenEntries.has(id)) failures.push(`${id}: selected for the pilot but has no content`);
+for (const { id } of selection.entries) if (!seenEntries.has(id)) failures.push(`${id}: selected for the pilot but has no content`);
 
 function list<T>(file: string, schema: { safeParse: (value: unknown) => { success: true; data: T } | { success: false; error: { issues: { path: PropertyKey[]; message: string }[] } } }): T[] {
   const full = path.join(SOURCE, file);
@@ -188,6 +191,7 @@ const targets = compiled.entries.flatMap((item) => item.senses.map((sense, posit
 const pilotOrder: PilotOrder = {
   version: compiled.version,
   order: Object.fromEntries(GOALS.map((goal) => [goal, orderForGoal(targets, goal, (target) => target).map((target) => target.id)])) as PilotOrder["order"],
+  released: compiled.entries.filter((item) => item.released).flatMap((item) => item.senses.map((sense) => sense.id)),
 };
 
 for (const [file, output] of [

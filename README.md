@@ -59,6 +59,9 @@ npm run dev        # http://localhost:8080
 | `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data, and that the compiled pilot is current |
 | `npm run content:build` | Compile the pilot content in `content/pilot/` into `public/data/pilot-a1.json` |
 | `npm run content:approve` | Record a bilingual or pronunciation review ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)) |
+| `npm run content:status` | Editorial progress across the A1 batches, and what to draft next |
+| `npm run content:lint` | Authoring checks: level of vocabulary, reused examples, ambiguous items |
+| `npm run content:scaffold` / `content:drafts` / `content:promote` | Start, check and finish drafts for the next A1 batch |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm test` | Unit tests in `src/lib/learn/**/*.test.ts` |
@@ -215,6 +218,10 @@ deployment, `npm run deploy` performs the build before invoking Wrangler.
 - Under **Build → Variables and secrets**, set `VITE_SITE_URL` to the site's
   address (for example `https://vajefy.<account>.workers.dev` or a custom
   domain) so share cards get an absolute image URL. It is read at build time.
+- For a public release, also set `VITE_CONTENT_CHANNEL=released`, so learners
+  meet only enhanced entries whose reviews are approved. Without it, every
+  enhanced entry is taught, unreviewed ones labelled as drafts
+  ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md#releasing-at-the-pace-of-review)).
 
 
 ## Privacy and offline behavior

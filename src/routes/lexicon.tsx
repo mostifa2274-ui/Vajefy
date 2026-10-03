@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PilotEntryDetail } from "@/components/pilot-entry";
 import { PageHeader, Sep, SpeakButton } from "@/components/ui";
-import { loadPilot, type PilotIndex } from "@/lib/learn/pilot";
+import { introducible, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
 import { cn } from "@/lib/cn";
 import { posLabel, useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta } from "@/lib/learn/load";
@@ -43,7 +43,7 @@ function LexiconPage() {
 
   useEffect(() => {
     void loadPilot()
-      .then(setPilot)
+      .then((loaded) => setPilot(introducible(loaded)))
       .catch(() => undefined);
   }, []);
   const [scope, setScope] = useState<LevelId | "all">(initial.q || initial.saved ? "all" : "A1");

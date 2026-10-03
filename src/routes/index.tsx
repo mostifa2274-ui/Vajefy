@@ -9,6 +9,7 @@ import { loadLevel, loadMeta, loadPairs } from "@/lib/learn/load";
 import { countLevel, dueIds, liveStreak, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
 import type { PilotOrder } from "@/lib/learn/content";
 import { lessonSize } from "@/lib/learn/lesson";
+import { CONTENT_CHANNEL } from "@/lib/learn/channel";
 import { loadPilotOrder } from "@/lib/learn/pilot";
 import { resumable } from "@/lib/learn/session";
 import { dayNumber } from "@/lib/learn/text";
@@ -116,9 +117,12 @@ function Home() {
   if (!hydrated || meta === null || order === null) return <TodayPlaceholder label={copy.loading} />;
 
   const due = hydrated ? dueIds(cards).length : 0;
+  const released = new Set(order ? order.released : []);
   const lessonCount =
     order && focus === "A1"
-      ? order.order[goal ?? "general"].filter((id) => !cards[id]).slice(0, lessonSize(minutes, due, sessionSize)).length
+      ? order.order[goal ?? "general"]
+          .filter((id) => !cards[id] && (CONTENT_CHANNEL === "draft" || released.has(id)))
+          .slice(0, lessonSize(minutes, due, sessionSize)).length
       : 0;
   // Rough time: a review takes about 8 seconds, a guided new word about 90.
   const planMinutes = Math.max(1, Math.ceil((Math.min(due, sessionSize) * 8 + lessonCount * 90) / 60));
