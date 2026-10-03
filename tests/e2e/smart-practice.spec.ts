@@ -53,7 +53,7 @@ test("Smart Practice preserves FSRS, daily-review evidence and v4 backup through
   await page.getByRole("button", { name: "Check", exact: true }).click();
   await expect.poll(async () => (await saved(page)).state.practiceSkills[ID]?.spelling?.attempts).toBe(1);
   const after = await saved(page);
-  expect(after.version).toBe(4);
+  expect(after.version).toBe(5);
   expect(after.state.cards).toEqual(before.state.cards);
   expect(after.state.reviewHistory).toEqual(before.state.reviewHistory);
   expect(after.state.lifetime).toEqual({ reviews: 4, correct: 3, practice: 1, practiceCorrect: 1 });
@@ -73,7 +73,7 @@ test("Smart Practice preserves FSRS, daily-review evidence and v4 backup through
   const download = await pendingDownload;
   const text = await readFile((await download.path())!, "utf8");
   const backup = JSON.parse(text);
-  expect(backup.version).toBe(4);
+  expect(backup.version).toBe(5);
   expect(backup.progress.practiceSkills).toEqual(after.state.practiceSkills);
   await page.getByRole("button", { name: "Clear progress", exact: true }).click();
   await page.getByRole("button", { name: "Yes, clear it", exact: true }).click();

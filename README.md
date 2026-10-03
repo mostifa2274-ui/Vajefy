@@ -8,9 +8,18 @@ and 5000 lists, with spaced repetition.
 - **2,950 reference notes**: phrasal verbs, collocations, prepositions, verb
   patterns, occupations, antonyms, common mix-ups, synonyms, word families,
   word formation and irregular verbs.
-- **Learn + Review** (`/study`): unseen words get a deliberate encoding pass,
-  then active recall; scheduled cards use recall first and grade Again / Hard /
-  Good / Easy.
+- **Guided lessons** (`/learn`) for a 150-entry A1 pilot taught sense by sense:
+  teach → hear → recall the meaning → feedback → use it in a new sentence →
+  delayed recall, which becomes the word's first scheduled review. Comparison
+  lessons (say/tell, bring/take …) and short scenes reuse what was learned.
+- **Recorded pronunciation** in British and American English for every pilot
+  word and example, downloadable for offline use, with browser speech only as a
+  fallback.
+- **Review** (`/study`): scheduled cards use recall first and grade Again / Hard /
+  Good / Easy; sessions resume where they stopped, and a grade can be undone.
+- **One-screen setup**: a learning goal, a starting level (with an optional
+  two-minute placement check) and 5, 10 or 15 minutes a day, which set the daily
+  plan.
 - **Quiz** (`/drill`): eleven practice modes, including Pairs and a 45-second
   spelling sprint, plus **Smart Practice**. Smart Practice selects studied words
   using FSRS memory estimates and real skill mistakes, then mixes spelling,
@@ -40,7 +49,9 @@ npm run dev        # http://localhost:8080
 | `npm run deploy` | Builds, then deploys with Wrangler (needs `npx wrangler login` first) |
 | `npm run cf-typegen` | Generate Cloudflare binding types from Wrangler config |
 | `npm run verify:workers-build` | Emulate Cloudflare's deploy-only pipeline from a clean build and run Wrangler dry-run |
-| `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data |
+| `npm run validate:data` | Validate schema, counts, Unicode, duplicates and stable ids for all learning data, and that the compiled pilot is current |
+| `npm run content:build` | Compile the pilot content in `content/pilot/` into `public/data/pilot-a1.json` |
+| `npm run content:approve` | Record a bilingual or pronunciation review ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm test` | Unit tests in `src/lib/learn/**/*.test.ts` |
@@ -52,12 +63,12 @@ in Chromium. It runs on pull requests and pushes to `main`.
 
 ## How it works
 
-The app is fully client-side: no accounts, no database, no AI service.
+The app is fully client-side: no accounts, no server database, no AI service.
 
 | Path | Contents |
 |---|---|
-| `src/routes/` | One file per screen: Today, Words, Review, Quiz, Notebook, Progress |
-| `src/components/` | Shell, review session, quiz runner, Pairs, sprint |
+| `src/routes/` | One file per screen: Today, Learn, Words, Review, Quiz, Notebook, Progress |
+| `src/components/` | Shell, setup, guided lesson, review session, quiz runner, Pairs, sprint |
 | `src/lib/learn/srs.ts` | FSRS-6 scheduler, legacy SM-2 bridge, retrievability |
 | `src/lib/learn/store.ts` | Progress state (zustand) whose actions dispatch operations |
 | `src/lib/learn/ops.ts` | Every progress change as a pure, deduplicated operation |
@@ -72,6 +83,15 @@ The app is fully client-side: no accounts, no database, no AI service.
 | `src/lib/learn/adaptive.ts` | FSRS-aware Smart Practice selection and skill targeting |
 | `src/lib/learn/practice.ts` | Bounded prospective vocabulary skill evidence |
 | `src/lib/learn/backup.ts` | Export and import of progress files |
+| `src/lib/learn/content.ts` | Schema of the sense-level pilot content |
+| `src/lib/learn/pilot.ts` | Loading the compiled pilot, introduction order by goal, study cards |
+| `src/lib/learn/lesson.ts` | Guided lesson steps, grading, retries and resume |
+| `src/lib/learn/speech.ts` | The single playback controller: recorded clips first, browser speech as fallback |
+| `src/lib/learn/audio-pack.ts` | Downloading and removing offline pronunciation |
+| `src/lib/learn/placement.ts` | The optional placement check at setup |
+| `src/lib/learn/measures.ts` | Learning measures from recorded evidence |
+| `content/pilot/` | Pilot source content, review ledger and audio manifest |
+| `scripts/audio/` | Pronunciation generation ([docs/AUDIO.md](docs/AUDIO.md)) |
 | `public/data/*.json` | The dataset, fetched by the browser on demand |
 | `attachments/*.xlsx` | The spreadsheet the dataset was converted from |
 
@@ -95,7 +115,13 @@ The app is fully client-side: no accounts, no database, no AI service.
 - Scheduled Review and practice keep **separate counters and accuracy**. Practice
   cannot satisfy the daily review target or inflate measured retention.
 - A completely unseen word gets a short **teach → hide → recall → grade** flow
-  before it joins normal spaced review.
+  before it joins normal spaced review. Pilot words are introduced through
+  guided lessons instead, and Review does not offer them as new cards while the
+  pilot still has words to teach.
+- New words come in order of usefulness: how often the headword appears across
+  the dataset's example sentences (`public/data/usefulness.json`), and for the
+  pilot, the learner's goal. Fewer new words are offered when many reviews are
+  due.
 
 ### Progress and backups
 
@@ -105,8 +131,8 @@ on another device. The saved shape is versioned (`PROGRESS_VERSION` in
 `progress.ts`) and migrations preserve older saves. Version 3 adds the FSRS
 memory state, target retention and prospective review evidence while preserving
 older due dates. Version 4 adds per-word drill skills without reconstructing
-past attempts or changing due dates. There is intentionally no account or remote learner database
-yet.
+past attempts or changing due dates. Version 5 adds the learning goal and daily
+minutes. There is intentionally no account or remote learner database yet.
 
 Progress is stored in IndexedDB. Each answer is saved in one transaction with
 its progress update and the session state, and has a unique id, so a retry,
@@ -185,13 +211,16 @@ deployment, `npm run deploy` performs the build before invoking Wrangler.
 ## Privacy and offline behavior
 
 The production app makes no application API or AI-service request. Fonts use
-system stacks, so the core UI, vocabulary data and pronunciation do not depend
-on Google Fonts or another web-font host. Browser speech synthesis is local to
-the user's device; available voice quality depends on the operating system.
+system stacks, so the core UI and vocabulary data do not depend on Google Fonts
+or another web-font host. Pilot pronunciation is recorded audio served by the app
+itself. For other words, the browser's speech synthesis is used; depending on
+the browser and voice, it may run on the device or send the text to the browser
+vendor's speech service.
 
 The service worker is deliberately limited to same-origin GET requests. Learning
 data and hashed assets are cached; navigations prefer the network and fall back
-to the cached app when offline. The production build fingerprints every deployed
+to the cached app when offline. Pronunciation clips have their own cache that
+survives updates, and Progress offers a download of every clip for one accent. The production build fingerprints every deployed
 client/data file into the service-worker cache version, so a data-only release
 also activates a fresh cache instead of leaving installed learners on stale
 vocabulary.
@@ -200,4 +229,5 @@ vocabulary.
 
 See [docs/CONTENT_PROVENANCE.md](docs/CONTENT_PROVENANCE.md). Code/data integrity
 checks establish what ships; they do not establish third-party redistribution
-rights.
+rights. The pilot's teaching content is shown as a draft until a bilingual
+reviewer approves it ([docs/PILOT_CONTENT.md](docs/PILOT_CONTENT.md)).

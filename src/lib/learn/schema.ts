@@ -106,6 +106,8 @@ export const progress = z.object({
   reviewHistory: z.array(reviewEvent).max(MAX_REVIEW_HISTORY).optional(),
   practiceSkills: practiceSkills.optional(),
   onboarded: z.boolean(),
+  goal: z.enum(["everyday", "work", "study", "general"]).optional(),
+  minutes: z.number().int().min(1).max(240).optional(),
 });
 
 /** A migrated save: every field of the current version must be present. */

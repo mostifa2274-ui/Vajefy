@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { PilotEntryDetail } from "@/components/pilot-entry";
 import { PageHeader, SpeakButton } from "@/components/ui";
+import { loadPilot, type PilotIndex } from "@/lib/learn/pilot";
 import { cn } from "@/lib/cn";
 import { posLabel, useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta } from "@/lib/learn/load";
@@ -35,7 +37,15 @@ function LexiconPage() {
   const addToReview = useProgress((state) => state.addToReview);
   const focus = useProgress((state) => state.focus);
   const copy = useCopy(lang);
+  const accent = useProgress((state) => state.accent);
   const [meta, setMeta] = useState<Meta | null>(null);
+  const [pilot, setPilot] = useState<PilotIndex | null>(null);
+
+  useEffect(() => {
+    void loadPilot()
+      .then(setPilot)
+      .catch(() => undefined);
+  }, []);
   const [scope, setScope] = useState<LevelId | "all">(initial.q || initial.saved ? "all" : "A1");
   const [q, setQ] = useState(initial.q ?? "");
   const [pos, setPos] = useState<string | null>(null);
@@ -244,18 +254,24 @@ function LexiconPage() {
               <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted">
                 {copy.pron}: {selected.pr}
               </p>
-              <div className="mt-3">
-                <SpeakButton text={selected.w} label={copy.listen} />
-              </div>
-              <p lang="fa" dir="rtl" className="mt-4 text-xl font-medium text-pretty">
-                {selected.fa}
-              </p>
-              <blockquote lang="en" dir="ltr" className="mt-4 border-s-2 border-accent ps-3 text-pretty">
-                {selected.ex}
-              </blockquote>
-              <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
-                {selected.tr}
-              </p>
+              {pilot?.byEntry.get(selected.id) ? (
+                <PilotEntryDetail entry={pilot.byEntry.get(selected.id)!} index={pilot} copy={copy} lang={lang} accent={accent} />
+              ) : (
+                <>
+                  <div className="mt-3">
+                    <SpeakButton text={selected.w} label={copy.listen} />
+                  </div>
+                  <p lang="fa" dir="rtl" className="mt-4 text-xl font-medium text-pretty">
+                    {selected.fa}
+                  </p>
+                  <blockquote lang="en" dir="ltr" className="mt-4 border-s-2 border-accent ps-3 text-pretty">
+                    {selected.ex}
+                  </blockquote>
+                  <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
+                    {selected.tr}
+                  </p>
+                </>
+              )}
               <div className="mt-4 flex flex-wrap gap-2">
                 <button
                   type="button"

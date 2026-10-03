@@ -1,0 +1,1446 @@
+[
+ {
+  "id": "scene:cafe-order",
+  "title": "At a café",
+  "titleFa": "در کافه",
+  "goal": "everyday",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:would",
+   "lex:A1:order",
+   "lex:A1:bring",
+   "lex:A1:some",
+   "lex:A1:check#bill"
+  ],
+  "lines": [
+   {
+    "speaker": "Waiter",
+    "en": "Hello! Are you ready to order?",
+    "fa": "سلام! آماده‌اید سفارش بدهید؟"
+   },
+   {
+    "speaker": "Mina",
+    "en": "Yes. I'd like a coffee and some cake, please.",
+    "fa": "بله. لطفاً یک قهوه و کمی کیک می‌خواهم."
+   },
+   {
+    "speaker": "Waiter",
+    "en": "Would you like milk with your coffee?",
+    "fa": "قهوه‌تان را با شیر میل دارید؟"
+   },
+   {
+    "speaker": "Mina",
+    "en": "No, thanks. Could you bring some water too?",
+    "fa": "نه، ممنون. می‌شود کمی آب هم بیاورید؟"
+   },
+   {
+    "speaker": "Waiter",
+    "en": "Of course.",
+    "fa": "حتماً."
+   },
+   {
+    "speaker": "Mina",
+    "en": "And could we have the bill, please?",
+    "fa": "و لطفاً صورت‌حساب را بیاورید."
+   },
+   {
+    "en": "Useful expression: «Could we have the bill, please?» (in American English: the check)",
+    "fa": "عبارت مفید: «لطفاً صورت‌حساب را بیاورید» (در آمریکایی: the check)"
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Why does Mina say «I'd like», not «I want»?",
+    "options": [
+     {
+      "text": "It's more polite.",
+      "ok": true,
+      "why": "در رستوران I'd like مؤدبانه‌تر است."
+     },
+     {
+      "text": "«I want» is wrong grammar.",
+      "ok": false,
+      "why": "I want از نظر دستوری درست است، فقط کمتر مؤدبانه است."
+     },
+     {
+      "text": "«I'd like» means «I like».",
+      "ok": false,
+      "why": "I'd like یعنی «می‌خواهم»، نه «دوست دارم»."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "The waiter will ___ the water to the table.",
+    "options": [
+     {
+      "text": "bring",
+      "ok": true,
+      "why": "آب به سوی مشتری می‌آید."
+     },
+     {
+      "text": "take",
+      "ok": false,
+      "why": "take یعنی بردن از اینجا."
+     },
+     {
+      "text": "order",
+      "ok": false,
+      "why": "مشتری سفارش می‌دهد، نه گارسون."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "Can I have ___ more bread, please?",
+    "answer": "some",
+    "accept": [],
+    "fa": "لطفاً کمی نان بیشتر می‌دهید؟",
+    "why": "درخواست مؤدبانه با some."
+   }
+  ],
+  "write": {
+   "prompt": "در یک رستوران، یک غذا و یک نوشیدنی سفارش بده و بعد صورت‌حساب را بخواه. از would like، bring و some استفاده کن.",
+   "model": "I'd like some rice and chicken, please. Could you bring some water too? Could we have the bill, please?",
+   "use": [
+    "would",
+    "bring",
+    "some"
+   ]
+  }
+ },
+ {
+  "id": "scene:new-colleague",
+  "title": "A new colleague",
+  "titleFa": "همکار جدید",
+  "goal": "work",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:this",
+   "lex:A1:name",
+   "lex:A1:job",
+   "lex:A1:work",
+   "lex:A1:where"
+  ],
+  "lines": [
+   {
+    "speaker": "Reza",
+    "en": "Good morning! This is Sara. She's our new designer.",
+    "fa": "صبح بخیر! ایشان ساراست. طراح جدیدمان است."
+   },
+   {
+    "speaker": "Ali",
+    "en": "Nice to meet you, Sara. I'm Ali. What's your last name?",
+    "fa": "خوشوقتم سارا. من علی هستم. نام خانوادگی‌ات چیست؟"
+   },
+   {
+    "speaker": "Sara",
+    "en": "Karimi. Nice to meet you too. Where do you work in the company?",
+    "fa": "کریمی. من هم خوشوقتم. در کدام بخش شرکت کار می‌کنی؟"
+   },
+   {
+    "speaker": "Ali",
+    "en": "I work in sales, on the second floor. Is this your first job?",
+    "fa": "در فروش کار می‌کنم، در طبقهٔ دوم. این اولین شغلت است؟"
+   },
+   {
+    "speaker": "Sara",
+    "en": "No, I worked for a bank before.",
+    "fa": "نه، قبلاً برای یک بانک کار می‌کردم."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Why does Reza say «This is Sara», not «She is Sara»?",
+    "options": [
+     {
+      "text": "We introduce people with «This is …».",
+      "ok": true,
+      "why": "برای معرفی کسی This is … به کار می‌رود."
+     },
+     {
+      "text": "«She is Sara» is impolite.",
+      "ok": false,
+      "why": "بی‌ادبانه نیست، اما برای معرفی طبیعی نیست."
+     },
+     {
+      "text": "Because Sara is near the door.",
+      "ok": false,
+      "why": "دلیلش معرفی است، نه فاصله."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "Sara has a lot of ___ today.",
+    "options": [
+     {
+      "text": "work",
+      "ok": true,
+      "why": "حجم کار: work، غیرقابل‌شمارش."
+     },
+     {
+      "text": "job",
+      "ok": false,
+      "why": "job یعنی شغل یا یک کار مشخص."
+     },
+     {
+      "text": "works",
+      "ok": false,
+      "why": "works در این معنا جمع ندارد."
+     }
+    ]
+   },
+   {
+    "type": "produce",
+    "id": "p1",
+    "prompt": "کجا کار می‌کنی؟",
+    "frame": "___ do you work?",
+    "answer": "Where",
+    "accept": [],
+    "why": "پرسیدن مکان کار."
+   }
+  ],
+  "write": {
+   "prompt": "یک همکار جدید را به دیگری معرفی کن و بپرس او قبلاً کجا کار می‌کرده.",
+   "model": "This is Hamid. He's our new engineer. Hamid, where did you work before?",
+   "use": [
+    "this",
+    "work",
+    "where"
+   ]
+  }
+ },
+ {
+  "id": "scene:directions",
+  "title": "Asking the way",
+  "titleFa": "پرسیدن نشانی",
+  "goal": "everyday",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:right#direction",
+   "lex:A1:close#near",
+   "lex:A1:take#transport",
+   "lex:A1:bus",
+   "lex:A1:on"
+  ],
+  "lines": [
+   {
+    "speaker": "Tourist",
+    "en": "Excuse me, is the museum close to here?",
+    "fa": "ببخشید، موزه نزدیک اینجاست؟"
+   },
+   {
+    "speaker": "Woman",
+    "en": "Not very. You can walk, but it takes twenty minutes.",
+    "fa": "نه خیلی. می‌توانید پیاده بروید، اما بیست دقیقه طول می‌کشد."
+   },
+   {
+    "speaker": "Tourist",
+    "en": "Can I take a bus?",
+    "fa": "می‌توانم اتوبوس بگیرم؟"
+   },
+   {
+    "speaker": "Woman",
+    "en": "Yes. Take the number 5. The bus stop is on the right, next to the bank.",
+    "fa": "بله. اتوبوس شمارهٔ ۵ را بگیرید. ایستگاه سمت راست است، کنار بانک."
+   },
+   {
+    "speaker": "Tourist",
+    "en": "Thank you very much!",
+    "fa": "خیلی ممنون!"
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "«close to here» means ___.",
+    "options": [
+     {
+      "text": "near here",
+      "ok": true,
+      "why": "close (صفت) = نزدیک."
+     },
+     {
+      "text": "closed now",
+      "ok": false,
+      "why": "این معنای فعل close است."
+     },
+     {
+      "text": "far away",
+      "ok": false,
+      "why": "متضاد است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "How is «close» pronounced in «close to here»?",
+    "options": [
+     {
+      "text": "with /s/",
+      "ok": true,
+      "why": "صفت close با «س»."
+     },
+     {
+      "text": "with /z/",
+      "ok": false,
+      "why": "فعل close (بستن) با «ز» است."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "It ___ ten minutes to walk to the station.",
+    "answer": "takes",
+    "accept": [],
+    "fa": "پیاده تا ایستگاه ده دقیقه طول می‌کشد.",
+    "why": "it takes + مدت."
+   }
+  ],
+  "write": {
+   "prompt": "به کسی بگو چطور به نانوایی نزدیک خانه‌ات برسد. از close، take و right استفاده کن.",
+   "model": "The bakery is close to my house. Take the first street on the right. It takes five minutes.",
+   "use": [
+    "close",
+    "take",
+    "right"
+   ]
+  }
+ },
+ {
+  "id": "scene:phone-message",
+  "title": "Leaving a message",
+  "titleFa": "پیغام گذاشتن",
+  "goal": "work",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:this",
+   "lex:A1:speak",
+   "lex:A1:leave#somewhere",
+   "lex:A1:back",
+   "lex:A1:tell"
+  ],
+  "lines": [
+   {
+    "speaker": "Receptionist",
+    "en": "Good afternoon, Sun Travel.",
+    "fa": "عصر بخیر، آژانس سان."
+   },
+   {
+    "speaker": "Mr Ahmadi",
+    "en": "Hello, this is Reza Ahmadi. Can I speak to Ms Rahimi, please?",
+    "fa": "سلام، رضا احمدی هستم. ممکن است با خانم رحیمی صحبت کنم؟"
+   },
+   {
+    "speaker": "Receptionist",
+    "en": "I'm sorry, she's in a meeting. Would you like to leave a message?",
+    "fa": "متأسفم، در جلسه است. می‌خواهید پیغام بگذارید؟"
+   },
+   {
+    "speaker": "Mr Ahmadi",
+    "en": "Yes, please tell her I called. Can she call me back after four?",
+    "fa": "بله، لطفاً به او بگویید زنگ زدم. می‌تواند بعد از ساعت چهار تماس بگیرد؟"
+   },
+   {
+    "speaker": "Receptionist",
+    "en": "Of course. I'll tell her.",
+    "fa": "حتماً. به او می‌گویم."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Why does Mr Ahmadi say «tell her», not «say her»?",
+    "options": [
+     {
+      "text": "«tell» takes a person after it.",
+      "ok": true,
+      "why": "tell + شخص."
+     },
+     {
+      "text": "«say her» is more polite.",
+      "ok": false,
+      "why": "say بعدش شخص نمی‌گیرد."
+     },
+     {
+      "text": "«tell» is only for stories.",
+      "ok": false,
+      "why": "tell برای اطلاعات هم هست."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "On the phone, he says «___ Reza Ahmadi».",
+    "options": [
+     {
+      "text": "This is",
+      "ok": true,
+      "why": "معرفی پشت تلفن."
+     },
+     {
+      "text": "I am",
+      "ok": false,
+      "why": "پشت تلفن This is طبیعی‌تر است."
+     },
+     {
+      "text": "Here is",
+      "ok": false,
+      "why": "در انگلیسی رایج نیست."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "She's busy now. Can she call you ___ later?",
+    "answer": "back",
+    "accept": [],
+    "fa": "الان مشغول است. می‌تواند بعداً تماس بگیرد؟",
+    "why": "call back."
+   }
+  ],
+  "write": {
+   "prompt": "پشت تلفن خودت را معرفی کن، بخواه با کسی صحبت کنی و پیغام بگذار.",
+   "model": "Hello, this is Mina. Can I speak to Mr Karimi? Please tell him to call me back.",
+   "use": [
+    "this",
+    "speak",
+    "tell",
+    "back"
+   ]
+  }
+ },
+ {
+  "id": "scene:weekend-plans",
+  "title": "Weekend plans",
+  "titleFa": "برنامهٔ آخر هفته",
+  "goal": "everyday",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:free#not-busy",
+   "lex:A1:would",
+   "lex:A1:come",
+   "lex:A1:play",
+   "lex:A1:if"
+  ],
+  "lines": [
+   {
+    "speaker": "Nima",
+    "en": "Are you free on Friday?",
+    "fa": "جمعه وقتت آزاد است؟"
+   },
+   {
+    "speaker": "Hadi",
+    "en": "I think so. Why?",
+    "fa": "فکر کنم. چرا؟"
+   },
+   {
+    "speaker": "Nima",
+    "en": "We're going to play football in the park. Would you like to come?",
+    "fa": "قرار است در پارک فوتبال بازی کنیم. دوست داری بیایی؟"
+   },
+   {
+    "speaker": "Hadi",
+    "en": "I'd love to! What time?",
+    "fa": "با کمال میل! چه ساعتی؟"
+   },
+   {
+    "speaker": "Nima",
+    "en": "At ten. If it rains, we'll play on Saturday.",
+    "fa": "ساعت ده. اگر باران بیاید، شنبه بازی می‌کنیم."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "«Are you free on Friday?» asks about ___.",
+    "options": [
+     {
+      "text": "time",
+      "ok": true,
+      "why": "free = وقت آزاد داشتن."
+     },
+     {
+      "text": "money",
+      "ok": false,
+      "why": "free به معنای رایگان اینجا نیست."
+     },
+     {
+      "text": "freedom",
+      "ok": false,
+      "why": "معنای آزادی اینجا نیست."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "If it ___, we'll play on Saturday.",
+    "options": [
+     {
+      "text": "rains",
+      "ok": true,
+      "why": "بعد از if برای آینده، حال ساده."
+     },
+     {
+      "text": "will rain",
+      "ok": false,
+      "why": "will بعد از if نمی‌آید."
+     },
+     {
+      "text": "rained",
+      "ok": false,
+      "why": "زمان گذشته اینجا مناسب نیست."
+     }
+    ]
+   },
+   {
+    "type": "produce",
+    "id": "p1",
+    "prompt": "دوست داری با ما بیایی؟",
+    "frame": "Would you like to ___ with us?",
+    "answer": "come",
+    "accept": [],
+    "why": "دعوت: come."
+   }
+  ],
+  "write": {
+   "prompt": "دوستت را برای کاری در آخر هفته دعوت کن و بپرس وقتش آزاد است یا نه.",
+   "model": "Are you free on Saturday? Would you like to come to the cinema with me?",
+   "use": [
+    "free",
+    "would",
+    "come"
+   ]
+  }
+ },
+ {
+  "id": "scene:at-the-doctor",
+  "title": "At the doctor's",
+  "titleFa": "پیش دکتر",
+  "goal": "general",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:well#healthy",
+   "lex:A1:tired",
+   "lex:A1:should",
+   "lex:A1:must",
+   "lex:A1:eat"
+  ],
+  "lines": [
+   {
+    "speaker": "Doctor",
+    "en": "Hello. What's the problem?",
+    "fa": "سلام. مشکل چیست؟"
+   },
+   {
+    "speaker": "Leila",
+    "en": "I don't feel well. I'm always tired, and I can't sleep at night.",
+    "fa": "حالم خوب نیست. همیشه خسته‌ام و شب‌ها نمی‌توانم بخوابم."
+   },
+   {
+    "speaker": "Doctor",
+    "en": "Do you drink a lot of coffee?",
+    "fa": "قهوهٔ زیادی می‌خوری؟"
+   },
+   {
+    "speaker": "Leila",
+    "en": "Yes, five or six cups a day.",
+    "fa": "بله، روزی پنج شش فنجان."
+   },
+   {
+    "speaker": "Doctor",
+    "en": "You should drink less coffee, and you must eat breakfast every day.",
+    "fa": "بهتر است قهوهٔ کمتری بخوری و حتماً باید هر روز صبحانه بخوری."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Which sentence is advice, not a strong rule?",
+    "options": [
+     {
+      "text": "You should drink less coffee.",
+      "ok": true,
+      "why": "should = توصیه."
+     },
+     {
+      "text": "You must eat breakfast.",
+      "ok": false,
+      "why": "must اجبارِ قوی‌تر است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "Leila says «I don't feel well». Here «well» means ___.",
+    "options": [
+     {
+      "text": "healthy",
+      "ok": true,
+      "why": "حال جسمی."
+     },
+     {
+      "text": "in a good way",
+      "ok": false,
+      "why": "این معنای قیدی است."
+     },
+     {
+      "text": "a pause word",
+      "ok": false,
+      "why": "اینجا مکث نیست."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "You look tired. You ___ go to bed early tonight.",
+    "answer": "should",
+    "accept": [],
+    "fa": "خسته به نظر می‌رسی. بهتر است امشب زود بخوابی.",
+    "why": "توصیه."
+   }
+  ],
+  "write": {
+   "prompt": "به دوستی که همیشه خسته است دو توصیه بده.",
+   "model": "You should sleep more. You shouldn't drink coffee at night.",
+   "use": [
+    "should",
+    "tired"
+   ]
+  }
+ },
+ {
+  "id": "scene:shopping",
+  "title": "Buying a jacket",
+  "titleFa": "خرید کت",
+  "goal": "everyday",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:expensive",
+   "lex:A1:too#excess",
+   "lex:A1:cheap",
+   "lex:A1:change#money",
+   "lex:A1:buy"
+  ],
+  "lines": [
+   {
+    "speaker": "Assistant",
+    "en": "Can I help you?",
+    "fa": "کمکی از دستم برمی‌آید؟"
+   },
+   {
+    "speaker": "Omid",
+    "en": "How much is this jacket?",
+    "fa": "این کت چند است؟"
+   },
+   {
+    "speaker": "Assistant",
+    "en": "It's 90 dollars.",
+    "fa": "۹۰ دلار است."
+   },
+   {
+    "speaker": "Omid",
+    "en": "That's too expensive for me. Do you have a cheaper one?",
+    "fa": "برای من خیلی گران است. ارزان‌ترش را دارید؟"
+   },
+   {
+    "speaker": "Assistant",
+    "en": "This one is 40 dollars.",
+    "fa": "این یکی ۴۰ دلار است."
+   },
+   {
+    "speaker": "Omid",
+    "en": "Great, I'll buy it. Here's 50.",
+    "fa": "عالی، می‌خرمش. این ۵۰ دلار."
+   },
+   {
+    "speaker": "Assistant",
+    "en": "Thank you. Here's your change.",
+    "fa": "ممنون. این هم بقیهٔ پولتان."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Why does Omid say «too expensive», not «very expensive»?",
+    "options": [
+     {
+      "text": "Because he can't buy it.",
+      "ok": true,
+      "why": "too نتیجهٔ منفی دارد: نمی‌تواند بخرد."
+     },
+     {
+      "text": "Because «very» is wrong grammar.",
+      "ok": false,
+      "why": "very درست است، اما نتیجهٔ منفی را نشان نمی‌دهد."
+     },
+     {
+      "text": "Because the jacket is big.",
+      "ok": false,
+      "why": "دربارهٔ قیمت است، نه اندازه."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "«Here's your change» means ___.",
+    "options": [
+     {
+      "text": "the money you get back",
+      "ok": true,
+      "why": "بقیهٔ پول."
+     },
+     {
+      "text": "a new jacket",
+      "ok": false,
+      "why": "change اینجا اسم و به معنای پول است."
+     },
+     {
+      "text": "please change it",
+      "ok": false,
+      "why": "فعل نیست."
+     }
+    ]
+   },
+   {
+    "type": "produce",
+    "id": "p1",
+    "prompt": "این کفش ارزان‌تر است.",
+    "frame": "These shoes are ___.",
+    "answer": "cheaper",
+    "accept": [],
+    "why": "تفضیلیِ cheap."
+   }
+  ],
+  "write": {
+   "prompt": "در یک فروشگاه قیمت چیزی را بپرس و بگو برایت خیلی گران است.",
+   "model": "How much is this bag? It's too expensive. Do you have a cheaper one?",
+   "use": [
+    "too",
+    "expensive",
+    "cheap"
+   ]
+  }
+ },
+ {
+  "id": "scene:in-class",
+  "title": "In English class",
+  "titleFa": "در کلاس انگلیسی",
+  "goal": "study",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:mean",
+   "lex:A1:say",
+   "lex:A1:difficult",
+   "lex:A1:help",
+   "lex:A1:listen"
+  ],
+  "lines": [
+   {
+    "speaker": "Student",
+    "en": "Excuse me, what does «borrow» mean?",
+    "fa": "ببخشید، «borrow» یعنی چه؟"
+   },
+   {
+    "speaker": "Teacher",
+    "en": "It means to take something and give it back later.",
+    "fa": "یعنی چیزی را بگیری و بعداً پس بدهی."
+   },
+   {
+    "speaker": "Student",
+    "en": "How do you say it? It's difficult for me.",
+    "fa": "چطور تلفظش می‌کنی؟ برایم سخت است."
+   },
+   {
+    "speaker": "Teacher",
+    "en": "Listen: BOR-row. Now you say it.",
+    "fa": "گوش کن: «بارو». حالا تو بگو."
+   },
+   {
+    "speaker": "Student",
+    "en": "Borrow. Thank you for your help!",
+    "fa": "بارو. ممنون از کمکتان!"
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Choose the correct question.",
+    "options": [
+     {
+      "text": "What does this word mean?",
+      "ok": true,
+      "why": "does + mean."
+     },
+     {
+      "text": "What means this word?",
+      "ok": false,
+      "why": "does جا افتاده است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "The teacher says «Listen», not «Hear», because ___.",
+    "options": [
+     {
+      "text": "the student must pay attention",
+      "ok": true,
+      "why": "گوش دادن عمدی: listen."
+     },
+     {
+      "text": "«hear» is only for music",
+      "ok": false,
+      "why": "hear برای هر صدایی است، اما بی‌تلاش."
+     },
+     {
+      "text": "«listen» is louder",
+      "ok": false,
+      "why": "دلیلش توجه است، نه بلندی."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "Can you ___ me with this exercise?",
+    "answer": "help",
+    "accept": [],
+    "fa": "می‌توانی در این تمرین کمکم کنی؟",
+    "why": "help + شخص + with."
+   }
+  ],
+  "write": {
+   "prompt": "از معلم معنی یک کلمه را بپرس و بگو تلفظش برایت سخت است.",
+   "model": "Excuse me, what does «weather» mean? It's difficult to say.",
+   "use": [
+    "mean",
+    "difficult"
+   ]
+  }
+ },
+ {
+  "id": "scene:my-family",
+  "title": "My family",
+  "titleFa": "خانوادهٔ من",
+  "goal": "general",
+  "kind": "passage",
+  "targets": [
+   "lex:A1:family",
+   "lex:A1:live",
+   "lex:A1:old",
+   "lex:A1:child",
+   "lex:A1:work"
+  ],
+  "lines": [
+   {
+    "en": "There are five people in my family.",
+    "fa": "خانوادهٔ ما پنج نفر است."
+   },
+   {
+    "en": "We live in a small house in Rasht.",
+    "fa": "در خانه‌ای کوچک در رشت زندگی می‌کنیم."
+   },
+   {
+    "en": "My father works in a bank, and my mother is a teacher.",
+    "fa": "پدرم در بانک کار می‌کند و مادرم معلم است."
+   },
+   {
+    "en": "I have two brothers. They are still children: one is eight and the other is ten years old.",
+    "fa": "دو برادر دارم. هنوز بچه‌اند: یکی هشت و دیگری ده سال دارد."
+   },
+   {
+    "en": "My grandmother lives near us. She is old, but she still cooks every day.",
+    "fa": "مادربزرگم نزدیک ما زندگی می‌کند. پیر است، اما هنوز هر روز آشپزی می‌کند."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "How many people are in the family?",
+    "options": [
+     {
+      "text": "five",
+      "ok": true,
+      "why": "پدر، مادر، گوینده و دو برادر."
+     },
+     {
+      "text": "three",
+      "ok": false,
+      "why": "دوباره بخوان."
+     },
+     {
+      "text": "two",
+      "ok": false,
+      "why": "دوباره بخوان."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "My little brother is eight years ___.",
+    "answer": "old",
+    "accept": [],
+    "fa": "برادر کوچکم هشت سال دارد.",
+    "why": "… years old."
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "«They are still children» means ___.",
+    "options": [
+     {
+      "text": "they are children now, not adults yet",
+      "ok": true,
+      "why": "still = هنوز."
+     },
+     {
+      "text": "they are quiet children",
+      "ok": false,
+      "why": "still اینجا یعنی هنوز، نه آرام."
+     },
+     {
+      "text": "they were children",
+      "ok": false,
+      "why": "زمان حال است."
+     }
+    ]
+   }
+  ],
+  "write": {
+   "prompt": "در سه جمله خانواده‌ات را معرفی کن: چند نفرید، کجا زندگی می‌کنید و یکی از اعضا چه کار می‌کند.",
+   "model": "There are four people in my family. We live in Tabriz. My mother works in a hospital.",
+   "use": [
+    "family",
+    "live",
+    "work"
+   ]
+  }
+ },
+ {
+  "id": "scene:morning-routine",
+  "title": "My morning",
+  "titleFa": "صبح من",
+  "goal": "everyday",
+  "kind": "passage",
+  "targets": [
+   "lex:A1:morning",
+   "lex:A1:have#activity",
+   "lex:A1:at",
+   "lex:A1:go",
+   "lex:A1:time"
+  ],
+  "lines": [
+   {
+    "en": "I get up at six thirty every morning.",
+    "fa": "هر روز صبح ساعت شش و نیم بیدار می‌شوم."
+   },
+   {
+    "en": "I have a shower and then I have breakfast: bread, cheese and tea.",
+    "fa": "دوش می‌گیرم و بعد صبحانه می‌خورم: نان، پنیر و چای."
+   },
+   {
+    "en": "I go to work by bus at seven fifteen.",
+    "fa": "ساعت هفت و ربع با اتوبوس سر کار می‌روم."
+   },
+   {
+    "en": "I don't have much time in the morning, so I don't drink coffee at home.",
+    "fa": "صبح وقت زیادی ندارم، برای همین در خانه قهوه نمی‌خورم."
+   },
+   {
+    "en": "I buy a coffee near the office.",
+    "fa": "نزدیک اداره یک قهوه می‌خرم."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Why «at six thirty» but «in the morning»?",
+    "options": [
+     {
+      "text": "at for clock times, in for parts of the day",
+      "ok": true,
+      "why": "ساعت با at، بخش‌های روز با in."
+     },
+     {
+      "text": "both are wrong",
+      "ok": false,
+      "why": "هر دو درست‌اند."
+     },
+     {
+      "text": "at is for places only",
+      "ok": false,
+      "why": "at برای ساعت هم هست."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "We usually ___ dinner at eight.",
+    "answer": "have",
+    "accept": [],
+    "fa": "ما معمولاً ساعت هشت شام می‌خوریم.",
+    "why": "have + وعدهٔ غذایی."
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "«I don't have much time» – why «much», not «many»?",
+    "options": [
+     {
+      "text": "«time» here is uncountable",
+      "ok": true,
+      "why": "time در معنای وقت غیرقابل‌شمارش است."
+     },
+     {
+      "text": "«much» is more polite",
+      "ok": false,
+      "why": "دلیلش شمارش‌پذیری است."
+     }
+    ]
+   }
+  ],
+  "write": {
+   "prompt": "صبح‌هایت را در سه جمله توصیف کن. از at برای ساعت و have برای صبحانه استفاده کن.",
+   "model": "I get up at seven. I have breakfast at seven thirty. I go to school at eight.",
+   "use": [
+    "at",
+    "have"
+   ]
+  }
+ },
+ {
+  "id": "scene:lost-phone",
+  "title": "A lost phone",
+  "titleFa": "گوشی گم‌شده",
+  "goal": "everyday",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:leave#somewhere",
+   "lex:A1:just#recently",
+   "lex:A1:still",
+   "lex:A1:miss",
+   "lex:A1:phone"
+  ],
+  "lines": [
+   {
+    "speaker": "Sara",
+    "en": "Oh no! Where's my phone?",
+    "fa": "وای! گوشی‌ام کجاست؟"
+   },
+   {
+    "speaker": "Mina",
+    "en": "Did you leave it in the taxi?",
+    "fa": "در تاکسی جا گذاشتی‌اش؟"
+   },
+   {
+    "speaker": "Sara",
+    "en": "Maybe. The taxi has just left!",
+    "fa": "شاید. تاکسی همین الان رفت!"
+   },
+   {
+    "speaker": "Mina",
+    "en": "Call your number from my phone. Maybe the driver will answer.",
+    "fa": "از گوشی من به شماره‌ات زنگ بزن. شاید راننده جواب بدهد."
+   },
+   {
+    "speaker": "Sara",
+    "en": "It's still ringing... Yes! He answered. He's coming back.",
+    "fa": "هنوز زنگ می‌خورد… آره! جواب داد. دارد برمی‌گردد."
+   },
+   {
+    "speaker": "Mina",
+    "en": "Good! And next time, don't miss your bus because of your phone!",
+    "fa": "خوب شد! دفعهٔ بعد هم به خاطر گوشی‌ات از اتوبوس جا نمان!"
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "«The taxi has just left» means ___.",
+    "options": [
+     {
+      "text": "it left a moment ago",
+      "ok": true,
+      "why": "just = همین الان."
+     },
+     {
+      "text": "it left only the taxi",
+      "ok": false,
+      "why": "just اینجا یعنی همین الان، نه فقط."
+     },
+     {
+      "text": "it will leave soon",
+      "ok": false,
+      "why": "گذشتهٔ نزدیک است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "Why «leave it in the taxi», not «forget it in the taxi»?",
+    "options": [
+     {
+      "text": "With a place, English uses «leave».",
+      "ok": true,
+      "why": "leave something somewhere."
+     },
+     {
+      "text": "«forget» is only for people",
+      "ok": false,
+      "why": "forget برای چیزها هم هست، اما بدون مکان."
+     },
+     {
+      "text": "«leave» means «lose»",
+      "ok": false,
+      "why": "leave یعنی جا گذاشتن."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "Hurry up! We'll ___ the train.",
+    "answer": "miss",
+    "accept": [],
+    "fa": "عجله کن! از قطار جا می‌مانیم.",
+    "why": "miss = جا ماندن."
+   }
+  ],
+  "write": {
+   "prompt": "بنویس که چیزی را کجا جا گذاشتی و همین الان چه اتفاقی افتاد.",
+   "model": "I left my keys at the office. My colleague has just called me.",
+   "use": [
+    "leave",
+    "just"
+   ]
+  }
+ },
+ {
+  "id": "scene:team-meeting",
+  "title": "Before a meeting",
+  "titleFa": "پیش از جلسه",
+  "goal": "work",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:have-to",
+   "lex:A1:must",
+   "lex:A1:check",
+   "lex:A1:on",
+   "lex:A1:time"
+  ],
+  "lines": [
+   {
+    "speaker": "Manager",
+    "en": "Remember, the meeting is on Tuesday at ten.",
+    "fa": "یادتان باشد، جلسه سه‌شنبه ساعت ده است."
+   },
+   {
+    "speaker": "Neda",
+    "en": "Do we have to bring the report?",
+    "fa": "باید گزارش را بیاوریم؟"
+   },
+   {
+    "speaker": "Manager",
+    "en": "Yes, and please check the numbers before the meeting.",
+    "fa": "بله، و لطفاً پیش از جلسه عددها را بررسی کنید."
+   },
+   {
+    "speaker": "Neda",
+    "en": "OK. Do I have to print it?",
+    "fa": "باشه. باید چاپش کنم؟"
+   },
+   {
+    "speaker": "Manager",
+    "en": "No, you don't have to print it. But you must be on time!",
+    "fa": "نه، لازم نیست چاپش کنی. اما حتماً باید سر وقت بیایی!"
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "«You don't have to print it» means ___.",
+    "options": [
+     {
+      "text": "printing is not necessary",
+      "ok": true,
+      "why": "don't have to = لازم نیست."
+     },
+     {
+      "text": "printing is not allowed",
+      "ok": false,
+      "why": "این معنای mustn't است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "Why «on Tuesday» but «at ten»?",
+    "options": [
+     {
+      "text": "on for days, at for clock times",
+      "ok": true,
+      "why": "روز با on، ساعت با at."
+     },
+     {
+      "text": "on and at mean the same",
+      "ok": false,
+      "why": "هر کدام کاربرد خودش را دارد."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "Please ___ your email for the new address.",
+    "answer": "check",
+    "accept": [],
+    "fa": "لطفاً ایمیلت را برای نشانی جدید بررسی کن.",
+    "why": "بررسی کردن."
+   }
+  ],
+  "write": {
+   "prompt": "به همکارت بگو چه کاری لازم است و چه کاری لازم نیست برای جلسهٔ فردا.",
+   "model": "You have to bring your laptop. You don't have to bring the report.",
+   "use": [
+    "have to"
+   ]
+  }
+ },
+ {
+  "id": "scene:study-plan",
+  "title": "Planning to study",
+  "titleFa": "برنامهٔ درس خواندن",
+  "goal": "study",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:need",
+   "lex:A1:want",
+   "lex:A1:because",
+   "lex:A1:so",
+   "lex:A1:if"
+  ],
+  "lines": [
+   {
+    "speaker": "Arash",
+    "en": "I want to pass my English test next month.",
+    "fa": "می‌خواهم امتحان انگلیسی ماه بعد را قبول شوم."
+   },
+   {
+    "speaker": "Teacher",
+    "en": "Good! You need to read every day.",
+    "fa": "خوب است! باید هر روز بخوانی."
+   },
+   {
+    "speaker": "Arash",
+    "en": "I can't read every day because I work in the evenings.",
+    "fa": "نمی‌توانم هر روز بخوانم چون عصرها کار می‌کنم."
+   },
+   {
+    "speaker": "Teacher",
+    "en": "Then study in the morning. If you study for twenty minutes a day, you will learn a lot.",
+    "fa": "پس صبح‌ها بخوان. اگر روزی بیست دقیقه بخوانی، خیلی یاد می‌گیری."
+   },
+   {
+    "speaker": "Arash",
+    "en": "OK, I'm free before work, so I'll study then.",
+    "fa": "باشه، پیش از کار وقتم آزاد است، پس آن موقع می‌خوانم."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Which word gives a reason?",
+    "options": [
+     {
+      "text": "because",
+      "ok": true,
+      "why": "because = چون."
+     },
+     {
+      "text": "so",
+      "ok": false,
+      "why": "so نتیجه را می‌گوید."
+     },
+     {
+      "text": "if",
+      "ok": false,
+      "why": "if شرط است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "«I'm free before work, so I'll study then.» Here «so» shows ___.",
+    "options": [
+     {
+      "text": "a result",
+      "ok": true,
+      "why": "so = پس، نتیجه."
+     },
+     {
+      "text": "a reason",
+      "ok": false,
+      "why": "دلیل با because است."
+     },
+     {
+      "text": "very",
+      "ok": false,
+      "why": "so پیش از صفت نیامده."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "If you ___ hard, you will pass.",
+    "answer": "study",
+    "accept": [],
+    "fa": "اگر سخت درس بخوانی، قبول می‌شوی.",
+    "why": "بعد از if، حال ساده."
+   }
+  ],
+  "write": {
+   "prompt": "بنویس چه چیزی می‌خواهی یاد بگیری، چرا، و اگر هر روز تمرین کنی چه می‌شود.",
+   "model": "I want to learn English because I want a better job. If I practise every day, I will speak better.",
+   "use": [
+    "want",
+    "because",
+    "if"
+   ]
+  }
+ },
+ {
+  "id": "scene:birthday",
+  "title": "A birthday present",
+  "titleFa": "هدیهٔ تولد",
+  "goal": "general",
+  "kind": "dialogue",
+  "targets": [
+   "lex:A1:present",
+   "lex:A1:buy",
+   "lex:A1:give",
+   "lex:A1:love",
+   "lex:A1:happy"
+  ],
+  "lines": [
+   {
+    "speaker": "Maryam",
+    "en": "It's my sister's birthday tomorrow. What can I buy for her?",
+    "fa": "فردا تولد خواهرم است. چه چیزی می‌توانم برایش بخرم؟"
+   },
+   {
+    "speaker": "Parisa",
+    "en": "Does she like books?",
+    "fa": "کتاب دوست دارد؟"
+   },
+   {
+    "speaker": "Maryam",
+    "en": "She loves books! Especially books about history.",
+    "fa": "عاشق کتاب است! به‌خصوص کتاب‌های تاریخی."
+   },
+   {
+    "speaker": "Parisa",
+    "en": "Then give her a history book. It's a good present.",
+    "fa": "پس یک کتاب تاریخی به او بده. هدیهٔ خوبی است."
+   },
+   {
+    "speaker": "Maryam",
+    "en": "Great idea. I'm sure she'll be very happy.",
+    "fa": "فکر خوبی است. مطمئنم خیلی خوشحال می‌شود."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "How is «present» (هدیه) pronounced?",
+    "options": [
+     {
+      "text": "PRE-sent",
+      "ok": true,
+      "why": "اسم: تأکید روی بخش اول."
+     },
+     {
+      "text": "pre-SENT",
+      "ok": false,
+      "why": "تلفظ فعل است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "«Give her a book» – which other order is correct?",
+    "options": [
+     {
+      "text": "Give a book to her.",
+      "ok": true,
+      "why": "چیز + to + شخص."
+     },
+     {
+      "text": "Give to her a book.",
+      "ok": false,
+      "why": "ترتیب نادرست."
+     },
+     {
+      "text": "Give her to a book.",
+      "ok": false,
+      "why": "معنا برعکس است."
+     }
+    ]
+   },
+   {
+    "type": "produce",
+    "id": "p1",
+    "prompt": "تولدت مبارک!",
+    "frame": "___ birthday!",
+    "answer": "Happy",
+    "accept": [],
+    "why": "تبریک."
+   }
+  ],
+  "write": {
+   "prompt": "برای تولد کسی که می‌شناسی، بنویس چه هدیه‌ای می‌خری و چرا.",
+   "model": "I'll buy my brother a watch for his birthday because he loves watches.",
+   "use": [
+    "buy",
+    "present",
+    "love"
+   ]
+  }
+ }
+]

@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { entryIdOf } from "@/lib/learn/content";
 import { loadLevel } from "@/lib/learn/load";
+import { loadPilot } from "@/lib/learn/pilot";
 import { levelOf } from "@/lib/learn/text";
 import type { LevelId } from "@/lib/learn/types";
 import { Num } from "./ui";
@@ -23,13 +25,17 @@ export function LabeledWords({
     const wanted = ids;
     if (!wanted.length) return;
     const levels = [...new Set(wanted.map((id) => levelOf(id)).filter((level): level is LevelId => Boolean(level)))];
-    void Promise.all(levels.map((level) => loadLevel(level))).then((lists) => {
+    const senses = wanted.some((id) => id.includes("#")) ? loadPilot().catch(() => null) : Promise.resolve(null);
+    void Promise.all([Promise.all(levels.map((level) => loadLevel(level))), senses]).then(([lists, pilot]) => {
       if (!alive) return;
       const byId = new Map(lists.flat().map((word) => [word.id, word]));
       setLoaded({
         key,
         rows: wanted.flatMap((id) => {
-          const word = byId.get(id);
+          // A further sense of a word shows that sense's own meaning.
+          const target = pilot?.bySense.get(id);
+          if (target) return [{ id, w: target.entry.headword, fa: target.sense.gloss }];
+          const word = byId.get(entryIdOf(id));
           return word ? [{ id, w: word.w, fa: word.fa }] : [];
         }),
       });

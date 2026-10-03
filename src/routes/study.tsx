@@ -7,12 +7,44 @@ import { useCopy } from "@/lib/learn/i18n";
 import { loadMeta } from "@/lib/learn/load";
 import { resumable, startReview, type ReviewSession } from "@/lib/learn/session";
 import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
+import { loadJson } from "@/lib/learn/load";
+import { introductionOrder, loadPilot } from "@/lib/learn/pilot";
 import { shuffle } from "@/lib/learn/text";
-import type { CardProg, StudyFace } from "@/lib/learn/types";
+import type { CardProg, LevelId, StudyFace } from "@/lib/learn/types";
 
 export const Route = createFileRoute("/study")({ component: StudyPage });
 
 type Ready = { session: ReviewSession; faces: Map<string, StudyFace>; resumed: boolean };
+
+/**
+ * New words for Review, in a purposeful order: the most useful entries of the
+ * level first. While the A1 pilot still has words to teach, those come through
+ * guided lessons instead. Fewer new words are added when reviews are piling up.
+ */
+async function newWords(
+  focus: LevelId,
+  faces: Map<string, StudyFace>,
+  known: Set<string>,
+  dueCount: number,
+  state: { newPerDay: number; sessionSize: number; logs: Parameters<typeof todayLog>[0]; goal: Parameters<typeof introductionOrder>[1] },
+): Promise<string[]> {
+  let budget = Math.max(0, state.newPerDay - todayLog(state.logs).introduced);
+  if (dueCount >= state.sessionSize) budget = 0;
+  else if (dueCount >= state.sessionSize / 2) budget = Math.floor(budget / 2);
+  if (!budget) return [];
+  const order = await loadJson<Partial<Record<LevelId, string[]>>>("usefulness.json")
+    .then((lists) => lists[focus])
+    .catch(() => undefined);
+  const levelIds = order ?? shuffle([...faces.keys()].filter((id) => id.startsWith(`lex:${focus}:`) && !id.includes("#")));
+  let excluded = new Set<string>();
+  if (focus === "A1") {
+    const pilot = await loadPilot();
+    if (introductionOrder(pilot.targets, state.goal).some((target) => !known.has(target.sense.id))) {
+      excluded = new Set(pilot.byEntry.keys());
+    }
+  }
+  return levelIds.filter((id) => faces.has(id) && !known.has(id) && !excluded.has(id)).slice(0, budget);
+}
 
 /** A card graded after the session was last saved was answered elsewhere. */
 function answeredElsewhere(card: CardProg | undefined, session: ReviewSession): boolean {
@@ -76,10 +108,8 @@ function StudyPage() {
         const known = new Set(Object.keys(state.cards));
         const dueTake = due.filter((id) => faces.has(id)).slice(0, state.sessionSize);
         const room = state.sessionSize - dueTake.length;
-        const budget = Math.max(0, state.newPerDay - todayLog(state.logs).introduced);
-        const fresh = shuffle(
-          [...faces.keys()].filter((id) => id.startsWith(`lex:${state.focus}:`) && !known.has(id)),
-        ).slice(0, Math.min(room, budget));
+        const fresh = (await newWords(state.focus, faces, known, due.length, state)).slice(0, room);
+        if (!alive) return;
         const session = startReview(
           [...dueTake.map((id) => ({ id, isNew: false })), ...fresh.map((id) => ({ id, isNew: true }))],
           state.focus,

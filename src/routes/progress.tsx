@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ChangeEvent, type ReactNode } from "react";
 import { LabeledWords } from "@/components/labeled-words";
+import { LearningSummary, OfflineAudio } from "@/components/progress-extras";
 import { Num, PageHeader } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { parseBackup } from "@/lib/learn/backup";
@@ -99,6 +100,8 @@ function ProgressPage() {
         {copy.goalCaption}: <Num value={reviewsToday} /> / <Num value={dailyGoal} />
       </p>
 
+      {hydrated ? <LearningSummary copy={copy} /> : null}
+
       {weak.length ? (
         <section className="mt-8">
           <h2 className="text-lg font-medium">{copy.weakTitle}</h2>
@@ -193,6 +196,8 @@ function ProgressPage() {
         <button type="button" className="mt-2 min-h-11 text-sm text-muted" onClick={() => setLang(lang === "fa" ? "en" : "fa")}>
           {lang === "fa" ? "English" : "فارسی"}
         </button>
+
+        <OfflineAudio copy={copy} />
 
         <BackupPanel copy={copy} />
 

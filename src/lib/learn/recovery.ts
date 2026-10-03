@@ -59,7 +59,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-const OPTIONAL = new Set(["lifetime", "accent", "requestRetention", "reviewHistory", "practiceSkills"]);
+const OPTIONAL = new Set(["lifetime", "accent", "requestRetention", "reviewHistory", "practiceSkills", "goal", "minutes"]);
 
 /**
  * Keep every part of a held save that is individually valid. Learning records

@@ -36,3 +36,15 @@ separately.
 - Update source workbook and generated JSON together when the workbook remains
   authoritative.
 - Treat a changed contract hash as a review event, not a routine formatting fix.
+
+## Enhanced pilot content
+
+The sense-level teaching content in `content/pilot/` (meanings, examples,
+grammar notes, mistakes, checks, contrasts and scenes) was written for this
+project as drafts for bilingual review. It refers to the Oxford list entries
+only by their headwords and stable ids. Every entry stays marked as a draft in
+the app until a reviewer approves it ([PILOT_CONTENT.md](PILOT_CONTENT.md)).
+
+The pronunciation clips in `public/audio/pilot/` are synthesised with Kokoro
+v1.0, whose weights are released under Apache 2.0 ([AUDIO.md](AUDIO.md)). The
+same rights review applies to them before a public or commercial release.

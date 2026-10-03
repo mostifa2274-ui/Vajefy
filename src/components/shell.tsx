@@ -1,6 +1,7 @@
 import { Link, useNavigate, useRouter, useRouterState } from "@tanstack/react-router";
 import {
   BookOpenText,
+  GraduationCap,
   ChartColumn,
   Library,
   PenLine,
@@ -18,10 +19,11 @@ import { Num } from "./ui";
 
 const serverHeld = (): HeldSave | null => null;
 
-const OFFLINE_ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
+const OFFLINE_ROUTES = ["/", "/learn", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
 
 const NAV = [
   { to: "/", key: "today", icon: BookOpenText, exact: true },
+  { to: "/learn", key: "learn", icon: GraduationCap, exact: false },
   { to: "/lexicon", key: "lexicon", icon: Search, exact: false },
   { to: "/study", key: "study", icon: SquareStack, exact: false },
   { to: "/drill", key: "drill", icon: PenLine, exact: false },
@@ -227,7 +229,7 @@ function NavItem({
   label,
   pathname,
 }: {
-  to: "/" | "/lexicon" | "/study" | "/drill" | "/library" | "/progress";
+  to: "/" | "/learn" | "/lexicon" | "/study" | "/drill" | "/library" | "/progress";
   exact: boolean;
   icon: typeof Search;
   label: string;

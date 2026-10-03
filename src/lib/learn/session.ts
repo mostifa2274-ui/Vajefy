@@ -1,3 +1,4 @@
+import type { LessonSession } from "./lesson";
 import type { CardProg, Grade, LevelId, Question } from "./types";
 
 /**
@@ -63,7 +64,7 @@ export type QuizSession = {
   answers: QuizAnswer[];
 };
 
-export type SessionRecord = ReviewSession | QuizSession;
+export type SessionRecord = ReviewSession | QuizSession | LessonSession;
 
 export function newId(): string {
   const crypto = globalThis.crypto;
@@ -217,5 +218,6 @@ export function resumable<K extends SessionRecord["kind"]>(
     .filter((session) => session.status === "active" && now - session.updatedAt <= RESUME_WINDOW_MS)
     // A round whose every question is answered has nothing left to resume.
     .filter((session: SessionRecord) => session.kind !== "quiz" || session.answers.length < session.questions.length)
+    .filter((session: SessionRecord) => session.kind !== "lesson" || session.index < session.steps.length)
     .sort((a, b) => b.updatedAt - a.updatedAt)[0];
 }

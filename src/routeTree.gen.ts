@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DrillRouteImport } from './routes/drill'
+import { Route as LearnRouteImport } from './routes/learn'
 import { Route as LexiconRouteImport } from './routes/lexicon'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as ProgressRouteImport } from './routes/progress'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const DrillRoute = DrillRouteImport.update({
   id: '/drill',
   path: '/drill',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnRoute = LearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LexiconRoute = LexiconRouteImport.update({
@@ -50,6 +56,7 @@ const StudyRoute = StudyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/drill': typeof DrillRoute
+  '/learn': typeof LearnRoute
   '/lexicon': typeof LexiconRoute
   '/library': typeof LibraryRoute
   '/progress': typeof ProgressRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/drill': typeof DrillRoute
+  '/learn': typeof LearnRoute
   '/lexicon': typeof LexiconRoute
   '/library': typeof LibraryRoute
   '/progress': typeof ProgressRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/drill': typeof DrillRoute
+  '/learn': typeof LearnRoute
   '/lexicon': typeof LexiconRoute
   '/library': typeof LibraryRoute
   '/progress': typeof ProgressRoute
@@ -74,13 +83,16 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/drill' | '/lexicon' | '/library' | '/progress' | '/study'
+  fullPaths:
+    '/' | '/drill' | '/learn' | '/lexicon' | '/library' | '/progress' | '/study'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/drill' | '/lexicon' | '/library' | '/progress' | '/study'
+  to:
+    '/' | '/drill' | '/learn' | '/lexicon' | '/library' | '/progress' | '/study'
   id:
     | '__root__'
     | '/'
     | '/drill'
+    | '/learn'
     | '/lexicon'
     | '/library'
     | '/progress'
@@ -90,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DrillRoute: typeof DrillRoute
+  LearnRoute: typeof LearnRoute
   LexiconRoute: typeof LexiconRoute
   LibraryRoute: typeof LibraryRoute
   ProgressRoute: typeof ProgressRoute
@@ -110,6 +123,13 @@ declare module '@tanstack/react-router' {
       path: '/drill'
       fullPath: '/drill'
       preLoaderRoute: typeof DrillRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn': {
+      id: '/learn'
+      path: '/learn'
+      fullPath: '/learn'
+      preLoaderRoute: typeof LearnRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lexicon': {
@@ -146,6 +166,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DrillRoute: DrillRoute,
+  LearnRoute: LearnRoute,
   LexiconRoute: LexiconRoute,
   LibraryRoute: LibraryRoute,
   ProgressRoute: ProgressRoute,

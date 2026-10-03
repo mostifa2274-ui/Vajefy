@@ -2,8 +2,8 @@
 
 Progress lives in the browser's IndexedDB database `vajefy`. Every change is an
 **operation** with a unique id, and each operation is committed in **one
-transaction** together with everything it changes. The backup file format is
-unchanged (progress version 4).
+transaction** together with everything it changes. Backups and the database use
+progress version 5.
 
 ## The database
 
@@ -13,7 +13,7 @@ unchanged (progress version 4).
 | `cards` | One FSRS/legacy scheduling record per learning target |
 | `skills` | Optional-practice skill evidence per word |
 | `events` | One record per operation: answers with their evidence, plus every other change, so ids can be checked |
-| `sessions` | Unfinished and finished review and practice sessions |
+| `sessions` | Unfinished and finished review, practice and lesson sessions |
 | `meta` | Migration record and progress version |
 
 The review history shown in the app and exported in backups contains the
@@ -96,6 +96,24 @@ remain, a countdown offers **Finish for now** or **Show it now**.
 **Undo last grade** reverts the most recent review in the session. It restores
 the card and removes its counts, XP and history entry. Undo is refused when
 anything has changed that card since, for example an answer in another tab.
+
+A guided lesson (`/learn`) is saved the same way: its step list, the current
+step, every answer with its retry, and the words it has already taught.
+
+## Progress versions
+
+| Version | Adds |
+|---|---|
+| 3 | FSRS memory state, target retention, review evidence |
+| 4 | Per-word practice skills |
+| 5 | Learning goal (everyday, work, study, general) and daily minutes (5, 10 or 15) |
+
+A save from an older version is migrated in memory with `migrateProgress`. Defaults
+fill only the new fields; nothing already saved changes. The result must pass the
+current schema (`currentProgress` in `schema.ts`) before `db.upgrade()` writes it
+in one transaction together with the new version number. If the upgrade cannot be
+written, the learner sees the normal save warning and the start is retried. Older
+backups import the same way.
 
 ## Moving from localStorage
 

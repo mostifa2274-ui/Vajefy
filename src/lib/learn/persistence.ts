@@ -1,7 +1,7 @@
-import { commit, dumpNewer, FutureDatabaseError, load, openDb, readChanged, type CommitHooks, type Loaded } from "./db";
+import { commit, dumpNewer, FutureDatabaseError, load, openDb, readChanged, upgrade, type CommitHooks, type Loaded } from "./db";
 import { journalAppend, journalPending, journalRemove } from "./journal";
 import { defaultProfile, needs, profileOf, reduce, type Op, type Profile, type SkillRecord, type StoredEvent, type Writes } from "./ops";
-import { MAX_REVIEW_HISTORY, PROGRESS_VERSION, savedProgress, type SavedProgress } from "./progress";
+import { MAX_REVIEW_HISTORY, migrateProgress, PROGRESS_VERSION, savedProgress, type SavedProgress } from "./progress";
 import { inspectStoredProgress, type HeldSave } from "./recovery";
 import { currentProgress } from "./schema";
 import { newId, type SessionRecord } from "./session";
@@ -476,6 +476,23 @@ export function createPersistence(env: Environment) {
       if (typeof version === "number" && version > PROGRESS_VERSION) {
         hold({ kind: "future", raw: JSON.stringify({ state: loaded.progress, version }), version });
         return;
+      }
+      const stored = typeof version === "number" ? version : PROGRESS_VERSION;
+      if (stored < PROGRESS_VERSION) {
+        // Migrate in place, verify, then save the result with its new version.
+        let migrated: SavedProgress | null;
+        try {
+          const parsed = currentProgress.safeParse(migrateProgress(loaded.progress, stored));
+          migrated = parsed.success ? parsed.data : null;
+        } catch {
+          migrated = null;
+        }
+        if (!migrated) {
+          hold({ kind: "damaged", raw: JSON.stringify({ state: loaded.progress, version: stored }) });
+          return;
+        }
+        await upgrade(db, migrated, PROGRESS_VERSION);
+        loaded = await load(db);
       }
       if (!currentProgress.safeParse(loaded.progress).success) {
         hold({ kind: "damaged", raw: JSON.stringify({ state: loaded.progress, version: PROGRESS_VERSION }) });

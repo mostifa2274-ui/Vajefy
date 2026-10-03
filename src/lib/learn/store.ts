@@ -1,7 +1,8 @@
 import { create } from "zustand";
+import { entryIdOf } from "./content";
 import type { AnswerContext, Op, SettingsPatch } from "./ops";
 import { CHANNEL, createPersistence, emptyMemory, type Memory } from "./persistence";
-import { DEFAULT_PROGRESS, savedProgress, type DayLog, type SavedProgress } from "./progress";
+import { DEFAULT_PROGRESS, savedProgress, type DayLog, type LearningGoal, type SavedProgress } from "./progress";
 import { newId, type SessionRecord } from "./session";
 import { isMastered } from "./srs";
 import { todayKey } from "./text";
@@ -35,7 +36,7 @@ type ProgressState = Memory & {
   setRequestRetention: (requestRetention: number) => void;
   setOnboarded: () => void;
   toggleBookmark: (id: string) => void;
-  completeOnboarding: (focus: LevelId, dailyGoal: number) => void;
+  completeOnboarding: (focus: LevelId, goal: LearningGoal, minutes: number) => void;
   /** Grade a scheduled recall. Returns the operation id, which undo uses. */
   review: (id: string, grade: Grade, extras?: AnswerExtras) => string;
   practice: (id: string, grade: Grade, skill?: PracticeSkill, extras?: AnswerExtras) => string;
@@ -82,15 +83,7 @@ export const useProgress = create<ProgressState>()((set, get) => {
     setOnboarded: () => void settings({ onboarded: true }),
     toggleBookmark: (id) =>
       void dispatch({ id: newId(), type: "bookmark", at: Date.now(), item: id, on: !get().bookmarks.includes(id) }),
-    completeOnboarding: (focus, dailyGoal) => {
-      const plan =
-        dailyGoal >= 40
-          ? { newPerDay: 15, sessionSize: 30 }
-          : dailyGoal <= 10
-            ? { newPerDay: 5, sessionSize: 10 }
-            : { newPerDay: 10, sessionSize: 20 };
-      settings({ focus, dailyGoal, onboarded: true, ...plan });
-    },
+    completeOnboarding: (focus, goal, minutes) => settings({ focus, goal, minutes, onboarded: true, ...planFor(minutes) }),
     review: (item, grade, extras) => {
       const { id, at, context, sessionState } = answer(extras);
       return dispatch({ id, type: "review", at, item, grade, ...context, sessionState });
@@ -152,6 +145,16 @@ export const persistence = createPersistence({
   channel: () => (browser && "BroadcastChannel" in window ? new BroadcastChannel(CHANNEL) : undefined),
 });
 
+/**
+ * A daily plan that fits the learner's time: new words and session length grow
+ * with the minutes available, and Review still comes first each day.
+ */
+export function planFor(minutes: number) {
+  if (minutes <= 5) return { newPerDay: 3, sessionSize: 10, dailyGoal: 10 };
+  if (minutes >= 15) return { newPerDay: 8, sessionSize: 30, dailyGoal: 30 };
+  return { newPerDay: 5, sessionSize: 20, dailyGoal: 20 };
+}
+
 export function todayLog(logs: DayLog[], today = todayKey()): DayLog {
   return (
     logs.find((row) => row.date === today) ?? {
@@ -180,16 +183,21 @@ export function dueIds(cards: Record<string, CardProg>, now = Date.now()): strin
     .map(([id]) => id);
 }
 
+/**
+ * Entries of a level the learner has met and mastered. Further senses of an
+ * entry (`id#sense`) are separate learning targets, but the level's word count
+ * is per entry, so an entry counts once and is mastered by its main sense.
+ */
 export function countLevel(cards: Record<string, CardProg>, level: LevelId) {
   const prefix = `lex:${level}:`;
-  let seen = 0;
+  const seen = new Set<string>();
   let mastered = 0;
   for (const [id, card] of Object.entries(cards)) {
     if (!id.startsWith(prefix)) continue;
-    seen += 1;
-    if (isMastered(card)) mastered += 1;
+    seen.add(entryIdOf(id));
+    if (!id.includes("#") && isMastered(card)) mastered += 1;
   }
-  return { seen, mastered };
+  return { seen: seen.size, mastered };
 }
 
 export function totals(cards: Record<string, CardProg>) {

@@ -75,7 +75,7 @@ export function StudySession({
 
   useEffect(() => {
     if (!voice || !face) return;
-    speakEnglish(face.speak);
+    speakEnglish(face.speak, face.clip);
     return () => cancelSpeech();
   }, [face, voice]);
 
@@ -267,11 +267,11 @@ export function StudySession({
             </p>
           ) : null}
           <div className="mt-4 flex justify-center">
-            <SpeakButton text={face.speak} label={copy.listen} />
+            <SpeakButton text={face.speak} label={copy.listen} clip={face.clip} slow />
           </div>
         </div>
 
-        {teaching || session.revealed ? <Meaning face={face} noteLabel={copy.note} /> : null}
+        {teaching || session.revealed ? <Meaning face={face} noteLabel={copy.note} exampleLabel={copy.listenExample} draftLabel={copy.draftContent} /> : null}
 
         {teaching ? (
           <Button className="mt-5 w-full" onClick={beginRecall}>
@@ -328,12 +328,27 @@ export function StudySession({
   );
 }
 
-function Meaning({ face, noteLabel }: { face: StudyFace; noteLabel: string }) {
+function Meaning({
+  face,
+  noteLabel,
+  exampleLabel,
+  draftLabel,
+}: {
+  face: StudyFace;
+  noteLabel: string;
+  exampleLabel: string;
+  draftLabel: string;
+}) {
   return (
     <div className="border-t border-line pt-4">
       <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">
         {face.meaning}
       </p>
+      {face.detail ? (
+        <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
+          {face.detail}
+        </p>
+      ) : null}
       {face.example ? (
         <blockquote lang="en" dir="ltr" className="mt-4 border-s-2 border-accent ps-3 text-pretty">
           {face.example}
@@ -344,14 +359,20 @@ function Meaning({ face, noteLabel }: { face: StudyFace; noteLabel: string }) {
           {face.exampleFa}
         </p>
       ) : null}
+      {face.example && face.exampleClip ? (
+        <div className="mt-2">
+          <SpeakButton text={face.example} label={exampleLabel} clip={face.exampleClip} />
+        </div>
+      ) : null}
       {face.note ? (
         <details className="mt-3">
-          <summary className="text-sm text-muted">{noteLabel}</summary>
+          <summary className="min-h-11 text-sm text-muted">{noteLabel}</summary>
           <p lang="fa" dir="rtl" className="mt-2 text-sm whitespace-pre-wrap text-pretty text-muted">
             {face.note}
           </p>
         </details>
       ) : null}
+      {face.draft ? <p className="mt-3 text-xs text-muted">{draftLabel}</p> : null}
     </div>
   );
 }

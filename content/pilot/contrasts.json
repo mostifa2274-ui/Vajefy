@@ -1,0 +1,1263 @@
+[
+ {
+  "id": "contrast:bring-take",
+  "title": "bring / take",
+  "entries": [
+   "lex:A1:bring",
+   "lex:A1:take"
+  ],
+  "shared": "هر دو یعنی جابه‌جا کردن چیزی یا کسی همراه خودمان.",
+  "difference": "جهت حرکت: bring به سوی گوینده یا جایی که گوینده و شنونده خواهند بود؛ take دور از جایی که گوینده الان هست.",
+  "patterns": [
+   {
+    "en": "Bring your book to class tomorrow. (to where I will be)",
+    "fa": "فردا کتابت را به کلاس بیاور."
+   },
+   {
+    "en": "Take an umbrella when you go out. (away from here)",
+    "fa": "وقتی بیرون می‌روی چتر ببر."
+   },
+   {
+    "en": "Can you bring me a glass of water?",
+    "fa": "می‌توانی برایم یک لیوان آب بیاوری؟"
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "Take me a coffee, please.",
+    "right": "Bring me a coffee, please.",
+    "why": "قهوه به سوی گوینده می‌آید."
+   },
+   {
+    "wrong": "Bring these books to the library. (you are at home)",
+    "right": "Take these books to the library.",
+    "why": "کتاب‌ها از جایی که گوینده هست دور می‌شوند."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "You are at a friend's party. You call another friend: «Please ___ some music when you come.»",
+    "options": [
+     {
+      "text": "bring",
+      "ok": true,
+      "why": "موسیقی به جایی می‌آید که تو هستی."
+     },
+     {
+      "text": "take",
+      "ok": false,
+      "why": "take یعنی بردن از اینجا به جای دیگر."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "You're leaving home. Your mother says: «___ your coat. It's cold outside.»",
+    "options": [
+     {
+      "text": "Take",
+      "ok": true,
+      "why": "کت از خانه (جای گوینده) دور می‌شود."
+     },
+     {
+      "text": "Bring",
+      "ok": false,
+      "why": "مادر جای دیگری نخواهد بود که کت به آنجا بیاید."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "Can you ___ me the salt, please? It's next to you.",
+    "answer": "bring",
+    "accept": [
+     "pass",
+     "give"
+    ],
+    "fa": "می‌شود نمک را برایم بیاوری؟ کنار توست.",
+    "why": "نمک به سوی گوینده می‌آید."
+   }
+  ]
+ },
+ {
+  "id": "contrast:come-go",
+  "title": "come / go",
+  "entries": [
+   "lex:A1:come",
+   "lex:A1:go"
+  ],
+  "shared": "هر دو حرکت از جایی به جای دیگر است.",
+  "difference": "come حرکت به سوی گوینده یا شنونده است؛ go حرکت دور از گوینده. وقتی به سوی کسی که صدایمان می‌زند می‌رویم، در انگلیسی I'm coming می‌گوییم.",
+  "patterns": [
+   {
+    "en": "Come here, please.",
+    "fa": "لطفاً بیا اینجا."
+   },
+   {
+    "en": "I go to the gym on Mondays.",
+    "fa": "دوشنبه‌ها به باشگاه می‌روم."
+   },
+   {
+    "en": "A: Dinner's ready! B: I'm coming!",
+    "fa": "شام آماده است! دارم می‌آیم!"
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "A: Ali, come here! B: I'm going!",
+    "right": "A: Ali, come here! B: I'm coming!",
+    "why": "به سوی کسی که صدایت می‌زند می‌روی: coming."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Your friend invites you to her house. You say: «Thanks, I'll ___ at seven.»",
+    "options": [
+     {
+      "text": "come",
+      "ok": true,
+      "why": "به جای شنونده می‌روی."
+     },
+     {
+      "text": "go",
+      "ok": false,
+      "why": "go به جای سوم اشاره می‌کند."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "It's late. «I'm tired. I'm ___ to bed.»",
+    "options": [
+     {
+      "text": "going",
+      "ok": true,
+      "why": "دور از جای فعلی."
+     },
+     {
+      "text": "coming",
+      "ok": false,
+      "why": "به سوی گوینده یا شنونده نیست."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:say-tell",
+  "title": "say / tell",
+  "entries": [
+   "lex:A1:say",
+   "lex:A1:tell"
+  ],
+  "shared": "هر دو یعنی گفتن.",
+  "difference": "tell معمولاً بلافاصله شخص می‌گیرد (tell me, tell her)؛ say نه، و اگر شخص بیاید با to است (say something to someone). tell a story/joke/the truth و say hello/sorry/goodbye ثابت‌اند.",
+  "patterns": [
+   {
+    "en": "She told me her name.",
+    "fa": "او اسمش را به من گفت."
+   },
+   {
+    "en": "She said her name was Leila.",
+    "fa": "او گفت اسمش لیلاست."
+   },
+   {
+    "en": "What did you say to him?",
+    "fa": "به او چه گفتی؟"
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "He said me the answer.",
+    "right": "He told me the answer.",
+    "why": "say بدون to شخص نمی‌گیرد."
+   },
+   {
+    "wrong": "Tell hello to your mother.",
+    "right": "Say hello to your mother.",
+    "why": "say hello ثابت است."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Please ___ me what happened.",
+    "options": [
+     {
+      "text": "tell",
+      "ok": true,
+      "why": "tell + شخص."
+     },
+     {
+      "text": "say",
+      "ok": false,
+      "why": "say بلافاصله شخص نمی‌گیرد."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "He ___ that he was busy.",
+    "options": [
+     {
+      "text": "said",
+      "ok": true,
+      "why": "بدون شخص: say that."
+     },
+     {
+      "text": "told",
+      "ok": false,
+      "why": "told به شخص نیاز دارد: told me that."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "My grandmother ___ us a story every night.",
+    "answer": "tells",
+    "accept": [],
+    "fa": "مادربزرگم هر شب برایمان داستان تعریف می‌کند.",
+    "why": "tell a story."
+   }
+  ]
+ },
+ {
+  "id": "contrast:speak-talk",
+  "title": "speak / talk",
+  "entries": [
+   "lex:A1:speak",
+   "lex:A1:talk"
+  ],
+  "shared": "هر دو یعنی صحبت کردن.",
+  "difference": "speak برای زبان‌ها (speak Persian)، تلفن و موقعیت رسمی‌تر است؛ talk برای گفت‌وگوی عادی و دوطرفه (talk to/with, talk about).",
+  "patterns": [
+   {
+    "en": "Do you speak Turkish?",
+    "fa": "ترکی بلدی؟"
+   },
+   {
+    "en": "Can I speak to the manager?",
+    "fa": "ممکن است با مدیر صحبت کنم؟"
+   },
+   {
+    "en": "We talked about our holiday.",
+    "fa": "دربارهٔ تعطیلاتمان حرف زدیم."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "She talks three languages.",
+    "right": "She speaks three languages.",
+    "why": "برای زبان speak."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "How many languages do you ___?",
+    "options": [
+     {
+      "text": "speak",
+      "ok": true,
+      "why": "زبان‌ها: speak."
+     },
+     {
+      "text": "talk",
+      "ok": false,
+      "why": "talk با نام زبان نمی‌آید."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "My friend and I ___ for hours on the phone last night.",
+    "options": [
+     {
+      "text": "talked",
+      "ok": true,
+      "why": "گفت‌وگوی عادی و طولانی."
+     },
+     {
+      "text": "spoke",
+      "ok": false,
+      "why": "ممکن است، اما برای گپِ دوستانه talk طبیعی‌تر است."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:see-look-watch",
+  "title": "see / look / watch",
+  "entries": [
+   "lex:A1:see",
+   "lex:A1:look",
+   "lex:A1:watch"
+  ],
+  "shared": "هر سه به چشم و دیدن مربوط‌اند.",
+  "difference": "see: دیدنی که بی‌تلاش رخ می‌دهد. look (at): عمداً نگاه کردن، معمولاً کوتاه. watch: مدتی با دقت تماشا کردن چیزی که حرکت یا تغییر می‌کند (TV، مسابقه).",
+  "patterns": [
+   {
+    "en": "I can see the sea from my window.",
+    "fa": "از پنجره‌ام دریا را می‌بینم."
+   },
+   {
+    "en": "Look at this photo!",
+    "fa": "به این عکس نگاه کن!"
+   },
+   {
+    "en": "We watched the match on TV.",
+    "fa": "مسابقه را از تلویزیون تماشا کردیم."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "I saw TV last night.",
+    "right": "I watched TV last night.",
+    "why": "برای تلویزیون watch."
+   },
+   {
+    "wrong": "Look this!",
+    "right": "Look at this!",
+    "why": "look پیش از مفعول به at نیاز دارد."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "___ at that bird on the roof!",
+    "options": [
+     {
+      "text": "Look",
+      "ok": true,
+      "why": "نگاه عمدی و کوتاه."
+     },
+     {
+      "text": "See",
+      "ok": false,
+      "why": "see بعدش at نمی‌گیرد."
+     },
+     {
+      "text": "Watch",
+      "ok": false,
+      "why": "watch بعدش at نمی‌گیرد."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "Did you ___ the film on TV last night?",
+    "options": [
+     {
+      "text": "watch",
+      "ok": true,
+      "why": "تماشای فیلم در تلویزیون."
+     },
+     {
+      "text": "look",
+      "ok": false,
+      "why": "look برای تماشای طولانی نیست."
+     },
+     {
+      "text": "look at",
+      "ok": false,
+      "why": "طبیعی نیست."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q3",
+    "prompt": "Can you ___ the number on that bus? My eyes are bad.",
+    "options": [
+     {
+      "text": "see",
+      "ok": true,
+      "why": "توانایی دیدن."
+     },
+     {
+      "text": "watch",
+      "ok": false,
+      "why": "تماشا معنا ندارد."
+     },
+     {
+      "text": "look",
+      "ok": false,
+      "why": "look به at نیاز دارد."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:hear-listen",
+  "title": "hear / listen",
+  "entries": [
+   "lex:A1:hear",
+   "lex:A1:listen"
+  ],
+  "shared": "هر دو به گوش و صدا مربوط‌اند.",
+  "difference": "hear: صدایی که بی‌تلاش به گوش می‌رسد. listen (to): عمداً و با توجه گوش دادن.",
+  "patterns": [
+   {
+    "en": "I heard a noise in the kitchen.",
+    "fa": "صدایی از آشپزخانه شنیدم."
+   },
+   {
+    "en": "I listen to the radio in the car.",
+    "fa": "در ماشین به رادیو گوش می‌دهم."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "I'm listening a strange noise.",
+    "right": "I can hear a strange noise.",
+    "why": "صدایی که بی‌تلاش می‌شنوی: hear."
+   },
+   {
+    "wrong": "Listen me!",
+    "right": "Listen to me!",
+    "why": "listen + to."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "Speak up! I can't ___ you.",
+    "options": [
+     {
+      "text": "hear",
+      "ok": true,
+      "why": "شنیدن بی‌تلاش."
+     },
+     {
+      "text": "listen",
+      "ok": false,
+      "why": "listen به to نیاز دارد و معنای توجه دارد."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "I love ___ to old Persian songs.",
+    "options": [
+     {
+      "text": "listening",
+      "ok": true,
+      "why": "گوش دادن عمدی."
+     },
+     {
+      "text": "hearing",
+      "ok": false,
+      "why": "hear بعدش to نمی‌گیرد."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:make-do",
+  "title": "make / do",
+  "entries": [
+   "lex:A1:make",
+   "lex:A1:do"
+  ],
+  "shared": "هر دو را در فارسی اغلب «کردن» یا «انجام دادن» ترجمه می‌کنیم.",
+  "difference": "make برای ساختن یا پدید آوردن چیزی تازه است (make a cake, make a mistake, make friends)؛ do برای انجام دادن فعالیت یا کار (do homework, do the dishes, do sport). بسیاری از عبارت‌ها ثابت‌اند.",
+  "patterns": [
+   {
+    "en": "I made a cake for her birthday.",
+    "fa": "برای تولدش کیک پختم."
+   },
+   {
+    "en": "I do my homework after dinner.",
+    "fa": "بعد از شام تکالیفم را انجام می‌دهم."
+   },
+   {
+    "en": "Everyone makes mistakes.",
+    "fa": "همه اشتباه می‌کنند."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "I did a mistake.",
+    "right": "I made a mistake.",
+    "why": "make a mistake ثابت است."
+   },
+   {
+    "wrong": "Can you make the dishes?",
+    "right": "Can you do the dishes?",
+    "why": "do the dishes ثابت است."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "I need to ___ a phone call.",
+    "options": [
+     {
+      "text": "make",
+      "ok": true,
+      "why": "make a call."
+     },
+     {
+      "text": "do",
+      "ok": false,
+      "why": "do a call نادرست است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "She ___ yoga every morning.",
+    "options": [
+     {
+      "text": "does",
+      "ok": true,
+      "why": "فعالیت ورزشی: do."
+     },
+     {
+      "text": "makes",
+      "ok": false,
+      "why": "make yoga نادرست است."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "It's easy to ___ friends at university.",
+    "answer": "make",
+    "accept": [],
+    "fa": "در دانشگاه دوست پیدا کردن آسان است.",
+    "why": "make friends."
+   }
+  ]
+ },
+ {
+  "id": "contrast:must-have-to",
+  "title": "must / have to / don't have to / mustn't",
+  "entries": [
+   "lex:A1:must",
+   "lex:A1:have-to"
+  ],
+  "shared": "هر دو اجبار را نشان می‌دهند.",
+  "difference": "must بیشتر اجبارِ از نظر گوینده یا قانون نوشته‌شده است؛ have to اجبارِ بیرونی (کار، شرایط). مهم‌ترین تفاوت در منفی است: mustn't = ممنوع است؛ don't have to = لازم نیست.",
+  "patterns": [
+   {
+    "en": "I must call my mum tonight.",
+    "fa": "امشب حتماً باید به مادرم زنگ بزنم."
+   },
+   {
+    "en": "I have to wear a uniform at work.",
+    "fa": "سر کار باید لباس فرم بپوشم."
+   },
+   {
+    "en": "You mustn't park here. / You don't have to pay.",
+    "fa": "اینجا نباید پارک کنید. / لازم نیست پول بدهید."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "You mustn't come tomorrow. (meaning it isn't necessary)",
+    "right": "You don't have to come tomorrow.",
+    "why": "mustn't یعنی ممنوع است."
+   },
+   {
+    "wrong": "She must to go.",
+    "right": "She must go. / She has to go.",
+    "why": "بعد از must فعل ساده می‌آید."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "It's a free concert. You ___ buy a ticket.",
+    "options": [
+     {
+      "text": "don't have to",
+      "ok": true,
+      "why": "لازم نیست."
+     },
+     {
+      "text": "mustn't",
+      "ok": false,
+      "why": "یعنی ممنوع است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "This is a hospital. You ___ make noise.",
+    "options": [
+     {
+      "text": "mustn't",
+      "ok": true,
+      "why": "ممنوع است."
+     },
+     {
+      "text": "don't have to",
+      "ok": false,
+      "why": "یعنی لازم نیست، که معنا را خراب می‌کند."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:very-too-quite",
+  "title": "very / too / quite",
+  "entries": [
+   "lex:A1:very",
+   "lex:A1:too#excess",
+   "lex:A1:quite"
+  ],
+  "shared": "هر سه پیش از صفت می‌آیند و شدت را نشان می‌دهند.",
+  "difference": "very: خیلی (بی‌طرف). too: بیش از حد، معمولاً با نتیجهٔ منفی (too hot to drink). quite: نسبتاً، ضعیف‌تر از very (در انگلیسی بریتانیایی).",
+  "patterns": [
+   {
+    "en": "It's very hot today. Let's go swimming.",
+    "fa": "امروز خیلی گرم است. بیا شنا برویم."
+   },
+   {
+    "en": "It's too hot to walk. Let's take a taxi.",
+    "fa": "برای پیاده‌روی بیش از حد گرم است. بیا تاکسی بگیریم."
+   },
+   {
+    "en": "The film was quite good.",
+    "fa": "فیلم نسبتاً خوب بود."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "Your house is too beautiful! (as a compliment)",
+    "right": "Your house is very beautiful!",
+    "why": "too مشکل را نشان می‌دهد؛ برای تعریف very."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "I can't buy this jacket. It's ___ expensive.",
+    "options": [
+     {
+      "text": "too",
+      "ok": true,
+      "why": "بیش از حد، با نتیجهٔ منفی."
+     },
+     {
+      "text": "very",
+      "ok": false,
+      "why": "very نتیجهٔ منفی را نشان نمی‌دهد."
+     },
+     {
+      "text": "quite",
+      "ok": false,
+      "why": "quite ضعیف‌تر است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "Thanks for dinner. It was ___ delicious!",
+    "options": [
+     {
+      "text": "very",
+      "ok": true,
+      "why": "تعریف."
+     },
+     {
+      "text": "too",
+      "ok": false,
+      "why": "too یعنی بیش از حد."
+     },
+     {
+      "text": "quite",
+      "ok": false,
+      "why": "تعریفِ ضعیف و کمی سرد است."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:in-on-at-time",
+  "title": "in / on / at (time)",
+  "entries": [
+   "lex:A1:in",
+   "lex:A1:on",
+   "lex:A1:at"
+  ],
+  "shared": "هر سه برای گفتنِ زمانِ رخ دادن کاری به کار می‌روند.",
+  "difference": "at برای لحظه و ساعت (at 7, at night)؛ on برای روز و تاریخ (on Monday, on 5 May)؛ in برای بازه‌های بزرگ‌تر (in May, in 2020, in summer, in the morning).",
+  "patterns": [
+   {
+    "en": "The class starts at nine.",
+    "fa": "کلاس ساعت نه شروع می‌شود."
+   },
+   {
+    "en": "I have a test on Monday.",
+    "fa": "دوشنبه امتحان دارم."
+   },
+   {
+    "en": "We travel in summer.",
+    "fa": "در تابستان سفر می‌کنیم."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "I'll see you in Monday.",
+    "right": "I'll see you on Monday.",
+    "why": "روز هفته با on."
+   },
+   {
+    "wrong": "I wake up in 7 o'clock.",
+    "right": "I wake up at 7 o'clock.",
+    "why": "ساعت با at."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "My birthday is ___ July.",
+    "options": [
+     {
+      "text": "in",
+      "ok": true,
+      "why": "ماه با in."
+     },
+     {
+      "text": "on",
+      "ok": false,
+      "why": "on برای روز یا تاریخ کامل."
+     },
+     {
+      "text": "at",
+      "ok": false,
+      "why": "at برای ساعت."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "The shop is closed ___ Fridays.",
+    "options": [
+     {
+      "text": "on",
+      "ok": true,
+      "why": "روز هفته با on."
+     },
+     {
+      "text": "in",
+      "ok": false,
+      "why": "روز با in نمی‌آید."
+     },
+     {
+      "text": "at",
+      "ok": false,
+      "why": "روز با at نمی‌آید."
+     }
+    ]
+   },
+   {
+    "type": "cloze",
+    "id": "c1",
+    "text": "I can't sleep well ___ night.",
+    "answer": "at",
+    "accept": [],
+    "fa": "شب‌ها خوب نمی‌توانم بخوابم.",
+    "why": "at night."
+   }
+  ]
+ },
+ {
+  "id": "contrast:some-any",
+  "title": "some / any",
+  "entries": [
+   "lex:A1:some",
+   "lex:A1:any"
+  ],
+  "shared": "هر دو برای مقدار یا تعداد نامشخص پیش از اسم جمع یا غیرقابل‌شمارش می‌آیند.",
+  "difference": "some در جملهٔ مثبت و در پیشنهاد و درخواست؛ any در جملهٔ منفی و سؤالِ معمولی.",
+  "patterns": [
+   {
+    "en": "I have some questions.",
+    "fa": "چند سؤال دارم."
+   },
+   {
+    "en": "Do you have any questions?",
+    "fa": "سؤالی دارید؟"
+   },
+   {
+    "en": "Would you like some tea?",
+    "fa": "چای میل دارید؟"
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "I don't have some money.",
+    "right": "I don't have any money.",
+    "why": "در منفی any."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "There aren't ___ eggs in the fridge.",
+    "options": [
+     {
+      "text": "any",
+      "ok": true,
+      "why": "منفی: any."
+     },
+     {
+      "text": "some",
+      "ok": false,
+      "why": "some در منفیِ معمولی نمی‌آید."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "Can I have ___ water, please?",
+    "options": [
+     {
+      "text": "some",
+      "ok": true,
+      "why": "درخواست مؤدبانه: some."
+     },
+     {
+      "text": "any",
+      "ok": false,
+      "why": "در درخواست، some طبیعی است."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:this-that",
+  "title": "this / that / these / those",
+  "entries": [
+   "lex:A1:this",
+   "lex:A1:that"
+  ],
+  "shared": "هر دو به چیز یا کسی اشاره می‌کنند.",
+  "difference": "this/these: نزدیک گوینده (در فاصله یا زمان)؛ that/those: دور از گوینده یا چیزی که پیش‌تر گفته شد. these و those جمع‌اند.",
+  "patterns": [
+   {
+    "en": "This is my bag, and that is yours.",
+    "fa": "این کیف من است و آن مالِ تو."
+   },
+   {
+    "en": "These apples are sweet.",
+    "fa": "این سیب‌ها شیرین‌اند."
+   },
+   {
+    "en": "Who are those people over there?",
+    "fa": "آن آدم‌ها آن طرف کی‌اند؟"
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "This shoes are new.",
+    "right": "These shoes are new.",
+    "why": "اسم جمع: these."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "(pointing to a mountain far away) Look at ___ mountain!",
+    "options": [
+     {
+      "text": "that",
+      "ok": true,
+      "why": "دور و مفرد."
+     },
+     {
+      "text": "this",
+      "ok": false,
+      "why": "this برای نزدیک است."
+     },
+     {
+      "text": "those",
+      "ok": false,
+      "why": "those جمع است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "(holding two tickets) ___ tickets are for tonight.",
+    "options": [
+     {
+      "text": "These",
+      "ok": true,
+      "why": "نزدیک و جمع."
+     },
+     {
+      "text": "This",
+      "ok": false,
+      "why": "this مفرد است."
+     },
+     {
+      "text": "That",
+      "ok": false,
+      "why": "that مفرد و دور است."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:a-the",
+  "title": "a / an / the",
+  "entries": [
+   "lex:A1:a-an",
+   "lex:A1:the"
+  ],
+  "shared": "هر دو حرف تعریف‌اند و پیش از اسم می‌آیند.",
+  "difference": "a/an: یک چیزِ نامشخص یا اولین بار؛ the: چیزی که هر دو می‌دانیم کدام است، یا یکتاست. برای حرف زدن کلی دربارهٔ چیزی، هیچ‌کدام نمی‌آید.",
+  "patterns": [
+   {
+    "en": "I saw a cat. The cat was black.",
+    "fa": "یک گربه دیدم. گربه سیاه بود."
+   },
+   {
+    "en": "Can you close the door?",
+    "fa": "می‌شود در را ببندی؟"
+   },
+   {
+    "en": "I like cats.",
+    "fa": "گربه‌ها را دوست دارم."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "The life is beautiful.",
+    "right": "Life is beautiful.",
+    "why": "حرف زدن کلی: بدون the."
+   },
+   {
+    "wrong": "She is doctor.",
+    "right": "She is a doctor.",
+    "why": "شغل: a/an."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "There's ___ new café near my house. ___ coffee there is great.",
+    "options": [
+     {
+      "text": "a / The",
+      "ok": true,
+      "why": "بار اول a، بار دوم the."
+     },
+     {
+      "text": "the / A",
+      "ok": false,
+      "why": "ترتیب برعکس است."
+     },
+     {
+      "text": "a / A",
+      "ok": false,
+      "why": "بار دوم the لازم است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "___ moon is very bright tonight.",
+    "options": [
+     {
+      "text": "The",
+      "ok": true,
+      "why": "یکتا."
+     },
+     {
+      "text": "A",
+      "ok": false,
+      "why": "فقط یک ماه داریم."
+     },
+     {
+      "text": "—",
+      "ok": false,
+      "why": "moon بدون the نمی‌آید."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:to-too-two",
+  "title": "to / too / two",
+  "entries": [
+   "lex:A1:to",
+   "lex:A1:too",
+   "lex:A1:two"
+  ],
+  "shared": "هر سه را می‌توان «توو» تلفظ کرد (to فقط در حالت تأکید).",
+  "difference": "to حرف اضافه یا نشانهٔ مصدر است (go to school, want to eat)؛ too یعنی «هم» یا «بیش از حد»؛ two عدد ۲ است. در گفتار، to معمولاً ضعیف «تِ» است.",
+  "patterns": [
+   {
+    "en": "I want to go to the park.",
+    "fa": "می‌خواهم به پارک بروم."
+   },
+   {
+    "en": "It's too cold.",
+    "fa": "بیش از حد سرد است."
+   },
+   {
+    "en": "I have two brothers.",
+    "fa": "دو برادر دارم."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "I'm going too the shop.",
+    "right": "I'm going to the shop.",
+    "why": "جهت: to."
+   },
+   {
+    "wrong": "Me to!",
+    "right": "Me too!",
+    "why": "«من هم»: too."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "A: I'm hungry. B: Me ___!",
+    "options": [
+     {
+      "text": "too",
+      "ok": true,
+      "why": "یعنی «من هم»."
+     },
+     {
+      "text": "to",
+      "ok": false,
+      "why": "to حرف اضافه است."
+     },
+     {
+      "text": "two",
+      "ok": false,
+      "why": "two عدد است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "We need ___ tickets.",
+    "options": [
+     {
+      "text": "two",
+      "ok": true,
+      "why": "عدد ۲."
+     },
+     {
+      "text": "too",
+      "ok": false,
+      "why": "too عدد نیست."
+     },
+     {
+      "text": "to",
+      "ok": false,
+      "why": "to عدد نیست."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q3",
+    "prompt": "I'd like ___ order a pizza.",
+    "options": [
+     {
+      "text": "to",
+      "ok": true,
+      "why": "نشانهٔ مصدر."
+     },
+     {
+      "text": "too",
+      "ok": false,
+      "why": "too پیش از فعل نمی‌آید."
+     },
+     {
+      "text": "two",
+      "ok": false,
+      "why": "two اینجا معنی ندارد."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:good-well",
+  "title": "good / well",
+  "entries": [
+   "lex:A1:good",
+   "lex:A1:well"
+  ],
+  "shared": "هر دو را در فارسی «خوب» ترجمه می‌کنیم.",
+  "difference": "good صفت است و اسم یا حالت را توصیف می‌کند (a good cook, The food is good)؛ well قید است و فعل را توصیف می‌کند (She cooks well). دربارهٔ سلامت: I'm well.",
+  "patterns": [
+   {
+    "en": "She is a good singer.",
+    "fa": "او خوانندهٔ خوبی است."
+   },
+   {
+    "en": "She sings well.",
+    "fa": "او خوب می‌خواند."
+   },
+   {
+    "en": "I don't feel well.",
+    "fa": "حالم خوب نیست."
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "He speaks English very good.",
+    "right": "He speaks English very well.",
+    "why": "توصیف فعل: well."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "You did very ___ in the test!",
+    "options": [
+     {
+      "text": "well",
+      "ok": true,
+      "why": "توصیف فعل did."
+     },
+     {
+      "text": "good",
+      "ok": false,
+      "why": "good صفت است."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "This is a ___ restaurant.",
+    "options": [
+     {
+      "text": "good",
+      "ok": true,
+      "why": "توصیف اسم."
+     },
+     {
+      "text": "well",
+      "ok": false,
+      "why": "well پیش از اسم به این معنا نمی‌آید."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "contrast:big-small-little",
+  "title": "big / small / little",
+  "entries": [
+   "lex:A1:big",
+   "lex:A1:small",
+   "lex:A1:little"
+  ],
+  "shared": "همه دربارهٔ اندازه‌اند.",
+  "difference": "big و small عینی و بی‌طرف‌اند؛ little معمولاً حس محبت یا کوچکیِ دلپذیر دارد (a little girl) و بیشتر پیش از اسم می‌آید، نه بعد از be. a little (+ اسم غیرقابل‌شمارش) یعنی «کمی».",
+  "patterns": [
+   {
+    "en": "They live in a small flat.",
+    "fa": "آن‌ها در آپارتمان کوچکی زندگی می‌کنند."
+   },
+   {
+    "en": "What a cute little dog!",
+    "fa": "چه سگ کوچولوی بامزه‌ای!"
+   },
+   {
+    "en": "Can I have a little milk?",
+    "fa": "کمی شیر می‌دهید؟"
+   }
+  ],
+  "unnatural": [
+   {
+    "wrong": "The room is little.",
+    "right": "The room is small.",
+    "why": "بعد از be معمولاً small."
+   }
+  ],
+  "check": [
+   {
+    "type": "choice",
+    "id": "q1",
+    "prompt": "My ___ sister is five years old.",
+    "options": [
+     {
+      "text": "little",
+      "ok": true,
+      "why": "خواهر کوچک‌تر، با حس."
+     },
+     {
+      "text": "small",
+      "ok": false,
+      "why": "small sister طبیعی نیست."
+     }
+    ]
+   },
+   {
+    "type": "choice",
+    "id": "q2",
+    "prompt": "These jeans are too ___. I need a bigger size.",
+    "options": [
+     {
+      "text": "small",
+      "ok": true,
+      "why": "اندازهٔ عینی، بعد از too."
+     },
+     {
+      "text": "little",
+      "ok": false,
+      "why": "little بعد از too برای اندازه طبیعی نیست."
+     }
+    ]
+   }
+  ]
+ }
+]

@@ -409,3 +409,28 @@ test("a start that fails while writing keeps working and Retry starts again", as
   assert.equal(db.progress.xp, 70 + 10);
   assert.equal(db.progress.lifetime.reviews, 1);
 });
+
+test("progress stored by an earlier version is migrated in place and verified", async () => {
+  const db = await openDb(browser.idb);
+  const { goal: _goal, minutes: _minutes, ...v4 } = JSON.parse(legacy({ xp: 12 })).state;
+  const tx = db.transaction(["profile", "meta", "cards"], "readwrite");
+  const { cards, practiceSkills: _skills, reviewHistory: _history, ...profile } = v4;
+  tx.objectStore("profile").put(profile, "profile");
+  tx.objectStore("meta").put(4, "progressVersion");
+  for (const [id, card] of Object.entries(cards)) tx.objectStore("cards").put(card, id);
+  await new Promise((resolve) => (tx.oncomplete = resolve));
+  db.close();
+  const app = tab();
+  await app.persistence.start();
+  assert.equal(app.persistence.getHeld(), null);
+  assert.equal(app.memory().xp, 12);
+  assert.equal(app.memory().goal, "general");
+  assert.equal(app.memory().minutes, 10);
+  const after = await openDb(browser.idb);
+  const version = await new Promise((resolve) => {
+    const request = after.transaction("meta").objectStore("meta").get("progressVersion");
+    request.onsuccess = () => resolve(request.result);
+  });
+  after.close();
+  assert.equal(version, PROGRESS_VERSION);
+});

@@ -64,6 +64,8 @@ const saved: SavedProgress = {
     },
   },
   onboarded: true,
+  goal: "work",
+  minutes: 15,
 };
 
 test("an export file reads back to the same progress", () => {

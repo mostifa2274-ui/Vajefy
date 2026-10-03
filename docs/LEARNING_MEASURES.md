@@ -88,6 +88,24 @@ chosen for. Phase 2 adds the content for each of these entries:
 An entry counts as *released* only when its editorial record shows completed
 bilingual review and approved pronunciation.
 
+The content now exists for all 150 entries and is compiled from `content/pilot/`.
+None is released yet: every entry carries a visible draft label until a reviewer
+approves it. See [PILOT_CONTENT.md](PILOT_CONTENT.md) for the editorial workflow
+and [AUDIO.md](AUDIO.md) for the pronunciation library.
+
+### Where the measures appear
+
+**Progress → What you have learned** shows, from saved evidence only:
+
+- words introduced;
+- words remembered after a delay of at least one day, as a count and a share of
+  the delayed reviews;
+- words used successfully in a context task (cloze, choice or produce);
+- accuracy per skill, shown only once a skill has at least five answers.
+
+`src/lib/learn/measures.ts` computes these from review events and practice
+evidence. It never fills in a measure that has no recorded evidence.
+
 ## Pilot study (Phase 5)
 
 1. Five to eight observed usability sessions, with notes on where help was

@@ -3,7 +3,9 @@ import { AudioLines } from "lucide-react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { useFormat } from "@/lib/learn/format";
-import { speakEnglish } from "@/lib/learn/speech";
+import { useCopy } from "@/lib/learn/i18n";
+import { play, stop, usePlayback } from "@/lib/learn/speech";
+import { useProgress } from "@/lib/learn/store";
 
 const buttonClass = {
   primary: "bg-accent text-accent-fg hover:bg-ink",
@@ -62,17 +64,53 @@ export function Num({ value }: { value: number }) {
   return <span className="tabular-nums">{num(value)}</span>;
 }
 
-export function SpeakButton({ text, label }: { text: string; label: string }) {
+/**
+ * Pronunciation with explicit loading, playing and failure states. A controlled
+ * clip plays when one exists; browser speech is the fallback.
+ */
+export function SpeakButton({
+  text,
+  label,
+  clip,
+  slow = false,
+}: {
+  text: string;
+  label: string;
+  clip?: string;
+  /** Also offer slower playback. */
+  slow?: boolean;
+}) {
+  const lang = useProgress((state) => state.lang);
+  const copy = useCopy(lang);
+  const key = `${clip ?? ""}|${text}`;
+  const state = usePlayback(key);
+  const slowState = usePlayback(`${key}|slow`);
+  const busy = state === "loading" || state === "playing";
+  const current = slowState !== "idle" ? slowState : state;
+  const status =
+    current === "loading" ? copy.audioLoading : current === "playing" ? copy.audioPlaying : current === "unavailable" ? copy.audioUnavailable : "";
+  const base = "inline-flex min-h-11 items-center gap-2 rounded-md bg-paper px-3 text-sm text-ink shadow-[var(--shadow-border)]";
   return (
-    <button
-      type="button"
-      onClick={() => speakEnglish(text)}
-      aria-label={label}
-      className="inline-flex min-h-11 items-center gap-2 rounded-md bg-paper px-3 text-sm text-ink shadow-[var(--shadow-border)]"
-    >
-      <AudioLines className="size-4" aria-hidden />
-      <span>{label}</span>
-    </button>
+    <span className="inline-flex flex-wrap items-center gap-2">
+      <button
+        type="button"
+        onClick={() => (busy ? stop() : void play({ key, text, clip }))}
+        aria-label={label}
+        aria-busy={state === "loading"}
+        className={base}
+      >
+        <AudioLines className={cn("size-4", state === "playing" && "text-accent")} aria-hidden />
+        <span>{label}</span>
+      </button>
+      {slow ? (
+        <button type="button" onClick={() => void play({ key: `${key}|slow`, text, clip, slow: true })} className={base}>
+          {copy.slower}
+        </button>
+      ) : null}
+      <span role="status" className={cn("text-xs", current === "unavailable" ? "text-bad" : "text-muted")}>
+        {status}
+      </span>
+    </span>
   );
 }
 

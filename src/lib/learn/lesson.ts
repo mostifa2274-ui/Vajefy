@@ -1,0 +1,356 @@
+import type { CheckItem, Contrast, Scene, Sense } from "./content";
+import { entryIdOf } from "./content";
+import type { PilotIndex, PilotTarget } from "./pilot";
+import { newId } from "./session";
+import { bestSpelling, shuffle } from "./text";
+import type { Grade, PracticeSkill } from "./types";
+
+/**
+ * A guided lesson. For each new target the sequence is: understand (teaching
+ * card with audio) → retrieve the meaning → feedback → use it in a new
+ * context → retrieve it again after the other words, which is the answer that
+ * starts its spaced schedule. A wrong answer brings one more, different
+ * opportunity later in the lesson. The lesson ends by applying the words in a
+ * contrast lesson or a short scene when one fits.
+ */
+
+export type ItemRef =
+  | { from: "sense"; target: string; item: string }
+  | { from: "contrast"; contrast: string; item: string; target: string }
+  | { from: "scene"; scene: string; item: string; target: string }
+  /** A generated choice: Persian meaning for the word, or the word for a meaning. */
+  | { from: "generated"; target: string; mode: "meaning" | "form"; options: string[] };
+
+export type Role = "retrieve" | "context" | "delayed" | "retry" | "apply";
+
+export type LessonStep =
+  | { kind: "teach"; target: string }
+  | { kind: "check"; ref: ItemRef; role: Role }
+  | { kind: "contrast"; contrast: string }
+  | { kind: "scene"; scene: string }
+  | { kind: "write"; scene: string };
+
+export type LessonAnswer = {
+  op: string;
+  step: number;
+  /** `close`: right word with a small spelling slip. */
+  result: "correct" | "close" | "wrong";
+  given?: string;
+  at: number;
+};
+
+export type LessonSession = {
+  id: string;
+  kind: "lesson";
+  status: "active" | "done";
+  createdAt: number;
+  updatedAt: number;
+  /** What this session is: new words, or one contrast or scene on its own. */
+  mode: "lesson" | "contrast" | "scene";
+  targets: string[];
+  steps: LessonStep[];
+  index: number;
+  answers: LessonAnswer[];
+};
+
+/** A resolved check item, ready to show. */
+export type ResolvedItem =
+  | { type: "choice"; prompt: string; promptLang: "en" | "fa"; options: { text: string; ok: boolean; why: string; lang: "en" | "fa" }[] }
+  | { type: "cloze"; text: string; answer: string; accept: string[]; fa: string; why: string }
+  | { type: "produce"; prompt: string; frame: string; answer: string; accept: string[]; why: string };
+
+function findItem(items: CheckItem[], id: string) {
+  return items.find((item) => item.id === id);
+}
+
+function fromContent(item: CheckItem): ResolvedItem {
+  if (item.type === "choice") {
+    return {
+      type: "choice",
+      prompt: item.prompt,
+      promptLang: /[؀-ۿ]/.test(item.prompt) ? "fa" : "en",
+      options: item.options.map((option) => ({ ...option, lang: /[؀-ۿ]/.test(option.text) ? "fa" : "en" })),
+    };
+  }
+  return item;
+}
+
+export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | null {
+  if (ref.from === "generated") {
+    const target = index.bySense.get(ref.target);
+    if (!target) return null;
+    const options = ref.options.map((id) => index.bySense.get(id)).filter((option): option is PilotTarget => Boolean(option));
+    if (ref.mode === "meaning") {
+      return {
+        type: "choice",
+        prompt: target.entry.headword,
+        promptLang: "en",
+        options: options.map((option) => ({
+          text: option.sense.gloss,
+          ok: option.sense.id === target.sense.id,
+          why: option.sense.id === target.sense.id ? target.sense.meaning : `${option.entry.headword}: ${option.sense.gloss}`,
+          lang: "fa" as const,
+        })),
+      };
+    }
+    return {
+      type: "choice",
+      prompt: target.sense.gloss,
+      promptLang: "fa",
+      options: options.map((option) => ({
+        text: option.entry.headword,
+        ok: option.sense.id === target.sense.id,
+        why: option.sense.id === target.sense.id ? target.sense.meaning : `${option.entry.headword}: ${option.sense.gloss}`,
+        lang: "en" as const,
+      })),
+    };
+  }
+  if (ref.from === "sense") {
+    const item = findItem(index.bySense.get(ref.target)?.sense.check ?? [], ref.item);
+    return item ? fromContent(item) : null;
+  }
+  if (ref.from === "contrast") {
+    const item = findItem(index.pilot.contrasts.find((contrast) => contrast.id === ref.contrast)?.check ?? [], ref.item);
+    return item ? fromContent(item) : null;
+  }
+  const item = findItem(index.pilot.scenes.find((scene) => scene.id === ref.scene)?.check ?? [], ref.item);
+  return item ? fromContent(item) : null;
+}
+
+/** The skill an item gives evidence for. */
+export function skillOf(ref: ItemRef, item: ResolvedItem): PracticeSkill {
+  if (ref.from === "generated") return "meaning";
+  if (item.type === "produce") return "spelling";
+  return "context";
+}
+
+/** Grade a typed answer against the answer and its accepted alternatives. */
+export function gradeTyped(typed: string, answer: string, accept: string[]): LessonAnswer["result"] {
+  const clean = (value: string) => value.trim().replace(/[.!?]+$/, "").replace(/\s+/g, " ");
+  const result = bestSpelling(clean(typed), [answer, ...accept].map(clean));
+  return result === "exact" ? "correct" : result === "close" ? "close" : "wrong";
+}
+
+export function gradeOf(result: LessonAnswer["result"]): Grade {
+  return result === "correct" ? "good" : result === "close" ? "hard" : "again";
+}
+
+/** Options for a generated choice: the target and three other meanings, preferring the same part of speech. */
+function distractors(index: PilotIndex, target: PilotTarget, random: () => number): string[] {
+  const pool = index.targets.filter(
+    (other) => entryIdOf(other.sense.id) !== entryIdOf(target.sense.id) && other.sense.gloss !== target.sense.gloss,
+  );
+  const same = pool.filter((other) => other.sense.pos === target.sense.pos);
+  const picked = [...shuffleWith(same, random), ...shuffleWith(pool, random)]
+    .filter((item, position, list) => list.findIndex((other) => other.sense.id === item.sense.id) === position)
+    .slice(0, 3)
+    .map((item) => item.sense.id);
+  return shuffleWith([target.sense.id, ...picked], random);
+}
+
+function shuffleWith<T>(items: T[], random: () => number): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j]!, copy[i]!];
+  }
+  return copy;
+}
+
+function contentItem(sense: Sense, types: CheckItem["type"][], used: Set<string>): CheckItem | undefined {
+  for (const type of types) {
+    const found = sense.check.find((item) => item.type === type && !used.has(item.id));
+    if (found) return found;
+  }
+  return undefined;
+}
+
+/** The target an applied item mostly tests: the one whose word is the answer, else the first. */
+function targetFor(item: CheckItem, targets: string[], index: PilotIndex): string {
+  const answer = item.type === "choice" ? item.options.find((option) => option.ok)?.text ?? "" : item.answer;
+  const words = answer.toLowerCase().split(/[^a-z']+/);
+  return (
+    targets.find((id) => {
+      const headword = index.bySense.get(id)?.entry.headword.toLowerCase() ?? "";
+      return headword && words.some((word) => word.startsWith(headword.split(/[ ,]/)[0]!));
+    }) ?? targets[0]!
+  );
+}
+
+function applySteps(kind: "contrast" | "scene", item: Contrast | Scene, index: PilotIndex): LessonStep[] {
+  const targets = kind === "contrast" ? (item as Contrast).entries : (item as Scene).targets;
+  const steps: LessonStep[] = [kind === "contrast" ? { kind: "contrast", contrast: item.id } : { kind: "scene", scene: item.id }];
+  for (const check of item.check) {
+    const target = targetFor(check, targets, index);
+    steps.push({
+      kind: "check",
+      role: "apply",
+      ref: kind === "contrast" ? { from: "contrast", contrast: item.id, item: check.id, target } : { from: "scene", scene: item.id, item: check.id, target },
+    });
+  }
+  if (kind === "scene") steps.push({ kind: "write", scene: item.id });
+  return steps;
+}
+
+export function buildLesson(
+  index: PilotIndex,
+  targets: PilotTarget[],
+  known: Set<string>,
+  now: number,
+  random: () => number = Math.random,
+): LessonSession {
+  const steps: LessonStep[] = [];
+  const used = new Map<string, Set<string>>(targets.map((target) => [target.sense.id, new Set<string>()]));
+  const contextStep = (target: PilotTarget): LessonStep => {
+    const item = contentItem(target.sense, ["cloze", "choice", "produce"], used.get(target.sense.id)!);
+    if (item) {
+      used.get(target.sense.id)!.add(item.id);
+      return { kind: "check", role: "context", ref: { from: "sense", target: target.sense.id, item: item.id } };
+    }
+    return { kind: "check", role: "context", ref: { from: "generated", target: target.sense.id, mode: "form", options: distractors(index, target, random) } };
+  };
+
+  targets.forEach((target, position) => {
+    steps.push({ kind: "teach", target: target.sense.id });
+    steps.push({
+      kind: "check",
+      role: "retrieve",
+      ref: { from: "generated", target: target.sense.id, mode: "meaning", options: distractors(index, target, random) },
+    });
+    // Interleave: the previous word comes back in a new context after this one is taught.
+    const previous = targets[position - 1];
+    if (previous) steps.push(contextStep(previous));
+  });
+  const last = targets[targets.length - 1];
+  if (last) steps.push(contextStep(last));
+
+  for (const target of targets) {
+    const item = contentItem(target.sense, ["produce", "cloze", "choice"], used.get(target.sense.id)!);
+    steps.push({
+      kind: "check",
+      role: "delayed",
+      ref: item
+        ? { from: "sense", target: target.sense.id, item: item.id }
+        : { from: "generated", target: target.sense.id, mode: "form", options: distractors(index, target, random) },
+    });
+  }
+
+  // Apply the words: a contrast all of whose words are now met, else the scene that reuses the most.
+  const met = new Set([...known, ...targets.map((target) => target.sense.id)]);
+  const ids = new Set(targets.map((target) => target.sense.id));
+  const contrast = index.pilot.contrasts.find((item) => item.entries.some((id) => ids.has(id)) && item.entries.every((id) => met.has(id)));
+  if (contrast) steps.push(...applySteps("contrast", contrast, index));
+  else {
+    const scene = [...index.pilot.scenes]
+      .map((item) => ({ item, overlap: item.targets.filter((id) => met.has(id)).length, fresh: item.targets.some((id) => ids.has(id)) }))
+      .filter((candidate) => candidate.fresh && candidate.overlap >= 2)
+      .sort((a, b) => b.overlap - a.overlap)[0]?.item;
+    if (scene) steps.push(...applySteps("scene", scene, index));
+  }
+
+  return {
+    id: newId(),
+    kind: "lesson",
+    status: steps.length ? "active" : "done",
+    createdAt: now,
+    updatedAt: now,
+    mode: "lesson",
+    targets: targets.map((target) => target.sense.id),
+    steps,
+    index: 0,
+    answers: [],
+  };
+}
+
+/** A contrast or scene on its own, for practice from the Learn page. */
+export function buildApplication(index: PilotIndex, kind: "contrast" | "scene", id: string, now: number): LessonSession | null {
+  const item = kind === "contrast" ? index.pilot.contrasts.find((contrast) => contrast.id === id) : index.pilot.scenes.find((scene) => scene.id === id);
+  if (!item) return null;
+  const steps = applySteps(kind, item, index);
+  return {
+    id: newId(),
+    kind: "lesson",
+    status: "active",
+    createdAt: now,
+    updatedAt: now,
+    mode: kind,
+    targets: kind === "contrast" ? (item as Contrast).entries : (item as Scene).targets,
+    steps,
+    index: 0,
+    answers: [],
+  };
+}
+
+export function answerFor(session: LessonSession, step = session.index): LessonAnswer | undefined {
+  return session.answers.find((answer) => answer.step === step);
+}
+
+/**
+ * Record an answer. A wrong retrieval or context answer earns one more,
+ * different opportunity two steps later (never for the delayed retrieval,
+ * which starts the schedule, and never twice for the same target).
+ */
+export function answerLesson(
+  session: LessonSession,
+  answer: Omit<LessonAnswer, "step">,
+  index: PilotIndex,
+  random: () => number = Math.random,
+): LessonSession {
+  if (answerFor(session)) return session;
+  const step = session.steps[session.index];
+  let steps = session.steps;
+  if (step?.kind === "check" && answer.result === "wrong" && (step.role === "retrieve" || step.role === "context")) {
+    const target = step.ref.target;
+    const retried = steps.some((other) => other.kind === "check" && other.role === "retry" && other.ref.target === target);
+    const pilotTarget = index.bySense.get(target);
+    if (!retried && pilotTarget) {
+      const mode = step.ref.from === "generated" && step.ref.mode === "meaning" ? "form" : "meaning";
+      const retry: LessonStep = { kind: "check", role: "retry", ref: { from: "generated", target, mode, options: distractors(index, pilotTarget, random) } };
+      const at = Math.min(steps.length, session.index + 3);
+      steps = [...steps.slice(0, at), retry, ...steps.slice(at)];
+    }
+  }
+  return {
+    ...session,
+    steps,
+    answers: [...session.answers, { ...answer, step: session.index }],
+    updatedAt: answer.at,
+  };
+}
+
+export function advanceLesson(session: LessonSession, now: number): LessonSession {
+  const index = Math.min(session.steps.length, session.index + 1);
+  return { ...session, index, status: index >= session.steps.length ? "done" : "active", updatedAt: now };
+}
+
+export function lessonStats(session: LessonSession) {
+  const checks = session.answers;
+  return {
+    answered: checks.length,
+    correct: checks.filter((answer) => answer.result !== "wrong").length,
+    missed: [...new Set(
+      checks
+        .filter((answer) => answer.result === "wrong")
+        .map((answer) => {
+          const step = session.steps[answer.step];
+          return step?.kind === "check" ? step.ref.target : null;
+        })
+        .filter((id): id is string => Boolean(id)),
+    )],
+  };
+}
+
+/** How many new targets fit today: the learner's time, less any review backlog. */
+export function lessonSize(minutes: number, due: number, sessionSize: number): number {
+  const base = minutes <= 5 ? 2 : minutes >= 15 ? 5 : 3;
+  if (due >= sessionSize * 2) return 0;
+  if (due >= sessionSize) return 1;
+  return base;
+}
+
+/** Targets the learner has not met yet, in introduction order. */
+export function nextTargets(ordered: PilotTarget[], cards: Record<string, unknown>, count: number): PilotTarget[] {
+  return ordered.filter((target) => !cards[target.sense.id]).slice(0, count);
+}
+
+export { shuffle };

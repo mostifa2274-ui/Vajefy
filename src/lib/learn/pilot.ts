@@ -1,0 +1,128 @@
+import type { Contrast, Entry, Goal, Pilot, Scene, Sense, SenseAudio } from "./content";
+import { entryIdOf } from "./content";
+import { loadJson } from "./load";
+
+export type PilotEntry = Pilot["entries"][number];
+
+/** Persian part-of-speech labels, matching the original dataset's wording. */
+export const POS_FA: Record<Sense["pos"], string> = {
+  noun: "اسم",
+  verb: "فعل",
+  adjective: "صفت",
+  adverb: "قید",
+  preposition: "حرف اضافه",
+  conjunction: "حرف ربط",
+  pronoun: "ضمیر",
+  determiner: "تعیین‌کننده",
+  article: "حرف تعریف",
+  modal: "فعل وجهی",
+  exclamation: "عبارت ندایی",
+  number: "عدد",
+  particle: "نشانهٔ مصدر",
+};
+export type PilotTarget = { sense: Sense; entry: PilotEntry; index: number };
+
+export type PilotIndex = {
+  pilot: Pilot;
+  /** Every learning target in curriculum order. */
+  targets: PilotTarget[];
+  bySense: Map<string, PilotTarget>;
+  byEntry: Map<string, PilotEntry>;
+  contrastsBySense: Map<string, Contrast[]>;
+  scenesBySense: Map<string, Scene[]>;
+};
+
+let index: Promise<PilotIndex> | null = null;
+
+export function indexPilot(pilot: Pilot): PilotIndex {
+  const targets: PilotTarget[] = [];
+  const bySense = new Map<string, PilotTarget>();
+  const byEntry = new Map<string, PilotEntry>();
+  for (const entry of pilot.entries) {
+    byEntry.set(entry.id, entry);
+    entry.senses.forEach((sense, position) => {
+      const target = { sense, entry, index: position };
+      targets.push(target);
+      bySense.set(sense.id, target);
+    });
+  }
+  const contrastsBySense = new Map<string, Contrast[]>();
+  for (const contrast of pilot.contrasts) {
+    for (const id of contrast.entries) contrastsBySense.set(id, [...(contrastsBySense.get(id) ?? []), contrast]);
+  }
+  const scenesBySense = new Map<string, Scene[]>();
+  for (const scene of pilot.scenes) {
+    for (const id of scene.targets) scenesBySense.set(id, [...(scenesBySense.get(id) ?? []), scene]);
+  }
+  return { pilot, targets, bySense, byEntry, contrastsBySense, scenesBySense };
+}
+
+export function loadPilot(): Promise<PilotIndex> {
+  index ??= loadJson<Pilot>("pilot-a1.json")
+    .then(indexPilot)
+    .catch((error: unknown) => {
+      index = null;
+      throw error;
+    });
+  return index;
+}
+
+/** Controlled audio for a sense, for the learner's accent. */
+export function senseAudio(audio: Record<string, SenseAudio>, senseId: string, accent: "en-GB" | "en-US") {
+  const clips = audio[senseId]?.[accent === "en-US" ? "us" : "gb"];
+  const url = (file: string | null | undefined) => (file ? `/audio/${file}` : undefined);
+  return { word: url(clips?.word), examples: (clips?.examples ?? []).map(url) };
+}
+
+export function pronunciationFor(sense: Sense, accent: "en-GB" | "en-US") {
+  return accent === "en-US" ? sense.pronunciation.us : sense.pronunciation.gb;
+}
+
+/**
+ * The order in which to introduce pilot targets: curriculum order, with
+ * targets that serve the learner's goal brought forward. Function words and
+ * the first sense of each entry come before further senses of the same word.
+ */
+export function introductionOrder(targets: PilotTarget[], goal: Goal | undefined): PilotTarget[] {
+  return targets
+    .map((target, position) => {
+      const serves = !goal || goal === "general" || target.entry.goals.includes(goal);
+      // A further sense waits until the first sense of its word has been met.
+      const later = target.index > 0 ? 1000 : 0;
+      return { target, rank: position + later + (serves ? 0 : 400) };
+    })
+    .sort((a, b) => a.rank - b.rank)
+    .map((item) => item.target);
+}
+
+export function isPilotEntry(index: PilotIndex, id: string): boolean {
+  return index.byEntry.has(entryIdOf(id));
+}
+
+/** A Review card for a pilot target: the precise sense, its example and its audio. */
+export function pilotFace(target: PilotTarget, audio: Record<string, SenseAudio>, accent: "en-GB" | "en-US", pron?: string): StudyFaceLike {
+  const { sense, entry } = target;
+  const clips = senseAudio(audio, sense.id, accent);
+  const grammar = sense.grammar.map((item) => `${item.pattern} — ${item.note}`).join("\n");
+  return {
+    id: sense.id,
+    level: "A1",
+    title: entry.headword,
+    ipa: pronunciationFor(sense, accent),
+    ...(pron ? { pron } : {}),
+    pos: POS_FA[sense.pos],
+    meaning: sense.gloss,
+    detail: sense.meaning,
+    example: sense.examples[0]?.en,
+    exampleFa: sense.examples[0]?.fa,
+    note: `${grammar}\n✗ ${sense.mistake.wrong}\n✓ ${sense.mistake.right}\n${sense.mistake.why}`,
+    speak: entry.headword,
+    ...(clips.word ? { clip: clips.word } : {}),
+    ...(clips.examples[0] ? { exampleClip: clips.examples[0] } : {}),
+    draft: !entry.released,
+  };
+}
+
+type StudyFaceLike = import("./types").StudyFace;
+
+export type { Contrast, Entry, Scene, Sense };

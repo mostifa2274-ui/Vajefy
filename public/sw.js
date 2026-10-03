@@ -1,7 +1,7 @@
 const CACHE_VERSION = /* __VAJEFY_BUILD_VERSION__ */ "dev";
 const CACHE = `vajefy-offline-${CACHE_VERSION}`;
 const BUILD_ASSETS = /* __VAJEFY_BUILD_ASSETS__ */ [];
-const ROUTES = ["/", "/lexicon", "/study", "/drill", "/library", "/progress"];
+const ROUTES = ["/", "/learn", "/lexicon", "/study", "/drill", "/library", "/progress"];
 const SHELL = ["/manifest.json", "/favicon.svg", "/early-language.js", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
 const DATA = [
   "/data/meta.json",
@@ -22,7 +22,12 @@ const DATA = [
   "/data/formation.json",
   "/data/synonyms.json",
   "/data/families.json",
+  "/data/pilot-a1.json",
+  "/data/usefulness.json",
 ];
+// Pronunciation clips are named by their content hash, so they never change
+// once published. They live in their own cache, which survives app updates.
+const AUDIO_CACHE = "vajefy-audio-v1";
 
 function sameOriginAsset(value) {
   try {
@@ -85,7 +90,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
-      await Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)));
+      await Promise.all(keys.filter((key) => key !== CACHE && key !== AUDIO_CACHE).map((key) => caches.delete(key)));
       await self.clients.claim();
     })(),
   );
@@ -127,6 +132,15 @@ async function cacheFirst(request) {
   return response;
 }
 
+async function cachedAudio(request) {
+  const cache = await caches.open(AUDIO_CACHE);
+  const cached = await cache.match(request, { ignoreVary: true });
+  if (cached) return cached;
+  const response = await fetch(request);
+  if (response.ok && response.status === 200) await cache.put(request, response.clone());
+  return response;
+}
+
 self.addEventListener("fetch", (event) => {
   const request = event.request;
   if (request.method !== "GET") return;
@@ -135,6 +149,11 @@ self.addEventListener("fetch", (event) => {
 
   if (request.mode === "navigate") {
     event.respondWith(navigationFallback(request));
+    return;
+  }
+
+  if (url.pathname.startsWith("/audio/")) {
+    event.respondWith(cachedAudio(request));
     return;
   }
 

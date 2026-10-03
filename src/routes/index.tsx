@@ -7,6 +7,8 @@ import { useFormat } from "@/lib/learn/format";
 import { useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta, loadPairs } from "@/lib/learn/load";
 import { countLevel, dueIds, liveStreak, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
+import { lessonSize, nextTargets } from "@/lib/learn/lesson";
+import { introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
 import { resumable } from "@/lib/learn/session";
 import { dayNumber } from "@/lib/learn/text";
 import type { LexWord, Meta, PairNote } from "@/lib/learn/types";
@@ -35,6 +37,10 @@ function Home() {
   const [opened] = useState(() => Date.now());
   const unfinishedReview = hydrated ? resumable(sessions, "review", opened) : undefined;
   const unfinishedQuiz = hydrated ? resumable(sessions, "quiz", opened) : undefined;
+  const unfinishedLesson = hydrated ? resumable(sessions, "lesson", opened) : undefined;
+  const goal = useProgress((state) => state.goal);
+  const minutes = useProgress((state) => state.minutes);
+  const [pilot, setPilot] = useState<PilotIndex | null>(null);
   const { pct } = useFormat();
   const [meta, setMeta] = useState<Meta | null>(null);
   const [word, setWord] = useState<LexWord | null>(null);
@@ -50,6 +56,9 @@ function Home() {
   useEffect(() => {
     void loadMeta()
       .then(setMeta)
+      .catch(() => undefined);
+    void loadPilot()
+      .then(setPilot)
       .catch(() => undefined);
   }, []);
 
@@ -88,6 +97,12 @@ function Home() {
   if (hydrated && !onboarded && !hasHistory) return <Onboard />;
 
   const due = hydrated ? dueIds(cards).length : 0;
+  const lessonCount =
+    hydrated && pilot && focus === "A1"
+      ? nextTargets(introductionOrder(pilot.targets, goal), cards, lessonSize(minutes, due, sessionSize)).length
+      : 0;
+  // Rough time: a review takes about 8 seconds, a guided new word about 90.
+  const planMinutes = Math.max(1, Math.ceil((Math.min(due, sessionSize) * 8 + lessonCount * 90) / 60));
   const introducedToday = hydrated ? todayLog(logs).introduced : 0;
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
   const roomForNew = Math.max(0, newPerDay - introducedToday);
@@ -137,35 +152,63 @@ function Home() {
           </div>
           <GoalRing value={reviewsToday} goal={dailyGoal} label={copy.goalCaption} />
         </div>
+        {/* One clear next step: finish what was started, then reviews, then new words. */}
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <ButtonLink to="/study">
-            {unfinishedReview ? (
-              <>
-                {copy.resumeReview} · <Num value={unfinishedReview.queue.length} /> {copy.leftLabel}
-              </>
-            ) : (
-              copy.startSession
-            )}
-          </ButtonLink>
-          {unfinishedQuiz ? (
-            <ButtonLink to="/drill" variant="secondary">
-              {copy.resumeQuiz} · <Num value={unfinishedQuiz.questions.length - unfinishedQuiz.index} /> {copy.leftLabel}
+          {unfinishedReview ? (
+            <ButtonLink to="/study">
+              {copy.resumeReview} · <Num value={unfinishedReview.queue.length} /> {copy.leftLabel}
             </ButtonLink>
+          ) : unfinishedLesson ? (
+            <ButtonLink to="/learn">
+              {copy.resumeLesson} · <Num value={unfinishedLesson.steps.length - unfinishedLesson.index} /> {copy.leftLabel}
+            </ButtonLink>
+          ) : due > 0 ? (
+            <ButtonLink to="/study">{copy.startSession}</ButtonLink>
+          ) : lessonCount > 0 ? (
+            <ButtonLink to="/learn">
+              {copy.startLesson} · <Num value={lessonCount} /> {copy.lessonNewWords}
+            </ButtonLink>
+          ) : (
+            <Link
+              to="/drill"
+              search={{ play: "smart" }}
+              className="inline-flex min-h-11 items-center justify-center rounded-md bg-accent px-4 text-sm font-medium text-accent-fg hover:bg-ink"
+            >
+              {copy.smartPractice}
+            </Link>
+          )}
+          {lessonCount > 0 && (unfinishedReview || due > 0) && !unfinishedLesson ? (
+            <Link to="/learn" className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
+              {copy.learn} · <Num value={lessonCount} /> {copy.lessonNewWords}
+            </Link>
           ) : null}
-          <Link
-            to="/drill"
-            search={{ play: "smart" }}
-            className="inline-flex min-h-11 items-center justify-center rounded-md bg-paper-2 px-4 text-sm font-medium shadow-[var(--shadow-border)]"
-          >
-            {copy.smartPractice}
-          </Link>
+          {unfinishedQuiz ? (
+            <Link to="/drill" className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
+              {copy.resumeQuiz} · <Num value={unfinishedQuiz.questions.length - unfinishedQuiz.index} /> {copy.leftLabel}
+            </Link>
+          ) : null}
+          {due > 0 || lessonCount > 0 || unfinishedReview || unfinishedLesson ? (
+            <Link to="/drill" search={{ play: "smart" }} className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
+              {copy.smartPractice}
+            </Link>
+          ) : null}
           <Link to="/drill" search={{ play: "match" }} className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
             {copy.openMatch}
           </Link>
-          <Link to="/drill" search={{ play: "sprint" }} className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
-            {copy.openSprint}
-          </Link>
         </div>
+        {hydrated && (due > 0 || lessonCount > 0) ? (
+          <p className="mt-4 text-sm">
+            {copy.todayPlan}: <Num value={due} /> {copy.dueLabel}
+            {lessonCount > 0 ? (
+              <>
+                <span className="mx-2">·</span>
+                <Num value={lessonCount} /> {copy.lessonNewWords}
+              </>
+            ) : null}
+            <span className="mx-2">·</span>
+            {copy.aboutLabel} <Num value={planMinutes} /> {copy.minutesLabel}
+          </p>
+        ) : null}
         <p className="mt-5 text-sm text-muted">
           <Num value={due} /> {copy.dueLabel}
           <span className="mx-2">·</span>

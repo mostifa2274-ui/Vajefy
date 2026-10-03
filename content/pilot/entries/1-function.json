@@ -1,0 +1,4651 @@
+[
+ {
+  "id": "lex:A1:a-an",
+  "headword": "a, an",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:a-an",
+    "pos": "article",
+    "gloss": "یک (حرف تعریف نامعین)",
+    "meaning": "پیش از اسم مفردِ قابل‌شمارش می‌آید، وقتی از یک چیز یا یک نفرِ نامشخص حرف می‌زنیم یا برای اولین بار از آن نام می‌بریم. پیش از صدای صامت a و پیش از صدای مصوت an می‌آید.",
+    "grammar": [
+     {
+      "pattern": "a + consonant sound / an + vowel sound",
+      "note": "انتخاب a یا an به صدای اولِ کلمهٔ بعد بستگی دارد، نه به حرفِ نوشته‌شده: a university (با صدای «یو»)، an hour (h خوانده نمی‌شود)."
+     },
+     {
+      "pattern": "be + a/an + job",
+      "note": "در فارسی می‌گوییم «او پزشک است»، اما در انگلیسی پیش از شغل a/an لازم است: She is a doctor."
+     }
+    ],
+    "examples": [
+     {
+      "en": "I have a sister and an older brother.",
+      "fa": "من یک خواهر و یک برادرِ بزرگ‌تر دارم."
+     },
+     {
+      "en": "She is an engineer.",
+      "fa": "او مهندس است."
+     }
+    ],
+    "collocations": [
+     "a lot of",
+     "an hour",
+     "once a week",
+     "a little"
+    ],
+    "mistake": {
+     "wrong": "He is teacher.",
+     "right": "He is a teacher.",
+     "why": "برای گفتن شغل یا نوعِ چیزی، پیش از اسم مفرد a/an لازم است، حتی وقتی در فارسی «یک» نمی‌گوییم."
+    },
+    "pronunciation": {
+     "gb": "/ə/, /ən/; stressed /eɪ/, /æn/",
+     "us": "/ə/, /ən/; stressed /eɪ/, /æn/",
+     "note": "معمولاً ضعیف و بی‌تأکید خوانده می‌شود: «اِ» و «اِن»."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "I waited for ___ hour at the station.",
+      "answer": "an",
+      "accept": [],
+      "fa": "یک ساعت در ایستگاه منتظر ماندم.",
+      "why": "h در hour خوانده نمی‌شود و کلمه با صدای مصوت شروع می‌شود، پس an."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the correct sentence.",
+      "options": [
+       {
+        "text": "My father is a driver.",
+        "ok": true,
+        "why": "برای شغل a لازم است."
+       },
+       {
+        "text": "My father is driver.",
+        "ok": false,
+        "why": "بدون a جملهٔ شغل در انگلیسی ناقص است."
+       },
+       {
+        "text": "My father is an driver.",
+        "ok": false,
+        "why": "driver با صدای صامت شروع می‌شود، پس a."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "او در یک دانشگاه بزرگ کار می‌کند.",
+      "frame": "She works at ___ big university.",
+      "answer": "a",
+      "accept": [],
+      "why": "big با صدای صامتِ «ب» شروع می‌شود؛ a/an به صدای کلمهٔ بعدی نگاه می‌کند."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:the",
+  "headword": "the",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:the",
+    "pos": "article",
+    "gloss": "حرف تعریف معین",
+    "meaning": "وقتی گوینده و شنونده هر دو می‌دانند منظور کدام چیز یا کدام نفر است، یا وقتی آن چیز یکتاست (the sun)، پیش از اسم the می‌آید. فارسی برای این معنا معمولاً نشانه‌ای ندارد.",
+    "grammar": [
+     {
+      "pattern": "a … (first time) → the … (again)",
+      "note": "بار اول a و وقتی دوباره از همان چیز حرف می‌زنیم the: I bought a book. The book is about Iran."
+     },
+     {
+      "pattern": "the + one of a kind",
+      "note": "برای چیزهای یکتا the لازم است: the sun, the internet."
+     },
+     {
+      "pattern": "no article for things in general",
+      "note": "برای حرف زدن کلی دربارهٔ چیزی the نمی‌آوریم: I like coffee. / Life is short."
+     }
+    ],
+    "examples": [
+     {
+      "en": "Can you open the window, please?",
+      "fa": "لطفاً می‌توانی پنجره را باز کنی؟"
+     },
+     {
+      "en": "The bus to the city centre is late.",
+      "fa": "اتوبوسِ مرکز شهر دیر کرده است."
+     }
+    ],
+    "collocations": [
+     "the same",
+     "the first",
+     "in the morning",
+     "the internet",
+     "play the piano"
+    ],
+    "mistake": {
+     "wrong": "The coffee is good for you.",
+     "right": "Coffee is good for you.",
+     "why": "وقتی به‌طور کلی دربارهٔ چیزی حرف می‌زنیم، the نمی‌آوریم؛ «قهوه برای سلامتی خوب است» = Coffee is good for you."
+    },
+    "pronunciation": {
+     "gb": "/ðə/; before a vowel sound /ði/",
+     "us": "/ðə/; before a vowel sound /ði/",
+     "note": "th در the با لرزش تارهای صوتی است (ð)، نه «د» و نه «ز». پیش از صدای مصوت «دی» خوانده می‌شود."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "I bought a new phone, but ___ phone doesn't work.",
+      "answer": "the",
+      "accept": [],
+      "fa": "یک گوشی جدید خریدم، اما گوشی کار نمی‌کند.",
+      "why": "بار دوم از همان گوشی حرف می‌زنیم، پس the."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the sentence about music in general.",
+      "options": [
+       {
+        "text": "I love music.",
+        "ok": true,
+        "why": "دربارهٔ موسیقی به‌طور کلی، بدون the."
+       },
+       {
+        "text": "I love the music.",
+        "ok": false,
+        "why": "the یعنی موسیقیِ مشخصی که هر دو می‌دانیم، نه موسیقی به‌طور کلی."
+       },
+       {
+        "text": "I love a music.",
+        "ok": false,
+        "why": "music غیرقابل‌شمارش است و a نمی‌گیرد."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "خورشید امروز گرم است.",
+      "frame": "___ sun is hot today.",
+      "answer": "The",
+      "accept": [],
+      "why": "خورشید یکتاست و the می‌گیرد."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:and",
+  "headword": "and",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:and",
+    "pos": "conjunction",
+    "gloss": "و",
+    "meaning": "دو کلمه، دو عبارت یا دو جمله را که هم‌جهت‌اند به هم وصل می‌کند.",
+    "grammar": [
+     {
+      "pattern": "A and B",
+      "note": "در فهرستِ سه‌تایی یا بیشتر، and فقط پیش از آخری می‌آید: tea, coffee and juice."
+     },
+     {
+      "pattern": "sentence and sentence",
+      "note": "دو جملهٔ کامل را هم وصل می‌کند: I cooked and she washed the dishes."
+     }
+    ],
+    "examples": [
+     {
+      "en": "My brother and I play football on Fridays.",
+      "fa": "من و برادرم جمعه‌ها فوتبال بازی می‌کنیم."
+     },
+     {
+      "en": "I opened the door and went in.",
+      "fa": "در را باز کردم و داخل رفتم."
+     }
+    ],
+    "collocations": [
+     "and then",
+     "and so on",
+     "bread and butter",
+     "you and me"
+    ],
+    "usage": "در انگلیسی اول دیگران را می‌آوریم و بعد خودمان را: my friend and I.",
+    "mistake": {
+     "wrong": "I and my sister went to the park.",
+     "right": "My sister and I went to the park.",
+     "why": "در انگلیسی مؤدبانه است که اول دیگری را بگوییم و بعد I."
+    },
+    "pronunciation": {
+     "gb": "/ənd/; stressed /ænd/",
+     "us": "/ənd/; stressed /ænd/",
+     "note": "در گفتار سریع معمولاً «اِن» شنیده می‌شود: fish and chips ≈ «فیش‌اِن‌چیپس»."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "We had soup ___ salad for lunch.",
+      "answer": "and",
+      "accept": [],
+      "fa": "برای ناهار سوپ و سالاد خوردیم.",
+      "why": "دو چیزِ هم‌جهت را به هم وصل می‌کند."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Which sentence is correct and polite?",
+      "options": [
+       {
+        "text": "My friend and I are students.",
+        "ok": true,
+        "why": "اول دیگری، بعد I."
+       },
+       {
+        "text": "I and my friend are students.",
+        "ok": false,
+        "why": "در انگلیسی I را آخر می‌گوییم."
+       },
+       {
+        "text": "Me and my friend is students.",
+        "ok": false,
+        "why": "فاعل باید I باشد و فعل are."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "من چای و یک کیک کوچک می‌خواهم.",
+      "frame": "I want tea ___ a small cake.",
+      "answer": "and",
+      "accept": [],
+      "why": "دو چیز را با and وصل می‌کنیم."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:but",
+  "headword": "but",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:but",
+    "pos": "conjunction",
+    "gloss": "اما؛ ولی",
+    "meaning": "دو بخش جمله را که با هم تضاد یا تفاوت دارند به هم وصل می‌کند.",
+    "grammar": [
+     {
+      "pattern": "sentence, but sentence",
+      "note": "معمولاً پیش از but ویرگول می‌آید: It is cheap, but it is good."
+     },
+     {
+      "pattern": "Sorry, but …",
+      "note": "برای مخالفت یا رد مؤدبانه: Sorry, but I can't come."
+     }
+    ],
+    "examples": [
+     {
+      "en": "The room is small, but it is very clean.",
+      "fa": "اتاق کوچک است، اما خیلی تمیز است."
+     },
+     {
+      "en": "I called him, but he didn't answer.",
+      "fa": "به او زنگ زدم، ولی جواب نداد."
+     }
+    ],
+    "collocations": [
+     "but then",
+     "but also",
+     "sorry, but",
+     "yes, but"
+    ],
+    "mistake": {
+     "wrong": "Although it was late, but we went out.",
+     "right": "It was late, but we went out.",
+     "why": "در فارسی می‌گوییم «با اینکه … اما …»، ولی در انگلیسی although و but با هم در یک جمله نمی‌آیند."
+    },
+    "pronunciation": {
+     "gb": "/bət/; stressed /bʌt/",
+     "us": "/bət/; stressed /bʌt/",
+     "note": "u در but کوتاه و باز است، شبیه «اَ»."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "The food was cheap ___ delicious.",
+      "answer": "but",
+      "accept": [],
+      "fa": "غذا ارزان اما خوشمزه بود.",
+      "why": "معمولاً انتظار نداریم غذای ارزان خوشمزه باشد؛ این تضاد را but نشان می‌دهد."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "I wanted to go out, ___ it was raining.",
+      "options": [
+       {
+        "text": "but",
+        "ok": true,
+        "why": "خواستنِ بیرون رفتن در برابر باران: تضاد."
+       },
+       {
+        "text": "and",
+        "ok": false,
+        "why": "and تضاد را نشان نمی‌دهد."
+       },
+       {
+        "text": "because",
+        "ok": false,
+        "why": "because علت را می‌گوید، نه تضاد."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "خسته بودم، اما کارم را تمام کردم.",
+      "frame": "I was tired, ___ I finished my work.",
+      "answer": "but",
+      "accept": [],
+      "why": "تضاد بین خستگی و تمام کردن کار."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:or",
+  "headword": "or",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:or",
+    "pos": "conjunction",
+    "gloss": "یا",
+    "meaning": "برای نشان دادن انتخاب بین دو یا چند چیز. در جملهٔ منفی معنای «و نه» می‌دهد.",
+    "grammar": [
+     {
+      "pattern": "A or B?",
+      "note": "در سؤال انتخابی، صدا روی گزینهٔ اول بالا و روی آخری پایین می‌رود: Tea or coffee?"
+     },
+     {
+      "pattern": "not … A or B",
+      "note": "در جملهٔ منفی به‌جای and از or استفاده می‌کنیم: I don't eat meat or fish."
+     }
+    ],
+    "examples": [
+     {
+      "en": "Do you want tea or coffee?",
+      "fa": "چای می‌خواهی یا قهوه؟"
+     },
+     {
+      "en": "You can pay by card or in cash.",
+      "fa": "می‌توانید با کارت یا نقدی پرداخت کنید."
+     }
+    ],
+    "collocations": [
+     "or not",
+     "either … or",
+     "one or two",
+     "sooner or later"
+    ],
+    "mistake": {
+     "wrong": "I don't like tea and coffee.",
+     "right": "I don't like tea or coffee.",
+     "why": "در جملهٔ منفی، برای «نه این و نه آن» از or استفاده می‌کنیم."
+    },
+    "pronunciation": {
+     "gb": "/ə/; stressed /ɔː/",
+     "us": "/ɚ/; stressed /ɔːr/",
+     "note": "در جملهٔ سریع ضعیف خوانده می‌شود: tea or coffee ≈ «تی‌اِ‌کافی»."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Is your new teacher a man ___ a woman?",
+      "answer": "or",
+      "accept": [],
+      "fa": "معلم جدیدت مرد است یا زن؟",
+      "why": "انتخاب بین دو گزینه."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "He doesn't drink milk ___ juice.",
+      "options": [
+       {
+        "text": "or",
+        "ok": true,
+        "why": "در جملهٔ منفی برای «نه این و نه آن» or می‌آید."
+       },
+       {
+        "text": "and",
+        "ok": false,
+        "why": "در جملهٔ منفی and برای این معنا طبیعی نیست."
+       },
+       {
+        "text": "but",
+        "ok": false,
+        "why": "but تضاد می‌سازد؛ اینجا تضادی نیست."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "با اتوبوس می‌روی یا با تاکسی؟",
+      "frame": "Are you going by bus ___ by taxi?",
+      "answer": "or",
+      "accept": [],
+      "why": "سؤال انتخابی."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:because",
+  "headword": "because",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:because",
+    "pos": "conjunction",
+    "gloss": "چون؛ زیرا",
+    "meaning": "دلیلِ کاری یا اتفاقی را بیان می‌کند و پیش از یک جملهٔ کامل (فاعل + فعل) می‌آید.",
+    "grammar": [
+     {
+      "pattern": "because + subject + verb",
+      "note": "بعد از because جمله می‌آید: because it was late."
+     },
+     {
+      "pattern": "because of + noun",
+      "note": "پیش از اسم یا عبارت اسمی because of می‌آید: because of the rain."
+     }
+    ],
+    "examples": [
+     {
+      "en": "I'm hungry because I didn't eat breakfast.",
+      "fa": "گرسنه‌ام چون صبحانه نخوردم."
+     },
+     {
+      "en": "We stayed home because of the snow.",
+      "fa": "به خاطر برف در خانه ماندیم."
+     }
+    ],
+    "collocations": [
+     "because of",
+     "just because",
+     "only because"
+    ],
+    "mistake": {
+     "wrong": "We stayed home because the rain.",
+     "right": "We stayed home because of the rain.",
+     "why": "پیش از اسم تنها (the rain) باید because of بیاید؛ because به جملهٔ کامل نیاز دارد."
+    },
+    "pronunciation": {
+     "gb": "/bɪˈkɒz/",
+     "us": "/bɪˈkɑːz/, /bɪˈkʌz/",
+     "note": "تأکید روی بخش دوم است: bi-COZ."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "She is happy ___ she passed the exam.",
+      "answer": "because",
+      "accept": [],
+      "fa": "او خوشحال است چون امتحان را قبول شد.",
+      "why": "بعد از جای خالی یک جملهٔ کامل آمده (she passed …)، پس because."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "The flight was late ___ the bad weather.",
+      "options": [
+       {
+        "text": "because of",
+        "ok": true,
+        "why": "بعد از جای خالی فقط اسم آمده."
+       },
+       {
+        "text": "because",
+        "ok": false,
+        "why": "because به فاعل و فعل نیاز دارد."
+       },
+       {
+        "text": "so",
+        "ok": false,
+        "why": "so نتیجه را می‌گوید، نه علت."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "دیر آمدم چون اتوبوس نیامد.",
+      "frame": "I was late ___ the bus didn't come.",
+      "answer": "because",
+      "accept": [],
+      "why": "دلیل با یک جملهٔ کامل."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:if",
+  "headword": "if",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:if",
+    "pos": "conjunction",
+    "gloss": "اگر؛ آیا",
+    "meaning": "شرطی را بیان می‌کند: اتفاقی که فقط در صورت درست بودن شرط رخ می‌دهد. در سؤال غیرمستقیم هم به معنای «آیا» می‌آید.",
+    "grammar": [
+     {
+      "pattern": "If + present, will + verb",
+      "note": "برای آیندهٔ واقعی، بعد از if زمان حال می‌آید، نه will: If it rains, I will stay home."
+     },
+     {
+      "pattern": "ask / don't know + if …",
+      "note": "«آیا»: I don't know if he is at home."
+     }
+    ],
+    "examples": [
+     {
+      "en": "If you are tired, go to bed.",
+      "fa": "اگر خسته‌ای، برو بخواب."
+     },
+     {
+      "en": "Can you ask her if she wants coffee?",
+      "fa": "می‌توانی از او بپرسی آیا قهوه می‌خواهد؟"
+     }
+    ],
+    "collocations": [
+     "if possible",
+     "even if",
+     "if not",
+     "as if"
+    ],
+    "mistake": {
+     "wrong": "If it will rain, we will stay home.",
+     "right": "If it rains, we will stay home.",
+     "why": "در فارسی هم می‌گوییم «اگر باران بیاید»؛ در انگلیسی بعد از if برای آینده از حال ساده استفاده می‌شود، نه will."
+    },
+    "pronunciation": {
+     "gb": "/ɪf/",
+     "us": "/ɪf/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ you need help, call me.",
+      "answer": "If",
+      "accept": [
+       "if"
+      ],
+      "fa": "اگر کمک لازم داشتی، به من زنگ بزن.",
+      "why": "شرطی برای زنگ زدن."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "If she ___ early tomorrow, we can have breakfast together.",
+      "options": [
+       {
+        "text": "comes",
+        "ok": true,
+        "why": "بعد از if برای آینده، حال ساده."
+       },
+       {
+        "text": "will come",
+        "ok": false,
+        "why": "در این ساختار will بعد از if نمی‌آید."
+       },
+       {
+        "text": "came",
+        "ok": false,
+        "why": "came گذشته است و برای فردا مناسب نیست."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "نمی‌دانم آیا او امشب می‌آید.",
+      "frame": "I don't know ___ he is coming tonight.",
+      "answer": "if",
+      "accept": [
+       "whether"
+      ],
+      "why": "if در سؤال غیرمستقیم یعنی «آیا»."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:so",
+  "headword": "so",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:so",
+    "pos": "conjunction",
+    "gloss": "پس؛ برای همین",
+    "meaning": "نتیجه یا پیامدِ چیزی را که قبلاً گفته شده بیان می‌کند.",
+    "grammar": [
+     {
+      "pattern": "cause, so result",
+      "note": "علت اول می‌آید و نتیجه بعد از so: It was cold, so I wore a coat."
+     },
+     {
+      "pattern": "because or so, not both",
+      "note": "در یک جمله یا because (علت) بیاورید یا so (نتیجه)، نه هر دو."
+     }
+    ],
+    "examples": [
+     {
+      "en": "It was late, so we took a taxi.",
+      "fa": "دیر بود، پس تاکسی گرفتیم."
+     },
+     {
+      "en": "I was hungry, so I made a sandwich.",
+      "fa": "گرسنه بودم، برای همین ساندویچ درست کردم."
+     }
+    ],
+    "collocations": [
+     "so that",
+     "and so",
+     "so what?"
+    ],
+    "mistake": {
+     "wrong": "Because it was late, so we took a taxi.",
+     "right": "It was late, so we took a taxi.",
+     "why": "در فارسی «چون دیر بود، برای همین …» طبیعی است؛ در انگلیسی because و so با هم در یک جمله نمی‌آیند."
+    },
+    "pronunciation": {
+     "gb": "/səʊ/",
+     "us": "/soʊ/",
+     "note": "o دوصدایی است: «سُ‌اُو»."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "The shop was closed, ___ we went home.",
+      "answer": "so",
+      "accept": [],
+      "fa": "مغازه بسته بود، پس به خانه رفتیم.",
+      "why": "رفتن به خانه نتیجهٔ بسته بودن مغازه است."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "It was raining, ___ we stayed inside.",
+      "options": [
+       {
+        "text": "so",
+        "ok": true,
+        "why": "ماندن در خانه نتیجهٔ باران است."
+       },
+       {
+        "text": "because",
+        "ok": false,
+        "why": "because علت را بعد از خودش می‌آورد؛ اینجا بعد از جای خالی نتیجه آمده."
+       },
+       {
+        "text": "but",
+        "ok": false,
+        "why": "تضادی در کار نیست."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "lex:A1:so#very",
+    "pos": "adverb",
+    "gloss": "خیلی؛ آن‌قدر",
+    "meaning": "برای تأکید بر صفت یا قید، وقتی بعد از آن اسمی نمی‌آید: so tired, so quickly. در گفتار بسیار رایج است.",
+    "grammar": [
+     {
+      "pattern": "so + adjective (no noun)",
+      "note": "The film was so funny. (اما پیش از صفت + اسم: such a funny film)"
+     },
+     {
+      "pattern": "so + adjective + that …",
+      "note": "«آن‌قدر … که …»: It was so hot that we stayed inside."
+     }
+    ],
+    "examples": [
+     {
+      "en": "Thank you so much!",
+      "fa": "خیلی ممنونم!"
+     },
+     {
+      "en": "The film was so funny.",
+      "fa": "فیلم خیلی خنده‌دار بود."
+     }
+    ],
+    "collocations": [
+     "so much",
+     "so many",
+     "so good",
+     "so sorry"
+    ],
+    "mistake": {
+     "wrong": "It is a so beautiful city.",
+     "right": "The city is so beautiful. / It is such a beautiful city.",
+     "why": "so پیش از «صفت + اسم» نمی‌آید؛ در آن حالت such a به کار می‌رود."
+    },
+    "pronunciation": {
+     "gb": "/səʊ/",
+     "us": "/soʊ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "I'm ___ happy to see you!",
+      "answer": "so",
+      "accept": [
+       "very",
+       "really"
+      ],
+      "fa": "خیلی خوشحالم که می‌بینمت!",
+      "why": "so پیش از صفت برای تأکید."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the correct sentence.",
+      "options": [
+       {
+        "text": "The weather is so nice today.",
+        "ok": true,
+        "why": "so پیش از صفتِ تنها."
+       },
+       {
+        "text": "It is a so nice day.",
+        "ok": false,
+        "why": "پیش از «صفت + اسم» such a لازم است."
+       },
+       {
+        "text": "It is so a nice day.",
+        "ok": false,
+        "why": "ترتیب درست such a nice day است."
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:than",
+  "headword": "than",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:than",
+    "pos": "conjunction",
+    "gloss": "از (در مقایسه)",
+    "meaning": "در مقایسه، بعد از صفت تفضیلی (bigger, more expensive) می‌آید و چیزی را که با آن مقایسه می‌کنیم معرفی می‌کند.",
+    "grammar": [
+     {
+      "pattern": "comparative + than",
+      "note": "bigger than, more interesting than. در فارسی «از» می‌گوییم، اما در انگلیسی from غلط است."
+     },
+     {
+      "pattern": "than me / than I am",
+      "note": "در گفتار معمولاً than me، و در نوشتار رسمی‌تر than I am."
+     }
+    ],
+    "examples": [
+     {
+      "en": "My brother is taller than me.",
+      "fa": "برادرم از من بلندتر است."
+     },
+     {
+      "en": "The train is faster than the bus.",
+      "fa": "قطار از اتوبوس سریع‌تر است."
+     }
+    ],
+    "collocations": [
+     "more than",
+     "less than",
+     "better than",
+     "rather than"
+    ],
+    "mistake": {
+     "wrong": "Tehran is bigger from Shiraz.",
+     "right": "Tehran is bigger than Shiraz.",
+     "why": "در فارسی «بزرگ‌تر از» می‌گوییم، اما در انگلیسی بعد از صفت تفضیلی than می‌آید، نه from."
+    },
+    "pronunciation": {
+     "gb": "/ðən/; stressed /ðæn/",
+     "us": "/ðən/; stressed /ðæn/",
+     "note": "than را با then (سپس) اشتباه نگیرید؛ شکل ضعیف than «دِن» است."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "This bag is cheaper ___ that one.",
+      "answer": "than",
+      "accept": [],
+      "fa": "این کیف از آن یکی ارزان‌تر است.",
+      "why": "بعد از cheaper (تفضیلی) than می‌آید."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the correct sentence.",
+      "options": [
+       {
+        "text": "Coffee is more expensive than tea here.",
+        "ok": true,
+        "why": "صفت تفضیلی + than."
+       },
+       {
+        "text": "Coffee is more expensive from tea here.",
+        "ok": false,
+        "why": "from برای مقایسه به کار نمی‌رود."
+       },
+       {
+        "text": "Coffee is more expensive then tea here.",
+        "ok": false,
+        "why": "then یعنی «سپس»؛ برای مقایسه than درست است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "امروز از دیروز گرم‌تر است.",
+      "frame": "Today is warmer ___ yesterday.",
+      "answer": "than",
+      "accept": [],
+      "why": "مقایسه با صفت تفضیلی."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:this",
+  "headword": "this",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:this",
+    "pos": "determiner",
+    "gloss": "این",
+    "meaning": "به چیز یا کسی اشاره می‌کند که نزدیک گوینده است، یا به زمانی که الان در آن هستیم (this week). جمع آن these است.",
+    "grammar": [
+     {
+      "pattern": "this + singular noun / these + plural noun",
+      "note": "this book / these books"
+     },
+     {
+      "pattern": "This is + person",
+      "note": "برای معرفی کسی: This is my friend Sara. پشت تلفن: Hello, this is Ali."
+     }
+    ],
+    "examples": [
+     {
+      "en": "This is my sister, Mina.",
+      "fa": "این خواهرم میناست."
+     },
+     {
+      "en": "I'm very busy this week.",
+      "fa": "این هفته خیلی سرم شلوغ است."
+     }
+    ],
+    "collocations": [
+     "this morning",
+     "this week",
+     "this one",
+     "like this"
+    ],
+    "usage": "پشت تلفن خودتان را با This is … معرفی می‌کنید، نه I am …",
+    "mistake": {
+     "wrong": "This shoes are new.",
+     "right": "These shoes are new.",
+     "why": "برای اسم جمع these به کار می‌رود، نه this."
+    },
+    "pronunciation": {
+     "gb": "/ðɪs/",
+     "us": "/ðɪs/",
+     "note": "i کوتاه است؛ these /ðiːz/ با i کشیده و صدای «ز» فرق دارد."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Hello, ___ is Reza. Can I speak to Sara?",
+      "answer": "this",
+      "accept": [
+       "This"
+      ],
+      "fa": "سلام، رضا هستم. می‌توانم با سارا صحبت کنم؟",
+      "why": "پشت تلفن خود را با this is معرفی می‌کنیم."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "___ apples are very sweet.",
+      "options": [
+       {
+        "text": "These",
+        "ok": true,
+        "why": "apples جمع است."
+       },
+       {
+        "text": "This",
+        "ok": false,
+        "why": "this برای اسم مفرد است."
+       },
+       {
+        "text": "That",
+        "ok": false,
+        "why": "that هم برای مفرد است و به دور اشاره می‌کند."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "امروز صبح باران آمد.",
+      "frame": "It rained ___ morning.",
+      "answer": "this",
+      "accept": [],
+      "why": "this morning یعنی صبحِ امروز."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:that",
+  "headword": "that",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:that",
+    "pos": "determiner",
+    "gloss": "آن",
+    "meaning": "به چیز یا کسی اشاره می‌کند که از گوینده دور است (جمع: those)، یا به چیزی که کمی پیش گفته شد.",
+    "grammar": [
+     {
+      "pattern": "that + singular noun / those + plural noun",
+      "note": "that car / those cars"
+     },
+     {
+      "pattern": "That's + reaction",
+      "note": "برای واکنش به حرفی که شنیدیم: That's great! / That's right."
+     }
+    ],
+    "examples": [
+     {
+      "en": "Who is that man near the door?",
+      "fa": "آن مرد کنار در کیست؟"
+     },
+     {
+      "en": "That's a good idea!",
+      "fa": "فکر خوبی است!"
+     }
+    ],
+    "collocations": [
+     "that one",
+     "that's right",
+     "that day",
+     "like that"
+    ],
+    "mistake": {
+     "wrong": "Those car is mine.",
+     "right": "That car is mine.",
+     "why": "car مفرد است، پس that."
+    },
+    "pronunciation": {
+     "gb": "/ðæt/",
+     "us": "/ðæt/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Can you see ___ big building over there?",
+      "answer": "that",
+      "accept": [],
+      "fa": "آن ساختمان بزرگ را آن طرف می‌بینی؟",
+      "why": "ساختمان دور و مفرد است."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "A: I passed my exam! B: ___ great!",
+      "options": [
+       {
+        "text": "That's",
+        "ok": true,
+        "why": "اشاره به خبری که شنیدیم."
+       },
+       {
+        "text": "This is",
+        "ok": false,
+        "why": "برای واکنش به حرف کسی معمولاً That's می‌گوییم."
+       },
+       {
+        "text": "Those are",
+        "ok": false,
+        "why": "جمع است، اما اینجا یک خبر داریم."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "lex:A1:that#conjunction",
+    "pos": "conjunction",
+    "gloss": "که",
+    "meaning": "دو جمله را به هم وصل می‌کند، به‌ویژه بعد از فعل‌هایی مثل think, know, say. همچنین بعد از اسم برای توضیح آن: the bus that goes to … . در گفتار اغلب حذف می‌شود.",
+    "grammar": [
+     {
+      "pattern": "think / know / say (that) + sentence",
+      "note": "I know (that) you are busy. حذف that در گفتار طبیعی است."
+     },
+     {
+      "pattern": "noun + that + verb",
+      "note": "the book that I bought = کتابی که خریدم"
+     }
+    ],
+    "examples": [
+     {
+      "en": "I think that he is right.",
+      "fa": "فکر می‌کنم حق با اوست."
+     },
+     {
+      "en": "This is the bus that goes to the airport.",
+      "fa": "این اتوبوسی است که به فرودگاه می‌رود."
+     }
+    ],
+    "collocations": [
+     "I think that",
+     "so that",
+     "the one that"
+    ],
+    "mistake": {
+     "wrong": "I know what he is busy.",
+     "right": "I know (that) he is busy.",
+     "why": "برای «که» بعد از know از that استفاده می‌کنیم؛ what یعنی «چه چیزی»."
+    },
+    "pronunciation": {
+     "gb": "/ðət/",
+     "us": "/ðət/",
+     "note": "در این معنا ضعیف خوانده می‌شود: «دِت»."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "She said ___ the shop opens at nine.",
+      "answer": "that",
+      "accept": [],
+      "fa": "او گفت که مغازه ساعت نه باز می‌شود.",
+      "why": "that دو جمله را بعد از said وصل می‌کند."
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "فکر می‌کنم که این رستوران خوب است.",
+      "frame": "I think ___ this restaurant is good.",
+      "answer": "that",
+      "accept": [],
+      "why": "that بعد از think جملهٔ دوم را وصل می‌کند (در گفتار می‌توان حذفش کرد)."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:what",
+  "headword": "what",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:what",
+    "pos": "pronoun",
+    "gloss": "چه؛ چه چیزی",
+    "meaning": "برای پرسیدن دربارهٔ چیزها، اطلاعات یا کارها. پیش از اسم هم می‌آید: What time …? What colour …?",
+    "grammar": [
+     {
+      "pattern": "What + do/does/did + subject + verb?",
+      "note": "What do you want? (در سؤال با فعل اصلی، فعل کمکی لازم است)"
+     },
+     {
+      "pattern": "What + noun …?",
+      "note": "What time is it? / What colour is your car?"
+     }
+    ],
+    "examples": [
+     {
+      "en": "What is your name?",
+      "fa": "اسمت چیست؟"
+     },
+     {
+      "en": "What time does the film start?",
+      "fa": "فیلم چه ساعتی شروع می‌شود؟"
+     }
+    ],
+    "collocations": [
+     "what time",
+     "what kind of",
+     "what about …?",
+     "what's wrong?"
+    ],
+    "usage": "What about …? برای پیشنهاد است: What about pizza? = نظرت دربارهٔ پیتزا چیست؟",
+    "mistake": {
+     "wrong": "What you want?",
+     "right": "What do you want?",
+     "why": "در سؤال انگلیسی با فعل اصلی، do/does/did لازم است."
+    },
+    "pronunciation": {
+     "gb": "/wɒt/",
+     "us": "/wʌt/, /wɑːt/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ do you usually eat for breakfast?",
+      "answer": "What",
+      "accept": [
+       "what"
+      ],
+      "fa": "معمولاً صبحانه چه می‌خوری؟",
+      "why": "پرسیدن دربارهٔ یک چیز (غذا)."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "___ is your favourite colour?",
+      "options": [
+       {
+        "text": "What",
+        "ok": true,
+        "why": "دربارهٔ یک چیز (رنگ) می‌پرسیم."
+       },
+       {
+        "text": "Who",
+        "ok": false,
+        "why": "who برای آدم‌هاست."
+       },
+       {
+        "text": "Where",
+        "ok": false,
+        "why": "where برای مکان است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "چه ساعتی به خانه می‌آیی؟",
+      "frame": "___ time are you coming home?",
+      "answer": "What",
+      "accept": [],
+      "why": "What time برای پرسیدن ساعت."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:who",
+  "headword": "who",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:who",
+    "pos": "pronoun",
+    "gloss": "چه کسی؛ که",
+    "meaning": "برای پرسیدن دربارهٔ آدم‌ها. همچنین «که» دربارهٔ آدم‌ها برای توضیح دادن کسی: the man who lives here.",
+    "grammar": [
+     {
+      "pattern": "Who + verb …? (who is the subject)",
+      "note": "Who called you? (بدون did، چون who خودش فاعل است)"
+     },
+     {
+      "pattern": "Who + did + subject + verb? (who is the object)",
+      "note": "Who did you call? = به چه کسی زنگ زدی؟"
+     }
+    ],
+    "examples": [
+     {
+      "en": "Who is your English teacher?",
+      "fa": "معلم انگلیسی‌ات کیست؟"
+     },
+     {
+      "en": "The woman who lives next door is a doctor.",
+      "fa": "زنی که همسایهٔ بغلی ماست پزشک است."
+     }
+    ],
+    "collocations": [
+     "who is …?",
+     "who else",
+     "someone who"
+    ],
+    "mistake": {
+     "wrong": "Who did call you?",
+     "right": "Who called you?",
+     "why": "وقتی who خودش فاعل است (چه کسی زنگ زد؟)، did لازم نیست."
+    },
+    "pronunciation": {
+     "gb": "/huː/",
+     "us": "/huː/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ is that girl with Sara?",
+      "answer": "Who",
+      "accept": [
+       "who"
+      ],
+      "fa": "آن دختری که با سارا است کیست؟",
+      "why": "دربارهٔ یک آدم می‌پرسیم."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "___ this book?",
+      "options": [
+       {
+        "text": "Who wrote",
+        "ok": true,
+        "why": "who فاعل است و wrote بدون did می‌آید."
+       },
+       {
+        "text": "Who did write",
+        "ok": false,
+        "why": "who فاعل جمله است؛ did اضافه است."
+       },
+       {
+        "text": "What wrote",
+        "ok": false,
+        "why": "دربارهٔ نویسنده (آدم) می‌پرسیم."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "کسی که این کیک را درست کرد آشپز خوبی است.",
+      "frame": "The person ___ made this cake is a good cook.",
+      "answer": "who",
+      "accept": [
+       "that"
+      ],
+      "why": "who دربارهٔ آدم «که» را می‌سازد."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:where",
+  "headword": "where",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:where",
+    "pos": "adverb",
+    "gloss": "کجا",
+    "meaning": "برای پرسیدن دربارهٔ مکان. همچنین «جایی که» در توصیف مکان.",
+    "grammar": [
+     {
+      "pattern": "Where + be + subject?",
+      "note": "Where is the station?"
+     },
+     {
+      "pattern": "Where + do/does + subject + verb?",
+      "note": "Where do you live?"
+     }
+    ],
+    "examples": [
+     {
+      "en": "Where is the nearest bank?",
+      "fa": "نزدیک‌ترین بانک کجاست؟"
+     },
+     {
+      "en": "This is the café where we met.",
+      "fa": "این همان کافه‌ای است که با هم آشنا شدیم."
+     }
+    ],
+    "collocations": [
+     "where from",
+     "where else",
+     "where to"
+    ],
+    "usage": "Where are you from? برای پرسیدن اهل کجا بودن است.",
+    "mistake": {
+     "wrong": "Where you live?",
+     "right": "Where do you live?",
+     "why": "در سؤال با فعل اصلی، do/does لازم است."
+    },
+    "pronunciation": {
+     "gb": "/weə/",
+     "us": "/wer/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ are my keys? I can't find them.",
+      "answer": "Where",
+      "accept": [
+       "where"
+      ],
+      "fa": "کلیدهایم کجاست؟ پیدایشان نمی‌کنم.",
+      "why": "دربارهٔ جای کلیدها می‌پرسیم."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "A: ___ are you from? B: I'm from Isfahan.",
+      "options": [
+       {
+        "text": "Where",
+        "ok": true,
+        "why": "دربارهٔ شهر یا کشور (مکان)."
+       },
+       {
+        "text": "What",
+        "ok": false,
+        "why": "What are you from? نادرست است."
+       },
+       {
+        "text": "Who",
+        "ok": false,
+        "why": "who برای آدم است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "کجا کار می‌کنی؟",
+      "frame": "___ do you work?",
+      "answer": "Where",
+      "accept": [],
+      "why": "پرسیدن مکان کار."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:when",
+  "headword": "when",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:when",
+    "pos": "adverb",
+    "gloss": "کی؛ وقتی که",
+    "meaning": "برای پرسیدن دربارهٔ زمان، یا «وقتی که» برای وصل کردن دو اتفاق.",
+    "grammar": [
+     {
+      "pattern": "When + do/does/did + subject + verb?",
+      "note": "When does the shop open?"
+     },
+     {
+      "pattern": "when + present for the future",
+      "note": "When I get home, I'll call you. (بعد از when برای آینده، حال ساده)"
+     }
+    ],
+    "examples": [
+     {
+      "en": "When is your birthday?",
+      "fa": "تولدت کی است؟"
+     },
+     {
+      "en": "I was tired when I got home.",
+      "fa": "وقتی به خانه رسیدم خسته بودم."
+     }
+    ],
+    "collocations": [
+     "since when",
+     "when I was a child",
+     "say when"
+    ],
+    "mistake": {
+     "wrong": "When I will finish, I'll call you.",
+     "right": "When I finish, I'll call you.",
+     "why": "مثل if، بعد از when برای آینده از حال ساده استفاده می‌کنیم."
+    },
+    "pronunciation": {
+     "gb": "/wen/",
+     "us": "/wen/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ does your class start?",
+      "answer": "When",
+      "accept": [
+       "when"
+      ],
+      "fa": "کلاست کی شروع می‌شود؟",
+      "why": "پرسیدن زمان."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Call me when you ___ the station.",
+      "options": [
+       {
+        "text": "get to",
+        "ok": true,
+        "why": "بعد از when برای آینده، حال ساده."
+       },
+       {
+        "text": "will get to",
+        "ok": false,
+        "why": "will بعد از when نمی‌آید."
+       },
+       {
+        "text": "got to",
+        "ok": false,
+        "why": "گذشته است، اما منظور آینده است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "وقتی بچه بودم، در شیراز زندگی می‌کردم.",
+      "frame": "___ I was a child, I lived in Shiraz.",
+      "answer": "When",
+      "accept": [],
+      "why": "when دو بخش جمله را از نظر زمانی وصل می‌کند."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:why",
+  "headword": "why",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:why",
+    "pos": "adverb",
+    "gloss": "چرا",
+    "meaning": "برای پرسیدن دلیل. جوابش اغلب با because شروع می‌شود.",
+    "grammar": [
+     {
+      "pattern": "Why + do/does/did/be + subject …?",
+      "note": "Why did you leave? / Why are you sad?"
+     },
+     {
+      "pattern": "Why don't we …? / Why not …?",
+      "note": "برای پیشنهاد: Why don't we take a taxi?"
+     }
+    ],
+    "examples": [
+     {
+      "en": "Why are you late?",
+      "fa": "چرا دیر کردی؟"
+     },
+     {
+      "en": "Why don't we eat out tonight?",
+      "fa": "چرا امشب بیرون غذا نخوریم؟"
+     }
+    ],
+    "collocations": [
+     "why not",
+     "that's why",
+     "why don't we …?"
+    ],
+    "usage": "Why don't we …? در واقع پیشنهاد است، نه سؤال دربارهٔ دلیل.",
+    "mistake": {
+     "wrong": "Why you are sad?",
+     "right": "Why are you sad?",
+     "why": "در سؤال، فعل be پیش از فاعل می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/waɪ/",
+     "us": "/waɪ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "A: ___ is she happy? B: Because she has a new job.",
+      "answer": "Why",
+      "accept": [
+       "why"
+      ],
+      "fa": "چرا خوشحال است؟ چون کار جدیدی پیدا کرده.",
+      "why": "جواب با because آمده؛ پس سؤال دربارهٔ دلیل است."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the correct question.",
+      "options": [
+       {
+        "text": "Why did you go home early?",
+        "ok": true,
+        "why": "Why + did + فاعل + فعل ساده."
+       },
+       {
+        "text": "Why you went home early?",
+        "ok": false,
+        "why": "در سؤال did لازم است."
+       },
+       {
+        "text": "Why did you went home early?",
+        "ok": false,
+        "why": "بعد از did فعل ساده (go) می‌آید."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "چرا قهوه نمی‌خوری؟",
+      "frame": "___ don't you drink coffee?",
+      "answer": "Why",
+      "accept": [],
+      "why": "پرسیدن دلیل."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:how",
+  "headword": "how",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:how",
+    "pos": "adverb",
+    "gloss": "چطور؛ چگونه",
+    "meaning": "برای پرسیدن روش یا حالت. همچنین با صفت یا قید برای پرسیدن مقدار: how old, how much, how many, how long.",
+    "grammar": [
+     {
+      "pattern": "How + do/does + subject + verb?",
+      "note": "How do you go to work?"
+     },
+     {
+      "pattern": "How + adjective/adverb …?",
+      "note": "How old are you? / How much is it?"
+     }
+    ],
+    "examples": [
+     {
+      "en": "How are you today?",
+      "fa": "امروز حالت چطور است؟"
+     },
+     {
+      "en": "How much is this jacket?",
+      "fa": "این کت چند است؟"
+     }
+    ],
+    "collocations": [
+     "how much",
+     "how many",
+     "how old",
+     "how long",
+     "how about …?"
+    ],
+    "mistake": {
+     "wrong": "How many money do you have?",
+     "right": "How much money do you have?",
+     "why": "money غیرقابل‌شمارش است؛ پس how much نه how many."
+    },
+    "pronunciation": {
+     "gb": "/haʊ/",
+     "us": "/haʊ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ old is your daughter?",
+      "answer": "How",
+      "accept": [
+       "how"
+      ],
+      "fa": "دخترت چند سال دارد؟",
+      "why": "How old برای پرسیدن سن."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "___ people are in your family?",
+      "options": [
+       {
+        "text": "How many",
+        "ok": true,
+        "why": "people قابل‌شمارش و جمع است."
+       },
+       {
+        "text": "How much",
+        "ok": false,
+        "why": "how much برای اسم غیرقابل‌شمارش است."
+       },
+       {
+        "text": "How long",
+        "ok": false,
+        "why": "how long برای مدت یا طول است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "چطور به این مدرسه می‌آیی؟",
+      "frame": "___ do you come to this school?",
+      "answer": "How",
+      "accept": [],
+      "why": "پرسیدن روش آمدن."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:i",
+  "headword": "I",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:i",
+    "pos": "pronoun",
+    "gloss": "من (فاعل)",
+    "meaning": "ضمیر فاعلی اول‌شخص مفرد. همیشه با حرف بزرگ نوشته می‌شود و فقط در جای فاعل می‌آید؛ در جای مفعول me به کار می‌رود.",
+    "grammar": [
+     {
+      "pattern": "I + verb",
+      "note": "فعل be با I می‌شود am: I am / I'm."
+     },
+     {
+      "pattern": "I versus me",
+      "note": "فاعل I؛ بعد از فعل یا حرف اضافه me: She called me."
+     }
+    ],
+    "examples": [
+     {
+      "en": "I am a student.",
+      "fa": "من دانشجو هستم."
+     },
+     {
+      "en": "I live with my parents.",
+      "fa": "من با پدر و مادرم زندگی می‌کنم."
+     }
+    ],
+    "collocations": [
+     "I'm",
+     "I think",
+     "I don't know",
+     "me too"
+    ],
+    "usage": "در فارسی می‌توان «من» را حذف کرد (دانشجو هستم)، اما در انگلیسی فاعل باید گفته شود: I am a student.",
+    "mistake": {
+     "wrong": "i like tea.",
+     "right": "I like tea.",
+     "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود، حتی وسط جمله."
+    },
+    "pronunciation": {
+     "gb": "/aɪ/",
+     "us": "/aɪ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "My name is Sara and ___ am from Tabriz.",
+      "answer": "I",
+      "accept": [],
+      "fa": "اسمم ساراست و اهل تبریز هستم.",
+      "why": "فاعلِ am باید I باشد."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the correct sentence.",
+      "options": [
+       {
+        "text": "I am tired.",
+        "ok": true,
+        "why": "فاعل I همراه am."
+       },
+       {
+        "text": "Am tired.",
+        "ok": false,
+        "why": "در انگلیسی فاعل حذف نمی‌شود."
+       },
+       {
+        "text": "Me am tired.",
+        "ok": false,
+        "why": "me فقط مفعول است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "من قهوه دوست ندارم.",
+      "frame": "___ don't like coffee.",
+      "answer": "I",
+      "accept": [],
+      "why": "فاعل جمله I است."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:you",
+  "headword": "you",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:you",
+    "pos": "pronoun",
+    "gloss": "تو؛ شما",
+    "meaning": "ضمیر دوم‌شخص؛ برای یک نفر و چند نفر یکسان است و هم فاعل و هم مفعول است. انگلیسی برای «تو» و «شمای مؤدبانه» یک کلمه دارد.",
+    "grammar": [
+     {
+      "pattern": "you + are (singular and plural)",
+      "note": "You are kind. (حتی برای یک نفر are)"
+     },
+     {
+      "pattern": "you as object",
+      "note": "I'll call you later."
+     }
+    ],
+    "examples": [
+     {
+      "en": "Are you ready?",
+      "fa": "آماده‌ای؟"
+     },
+     {
+      "en": "Nice to meet you.",
+      "fa": "از آشنایی با شما خوشوقتم."
+     }
+    ],
+    "collocations": [
+     "thank you",
+     "you know",
+     "see you",
+     "are you OK?"
+    ],
+    "usage": "احترام در انگلیسی با کلماتی مثل please و could و لحن نشان داده می‌شود، نه با تفاوت «تو» و «شما».",
+    "mistake": {
+     "wrong": "You is my friend.",
+     "right": "You are my friend.",
+     "why": "با you همیشه are می‌آید، حتی وقتی منظور یک نفر است."
+    },
+    "pronunciation": {
+     "gb": "/juː/; weak /jə/",
+     "us": "/juː/; weak /jə/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ are very kind. Thank you!",
+      "answer": "You",
+      "accept": [],
+      "fa": "شما خیلی مهربان هستید. ممنونم!",
+      "why": "you فاعل است و با are می‌آید."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "I'll see ___ tomorrow.",
+      "options": [
+       {
+        "text": "you",
+        "ok": true,
+        "why": "you مفعول هم هست."
+       },
+       {
+        "text": "your",
+        "ok": false,
+        "why": "your صفت ملکی است و پیش از اسم می‌آید."
+       },
+       {
+        "text": "yours",
+        "ok": false,
+        "why": "yours یعنی «مال شما» و اینجا معنی نمی‌دهد."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "تو برادر داری؟",
+      "frame": "Do ___ have a brother?",
+      "answer": "you",
+      "accept": [],
+      "why": "فاعل سؤال you است."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:he",
+  "headword": "he",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:he",
+    "pos": "pronoun",
+    "gloss": "او (مرد)",
+    "meaning": "ضمیر فاعلی سوم‌شخص مفرد برای مرد یا پسر. فارسی «او» را برای مرد و زن یکسان به کار می‌برد، اما انگلیسی he و she را جدا می‌کند.",
+    "grammar": [
+     {
+      "pattern": "he + verb-s (present simple)",
+      "note": "he works, he lives"
+     },
+     {
+      "pattern": "he → him (object) / his (possessive)",
+      "note": "I know him. / his car"
+     }
+    ],
+    "examples": [
+     {
+      "en": "He is my uncle.",
+      "fa": "او عموی من است."
+     },
+     {
+      "en": "My brother works in a bank. He likes his job.",
+      "fa": "برادرم در بانک کار می‌کند. کارش را دوست دارد."
+     }
+    ],
+    "collocations": [
+     "he's",
+     "he says",
+     "he and I"
+    ],
+    "mistake": {
+     "wrong": "My sister is a doctor. He works at a hospital.",
+     "right": "My sister is a doctor. She works at a hospital.",
+     "why": "در فارسی «او» برای هر دو جنس است؛ در انگلیسی برای زن she و برای مرد he."
+    },
+    "pronunciation": {
+     "gb": "/hiː/; weak /i/",
+     "us": "/hiː/; weak /i/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "This is my father. ___ is a taxi driver.",
+      "answer": "He",
+      "accept": [],
+      "fa": "این پدرم است. راننده تاکسی است.",
+      "why": "پدر مرد است، پس he."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Reza is a teacher. ___ teaches English.",
+      "options": [
+       {
+        "text": "He",
+        "ok": true,
+        "why": "رضا مرد است."
+       },
+       {
+        "text": "She",
+        "ok": false,
+        "why": "she برای زن است."
+       },
+       {
+        "text": "It",
+        "ok": false,
+        "why": "it برای اشیا و حیوانات است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "او (مرد) هر روز ورزش می‌کند.",
+      "frame": "___ exercises every day.",
+      "answer": "He",
+      "accept": [],
+      "why": "برای مرد he."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:she",
+  "headword": "she",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:she",
+    "pos": "pronoun",
+    "gloss": "او (زن)",
+    "meaning": "ضمیر فاعلی سوم‌شخص مفرد برای زن یا دختر.",
+    "grammar": [
+     {
+      "pattern": "she + verb-s (present simple)",
+      "note": "she lives, she works"
+     },
+     {
+      "pattern": "she → her (object and possessive)",
+      "note": "I saw her. / her bag"
+     }
+    ],
+    "examples": [
+     {
+      "en": "She is my best friend.",
+      "fa": "او بهترین دوست من است."
+     },
+     {
+      "en": "My mother? She is at work.",
+      "fa": "مادرم؟ سر کار است."
+     }
+    ],
+    "collocations": [
+     "she's",
+     "she says",
+     "she and I"
+    ],
+    "mistake": {
+     "wrong": "She live in Mashhad.",
+     "right": "She lives in Mashhad.",
+     "why": "با she در حال ساده، فعل -s می‌گیرد."
+    },
+    "pronunciation": {
+     "gb": "/ʃiː/",
+     "us": "/ʃiː/",
+     "note": "she با صدای «ش» و see با صدای «س» فرق دارد."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Where is Maryam? ___ is in the kitchen.",
+      "answer": "She",
+      "accept": [],
+      "fa": "مریم کجاست؟ در آشپزخانه است.",
+      "why": "مریم زن است."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "My aunt is a nurse. She ___ at night.",
+      "options": [
+       {
+        "text": "works",
+        "ok": true,
+        "why": "فعل با she -s می‌گیرد."
+       },
+       {
+        "text": "work",
+        "ok": false,
+        "why": "بدون -s فقط برای I/you/we/they."
+       },
+       {
+        "text": "working",
+        "ok": false,
+        "why": "بدون is، شکل ing کامل نیست."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "او (زن) انگلیسی صحبت می‌کند.",
+      "frame": "___ speaks English.",
+      "answer": "She",
+      "accept": [],
+      "why": "برای زن she."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:it",
+  "headword": "it",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:it",
+    "pos": "pronoun",
+    "gloss": "آن (برای چیزها)",
+    "meaning": "ضمیر سوم‌شخص مفرد برای چیزها، حیوانات و موقعیت‌ها. همچنین فاعلِ ظاهری برای هوا، زمان و فاصله: It is cold. It is five o'clock.",
+    "grammar": [
+     {
+      "pattern": "It + be for weather, time and distance",
+      "note": "It's raining. / It's ten kilometres. (در فارسی این جمله‌ها فاعل ندارند)"
+     },
+     {
+      "pattern": "it as object",
+      "note": "I like this song. I love it."
+     }
+    ],
+    "examples": [
+     {
+      "en": "It's very hot today.",
+      "fa": "امروز خیلی گرم است."
+     },
+     {
+      "en": "Where is my phone? I can't find it.",
+      "fa": "گوشی‌ام کجاست؟ پیدایش نمی‌کنم."
+     }
+    ],
+    "collocations": [
+     "it's",
+     "it's time to",
+     "it doesn't matter"
+    ],
+    "mistake": {
+     "wrong": "Is very cold today.",
+     "right": "It is very cold today.",
+     "why": "در فارسی می‌گوییم «امروز سرد است»، اما در انگلیسی جمله باید فاعل داشته باشد؛ برای هوا it می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/ɪt/",
+     "us": "/ɪt/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ is raining, so take an umbrella.",
+      "answer": "It",
+      "accept": [],
+      "fa": "باران می‌بارد، پس چتر ببر.",
+      "why": "برای هوا فاعل it لازم است."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "This soup is great. I really like ___.",
+      "options": [
+       {
+        "text": "it",
+        "ok": true,
+        "why": "it به soup برمی‌گردد."
+       },
+       {
+        "text": "its",
+        "ok": false,
+        "why": "its یعنی «مال آن» و پیش از اسم می‌آید."
+       },
+       {
+        "text": "it's",
+        "ok": false,
+        "why": "it's یعنی it is."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "ساعت هشت است.",
+      "frame": "___ is eight o'clock.",
+      "answer": "It",
+      "accept": [],
+      "why": "برای زمان فاعل it."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:we",
+  "headword": "we",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:we",
+    "pos": "pronoun",
+    "gloss": "ما",
+    "meaning": "ضمیر فاعلی اول‌شخص جمع: گوینده و کسان دیگر.",
+    "grammar": [
+     {
+      "pattern": "we + are / we + verb",
+      "note": "We are … / We live …"
+     },
+     {
+      "pattern": "we → us (object) / our (possessive)",
+      "note": "Come with us. / our house"
+     }
+    ],
+    "examples": [
+     {
+      "en": "We are from Iran.",
+      "fa": "ما اهل ایران هستیم."
+     },
+     {
+      "en": "We usually have dinner at eight.",
+      "fa": "ما معمولاً ساعت هشت شام می‌خوریم."
+     }
+    ],
+    "collocations": [
+     "we're",
+     "shall we …?",
+     "let's"
+    ],
+    "mistake": {
+     "wrong": "Us are ready.",
+     "right": "We are ready.",
+     "why": "در جای فاعل we می‌آید؛ us مفعول است."
+    },
+    "pronunciation": {
+     "gb": "/wiː/",
+     "us": "/wiː/",
+     "note": "w با گرد کردن لب‌ها گفته می‌شود، نه مثل «و» فارسی که دندان روی لب است."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "My wife and I love films. ___ go to the cinema every week.",
+      "answer": "We",
+      "accept": [],
+      "fa": "من و همسرم فیلم دوست داریم. هر هفته به سینما می‌رویم.",
+      "why": "my wife and I یعنی we."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Can you help ___?",
+      "options": [
+       {
+        "text": "us",
+        "ok": true,
+        "why": "بعد از فعل، ضمیر مفعولی us."
+       },
+       {
+        "text": "we",
+        "ok": false,
+        "why": "we فقط فاعل است."
+       },
+       {
+        "text": "our",
+        "ok": false,
+        "why": "our پیش از اسم می‌آید."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "ما خسته‌ایم.",
+      "frame": "___ are tired.",
+      "answer": "We",
+      "accept": [],
+      "why": "فاعل جمعِ اول‌شخص."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:they",
+  "headword": "they",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:they",
+    "pos": "pronoun",
+    "gloss": "آن‌ها؛ ایشان",
+    "meaning": "ضمیر فاعلی سوم‌شخص جمع، برای آدم‌ها و چیزها. همچنین برای یک نفر وقتی جنسیتش را نمی‌دانیم یا نمی‌خواهیم مشخص کنیم.",
+    "grammar": [
+     {
+      "pattern": "they + are / they + verb (no -s)",
+      "note": "They live … / They are …"
+     },
+     {
+      "pattern": "they → them (object) / their (possessive)",
+      "note": "I know them. / their car"
+     }
+    ],
+    "examples": [
+     {
+      "en": "My grandparents live in Yazd. They have a big garden.",
+      "fa": "پدربزرگ و مادربزرگم در یزد زندگی می‌کنند. باغ بزرگی دارند."
+     },
+     {
+      "en": "Someone called, but they didn't leave a message.",
+      "fa": "کسی زنگ زد، اما پیغامی نگذاشت."
+     }
+    ],
+    "collocations": [
+     "they're",
+     "they say",
+     "them",
+     "their"
+    ],
+    "mistake": {
+     "wrong": "My shoes are old. It is very old.",
+     "right": "My shoes are old. They are very old.",
+     "why": "برای اسم جمع، حتی برای اشیا، they به کار می‌رود."
+    },
+    "pronunciation": {
+     "gb": "/ðeɪ/",
+     "us": "/ðeɪ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "I love these flowers. ___ are beautiful.",
+      "answer": "They",
+      "accept": [],
+      "fa": "این گل‌ها را دوست دارم. زیبا هستند.",
+      "why": "flowers جمع است."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Where are the children? ___ in the garden.",
+      "options": [
+       {
+        "text": "They're",
+        "ok": true,
+        "why": "they are برای جمع."
+       },
+       {
+        "text": "Their",
+        "ok": false,
+        "why": "their یعنی «مال آن‌ها»."
+       },
+       {
+        "text": "There",
+        "ok": false,
+        "why": "there یعنی «آنجا»."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "آن‌ها هر روز با هم ناهار می‌خورند.",
+      "frame": "___ have lunch together every day.",
+      "answer": "They",
+      "accept": [],
+      "why": "فاعل جمعِ سوم‌شخص."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:my",
+  "headword": "my",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:my",
+    "pos": "determiner",
+    "gloss": "ـَم؛ مالِ من",
+    "meaning": "صفت ملکی اول‌شخص: پیش از اسم می‌آید و مالکیت را نشان می‌دهد. فارسی آن را با «ـم» در آخر اسم می‌گوید (کتابم)، اما انگلیسی آن را پیش از اسم می‌آورد.",
+    "grammar": [
+     {
+      "pattern": "my + noun",
+      "note": "my book, my friends"
+     },
+     {
+      "pattern": "my versus mine",
+      "note": "پیش از اسم my؛ بدون اسم mine: This is my bag. It's mine."
+     }
+    ],
+    "examples": [
+     {
+      "en": "My name is Ali.",
+      "fa": "اسمم علی است."
+     },
+     {
+      "en": "I left my keys at home.",
+      "fa": "کلیدهایم را خانه جا گذاشتم."
+     }
+    ],
+    "collocations": [
+     "my name is",
+     "my own",
+     "my family"
+    ],
+    "mistake": {
+     "wrong": "This is the book of me.",
+     "right": "This is my book.",
+     "why": "در انگلیسی برای مالکیت پیش از اسم my می‌آید، نه the … of me."
+    },
+    "pronunciation": {
+     "gb": "/maɪ/",
+     "us": "/maɪ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ phone is on the table.",
+      "answer": "My",
+      "accept": [],
+      "fa": "گوشی‌ام روی میز است.",
+      "why": "مالکیت پیش از اسم."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Is this your bag? Yes, it's ___.",
+      "options": [
+       {
+        "text": "mine",
+        "ok": true,
+        "why": "بدون اسم بعدش، mine."
+       },
+       {
+        "text": "my",
+        "ok": false,
+        "why": "my باید پیش از اسم بیاید."
+       },
+       {
+        "text": "me",
+        "ok": false,
+        "why": "me مفعول است، نه ملکی."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "برادرم در لندن زندگی می‌کند.",
+      "frame": "___ brother lives in London.",
+      "answer": "My",
+      "accept": [],
+      "why": "برادرِ من = my brother."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:your",
+  "headword": "your",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:your",
+    "pos": "determiner",
+    "gloss": "ـَت؛ مالِ تو/شما",
+    "meaning": "صفت ملکی دوم‌شخص، برای یک نفر یا چند نفر، پیش از اسم.",
+    "grammar": [
+     {
+      "pattern": "your + noun",
+      "note": "your house, your children"
+     },
+     {
+      "pattern": "your versus you're",
+      "note": "your = مالِ تو؛ you're = you are"
+     }
+    ],
+    "examples": [
+     {
+      "en": "What's your phone number?",
+      "fa": "شماره تلفنت چند است؟"
+     },
+     {
+      "en": "Please write your name here.",
+      "fa": "لطفاً اسمتان را اینجا بنویسید."
+     }
+    ],
+    "collocations": [
+     "your own",
+     "your name",
+     "yours"
+    ],
+    "mistake": {
+     "wrong": "Your welcome.",
+     "right": "You're welcome.",
+     "why": "در پاسخ به thank you، you're (= you are) welcome درست است، نه your."
+    },
+    "pronunciation": {
+     "gb": "/jɔː/; weak /jə/",
+     "us": "/jʊr/, /jɔːr/; weak /jɚ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Is this ___ car? It's very nice.",
+      "answer": "your",
+      "accept": [],
+      "fa": "این ماشینِ توست؟ خیلی قشنگ است.",
+      "why": "مالکیت دوم‌شخص پیش از اسم."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "A: Thank you! B: ___ welcome.",
+      "options": [
+       {
+        "text": "You're",
+        "ok": true,
+        "why": "you are welcome."
+       },
+       {
+        "text": "Your",
+        "ok": false,
+        "why": "your ملکی است و اینجا فعل لازم است."
+       },
+       {
+        "text": "You",
+        "ok": false,
+        "why": "فعل are جا افتاده است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "کتابت را باز کن.",
+      "frame": "Open ___ book.",
+      "answer": "your",
+      "accept": [],
+      "why": "کتابِ تو = your book."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:some",
+  "headword": "some",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:some",
+    "pos": "determiner",
+    "gloss": "مقداری؛ چند تا",
+    "meaning": "برای مقدار یا تعدادِ نامشخص (نه زیاد و نه صفر)، پیش از اسم جمع یا غیرقابل‌شمارش. معمولاً در جملهٔ مثبت و در پیشنهاد و درخواست.",
+    "grammar": [
+     {
+      "pattern": "some + plural / uncountable noun",
+      "note": "some apples, some water"
+     },
+     {
+      "pattern": "some in offers and requests",
+      "note": "Would you like some tea? / Can I have some water?"
+     }
+    ],
+    "examples": [
+     {
+      "en": "I bought some eggs and some milk.",
+      "fa": "چند تا تخم‌مرغ و کمی شیر خریدم."
+     },
+     {
+      "en": "Would you like some cake?",
+      "fa": "کیک میل دارید؟"
+     }
+    ],
+    "collocations": [
+     "some time",
+     "some people",
+     "some of"
+    ],
+    "mistake": {
+     "wrong": "I don't have some money.",
+     "right": "I don't have any money.",
+     "why": "در جملهٔ منفی به‌جای some از any استفاده می‌کنیم."
+    },
+    "pronunciation": {
+     "gb": "/sʌm/; weak /səm/",
+     "us": "/sʌm/; weak /səm/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Can I have ___ water, please?",
+      "answer": "some",
+      "accept": [],
+      "fa": "لطفاً کمی آب می‌دهید؟",
+      "why": "در درخواست مؤدبانه some می‌آید، حتی در سؤال."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "There are ___ books on the desk.",
+      "options": [
+       {
+        "text": "some",
+        "ok": true,
+        "why": "جملهٔ مثبت با اسم جمع."
+       },
+       {
+        "text": "any",
+        "ok": false,
+        "why": "any معمولاً در منفی و سؤال است."
+       },
+       {
+        "text": "a",
+        "ok": false,
+        "why": "a پیش از اسم جمع نمی‌آید."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "برای ناهار مقداری برنج پختم.",
+      "frame": "I cooked ___ rice for lunch.",
+      "answer": "some",
+      "accept": [],
+      "why": "مقدار نامشخص از اسمِ غیرقابل‌شمارش."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:any",
+  "headword": "any",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:any",
+    "pos": "determiner",
+    "gloss": "هیچ؛ (در سؤال) … ای",
+    "meaning": "در جملهٔ منفی و سؤال برای مقدار یا تعداد نامشخص به کار می‌رود (همتای some). در جملهٔ مثبت یعنی «هر … ای؛ فرقی نمی‌کند کدام».",
+    "grammar": [
+     {
+      "pattern": "not … any",
+      "note": "«هیچ … ندارم»: I don't have any …"
+     },
+     {
+      "pattern": "Do you have any …?",
+      "note": "سؤال دربارهٔ وجود چیزی"
+     },
+     {
+      "pattern": "any = it doesn't matter which",
+      "note": "Take any seat. = هر صندلی‌ای که خواستی بنشین."
+     }
+    ],
+    "examples": [
+     {
+      "en": "Do you have any brothers or sisters?",
+      "fa": "خواهر یا برادر داری؟"
+     },
+     {
+      "en": "There isn't any milk in the fridge.",
+      "fa": "هیچ شیری در یخچال نیست."
+     }
+    ],
+    "collocations": [
+     "any time",
+     "any questions?",
+     "not any more"
+    ],
+    "mistake": {
+     "wrong": "I don't have no time.",
+     "right": "I don't have any time.",
+     "why": "در انگلیسی دو کلمهٔ منفی (don't + no) با هم نمی‌آیند؛ «هیچ وقتی ندارم» = I don't have any time."
+    },
+    "pronunciation": {
+     "gb": "/ˈeni/",
+     "us": "/ˈeni/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Are there ___ good restaurants near here?",
+      "answer": "any",
+      "accept": [],
+      "fa": "این نزدیکی‌ها رستوران خوبی هست؟",
+      "why": "سؤال دربارهٔ وجود چیزی، پس any."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "She didn't buy ___ bread.",
+      "options": [
+       {
+        "text": "any",
+        "ok": true,
+        "why": "منفی + any."
+       },
+       {
+        "text": "some",
+        "ok": false,
+        "why": "some در جملهٔ منفیِ معمولی نمی‌آید."
+       },
+       {
+        "text": "no",
+        "ok": false,
+        "why": "didn't با no دو منفی می‌سازد."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "امروز هیچ تکلیفی ندارم.",
+      "frame": "I don't have ___ homework today.",
+      "answer": "any",
+      "accept": [],
+      "why": "فعل منفی + any = هیچ."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:no",
+  "headword": "no",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:no",
+    "pos": "exclamation",
+    "gloss": "نه",
+    "meaning": "جواب منفی؛ مخالفِ yes.",
+    "grammar": [
+     {
+      "pattern": "No, + short answer",
+      "note": "No, I'm not. / No, I don't."
+     },
+     {
+      "pattern": "No, thanks.",
+      "note": "«نه، ممنون» برای رد مؤدبانهٔ پیشنهاد"
+     }
+    ],
+    "examples": [
+     {
+      "en": "A: Are you hungry? B: No, I'm not.",
+      "fa": "گرسنه‌ای؟ نه، نیستم."
+     },
+     {
+      "en": "No, thank you. I'm fine.",
+      "fa": "نه، ممنون. خوبم."
+     }
+    ],
+    "collocations": [
+     "no, thanks",
+     "oh no",
+     "no problem"
+    ],
+    "mistake": {
+     "wrong": "A: Don't you like tea? B: No, I like it.",
+     "right": "A: Don't you like tea? B: Yes, I do. / No, I don't.",
+     "why": "در جواب سؤال منفی، انگلیسی به واقعیت نگاه می‌کند: اگر دوست داری Yes. جوابِ فارسیِ «نه، دوست دارم» در انگلیسی گیج‌کننده است."
+    },
+    "pronunciation": {
+     "gb": "/nəʊ/",
+     "us": "/noʊ/",
+     "note": "o دوصدایی است: «نُ‌اُو»، نه «نو» کوتاه."
+    },
+    "check": [
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "A: Do you have a car? B: ___",
+      "options": [
+       {
+        "text": "No, I don't.",
+        "ok": true,
+        "why": "جواب کوتاه منفی با do."
+       },
+       {
+        "text": "No, I haven't.",
+        "ok": false,
+        "why": "سؤال با do پرسیده شده؛ جواب هم با don't."
+       },
+       {
+        "text": "No, I not.",
+        "ok": false,
+        "why": "فعل کمکی جا افتاده است."
+       }
+      ]
+     },
+     {
+      "type": "choice",
+      "id": "q2",
+      "prompt": "A: Aren't you cold? B: (You are not cold.) ___",
+      "options": [
+       {
+        "text": "No, I'm not.",
+        "ok": true,
+        "why": "واقعیت منفی است، پس No."
+       },
+       {
+        "text": "Yes, I'm not.",
+        "ok": false,
+        "why": "yes با جملهٔ منفی جور نیست."
+       },
+       {
+        "text": "No, I am.",
+        "ok": false,
+        "why": "No با جملهٔ مثبت تناقض دارد."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "lex:A1:no#none",
+    "pos": "determiner",
+    "gloss": "هیچ (پیش از اسم)",
+    "meaning": "پیش از اسم یعنی «هیچ … نیست/ندارد»؛ همان not any، اما با فعل مثبت.",
+    "grammar": [
+     {
+      "pattern": "no + noun with a positive verb",
+      "note": "There is no milk. = There isn't any milk."
+     },
+     {
+      "pattern": "No + noun on signs",
+      "note": "No smoking. / No parking."
+     }
+    ],
+    "examples": [
+     {
+      "en": "There are no buses after midnight.",
+      "fa": "بعد از نیمه‌شب هیچ اتوبوسی نیست."
+     },
+     {
+      "en": "I have no idea.",
+      "fa": "اصلاً نمی‌دانم."
+     }
+    ],
+    "collocations": [
+     "no idea",
+     "no time",
+     "no one"
+    ],
+    "mistake": {
+     "wrong": "There isn't no water.",
+     "right": "There is no water. / There isn't any water.",
+     "why": "no خودش منفی است؛ با فعل منفی نمی‌آید."
+    },
+    "pronunciation": {
+     "gb": "/nəʊ/",
+     "us": "/noʊ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Sorry, there is ___ coffee left.",
+      "answer": "no",
+      "accept": [],
+      "fa": "ببخشید، هیچ قهوه‌ای نمانده.",
+      "why": "فعل مثبت (is) + no = هیچ."
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "هیچ وقت ندارم.",
+      "frame": "I have ___ time.",
+      "answer": "no",
+      "accept": [],
+      "why": "no پیش از اسم با فعل مثبت."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:not",
+  "headword": "not",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:not",
+    "pos": "adverb",
+    "gloss": "نه؛ (منفی‌ساز)",
+    "meaning": "فعل یا بخشی از جمله را منفی می‌کند. بعد از be و فعل‌های کمکی می‌آید و در گفتار اغلب کوتاه می‌شود: isn't, don't, can't.",
+    "grammar": [
+     {
+      "pattern": "be / auxiliary + not",
+      "note": "I am not … / She does not (doesn't) … / We cannot (can't) …"
+     },
+     {
+      "pattern": "not + word",
+      "note": "not bad, not now, not me"
+     }
+    ],
+    "examples": [
+     {
+      "en": "I'm not hungry.",
+      "fa": "گرسنه نیستم."
+     },
+     {
+      "en": "He doesn't eat meat.",
+      "fa": "او گوشت نمی‌خورد."
+     }
+    ],
+    "collocations": [
+     "not bad",
+     "not yet",
+     "not at all",
+     "why not"
+    ],
+    "mistake": {
+     "wrong": "I not like this film.",
+     "right": "I don't like this film.",
+     "why": "با فعل اصلی (like) باید do/does + not بیاید."
+    },
+    "pronunciation": {
+     "gb": "/nɒt/",
+     "us": "/nɑːt/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "This exercise is ___ difficult. It's easy!",
+      "answer": "not",
+      "accept": [],
+      "fa": "این تمرین سخت نیست. آسان است!",
+      "why": "is + not."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the correct sentence.",
+      "options": [
+       {
+        "text": "She doesn't like tea.",
+        "ok": true,
+        "why": "does + not + فعل ساده."
+       },
+       {
+        "text": "She not likes tea.",
+        "ok": false,
+        "why": "با فعل اصلی does لازم است."
+       },
+       {
+        "text": "She don't like tea.",
+        "ok": false,
+        "why": "با she باید doesn't."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "امروز کار نمی‌کنم.",
+      "frame": "I'm ___ working today.",
+      "answer": "not",
+      "accept": [],
+      "why": "am + not + ing."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:can",
+  "headword": "can",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:can",
+    "pos": "modal",
+    "gloss": "توانستن؛ اجازه داشتن",
+    "meaning": "فعل وجهی برای توانایی (I can swim)، امکان، و درخواست یا اجازه (Can I …? / Can you …?). شکلش با همهٔ فاعل‌ها یکی است و بعد از آن فعل ساده بدون to می‌آید.",
+    "grammar": [
+     {
+      "pattern": "can + base verb (no to, no -s)",
+      "note": "She can drive. (نه can to drive و نه cans)"
+     },
+     {
+      "pattern": "Can I / Can you …?",
+      "note": "درخواست: Can I sit here? / Can you help me?"
+     },
+     {
+      "pattern": "can't = cannot",
+      "note": "I can't swim."
+     }
+    ],
+    "examples": [
+     {
+      "en": "Can you speak French?",
+      "fa": "فرانسوی بلدی صحبت کنی؟"
+     },
+     {
+      "en": "You can park here after six.",
+      "fa": "بعد از ساعت شش می‌توانید اینجا پارک کنید."
+     }
+    ],
+    "collocations": [
+     "can't wait",
+     "can I have …?",
+     "as soon as you can"
+    ],
+    "usage": "Could you …? از Can you …? مؤدبانه‌تر است.",
+    "mistake": {
+     "wrong": "I can to swim.",
+     "right": "I can swim.",
+     "why": "بعد از can فعل ساده بدون to می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/kən/; stressed /kæn/; can't /kɑːnt/",
+     "us": "/kən/; stressed /kæn/; can't /kænt/",
+     "note": "در جملهٔ مثبت can ضعیف است («کِن») و can't کامل و با تأکید؛ همین تفاوت کمک می‌کند مثبت و منفی را از هم تشخیص دهید."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ I open the window? It's hot.",
+      "answer": "Can",
+      "accept": [
+       "can",
+       "Could",
+       "could"
+      ],
+      "fa": "می‌شود پنجره را باز کنم؟ گرم است.",
+      "why": "درخواست اجازه با Can I."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "My son ___ ride a bike.",
+      "options": [
+       {
+        "text": "can",
+        "ok": true,
+        "why": "can + فعل ساده."
+       },
+       {
+        "text": "can to",
+        "ok": false,
+        "why": "بعد از can، to نمی‌آید."
+       },
+       {
+        "text": "cans",
+        "ok": false,
+        "why": "can با he/she هم -s نمی‌گیرد."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "نمی‌توانم این را بخوانم.",
+      "frame": "I ___ read this.",
+      "answer": "can't",
+      "accept": [
+       "cannot",
+       "can not"
+      ],
+      "why": "شکل منفی can."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:will",
+  "headword": "will",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:will",
+    "pos": "modal",
+    "gloss": "(فعل کمکی آینده)",
+    "meaning": "برای آینده، به‌ویژه تصمیمِ همان لحظه، پیش‌بینی و قول. بعد از آن فعل ساده می‌آید و شکلش با همهٔ فاعل‌ها یکی است.",
+    "grammar": [
+     {
+      "pattern": "will + base verb",
+      "note": "It will rain tomorrow. / I'll call you."
+     },
+     {
+      "pattern": "won't = will not",
+      "note": "I won't be late."
+     }
+    ],
+    "examples": [
+     {
+      "en": "I'll help you with your bags.",
+      "fa": "در حمل کیف‌هایت کمکت می‌کنم."
+     },
+     {
+      "en": "I think it will be sunny tomorrow.",
+      "fa": "فکر می‌کنم فردا هوا آفتابی باشد."
+     }
+    ],
+    "collocations": [
+     "I'll …",
+     "will be",
+     "won't",
+     "will you …?"
+    ],
+    "usage": "برای برنامه‌ای که از قبل تصمیمش را گرفته‌ایم معمولاً be going to می‌گوییم؛ برای تصمیمِ همان لحظه will.",
+    "mistake": {
+     "wrong": "I will to go.",
+     "right": "I will go.",
+     "why": "بعد از will فعل ساده بدون to می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/wɪl/; 'll /l/",
+     "us": "/wɪl/; 'll /l/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "A: The phone is ringing. B: OK, I ___ answer it.",
+      "answer": "will",
+      "accept": [
+       "'ll"
+      ],
+      "fa": "تلفن زنگ می‌زند. باشه، جواب می‌دهم.",
+      "why": "تصمیمِ همان لحظه، پس will."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Don't worry, I ___ be late.",
+      "options": [
+       {
+        "text": "won't",
+        "ok": true,
+        "why": "will not = قول می‌دهم دیر نکنم."
+       },
+       {
+        "text": "don't",
+        "ok": false,
+        "why": "don't برای آینده با be نمی‌آید."
+       },
+       {
+        "text": "willn't",
+        "ok": false,
+        "why": "شکل منفی will می‌شود won't."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "فردا به تو زنگ می‌زنم.",
+      "frame": "I ___ call you tomorrow.",
+      "answer": "will",
+      "accept": [
+       "'ll"
+      ],
+      "why": "قول برای آینده."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:would",
+  "headword": "would",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:would",
+    "pos": "modal",
+    "gloss": "(شکل مؤدبانه)",
+    "meaning": "در سطح A1 بیشتر در عبارت‌های مؤدبانه به کار می‌رود: Would you like …? (میل دارید؟) و I'd like … (مایلم، می‌خواهم).",
+    "grammar": [
+     {
+      "pattern": "Would you like + noun / to + verb?",
+      "note": "Would you like some tea? / Would you like to come?"
+     },
+     {
+      "pattern": "I'd like = I would like",
+      "note": "مؤدبانه‌تر از I want: I'd like a coffee, please."
+     }
+    ],
+    "examples": [
+     {
+      "en": "Would you like a cup of tea?",
+      "fa": "یک فنجان چای میل دارید؟"
+     },
+     {
+      "en": "I'd like a table for two, please.",
+      "fa": "لطفاً یک میز برای دو نفر می‌خواهم."
+     }
+    ],
+    "collocations": [
+     "would you like",
+     "I'd like",
+     "I'd love to"
+    ],
+    "usage": "در رستوران و فروشگاه I'd like … از I want … مؤدبانه‌تر است.",
+    "mistake": {
+     "wrong": "Would you like coming with us?",
+     "right": "Would you like to come with us?",
+     "why": "بعد از would like فعل با to می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/wʊd/; weak /wəd/; 'd /d/",
+     "us": "/wʊd/; weak /wəd/; 'd /d/",
+     "note": "l در would خوانده نمی‌شود: «وود»."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "___ you like some more rice?",
+      "answer": "Would",
+      "accept": [
+       "would"
+      ],
+      "fa": "باز هم برنج میل دارید؟",
+      "why": "پیشنهاد مؤدبانه."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "In a café, you say: ___",
+      "options": [
+       {
+        "text": "I'd like a lemonade, please.",
+        "ok": true,
+        "why": "درخواست مؤدبانه."
+       },
+       {
+        "text": "I would like to a lemonade.",
+        "ok": false,
+        "why": "پیش از اسم، to لازم نیست."
+       },
+       {
+        "text": "I like a lemonade, please.",
+        "ok": false,
+        "why": "like یعنی «به‌طور کلی دوست دارم»، نه سفارش."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "دوست دارید با ما بیایید؟",
+      "frame": "___ you like to come with us?",
+      "answer": "Would",
+      "accept": [],
+      "why": "دعوت مؤدبانه."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:should",
+  "headword": "should",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:should",
+    "pos": "modal",
+    "gloss": "بهتر است؛ باید (توصیه)",
+    "meaning": "برای توصیه و نظر دربارهٔ کار درست یا بهتر. از must ملایم‌تر است و اجبار نیست.",
+    "grammar": [
+     {
+      "pattern": "should + base verb",
+      "note": "You should rest. (بدون to)"
+     },
+     {
+      "pattern": "shouldn't = should not",
+      "note": "You shouldn't eat so much sugar."
+     }
+    ],
+    "examples": [
+     {
+      "en": "You should see a doctor.",
+      "fa": "بهتر است پیش دکتر بروی."
+     },
+     {
+      "en": "We shouldn't be late for the meeting.",
+      "fa": "نباید برای جلسه دیر کنیم."
+     }
+    ],
+    "collocations": [
+     "you should",
+     "should I …?",
+     "I think you should"
+    ],
+    "mistake": {
+     "wrong": "You should to drink more water.",
+     "right": "You should drink more water.",
+     "why": "بعد از should فعل ساده بدون to می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/ʃʊd/; weak /ʃəd/",
+     "us": "/ʃʊd/; weak /ʃəd/",
+     "note": "l خوانده نمی‌شود."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "You look tired. You ___ go to bed early.",
+      "answer": "should",
+      "accept": [],
+      "fa": "خسته به نظر می‌رسی. بهتر است زود بخوابی.",
+      "why": "توصیه."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Which one is advice, not a rule?",
+      "options": [
+       {
+        "text": "You should try this soup.",
+        "ok": true,
+        "why": "should برای پیشنهاد و توصیه است."
+       },
+       {
+        "text": "You must wear a seat belt.",
+        "ok": false,
+        "why": "must اجبار و قانون است."
+       },
+       {
+        "text": "You have to show your ticket.",
+        "ok": false,
+        "why": "have to هم اجبار است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "نباید این‌قدر قهوه بخوری.",
+      "frame": "You ___ drink so much coffee.",
+      "answer": "shouldn't",
+      "accept": [
+       "should not"
+      ],
+      "why": "توصیهٔ منفی."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:must",
+  "headword": "must",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:must",
+    "pos": "modal",
+    "gloss": "باید",
+    "meaning": "برای اجبار قوی یا قانون، و وقتی گوینده خودش چیزی را لازم می‌داند. mustn't یعنی «نباید؛ ممنوع است».",
+    "grammar": [
+     {
+      "pattern": "must + base verb",
+      "note": "I must finish this today."
+     },
+     {
+      "pattern": "mustn't = it is not allowed",
+      "note": "You mustn't smoke here."
+     }
+    ],
+    "examples": [
+     {
+      "en": "I must call my mother tonight.",
+      "fa": "امشب حتماً باید به مادرم زنگ بزنم."
+     },
+     {
+      "en": "You mustn't use your phone in the exam.",
+      "fa": "در امتحان نباید از گوشی استفاده کنید."
+     }
+    ],
+    "collocations": [
+     "must not",
+     "I must go",
+     "you must be tired"
+    ],
+    "mistake": {
+     "wrong": "You mustn't come tomorrow, it's a holiday.",
+     "right": "You don't have to come tomorrow, it's a holiday.",
+     "why": "mustn't یعنی «ممنوع است»؛ برای «لازم نیست» don't have to درست است."
+    },
+    "pronunciation": {
+     "gb": "/mʌst/; weak /məst/",
+     "us": "/mʌst/; weak /məst/",
+     "note": "در mustn't حرف t اول خوانده نمی‌شود: «ماسِنت»."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Students ___ not eat in the library.",
+      "answer": "must",
+      "accept": [],
+      "fa": "دانشجوها نباید در کتابخانه چیزی بخورند.",
+      "why": "قانون و ممنوعیت."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Tomorrow is Friday. You ___ go to school.",
+      "options": [
+       {
+        "text": "don't have to",
+        "ok": true,
+        "why": "«لازم نیست» چون جمعه است."
+       },
+       {
+        "text": "mustn't",
+        "ok": false,
+        "why": "mustn't یعنی ممنوع است، نه «لازم نیست»."
+       },
+       {
+        "text": "must",
+        "ok": false,
+        "why": "معنای جمله برعکس می‌شود."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "باید این فرم را امروز پر کنم.",
+      "frame": "I ___ fill in this form today.",
+      "answer": "must",
+      "accept": [
+       "have to"
+      ],
+      "why": "اجبار؛ گوینده آن را لازم می‌داند."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:have-to",
+  "headword": "have to",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:have-to",
+    "pos": "modal",
+    "gloss": "مجبور بودن؛ باید",
+    "meaning": "برای اجباری که از بیرون (قانون، کار، شرایط) می‌آید. برخلاف must با do/does منفی و سؤالی می‌شود، و don't have to یعنی «لازم نیست».",
+    "grammar": [
+     {
+      "pattern": "have/has to + base verb",
+      "note": "She has to work on Saturdays."
+     },
+     {
+      "pattern": "don't have to = not necessary",
+      "note": "You don't have to pay. It's free."
+     },
+     {
+      "pattern": "Do you have to …?",
+      "note": "Do you have to wear a uniform?"
+     }
+    ],
+    "examples": [
+     {
+      "en": "I have to get up at six for work.",
+      "fa": "برای کار باید ساعت شش بیدار شوم."
+     },
+     {
+      "en": "You don't have to bring anything.",
+      "fa": "لازم نیست چیزی بیاوری."
+     }
+    ],
+    "collocations": [
+     "have to go",
+     "has to",
+     "don't have to",
+     "had to"
+    ],
+    "mistake": {
+     "wrong": "She have to work today.",
+     "right": "She has to work today.",
+     "why": "با he/she/it شکل has to می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/ˈhæf tə/",
+     "us": "/ˈhæf tə/",
+     "note": "در have to صدای v شبیه f شنیده می‌شود: «هَف‌تِ»."
+    },
+    "tts": {
+     "gb": "hˈæf tə",
+     "us": "hˈæf tə"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "My father ___ to take medicine every morning.",
+      "answer": "has",
+      "accept": [],
+      "fa": "پدرم باید هر صبح دارو بخورد.",
+      "why": "با he شکل has to."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "The museum is free. You ___ pay.",
+      "options": [
+       {
+        "text": "don't have to",
+        "ok": true,
+        "why": "«لازم نیست»."
+       },
+       {
+        "text": "mustn't",
+        "ok": false,
+        "why": "یعنی ممنوع است پول بدهید، که درست نیست."
+       },
+       {
+        "text": "have to",
+        "ok": false,
+        "why": "معنا برعکس است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "مجبور نیستی امروز بیایی.",
+      "frame": "You ___ to come today.",
+      "answer": "don't have",
+      "accept": [
+       "do not have"
+      ],
+      "why": "don't have to = لازم نیست."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:in",
+  "headword": "in",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:in",
+    "pos": "preposition",
+    "gloss": "در؛ داخلِ",
+    "meaning": "برای داخل یک فضا یا محدوده (in the box, in Tehran) و برای بازه‌های بزرگ زمانی: ماه، سال، فصل و بخش‌های روز (in May, in 2020, in the morning).",
+    "grammar": [
+     {
+      "pattern": "in + city / country / room",
+      "note": "in Shiraz, in Iran, in the kitchen"
+     },
+     {
+      "pattern": "in + month / year / season",
+      "note": "in July, in 1999, in summer"
+     },
+     {
+      "pattern": "in the morning / afternoon / evening",
+      "note": "اما at night"
+     }
+    ],
+    "examples": [
+     {
+      "en": "My parents live in Kerman.",
+      "fa": "پدر و مادرم در کرمان زندگی می‌کنند."
+     },
+     {
+      "en": "I was born in 2005.",
+      "fa": "من در سال ۲۰۰۵ به دنیا آمدم."
+     }
+    ],
+    "collocations": [
+     "in the morning",
+     "in time",
+     "in English",
+     "in front of"
+    ],
+    "mistake": {
+     "wrong": "I'll see you in Monday.",
+     "right": "I'll see you on Monday.",
+     "why": "برای روزهای هفته on به کار می‌رود، نه in."
+    },
+    "pronunciation": {
+     "gb": "/ɪn/",
+     "us": "/ɪn/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "The milk is ___ the fridge.",
+      "answer": "in",
+      "accept": [],
+      "fa": "شیر در یخچال است.",
+      "why": "داخل یک فضای بسته."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "We go to the beach ___ summer.",
+      "options": [
+       {
+        "text": "in",
+        "ok": true,
+        "why": "فصل با in."
+       },
+       {
+        "text": "on",
+        "ok": false,
+        "why": "on برای روز و تاریخ است."
+       },
+       {
+        "text": "at",
+        "ok": false,
+        "why": "at برای ساعت و زمان دقیق است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "خواهرم در لندن زندگی می‌کند.",
+      "frame": "My sister lives ___ London.",
+      "answer": "in",
+      "accept": [],
+      "why": "شهر با in."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:on",
+  "headword": "on",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:on",
+    "pos": "preposition",
+    "gloss": "روی؛ در (روز)",
+    "meaning": "برای قرار گرفتن روی یک سطح (on the table) و برای روزها و تاریخ‌ها (on Monday, on 5 May). همچنین برای وسایل نقلیهٔ عمومی: on the bus.",
+    "grammar": [
+     {
+      "pattern": "on + surface",
+      "note": "on the wall, on the floor"
+     },
+     {
+      "pattern": "on + day / date",
+      "note": "on Friday, on my birthday"
+     },
+     {
+      "pattern": "on the bus / train / plane",
+      "note": "اما in a car / in a taxi"
+     }
+    ],
+    "examples": [
+     {
+      "en": "Your keys are on the table.",
+      "fa": "کلیدهایت روی میز است."
+     },
+     {
+      "en": "The shop is closed on Fridays.",
+      "fa": "مغازه جمعه‌ها بسته است."
+     }
+    ],
+    "collocations": [
+     "on time",
+     "on the phone",
+     "on TV",
+     "turn on"
+    ],
+    "mistake": {
+     "wrong": "I read a book in the bus.",
+     "right": "I read a book on the bus.",
+     "why": "برای اتوبوس، قطار و هواپیما on می‌آید، نه in."
+    },
+    "pronunciation": {
+     "gb": "/ɒn/",
+     "us": "/ɑːn/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "There is a picture ___ the wall.",
+      "answer": "on",
+      "accept": [],
+      "fa": "یک عکس روی دیوار است.",
+      "why": "روی یک سطح."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "My birthday is ___ 12 March.",
+      "options": [
+       {
+        "text": "on",
+        "ok": true,
+        "why": "تاریخ با on."
+       },
+       {
+        "text": "in",
+        "ok": false,
+        "why": "in برای ماهِ تنها است (in March)."
+       },
+       {
+        "text": "at",
+        "ok": false,
+        "why": "at برای ساعت است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "چهارشنبه کلاس دارم.",
+      "frame": "I have a class ___ Wednesday.",
+      "answer": "on",
+      "accept": [],
+      "why": "روز هفته با on."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:at",
+  "headword": "at",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:at",
+    "pos": "preposition",
+    "gloss": "در؛ سرِ (ساعت)",
+    "meaning": "برای یک نقطهٔ مشخص: ساعت (at 7)، جای دقیق (at the door, at the station)، و جاهایی که در آن کاری انجام می‌شود (at work, at school, at home).",
+    "grammar": [
+     {
+      "pattern": "at + time",
+      "note": "at 8 o'clock, at noon, at night"
+     },
+     {
+      "pattern": "at + point or place of activity",
+      "note": "at home, at work, at the bus stop"
+     }
+    ],
+    "examples": [
+     {
+      "en": "The film starts at half past eight.",
+      "fa": "فیلم ساعت هشت و نیم شروع می‌شود."
+     },
+     {
+      "en": "I'm at home all day.",
+      "fa": "تمام روز خانه هستم."
+     }
+    ],
+    "collocations": [
+     "at home",
+     "at work",
+     "at night",
+     "at the weekend"
+    ],
+    "mistake": {
+     "wrong": "I'll meet you in 6 o'clock.",
+     "right": "I'll meet you at 6 o'clock.",
+     "why": "ساعت با at می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/ət/; stressed /æt/",
+     "us": "/ət/; stressed /æt/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Let's meet ___ the station.",
+      "answer": "at",
+      "accept": [],
+      "fa": "بیا در ایستگاه همدیگر را ببینیم.",
+      "why": "یک نقطهٔ مشخص (محل قرار)."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "I usually go to bed ___ eleven.",
+      "options": [
+       {
+        "text": "at",
+        "ok": true,
+        "why": "ساعت با at."
+       },
+       {
+        "text": "in",
+        "ok": false,
+        "why": "in برای بازهٔ بزرگ‌تر است."
+       },
+       {
+        "text": "on",
+        "ok": false,
+        "why": "on برای روز است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "امشب خانه‌ای؟",
+      "frame": "Are you ___ home tonight?",
+      "answer": "at",
+      "accept": [],
+      "why": "at home."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:to",
+  "headword": "to",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:to",
+    "pos": "preposition",
+    "gloss": "به؛ تا",
+    "meaning": "جهت حرکت به سوی جایی یا کسی (go to school, give it to me).",
+    "grammar": [
+     {
+      "pattern": "go / come / walk + to + place",
+      "note": "go to work, come to my house (اما go home، بدون to)"
+     },
+     {
+      "pattern": "give / send / say + something + to + person",
+      "note": "Send it to me."
+     }
+    ],
+    "examples": [
+     {
+      "en": "I go to work by bus.",
+      "fa": "با اتوبوس سر کار می‌روم."
+     },
+     {
+      "en": "Give this letter to your teacher.",
+      "fa": "این نامه را به معلمت بده."
+     }
+    ],
+    "collocations": [
+     "go to",
+     "listen to",
+     "talk to",
+     "from … to …"
+    ],
+    "mistake": {
+     "wrong": "I go to home at five.",
+     "right": "I go home at five.",
+     "why": "با home حرف اضافهٔ to نمی‌آید."
+    },
+    "pronunciation": {
+     "gb": "/tə/; before a vowel /tu/; stressed /tuː/",
+     "us": "/tə/; before a vowel /tu/; stressed /tuː/",
+     "note": "شکل ضعیف «تِ» است؛ با too و two که «توو» کشیده‌اند فرق دارد."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "We drove ___ the airport.",
+      "answer": "to",
+      "accept": [],
+      "fa": "تا فرودگاه رانندگی کردیم.",
+      "why": "جهت حرکت به سمت یک مکان."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the correct sentence.",
+      "options": [
+       {
+        "text": "She is going home now.",
+        "ok": true,
+        "why": "home بدون to."
+       },
+       {
+        "text": "She is going to home now.",
+        "ok": false,
+        "why": "با home، to نمی‌آید."
+       },
+       {
+        "text": "She is going at home now.",
+        "ok": false,
+        "why": "at برای حرکت به کار نمی‌رود."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "lex:A1:to#infinitive",
+    "pos": "particle",
+    "gloss": "(نشانهٔ مصدر)",
+    "meaning": "پیش از فعل ساده، مصدر می‌سازد: بعد از فعل‌هایی مثل want, need, like, would like، و برای بیان هدف: I came here to study.",
+    "grammar": [
+     {
+      "pattern": "want / need / would like + to + verb",
+      "note": "I want to sleep."
+     },
+     {
+      "pattern": "to + verb for purpose",
+      "note": "I went to the shop to buy bread. = برای خریدن نان"
+     }
+    ],
+    "examples": [
+     {
+      "en": "I want to learn English.",
+      "fa": "می‌خواهم انگلیسی یاد بگیرم."
+     },
+     {
+      "en": "She went out to buy some milk.",
+      "fa": "او بیرون رفت تا شیر بخرد."
+     }
+    ],
+    "collocations": [
+     "want to",
+     "need to",
+     "have to"
+    ],
+    "mistake": {
+     "wrong": "I came here for learn English.",
+     "right": "I came here to learn English.",
+     "why": "برای بیان هدف با فعل، to + فعل می‌آید، نه for."
+    },
+    "pronunciation": {
+     "gb": "/tə/; before a vowel /tu/",
+     "us": "/tə/; before a vowel /tu/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "I need ___ buy a new phone.",
+      "answer": "to",
+      "accept": [],
+      "fa": "باید یک گوشی جدید بخرم.",
+      "why": "need + to + فعل."
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "برای دیدن دوستم به اصفهان رفتم.",
+      "frame": "I went to Isfahan ___ see my friend.",
+      "answer": "to",
+      "accept": [],
+      "why": "هدف: to + فعل."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:from",
+  "headword": "from",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:from",
+    "pos": "preposition",
+    "gloss": "از",
+    "meaning": "نقطهٔ شروع (مکان یا زمان) یا منشأ: be from (اهل جایی بودن)، from … to …، a letter from Ali.",
+    "grammar": [
+     {
+      "pattern": "be from + place",
+      "note": "I'm from Ahvaz."
+     },
+     {
+      "pattern": "from … to / until …",
+      "note": "from 9 to 5, from Monday to Friday"
+     }
+    ],
+    "examples": [
+     {
+      "en": "Where are you from?",
+      "fa": "اهل کجایی؟"
+     },
+     {
+      "en": "I work from nine to five.",
+      "fa": "از نه تا پنج کار می‌کنم."
+     }
+    ],
+    "collocations": [
+     "from … to …",
+     "far from",
+     "different from",
+     "a message from"
+    ],
+    "mistake": {
+     "wrong": "I got a message of my friend.",
+     "right": "I got a message from my friend.",
+     "why": "برای فرستنده from به کار می‌رود، نه of."
+    },
+    "pronunciation": {
+     "gb": "/frəm/; stressed /frɒm/",
+     "us": "/frəm/; stressed /frʌm/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "This is a present ___ my grandmother.",
+      "answer": "from",
+      "accept": [],
+      "fa": "این هدیه‌ای از طرف مادربزرگم است.",
+      "why": "فرستنده یا منشأ هدیه."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "The shop is open ___ 8 a.m. to 10 p.m.",
+      "options": [
+       {
+        "text": "from",
+        "ok": true,
+        "why": "from … to … برای بازهٔ زمانی."
+       },
+       {
+        "text": "since",
+        "ok": false,
+        "why": "since با to نمی‌آید."
+       },
+       {
+        "text": "at",
+        "ok": false,
+        "why": "at فقط برای یک لحظه است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "من اهل یزد هستم.",
+      "frame": "I'm ___ Yazd.",
+      "answer": "from",
+      "accept": [],
+      "why": "be from = اهل جایی بودن."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:with",
+  "headword": "with",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:with",
+    "pos": "preposition",
+    "gloss": "با؛ همراهِ",
+    "meaning": "همراهی (with my friends)، ابزار (with a pen)، و داشتن ویژگی (a girl with long hair).",
+    "grammar": [
+     {
+      "pattern": "with + person",
+      "note": "I live with my sister."
+     },
+     {
+      "pattern": "with + tool",
+      "note": "Write with a pencil."
+     },
+     {
+      "pattern": "noun + with + feature",
+      "note": "a house with a garden"
+     }
+    ],
+    "examples": [
+     {
+      "en": "I went to the park with my children.",
+      "fa": "با بچه‌هایم به پارک رفتم."
+     },
+     {
+      "en": "He cut the bread with a knife.",
+      "fa": "او نان را با چاقو برید."
+     }
+    ],
+    "collocations": [
+     "with me",
+     "with milk",
+     "help with",
+     "agree with"
+    ],
+    "mistake": {
+     "wrong": "I go to work with bus.",
+     "right": "I go to work by bus.",
+     "why": "برای وسیلهٔ نقلیه by به کار می‌رود (by bus, by car)، نه with."
+    },
+    "pronunciation": {
+     "gb": "/wɪð/",
+     "us": "/wɪð/, /wɪθ/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "Do you take your coffee ___ sugar?",
+      "answer": "with",
+      "accept": [],
+      "fa": "قهوه‌ات را با شکر می‌خوری؟",
+      "why": "همراهی یک چیز با چیز دیگر."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "She travels to work ___ train.",
+      "options": [
+       {
+        "text": "by",
+        "ok": true,
+        "why": "وسیلهٔ نقلیه با by."
+       },
+       {
+        "text": "with",
+        "ok": false,
+        "why": "with برای وسیلهٔ نقلیه به کار نمی‌رود."
+       },
+       {
+        "text": "on",
+        "ok": false,
+        "why": "on the train درست است، اما on train بدون the نادرست است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "دختری با موی قرمز وارد شد.",
+      "frame": "A girl ___ red hair came in.",
+      "answer": "with",
+      "accept": [],
+      "why": "ویژگیِ کسی با with."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:for",
+  "headword": "for",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:for",
+    "pos": "preposition",
+    "gloss": "برای؛ به مدتِ",
+    "meaning": "هدف یا گیرنده (a present for you, for dinner)، و مدت زمان (for two hours).",
+    "grammar": [
+     {
+      "pattern": "for + person / purpose noun",
+      "note": "This is for you. / What's for dinner?"
+     },
+     {
+      "pattern": "for + period of time",
+      "note": "for three days, for a week"
+     },
+     {
+      "pattern": "to + verb, not for + verb",
+      "note": "برای هدف با فعل: to buy (نه for buy)"
+     }
+    ],
+    "examples": [
+     {
+      "en": "I bought flowers for my mother.",
+      "fa": "برای مادرم گل خریدم."
+     },
+     {
+      "en": "We waited for twenty minutes.",
+      "fa": "بیست دقیقه منتظر ماندیم."
+     }
+    ],
+    "collocations": [
+     "wait for",
+     "look for",
+     "for example",
+     "for a long time"
+    ],
+    "mistake": {
+     "wrong": "I went out for buy bread.",
+     "right": "I went out to buy bread.",
+     "why": "برای هدف با فعل، to + فعل می‌آید؛ for پیش از اسم: for bread."
+    },
+    "pronunciation": {
+     "gb": "/fə/; stressed /fɔː/",
+     "us": "/fɚ/; stressed /fɔːr/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "We stayed in Kish ___ a week.",
+      "answer": "for",
+      "accept": [],
+      "fa": "یک هفته در کیش ماندیم.",
+      "why": "مدت زمان با for."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "I'm looking ___ my glasses.",
+      "options": [
+       {
+        "text": "for",
+        "ok": true,
+        "why": "look for = دنبال چیزی گشتن."
+       },
+       {
+        "text": "at",
+        "ok": false,
+        "why": "look at یعنی نگاه کردن."
+       },
+       {
+        "text": "to",
+        "ok": false,
+        "why": "look to معنای دیگری دارد."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "این کیک برای توست.",
+      "frame": "This cake is ___ you.",
+      "answer": "for",
+      "accept": [],
+      "why": "گیرنده."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:of",
+  "headword": "of",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:of",
+    "pos": "preposition",
+    "gloss": "ـِ (کسرهٔ اضافه)؛ از",
+    "meaning": "رابطهٔ جزء و کل، مقدار، یا تعلق میان دو اسم: a cup of tea, the name of the street, one of my friends. در بسیاری موارد همتای کسرهٔ اضافهٔ فارسی است.",
+    "grammar": [
+     {
+      "pattern": "container / amount + of + noun",
+      "note": "a bottle of water, a lot of people"
+     },
+     {
+      "pattern": "one of + plural noun",
+      "note": "one of my friends"
+     }
+    ],
+    "examples": [
+     {
+      "en": "Can I have a glass of water?",
+      "fa": "یک لیوان آب می‌دهید؟"
+     },
+     {
+      "en": "She is one of my best friends.",
+      "fa": "او یکی از بهترین دوستانم است."
+     }
+    ],
+    "collocations": [
+     "a lot of",
+     "a cup of",
+     "some of",
+     "the end of"
+    ],
+    "usage": "برای مالکیتِ آدم‌ها معمولاً 's به کار می‌رود: Ali's car (نه the car of Ali).",
+    "mistake": {
+     "wrong": "one of my friend",
+     "right": "one of my friends",
+     "why": "بعد از one of اسم جمع می‌آید."
+    },
+    "pronunciation": {
+     "gb": "/əv/; stressed /ɒv/",
+     "us": "/əv/; stressed /ʌv/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "I'd like a cup ___ tea, please.",
+      "answer": "of",
+      "accept": [],
+      "fa": "لطفاً یک فنجان چای می‌خواهم.",
+      "why": "ظرف + of + محتوا."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "This is ___",
+      "options": [
+       {
+        "text": "my brother's car.",
+        "ok": true,
+        "why": "مالکیتِ آدم با 's."
+       },
+       {
+        "text": "the car of my brother.",
+        "ok": false,
+        "why": "از نظر دستوری ممکن است، اما برای آدم‌ها طبیعی نیست."
+       },
+       {
+        "text": "my brother car.",
+        "ok": false,
+        "why": "'s جا افتاده است."
+       }
+      ]
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "خیلی از مردم اینجا انگلیسی صحبت می‌کنند.",
+      "frame": "A lot ___ people here speak English.",
+      "answer": "of",
+      "accept": [],
+      "why": "a lot of."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lex:A1:about",
+  "headword": "about",
+  "goals": [
+   "everyday",
+   "work",
+   "study",
+   "general"
+  ],
+  "senses": [
+   {
+    "id": "lex:A1:about",
+    "pos": "preposition",
+    "gloss": "دربارهٔ",
+    "meaning": "موضوع چیزی: a book about cats, talk about the weather.",
+    "grammar": [
+     {
+      "pattern": "talk / think / know + about + topic",
+      "note": "What are you talking about?"
+     },
+     {
+      "pattern": "a book / film + about …",
+      "note": "a film about the war"
+     }
+    ],
+    "examples": [
+     {
+      "en": "This film is about a family in Tabriz.",
+      "fa": "این فیلم دربارهٔ خانواده‌ای در تبریز است."
+     },
+     {
+      "en": "We talked about our holiday.",
+      "fa": "دربارهٔ تعطیلاتمان صحبت کردیم."
+     }
+    ],
+    "collocations": [
+     "talk about",
+     "think about",
+     "what about …?",
+     "worry about"
+    ],
+    "mistake": {
+     "wrong": "We discussed about the plan.",
+     "right": "We talked about the plan. / We discussed the plan.",
+     "why": "discuss مفعول مستقیم می‌گیرد و about نمی‌خواهد؛ talk about درست است."
+    },
+    "pronunciation": {
+     "gb": "/əˈbaʊt/",
+     "us": "/əˈbaʊt/",
+     "note": "تأکید روی بخش دوم است: a-BOUT."
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "What is the book ___?",
+      "answer": "about",
+      "accept": [],
+      "fa": "کتاب دربارهٔ چیست؟",
+      "why": "موضوع."
+     },
+     {
+      "type": "choice",
+      "id": "q1",
+      "prompt": "Choose the natural sentence.",
+      "options": [
+       {
+        "text": "Let's talk about the trip.",
+        "ok": true,
+        "why": "talk about + موضوع."
+       },
+       {
+        "text": "Let's discuss about the trip.",
+        "ok": false,
+        "why": "discuss بدون about."
+       },
+       {
+        "text": "Let's talk the trip.",
+        "ok": false,
+        "why": "talk بدون about مفعول نمی‌گیرد."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "lex:A1:about#approximately",
+    "pos": "adverb",
+    "gloss": "حدوداً؛ تقریباً",
+    "meaning": "پیش از عدد، مقدار یا زمان یعنی دقیق نیست.",
+    "grammar": [
+     {
+      "pattern": "about + number / time",
+      "note": "about 50 people, at about 3 o'clock"
+     }
+    ],
+    "examples": [
+     {
+      "en": "The trip takes about two hours.",
+      "fa": "سفر حدود دو ساعت طول می‌کشد."
+     },
+     {
+      "en": "There were about thirty students in the class.",
+      "fa": "حدود سی دانشجو در کلاس بودند."
+     }
+    ],
+    "collocations": [
+     "about ten minutes",
+     "at about six",
+     "about the same"
+    ],
+    "mistake": {
+     "wrong": "It costs about of ten dollars.",
+     "right": "It costs about ten dollars.",
+     "why": "پیش از عدد about به‌تنهایی کافی است."
+    },
+    "pronunciation": {
+     "gb": "/əˈbaʊt/",
+     "us": "/əˈbaʊt/"
+    },
+    "check": [
+     {
+      "type": "cloze",
+      "id": "c1",
+      "text": "I'll be there in ___ ten minutes.",
+      "answer": "about",
+      "accept": [
+       "around"
+      ],
+      "fa": "حدود ده دقیقهٔ دیگر آنجا هستم.",
+      "why": "تقریب پیش از زمان."
+     },
+     {
+      "type": "produce",
+      "id": "p1",
+      "prompt": "حدود صد نفر به مهمانی آمدند.",
+      "frame": "___ a hundred people came to the party.",
+      "answer": "About",
+      "accept": [
+       "Around"
+      ],
+      "why": "تقریب پیش از عدد."
+     }
+    ]
+   }
+  ]
+ }
+]

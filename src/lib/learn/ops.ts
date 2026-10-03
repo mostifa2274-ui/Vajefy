@@ -18,7 +18,17 @@ export type SkillRecord = PracticeEvidence[string];
 export type SettingsPatch = Partial<
   Pick<
     Profile,
-    "lang" | "focus" | "sessionSize" | "newPerDay" | "voice" | "accent" | "dailyGoal" | "requestRetention" | "onboarded"
+    | "lang"
+    | "focus"
+    | "sessionSize"
+    | "newPerDay"
+    | "voice"
+    | "accent"
+    | "dailyGoal"
+    | "requestRetention"
+    | "onboarded"
+    | "goal"
+    | "minutes"
   >
 >;
 

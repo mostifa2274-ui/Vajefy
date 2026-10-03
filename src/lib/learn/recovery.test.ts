@@ -28,6 +28,8 @@ const saved: SavedProgress = JSON.parse(makeBackup({
   reviewHistory: [event],
   practiceSkills: { "lex:A1:about": { spelling: { attempts: 1, correct: 1, lastAt: AT, lastGrade: "good" } } },
   onboarded: true,
+  goal: "study",
+  minutes: 5,
 })).progress;
 
 const stored = (state: unknown, version: number = PROGRESS_VERSION) => JSON.stringify({ state, version });

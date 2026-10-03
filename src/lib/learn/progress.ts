@@ -2,6 +2,10 @@ import { DEFAULT_REQUEST_RETENTION, normalizeRetention } from "./srs";
 import { boundPracticeEvidence } from "./practice";
 import type { CardProg, Lang, LevelId, PracticeEvidence, ReviewEvent } from "./types";
 
+/** Why the learner studies, used to order new words. */
+export type LearningGoal = "everyday" | "work" | "study" | "general";
+export const STUDY_MINUTES = [5, 10, 15] as const;
+
 export type DayLog = {
   date: string;
   /** Scheduled recall attempts only. Practice is deliberately separate. */
@@ -45,10 +49,13 @@ export type SavedProgress = {
   /** Prospective vocabulary drill evidence, kept separate from retention. */
   practiceSkills: PracticeEvidence;
   onboarded: boolean;
+  /** Version 5: the learner's goal and daily study time, from onboarding. */
+  goal: LearningGoal;
+  minutes: number;
 };
 
 /** Bump when the saved shape changes, and teach `migrate` the old shape. */
-export const PROGRESS_VERSION = 4;
+export const PROGRESS_VERSION = 5;
 
 export const MAX_REVIEW_HISTORY = 12_000;
 
@@ -71,6 +78,8 @@ export const DEFAULT_PROGRESS: SavedProgress = {
   reviewHistory: [],
   practiceSkills: {},
   onboarded: false,
+  goal: "general",
+  minutes: 10,
 };
 
 export function savedProgress(state: SavedProgress): SavedProgress {
@@ -93,6 +102,8 @@ export function savedProgress(state: SavedProgress): SavedProgress {
     reviewHistory: state.reviewHistory,
     practiceSkills: state.practiceSkills,
     onboarded: state.onboarded,
+    goal: state.goal,
+    minutes: state.minutes,
   };
 }
 
@@ -117,6 +128,9 @@ export function migrateProgress(persisted: unknown, version: number): SavedProgr
     requestRetention: normalizeRetention(input.requestRetention ?? DEFAULT_REQUEST_RETENTION),
     reviewHistory: Array.isArray(input.reviewHistory) ? input.reviewHistory.slice(-MAX_REVIEW_HISTORY) : [],
     practiceSkills: boundPracticeEvidence(input.practiceSkills ?? {}),
+    // Version 5 adds the goal and study time; earlier learners keep defaults.
+    goal: input.goal ?? DEFAULT_PROGRESS.goal,
+    minutes: input.minutes ?? DEFAULT_PROGRESS.minutes,
   };
   if (version < 1) {
     // v0 kept only the last 60 days of logs; seed the legacy aggregate as

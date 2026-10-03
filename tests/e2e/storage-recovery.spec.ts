@@ -84,7 +84,7 @@ test("failed database writes keep answers in the session, export them, and retry
   expect((await readProgress(page)).state).toEqual(before.state);
   expect(await journal(page)).toBe(1);
   const exported = await backup(page, notice.getByRole("button", { name: "Export progress", exact: true }));
-  expect(exported.version).toBe(4);
+  expect(exported.version).toBe(5);
   expect(exported.progress.lifetime).toEqual({ reviews: 4, correct: 3, practice: 1, practiceCorrect: 1 });
   expect(exported.progress.practiceSkills[ID].spelling.attempts).toBe(1);
   expect(exported.progress.cards).toEqual(before.state.cards);

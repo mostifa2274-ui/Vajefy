@@ -74,7 +74,7 @@ test("an unreadable save is never replaced at startup and can be downloaded exac
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "سطح شروع", exact: true })).toBeVisible();
   const fresh = await readProgress(page);
-  expect(fresh.version).toBe(4);
+  expect(fresh.version).toBe(5);
   expect(fresh.state.cards).toEqual({});
   expect(fresh.state.onboarded).toBe(false);
   // The unreadable original is still there, untouched, but no longer in use.
@@ -107,7 +107,7 @@ test("readable parts of a damaged save are recovered only after confirmation", a
   await expect(page.getByRole("alert")).toHaveCount(0);
   await expect.poll(async () => (await readProgress(page)).state?.xp).toBe(60);
   const saved = await readProgress(page);
-  expect(saved.version).toBe(4);
+  expect(saved.version).toBe(5);
   expect(Object.keys(saved.state.cards)).toEqual(["lex:A1:about"]);
   expect(saved.state.logs).toEqual([]);
   expect(await stored(page)).toBe(raw);

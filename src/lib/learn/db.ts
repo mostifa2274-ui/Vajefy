@@ -276,6 +276,35 @@ export async function load(db: IDBDatabase): Promise<Loaded> {
   };
 }
 
+/**
+ * Bring stored progress to the current version in one transaction: the
+ * migrated profile, cards and skills replace the old ones together with the
+ * new version number. Events and sessions are left as they are.
+ */
+export async function upgrade(db: IDBDatabase, progress: SavedProgress, version: number): Promise<void> {
+  const tx = db.transaction(["profile", "cards", "skills", "meta"], "readwrite");
+  const done = finished(tx);
+  try {
+    tx.objectStore("profile").put(profileOf(progress), PROFILE_KEY);
+    const cards = tx.objectStore("cards");
+    cards.clear();
+    for (const [id, card] of Object.entries(progress.cards)) cards.put(card, id);
+    const skills = tx.objectStore("skills");
+    skills.clear();
+    for (const [id, record] of Object.entries(progress.practiceSkills)) skills.put(record, id);
+    tx.objectStore("meta").put(version, "progressVersion");
+    await done;
+  } catch (error) {
+    try {
+      tx.abort();
+    } catch {
+      // Already finished.
+    }
+    await done.catch(() => undefined);
+    throw error;
+  }
+}
+
 /** Read the records another tab reported changing. */
 export async function readChanged(
   db: IDBDatabase,

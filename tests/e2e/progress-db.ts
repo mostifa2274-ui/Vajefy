@@ -36,7 +36,7 @@ export async function readProgress(page: Page): Promise<{ version: number; state
       .sort((a, b) => a.at - b.at || (a.id < b.id ? -1 : 1))
       .map((event) => event.review);
     return {
-      version: typeof version === "number" ? version : 4,
+      version: typeof version === "number" ? version : 5,
       state: profile
         ? {
             ...profile,
