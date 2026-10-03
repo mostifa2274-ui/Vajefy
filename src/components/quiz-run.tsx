@@ -98,6 +98,7 @@ export function QuizRun({
       at,
       session: session.id,
       prompt: `${session.mode}:${active.kind}`,
+      ...("hint" in active && active.hint ? { hint: true } : {}),
       responseMs: elapsed(),
       sessionState: next,
     });

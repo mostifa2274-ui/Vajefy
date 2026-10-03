@@ -31,7 +31,7 @@ export function PilotEntryDetail({
             <p lang="fa" dir="rtl" className="mt-1 text-lg font-medium">{sense.gloss}</p>
             <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty">{sense.meaning}</p>
             <div className="mt-2">
-              <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow />
+              <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow item={sense.id} />
             </div>
             <ul className="mt-3 grid gap-1 text-sm">
               {sense.grammar.map((item) => (
@@ -46,7 +46,7 @@ export function PilotEntryDetail({
                 <li key={example.en} className="border-s-2 border-accent ps-3 text-sm">
                   <span lang="en" dir="ltr" className="block text-pretty">{example.en}</span>
                   <span lang="fa" dir="rtl" className="block text-muted text-pretty">{example.fa}</span>
-                  <SpeakButton text={example.en} label={copy.listenExample} clip={clips.examples[at]} />
+                  <SpeakButton text={example.en} label={copy.listenExample} clip={clips.examples[at]} item={sense.id} exposure="example" />
                 </li>
               ))}
             </ul>

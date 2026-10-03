@@ -32,6 +32,10 @@ practice), **Words** (search, saved entries and reference) and **Progress**
   offline study after the first successful load.
 - Persian or English interface, right-to-left aware throughout, with selectable
   British or American pronunciation.
+- **Built to be evaluated**: answers record their evidence, a 30-day check-up
+  measures what was retained, learners can export their data for the pilot
+  study, and an analysis compares the active scheduler with personalised FSRS-6
+  and FSRS-7 ([docs/EVALUATION.md](docs/EVALUATION.md)).
 - **Accessible and fast on phones**: tested against WCAG 2.2 AA
   ([docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and Core Web Vitals budgets on
   a throttled phone ([docs/PERFORMANCE.md](docs/PERFORMANCE.md)).
@@ -62,6 +66,7 @@ npm run dev        # http://localhost:8080
 | `npm run content:status` | Editorial progress across the A1 batches, and what to draft next |
 | `npm run content:lint` | Authoring checks: level of vocabulary, reused examples, ambiguous items |
 | `npm run content:scaffold` / `content:drafts` / `content:promote` | Start, check and finish drafts for the next A1 batch |
+| `npm run evaluate` | Analyse pilot-study exports: scheduler comparison and the 30-day measure ([docs/EVALUATION.md](docs/EVALUATION.md)) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm test` | Unit tests in `src/lib/learn/**/*.test.ts` |

@@ -85,14 +85,21 @@ export function SpeakButton({
   label,
   clip,
   slow = false,
+  item,
+  exposure = "listen",
 }: {
   text: string;
   label: string;
   clip?: string;
   /** Also offer slower playback. */
   slow?: boolean;
+  /** The learning item heard, recorded as an exposure. */
+  item?: string;
+  /** What was heard: the word itself or one of its examples. */
+  exposure?: "listen" | "example";
 }) {
   const lang = useProgress((state) => state.lang);
+  const expose = useProgress((state) => state.expose);
   const copy = useCopy(lang);
   const key = `${clip ?? ""}|${text}`;
   const state = usePlayback(key);
@@ -106,7 +113,11 @@ export function SpeakButton({
     <span className="inline-flex flex-wrap items-center gap-2">
       <button
         type="button"
-        onClick={() => (busy ? stop() : void play({ key, text, clip }))}
+        onClick={() => {
+          if (busy) return stop();
+          if (item) expose(item, exposure);
+          void play({ key, text, clip });
+        }}
         aria-label={label}
         aria-busy={state === "loading"}
         className={base}
@@ -115,7 +126,14 @@ export function SpeakButton({
         <span>{label}</span>
       </button>
       {slow ? (
-        <button type="button" onClick={() => void play({ key: `${key}|slow`, text, clip, slow: true })} className={base}>
+        <button
+          type="button"
+          onClick={() => {
+            if (item) expose(item, exposure);
+            void play({ key: `${key}|slow`, text, clip, slow: true });
+          }}
+          className={base}
+        >
           {copy.slower}
         </button>
       ) : null}

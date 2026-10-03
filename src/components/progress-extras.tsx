@@ -2,9 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { downloadPack, packStatus, removePack, type PackStatus } from "@/lib/learn/audio-pack";
 import { useFormat } from "@/lib/learn/format";
 import type { Copy } from "@/lib/learn/i18n";
+import { checkupResult, type LessonSession } from "@/lib/learn/lesson";
 import { measures } from "@/lib/learn/measures";
-import { loadPilot } from "@/lib/learn/pilot";
-import { useProgress } from "@/lib/learn/store";
+import { CONTENT_CHANNEL } from "@/lib/learn/channel";
+import { downloadText } from "@/lib/learn/download-backup";
+import { loadPilot, loadPilotOrder } from "@/lib/learn/pilot";
+import { persistence, useProgress } from "@/lib/learn/store";
+import { buildStudyExport, studyFileName, validParticipant } from "@/lib/learn/study";
 import type { PracticeSkill } from "@/lib/learn/types";
 import { Num, Sep } from "./ui";
 
@@ -20,8 +24,13 @@ export function LearningSummary({ copy }: { copy: Copy }) {
   const cards = useProgress((state) => state.cards);
   const reviewHistory = useProgress((state) => state.reviewHistory);
   const practiceSkills = useProgress((state) => state.practiceSkills);
+  const sessions = useProgress((state) => state.sessions);
   const { pct, sep } = useFormat();
   const result = measures({ cards, reviewHistory, practiceSkills });
+  const latestCheckup = Object.values(sessions)
+    .filter((session): session is LessonSession => session.kind === "lesson" && session.mode === "checkup" && session.status === "done")
+    .sort((a, b) => b.updatedAt - a.updatedAt)[0];
+  const checkup = latestCheckup ? checkupResult(latestCheckup) : null;
   return (
     <section className="mt-8" aria-labelledby="measures-title">
       <h2 id="measures-title" className="text-lg font-medium">{copy.measuresTitle}</h2>
@@ -37,6 +46,11 @@ export function LearningSummary({ copy }: { copy: Copy }) {
           </div>
         ))}
       </dl>
+      {checkup ? (
+        <p className="mt-3 text-sm">
+          {copy.checkupLatest}: {copy.checkupUsable} <Num value={checkup.usable} /> / <Num value={checkup.checked} />
+        </p>
+      ) : null}
       <h3 className="mt-5 text-sm font-medium">{copy.skillsTitle}</h3>
       <ul className="mt-2 grid gap-1 text-sm">
         {result.skills.map((item) => (
@@ -144,5 +158,84 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
       ) : null}
       {failed ? <p className="mt-2 text-sm text-bad" role="alert">{copy.downloadFailed}</p> : null}
     </div>
+  );
+}
+
+/** The study export: a participant code, an opt-in for written answers, and a file. */
+export function StudyPanel({ copy }: { copy: Copy }) {
+  const [code, setCode] = useState("");
+  const [writing, setWriting] = useState(false);
+  const [unavailable, setUnavailable] = useState(false);
+  const ready = validParticipant(code);
+
+  async function download() {
+    const evidence = await persistence.evidence();
+    if (!evidence) {
+      setUnavailable(true);
+      return;
+    }
+    const state = useProgress.getState();
+    const contentVersion = await loadPilotOrder()
+      .then((order) => order.version)
+      .catch(() => null);
+    const now = new Date();
+    const data = buildStudyExport({
+      participant: code,
+      includeWriting: writing,
+      events: evidence.events,
+      sessions: evidence.sessions,
+      profile: {
+        lang: state.lang,
+        focus: state.focus,
+        goal: state.goal,
+        minutes: state.minutes,
+        requestRetention: state.requestRetention,
+        accent: state.accent,
+        sessionSize: state.sessionSize,
+        newPerDay: state.newPerDay,
+      },
+      contentVersion,
+      channel: CONTENT_CHANNEL,
+      now,
+    });
+    downloadText(JSON.stringify(data), studyFileName(code, now));
+  }
+
+  return (
+    <section className="mt-6" aria-labelledby="study-title">
+      <h3 id="study-title" className="text-sm font-medium">
+        {copy.studyTitle}
+      </h3>
+      <p className="mt-1 text-sm text-pretty text-muted">{copy.studyHint}</p>
+      <label className="mt-3 block text-sm">
+        <span>{copy.studyCode}</span>
+        <input
+          value={code}
+          onChange={(event) => setCode(event.target.value)}
+          className="field mt-1 h-11 w-full max-w-xs px-3"
+          dir="ltr"
+          autoCapitalize="characters"
+          autoCorrect="off"
+          spellCheck={false}
+        />
+      </label>
+      <label className="mt-3 flex min-h-11 items-center gap-2 text-sm">
+        <input type="checkbox" checked={writing} onChange={(event) => setWriting(event.target.checked)} className="size-5" />
+        {copy.studyWriting}
+      </label>
+      <button
+        type="button"
+        disabled={!ready}
+        onClick={() => void download()}
+        className="mt-2 min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)] disabled:opacity-40"
+      >
+        {copy.studyDownload}
+      </button>
+      {unavailable ? (
+        <p role="status" className="mt-2 text-sm text-bad">
+          {copy.studyUnavailable}
+        </p>
+      ) : null}
+    </section>
   );
 }

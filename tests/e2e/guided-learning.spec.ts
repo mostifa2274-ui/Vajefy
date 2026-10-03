@@ -1,4 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
+import { readFile } from "node:fs/promises";
 import { expect, test, type Page } from "@playwright/test";
 import { LEGACY_KEY, readProgress } from "./progress-db";
 
@@ -25,7 +26,7 @@ async function seedNewLearner(page: Page, minutes = 5) {
 /** Answer whatever the current lesson step asks, without knowing the answers. */
 async function step(page: Page): Promise<boolean> {
   const main = page.locator("main");
-  if (await page.getByRole("heading", { name: "Lesson complete", exact: true }).isVisible()) return false;
+  if (await page.getByRole("heading", { name: /^(Lesson|Check-up) complete$/ }).isVisible()) return false;
   const recall = main.getByRole("button", { name: "Now recall it", exact: true });
   if (await recall.isVisible()) {
     await recall.click();
@@ -158,4 +159,65 @@ test("recorded pronunciation downloads for offline use and plays from the cache"
   expect(offline.ok).toBe(true);
   expect(offline.bytes).toBeGreaterThan(1000);
   await context.setOffline(false);
+});
+
+/** An English learner who met four pilot words 35 days ago and is not due to review them yet. */
+async function seedMonthOld(page: Page) {
+  await page.addInitScript((key) => {
+    if (localStorage.getItem(key)) return;
+    const day = 86_400_000;
+    const now = Date.now();
+    const ids = ["lex:A1:a-an", "lex:A1:the", "lex:A1:and", "lex:A1:but"];
+    const card = {
+      ease: 2.5, interval: 20, due: now + 10 * day, reps: 3, lapses: 0, state: "review", step: 0, last: now - 10 * day,
+      fsrs: { model: "fsrs6", stability: 20, difficulty: 5, scheduledDays: 20, learningSteps: 0, state: "review", lastReview: now - 10 * day },
+    };
+    localStorage.setItem(key, JSON.stringify({ version: 5, state: {
+      cards: Object.fromEntries(ids.map((id) => [id, card])),
+      logs: [], lifetime: { reviews: 4, correct: 4, practice: 0, practiceCorrect: 0 },
+      streak: 0, lastStudyDate: null, xp: 0, lang: "en", focus: "A1",
+      sessionSize: 10, newPerDay: 3, voice: false, accent: "en-GB", bookmarks: [],
+      dailyGoal: 10, requestRetention: 0.9, practiceSkills: {}, onboarded: true, goal: "general", minutes: 5,
+      reviewHistory: ids.map((id) => ({ id, at: now - 35 * day, grade: "good", algorithm: "fsrs6", targetRetention: 0.9, elapsedDays: 0, scheduledDays: 3, stability: 3, difficulty: 5 })),
+    } }));
+  }, LEGACY_KEY);
+}
+
+test("the 30-day check-up measures retention without touching the schedule, and the study file carries it", async ({ page }) => {
+  test.setTimeout(90_000);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedMonthOld(page);
+  await page.goto("/learn");
+  await expect(page.getByRole("heading", { name: "30-day check-up", exact: true })).toBeVisible();
+  await accessible(page);
+  const before = (await readProgress(page)).state.cards;
+  const started = await page.evaluate(() => Date.now());
+  await page.getByRole("button", { name: /Start check-up · 4 words/ }).click();
+  for (let i = 0; i < 30 && (await step(page)); i++);
+  await expect(page.getByRole("heading", { name: "Check-up complete", exact: true })).toBeVisible();
+  await expect(page.getByText(/Recalled and used correctly: \d \/ 4/)).toBeVisible();
+
+  const { state, events } = await readProgress(page);
+  const assessments = events.filter((event) => event.type === "assessment");
+  expect(assessments).toHaveLength(8);
+  expect(assessments.every((event) => event.assessment.delayDays === 35)).toBe(true);
+  // The seeded history was copied in as review events; the check-up adds none.
+  expect(events.filter((event) => (event.type === "review" || event.type === "practice") && event.at >= started)).toHaveLength(0);
+  expect(state.cards).toEqual(before);
+  expect(state.lifetime).toEqual({ reviews: 4, correct: 4, practice: 0, practiceCorrect: 0 });
+
+  await page.goto("/progress");
+  await expect(page.getByText(/Latest 30-day check-up: Recalled and used correctly \d \/ 4/)).toBeVisible();
+  const download = page.getByRole("button", { name: "Download study data", exact: true });
+  await expect(download).toBeDisabled();
+  await page.getByRole("textbox", { name: "Participant code", exact: true }).fill("P-017");
+  const pending = page.waitForEvent("download");
+  await download.click();
+  const file = await pending;
+  expect(file.suggestedFilename()).toMatch(/^vajefy-study-P-017-\d{4}-\d{2}-\d{2}\.json$/);
+  const data = JSON.parse(await readFile((await file.path())!, "utf8"));
+  expect(data.kind).toBe("vajefy-study");
+  expect(data.participant).toBe("P-017");
+  expect(data.events.filter((event: { type: string }) => event.type === "assessment")).toHaveLength(8);
+  expect(data.sessions.find((session: { mode?: string }) => session.mode === "checkup").answers.every((answer: object) => !("given" in answer))).toBe(true);
 });

@@ -42,6 +42,8 @@ export type AnswerContext = {
   contentVersion?: string;
   /** A hint or the answer was shown before the learner answered. */
   hint?: boolean;
+  /** Which prompt was shown, e.g. "lex:A1:close/c1", so later assessments can use unseen ones. */
+  promptId?: string;
   /** Active response time in milliseconds. */
   responseMs?: number;
 };
@@ -55,12 +57,29 @@ type OpBase = {
 
 export type ReplaceReason = "import" | "restore" | "start-over" | "migrate";
 
+/**
+ * Meeting a word outside an answer: hearing it, seeing its examples or reading
+ * its detail or reference note. Recorded so evaluations can account for
+ * exposure between reviews; it changes no progress.
+ */
+export type ExposureKind = "listen" | "example" | "detail" | "reference";
+
+/** What a check-up question asks: recognising the meaning, or using the word. */
+export type AssessmentPart = "meaning" | "use";
+
 export type Op = OpBase &
   (
     | ({ type: "review"; item: string; grade: Grade } & AnswerContext)
     | ({ type: "practice"; item: string; grade: Grade; skill?: PracticeSkill } & AnswerContext)
     /** A question the learner could not answer (for example unheard audio): evidence only. */
     | ({ type: "skip"; item: string; skill?: PracticeSkill } & AnswerContext)
+    /** Evidence only: the learner met the item outside an answer. */
+    | { type: "exposure"; item: string; kind: ExposureKind }
+    /**
+     * Evidence only: a delayed check-up answer, measuring what was retained.
+     * It never changes the schedule, practice skills, counts or XP.
+     */
+    | ({ type: "assessment"; item: string; part: AssessmentPart; correct: boolean; delayDays: number } & AnswerContext)
     | { type: "introduce"; item: string }
     | { type: "settings"; patch: SettingsPatch }
     | { type: "bookmark"; item: string; on: boolean }
@@ -93,6 +112,8 @@ export type StoredEvent = {
   grade?: Grade;
   skill?: PracticeSkill;
   context?: AnswerContext;
+  exposure?: ExposureKind;
+  assessment?: { part: AssessmentPart; correct: boolean; delayDays: number };
   /** Scheduler outcome of a review answer; these form the review history. */
   review?: ReviewEvent;
   undo?: UndoRecord;
@@ -223,6 +244,7 @@ function context(op: AnswerContext): AnswerContext | undefined {
   if (op.prompt !== undefined) value.prompt = op.prompt;
   if (op.contentVersion !== undefined) value.contentVersion = op.contentVersion;
   if (op.hint !== undefined) value.hint = op.hint;
+  if (op.promptId !== undefined) value.promptId = op.promptId;
   if (op.responseMs !== undefined) value.responseMs = Math.max(0, Math.round(op.responseMs));
   return Object.keys(value).length ? value : undefined;
 }
@@ -331,6 +353,19 @@ export function reduce(op: Op, snap: Snapshot): Writes {
           ...base,
           item: op.item,
           ...(op.skill ? { skill: op.skill } : {}),
+          ...(context(op) ? { context: context(op) } : {}),
+        },
+      });
+
+    case "exposure":
+      return withSession(op, { event: { ...base, item: op.item, exposure: op.kind } });
+
+    case "assessment":
+      return withSession(op, {
+        event: {
+          ...base,
+          item: op.item,
+          assessment: { part: op.part, correct: op.correct, delayDays: op.delayDays },
           ...(context(op) ? { context: context(op) } : {}),
         },
       });

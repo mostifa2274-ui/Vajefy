@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { entryIdOf } from "./content";
-import type { AnswerContext, Op, SettingsPatch } from "./ops";
+import type { AnswerContext, AssessmentPart, ExposureKind, Op, SettingsPatch } from "./ops";
 import { CHANNEL, createPersistence, emptyMemory, type Memory } from "./persistence";
 import { DEFAULT_PROGRESS, savedProgress, type DayLog, type LearningGoal, type SavedProgress } from "./progress";
 import { newId, type SessionRecord } from "./session";
@@ -40,6 +40,10 @@ type ProgressState = Memory & {
   /** Grade a scheduled recall. Returns the operation id, which undo uses. */
   review: (id: string, grade: Grade, extras?: AnswerExtras) => string;
   practice: (id: string, grade: Grade, skill?: PracticeSkill, extras?: AnswerExtras) => string;
+  /** Record a delayed check-up answer: evidence only, nothing else changes. */
+  assess: (id: string, part: AssessmentPart, correct: boolean, delayDays: number, extras?: AnswerExtras) => string;
+  /** Record meeting an item outside an answer (evidence only; repeated meetings within ten minutes count once). */
+  expose: (id: string, kind: ExposureKind) => void;
   /** Record a question that could not be answered, without credit or penalty. */
   skip: (id: string, skill?: PracticeSkill, extras?: AnswerExtras) => string;
   /** Revert a review answer, if nothing has changed that card since. */
@@ -56,6 +60,9 @@ type ProgressState = Memory & {
 };
 
 const browser = typeof window !== "undefined";
+
+const EXPOSURE_WINDOW_MS = 10 * 60_000;
+const lastExposure = new Map<string, number>();
 
 export const useProgress = create<ProgressState>()((set, get) => {
   function dispatch(op: Op) {
@@ -104,6 +111,17 @@ export const useProgress = create<ProgressState>()((set, get) => {
     skip: (item, skill, extras) => {
       const { id, at, context, sessionState } = answer(extras);
       return dispatch({ id, type: "skip", at, item, ...(skill ? { skill } : {}), ...context, sessionState });
+    },
+    assess: (item, part, correct, delayDays, extras) => {
+      const { id, at, context, sessionState } = answer(extras);
+      return dispatch({ id, type: "assessment", at, item, part, correct, delayDays, ...context, sessionState });
+    },
+    expose: (item, kind) => {
+      const at = Date.now();
+      const key = `${kind}\u0000${item}`;
+      if (!get().hydrated || at - (lastExposure.get(key) ?? 0) < EXPOSURE_WINDOW_MS) return;
+      lastExposure.set(key, at);
+      dispatch({ id: newId(), type: "exposure", at, item, kind });
     },
     undo: (target, sessionState) => void dispatch({ id: newId(), type: "undo", at: Date.now(), target, sessionState }),
     addToReview: (id) => {

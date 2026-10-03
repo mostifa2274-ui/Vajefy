@@ -5,17 +5,42 @@ import type { Copy } from "./i18n";
 import type { CardProg, Lang, LexWord, PracticeEvidence, PracticeSkill, Question } from "./types";
 
 const HOUR = 3_600_000;
+const DAY = 24 * HOUR;
+
 /**
- * Protect the next scheduled retrieval from being spoiled by optional practice.
- * Smart Practice never selects cards due now or within the next six hours.
+ * Smart Practice's choices, as configuration so each can be evaluated and
+ * changed on evidence rather than fixed in code.
  */
-export const SMART_PRACTICE_GUARD_MS = 6 * HOUR;
+export type PracticePolicy = {
+  /** Never select cards due now or within this time: their next retrieval belongs to Review. */
+  guardMs: number;
+  /** Rest a word for this long after it was practised. */
+  cooldownMs: number;
+  /** The extra weight of the latest miss halves over this time. */
+  missHalfLifeMs: number;
+  /**
+   * Successful answers assumed before any evidence. A skill's miss rate is
+   * shrunk towards zero by them, so one miss weighs less than five.
+   */
+  priorAttempts: number;
+};
+
+export const DEFAULT_PRACTICE_POLICY: PracticePolicy = {
+  guardMs: 6 * HOUR,
+  cooldownMs: 30 * 60_000,
+  missHalfLifeMs: 7 * DAY,
+  priorAttempts: 2,
+};
+
+/** Protect the next scheduled retrieval from being spoiled by optional practice. */
+export const SMART_PRACTICE_GUARD_MS = DEFAULT_PRACTICE_POLICY.guardMs;
 /** Avoid repeating the same optional prompts immediately after a session. */
-export const SMART_PRACTICE_COOLDOWN_MS = 30 * 60_000;
+export const SMART_PRACTICE_COOLDOWN_MS = DEFAULT_PRACTICE_POLICY.cooldownMs;
 
 export type SmartPracticeOptions = {
   evidence?: PracticeEvidence;
   allowListening?: boolean;
+  policy?: PracticePolicy;
 };
 
 export type SmartPracticeCandidate = {
@@ -43,11 +68,31 @@ const SKILL_MODE: Record<PracticeSkill, SmartLexMode> = {
   context: "cloze",
 };
 
-function skillWeakness(skills: PracticeEvidence[string] = {}, skill: PracticeSkill): number {
+/**
+ * How much a skill needs work, from its practice evidence:
+ *
+ * - the miss rate, shrunk towards zero when there are few answers, so a single
+ *   miss is weaker evidence than a pattern of them;
+ * - extra weight for the latest answer if it was a miss (or hard), fading with
+ *   time, so a mistake gets prompt support;
+ * - a later success removes that extra weight and lowers the miss rate.
+ *
+ * Skills never practised score zero: no evidence is not weakness.
+ */
+export function skillWeakness(
+  skills: PracticeEvidence[string] = {},
+  skill: PracticeSkill,
+  now = Date.now(),
+  policy: PracticePolicy = DEFAULT_PRACTICE_POLICY,
+): number {
   const observed = skills[skill];
   if (!observed?.attempts) return 0;
-  const missRate = clamp(1 - observed.correct / observed.attempts, 0, 1);
-  return missRate * 40 + (observed.lastGrade === "again" ? 60 : observed.lastGrade === "hard" ? 20 : 0);
+  const misses = clamp(observed.attempts - observed.correct, 0, observed.attempts);
+  const missRate = misses / (observed.attempts + policy.priorAttempts);
+  const age = Math.max(0, now - observed.lastAt);
+  const fading = 0.5 ** (age / Math.max(1, policy.missHalfLifeMs));
+  const latest = observed.lastGrade === "again" ? 60 : observed.lastGrade === "hard" ? 20 : 0;
+  return missRate * 40 + latest * fading;
 }
 
 function clamp(value: number, min: number, max: number): number {
@@ -75,12 +120,13 @@ export function smartPracticeCandidate(
   now: number,
   requestRetention: number,
   skills: PracticeEvidence[string] = {},
+  policy: PracticePolicy = DEFAULT_PRACTICE_POLICY,
 ): SmartPracticeCandidate | null {
   if (card.state !== "review") return null;
   if (card.fsrs && card.fsrs.state !== "review") return null;
-  if (card.due <= now + SMART_PRACTICE_GUARD_MS) return null;
+  if (card.due <= now + policy.guardMs) return null;
   const recent = latestPractice(skills);
-  if (recent > 0 && now - recent < SMART_PRACTICE_COOLDOWN_MS) return null;
+  if (recent > 0 && now - recent < policy.cooldownMs) return null;
 
   const recall = retrievability(card, now, requestRetention);
   if (recall == null || !Number.isFinite(recall)) return null;
@@ -90,7 +136,7 @@ export function smartPracticeCandidate(
     (1 - clamp(recall, 0, 1)) * 100 +
     Math.min(card.lapses, 10) * 8 +
     difficulty +
-    Math.max(...PRACTICE_SKILLS.map((skill) => skillWeakness(skills, skill))) * 0.5;
+    Math.max(...PRACTICE_SKILLS.map((skill) => skillWeakness(skills, skill, now, policy))) * 0.5;
 
   return {
     id,
@@ -106,10 +152,11 @@ export function rankSmartPractice(
   now: number,
   requestRetention: number,
   evidence: PracticeEvidence = {},
+  policy: PracticePolicy = DEFAULT_PRACTICE_POLICY,
 ): SmartPracticeCandidate[] {
   return Object.entries(cards)
     .flatMap(([id, card]) => {
-      const candidate = smartPracticeCandidate(id, card, now, requestRetention, evidence[id]);
+      const candidate = smartPracticeCandidate(id, card, now, requestRetention, evidence[id], policy);
       return candidate ? [candidate] : [];
     })
     .sort(
@@ -122,10 +169,16 @@ export function rankSmartPractice(
     );
 }
 
-function modeAt(index: number, skills: PracticeEvidence[string] = {}, allowListening = true): SmartLexMode {
+function modeAt(
+  index: number,
+  skills: PracticeEvidence[string] = {},
+  allowListening = true,
+  now = Date.now(),
+  policy: PracticePolicy = DEFAULT_PRACTICE_POLICY,
+): SmartLexMode {
   const weak = PRACTICE_SKILLS
     .filter((skill) => allowListening || skill !== "listening")
-    .map((skill) => ({ mode: SKILL_MODE[skill], score: skillWeakness(skills, skill) }))
+    .map((skill) => ({ mode: SKILL_MODE[skill], score: skillWeakness(skills, skill, now, policy) }))
     .sort((a, b) => b.score - a.score)[0];
   if (weak && weak.score > 0) return weak.mode;
   const cycle = allowListening ? MODE_CYCLE : MODE_CYCLE.filter((mode) => mode !== "listen");
@@ -148,7 +201,8 @@ export function smartPracticeQuestions(
   options: SmartPracticeOptions = {},
 ): Question[] {
   const byId = new Map(words.map((word) => [word.id, word]));
-  const ranked = rankSmartPractice(cards, now, requestRetention, options.evidence);
+  const policy = options.policy ?? DEFAULT_PRACTICE_POLICY;
+  const ranked = rankSmartPractice(cards, now, requestRetention, options.evidence, policy);
   const questions: Question[] = [];
   const limit = Number.isFinite(count) ? clamp(Math.floor(count), 0, 20) : 0;
 
@@ -157,7 +211,7 @@ export function smartPracticeQuestions(
     const word = byId.get(candidate.id);
     if (!word) continue;
 
-    const preferred = modeAt(questions.length, options.evidence?.[candidate.id], options.allowListening);
+    const preferred = modeAt(questions.length, options.evidence?.[candidate.id], options.allowListening, now, policy);
     const question =
       lexQuestion(word, words, preferred, copy, lang) ??
       // Spelling is generative and does not require distractors, so it is a

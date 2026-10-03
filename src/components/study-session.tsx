@@ -104,6 +104,7 @@ export function StudySession({
       at,
       session: session.id,
       prompt: current.isNew ? "recall-new" : "recall",
+      ...(face?.version ? { contentVersion: face.version } : {}),
       responseMs: elapsed(),
       sessionState: changed,
     });
@@ -267,7 +268,7 @@ export function StudySession({
             </p>
           ) : null}
           <div className="mt-4 flex justify-center">
-            <SpeakButton text={face.speak} label={copy.listen} clip={face.clip} slow />
+            <SpeakButton text={face.speak} label={copy.listen} clip={face.clip} slow item={face.id} />
           </div>
         </div>
 
@@ -361,7 +362,7 @@ function Meaning({
       ) : null}
       {face.example && face.exampleClip ? (
         <div className="mt-2">
-          <SpeakButton text={face.example} label={exampleLabel} clip={face.exampleClip} />
+          <SpeakButton text={face.example} label={exampleLabel} clip={face.exampleClip} item={face.id} exposure="example" />
         </div>
       ) : null}
       {face.note ? (

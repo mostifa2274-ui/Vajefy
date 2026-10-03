@@ -3,7 +3,7 @@ import { IDBFactory } from "fake-indexeddb";
 import assert from "node:assert/strict";
 import { beforeEach, test } from "node:test";
 import { makeBackup } from "./backup";
-import { commit, load, openDb } from "./db";
+import { commit, getEvent, load, openDb } from "./db";
 import { JOURNAL_PREFIX } from "./journal";
 import type { Op } from "./ops";
 import { createPersistence, emptyMemory, LEGACY_KEY, type Environment, type Memory } from "./persistence";
@@ -433,4 +433,23 @@ test("progress stored by an earlier version is migrated in place and verified", 
   });
   after.close();
   assert.equal(version, PROGRESS_VERSION);
+});
+
+test("an exposure is kept as evidence and changes no progress", async () => {
+  const app = tab();
+  await app.persistence.start();
+  const before = app.memory();
+  app.persistence.dispatch({ id: "exposure-1", type: "exposure", at: T0, item: "lex:A1:about", kind: "example" });
+  await settle(app);
+  const db = await openDb(browser.idb);
+  try {
+    const event = await getEvent(db, "exposure-1");
+    assert.equal(event?.exposure, "example");
+    assert.equal(event?.item, "lex:A1:about");
+    const after = await load(db);
+    assert.deepEqual(after.progress.cards, {});
+    assert.deepEqual(after.progress.lifetime, before.lifetime);
+  } finally {
+    db.close();
+  }
 });

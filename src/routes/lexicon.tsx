@@ -53,6 +53,11 @@ function LexiconPage() {
   const [loaded, setLoaded] = useState<{ scope: LevelId | "all"; words: LexWord[] } | null>(null);
   const [errorScope, setErrorScope] = useState<LevelId | "all" | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const expose = useProgress((state) => state.expose);
+  // Reading a word's detail is exposure to it, recorded for evaluation.
+  useEffect(() => {
+    if (selectedId) expose(selectedId, "detail");
+  }, [selectedId, expose]);
   const [page, setPage] = useState({ key: "", limit: 40 });
 
   // Open on the learner's level once it is known, unless the URL asked for
@@ -264,7 +269,7 @@ function LexiconPage() {
               ) : (
                 <>
                   <div className="mt-3">
-                    <SpeakButton text={selected.w} label={copy.listen} />
+                    <SpeakButton text={selected.w} label={copy.listen} item={selected.id} />
                   </div>
                   <p lang="fa" dir="rtl" className="mt-4 text-xl font-medium text-pretty">
                     {selected.fa}

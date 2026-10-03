@@ -1,4 +1,4 @@
-import { commit, dumpNewer, FutureDatabaseError, load, openDb, readChanged, upgrade, type CommitHooks, type Loaded } from "./db";
+import { commit, dumpNewer, FutureDatabaseError, load, openDb, readChanged, readEvidence, upgrade, type CommitHooks, type Loaded } from "./db";
 import { journalAppend, journalPending, journalRemove } from "./journal";
 import { defaultProfile, needs, profileOf, reduce, type Op, type Profile, type SkillRecord, type StoredEvent, type Writes } from "./ops";
 import { MAX_REVIEW_HISTORY, migrateProgress, PROGRESS_VERSION, savedProgress, type SavedProgress } from "./progress";
@@ -607,6 +607,10 @@ export function createPersistence(env: Environment) {
     },
     /** For tests: the operation ids behind memory's review history. */
     historyIds: () => historyIds,
+    /** All stored evidence, for the study export; null when nothing is stored in this browser. */
+    async evidence() {
+      return db ? readEvidence(db) : null;
+    },
   };
 }
 

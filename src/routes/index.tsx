@@ -8,8 +8,8 @@ import { useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta, loadPairs } from "@/lib/learn/load";
 import { countLevel, dueIds, liveStreak, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
 import type { PilotOrder } from "@/lib/learn/content";
-import { lessonSize } from "@/lib/learn/lesson";
-import { CONTENT_CHANNEL } from "@/lib/learn/channel";
+import { CHECKUP_SIZE, checkupCandidates, lessonSize } from "@/lib/learn/lesson";
+import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
 import { loadPilotOrder } from "@/lib/learn/pilot";
 import { resumable } from "@/lib/learn/session";
 import { dayNumber } from "@/lib/learn/text";
@@ -44,6 +44,7 @@ function Home() {
   const setOnboarded = useProgress((state) => state.setOnboarded);
   const addToReview = useProgress((state) => state.addToReview);
   const sessions = useProgress((state) => state.sessions);
+  const reviewHistory = useProgress((state) => state.reviewHistory);
   const copy = useCopy(lang);
   const [opened] = useState(() => Date.now());
   const unfinishedReview = hydrated ? resumable(sessions, "review", opened) : undefined;
@@ -118,10 +119,11 @@ function Home() {
 
   const due = hydrated ? dueIds(cards).length : 0;
   const released = new Set(order ? order.released : []);
+  const checkupReady = order && !unfinishedLesson ? checkupCandidates(order.order.general, reviewHistory, Object.values(sessions), opened).length : 0;
   const lessonCount =
     order && focus === "A1"
       ? order.order[goal ?? "general"]
-          .filter((id) => !cards[id] && (CONTENT_CHANNEL === "draft" || released.has(id)))
+          .filter((id) => !cards[id] && introducibleIn(CONTENT_CHANNEL, released.has(id)))
           .slice(0, lessonSize(minutes, due, sessionSize)).length
       : 0;
   // Rough time: a review takes about 8 seconds, a guided new word about 90.
@@ -205,6 +207,13 @@ function Home() {
               {copy.learn}{sep}<Num value={lessonCount} /> {copy.lessonNewWords}
             </Link>
           ) : null}
+          {checkupReady >= 3 ? (
+            <Link to="/learn" className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
+              {copy.checkupReady}
+              {sep}
+              <Num value={Math.min(checkupReady, CHECKUP_SIZE)} /> {copy.checkupWords}
+            </Link>
+          ) : null}
           {unfinishedQuiz ? (
             <Link to="/drill" className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
               {copy.resumeQuiz}{sep}<Num value={unfinishedQuiz.questions.length - unfinishedQuiz.index} /> {copy.leftLabel}
@@ -264,7 +273,7 @@ function Home() {
                   {word.ex}
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-3">
-                  <SpeakButton text={word.w} label={copy.listen} />
+                  <SpeakButton text={word.w} label={copy.listen} item={word.id} />
                   <button
                     type="button"
                     disabled={!hydrated || inReview}

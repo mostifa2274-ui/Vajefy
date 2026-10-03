@@ -51,6 +51,11 @@ function LibraryPage() {
   const [q, setQ] = useState(search.q ?? "");
   const [band, setBand] = useState<number | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const expose = useProgress((state) => state.expose);
+  // Reading a reference note is exposure to it, recorded for evaluation.
+  useEffect(() => {
+    if (selectedId) expose(selectedId, "reference");
+  }, [selectedId, expose]);
   const [page, setPage] = useState({ key: "", limit: 40 });
 
   useEffect(() => {
@@ -209,7 +214,7 @@ function LibraryPage() {
                 </p>
               ) : null}
               <div className="mt-3">
-                <SpeakButton text={selected.title} label={copy.listen} />
+                <SpeakButton text={selected.title} label={copy.listen} item={selected.id} />
               </div>
               <div className="mt-4 grid gap-4">
                 {selected.blocks.map((block) => (

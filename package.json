@@ -20,6 +20,7 @@
     "content:drafts": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/content-drafts.ts check",
     "content:promote": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/content-drafts.ts promote",
     "content:audio": "echo 'See docs/AUDIO.md: python scripts/audio/generate_audio.py --models <dir>' && exit 1",
+    "evaluate": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/evaluate-schedulers.ts",
     "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts'",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
@@ -60,6 +61,7 @@
     "fake-indexeddb": "6.2.5",
     "globals": "^15.15.0",
     "prettier": "^3.4.0",
+    "ts-fsrs-next": "npm:ts-fsrs@6.0.0-beta.12",
     "typescript-eslint": "^8.56.1",
     "wrangler": "^4.147.0"
   }

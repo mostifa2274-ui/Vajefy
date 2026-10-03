@@ -1,6 +1,6 @@
 import type { Contrast, Entry, Goal, Pilot, PilotOrder, Scene, Sense, SenseAudio } from "./content";
 import { entryIdOf, orderForGoal } from "./content";
-import { CONTENT_CHANNEL, type Channel } from "./channel";
+import { CONTENT_CHANNEL, introducibleIn, type Channel } from "./channel";
 import { loadJson } from "./load";
 
 export type PilotEntry = Pilot["entries"][number];
@@ -86,11 +86,11 @@ export function pronunciationFor(sense: Sense, accent: "en-GB" | "en-US") {
  */
 export function introducible(index: PilotIndex, channel: Channel = CONTENT_CHANNEL): PilotIndex {
   if (channel === "draft") return index;
-  const released = (senseId: string) => index.bySense.get(senseId)?.entry.released ?? false;
+  const released = (senseId: string) => introducibleIn(channel, index.bySense.get(senseId)?.entry.released ?? false);
   return {
     ...index,
-    targets: index.targets.filter((target) => target.entry.released),
-    byEntry: new Map([...index.byEntry].filter(([, entry]) => entry.released)),
+    targets: index.targets.filter((target) => introducibleIn(channel, target.entry.released)),
+    byEntry: new Map([...index.byEntry].filter(([, entry]) => introducibleIn(channel, entry.released))),
     pilot: {
       ...index.pilot,
       contrasts: index.pilot.contrasts.filter((contrast) => contrast.entries.every(released)),
@@ -137,6 +137,7 @@ export function pilotFace(target: PilotTarget, audio: Record<string, SenseAudio>
     ...(clips.word ? { clip: clips.word } : {}),
     ...(clips.examples[0] ? { exampleClip: clips.examples[0] } : {}),
     draft: !entry.released,
+    version: entry.version,
   };
 }
 

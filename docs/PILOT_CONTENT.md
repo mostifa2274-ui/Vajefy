@@ -182,3 +182,7 @@ The app's build chooses which content learners meet, with
 A public deployment set to `released` therefore grows exactly as fast as
 entries are approved, with no other change.
 
+A third value, `none`, turns guided lessons off. The pilot words are then
+introduced in Review with their original cards. This is the pilot study's
+comparison arm ([EVALUATION.md](EVALUATION.md#the-pilot-study)).
+

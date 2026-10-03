@@ -6,6 +6,7 @@ import {
   advanceLesson,
   answerFor,
   answerLesson,
+  checkupResult,
   gradeOf,
   gradeTyped,
   lessonStats,
@@ -37,7 +38,17 @@ const ROLE_LABEL: Record<Role, keyof Copy> = {
   delayed: "roleDelayed",
   retry: "roleRetry",
   apply: "roleApply",
+  "checkup-use": "roleCheckupUse",
+  "checkup-meaning": "roleCheckupMeaning",
 };
+
+/** Which prompt an answer was given to, so later check-ups can choose unseen ones. */
+function promptIdOf(ref: ItemRef): string {
+  if (ref.from === "sense") return `${ref.target}/${ref.item}`;
+  if (ref.from === "contrast") return `${ref.contrast}/${ref.item}`;
+  if (ref.from === "scene") return `${ref.scene}/${ref.item}`;
+  return `generated:${ref.mode}`;
+}
 
 /**
  * Runs a guided lesson saved with every step. Teaching a target adds it to the
@@ -53,6 +64,7 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
   const practice = useProgress((state) => state.practice);
   const review = useProgress((state) => state.review);
   const saveSession = useProgress((state) => state.saveSession);
+  const assess = useProgress((state) => state.assess);
   const [session, setSession] = useState(initial);
   const step = session.steps[session.index];
   const answered = answerFor(session);
@@ -81,23 +93,38 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
       at,
       session: session.id,
       prompt: `lesson:${role}:${item.type}`,
+      promptId: promptIdOf(ref),
       responseMs: elapsed(),
       contentVersion: index.bySense.get(ref.target)?.entry.version,
+      // A retry comes after feedback that showed the answer.
+      ...(role === "retry" ? { hint: true } : {}),
       sessionState: next,
     };
-    // The delayed retrieval is the scheduled answer; everything else is practice.
-    if (role === "delayed") review(ref.target, gradeOf(result), extras);
+    // A check-up only measures. The delayed retrieval is the scheduled answer;
+    // everything else is practice.
+    if (role === "checkup-use" || role === "checkup-meaning") {
+      assess(ref.target, role === "checkup-use" ? "use" : "meaning", result !== "wrong", session.delays?.[ref.target] ?? 0, extras);
+    } else if (role === "delayed") review(ref.target, gradeOf(result), extras);
     else practice(ref.target, gradeOf(result), skillOf(ref, item), extras);
     setSession(next);
   }
 
   if (!step) {
     const stats = lessonStats(session);
+    const checkup = session.mode === "checkup" ? checkupResult(session) : null;
     return (
       <section className="mx-auto max-w-xl">
-        <h1 className="text-3xl font-medium text-balance">{copy.lessonDone}</h1>
+        <h1 className="text-3xl font-medium text-balance">{checkup ? copy.checkupDone : copy.lessonDone}</h1>
         <p className="mt-3 text-muted">
-          {num(stats.correct)} / {num(stats.answered)} {copy.correct}
+          {checkup ? (
+            <>
+              {copy.checkupUsable}: {num(checkup.usable)} / {num(checkup.checked)}
+            </>
+          ) : (
+            <>
+              {num(stats.correct)} / {num(stats.answered)} {copy.correct}
+            </>
+          )}
         </p>
         {session.mode === "lesson" ? <p className="mt-2 text-sm text-pretty text-muted">{copy.lessonNext}</p> : null}
         {stats.missed.length ? (
@@ -265,7 +292,7 @@ function Teach({
         <p lang="en" dir="ltr" className="mt-2 text-muted">{pronunciationFor(sense, accent)}</p>
         {sense.pronunciation.note ? <p lang="fa" dir="rtl" className="mt-1 text-xs text-pretty text-muted">{sense.pronunciation.note}</p> : null}
         <div className="mt-3 flex justify-center">
-          <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow />
+          <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow item={sense.id} />
         </div>
       </div>
       <div className="mt-5 border-t border-line pt-4">
@@ -288,7 +315,7 @@ function Teach({
             <p lang="en" dir="ltr" className="text-pretty">{example.en}</p>
             <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty">{example.fa}</p>
             <div className="mt-1">
-              <SpeakButton text={example.en} label={copy.listenExample} clip={clips.examples[position]} />
+              <SpeakButton text={example.en} label={copy.listenExample} clip={clips.examples[position]} item={sense.id} exposure="example" />
             </div>
           </li>
         ))}

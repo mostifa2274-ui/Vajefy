@@ -337,3 +337,13 @@ export async function getEvent(db: IDBDatabase, id: string): Promise<StoredEvent
   await done;
   return event;
 }
+
+/** Every stored event and session, for the study export. */
+export async function readEvidence(db: IDBDatabase): Promise<{ events: StoredEvent[]; sessions: SessionRecord[] }> {
+  const tx = db.transaction(["events", "sessions"], "readonly");
+  const [events, sessions] = await Promise.all([
+    request(tx.objectStore("events").getAll()) as Promise<StoredEvent[]>,
+    request(tx.objectStore("sessions").getAll()) as Promise<SessionRecord[]>,
+  ]);
+  return { events, sessions };
+}

@@ -103,6 +103,8 @@ export type StudyFace = {
   exampleClip?: string;
   /** Enhanced content that has not completed bilingual review yet. */
   draft?: boolean;
+  /** Content version of enhanced content, recorded with each answer. */
+  version?: string;
 };
 
 export type RefEntry = {

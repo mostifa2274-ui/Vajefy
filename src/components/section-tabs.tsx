@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/cn";
 import type { Copy } from "@/lib/learn/i18n";
+import { LEARN_HOME } from "@/lib/sections";
 
 const TABS = {
   learn: {
@@ -23,10 +24,12 @@ const TABS = {
 /** The screens inside Learn or Words, as one row of tabs. */
 export function SectionTabs({ section, pathname, copy }: { section: "learn" | "words"; pathname: string; copy: Copy }) {
   const group = TABS[section];
+  // Without guided lessons (the study's comparison arm) Learn has no Lessons tab.
+  const items = group.items.filter((item) => item.to !== "/learn" || LEARN_HOME === "/learn");
   return (
     <nav aria-label={copy[group.label]} className="mb-5">
       <ul className="inline-flex max-w-full gap-1 overflow-x-auto rounded-lg bg-paper-2 p-1 shadow-[var(--shadow-border)]">
-        {group.items.map((item) => {
+        {items.map((item) => {
           const active = pathname.startsWith(item.to);
           return (
             <li key={item.to}>

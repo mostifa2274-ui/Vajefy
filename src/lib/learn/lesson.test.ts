@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
-import { advanceLesson, answerLesson, buildApplication, buildLesson, gradeTyped, lessonSize, nextTargets, resolveItem } from "./lesson";
+import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, lessonSize, nextTargets, resolveItem, seenPrompts } from "./lesson";
 import { indexPilot, introducible, introductionOrder } from "./pilot";
 
 const index = indexPilot(JSON.parse(readFileSync("public/data/pilot-a1.json", "utf8")) as Pilot);
@@ -103,3 +103,45 @@ test("the released channel introduces only reviewed entries, but keeps every sen
   assert.ok(view.pilot.contrasts.every((contrast) => contrast.entries.every((id) => view.bySense.get(id)?.entry.released)));
   assert.equal(introducible(full, "draft"), full);
 });
+
+test("the 30-day check-up uses unseen prompts, measures use and meaning, and offers each word once a month", () => {
+  const DAY = 86_400_000;
+  const targets = index.targets.slice(0, 4);
+  const history = targets.map((target, position) => ({ id: target.sense.id, at: T0 - (31 + position) * DAY }));
+  // Too recent to check up.
+  history.push({ id: index.targets[10]!.sense.id, at: T0 - 5 * DAY });
+  const lesson = buildLesson(index, targets, new Set(), T0 - 40 * DAY, random);
+  // Every prompt shown in the lesson counts as seen.
+  const answered = { ...lesson, answers: lesson.steps.map((_, step) => ({ op: `o${step}`, step, result: "correct" as const, at: T0 })) };
+  const seen = seenPrompts([answered]);
+
+  const ids = index.targets.map((target) => target.sense.id);
+  const candidates = checkupCandidates(ids, history, [answered], T0);
+  assert.deepEqual(candidates.map((item) => item.id).sort(), targets.map((target) => target.sense.id).sort());
+  assert.equal(candidates[0]!.delayDays, 34, "oldest first, with days since first met");
+
+  const checkup = buildCheckup(index, candidates, seen, T0, random);
+  assert.equal(checkup.mode, "checkup");
+  const use = checkup.steps.filter((step) => step.kind === "check" && step.role === "checkup-use");
+  const meaning = checkup.steps.filter((step) => step.kind === "check" && step.role === "checkup-meaning");
+  assert.equal(use.length, targets.length);
+  assert.equal(meaning.length, targets.length);
+  assert.ok(checkup.steps.indexOf(use.at(-1)!) < checkup.steps.indexOf(meaning[0]!), "use comes before the meaning can cue it");
+  for (const step of use) {
+    if (step.kind === "check" && step.ref.from === "sense") assert.ok(!seen.has(`${step.ref.target}/${step.ref.item}`), "a fresh sentence");
+  }
+
+  // One word recalled but not used, the rest both.
+  let session = checkup;
+  for (const step of checkup.steps) {
+    const wrong = step.kind === "check" && step.role === "checkup-use" && step.ref.target === targets[0]!.sense.id;
+    session = advanceLesson(answerLesson(session, { op: newIdFor(session), result: wrong ? "wrong" : "correct", at: T0 }, index), T0);
+  }
+  assert.equal(session.steps.length, checkup.steps.length, "a check-up never adds retries");
+  assert.deepEqual(checkupResult(session), { checked: 4, usable: 3, meaning: 4, use: 3 });
+  assert.equal(checkupCandidates(ids, history, [answered, session], T0 + DAY).length, 0, "not checked again within 30 days");
+});
+
+function newIdFor(session: { answers: unknown[] }) {
+  return `answer-${session.answers.length}`;
+}

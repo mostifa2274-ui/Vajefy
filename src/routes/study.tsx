@@ -8,6 +8,7 @@ import { loadMeta } from "@/lib/learn/load";
 import { resumable, startReview, type ReviewSession } from "@/lib/learn/session";
 import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
 import { loadJson } from "@/lib/learn/load";
+import { CONTENT_CHANNEL } from "@/lib/learn/channel";
 import { introducible, introductionOrder, loadPilot } from "@/lib/learn/pilot";
 import { shuffle } from "@/lib/learn/text";
 import type { CardProg, LevelId, StudyFace } from "@/lib/learn/types";
@@ -37,6 +38,16 @@ async function newWords(
     .catch(() => undefined);
   const levelIds = order ?? shuffle([...faces.keys()].filter((id) => id.startsWith(`lex:${focus}:`) && !id.includes("#")));
   let excluded = new Set<string>();
+  if (focus === "A1" && CONTENT_CHANNEL === "none") {
+    // The study's comparison arm meets the same pilot words, here in Review,
+    // in the order the guided lessons would introduce them.
+    const pilot = await loadPilot();
+    const first = introductionOrder(pilot.targets, state.goal)
+      .filter((target) => target.index === 0)
+      .map((target) => target.entry.id);
+    const ordered = [...first, ...levelIds.filter((id) => !first.includes(id))];
+    return ordered.filter((id) => faces.has(id) && !known.has(id)).slice(0, budget);
+  }
   if (focus === "A1") {
     const pilot = introducible(await loadPilot());
     if (introductionOrder(pilot.targets, state.goal).some((target) => !known.has(target.sense.id))) {

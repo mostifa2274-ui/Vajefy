@@ -9,6 +9,7 @@ import {
   loadPairs,
   loadPatterns,
 } from "./load";
+import { CONTENT_CHANNEL } from "./channel";
 import { loadPilot, pilotFace } from "./pilot";
 import { useProgress } from "./store";
 import { bareHeadword, levelOf } from "./text";
@@ -246,7 +247,8 @@ export async function loadStudyFaces(
 
   // Sense-level targets exist only in the pilot. If it cannot load, this
   // rejects, so the caller shows an error rather than dropping those cards.
-  const needsPilot = levels.has("A1") || extraIds.some((id) => id.includes("#"));
+  // The study's comparison arm keeps the original cards for pilot words.
+  const needsPilot = extraIds.some((id) => id.includes("#")) || (levels.has("A1") && CONTENT_CHANNEL !== "none");
   await Promise.all([
     ...[...levels].map(async (level) => {
       const label = meta.levels.find((item) => item.id === level)?.label ?? level;

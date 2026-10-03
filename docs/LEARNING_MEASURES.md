@@ -109,6 +109,11 @@ and [AUDIO.md](AUDIO.md) for the pronunciation library.
 `src/lib/learn/measures.ts` computes these from review events and practice
 evidence. It never fills in a measure that has no recorded evidence.
 
+The principal measure needs a delayed test with new prompts. That is the
+30-day check-up, which Progress reports as "recalled and used correctly". The
+pilot study's analysis divides it by active study time
+([EVALUATION.md](EVALUATION.md)).
+
 ## Pilot study (Phase 5)
 
 1. Five to eight observed usability sessions, with notes on where help was

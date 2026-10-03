@@ -7,7 +7,7 @@ import { liveStreak, persistence, todayLog, useProgress } from "@/lib/learn/stor
 import type { HeldSave } from "@/lib/learn/recovery";
 import { RecoveryScreen } from "./recovery-screen";
 import { SaveNotice } from "./save-notice";
-import { sectionOf } from "@/lib/sections";
+import { LEARN_HOME, sectionOf } from "@/lib/sections";
 import { SectionTabs } from "./section-tabs";
 import { Num, Sep } from "./ui";
 
@@ -18,7 +18,7 @@ const OFFLINE_ROUTES = ["/", "/learn", "/lexicon", "/study", "/drill", "/library
 /** The four destinations. Learn and Words each group several screens. */
 const NAV = [
   { to: "/", key: "today", icon: BookOpenText, section: "today" },
-  { to: "/learn", key: "learn", icon: GraduationCap, section: "learn" },
+  { to: LEARN_HOME, key: "learn", icon: GraduationCap, section: "learn" },
   { to: "/lexicon", key: "navLexicon", icon: Search, section: "words" },
   { to: "/progress", key: "progress", icon: ChartColumn, section: "progress" },
 ] as const;

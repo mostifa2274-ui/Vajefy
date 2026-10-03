@@ -21,7 +21,8 @@ export type ItemRef =
   /** A generated choice: Persian meaning for the word, or the word for a meaning. */
   | { from: "generated"; target: string; mode: "meaning" | "form"; options: string[] };
 
-export type Role = "retrieve" | "context" | "delayed" | "retry" | "apply";
+/** Check-up roles measure retention (docs/LEARNING_MEASURES.md) and never schedule or teach. */
+export type Role = "retrieve" | "context" | "delayed" | "retry" | "apply" | "checkup-use" | "checkup-meaning";
 
 export type LessonStep =
   | { kind: "teach"; target: string }
@@ -45,8 +46,10 @@ export type LessonSession = {
   status: "active" | "done";
   createdAt: number;
   updatedAt: number;
-  /** What this session is: new words, or one contrast or scene on its own. */
-  mode: "lesson" | "contrast" | "scene";
+  /** What this session is: new words, one contrast or scene on its own, or a delayed check-up. */
+  mode: "lesson" | "contrast" | "scene" | "checkup";
+  /** For a check-up: days since each target was first met. */
+  delays?: Record<string, number>;
   targets: string[];
   steps: LessonStep[];
   index: number;
@@ -337,6 +340,134 @@ export function lessonStats(session: LessonSession) {
         })
         .filter((id): id is string => Boolean(id)),
     )],
+  };
+}
+
+/** A word is ready for the delayed check-up this many days after it was first met. */
+export const CHECKUP_DELAY_DAYS = 30;
+/** Words in one check-up. */
+export const CHECKUP_SIZE = 10;
+const DAY_MS = 86_400_000;
+
+/** Lesson prompts the learner has already answered, as "<sense>/<item>". */
+export function seenPrompts(sessions: readonly { kind: string }[]): Set<string> {
+  const seen = new Set<string>();
+  for (const session of sessions) {
+    if (session.kind !== "lesson") continue;
+    const lesson = session as LessonSession;
+    for (const answer of lesson.answers) {
+      const step = lesson.steps[answer.step];
+      if (step?.kind === "check" && step.ref.from === "sense") seen.add(`${step.ref.target}/${step.ref.item}`);
+    }
+  }
+  return seen;
+}
+
+/**
+ * Targets ready for the delayed check-up: first met at least CHECKUP_DELAY_DAYS
+ * ago (their first review) and not checked in the last CHECKUP_DELAY_DAYS.
+ * Oldest first, with the days since each was first met.
+ */
+export function checkupCandidates(
+  targetIds: readonly string[],
+  history: readonly { id: string; at: number }[],
+  sessions: readonly { kind: string }[],
+  now: number,
+): { id: string; delayDays: number }[] {
+  const first = new Map<string, number>();
+  for (const event of history) {
+    const known = first.get(event.id);
+    if (known === undefined || event.at < known) first.set(event.id, event.at);
+  }
+  const recent = new Set<string>();
+  for (const session of sessions) {
+    const lesson = session as LessonSession;
+    if (lesson.kind === "lesson" && lesson.mode === "checkup" && now - lesson.createdAt < CHECKUP_DELAY_DAYS * DAY_MS) {
+      for (const id of lesson.targets) recent.add(id);
+    }
+  }
+  return targetIds
+    .flatMap((id) => {
+      const met = first.get(id);
+      if (met === undefined || recent.has(id)) return [];
+      const delayDays = Math.floor((now - met) / DAY_MS);
+      return delayDays >= CHECKUP_DELAY_DAYS ? [{ id, delayDays }] : [];
+    })
+    .sort((a, b) => b.delayDays - a.delayDays || a.id.localeCompare(b.id));
+}
+
+/**
+ * A delayed check-up: for each word, first using it in a sentence it has not
+ * been seen in (a content item never answered before, else choosing the word
+ * for its meaning), then recognising its meaning. Use comes first so the
+ * meaning question cannot cue it. Answers are recorded as assessments only.
+ */
+export function buildCheckup(
+  index: PilotIndex,
+  candidates: { id: string; delayDays: number }[],
+  seen: Set<string>,
+  now: number,
+  random: () => number = Math.random,
+): LessonSession {
+  const chosen = candidates
+    .flatMap((candidate) => {
+      const target = index.bySense.get(candidate.id);
+      return target ? [{ target, delayDays: candidate.delayDays }] : [];
+    })
+    .slice(0, CHECKUP_SIZE);
+  const use: LessonStep[] = [];
+  const meaning: LessonStep[] = [];
+  for (const { target } of chosen) {
+    const fresh = contentItem(
+      target.sense,
+      ["produce", "cloze", "choice"],
+      new Set(target.sense.check.filter((item) => seen.has(`${target.sense.id}/${item.id}`)).map((item) => item.id)),
+    );
+    use.push({
+      kind: "check",
+      role: "checkup-use",
+      ref: fresh
+        ? { from: "sense", target: target.sense.id, item: fresh.id }
+        : { from: "generated", target: target.sense.id, mode: "form", options: distractors(index, target, random) },
+    });
+    meaning.push({
+      kind: "check",
+      role: "checkup-meaning",
+      ref: { from: "generated", target: target.sense.id, mode: "meaning", options: distractors(index, target, random) },
+    });
+  }
+  const steps = [...shuffleWith(use, random), ...shuffleWith(meaning, random)];
+  return {
+    id: newId(),
+    kind: "lesson",
+    status: steps.length ? "active" : "done",
+    createdAt: now,
+    updatedAt: now,
+    mode: "checkup",
+    delays: Object.fromEntries(chosen.map(({ target, delayDays }) => [target.sense.id, delayDays])),
+    targets: chosen.map(({ target }) => target.sense.id),
+    steps,
+    index: 0,
+    answers: [],
+  };
+}
+
+/** A check-up's result: words whose meaning was recognised and that were used correctly. */
+export function checkupResult(session: LessonSession): { checked: number; usable: number; meaning: number; use: number } {
+  const outcome = new Map<string, { meaning?: boolean; use?: boolean }>();
+  for (const answer of session.answers) {
+    const step = session.steps[answer.step];
+    if (step?.kind !== "check" || (step.role !== "checkup-use" && step.role !== "checkup-meaning")) continue;
+    const entry = outcome.get(step.ref.target) ?? {};
+    entry[step.role === "checkup-use" ? "use" : "meaning"] = answer.result !== "wrong";
+    outcome.set(step.ref.target, entry);
+  }
+  const results = session.targets.map((id) => outcome.get(id) ?? {});
+  return {
+    checked: session.targets.length,
+    usable: results.filter((item) => item.meaning && item.use).length,
+    meaning: results.filter((item) => item.meaning).length,
+    use: results.filter((item) => item.use).length,
   };
 }
 

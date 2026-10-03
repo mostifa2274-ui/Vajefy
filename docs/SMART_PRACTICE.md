@@ -9,13 +9,36 @@ in a keyboard-accessible disclosure rather than preceding the session controls.
 ## Selection and question format
 
 Only vocabulary already in the learner's schedule is eligible. Learning and
-relearning cards, words due within six hours, and words practised during the
-last 30 minutes stay outside optional practice. The time guard and cooldown are
-product heuristics; they are not claims of an experimentally optimal interval.
+relearning cards, words due soon, and words practised very recently stay
+outside optional practice.
 
 Priority combines current FSRS retrievability, difficulty, accumulated lapses,
 and observed drill mistakes. Older SM-2 cards use the same bridge employed by
 the scheduler for memory estimates. Selection itself never changes a card.
+
+## Policy
+
+Every choice is configuration (`PracticePolicy` in `src/lib/learn/adaptive.ts`),
+so each can be tested and changed on evidence. The defaults are product
+heuristics, not claims of an experimentally optimal value:
+
+| Setting | Default | Effect |
+|---|---|---|
+| `guardMs` | 6 hours | Words due within this time are left for Review |
+| `cooldownMs` | 30 minutes | A practised word rests this long |
+| `missHalfLifeMs` | 7 days | The extra weight of a word's latest miss halves over this time |
+| `priorAttempts` | 2 | Successful answers assumed before any evidence |
+
+A skill's weakness combines two parts:
+
+- **Its miss rate, shrunk towards zero by `priorAttempts`.** One miss in one
+  answer counts as a third, five misses in five as five sevenths, so a pattern
+  outweighs a single slip.
+- **Extra weight when the latest answer was a miss (or hard).** It gives a new
+  mistake prompt support, fades with `missHalfLifeMs`, and disappears as soon as
+  a later answer succeeds.
+
+A skill with no answers scores zero: no evidence is not weakness.
 
 The format targets the word's weaker observed skill when evidence exists. With
 no weakness evidence, formats alternate between written spelling, listening
@@ -42,7 +65,7 @@ due now, preserving FSRS stability/difficulty until a real Review answer updates
 them. Review totals, the daily review goal, and scheduled review history remain
 independent. Listening questions can be skipped when sound is unavailable;
 skips generate no answer or XP and are excluded from the result denominator.
-Pronunciation still uses installed system voices and can vary by device.
+Words without recorded audio still use the device's speech voices, which vary.
 
 ## Migration and verification
 
@@ -60,7 +83,6 @@ failed-load retry and ungraded listening skips.
 ## Follow-up work
 
 This release does not tune FSRS parameters from incomplete legacy history or
-claim personalized forgetting parameters. Prospective review evidence remains
-available for a separately validated optimizer. Controlled pronunciation assets,
-optional account synchronization and larger durable local storage remain
-separate product improvements.
+claim personalized forgetting parameters. Personalised FSRS-6 and FSRS-7 are
+compared offline against the active scheduler first ([EVALUATION.md](EVALUATION.md)).
+The policy defaults above are candidates for the same kind of evaluation.

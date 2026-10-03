@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ChangeEvent, type ReactNode } from "react";
 import { LabeledWords } from "@/components/labeled-words";
-import { LearningSummary, OfflineAudio } from "@/components/progress-extras";
+import { LearningSummary, OfflineAudio, StudyPanel } from "@/components/progress-extras";
 import { Num, PageHeader, Sep } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { parseBackup } from "@/lib/learn/backup";
@@ -206,6 +206,7 @@ function ProgressPage() {
         <OfflineAudio copy={copy} />
 
         <BackupPanel copy={copy} />
+        <StudyPanel copy={copy} />
 
         <div className="mt-6">
           {confirm ? (
