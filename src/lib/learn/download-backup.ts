@@ -1,4 +1,4 @@
-import { backupFileName, makeBackup } from "./backup";
+import { backupFileName, makeBackup } from "./backup-file";
 import { useProgress } from "./store";
 
 export function downloadText(text: string, fileName: string) {

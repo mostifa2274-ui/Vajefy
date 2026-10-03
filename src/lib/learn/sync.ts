@@ -4,6 +4,7 @@ import { PROGRESS_VERSION, savedProgress } from "./progress";
 import { currentProgress } from "./schema";
 import { newId } from "./session";
 import { deriveKeys, newSyncCode, opaqueId, readSyncCode, seal, unseal, type SyncKeys } from "./sync-crypto";
+import { SYNC_KEY } from "./sync-key";
 
 /**
  * Optional sync between a learner's devices (docs/SYNC.md).
@@ -34,7 +35,7 @@ type Marker = { id: string; seen?: number };
 /** What is encrypted: the operation and the progress version that wrote it. */
 type Payload = { v: number; op: Op };
 
-export const SYNC_KEY = "vajefy-sync";
+export { SYNC_KEY } from "./sync-key";
 const DB_NAME = "vajefy-sync";
 const PUSH_BATCH = 50;
 const PUSH_BYTES = 2_500_000;

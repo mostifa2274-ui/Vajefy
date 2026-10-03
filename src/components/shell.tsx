@@ -1,19 +1,21 @@
 import { Link, useNavigate, useRouter, useRouterState } from "@tanstack/react-router";
 import { BookOpenText, ChartColumn, GraduationCap, Search } from "lucide-react";
-import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { report, reportCrashes } from "@/lib/telemetry";
 import { useCopy } from "@/lib/learn/i18n";
 import { liveStreak, persistence, todayLog, useProgress } from "@/lib/learn/store";
-import { startWithSync } from "@/lib/learn/sync-client";
+import { pairingStored } from "@/lib/learn/sync-key";
 import type { HeldSave } from "@/lib/learn/recovery";
-import { RecoveryScreen } from "./recovery-screen";
 import { SaveNotice } from "./save-notice";
 import { LEARN_HOME, sectionOf } from "@/lib/sections";
 import { SectionTabs } from "./section-tabs";
 import { Num, Sep } from "./ui";
 
 const serverHeld = (): HeldSave | null => null;
+// Shown only when a save cannot be read, so its code (and the progress
+// schema it uses) loads only then.
+const RecoveryScreen = lazy(() => import("./recovery-screen").then((module) => ({ default: module.RecoveryScreen })));
 
 const OFFLINE_ROUTES = ["/", "/learn", "/lexicon", "/study", "/drill", "/library", "/progress"] as const;
 
@@ -43,7 +45,17 @@ export function Shell({ children }: { children: ReactNode }) {
   const dock = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const stopSync = startWithSync();
+    // Progress starts at once. A paired device first takes up its pairing, so
+    // the sync engine starts progress itself (sync-client.ts); it loads after
+    // the first screen either way.
+    let alive = true;
+    let stopSync = () => {};
+    if (!pairingStored()) void persistence.start();
+    void import("@/lib/learn/sync-client")
+      .then((module) => {
+        if (alive) stopSync = module.startWithSync();
+      })
+      .catch(() => persistence.start());
     // Save failures are reported by kind only, when the build enables reporting.
     const watch = () => {
       const status = persistence.getStatus();
@@ -55,6 +67,7 @@ export function Shell({ children }: { children: ReactNode }) {
     return () => {
       unsubscribe();
       stopCrashes();
+      alive = false;
       stopSync();
     };
   }, []);
@@ -219,7 +232,9 @@ export function Shell({ children }: { children: ReactNode }) {
           {/* A held save replaces the app, so nothing can be learned into a
               placeholder state that could never be saved. */}
           {hydrated && held ? (
-            <RecoveryScreen held={held} copy={copy} />
+            <Suspense fallback={null}>
+              <RecoveryScreen held={held} copy={copy} />
+            </Suspense>
           ) : (
             <>
               {hydrated ? <SaveNotice copy={copy} /> : null}

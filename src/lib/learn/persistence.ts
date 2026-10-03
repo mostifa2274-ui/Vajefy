@@ -2,8 +2,7 @@ import { commit, dumpNewer, FutureDatabaseError, load, openDb, readChanged, read
 import { journalAppend, journalPending, journalRemove } from "./journal";
 import { defaultProfile, needs, profileOf, reduce, type Op, type Profile, type SkillRecord, type StoredEvent, type Writes } from "./ops";
 import { MAX_REVIEW_HISTORY, migrateProgress, PROGRESS_VERSION, savedProgress, type SavedProgress } from "./progress";
-import { inspectStoredProgress, type HeldSave } from "./recovery";
-import { currentProgress } from "./schema";
+import type { HeldSave, StoredProgress } from "./recovery";
 import { newId, type SessionRecord } from "./session";
 import type { CardProg, ReviewEvent } from "./types";
 
@@ -383,12 +382,22 @@ export function createPersistence(env: Environment) {
     });
   }
 
+  /**
+   * Read a save kept by an older release. Checking it needs the progress
+   * schema, which loads only when there is a save: a new learner's first
+   * visit never fetches it.
+   */
+  async function inspect(raw: string | null): Promise<StoredProgress> {
+    if (raw === null) return { kind: "empty" };
+    return (await import("./recovery")).inspectStoredProgress(raw);
+  }
+
   /** Bring answers made by an older release in this browser after the migration. */
   async function catchUpLegacy(meta: Record<string, unknown>) {
     const migration = meta.migration as { at?: number; legacyHash?: string } | undefined;
     const raw = legacyRaw();
     if (!db || !migration || !raw || fnv1a(raw) === migration.legacyHash) return 0;
-    const inspected = inspectStoredProgress(raw);
+    const inspected = await inspect(raw);
     let replayed = 0;
     if (inspected.kind === "ok") {
       for (const event of inspected.progress.reviewHistory) {
@@ -456,7 +465,7 @@ export function createPersistence(env: Environment) {
   async function run() {
     const factory = env.idb?.();
     if (!factory) {
-      fallBack();
+      await fallBack();
       return;
     }
     try {
@@ -467,14 +476,14 @@ export function createPersistence(env: Environment) {
         hold({ kind: "future", raw, version: error.version });
         return;
       }
-      fallBack();
+      await fallBack();
       return;
     }
 
     let loaded = await load(db);
     if (!loaded.exists) {
       const raw = legacyRaw();
-      const inspected = inspectStoredProgress(raw);
+      const inspected = await inspect(raw);
       if (inspected.kind === "damaged" || inspected.kind === "future") {
         hold(inspected);
         return;
@@ -489,6 +498,7 @@ export function createPersistence(env: Environment) {
       }
       loaded = await load(db);
     } else {
+      const { currentProgress } = await import("./schema");
       const version = loaded.meta.progressVersion;
       if (typeof version === "number" && version > PROGRESS_VERSION) {
         hold({ kind: "future", raw: JSON.stringify({ state: loaded.progress, version }), version });
@@ -534,8 +544,10 @@ export function createPersistence(env: Environment) {
     channel?.addEventListener("message", (event) => void onMessage(event.data).catch(() => undefined));
   }
 
-  function fallBack(reason: SaveStatus = "unavailable") {
-    const inspected = inspectStoredProgress(legacyRaw());
+  async function fallBack(reason: SaveStatus = "unavailable") {
+    // If even the checking code cannot load, keep working from memory: the
+    // old save is only ever read, so it stays intact for the next start.
+    const inspected = await inspect(legacyRaw()).catch((): StoredProgress => ({ kind: "empty" }));
     if (inspected.kind === "damaged" || inspected.kind === "future") hold(inspected);
     else runInMemory(inspected.kind === "ok" ? inspected.progress : null, reason);
   }
@@ -552,7 +564,7 @@ export function createPersistence(env: Environment) {
             db?.close();
             db = null;
             restartable = opened;
-            if (mode === "starting") fallBack(opened ? "session" : "unavailable");
+            if (mode === "starting") return fallBack(opened ? "session" : "unavailable");
           })
           .finally(() => env.hydrated());
       }
