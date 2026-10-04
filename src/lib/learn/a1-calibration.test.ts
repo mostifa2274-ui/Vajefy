@@ -50,6 +50,9 @@ type FixtureOptions = {
   curriculumPrerequisites?: Record<string, string[]>;
   checks?: number;
   exampleText?: Record<string, string>;
+  grammarPattern?: Record<string, string>;
+  grammarNote?: Record<string, string>;
+  collocationText?: Record<string, string>;
   extraEntries?: { id: string; headword: string }[];
   languageExceptions?: Record<string, { token: string; reason: string }[]>;
   headwordOverrides?: Record<string, string>;
@@ -143,7 +146,18 @@ function makeFixture(options: FixtureOptions = {}): string {
             id: senseId,
             pos: "noun",
             gloss: "آزمون",
-            examples: example ? [{ en: example, fa: "آزمون" }] : [],
+            grammar: options.grammarPattern?.[id]
+              ? [
+                  {
+                    pattern: options.grammarPattern[id],
+                    note: options.grammarNote?.[id] ?? "توضیح فارسی",
+                  },
+                ]
+              : [],
+            examples: example ? [{ en: example, fa: "ترجمهٔ فارسی" }] : [],
+            collocations: options.collocationText?.[id]
+              ? [options.collocationText[id]]
+              : [],
             check: Array.from({ length: checkCount }, (_, index) => ({
               id: `${senseId}:check-${index + 1}`,
               type: "cloze",
@@ -333,7 +347,7 @@ test("an aligned three-check calibration packet passes the structural gate", () 
 
 test("the learner-language audit distinguishes future, outside-slice, proper-name and external dependencies", () => {
   const root = makeFixture({
-    exampleText: {
+    collocationText: {
       [IDS[0]]: "beta outside Zara mystery.",
     },
     extraEntries: [{ id: "lex:A1:outside", headword: "outside" }],
@@ -376,7 +390,7 @@ test("the learner-language audit distinguishes future, outside-slice, proper-nam
 
 test("strict language mode fails while learner-language dependencies are unresolved", () => {
   const root = makeFixture({
-    exampleText: { [IDS[0]]: "mystery" },
+    collocationText: { [IDS[0]]: "mystery" },
   });
   try {
     const result = runCalibration(root, "--strict-language");
@@ -387,9 +401,109 @@ test("strict language mode fails while learner-language dependencies are unresol
   }
 });
 
-test("a documented language exception needs a rationale and can satisfy the strict gate", () => {
+
+test("an English example with a visible Persian translation is an explicit paired scaffold", () => {
   const root = makeFixture({
     exampleText: { [IDS[0]]: "mystery" },
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: {
+        language: {
+          unresolved: number;
+          pairedScaffolded: number;
+          dependencies: { token: string; status: string; reason?: string }[];
+        };
+      }[];
+      summary: { pairedTeachingScaffolded: number };
+    };
+    const language = packet.entries[0].language;
+    assert.equal(language.unresolved, 0);
+    assert.equal(language.pairedScaffolded, 1);
+    assert.equal(packet.summary.pairedTeachingScaffolded, 1);
+    assert.deepEqual(
+      language.dependencies.map((item) => [item.token, item.status]),
+      [["mystery", "paired-scaffold"]],
+    );
+    assert.match(
+      language.dependencies[0].reason ?? "",
+      /visible Persian example translation/,
+    );
+
+    const strict = runCalibration(root, "--strict-language");
+    assert.equal(strict.status, 0, strict.stderr);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a grammar pattern with its visible Persian note is an explicit paired scaffold", () => {
+  const root = makeFixture({
+    grammarPattern: { [IDS[0]]: "mystery" },
+    grammarNote: { [IDS[0]]: "توضیح فارسیِ الگو" },
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: {
+        language: {
+          unresolved: number;
+          pairedScaffolded: number;
+          dependencies: { token: string; status: string; reason?: string }[];
+        };
+      }[];
+    };
+    const language = packet.entries[0].language;
+    assert.equal(language.unresolved, 0);
+    assert.equal(language.pairedScaffolded, 1);
+    assert.deepEqual(
+      language.dependencies.map((item) => [item.token, item.status]),
+      [["mystery", "paired-scaffold"]],
+    );
+    assert.match(
+      language.dependencies[0].reason ?? "",
+      /visible Persian grammar note/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+
+test("already introduced language stays available even inside a Persian-paired example", () => {
+  const root = makeFixture({
+    exampleText: { [IDS[1]]: "alpha" },
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: {
+        id: string;
+        language: {
+          unresolved: number;
+          pairedScaffolded: number;
+          dependencies: { token: string; status: string }[];
+        };
+      }[];
+      summary: { pairedTeachingScaffolded: number };
+    };
+    const language = packet.entries[1].language;
+    assert.equal(language.unresolved, 0);
+    assert.equal(language.pairedScaffolded, 0);
+    assert.deepEqual(language.dependencies, []);
+    assert.equal(packet.summary.pairedTeachingScaffolded, 0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a documented language exception needs a rationale and can satisfy the strict gate", () => {
+  const root = makeFixture({
+    collocationText: { [IDS[0]]: "mystery" },
     languageExceptions: {
       [IDS[0]]: [
         {
@@ -426,7 +540,7 @@ test("stale language exceptions are rejected instead of silently accumulating", 
 test("comma-separated headword variants resolve as real A1 aliases", () => {
   const root = makeFixture({
     headwordOverrides: { [IDS[0]]: "a, an" },
-    exampleText: { [IDS[1]]: "an" },
+    collocationText: { [IDS[1]]: "an" },
   });
   try {
     const result = runCalibration(root, "--json");
@@ -443,7 +557,7 @@ test("comma-separated headword variants resolve as real A1 aliases", () => {
 test("sense labels containing slash characters do not hide the base headword", () => {
   const root = makeFixture({
     headwordOverrides: { [IDS[0]]: "like (find sb/sth pleasant)" },
-    exampleText: { [IDS[1]]: "like" },
+    collocationText: { [IDS[1]]: "like" },
   });
   try {
     const result = runCalibration(root, "--json");
@@ -459,7 +573,7 @@ test("sense labels containing slash characters do not hide the base headword", (
 
 test("strict task language ignores prose-only debt but fails on authored-check debt", () => {
   const proseRoot = makeFixture({
-    exampleText: { [IDS[0]]: "mystery" },
+    collocationText: { [IDS[0]]: "mystery" },
   });
   try {
     const proseResult = runCalibration(proseRoot, "--strict-tasks");
