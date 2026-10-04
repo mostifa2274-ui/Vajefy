@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
-import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, lessonSize, nextTargets, resolveItem, seenPrompts } from "./lesson";
+import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, lessonSize, nextTargets, resolveItem, seenPrompts, skillOf } from "./lesson";
 import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace } from "./pilot";
 
 const pilot = JSON.parse(readFileSync("content/compiled/enhanced.json", "utf8")) as Pilot;
@@ -31,6 +31,19 @@ test("a lesson teaches, retrieves, uses in context and retrieves again after a d
   assert.ok(first && first.kind === "check");
   const item = resolveItem(index, first.ref);
   assert.equal(item?.type === "choice" && item.options.filter((option) => option.ok).length, 1);
+});
+
+test("typed sentence-frame answers count as context, not isolated spelling", () => {
+  const target = index.targets.find((candidate) =>
+    index.content.get(candidate.sense.id)?.sense.check.some((item) => item.type === "produce"),
+  );
+  assert.ok(target);
+  const produce = index.content.get(target.sense.id)?.sense.check.find((item) => item.type === "produce");
+  assert.ok(produce);
+  const ref = { from: "sense" as const, target: target.sense.id, item: produce.id };
+  const item = resolveItem(index, ref);
+  assert.ok(item);
+  assert.equal(skillOf(ref, item), "context");
 });
 
 test("generated choices offer three other words' meanings, of the same part of speech when there are enough", () => {
