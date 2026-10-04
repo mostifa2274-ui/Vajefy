@@ -84,6 +84,13 @@ of one A1 entry and strips trailing parenthetical sense labels before indexing
 headwords such as `like (find sb/sth pleasant)`. Punctuation inside a sense label
 must never make the actual headword disappear from the dependency graph.
 
+Entries whose authored tasks are clean are marked `taskLanguageReady` in the
+calibration overlay. These flags must form one contiguous curriculum prefix,
+and `taskLanguageReadyMinimum` is a monotonic CI ratchet: later work may raise
+the minimum but must not silently shrink it. The current cleanup raises that
+protected prefix to 15/20 entries, through `school`. This is a task-language
+quality claim only; human bilingual and pronunciation review remain separate.
+
 ## Calibration curriculum
 
 | Unit                        | Entries                         | Main outcome                                            |

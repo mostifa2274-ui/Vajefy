@@ -1824,42 +1824,42 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "The children play football after ___.",
+      "text": "Where is my ___?",
       "answer": "school",
       "accept": [],
-      "fa": "بچه‌ها بعد از مدرسه فوتبال بازی می‌کنند.",
-      "why": "after school."
+      "fa": "مدرسهٔ من کجاست؟",
+      "why": "school یعنی «مدرسه»."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "My son is twelve. He goes ___.",
+      "prompt": "برای کامل کردن «He is in ___» با معنی «او در مدرسه است»، کدام واژه درست است؟",
       "options": [
        {
-        "text": "to school",
+        "text": "school",
         "ok": true,
-        "why": "رفتن برای درس: بدون the."
+        "why": "school یعنی «مدرسه» و جملهٔ He is in school را کامل می‌کند."
        },
        {
-        "text": "to the school",
+        "text": "name",
         "ok": false,
-        "why": "the برای رفتن به ساختمان، نه درس خواندن."
+        "why": "name یعنی «نام» و معنی جمله را عوض می‌کند."
        },
        {
-        "text": "at school",
+        "text": "who",
         "ok": false,
-        "why": "go at نادرست است."
+        "why": "who واژهٔ پرسشی برای آدم‌هاست."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "دخترم در مدرسه است.",
-      "frame": "My daughter is at ___.",
+      "prompt": "این مدرسهٔ من است.",
+      "frame": "This is my ___.",
       "answer": "school",
       "accept": [],
-      "why": "at school."
+      "why": "school یعنی «مدرسه»."
      }
     ]
    }
