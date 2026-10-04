@@ -27,9 +27,27 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Only unit 1 is assigned in the first calibration package. The remaining units
-are deliberately marked `planned` with no entries yet. Unassigned entries are
-a visible backlog, not silently treated as curriculum-complete.
+Unit 1 remains the fixed 20-entry calibration package. Unit 2 now has a
+20-entry **mapped** Family & Home sequence, while its status remains `planned`:
+mapping establishes curriculum order and prerequisites but does not mean the
+content has passed bilingual/pronunciation review or is released. Units 3–12
+remain planned and unassigned.
+
+The manifest now carries an `assignedMinimum` coverage ratchet. It is set to
+40, so CI prevents later edits from silently dropping either the calibration
+slice or the mapped Family & Home sequence. The other 860 entries remain a
+visible curriculum backlog, not silently treated as complete.
+
+### Unit 2 — Family and home
+
+The mapped sequence is:
+
+`the`, `that`, `she`, `it`, `we`, `they`, `and`, `have`,
+`with`, `of`, `mother`, `father`, `child`, `home`, `house`,
+`room`, `big`, `small`, `old`, `new`.
+
+Core function words are placed here because they are needed to form useful
+family/home language, not because batch order is being preserved.
 
 ## First 20-entry calibration slice
 
@@ -46,7 +64,7 @@ editorial review. CI requires every sense in this slice to have:
 - at least three authored checks, leaving two opportunities for normal learning
   and one prompt reserved for delayed assessment;
 - complete current word/example audio in both supported accents;
-- valid prerequisite references that appear earlier in the same unit.
+- valid prerequisite references that appear earlier in the curriculum.
 
 `content/calibration/a1-20.json` adds reviewer-facing sections, teaching
 objectives, patterns and recycling for this exact sequence. The calibration
@@ -67,9 +85,13 @@ lessons to rely on generated fallback items. `he` is used instead until
 ## Prerequisites
 
 Each assigned entry lists explicit prerequisite entry IDs. A prerequisite must
-already occur earlier in the same unit. These links describe the intended
-teaching sequence; they do not claim that every word appearing in every example
-has already been mastered.
+already occur earlier in the **full curriculum sequence**: it may come from a
+previous unit or from an earlier position in the same unit. Forward and cyclic
+dependencies therefore fail CI. This is necessary once a real multi-unit A1
+course reuses foundations such as `be`, `my`, `in`, and `friend`.
+
+These links describe the intended teaching sequence; they do not claim that
+every word appearing in every example has already been mastered.
 
 A text/task dependency audit is now part of the calibration tooling. It scans
 learner-facing English in grammar patterns, examples, collocations, mistake
@@ -105,7 +127,8 @@ For every one of the 900 planned A1 entries it reports:
 
 `npm run curriculum:complete` is intentionally stricter and fails until all
 900 entries are assigned. It is a future Stage 3/5 completion gate, not a
-current CI requirement.
+current CI requirement. Normal CI still enforces `assignedMinimum`, which is
+the monotonic partial-coverage ratchet used while the syllabus expands.
 
 ## Human review queue
 
