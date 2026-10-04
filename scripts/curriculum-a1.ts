@@ -15,6 +15,8 @@ type Unit = {
 type Curriculum = {
   version: number;
   level: "A1";
+  /** Monotonic CI ratchet for curriculum coverage. */
+  assignedMinimum?: number;
   units: Unit[];
   calibrationSlice: { unit: string; entries: string[] };
 };
@@ -46,6 +48,7 @@ const compiled = new Map(pilot.entries.map((entry) => [entry.id, entry]));
 const flagged = new Set((audioReport.flagged ?? []).map((row) => row.sense));
 const unitIds = new Set<string>();
 const assigned = new Map<string, string>();
+const introduced = new Set<string>();
 
 for (const unit of curriculum.units) {
   if (!/^\d{2}-[a-z0-9-]+$/.test(unit.id)) failures.push(`${unit.id}: unit id must start with a two-digit order`);
@@ -55,7 +58,6 @@ for (const unit of curriculum.units) {
     failures.push(`${unit.id}: titles and objectives are required in both languages`);
   }
 
-  const earlier = new Set<string>();
   for (const item of unit.entries) {
     if (!planned.has(item.id)) failures.push(`${unit.id}: unknown A1 entry ${item.id}`);
     const other = assigned.get(item.id);
@@ -67,11 +69,11 @@ for (const unit of curriculum.units) {
       if (prereqs.has(prerequisite)) failures.push(`${item.id}: duplicate prerequisite ${prerequisite}`);
       prereqs.add(prerequisite);
       if (!planned.has(prerequisite)) failures.push(`${item.id}: unknown prerequisite ${prerequisite}`);
-      if (!earlier.has(prerequisite)) {
-        failures.push(`${item.id}: prerequisite ${prerequisite} must appear earlier in the same unit`);
+      if (!introduced.has(prerequisite)) {
+        failures.push(`${item.id}: prerequisite ${prerequisite} must appear earlier in the curriculum`);
       }
     }
-    earlier.add(item.id);
+    introduced.add(item.id);
   }
 }
 
@@ -141,8 +143,10 @@ const coverage = plannedRows.map((row) => {
   };
 });
 
+const assignedMinimum = curriculum.assignedMinimum ?? 0;
 const summary = {
   total: coverage.length,
+  assignedMinimum,
   assigned: coverage.filter((row) => row.unit).length,
   unassigned: coverage.filter((row) => !row.unit).length,
   withContent: coverage.filter((row) => row.content).length,
@@ -158,6 +162,20 @@ const summary = {
   },
 };
 
+if (
+  !Number.isInteger(assignedMinimum) ||
+  assignedMinimum < 0 ||
+  assignedMinimum > summary.total
+) {
+  failures.push(
+    `assignedMinimum must be an integer from 0 to ${summary.total}`,
+  );
+} else if (summary.assigned < assignedMinimum) {
+  failures.push(
+    `A1 curriculum requires at least ${assignedMinimum} assigned entries, found ${summary.assigned}`,
+  );
+}
+
 if (process.argv.includes("--complete") && summary.assigned !== summary.total) {
   failures.push(`A1 curriculum is not complete: ${summary.unassigned} of ${summary.total} entries remain unassigned`);
 }
@@ -171,7 +189,7 @@ if (process.argv.includes("--json")) {
   console.log(JSON.stringify({ summary, units: curriculum.units, calibration, coverage }, null, 2));
 } else {
   console.log(
-    `A1 curriculum OK: ${summary.assigned}/${summary.total} entries assigned; ${summary.withContent} have enhanced content; ${summary.fullAudio} have complete audio; ${summary.heldOutReady} have >=3 checks per sense.`,
+    `A1 curriculum OK: ${summary.assigned}/${summary.total} entries assigned (coverage ratchet ${summary.assignedMinimum}); ${summary.withContent} have enhanced content; ${summary.fullAudio} have complete audio; ${summary.heldOutReady} have >=3 checks per sense.`,
   );
   console.log(
     `Calibration slice: ${summary.calibration.entries}/20 structurally ready; ${summary.calibration.fullAudio}/20 full audio; ${summary.calibration.flaggedAudio} entries still have clips flagged for human listening; ${summary.calibration.released}/20 released.`,

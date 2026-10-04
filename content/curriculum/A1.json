@@ -145,7 +145,141 @@
       "status": "planned",
       "objectiveEn": "Talk about close family, people, rooms, and everyday things at home.",
       "objectiveFa": "دربارهٔ خانوادهٔ نزدیک، افراد، اتاق‌ها و چیزهای روزمرهٔ خانه صحبت کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:the",
+          "prerequisites": [
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:that",
+          "prerequisites": [
+            "lex:A1:this",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:she",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:it",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:we",
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:you",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:they",
+          "prerequisites": [
+            "lex:A1:he",
+            "lex:A1:she",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:and",
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:you"
+          ]
+        },
+        {
+          "id": "lex:A1:have",
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:you"
+          ]
+        },
+        {
+          "id": "lex:A1:with",
+          "prerequisites": [
+            "lex:A1:friend"
+          ]
+        },
+        {
+          "id": "lex:A1:of",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:mother",
+          "prerequisites": [
+            "lex:A1:my",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:father",
+          "prerequisites": [
+            "lex:A1:my",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:child",
+          "prerequisites": [
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:home",
+          "prerequisites": [
+            "lex:A1:my"
+          ]
+        },
+        {
+          "id": "lex:A1:house",
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:my"
+          ]
+        },
+        {
+          "id": "lex:A1:room",
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:in"
+          ]
+        },
+        {
+          "id": "lex:A1:big",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:small",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:old",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:new",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:a-an"
+          ]
+        }
+      ]
     },
     {
       "id": "03-daily-routine",
@@ -262,5 +396,6 @@
       "lex:A1:friend",
       "lex:A1:how"
     ]
-  }
+  },
+  "assignedMinimum": 40
 }
