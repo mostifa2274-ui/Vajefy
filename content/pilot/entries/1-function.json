@@ -1362,44 +1362,44 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "___ is that girl with Sara?",
+      "text": "___ is this?",
       "answer": "Who",
       "accept": [
        "who"
       ],
-      "fa": "آن دختری که با سارا است کیست؟",
-      "why": "دربارهٔ یک آدم می‌پرسیم."
+      "fa": "این کیست؟",
+      "why": "برای پرسیدن دربارهٔ هویت یک آدم از Who استفاده می‌کنیم."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "___ this book?",
+      "prompt": "برای پرسیدن «او کیست؟» کدام واژه جای خالی می‌آید؟",
       "options": [
        {
-        "text": "Who wrote",
+        "text": "Who",
         "ok": true,
-        "why": "who فاعل است و wrote بدون did می‌آید."
+        "why": "Who برای پرسیدن دربارهٔ هویت یک آدم است."
        },
        {
-        "text": "Who did write",
+        "text": "What",
         "ok": false,
-        "why": "who فاعل جمله است؛ did اضافه است."
+        "why": "What دربارهٔ چیز یا اطلاعات می‌پرسد."
        },
        {
-        "text": "What wrote",
+        "text": "This",
         "ok": false,
-        "why": "دربارهٔ نویسنده (آدم) می‌پرسیم."
+        "why": "This واژهٔ پرسشی نیست."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "چه کسی با توست؟",
-      "frame": "___ is with you?",
+      "prompt": "او کیست؟",
+      "frame": "___ is he?",
       "answer": "Who",
       "accept": [],
-      "why": "برای پرسیدن دربارهٔ یک آدم از Who استفاده می‌کنیم."
+      "why": "برای پرسیدن «چه کسی؟» از Who استفاده می‌کنیم."
      }
     ]
    }
@@ -1459,44 +1459,44 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "___ are my keys? I can't find them.",
+      "text": "___ are you?",
       "answer": "Where",
       "accept": [
        "where"
       ],
-      "fa": "کلیدهایم کجاست؟ پیدایشان نمی‌کنم.",
-      "why": "دربارهٔ جای کلیدها می‌پرسیم."
+      "fa": "کجایی؟",
+      "why": "برای پرسیدن دربارهٔ مکان از Where استفاده می‌کنیم."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "A: ___ are you from? B: I'm from Isfahan.",
+      "prompt": "برای پرسیدن «کجایی؟» کدام جمله درست است؟",
       "options": [
        {
-        "text": "Where",
+        "text": "Where are you?",
         "ok": true,
-        "why": "دربارهٔ شهر یا کشور (مکان)."
+        "why": "Where دربارهٔ مکان می‌پرسد."
        },
        {
-        "text": "What",
+        "text": "Who are you?",
         "ok": false,
-        "why": "What are you from? نادرست است."
+        "why": "Who دربارهٔ هویت یک آدم می‌پرسد."
        },
        {
-        "text": "Who",
+        "text": "What are you?",
         "ok": false,
-        "why": "who برای آدم است."
+        "why": "What در اینجا معنی «کجا» نمی‌دهد."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "کجا کار می‌کنی؟",
-      "frame": "___ do you work?",
+      "prompt": "او کجاست؟",
+      "frame": "___ is he?",
       "answer": "Where",
       "accept": [],
-      "why": "پرسیدن مکان کار."
+      "why": "برای پرسیدن مکانِ او از Where استفاده می‌کنیم."
      }
     ]
    }
@@ -3843,42 +3843,60 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "The milk is ___ the fridge.",
+      "text": "He is ___ Iran.",
       "answer": "in",
       "accept": [],
-      "fa": "شیر در یخچال است.",
-      "why": "داخل یک فضای بسته."
+      "fa": "او در ایران است.",
+      "why": "برای بودن داخل یک کشور یا محدوده از in استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "Iran",
+        "fa": "ایران"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "We go to the beach ___ summer.",
+      "prompt": "برای گفتن «او در ایران است»، جای خالی را کامل کن: He is ___ Iran.",
       "options": [
        {
         "text": "in",
         "ok": true,
-        "why": "فصل با in."
+        "why": "in مکانِ داخل یک کشور یا محدوده را نشان می‌دهد."
        },
        {
-        "text": "on",
+        "text": "from",
         "ok": false,
-        "why": "on برای روز و تاریخ است."
+        "why": "from در این ساختار یعنی «اهلِ ایران»."
        },
        {
-        "text": "at",
+        "text": "where",
         "ok": false,
-        "why": "at برای ساعت و زمان دقیق است."
+        "why": "where واژهٔ پرسشی است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Iran",
+        "fa": "ایران"
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "خواهرم در لندن زندگی می‌کند.",
-      "frame": "My sister lives ___ London.",
+      "prompt": "او داخل این مدرسه است.",
+      "frame": "He is ___ this school.",
       "answer": "in",
       "accept": [],
-      "why": "شهر با in."
+      "why": "برای بودن داخل یک مکان از in استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "school",
+        "fa": "مدرسه"
+       }
+      ]
      }
     ]
    }
@@ -4279,31 +4297,43 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "This is a present ___ my grandmother.",
+      "text": "I am ___ Iran.",
       "answer": "from",
       "accept": [],
-      "fa": "این هدیه‌ای از طرف مادربزرگم است.",
-      "why": "فرستنده یا منشأ هدیه."
+      "fa": "من اهل ایران هستم.",
+      "why": "be from برای گفتن محلِ اصلی یا زادگاه به کار می‌رود.",
+      "support": [
+       {
+        "en": "Iran",
+        "fa": "ایران"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "The shop is open ___ 8 a.m. to 10 p.m.",
+      "prompt": "برای گفتن «من اهل ایران هستم»، جای خالی را کامل کن: I am ___ Iran.",
       "options": [
        {
         "text": "from",
         "ok": true,
-        "why": "from … to … برای بازهٔ زمانی."
+        "why": "I am from Iran یعنی «من اهل ایران هستم»."
        },
        {
-        "text": "since",
+        "text": "where",
         "ok": false,
-        "why": "since با to نمی‌آید."
+        "why": "where واژهٔ پرسشیِ مکان است."
        },
        {
-        "text": "at",
+        "text": "what",
         "ok": false,
-        "why": "at فقط برای یک لحظه است."
+        "why": "what برای این ساختار مناسب نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "Iran",
+        "fa": "ایران"
        }
       ]
      },
@@ -4311,10 +4341,16 @@
       "type": "produce",
       "id": "p1",
       "prompt": "من اهل یزد هستم.",
-      "frame": "I'm ___ Yazd.",
+      "frame": "I am ___ Yazd.",
       "answer": "from",
       "accept": [],
-      "why": "be from = اهل جایی بودن."
+      "why": "برای گفتن اهل کجا بودن، after be از from استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "Yazd",
+        "fa": "یزد"
+       }
+      ]
      }
     ]
    }
