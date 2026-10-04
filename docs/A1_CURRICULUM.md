@@ -105,13 +105,17 @@ The optional strict gate `npm run content:calibration:language` fails until
 each unresolved dependency is rewritten away or explicitly documented with a
 rationale. This prepares editorial cleanup; it never creates human approval.
 
-For this gate, “unresolved” follows the learner-visible UI. An English example
-with its displayed Persian translation and a grammar pattern with its displayed
-Persian note are counted as explicit paired scaffolds rather than hidden
-vocabulary. The audit still reports them separately. Unpaired English—especially
-collocations and common-mistake sentences—remains real dependency debt. A
-paired scaffold is a visibility fact, not evidence that a bilingual reviewer
-has approved the wording.
+For this gate, “unresolved” follows the learner-visible UI. English examples,
+grammar patterns, calibration collocations, and the wrong/right mistake
+sentences count as paired scaffolds only when the corresponding Persian support
+is actually rendered beside them. The audit reports those dependencies
+separately from already-introduced vocabulary and authored-task support.
+
+The 20-entry calibration slice now has complete visible pairing for these
+teaching fields and zero unresolved learner-language dependencies, so the
+strict language gate is part of normal `validate:data`. A paired scaffold is
+still only a visibility fact, not evidence that a bilingual reviewer has
+approved the wording.
 
 ## Coverage matrix
 
