@@ -1,8 +1,8 @@
 # Pronunciation audio
 
-Every enhanced sense (the pilot and A1 batches 2–8) has recorded clips in
+Every enhanced sense (the pilot and A1 batches 2–9, all 900 A1 entries) has recorded clips in
 British and American English: the word itself and each teaching example. There
-are 5,542 clips (2,771 per accent), 47.6 MB in total, in `public/audio/pilot/`.
+are 5,850 clips (2,925 per accent), 50.2 MB in total, in `public/audio/pilot/`.
 
 ## How clips are made
 
@@ -54,8 +54,10 @@ in *last*, *after*, *afternoon*, *answer*, *ask*, *aunt*, *banana*, *bath*,
 *fast*, *glass*, *half*, *laugh*, *paragraph*, *passport*, *past*,
 *photograph*, *plant* and *tomato*, and /wɒn/ in *one*, *once*, *anyone*,
 *everyone*, *no one* and *someone*. Kokoro also says *husband* and *trousers*
-with /s/ for /z/ in both accents. Those senses give phonemes too, so their
-clips follow the dictionary.
+with /s/ for /z/ and *yeah* with a final /h/, and stresses *thirteen* to
+*nineteen* on the first syllable, which hides the contrast with *thirty* to
+*ninety*. Those senses give phonemes too, so their clips follow the
+dictionary.
 
 ## Automatic checks
 
@@ -74,7 +76,7 @@ The comparison ignores stress, length and syllable marks, and maps notation
 differences such as Kokoro's /a/ for the British TRAP vowel to /æ/.
 
 Clips with a fault or a mismatch are listed in `content/pilot/audio-report.json`.
-The current report flags 267 word clips and no technical faults. Most are
+The current report flags 292 word clips and no technical faults. Most are
 expected:
 
 - function words said in isolation use their strong form (*a* /eɪ/, *that*
@@ -125,8 +127,8 @@ unavailable with a reason.
 
 The service worker keeps clips in their own cache, `vajefy-audio-v1`, which
 survives app updates. A clip played once is cached. **Progress → Pronunciation
-offline** downloads every clip for the selected accent: about 24.5 MB for
-British, 23.1 MB for American. Each accent can also be removed again.
+offline** downloads every clip for the selected accent: about 25.9 MB for
+British, 24.3 MB for American. Each accent can also be removed again.
 
 ## Speaking practice
 

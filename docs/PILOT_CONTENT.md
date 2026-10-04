@@ -18,7 +18,7 @@ measures. The rest of A1 follows in batches, as fast as editorial review allows
 | File | Contents |
 |---|---|
 | `entries/1-function.json` … `4-ambiguous.json` | The pilot: 150 entries, 193 senses, one file per pilot group |
-| `entries/<LEVEL>-batch-NN.json` | Later batches, added by `content:promote`: `A1-batch-02.json` to `A1-batch-08.json` (100 entries each; 120, 119, 112, 104, 110, 108 and 108 senses) |
+| `entries/<LEVEL>-batch-NN.json` | Later batches, added by `content:promote`: `A1-batch-02.json` to `A1-batch-09.json` (100 entries each, and 50 in batch 9; 120, 119, 112, 104, 110, 108, 108 and 53 senses) |
 | `contrasts.json` | 16 comparison lessons for words learners confuse (say/tell, bring/take, a/an/the …) |
 | `scenes.json` | 14 short dialogues and passages that reuse learned words in a new situation |
 | `review.json` | The editorial ledger: one review record per entry (created by the first approval) |
@@ -65,7 +65,7 @@ reviewed again. Unreleased content is still taught, with a visible
 **Draft: awaiting bilingual review** label on the card, the lesson and the Words
 page.
 
-All 850 entries (the pilot and A1 batches 2–8) are currently drafts. Their
+All 900 A1 entries (the pilot and A1 batches 2–9) are currently drafts. Their
 content was drafted for review and has passed the automated checks, but no
 bilingual reviewer has approved it yet.
 
@@ -121,10 +121,11 @@ What reviewers check:
 
 ## Expanding across A1
 
-The same process continues across A1 and then the rest of the catalogue
-([CATALOGUE.md](CATALOGUE.md)). `content/plans/A1.json` places every one of the
-900 A1 entries in one batch: the pilot first, then `batch-02` … `batch-09`,
-100 entries each, in order of usefulness. The workflow for a batch:
+Every A1 entry now has enhanced content. The same process continues with the
+rest of the catalogue ([CATALOGUE.md](CATALOGUE.md)). `content/plans/A1.json`
+places every one of the 900 A1 entries in one batch: the pilot first, then
+`batch-02` … `batch-09`, 100 entries each (the last 50 in `batch-09`), in order
+of usefulness. The workflow for a batch:
 
 1. **Scaffold.** `npm run content:scaffold -- --batch batch-02 --limit 20`
    writes drafts to `content/drafts/A1/batch-02/`. A draft is prefilled with
