@@ -1,0 +1,40 @@
+name: Temporary content regeneration
+
+permissions:
+  contents: write
+
+on:
+  pull_request:
+    paths:
+      - "content/pilot/entries/**"
+      - "content/curriculum/**"
+      - ".github/workflows/content-regenerate-once.yml"
+
+jobs:
+  regenerate:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'codex/a1-calibration-content-quality'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Rebuild learning content
+        run: node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
+      - name: Commit exact generated snapshot
+        shell: bash
+        run: |
+          git add content/compiled/enhanced.json public/data/enhanced public/data/enhanced-order.json
+          if git diff --cached --quiet; then
+            echo "Generated snapshot already committed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rebuild generated A1 content after held-out fixes"
+          git push origin "HEAD:${GITHUB_HEAD_REF}"
