@@ -1005,22 +1005,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "___ apples are very sweet.",
+      "prompt": "___ book here is mine.",
       "options": [
        {
-        "text": "These",
+        "text": "This",
         "ok": true,
-        "why": "apples جمع است."
+        "why": "book مفرد است و here به چیزی نزدیک اشاره می‌کند."
        },
        {
-        "text": "This",
+        "text": "These",
         "ok": false,
-        "why": "this برای اسم مفرد است."
+        "why": "these برای اسم جمع است."
        },
        {
         "text": "That",
         "ok": false,
-        "why": "that هم برای مفرد است و به دور اشاره می‌کند."
+        "why": "that معمولاً به چیزی دورتر اشاره می‌کند؛ here اینجا به چیز نزدیک اشاره دارد."
        }
       ]
      },
@@ -2495,22 +2495,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Is this your bag? Yes, it's ___.",
+      "prompt": "___ sister lives in Tabriz.",
       "options": [
        {
-        "text": "mine",
+        "text": "My",
         "ok": true,
-        "why": "بدون اسم بعدش، mine."
+        "why": "پیش از sister برای مالکیت my می‌آید."
        },
        {
-        "text": "my",
+        "text": "Me",
         "ok": false,
-        "why": "my باید پیش از اسم بیاید."
+        "why": "me ضمیر مفعولی است."
        },
        {
-        "text": "me",
+        "text": "I",
         "ok": false,
-        "why": "me مفعول است، نه ملکی."
+        "why": "I ضمیر فاعلی است، نه صفت ملکی."
        }
       ]
      },
@@ -2589,22 +2589,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "A: Thank you! B: ___ welcome.",
+      "prompt": "Please write ___ address here.",
       "options": [
        {
-        "text": "You're",
+        "text": "your",
         "ok": true,
-        "why": "you are welcome."
+        "why": "your پیش از اسم address مالکیت را نشان می‌دهد."
        },
        {
-        "text": "Your",
+        "text": "you're",
         "ok": false,
-        "why": "your ملکی است و اینجا فعل لازم است."
+        "why": "you're یعنی you are و پیش از address درست نیست."
        },
        {
-        "text": "You",
+        "text": "you",
         "ok": false,
-        "why": "فعل are جا افتاده است."
+        "why": "you ضمیر است؛ اینجا صفت ملکی لازم است."
        }
       ]
      },
