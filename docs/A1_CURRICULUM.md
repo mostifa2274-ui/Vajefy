@@ -36,8 +36,8 @@ a visible backlog, not silently treated as curriculum-complete.
 The first slice is a coherent introductions/personal-information unit:
 
 `I`, `you`, `a/an`, `be`, `my`, `your`, `name`, `what`,
-`this`, `he`, `who`, `where`, `from`, `in`, `city`, `live`,
-`family`, `friend`, `school`, `how`.
+`this`, `he`, `who`, `where`, `from`, `in`, `school`, `city`,
+`live`, `family`, `friend`, `how`.
 
 This is a calibration slice, not a claim that these 20 entries have passed
 editorial review. CI requires every sense in this slice to have:
@@ -47,6 +47,11 @@ editorial review. CI requires every sense in this slice to have:
   and one prompt reserved for delayed assessment;
 - complete current word/example audio in both supported accents;
 - valid prerequisite references that appear earlier in the same unit.
+
+`content/calibration/a1-20.json` adds reviewer-facing sections, teaching
+objectives, patterns and recycling for this exact sequence. The calibration
+gate rejects any different membership or order and always reads prerequisites
+from this canonical curriculum manifest.
 
 Human review remains separate. No script may create a bilingual or pronunciation
 approval by inference.
