@@ -178,6 +178,38 @@ test("starting over from a held save writes a fresh profile once chosen", async 
   assert.equal(again.persistence.getHeld(), null);
 });
 
+test("a failed journal replay after restore stays visible and retryable", async () => {
+  const recovered = JSON.parse(legacy({ xp: 40 })).state as SavedProgress;
+  const op = review("lex:A1:about");
+  browser.storage.setItem(LEGACY_KEY, "{not json");
+  browser.storage.setItem(JOURNAL_PREFIX + op.id, JSON.stringify(op));
+  let writes = 0;
+  let failJournal = true;
+  const app = tab({
+    hooks: {
+      afterWrites: (tx) => {
+        writes += 1;
+        if (failJournal && writes > 1) tx.abort();
+      },
+    },
+  });
+  await app.persistence.start();
+  assert.equal(app.persistence.getHeld()?.kind, "damaged");
+
+  await app.persistence.resolve(recovered, "restore");
+
+  assert.equal(app.persistence.getStatus(), "session");
+  assert.equal(app.persistence.pendingCount(), 1);
+  assert.equal(app.memory().lifetime.reviews, 1, "the recovered export includes the unsaved answer");
+  assert.ok(browser.storage.getItem(JOURNAL_PREFIX + op.id));
+
+  failJournal = false;
+  assert.equal(await app.persistence.retry(), true);
+  assert.equal(app.persistence.getStatus(), "saved");
+  assert.equal((await stored()).progress.lifetime.reviews, 1);
+  assert.equal(browser.storage.getItem(JOURNAL_PREFIX + op.id), null);
+});
+
 test("an answer and its progress are committed together and counted once", async () => {
   const app = tab();
   await app.persistence.start();
@@ -256,6 +288,34 @@ test("an interrupted write keeps the answer in the session and replays it exactl
   await app.persistence.retry();
   assert.equal(app.persistence.getStatus(), "saved");
   assert.equal((await stored()).progress.lifetime.reviews, 1);
+});
+
+test("a failed startup replay stays visible and retryable until it is committed", async () => {
+  const op = review("lex:A1:about");
+  browser.storage.setItem(JOURNAL_PREFIX + op.id, JSON.stringify(op));
+  let fail = true;
+  const reopened = tab({
+    hooks: {
+      afterWrites: (tx) => {
+        if (fail) tx.abort();
+      },
+    },
+  });
+
+  await reopened.persistence.start();
+
+  assert.equal(reopened.persistence.getStatus(), "session");
+  assert.equal(reopened.persistence.pendingCount(), 1);
+  assert.equal(reopened.memory().lifetime.reviews, 1, "the unsaved answer remains visible and exportable");
+  assert.ok(browser.storage.getItem(JOURNAL_PREFIX + op.id), "the failed answer remains in the crash journal");
+  assert.equal((await stored()).progress.lifetime.reviews, 0);
+
+  fail = false;
+  assert.equal(await reopened.persistence.retry(), true);
+  assert.equal(reopened.persistence.getStatus(), "saved");
+  assert.equal(reopened.persistence.pendingCount(), 0);
+  assert.equal((await stored()).progress.lifetime.reviews, 1);
+  assert.equal(browser.storage.getItem(JOURNAL_PREFIX + op.id), null);
 });
 
 test("a journal entry left behind after a successful commit is not counted again", async () => {
