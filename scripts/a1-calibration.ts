@@ -271,7 +271,12 @@ type EnglishSource = {
   support?: TaskSupport[];
   /** Persian text rendered next to this English teaching copy. */
   pairedScaffold?: {
-    kind: "grammar-note" | "example-translation";
+    kind:
+      | "grammar-note"
+      | "example-translation"
+      | "collocation-translation"
+      | "mistake-wrong-translation"
+      | "mistake-right-translation";
     fa: string;
   };
 };
@@ -317,13 +322,47 @@ function englishSources(entry: Pilot["entries"][number]): EnglishSource[] {
       });
     }
     for (const [index, item] of (sense.collocations ?? []).entries()) {
-      sources.push({ source: `${sense.id}/collocation-${index + 1}`, text: item });
+      const translation = sense.collocationFa?.[item];
+      sources.push({
+        source: `${sense.id}/collocation-${index + 1}`,
+        text: item,
+        ...(translation
+          ? {
+              pairedScaffold: {
+                kind: "collocation-translation" as const,
+                fa: translation,
+              },
+            }
+          : {}),
+      });
     }
     if (sense.mistake?.wrong) {
-      sources.push({ source: `${sense.id}/mistake-wrong`, text: sense.mistake.wrong });
+      sources.push({
+        source: `${sense.id}/mistake-wrong`,
+        text: sense.mistake.wrong,
+        ...(sense.mistake.wrongFa
+          ? {
+              pairedScaffold: {
+                kind: "mistake-wrong-translation" as const,
+                fa: sense.mistake.wrongFa,
+              },
+            }
+          : {}),
+      });
     }
     if (sense.mistake?.right) {
-      sources.push({ source: `${sense.id}/mistake-right`, text: sense.mistake.right });
+      sources.push({
+        source: `${sense.id}/mistake-right`,
+        text: sense.mistake.right,
+        ...(sense.mistake.rightFa
+          ? {
+              pairedScaffold: {
+                kind: "mistake-right-translation" as const,
+                fa: sense.mistake.rightFa,
+              },
+            }
+          : {}),
+      });
     }
     for (const item of sense.check ?? []) {
       const support = item.support;
@@ -511,10 +550,13 @@ function auditLanguage(
             ? { reason: scaffoldMeaning }
             : pairedScaffold
               ? {
-                  reason:
-                    pairedScaffold.kind === "example-translation"
-                      ? `visible Persian example translation: ${pairedScaffold.fa}`
-                      : `visible Persian grammar note: ${pairedScaffold.fa}`,
+                  reason: `visible Persian ${({
+                    "grammar-note": "grammar note",
+                    "example-translation": "example translation",
+                    "collocation-translation": "collocation translation",
+                    "mistake-wrong-translation": "mistake translation",
+                    "mistake-right-translation": "correction translation",
+                  } as const)[pairedScaffold.kind]}: ${pairedScaffold.fa}`,
                 }
               : exactException
                 ? { reason: exactException.reason }
