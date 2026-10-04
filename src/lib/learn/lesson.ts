@@ -122,10 +122,15 @@ export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | nul
 /** The skill an item gives evidence for. */
 export function skillOf(ref: ItemRef, item: ResolvedItem): PracticeSkill {
   if (ref.from === "generated") return "meaning";
-  // A typed answer inside a sentence frame measures contextual use, not
-  // isolated spelling. Response modality and learning construct stay separate.
-  if (item.type === "produce") return "context";
-  return "context";
+  // Every authored check item puts the target in a sentence or situation.
+  // Produce happens to be typed, but its construct is still context rather
+  // than isolated spelling; response modality must not redefine the evidence.
+  switch (item.type) {
+    case "choice":
+    case "cloze":
+    case "produce":
+      return "context";
+  }
 }
 
 /** Grade a typed answer against the answer and its accepted alternatives. */
