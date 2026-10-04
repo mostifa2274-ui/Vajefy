@@ -69,6 +69,12 @@ All 900 A1 entries (the pilot and A1 batches 2–9) are currently drafts. Their
 content was drafted for review and has passed the automated checks, but no
 bilingual reviewer has approved it yet.
 
+The A1 curriculum sequence and first 20-entry calibration slice are tracked in
+[`A1_CURRICULUM.md`](A1_CURRICULUM.md) and
+`content/curriculum/A1.json`. `npm run curriculum:status` checks that slice
+against current content, audio, prerequisites and held-out assessment capacity.
+Those checks prepare review; they never create editorial approval.
+
 ## Editing
 
 1. Edit the entry, contrast or scene in `content/pilot/`.
