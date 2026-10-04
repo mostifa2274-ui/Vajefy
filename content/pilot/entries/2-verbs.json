@@ -3104,42 +3104,48 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "My cousins ___ in Canada.",
+      "text": "I ___ in this city.",
       "answer": "live",
       "accept": [],
-      "fa": "دخترخاله‌ها و پسرخاله‌هایم در کانادا زندگی می‌کنند.",
-      "why": "live in + کشور."
+      "fa": "من در این شهر زندگی می‌کنم.",
+      "why": "live یعنی «زندگی کردن؛ ساکن بودن»."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Choose the correct question.",
+      "prompt": "برای گفتن «من در این شهر زندگی می‌کنم» کدام جمله درست است؟",
       "options": [
        {
-        "text": "Where does your brother live?",
+        "text": "I live in this city.",
         "ok": true,
-        "why": "does + فاعل + فعل ساده."
+        "why": "این جمله محل زندگی را بیان می‌کند."
        },
        {
-        "text": "Where your brother lives?",
+        "text": "I am in this city.",
         "ok": false,
-        "why": "در سؤال does لازم است."
+        "why": "این جمله فقط می‌گوید اکنون در این شهر هستم."
        },
        {
-        "text": "Where does your brother lives?",
+        "text": "Where is this city?",
         "ok": false,
-        "why": "بعد از does فعل -s نمی‌گیرد."
+        "why": "این یک سؤال دربارهٔ مکان شهر است."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "با پدر و مادرم زندگی می‌کنم.",
-      "frame": "I ___ with my parents.",
+      "prompt": "من اینجا زندگی می‌کنم.",
+      "frame": "I ___ here.",
       "answer": "live",
       "accept": [],
-      "why": "live with."
+      "why": "برای گفتن محل زندگی از live استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "here",
+        "fa": "اینجا"
+       }
+      ]
      }
     ]
    }
