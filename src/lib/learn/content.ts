@@ -39,6 +39,19 @@ const option = z.object({
   why: fa,
 });
 
+const taskSupport = z
+  .array(
+    z.object({
+      /** Exact English word or short phrase visible in the authored task. */
+      en: text,
+      /** Learner-visible Persian gloss for that support language. */
+      fa,
+    }),
+  )
+  .min(1)
+  .max(6)
+  .optional();
+
 /** A blank in a new sentence: the meaning must be used, not just recognised. */
 const cloze = z.object({
   type: z.literal("cloze"),
@@ -50,6 +63,7 @@ const cloze = z.object({
   accept: z.array(text).default([]),
   fa,
   why: fa,
+  support: taskSupport,
 });
 
 /** Choose the word that fits and see why each option does or does not. */
@@ -58,6 +72,7 @@ const choice = z.object({
   id: text,
   prompt: text,
   options: z.array(option).min(2).max(4).refine((items) => items.filter((item) => item.ok).length === 1, "exactly one option must be correct"),
+  support: taskSupport,
 });
 
 /** From a Persian meaning, write the English in a sentence frame. */
@@ -71,6 +86,7 @@ const produce = z.object({
   answer: text,
   accept: z.array(text).default([]),
   why: fa,
+  support: taskSupport,
 });
 
 export const checkItem = z.discriminatedUnion("type", [cloze, choice, produce]);
