@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
-import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, lessonSize, nextTargets, resolveItem, seenPrompts, skillOf } from "./lesson";
+import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, heldOutItem, lessonSize, nextTargets, resolveItem, seenPrompts, skillOf } from "./lesson";
 import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace } from "./pilot";
 
 const pilot = JSON.parse(readFileSync("content/compiled/enhanced.json", "utf8")) as Pilot;
@@ -26,6 +26,15 @@ test("a lesson teaches, retrieves, uses in context and retrieves again after a d
   }
   // Every item resolves to something the learner can answer.
   for (const step of lesson.steps) if (step.kind === "check") assert.ok(resolveItem(index, step.ref), JSON.stringify(step.ref));
+  // The final authored check for each sense is reserved for delayed assessment.
+  for (const target of targets) {
+    const reserved = heldOutItem(index.content.get(target.sense.id)?.sense);
+    if (!reserved) continue;
+    assert.ok(
+      !lesson.steps.some((step) => step.kind === "check" && step.ref.from === "sense" && step.ref.target === target.sense.id && step.ref.item === reserved.id),
+      `held-out prompt leaked into teaching: ${target.sense.id}/${reserved.id}`,
+    );
+  }
   // The retrieval choice always contains the right meaning exactly once.
   const first = lesson.steps.find((step) => step.kind === "check" && step.role === "retrieve");
   assert.ok(first && first.kind === "check");
@@ -192,8 +201,29 @@ test("the 30-day check-up uses unseen prompts, measures use and meaning, and off
     session = advanceLesson(answerLesson(session, { op: newIdFor(session), result: wrong ? "wrong" : "correct", at: T0 }, index), T0);
   }
   assert.equal(session.steps.length, checkup.steps.length, "a check-up never adds retries");
-  assert.deepEqual(checkupResult(session), { checked: 4, usable: 3, meaning: 4, use: 3 });
+  assert.deepEqual(checkupResult(session), { checked: 4, usable: 3, meaning: 4, use: 3, missing: 0 });
   assert.equal(checkupCandidates(ids, history, [answered, session], T0 + DAY).length, 0, "not checked again within 30 days");
+});
+
+test("a used-up held-out prompt is recorded as missing, never replaced by recognition", () => {
+  const target = index.targets[0]!;
+  const heldOut = heldOutItem(index.content.get(target.sense.id)?.sense);
+  assert.ok(heldOut);
+  const candidates = [{ id: target.sense.id, delayDays: 31 }];
+  const seen = new Set([`${target.sense.id}/${heldOut.id}`]);
+  const checkup = buildCheckup(index, candidates, seen, T0, random);
+
+  const use = checkup.steps.filter((step) => step.kind === "check" && step.role === "checkup-use");
+  const meaning = checkup.steps.filter((step) => step.kind === "check" && step.role === "checkup-meaning");
+  assert.equal(use.length, 0, "no easier substitute is created");
+  assert.equal(meaning.length, 1, "the independent meaning part may still run");
+  assert.deepEqual(checkup.missing, { [target.sense.id]: ["use"] });
+
+  let session = checkup;
+  for (const _step of checkup.steps) {
+    session = advanceLesson(answerLesson(session, { op: newIdFor(session), result: "correct", at: T0 }, index), T0);
+  }
+  assert.deepEqual(checkupResult(session), { checked: 0, usable: 0, meaning: 1, use: 0, missing: 1 });
 });
 
 function newIdFor(session: { answers: unknown[] }) {
