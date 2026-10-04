@@ -24,6 +24,7 @@ const IDS = Array.from(
 type FixtureOptions = {
   packetIds?: string[];
   curriculumIds?: string[];
+  curriculumUnitIds?: string[];
   curriculumPrerequisites?: Record<string, string[]>;
   checks?: number;
 };
@@ -38,7 +39,10 @@ function makeFixture(options: FixtureOptions = {}): string {
   const root = mkdtempSync(path.join(tmpdir(), "vajefy-a1-calibration-"));
   const packetIds = options.packetIds ?? IDS;
   const curriculumIds = options.curriculumIds ?? IDS;
-  const allIds = [...new Set([...packetIds, ...curriculumIds])];
+  const curriculumUnitIds = options.curriculumUnitIds ?? curriculumIds;
+  const allIds = [
+    ...new Set([...packetIds, ...curriculumIds, ...curriculumUnitIds]),
+  ];
   const checkCount = options.checks ?? 3;
 
   writeJson(root, "content/calibration/a1-20.json", {
@@ -71,7 +75,7 @@ function makeFixture(options: FixtureOptions = {}): string {
         status: "calibration",
         objectiveEn: "Test",
         objectiveFa: "آزمون",
-        entries: curriculumIds.map((id) => ({
+        entries: curriculumUnitIds.map((id) => ({
           id,
           prerequisites: options.curriculumPrerequisites?.[id] ?? [],
         })),
@@ -152,6 +156,38 @@ test("the reviewer packet must use the canonical curriculum calibration slice", 
   }
 });
 
+test("the reviewer packet cannot reorder the canonical curriculum slice", () => {
+  const reordered = [...IDS];
+  [reordered[0], reordered[1]] = [reordered[1], reordered[0]];
+  const root = makeFixture({ packetIds: reordered });
+  try {
+    const result = runCalibration(root);
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /must exactly match the curriculum calibration slice/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("the canonical slice must agree with its curriculum unit", () => {
+  const reordered = [...IDS];
+  [reordered[0], reordered[1]] = [reordered[1], reordered[0]];
+  const root = makeFixture({ curriculumUnitIds: reordered });
+  try {
+    const result = runCalibration(root);
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /curriculum calibration slice order must exactly match its unit entries/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("every calibration sense keeps two lesson checks before its held-out assessment", () => {
   const root = makeFixture({ checks: 2 });
   try {
@@ -176,6 +212,37 @@ test("the reviewer packet gets prerequisites from the canonical curriculum", () 
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+for (const scenario of [
+  {
+    name: "a self prerequisite",
+    prerequisites: { [IDS[1]]: [IDS[1]] },
+    error: /must be introduced earlier/,
+  },
+  {
+    name: "a forward prerequisite",
+    prerequisites: { [IDS[1]]: [IDS[2]] },
+    error: /must be introduced earlier/,
+  },
+  {
+    name: "a prerequisite outside the slice",
+    prerequisites: { [IDS[1]]: ["lex:A1:outside"] },
+    error: /is outside the 20-entry slice/,
+  },
+]) {
+  test(`the canonical curriculum rejects ${scenario.name}`, () => {
+    const root = makeFixture({
+      curriculumPrerequisites: scenario.prerequisites,
+    });
+    try {
+      const result = runCalibration(root);
+      assert.notEqual(result.status, 0);
+      assert.match(result.stderr, scenario.error);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+}
 
 test("an aligned three-check calibration packet passes the structural gate", () => {
   const root = makeFixture();
