@@ -10,26 +10,132 @@
       "objectiveEn": "Introduce yourself, ask basic personal questions, and say where you live or study.",
       "objectiveFa": "خودت را معرفی کن، سؤال‌های سادهٔ شخصی بپرس و بگو کجا زندگی یا تحصیل می‌کنی.",
       "entries": [
-        { "id": "lex:A1:i", "prerequisites": [] },
-        { "id": "lex:A1:you", "prerequisites": [] },
-        { "id": "lex:A1:a-an", "prerequisites": [] },
-        { "id": "lex:A1:be", "prerequisites": ["lex:A1:i", "lex:A1:you"] },
-        { "id": "lex:A1:my", "prerequisites": ["lex:A1:i"] },
-        { "id": "lex:A1:your", "prerequisites": ["lex:A1:you"] },
-        { "id": "lex:A1:name", "prerequisites": ["lex:A1:my", "lex:A1:your", "lex:A1:be"] },
-        { "id": "lex:A1:what", "prerequisites": ["lex:A1:be", "lex:A1:your", "lex:A1:name"] },
-        { "id": "lex:A1:this", "prerequisites": ["lex:A1:be"] },
-        { "id": "lex:A1:he", "prerequisites": ["lex:A1:be"] },
-        { "id": "lex:A1:who", "prerequisites": ["lex:A1:be", "lex:A1:he"] },
-        { "id": "lex:A1:where", "prerequisites": ["lex:A1:be"] },
-        { "id": "lex:A1:from", "prerequisites": ["lex:A1:where", "lex:A1:be"] },
-        { "id": "lex:A1:in", "prerequisites": [] },
-        { "id": "lex:A1:city", "prerequisites": ["lex:A1:in"] },
-        { "id": "lex:A1:live", "prerequisites": ["lex:A1:i", "lex:A1:in", "lex:A1:city"] },
-        { "id": "lex:A1:family", "prerequisites": ["lex:A1:my", "lex:A1:be"] },
-        { "id": "lex:A1:friend", "prerequisites": ["lex:A1:a-an", "lex:A1:my", "lex:A1:be"] },
-        { "id": "lex:A1:school", "prerequisites": ["lex:A1:a-an", "lex:A1:in"] },
-        { "id": "lex:A1:how", "prerequisites": ["lex:A1:be", "lex:A1:you"] }
+        {
+          "id": "lex:A1:i",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:you",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:a-an",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:be",
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:you"
+          ]
+        },
+        {
+          "id": "lex:A1:my",
+          "prerequisites": [
+            "lex:A1:i"
+          ]
+        },
+        {
+          "id": "lex:A1:your",
+          "prerequisites": [
+            "lex:A1:you"
+          ]
+        },
+        {
+          "id": "lex:A1:name",
+          "prerequisites": [
+            "lex:A1:my",
+            "lex:A1:your",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:what",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:your",
+            "lex:A1:name"
+          ]
+        },
+        {
+          "id": "lex:A1:this",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:he",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:who",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:he"
+          ]
+        },
+        {
+          "id": "lex:A1:where",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:from",
+          "prerequisites": [
+            "lex:A1:where",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:in",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:school",
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:in"
+          ]
+        },
+        {
+          "id": "lex:A1:city",
+          "prerequisites": [
+            "lex:A1:in"
+          ]
+        },
+        {
+          "id": "lex:A1:live",
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:in",
+            "lex:A1:city"
+          ]
+        },
+        {
+          "id": "lex:A1:family",
+          "prerequisites": [
+            "lex:A1:my",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:friend",
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:my",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:how",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:you"
+          ]
+        }
       ]
     },
     {
@@ -149,11 +255,11 @@
       "lex:A1:where",
       "lex:A1:from",
       "lex:A1:in",
+      "lex:A1:school",
       "lex:A1:city",
       "lex:A1:live",
       "lex:A1:family",
       "lex:A1:friend",
-      "lex:A1:school",
       "lex:A1:how"
     ]
   }
