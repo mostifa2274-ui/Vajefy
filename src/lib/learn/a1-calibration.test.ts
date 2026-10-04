@@ -472,6 +472,35 @@ test("a grammar pattern with its visible Persian note is an explicit paired scaf
   }
 });
 
+
+test("already introduced language stays available even inside a Persian-paired example", () => {
+  const root = makeFixture({
+    exampleText: { [IDS[1]]: "alpha" },
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: {
+        id: string;
+        language: {
+          unresolved: number;
+          pairedScaffolded: number;
+          dependencies: { token: string; status: string }[];
+        };
+      }[];
+      summary: { pairedTeachingScaffolded: number };
+    };
+    const language = packet.entries[1].language;
+    assert.equal(language.unresolved, 0);
+    assert.equal(language.pairedScaffolded, 0);
+    assert.deepEqual(language.dependencies, []);
+    assert.equal(packet.summary.pairedTeachingScaffolded, 0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("a documented language exception needs a rationale and can satisfy the strict gate", () => {
   const root = makeFixture({
     collocationText: { [IDS[0]]: "mystery" },
