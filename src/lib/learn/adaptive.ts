@@ -37,10 +37,19 @@ export const SMART_PRACTICE_GUARD_MS = DEFAULT_PRACTICE_POLICY.guardMs;
 /** Avoid repeating the same optional prompts immediately after a session. */
 export const SMART_PRACTICE_COOLDOWN_MS = DEFAULT_PRACTICE_POLICY.cooldownMs;
 
+export type SmartPracticeTarget = {
+  /** Sense-specific word facts. Its id must be the scheduled learning-target id. */
+  word: LexWord;
+  /** Reviewed/generated clip for this exact sense and accent, when available. */
+  clip?: string;
+};
+
 export type SmartPracticeOptions = {
   evidence?: PracticeEvidence;
   allowListening?: boolean;
   policy?: PracticePolicy;
+  /** Exact enhanced targets override the broad base-word dataset. */
+  targets?: Record<string, SmartPracticeTarget>;
 };
 
 export type SmartPracticeCandidate = {
@@ -200,7 +209,16 @@ export function smartPracticeQuestions(
   requestRetention = 0.9,
   options: SmartPracticeOptions = {},
 ): Question[] {
-  const byId = new Map(words.map((word) => [word.id, word]));
+  // Enhanced sense targets come first so their precise Persian meaning,
+  // example and id replace the broad one-row lexical record when both exist.
+  const pool: LexWord[] = [];
+  const seen = new Set<string>();
+  for (const word of [...Object.values(options.targets ?? {}).map((target) => target.word), ...words]) {
+    if (seen.has(word.id)) continue;
+    seen.add(word.id);
+    pool.push(word);
+  }
+  const byId = new Map(pool.map((word) => [word.id, word]));
   const policy = options.policy ?? DEFAULT_PRACTICE_POLICY;
   const ranked = rankSmartPractice(cards, now, requestRetention, options.evidence, policy);
   const questions: Question[] = [];
@@ -211,13 +229,18 @@ export function smartPracticeQuestions(
     const word = byId.get(candidate.id);
     if (!word) continue;
 
-    const preferred = modeAt(questions.length, options.evidence?.[candidate.id], options.allowListening, now, policy);
-    const question =
-      lexQuestion(word, words, preferred, copy, lang) ??
+    const exact = options.targets?.[candidate.id];
+    const canListen = options.allowListening !== false || Boolean(exact?.clip);
+    const preferred = modeAt(questions.length, options.evidence?.[candidate.id], canListen, now, policy);
+    let question =
+      lexQuestion(word, pool, preferred, copy, lang) ??
       // Spelling is generative and does not require distractors, so it is a
       // robust fallback for words whose example cannot make a cloze question.
-      lexQuestion(word, words, "spell", copy, lang);
+      lexQuestion(word, pool, "spell", copy, lang);
 
+    if (question?.kind === "mcq" && question.speak && exact?.clip) {
+      question = { ...question, clip: exact.clip };
+    }
     if (question) questions.push(question);
   }
 

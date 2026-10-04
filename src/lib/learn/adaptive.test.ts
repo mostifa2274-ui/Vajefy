@@ -91,6 +91,52 @@ test("a listening weakness selects listening while unavailable audio falls back 
   assert.deepEqual(cards[id], reviewCard());
 });
 
+test("additional senses keep their own meaning and controlled listening clip", () => {
+  const words = Array.from({ length: 6 }, (_, index) => word(index));
+  const id = `${words[0]!.id}#second`;
+  const exact: LexWord = {
+    ...words[0]!,
+    id,
+    fa: "معنی دوم دقیق",
+    ex: "This sentence uses alpha in its second sense.",
+    tr: "این جمله معنی دوم alpha را به‌کار می‌برد.",
+  };
+  const cards = { [id]: reviewCard() };
+  const evidence = {
+    [id]: { listening: { attempts: 3, correct: 1, lastAt: T0 - 60 * MIN, lastGrade: "again" as const } },
+  };
+  const questions = smartPracticeQuestions(words, cards, 1, useCopy("fa"), "fa", T0, 0.9, {
+    evidence,
+    allowListening: false,
+    targets: { [id]: { word: exact, clip: "/audio/exact-sense.mp3" } },
+  });
+
+  assert.equal(questions.length, 1);
+  const question = questions[0]!;
+  assert.equal(question.id, id);
+  assert.equal(question.practiceSkill, "listening");
+  assert.ok(question.kind === "mcq");
+  assert.equal(question.clip, "/audio/exact-sense.mp3");
+  assert.equal(question.options.find((option) => option.key === id)?.text, exact.fa);
+});
+
+test("a clip on another target does not enable silent listening", () => {
+  const words = Array.from({ length: 6 }, (_, index) => word(index));
+  const silentId = words[0]!.id;
+  const clippedId = words[1]!.id;
+  const cards = { [silentId]: reviewCard(), [clippedId]: reviewCard(1) };
+  const evidence = {
+    [silentId]: { listening: { attempts: 3, correct: 1, lastAt: T0 - 60 * MIN, lastGrade: "again" as const } },
+  };
+  const questions = smartPracticeQuestions(words, cards, 1, useCopy("en"), "en", T0, 0.9, {
+    evidence,
+    allowListening: false,
+    targets: { [clippedId]: { word: words[1]!, clip: "/audio/other.mp3" } },
+  });
+  assert.equal(questions[0]?.id, silentId);
+  assert.notEqual(questions[0]?.practiceSkill, "listening");
+});
+
 test("recent optional practice rests a word until the cooldown expires", () => {
   const skills = { spelling: { attempts: 1, correct: 1, lastAt: T0, lastGrade: "good" as const } };
   const card = reviewCard();

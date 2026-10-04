@@ -5,10 +5,11 @@ import { QuizRun } from "@/components/quiz-run";
 import { SprintRun } from "@/components/sprint-run";
 import { PageHeader } from "@/components/ui";
 import { cn } from "@/lib/cn";
-import { smartPracticeQuestions } from "@/lib/learn/adaptive";
+import { rankSmartPractice, smartPracticeQuestions, type SmartPracticeTarget } from "@/lib/learn/adaptive";
 import { useFormat } from "@/lib/learn/format";
 import { useCopy, type Copy, type CopyKey } from "@/lib/learn/i18n";
 import { DECK_FILE, loadAntonyms, loadIrregular, loadLevel, loadPairs, loadPatterns } from "@/lib/learn/load";
+import { loadPilot, pronunciationFor, senseAudio } from "@/lib/learn/pilot";
 import { playPairs, type PlayPair } from "@/lib/learn/play";
 import {
   antonymQuestions,
@@ -123,15 +124,49 @@ function DrillPage() {
     try {
       const cards = useProgress.getState().cards;
       if (mode === "smart") {
-        const ids = Object.keys(cards);
-        const levels = LEVELS.filter((id) => ids.some((key) => key.startsWith(`lex:${id}:`)));
+        // Rank first so enhanced content is loaded only for plausible questions,
+        // not for every word the learner has ever studied.
+        const current = useProgress.getState();
+        const now = Date.now();
+        const ranked = rankSmartPractice(current.cards, now, current.requestRetention, current.practiceSkills);
+        const candidateIds = ranked.slice(0, Math.max(20, count * 4)).map((candidate) => candidate.id);
+        const levels = LEVELS.filter((id) => candidateIds.some((key) => key.startsWith(`lex:${id}:`)));
         const words = (await Promise.all(levels.map(loadLevel))).flat();
+
+        const targets: Record<string, SmartPracticeTarget> = {};
+        try {
+          const pilot = await loadPilot(candidateIds);
+          for (const id of candidateIds) {
+            const target = pilot.content.get(id);
+            if (!target) continue;
+            const example = target.sense.examples[0];
+            const clips = senseAudio(pilot.audio, id, current.accent);
+            targets[id] = {
+              word: {
+                id,
+                w: target.entry.headword,
+                pr: "",
+                ipa: pronunciationFor(target.sense, current.accent),
+                pos: target.sense.pos,
+                fa: target.sense.gloss,
+                ex: example?.en ?? target.entry.headword,
+                tr: example?.fa ?? target.sense.meaning,
+              },
+              ...(clips.word ? { clip: clips.word } : {}),
+            };
+          }
+        } catch {
+          // Smart Practice remains usable with the classic dataset if enhanced
+          // content is temporarily unavailable.
+        }
+
         // Read after loading so a review/reset in another tab cannot start a
         // stale session from the earlier snapshot.
-        const current = useProgress.getState();
-        const built = smartPracticeQuestions(words, current.cards, count, copy, lang, Date.now(), current.requestRetention, {
-          evidence: current.practiceSkills,
+        const latest = useProgress.getState();
+        const built = smartPracticeQuestions(words, latest.cards, count, copy, lang, now, latest.requestRetention, {
+          evidence: latest.practiceSkills,
           allowListening: Boolean(window.speechSynthesis),
+          targets,
         });
         if (!built.length) {
           setError("empty");

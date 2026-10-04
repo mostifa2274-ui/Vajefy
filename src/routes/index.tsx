@@ -8,7 +8,8 @@ import { useCopy } from "@/lib/learn/i18n";
 import { loadLevel, loadMeta, loadPairs } from "@/lib/learn/load";
 import { countLevel, dueIds, liveStreak, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
 import type { PilotOrder } from "@/lib/learn/content";
-import { CHECKUP_SIZE, checkupCandidates, lessonSize } from "@/lib/learn/lesson";
+import { CHECKUP_SIZE, checkupCandidates } from "@/lib/learn/lesson";
+import { dailyPlan } from "@/lib/learn/planner";
 import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
 import { loadPilotOrder } from "@/lib/learn/pilot";
 import { resumable } from "@/lib/learn/session";
@@ -118,23 +119,22 @@ function Home() {
   if (!hydrated || meta === null || order === null) return <TodayPlaceholder label={copy.loading} />;
 
   const due = hydrated ? dueIds(cards).length : 0;
+  const introducedToday = hydrated ? todayLog(logs).introduced : 0;
+  const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
+  const plan = dailyPlan({ due, introducedToday, newPerDay, sessionSize, minutes });
   const released = new Set(order ? order.released : []);
   const checkupReady = order && !unfinishedLesson ? checkupCandidates(order.order.general, reviewHistory, Object.values(sessions), opened).length : 0;
-  // Lessons for the learner's own level, as Learn will offer them first.
+  // Lessons for the learner's own level use the same daily new-target budget as Review.
   const lessonCount = order
     ? order.order[goal ?? "general"]
         .filter((id) => id.startsWith(`lex:${focus}:`) && !cards[id] && introducibleIn(CONTENT_CHANNEL, released.has(id)))
-        .slice(0, lessonSize(minutes, due, sessionSize)).length
+        .slice(0, plan.newLimit).length
     : 0;
-  // Rough time: a review takes about 8 seconds, a guided new word about 90.
-  const planMinutes = Math.max(1, Math.ceil((Math.min(due, sessionSize) * 8 + lessonCount * 90) / 60));
-  const introducedToday = hydrated ? todayLog(logs).introduced : 0;
-  const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
-  const roomForNew = Math.max(0, newPerDay - introducedToday);
+  const planMinutes = plan.estimatedMinutes;
   const focusMeta = meta ? meta.levels.find((level) => level.id === focus) : undefined;
   const focusCounts = countLevel(cards, focus);
   const remainingNew = focusMeta ? Math.max(0, focusMeta.count - focusCounts.seen) : 0;
-  const willIntroduce = Math.min(roomForNew, remainingNew, Math.max(0, sessionSize - Math.min(due, sessionSize)));
+  const willIntroduce = Math.min(plan.newLimit, remainingNew);
   const all = totals(cards);
   const accuracy = lifetime.reviews ? lifetime.correct / lifetime.reviews : null;
   const totalWords = meta ? meta.levels.reduce((sum, level) => sum + level.count, 0) : 0;

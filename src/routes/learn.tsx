@@ -12,14 +12,14 @@ import {
   CHECKUP_SIZE,
   checkupCandidates,
   contentIds,
-  lessonSize,
   nextTargets,
   seenPrompts,
   type LessonSession,
 } from "@/lib/learn/lesson";
 import { focusFirst, hasContent, introducible, introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
+import { dailyPlan } from "@/lib/learn/planner";
 import { resumable } from "@/lib/learn/session";
-import { dueIds, useProgress } from "@/lib/learn/store";
+import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
 
 export const Route = createFileRoute("/learn")({ component: LearnPage });
 
@@ -40,6 +40,8 @@ function LearnPage() {
   const focus = useProgress((state) => state.focus);
   const minutes = useProgress((state) => state.minutes);
   const sessionSize = useProgress((state) => state.sessionSize);
+  const newPerDay = useProgress((state) => state.newPerDay);
+  const logs = useProgress((state) => state.logs);
   const sessions = useProgress((state) => state.sessions);
   const saveSession = useProgress((state) => state.saveSession);
   const reviewHistory = useProgress((state) => state.reviewHistory);
@@ -55,10 +57,16 @@ function LearnPage() {
 
   const unfinished = resumable(sessions, "lesson", opened);
   const due = dueIds(cards, opened).length;
+  const plan = dailyPlan({
+    due,
+    introducedToday: todayLog(logs).introduced,
+    newPerDay,
+    sessionSize,
+    minutes,
+  });
   // Lessons at the learner's level first, then the other levels' lessons.
   const ordered = index ? focusFirst(introductionOrder(index.targets, goal), focus) : [];
-  const size = lessonSize(minutes, due, sessionSize);
-  const upcoming = nextTargets(ordered, cards, size);
+  const upcoming = nextTargets(ordered, cards, plan.newLimit);
   const checkup =
     unfinished || !full
       ? []

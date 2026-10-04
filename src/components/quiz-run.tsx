@@ -81,7 +81,7 @@ export function QuizRun({
   const setPp = (value: string) => setDraft({ ...current, pp: value });
 
   useEffect(() => {
-    if (question?.kind === "mcq" && question.speak && !answered) speakEnglish(question.speak);
+    if (question?.kind === "mcq" && question.speak && !answered) speakEnglish(question.speak, question.clip);
     return () => cancelSpeech();
     // Speak once per question, not again when its answer is saved.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -247,7 +247,7 @@ export function QuizRun({
             ) : null}
             {question.kind === "mcq" && question.speak ? (
               <div className="mt-4">
-                <SpeakButton text={question.speak} label={copy.replay} />
+                <SpeakButton text={question.speak} label={copy.replay} clip={question.clip} item={question.id} />
                 {!locked ? (
                   <button type="button" className="ms-2 min-h-11 px-2 text-sm text-accent" onClick={skipQuestion}>{copy.skipAudio}</button>
                 ) : null}
