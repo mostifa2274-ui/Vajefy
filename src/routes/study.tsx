@@ -11,6 +11,7 @@ import { loadJson } from "@/lib/learn/load";
 import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
 import { introductionOrder, loadPilot, loadPilotOrder } from "@/lib/learn/pilot";
 import { entryIdOf } from "@/lib/learn/targets";
+import { dailyPlan } from "@/lib/learn/planner";
 import { levelOf, shuffle } from "@/lib/learn/text";
 import type { CardProg, LevelId, StudyFace } from "@/lib/learn/types";
 
@@ -29,11 +30,21 @@ async function newWords(
   faces: Map<string, StudyFace>,
   known: Set<string>,
   dueCount: number,
-  state: { newPerDay: number; sessionSize: number; logs: Parameters<typeof todayLog>[0]; goal: Parameters<typeof introductionOrder>[1] },
+  state: {
+    newPerDay: number;
+    sessionSize: number;
+    minutes: number;
+    logs: Parameters<typeof todayLog>[0];
+    goal: Parameters<typeof introductionOrder>[1];
+  },
 ): Promise<string[]> {
-  let budget = Math.max(0, state.newPerDay - todayLog(state.logs).introduced);
-  if (dueCount >= state.sessionSize) budget = 0;
-  else if (dueCount >= state.sessionSize / 2) budget = Math.floor(budget / 2);
+  const budget = dailyPlan({
+    due: dueCount,
+    introducedToday: todayLog(state.logs).introduced,
+    newPerDay: state.newPerDay,
+    sessionSize: state.sessionSize,
+    minutes: state.minutes,
+  }).newLimit;
   if (!budget) return [];
   const order = await loadJson<Partial<Record<LevelId, string[]>>>("usefulness.json")
     .then((lists) => lists[focus])
