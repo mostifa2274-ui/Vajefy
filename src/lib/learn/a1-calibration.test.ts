@@ -56,6 +56,7 @@ type FixtureOptions = {
   checkText?: Record<string, string>;
   checkSupport?: Record<string, { en: string; fa: string }[]>;
   taskLanguageReadyIds?: string[];
+  taskLanguageReadyMinimum?: number;
 };
 
 function writeJson(root: string, relative: string, value: unknown): void {
@@ -78,6 +79,9 @@ function makeFixture(options: FixtureOptions = {}): string {
     version: 1,
     title: "Test calibration",
     description: "Fixture",
+    ...(options.taskLanguageReadyMinimum !== undefined
+      ? { taskLanguageReadyMinimum: options.taskLanguageReadyMinimum }
+      : {}),
     units: [
       {
         id: "test-unit",
@@ -563,5 +567,37 @@ test("task-language-ready entries form a CI ratchet against hidden task debt", (
     assert.equal(result.status, 0, result.stderr);
   } finally {
     rmSync(passing, { recursive: true, force: true });
+  }
+});
+
+
+test("task-language-ready minimum prevents the ratchet from shrinking", () => {
+  const root = makeFixture({
+    taskLanguageReadyIds: [IDS[0]],
+    taskLanguageReadyMinimum: 2,
+  });
+  try {
+    const result = runCalibration(root);
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /requires at least 2 task-language-ready entries, found 1/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("task-language-ready entries must remain a contiguous curriculum prefix", () => {
+  const root = makeFixture({
+    taskLanguageReadyIds: [IDS[0], IDS[2]],
+    taskLanguageReadyMinimum: 2,
+  });
+  try {
+    const result = runCalibration(root);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /must form a contiguous prefix/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
   }
 });
