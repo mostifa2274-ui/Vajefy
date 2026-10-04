@@ -165,7 +165,7 @@ function DrillPage() {
         const latest = useProgress.getState();
         const built = smartPracticeQuestions(words, latest.cards, count, copy, lang, now, latest.requestRetention, {
           evidence: latest.practiceSkills,
-          allowListening: Boolean(window.speechSynthesis) || Object.values(targets).some((target) => Boolean(target.clip)),
+          allowListening: Boolean(window.speechSynthesis),
           targets,
         });
         if (!built.length) {
