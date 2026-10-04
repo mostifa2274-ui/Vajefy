@@ -393,7 +393,7 @@ function Teach({
             </ul>
           ) : (
             <p lang="en" dir="ltr" className="mt-1 text-sm text-pretty">{sense.collocations.join(" · ")}</p>
-          )
+          )}
           {sense.usage ? (
             <>
               <h3 className="mt-5 text-sm font-medium">{copy.usageLabel}</h3>
