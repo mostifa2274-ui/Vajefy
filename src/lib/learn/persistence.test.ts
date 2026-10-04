@@ -408,6 +408,59 @@ test("an accidental grade can be undone, but not over a later answer", async () 
   assert.equal(db.progress.lifetime.reviews, 2, "the stale undo was refused");
 });
 
+test("undo preserves the streak when another review remains on that day", async () => {
+  const app = tab();
+  await app.persistence.start();
+  const first = review("lex:A1:about", "good", T0);
+  const second = review("lex:A1:above", "good", T0 + 1000);
+  app.persistence.dispatch(first);
+  app.persistence.dispatch(second);
+  await settle(app);
+
+  const before = app.memory();
+  assert.equal(before.streak, 1);
+  assert.equal(before.logs.at(-1)?.reviews, 2);
+
+  app.persistence.dispatch({ id: "undo-same-day-review", type: "undo", at: T0 + 2000, target: first.id });
+  await settle(app);
+
+  const after = app.memory();
+  assert.equal(after.streak, 1);
+  assert.equal(after.lastStudyDate, before.lastStudyDate);
+  assert.equal(after.logs.at(-1)?.reviews, 1);
+  assert.ok(after.cards["lex:A1:above"]);
+  assert.equal(after.cards["lex:A1:about"], undefined);
+});
+
+test("undo preserves the streak when practice remains on that day", async () => {
+  const app = tab();
+  await app.persistence.start();
+  const first = review("lex:A1:about", "good", T0);
+  app.persistence.dispatch(first);
+  app.persistence.dispatch({
+    id: "practice-same-day",
+    type: "practice",
+    at: T0 + 1000,
+    item: "lex:A1:above",
+    grade: "good",
+    skill: "meaning",
+  });
+  await settle(app);
+
+  const before = app.memory();
+  assert.equal(before.streak, 1);
+  assert.equal(before.logs.at(-1)?.practice, 1);
+
+  app.persistence.dispatch({ id: "undo-same-day-practice", type: "undo", at: T0 + 2000, target: first.id });
+  await settle(app);
+
+  const after = app.memory();
+  assert.equal(after.streak, 1);
+  assert.equal(after.lastStudyDate, before.lastStudyDate);
+  assert.equal(after.logs.at(-1)?.reviews, 0);
+  assert.equal(after.logs.at(-1)?.practice, 1);
+});
+
 test("answers saved by an older release after the migration are brought across once", async () => {
   browser.storage.setItem(LEGACY_KEY, legacy());
   const app = tab();
