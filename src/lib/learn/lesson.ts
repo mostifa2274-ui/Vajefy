@@ -2,6 +2,7 @@ import type { CheckItem, Contrast, Scene, Sense } from "./content";
 import type { PilotIndex, PilotTarget } from "./pilot";
 import { newId } from "./session";
 import { bestSpelling, shuffle } from "./text";
+import type { AssessmentPart } from "./ops";
 import type { Grade, PracticeSkill } from "./types";
 
 /**
@@ -49,6 +50,8 @@ export type LessonSession = {
   mode: "lesson" | "contrast" | "scene" | "checkup";
   /** For a check-up: days since each target was first met. */
   delays?: Record<string, number>;
+  /** Required check-up evidence that was unavailable; absence is never scored as wrong. */
+  missing?: Record<string, AssessmentPart[]>;
   targets: string[];
   steps: LessonStep[];
   index: number;
@@ -188,9 +191,19 @@ function shuffleWith<T>(items: T[], random: () => number): T[] {
   return copy;
 }
 
+/** The last authored sense check is held out from teaching/practice for delayed assessment. */
+export function heldOutItem(sense: Sense | undefined): CheckItem | undefined {
+  return sense?.check.at(-1);
+}
+
+function teachingChecks(sense: Sense | undefined): CheckItem[] {
+  return sense?.check.slice(0, -1) ?? [];
+}
+
 function contentItem(sense: Sense | undefined, types: CheckItem["type"][], used: Set<string>): CheckItem | undefined {
+  const checks = teachingChecks(sense);
   for (const type of types) {
-    const found = sense?.check.find((item) => item.type === type && !used.has(item.id));
+    const found = checks.find((item) => item.type === type && !used.has(item.id));
     if (found) return found;
   }
   return undefined;
@@ -440,11 +453,11 @@ export function checkupCandidates(
 }
 
 /**
- * A delayed check-up: for each word, first using it in a sentence it has not
- * been seen in (a content item never answered before, else choosing the word
- * for its meaning), then recognising its meaning. Use comes first so the
- * meaning question cannot cue it. Answers are recorded as assessments only.
- * The first CHECKUP_SIZE candidates need their content loaded.
+ * A delayed check-up uses held-out authored context items that normal lessons
+ * never consume. If a target has no still-fresh held-out item, the required
+ * use evidence is marked missing instead of being replaced by an easier
+ * generated recognition question. Meaning recognition keeps the same format
+ * in both study arms and comes after use so it cannot cue the context answer.
  */
 export function buildCheckup(
   index: PilotIndex,
@@ -461,26 +474,30 @@ export function buildCheckup(
     .slice(0, CHECKUP_SIZE);
   const use: LessonStep[] = [];
   const meaning: LessonStep[] = [];
+  const missing: Record<string, AssessmentPart[]> = {};
+
   for (const { target } of chosen) {
     const sense = index.content.get(target.sense.id)?.sense;
-    const fresh = contentItem(
-      sense,
-      ["produce", "cloze", "choice"],
-      new Set((sense?.check ?? []).filter((item) => seen.has(`${target.sense.id}/${item.id}`)).map((item) => item.id)),
-    );
-    use.push({
-      kind: "check",
-      role: "checkup-use",
-      ref: fresh
-        ? { from: "sense", target: target.sense.id, item: fresh.id }
-        : { from: "generated", target: target.sense.id, mode: "form", options: distractors(index, target, random) },
-    });
+    const heldOut = heldOutItem(sense);
+    const promptId = heldOut ? `${target.sense.id}/${heldOut.id}` : null;
+
+    if (heldOut && promptId && !seen.has(promptId)) {
+      use.push({
+        kind: "check",
+        role: "checkup-use",
+        ref: { from: "sense", target: target.sense.id, item: heldOut.id },
+      });
+    } else {
+      missing[target.sense.id] = ["use"];
+    }
+
     meaning.push({
       kind: "check",
       role: "checkup-meaning",
       ref: { from: "generated", target: target.sense.id, mode: "meaning", options: distractors(index, target, random) },
     });
   }
+
   const steps = [...shuffleWith(use, random), ...shuffleWith(meaning, random)];
   return {
     id: newId(),
@@ -490,6 +507,7 @@ export function buildCheckup(
     updatedAt: now,
     mode: "checkup",
     delays: Object.fromEntries(chosen.map(({ target, delayDays }) => [target.sense.id, delayDays])),
+    ...(Object.keys(missing).length ? { missing } : {}),
     targets: chosen.map(({ target }) => target.sense.id),
     steps,
     index: 0,
@@ -497,8 +515,14 @@ export function buildCheckup(
   };
 }
 
-/** A check-up's result: words whose meaning was recognised and that were used correctly. */
-export function checkupResult(session: LessonSession): { checked: number; usable: number; meaning: number; use: number } {
+/** A check-up's result. Missing held-out evidence is excluded, never scored as wrong. */
+export function checkupResult(session: LessonSession): {
+  checked: number;
+  usable: number;
+  meaning: number;
+  use: number;
+  missing: number;
+} {
   const outcome = new Map<string, { meaning?: boolean; use?: boolean }>();
   for (const answer of session.answers) {
     const step = session.steps[answer.step];
@@ -507,12 +531,16 @@ export function checkupResult(session: LessonSession): { checked: number; usable
     entry[step.role === "checkup-use" ? "use" : "meaning"] = answer.result !== "wrong";
     outcome.set(step.ref.target, entry);
   }
-  const results = session.targets.map((id) => outcome.get(id) ?? {});
+  const complete = session.targets
+    .map((id) => outcome.get(id) ?? {})
+    .filter((item) => item.meaning !== undefined && item.use !== undefined);
+  const all = session.targets.map((id) => outcome.get(id) ?? {});
   return {
-    checked: session.targets.length,
-    usable: results.filter((item) => item.meaning && item.use).length,
-    meaning: results.filter((item) => item.meaning).length,
-    use: results.filter((item) => item.use).length,
+    checked: complete.length,
+    usable: complete.filter((item) => item.meaning && item.use).length,
+    meaning: all.filter((item) => item.meaning).length,
+    use: all.filter((item) => item.use).length,
+    missing: session.targets.length - complete.length,
   };
 }
 
