@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "f6c201abce4d",
+ "contentVersion": "c6062e9d7ba8",
  "cases": [
   {
    "id": "7aa02ebefb",
@@ -4047,25 +4047,25 @@
    ]
   },
   {
-   "id": "64a04d0441",
+   "id": "f32e45927b",
    "split": "dev",
    "source": "mistake-right",
    "senses": [
     "lex:A1:live"
    ],
-   "text": "I have lived in Tehran since 2010.",
+   "text": "I live in Tehran.",
    "expect": [
     "natural"
    ]
   },
   {
-   "id": "254fadc56f",
-   "split": "test",
+   "id": "d811e73943",
+   "split": "dev",
    "source": "mistake-wrong",
    "senses": [
     "lex:A1:live"
    ],
-   "text": "I am living in Tehran since 2010.",
+   "text": "I live at Tehran.",
    "expect": [
     "needs-change"
    ]
@@ -4707,25 +4707,25 @@
    ]
   },
   {
-   "id": "08b6025da9",
-   "split": "test",
+   "id": "5542463ffb",
+   "split": "dev",
    "source": "mistake-right",
    "senses": [
     "lex:A1:friend"
    ],
-   "text": "He is my childhood friend.",
+   "text": "I made friends with Sara.",
    "expect": [
     "natural"
    ]
   },
   {
-   "id": "141cbcc04a",
-   "split": "test",
+   "id": "e26851a32e",
+   "split": "dev",
    "source": "mistake-wrong",
    "senses": [
     "lex:A1:friend"
    ],
-   "text": "He is my friend from childhood.",
+   "text": "I made a friend with Sara.",
    "expect": [
     "needs-change"
    ]
@@ -5655,25 +5655,25 @@
    ]
   },
   {
-   "id": "22abc308d2",
+   "id": "23278ee6a6",
    "split": "test",
    "source": "mistake-right",
    "senses": [
     "lex:A1:city"
    ],
-   "text": "I live in the city of Mashhad. / I live in Mashhad.",
+   "text": "I live in Tehran.",
    "expect": [
     "natural"
    ]
   },
   {
-   "id": "62c1c0a673",
-   "split": "dev",
+   "id": "0271b33ed8",
+   "split": "test",
    "source": "mistake-wrong",
    "senses": [
     "lex:A1:city"
    ],
-   "text": "I live in the city of Mashhad city.",
+   "text": "I live in Tehran city.",
    "expect": [
     "needs-change"
    ]
