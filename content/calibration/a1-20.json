@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "title": "A1 calibration slice — first 20 reviewed entries",
+  "description": "A practical 20-entry slice used to calibrate curriculum, bilingual review, pronunciation review and held-out assessment before scaling editorial sign-off.",
+  "units": [
+    {
+      "id": "identity-basics",
+      "title": "Identify yourself and things",
+      "goal": "Make the smallest useful identity sentences and introduce a thing.",
+      "patterns": [
+        "I am …",
+        "You are …",
+        "a/an + singular count noun",
+        "the + known or specific noun"
+      ],
+      "recycles": [],
+      "entries": [
+        { "id": "lex:A1:i", "objective": "Refer to yourself as the speaker.", "prerequisites": [] },
+        { "id": "lex:A1:you", "objective": "Address the listener directly.", "prerequisites": [] },
+        { "id": "lex:A1:be", "objective": "Build basic identity and description statements.", "prerequisites": ["lex:A1:i", "lex:A1:you"] },
+        { "id": "lex:A1:a-an", "objective": "Introduce one non-specific countable thing.", "prerequisites": [] },
+        { "id": "lex:A1:the", "objective": "Refer to a known or specific thing.", "prerequisites": ["lex:A1:a-an"] }
+      ]
+    },
+    {
+      "id": "possession-and-pointing",
+      "title": "Possess and point",
+      "goal": "Say what belongs to you or the listener and identify nearby/farther things.",
+      "patterns": [
+        "my/your + noun",
+        "I/You have …",
+        "This is …",
+        "That is …",
+        "this/that + singular noun"
+      ],
+      "recycles": ["lex:A1:i", "lex:A1:you", "lex:A1:be", "lex:A1:a-an", "lex:A1:the"],
+      "entries": [
+        { "id": "lex:A1:my", "objective": "Mark something as belonging to the speaker.", "prerequisites": ["lex:A1:i"] },
+        { "id": "lex:A1:your", "objective": "Mark something as belonging to the listener.", "prerequisites": ["lex:A1:you"] },
+        { "id": "lex:A1:have", "objective": "Express basic possession.", "prerequisites": ["lex:A1:i", "lex:A1:you", "lex:A1:a-an"] },
+        { "id": "lex:A1:this", "objective": "Point to or identify a nearby singular thing.", "prerequisites": ["lex:A1:be", "lex:A1:the"] },
+        { "id": "lex:A1:that", "objective": "Point to or identify a farther singular thing.", "prerequisites": ["lex:A1:be", "lex:A1:the"] }
+      ]
+    },
+    {
+      "id": "people-together",
+      "title": "Talk about people together",
+      "goal": "Refer to other people and combine simple ideas.",
+      "patterns": [
+        "He/She is …",
+        "We/They are …",
+        "X and Y"
+      ],
+      "recycles": ["lex:A1:be", "lex:A1:my", "lex:A1:your", "lex:A1:have", "lex:A1:this", "lex:A1:that", "lex:A1:the"],
+      "entries": [
+        { "id": "lex:A1:he", "objective": "Refer to one male person already identified.", "prerequisites": ["lex:A1:be"] },
+        { "id": "lex:A1:she", "objective": "Refer to one female person already identified.", "prerequisites": ["lex:A1:be"] },
+        { "id": "lex:A1:we", "objective": "Refer to the speaker together with other people.", "prerequisites": ["lex:A1:i", "lex:A1:you", "lex:A1:be"] },
+        { "id": "lex:A1:they", "objective": "Refer to people or things as a group.", "prerequisites": ["lex:A1:be"] },
+        { "id": "lex:A1:and", "objective": "Join two people, things or simple ideas.", "prerequisites": ["lex:A1:i", "lex:A1:you"] }
+      ]
+    },
+    {
+      "id": "basic-questions-and-ability",
+      "title": "Ask basic questions and express ability",
+      "goal": "Ask who/what/where/how and say what someone can do.",
+      "patterns": [
+        "What is …?",
+        "Who is …?",
+        "Where is/are …?",
+        "How are you?",
+        "can + base verb",
+        "Can you …?"
+      ],
+      "recycles": ["lex:A1:i", "lex:A1:you", "lex:A1:he", "lex:A1:she", "lex:A1:we", "lex:A1:they", "lex:A1:be", "lex:A1:my", "lex:A1:your", "lex:A1:have", "lex:A1:this", "lex:A1:that", "lex:A1:and"],
+      "entries": [
+        { "id": "lex:A1:what", "objective": "Ask for the identity or nature of a thing.", "prerequisites": ["lex:A1:be", "lex:A1:this", "lex:A1:that"] },
+        { "id": "lex:A1:who", "objective": "Ask for the identity of a person.", "prerequisites": ["lex:A1:be", "lex:A1:he", "lex:A1:she"] },
+        { "id": "lex:A1:where", "objective": "Ask about a basic location.", "prerequisites": ["lex:A1:be", "lex:A1:i", "lex:A1:you", "lex:A1:he", "lex:A1:she", "lex:A1:we", "lex:A1:they"] },
+        { "id": "lex:A1:how", "objective": "Ask about manner or condition in a basic exchange.", "prerequisites": ["lex:A1:be", "lex:A1:you"] },
+        { "id": "lex:A1:can", "objective": "Express and ask about basic ability.", "prerequisites": ["lex:A1:i", "lex:A1:you", "lex:A1:he", "lex:A1:she", "lex:A1:we", "lex:A1:they"] }
+      ]
+    }
+  ]
+}
