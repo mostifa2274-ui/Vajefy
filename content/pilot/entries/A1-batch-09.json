@@ -1,0 +1,5265 @@
+[
+  {
+    "id": "lex:A1:dollar",
+    "headword": "dollar",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:dollar",
+        "pos": "noun",
+        "gloss": "دلار",
+        "meaning": "پولِ آمریکا و چند کشورِ دیگر ($). جمعش dollars است: ten dollars.",
+        "grammar": [
+          {
+            "pattern": "number + dollars",
+            "note": "ten dollars"
+          },
+          {
+            "pattern": "in dollars",
+            "note": "به دلار"
+          },
+          {
+            "pattern": "a dollar",
+            "note": "یک دلار"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I paid fifty dollars for these shoes.",
+            "fa": "برای این کفش‌ها پنجاه دلار دادم."
+          },
+          {
+            "en": "How many dollars do you have?",
+            "fa": "چند دلار داری؟"
+          }
+        ],
+        "collocations": [
+          "ten dollars",
+          "a dollar",
+          "pay in dollars",
+          "a hundred dollars"
+        ],
+        "mistake": {
+          "wrong": "It costs $10 dollars.",
+          "right": "It costs $10.",
+          "why": "یا علامتِ $ یا کلمهٔ dollars؛ هر دو با هم نمی‌آیند."
+        },
+        "pronunciation": {
+          "gb": "/ˈdɒlə/",
+          "us": "/ˈdɑːlər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "In the USA, people pay in ___.",
+            "answer": "dollars",
+            "accept": [
+              "dollar"
+            ],
+            "fa": "در آمریکا مردم با دلار پرداخت می‌کنند.",
+            "why": "pay in dollars."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "This T-shirt costs fifteen ___.",
+            "options": [
+              {
+                "text": "dollars",
+                "ok": true,
+                "why": "با fifteen جمع لازم است."
+              },
+              {
+                "text": "dollar's",
+                "ok": false,
+                "why": "اینجا ' لازم نیست."
+              },
+              {
+                "text": "a dollar",
+                "ok": false,
+                "why": "با fifteen، a نمی‌آید."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "صد دلار دارم.",
+            "frame": "I have a hundred ___.",
+            "answer": "dollars",
+            "accept": [],
+            "why": "a hundred dollars."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:join",
+    "headword": "join",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:join",
+        "pos": "verb",
+        "gloss": "عضو شدن؛ پیوستن",
+        "meaning": "عضوِ گروه، باشگاه یا کلاسی شدن، یا همراهِ کسی شدن. join بدون to می‌آید: join the club. متضاد: leave.",
+        "grammar": [
+          {
+            "pattern": "join + group / club",
+            "note": "عضو شدن"
+          },
+          {
+            "pattern": "join + person",
+            "note": "همراهِ کسی شدن"
+          },
+          {
+            "pattern": "join – joined",
+            "note": "باقاعده"
+          }
+        ],
+        "examples": [
+          {
+            "en": "She joined the football team last year.",
+            "fa": "پارسال عضوِ تیمِ فوتبال شد."
+          },
+          {
+            "en": "Can I join you for lunch?",
+            "fa": "می‌توانم برای ناهار به شما ملحق شوم؟"
+          }
+        ],
+        "collocations": [
+          "join a club",
+          "join a team",
+          "join us",
+          "join a class"
+        ],
+        "mistake": {
+          "wrong": "I want to join to the club.",
+          "right": "I want to join the club.",
+          "why": "join بدون to می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/dʒɔɪn/",
+          "us": "/dʒɔɪn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Would you like to ___ our English class? It starts on Monday.",
+            "answer": "join",
+            "accept": [
+              "come to",
+              "start"
+            ],
+            "fa": "دوست داری به کلاسِ انگلیسیِ ما بیایی؟ دوشنبه شروع می‌شود.",
+            "why": "join a class."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "She ___ the team last month.",
+            "options": [
+              {
+                "text": "joined",
+                "ok": true,
+                "why": "last month → گذشته: joined."
+              },
+              {
+                "text": "join",
+                "ok": false,
+                "why": "با last month گذشته لازم است."
+              },
+              {
+                "text": "joins",
+                "ok": false,
+                "why": "با last month گذشته لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "می‌خواهم عضوِ باشگاه شوم.",
+            "frame": "I want to ___ the club.",
+            "answer": "join",
+            "accept": [],
+            "why": "join the club."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:kilometre",
+    "headword": "kilometre",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:kilometre",
+        "pos": "noun",
+        "gloss": "کیلومتر",
+        "meaning": "هزار متر. املای آمریکایی: kilometer. کوتاه‌شده: km.",
+        "grammar": [
+          {
+            "pattern": "number + kilometres",
+            "note": "ten kilometres"
+          },
+          {
+            "pattern": "… kilometres from + place",
+            "note": "… کیلومتر از …"
+          },
+          {
+            "pattern": "kilometre / kilometer",
+            "note": "بریتانیایی / آمریکایی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I walk three kilometres every day.",
+            "fa": "هر روز سه کیلومتر پیاده‌روی می‌کنم."
+          },
+          {
+            "en": "The beach is fifty kilometres from the city.",
+            "fa": "ساحل پنجاه کیلومتر از شهر فاصله دارد."
+          }
+        ],
+        "collocations": [
+          "ten kilometres",
+          "kilometres away",
+          "kilometres an hour",
+          "a few kilometres"
+        ],
+        "mistake": {
+          "wrong": "How much kilometres is it to the city?",
+          "right": "How many kilometres is it to the city?",
+          "why": "kilometre قابل‌شمارش است: how many."
+        },
+        "pronunciation": {
+          "gb": "/ˈkɪləmiːtə/",
+          "us": "/kɪˈlɑːmətər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "A thousand metres make one ___.",
+            "answer": "kilometre",
+            "accept": [
+              "kilometer",
+              "km"
+            ],
+            "fa": "هزار متر یک کیلومتر می‌شود.",
+            "why": "۱۰۰۰ متر = یک کیلومتر."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "The airport is twenty ___ from the city.",
+            "options": [
+              {
+                "text": "kilometres",
+                "ok": true,
+                "why": "با twenty جمع لازم است."
+              },
+              {
+                "text": "kilometre",
+                "ok": false,
+                "why": "بعد از twenty اسمِ جمع لازم است."
+              },
+              {
+                "text": "kilos",
+                "ok": false,
+                "why": "kilo یعنی کیلوگرم، نه کیلومتر."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "هر روز پنج کیلومتر می‌دوم.",
+            "frame": "I run five ___ every day.",
+            "answer": "kilometres",
+            "accept": [
+              "kilometers",
+              "km"
+            ],
+            "why": "five kilometres."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:lion",
+    "headword": "lion",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:lion",
+        "pos": "noun",
+        "gloss": "شیر (حیوان)",
+        "meaning": "حیوانِ وحشیِ بزرگ از خانوادهٔ گربه. «شیر» در فارسی سه معنی دارد: شیرِ حیوان lion، شیرِ خوراکی milk، شیرِ آب tap.",
+        "grammar": [
+          {
+            "pattern": "a lion / lions",
+            "note": "مفرد / جمع"
+          },
+          {
+            "pattern": "a lion and a tiger",
+            "note": "شیر و ببر"
+          },
+          {
+            "pattern": "lion / milk / tap",
+            "note": "سه «شیر» در فارسی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Lions live in Africa.",
+            "fa": "شیرها در آفریقا زندگی می‌کنند."
+          },
+          {
+            "en": "The lion is a very strong animal.",
+            "fa": "شیر حیوانِ خیلی قوی‌ای است."
+          }
+        ],
+        "collocations": [
+          "a big lion",
+          "a young lion",
+          "lions and tigers",
+          "a lion at the zoo"
+        ],
+        "mistake": {
+          "wrong": "We saw two lion at the zoo.",
+          "right": "We saw two lions at the zoo.",
+          "why": "با two اسمِ جمع لازم است."
+        },
+        "pronunciation": {
+          "gb": "/ˈlaɪən/",
+          "us": "/ˈlaɪən/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "The ___ is called the king of the animals.",
+            "answer": "lion",
+            "accept": [],
+            "fa": "به شیر می‌گویند پادشاهِ حیوانات.",
+            "why": "lion = شیر (حیوان)."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "A ___ is a big wild cat.",
+            "options": [
+              {
+                "text": "lion",
+                "ok": true,
+                "why": "شیر یک گربه‌سانِ وحشیِ بزرگ است."
+              },
+              {
+                "text": "line",
+                "ok": false,
+                "why": "line یعنی خط."
+              },
+              {
+                "text": "milk",
+                "ok": false,
+                "why": "milk شیرِ خوردنی است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "شیر خوابیده است.",
+            "frame": "The ___ is sleeping.",
+            "answer": "lion",
+            "accept": [],
+            "why": "lion = شیر (حیوان)."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:mile",
+    "headword": "mile",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:mile",
+        "pos": "noun",
+        "gloss": "مایل",
+        "meaning": "واحدِ طول در بریتانیا و آمریکا؛ حدودِ ۱٫۶ کیلومتر. فاصله: … miles away.",
+        "grammar": [
+          {
+            "pattern": "number + miles",
+            "note": "three miles"
+          },
+          {
+            "pattern": "… miles away",
+            "note": "… مایل فاصله"
+          },
+          {
+            "pattern": "miles an hour",
+            "note": "مایل در ساعت"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I walk two miles every morning.",
+            "fa": "هر صبح دو مایل پیاده‌روی می‌کنم."
+          },
+          {
+            "en": "In Britain, road signs show miles, not kilometres.",
+            "fa": "در بریتانیا تابلوهای جاده مایل نشان می‌دهند، نه کیلومتر."
+          }
+        ],
+        "collocations": [
+          "a mile away",
+          "miles an hour",
+          "two miles",
+          "for miles"
+        ],
+        "mistake": {
+          "wrong": "It's a mile far from here.",
+          "right": "It's a mile away from here.",
+          "why": "با عددِ فاصله away می‌آید، نه far."
+        },
+        "pronunciation": {
+          "gb": "/maɪl/",
+          "us": "/maɪl/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "A ___ is about 1.6 kilometres.",
+            "answer": "mile",
+            "accept": [],
+            "fa": "یک مایل حدودِ ۱٫۶ کیلومتر است.",
+            "why": "mile = مایل."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "The station is two ___ away.",
+            "options": [
+              {
+                "text": "miles",
+                "ok": true,
+                "why": "با two جمع لازم است."
+              },
+              {
+                "text": "mile",
+                "ok": false,
+                "why": "بعد از two اسمِ جمع لازم است."
+              },
+              {
+                "text": "smiles",
+                "ok": false,
+                "why": "smiles یعنی لبخندها."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "مدرسه یک مایل با اینجا فاصله دارد.",
+            "frame": "The school is a ___ away.",
+            "answer": "mile",
+            "accept": [],
+            "why": "a mile away."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:mouse",
+    "headword": "mouse",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:mouse",
+        "pos": "noun",
+        "gloss": "موش",
+        "meaning": "حیوانِ کوچکی با دُمِ دراز. جمعش بی‌قاعده است: mice.",
+        "grammar": [
+          {
+            "pattern": "a mouse / two mice",
+            "note": "جمعِ بی‌قاعده"
+          },
+          {
+            "pattern": "a cat and a mouse",
+            "note": "گربه و موش"
+          },
+          {
+            "pattern": "a little mouse",
+            "note": "موشِ کوچک"
+          }
+        ],
+        "examples": [
+          {
+            "en": "There's a mouse in the kitchen!",
+            "fa": "یک موش در آشپزخانه است!"
+          },
+          {
+            "en": "Our cat caught two mice.",
+            "fa": "گربه‌مان دو موش گرفت."
+          }
+        ],
+        "collocations": [
+          "a little mouse",
+          "a cat and a mouse",
+          "a field mouse",
+          "two mice"
+        ],
+        "mistake": {
+          "wrong": "I saw two mouses.",
+          "right": "I saw two mice.",
+          "why": "جمعِ mouse بی‌قاعده است: mice."
+        },
+        "pronunciation": {
+          "gb": "/maʊs/",
+          "us": "/maʊs/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "The cat is running after a small ___.",
+            "answer": "mouse",
+            "accept": [],
+            "fa": "گربه دنبالِ یک موشِ کوچک می‌دود.",
+            "why": "a mouse = یک موش."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "There are three ___ in the box!",
+            "options": [
+              {
+                "text": "mice",
+                "ok": true,
+                "why": "جمعِ mouse: mice."
+              },
+              {
+                "text": "mouses",
+                "ok": false,
+                "why": "جمعِ mouse بی‌قاعده است."
+              },
+              {
+                "text": "mouse",
+                "ok": false,
+                "why": "با three جمع لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "یک موش زیرِ میز است.",
+            "frame": "There's a ___ under the table.",
+            "answer": "mouse",
+            "accept": [],
+            "why": "a mouse."
+          }
+        ]
+      },
+      {
+        "id": "lex:A1:mouse#computer",
+        "pos": "noun",
+        "gloss": "ماوس",
+        "meaning": "وسیلهٔ کوچکی که با آن روی کامپیوتر چیزی را انتخاب می‌کنیم یا کلیک می‌کنیم.",
+        "grammar": [
+          {
+            "pattern": "move the mouse",
+            "note": "ماوس را حرکت دادن"
+          },
+          {
+            "pattern": "a computer mouse",
+            "note": "ماوسِ کامپیوتر"
+          },
+          {
+            "pattern": "use the mouse",
+            "note": "از ماوس استفاده کردن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Move your mouse to the top of the page.",
+            "fa": "ماوس را به بالای صفحه ببر."
+          },
+          {
+            "en": "My computer mouse doesn't work.",
+            "fa": "ماوسِ کامپیوترم کار نمی‌کند."
+          }
+        ],
+        "collocations": [
+          "a computer mouse",
+          "use the mouse",
+          "a new mouse",
+          "move the mouse"
+        ],
+        "mistake": {
+          "wrong": "I need a new mice for my computer.",
+          "right": "I need a new mouse for my computer.",
+          "why": "a + اسمِ مفرد: mouse."
+        },
+        "pronunciation": {
+          "gb": "/maʊs/",
+          "us": "/maʊs/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Move the ___ to the picture you want.",
+            "answer": "mouse",
+            "accept": [],
+            "fa": "ماوس را روی عکسی که می‌خواهی ببر.",
+            "why": "mouse = ماوس."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "You use a ___ with a computer.",
+            "options": [
+              {
+                "text": "mouse",
+                "ok": true,
+                "why": "mouse = ماوس."
+              },
+              {
+                "text": "mouth",
+                "ok": false,
+                "why": "mouth یعنی دهان."
+              },
+              {
+                "text": "house",
+                "ok": false,
+                "why": "house یعنی خانه."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "ماوسم کار نمی‌کند.",
+            "frame": "My ___ doesn't work.",
+            "answer": "mouse",
+            "accept": [],
+            "why": "mouse = ماوس."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:nineteen",
+    "headword": "nineteen",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:nineteen",
+        "pos": "number",
+        "gloss": "نوزده",
+        "meaning": "عدد ۱۹. e در nine می‌ماند: nineteen. تکیه روی بخشِ دوم است؛ ninety (۹۰) تکیه روی بخشِ اول.",
+        "grammar": [
+          {
+            "pattern": "nineteen + plural noun",
+            "note": "nineteen years"
+          },
+          {
+            "pattern": "nineteen / ninety",
+            "note": "۱۹ / ۹۰"
+          },
+          {
+            "pattern": "nineteenth",
+            "note": "نوزدهم"
+          }
+        ],
+        "examples": [
+          {
+            "en": "My sister is nineteen.",
+            "fa": "خواهرم نوزده سال دارد."
+          },
+          {
+            "en": "There are nineteen students in the class.",
+            "fa": "در کلاس نوزده دانش‌آموز هست."
+          }
+        ],
+        "collocations": [
+          "nineteen years old",
+          "nineteen people",
+          "at nineteen",
+          "nineteen minutes"
+        ],
+        "mistake": {
+          "wrong": "He is ninteen.",
+          "right": "He is nineteen.",
+          "why": "املا: nineteen؛ e در nine می‌ماند."
+        },
+        "pronunciation": {
+          "gb": "/ˌnaɪnˈtiːn/",
+          "us": "/ˌnaɪnˈtiːn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Ten and nine make ___.",
+            "answer": "nineteen",
+            "accept": [
+              "19"
+            ],
+            "fa": "ده و نه می‌شود نوزده.",
+            "why": "۱۰ + ۹ = ۱۹."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How do you write 19 in words?",
+            "options": [
+              {
+                "text": "nineteen",
+                "ok": true,
+                "why": "۱۹ = nineteen."
+              },
+              {
+                "text": "ninety",
+                "ok": false,
+                "why": "ninety = ۹۰."
+              },
+              {
+                "text": "ninteen",
+                "ok": false,
+                "why": "املای درست: nineteen."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "نوزده سالم است.",
+            "frame": "I'm ___ years old.",
+            "answer": "nineteen",
+            "accept": [
+              "19"
+            ],
+            "why": "nineteen = نوزده."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:nose",
+    "headword": "nose",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:nose",
+        "pos": "noun",
+        "gloss": "بینی",
+        "meaning": "عضوی وسطِ صورت که با آن نفس می‌کشیم و بو می‌کنیم.",
+        "grammar": [
+          {
+            "pattern": "my / your nose",
+            "note": "بینی‌ام / بینی‌ات"
+          },
+          {
+            "pattern": "a big / small nose",
+            "note": "بینیِ بزرگ / کوچک"
+          },
+          {
+            "pattern": "blow your nose",
+            "note": "فین کردن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Blow your nose, please.",
+            "fa": "لطفاً فین کن."
+          },
+          {
+            "en": "He has a big nose like his father.",
+            "fa": "مثلِ پدرش بینیِ بزرگی دارد."
+          }
+        ],
+        "collocations": [
+          "a big nose",
+          "a small nose",
+          "blow your nose",
+          "a red nose"
+        ],
+        "mistake": {
+          "wrong": "He has a nose very big.",
+          "right": "He has a very big nose.",
+          "why": "صفت قبل از اسم می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/nəʊz/",
+          "us": "/noʊz/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Your ___ is in the middle of your face.",
+            "answer": "nose",
+            "accept": [],
+            "fa": "بینی‌ات وسطِ صورتت است.",
+            "why": "nose = بینی."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "You smell flowers with your ___.",
+            "options": [
+              {
+                "text": "nose",
+                "ok": true,
+                "why": "با بینی بو می‌کنیم."
+              },
+              {
+                "text": "ears",
+                "ok": false,
+                "why": "با گوش می‌شنویم."
+              },
+              {
+                "text": "mouth",
+                "ok": false,
+                "why": "با دهان می‌خوریم."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "بینی‌ام سرد است.",
+            "frame": "My ___ is cold.",
+            "answer": "nose",
+            "accept": [],
+            "why": "nose = بینی."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:november",
+    "headword": "November",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:november",
+        "pos": "noun",
+        "gloss": "نوامبر",
+        "meaning": "ماهِ یازدهمِ سالِ میلادی. همیشه با حرف بزرگ نوشته می‌شود. با ماه in، با تاریخ on.",
+        "grammar": [
+          {
+            "pattern": "in November",
+            "note": "در نوامبر"
+          },
+          {
+            "pattern": "on 2 November",
+            "note": "با تاریخ: on"
+          },
+          {
+            "pattern": "last / next November",
+            "note": "بدون in"
+          }
+        ],
+        "examples": [
+          {
+            "en": "It often rains in November.",
+            "fa": "در نوامبر اغلب باران می‌بارد."
+          },
+          {
+            "en": "My brother was born in November.",
+            "fa": "برادرم در نوامبر به دنیا آمد."
+          }
+        ],
+        "collocations": [
+          "in November",
+          "early November",
+          "last November",
+          "the end of November"
+        ],
+        "mistake": {
+          "wrong": "I'll see you at November.",
+          "right": "I'll see you in November.",
+          "why": "با ماه in می‌آید؛ at برای ساعت است."
+        },
+        "pronunciation": {
+          "gb": "/nəʊˈvembə/",
+          "us": "/noʊˈvembər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "October, ___, December.",
+            "answer": "November",
+            "accept": [],
+            "fa": "اکتبر، نوامبر، دسامبر.",
+            "why": "ماهِ بعد از October: November."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "We moved here ___ November.",
+            "options": [
+              {
+                "text": "in",
+                "ok": true,
+                "why": "با ماه in می‌آید."
+              },
+              {
+                "text": "on",
+                "ok": false,
+                "why": "on برای روز و تاریخ است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "at برای ساعت است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "در نوامبر هوا سرد است.",
+            "frame": "It's cold in ___.",
+            "answer": "November",
+            "accept": [],
+            "why": "November = نوامبر."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:o-clock",
+    "headword": "o’clock",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:o-clock",
+        "pos": "adverb",
+        "gloss": "ساعت … (تمام)",
+        "meaning": "فقط برای ساعتِ کامل می‌آید: It's eight o'clock = ساعت هشت است. با دقیقه نمی‌آید: ten thirty، نه ten thirty o'clock.",
+        "grammar": [
+          {
+            "pattern": "number + o'clock",
+            "note": "eight o'clock"
+          },
+          {
+            "pattern": "at … o'clock",
+            "note": "ساعتِ …"
+          },
+          {
+            "pattern": "only for full hours",
+            "note": "فقط ساعتِ کامل"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The film starts at seven o'clock.",
+            "fa": "فیلم ساعتِ هفت شروع می‌شود."
+          },
+          {
+            "en": "I get up at six o'clock every day.",
+            "fa": "هر روز ساعتِ شش بیدار می‌شوم."
+          }
+        ],
+        "collocations": [
+          "at six o'clock",
+          "eight o'clock",
+          "about ten o'clock",
+          "one o'clock"
+        ],
+        "mistake": {
+          "wrong": "It's ten thirty o'clock.",
+          "right": "It's ten thirty.",
+          "why": "o'clock فقط برای ساعتِ کامل است."
+        },
+        "pronunciation": {
+          "gb": "/əˈklɒk/",
+          "us": "/əˈklɑːk/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "School starts at eight ___.",
+            "answer": "o'clock",
+            "accept": [
+              "am",
+              "a.m."
+            ],
+            "fa": "مدرسه ساعتِ هشت شروع می‌شود.",
+            "why": "eight o'clock."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "It's 3:00. It's three ___.",
+            "options": [
+              {
+                "text": "o'clock",
+                "ok": true,
+                "why": "ساعتِ کامل: o'clock."
+              },
+              {
+                "text": "clock",
+                "ok": false,
+                "why": "clock یعنی ساعتِ دیواری."
+              },
+              {
+                "text": "o'clocks",
+                "ok": false,
+                "why": "o'clock جمع بسته نمی‌شود."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "ساعت نه است.",
+            "frame": "It's nine ___.",
+            "answer": "o'clock",
+            "accept": [],
+            "why": "nine o'clock."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:october",
+    "headword": "October",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:october",
+        "pos": "noun",
+        "gloss": "اکتبر",
+        "meaning": "ماهِ دهمِ سالِ میلادی. همیشه با حرف بزرگ نوشته می‌شود. با ماه in، با تاریخ on.",
+        "grammar": [
+          {
+            "pattern": "in October",
+            "note": "در اکتبر"
+          },
+          {
+            "pattern": "on 3 October",
+            "note": "با تاریخ: on"
+          },
+          {
+            "pattern": "last / next October",
+            "note": "بدون in"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The leaves change colour in October.",
+            "fa": "در اکتبر رنگِ برگ‌ها عوض می‌شود."
+          },
+          {
+            "en": "My exams finish at the end of October.",
+            "fa": "امتحان‌هایم آخرِ اکتبر تمام می‌شوند."
+          }
+        ],
+        "collocations": [
+          "in October",
+          "early October",
+          "next October",
+          "the end of October"
+        ],
+        "mistake": {
+          "wrong": "The school year starts in Oktober.",
+          "right": "The school year starts in October.",
+          "why": "املا: October با c."
+        },
+        "pronunciation": {
+          "gb": "/ɒkˈtəʊbə/",
+          "us": "/ɑːkˈtoʊbər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "September, ___, November.",
+            "answer": "October",
+            "accept": [],
+            "fa": "سپتامبر، اکتبر، نوامبر.",
+            "why": "ماهِ بعد از September: October."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "My birthday is ___ 3 October.",
+            "options": [
+              {
+                "text": "on",
+                "ok": true,
+                "why": "با تاریخ on می‌آید."
+              },
+              {
+                "text": "in",
+                "ok": false,
+                "why": "in با ماهِ تنهاست، نه با تاریخ."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "at برای ساعت است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "در اکتبر به ایران آمدیم.",
+            "frame": "We came to Iran in ___.",
+            "answer": "October",
+            "accept": [],
+            "why": "October = اکتبر."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:ok",
+    "headword": "OK",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:ok",
+        "pos": "exclamation",
+        "gloss": "باشه؛ خب",
+        "meaning": "برای موافقت (باشه) یا شروعِ حرف (خب). املای دیگر: okay.",
+        "grammar": [
+          {
+            "pattern": "OK.",
+            "note": "باشه"
+          },
+          {
+            "pattern": "OK, …",
+            "note": "خب، …"
+          },
+          {
+            "pattern": "…, OK?",
+            "note": "…، باشه؟"
+          }
+        ],
+        "examples": [
+          {
+            "en": "OK, let's start the lesson.",
+            "fa": "خب، درس را شروع کنیم."
+          },
+          {
+            "en": "Close the door, OK?",
+            "fa": "در را ببند، باشه؟"
+          }
+        ],
+        "collocations": [
+          "OK, let's go",
+          "OK, thanks",
+          "OK, fine",
+          "that's OK"
+        ],
+        "mistake": {
+          "wrong": "Okey, see you tomorrow.",
+          "right": "OK, see you tomorrow.",
+          "why": "املا: OK یا okay؛ okey غلط است."
+        },
+        "pronunciation": {
+          "gb": "/əʊˈkeɪ/",
+          "us": "/oʊˈkeɪ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Let's meet at six. — ___, see you then.",
+            "answer": "OK",
+            "accept": [
+              "Okay",
+              "Fine",
+              "Great",
+              "Good"
+            ],
+            "fa": "ساعتِ شش هم را ببینیم. — باشه، آن موقع می‌بینمت.",
+            "why": "OK = باشه."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Can you help me with this? — ___, no problem.",
+            "options": [
+              {
+                "text": "OK",
+                "ok": true,
+                "why": "OK = باشه."
+              },
+              {
+                "text": "Sorry",
+                "ok": false,
+                "why": "sorry با no problem جور نیست."
+              },
+              {
+                "text": "Bye",
+                "ok": false,
+                "why": "bye برای خداحافظی است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "باشه، برویم.",
+            "frame": "___, let's go.",
+            "answer": "OK",
+            "accept": [
+              "Okay"
+            ],
+            "why": "OK = باشه."
+          }
+        ]
+      },
+      {
+        "id": "lex:A1:ok#adjective",
+        "pos": "adjective",
+        "gloss": "خوب؛ روبه‌راه؛ اشکالی ندارد",
+        "meaning": "یعنی خوب یا قابل‌قبول: Are you OK? = حالت خوب است؟ That's OK = اشکالی ندارد.",
+        "grammar": [
+          {
+            "pattern": "be OK",
+            "note": "خوب بودن"
+          },
+          {
+            "pattern": "Are you OK?",
+            "note": "حالت خوب است؟"
+          },
+          {
+            "pattern": "That's OK.",
+            "note": "اشکالی ندارد"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Are you OK? You look tired.",
+            "fa": "حالت خوب است؟ خسته به نظر می‌رسی."
+          },
+          {
+            "en": "I'm sorry I'm late. — That's OK.",
+            "fa": "ببخشید دیر کردم. — اشکالی ندارد."
+          }
+        ],
+        "collocations": [
+          "are you OK",
+          "that's OK",
+          "it's OK",
+          "OK for me"
+        ],
+        "mistake": {
+          "wrong": "Is it OK if I sit here? — Yes, it OK.",
+          "right": "Is it OK if I sit here? — Yes, it's OK.",
+          "why": "فعل لازم است: it's (it is) OK."
+        },
+        "pronunciation": {
+          "gb": "/əʊˈkeɪ/",
+          "us": "/oʊˈkeɪ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "You look sad. Are you ___?",
+            "answer": "OK",
+            "accept": [
+              "okay",
+              "all right",
+              "alright"
+            ],
+            "fa": "ناراحت به نظر می‌رسی. حالت خوب است؟",
+            "why": "Are you OK?"
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "The food wasn't great, but it was ___.",
+            "options": [
+              {
+                "text": "OK",
+                "ok": true,
+                "why": "OK = قابل‌قبول."
+              },
+              {
+                "text": "terrible",
+                "ok": false,
+                "why": "با but جور نیست."
+              },
+              {
+                "text": "an OK",
+                "ok": false,
+                "why": "بدون اسم، a / an لازم نیست."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "حالم خوب است، ممنون.",
+            "frame": "I'm ___, thanks.",
+            "answer": "OK",
+            "accept": [
+              "okay",
+              "fine",
+              "good",
+              "all right",
+              "alright"
+            ],
+            "why": "I'm OK."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:onion",
+    "headword": "onion",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:onion",
+        "pos": "noun",
+        "gloss": "پیاز",
+        "meaning": "سبزیِ گردی که در غذا زیاد استفاده می‌شود و موقعِ خرد کردن اشکِ آدم را درمی‌آورد. با an: an onion.",
+        "grammar": [
+          {
+            "pattern": "an onion",
+            "note": "با an"
+          },
+          {
+            "pattern": "onions",
+            "note": "جمع"
+          },
+          {
+            "pattern": "onion soup",
+            "note": "سوپِ پیاز"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Onions make me cry.",
+            "fa": "پیاز اشکم را درمی‌آورد."
+          },
+          {
+            "en": "There are three onions in the bag.",
+            "fa": "در کیسه سه پیاز هست."
+          }
+        ],
+        "collocations": [
+          "an onion",
+          "a red onion",
+          "onion soup",
+          "chopped onions"
+        ],
+        "mistake": {
+          "wrong": "Can you buy a onion?",
+          "right": "Can you buy an onion?",
+          "why": "onion با صدای واکه شروع می‌شود: an onion."
+        },
+        "pronunciation": {
+          "gb": "/ˈʌnjən/",
+          "us": "/ˈʌnjən/",
+          "note": "o مثل «اَ»: «اَنیِن»."
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Cutting ___ always makes me cry.",
+            "answer": "onions",
+            "accept": [
+              "onion"
+            ],
+            "fa": "خرد کردنِ پیاز همیشه اشکم را درمی‌آورد.",
+            "why": "onions = پیازها."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "I need ___ onion for the soup.",
+            "options": [
+              {
+                "text": "an",
+                "ok": true,
+                "why": "قبل از صدای واکه an."
+              },
+              {
+                "text": "a",
+                "ok": false,
+                "why": "قبل از onion، an لازم است."
+              },
+              {
+                "text": "two",
+                "ok": false,
+                "why": "با two جمع لازم است: two onions."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "پیاز دوست ندارم.",
+            "frame": "I don't like ___.",
+            "answer": "onions",
+            "accept": [
+              "onion"
+            ],
+            "why": "onions = پیاز."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:opposite",
+    "headword": "opposite",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:opposite",
+        "pos": "preposition",
+        "gloss": "روبه‌روی",
+        "meaning": "در طرفِ مقابلِ چیزی، معمولاً آن طرفِ خیابان یا میز: The bank is opposite the school. در این معنی معمولاً of نمی‌آید.",
+        "grammar": [
+          {
+            "pattern": "opposite + place / person",
+            "note": "روبه‌روی …"
+          },
+          {
+            "pattern": "sit opposite somebody",
+            "note": "روبه‌روی کسی نشستن"
+          },
+          {
+            "pattern": "opposite = across from",
+            "note": "هم‌معنی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The bank is opposite the post office.",
+            "fa": "بانک روبه‌روی ادارهٔ پست است."
+          },
+          {
+            "en": "She sat opposite me at dinner.",
+            "fa": "سرِ شام روبه‌روی من نشست."
+          }
+        ],
+        "collocations": [
+          "opposite the station",
+          "sit opposite",
+          "just opposite",
+          "opposite my house"
+        ],
+        "mistake": {
+          "wrong": "She sat in opposite me.",
+          "right": "She sat opposite me.",
+          "why": "opposite خودش حرف اضافه است؛ in لازم نیست."
+        },
+        "pronunciation": {
+          "gb": "/ˈɒpəzɪt/",
+          "us": "/ˈɑːpəzət/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "The bus stop is ___ the school, on the other side of the road.",
+            "answer": "opposite",
+            "accept": [
+              "across from"
+            ],
+            "fa": "ایستگاهِ اتوبوس روبه‌روی مدرسه است، آن طرفِ خیابان.",
+            "why": "opposite = روبه‌روی."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "My house is ___ the park.",
+            "options": [
+              {
+                "text": "opposite",
+                "ok": true,
+                "why": "opposite + مکان."
+              },
+              {
+                "text": "opposite at",
+                "ok": false,
+                "why": "بعد از opposite حرف اضافهٔ دیگری نمی‌آید."
+              },
+              {
+                "text": "in front",
+                "ok": false,
+                "why": "in front of لازم است، با of."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "روبه‌روی من نشست.",
+            "frame": "He sat ___ me.",
+            "answer": "opposite",
+            "accept": [
+              "across from"
+            ],
+            "why": "opposite = روبه‌روی."
+          }
+        ]
+      },
+      {
+        "id": "lex:A1:opposite#noun",
+        "pos": "noun",
+        "gloss": "متضاد؛ برعکس",
+        "meaning": "چیزی که کاملاً برعکسِ چیزِ دیگر است: Hot is the opposite of cold. با the و of.",
+        "grammar": [
+          {
+            "pattern": "the opposite of + noun",
+            "note": "متضادِ …"
+          },
+          {
+            "pattern": "the opposite",
+            "note": "برعکس"
+          },
+          {
+            "pattern": "exactly the opposite",
+            "note": "دقیقاً برعکس"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Hot is the opposite of cold.",
+            "fa": "داغ متضادِ سرد است."
+          },
+          {
+            "en": "He says one thing and does the opposite.",
+            "fa": "یک چیز می‌گوید و برعکسش را انجام می‌دهد."
+          }
+        ],
+        "collocations": [
+          "the opposite of",
+          "exactly the opposite",
+          "the opposite way",
+          "do the opposite"
+        ],
+        "mistake": {
+          "wrong": "Big is opposite of small.",
+          "right": "Big is the opposite of small.",
+          "why": "the opposite of با the می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/ˈɒpəzɪt/",
+          "us": "/ˈɑːpəzət/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "The ___ of tall is short.",
+            "answer": "opposite",
+            "accept": [],
+            "fa": "متضادِ بلند کوتاه است.",
+            "why": "the opposite of."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "What's the opposite ___ old?",
+            "options": [
+              {
+                "text": "of",
+                "ok": true,
+                "why": "the opposite of."
+              },
+              {
+                "text": "from",
+                "ok": false,
+                "why": "opposite from اینجا غلط است."
+              },
+              {
+                "text": "with",
+                "ok": false,
+                "why": "opposite with غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "متضادِ بزرگ چیست؟",
+            "frame": "What's the ___ of big?",
+            "answer": "opposite",
+            "accept": [],
+            "why": "the opposite of."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:parent",
+    "headword": "parent",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:parent",
+        "pos": "noun",
+        "gloss": "والد (پدر یا مادر)",
+        "meaning": "پدر یا مادر. بیشتر جمع به کار می‌رود: my parents = پدر و مادرم. متضاد: child.",
+        "grammar": [
+          {
+            "pattern": "my parents",
+            "note": "پدر و مادرم"
+          },
+          {
+            "pattern": "a parent",
+            "note": "پدر یا مادر"
+          },
+          {
+            "pattern": "parents and children",
+            "note": "والدین و بچه‌ها"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I live with my parents.",
+            "fa": "با پدر و مادرم زندگی می‌کنم."
+          },
+          {
+            "en": "Parents can wait outside the classroom.",
+            "fa": "والدین می‌توانند بیرونِ کلاس منتظر بمانند."
+          }
+        ],
+        "collocations": [
+          "my parents",
+          "your parents",
+          "a single parent",
+          "parents and children"
+        ],
+        "mistake": {
+          "wrong": "Both my parent are doctors.",
+          "right": "Both my parents are doctors.",
+          "why": "both + اسمِ جمع."
+        },
+        "pronunciation": {
+          "gb": "/ˈpeərənt/",
+          "us": "/ˈperənt/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Your mother and father are your ___.",
+            "answer": "parents",
+            "accept": [],
+            "fa": "مادر و پدرت والدینِ تو هستند.",
+            "why": "parents = پدر و مادر."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "My ___ live in a small village.",
+            "options": [
+              {
+                "text": "parents",
+                "ok": true,
+                "why": "live بدون s → اسمِ جمع."
+              },
+              {
+                "text": "parent",
+                "ok": false,
+                "why": "با live جمع لازم است."
+              },
+              {
+                "text": "parent's",
+                "ok": false,
+                "why": "اینجا ' لازم نیست."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "پدر و مادرم در تهران زندگی می‌کنند.",
+            "frame": "My ___ live in Tehran.",
+            "answer": "parents",
+            "accept": [],
+            "why": "my parents."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:pencil",
+    "headword": "pencil",
+    "goals": [
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:pencil",
+        "pos": "noun",
+        "gloss": "مداد",
+        "meaning": "وسیلهٔ نوشتن که نوشته‌اش پاک می‌شود. in pencil = با مداد.",
+        "grammar": [
+          {
+            "pattern": "a pencil",
+            "note": "یک مداد"
+          },
+          {
+            "pattern": "in pencil",
+            "note": "با مداد"
+          },
+          {
+            "pattern": "a pencil case",
+            "note": "جامدادی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Can I borrow your pencil?",
+            "fa": "می‌توانم مدادت را قرض بگیرم؟"
+          },
+          {
+            "en": "Write your name in pencil.",
+            "fa": "اسمت را با مداد بنویس."
+          }
+        ],
+        "collocations": [
+          "a pencil case",
+          "in pencil",
+          "a sharp pencil",
+          "a coloured pencil"
+        ],
+        "mistake": {
+          "wrong": "There are three pencil on the desk.",
+          "right": "There are three pencils on the desk.",
+          "why": "با three اسمِ جمع لازم است."
+        },
+        "pronunciation": {
+          "gb": "/ˈpensl/",
+          "us": "/ˈpensl/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I need a ___ and some paper to draw.",
+            "answer": "pencil",
+            "accept": [
+              "pen"
+            ],
+            "fa": "برای نقاشی یک مداد و کمی کاغذ لازم دارم.",
+            "why": "a pencil."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Don't use a pen. Write in ___.",
+            "options": [
+              {
+                "text": "pencil",
+                "ok": true,
+                "why": "in pencil، بدون a."
+              },
+              {
+                "text": "a pencil",
+                "ok": false,
+                "why": "در عبارتِ in pencil، a نمی‌آید."
+              },
+              {
+                "text": "pen",
+                "ok": false,
+                "why": "جمله می‌گوید از خودکار استفاده نکن."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "مدادم را گم کردم.",
+            "frame": "I lost my ___.",
+            "answer": "pencil",
+            "accept": [],
+            "why": "my pencil."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:pepper",
+    "headword": "pepper",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:pepper",
+        "pos": "noun",
+        "gloss": "فلفل",
+        "meaning": "۱) پودرِ تند که با نمک روی غذا می‌ریزند (غیرقابل‌شمارش). ۲) فلفل دلمه‌ای یا سبزیِ فلفل (قابل‌شمارش): a red pepper.",
+        "grammar": [
+          {
+            "pattern": "salt and pepper",
+            "note": "نمک و فلفل"
+          },
+          {
+            "pattern": "black pepper",
+            "note": "فلفلِ سیاه"
+          },
+          {
+            "pattern": "a red / green pepper",
+            "note": "فلفل دلمه‌ای"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I like black pepper on my eggs.",
+            "fa": "روی تخم‌مرغم فلفل سیاه دوست دارم."
+          },
+          {
+            "en": "This soup needs more pepper.",
+            "fa": "این سوپ فلفلِ بیشتری لازم دارد."
+          }
+        ],
+        "collocations": [
+          "salt and pepper",
+          "black pepper",
+          "a red pepper",
+          "too much pepper"
+        ],
+        "mistake": {
+          "wrong": "There are too many pepper in this food.",
+          "right": "There's too much pepper in this food.",
+          "why": "پودرِ فلفل غیرقابل‌شمارش است: too much pepper."
+        },
+        "pronunciation": {
+          "gb": "/ˈpepə/",
+          "us": "/ˈpepər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Can you pass the salt and ___, please?",
+            "answer": "pepper",
+            "accept": [],
+            "fa": "می‌شود نمک و فلفل را بدهی؟",
+            "why": "salt and pepper."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Would you like salt and ___?",
+            "options": [
+              {
+                "text": "pepper",
+                "ok": true,
+                "why": "salt and pepper."
+              },
+              {
+                "text": "paper",
+                "ok": false,
+                "why": "paper یعنی کاغذ."
+              },
+              {
+                "text": "people",
+                "ok": false,
+                "why": "people یعنی مردم."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "کمی فلفل بریز.",
+            "frame": "Add some ___.",
+            "answer": "pepper",
+            "accept": [],
+            "why": "some pepper."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:phrase",
+    "headword": "phrase",
+    "goals": [
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:phrase",
+        "pos": "noun",
+        "gloss": "عبارت",
+        "meaning": "چند کلمه که با هم یک معنی می‌دهند، اما جملهٔ کامل نیستند: at home، a cup of tea. ph مثل f تلفظ می‌شود.",
+        "grammar": [
+          {
+            "pattern": "a useful phrase",
+            "note": "عبارتِ مفید"
+          },
+          {
+            "pattern": "words and phrases",
+            "note": "کلمه‌ها و عبارت‌ها"
+          },
+          {
+            "pattern": "What does this phrase mean?",
+            "note": "این عبارت یعنی چه؟"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Learn these useful phrases for travel.",
+            "fa": "این عبارت‌های مفید را برای سفر یاد بگیر."
+          },
+          {
+            "en": "What does this phrase mean?",
+            "fa": "این عبارت یعنی چه؟"
+          }
+        ],
+        "collocations": [
+          "a useful phrase",
+          "a short phrase",
+          "words and phrases",
+          "a new phrase"
+        ],
+        "mistake": {
+          "wrong": "What means this phrase?",
+          "right": "What does this phrase mean?",
+          "why": "سؤال با does: What does … mean?"
+        },
+        "pronunciation": {
+          "gb": "/freɪz/",
+          "us": "/freɪz/",
+          "note": "ph مثل f: «فرِیز»."
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Learn the new words and ___ from the lesson.",
+            "answer": "phrases",
+            "accept": [
+              "sentences"
+            ],
+            "fa": "کلمه‌ها و عبارت‌های جدیدِ درس را یاد بگیر.",
+            "why": "words and phrases."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Learn these ___ before your trip.",
+            "options": [
+              {
+                "text": "phrases",
+                "ok": true,
+                "why": "these + اسمِ جمع."
+              },
+              {
+                "text": "phrase",
+                "ok": false,
+                "why": "بعد از these جمع لازم است."
+              },
+              {
+                "text": "phrasing",
+                "ok": false,
+                "why": "phrasing اینجا معنی ندارد."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "این عبارت را نمی‌فهمم.",
+            "frame": "I don't understand this ___.",
+            "answer": "phrase",
+            "accept": [
+              "sentence"
+            ],
+            "why": "this phrase."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:pig",
+    "headword": "pig",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:pig",
+        "pos": "noun",
+        "gloss": "خوک",
+        "meaning": "حیوانِ مزرعه با بدنِ چاق و دمِ کوتاه.",
+        "grammar": [
+          {
+            "pattern": "a pig / pigs",
+            "note": "مفرد / جمع"
+          },
+          {
+            "pattern": "a farm with pigs",
+            "note": "مزرعه با خوک"
+          },
+          {
+            "pattern": "pig / big",
+            "note": "تلفظِ نزدیک"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Pigs eat almost everything.",
+            "fa": "خوک‌ها تقریباً همه چیز می‌خورند."
+          },
+          {
+            "en": "The farmer has ten pigs.",
+            "fa": "کشاورز ده خوک دارد."
+          }
+        ],
+        "collocations": [
+          "a fat pig",
+          "a little pig",
+          "pigs and cows",
+          "a pig farm"
+        ],
+        "mistake": {
+          "wrong": "I saw a big pigs on the farm.",
+          "right": "I saw a big pig on the farm.",
+          "why": "بعد از a اسمِ مفرد می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/pɪɡ/",
+          "us": "/pɪɡ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "A ___ is a fat pink animal on a farm.",
+            "answer": "pig",
+            "accept": [],
+            "fa": "خوک حیوانِ چاق و صورتیِ مزرعه است.",
+            "why": "pig = خوک."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How many ___ are on the farm?",
+            "options": [
+              {
+                "text": "pigs",
+                "ok": true,
+                "why": "how many + اسمِ جمع."
+              },
+              {
+                "text": "pig",
+                "ok": false,
+                "why": "بعد از how many جمع لازم است."
+              },
+              {
+                "text": "big",
+                "ok": false,
+                "why": "big یعنی بزرگ."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "خوک حیوانِ باهوشی است.",
+            "frame": "A ___ is a clever animal.",
+            "answer": "pig",
+            "accept": [],
+            "why": "a pig."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:pink",
+    "headword": "pink",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:pink",
+        "pos": "adjective",
+        "gloss": "صورتی",
+        "meaning": "رنگی بینِ قرمز و سفید. صفت است و جمع بسته نمی‌شود؛ اسمِ رنگ هم هست: Pink is her favourite colour.",
+        "grammar": [
+          {
+            "pattern": "pink + noun",
+            "note": "a pink dress"
+          },
+          {
+            "pattern": "be pink",
+            "note": "صورتی بودن"
+          },
+          {
+            "pattern": "light / bright pink",
+            "note": "صورتیِ روشن / پررنگ"
+          }
+        ],
+        "examples": [
+          {
+            "en": "She's wearing a pink dress.",
+            "fa": "یک لباسِ صورتی پوشیده."
+          },
+          {
+            "en": "I don't like pink.",
+            "fa": "رنگِ صورتی را دوست ندارم."
+          }
+        ],
+        "collocations": [
+          "bright pink",
+          "light pink",
+          "a pink dress",
+          "pink flowers"
+        ],
+        "mistake": {
+          "wrong": "Her shoes are pinks.",
+          "right": "Her shoes are pink.",
+          "why": "صفت جمع بسته نمی‌شود."
+        },
+        "pronunciation": {
+          "gb": "/pɪŋk/",
+          "us": "/pɪŋk/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Red and white make ___.",
+            "answer": "pink",
+            "accept": [],
+            "fa": "قرمز و سفید صورتی می‌سازند.",
+            "why": "قرمز + سفید = صورتی."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "She has a ___ bike.",
+            "options": [
+              {
+                "text": "pink",
+                "ok": true,
+                "why": "صفت قبل از اسم، بدون s."
+              },
+              {
+                "text": "pinks",
+                "ok": false,
+                "why": "صفت جمع بسته نمی‌شود."
+              },
+              {
+                "text": "pink colour",
+                "ok": false,
+                "why": "بعد از a + صفت، colour لازم نیست."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "یک لباسِ صورتی خرید.",
+            "frame": "She bought a ___ dress.",
+            "answer": "pink",
+            "accept": [],
+            "why": "a pink dress."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:policeman",
+    "headword": "policeman",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:policeman",
+        "pos": "noun",
+        "gloss": "پلیس (مرد)",
+        "meaning": "مردی که در پلیس کار می‌کند. جمع: policemen. برای زن policewoman؛ کلمهٔ عمومی: police officer.",
+        "grammar": [
+          {
+            "pattern": "a policeman / two policemen",
+            "note": "جمعِ بی‌قاعده"
+          },
+          {
+            "pattern": "police officer",
+            "note": "عمومی، برای زن و مرد"
+          },
+          {
+            "pattern": "policewoman",
+            "note": "پلیسِ زن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The policeman helped the old woman across the road.",
+            "fa": "پلیس به پیرزن کمک کرد از خیابان رد شود."
+          },
+          {
+            "en": "Ask a policeman if you are lost.",
+            "fa": "اگر گم شدی از یک پلیس بپرس."
+          }
+        ],
+        "collocations": [
+          "a young policeman",
+          "two policemen",
+          "a police officer",
+          "ask a policeman"
+        ],
+        "mistake": {
+          "wrong": "Two policemans came to our house.",
+          "right": "Two policemen came to our house.",
+          "why": "جمعِ policeman مثل man: policemen."
+        },
+        "pronunciation": {
+          "gb": "/pəˈliːsmən/",
+          "us": "/pəˈliːsmən/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "A ___ stopped the car and asked for the driver's name.",
+            "answer": "policeman",
+            "accept": [
+              "police officer",
+              "policewoman"
+            ],
+            "fa": "یک پلیس ماشین را نگه داشت و اسمِ راننده را پرسید.",
+            "why": "policeman = پلیس."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "There are three ___ outside the bank.",
+            "options": [
+              {
+                "text": "policemen",
+                "ok": true,
+                "why": "جمعِ policeman: policemen."
+              },
+              {
+                "text": "policemans",
+                "ok": false,
+                "why": "جمعِ policeman بی‌قاعده است."
+              },
+              {
+                "text": "policeman",
+                "ok": false,
+                "why": "با three جمع لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "پدرش پلیس است.",
+            "frame": "His father is a ___.",
+            "answer": "policeman",
+            "accept": [
+              "police officer"
+            ],
+            "why": "a policeman."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:potato",
+    "headword": "potato",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:potato",
+        "pos": "noun",
+        "gloss": "سیب‌زمینی",
+        "meaning": "سبزیِ زیرِ خاک که آن را می‌پزند یا سرخ می‌کنند. جمع: potatoes (با e).",
+        "grammar": [
+          {
+            "pattern": "potato / potatoes",
+            "note": "مفرد / جمع"
+          },
+          {
+            "pattern": "potato + noun",
+            "note": "potato soup"
+          },
+          {
+            "pattern": "chips / fries",
+            "note": "سیب‌زمینی سرخ‌کرده"
+          }
+        ],
+        "examples": [
+          {
+            "en": "We had chicken and potatoes for dinner.",
+            "fa": "شام مرغ و سیب‌زمینی خوردیم."
+          },
+          {
+            "en": "Potatoes are cheap at the market.",
+            "fa": "در بازار سیب‌زمینی ارزان است."
+          }
+        ],
+        "collocations": [
+          "a baked potato",
+          "potato soup",
+          "a kilo of potatoes",
+          "boiled potatoes"
+        ],
+        "mistake": {
+          "wrong": "These potato are very big.",
+          "right": "These potatoes are very big.",
+          "why": "these + اسمِ جمع: potatoes."
+        },
+        "pronunciation": {
+          "gb": "/pəˈteɪtəʊ/",
+          "us": "/pəˈteɪtoʊ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Chips are made from ___.",
+            "answer": "potatoes",
+            "accept": [
+              "potato"
+            ],
+            "fa": "چیپس از سیب‌زمینی درست می‌شود.",
+            "why": "potatoes = سیب‌زمینی‌ها."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How many ___ do we need?",
+            "options": [
+              {
+                "text": "potatoes",
+                "ok": true,
+                "why": "جمع با es: potatoes."
+              },
+              {
+                "text": "potatos",
+                "ok": false,
+                "why": "جمعِ potato با e است."
+              },
+              {
+                "text": "potato",
+                "ok": false,
+                "why": "بعد از how many جمع لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "سیب‌زمینی دوست دارم.",
+            "frame": "I like ___.",
+            "answer": "potatoes",
+            "accept": [],
+            "why": "potatoes = سیب‌زمینی."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:pound",
+    "headword": "pound",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:pound",
+        "pos": "noun",
+        "gloss": "پوند",
+        "meaning": "پولِ بریتانیا (£). جمعش pounds است. واحدِ وزن هم هست (حدودِ نیم کیلو).",
+        "grammar": [
+          {
+            "pattern": "number + pounds",
+            "note": "five pounds"
+          },
+          {
+            "pattern": "£ / pounds",
+            "note": "یکی کافی است: £5 یا five pounds"
+          },
+          {
+            "pattern": "a pound coin",
+            "note": "سکهٔ یک‌پوندی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The ticket costs twenty pounds.",
+            "fa": "بلیت بیست پوند است."
+          },
+          {
+            "en": "Bread costs about one pound here.",
+            "fa": "اینجا نان حدودِ یک پوند است."
+          }
+        ],
+        "collocations": [
+          "five pounds",
+          "a pound coin",
+          "pay in pounds",
+          "a hundred pounds"
+        ],
+        "mistake": {
+          "wrong": "It costs £5 pounds.",
+          "right": "It costs £5.",
+          "why": "یا علامتِ £ یا کلمهٔ pounds؛ هر دو با هم نمی‌آیند."
+        },
+        "pronunciation": {
+          "gb": "/paʊnd/",
+          "us": "/paʊnd/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "In the UK, people pay in ___.",
+            "answer": "pounds",
+            "accept": [
+              "pound"
+            ],
+            "fa": "در بریتانیا مردم با پوند پرداخت می‌کنند.",
+            "why": "pay in pounds."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "This shirt costs ten ___.",
+            "options": [
+              {
+                "text": "pounds",
+                "ok": true,
+                "why": "با ten جمع لازم است."
+              },
+              {
+                "text": "pound's",
+                "ok": false,
+                "why": "اینجا ' لازم نیست."
+              },
+              {
+                "text": "a pound",
+                "ok": false,
+                "why": "با ten، a نمی‌آید."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "بیست پوند لازم دارم.",
+            "frame": "I need twenty ___.",
+            "answer": "pounds",
+            "accept": [],
+            "why": "twenty pounds."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:probably",
+    "headword": "probably",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:probably",
+        "pos": "adverb",
+        "gloss": "احتمالاً",
+        "meaning": "یعنی به احتمالِ زیاد؛ از maybe مطمئن‌تر است. جایش: قبل از فعلِ اصلی (will probably come) و بعد از be (is probably).",
+        "grammar": [
+          {
+            "pattern": "will probably + verb",
+            "note": "احتمالاً … می‌کند"
+          },
+          {
+            "pattern": "be + probably",
+            "note": "is probably"
+          },
+          {
+            "pattern": "probably not",
+            "note": "احتمالاً نه"
+          }
+        ],
+        "examples": [
+          {
+            "en": "It will probably rain tomorrow.",
+            "fa": "احتمالاً فردا باران می‌بارد."
+          },
+          {
+            "en": "She's probably at home now.",
+            "fa": "احتمالاً الان خانه است."
+          }
+        ],
+        "collocations": [
+          "probably not",
+          "will probably",
+          "most probably",
+          "probably the best"
+        ],
+        "mistake": {
+          "wrong": "I will come probably tomorrow.",
+          "right": "I will probably come tomorrow.",
+          "why": "probably قبل از فعلِ اصلی می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/ˈprɒbəbli/",
+          "us": "/ˈprɑːbəbli/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "The sky is dark. It will ___ rain.",
+            "answer": "probably",
+            "accept": [
+              "perhaps"
+            ],
+            "fa": "آسمان تیره است. احتمالاً باران می‌بارد.",
+            "why": "will probably + فعل."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "He's ___ at work now.",
+            "options": [
+              {
+                "text": "probably",
+                "ok": true,
+                "why": "بعد از be: is probably."
+              },
+              {
+                "text": "probable",
+                "ok": false,
+                "why": "probable صفت است؛ اینجا قید لازم است."
+              },
+              {
+                "text": "probability",
+                "ok": false,
+                "why": "probability اسم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "احتمالاً فردا می‌آیم.",
+            "frame": "I'll ___ come tomorrow.",
+            "answer": "probably",
+            "accept": [],
+            "why": "will probably + فعل."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:purple",
+    "headword": "purple",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:purple",
+        "pos": "adjective",
+        "gloss": "بنفش",
+        "meaning": "رنگی بینِ قرمز و آبی. صفت است و جمع بسته نمی‌شود؛ اسمِ رنگ هم هست و معمولاً بدون the می‌آید: I like purple.",
+        "grammar": [
+          {
+            "pattern": "purple + noun",
+            "note": "a purple shirt"
+          },
+          {
+            "pattern": "be purple",
+            "note": "بنفش بودن"
+          },
+          {
+            "pattern": "dark / light purple",
+            "note": "بنفشِ تیره / روشن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "These flowers are purple.",
+            "fa": "این گل‌ها بنفش‌اند."
+          },
+          {
+            "en": "He's wearing a purple shirt.",
+            "fa": "یک پیراهنِ بنفش پوشیده."
+          }
+        ],
+        "collocations": [
+          "dark purple",
+          "light purple",
+          "a purple shirt",
+          "purple flowers"
+        ],
+        "mistake": {
+          "wrong": "My favourite colour is the purple.",
+          "right": "My favourite colour is purple.",
+          "why": "اسمِ رنگ به‌تنهایی the نمی‌گیرد."
+        },
+        "pronunciation": {
+          "gb": "/ˈpɜːpl/",
+          "us": "/ˈpɜːrpl/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Red and blue make ___.",
+            "answer": "purple",
+            "accept": [],
+            "fa": "قرمز و آبی بنفش می‌سازند.",
+            "why": "قرمز + آبی = بنفش."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Her new phone is ___.",
+            "options": [
+              {
+                "text": "purple",
+                "ok": true,
+                "why": "بعد از is خودِ رنگ می‌آید."
+              },
+              {
+                "text": "purples",
+                "ok": false,
+                "why": "صفت جمع بسته نمی‌شود."
+              },
+              {
+                "text": "purple colour",
+                "ok": false,
+                "why": "بعد از is خودِ رنگ کافی است؛ colour لازم نیست."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "بنفش رنگِ موردِ علاقه‌ام است.",
+            "frame": "___ is my favourite colour.",
+            "answer": "Purple",
+            "accept": [],
+            "why": "Purple = بنفش."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:reader",
+    "headword": "reader",
+    "goals": [
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:reader",
+        "pos": "noun",
+        "gloss": "خواننده؛ کتاب‌خوان",
+        "meaning": "کسی که می‌خواند، مثلاً کتاب یا مجله: a good reader. «خواننده» به معنیِ آوازخوان singer است، نه reader.",
+        "grammar": [
+          {
+            "pattern": "a good / fast reader",
+            "note": "کتاب‌خوانِ خوب / تندخوان"
+          },
+          {
+            "pattern": "read → reader",
+            "note": "فعل → شخص"
+          },
+          {
+            "pattern": "readers of + magazine",
+            "note": "خوانندگانِ …"
+          }
+        ],
+        "examples": [
+          {
+            "en": "She's a fast reader.",
+            "fa": "او تند می‌خواند."
+          },
+          {
+            "en": "This magazine has a lot of readers.",
+            "fa": "این مجله خوانندهٔ زیادی دارد."
+          }
+        ],
+        "collocations": [
+          "a good reader",
+          "a fast reader",
+          "young readers",
+          "dear reader"
+        ],
+        "usage": "«خوانندهٔ پاپ» در انگلیسی pop singer است.",
+        "mistake": {
+          "wrong": "My sister is a very good read.",
+          "right": "My sister is a very good reader.",
+          "why": "شخص: reader؛ read فعل است."
+        },
+        "pronunciation": {
+          "gb": "/ˈriːdə/",
+          "us": "/ˈriːdər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "She reads three books a week. She's a great ___.",
+            "answer": "reader",
+            "accept": [],
+            "fa": "هفته‌ای سه کتاب می‌خواند. کتاب‌خوانِ فوق‌العاده‌ای است.",
+            "why": "reader = کتاب‌خوان."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "A person who reads a lot is a good ___.",
+            "options": [
+              {
+                "text": "reader",
+                "ok": true,
+                "why": "read → reader."
+              },
+              {
+                "text": "reading",
+                "ok": false,
+                "why": "reading کارِ خواندن است، نه شخص."
+              },
+              {
+                "text": "singer",
+                "ok": false,
+                "why": "singer کسی است که آواز می‌خواند."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "او کتاب‌خوانِ خوبی است.",
+            "frame": "He's a good ___.",
+            "answer": "reader",
+            "accept": [],
+            "why": "a good reader."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:seventeen",
+    "headword": "seventeen",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:seventeen",
+        "pos": "number",
+        "gloss": "هفده",
+        "meaning": "عدد ۱۷. تکیه روی بخشِ دوم است؛ seventy (۷۰) تکیه روی بخشِ اول.",
+        "grammar": [
+          {
+            "pattern": "seventeen + plural noun",
+            "note": "seventeen years"
+          },
+          {
+            "pattern": "seventeen / seventy",
+            "note": "۱۷ / ۷۰"
+          },
+          {
+            "pattern": "seventeenth",
+            "note": "هفدهم"
+          }
+        ],
+        "examples": [
+          {
+            "en": "My brother is seventeen.",
+            "fa": "برادرم هفده سال دارد."
+          },
+          {
+            "en": "The bus leaves in seventeen minutes.",
+            "fa": "اتوبوس هفده دقیقهٔ دیگر حرکت می‌کند."
+          }
+        ],
+        "collocations": [
+          "seventeen years old",
+          "seventeen people",
+          "at seventeen",
+          "seventeen minutes"
+        ],
+        "mistake": {
+          "wrong": "She is seventen.",
+          "right": "She is seventeen.",
+          "why": "املا: seventeen، با دو e."
+        },
+        "pronunciation": {
+          "gb": "/ˌsevnˈtiːn/",
+          "us": "/ˌsevnˈtiːn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Ten and seven make ___.",
+            "answer": "seventeen",
+            "accept": [
+              "17"
+            ],
+            "fa": "ده و هفت می‌شود هفده.",
+            "why": "۱۰ + ۷ = ۱۷."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How do you write 17 in words?",
+            "options": [
+              {
+                "text": "seventeen",
+                "ok": true,
+                "why": "۱۷ = seventeen."
+              },
+              {
+                "text": "seventy",
+                "ok": false,
+                "why": "seventy = ۷۰."
+              },
+              {
+                "text": "seventen",
+                "ok": false,
+                "why": "املای درست: seventeen."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "هفده سالم است.",
+            "frame": "I'm ___.",
+            "answer": "seventeen",
+            "accept": [
+              "17"
+            ],
+            "why": "seventeen = هفده."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:seventy",
+    "headword": "seventy",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:seventy",
+        "pos": "number",
+        "gloss": "هفتاد",
+        "meaning": "عدد ۷۰. seventy-one, seventy-two … با خط تیره. تکیه روی بخشِ اول.",
+        "grammar": [
+          {
+            "pattern": "seventy + plural noun",
+            "note": "seventy pages"
+          },
+          {
+            "pattern": "seventy-one, seventy-two …",
+            "note": "با خط تیره"
+          },
+          {
+            "pattern": "seventy / seventeen",
+            "note": "۷۰ / ۱۷"
+          }
+        ],
+        "examples": [
+          {
+            "en": "My grandmother is seventy-five.",
+            "fa": "مادربزرگم هفتادوپنج سال دارد."
+          },
+          {
+            "en": "The book has seventy pages.",
+            "fa": "کتاب هفتاد صفحه دارد."
+          }
+        ],
+        "collocations": [
+          "seventy years old",
+          "seventy people",
+          "seventy-five",
+          "about seventy"
+        ],
+        "mistake": {
+          "wrong": "There are seventy student in the school.",
+          "right": "There are seventy students in the school.",
+          "why": "بعد از عدد اسمِ جمع می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/ˈsevnti/",
+          "us": "/ˈsevnti/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Sixty, ___, eighty.",
+            "answer": "seventy",
+            "accept": [
+              "70"
+            ],
+            "fa": "شصت، هفتاد، هشتاد.",
+            "why": "۷۰ = seventy."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How do you write 70 in words?",
+            "options": [
+              {
+                "text": "seventy",
+                "ok": true,
+                "why": "۷۰ = seventy."
+              },
+              {
+                "text": "seventeen",
+                "ok": false,
+                "why": "seventeen = ۱۷."
+              },
+              {
+                "text": "sevendy",
+                "ok": false,
+                "why": "املای درست: seventy."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "هفتاد نفر آمدند.",
+            "frame": "___ people came.",
+            "answer": "Seventy",
+            "accept": [
+              "70"
+            ],
+            "why": "seventy = هفتاد."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:shower",
+    "headword": "shower",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:shower",
+        "pos": "noun",
+        "gloss": "دوش",
+        "meaning": "وسیله‌ای که از بالا آب می‌ریزد و زیرِ آن خودمان را می‌شوییم. دوش گرفتن: have / take a shower.",
+        "grammar": [
+          {
+            "pattern": "have / take a shower",
+            "note": "دوش گرفتن"
+          },
+          {
+            "pattern": "in the shower",
+            "note": "زیرِ دوش"
+          },
+          {
+            "pattern": "a hot / cold shower",
+            "note": "دوشِ آبِ گرم / سرد"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I have a shower every morning.",
+            "fa": "هر صبح دوش می‌گیرم."
+          },
+          {
+            "en": "Our bathroom has a shower but no bath.",
+            "fa": "حمامِ ما دوش دارد ولی وان ندارد."
+          }
+        ],
+        "collocations": [
+          "have a shower",
+          "take a shower",
+          "a hot shower",
+          "in the shower"
+        ],
+        "mistake": {
+          "wrong": "I do a shower after the gym.",
+          "right": "I have a shower after the gym.",
+          "why": "دوش گرفتن: have / take a shower، نه do."
+        },
+        "pronunciation": {
+          "gb": "/ˈʃaʊə/",
+          "us": "/ˈʃaʊər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I'm going to have a ___ and then go to bed.",
+            "answer": "shower",
+            "accept": [
+              "bath"
+            ],
+            "fa": "می‌خواهم دوش بگیرم و بعد بخوابم.",
+            "why": "have a shower."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "I ___ a shower every morning.",
+            "options": [
+              {
+                "text": "take",
+                "ok": true,
+                "why": "take a shower."
+              },
+              {
+                "text": "do",
+                "ok": false,
+                "why": "do a shower غلط است."
+              },
+              {
+                "text": "make",
+                "ok": false,
+                "why": "make a shower غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "دارم دوش می‌گیرم.",
+            "frame": "I'm having a ___.",
+            "answer": "shower",
+            "accept": [],
+            "why": "have a shower."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:sing",
+    "headword": "sing",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:sing",
+        "pos": "verb",
+        "gloss": "آواز خواندن",
+        "meaning": "با صدا آهنگ خواندن. بی‌قاعده: sing – sang – sung. کسی که آواز می‌خواند: singer.",
+        "grammar": [
+          {
+            "pattern": "sing – sang – sung",
+            "note": "بی‌قاعده"
+          },
+          {
+            "pattern": "sing a song",
+            "note": "آهنگ خواندن"
+          },
+          {
+            "pattern": "sing → singer",
+            "note": "فعل → شخص"
+          }
+        ],
+        "examples": [
+          {
+            "en": "She sings in a band.",
+            "fa": "او در یک گروهِ موسیقی می‌خواند."
+          },
+          {
+            "en": "We sang happy birthday to him.",
+            "fa": "برایش تولدت مبارک خواندیم."
+          }
+        ],
+        "collocations": [
+          "sing a song",
+          "sing well",
+          "sing along",
+          "sing together"
+        ],
+        "mistake": {
+          "wrong": "Yesterday we sing at the party.",
+          "right": "Yesterday we sang at the party.",
+          "why": "گذشتهٔ sing بی‌قاعده است: sang."
+        },
+        "pronunciation": {
+          "gb": "/sɪŋ/",
+          "us": "/sɪŋ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "She has a beautiful voice. She ___ very well.",
+            "answer": "sings",
+            "accept": [],
+            "fa": "صدای قشنگی دارد. خیلی خوب آواز می‌خواند.",
+            "why": "حالِ ساده با she: sings."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Last night they ___ songs around the fire.",
+            "options": [
+              {
+                "text": "sang",
+                "ok": true,
+                "why": "گذشتهٔ sing: sang."
+              },
+              {
+                "text": "sung",
+                "ok": false,
+                "why": "sung بدون have نمی‌آید."
+              },
+              {
+                "text": "singing",
+                "ok": false,
+                "why": "بدون were، شکلِ ing کامل نیست."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "دوست دارم آواز بخوانم.",
+            "frame": "I love to ___.",
+            "answer": "sing",
+            "accept": [],
+            "why": "love to + فعل."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:sixteen",
+    "headword": "sixteen",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:sixteen",
+        "pos": "number",
+        "gloss": "شانزده",
+        "meaning": "عدد ۱۶. تکیه روی بخشِ دوم است؛ sixty (۶۰) تکیه روی بخشِ اول.",
+        "grammar": [
+          {
+            "pattern": "sixteen + plural noun",
+            "note": "sixteen years"
+          },
+          {
+            "pattern": "sixteen / sixty",
+            "note": "۱۶ / ۶۰"
+          },
+          {
+            "pattern": "sixteenth",
+            "note": "شانزدهم"
+          }
+        ],
+        "examples": [
+          {
+            "en": "My cousin is sixteen.",
+            "fa": "پسرخاله‌ام شانزده سال دارد."
+          },
+          {
+            "en": "I was sixteen when I started work.",
+            "fa": "وقتی کار را شروع کردم شانزده ساله بودم."
+          }
+        ],
+        "collocations": [
+          "sixteen years old",
+          "sixteen people",
+          "at sixteen",
+          "sixteen pages"
+        ],
+        "mistake": {
+          "wrong": "He is sixten.",
+          "right": "He is sixteen.",
+          "why": "املا: sixteen، با دو e."
+        },
+        "pronunciation": {
+          "gb": "/ˌsɪksˈtiːn/",
+          "us": "/ˌsɪksˈtiːn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Eight and eight make ___.",
+            "answer": "sixteen",
+            "accept": [
+              "16"
+            ],
+            "fa": "هشت و هشت می‌شود شانزده.",
+            "why": "۸ + ۸ = ۱۶."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How do you write 16 in words?",
+            "options": [
+              {
+                "text": "sixteen",
+                "ok": true,
+                "why": "۱۶ = sixteen."
+              },
+              {
+                "text": "sixty",
+                "ok": false,
+                "why": "sixty = ۶۰."
+              },
+              {
+                "text": "sixten",
+                "ok": false,
+                "why": "املای درست: sixteen."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "او شانزده سال دارد.",
+            "frame": "She's ___.",
+            "answer": "sixteen",
+            "accept": [
+              "16"
+            ],
+            "why": "sixteen = شانزده."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:somebody",
+    "headword": "somebody",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:somebody",
+        "pos": "pronoun",
+        "gloss": "کسی؛ یک نفر",
+        "meaning": "یک نفر که نمی‌دانیم یا نمی‌گوییم کیست؛ هم‌معنیِ someone. فعلش مفرد است. در سؤال و جملهٔ منفی معمولاً anybody.",
+        "grammar": [
+          {
+            "pattern": "somebody + singular verb",
+            "note": "Somebody is …"
+          },
+          {
+            "pattern": "somebody = someone",
+            "note": "هم‌معنی"
+          },
+          {
+            "pattern": "somebody / anybody",
+            "note": "مثبت / منفی و سؤال"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Somebody called you this morning.",
+            "fa": "امروز صبح کسی به تو زنگ زد."
+          },
+          {
+            "en": "Can somebody help me, please?",
+            "fa": "کسی می‌تواند کمکم کند؟"
+          }
+        ],
+        "collocations": [
+          "somebody else",
+          "somebody new",
+          "ask somebody",
+          "somebody special"
+        ],
+        "mistake": {
+          "wrong": "Somebody are waiting for you.",
+          "right": "Somebody is waiting for you.",
+          "why": "somebody فعلِ مفرد می‌گیرد."
+        },
+        "pronunciation": {
+          "gb": "/ˈsʌmbədi/",
+          "us": "/ˈsʌmbɑːdi/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I can hear ___ in the kitchen. Who is it?",
+            "answer": "somebody",
+            "accept": [
+              "someone"
+            ],
+            "fa": "صدای کسی را در آشپزخانه می‌شنوم. کیست؟",
+            "why": "somebody = کسی."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "___ left a bag on the bus.",
+            "options": [
+              {
+                "text": "Somebody",
+                "ok": true,
+                "why": "جملهٔ مثبت: somebody."
+              },
+              {
+                "text": "Anybody",
+                "ok": false,
+                "why": "در جملهٔ مثبتِ خبری somebody می‌آید."
+              },
+              {
+                "text": "Some body",
+                "ok": false,
+                "why": "somebody یک کلمه است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "کسی پشتِ در است.",
+            "frame": "There's ___ at the door.",
+            "answer": "somebody",
+            "accept": [
+              "someone"
+            ],
+            "why": "somebody = کسی."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:south",
+    "headword": "south",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:south",
+        "pos": "noun",
+        "gloss": "جنوب",
+        "meaning": "جهتِ جنوب، مقابلِ north. in the south of = در جنوبِ …. به‌صورت صفت و قید هم: the south side، go south.",
+        "grammar": [
+          {
+            "pattern": "in the south (of)",
+            "note": "در جنوب"
+          },
+          {
+            "pattern": "south of + place",
+            "note": "جنوبِ جایی"
+          },
+          {
+            "pattern": "go / fly south",
+            "note": "به سمتِ جنوب رفتن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "My family lives in the south of Iran.",
+            "fa": "خانواده‌ام در جنوبِ ایران زندگی می‌کنند."
+          },
+          {
+            "en": "Some birds fly south in winter.",
+            "fa": "بعضی پرنده‌ها زمستان به جنوب می‌روند."
+          }
+        ],
+        "collocations": [
+          "in the south",
+          "the south of",
+          "go south",
+          "north and south"
+        ],
+        "mistake": {
+          "wrong": "We went to south of the country.",
+          "right": "We went to the south of the country.",
+          "why": "قبل از south، the لازم است."
+        },
+        "pronunciation": {
+          "gb": "/saʊθ/",
+          "us": "/saʊθ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "The opposite of north is ___.",
+            "answer": "south",
+            "accept": [],
+            "fa": "متضادِ شمال جنوب است.",
+            "why": "north ↔ south."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "My aunt lives ___ the south of Iran.",
+            "options": [
+              {
+                "text": "in",
+                "ok": true,
+                "why": "in the south of."
+              },
+              {
+                "text": "on",
+                "ok": false,
+                "why": "on the south غلط است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "at the south غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "در جنوبِ شهر زندگی می‌کنیم.",
+            "frame": "We live in the ___ of the city.",
+            "answer": "south",
+            "accept": [],
+            "why": "in the south of."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:spelling",
+    "headword": "spelling",
+    "goals": [
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:spelling",
+        "pos": "noun",
+        "gloss": "املا",
+        "meaning": "شکلِ درستِ نوشتنِ یک کلمه با حروف. spell فعل است (هجی کردن)؛ spelling اسم است.",
+        "grammar": [
+          {
+            "pattern": "spelling (noun) / spell (verb)",
+            "note": "اسم / فعل"
+          },
+          {
+            "pattern": "a spelling mistake",
+            "note": "غلطِ املایی"
+          },
+          {
+            "pattern": "a spelling test",
+            "note": "امتحانِ املا"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Check your spelling before you finish.",
+            "fa": "قبل از تمام کردن املایت را بررسی کن."
+          },
+          {
+            "en": "We have a spelling test on Friday.",
+            "fa": "جمعه امتحانِ املا داریم."
+          }
+        ],
+        "collocations": [
+          "a spelling mistake",
+          "a spelling test",
+          "check your spelling",
+          "English spelling"
+        ],
+        "mistake": {
+          "wrong": "I made a lot of spell mistakes.",
+          "right": "I made a lot of spelling mistakes.",
+          "why": "اسم: spelling؛ spell فعل است."
+        },
+        "pronunciation": {
+          "gb": "/ˈspelɪŋ/",
+          "us": "/ˈspelɪŋ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "There's a ___ mistake in this word.",
+            "answer": "spelling",
+            "accept": [],
+            "fa": "در این کلمه یک غلطِ املایی هست.",
+            "why": "a spelling mistake."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "What's the correct ___ of this word?",
+            "options": [
+              {
+                "text": "spelling",
+                "ok": true,
+                "why": "اسم: spelling."
+              },
+              {
+                "text": "spell",
+                "ok": false,
+                "why": "spell فعل است."
+              },
+              {
+                "text": "speller",
+                "ok": false,
+                "why": "speller اینجا معنی نمی‌دهد."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "املایت خیلی خوب است.",
+            "frame": "Your ___ is very good.",
+            "answer": "spelling",
+            "accept": [],
+            "why": "spelling = املا."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:style",
+    "headword": "style",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:style",
+        "pos": "noun",
+        "gloss": "سبک؛ مدل",
+        "meaning": "شکل یا روشِ خاصِ انجامِ کاری، یا مدلِ لباس، مو و ساختمان: a style of music، her style.",
+        "grammar": [
+          {
+            "pattern": "a style of + noun",
+            "note": "سبکی از …"
+          },
+          {
+            "pattern": "in the … style",
+            "note": "به سبکِ …"
+          },
+          {
+            "pattern": "your / her style",
+            "note": "سبکِ تو / او"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I like your style.",
+            "fa": "از سبکت خوشم می‌آید."
+          },
+          {
+            "en": "The two buildings are in different styles.",
+            "fa": "دو ساختمان سبک‌های متفاوتی دارند."
+          }
+        ],
+        "collocations": [
+          "a new style",
+          "an old style",
+          "her own style",
+          "a style of music"
+        ],
+        "mistake": {
+          "wrong": "We have two different style.",
+          "right": "We have two different styles.",
+          "why": "با two اسمِ جمع لازم است."
+        },
+        "pronunciation": {
+          "gb": "/staɪl/",
+          "us": "/staɪl/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "I like the ___ of your new jacket.",
+            "answer": "style",
+            "accept": [
+              "colour",
+              "color"
+            ],
+            "fa": "مدلِ کتِ جدیدت را دوست دارم.",
+            "why": "style = مدل."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "These houses are in an old ___.",
+            "options": [
+              {
+                "text": "style",
+                "ok": true,
+                "why": "an old style."
+              },
+              {
+                "text": "styles",
+                "ok": false,
+                "why": "بعد از an اسمِ مفرد می‌آید."
+              },
+              {
+                "text": "stylish",
+                "ok": false,
+                "why": "stylish صفت است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "سبکِ لباس پوشیدنش را دوست دارم.",
+            "frame": "I like her ___.",
+            "answer": "style",
+            "accept": [],
+            "why": "her style."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:t-shirt",
+    "headword": "T-shirt",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:t-shirt",
+        "pos": "noun",
+        "gloss": "تی‌شرت",
+        "meaning": "پیراهنِ نخیِ آستین‌کوتاه بدونِ یقه و دکمه. با T بزرگ و خط تیره نوشته می‌شود.",
+        "grammar": [
+          {
+            "pattern": "a T-shirt / T-shirts",
+            "note": "مفرد / جمع"
+          },
+          {
+            "pattern": "wear a T-shirt",
+            "note": "تی‌شرت پوشیدن"
+          },
+          {
+            "pattern": "a white T-shirt",
+            "note": "تی‌شرتِ سفید"
+          }
+        ],
+        "examples": [
+          {
+            "en": "I always wear a T-shirt at the gym.",
+            "fa": "در باشگاه همیشه تی‌شرت می‌پوشم."
+          },
+          {
+            "en": "I bought three T-shirts.",
+            "fa": "سه تی‌شرت خریدم."
+          }
+        ],
+        "collocations": [
+          "a white T-shirt",
+          "a cotton T-shirt",
+          "wear a T-shirt",
+          "a T-shirt and jeans"
+        ],
+        "mistake": {
+          "wrong": "These T-shirt are cheap.",
+          "right": "These T-shirts are cheap.",
+          "why": "these + اسمِ جمع: T-shirts."
+        },
+        "pronunciation": {
+          "gb": "/ˈtiː ʃɜːt/",
+          "us": "/ˈtiː ʃɜːrt/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "It's hot today. I'll wear shorts and a ___.",
+            "answer": "T-shirt",
+            "accept": [
+              "shirt",
+              "tee shirt"
+            ],
+            "fa": "امروز گرم است. شلوارک و تی‌شرت می‌پوشم.",
+            "why": "a T-shirt."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "I have five ___.",
+            "options": [
+              {
+                "text": "T-shirts",
+                "ok": true,
+                "why": "با five جمع لازم است."
+              },
+              {
+                "text": "T-shirt",
+                "ok": false,
+                "why": "بعد از five اسمِ جمع لازم است."
+              },
+              {
+                "text": "T-shirtes",
+                "ok": false,
+                "why": "جمعِ T-shirt فقط s می‌گیرد."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "یک تی‌شرتِ سفید پوشیده.",
+            "frame": "He's wearing a white ___.",
+            "answer": "T-shirt",
+            "accept": [],
+            "why": "a white T-shirt."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:teenager",
+    "headword": "teenager",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:teenager",
+        "pos": "noun",
+        "gloss": "نوجوان",
+        "meaning": "کسی بین ۱۳ تا ۱۹ سال (thirteen تا nineteen، همهٔ عددهایی که teen دارند). teenage صفت است: a teenage boy.",
+        "grammar": [
+          {
+            "pattern": "a teenager",
+            "note": "یک نوجوان"
+          },
+          {
+            "pattern": "teenager / teenage",
+            "note": "اسم / صفت"
+          },
+          {
+            "pattern": "when I was a teenager",
+            "note": "وقتی نوجوان بودم"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Most teenagers love their phones.",
+            "fa": "بیشترِ نوجوان‌ها عاشقِ گوشی‌شان هستند."
+          },
+          {
+            "en": "When I was a teenager, I played football every day.",
+            "fa": "وقتی نوجوان بودم هر روز فوتبال بازی می‌کردم."
+          }
+        ],
+        "collocations": [
+          "a young teenager",
+          "teenagers and adults",
+          "as a teenager",
+          "teenagers today"
+        ],
+        "mistake": {
+          "wrong": "He is a teenage.",
+          "right": "He is a teenager.",
+          "why": "اسم: teenager؛ teenage صفت است: a teenage boy."
+        },
+        "pronunciation": {
+          "gb": "/ˈtiːneɪdʒə/",
+          "us": "/ˈtiːneɪdʒər/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "She's fifteen. She's a ___.",
+            "answer": "teenager",
+            "accept": [],
+            "fa": "او پانزده سال دارد. نوجوان است.",
+            "why": "teenager = نوجوان."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "People from thirteen to nineteen are ___.",
+            "options": [
+              {
+                "text": "teenagers",
+                "ok": true,
+                "why": "۱۳ تا ۱۹ سال: teenagers."
+              },
+              {
+                "text": "adults",
+                "ok": false,
+                "why": "adults بزرگسال‌اند."
+              },
+              {
+                "text": "babies",
+                "ok": false,
+                "why": "babies نوزادند."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "آن‌ها دو بچهٔ نوجوان دارند.",
+            "frame": "They have two ___.",
+            "answer": "teenagers",
+            "accept": [],
+            "why": "two teenagers."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:thirsty",
+    "headword": "thirsty",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:thirsty",
+        "pos": "adjective",
+        "gloss": "تشنه",
+        "meaning": "وقتی می‌خواهی آب یا نوشیدنی بخوری. در انگلیسی با be می‌آید: I'm thirsty، نه I have thirsty.",
+        "grammar": [
+          {
+            "pattern": "be / feel thirsty",
+            "note": "تشنه بودن"
+          },
+          {
+            "pattern": "make somebody thirsty",
+            "note": "تشنه کردن"
+          },
+          {
+            "pattern": "thirsty / hungry",
+            "note": "تشنه / گرسنه"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Can I have some water? I'm very thirsty.",
+            "fa": "می‌شود کمی آب بدهید؟ خیلی تشنه‌ام."
+          },
+          {
+            "en": "After the game, everybody was hot and thirsty.",
+            "fa": "بعد از بازی همه گرم‌شان بود و تشنه بودند."
+          }
+        ],
+        "collocations": [
+          "very thirsty",
+          "feel thirsty",
+          "hungry and thirsty",
+          "get thirsty"
+        ],
+        "mistake": {
+          "wrong": "I have thirsty.",
+          "right": "I'm thirsty.",
+          "why": "تشنه بودن با be است: I'm thirsty."
+        },
+        "pronunciation": {
+          "gb": "/ˈθɜːsti/",
+          "us": "/ˈθɜːrsti/",
+          "note": "با thirty (سی) اشتباه نکن: thirsty یک s دارد."
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "It's very hot. I'm ___. Can I have a drink?",
+            "answer": "thirsty",
+            "accept": [],
+            "fa": "خیلی گرم است. تشنه‌ام. می‌شود یک نوشیدنی بخورم؟",
+            "why": "thirsty = تشنه."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "I'm ___. I need some water.",
+            "options": [
+              {
+                "text": "thirsty",
+                "ok": true,
+                "why": "آب برای تشنگی است."
+              },
+              {
+                "text": "hungry",
+                "ok": false,
+                "why": "hungry یعنی گرسنه."
+              },
+              {
+                "text": "thirty",
+                "ok": false,
+                "why": "thirty یعنی سی."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "تشنه‌ام.",
+            "frame": "I'm ___.",
+            "answer": "thirsty",
+            "accept": [],
+            "why": "I'm thirsty."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:thirteen",
+    "headword": "thirteen",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:thirteen",
+        "pos": "number",
+        "gloss": "سیزده",
+        "meaning": "عدد ۱۳. تکیه روی بخشِ دوم است؛ thirty (۳۰) تکیه روی بخشِ اول.",
+        "grammar": [
+          {
+            "pattern": "thirteen + plural noun",
+            "note": "thirteen years"
+          },
+          {
+            "pattern": "thirteen / thirty",
+            "note": "۱۳ / ۳۰"
+          },
+          {
+            "pattern": "thirteenth",
+            "note": "سیزدهم"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Thirteen is my lucky number.",
+            "fa": "سیزده عددِ خوش‌شانسیِ من است."
+          },
+          {
+            "en": "I lived there for thirteen years.",
+            "fa": "سیزده سال آنجا زندگی کردم."
+          }
+        ],
+        "collocations": [
+          "thirteen years old",
+          "thirteen people",
+          "at thirteen",
+          "number thirteen"
+        ],
+        "mistake": {
+          "wrong": "She is threeteen.",
+          "right": "She is thirteen.",
+          "why": "املا: thirteen (نه threeteen)."
+        },
+        "pronunciation": {
+          "gb": "/ˌθɜːˈtiːn/",
+          "us": "/ˌθɜːrˈtiːn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Ten and three make ___.",
+            "answer": "thirteen",
+            "accept": [
+              "13"
+            ],
+            "fa": "ده و سه می‌شود سیزده.",
+            "why": "۱۰ + ۳ = ۱۳."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "How do you write 13 in words?",
+            "options": [
+              {
+                "text": "thirteen",
+                "ok": true,
+                "why": "۱۳ = thirteen."
+              },
+              {
+                "text": "thirty",
+                "ok": false,
+                "why": "thirty = ۳۰."
+              },
+              {
+                "text": "threeteen",
+                "ok": false,
+                "why": "املای درست: thirteen."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "پسرم سیزده سال دارد.",
+            "frame": "My son is ___.",
+            "answer": "thirteen",
+            "accept": [
+              "13"
+            ],
+            "why": "thirteen = سیزده."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:thursday",
+    "headword": "Thursday",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:thursday",
+        "pos": "noun",
+        "gloss": "پنجشنبه",
+        "meaning": "روزِ بعد از چهارشنبه. با حرف بزرگ و با on می‌آید.",
+        "grammar": [
+          {
+            "pattern": "on Thursday / on Thursdays",
+            "note": "پنجشنبه / پنجشنبه‌ها"
+          },
+          {
+            "pattern": "next / last Thursday",
+            "note": "بدون on"
+          },
+          {
+            "pattern": "Thursday morning",
+            "note": "پنجشنبه صبح"
+          }
+        ],
+        "examples": [
+          {
+            "en": "We have football practice on Thursdays.",
+            "fa": "پنجشنبه‌ها تمرینِ فوتبال داریم."
+          },
+          {
+            "en": "The meeting is on Thursday morning.",
+            "fa": "جلسه پنجشنبه صبح است."
+          }
+        ],
+        "collocations": [
+          "on Thursday",
+          "next Thursday",
+          "Thursday evening",
+          "every Thursday"
+        ],
+        "mistake": {
+          "wrong": "I'll see you at Thursday.",
+          "right": "I'll see you on Thursday.",
+          "why": "با روز on می‌آید؛ at برای ساعت است."
+        },
+        "pronunciation": {
+          "gb": "/ˈθɜːzdeɪ/",
+          "us": "/ˈθɜːrzdeɪ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Wednesday, ___, Friday.",
+            "answer": "Thursday",
+            "accept": [],
+            "fa": "چهارشنبه، پنجشنبه، جمعه.",
+            "why": "روزِ بعد از Wednesday: Thursday."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "The shop is closed ___ Thursday afternoon.",
+            "options": [
+              {
+                "text": "on",
+                "ok": true,
+                "why": "on + روز."
+              },
+              {
+                "text": "in",
+                "ok": false,
+                "why": "in برای ماه و فصل است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "at برای ساعت است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "پنجشنبه‌ها خانه‌ام.",
+            "frame": "I'm at home on ___.",
+            "answer": "Thursdays",
+            "accept": [
+              "Thursday"
+            ],
+            "why": "on Thursdays = پنجشنبه‌ها."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:title",
+    "headword": "title",
+    "goals": [
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:title",
+        "pos": "noun",
+        "gloss": "عنوان؛ اسم",
+        "meaning": "اسمِ کتاب، فیلم، آهنگ یا متن: the title of + اسم.",
+        "grammar": [
+          {
+            "pattern": "the title of + noun",
+            "note": "عنوانِ …"
+          },
+          {
+            "pattern": "a good / short title",
+            "note": "عنوانِ خوب / کوتاه"
+          },
+          {
+            "pattern": "give it a title",
+            "note": "برایش عنوان گذاشتن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "The title of the story is very short.",
+            "fa": "عنوانِ داستان خیلی کوتاه است."
+          },
+          {
+            "en": "Write a title for your story.",
+            "fa": "برای داستانت یک عنوان بنویس."
+          }
+        ],
+        "collocations": [
+          "the title of",
+          "a short title",
+          "a good title",
+          "the book's title"
+        ],
+        "mistake": {
+          "wrong": "Read the title the story.",
+          "right": "Read the title of the story.",
+          "why": "the title of + اسم."
+        },
+        "pronunciation": {
+          "gb": "/ˈtaɪtl/",
+          "us": "/ˈtaɪtl/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Every story needs a good ___.",
+            "answer": "title",
+            "accept": [
+              "name",
+              "beginning",
+              "end"
+            ],
+            "fa": "هر داستانی یک عنوانِ خوب لازم دارد.",
+            "why": "a good title."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "What's the ___ of your favourite song?",
+            "options": [
+              {
+                "text": "title",
+                "ok": true,
+                "why": "the title of = اسمِ …"
+              },
+              {
+                "text": "titles",
+                "ok": false,
+                "why": "the … of your favourite song مفرد است."
+              },
+              {
+                "text": "little",
+                "ok": false,
+                "why": "little یعنی کوچک."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "عنوانِ کتاب چیست؟",
+            "frame": "What's the ___ of the book?",
+            "answer": "title",
+            "accept": [
+              "name"
+            ],
+            "why": "the title of."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:toilet",
+    "headword": "toilet",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:toilet",
+        "pos": "noun",
+        "gloss": "توالت؛ دستشویی",
+        "meaning": "توالت یا اتاقِ توالت. go to the toilet = به دستشویی رفتن. در آمریکا bathroom یا restroom رایج‌تر است.",
+        "grammar": [
+          {
+            "pattern": "go to the toilet",
+            "note": "به دستشویی رفتن"
+          },
+          {
+            "pattern": "use the toilet",
+            "note": "از دستشویی استفاده کردن"
+          },
+          {
+            "pattern": "toilet / bathroom",
+            "note": "بریتانیایی / آمریکایی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Our flat has one bathroom and one toilet.",
+            "fa": "آپارتمانِ ما یک حمام و یک دستشویی دارد."
+          },
+          {
+            "en": "Can I use your toilet?",
+            "fa": "می‌توانم از دستشویی‌تان استفاده کنم؟"
+          }
+        ],
+        "collocations": [
+          "go to the toilet",
+          "use the toilet",
+          "a public toilet",
+          "toilet paper"
+        ],
+        "mistake": {
+          "wrong": "I need to go to toilet.",
+          "right": "I need to go to the toilet.",
+          "why": "go to the toilet با the می‌آید."
+        },
+        "pronunciation": {
+          "gb": "/ˈtɔɪlət/",
+          "us": "/ˈtɔɪlət/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Where is the ___? I need to wash my hands.",
+            "answer": "toilet",
+            "accept": [
+              "bathroom"
+            ],
+            "fa": "دستشویی کجاست؟ باید دست‌هایم را بشویم.",
+            "why": "toilet = دستشویی."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Can I go to ___ toilet, please?",
+            "options": [
+              {
+                "text": "the",
+                "ok": true,
+                "why": "go to the toilet."
+              },
+              {
+                "text": "an",
+                "ok": false,
+                "why": "toilet با صدای بی‌صدا شروع می‌شود و اینجا the لازم است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "go to at غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "دستشویی کجاست؟",
+            "frame": "Where's the ___?",
+            "answer": "toilet",
+            "accept": [
+              "bathroom"
+            ],
+            "why": "the toilet."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:tooth",
+    "headword": "tooth",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:tooth",
+        "pos": "noun",
+        "gloss": "دندان",
+        "meaning": "هر کدام از دندان‌ها. جمعش بی‌قاعده است: teeth. brush your teeth = مسواک زدن.",
+        "grammar": [
+          {
+            "pattern": "a tooth / two teeth",
+            "note": "جمعِ بی‌قاعده"
+          },
+          {
+            "pattern": "brush your teeth",
+            "note": "مسواک زدن"
+          },
+          {
+            "pattern": "my tooth hurts",
+            "note": "دندانم درد می‌کند"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Brush your teeth twice a day.",
+            "fa": "روزی دو بار مسواک بزن."
+          },
+          {
+            "en": "The baby has two teeth now.",
+            "fa": "بچه حالا دو تا دندان دارد."
+          }
+        ],
+        "collocations": [
+          "brush your teeth",
+          "white teeth",
+          "a bad tooth",
+          "a front tooth"
+        ],
+        "mistake": {
+          "wrong": "I brush my tooths every morning.",
+          "right": "I brush my teeth every morning.",
+          "why": "جمعِ tooth بی‌قاعده است: teeth."
+        },
+        "pronunciation": {
+          "gb": "/tuːθ/",
+          "us": "/tuːθ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "A dentist looks after your ___.",
+            "answer": "teeth",
+            "accept": [],
+            "fa": "دندان‌پزشک از دندان‌هایت مراقبت می‌کند.",
+            "why": "جمعِ tooth: teeth."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Brush all your ___ before bed.",
+            "options": [
+              {
+                "text": "teeth",
+                "ok": true,
+                "why": "جمعِ tooth: teeth."
+              },
+              {
+                "text": "tooths",
+                "ok": false,
+                "why": "جمعِ tooth بی‌قاعده است."
+              },
+              {
+                "text": "tooth",
+                "ok": false,
+                "why": "با all your جمع لازم است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "دندانم درد می‌کند.",
+            "frame": "My ___ hurts.",
+            "answer": "tooth",
+            "accept": [],
+            "why": "a tooth = یک دندان."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:vacation",
+    "headword": "vacation",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:vacation",
+        "pos": "noun",
+        "gloss": "تعطیلات؛ مرخصی",
+        "meaning": "زمانی که سرِ کار یا مدرسه نمی‌روی و استراحت یا سفر می‌کنی. بیشتر آمریکایی است؛ در بریتانیا holiday. on vacation = در تعطیلات.",
+        "grammar": [
+          {
+            "pattern": "on vacation",
+            "note": "در تعطیلات"
+          },
+          {
+            "pattern": "go on vacation",
+            "note": "به تعطیلات رفتن"
+          },
+          {
+            "pattern": "vacation / holiday",
+            "note": "آمریکایی / بریتانیایی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "We're going on vacation next week.",
+            "fa": "هفتهٔ بعد به تعطیلات می‌رویم."
+          },
+          {
+            "en": "Where did you go on vacation?",
+            "fa": "تعطیلات کجا رفتی؟"
+          }
+        ],
+        "collocations": [
+          "on vacation",
+          "summer vacation",
+          "a short vacation",
+          "go on vacation"
+        ],
+        "usage": "در انگلیسیِ بریتانیایی بیشتر holiday می‌گویند.",
+        "mistake": {
+          "wrong": "We are in vacation now.",
+          "right": "We are on vacation now.",
+          "why": "در تعطیلات: on vacation."
+        },
+        "pronunciation": {
+          "gb": "/vəˈkeɪʃn/",
+          "us": "/veɪˈkeɪʃn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "The children are out of school for their summer ___.",
+            "answer": "vacation",
+            "accept": [
+              "holiday",
+              "holidays"
+            ],
+            "fa": "بچه‌ها برای تعطیلاتِ تابستان مدرسه نمی‌روند.",
+            "why": "summer vacation."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "They went ___ vacation to Spain.",
+            "options": [
+              {
+                "text": "on",
+                "ok": true,
+                "why": "go on vacation."
+              },
+              {
+                "text": "in",
+                "ok": false,
+                "why": "in vacation غلط است."
+              },
+              {
+                "text": "at",
+                "ok": false,
+                "why": "at vacation غلط است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "به تعطیلات می‌رویم.",
+            "frame": "We're going on ___.",
+            "answer": "vacation",
+            "accept": [
+              "holiday"
+            ],
+            "why": "go on vacation."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:vegetable",
+    "headword": "vegetable",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:vegetable",
+        "pos": "noun",
+        "gloss": "سبزی؛ سبزیجات",
+        "meaning": "گیاهی که می‌خوریم، مثلِ هویج، پیاز و سیب‌زمینی. قابل‌شمارش است و بیشتر جمع به کار می‌رود: vegetables.",
+        "grammar": [
+          {
+            "pattern": "vegetables",
+            "note": "سبزیجات"
+          },
+          {
+            "pattern": "fruit and vegetables",
+            "note": "میوه و سبزی"
+          },
+          {
+            "pattern": "vegetable + noun",
+            "note": "vegetable soup"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Eat more fruit and vegetables.",
+            "fa": "میوه و سبزیِ بیشتری بخور."
+          },
+          {
+            "en": "Vegetable soup is good for you.",
+            "fa": "سوپِ سبزیجات برایت خوب است."
+          }
+        ],
+        "collocations": [
+          "fresh vegetables",
+          "fruit and vegetables",
+          "vegetable soup",
+          "green vegetables"
+        ],
+        "mistake": {
+          "wrong": "I eat a lot of vegetable.",
+          "right": "I eat a lot of vegetables.",
+          "why": "a lot of + اسمِ قابل‌شمارشِ جمع."
+        },
+        "pronunciation": {
+          "gb": "/ˈvedʒtəbl/",
+          "us": "/ˈvedʒtəbl/",
+          "note": "معمولاً سه‌بخشی تلفظ می‌شود: «وِج-تِ-بِل»."
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Carrots, onions and potatoes are all ___.",
+            "answer": "vegetables",
+            "accept": [],
+            "fa": "هویج، پیاز و سیب‌زمینی همه سبزی‌اند.",
+            "why": "vegetables = سبزیجات."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Which one is a vegetable?",
+            "options": [
+              {
+                "text": "carrot",
+                "ok": true,
+                "why": "هویج سبزی است."
+              },
+              {
+                "text": "apple",
+                "ok": false,
+                "why": "apple میوه است."
+              },
+              {
+                "text": "banana",
+                "ok": false,
+                "why": "banana میوه است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "سبزیجات دوست ندارم.",
+            "frame": "I don't like ___.",
+            "answer": "vegetables",
+            "accept": [],
+            "why": "vegetables = سبزیجات."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:west",
+    "headword": "west",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:west",
+        "pos": "noun",
+        "gloss": "غرب",
+        "meaning": "جهتِ غرب، جایی که خورشید غروب می‌کند؛ مقابلِ east. in the west of = در غربِ …. به‌صورت صفت و قید هم: the west side، go west.",
+        "grammar": [
+          {
+            "pattern": "in the west (of)",
+            "note": "در غرب"
+          },
+          {
+            "pattern": "west of + place",
+            "note": "غربِ جایی"
+          },
+          {
+            "pattern": "go / drive west",
+            "note": "به سمتِ غرب رفتن"
+          }
+        ],
+        "examples": [
+          {
+            "en": "They live in the west of the country.",
+            "fa": "آن‌ها در غربِ کشور زندگی می‌کنند."
+          },
+          {
+            "en": "We drove west for three hours.",
+            "fa": "سه ساعت به سمتِ غرب رانندگی کردیم."
+          }
+        ],
+        "collocations": [
+          "in the west",
+          "the west of",
+          "go west",
+          "east and west"
+        ],
+        "mistake": {
+          "wrong": "The sun goes down in west.",
+          "right": "The sun goes down in the west.",
+          "why": "قبل از west، the لازم است."
+        },
+        "pronunciation": {
+          "gb": "/west/",
+          "us": "/west/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "The opposite of east is ___.",
+            "answer": "west",
+            "accept": [],
+            "fa": "متضادِ شرق غرب است.",
+            "why": "east ↔ west."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "The sun goes down in the ___.",
+            "options": [
+              {
+                "text": "west",
+                "ok": true,
+                "why": "خورشید در غرب غروب می‌کند."
+              },
+              {
+                "text": "east",
+                "ok": false,
+                "why": "خورشید از شرق طلوع می‌کند."
+              },
+              {
+                "text": "north",
+                "ok": false,
+                "why": "خورشید در شمال غروب نمی‌کند."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "در غربِ شهر کار می‌کند.",
+            "frame": "He works in the ___ of the city.",
+            "answer": "west",
+            "accept": [],
+            "why": "in the west of."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:wife",
+    "headword": "wife",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:wife",
+        "pos": "noun",
+        "gloss": "همسر (زن)",
+        "meaning": "زنی که مردی با او ازدواج کرده است. جمع: wives. متضاد: husband. برای مرد: his wife.",
+        "grammar": [
+          {
+            "pattern": "his wife",
+            "note": "همسرش"
+          },
+          {
+            "pattern": "husband and wife",
+            "note": "زن و شوهر"
+          },
+          {
+            "pattern": "a wife / two wives",
+            "note": "جمعِ بی‌قاعده"
+          }
+        ],
+        "examples": [
+          {
+            "en": "This is my wife, Sara.",
+            "fa": "این همسرم، سارا است."
+          },
+          {
+            "en": "He lives with his wife and two children.",
+            "fa": "او با همسر و دو بچه‌اش زندگی می‌کند."
+          }
+        ],
+        "collocations": [
+          "his wife",
+          "my wife",
+          "husband and wife",
+          "a good wife"
+        ],
+        "mistake": {
+          "wrong": "My wife name is Sara.",
+          "right": "My wife's name is Sara.",
+          "why": "مالکیت: wife's."
+        },
+        "pronunciation": {
+          "gb": "/waɪf/",
+          "us": "/waɪf/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "He loves his ___ very much. They got married ten years ago.",
+            "answer": "wife",
+            "accept": [],
+            "fa": "همسرش را خیلی دوست دارد. ده سال پیش ازدواج کردند.",
+            "why": "his wife."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "A man's ___ is the woman he is married to.",
+            "options": [
+              {
+                "text": "wife",
+                "ok": true,
+                "why": "همسرِ مرد: wife."
+              },
+              {
+                "text": "sister",
+                "ok": false,
+                "why": "sister خواهر است."
+              },
+              {
+                "text": "girlfriend",
+                "ok": false,
+                "why": "با girlfriend ازدواج نکرده است."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "همسرش پرستار است.",
+            "frame": "His ___ is a nurse.",
+            "answer": "wife",
+            "accept": [],
+            "why": "his wife."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:wine",
+    "headword": "wine",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:wine",
+        "pos": "noun",
+        "gloss": "شراب",
+        "meaning": "نوشیدنیِ الکلی که از انگور درست می‌شود. غیرقابل‌شمارش است: a glass of wine؛ red / white wine.",
+        "grammar": [
+          {
+            "pattern": "a glass / bottle of wine",
+            "note": "یک لیوان / بطری شراب"
+          },
+          {
+            "pattern": "red / white wine",
+            "note": "شرابِ قرمز / سفید"
+          },
+          {
+            "pattern": "wine (uncountable)",
+            "note": "some wine"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Would you like a glass of wine?",
+            "fa": "یک لیوان شراب می‌خواهی؟"
+          },
+          {
+            "en": "This wine comes from France.",
+            "fa": "این شراب از فرانسه است."
+          }
+        ],
+        "collocations": [
+          "red wine",
+          "white wine",
+          "a glass of wine",
+          "a bottle of wine"
+        ],
+        "mistake": {
+          "wrong": "Two glass of wine, please.",
+          "right": "Two glasses of wine, please.",
+          "why": "جمعِ glass: glasses."
+        },
+        "pronunciation": {
+          "gb": "/waɪn/",
+          "us": "/waɪn/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Would you like red or white ___?",
+            "answer": "wine",
+            "accept": [],
+            "fa": "شرابِ قرمز می‌خواهی یا سفید؟",
+            "why": "red / white wine."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Can I have a ___ of wine?",
+            "options": [
+              {
+                "text": "glass",
+                "ok": true,
+                "why": "a glass of wine."
+              },
+              {
+                "text": "slice",
+                "ok": false,
+                "why": "a slice of برای نان و کیک است."
+              },
+              {
+                "text": "piece",
+                "ok": false,
+                "why": "a piece of برای نوشیدنی نمی‌آید."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "او شراب نمی‌نوشد.",
+            "frame": "She doesn't drink ___.",
+            "answer": "wine",
+            "accept": [],
+            "why": "wine = شراب."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:yeah",
+    "headword": "yeah",
+    "goals": [
+      "everyday",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:yeah",
+        "pos": "exclamation",
+        "gloss": "آره",
+        "meaning": "شکلِ خودمانیِ yes در گفت‌وگو با دوستان. در نوشتهٔ رسمی و با غریبه‌ها yes بگو.",
+        "grammar": [
+          {
+            "pattern": "Yeah.",
+            "note": "آره"
+          },
+          {
+            "pattern": "Yeah, sure.",
+            "note": "آره، حتماً"
+          },
+          {
+            "pattern": "yeah / yes",
+            "note": "خودمانی / عادی"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Are you coming? — Yeah, I'm ready.",
+            "fa": "می‌آیی؟ — آره، آماده‌ام."
+          },
+          {
+            "en": "Yeah, that's a good idea.",
+            "fa": "آره، فکرِ خوبی است."
+          }
+        ],
+        "collocations": [
+          "yeah, sure",
+          "oh yeah",
+          "yeah, right",
+          "yeah, I know"
+        ],
+        "mistake": {
+          "wrong": "Do you like it? — Yeah, I like.",
+          "right": "Do you like it? — Yeah, I like it.",
+          "why": "like مفعول لازم دارد: I like it."
+        },
+        "pronunciation": {
+          "gb": "/jeə/",
+          "us": "/jæ/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Do you want to come? — ___, sure!",
+            "answer": "Yeah",
+            "accept": [
+              "Yes",
+              "Yep",
+              "OK",
+              "Okay"
+            ],
+            "fa": "می‌خواهی بیایی؟ — آره، حتماً!",
+            "why": "Yeah = آره."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Which one is the informal way to say yes?",
+            "options": [
+              {
+                "text": "yeah",
+                "ok": true,
+                "why": "yeah شکلِ خودمانیِ yes است."
+              },
+              {
+                "text": "yet",
+                "ok": false,
+                "why": "yet یعنی هنوز."
+              },
+              {
+                "text": "year",
+                "ok": false,
+                "why": "year یعنی سال."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "آره، می‌دانم.",
+            "frame": "___, I know.",
+            "answer": "Yeah",
+            "accept": [
+              "Yes"
+            ],
+            "why": "Yeah = آره."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lex:A1:yes",
+    "headword": "yes",
+    "goals": [
+      "everyday",
+      "work",
+      "study",
+      "general"
+    ],
+    "senses": [
+      {
+        "id": "lex:A1:yes",
+        "pos": "exclamation",
+        "gloss": "بله؛ آره",
+        "meaning": "جوابِ مثبت. در جوابِ کوتاه، فعلِ کمکی را تکرار می‌کنیم: Yes, I am. / Yes, I do. Yes, please = بله، لطفاً. متضاد: no.",
+        "grammar": [
+          {
+            "pattern": "Yes, + short answer",
+            "note": "Yes, I am / I do"
+          },
+          {
+            "pattern": "Yes, please.",
+            "note": "بله، لطفاً"
+          },
+          {
+            "pattern": "yes / no",
+            "note": "بله / نه"
+          }
+        ],
+        "examples": [
+          {
+            "en": "Are you a student? — Yes, I am.",
+            "fa": "دانشجو هستی؟ — بله، هستم."
+          },
+          {
+            "en": "Yes, please. I'd love some tea.",
+            "fa": "بله، لطفاً. کمی چای خیلی خوب است."
+          }
+        ],
+        "collocations": [
+          "yes, please",
+          "say yes",
+          "yes or no",
+          "yes, of course"
+        ],
+        "mistake": {
+          "wrong": "Are you hungry? — Yes, I'm.",
+          "right": "Are you hungry? — Yes, I am.",
+          "why": "در جوابِ کوتاهِ مثبت، شکلِ کامل می‌آید: Yes, I am."
+        },
+        "pronunciation": {
+          "gb": "/jes/",
+          "us": "/jes/"
+        },
+        "check": [
+          {
+            "type": "cloze",
+            "id": "c1",
+            "text": "Do you speak English? — ___, a little.",
+            "answer": "Yes",
+            "accept": [
+              "Yeah"
+            ],
+            "fa": "انگلیسی حرف می‌زنی؟ — بله، کمی.",
+            "why": "Yes = بله."
+          },
+          {
+            "type": "choice",
+            "id": "q1",
+            "prompt": "Do you like tea? — Yes, I ___.",
+            "options": [
+              {
+                "text": "do",
+                "ok": true,
+                "why": "جوابِ کوتاه با do."
+              },
+              {
+                "text": "like",
+                "ok": false,
+                "why": "like بدون مفعول اینجا کامل نیست."
+              },
+              {
+                "text": "am",
+                "ok": false,
+                "why": "سؤال با do است، پس جواب هم do."
+              }
+            ]
+          },
+          {
+            "type": "produce",
+            "id": "p1",
+            "prompt": "بله، لطفاً.",
+            "frame": "___, please.",
+            "answer": "Yes",
+            "accept": [],
+            "why": "Yes, please."
+          }
+        ]
+      }
+    ]
+  }
+]
