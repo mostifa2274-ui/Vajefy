@@ -19,7 +19,7 @@ const SKILL_LABEL: Record<PracticeSkill, keyof Copy> = {
   context: "skillContext",
 };
 
-/** Introduced, remembered after a delay, used in context, and the weakest skill. */
+/** Introduced, remembered after a delay, correct in context, and the weakest skill. */
 export function LearningSummary({ copy }: { copy: Copy }) {
   const cards = useProgress((state) => state.cards);
   const reviewHistory = useProgress((state) => state.reviewHistory);
