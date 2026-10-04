@@ -2039,9 +2039,9 @@
           "cents and euros"
         ],
         "mistake": {
-          "wrong": "It costs fifty cent.",
-          "right": "It costs fifty cents.",
-          "why": "بعد از fifty جمع."
+          "wrong": "How many cent do you need?",
+          "right": "How many cents do you need?",
+          "why": "بعد از how many اسمِ جمع می‌آید."
         },
         "pronunciation": {
           "gb": "/sent/",
@@ -2069,9 +2069,9 @@
                 "why": "بعد از fifty جمع."
               },
               {
-                "text": "cent",
+                "text": "sent",
                 "ok": false,
-                "why": "بعد از fifty اسم جمع لازم است."
+                "why": "sent یعنی فرستاد؛ فقط هم‌صدای cent است."
               },
               {
                 "text": "cent's",
@@ -3798,7 +3798,7 @@
         "id": "lex:A1:euro",
         "pos": "noun",
         "gloss": "یورو",
-        "meaning": "پولِ بیشترِ کشورهای اروپا (€). جمعش euros است. با صدای «یو» شروع می‌شود، پس a euro.",
+        "meaning": "پولِ بیشترِ کشورهای اروپا (€). جمعش معمولاً euros است (گاهی euro هم می‌گویند). با صدای «یو» شروع می‌شود، پس a euro.",
         "grammar": [
           {
             "pattern": "number + euros",
@@ -3866,9 +3866,9 @@
                 "why": "euro با صدای «یو» شروع می‌شود."
               },
               {
-                "text": "two",
+                "text": "much",
                 "ok": false,
-                "why": "بعد از two جمع لازم است: two euros."
+                "why": "euro قابل‌شمارش است؛ much با آن نمی‌آید."
               }
             ]
           },
@@ -3878,7 +3878,9 @@
             "prompt": "پنجاه یورو لازم دارم.",
             "frame": "I need fifty ___.",
             "answer": "euros",
-            "accept": [],
+            "accept": [
+              "euro"
+            ],
             "why": "fifty euros."
           }
         ]
@@ -5394,7 +5396,7 @@
         "id": "lex:A1:grow",
         "pos": "verb",
         "gloss": "رشد کردن؛ بزرگ شدن",
-        "meaning": "بزرگ‌تر شدن (گیاه، بچه، شهر). بی‌قاعده: grew، grown. grow up = بزرگ شدن (آدم).",
+        "meaning": "بزرگ‌تر شدن (گیاه، بچه، شهر). بی‌قاعده: grew، grown. grow up = از بچگی بزرگ شدن (آدم یا حیوان) و مفعول نمی‌گیرد.",
         "grammar": [
           {
             "pattern": "grow – grew – grown",
@@ -5481,7 +5483,7 @@
         "id": "lex:A1:grow#plants",
         "pos": "verb",
         "gloss": "کاشتن؛ پرورش دادن",
-        "meaning": "گیاه یا سبزی را کاشتن و نگه داشتن تا بزرگ شود: grow vegetables. برای گیاه، up نمی‌آید.",
+        "meaning": "گیاه یا سبزی را کاشتن و نگه داشتن تا بزرگ شود: grow vegetables. گیاه مستقیم بعد از grow می‌آید؛ grow up مفعول نمی‌گیرد.",
         "grammar": [
           {
             "pattern": "grow + plants / food",
@@ -5492,8 +5494,8 @@
             "note": "در باغچه کاشتن"
           },
           {
-            "pattern": "grow / grow up",
-            "note": "grow up فقط برای آدم"
+            "pattern": "grow + crop / grow up",
+            "note": "grow up مفعول نمی‌گیرد"
           }
         ],
         "examples": [
@@ -5515,7 +5517,7 @@
         "mistake": {
           "wrong": "We grow up vegetables.",
           "right": "We grow vegetables.",
-          "why": "برای گیاه grow بدون up."
+          "why": "grow up مفعول نمی‌گیرد؛ کاشتن: grow + گیاه."
         },
         "pronunciation": {
           "gb": "/ɡrəʊ/",
@@ -5547,7 +5549,7 @@
               {
                 "text": "grow up",
                 "ok": false,
-                "why": "grow up فقط برای آدم است."
+                "why": "grow up مفعول نمی‌گیرد؛ اینجا grow + apples."
               },
               {
                 "text": "growing",

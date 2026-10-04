@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "23ad96417133",
+ "contentVersion": "54055da37ecb",
  "cases": [
   {
    "id": "7aa02ebefb",
@@ -40167,25 +40167,25 @@
    ]
   },
   {
-   "id": "15af67ed16",
-   "split": "test",
+   "id": "8a2882b5b3",
+   "split": "dev",
    "source": "mistake-right",
    "senses": [
     "lex:A1:cent"
    ],
-   "text": "It costs fifty cents.",
+   "text": "How many cents do you need?",
    "expect": [
     "natural"
    ]
   },
   {
-   "id": "28de31f72f",
+   "id": "06d2ca784f",
    "split": "test",
    "source": "mistake-wrong",
    "senses": [
     "lex:A1:cent"
    ],
-   "text": "It costs fifty cent.",
+   "text": "How many cent do you need?",
    "expect": [
     "needs-change"
    ]
