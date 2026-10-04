@@ -87,9 +87,12 @@ must never make the actual headword disappear from the dependency graph.
 Entries whose authored tasks are clean are marked `taskLanguageReady` in the
 calibration overlay. These flags must form one contiguous curriculum prefix,
 and `taskLanguageReadyMinimum` is a monotonic CI ratchet: later work may raise
-the minimum but must not silently shrink it. The current cleanup raises that
-protected prefix to 15/20 entries, through `school`. This is a task-language
-quality claim only; human bilingual and pronunciation review remain separate.
+the minimum but must not silently shrink it. The calibration slice now protects
+all 20/20 entries, through `how`; therefore every authored check in this slice
+must remain free of hidden learner-language debt. `npm run
+content:calibration:tasks` is expected to pass for the complete slice. This is
+a task-language quality claim only; human bilingual and pronunciation review
+remain separate.
 
 ## Calibration curriculum
 
