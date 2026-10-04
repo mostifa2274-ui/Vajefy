@@ -16,6 +16,8 @@ type SliceEntry = {
    * automatic approval.
    */
   languageExceptions?: LanguageException[];
+  /** CI ratchet: this entry's authored tasks must have no hidden language debt. */
+  taskLanguageReady?: boolean;
 };
 
 type SliceUnit = {
@@ -114,6 +116,7 @@ type EntryRow = {
     reviewer?: string;
     date?: string;
   };
+  taskLanguageReady: boolean;
   language: LanguageAudit;
   senses: SenseRow[];
   gaps: string[];
@@ -137,6 +140,7 @@ type Packet = {
     languageUnresolved: number;
     taskLanguageUnresolved: number;
     taskLanguageScaffolded: number;
+    taskLanguageReadyEntries: number;
     languageExceptions: number;
   };
 };
@@ -551,6 +555,7 @@ function markdown(packet: Packet): string {
     `| Unresolved learner-language dependencies | ${packet.summary.languageUnresolved} |`,
     `| Unresolved authored-task dependencies | ${packet.summary.taskLanguageUnresolved} |`,
     `| Learner-visible authored-task scaffolds | ${packet.summary.taskLanguageScaffolded} |`,
+    `| Entries ratcheted task-language-ready | ${packet.summary.taskLanguageReadyEntries}/${packet.summary.entries} |`,
     `| Documented language exceptions | ${packet.summary.languageExceptions} |`,
     `| Editorial/coverage gaps to inspect | ${packet.summary.editorialGaps} |`,
     "",
@@ -582,6 +587,7 @@ function markdown(packet: Packet): string {
     out.push(
       `### ${entry.order}. ${entry.headword} — \`${entry.id}\``,
       "",
+      `- Authored-task language ratchet: ${entry.taskLanguageReady ? "ready" : "pending"}`,
       `- Learner-language dependency audit: ${dependencySummary(entry.language)}`,
       "",
     );
@@ -751,6 +757,11 @@ for (const { unit, entry } of flat) {
       entry.languageExceptions ?? [],
     );
     languageByEntry.set(entry.id, language);
+    if (entry.taskLanguageReady && language.taskUnresolved > 0) {
+      structural.push(
+        `${entry.id}: marked taskLanguageReady but still has ${language.taskUnresolved} unresolved authored-task dependenc${language.taskUnresolved === 1 ? "y" : "ies"}`,
+      );
+    }
     for (const token of language.staleExceptions) {
       structural.push(
         `${entry.id}: language exception ${token} is stale because the token is not present in learner-facing English`,
@@ -902,6 +913,7 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
         : {}),
       ...(content.review?.date ? { date: content.review.date } : {}),
     },
+    taskLanguageReady: Boolean(selected.taskLanguageReady),
     language,
     senses,
     gaps,
@@ -946,6 +958,9 @@ const packet: Packet = {
       (sum, entry) => sum + entry.language.taskScaffolded,
       0,
     ),
+    taskLanguageReadyEntries: entries.filter(
+      (entry) => entry.taskLanguageReady,
+    ).length,
     languageExceptions: entries.reduce(
       (sum, entry) => sum + entry.language.documentedExceptions,
       0,
@@ -975,7 +990,7 @@ if (
 
 if (process.argv.includes("--check")) {
   console.log(
-    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies (${packet.summary.taskLanguageUnresolved} in authored tasks, ${packet.summary.taskLanguageScaffolded} learner-visible task scaffolds) and ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
+    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies (${packet.summary.taskLanguageUnresolved} in authored tasks, ${packet.summary.taskLanguageScaffolded} learner-visible task scaffolds); ${packet.summary.taskLanguageReadyEntries}/${packet.summary.entries} entries ratcheted task-language-ready; ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
   );
 } else if (process.argv.includes("--json")) {
   console.log(JSON.stringify(packet, null, 2));
