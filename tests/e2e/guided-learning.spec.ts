@@ -26,6 +26,10 @@ async function seedNewLearner(page: Page, minutes = 5) {
 /** Answer whatever the current lesson step asks, without knowing the answers. */
 async function step(page: Page): Promise<boolean> {
   const main = page.locator("main");
+  // A Teach card draws the word at once and the rest, with its button, in a
+  // deferred render (aria-busy meanwhile). Wait for the step to settle, or the
+  // instant checks below can all run in that gap and find nothing.
+  await expect(main.locator('[aria-busy="true"]')).toHaveCount(0);
   if (await page.getByRole("heading", { name: /^(Lesson|Check-up) complete$/ }).isVisible()) return false;
   const recall = main.getByRole("button", { name: "Now recall it", exact: true });
   if (await recall.isVisible()) {
