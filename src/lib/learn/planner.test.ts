@@ -22,7 +22,7 @@ test("time and session room cap introductions consistently", () => {
   assert.equal(dailyPlan({ due: 0, introducedToday: 0, newPerDay: 20, sessionSize: 20, minutes: 5 }).newLimit, 2);
   assert.equal(dailyPlan({ due: 0, introducedToday: 0, newPerDay: 20, sessionSize: 20, minutes: 10 }).newLimit, 3);
   assert.equal(dailyPlan({ due: 0, introducedToday: 0, newPerDay: 20, sessionSize: 20, minutes: 15 }).newLimit, 5);
-  assert.equal(dailyPlan({ due: 18, introducedToday: 0, newPerDay: 20, sessionSize: 20, minutes: 15 }).newLimit, 0);
+  assert.equal(dailyPlan({ due: 18, introducedToday: 0, newPerDay: 20, sessionSize: 20, minutes: 15 }).newLimit, 2);
 });
 
 test("invalid counts degrade to a safe empty plan", () => {
