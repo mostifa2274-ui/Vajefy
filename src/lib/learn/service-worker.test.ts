@@ -170,6 +170,21 @@ test("an install reusing a pre-existing complete release is a safe no-op", async
   assert.equal(await (await (await caches.open(CURRENT)).match("/learn"))?.text(), "working release");
 });
 
+test("the first complete release claims an already-open uncontrolled tab", async () => {
+  const caches = new MemoryCacheStorage({ [CURRENT]: completeRelease("dev") });
+  let claims = 0;
+  const app = loadWorker({
+    caches,
+    claim: async () => {
+      claims += 1;
+    },
+  });
+
+  await lifetime(app.listeners.get("activate")!);
+
+  assert.equal(claims, 1);
+});
+
 test("activation keeps the last usable release and does not take over open tabs", async () => {
   const caches = new MemoryCacheStorage({
     "vajefy-offline-oldest": completeRelease("oldest", { "/assets/oldest.js": "oldest" }),

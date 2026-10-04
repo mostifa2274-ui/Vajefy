@@ -71,14 +71,16 @@ the graph is cached successfully. The release identity includes both deployed
 client/public files and the service-worker template, so a worker-only safety
 fix cannot accidentally reuse and delete the active cache.
 
-The worker does not call `skipWaiting()` or `clients.claim()`. The browser keeps
-a completed update waiting until tabs controlled by the previous release have
-closed or navigated away, then activates it through the normal lifecycle.
-Activation ignores and removes interrupted caches, retains the most recent
-earlier cache carrying a valid completion marker, and never deletes the
-long-lived pronunciation cache or unrelated origin caches. Old hashed assets
-can fall back to that retained complete release when the network no longer has
-them. Runtime navigation never overwrites the validated offline documents.
+The worker never calls `skipWaiting()`. Its first complete release claims
+already-open uncontrolled pages so they can use the offline cache without a
+manual reload. A completed update waits until tabs controlled by the previous
+release have closed or navigated away, then activates through the normal
+lifecycle without claiming over them. Activation ignores and removes
+interrupted caches, retains the most recent earlier cache carrying a valid
+completion marker, and never deletes the long-lived pronunciation cache or
+unrelated origin caches. Old hashed assets can fall back to that retained
+complete release when the network no longer has them. Runtime navigation never
+overwrites the validated offline documents.
 
 Pronunciation audio is separate from the required application release. A clip
 is available offline only when it has already played successfully or when the

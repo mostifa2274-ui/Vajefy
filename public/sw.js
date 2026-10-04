@@ -107,8 +107,10 @@ self.addEventListener("activate", (event) => {
       let previous;
       for (const key of earlier) if (await isCompleteRelease(key)) previous = key;
       await Promise.all(earlier.filter((key) => key !== previous).map((key) => caches.delete(key)));
-      // No skipWaiting/claim pair is used: the normal lifecycle drains clients
-      // of the previous release before this cleanup can run.
+      // Claim pages only on the first installation. An update with a previous
+      // complete release uses the normal lifecycle, which drains its clients
+      // before this cleanup can run and never swaps their controller in place.
+      if (!previous) await self.clients.claim();
     })(),
   );
 });
