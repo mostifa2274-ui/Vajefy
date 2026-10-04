@@ -1438,42 +1438,54 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "Excuse me, what's the ___ of this street?",
+      "text": "My ___ is Reza.",
       "answer": "name",
       "accept": [],
-      "fa": "ببخشید، اسم این خیابان چیست؟",
-      "why": "اسمِ چیزی."
+      "fa": "اسم من رضا است.",
+      "why": "برای معرفی اسم می‌گوییم My name is …",
+      "support": [
+       {
+        "en": "Reza",
+        "fa": "رضا (نام)"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "On a form, «Surname» means your ___.",
+      "prompt": "کدام واژه یعنی «نام»؟",
       "options": [
        {
-        "text": "last name",
+        "text": "name",
         "ok": true,
-        "why": "surname = نام خانوادگی."
+        "why": "name یعنی «نام/اسم»."
        },
        {
-        "text": "first name",
+        "text": "my",
         "ok": false,
-        "why": "first name نام کوچک است."
+        "why": "my یعنی «مالِ من/ـم»."
        },
        {
-        "text": "nickname",
+        "text": "your",
         "ok": false,
-        "why": "nickname لقب یا اسم خودمانی است."
+        "why": "your یعنی «مالِ تو/شما»."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "اسم من مریم است.",
-      "frame": "My ___ is Maryam.",
+      "prompt": "«اسم شما سارا است» را کامل کن.",
+      "frame": "Your ___ is Sara.",
       "answer": "name",
       "accept": [],
-      "why": "معرفی."
+      "why": "your name یعنی «اسم تو/شما».",
+      "support": [
+       {
+        "en": "Sara",
+        "fa": "سارا (نام)"
+       }
+      ]
      }
     ]
    }
