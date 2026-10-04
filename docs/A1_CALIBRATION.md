@@ -39,6 +39,27 @@ pending or stale human review, incomplete audio, listener flags and senses that
 still need later recycling. Those are decisions for an actual bilingual or
 pronunciation reviewer.
 
+The same packet now audits learner-facing English in grammar patterns, examples,
+collocations, common-mistake corrections and authored checks. Each lexical
+dependency is classified as already introduced, a future item in the 20-entry
+sequence, A1 material outside the slice, an external token, or a proper-name
+candidate. This prevents hidden vocabulary from being mistaken for
+prerequisite-safe teaching text.
+
+Run the stricter language-readiness gate separately while calibration copy is
+being cleaned:
+
+```sh
+npm run content:calibration:language
+```
+
+It fails while unresolved learner-language dependencies remain. Proper names
+are not silently exempt. If a token is genuinely unavoidable, add a
+`languageExceptions` item to the affected entry in
+`content/calibration/a1-20.json` with the exact token and a concrete rationale.
+Duplicate, empty-rationale and stale exceptions fail structurally. Recording an
+exception is evidence for review, not bilingual approval.
+
 ## Calibration curriculum
 
 | Unit                        | Entries                         | Main outcome                                            |
