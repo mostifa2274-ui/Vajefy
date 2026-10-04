@@ -34,9 +34,17 @@ if (!assets.length) {
   throw new Error("Vite produced no client assets to precache.");
 }
 
-// Fingerprint every deployed client/public file except sw.js itself. This makes
-// the service-worker source change on data-only releases too, so installed PWAs
-// activate a new cache instead of serving stale vocabulary indefinitely.
+const original = fs.readFileSync(swPath, "utf8");
+if (!original.includes(assetMarker)) {
+  throw new Error("Service-worker build asset marker is missing.");
+}
+if (!original.includes(versionMarker)) {
+  throw new Error("Service-worker build version marker is missing.");
+}
+
+// Fingerprint every deployed client/public file and the unmodified worker
+// template. The template is hashed before its generated version is injected,
+// avoiding a circular hash while still giving worker-only fixes a new cache.
 const fingerprintFiles = walk(clientDir)
   .filter((file) => file !== swPath)
   .sort((a, b) => path.relative(clientDir, a).localeCompare(path.relative(clientDir, b)));
@@ -49,15 +57,11 @@ for (const file of fingerprintFiles) {
   hash.update(fs.readFileSync(file));
   hash.update("\0");
 }
+hash.update("sw.js");
+hash.update("\0");
+hash.update(original);
+hash.update("\0");
 const buildVersion = hash.digest("hex").slice(0, 16);
-
-const original = fs.readFileSync(swPath, "utf8");
-if (!original.includes(assetMarker)) {
-  throw new Error("Service-worker build asset marker is missing.");
-}
-if (!original.includes(versionMarker)) {
-  throw new Error("Service-worker build version marker is missing.");
-}
 
 const output = original
   .replace(assetMarker, `/* __VAJEFY_BUILD_ASSETS__ */ ${JSON.stringify(assets)}`)

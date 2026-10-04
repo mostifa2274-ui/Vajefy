@@ -1,5 +1,7 @@
 const CACHE_VERSION = /* __VAJEFY_BUILD_VERSION__ */ "dev";
-const CACHE = `vajefy-offline-${CACHE_VERSION}`;
+const CACHE_PREFIX = "vajefy-offline-";
+const CACHE = `${CACHE_PREFIX}${CACHE_VERSION}`;
+const COMPLETE_MARKER = "/__vajefy_release_complete__";
 const BUILD_ASSETS = /* __VAJEFY_BUILD_ASSETS__ */ [];
 const ROUTES = ["/", "/learn", "/lexicon", "/study", "/drill", "/library", "/progress"];
 const SHELL = ["/manifest.json", "/favicon.svg", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
@@ -49,42 +51,50 @@ function sameOriginAsset(value) {
  * bundle is unavailable on the first offline navigation.
  */
 async function warmRoute(cache, path) {
-  try {
-    const response = await fetch(path, { cache: "reload" });
-    if (!response.ok) return;
-    await cache.put(path, response.clone());
-    const html = await response.text();
-    const urls = new Set();
-    for (const match of html.matchAll(/(?:src|href)=["']([^"'#]+)["']/g)) {
-      const asset = sameOriginAsset(match[1]);
-      if (asset) urls.add(asset);
-    }
-    await Promise.all(
-      [...urls].map(async (url) => {
-        try {
-          const asset = await fetch(url, { cache: "reload" });
-          if (asset.ok) await cache.put(url, asset);
-        } catch {
-          // One optional asset must not make the entire PWA uninstallable.
-        }
-      }),
-    );
-  } catch {
-    // The online app still works; a later service-worker update can retry.
+  const response = await fetch(path, { cache: "reload" });
+  if (!response.ok) throw new Error(`Required offline route failed: ${path} (${response.status})`);
+  await cache.put(path, response.clone());
+  const html = await response.text();
+  const urls = new Set();
+  for (const match of html.matchAll(/(?:src|href)=["']([^"'#]+)["']/g)) {
+    const asset = sameOriginAsset(match[1]);
+    if (asset) urls.add(asset);
   }
+  await Promise.all(
+    [...urls].map(async (url) => {
+      const asset = await fetch(url, { cache: "reload" });
+      if (!asset.ok) throw new Error(`Required route asset failed: ${url} (${asset.status})`);
+      await cache.put(url, asset);
+    }),
+  );
+}
+
+async function isCompleteRelease(cacheName) {
+  const marker = await (await caches.open(cacheName)).match(COMPLETE_MARKER, { ignoreSearch: true, ignoreVary: true });
+  return Boolean(marker && (await marker.text()) === cacheName.slice(CACHE_PREFIX.length));
 }
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
-      const cache = await caches.open(CACHE);
-      await Promise.all(SHELL.map((url) => cache.add(url).catch(() => undefined)));
-      await Promise.all(DATA.map((url) => cache.add(url).catch(() => undefined)));
-      // Generated after Vite builds, so every hashed lazy route/runtime chunk is
-      // guaranteed to exist offline even if the learner never visited it online.
-      await Promise.all(BUILD_ASSETS.map((url) => cache.add(url).catch(() => undefined)));
-      await Promise.all(ROUTES.map((route) => warmRoute(cache, route)));
-      await self.skipWaiting();
+      const keys = await caches.keys();
+      if (keys.includes(CACHE) && (await isCompleteRelease(CACHE))) return;
+      try {
+        const cache = await caches.open(CACHE);
+        await Promise.all(SHELL.map((url) => cache.add(url)));
+        await Promise.all(DATA.map((url) => cache.add(url)));
+        // Generated after Vite builds, so every hashed lazy route/runtime chunk
+        // and enhanced-content part is required before this release activates.
+        await Promise.all(BUILD_ASSETS.map((url) => cache.add(url)));
+        await Promise.all(ROUTES.map((route) => warmRoute(cache, route)));
+        await cache.put(COMPLETE_MARKER, new Response(CACHE_VERSION));
+        // Keep the worker waiting until every client controlled by the old
+        // release has closed or navigated away. Activation is then safe.
+      } catch (error) {
+        // A partial release must never replace the last complete offline one.
+        await caches.delete(CACHE);
+        throw error;
+      }
     })(),
   );
 });
@@ -93,11 +103,28 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
       const keys = await caches.keys();
-      await Promise.all(keys.filter((key) => key !== CACHE && key !== AUDIO_CACHE).map((key) => caches.delete(key)));
-      await self.clients.claim();
+      const earlier = keys.filter((key) => key.startsWith(CACHE_PREFIX) && key !== CACHE);
+      let previous;
+      for (const key of earlier) if (await isCompleteRelease(key)) previous = key;
+      await Promise.all(earlier.filter((key) => key !== previous).map((key) => caches.delete(key)));
+      // Claim pages only on the first installation. An update with a previous
+      // complete release uses the normal lifecycle, which drains its clients
+      // before this cleanup can run and never swaps their controller in place.
+      if (!previous) await self.clients.claim();
     })(),
   );
 });
+
+async function previousReleaseMatch(request, options) {
+  const keys = await caches.keys();
+  for (const key of keys.reverse()) {
+    if (key === CACHE || !key.startsWith(CACHE_PREFIX)) continue;
+    if (!(await isCompleteRelease(key))) continue;
+    const cached = await (await caches.open(key)).match(request, options);
+    if (cached) return cached;
+  }
+  return undefined;
+}
 
 async function cachedNavigation(cache, request) {
   return (
@@ -111,10 +138,7 @@ async function navigationFallback(request) {
   const cache = await caches.open(CACHE);
   try {
     const response = await fetch(request);
-    if (response.ok) {
-      await cache.put(request, response.clone());
-      return response;
-    }
+    if (response.ok) return response;
     // Chromium and some embedded browsers may resolve an offline navigation
     // with a synthetic non-OK response rather than rejecting fetch().
     return (await cachedNavigation(cache, request)) ?? response;
@@ -130,9 +154,25 @@ async function cacheFirst(request) {
   // so strict Vary matching would miss a byte-identical same-origin asset.
   const cached = await cache.match(request, { ignoreSearch: false, ignoreVary: true });
   if (cached) return cached;
-  const response = await fetch(request);
-  if (response.ok) await cache.put(request, response.clone());
-  return response;
+  let response;
+  try {
+    response = await fetch(request);
+  } catch (error) {
+    const previous = await previousReleaseMatch(request, { ignoreSearch: false, ignoreVary: true });
+    if (previous) return previous;
+    throw error;
+  }
+  if (response.ok) {
+    try {
+      await cache.put(request, response.clone());
+    } catch {
+      // Storage pressure must not replace a fresh network response with stale
+      // content or turn a successful request into an application failure.
+    }
+    return response;
+  }
+  // An old tab may request a hashed chunk the deployment no longer serves.
+  return (await previousReleaseMatch(request, { ignoreSearch: false, ignoreVary: true })) ?? response;
 }
 
 async function cachedAudio(request) {

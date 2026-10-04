@@ -221,6 +221,16 @@ export function createPersistence(env: Environment) {
     for (const op of pending) applyToMemory(reduce(op, snapshotFor(op, env.read())), op.id);
   }
 
+  function queueJournal() {
+    const queued = new Set(pending.map((op) => op.id));
+    for (const op of journalPending()) {
+      if (queued.has(op.id)) continue;
+      queued.add(op.id);
+      pending.push(op);
+      applyToMemory(reduce(op, snapshotFor(op, env.read())), op.id);
+    }
+  }
+
   function setLoaded(loaded: Loaded) {
     historyIds = loaded.historyIds;
     env.write({
@@ -432,8 +442,10 @@ export function createPersistence(env: Environment) {
   }
 
   async function replayJournal(): Promise<number> {
+    const journal = journalPending();
     let replayed = 0;
-    for (const op of journalPending()) {
+    for (let index = 0; index < journal.length; index++) {
+      const op = journal[index]!;
       if (!db) break;
       try {
         const result = await commit(db, op, env.hooks);
@@ -442,7 +454,11 @@ export function createPersistence(env: Environment) {
         if (afterCommit) await afterCommit(op);
         journalRemove(op.id);
       } catch {
-        // Leave it journaled; a later start retries.
+        // Keep this operation and everything after it in order. They remain
+        // visible in memory and Retry can commit them without a reload.
+        const queued = new Set(pending.map((candidate) => candidate.id));
+        pending.unshift(...journal.slice(index).filter((candidate) => !queued.has(candidate.id)));
+        break;
       }
     }
     return replayed;
@@ -534,8 +550,11 @@ export function createPersistence(env: Environment) {
     mirrorLanguage(loaded.progress.lang);
     mode = "idb";
     listen();
-    report("saved");
+    // Do not announce success while startup replay or work dispatched during
+    // hydration is still outstanding. The pump reports saved only after the
+    // complete ordered queue commits, or session when an operation fails.
     if (pending.length) await pump();
+    else report("saved");
   }
 
   function listen() {
@@ -618,11 +637,11 @@ export function createPersistence(env: Environment) {
           progressVersion: PROGRESS_VERSION,
         },
       });
+      // Restoration and crash recovery are one ordered commit. Queue the old
+      // journal behind the replacement before pumping so either all remaining
+      // work is saved, or every failed operation stays visible and retryable.
+      if (reason === "restore") queueJournal();
       await pump();
-      if (reason === "restore" && (await replayJournal()) > 0) {
-        setLoaded(await load(db));
-        applyPending();
-      }
       listen();
     },
     /**
