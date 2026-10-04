@@ -54,6 +54,7 @@ type FixtureOptions = {
   languageExceptions?: Record<string, { token: string; reason: string }[]>;
   headwordOverrides?: Record<string, string>;
   checkText?: Record<string, string>;
+  checkSupport?: Record<string, { en: string; fa: string }[]>;
 };
 
 function writeJson(root: string, relative: string, value: unknown): void {
@@ -143,6 +144,7 @@ function makeFixture(options: FixtureOptions = {}): string {
               accept: [],
               fa: "آزمون",
               why: "آزمون",
+              support: options.checkSupport?.[id],
             })),
           },
         ],
@@ -467,5 +469,66 @@ test("strict task language ignores prose-only debt but fails on authored-check d
     assert.match(taskResult.stderr, /task-language gate failed: 1 unresolved/);
   } finally {
     rmSync(taskRoot, { recursive: true, force: true });
+  }
+});
+
+
+test("learner-visible support resolves authored-task debt without creating an exception", () => {
+  const root = makeFixture({
+    checkText: { [IDS[0]]: "mystery ___" },
+    checkSupport: {
+      [IDS[0]]: [{ en: "mystery", fa: "واژهٔ کمکی آزمایشی" }],
+    },
+  });
+  try {
+    const strict = runCalibration(root, "--strict-tasks");
+    assert.equal(strict.status, 0, strict.stderr);
+
+    const json = runCalibration(root, "--json");
+    assert.equal(json.status, 0, json.stderr);
+    const packet = JSON.parse(json.stdout) as {
+      summary: {
+        taskLanguageUnresolved: number;
+        taskLanguageScaffolded: number;
+        languageExceptions: number;
+      };
+    };
+    assert.equal(packet.summary.taskLanguageUnresolved, 0);
+    assert.equal(packet.summary.taskLanguageScaffolded, 1);
+    assert.equal(packet.summary.languageExceptions, 0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("stale task support is rejected instead of hiding unrelated vocabulary", () => {
+  const root = makeFixture({
+    checkText: { [IDS[0]]: "mystery ___" },
+    checkSupport: {
+      [IDS[0]]: [{ en: "ghost", fa: "واژهٔ ناموجود" }],
+    },
+  });
+  try {
+    const result = runCalibration(root);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /task support "ghost" is stale/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("task support cannot expose the current target", () => {
+  const root = makeFixture({
+    checkText: { [IDS[0]]: "alpha ___" },
+    checkSupport: {
+      [IDS[0]]: [{ en: "alpha", fa: "نباید پاسخ را لو بدهد" }],
+    },
+  });
+  try {
+    const result = runCalibration(root);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /exposes the current target/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
   }
 });

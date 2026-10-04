@@ -75,6 +75,24 @@ The A1 curriculum sequence and first 20-entry calibration slice are tracked in
 against current content, audio, prerequisites and held-out assessment capacity.
 Those checks prepare review; they never create editorial approval.
 
+## Authored task support
+
+Checks should prefer already introduced language. When an early A1 check needs
+an otherwise untaught context word to stay natural, add a small learner-visible
+`support` list directly to that check:
+
+```json
+"support": [
+  { "en": "book", "fa": "کتاب" }
+]
+```
+
+Use the exact word or short phrase that appears in the task. Keep the list
+minimal and never include the current target or its answer form. The UI shows
+these glosses before answering, and the calibration gate rejects stale support
+or support that leaks the target. This mechanism is for comprehensible context,
+not for bypassing prerequisite design.
+
 ## Editing
 
 1. Edit the entry, contrast or scene in `content/pilot/`.

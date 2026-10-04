@@ -229,3 +229,24 @@ test("a used-up held-out prompt is recorded as missing, never replaced by recogn
 function newIdFor(session: { answers: unknown[] }) {
   return `answer-${session.answers.length}`;
 }
+
+
+test("authored task support survives content resolution for the learner UI", () => {
+  const localPilot = structuredClone(pilot);
+  const entry = localPilot.entries.find((candidate) =>
+    candidate.senses.some((sense) => sense.check.length > 0),
+  );
+  assert.ok(entry);
+  const sense = entry.senses.find((candidate) => candidate.check.length > 0);
+  assert.ok(sense);
+  const authored = sense.check[0];
+  authored.support = [{ en: "helper", fa: "واژهٔ کمکی" }];
+
+  const localIndex = indexPilot(localPilot);
+  const resolved = resolveItem(localIndex, {
+    from: "sense",
+    target: sense.id,
+    item: authored.id,
+  });
+  assert.deepEqual(resolved?.support, [{ en: "helper", fa: "واژهٔ کمکی" }]);
+});

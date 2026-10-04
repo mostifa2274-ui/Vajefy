@@ -430,6 +430,7 @@ function Check({
           <p lang={item.promptLang} dir={item.promptLang === "fa" ? "rtl" : "ltr"} className={cn("mt-2 text-pretty", item.promptLang === "en" ? "lex-word text-3xl" : "text-xl font-medium")}>
             {item.prompt}
           </p>
+          <TaskSupport support={item.support} copy={copy} />
           <div className="mt-4 grid gap-2" role="group" aria-label={copy.meaning}>
             {item.options.map((option) => {
               const chosen = locked && given === option.text;
@@ -474,6 +475,7 @@ function Check({
               </span>
             ))}
           </p>
+          <TaskSupport support={item.support} copy={copy} />
           <input
             aria-label={copy.yourAnswer}
             value={locked ? given : typed}
@@ -499,6 +501,40 @@ function Check({
           {coach ? <CoachPanel request={coach} label={copy.coachAskFit} copy={copy} lang={lang} /> : null}
         </Feedback>
       ) : null}
+    </div>
+  );
+}
+
+function TaskSupport({
+  support,
+  copy,
+}: {
+  support: ResolvedItem["support"];
+  copy: Copy;
+}) {
+  if (!support?.length) return null;
+  return (
+    <div
+      className="mt-3 rounded-md border border-line px-3 py-2"
+      role="note"
+      aria-label={copy.taskSupport}
+    >
+      <p className="text-xs font-semibold text-muted">{copy.taskSupport}</p>
+      <dl className="mt-1 flex flex-wrap gap-x-4 gap-y-1">
+        {support.map((item) => (
+          <div
+            key={`${item.en}:${item.fa}`}
+            className="grid grid-cols-[auto_1fr] items-baseline gap-x-2"
+          >
+            <dt lang="en" dir="ltr" className="lex-word text-sm">
+              {item.en}
+            </dt>
+            <dd lang="fa" dir="rtl" className="text-sm text-muted">
+              {item.fa}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </div>
   );
 }
