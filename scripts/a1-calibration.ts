@@ -84,6 +84,7 @@ type LanguageDependencyStatus =
   | "external"
   | "proper-name-candidate"
   | "scaffold"
+  | "paired-scaffold"
   | "exception";
 
 type LanguageDependency = {
@@ -99,6 +100,7 @@ type LanguageAudit = {
   unresolved: number;
   taskUnresolved: number;
   taskScaffolded: number;
+  pairedScaffolded: number;
   documentedExceptions: number;
   staleExceptions: string[];
 };
@@ -142,6 +144,7 @@ type Packet = {
     languageUnresolved: number;
     taskLanguageUnresolved: number;
     taskLanguageScaffolded: number;
+    pairedTeachingScaffolded: number;
     taskLanguageReadyEntries: number;
     languageExceptions: number;
   };
@@ -266,6 +269,11 @@ type EnglishSource = {
   source: string;
   text: string;
   support?: TaskSupport[];
+  /** Persian text rendered next to this English teaching copy. */
+  pairedScaffold?: {
+    kind: "grammar-note" | "example-translation";
+    fa: string;
+  };
 };
 
 function englishTokens(value: string): string[] {
@@ -295,10 +303,18 @@ function englishSources(entry: Pilot["entries"][number]): EnglishSource[] {
   const sources: EnglishSource[] = [];
   for (const sense of entry.senses) {
     for (const [index, item] of (sense.grammar ?? []).entries()) {
-      sources.push({ source: `${sense.id}/grammar-${index + 1}`, text: item.pattern });
+      sources.push({
+        source: `${sense.id}/grammar-${index + 1}`,
+        text: item.pattern,
+        pairedScaffold: { kind: "grammar-note", fa: item.note },
+      });
     }
     for (const [index, item] of (sense.examples ?? []).entries()) {
-      sources.push({ source: `${sense.id}/example-${index + 1}`, text: item.en });
+      sources.push({
+        source: `${sense.id}/example-${index + 1}`,
+        text: item.en,
+        pairedScaffold: { kind: "example-translation", fa: item.fa },
+      });
     }
     for (const [index, item] of (sense.collocations ?? []).entries()) {
       sources.push({ source: `${sense.id}/collocation-${index + 1}`, text: item });
@@ -440,7 +456,7 @@ function auditLanguage(
   const rows = new Map<string, LanguageDependency>();
   const usedExceptions = new Set<string>();
 
-  for (const { source, text, support } of englishSources(entry)) {
+  for (const { source, text, support, pairedScaffold } of englishSources(entry)) {
     const supportByToken = new Map<string, string>();
     for (const item of support ?? []) {
       for (const raw of englishTokens(item.en)) {
@@ -459,6 +475,8 @@ function auditLanguage(
         let status: LanguageDependencyStatus | "available";
         if (scaffoldMeaning) {
           status = "scaffold";
+        } else if (pairedScaffold) {
+          status = "paired-scaffold";
         } else if (exactException) {
           status = "exception";
           usedExceptions.add(form);
@@ -487,9 +505,16 @@ function auditLanguage(
           ...(resolvedId ? { entryId: resolvedId } : {}),
           ...(scaffoldMeaning
             ? { reason: scaffoldMeaning }
-            : exactException
-              ? { reason: exactException.reason }
-              : {}),
+            : pairedScaffold
+              ? {
+                  reason:
+                    pairedScaffold.kind === "example-translation"
+                      ? `visible Persian example translation: ${pairedScaffold.fa}`
+                      : `visible Persian grammar note: ${pairedScaffold.fa}`,
+                }
+              : exactException
+                ? { reason: exactException.reason }
+                : {}),
           sources: [source],
         });
       }
@@ -500,7 +525,10 @@ function auditLanguage(
     `${a.status}:${a.token}`.localeCompare(`${b.status}:${b.token}`),
   );
   const unresolvedDependencies = dependencies.filter(
-    (item) => item.status !== "exception" && item.status !== "scaffold",
+    (item) =>
+      item.status !== "exception" &&
+      item.status !== "scaffold" &&
+      item.status !== "paired-scaffold",
   );
   return {
     dependencies,
@@ -512,6 +540,9 @@ function auditLanguage(
       (item) =>
         item.status === "scaffold" &&
         item.sources.some((source) => source.includes("/check-")),
+    ).length,
+    pairedScaffolded: dependencies.filter(
+      (item) => item.status === "paired-scaffold",
     ).length,
     documentedExceptions: dependencies.filter(
       (item) => item.status === "exception",
@@ -557,6 +588,7 @@ function markdown(packet: Packet): string {
     `| Unresolved learner-language dependencies | ${packet.summary.languageUnresolved} |`,
     `| Unresolved authored-task dependencies | ${packet.summary.taskLanguageUnresolved} |`,
     `| Learner-visible authored-task scaffolds | ${packet.summary.taskLanguageScaffolded} |`,
+    `| Persian-paired teaching dependencies | ${packet.summary.pairedTeachingScaffolded} |`,
     `| Entries ratcheted task-language-ready | ${packet.summary.taskLanguageReadyEntries}/${packet.summary.entries} |`,
     `| Documented language exceptions | ${packet.summary.languageExceptions} |`,
     `| Editorial/coverage gaps to inspect | ${packet.summary.editorialGaps} |`,
@@ -888,6 +920,7 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
     unresolved: 0,
     taskUnresolved: 0,
     taskScaffolded: 0,
+    pairedScaffolded: 0,
     documentedExceptions: 0,
     staleExceptions: [],
   };
@@ -990,6 +1023,10 @@ const packet: Packet = {
       (sum, entry) => sum + entry.language.taskScaffolded,
       0,
     ),
+    pairedTeachingScaffolded: entries.reduce(
+      (sum, entry) => sum + entry.language.pairedScaffolded,
+      0,
+    ),
     taskLanguageReadyEntries: entries.filter(
       (entry) => entry.taskLanguageReady,
     ).length,
@@ -1022,7 +1059,7 @@ if (
 
 if (process.argv.includes("--check")) {
   console.log(
-    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies (${packet.summary.taskLanguageUnresolved} in authored tasks, ${packet.summary.taskLanguageScaffolded} learner-visible task scaffolds); ${packet.summary.taskLanguageReadyEntries}/${packet.summary.entries} entries ratcheted task-language-ready; ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
+    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies (${packet.summary.taskLanguageUnresolved} in authored tasks, ${packet.summary.taskLanguageScaffolded} learner-visible task scaffolds, ${packet.summary.pairedTeachingScaffolded} Persian-paired teaching dependencies); ${packet.summary.taskLanguageReadyEntries}/${packet.summary.entries} entries ratcheted task-language-ready; ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
   );
 } else if (process.argv.includes("--json")) {
   console.log(JSON.stringify(packet, null, 2));
