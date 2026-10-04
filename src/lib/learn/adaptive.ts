@@ -229,14 +229,15 @@ export function smartPracticeQuestions(
     const word = byId.get(candidate.id);
     if (!word) continue;
 
-    const preferred = modeAt(questions.length, options.evidence?.[candidate.id], options.allowListening, now, policy);
+    const exact = options.targets?.[candidate.id];
+    const canListen = options.allowListening !== false || Boolean(exact?.clip);
+    const preferred = modeAt(questions.length, options.evidence?.[candidate.id], canListen, now, policy);
     let question =
       lexQuestion(word, pool, preferred, copy, lang) ??
       // Spelling is generative and does not require distractors, so it is a
       // robust fallback for words whose example cannot make a cloze question.
       lexQuestion(word, pool, "spell", copy, lang);
 
-    const exact = options.targets?.[candidate.id];
     if (question?.kind === "mcq" && question.speak && exact?.clip) {
       question = { ...question, clip: exact.clip };
     }
