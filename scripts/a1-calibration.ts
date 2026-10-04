@@ -2,9 +2,20 @@ import fs from "node:fs";
 import path from "node:path";
 import type { CheckItem, Pilot } from "../src/lib/learn/content.ts";
 
+type LanguageException = {
+  token: string;
+  reason: string;
+};
+
 type SliceEntry = {
   id: string;
   objective: string;
+  /**
+   * A deliberately allowed learner-language dependency that cannot yet be
+   * removed. The token and rationale stay reviewer-visible; this is never an
+   * automatic approval.
+   */
+  languageExceptions?: LanguageException[];
 };
 
 type SliceUnit = {
@@ -63,6 +74,28 @@ type SenseRow = {
   recycling: { laterUnits: string[]; contrasts: string[]; scenes: string[] };
 };
 
+type LanguageDependencyStatus =
+  | "future"
+  | "outside-slice"
+  | "external"
+  | "proper-name-candidate"
+  | "exception";
+
+type LanguageDependency = {
+  token: string;
+  status: LanguageDependencyStatus;
+  entryId?: string;
+  reason?: string;
+  sources: string[];
+};
+
+type LanguageAudit = {
+  dependencies: LanguageDependency[];
+  unresolved: number;
+  documentedExceptions: number;
+  staleExceptions: string[];
+};
+
 type EntryRow = {
   order: number;
   id: string;
@@ -78,6 +111,7 @@ type EntryRow = {
     reviewer?: string;
     date?: string;
   };
+  language: LanguageAudit;
   senses: SenseRow[];
   gaps: string[];
 };
@@ -97,6 +131,8 @@ type Packet = {
     flaggedClips: number;
     structuralGaps: number;
     editorialGaps: number;
+    languageUnresolved: number;
+    languageExceptions: number;
   };
 };
 
@@ -147,6 +183,273 @@ function reviewStatus(value: string | undefined): string {
   return value ?? "pending";
 }
 
+const CONTRACTIONS: Record<string, string[]> = {
+  "i'm": ["i", "be"],
+  "you're": ["you", "be"],
+  "he's": ["he", "be"],
+  "she's": ["she", "be"],
+  "it's": ["it", "be"],
+  "we're": ["we", "be"],
+  "they're": ["they", "be"],
+  "that's": ["that", "be"],
+  "what's": ["what", "be"],
+  "who's": ["who", "be"],
+  "where's": ["where", "be"],
+  "how's": ["how", "be"],
+  "isn't": ["be", "not"],
+  "aren't": ["be", "not"],
+  "wasn't": ["be", "not"],
+  "weren't": ["be", "not"],
+  "don't": ["do", "not"],
+  "doesn't": ["do", "not"],
+  "didn't": ["do", "not"],
+  "can't": ["can", "not"],
+  "couldn't": ["could", "not"],
+  "won't": ["will", "not"],
+  "wouldn't": ["would", "not"],
+  "haven't": ["have", "not"],
+  "hasn't": ["have", "not"],
+  "hadn't": ["have", "not"],
+  "i've": ["i", "have"],
+  "you've": ["you", "have"],
+  "we've": ["we", "have"],
+  "they've": ["they", "have"],
+  "i'll": ["i", "will"],
+  "you'll": ["you", "will"],
+  "he'll": ["he", "will"],
+  "she'll": ["she", "will"],
+  "we'll": ["we", "will"],
+  "they'll": ["they", "will"],
+};
+
+const IRREGULAR: Record<string, string> = {
+  am: "be",
+  is: "be",
+  are: "be",
+  was: "be",
+  were: "be",
+  been: "be",
+  being: "be",
+  has: "have",
+  had: "have",
+  having: "have",
+  does: "do",
+  did: "do",
+  done: "do",
+  doing: "do",
+  goes: "go",
+  went: "go",
+  gone: "go",
+  going: "go",
+  people: "person",
+  children: "child",
+  men: "man",
+  women: "woman",
+  feet: "foot",
+  teeth: "tooth",
+  mice: "mouse",
+};
+
+type EnglishSource = { source: string; text: string };
+
+function englishSources(entry: Pilot["entries"][number]): EnglishSource[] {
+  const sources: EnglishSource[] = [];
+  for (const sense of entry.senses) {
+    for (const [index, item] of (sense.grammar ?? []).entries()) {
+      sources.push({ source: `${sense.id}/grammar-${index + 1}`, text: item.pattern });
+    }
+    for (const [index, item] of (sense.examples ?? []).entries()) {
+      sources.push({ source: `${sense.id}/example-${index + 1}`, text: item.en });
+    }
+    for (const [index, item] of (sense.collocations ?? []).entries()) {
+      sources.push({ source: `${sense.id}/collocation-${index + 1}`, text: item });
+    }
+    if (sense.mistake?.wrong) {
+      sources.push({ source: `${sense.id}/mistake-wrong`, text: sense.mistake.wrong });
+    }
+    if (sense.mistake?.right) {
+      sources.push({ source: `${sense.id}/mistake-right`, text: sense.mistake.right });
+    }
+    for (const item of sense.check ?? []) {
+      if (item.type === "cloze") {
+        sources.push({ source: `${sense.id}/check-${item.id}`, text: item.text });
+      } else if (item.type === "choice") {
+        sources.push({ source: `${sense.id}/check-${item.id}/prompt`, text: item.prompt });
+        item.options.forEach((option, index) =>
+          sources.push({
+            source: `${sense.id}/check-${item.id}/option-${index + 1}`,
+            text: option.text,
+          }),
+        );
+      } else {
+        sources.push({ source: `${sense.id}/check-${item.id}/frame`, text: item.frame });
+      }
+    }
+  }
+  return sources;
+}
+
+function headwordAliases(headword: string): string[] {
+  const normalized = headword.toLowerCase().replaceAll("’", "'").trim();
+  if (normalized.includes("/")) {
+    return normalized
+      .split("/")
+      .map((part) => part.trim())
+      .filter((part) => /^[a-z]+(?:[-'][a-z]+)*$/.test(part));
+  }
+  return /^[a-z]+(?:[-'][a-z]+)*$/.test(normalized) ? [normalized] : [];
+}
+
+function buildHeadwordIndex(
+  entries: Pilot["entries"],
+): Map<string, string> {
+  const index = new Map<string, string>();
+  for (const entry of entries) {
+    for (const alias of headwordAliases(entry.headword)) {
+      if (!index.has(alias)) index.set(alias, entry.id);
+    }
+  }
+  return index;
+}
+
+function lexicalForms(raw: string): string[] {
+  const token = raw.toLowerCase().replaceAll("’", "'");
+  const contraction = CONTRACTIONS[token];
+  if (contraction) return contraction;
+  if (token.endsWith("'s") && token.length > 2) return [token.slice(0, -2)];
+  if (token.endsWith("'re") && token.length > 3)
+    return [token.slice(0, -3), "be"];
+  if (token.endsWith("'ve") && token.length > 3)
+    return [token.slice(0, -3), "have"];
+  if (token.endsWith("'ll") && token.length > 3)
+    return [token.slice(0, -3), "will"];
+  return [token];
+}
+
+function morphologyCandidates(form: string): string[] {
+  const candidates = [form];
+  const irregular = IRREGULAR[form];
+  if (irregular) candidates.push(irregular);
+  if (form.endsWith("ies") && form.length > 3)
+    candidates.push(`${form.slice(0, -3)}y`);
+  if (form.endsWith("es") && form.length > 2)
+    candidates.push(form.slice(0, -2));
+  if (form.endsWith("s") && form.length > 1)
+    candidates.push(form.slice(0, -1));
+  if (form.endsWith("ied") && form.length > 3)
+    candidates.push(`${form.slice(0, -3)}y`);
+  if (form.endsWith("ed") && form.length > 2) {
+    const stem = form.slice(0, -2);
+    candidates.push(stem, `${stem}e`);
+    if (
+      stem.length > 2 &&
+      stem.at(-1) === stem.at(-2)
+    )
+      candidates.push(stem.slice(0, -1));
+  }
+  if (form.endsWith("ing") && form.length > 3) {
+    const stem = form.slice(0, -3);
+    candidates.push(stem, `${stem}e`);
+    if (
+      stem.length > 2 &&
+      stem.at(-1) === stem.at(-2)
+    )
+      candidates.push(stem.slice(0, -1));
+  }
+  return [...new Set(candidates)];
+}
+
+function resolveA1Entry(
+  form: string,
+  headwordIndex: Map<string, string>,
+): string | undefined {
+  for (const candidate of morphologyCandidates(form)) {
+    const id = headwordIndex.get(candidate);
+    if (id) return id;
+  }
+  return undefined;
+}
+
+function auditLanguage(
+  entry: Pilot["entries"][number],
+  currentIndex: number,
+  position: Map<string, number>,
+  headwordIndex: Map<string, string>,
+  exceptions: LanguageException[],
+): LanguageAudit {
+  const exceptionByToken = new Map<string, LanguageException>();
+  for (const exception of exceptions) {
+    const token = exception.token.toLowerCase().replaceAll("’", "'").trim();
+    if (token) exceptionByToken.set(token, exception);
+  }
+
+  const rows = new Map<string, LanguageDependency>();
+  const usedExceptions = new Set<string>();
+
+  for (const { source, text } of englishSources(entry)) {
+    const rawTokens = text.match(/[A-Za-z]+(?:[-'’][A-Za-z]+)*/g) ?? [];
+    for (const raw of rawTokens) {
+      for (const form of lexicalForms(raw)) {
+        const exactException = exceptionByToken.get(form);
+        const resolvedId = resolveA1Entry(form, headwordIndex);
+        const resolvedPosition = resolvedId ? position.get(resolvedId) : undefined;
+
+        let status: LanguageDependencyStatus | "available";
+        if (exactException) {
+          status = "exception";
+          usedExceptions.add(form);
+        } else if (resolvedId && resolvedPosition !== undefined && resolvedPosition <= currentIndex) {
+          status = "available";
+        } else if (resolvedId && resolvedPosition !== undefined) {
+          status = "future";
+        } else if (resolvedId) {
+          status = "outside-slice";
+        } else if (/^[A-Z]/.test(raw)) {
+          status = "proper-name-candidate";
+        } else {
+          status = "external";
+        }
+
+        if (status === "available") continue;
+        const key = `${status}:${form}:${resolvedId ?? ""}`;
+        const existing = rows.get(key);
+        if (existing) {
+          if (!existing.sources.includes(source)) existing.sources.push(source);
+          continue;
+        }
+        rows.set(key, {
+          token: form,
+          status,
+          ...(resolvedId ? { entryId: resolvedId } : {}),
+          ...(exactException ? { reason: exactException.reason } : {}),
+          sources: [source],
+        });
+      }
+    }
+  }
+
+  const dependencies = [...rows.values()].sort((a, b) =>
+    `${a.status}:${a.token}`.localeCompare(`${b.status}:${b.token}`),
+  );
+  return {
+    dependencies,
+    unresolved: dependencies.filter((item) => item.status !== "exception").length,
+    documentedExceptions: dependencies.filter((item) => item.status === "exception").length,
+    staleExceptions: [...exceptionByToken.keys()].filter((token) => !usedExceptions.has(token)),
+  };
+}
+
+function dependencySummary(audit: LanguageAudit): string {
+  if (!audit.dependencies.length) return "all learner-facing English resolves to introduced A1 targets";
+  return audit.dependencies
+    .map((item) => {
+      const mapped = item.entryId ? ` → ${item.entryId}` : "";
+      const reason = item.reason ? ` — ${item.reason}` : "";
+      return `${item.token} [${item.status}${mapped}]${reason}`;
+    })
+    .join("; ");
+}
+
 function markdown(packet: Packet): string {
   const out: string[] = [];
   out.push(
@@ -168,6 +471,8 @@ function markdown(packet: Packet): string {
     `| Entries fully reviewed | ${packet.summary.fullyReviewed} |`,
     `| Senses with complete GB+US word/example audio | ${packet.summary.completeAudioSenses} |`,
     `| Flagged clips in this slice | ${packet.summary.flaggedClips} |`,
+    `| Unresolved learner-language dependencies | ${packet.summary.languageUnresolved} |`,
+    `| Documented language exceptions | ${packet.summary.languageExceptions} |`,
     `| Editorial/coverage gaps to inspect | ${packet.summary.editorialGaps} |`,
     "",
   );
@@ -195,7 +500,12 @@ function markdown(packet: Packet): string {
 
   out.push("", "## Sense-level review matrix", "");
   for (const entry of packet.entries) {
-    out.push(`### ${entry.order}. ${entry.headword} — \`${entry.id}\``, "");
+    out.push(
+      `### ${entry.order}. ${entry.headword} — \`${entry.id}\``,
+      "",
+      `- Learner-language dependency audit: ${dependencySummary(entry.language)}`,
+      "",
+    );
     for (const sense of entry.senses) {
       const teaching = sense.teachingChecks
         .map((item) => `${item.id} (${item.type})`)
@@ -226,6 +536,7 @@ function markdown(packet: Packet): string {
     "- Verify the held-out item is independent of teaching examples and has one defensible answer.",
     "- Listen to the current GB and US clips; resolve every flagged clip rather than accepting it automatically.",
     "- Check prerequisites and recycling in the actual learner sequence; add curriculum recycling when the packet reports none.",
+    "- Resolve every learner-language dependency marked future, outside-slice, external, or proper-name-candidate. Rewrite the teaching text when possible; if an exception is genuinely unavoidable, document its exact token and rationale in the calibration overlay.",
     "- Record approvals only through the documented human review workflow after the reviewer has actually completed the checks.",
     "",
   );
@@ -292,6 +603,8 @@ const position = new Map(ids.map((id, index) => [id, index]));
 const unitPosition = new Map(
   slice.units.map((unit, index) => [unit.id, index]),
 );
+const headwordIndex = buildHeadwordIndex(pilot.entries);
+const languageByEntry = new Map<string, LanguageAudit>();
 
 for (const { unit, entry } of flat) {
   const content = byEntry.get(entry.id);
@@ -303,6 +616,34 @@ for (const { unit, entry } of flat) {
     structural.push(
       `${entry.id}: missing from the curriculum calibration unit`,
     );
+
+  const exceptionTokens = new Set<string>();
+  for (const exception of entry.languageExceptions ?? []) {
+    const token = exception.token.toLowerCase().replaceAll("’", "'").trim();
+    if (!token) structural.push(`${entry.id}: language exception token is required`);
+    if (!exception.reason.trim())
+      structural.push(`${entry.id}: language exception ${exception.token} needs a rationale`);
+    if (exceptionTokens.has(token))
+      structural.push(`${entry.id}: duplicate language exception ${exception.token}`);
+    exceptionTokens.add(token);
+  }
+
+  if (content) {
+    const language = auditLanguage(
+      content,
+      position.get(entry.id) ?? -1,
+      position,
+      headwordIndex,
+      entry.languageExceptions ?? [],
+    );
+    languageByEntry.set(entry.id, language);
+    for (const token of language.staleExceptions) {
+      structural.push(
+        `${entry.id}: language exception ${token} is stale because the token is not present in learner-facing English`,
+      );
+    }
+  }
+
   for (const prerequisite of curriculumEntry?.prerequisites ?? []) {
     const at = position.get(prerequisite);
     if (at === undefined)
@@ -385,6 +726,13 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
     };
   });
 
+  const language = languageByEntry.get(selected.id) ?? {
+    dependencies: [],
+    unresolved: 0,
+    documentedExceptions: 0,
+    staleExceptions: [],
+  };
+
   const gaps: string[] = [];
   if (!content.review) gaps.push("no current human review record");
   else {
@@ -410,6 +758,11 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
   ) {
     gaps.push("one or more senses need later recycling");
   }
+  if (language.unresolved) {
+    gaps.push(
+      `${language.unresolved} unresolved learner-language dependenc${language.unresolved === 1 ? "y" : "ies"}`,
+    );
+  }
 
   return {
     order: index + 1,
@@ -433,6 +786,7 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
         : {}),
       ...(content.review?.date ? { date: content.review.date } : {}),
     },
+    language,
     senses,
     gaps,
   };
@@ -464,12 +818,30 @@ const packet: Packet = {
     flaggedClips: allSenses.reduce((sum, sense) => sum + sense.flags.length, 0),
     structuralGaps: structural.length,
     editorialGaps: entries.reduce((sum, entry) => sum + entry.gaps.length, 0),
+    languageUnresolved: entries.reduce(
+      (sum, entry) => sum + entry.language.unresolved,
+      0,
+    ),
+    languageExceptions: entries.reduce(
+      (sum, entry) => sum + entry.language.documentedExceptions,
+      0,
+    ),
   },
 };
 
+if (
+  process.argv.includes("--strict-language") &&
+  packet.summary.languageUnresolved > 0
+) {
+  console.error(
+    `A1 calibration language gate failed: ${packet.summary.languageUnresolved} unresolved learner-language dependenc${packet.summary.languageUnresolved === 1 ? "y" : "ies"}. Use --json or the review packet to inspect them; rewrite the text or document a justified exception.`,
+  );
+  process.exit(1);
+}
+
 if (process.argv.includes("--check")) {
   console.log(
-    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
+    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies and ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
   );
 } else if (process.argv.includes("--json")) {
   console.log(JSON.stringify(packet, null, 2));
