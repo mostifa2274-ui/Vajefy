@@ -380,7 +380,20 @@ function Teach({
             ))}
           </ul>
           <h3 className="mt-5 text-sm font-medium">{copy.collocationsLabel}</h3>
-          <p lang="en" dir="ltr" className="mt-1 text-sm text-pretty">{sense.collocations.join(" · ")}</p>
+          {sense.collocationFa ? (
+            <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+              {sense.collocations.map((item) => (
+                <li key={item} className="rounded-md bg-paper-2 px-3 py-2 text-sm shadow-[var(--shadow-border)]">
+                  <p lang="en" dir="ltr" className="font-medium text-pretty">{item}</p>
+                  <p lang="fa" dir="rtl" className="mt-0.5 text-xs text-muted text-pretty">
+                    {sense.collocationFa?.[item]}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p lang="en" dir="ltr" className="mt-1 text-sm text-pretty">{sense.collocations.join(" · ")}</p>
+          )}
           {sense.usage ? (
             <>
               <h3 className="mt-5 text-sm font-medium">{copy.usageLabel}</h3>
@@ -389,7 +402,14 @@ function Teach({
           ) : null}
           <h3 className="mt-5 text-sm font-medium">{copy.mistakeLabel}</h3>
           <div className="mt-1">
-            <WrongRight wrong={sense.mistake.wrong} right={sense.mistake.right} why={sense.mistake.why} copy={copy} />
+            <WrongRight
+              wrong={sense.mistake.wrong}
+              wrongFa={sense.mistake.wrongFa}
+              right={sense.mistake.right}
+              rightFa={sense.mistake.rightFa}
+              why={sense.mistake.why}
+              copy={copy}
+            />
           </div>
           {!entry.released ? <p className="mt-4 text-xs text-muted">{copy.draftContent}</p> : null}
           <Button className="mt-6 w-full" onClick={onDone}>{copy.tryRecall}</Button>

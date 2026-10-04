@@ -101,9 +101,19 @@ export const sense = z.object({
   grammar: z.array(z.object({ pattern: text, note: fa })).min(1),
   examples: z.array(example).min(2),
   collocations: z.array(text).min(1),
+  /** Optional direct Persian translations keyed by the exact collocation text. */
+  collocationFa: z.record(text, fa).optional(),
   /** Register, context or restrictions, in Persian. */
   usage: fa.optional(),
-  mistake: z.object({ wrong: text, right: text, why: fa }),
+  mistake: z.object({
+    wrong: text,
+    /** Direct Persian translation of the incorrect English example. */
+    wrongFa: fa.optional(),
+    right: text,
+    /** Direct Persian translation of the corrected English example. */
+    rightFa: fa.optional(),
+    why: fa,
+  }),
   pronunciation: z.object({
     gb: text,
     us: text,

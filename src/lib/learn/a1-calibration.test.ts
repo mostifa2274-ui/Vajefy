@@ -53,6 +53,11 @@ type FixtureOptions = {
   grammarPattern?: Record<string, string>;
   grammarNote?: Record<string, string>;
   collocationText?: Record<string, string>;
+  collocationFa?: Record<string, string>;
+  mistakeWrongText?: Record<string, string>;
+  mistakeWrongFa?: Record<string, string>;
+  mistakeRightText?: Record<string, string>;
+  mistakeRightFa?: Record<string, string>;
   extraEntries?: { id: string; headword: string }[];
   languageExceptions?: Record<string, { token: string; reason: string }[]>;
   headwordOverrides?: Record<string, string>;
@@ -158,6 +163,20 @@ function makeFixture(options: FixtureOptions = {}): string {
             collocations: options.collocationText?.[id]
               ? [options.collocationText[id]]
               : [],
+            collocationFa:
+              options.collocationText?.[id] && options.collocationFa?.[id]
+                ? { [options.collocationText[id]]: options.collocationFa[id] }
+                : undefined,
+            mistake:
+              options.mistakeWrongText?.[id] || options.mistakeRightText?.[id]
+                ? {
+                    wrong: options.mistakeWrongText?.[id] ?? "mystery",
+                    wrongFa: options.mistakeWrongFa?.[id],
+                    right: options.mistakeRightText?.[id] ?? "answer",
+                    rightFa: options.mistakeRightFa?.[id],
+                    why: "توضیح فارسی",
+                  }
+                : undefined,
             check: Array.from({ length: checkCount }, (_, index) => ({
               id: `${senseId}:check-${index + 1}`,
               type: "cloze",
@@ -466,6 +485,101 @@ test("a grammar pattern with its visible Persian note is an explicit paired scaf
     assert.match(
       language.dependencies[0].reason ?? "",
       /visible Persian grammar note/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+
+test("a collocation with a direct Persian translation is an explicit paired scaffold", () => {
+  const root = makeFixture({
+    collocationText: { [IDS[0]]: "mystery phrase" },
+    collocationFa: { [IDS[0]]: "ترجمهٔ مستقیمِ عبارت" },
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: {
+        language: {
+          unresolved: number;
+          pairedScaffolded: number;
+          dependencies: { token: string; status: string; reason?: string }[];
+        };
+      }[];
+    };
+    const language = packet.entries[0].language;
+    assert.equal(language.unresolved, 0);
+    assert.equal(language.pairedScaffolded, 2);
+    assert.ok(
+      language.dependencies.every((item) => item.status === "paired-scaffold"),
+    );
+    assert.ok(
+      language.dependencies.every((item) =>
+        /visible Persian collocation translation/.test(item.reason ?? ""),
+      ),
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("direct Persian translations scaffold both mistake sentences", () => {
+  const root = makeFixture({
+    mistakeWrongText: { [IDS[0]]: "mystery" },
+    mistakeWrongFa: { [IDS[0]]: "ترجمهٔ جملهٔ نادرست" },
+    mistakeRightText: { [IDS[0]]: "answer" },
+    mistakeRightFa: { [IDS[0]]: "ترجمهٔ جملهٔ درست" },
+  });
+  try {
+    const result = runCalibration(root, "--strict-language");
+    assert.equal(result.status, 0, result.stderr);
+
+    const json = runCalibration(root, "--json");
+    assert.equal(json.status, 0, json.stderr);
+    const packet = JSON.parse(json.stdout) as {
+      entries: {
+        language: {
+          unresolved: number;
+          pairedScaffolded: number;
+        };
+      }[];
+    };
+    assert.equal(packet.entries[0].language.unresolved, 0);
+    assert.equal(packet.entries[0].language.pairedScaffolded, 2);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a missing direct mistake translation remains real language debt", () => {
+  const root = makeFixture({
+    mistakeWrongText: { [IDS[0]]: "mystery" },
+    mistakeWrongFa: { [IDS[0]]: "ترجمهٔ جملهٔ نادرست" },
+    mistakeRightText: { [IDS[0]]: "answer" },
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: {
+        language: {
+          unresolved: number;
+          dependencies: { token: string; status: string }[];
+        };
+      }[];
+    };
+    assert.equal(packet.entries[0].language.unresolved, 1);
+    assert.deepEqual(
+      packet.entries[0].language.dependencies.map((item) => [
+        item.token,
+        item.status,
+      ]),
+      [
+        ["answer", "external"],
+        ["mystery", "paired-scaffold"],
+      ],
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
