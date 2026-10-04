@@ -81,7 +81,7 @@ export type Op = OpBase &
      * Evidence only: a delayed check-up answer, measuring what was retained.
      * It never changes the schedule, practice skills, counts or XP.
      */
-    | ({ type: "assessment"; item: string; part: AssessmentPart; correct: boolean; delayDays: number } & AnswerContext)
+    | ({ type: "assessment"; item: string; part: AssessmentPart; delayDays: number } & ({ correct: boolean; missing?: never } | { missing: true; correct?: never }) & AnswerContext)
     | { type: "introduce"; item: string }
     | { type: "settings"; patch: SettingsPatch }
     | { type: "bookmark"; item: string; on: boolean }
@@ -115,7 +115,7 @@ export type StoredEvent = {
   skill?: PracticeSkill;
   context?: AnswerContext;
   exposure?: ExposureKind;
-  assessment?: { part: AssessmentPart; correct: boolean; delayDays: number };
+  assessment?: { part: AssessmentPart; delayDays: number; correct?: boolean; missing?: true };
   /** Scheduler outcome of a review answer; these form the review history. */
   review?: ReviewEvent;
   undo?: UndoRecord;
@@ -367,7 +367,9 @@ export function reduce(op: Op, snap: Snapshot): Writes {
         event: {
           ...base,
           item: op.item,
-          assessment: { part: op.part, correct: op.correct, delayDays: op.delayDays },
+          assessment: op.missing
+            ? { part: op.part, delayDays: op.delayDays, missing: true }
+            : { part: op.part, delayDays: op.delayDays, correct: op.correct },
           ...(context(op) ? { context: context(op) } : {}),
         },
       });
