@@ -28,16 +28,20 @@ Learn offers a check-up once at least three enhanced words were first met 30
 or more days ago and have not been checked in the last 30 days. Today links to
 it. Up to ten words are checked:
 
-1. **Use:** for each word, a sentence item (produce, cloze or choice) the
-   learner has never answered. If none is left, they choose the word for its
-   meaning.
+1. **Use:** for each word, a sentence item (produce, cloze or choice) reserved
+   from normal teaching and practice. The final authored sense check is the
+   held-out item. If it is unavailable or was already exposed, the use
+   measurement is recorded as **missing**; it is never replaced by an easier
+   recognition question.
 2. **Meaning:** then recognising each word's Persian meaning, among new
-   distractors.
+   distractors. Both study arms use this same format.
 
 Use comes first, so the meaning question cannot cue it. A word counts as
-*recalled and used* when both are right. The result appears at the end and on
-Progress. Check-up answers are assessments only: they never change a due date,
-skill evidence, counts or XP, and a wrong answer gets no retry.
+*recalled and used* only when both required parts were observed and both were
+right. Missing held-out evidence is reported separately and excluded from the
+denominator rather than treated as a learner error. The result appears at the
+end and on Progress. Check-up answers are assessments only: they never change a
+due date, skill evidence, counts or XP, and a wrong answer gets no retry.
 
 ## The pilot study
 
