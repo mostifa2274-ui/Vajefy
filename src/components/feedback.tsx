@@ -44,19 +44,47 @@ export function Mark({ ok, copy }: { ok: boolean; copy: Copy }) {
   );
 }
 
-/** A common mistake beside its correction, with the reason in Persian. */
-export function WrongRight({ wrong, right, why, copy }: { wrong: string; right: string; why: string; copy: Copy }) {
+/** A common mistake beside its correction, with direct Persian support when available. */
+export function WrongRight({
+  wrong,
+  wrongFa,
+  right,
+  rightFa,
+  why,
+  copy,
+}: {
+  wrong: string;
+  wrongFa?: string;
+  right: string;
+  rightFa?: string;
+  why: string;
+  copy: Copy;
+}) {
   return (
-    <div className="text-sm">
-      <p lang="en" dir="ltr" className="text-bad">
-        <Mark ok={false} copy={copy} />
-        {wrong}
-      </p>
-      <p lang="en" dir="ltr" className="text-good">
-        <Mark ok copy={copy} />
-        {right}
-      </p>
-      <p lang="fa" dir="rtl" className="mt-1 text-muted text-pretty">
+    <div className="grid gap-2 text-sm">
+      <div>
+        <p lang="en" dir="ltr" className="text-bad">
+          <Mark ok={false} copy={copy} />
+          {wrong}
+        </p>
+        {wrongFa ? (
+          <p lang="fa" dir="rtl" className="mt-0.5 text-xs text-muted text-pretty">
+            {wrongFa}
+          </p>
+        ) : null}
+      </div>
+      <div>
+        <p lang="en" dir="ltr" className="text-good">
+          <Mark ok copy={copy} />
+          {right}
+        </p>
+        {rightFa ? (
+          <p lang="fa" dir="rtl" className="mt-0.5 text-xs text-muted text-pretty">
+            {rightFa}
+          </p>
+        ) : null}
+      </div>
+      <p lang="fa" dir="rtl" className="text-muted text-pretty">
         {why}
       </p>
     </div>
