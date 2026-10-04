@@ -58,46 +58,58 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "My sister ___ a nurse.",
-      "answer": "is",
+      "text": "I ___ here.",
+      "answer": "am",
       "accept": [
-       "'s"
+       "'m"
       ],
-      "fa": "خواهرم پرستار است.",
-      "why": "با he/she/it شکل is."
+      "fa": "من اینجا هستم.",
+      "why": "با I شکل am از فعل be می‌آید.",
+      "support": [
+       {
+        "en": "here",
+        "fa": "اینجا"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "How do you say «من سی سال دارم»?",
+      "prompt": "با you کدام شکلِ be درست است؟",
       "options": [
        {
-        "text": "I'm thirty.",
+        "text": "are",
         "ok": true,
-        "why": "سن با be."
+        "why": "با you از are استفاده می‌کنیم."
        },
        {
-        "text": "I have thirty years.",
+        "text": "am",
         "ok": false,
-        "why": "سن با have گفته نمی‌شود."
+        "why": "am با I می‌آید."
        },
        {
-        "text": "I have thirty.",
+        "text": "is",
         "ok": false,
-        "why": "have برای سن به کار نمی‌رود."
+        "why": "is با he / she / it می‌آید."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "آن‌ها الان خانه هستند.",
-      "frame": "They ___ at home now.",
+      "prompt": "تو آماده‌ای.",
+      "frame": "You ___ ready.",
       "answer": "are",
       "accept": [
        "'re"
       ],
-      "why": "با they شکل are."
+      "why": "با you شکل are می‌آید.",
+      "support": [
+       {
+        "en": "ready",
+        "fa": "آماده"
+       }
+      ]
      }
     ]
    }

@@ -114,6 +114,24 @@ test("a guided lesson teaches, checks, applies and schedules its words", async (
   expect(sessions.find((session) => session.kind === "lesson")?.status).toBe("done");
 });
 
+test("an authored A1 task shows Persian support before the learner answers", async ({ page }) => {
+  test.setTimeout(90_000);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedNewLearner(page);
+  await page.goto("/learn");
+  await page.getByRole("button", { name: /Start lesson/ }).click();
+
+  const support = page.getByRole("note", { name: "Support words" });
+  for (let i = 0; i < 20 && !(await support.isVisible()); i++) {
+    if (!(await step(page))) break;
+  }
+
+  await expect(support).toBeVisible();
+  await expect(support).toContainText(/apple|book/);
+  await expect(support).toContainText(/سیب|کتاب/);
+  await accessible(page);
+});
+
 test("a lesson left midway resumes at the same step", async ({ page }) => {
   await seedNewLearner(page, 10);
   await page.goto("/learn");

@@ -1,159 +1,173 @@
 {
-  "version": 1,
-  "title": "A1 calibration slice — canonical introductions review",
-  "description": "The reviewer-facing overlay for the canonical 20-entry introductions slice in content/curriculum/A1.json. Curriculum owns entry order and prerequisites; this file adds review sections, teaching objectives, patterns and explicit recycling.",
-  "units": [
+ "version": 1,
+ "title": "A1 calibration slice — canonical introductions review",
+ "description": "The reviewer-facing overlay for the canonical 20-entry introductions slice in content/curriculum/A1.json. Curriculum owns entry order and prerequisites; this file adds review sections, teaching objectives, patterns and explicit recycling.",
+ "units": [
+  {
+   "id": "introduce-yourself",
+   "title": "Introduce yourself",
+   "goal": "Name the speaker and listener, introduce one person or thing, and form the smallest identity statements.",
+   "patterns": [
+    "I am …",
+    "You are …",
+    "a/an + singular count noun",
+    "my + noun"
+   ],
+   "recycles": [],
+   "entries": [
     {
-      "id": "introduce-yourself",
-      "title": "Introduce yourself",
-      "goal": "Name the speaker and listener, introduce one person or thing, and form the smallest identity statements.",
-      "patterns": [
-        "I am …",
-        "You are …",
-        "a/an + singular count noun",
-        "my + noun"
-      ],
-      "recycles": [],
-      "entries": [
-        { "id": "lex:A1:i", "objective": "Refer to yourself as the speaker." },
-        { "id": "lex:A1:you", "objective": "Address the listener directly." },
-        {
-          "id": "lex:A1:a-an",
-          "objective": "Introduce one non-specific countable person or thing."
-        },
-        {
-          "id": "lex:A1:be",
-          "objective": "Build basic identity, description and location statements."
-        },
-        {
-          "id": "lex:A1:my",
-          "objective": "Mark something as belonging to the speaker."
-        }
-      ]
+     "id": "lex:A1:i",
+     "objective": "Refer to yourself as the speaker.",
+     "taskLanguageReady": true
     },
     {
-      "id": "ask-and-identify",
-      "title": "Ask and identify",
-      "goal": "Exchange a name and identify a nearby person or thing.",
-      "patterns": [
-        "My/Your name is …",
-        "What is your name?",
-        "This is a/an …",
-        "He is …",
-        "I am … / You are …"
-      ],
-      "recycles": [
-        "lex:A1:i",
-        "lex:A1:you",
-        "lex:A1:a-an",
-        "lex:A1:be",
-        "lex:A1:my"
-      ],
-      "entries": [
-        {
-          "id": "lex:A1:your",
-          "objective": "Mark something as belonging to the listener."
-        },
-        { "id": "lex:A1:name", "objective": "Identify a person by name." },
-        {
-          "id": "lex:A1:what",
-          "objective": "Ask for basic identity or information."
-        },
-        {
-          "id": "lex:A1:this",
-          "objective": "Point to or identify a nearby person or thing."
-        },
-        {
-          "id": "lex:A1:he",
-          "objective": "Refer to one male person already identified."
-        }
-      ]
+     "id": "lex:A1:you",
+     "objective": "Address the listener directly.",
+     "taskLanguageReady": true
     },
     {
-      "id": "people-and-places",
-      "title": "Ask about people and places",
-      "goal": "Ask who someone is, ask about origin or location, and name a basic place of study.",
-      "patterns": [
-        "Who is this/he?",
-        "Where are you from?",
-        "from + place",
-        "in + place",
-        "This is a school.",
-        "He is in school."
-      ],
-      "recycles": [
-        "lex:A1:you",
-        "lex:A1:a-an",
-        "lex:A1:be",
-        "lex:A1:this",
-        "lex:A1:he"
-      ],
-      "entries": [
-        {
-          "id": "lex:A1:who",
-          "objective": "Ask for the identity of a person."
-        },
-        {
-          "id": "lex:A1:where",
-          "objective": "Ask about a basic location or origin."
-        },
-        {
-          "id": "lex:A1:from",
-          "objective": "Express a person's place of origin."
-        },
-        {
-          "id": "lex:A1:in",
-          "objective": "Locate someone or something inside a place or area."
-        },
-        {
-          "id": "lex:A1:school",
-          "objective": "Identify the basic place or institution where someone studies."
-        }
-      ]
+     "id": "lex:A1:a-an",
+     "objective": "Introduce one non-specific countable person or thing.",
+     "taskLanguageReady": true
     },
     {
-      "id": "personal-details",
-      "title": "Share personal details",
-      "goal": "Say where you live, mention close people, and ask how someone is.",
-      "patterns": [
-        "I live in + city.",
-        "This is my family/friend.",
-        "a friend",
-        "How are you?",
-        "How is your family?"
-      ],
-      "recycles": [
-        "lex:A1:i",
-        "lex:A1:you",
-        "lex:A1:a-an",
-        "lex:A1:be",
-        "lex:A1:my",
-        "lex:A1:your",
-        "lex:A1:this",
-        "lex:A1:in"
-      ],
-      "entries": [
-        {
-          "id": "lex:A1:city",
-          "objective": "Refer to a city as a place where someone can be or live."
-        },
-        {
-          "id": "lex:A1:live",
-          "objective": "Say where a person has their home."
-        },
-        {
-          "id": "lex:A1:family",
-          "objective": "Refer to a person's close family as a group."
-        },
-        {
-          "id": "lex:A1:friend",
-          "objective": "Refer to a person someone knows and likes."
-        },
-        {
-          "id": "lex:A1:how",
-          "objective": "Ask about condition or wellbeing in a basic exchange."
-        }
-      ]
+     "id": "lex:A1:be",
+     "objective": "Build basic identity, description and location statements.",
+     "taskLanguageReady": true
+    },
+    {
+     "id": "lex:A1:my",
+     "objective": "Mark something as belonging to the speaker.",
+     "taskLanguageReady": true
     }
-  ]
+   ]
+  },
+  {
+   "id": "ask-and-identify",
+   "title": "Ask and identify",
+   "goal": "Exchange a name and identify a nearby person or thing.",
+   "patterns": [
+    "My/Your name is …",
+    "What is your name?",
+    "This is a/an …",
+    "He is …",
+    "I am … / You are …"
+   ],
+   "recycles": [
+    "lex:A1:i",
+    "lex:A1:you",
+    "lex:A1:a-an",
+    "lex:A1:be",
+    "lex:A1:my"
+   ],
+   "entries": [
+    {
+     "id": "lex:A1:your",
+     "objective": "Mark something as belonging to the listener."
+    },
+    {
+     "id": "lex:A1:name",
+     "objective": "Identify a person by name."
+    },
+    {
+     "id": "lex:A1:what",
+     "objective": "Ask for basic identity or information."
+    },
+    {
+     "id": "lex:A1:this",
+     "objective": "Point to or identify a nearby person or thing."
+    },
+    {
+     "id": "lex:A1:he",
+     "objective": "Refer to one male person already identified."
+    }
+   ]
+  },
+  {
+   "id": "people-and-places",
+   "title": "Ask about people and places",
+   "goal": "Ask who someone is, ask about origin or location, and name a basic place of study.",
+   "patterns": [
+    "Who is this/he?",
+    "Where are you from?",
+    "from + place",
+    "in + place",
+    "This is a school.",
+    "He is in school."
+   ],
+   "recycles": [
+    "lex:A1:you",
+    "lex:A1:a-an",
+    "lex:A1:be",
+    "lex:A1:this",
+    "lex:A1:he"
+   ],
+   "entries": [
+    {
+     "id": "lex:A1:who",
+     "objective": "Ask for the identity of a person."
+    },
+    {
+     "id": "lex:A1:where",
+     "objective": "Ask about a basic location or origin."
+    },
+    {
+     "id": "lex:A1:from",
+     "objective": "Express a person's place of origin."
+    },
+    {
+     "id": "lex:A1:in",
+     "objective": "Locate someone or something inside a place or area."
+    },
+    {
+     "id": "lex:A1:school",
+     "objective": "Identify the basic place or institution where someone studies."
+    }
+   ]
+  },
+  {
+   "id": "personal-details",
+   "title": "Share personal details",
+   "goal": "Say where you live, mention close people, and ask how someone is.",
+   "patterns": [
+    "I live in + city.",
+    "This is my family/friend.",
+    "a friend",
+    "How are you?",
+    "How is your family?"
+   ],
+   "recycles": [
+    "lex:A1:i",
+    "lex:A1:you",
+    "lex:A1:a-an",
+    "lex:A1:be",
+    "lex:A1:my",
+    "lex:A1:your",
+    "lex:A1:this",
+    "lex:A1:in"
+   ],
+   "entries": [
+    {
+     "id": "lex:A1:city",
+     "objective": "Refer to a city as a place where someone can be or live."
+    },
+    {
+     "id": "lex:A1:live",
+     "objective": "Say where a person has their home."
+    },
+    {
+     "id": "lex:A1:family",
+     "objective": "Refer to a person's close family as a group."
+    },
+    {
+     "id": "lex:A1:friend",
+     "objective": "Refer to a person someone knows and likes."
+    },
+    {
+     "id": "lex:A1:how",
+     "objective": "Ask about condition or wellbeing in a basic exchange."
+    }
+   ]
+  }
+ ]
 }

@@ -55,6 +55,7 @@ type FixtureOptions = {
   headwordOverrides?: Record<string, string>;
   checkText?: Record<string, string>;
   checkSupport?: Record<string, { en: string; fa: string }[]>;
+  taskLanguageReadyIds?: string[];
 };
 
 function writeJson(root: string, relative: string, value: unknown): void {
@@ -89,6 +90,9 @@ function makeFixture(options: FixtureOptions = {}): string {
           objective: `Teach ${id}.`,
           ...(options.languageExceptions?.[id]
             ? { languageExceptions: options.languageExceptions[id] }
+            : {}),
+          ...(options.taskLanguageReadyIds?.includes(id)
+            ? { taskLanguageReady: true }
             : {}),
         })),
       },
@@ -530,5 +534,34 @@ test("task support cannot expose the current target", () => {
     assert.match(result.stderr, /exposes the current target/);
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+
+test("task-language-ready entries form a CI ratchet against hidden task debt", () => {
+  const failing = makeFixture({
+    checkText: { [IDS[0]]: "mystery ___" },
+    taskLanguageReadyIds: [IDS[0]],
+  });
+  try {
+    const result = runCalibration(failing);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /marked taskLanguageReady but still has 1 unresolved/);
+  } finally {
+    rmSync(failing, { recursive: true, force: true });
+  }
+
+  const passing = makeFixture({
+    checkText: { [IDS[0]]: "mystery ___" },
+    checkSupport: {
+      [IDS[0]]: [{ en: "mystery", fa: "واژهٔ کمکی آزمایشی" }],
+    },
+    taskLanguageReadyIds: [IDS[0]],
+  });
+  try {
+    const result = runCalibration(passing);
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    rmSync(passing, { recursive: true, force: true });
   }
 });
