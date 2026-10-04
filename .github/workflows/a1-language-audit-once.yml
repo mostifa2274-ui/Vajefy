@@ -1,0 +1,46 @@
+name: A1 language audit once
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - codex/a1-teaching-copy-cleanup
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Print unresolved A1 calibration teaching language
+        shell: bash
+        run: |
+          npm run --silent content:calibration -- --json > /tmp/a1-calibration.json
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const packet = JSON.parse(fs.readFileSync("/tmp/a1-calibration.json", "utf8"));
+          console.log("A1_LANGUAGE_SUMMARY");
+          console.log(JSON.stringify(packet.summary, null, 2));
+          console.log("A1_UNPAIRED_DEPENDENCIES");
+          for (const entry of packet.entries) {
+            const deps = entry.language.dependencies.filter(
+              (item) => !["scaffold", "paired-scaffold", "exception"].includes(item.status),
+            );
+            if (!deps.length) continue;
+            console.log(JSON.stringify({
+              id: entry.id,
+              headword: entry.headword,
+              unresolved: deps.length,
+              dependencies: deps,
+            }, null, 2));
+          }
+          NODE
+      - name: Confirm strict language gate is still informative
+        continue-on-error: true
+        run: npm run --silent content:calibration:language
