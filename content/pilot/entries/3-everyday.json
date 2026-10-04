@@ -1010,13 +1010,11 @@
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "نام خانوادگی‌ات چیست؟",
-      "frame": "What's your ___ name?",
+      "prompt": "من یک خانوادهٔ بزرگ دارم.",
+      "frame": "I have a big ___.",
       "answer": "family",
-      "accept": [
-       "last"
-      ],
-      "why": "family name = نام خانوادگی."
+      "accept": [],
+      "why": "a big family یعنی یک خانوادهٔ بزرگ."
      }
     ]
    }
