@@ -59,10 +59,12 @@ export type LessonSession = {
 };
 
 /** A resolved check item, ready to show. */
+type TaskSupport = { en: string; fa: string };
+
 export type ResolvedItem =
-  | { type: "choice"; prompt: string; promptLang: "en" | "fa"; options: { text: string; ok: boolean; why: string; lang: "en" | "fa" }[] }
-  | { type: "cloze"; text: string; answer: string; accept: string[]; fa: string; why: string }
-  | { type: "produce"; prompt: string; frame: string; answer: string; accept: string[]; why: string };
+  | { type: "choice"; prompt: string; promptLang: "en" | "fa"; options: { text: string; ok: boolean; why: string; lang: "en" | "fa" }[]; support?: TaskSupport[] }
+  | { type: "cloze"; text: string; answer: string; accept: string[]; fa: string; why: string; support?: TaskSupport[] }
+  | { type: "produce"; prompt: string; frame: string; answer: string; accept: string[]; why: string; support?: TaskSupport[] };
 
 function findItem(items: CheckItem[], id: string) {
   return items.find((item) => item.id === id);
@@ -75,6 +77,7 @@ function fromContent(item: CheckItem): ResolvedItem {
       prompt: item.prompt,
       promptLang: /[؀-ۿ]/.test(item.prompt) ? "fa" : "en",
       options: item.options.map((option) => ({ ...option, lang: /[؀-ۿ]/.test(option.text) ? "fa" : "en" })),
+      support: item.support,
     };
   }
   return item;
