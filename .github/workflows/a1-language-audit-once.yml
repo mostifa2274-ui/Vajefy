@@ -18,6 +18,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Rebuild learning content for audit
+        run: node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
       - name: Print compact unresolved A1 calibration language
         shell: bash
         run: |
