@@ -71,6 +71,14 @@ prose and fails on unresolved dependencies used by authored learner tasks. The
 normal report shows both totals. This lets task prompts become prerequisite-safe
 first, without pretending the wider teaching copy is already clean.
 
+When a natural early-A1 task needs a small amount of context that has not been
+taught yet, use the check item's optional `support` list instead of a hidden
+exception. Each support item contains the exact visible English word or short
+phrase plus a Persian gloss, and the lesson renders it before the learner
+answers. The calibration audit counts that dependency as scaffolded only for
+the specific authored task where the gloss is visible. Support that is stale,
+duplicated, or exposes the current target fails structurally.
+
 The resolver treats comma-separated lexical variants such as `a, an` as aliases
 of one A1 entry and strips trailing parenthetical sense labels before indexing
 headwords such as `like (find sb/sth pleasant)`. Punctuation inside a sense label
