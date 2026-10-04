@@ -12,18 +12,23 @@ roadmap are proposals, not measured Vajefy results.
 For each learner:
 
 - *Numerator*: the number of target meanings that pass a **delayed check** at
-  least 30 days after their first introduction. The check has two parts, and
-  both must be correct:
-  - **recall**: give the meaning from the English word, using a fresh prompt the
-    learner has not seen for that meaning;
-  - **use**: choose or produce the word correctly in a new sentence context.
+  least 30 days after their first introduction. The check has two required
+  parts, and both must be observed and correct:
+  - **recall**: identify the Persian meaning from the English word using the
+    same assessment format in both study arms;
+  - **use**: answer a sentence-context item reserved from normal teaching and
+    practice.
 - *Denominator*: **active study time** in hours, from first introduction to the
   delayed check.
 
 Rules:
 
-- A prompt is *fresh* when that prompt, at its content version, never appeared
-  in the learner's review or practice for that meaning.
+- Each sense reserves its final authored check item for delayed assessment;
+  normal lessons and practice do not use it.
+- If a required held-out item is unavailable or has already been exposed, the
+  measurement is recorded as **missing** and excluded from the completed-check
+  denominator. It is never converted into a wrong learner answer or replaced by
+  an easier task.
 - *Active study time* counts only time the page was visible and the learner
   acted within the previous 60 seconds. Idle time over 60 seconds is not
   counted. Background tabs are not counted.
@@ -109,9 +114,11 @@ and [AUDIO.md](AUDIO.md) for the pronunciation library.
 `src/lib/learn/measures.ts` computes these from review events and practice
 evidence. It never fills in a measure that has no recorded evidence.
 
-The principal measure needs a delayed test with new prompts. That is the
-30-day check-up, which Progress reports as "recalled and used correctly". The
-pilot study's analysis divides it by active study time
+The principal measure needs delayed evidence independent of normal teaching.
+That is the 30-day check-up. Its context item is held out from teaching and
+practice; missing required evidence is reported separately rather than scored
+as wrong. Progress reports completed checks as "recalled and used correctly".
+The pilot study's analysis divides usable meanings by active study time
 ([EVALUATION.md](EVALUATION.md)).
 
 ## Pilot study (Phase 5)
