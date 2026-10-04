@@ -46,6 +46,16 @@ sequence, A1 material outside the slice, an external token, or a proper-name
 candidate. This prevents hidden vocabulary from being mistaken for
 prerequisite-safe teaching text.
 
+The audit also models what the learner actually sees on the teach card.
+English example sentences are rendered directly beside their Persian
+translations, and grammar patterns are rendered directly beside Persian notes.
+Dependencies that occur only in those paired fields are reported as
+`paired-scaffold`, not hidden debt. This does **not** approve the translation
+or grammar note; it only records that an explicit Persian scaffold is visible.
+Plain-English collocations and common-mistake sentences are not automatically
+scaffolded and remain unresolved until their language is already taught,
+rewritten, or explicitly justified.
+
 Run the stricter language-readiness gate separately while calibration copy is
 being cleaned:
 
