@@ -52,6 +52,8 @@ type FixtureOptions = {
   exampleText?: Record<string, string>;
   extraEntries?: { id: string; headword: string }[];
   languageExceptions?: Record<string, { token: string; reason: string }[]>;
+  headwordOverrides?: Record<string, string>;
+  checkText?: Record<string, string>;
 };
 
 function writeJson(root: string, relative: string, value: unknown): void {
@@ -112,6 +114,8 @@ function makeFixture(options: FixtureOptions = {}): string {
   });
 
   const fixtureHeadword = (id: string): string => {
+    const override = options.headwordOverrides?.[id];
+    if (override) return override;
     const index = IDS.indexOf(id);
     return index >= 0 ? HEADWORDS[index] : id.slice("lex:A1:".length);
   };
@@ -134,7 +138,7 @@ function makeFixture(options: FixtureOptions = {}): string {
             check: Array.from({ length: checkCount }, (_, index) => ({
               id: `${senseId}:check-${index + 1}`,
               type: "cloze",
-              text: "___",
+              text: options.checkText?.[id] ?? "___",
               answer: "alpha",
               accept: [],
               fa: "آزمون",
@@ -405,5 +409,63 @@ test("stale language exceptions are rejected instead of silently accumulating", 
     assert.match(result.stderr, /language exception ghost is stale/);
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+
+test("comma-separated headword variants resolve as real A1 aliases", () => {
+  const root = makeFixture({
+    headwordOverrides: { [IDS[0]]: "a, an" },
+    exampleText: { [IDS[1]]: "an" },
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: { id: string; language: { unresolved: number } }[];
+    };
+    assert.equal(packet.entries[1].language.unresolved, 0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("sense labels containing slash characters do not hide the base headword", () => {
+  const root = makeFixture({
+    headwordOverrides: { [IDS[0]]: "like (find sb/sth pleasant)" },
+    exampleText: { [IDS[1]]: "like" },
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: { id: string; language: { unresolved: number } }[];
+    };
+    assert.equal(packet.entries[1].language.unresolved, 0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("strict task language ignores prose-only debt but fails on authored-check debt", () => {
+  const proseRoot = makeFixture({
+    exampleText: { [IDS[0]]: "mystery" },
+  });
+  try {
+    const proseResult = runCalibration(proseRoot, "--strict-tasks");
+    assert.equal(proseResult.status, 0, proseResult.stderr);
+  } finally {
+    rmSync(proseRoot, { recursive: true, force: true });
+  }
+
+  const taskRoot = makeFixture({
+    checkText: { [IDS[0]]: "mystery ___" },
+  });
+  try {
+    const taskResult = runCalibration(taskRoot, "--strict-tasks");
+    assert.notEqual(taskResult.status, 0);
+    assert.match(taskResult.stderr, /task-language gate failed: 1 unresolved/);
+  } finally {
+    rmSync(taskRoot, { recursive: true, force: true });
   }
 });

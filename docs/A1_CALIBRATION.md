@@ -60,6 +60,22 @@ are not silently exempt. If a token is genuinely unavoidable, add a
 Duplicate, empty-rationale and stale exceptions fail structurally. Recording an
 exception is evidence for review, not bilingual approval.
 
+For iterative cleanup, authored checks have their own stricter target:
+
+```sh
+npm run content:calibration:tasks
+```
+
+This command ignores unresolved vocabulary that appears only in explanatory
+prose and fails on unresolved dependencies used by authored learner tasks. The
+normal report shows both totals. This lets task prompts become prerequisite-safe
+first, without pretending the wider teaching copy is already clean.
+
+The resolver treats comma-separated lexical variants such as `a, an` as aliases
+of one A1 entry and strips trailing parenthetical sense labels before indexing
+headwords such as `like (find sb/sth pleasant)`. Punctuation inside a sense label
+must never make the actual headword disappear from the dependency graph.
+
 ## Calibration curriculum
 
 | Unit                        | Entries                         | Main outcome                                            |

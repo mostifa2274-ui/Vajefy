@@ -92,6 +92,7 @@ type LanguageDependency = {
 type LanguageAudit = {
   dependencies: LanguageDependency[];
   unresolved: number;
+  taskUnresolved: number;
   documentedExceptions: number;
   staleExceptions: string[];
 };
@@ -132,6 +133,7 @@ type Packet = {
     structuralGaps: number;
     editorialGaps: number;
     languageUnresolved: number;
+    taskLanguageUnresolved: number;
     languageExceptions: number;
   };
 };
@@ -291,13 +293,14 @@ function englishSources(entry: Pilot["entries"][number]): EnglishSource[] {
 
 function headwordAliases(headword: string): string[] {
   const normalized = headword.toLowerCase().replaceAll("’", "'").trim();
-  if (normalized.includes("/")) {
-    return normalized
-      .split("/")
-      .map((part) => part.trim())
-      .filter((part) => /^[a-z]+(?:[-'][a-z]+)*$/.test(part));
-  }
-  return /^[a-z]+(?:[-'][a-z]+)*$/.test(normalized) ? [normalized] : [];
+  // Some catalogue headwords carry sense labels, e.g.
+  // "like (find sb/sth pleasant)". Slash characters inside those labels are
+  // not lexical variants and must not make us discard the actual headword.
+  const withoutSenseLabel = normalized.replace(/\s*\([^)]*\)\s*$/, "").trim();
+  return withoutSenseLabel
+    .split(/\s*[,/;]\s*/)
+    .map((part) => part.trim())
+    .filter((part) => /^[a-z]+(?:[-'][a-z]+)*$/.test(part));
 }
 
 function buildHeadwordIndex(
@@ -431,11 +434,21 @@ function auditLanguage(
   const dependencies = [...rows.values()].sort((a, b) =>
     `${a.status}:${a.token}`.localeCompare(`${b.status}:${b.token}`),
   );
+  const unresolvedDependencies = dependencies.filter(
+    (item) => item.status !== "exception",
+  );
   return {
     dependencies,
-    unresolved: dependencies.filter((item) => item.status !== "exception").length,
-    documentedExceptions: dependencies.filter((item) => item.status === "exception").length,
-    staleExceptions: [...exceptionByToken.keys()].filter((token) => !usedExceptions.has(token)),
+    unresolved: unresolvedDependencies.length,
+    taskUnresolved: unresolvedDependencies.filter((item) =>
+      item.sources.some((source) => source.includes("/check-")),
+    ).length,
+    documentedExceptions: dependencies.filter(
+      (item) => item.status === "exception",
+    ).length,
+    staleExceptions: [...exceptionByToken.keys()].filter(
+      (token) => !usedExceptions.has(token),
+    ),
   };
 }
 
@@ -472,6 +485,7 @@ function markdown(packet: Packet): string {
     `| Senses with complete GB+US word/example audio | ${packet.summary.completeAudioSenses} |`,
     `| Flagged clips in this slice | ${packet.summary.flaggedClips} |`,
     `| Unresolved learner-language dependencies | ${packet.summary.languageUnresolved} |`,
+    `| Unresolved authored-task dependencies | ${packet.summary.taskLanguageUnresolved} |`,
     `| Documented language exceptions | ${packet.summary.languageExceptions} |`,
     `| Editorial/coverage gaps to inspect | ${packet.summary.editorialGaps} |`,
     "",
@@ -729,6 +743,7 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
   const language = languageByEntry.get(selected.id) ?? {
     dependencies: [],
     unresolved: 0,
+    taskUnresolved: 0,
     documentedExceptions: 0,
     staleExceptions: [],
   };
@@ -822,6 +837,10 @@ const packet: Packet = {
       (sum, entry) => sum + entry.language.unresolved,
       0,
     ),
+    taskLanguageUnresolved: entries.reduce(
+      (sum, entry) => sum + entry.language.taskUnresolved,
+      0,
+    ),
     languageExceptions: entries.reduce(
       (sum, entry) => sum + entry.language.documentedExceptions,
       0,
@@ -839,9 +858,19 @@ if (
   process.exit(1);
 }
 
+if (
+  process.argv.includes("--strict-tasks") &&
+  packet.summary.taskLanguageUnresolved > 0
+) {
+  console.error(
+    `A1 calibration task-language gate failed: ${packet.summary.taskLanguageUnresolved} unresolved authored-task dependenc${packet.summary.taskLanguageUnresolved === 1 ? "y" : "ies"}. Rewrite the authored checks or document only genuinely unavoidable support language.`,
+  );
+  process.exit(1);
+}
+
 if (process.argv.includes("--check")) {
   console.log(
-    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies and ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
+    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies (${packet.summary.taskLanguageUnresolved} in authored tasks) and ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
   );
 } else if (process.argv.includes("--json")) {
   console.log(JSON.stringify(packet, null, 2));
