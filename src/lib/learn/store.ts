@@ -42,6 +42,8 @@ type ProgressState = Memory & {
   practice: (id: string, grade: Grade, skill?: PracticeSkill, extras?: AnswerExtras) => string;
   /** Record a delayed check-up answer: evidence only, nothing else changes. */
   assess: (id: string, part: AssessmentPart, correct: boolean, delayDays: number, extras?: AnswerExtras) => string;
+  /** Record that required delayed evidence was unavailable; never score it as wrong. */
+  assessMissing: (id: string, part: AssessmentPart, delayDays: number, extras?: AnswerExtras) => string;
   /** Record meeting an item outside an answer (evidence only; repeated meetings within ten minutes count once). */
   expose: (id: string, kind: ExposureKind) => void;
   /** Record a question that could not be answered, without credit or penalty. */
@@ -115,6 +117,10 @@ export const useProgress = create<ProgressState>()((set, get) => {
     assess: (item, part, correct, delayDays, extras) => {
       const { id, at, context, sessionState } = answer(extras);
       return dispatch({ id, type: "assessment", at, item, part, correct, delayDays, ...context, sessionState });
+    },
+    assessMissing: (item, part, delayDays, extras) => {
+      const { id, at, context, sessionState } = answer(extras);
+      return dispatch({ id, type: "assessment", at, item, part, missing: true, delayDays, ...context, sessionState });
     },
     expose: (item, kind) => {
       const at = Date.now();
