@@ -24,7 +24,7 @@ type Event = {
   grade?: string;
   undone?: boolean;
   context?: { responseMs?: number; session?: string };
-  assessment?: { part: "meaning" | "use"; correct: boolean; delayDays: number };
+  assessment?: { part: "meaning" | "use"; correct?: boolean; missing?: true; delayDays: number };
 };
 
 const RATING: Record<string, Rating> = { again: 1, hard: 2, good: 3, easy: 4 };
@@ -35,7 +35,7 @@ const option = (flag: string) => {
 };
 const inputs = args.filter((arg, index) => !arg.startsWith("--") && !args[index - 1]?.startsWith("--"));
 
-type Outcome = { arm: string; checked: number; usable: number; activeHours: number };
+type Outcome = { arm: string; checked: number; usable: number; missing: number; activeHours: number };
 const learners: Learner[] = [];
 const outcomes = new Map<string, Outcome>();
 
@@ -54,17 +54,31 @@ for (const file of inputs.flatMap(files)) {
       .map((event) => ({ card: event.item!, at: event.at, rating: RATING[event.grade!]! }));
     const id = String(data.participant);
     learners.push({ id, reviews });
-    // A word is usable after 30 days when, in one check-up, its use and its meaning were both right.
-    const parts = new Map<string, { meaning?: boolean; use?: boolean }>();
+    // A word is usable after 30 days only when both required parts were
+    // actually observed. Missing held-out evidence is reported, never scored
+    // as an incorrect learner answer.
+    const parts = new Map<string, { meaning?: boolean; use?: boolean; missing?: boolean }>();
     for (const event of events) {
       if (event.type !== "assessment" || !event.assessment || event.assessment.delayDays < 30) continue;
       const key = `${event.context?.session ?? ""}\u0000${event.item}`;
-      parts.set(key, { ...parts.get(key), [event.assessment.part]: event.assessment.correct });
+      const previous = parts.get(key) ?? {};
+      if (event.assessment.missing) {
+        parts.set(key, { ...previous, missing: true });
+      } else if (event.assessment.correct !== undefined) {
+        parts.set(key, { ...previous, [event.assessment.part]: event.assessment.correct });
+      }
     }
     const results = [...parts.values()];
+    const complete = results.filter((item) => item.meaning !== undefined && item.use !== undefined);
     const activeMs = events.reduce((sum, event) => sum + (event.context?.responseMs ?? 0), 0);
     const arm = (data.app as { channel?: string } | undefined)?.channel === "none" ? "comparison (current flow)" : "enhanced";
-    outcomes.set(id, { arm, checked: results.length, usable: results.filter((item) => item.meaning && item.use).length, activeHours: activeMs / 3_600_000 });
+    outcomes.set(id, {
+      arm,
+      checked: complete.length,
+      usable: complete.filter((item) => item.meaning && item.use).length,
+      missing: results.length - complete.length,
+      activeHours: activeMs / 3_600_000,
+    });
   } else if (data.kind === "roshana-progress") {
     const progress = data.progress as { reviewHistory?: { id: string; at: number; grade: string }[] };
     learners.push({
@@ -114,7 +128,7 @@ for (const result of results) {
   if (outcome) {
     lines.push(
       "",
-      `30-day check-up: ${outcome.usable} of ${outcome.checked} words recalled and used; ${fixed(outcome.activeHours, 2)} active hours; ${outcome.activeHours > 0 ? fixed(outcome.usable / outcome.activeHours, 1) : "–"} usable words per active hour.`,
+      `30-day check-up: ${outcome.usable} of ${outcome.checked} fully observed words recalled and used; ${outcome.missing} missing held-out measurements; ${fixed(outcome.activeHours, 2)} active hours; ${outcome.activeHours > 0 ? fixed(outcome.usable / outcome.activeHours, 1) : "–"} usable words per active hour.`,
     );
   }
   lines.push("");
