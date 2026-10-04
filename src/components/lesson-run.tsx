@@ -69,12 +69,28 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
   const review = useProgress((state) => state.review);
   const saveSession = useProgress((state) => state.saveSession);
   const assess = useProgress((state) => state.assess);
+  const assessMissing = useProgress((state) => state.assessMissing);
   const [session, setSession] = useState(initial);
   const step = session.steps[session.index];
   const answered = answerFor(session);
   const elapsed = useActiveTime(step ? `${session.id}:${session.index}` : undefined);
   const stepTop = useRef<HTMLDivElement>(null);
   useKeepFocus(stepTop, `${session.index}:${Boolean(answered)}`);
+
+  useEffect(() => {
+    if (session.mode !== "checkup" || !session.missing) return;
+    for (const [target, parts] of Object.entries(session.missing)) {
+      for (const part of parts) {
+        assessMissing(target, part, session.delays?.[target] ?? 0, {
+          id: `${session.id}:missing:${target}:${part}`,
+          at: session.createdAt,
+          session: session.id,
+          prompt: `checkup:${part}:missing`,
+          contentVersion: index.bySense.get(target)?.entry.version,
+        });
+      }
+    }
+  }, [assessMissing, index, session.createdAt, session.delays, session.id, session.missing, session.mode]);
 
   function advance() {
     const next = advanceLesson(session, timestamp());
@@ -123,6 +139,11 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
           {checkup ? (
             <>
               {copy.checkupUsable}: {num(checkup.usable)} / {num(checkup.checked)}
+              {checkup.missing > 0 ? (
+                <span className="mt-1 block text-xs text-muted">
+                  {copy.checkupMissing}: {num(checkup.missing)}
+                </span>
+              ) : null}
             </>
           ) : (
             <>
