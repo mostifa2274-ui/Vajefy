@@ -1368,13 +1368,11 @@
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "کسی که این کیک را درست کرد آشپز خوبی است.",
-      "frame": "The person ___ made this cake is a good cook.",
-      "answer": "who",
-      "accept": [
-       "that"
-      ],
-      "why": "who دربارهٔ آدم «که» را می‌سازد."
+      "prompt": "چه کسی به تو زنگ زد؟",
+      "frame": "___ called you?",
+      "answer": "Who",
+      "accept": [],
+      "why": "وقتی دربارهٔ فاعلِ آدم می‌پرسیم، Who مستقیم پیش از فعل می‌آید."
      }
     ]
    }
