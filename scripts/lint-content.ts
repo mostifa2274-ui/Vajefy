@@ -103,7 +103,7 @@ const entries = fs
 const headwordOf = new Map<string, string>();
 for (const entry of entries) {
   // An entry's own words are what it teaches, whatever their level elsewhere.
-  const own = new Set(entry.headword.toLowerCase().split(/[^a-z']+/).filter(Boolean));
+  const own = new Set(entry.headword.toLowerCase().replace(/’/g, "'").split(/[^a-z']+/).filter(Boolean));
   const level = levelOfId(entry.id);
   for (const sense of entry.senses) {
     headwordOf.set(sense.id, entry.headword);
@@ -119,7 +119,7 @@ for (const entry of entries) {
 
 const contrasts = fs.existsSync(path.join(SOURCE, "contrasts.json")) ? read<Contrast[]>(path.join(SOURCE, "contrasts.json")) : [];
 for (const contrast of contrasts) {
-  const own = new Set(contrast.title.toLowerCase().split(/[^a-z']+/).filter(Boolean));
+  const own = new Set(contrast.title.toLowerCase().replace(/’/g, "'").split(/[^a-z']+/).filter(Boolean));
   checkItems(contrast.id, contrast.check, contrast.patterns.map((pattern) => pattern.en), own, highest(contrast.entries.map(levelOfId)));
 }
 

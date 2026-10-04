@@ -14,6 +14,8 @@ for (const level of meta.levels) {
   for (const row of read<{ w: string }[]>(path.join(DATA, level.file))) {
     const forms = row.w
       .toLowerCase()
+      // Sentences are matched with a straight apostrophe (o’clock → o'clock).
+      .replace(/’/g, "'")
       // Homographs carry superscript numbers in the dataset (close¹, close²).
       .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, "")
       .replace(/\(.*?\)/g, "")
