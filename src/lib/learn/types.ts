@@ -198,6 +198,8 @@ export type Mcq = {
   promptDir: "ltr" | "rtl";
   hint?: string;
   speak?: string;
+  /** Controlled pronunciation clip for listening questions, when available. */
+  clip?: string;
   options: { key: string; text: string; dir: "ltr" | "rtl" }[];
   answerKey: string;
   explain?: string;
