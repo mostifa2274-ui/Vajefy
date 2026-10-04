@@ -18,6 +18,28 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Rebuild generated learning content
+        run: node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
+      - name: Upload generated learning content
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-learning-content
+          path: |
+            content/compiled/enhanced.json
+            public/data/enhanced
+            public/data/enhanced-order.json
+          if-no-files-found: error
+          retention-days: 3
+      - name: Verify generated learning content is committed
+        shell: bash
+        run: |
+          changed="$(git status --porcelain -- content/compiled/enhanced.json public/data/enhanced public/data/enhanced-order.json)"
+          if [ -n "$changed" ]; then
+            echo "Generated learning content is out of date. Download the generated-learning-content artifact and commit it."
+            printf '%s\n' "$changed"
+            exit 1
+          fi
       - run: npm run validate:data
       - run: npm run typecheck
       - run: npm run lint
