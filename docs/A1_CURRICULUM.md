@@ -83,6 +83,14 @@ The optional strict gate `npm run content:calibration:language` fails until
 each unresolved dependency is rewritten away or explicitly documented with a
 rationale. This prepares editorial cleanup; it never creates human approval.
 
+For this gate, “unresolved” follows the learner-visible UI. An English example
+with its displayed Persian translation and a grammar pattern with its displayed
+Persian note are counted as explicit paired scaffolds rather than hidden
+vocabulary. The audit still reports them separately. Unpaired English—especially
+collocations and common-mistake sentences—remains real dependency debt. A
+paired scaffold is a visibility fact, not evidence that a bilingual reviewer
+has approved the wording.
+
 ## Coverage matrix
 
 The coverage matrix is computed from live repository data instead of being
