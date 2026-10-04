@@ -122,7 +122,9 @@ export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | nul
 /** The skill an item gives evidence for. */
 export function skillOf(ref: ItemRef, item: ResolvedItem): PracticeSkill {
   if (ref.from === "generated") return "meaning";
-  if (item.type === "produce") return "spelling";
+  // A typed answer inside a sentence frame measures contextual use, not
+  // isolated spelling. Response modality and learning construct stay separate.
+  if (item.type === "produce") return "context";
   return "context";
 }
 
