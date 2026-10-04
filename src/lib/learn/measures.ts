@@ -13,7 +13,7 @@ export type Measures = {
   introduced: number;
   /** Targets correctly recalled in Review at least a day after the previous exposure. */
   remembered: number;
-  /** Targets answered correctly in a sentence or written in context. */
+  /** Targets answered correctly in a sentence context. */
   used: number;
   skills: SkillSummary[];
   /** The weakest skill with enough evidence, if any. */
@@ -31,7 +31,9 @@ export function measures(progress: Pick<SavedProgress, "cards" | "reviewHistory"
   );
   const used = new Set(
     Object.entries(progress.practiceSkills)
-      .filter(([, skills]) => (skills.context?.correct ?? 0) > 0 || (skills.spelling?.correct ?? 0) > 0)
+      // Isolated spelling is a different construct. Context evidence comes
+      // only from tasks that actually place the target in a sentence.
+      .filter(([, skills]) => (skills.context?.correct ?? 0) > 0)
       .map(([id]) => id),
   );
   const skills = PRACTICE_SKILLS.map((skill) => {
