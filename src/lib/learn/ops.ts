@@ -416,19 +416,31 @@ export function reduce(op: Op, snap: Snapshot): Writes {
         return withSession(op, { event: { ...event, rejected: "stale" } });
       }
       const correct = target.grade !== "again";
+      const logs = unbumpLog(profile.logs, target.at, {
+        reviews: 1,
+        correct: correct ? 1 : 0,
+        introduced: undo.card ? 0 : 1,
+      });
+      const targetDay = todayKey(new Date(target.at));
+      // Review and practice are the only operations that advance the streak.
+      // Restoring the snapshot is safe only if the undone review was still the
+      // day's sole streak-bearing activity. Another answer on the same day can
+      // leave the aggregate streak unchanged, so comparing aggregates alone is
+      // insufficient (the F8 cross-tab case).
+      const dayStillActive = logs.some(
+        (row) => row.date === targetDay && (row.reviews > 0 || row.practice > 0),
+      );
       const restoreStreak =
-        profile.streak === undo.afterStreak && profile.lastStudyDate === undo.afterLastStudyDate;
+        !dayStillActive &&
+        profile.streak === undo.afterStreak &&
+        profile.lastStudyDate === undo.afterLastStudyDate;
       return withSession(op, {
         event: { ...event, item: target.item },
         cards: { [target.item]: undo.card },
         targetEvent: { ...target, undone: true },
         profile: {
           ...profile,
-          logs: unbumpLog(profile.logs, target.at, {
-            reviews: 1,
-            correct: correct ? 1 : 0,
-            introduced: undo.card ? 0 : 1,
-          }),
+          logs,
           lifetime: {
             ...profile.lifetime,
             reviews: Math.max(0, profile.lifetime.reviews - 1),
