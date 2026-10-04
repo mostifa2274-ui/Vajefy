@@ -17,7 +17,17 @@ test("introduced, remembered after a delay and used are counted per target", () 
   });
   assert.equal(result.introduced, 3);
   assert.equal(result.remembered, 1, "only a correct recall a day or more later counts");
-  assert.equal(result.used, 2, "context or spelling in a sentence");
+  assert.equal(result.used, 1, "only recorded context evidence counts; isolated spelling does not");
+});
+
+test("isolated spelling cannot manufacture context success", () => {
+  const result = measures({
+    cards: { a: card },
+    reviewHistory: [],
+    practiceSkills: { a: { spelling: observed(5, 5) } },
+  });
+  assert.equal(result.used, 0);
+  assert.equal(result.skills.find((item) => item.skill === "spelling")?.accuracy, 1);
 });
 
 test("a skill is judged only with enough evidence", () => {
