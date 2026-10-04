@@ -220,7 +220,7 @@ test("a used-up held-out prompt is recorded as missing, never replaced by recogn
   assert.deepEqual(checkup.missing, { [target.sense.id]: ["use"] });
 
   let session = checkup;
-  for (const step of checkup.steps) {
+  for (const _step of checkup.steps) {
     session = advanceLesson(answerLesson(session, { op: newIdFor(session), result: "correct", at: T0 }, index), T0);
   }
   assert.deepEqual(checkupResult(session), { checked: 0, usable: 0, meaning: 1, use: 0, missing: 1 });
