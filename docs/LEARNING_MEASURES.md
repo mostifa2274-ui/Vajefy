@@ -36,7 +36,7 @@ Rules:
 |---|---|
 | Introduced | A meaning's first recorded exposure (teaching card, review or added to the schedule) |
 | Remembered after a delay | A correct scheduled recall at least 1 day after the previous exposure to the meaning |
-| Used successfully | A correct answer on a context, cloze or production item for the meaning |
+| Correct in context | A correct answer on a context, cloze or sentence-frame production item for the meaning; isolated spelling does not count |
 | Listening comprehension | Correct share of listening items whose audio actually played, per meaning and overall |
 | Production accuracy | Correct share of typed or written production items; a sample is reviewed by a person |
 | Review burden | Scheduled reviews per day, per 100 known meanings, over the following 30 days |
@@ -103,7 +103,7 @@ and [AUDIO.md](AUDIO.md) for the pronunciation library.
 - words introduced;
 - words remembered after a delay of at least one day, as a count and a share of
   the delayed reviews;
-- words used successfully in a context task (cloze, choice or produce);
+- words answered correctly in a context task (cloze, choice or sentence-frame produce); isolated spelling is reported separately;
 - accuracy per skill, shown only once a skill has at least five answers.
 
 `src/lib/learn/measures.ts` computes these from review events and practice
