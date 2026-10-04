@@ -33,6 +33,8 @@ type Slice = {
   version: number;
   title: string;
   description: string;
+  /** Monotonic CI ratchet: at least this many leading entries must remain ready. */
+  taskLanguageReadyMinimum?: number;
   units: SliceUnit[];
 };
 
@@ -644,6 +646,36 @@ if (flat.length !== 20)
   structural.push(
     `expected exactly 20 calibration entries, found ${flat.length}`,
   );
+
+const readyMinimum = slice.taskLanguageReadyMinimum ?? 0;
+if (
+  !Number.isInteger(readyMinimum) ||
+  readyMinimum < 0 ||
+  readyMinimum > flat.length
+) {
+  structural.push(
+    `taskLanguageReadyMinimum must be an integer from 0 to ${flat.length}`,
+  );
+}
+let readyCount = 0;
+let sawPendingReady = false;
+for (const { entry } of flat) {
+  if (entry.taskLanguageReady) {
+    readyCount += 1;
+    if (sawPendingReady) {
+      structural.push(
+        `${entry.id}: taskLanguageReady entries must form a contiguous prefix`,
+      );
+    }
+  } else {
+    sawPendingReady = true;
+  }
+}
+if (readyCount < readyMinimum) {
+  structural.push(
+    `calibration requires at least ${readyMinimum} task-language-ready entries, found ${readyCount}`,
+  );
+}
 
 const ids = flat.map(({ entry }) => entry.id);
 const canonicalIds = curriculum.calibrationSlice.entries;
