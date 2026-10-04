@@ -79,6 +79,7 @@ type LanguageDependencyStatus =
   | "outside-slice"
   | "external"
   | "proper-name-candidate"
+  | "scaffold"
   | "exception";
 
 type LanguageDependency = {
@@ -93,6 +94,7 @@ type LanguageAudit = {
   dependencies: LanguageDependency[];
   unresolved: number;
   taskUnresolved: number;
+  taskScaffolded: number;
   documentedExceptions: number;
   staleExceptions: string[];
 };
@@ -134,6 +136,7 @@ type Packet = {
     editorialGaps: number;
     languageUnresolved: number;
     taskLanguageUnresolved: number;
+    taskLanguageScaffolded: number;
     languageExceptions: number;
   };
 };
@@ -252,7 +255,35 @@ const IRREGULAR: Record<string, string> = {
   mice: "mouse",
 };
 
-type EnglishSource = { source: string; text: string };
+type TaskSupport = NonNullable<CheckItem["support"]>[number];
+type EnglishSource = {
+  source: string;
+  text: string;
+  support?: TaskSupport[];
+};
+
+function englishTokens(value: string): string[] {
+  return value.match(/[A-Za-z]+(?:[-'’][A-Za-z]+)*/g) ?? [];
+}
+
+function authoredTaskText(item: CheckItem): string {
+  if (item.type === "cloze") return item.text;
+  if (item.type === "produce") return item.frame;
+  return [item.prompt, ...item.options.map((option) => option.text)].join(" ");
+}
+
+function normalizedTokens(value: string): string[] {
+  return englishTokens(value).map((token) =>
+    token.toLowerCase().replaceAll("’", "'"),
+  );
+}
+
+function containsTokenSequence(haystack: string[], needle: string[]): boolean {
+  if (!needle.length || needle.length > haystack.length) return false;
+  return haystack.some((_, start) =>
+    needle.every((token, offset) => haystack[start + offset] === token),
+  );
+}
 
 function englishSources(entry: Pilot["entries"][number]): EnglishSource[] {
   const sources: EnglishSource[] = [];
@@ -273,18 +304,32 @@ function englishSources(entry: Pilot["entries"][number]): EnglishSource[] {
       sources.push({ source: `${sense.id}/mistake-right`, text: sense.mistake.right });
     }
     for (const item of sense.check ?? []) {
+      const support = item.support;
       if (item.type === "cloze") {
-        sources.push({ source: `${sense.id}/check-${item.id}`, text: item.text });
+        sources.push({
+          source: `${sense.id}/check-${item.id}`,
+          text: item.text,
+          support,
+        });
       } else if (item.type === "choice") {
-        sources.push({ source: `${sense.id}/check-${item.id}/prompt`, text: item.prompt });
+        sources.push({
+          source: `${sense.id}/check-${item.id}/prompt`,
+          text: item.prompt,
+          support,
+        });
         item.options.forEach((option, index) =>
           sources.push({
             source: `${sense.id}/check-${item.id}/option-${index + 1}`,
             text: option.text,
+            support,
           }),
         );
       } else {
-        sources.push({ source: `${sense.id}/check-${item.id}/frame`, text: item.frame });
+        sources.push({
+          source: `${sense.id}/check-${item.id}/frame`,
+          text: item.frame,
+          support,
+        });
       }
     }
   }
@@ -389,16 +434,26 @@ function auditLanguage(
   const rows = new Map<string, LanguageDependency>();
   const usedExceptions = new Set<string>();
 
-  for (const { source, text } of englishSources(entry)) {
-    const rawTokens = text.match(/[A-Za-z]+(?:[-'’][A-Za-z]+)*/g) ?? [];
+  for (const { source, text, support } of englishSources(entry)) {
+    const supportByToken = new Map<string, string>();
+    for (const item of support ?? []) {
+      for (const raw of englishTokens(item.en)) {
+        for (const form of lexicalForms(raw)) supportByToken.set(form, item.fa);
+      }
+    }
+
+    const rawTokens = englishTokens(text);
     for (const raw of rawTokens) {
       for (const form of lexicalForms(raw)) {
+        const scaffoldMeaning = supportByToken.get(form);
         const exactException = exceptionByToken.get(form);
         const resolvedId = resolveA1Entry(form, headwordIndex);
         const resolvedPosition = resolvedId ? position.get(resolvedId) : undefined;
 
         let status: LanguageDependencyStatus | "available";
-        if (exactException) {
+        if (scaffoldMeaning) {
+          status = "scaffold";
+        } else if (exactException) {
           status = "exception";
           usedExceptions.add(form);
         } else if (resolvedId && resolvedPosition !== undefined && resolvedPosition <= currentIndex) {
@@ -424,7 +479,11 @@ function auditLanguage(
           token: form,
           status,
           ...(resolvedId ? { entryId: resolvedId } : {}),
-          ...(exactException ? { reason: exactException.reason } : {}),
+          ...(scaffoldMeaning
+            ? { reason: scaffoldMeaning }
+            : exactException
+              ? { reason: exactException.reason }
+              : {}),
           sources: [source],
         });
       }
@@ -435,13 +494,18 @@ function auditLanguage(
     `${a.status}:${a.token}`.localeCompare(`${b.status}:${b.token}`),
   );
   const unresolvedDependencies = dependencies.filter(
-    (item) => item.status !== "exception",
+    (item) => item.status !== "exception" && item.status !== "scaffold",
   );
   return {
     dependencies,
     unresolved: unresolvedDependencies.length,
     taskUnresolved: unresolvedDependencies.filter((item) =>
       item.sources.some((source) => source.includes("/check-")),
+    ).length,
+    taskScaffolded: dependencies.filter(
+      (item) =>
+        item.status === "scaffold" &&
+        item.sources.some((source) => source.includes("/check-")),
     ).length,
     documentedExceptions: dependencies.filter(
       (item) => item.status === "exception",
@@ -486,6 +550,7 @@ function markdown(packet: Packet): string {
     `| Flagged clips in this slice | ${packet.summary.flaggedClips} |`,
     `| Unresolved learner-language dependencies | ${packet.summary.languageUnresolved} |`,
     `| Unresolved authored-task dependencies | ${packet.summary.taskLanguageUnresolved} |`,
+    `| Learner-visible authored-task scaffolds | ${packet.summary.taskLanguageScaffolded} |`,
     `| Documented language exceptions | ${packet.summary.languageExceptions} |`,
     `| Editorial/coverage gaps to inspect | ${packet.summary.editorialGaps} |`,
     "",
@@ -643,6 +708,41 @@ for (const { unit, entry } of flat) {
   }
 
   if (content) {
+    for (const sense of content.senses) {
+      for (const item of sense.check ?? []) {
+        const seenSupport = new Set<string>();
+        const taskTokens = normalizedTokens(authoredTaskText(item));
+        for (const support of item.support ?? []) {
+          const normalized = support.en
+            .toLowerCase()
+            .replaceAll("’", "'")
+            .trim();
+          if (seenSupport.has(normalized)) {
+            structural.push(
+              `${sense.id}/${item.id}: duplicate task support ${support.en}`,
+            );
+          }
+          seenSupport.add(normalized);
+
+          const supportTokens = normalizedTokens(support.en);
+          if (!containsTokenSequence(taskTokens, supportTokens)) {
+            structural.push(
+              `${sense.id}/${item.id}: task support "${support.en}" is stale because that exact language is not visible in the task`,
+            );
+          }
+          for (const token of supportTokens) {
+            for (const form of lexicalForms(token)) {
+              if (resolveA1Entry(form, headwordIndex) === entry.id) {
+                structural.push(
+                  `${sense.id}/${item.id}: task support "${support.en}" exposes the current target and would leak the answer`,
+                );
+              }
+            }
+          }
+        }
+      }
+    }
+
     const language = auditLanguage(
       content,
       position.get(entry.id) ?? -1,
@@ -744,6 +844,7 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
     dependencies: [],
     unresolved: 0,
     taskUnresolved: 0,
+    taskScaffolded: 0,
     documentedExceptions: 0,
     staleExceptions: [],
   };
@@ -841,6 +942,10 @@ const packet: Packet = {
       (sum, entry) => sum + entry.language.taskUnresolved,
       0,
     ),
+    taskLanguageScaffolded: entries.reduce(
+      (sum, entry) => sum + entry.language.taskScaffolded,
+      0,
+    ),
     languageExceptions: entries.reduce(
       (sum, entry) => sum + entry.language.documentedExceptions,
       0,
@@ -870,7 +975,7 @@ if (
 
 if (process.argv.includes("--check")) {
   console.log(
-    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies (${packet.summary.taskLanguageUnresolved} in authored tasks) and ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
+    `A1 calibration OK: ${packet.summary.entries} entries, ${packet.summary.senses} senses; ${packet.summary.languageUnresolved} unresolved learner-language dependencies (${packet.summary.taskLanguageUnresolved} in authored tasks, ${packet.summary.taskLanguageScaffolded} learner-visible task scaffolds) and ${packet.summary.editorialGaps} editorial/coverage gap(s) reported for human review.`,
   );
 } else if (process.argv.includes("--json")) {
   console.log(JSON.stringify(packet, null, 2));
