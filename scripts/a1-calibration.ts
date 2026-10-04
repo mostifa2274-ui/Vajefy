@@ -5,7 +5,6 @@ import type { CheckItem, Pilot } from "../src/lib/learn/content.ts";
 type SliceEntry = {
   id: string;
   objective: string;
-  prerequisites: string[];
 };
 
 type SliceUnit = {
@@ -22,6 +21,17 @@ type Slice = {
   title: string;
   description: string;
   units: SliceUnit[];
+};
+
+type CurriculumEntry = {
+  id: string;
+  prerequisites: string[];
+};
+
+type Curriculum = {
+  level: string;
+  units: { id: string; entries: CurriculumEntry[] }[];
+  calibrationSlice: { unit: string; entries: string[] };
 };
 
 type AudioFlag = {
@@ -92,15 +102,23 @@ type Packet = {
 
 const ROOT = process.cwd();
 const SLICE_FILE = path.join(ROOT, "content", "calibration", "a1-20.json");
+const CURRICULUM_FILE = path.join(ROOT, "content", "curriculum", "A1.json");
 const COMPILED_FILE = path.join(ROOT, "content", "compiled", "enhanced.json");
-const AUDIO_REPORT_FILE = path.join(ROOT, "content", "pilot", "audio-report.json");
+const AUDIO_REPORT_FILE = path.join(
+  ROOT,
+  "content",
+  "pilot",
+  "audio-report.json",
+);
 
 function read<T>(file: string): T {
   return JSON.parse(fs.readFileSync(file, "utf8")) as T;
 }
 
 function die(messages: string[]): never {
-  console.error(`A1 calibration failed with ${messages.length} structural issue(s):\n- ${messages.join("\n- ")}`);
+  console.error(
+    `A1 calibration failed with ${messages.length} structural issue(s):\n- ${messages.join("\n- ")}`,
+  );
   process.exit(1);
 }
 
@@ -179,7 +197,9 @@ function markdown(packet: Packet): string {
   for (const entry of packet.entries) {
     out.push(`### ${entry.order}. ${entry.headword} — \`${entry.id}\``, "");
     for (const sense of entry.senses) {
-      const teaching = sense.teachingChecks.map((item) => `${item.id} (${item.type})`).join(", ");
+      const teaching = sense.teachingChecks
+        .map((item) => `${item.id} (${item.type})`)
+        .join(", ");
       const recycling = [
         ...sense.recycling.laterUnits.map((id) => `unit:${id}`),
         ...sense.recycling.contrasts.map((id) => `contrast:${id}`),
@@ -213,41 +233,111 @@ function markdown(packet: Packet): string {
 }
 
 const slice = read<Slice>(SLICE_FILE);
+const curriculum = read<Curriculum>(CURRICULUM_FILE);
 const pilot = read<Pilot>(COMPILED_FILE);
-const audioReport = fs.existsSync(AUDIO_REPORT_FILE) ? read<AudioReport>(AUDIO_REPORT_FILE) : {};
+const audioReport = fs.existsSync(AUDIO_REPORT_FILE)
+  ? read<AudioReport>(AUDIO_REPORT_FILE)
+  : {};
 const flags = audioReport.flagged ?? [];
 const structural: string[] = [];
 
-const flat = slice.units.flatMap((unit) => unit.entries.map((entry) => ({ unit, entry })));
-if (flat.length !== 20) structural.push(`expected exactly 20 calibration entries, found ${flat.length}`);
+const flat = slice.units.flatMap((unit) =>
+  unit.entries.map((entry) => ({ unit, entry })),
+);
+if (flat.length !== 20)
+  structural.push(
+    `expected exactly 20 calibration entries, found ${flat.length}`,
+  );
 
 const ids = flat.map(({ entry }) => entry.id);
-if (new Set(ids).size !== ids.length) structural.push("calibration entry ids must be unique");
-if (new Set(slice.units.map((unit) => unit.id)).size !== slice.units.length) structural.push("calibration unit ids must be unique");
+const canonicalIds = curriculum.calibrationSlice.entries;
+const canonicalUnit = curriculum.units.find(
+  (unit) => unit.id === curriculum.calibrationSlice.unit,
+);
+if (curriculum.level !== "A1")
+  structural.push("content/curriculum/A1.json must describe A1");
+if (canonicalIds.length !== 20)
+  structural.push(
+    `curriculum calibration slice must contain exactly 20 entries, found ${canonicalIds.length}`,
+  );
+if (new Set(canonicalIds).size !== canonicalIds.length)
+  structural.push("curriculum calibration slice contains duplicate entries");
+if (!canonicalUnit)
+  structural.push(
+    `curriculum calibration unit ${curriculum.calibrationSlice.unit} does not exist`,
+  );
+else if (
+  JSON.stringify(canonicalUnit.entries.map((entry) => entry.id)) !==
+  JSON.stringify(canonicalIds)
+) {
+  structural.push(
+    "curriculum calibration slice order must exactly match its unit entries",
+  );
+}
+if (JSON.stringify(ids) !== JSON.stringify(canonicalIds)) {
+  structural.push(
+    "calibration packet entries must exactly match the curriculum calibration slice",
+  );
+}
+if (new Set(ids).size !== ids.length)
+  structural.push("calibration entry ids must be unique");
+if (new Set(slice.units.map((unit) => unit.id)).size !== slice.units.length)
+  structural.push("calibration unit ids must be unique");
 
 const byEntry = new Map(pilot.entries.map((entry) => [entry.id, entry]));
+const curriculumByEntry = new Map(
+  (canonicalUnit?.entries ?? []).map((entry) => [entry.id, entry]),
+);
 const position = new Map(ids.map((id, index) => [id, index]));
-const unitPosition = new Map(slice.units.map((unit, index) => [unit.id, index]));
+const unitPosition = new Map(
+  slice.units.map((unit, index) => [unit.id, index]),
+);
 
 for (const { unit, entry } of flat) {
   const content = byEntry.get(entry.id);
-  if (!entry.id.startsWith("lex:A1:")) structural.push(`${entry.id}: calibration slice must remain A1`);
+  const curriculumEntry = curriculumByEntry.get(entry.id);
+  if (!entry.id.startsWith("lex:A1:"))
+    structural.push(`${entry.id}: calibration slice must remain A1`);
   if (!content) structural.push(`${entry.id}: no enhanced content`);
-  for (const prerequisite of entry.prerequisites) {
+  if (!curriculumEntry)
+    structural.push(
+      `${entry.id}: missing from the curriculum calibration unit`,
+    );
+  for (const prerequisite of curriculumEntry?.prerequisites ?? []) {
     const at = position.get(prerequisite);
-    if (at === undefined) structural.push(`${entry.id}: prerequisite ${prerequisite} is outside the 20-entry slice`);
-    else if (at >= (position.get(entry.id) ?? -1)) structural.push(`${entry.id}: prerequisite ${prerequisite} must be introduced earlier`);
+    if (at === undefined)
+      structural.push(
+        `${entry.id}: prerequisite ${prerequisite} is outside the 20-entry slice`,
+      );
+    else if (at >= (position.get(entry.id) ?? -1))
+      structural.push(
+        `${entry.id}: prerequisite ${prerequisite} must be introduced earlier`,
+      );
   }
   for (const recycled of unit.recycles) {
     const at = position.get(recycled);
-    if (at === undefined) structural.push(`${unit.id}: recycled entry ${recycled} is outside the slice`);
-    const introUnit = slice.units.find((candidate) => candidate.entries.some((item) => item.id === recycled));
-    if (introUnit && (unitPosition.get(introUnit.id) ?? 0) >= (unitPosition.get(unit.id) ?? 0)) {
-      structural.push(`${unit.id}: ${recycled} must be introduced in an earlier unit before recycling`);
+    if (at === undefined)
+      structural.push(
+        `${unit.id}: recycled entry ${recycled} is outside the slice`,
+      );
+    const introUnit = slice.units.find((candidate) =>
+      candidate.entries.some((item) => item.id === recycled),
+    );
+    if (
+      introUnit &&
+      (unitPosition.get(introUnit.id) ?? 0) >= (unitPosition.get(unit.id) ?? 0)
+    ) {
+      structural.push(
+        `${unit.id}: ${recycled} must be introduced in an earlier unit before recycling`,
+      );
     }
   }
   for (const sense of content?.senses ?? []) {
-    if (sense.check.length < 2) structural.push(`${sense.id}: needs at least one teaching check plus one held-out assessment`);
+    if (sense.check.length < 3) {
+      structural.push(
+        `${sense.id}: needs at least 3 checks (two lesson opportunities plus one held-out assessment)`,
+      );
+    }
     const heldOut = sense.check.at(-1);
     if (!heldOut) structural.push(`${sense.id}: missing held-out assessment`);
   }
@@ -257,13 +347,21 @@ if (structural.length) die(structural);
 
 const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
   const content = byEntry.get(selected.id)!;
+  const curriculumEntry = curriculumByEntry.get(selected.id)!;
   const laterUnits = slice.units
-    .filter((candidate) => (unitPosition.get(candidate.id) ?? 0) > (unitPosition.get(unit.id) ?? 0) && candidate.recycles.includes(selected.id))
+    .filter(
+      (candidate) =>
+        (unitPosition.get(candidate.id) ?? 0) >
+          (unitPosition.get(unit.id) ?? 0) &&
+        candidate.recycles.includes(selected.id),
+    )
     .map((candidate) => candidate.id);
 
   const senses: SenseRow[] = content.senses.map((sense) => {
     const heldOut = sense.check.at(-1)!;
-    const teachingChecks = sense.check.slice(0, -1).map((item) => ({ id: item.id, type: item.type }));
+    const teachingChecks = sense.check
+      .slice(0, -1)
+      .map((item) => ({ id: item.id, type: item.type }));
     return {
       id: sense.id,
       pos: sense.pos,
@@ -277,8 +375,12 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
       flags: flags.filter((flag) => flag.sense === sense.id),
       recycling: {
         laterUnits,
-        contrasts: pilot.contrasts.filter((item) => item.entries.includes(sense.id)).map((item) => item.id),
-        scenes: pilot.scenes.filter((item) => item.targets.includes(sense.id)).map((item) => item.id),
+        contrasts: pilot.contrasts
+          .filter((item) => item.entries.includes(sense.id))
+          .map((item) => item.id),
+        scenes: pilot.scenes
+          .filter((item) => item.targets.includes(sense.id))
+          .map((item) => item.id),
       },
     };
   });
@@ -286,13 +388,26 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
   const gaps: string[] = [];
   if (!content.review) gaps.push("no current human review record");
   else {
-    if (content.review.bilingual !== "approved") gaps.push(`bilingual review: ${content.review.bilingual}`);
-    if (content.review.pronunciation !== "approved") gaps.push(`pronunciation review: ${content.review.pronunciation}`);
+    if (content.review.bilingual !== "approved")
+      gaps.push(`bilingual review: ${content.review.bilingual}`);
+    if (content.review.pronunciation !== "approved")
+      gaps.push(`pronunciation review: ${content.review.pronunciation}`);
   }
-  if (senses.some((sense) => !sense.audio.gb.complete || !sense.audio.us.complete)) gaps.push("audio incomplete");
+  if (
+    senses.some((sense) => !sense.audio.gb.complete || !sense.audio.us.complete)
+  )
+    gaps.push("audio incomplete");
   const flagged = senses.reduce((sum, sense) => sum + sense.flags.length, 0);
-  if (flagged) gaps.push(`${flagged} flagged audio clip${flagged === 1 ? "" : "s"}`);
-  if (senses.some((sense) => !sense.recycling.laterUnits.length && !sense.recycling.contrasts.length && !sense.recycling.scenes.length)) {
+  if (flagged)
+    gaps.push(`${flagged} flagged audio clip${flagged === 1 ? "" : "s"}`);
+  if (
+    senses.some(
+      (sense) =>
+        !sense.recycling.laterUnits.length &&
+        !sense.recycling.contrasts.length &&
+        !sense.recycling.scenes.length,
+    )
+  ) {
     gaps.push("one or more senses need later recycling");
   }
 
@@ -301,14 +416,21 @@ const entries: EntryRow[] = flat.map(({ unit, entry: selected }, index) => {
     id: content.id,
     headword: content.headword,
     objective: selected.objective,
-    prerequisites: selected.prerequisites,
-    unit: { id: unit.id, title: unit.title, goal: unit.goal, patterns: unit.patterns },
+    prerequisites: curriculumEntry.prerequisites,
+    unit: {
+      id: unit.id,
+      title: unit.title,
+      goal: unit.goal,
+      patterns: unit.patterns,
+    },
     version: content.version,
     released: content.released,
     review: {
       bilingual: reviewStatus(content.review?.bilingual),
       pronunciation: reviewStatus(content.review?.pronunciation),
-      ...(content.review?.reviewer ? { reviewer: content.review.reviewer } : {}),
+      ...(content.review?.reviewer
+        ? { reviewer: content.review.reviewer }
+        : {}),
       ...(content.review?.date ? { date: content.review.date } : {}),
     },
     senses,
@@ -325,10 +447,20 @@ const packet: Packet = {
     entries: entries.length,
     senses: allSenses.length,
     released: entries.filter((entry) => entry.released).length,
-    bilingualApproved: entries.filter((entry) => entry.review.bilingual === "approved").length,
-    pronunciationApproved: entries.filter((entry) => entry.review.pronunciation === "approved").length,
-    fullyReviewed: entries.filter((entry) => entry.review.bilingual === "approved" && entry.review.pronunciation === "approved").length,
-    completeAudioSenses: allSenses.filter((sense) => sense.audio.gb.complete && sense.audio.us.complete).length,
+    bilingualApproved: entries.filter(
+      (entry) => entry.review.bilingual === "approved",
+    ).length,
+    pronunciationApproved: entries.filter(
+      (entry) => entry.review.pronunciation === "approved",
+    ).length,
+    fullyReviewed: entries.filter(
+      (entry) =>
+        entry.review.bilingual === "approved" &&
+        entry.review.pronunciation === "approved",
+    ).length,
+    completeAudioSenses: allSenses.filter(
+      (sense) => sense.audio.gb.complete && sense.audio.us.complete,
+    ).length,
     flaggedClips: allSenses.reduce((sum, sense) => sum + sense.flags.length, 0),
     structuralGaps: structural.length,
     editorialGaps: entries.reduce((sum, entry) => sum + entry.gaps.length, 0),
