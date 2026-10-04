@@ -475,13 +475,17 @@ function auditLanguage(
         let status: LanguageDependencyStatus | "available";
         if (scaffoldMeaning) {
           status = "scaffold";
+        } else if (
+          resolvedId &&
+          resolvedPosition !== undefined &&
+          resolvedPosition <= currentIndex
+        ) {
+          status = "available";
         } else if (pairedScaffold) {
           status = "paired-scaffold";
         } else if (exactException) {
           status = "exception";
           usedExceptions.add(form);
-        } else if (resolvedId && resolvedPosition !== undefined && resolvedPosition <= currentIndex) {
-          status = "available";
         } else if (resolvedId && resolvedPosition !== undefined) {
           status = "future";
         } else if (resolvedId) {
