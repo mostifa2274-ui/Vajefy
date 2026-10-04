@@ -1007,44 +1007,48 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "Hello, ___ is Reza. Can I speak to Sara?",
-      "answer": "this",
-      "accept": [
-       "This"
-      ],
-      "fa": "سلام، رضا هستم. می‌توانم با سارا صحبت کنم؟",
-      "why": "پشت تلفن خود را با this is معرفی می‌کنیم."
+      "text": "___ is my book.",
+      "answer": "This",
+      "accept": [],
+      "fa": "این کتابِ من است.",
+      "why": "برای اشاره به چیزی نزدیک از this استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "book",
+        "fa": "کتاب"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "___ book here is mine.",
+      "prompt": "برای اشاره به یک چیز نزدیک، کدام گزینه درست است؟",
       "options": [
        {
         "text": "This",
         "ok": true,
-        "why": "book مفرد است و here به چیزی نزدیک اشاره می‌کند."
+        "why": "this برای یک چیز نزدیک به کار می‌رود."
        },
        {
-        "text": "These",
+        "text": "What",
         "ok": false,
-        "why": "these برای اسم جمع است."
+        "why": "what واژهٔ پرسشی است."
        },
        {
-        "text": "That",
+        "text": "Your",
         "ok": false,
-        "why": "that معمولاً به چیزی دورتر اشاره می‌کند؛ here اینجا به چیز نزدیک اشاره دارد."
+        "why": "your مالکیتِ مخاطب را نشان می‌دهد."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "امروز صبح باران آمد.",
-      "frame": "It rained ___ morning.",
-      "answer": "this",
+      "prompt": "«این اسم» را کامل کن.",
+      "frame": "___ name",
+      "answer": "This",
       "accept": [],
-      "why": "this morning یعنی صبحِ امروز."
+      "why": "this پیش از اسم مفرد می‌آید."
      }
     ]
    }
@@ -1252,44 +1256,48 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "___ do you usually eat for breakfast?",
+      "text": "___ is your name?",
       "answer": "What",
-      "accept": [
-       "what"
-      ],
-      "fa": "معمولاً صبحانه چه می‌خوری؟",
-      "why": "پرسیدن دربارهٔ یک چیز (غذا)."
+      "accept": [],
+      "fa": "اسم تو چیست؟",
+      "why": "برای پرسیدن دربارهٔ یک چیز یا اطلاعات از what استفاده می‌کنیم."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "___ is your favourite colour?",
+      "prompt": "برای پرسیدن «اسم تو چیست؟» کدام کلمه در ابتدای جمله می‌آید؟",
       "options": [
        {
         "text": "What",
         "ok": true,
-        "why": "دربارهٔ یک چیز (رنگ) می‌پرسیم."
+        "why": "What is your name? سؤال درست است."
        },
        {
-        "text": "Who",
+        "text": "You",
         "ok": false,
-        "why": "who برای آدم‌هاست."
+        "why": "you یعنی «تو/شما» و واژهٔ پرسشی نیست."
        },
        {
-        "text": "Where",
+        "text": "Your",
         "ok": false,
-        "why": "where برای مکان است."
+        "why": "your مالکیت را نشان می‌دهد و واژهٔ پرسشی نیست."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "چه ساعتی به خانه می‌آیی؟",
-      "frame": "___ time are you coming home?",
+      "prompt": "«این چیست؟» را کامل کن.",
+      "frame": "___ is this?",
       "answer": "What",
       "accept": [],
-      "why": "What time برای پرسیدن ساعت."
+      "why": "برای پرسیدن «چه چیزی؟» از what استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "this",
+        "fa": "این"
+       }
+      ]
      }
     ]
    }
@@ -2058,42 +2066,58 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "This is my father. ___ is a taxi driver.",
+      "text": "This is Ali. ___ is here.",
       "answer": "He",
       "accept": [],
-      "fa": "این پدرم است. راننده تاکسی است.",
-      "why": "پدر مرد است، پس he."
+      "fa": "این علی است. او اینجاست.",
+      "why": "برای یک مرد یا پسر از he استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "Ali",
+        "fa": "علی (نام)"
+       },
+       {
+        "en": "here",
+        "fa": "اینجا"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Reza is a teacher. ___ teaches English.",
+      "prompt": "برای اشاره به یک مرد، کدام ضمیر درست است؟",
       "options": [
        {
         "text": "He",
         "ok": true,
-        "why": "رضا مرد است."
+        "why": "he برای یک مرد یا پسر است."
        },
        {
-        "text": "She",
+        "text": "You",
         "ok": false,
-        "why": "she برای زن است."
+        "why": "you برای مخاطب است."
        },
        {
-        "text": "It",
+        "text": "This",
         "ok": false,
-        "why": "it برای اشیا و حیوانات است."
+        "why": "this برای اشاره به شخص یا چیز نزدیک است، نه ضمیر شخصیِ «او»."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "او (مرد) هر روز ورزش می‌کند.",
-      "frame": "___ exercises every day.",
+      "prompt": "«او علی است» را کامل کن.",
+      "frame": "___ is Ali.",
       "answer": "He",
       "accept": [],
-      "why": "برای مرد he."
+      "why": "برای «او» دربارهٔ یک مرد از he استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "Ali",
+        "fa": "علی (نام)"
+       }
+      ]
      }
     ]
    }
@@ -2643,26 +2667,36 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "Is this ___ car? It's very nice.",
+      "text": "Is this ___ book?",
       "answer": "your",
       "accept": [],
-      "fa": "این ماشینِ توست؟ خیلی قشنگ است.",
-      "why": "مالکیت دوم‌شخص پیش از اسم."
+      "fa": "این کتابِ توست؟",
+      "why": "your پیش از اسم، مالکیتِ مخاطب را نشان می‌دهد.",
+      "support": [
+       {
+        "en": "this",
+        "fa": "این"
+       },
+       {
+        "en": "book",
+        "fa": "کتاب"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Please write ___ address here.",
+      "prompt": "برای «اسمِ تو/شما» کدام گزینه درست است؟",
       "options": [
        {
         "text": "your",
         "ok": true,
-        "why": "your پیش از اسم address مالکیت را نشان می‌دهد."
+        "why": "your پیش از اسم، مالکیتِ مخاطب را نشان می‌دهد."
        },
        {
         "text": "you're",
         "ok": false,
-        "why": "you're یعنی you are و پیش از address درست نیست."
+        "why": "you're کوتاه‌شدهٔ you are است."
        },
        {
         "text": "you",
@@ -2674,11 +2708,21 @@
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "کتابت را باز کن.",
+      "prompt": "«کتابت را باز کن» را کامل کن.",
       "frame": "Open ___ book.",
       "answer": "your",
       "accept": [],
-      "why": "کتابِ تو = your book."
+      "why": "کتابِ تو = your book.",
+      "support": [
+       {
+        "en": "Open",
+        "fa": "باز کن"
+       },
+       {
+        "en": "book",
+        "fa": "کتاب"
+       }
+      ]
      }
     ]
    }
