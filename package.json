@@ -32,7 +32,8 @@
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "cf-typegen": "wrangler types",
-    "content:calibration": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/a1-calibration.ts"
+    "content:calibration": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/a1-calibration.ts",
+    "content:calibration:language": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/a1-calibration.ts --strict-language"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
