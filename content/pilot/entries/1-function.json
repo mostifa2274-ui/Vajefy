@@ -1750,44 +1750,44 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "___ old is your daughter?",
+      "text": "___ are you?",
       "answer": "How",
       "accept": [
        "how"
       ],
-      "fa": "دخترت چند سال دارد؟",
-      "why": "How old برای پرسیدن سن."
+      "fa": "حالت چطور است؟",
+      "why": "How are you? برای پرسیدن حالِ کسی است."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "___ people are in your family?",
+      "prompt": "کدام جمله یعنی «حالت چطور است؟»؟",
       "options": [
        {
-        "text": "How many",
+        "text": "How are you?",
         "ok": true,
-        "why": "people قابل‌شمارش و جمع است."
+        "why": "How دربارهٔ حالت یا چگونگی می‌پرسد."
        },
        {
-        "text": "How much",
+        "text": "Where are you?",
         "ok": false,
-        "why": "how much برای اسم غیرقابل‌شمارش است."
+        "why": "Where دربارهٔ مکان می‌پرسد."
        },
        {
-        "text": "How long",
+        "text": "Who are you?",
         "ok": false,
-        "why": "how long برای مدت یا طول است."
+        "why": "Who دربارهٔ هویتِ آدم می‌پرسد."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "چطور به این مدرسه می‌آیی؟",
-      "frame": "___ do you come to this school?",
+      "prompt": "خانواده‌ات چطور است؟",
+      "frame": "___ is your family?",
       "answer": "How",
       "accept": [],
-      "why": "پرسیدن روش آمدن."
+      "why": "برای پرسیدن حال یا وضعیت از How استفاده می‌کنیم."
      }
     ]
    }
