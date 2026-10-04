@@ -54,42 +54,55 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "I waited for ___ hour at the station.",
+      "text": "___ apple",
       "answer": "an",
       "accept": [],
-      "fa": "یک ساعت در ایستگاه منتظر ماندم.",
-      "why": "h در hour خوانده نمی‌شود و کلمه با صدای مصوت شروع می‌شود، پس an."
+      "fa": "یک سیب",
+      "why": "apple با صدای مصوت شروع می‌شود، پس an می‌آید.",
+      "support": [
+       {
+        "en": "apple",
+        "fa": "سیب"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Choose the correct sentence.",
+      "prompt": "پیش از book کدام حرف تعریف درست است؟",
       "options": [
        {
-        "text": "My father is a driver.",
+        "text": "a",
         "ok": true,
-        "why": "برای شغل a لازم است."
+        "why": "book با صدای صامت /b/ شروع می‌شود."
        },
        {
-        "text": "My father is driver.",
+        "text": "an",
         "ok": false,
-        "why": "بدون a جملهٔ شغل در انگلیسی ناقص است."
-       },
+        "why": "an پیش از صدای مصوت می‌آید."
+       }
+      ],
+      "support": [
        {
-        "text": "My father is an driver.",
-        "ok": false,
-        "why": "driver با صدای صامت شروع می‌شود، پس a."
+        "en": "book",
+        "fa": "کتاب"
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "او در یک دانشگاه بزرگ کار می‌کند.",
-      "frame": "She works at ___ big university.",
-      "answer": "a",
+      "prompt": "«یک مهندس» را کامل کن.",
+      "frame": "___ engineer",
+      "answer": "an",
       "accept": [],
-      "why": "big با صدای صامتِ «ب» شروع می‌شود؛ a/an به صدای کلمهٔ بعدی نگاه می‌کند."
+      "why": "engineer با صدای مصوت شروع می‌شود، پس an می‌آید.",
+      "support": [
+       {
+        "en": "engineer",
+        "fa": "مهندس"
+       }
+      ]
      }
     ]
    }
@@ -1821,42 +1834,61 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "My name is Sara and ___ am from Tabriz.",
+      "text": "___ am Sara.",
       "answer": "I",
       "accept": [],
-      "fa": "اسمم ساراست و اهل تبریز هستم.",
-      "why": "فاعلِ am باید I باشد."
+      "fa": "من سارا هستم.",
+      "why": "وقتی گوینده دربارهٔ خودش حرف می‌زند، فاعل I است.",
+      "support": [
+       {
+        "en": "am",
+        "fa": "هستم"
+       },
+       {
+        "en": "Sara",
+        "fa": "سارا"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Choose the correct sentence.",
+      "prompt": "کدام شکلِ ضمیر «من» درست نوشته شده است؟",
       "options": [
        {
-        "text": "I am tired.",
+        "text": "I",
         "ok": true,
-        "why": "فاعل I همراه am."
+        "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود."
        },
        {
-        "text": "Am tired.",
+        "text": "i",
         "ok": false,
-        "why": "در انگلیسی فاعل حذف نمی‌شود."
-       },
-       {
-        "text": "Me am tired.",
-        "ok": false,
-        "why": "me فقط مفعول است."
+        "why": "ضمیر I حتی وسط جمله هم باید با حرف بزرگ نوشته شود."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "من قهوه دوست ندارم.",
-      "frame": "___ don't like coffee.",
+      "prompt": "من دانشجو هستم.",
+      "frame": "___ am a student.",
       "answer": "I",
       "accept": [],
-      "why": "فاعل جمله I است."
+      "why": "فاعلِ جمله «من» است، پس I می‌نویسیم.",
+      "support": [
+       {
+        "en": "am",
+        "fa": "هستم"
+       },
+       {
+        "en": "a",
+        "fa": "یک"
+       },
+       {
+        "en": "student",
+        "fa": "دانشجو"
+       }
+      ]
      }
     ]
    }
@@ -1917,42 +1949,57 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "___ are very kind. Thank you!",
+      "text": "___ are ready.",
       "answer": "You",
       "accept": [],
-      "fa": "شما خیلی مهربان هستید. ممنونم!",
-      "why": "you فاعل است و با are می‌آید."
+      "fa": "تو آماده‌ای / شما آماده‌اید.",
+      "why": "فاعلِ «تو / شما» در انگلیسی you است.",
+      "support": [
+       {
+        "en": "are",
+        "fa": "هستی / هستید"
+       },
+       {
+        "en": "ready",
+        "fa": "آماده"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "I'll see ___ tomorrow.",
+      "prompt": "کدام ضمیر یعنی «تو / شما»؟",
       "options": [
        {
         "text": "you",
         "ok": true,
-        "why": "you مفعول هم هست."
+        "why": "you هم برای «تو» و هم برای «شما» به کار می‌رود."
        },
        {
-        "text": "your",
+        "text": "I",
         "ok": false,
-        "why": "your صفت ملکی است و پیش از اسم می‌آید."
-       },
-       {
-        "text": "yours",
-        "ok": false,
-        "why": "yours یعنی «مال شما» و اینجا معنی نمی‌دهد."
+        "why": "I یعنی «من»."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "تو برادر داری؟",
-      "frame": "Do ___ have a brother?",
-      "answer": "you",
+      "prompt": "تو سارا هستی.",
+      "frame": "___ are Sara.",
+      "answer": "You",
       "accept": [],
-      "why": "فاعل سؤال you است."
+      "why": "فاعلِ «تو» برابر you است.",
+      "support": [
+       {
+        "en": "are",
+        "fa": "هستی"
+       },
+       {
+        "en": "Sara",
+        "fa": "سارا"
+       }
+      ]
      }
     ]
    }
@@ -2484,42 +2531,60 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "___ phone is on the table.",
+      "text": "___ book",
       "answer": "My",
       "accept": [],
-      "fa": "گوشی‌ام روی میز است.",
-      "why": "مالکیت پیش از اسم."
+      "fa": "کتاب من",
+      "why": "برای مالکیت پیش از اسم از my استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "book",
+        "fa": "کتاب"
+       }
+      ]
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "___ sister lives in Tabriz.",
+      "prompt": "کدام عبارت یعنی «کتاب من»؟",
       "options": [
        {
-        "text": "My",
+        "text": "my book",
         "ok": true,
-        "why": "پیش از sister برای مالکیت my می‌آید."
+        "why": "my پیش از اسم مالکیت را نشان می‌دهد."
        },
        {
-        "text": "Me",
+        "text": "I book",
         "ok": false,
-        "why": "me ضمیر مفعولی است."
+        "why": "I ضمیر فاعلی است و پیش از اسم مالکیت نمی‌سازد."
        },
        {
-        "text": "I",
+        "text": "you book",
         "ok": false,
-        "why": "I ضمیر فاعلی است، نه صفت ملکی."
+        "why": "you ضمیر شخصی است؛ برای مالکیت به شکل دیگری نیاز است."
+       }
+      ],
+      "support": [
+       {
+        "en": "book",
+        "fa": "کتاب"
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "برادرم در لندن زندگی می‌کند.",
-      "frame": "___ brother lives in London.",
+      "prompt": "«نام من» را کامل کن.",
+      "frame": "___ name",
       "answer": "My",
       "accept": [],
-      "why": "برادرِ من = my brother."
+      "why": "برای «نام من» می‌گوییم my name.",
+      "support": [
+       {
+        "en": "name",
+        "fa": "نام"
+       }
+      ]
      }
     ]
    }
