@@ -133,7 +133,12 @@ function makeFixture(options: FixtureOptions = {}): string {
             examples: example ? [{ en: example, fa: "آزمون" }] : [],
             check: Array.from({ length: checkCount }, (_, index) => ({
               id: `${senseId}:check-${index + 1}`,
-              type: "choice",
+              type: "cloze",
+              text: "___",
+              answer: "alpha",
+              accept: [],
+              fa: "آزمون",
+              why: "آزمون",
             })),
           },
         ],
