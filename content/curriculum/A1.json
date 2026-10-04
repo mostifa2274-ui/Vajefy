@@ -1,0 +1,160 @@
+{
+  "version": 1,
+  "level": "A1",
+  "units": [
+    {
+      "id": "01-introductions",
+      "titleEn": "Introductions and personal information",
+      "titleFa": "معرفی و اطلاعات شخصی",
+      "status": "calibration",
+      "objectiveEn": "Introduce yourself, ask basic personal questions, and say where you live or study.",
+      "objectiveFa": "خودت را معرفی کن، سؤال‌های سادهٔ شخصی بپرس و بگو کجا زندگی یا تحصیل می‌کنی.",
+      "entries": [
+        { "id": "lex:A1:i", "prerequisites": [] },
+        { "id": "lex:A1:you", "prerequisites": [] },
+        { "id": "lex:A1:a-an", "prerequisites": [] },
+        { "id": "lex:A1:be", "prerequisites": ["lex:A1:i", "lex:A1:you"] },
+        { "id": "lex:A1:my", "prerequisites": ["lex:A1:i"] },
+        { "id": "lex:A1:your", "prerequisites": ["lex:A1:you"] },
+        { "id": "lex:A1:name", "prerequisites": ["lex:A1:my", "lex:A1:your", "lex:A1:be"] },
+        { "id": "lex:A1:what", "prerequisites": ["lex:A1:be", "lex:A1:your", "lex:A1:name"] },
+        { "id": "lex:A1:this", "prerequisites": ["lex:A1:be"] },
+        { "id": "lex:A1:he", "prerequisites": ["lex:A1:be"] },
+        { "id": "lex:A1:who", "prerequisites": ["lex:A1:be", "lex:A1:he"] },
+        { "id": "lex:A1:where", "prerequisites": ["lex:A1:be"] },
+        { "id": "lex:A1:from", "prerequisites": ["lex:A1:where", "lex:A1:be"] },
+        { "id": "lex:A1:in", "prerequisites": [] },
+        { "id": "lex:A1:city", "prerequisites": ["lex:A1:in"] },
+        { "id": "lex:A1:live", "prerequisites": ["lex:A1:i", "lex:A1:in", "lex:A1:city"] },
+        { "id": "lex:A1:family", "prerequisites": ["lex:A1:my", "lex:A1:be"] },
+        { "id": "lex:A1:friend", "prerequisites": ["lex:A1:a-an", "lex:A1:my", "lex:A1:be"] },
+        { "id": "lex:A1:school", "prerequisites": ["lex:A1:a-an", "lex:A1:in"] },
+        { "id": "lex:A1:how", "prerequisites": ["lex:A1:be", "lex:A1:you"] }
+      ]
+    },
+    {
+      "id": "02-family-home",
+      "titleEn": "Family and home",
+      "titleFa": "خانواده و خانه",
+      "status": "planned",
+      "objectiveEn": "Talk about close family, people, rooms, and everyday things at home.",
+      "objectiveFa": "دربارهٔ خانوادهٔ نزدیک، افراد، اتاق‌ها و چیزهای روزمرهٔ خانه صحبت کن.",
+      "entries": []
+    },
+    {
+      "id": "03-daily-routine",
+      "titleEn": "Daily routine and time",
+      "titleFa": "کارهای روزانه و زمان",
+      "status": "planned",
+      "objectiveEn": "Describe a simple day, times, frequency, and common routine actions.",
+      "objectiveFa": "یک روز ساده، زمان‌ها، تکرار و کارهای معمول روزانه را بیان کن.",
+      "entries": []
+    },
+    {
+      "id": "04-food-drink",
+      "titleEn": "Food and drink",
+      "titleFa": "خوراکی و نوشیدنی",
+      "status": "planned",
+      "objectiveEn": "Ask for, choose, and talk about basic food and drink.",
+      "objectiveFa": "خوراکی و نوشیدنی ساده را درخواست، انتخاب و توصیف کن.",
+      "entries": []
+    },
+    {
+      "id": "05-shopping-money",
+      "titleEn": "Shopping and money",
+      "titleFa": "خرید و پول",
+      "status": "planned",
+      "objectiveEn": "Ask about prices, quantities, sizes, and simple purchases.",
+      "objectiveFa": "دربارهٔ قیمت، مقدار، اندازه و خریدهای ساده سؤال کن.",
+      "entries": []
+    },
+    {
+      "id": "06-places-directions",
+      "titleEn": "Places and directions",
+      "titleFa": "مکان‌ها و مسیر",
+      "status": "planned",
+      "objectiveEn": "Identify common places and ask for or follow simple directions.",
+      "objectiveFa": "مکان‌های رایج را بشناس و مسیر ساده را بپرس یا دنبال کن.",
+      "entries": []
+    },
+    {
+      "id": "07-travel-transport",
+      "titleEn": "Travel and transport",
+      "titleFa": "سفر و حمل‌ونقل",
+      "status": "planned",
+      "objectiveEn": "Handle basic travel, tickets, vehicles, arrivals, and departures.",
+      "objectiveFa": "موقعیت‌های سادهٔ سفر، بلیت، وسیلهٔ نقلیه، رسیدن و رفتن را مدیریت کن.",
+      "entries": []
+    },
+    {
+      "id": "08-work-study",
+      "titleEn": "Work and study",
+      "titleFa": "کار و تحصیل",
+      "status": "planned",
+      "objectiveEn": "Talk about simple work, school, study, schedules, and tasks.",
+      "objectiveFa": "دربارهٔ کار، مدرسه، مطالعه، برنامه و وظایف ساده صحبت کن.",
+      "entries": []
+    },
+    {
+      "id": "09-leisure-people",
+      "titleEn": "Leisure and people",
+      "titleFa": "اوقات فراغت و آدم‌ها",
+      "status": "planned",
+      "objectiveEn": "Talk about friends, interests, sports, media, and simple plans.",
+      "objectiveFa": "دربارهٔ دوستان، علایق، ورزش، رسانه و برنامه‌های ساده صحبت کن.",
+      "entries": []
+    },
+    {
+      "id": "10-weather-clothes",
+      "titleEn": "Weather and clothes",
+      "titleFa": "هوا و لباس",
+      "status": "planned",
+      "objectiveEn": "Describe basic weather and choose or describe everyday clothing.",
+      "objectiveFa": "هوای ساده را توصیف کن و لباس روزمره را انتخاب یا توصیف کن.",
+      "entries": []
+    },
+    {
+      "id": "11-health-feelings",
+      "titleEn": "Health and feelings",
+      "titleFa": "سلامت و احساسات",
+      "status": "planned",
+      "objectiveEn": "Describe basic feelings, needs, body states, and simple health problems.",
+      "objectiveFa": "احساسات، نیازها، وضعیت بدن و مشکل‌های سادهٔ سلامتی را بیان کن.",
+      "entries": []
+    },
+    {
+      "id": "12-help-everyday-problems",
+      "titleEn": "Help and everyday problems",
+      "titleFa": "کمک و مشکل‌های روزمره",
+      "status": "planned",
+      "objectiveEn": "Ask for help, clarify misunderstandings, and handle common everyday problems.",
+      "objectiveFa": "کمک بخواه، سوءتفاهم ساده را روشن کن و مشکل‌های روزمره را مدیریت کن.",
+      "entries": []
+    }
+  ],
+  "calibrationSlice": {
+    "unit": "01-introductions",
+    "entries": [
+      "lex:A1:i",
+      "lex:A1:you",
+      "lex:A1:a-an",
+      "lex:A1:be",
+      "lex:A1:my",
+      "lex:A1:your",
+      "lex:A1:name",
+      "lex:A1:what",
+      "lex:A1:this",
+      "lex:A1:he",
+      "lex:A1:who",
+      "lex:A1:where",
+      "lex:A1:from",
+      "lex:A1:in",
+      "lex:A1:city",
+      "lex:A1:live",
+      "lex:A1:family",
+      "lex:A1:friend",
+      "lex:A1:school",
+      "lex:A1:how"
+    ]
+  }
+}
