@@ -979,42 +979,42 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "We always have dinner together as a ___.",
+      "text": "My ___ is in this city.",
       "answer": "family",
       "accept": [],
-      "fa": "ما همیشه همهٔ اعضای خانواده با هم شام می‌خوریم.",
-      "why": "خانواده."
+      "fa": "خانوادهٔ من در این شهر است.",
+      "why": "family یعنی «خانواده»."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Choose the natural sentence.",
+      "prompt": "برای کامل کردن «My ___ lives in this city» با معنی «خانواده‌ام در این شهر زندگی می‌کند»، کدام واژه درست است؟",
       "options": [
        {
-        "text": "There are four people in my family.",
+        "text": "family",
         "ok": true,
-        "why": "ساختار طبیعی برای تعداد."
+        "why": "family یعنی «خانواده»."
        },
        {
-        "text": "We are four persons.",
+        "text": "school",
         "ok": false,
-        "why": "persons رسمی است و این جمله طبیعی نیست."
+        "why": "school یعنی «مدرسه»."
        },
        {
-        "text": "My family has four persons.",
+        "text": "name",
         "ok": false,
-        "why": "people درست است، نه persons."
+        "why": "name یعنی «نام»."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "خانواده‌ام در این شهر زندگی می‌کند.",
-      "frame": "My ___ lives in this city.",
+      "prompt": "این خانوادهٔ من است.",
+      "frame": "This is my ___.",
       "answer": "family",
       "accept": [],
-      "why": "my family یعنی خانوادهٔ من."
+      "why": "my family یعنی «خانوادهٔ من»."
      }
     ]
    }
@@ -1077,42 +1077,42 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "It's easy to make ___ at university.",
-      "answer": "friends",
+      "text": "This is my ___.",
+      "answer": "friend",
       "accept": [],
-      "fa": "در دانشگاه دوست پیدا کردن آسان است.",
-      "why": "make friends."
+      "fa": "این دوست من است.",
+      "why": "friend یعنی «دوست»."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "«یکی از دوستانم» in English is ___.",
+      "prompt": "برای کامل کردن «He is my ___» با معنی «او دوست من است»، کدام واژه درست است؟",
       "options": [
        {
-        "text": "a friend of mine",
+        "text": "friend",
         "ok": true,
-        "why": "عبارت رایج."
+        "why": "friend یعنی «دوست»."
        },
        {
-        "text": "a friend of me",
+        "text": "family",
         "ok": false,
-        "why": "بعد از of شکل ملکی mine لازم است."
+        "why": "family یعنی «خانواده»."
        },
        {
-        "text": "one my friend",
+        "text": "school",
         "ok": false,
-        "why": "of و جمع جا افتاده‌اند."
+        "why": "school یعنی «مدرسه»."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "او بهترین دوست من است.",
-      "frame": "She's my best ___.",
+      "prompt": "دوستم در این شهر است.",
+      "frame": "My ___ is in this city.",
       "answer": "friend",
       "accept": [],
-      "why": "best friend."
+      "why": "friend یعنی «دوست»."
      }
     ]
    }
@@ -2921,42 +2921,42 @@
      {
       "type": "cloze",
       "id": "c1",
-      "text": "Tehran is the biggest ___ in Iran.",
+      "text": "He is in this ___.",
       "answer": "city",
       "accept": [],
-      "fa": "تهران بزرگ‌ترین شهر ایران است.",
-      "why": "شهر بزرگ."
+      "fa": "او در این شهر است.",
+      "why": "city یعنی «شهر»."
      },
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Tehran is the capital ___ of Iran.",
+      "prompt": "برای کامل کردن «This is a ___» با معنی «این یک شهر است»، کدام واژه درست است؟",
       "options": [
        {
         "text": "city",
         "ok": true,
-        "why": "capital city یعنی پایتخت."
+        "why": "city یعنی «شهر»."
        },
        {
         "text": "school",
         "ok": false,
-        "why": "school یعنی مدرسه و اینجا از نوع مکانِ پایتخت حرف می‌زنیم."
+        "why": "school یعنی «مدرسه»."
        },
        {
         "text": "name",
         "ok": false,
-        "why": "name یعنی نام؛ اینجا اسمِ نوع مکان لازم است."
+        "why": "name یعنی «نام»."
        }
       ]
      },
      {
       "type": "produce",
       "id": "p1",
-      "prompt": "مرکز شهر نزدیک است.",
-      "frame": "The ___ centre is near.",
+      "prompt": "این شهر من است.",
+      "frame": "This is my ___.",
       "answer": "city",
       "accept": [],
-      "why": "city centre."
+      "why": "city یعنی «شهر»."
      }
     ]
    }
