@@ -948,7 +948,7 @@
      },
      {
       "pattern": "have a family",
-      "note": "بچه داشتن"
+      "note": "خانواده داشتن؛ در بافت روزمره اغلب منظور داشتن همسر یا فرزند است."
      }
     ],
     "examples": [
@@ -1014,8 +1014,7 @@
       "frame": "What's your ___ name?",
       "answer": "family",
       "accept": [
-       "last",
-       "sur"
+       "last"
       ],
       "why": "family name = نام خانوادگی."
      }
@@ -1067,9 +1066,9 @@
      "a friend of mine"
     ],
     "mistake": {
-     "wrong": "He is my friend from childhood.",
-     "right": "He is my childhood friend.",
-     "why": "در انگلیسی معمولاً گفته می‌شود childhood friend."
+     "wrong": "I made a friend with Sara.",
+     "right": "I made friends with Sara.",
+     "why": "برای «دوست شدن/دوست پیدا کردن» معمولاً make friends with به کار می‌رود."
     },
     "pronunciation": {
      "gb": "/frend/",
@@ -1426,7 +1425,7 @@
      "first name",
      "last name",
      "full name",
-     "call someone names"
+     "family name"
     ],
     "mistake": {
      "wrong": "My name's is Ali.",
@@ -2871,7 +2870,7 @@
     "id": "lex:A1:city",
     "pos": "noun",
     "gloss": "شهر (بزرگ)",
-    "meaning": "شهر بزرگ و مهم. شهر کوچک‌تر town است.",
+    "meaning": "شهر؛ معمولاً از town بزرگ‌تر است، اما مرز دقیق این دو در کشورها متفاوت است.",
     "grammar": [
      {
       "pattern": "in the city",
@@ -2899,9 +2898,9 @@
      "city life"
     ],
     "mistake": {
-     "wrong": "I live in the city of Mashhad city.",
-     "right": "I live in the city of Mashhad. / I live in Mashhad.",
-     "why": "نام شهر را دو بار با city نمی‌آوریم."
+     "wrong": "I live in Tehran city.",
+     "right": "I live in Tehran.",
+     "why": "بعد از نام شهر معمولاً دوباره city نمی‌آوریم: in Tehran, in Shiraz."
     },
     "pronunciation": {
      "gb": "/ˈsɪti/",
@@ -2921,22 +2920,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "A small place with houses and shops, smaller than a city, is a ___.",
+      "prompt": "Tehran is the capital ___ of Iran.",
       "options": [
        {
-        "text": "town",
+        "text": "city",
         "ok": true,
-        "why": "town از city کوچک‌تر است."
+        "why": "capital city یعنی پایتخت."
        },
        {
-        "text": "country",
+        "text": "school",
         "ok": false,
-        "why": "country یعنی کشور یا روستا (countryside)."
+        "why": "school یعنی مدرسه و اینجا از نوع مکانِ پایتخت حرف می‌زنیم."
        },
        {
-        "text": "capital",
+        "text": "name",
         "ok": false,
-        "why": "capital پایتخت است."
+        "why": "name یعنی نام؛ اینجا اسمِ نوع مکان لازم است."
        }
       ]
      },
