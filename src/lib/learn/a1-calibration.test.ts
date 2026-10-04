@@ -20,6 +20,28 @@ const IDS = Array.from(
   { length: 20 },
   (_, index) => `lex:A1:word-${index + 1}`,
 );
+const HEADWORDS = [
+  "alpha",
+  "beta",
+  "gamma",
+  "delta",
+  "epsilon",
+  "zeta",
+  "eta",
+  "theta",
+  "iota",
+  "kappa",
+  "lambda",
+  "mu",
+  "nu",
+  "xi",
+  "omicron",
+  "pi",
+  "rho",
+  "sigma",
+  "tau",
+  "upsilon",
+];
 
 type FixtureOptions = {
   packetIds?: string[];
@@ -27,6 +49,9 @@ type FixtureOptions = {
   curriculumUnitIds?: string[];
   curriculumPrerequisites?: Record<string, string[]>;
   checks?: number;
+  exampleText?: Record<string, string>;
+  extraEntries?: { id: string; headword: string }[];
+  languageExceptions?: Record<string, { token: string; reason: string }[]>;
 };
 
 function writeJson(root: string, relative: string, value: unknown): void {
@@ -59,7 +84,9 @@ function makeFixture(options: FixtureOptions = {}): string {
         entries: packetIds.map((id) => ({
           id,
           objective: `Teach ${id}.`,
-          prerequisites: [],
+          ...(options.languageExceptions?.[id]
+            ? { languageExceptions: options.languageExceptions[id] }
+            : {}),
         })),
       },
     ],
@@ -84,28 +111,56 @@ function makeFixture(options: FixtureOptions = {}): string {
     calibrationSlice: { unit: "01-test", entries: curriculumIds },
   });
 
-  const entries = allIds.map((id) => {
-    const senseId = `${id}#1`;
-    return {
-      id,
-      headword: id.slice("lex:A1:".length),
+  const fixtureHeadword = (id: string): string => {
+    const index = IDS.indexOf(id);
+    return index >= 0 ? HEADWORDS[index] : id.slice("lex:A1:".length);
+  };
+  const entries = [
+    ...allIds.map((id) => {
+      const senseId = `${id}#1`;
+      const example = options.exampleText?.[id];
+      return {
+        id,
+        headword: fixtureHeadword(id),
+        level: "A1",
+        version: "fixture-v1",
+        released: false,
+        senses: [
+          {
+            id: senseId,
+            pos: "noun",
+            gloss: "آزمون",
+            examples: example ? [{ en: example, fa: "آزمون" }] : [],
+            check: Array.from({ length: checkCount }, (_, index) => ({
+              id: `${senseId}:check-${index + 1}`,
+              type: "cloze",
+              text: "___",
+              answer: "alpha",
+              accept: [],
+              fa: "آزمون",
+              why: "آزمون",
+            })),
+          },
+        ],
+      };
+    }),
+    ...(options.extraEntries ?? []).map((extra) => ({
+      id: extra.id,
+      headword: extra.headword,
       level: "A1",
       version: "fixture-v1",
       released: false,
       senses: [
         {
-          id: senseId,
+          id: `${extra.id}#1`,
           pos: "noun",
           gloss: "آزمون",
           examples: [],
-          check: Array.from({ length: checkCount }, (_, index) => ({
-            id: `${senseId}:check-${index + 1}`,
-            type: "choice",
-          })),
+          check: [],
         },
       ],
-    };
-  });
+    })),
+  ];
   writeJson(root, "content/compiled/enhanced.json", {
     version: "fixture-v1",
     entries,
@@ -113,8 +168,14 @@ function makeFixture(options: FixtureOptions = {}): string {
       entries.map((entry) => [
         entry.senses[0].id,
         {
-          gb: { word: "gb.mp3", examples: [] },
-          us: { word: "us.mp3", examples: [] },
+          gb: {
+            word: "gb.mp3",
+            examples: entry.senses[0].examples.map(() => "gb-example.mp3"),
+          },
+          us: {
+            word: "us.mp3",
+            examples: entry.senses[0].examples.map(() => "us-example.mp3"),
+          },
         },
       ]),
     ),
@@ -250,6 +311,98 @@ test("an aligned three-check calibration packet passes the structural gate", () 
     const result = runCalibration(root);
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /A1 calibration OK: 20 entries, 20 senses/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+
+test("the learner-language audit distinguishes future, outside-slice, proper-name and external dependencies", () => {
+  const root = makeFixture({
+    exampleText: {
+      [IDS[0]]: "beta outside Zara mystery.",
+    },
+    extraEntries: [{ id: "lex:A1:outside", headword: "outside" }],
+  });
+  try {
+    const result = runCalibration(root, "--json");
+    assert.equal(result.status, 0, result.stderr);
+    const packet = JSON.parse(result.stdout) as {
+      entries: {
+        id: string;
+        language: {
+          dependencies: {
+            token: string;
+            status: string;
+            entryId?: string;
+          }[];
+          unresolved: number;
+        };
+      }[];
+    };
+    const language = packet.entries[0].language;
+    assert.equal(language.unresolved, 4);
+    assert.deepEqual(
+      language.dependencies.map((item) => [
+        item.token,
+        item.status,
+        item.entryId ?? null,
+      ]),
+      [
+        ["mystery", "external", null],
+        ["outside", "outside-slice", "lex:A1:outside"],
+        ["Zara".toLowerCase(), "proper-name-candidate", null],
+        ["beta", "future", IDS[1]],
+      ].sort((a, b) => `${a[1]}:${a[0]}`.localeCompare(`${b[1]}:${b[0]}`)),
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("strict language mode fails while learner-language dependencies are unresolved", () => {
+  const root = makeFixture({
+    exampleText: { [IDS[0]]: "mystery" },
+  });
+  try {
+    const result = runCalibration(root, "--strict-language");
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /language gate failed: 1 unresolved/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a documented language exception needs a rationale and can satisfy the strict gate", () => {
+  const root = makeFixture({
+    exampleText: { [IDS[0]]: "mystery" },
+    languageExceptions: {
+      [IDS[0]]: [
+        {
+          token: "mystery",
+          reason: "Fixture-only unavoidable external token.",
+        },
+      ],
+    },
+  });
+  try {
+    const result = runCalibration(root, "--strict-language");
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("stale language exceptions are rejected instead of silently accumulating", () => {
+  const root = makeFixture({
+    languageExceptions: {
+      [IDS[0]]: [{ token: "ghost", reason: "Should be used." }],
+    },
+  });
+  try {
+    const result = runCalibration(root);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /language exception ghost is stale/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

@@ -71,10 +71,17 @@ already occur earlier in the same unit. These links describe the intended
 teaching sequence; they do not claim that every word appearing in every example
 has already been mastered.
 
-The next curriculum pass should add a text/task dependency audit: required
-lesson text should contain already taught language plus explicit new targets,
-with names, inflections and unavoidable exceptions documented rather than
-silently ignored.
+A text/task dependency audit is now part of the calibration tooling. It scans
+learner-facing English in grammar patterns, examples, collocations, mistake
+corrections and authored checks, resolves common contractions and inflections,
+and reports any dependency that is not yet available at that point in the
+20-entry sequence. Future-in-slice A1 words, A1 words outside the slice,
+unresolved external tokens and proper-name candidates remain visible in the
+review packet.
+
+The optional strict gate `npm run content:calibration:language` fails until
+each unresolved dependency is rewritten away or explicitly documented with a
+rationale. This prepares editorial cleanup; it never creates human approval.
 
 ## Coverage matrix
 
