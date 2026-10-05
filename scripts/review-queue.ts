@@ -11,6 +11,7 @@ import { review } from "../src/lib/learn/content.ts";
  *   npm run content:review-queue -- --scope pilot
  *   npm run content:review-queue -- --scope all-a1 --json
  *   npm run content:review-queue -- --unit 08-work-study
+ *   npm run content:review-queue -- --unit 08-work-study --packet
  *   npm run content:review-queue -- --scope calibration --limit 10
  *
  * This command never writes review.json and never changes release state.
@@ -146,6 +147,11 @@ const limit =
     : Number.isInteger(Number(rawLimit)) && Number(rawLimit) > 0
       ? Number(rawLimit)
       : fail("--limit must be a positive integer");
+
+const outputModes = ["--check", "--json", "--packet"].filter(has);
+if (outputModes.length > 1) {
+  fail(`choose only one output mode: ${outputModes.join(", ")}`);
+}
 
 const pilot = read<Pilot>(COMPILED);
 const curriculum = read<Curriculum>(A1_CURRICULUM);
@@ -360,6 +366,212 @@ const queue: Queue = {
   entries: limit ? allRows.slice(0, limit) : allRows,
 };
 
+
+function mdInline(value: string): string {
+  return value.replace(/\r?\n/g, " ").replace(/\x60/g, "\\x60");
+}
+
+function mdCode(value: string): string {
+  const tick = String.fromCharCode(96);
+  return tick + mdInline(value) + tick;
+}
+
+function renderSupport(
+  support:
+    | Pilot["entries"][number]["senses"][number]["check"][number]["support"]
+    | undefined,
+): string[] {
+  if (!support?.length) return [];
+  return [
+    `- Learner-visible task support: ${support
+      .map((item) => `${mdCode(item.en)} = ${item.fa}`)
+      .join("; ")}`,
+  ];
+}
+
+function renderCheck(
+  item: Pilot["entries"][number]["senses"][number]["check"][number],
+): string[] {
+  if (item.type === "cloze") {
+    return [
+      `- Type: cloze (${mdCode(item.id)})`,
+      `- Task: ${mdCode(item.text)}`,
+      `- Persian: ${item.fa}`,
+      `- Answer: ${mdCode(item.answer)}${item.accept.length ? ` (also: ${item.accept.map(mdCode).join(", ")})` : ""}`,
+      `- Why: ${item.why}`,
+      ...renderSupport(item.support),
+    ];
+  }
+  if (item.type === "produce") {
+    return [
+      `- Type: produce (${mdCode(item.id)})`,
+      `- Persian prompt: ${item.prompt}`,
+      `- Frame: ${mdCode(item.frame)}`,
+      `- Answer: ${mdCode(item.answer)}${item.accept.length ? ` (also: ${item.accept.map(mdCode).join(", ")})` : ""}`,
+      `- Why: ${item.why}`,
+      ...renderSupport(item.support),
+    ];
+  }
+  return [
+    `- Type: choice (${mdCode(item.id)})`,
+    `- Prompt: ${item.prompt}`,
+    ...item.options.map(
+      (option) =>
+        `  - ${option.ok ? "✓" : "✗"} ${mdCode(option.text)} — ${option.why}`,
+    ),
+    ...renderSupport(item.support),
+  ];
+}
+
+function renderPacket(queue: Queue): string {
+  const lines: string[] = [
+    "# A1 human review packet",
+    "",
+    `Scope: **${queue.scope}**`,
+    `Content build: ${mdCode(queue.generatedFrom.contentVersion)}`,
+    `Showing: **${queue.entries.length}** of **${queue.summary.entries}** selected entries`,
+    "",
+    "> This packet is read-only. It never creates or infers bilingual or pronunciation approval. Record a decision only after a human has reviewed the exact entry version and listened to the required audio.",
+    "",
+    "## Queue summary",
+    "",
+    `- Current review records: ${queue.summary.ledgerCurrent}`,
+    `- Stale review records: ${queue.summary.ledgerStale}`,
+    `- Missing review records: ${queue.summary.ledgerMissing}`,
+    `- Audio-complete entries: ${queue.summary.audioComplete}/${queue.summary.entries}`,
+    `- Flagged audio: ${queue.summary.flaggedClips} clip(s) across ${queue.summary.flaggedEntries} entries`,
+    "",
+  ];
+
+  for (const row of queue.entries) {
+    const entry = byId.get(row.id)!;
+    lines.push(
+      `## ${row.order}. ${entry.headword} — ${mdCode(entry.id)}`,
+      "",
+      `- Approval token: ${mdCode(row.approvalToken)}`,
+      `- Curriculum unit: ${row.curriculumUnit ? mdCode(row.curriculumUnit) : "unassigned"}`,
+      `- Ledger: **${row.ledgerState}**; bilingual: **${row.bilingual}**; pronunciation: **${row.pronunciation}**`,
+      `- Audio coverage: **${row.audio.presentClips}/${row.audio.requiredClips}**; flags: **${row.flags.length}**`,
+      `- Released in compiled content: **${row.released ? "yes" : "no"}**`,
+      `- Next evidence actions: ${row.nextActions.length ? row.nextActions.map(mdCode).join(", ") : "none"}`,
+    );
+    if (row.currentReview) {
+      lines.push(
+        `- Current reviewer: ${row.currentReview.reviewer ?? "not recorded"}; date: ${row.currentReview.date ?? "not recorded"}`,
+      );
+      if (row.currentReview.notes)
+        lines.push(`- Current review notes: ${row.currentReview.notes}`);
+    } else if (row.staleReview) {
+      lines.push(
+        `- Stale reviewed version: ${mdCode(row.staleReview.version)} (does not approve the current version)`,
+      );
+    }
+    lines.push("");
+
+    for (const sense of entry.senses) {
+      lines.push(
+        `### ${sense.gloss} — ${mdCode(sense.id)} (${sense.pos})`,
+        "",
+        `**Meaning:** ${sense.meaning}`,
+        "",
+        "**Grammar**",
+        "",
+        ...sense.grammar.flatMap((item) => [
+          `- ${mdCode(item.pattern)}`,
+          `  - ${item.note}`,
+        ]),
+        "",
+        "**Examples**",
+        "",
+        ...sense.examples.map(
+          (example, index) =>
+            `${index + 1}. ${mdCode(example.en)} — ${example.fa}`,
+        ),
+        "",
+        "**Collocations**",
+        "",
+        ...sense.collocations.map((item) => {
+          const translation = sense.collocationFa?.[item];
+          return `- ${mdCode(item)}${translation ? ` — ${translation}` : ""}`;
+        }),
+      );
+      if (sense.usage) {
+        lines.push("", `**Usage:** ${sense.usage}`);
+      }
+      lines.push(
+        "",
+        "**Common mistake**",
+        "",
+        `- Wrong: ${mdCode(sense.mistake.wrong)}${sense.mistake.wrongFa ? ` — ${sense.mistake.wrongFa}` : ""}`,
+        `- Right: ${mdCode(sense.mistake.right)}${sense.mistake.rightFa ? ` — ${sense.mistake.rightFa}` : ""}`,
+        `- Why: ${sense.mistake.why}`,
+        "",
+        "**Pronunciation**",
+        "",
+        `- GB: ${mdCode(sense.pronunciation.gb)}`,
+        `- US: ${mdCode(sense.pronunciation.us)}`,
+      );
+      if (sense.pronunciation.note) {
+        lines.push(`- Note: ${sense.pronunciation.note}`);
+      }
+
+      const audio = pilot.audio[sense.id];
+      lines.push("", "**Current audio assets**", "");
+      for (const accent of ["gb", "us"] as const) {
+        const recorded = audio?.[accent];
+        lines.push(
+          `- ${accent.toUpperCase()} word: ${recorded?.word ? mdCode(recorded.word) : "**MISSING**"}`,
+        );
+        sense.examples.forEach((example, index) => {
+          const clip = recorded?.examples[index];
+          lines.push(
+            `  - Example ${index + 1} (${mdCode(example.en)}): ${clip ? mdCode(clip) : "**MISSING**"}`,
+          );
+        });
+      }
+
+      const senseFlags = row.flags.filter((flag) => flag.sense === sense.id);
+      lines.push("", "**Listener flags**", "");
+      if (!senseFlags.length) {
+        lines.push("- None in the current automated report.");
+      } else {
+        for (const flag of senseFlags) {
+          lines.push(
+            `- ${flag.accent.toUpperCase()} ${flag.kind}: ${mdCode(flag.file)} — ${flag.issues.join("; ")}`,
+          );
+        }
+      }
+
+      const reserved = sense.check.at(-1);
+      lines.push(
+        "",
+        `**Reserved held-out candidate** (${sense.check.length} authored checks total)`,
+        "",
+      );
+      if (reserved) lines.push(...renderCheck(reserved));
+      else lines.push("- **MISSING**");
+      lines.push("");
+    }
+
+    lines.push(
+      "### Decision commands",
+      "",
+      "Run these only after reviewing this exact version:",
+      "",
+      "~~~sh",
+      `npm run content:approve -- --entry ${row.approvalToken} --bilingual approved --reviewer "<NAME>"`,
+      `npm run content:approve -- --entry ${row.approvalToken} --pronunciation approved --reviewer "<NAME>"`,
+      "~~~",
+      "",
+      "If changes are required, record changes with concrete notes instead of approving.",
+      "",
+      "---",
+      "",
+    );
+  }
+  return lines.join("\n");
+}
+
 if (has("--check")) {
   console.log(
     `Review queue OK: ${queueScope} ${summary.entries} entries; ${summary.audioComplete} full audio; ${summary.ledgerCurrent} current, ${summary.ledgerStale} stale and ${summary.ledgerMissing} missing review record(s).`,
@@ -369,6 +581,11 @@ if (has("--check")) {
 
 if (has("--json")) {
   console.log(JSON.stringify(queue, null, 2));
+  process.exit(0);
+}
+
+if (has("--packet")) {
+  console.log(renderPacket(queue));
   process.exit(0);
 }
 
