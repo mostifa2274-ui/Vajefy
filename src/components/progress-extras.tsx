@@ -10,6 +10,10 @@ import { loadAudioPack, loadPilotOrder } from "@/lib/learn/pilot";
 import { persistence, useProgress } from "@/lib/learn/store";
 import { buildStudyExport, studyFileName, validParticipant } from "@/lib/learn/study";
 import type { PracticeSkill } from "@/lib/learn/types";
+
+const APP_BUILD =
+  ((import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env
+    ?.VITE_APP_VERSION ?? "local");
 import { Num, Sep } from "./ui";
 
 const SKILL_LABEL: Record<PracticeSkill, keyof Copy> = {
@@ -178,6 +182,10 @@ export function StudyPanel({ copy }: { copy: Copy }) {
     const contentVersion = await loadPilotOrder()
       .then((order) => order.version)
       .catch(() => null);
+    if (!contentVersion) {
+      setUnavailable(true);
+      return;
+    }
     const now = new Date();
     const data = buildStudyExport({
       participant: code,
@@ -196,6 +204,7 @@ export function StudyPanel({ copy }: { copy: Copy }) {
       },
       contentVersion,
       channel: CONTENT_CHANNEL,
+      build: APP_BUILD,
       now,
     });
     downloadText(JSON.stringify(data), studyFileName(code, now));
