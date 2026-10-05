@@ -348,15 +348,16 @@ link is not proof that recycling was effective, and a structurally reserved
 check is not learner-outcome evidence. The report carries these boundaries in
 `evidenceBoundary` and copies only explicit review state from compiled content.
 
-The status command summarizes sense evidence for the currently introduced
-curriculum while the JSON form retains all unassigned senses and their gaps.
-This lets editors decide what to strengthen before mapping or activating later
-units without silently treating the remaining backlog as ready.
+The status command summarizes sense evidence across the structurally complete
+900-entry A1 curriculum, while the JSON form keeps every sense-level evidence
+gap explicit. This lets editors strengthen content and review evidence without
+silently treating structural assignment as editorial readiness.
 
-`npm run curriculum:complete` is intentionally stricter and fails until all
-900 entries are assigned. It is a future Stage 3/5 completion gate, not a
-current CI requirement. Normal CI still enforces `assignedMinimum`, which is
-the monotonic partial-coverage ratchet used while the syllabus expands.
+`npm run curriculum:complete` now passes because all 900 canonical A1 entries
+are assigned and every unit target is filled. This is a **structural**
+completion gate only: it does not create bilingual/pronunciation approval,
+release content or establish learner effectiveness. Normal CI also keeps the
+900-entry assignment and unit-target invariants protected.
 
 ## Human review queue
 
@@ -389,16 +390,48 @@ After a real review, use `npm run content:approve` with the reviewer's actual
 name and decision. Editing the entry later changes its content version and
 invalidates that approval automatically.
 
+## Unit qualification
+
+Use the read-only qualification report to separate machine evidence from human
+release qualification:
+
+```sh
+npm run content:qualification
+npm run content:qualification -- --unit 01-introductions
+npm run content:qualification -- --unit 01-introductions --require-ready
+npm run content:qualification -- --unit 01-introductions --require-qualified
+```
+
+A unit is **machine-ready for review** only when its target is filled, current
+enhanced content exists for every entry, every current sense has at least three
+authored checks so one can remain held out, and all current GB/US word/example
+audio assets exist. This is automated repository evidence, not approval.
+
+A unit is **release-qualified** only when it is machine-ready **and** every
+entry has explicit, version-matched bilingual and pronunciation approvals.
+Automated audio flags remain visible for the reviewer but are never interpreted
+as an approval or rejection. The report also distinguishes qualification from
+the compiled `released` state, because a newly approved unit can still require
+a content rebuild before the released channel catches up.
+
+Normal CI runs this report in `--check` mode only. The stricter
+`--require-ready` and `--require-qualified` modes are deliberate editor or
+release gates and are never satisfied by inference.
+
 ## Stage 3 exit
 
-This package establishes the curriculum mechanism and first calibration slice.
-Stage 3 is not complete until:
+The A1 curriculum is now structurally complete at 900/900 and the review,
+provenance and unit-qualification tooling is in place. Stage 3 is still not
+editorially complete until:
 
-- the first 20 entries have recorded bilingual and pronunciation decisions;
-- problems found in that review have been corrected and re-reviewed;
+- the first 20 entries have recorded current bilingual and pronunciation
+  decisions;
+- problems found in that calibration review have been corrected and re-reviewed;
 - the original 150-entry pilot has current approvals;
-- curriculum/prerequisite assignment has expanded coherently beyond the
-  calibration slice;
-- held-out assessment tasks remain independent and usable.
+- review then proceeds through the remaining curriculum units with
+  version-matched decisions;
+- held-out assessment tasks remain independent and usable as content changes;
+- any release-qualified content has been rebuilt into the released channel.
 
-No learner-effectiveness claim follows from passing these structural checks.
+No learner-effectiveness claim follows from structural completion, machine
+readiness or editorial approval alone.
