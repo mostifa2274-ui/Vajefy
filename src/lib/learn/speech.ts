@@ -23,6 +23,8 @@ export type Source = {
   /** URL of a controlled clip, if one exists. */
   clip?: string;
   slow?: boolean;
+  /** Play only the recorded clip, never browser speech: for listening questions. */
+  clipOnly?: boolean;
 };
 
 type Snapshot = { key: string | null; state: PlaybackState };
@@ -139,7 +141,7 @@ export async function play(source: Source, accent: Accent = useProgress.getState
   set({ key: source.key, state: "loading" });
   let ok = false;
   if (source.clip) ok = await playClip(source.clip, Boolean(source.slow), mine);
-  if (!ok && mine === token) ok = await speak(source.text, accent, Boolean(source.slow), mine);
+  if (!ok && mine === token && !source.clipOnly) ok = await speak(source.text, accent, Boolean(source.slow), mine);
   if (mine === token) set({ key: source.key, state: ok ? "idle" : "unavailable" });
   if (mine === token && !ok) report("audio-failed", source.clip ? "clip" : "speech");
   return ok;

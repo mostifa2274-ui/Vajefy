@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
-import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, heldOutItem, lessonSize, nextTargets, resolveItem, seenPrompts, skillOf } from "./lesson";
+import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, heldOutItem, lessonReadiness, lessonSize, lessonStats, nextTargets, resolveItem, seenPrompts, shapeOf, skillOf, writtenForms } from "./lesson";
 import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace, unitOf } from "./pilot";
 import { orderForGoal } from "./targets";
 
@@ -12,7 +12,7 @@ let seed = 7;
 const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
 const T0 = 1_800_000_000_000;
 
-test("a lesson teaches, retrieves, uses in context and retrieves again after a delay", () => {
+test("a lesson teaches, asks for the written word, plays it, uses it in context and retrieves it again after a delay", () => {
   const targets = introductionOrder(index.targets, "general").slice(0, 3);
   const lesson = buildLesson(index, targets, new Set(), T0, random);
   for (const target of targets) {
@@ -21,9 +21,24 @@ test("a lesson teaches, retrieves, uses in context and retrieves again after a d
       lesson.steps.findIndex((step) => (step.kind === "teach" && kind === "teach" && step.target === id) || (step.kind === "check" && step.role === role && step.ref.target === id));
     const teach = position("teach");
     const retrieve = position("check", "retrieve");
+    const listen = position("check", "listen");
     const context = position("check", "context");
     const delayed = position("check", "delayed");
-    assert.ok(teach >= 0 && teach < retrieve && retrieve < context && context < delayed, id);
+    assert.ok(teach >= 0 && teach < retrieve && retrieve < listen && listen < context && context < delayed, id);
+    // Written retrieval: type the English word from its Persian meaning.
+    const recall = lesson.steps[retrieve]!;
+    assert.ok(recall.kind === "check" && recall.ref.from === "generated" && recall.ref.mode === "recall");
+    const item = resolveItem(index, recall.ref);
+    assert.equal(item?.type, "recall");
+    assert.equal(item?.type === "recall" && item.prompt, target.sense.gloss);
+    assert.equal(skillOf(recall.ref, item!), "spelling");
+    // Listening: the recorded word without its spelling, choosing its meaning.
+    const heard = lesson.steps[listen]!;
+    assert.ok(heard.kind === "check" && heard.ref.from === "generated" && heard.ref.mode === "listen");
+    const listening = resolveItem(index, heard.ref);
+    assert.equal(listening?.type, "listen");
+    assert.equal(listening?.type === "listen" && listening.options.filter((option) => option.ok).length, 1);
+    assert.equal(skillOf(heard.ref, listening!), "listening");
   }
   // Every item resolves to something the learner can answer.
   for (const step of lesson.steps) if (step.kind === "check") assert.ok(resolveItem(index, step.ref), JSON.stringify(step.ref));
@@ -36,11 +51,64 @@ test("a lesson teaches, retrieves, uses in context and retrieves again after a d
       `held-out prompt leaked into teaching: ${target.sense.id}/${reserved.id}`,
     );
   }
-  // The retrieval choice always contains the right meaning exactly once.
-  const first = lesson.steps.find((step) => step.kind === "check" && step.role === "retrieve");
-  assert.ok(first && first.kind === "check");
-  const item = resolveItem(index, first.ref);
-  assert.equal(item?.type === "choice" && item.options.filter((option) => option.ok).length, 1);
+});
+
+test("written retrieval accepts each written form of a headword and shows its shape", () => {
+  assert.deepEqual(writtenForms("a, an"), ["a", "an"]);
+  assert.deepEqual(writtenForms("have to"), ["have to"]);
+  assert.equal(shapeOf("book"), "b _ _ _");
+  assert.equal(shapeOf("have to"), "h _ _ _   _ _");
+  // Short words show only gaps, so the cue never is the answer.
+  assert.equal(shapeOf("I"), "_");
+  assert.equal(shapeOf("an"), "_ _");
+  const article = index.bySense.get("lex:A1:a-an")!;
+  const item = resolveItem(index, { from: "generated", target: article.sense.id, mode: "recall", options: [] });
+  assert.ok(item?.type === "recall");
+  assert.equal(gradeTyped("an", item.answer, item.accept), "correct");
+  assert.equal(gradeTyped("a", item.answer, item.accept), "correct");
+});
+
+test("a word without a recording gets no listening question", () => {
+  const targets = introductionOrder(index.targets, "general").slice(0, 2);
+  const silent = { ...index, audio: {} };
+  const lesson = buildLesson(silent, targets, new Set(), T0, random);
+  assert.ok(!lesson.steps.some((step) => step.kind === "check" && step.role === "listen"));
+  assert.ok(lesson.steps.some((step) => step.kind === "check" && step.role === "retrieve"));
+});
+
+test("readiness counts unaided answers; a prompted retry stays helped until an unaided success", () => {
+  const targets = introductionOrder(index.targets, "general").slice(0, 2);
+  let lesson = buildLesson(index, targets, new Set(), T0, random);
+  const [first, second] = targets.map((target) => target.sense.id) as [string, string];
+  // Answer every check: the first word wrong at its written retrieval, everything else right.
+  let guard = 0;
+  while (lesson.index < lesson.steps.length && guard++ < 100) {
+    const step = lesson.steps[lesson.index]!;
+    if (step.kind === "check") {
+      const wrong = step.role === "retrieve" && step.ref.target === first;
+      const skipped = step.role === "listen" && step.ref.target === second;
+      lesson = answerLesson(lesson, { op: `op${lesson.index}`, result: wrong ? "wrong" : skipped ? "skipped" : "correct", at: T0 }, index, random);
+    }
+    lesson = advanceLesson(lesson, T0);
+  }
+  // The first word's later unaided checks succeeded, so the help no longer counts.
+  assert.deepEqual(lessonReadiness(lesson), { [first]: "ready", [second]: "ready" });
+  // A skipped listening question is neither credit nor a miss.
+  assert.equal(lessonStats(lesson).answered, lesson.answers.filter((answer) => answer.result !== "skipped").length);
+
+  // Stopping right after a successful retry leaves the word helped, not ready.
+  let partial = buildLesson(index, targets, new Set(), T0, random);
+  partial = advanceLesson(partial, T0);
+  partial = answerLesson(partial, { op: "w", result: "wrong", at: T0 }, index, random);
+  const retryAt = partial.steps.findIndex((step) => step.kind === "check" && step.role === "retry");
+  assert.ok(retryAt > partial.index);
+  const retry = partial.steps[retryAt]!;
+  assert.ok(retry.kind === "check" && retry.ref.from === "generated" && retry.ref.mode === "recall");
+  partial = answerLesson({ ...partial, index: retryAt }, { op: "r", result: "correct", at: T0 }, index, random);
+  assert.deepEqual(lessonReadiness(partial), { [first]: "helped" });
+  // And a failed retry leaves it needing another try.
+  const failed = answerLesson({ ...partial, answers: partial.answers.slice(0, 1) }, { op: "r2", result: "wrong", at: T0 }, index, random);
+  assert.deepEqual(lessonReadiness(failed), { [first]: "again" });
 });
 
 test("typed sentence-frame answers count as context, not isolated spelling", () => {
@@ -59,7 +127,9 @@ test("typed sentence-frame answers count as context, not isolated spelling", () 
 test("generated choices offer three other words' meanings, of the same part of speech when there are enough", () => {
   const targets = introductionOrder(index.targets, "general").slice(0, 5);
   const lesson = buildLesson(index, targets, new Set(), T0, random);
-  const generated = lesson.steps.flatMap((step) => (step.kind === "check" && step.ref.from === "generated" ? [step.ref] : []));
+  const generated = lesson.steps.flatMap((step) =>
+    step.kind === "check" && step.ref.from === "generated" && step.ref.mode !== "recall" ? [step.ref] : [],
+  );
   assert.ok(generated.length >= targets.length);
   for (const ref of generated) {
     const target = index.bySense.get(ref.target)!;

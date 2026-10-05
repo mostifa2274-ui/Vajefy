@@ -87,10 +87,13 @@ export function SpeakButton({
   slow = false,
   item,
   exposure = "listen",
+  clipOnly = false,
 }: {
   text: string;
   label: string;
   clip?: string;
+  /** Play only the recorded clip, never browser speech. */
+  clipOnly?: boolean;
   /** Also offer slower playback. */
   slow?: boolean;
   /** The learning item heard, recorded as an exposure. */
@@ -116,7 +119,7 @@ export function SpeakButton({
         onClick={() => {
           if (busy) return stop();
           if (item) expose(item, exposure);
-          void play({ key, text, clip });
+          void play({ key, text, clip, clipOnly });
         }}
         aria-label={label}
         aria-busy={state === "loading"}
@@ -130,7 +133,7 @@ export function SpeakButton({
           type="button"
           onClick={() => {
             if (item) expose(item, exposure);
-            void play({ key: `${key}|slow`, text, clip, slow: true });
+            void play({ key: `${key}|slow`, text, clip, slow: true, clipOnly });
           }}
           className={base}
         >

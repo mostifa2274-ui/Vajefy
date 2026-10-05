@@ -14,8 +14,8 @@ stay unknown.
 | Record | Contents |
 |---|---|
 | Review | Card, grade, time, prompt format, content version, active response time, the scheduler's outcome (elapsed and scheduled days, stability, difficulty) |
-| Practice | Card, skill (meaning, spelling, listening, context), grade, prompt and prompt id, content version, response time; `hint` when a hint or the answer had been shown, for example a lesson retry after feedback |
-| Skip | A question that could not be answered (unheard audio): no credit, no penalty |
+| Practice | Card, skill (meaning, spelling, listening, context), grade, prompt and prompt id, content version, response time; `hint` when a hint or the answer had been shown, for example a lesson retry after feedback. A lesson's typed written retrieval is `spelling` (prompt `lesson:retrieve:recall`), its listening question `listening` (`lesson:listen:listen`) |
+| Skip | A question that could not be answered (unheard audio, including a lesson's listening question): no credit, no penalty |
 | Exposure | Hearing a word or example, opening a word's detail, reading a reference note (at most once per item and kind in ten minutes) |
 | Assessment | A 30-day check-up answer: part (use or meaning), correct, days since first met, exact prompt id when observed, and the entry content version. It changes nothing else |
 | Undo | Which answer was withdrawn; the undone answer is marked |

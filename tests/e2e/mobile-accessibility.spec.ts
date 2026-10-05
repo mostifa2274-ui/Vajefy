@@ -133,9 +133,11 @@ test("a lesson can be done with the keyboard, and focus follows each step", asyn
   const recall = page.getByRole("button", { name: "Now recall it", exact: true });
   await recall.focus();
   await page.keyboard.press("Enter");
-  // The choice that was clicked is disabled after answering, so focus moves on.
-  const option = page.locator("main").getByRole("group").getByRole("button").first();
-  await option.focus();
+  // Written retrieval: type the word and submit with Enter. The answer field is
+  // locked after answering, so focus moves on.
+  const answer = page.getByRole("textbox", { name: "Your answer", exact: true });
+  await answer.focus();
+  await page.keyboard.type("I");
   await page.keyboard.press("Enter");
   await expect(page.getByRole("button", { name: "Next", exact: true })).toBeFocused();
   await expect(page.getByRole("status").filter({ hasText: /Correct|Incorrect/ })).toBeVisible();
