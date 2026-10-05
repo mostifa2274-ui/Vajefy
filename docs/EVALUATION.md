@@ -81,17 +81,38 @@ or evidence that the assessment has been administered to a learner.
    help was needed. The release target is that at least 90% of pilot users
    complete their first session without assistance.
 2. **Learning pilot.** 20–40 learners for at least 30 days, assigned to two
-   arms with the same daily time setting:
+   arms with the same daily time setting. Before enrollment, create opaque
+   participant codes (no names/contact details in the file), put one code per
+   line in `participants.txt`, and freeze the allocation:
+
+   ```sh
+   npm run study:roster -- \
+     --participants participants.txt \
+     --seed "<private random seed>" \
+     --enhanced-channel draft \
+     --minutes 15 \
+     --out pilot-roster.json
+
+   # Later, prove that the archived seed regenerates the same assignment identity.
+   npm run study:roster -- --check pilot-roster.json --seed "<private random seed>"
+   ```
+
+   The manifest stores only a memory-hard scrypt fingerprint of the seed, never
+   the raw seed. Use a high-entropy random seed and archive it separately from
+   the roster and participant identity key. Assignment is deterministic and
+   balanced to within one learner, so the same participant-code list plus seed
+   always yields the same arms.
 
    | Arm | Build | What learners get |
    |---|---|---|
    | Enhanced | `VITE_CONTENT_CHANNEL=draft` (or `released` once reviewed) | Guided lessons for the pilot words |
    | Comparison | `VITE_CONTENT_CHANNEL=none` | The current flow: the same pilot words, introduced in Review, in the same order, with the original cards |
 
-   Both arms use the same scheduler and the same check-up. Vocabulary is
-   comparable because both meet the 150 pilot words. Compare on the first
-   sense of each word, which both arms learn. The enhanced arm also learns
-   further senses (`#` ids).
+   The roster freezes the enhanced channel, content/assessment-bank version,
+   delayed-assessment protocol, and daily minutes. Both arms use the same
+   scheduler and the same check-up. Vocabulary is comparable because both meet
+   the 150 pilot words. Compare on the first sense of each word, which both arms
+   learn. The enhanced arm also learns further senses (`#` ids).
 3. **Follow-up.** After 30 days, each learner completes the check-up, then
    exports their data: Progress → **Take part in the study**, with the
    participant code the researchers issued. Written answers are included only
@@ -112,7 +133,7 @@ researchers can reconcile exported evidence to the frozen assessment bank.
 ## Analysis
 
 ```sh
-npm run evaluate -- path/to/exports/ --out report.md
+npm run evaluate -- path/to/exports/ --roster pilot-roster.json --out report.md
 npm run evaluate -- --simulate 6      # synthetic learners, to check the method
 # Exploratory only, when intentionally stratifying incompatible protocol files:
 npm run evaluate -- path/to/exports/ --allow-mixed-protocols
@@ -127,6 +148,13 @@ protocol. Mixing `draft` and `released` enhanced variants also fails by
 default. Deployment build ids are reported so code changes during a pilot stay
 visible. `--allow-mixed-protocols` exists only for explicitly exploratory,
 stratified analysis and prints a warning in the report.
+
+When `--roster` is supplied, analysis also rejects unknown participant codes,
+wrong-arm content channels, a different content/assessment-bank version,
+different delayed-assessment protocol, or a different daily-time setting. A
+rostered participant with no export is **not** treated as invalid evidence:
+the report counts that absence separately by arm so attrition remains visible
+instead of being silently dropped.
 
 For each learner, `scripts/evaluate-schedulers.ts`:
 

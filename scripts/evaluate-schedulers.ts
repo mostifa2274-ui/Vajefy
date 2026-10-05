@@ -13,6 +13,13 @@ import {
   validateStudyProtocols,
   type StudyProtocolRecord,
 } from "../src/lib/learn/study-protocol.ts";
+import {
+  validatePilotRoster,
+  validatePilotRosterEvidence,
+  type PilotRoster,
+  type PilotRosterObservedExport,
+  type PilotRosterValidationSummary,
+} from "../src/lib/learn/pilot-roster.ts";
 
 /**
  * The pilot study's analysis (docs/EVALUATION.md):
@@ -48,7 +55,7 @@ const option = (flag: string) => {
   const at = args.indexOf(flag);
   return at >= 0 ? args[at + 1] : undefined;
 };
-const VALUE_FLAGS = new Set(["--out", "--simulate"]);
+const VALUE_FLAGS = new Set(["--out", "--simulate", "--roster"]);
 const inputs: string[] = [];
 for (let index = 0; index < args.length; index++) {
   const arg = args[index]!;
@@ -59,12 +66,31 @@ for (let index = 0; index < args.length; index++) {
   if (!arg.startsWith("--")) inputs.push(arg);
 }
 const allowMixedProtocols = args.includes("--allow-mixed-protocols");
+const rosterFile = option("--roster");
 
 type Outcome = { arm: string; checked: number; usable: number; missing: number; activeHours: number };
 const learners: Learner[] = [];
 const outcomes = new Map<string, Outcome>();
 const studyProtocols: StudyProtocolRecord[] = [];
+const rosterExports: PilotRosterObservedExport[] = [];
 const protocolErrors: string[] = [];
+
+let pilotRoster: PilotRoster | null = null;
+let rosterSummary: PilotRosterValidationSummary | null = null;
+if (rosterFile) {
+  try {
+    pilotRoster = JSON.parse(fs.readFileSync(rosterFile, "utf8")) as PilotRoster;
+    const rosterErrors = validatePilotRoster(pilotRoster);
+    if (rosterErrors.length) {
+      protocolErrors.push(
+        ...rosterErrors.map((error) => `${rosterFile}: ${error}`),
+      );
+      pilotRoster = null;
+    }
+  } catch {
+    protocolErrors.push(`${rosterFile}: invalid or unreadable pilot roster JSON`);
+  }
+}
 
 function files(target: string): string[] {
   if (!fs.existsSync(target)) return [];
@@ -83,6 +109,10 @@ for (const file of inputs.flatMap(files)) {
       data.app && typeof data.app === "object"
         ? (data.app as Record<string, unknown>)
         : {};
+    const profile =
+      data.profile && typeof data.profile === "object"
+        ? (data.profile as Record<string, unknown>)
+        : {};
     const protocol =
       data.protocol && typeof data.protocol === "object"
         ? (data.protocol as Record<string, unknown>)
@@ -99,6 +129,19 @@ for (const file of inputs.flatMap(files)) {
       typeof app.channel === "string" && app.channel ? app.channel : null;
     const build =
       typeof app.build === "string" && app.build ? app.build : null;
+    const assessmentProtocol =
+      typeof assessment.id === "string" ? assessment.id : null;
+    const assessmentMinimumDelayDays =
+      typeof assessment.minimumDelayDays === "number"
+        ? assessment.minimumDelayDays
+        : null;
+    const assessmentBankContentVersion =
+      typeof assessment.bankContentVersion === "string"
+        ? assessment.bankContentVersion
+        : null;
+    const dailyMinutes =
+      typeof profile.minutes === "number" ? profile.minutes : null;
+
     studyProtocols.push({
       source: file,
       participant,
@@ -106,16 +149,20 @@ for (const file of inputs.flatMap(files)) {
       contentVersion,
       channel,
       build,
-      assessmentProtocol:
-        typeof assessment.id === "string" ? assessment.id : null,
-      assessmentMinimumDelayDays:
-        typeof assessment.minimumDelayDays === "number"
-          ? assessment.minimumDelayDays
-          : null,
-      assessmentBankContentVersion:
-        typeof assessment.bankContentVersion === "string"
-          ? assessment.bankContentVersion
-          : null,
+      assessmentProtocol,
+      assessmentMinimumDelayDays,
+      assessmentBankContentVersion,
+    });
+    rosterExports.push({
+      source: file,
+      participant,
+      version: exportVersion,
+      contentVersion,
+      channel,
+      assessmentProtocol,
+      assessmentMinimumDelayDays,
+      assessmentBankContentVersion,
+      dailyMinutes,
     });
     if (exportVersion >= 2) {
       protocolErrors.push(...validateAssessmentEvidence(file, events));
@@ -167,6 +214,14 @@ const protocolValidation = validateStudyProtocols(
   allowMixedProtocols,
 );
 protocolErrors.push(...protocolValidation.errors);
+if (pilotRoster) {
+  const rosterValidation = validatePilotRosterEvidence(
+    pilotRoster,
+    rosterExports,
+  );
+  protocolErrors.push(...rosterValidation.errors);
+  rosterSummary = rosterValidation.summary;
+}
 if (protocolErrors.length) {
   console.error(
     [
@@ -192,7 +247,7 @@ for (let index = 0; index < simulated; index++) {
 
 if (!learners.length) {
   console.error(
-    "Usage: npm run evaluate -- <study files or folders> [--out report.md] [--allow-mixed-protocols] | --simulate <n>",
+    "Usage: npm run evaluate -- <study files or folders> [--out report.md] [--roster roster.json] [--allow-mixed-protocols] | --simulate <n>",
   );
   process.exit(1);
 }
@@ -219,6 +274,16 @@ if (studyProtocols.length) {
     `- Arms: ${armCounts.enhanced} enhanced, ${armCounts.comparison} comparison`,
     "",
   );
+  if (rosterSummary) {
+    lines.push(
+      "- Pilot roster: " +
+        `${rosterSummary.observed}/${rosterSummary.assigned} assigned participants observed ` +
+        `(enhanced ${rosterSummary.observedEnhanced}/${rosterSummary.assignedEnhanced}; ` +
+        `comparison ${rosterSummary.observedComparison}/${rosterSummary.assignedComparison}); ` +
+        `${rosterSummary.missing} assigned participant(s) have no export yet`,
+      "",
+    );
+  }
   if (protocolValidation.warnings.length) {
     lines.push(
       "**Exploratory mixed-protocol analysis:**",
