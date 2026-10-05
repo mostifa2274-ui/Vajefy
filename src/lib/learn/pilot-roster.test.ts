@@ -106,9 +106,6 @@ test("export evidence must follow the assigned arm and frozen pilot protocol", (
     enhancedChannel: "draft",
     dailyMinutes: 15,
   });
-  const assigned = new Map(
-    roster.assignments.map((row) => [row.participant, row]),
-  );
   const good = roster.assignments.slice(0, 2).map((row) =>
     observed(row.participant, row.channel),
   );
