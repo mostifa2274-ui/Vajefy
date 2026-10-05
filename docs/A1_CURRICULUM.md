@@ -153,6 +153,38 @@ For every one of the 900 planned A1 entries it reports:
 - whether audio has been flagged for human listening;
 - whether the current content version is released.
 
+The JSON report also includes one `senseCoverage` row for every current A1
+sense. Each row links the sense to:
+
+- its curriculum unit and one-based unit, entry and full-sequence introduction
+  positions, or an explicit `null` when it has not been introduced;
+- the entry prerequisites declared by the curriculum and the grammar patterns
+  authored for that sense;
+- exact GB/US word and example-clip availability plus any automated flag that
+  still requires human listening;
+- the normal lesson checks, productive-practice presence, scenes and contrasts;
+- later-recycling candidates through a scene or contrast when that resource
+  also targets a sense introduced later in the current curriculum sequence;
+- the final authored check reserved for delayed assessment, separately from
+  normal lesson opportunities;
+- the exact content version, release flag and recorded review state;
+- explicit evidence gaps such as incomplete audio, too few checks, missing
+  contextual/later practice or an unrecorded human review.
+
+Scenes and contrasts have no curriculum schedule, so a candidate does not claim
+that the resource is actually delivered later. Grammar patterns are exposed as
+authored teaching evidence; the tool does not infer that a learner has mastered
+them. Likewise, a complete audio file set is not a pronunciation approval, a
+scene link is not proof that recycling was effective, and a structurally
+reserved check is not learner-outcome evidence. The report carries these
+boundaries in `evidenceBoundary` and copies only explicit review state from the
+compiled content.
+
+The status command summarizes sense evidence for the currently introduced
+curriculum while the JSON form retains all unassigned senses and their gaps.
+This lets editors decide what to strengthen before mapping or activating later
+units without silently treating the remaining backlog as ready.
+
 `npm run curriculum:complete` is intentionally stricter and fails until all
 900 entries are assigned. It is a future Stage 3/5 completion gate, not a
 current CI requirement. Normal CI still enforces `assignedMinimum`, which is
