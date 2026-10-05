@@ -27,16 +27,17 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Unit 2 now has a
-20-entry **mapped** Family & Home sequence, while its status remains `planned`:
+Unit 1 remains the fixed 20-entry calibration package. Units 2 and 3 now each
+have a 20-entry **mapped** sequence, while their status remains `planned`:
 mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Units 3–12
+content has passed bilingual/pronunciation review or is released. Units 4–12
 remain planned and unassigned.
 
-The manifest now carries an `assignedMinimum` coverage ratchet. It is set to
-40, so CI prevents later edits from silently dropping either the calibration
-slice or the mapped Family & Home sequence. The other 860 entries remain a
-visible curriculum backlog, not silently treated as complete.
+The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
+60, so CI prevents total mapped A1 coverage from silently falling below the
+current three-unit baseline. It protects the count, not exact unit membership;
+the other 840 entries remain a visible curriculum backlog, not silently treated
+as complete.
 
 ### Unit 2 — Family and home
 
@@ -48,6 +49,21 @@ The mapped sequence is:
 
 Core function words are placed here because they are needed to form useful
 family/home language, not because batch order is being preserved.
+
+### Unit 3 — Daily routine and time
+
+The mapped sequence is:
+
+`time`, `day`, `morning`, `afternoon`, `evening`, `night`,
+`today`, `every`, `always`, `usually`, `sometimes`, `never`,
+`before`, `after`, `start`, `finish`, `early`, `late`,
+`wake`, `sleep`.
+
+This unit deliberately combines time vocabulary with frequency language and a
+small set of routine verbs. It is designed to support beginner present-time
+routines before later units add food, work/study, travel, and other domains.
+Prerequisites reuse foundations already mapped in Units 1–2 and earlier targets
+inside Unit 3; no forward prerequisite is permitted.
 
 ## First 20-entry calibration slice
 
