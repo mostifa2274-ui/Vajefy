@@ -1,0 +1,40 @@
+name: Pilot selection provenance regenerate once
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - codex/pilot-selection-provenance
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: codex/pilot-selection-provenance
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Rebuild enhanced content
+        run: node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
+      - name: Rebuild coach evaluation cases
+        run: npm run --silent coach:cases
+      - name: Verify data contracts
+        run: npm run validate:data
+      - name: Commit exact generated snapshots
+        shell: bash
+        run: |
+          git add content/compiled/enhanced.json content/coach-eval/cases.json public/data/enhanced public/data/enhanced-order.json
+          if git diff --cached --quiet; then
+            echo "Generated snapshots already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rebuild selection-bound content snapshots"
+          git push origin HEAD:codex/pilot-selection-provenance
