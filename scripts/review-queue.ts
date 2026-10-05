@@ -10,6 +10,7 @@ import { review } from "../src/lib/learn/content.ts";
  *   npm run content:review-queue
  *   npm run content:review-queue -- --scope pilot
  *   npm run content:review-queue -- --scope all-a1 --json
+ *   npm run content:review-queue -- --unit 08-work-study
  *   npm run content:review-queue -- --scope calibration --limit 10
  *
  * This command never writes review.json and never changes release state.
@@ -25,6 +26,7 @@ const A1_CURRICULUM = path.join(ROOT, "content", "curriculum", "A1.json");
 
 const SCOPES = ["calibration", "pilot", "all-a1"] as const;
 type Scope = (typeof SCOPES)[number];
+type QueueScope = Scope | `unit:${string}`;
 
 type LedgerState = "missing" | "current" | "stale";
 
@@ -82,7 +84,7 @@ type ReviewRow = {
 };
 
 type Queue = {
-  scope: Scope;
+  scope: QueueScope;
   generatedFrom: {
     contentVersion: string;
     selectionEntries: number;
@@ -126,7 +128,12 @@ function fail(message: string): never {
   process.exit(1);
 }
 
-const rawScope = option("--scope") ?? "calibration";
+const explicitScope = option("--scope");
+const rawUnit = option("--unit");
+if (rawUnit && explicitScope) {
+  fail("--unit cannot be combined with --scope; choose one review selection");
+}
+const rawScope = explicitScope ?? "calibration";
 if (!SCOPES.includes(rawScope as Scope)) {
   fail(`--scope must be one of ${SCOPES.join(", ")}`);
 }
@@ -172,30 +179,61 @@ for (const entry of pilot.entries) {
 }
 
 const unitByEntry = new Map<string, string>();
+const unitById = new Map(curriculum.units.map((unit) => [unit.id, unit]));
 for (const unit of curriculum.units) {
   for (const entry of unit.entries) unitByEntry.set(entry.id, unit.id);
 }
 
-const selectedIds =
-  scope === "calibration"
+const selectedUnit = rawUnit ? unitById.get(rawUnit) : undefined;
+if (rawUnit && !selectedUnit) {
+  fail(
+    `unknown curriculum unit ${rawUnit}; choose one of ${curriculum.units
+      .map((unit) => unit.id)
+      .join(", ")}`,
+  );
+}
+
+const queueScope: QueueScope = rawUnit ? `unit:${rawUnit}` : scope;
+const selectedIds = rawUnit
+  ? selectedUnit!.entries.map((entry) => entry.id)
+  : scope === "calibration"
     ? curriculum.calibrationSlice.entries
     : scope === "pilot"
       ? pilotSelection.entries.map((entry) => entry.id)
-      : plan.batches.flatMap((batch) => batch.entries.map((entry) => entry.id));
+      : curriculum.units.flatMap((unit) => unit.entries.map((entry) => entry.id));
+
+const plannedIds = plan.batches.flatMap((batch) =>
+  batch.entries.map((entry) => entry.id),
+);
+if (!rawUnit && scope === "all-a1") {
+  const selectedSet = new Set(selectedIds);
+  const planSet = new Set(plannedIds);
+  const missingFromCurriculum = plannedIds.filter((id) => !selectedSet.has(id));
+  const unknownInCurriculum = selectedIds.filter((id) => !planSet.has(id));
+  if (
+    selectedIds.length !== plannedIds.length ||
+    missingFromCurriculum.length ||
+    unknownInCurriculum.length
+  ) {
+    fail(
+      `all-a1 review queue must exactly match the A1 plan; ${missingFromCurriculum.length} missing and ${unknownInCurriculum.length} unknown curriculum id(s)`,
+    );
+  }
+}
 
 const duplicates = selectedIds.filter(
   (id, index) => selectedIds.indexOf(id) !== index,
 );
 if (duplicates.length) {
   fail(
-    `${scope} selection contains duplicate ids: ${[...new Set(duplicates)].join(", ")}`,
+    `${queueScope} selection contains duplicate ids: ${[...new Set(duplicates)].join(", ")}`,
   );
 }
 
 const missingContent = selectedIds.filter((id) => !byId.has(id));
 if (missingContent.length) {
   fail(
-    `${scope} selection contains ${missingContent.length} id(s) without compiled content: ${missingContent
+    `${queueScope} selection contains ${missingContent.length} id(s) without compiled content: ${missingContent
       .slice(0, 10)
       .join(", ")}${missingContent.length > 10 ? ", …" : ""}`,
   );
@@ -305,7 +343,7 @@ const summary = {
 };
 
 const queue: Queue = {
-  scope,
+  scope: queueScope,
   generatedFrom: {
     contentVersion: pilot.version,
     selectionEntries: selectedIds.length,
@@ -324,7 +362,7 @@ const queue: Queue = {
 
 if (has("--check")) {
   console.log(
-    `Review queue OK: ${scope} ${summary.entries} entries; ${summary.audioComplete} full audio; ${summary.ledgerCurrent} current, ${summary.ledgerStale} stale and ${summary.ledgerMissing} missing review record(s).`,
+    `Review queue OK: ${queueScope} ${summary.entries} entries; ${summary.audioComplete} full audio; ${summary.ledgerCurrent} current, ${summary.ledgerStale} stale and ${summary.ledgerMissing} missing review record(s).`,
   );
   process.exit(0);
 }
@@ -373,7 +411,7 @@ for (const line of table) {
   );
 }
 console.log(
-  `\n${scope}: ${summary.entries} entries; ${summary.released} released; ${summary.ledgerCurrent} current, ${summary.ledgerStale} stale, ${summary.ledgerMissing} missing ledger record(s); ${summary.audioComplete} full audio; ${summary.flaggedClips} flagged clip(s) across ${summary.flaggedEntries} entries.`,
+  `\n${queueScope}: ${summary.entries} entries; ${summary.released} released; ${summary.ledgerCurrent} current, ${summary.ledgerStale} stale, ${summary.ledgerMissing} missing ledger record(s); ${summary.audioComplete} full audio; ${summary.flaggedClips} flagged clip(s) across ${summary.flaggedEntries} entries.`,
 );
 console.log(
   "Evidence boundary: this report is read-only. Only explicit version-matched human decisions in review.json can approve or release content.",

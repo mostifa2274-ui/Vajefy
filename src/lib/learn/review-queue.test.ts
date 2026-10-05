@@ -44,7 +44,9 @@ function entry(
   };
 }
 
-function fixture(options: { withLedger?: boolean } = {}): string {
+function fixture(
+  options: { withLedger?: boolean; planIds?: string[] } = {},
+): string {
   const root = mkdtempSync(path.join(tmpdir(), "vajefy-review-queue-"));
   writeJson(root, "content/compiled/enhanced.json", {
     version: "compiled-v1",
@@ -86,7 +88,10 @@ function fixture(options: { withLedger?: boolean } = {}): string {
   writeJson(root, "content/plans/A1.json", {
     level: "A1",
     batches: [
-      { id: "pilot", entries: [{ id: A }, { id: B }, { id: C }] },
+      {
+        id: "pilot",
+        entries: (options.planIds ?? [A, B, C]).map((id) => ({ id })),
+      },
     ],
   });
   writeJson(root, "content/pilot/audio-report.json", {
@@ -224,6 +229,82 @@ test("pilot queue follows the pilot selection order and treats no ledger as miss
         [3, B, "missing"],
       ],
     );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("all-a1 queue follows curriculum order rather than catalogue batch order", () => {
+  const root = fixture({ withLedger: false, planIds: [C, B, A] });
+  try {
+    const result = run(root, ["--scope", "all-a1", "--json"]);
+    assert.equal(result.status, 0, result.stderr);
+    const queue = JSON.parse(result.stdout) as {
+      scope: string;
+      summary: { entries: number };
+      entries: { id: string; order: number; curriculumUnit: string | null }[];
+    };
+
+    assert.equal(queue.scope, "all-a1");
+    assert.equal(queue.summary.entries, 3);
+    assert.deepEqual(
+      queue.entries.map((row) => [row.order, row.id, row.curriculumUnit]),
+      [
+        [1, A, "01-introductions"],
+        [2, B, "01-introductions"],
+        [3, C, "02-family-home"],
+      ],
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("unit queue selects one curriculum unit in curriculum order", () => {
+  const root = fixture({ withLedger: false });
+  try {
+    const result = run(root, ["--unit", "02-family-home", "--json"]);
+    assert.equal(result.status, 0, result.stderr);
+    const queue = JSON.parse(result.stdout) as {
+      scope: string;
+      summary: { entries: number; ledgerMissing: number };
+      entries: { id: string; order: number; curriculumUnit: string | null }[];
+    };
+
+    assert.equal(queue.scope, "unit:02-family-home");
+    assert.equal(queue.summary.entries, 1);
+    assert.equal(queue.summary.ledgerMissing, 1);
+    assert.deepEqual(
+      queue.entries.map((row) => [row.order, row.id, row.curriculumUnit]),
+      [[1, C, "02-family-home"]],
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("unknown unit is rejected", () => {
+  const root = fixture();
+  try {
+    const result = run(root, ["--unit", "99-missing"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /unknown curriculum unit 99-missing/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("unit selection cannot be combined with a named scope", () => {
+  const root = fixture();
+  try {
+    const result = run(root, [
+      "--unit",
+      "02-family-home",
+      "--scope",
+      "all-a1",
+    ]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /--unit cannot be combined with --scope/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

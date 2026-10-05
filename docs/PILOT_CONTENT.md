@@ -124,21 +124,28 @@ reviewed:
 npm run content:review-queue
 npm run content:review-queue -- --scope pilot
 npm run content:review-queue -- --scope all-a1 --json
+npm run content:review-queue -- --unit 08-work-study
 ```
 
 The default scope is the fixed 20-entry calibration slice. `pilot` is the
-original 150-entry pilot and `all-a1` covers all 900 A1 entries. The queue
-reports the exact current content version, whether the ledger record is
-`missing`, `current` or `stale`, the current bilingual and pronunciation
+original 150-entry pilot and `all-a1` covers all 900 A1 entries in **curriculum
+order**. Use `--unit <unit-id>` to generate the same evidence queue for one
+curriculum unit, for example `08-work-study`. Unit selection cannot be mixed
+with `--scope`, which keeps reviewer batches unambiguous.
+
+The queue reports the exact current content version, whether the ledger record
+is `missing`, `current` or `stale`, the current bilingual and pronunciation
 states, exact audio completeness, flagged clips that need listening, release
 state and the next evidence action. A stale record remains visible but is never
 treated as approval for the current version.
 
 The queue is deliberately read-only. Complete audio means the required current
 files exist; it is not pronunciation approval. Likewise an automatic audio flag
-means “listen to this clip”, not “reject this clip”. Normal CI builds both the
-calibration and pilot queues in `--check` mode so their source membership
-cannot silently drift.
+means “listen to this clip”, not “reject this clip”. Normal CI validates the
+calibration, pilot and full 900-entry A1 queues in `--check` mode. The full-A1
+queue must exactly match the canonical A1 plan while following curriculum
+order, so catalogue, curriculum and editorial membership cannot silently
+drift apart.
 
 A reviewer then reads the entry in the app (Words → the entry) or in its source
 file, listens to its clips in both accents, and records the outcome using the
