@@ -3,7 +3,6 @@ import path from "node:path";
 import type { Pilot } from "../src/lib/learn/content.ts";
 import {
   createPilotRoster,
-  pilotRosterSeedFingerprint,
   validatePilotRoster,
   type PilotRoster,
 } from "../src/lib/learn/pilot-roster.ts";
@@ -14,10 +13,6 @@ const COMPILED = path.join(ROOT, "content", "compiled", "enhanced.json");
 function option(flag: string): string | undefined {
   const at = process.argv.indexOf(flag);
   return at >= 0 ? process.argv[at + 1] : undefined;
-}
-
-function has(flag: string): boolean {
-  return process.argv.includes(flag);
 }
 
 function fail(message: string): never {
@@ -144,10 +139,4 @@ if (output) {
   printSummary(roster);
 } else {
   process.stdout.write(json);
-}
-
-if (has("--fingerprint-only")) {
-  console.error(
-    `Seed fingerprint: ${pilotRosterSeedFingerprint(seed)}`,
-  );
 }
