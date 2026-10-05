@@ -48,9 +48,15 @@ const compiled = new Map(pilot.entries.map((entry) => [entry.id, entry]));
 const flagged = new Set((audioReport.flagged ?? []).map((row) => row.sense));
 const unitIds = new Set<string>();
 const assigned = new Map<string, string>();
+const curriculumEntries = new Map<string, CurriculumEntry>();
+const introductions = new Map<
+  string,
+  { unit: string; unitOrder: number; entryOrder: number; curriculumOrder: number }
+>();
 const introduced = new Set<string>();
+let curriculumOrder = 0;
 
-for (const unit of curriculum.units) {
+for (const [unitIndex, unit] of curriculum.units.entries()) {
   if (!/^\d{2}-[a-z0-9-]+$/.test(unit.id)) failures.push(`${unit.id}: unit id must start with a two-digit order`);
   if (unitIds.has(unit.id)) failures.push(`${unit.id}: duplicate unit id`);
   unitIds.add(unit.id);
@@ -58,11 +64,21 @@ for (const unit of curriculum.units) {
     failures.push(`${unit.id}: titles and objectives are required in both languages`);
   }
 
-  for (const item of unit.entries) {
+  for (const [entryIndex, item] of unit.entries.entries()) {
+    curriculumOrder += 1;
     if (!planned.has(item.id)) failures.push(`${unit.id}: unknown A1 entry ${item.id}`);
     const other = assigned.get(item.id);
     if (other) failures.push(`${item.id}: assigned to both ${other} and ${unit.id}`);
-    else assigned.set(item.id, unit.id);
+    else {
+      assigned.set(item.id, unit.id);
+      curriculumEntries.set(item.id, item);
+      introductions.set(item.id, {
+        unit: unit.id,
+        unitOrder: unitIndex + 1,
+        entryOrder: entryIndex + 1,
+        curriculumOrder,
+      });
+    }
 
     const prereqs = new Set<string>();
     for (const prerequisite of item.prerequisites) {
@@ -143,6 +159,142 @@ const coverage = plannedRows.map((row) => {
   };
 });
 
+const senseOwners = new Map<string, string>();
+for (const entry of pilot.entries) {
+  for (const sense of entry.senses) senseOwners.set(sense.id, entry.id);
+}
+
+function entryForTarget(target: string): string | null {
+  return senseOwners.get(target) ?? (planned.has(target) ? target : null);
+}
+
+function listeningFor(
+  sense: Pilot["entries"][number]["senses"][number],
+  accent: "gb" | "us",
+) {
+  const recorded = pilot.audio[sense.id]?.[accent];
+  const examples = sense.examples.length;
+  const exampleClips = recorded?.examples.filter(Boolean).length ?? 0;
+  return {
+    word: Boolean(recorded?.word),
+    exampleClips,
+    examples,
+    complete: Boolean(
+      recorded?.word &&
+      recorded.examples.length === examples &&
+      recorded.examples.every(Boolean),
+    ),
+  };
+}
+
+function resourceRecyclesLater(
+  targets: string[],
+  senseId: string,
+  introduction: { curriculumOrder: number } | null,
+): boolean {
+  if (!introduction || !targets.includes(senseId)) return false;
+  return targets.some((target) => {
+    const entryId = entryForTarget(target);
+    const targetIntroduction = entryId ? introductions.get(entryId) : null;
+    return Boolean(
+      targetIntroduction &&
+      targetIntroduction.curriculumOrder > introduction.curriculumOrder,
+    );
+  });
+}
+
+const senseCoverage = pilot.entries.filter((entry) => planned.has(entry.id)).flatMap((entry) =>
+  entry.senses.map((sense) => {
+    const introduction = introductions.get(entry.id) ?? null;
+    const lessonChecks = sense.check.slice(0, -1).map(({ id, type }) => ({ id, type }));
+    const heldOut = sense.check[sense.check.length - 1];
+    const scenes = pilot.scenes
+      .filter((scene) => scene.targets.includes(sense.id))
+      .map((scene) => scene.id);
+    const contrasts = pilot.contrasts
+      .filter((contrast) => contrast.entries.includes(sense.id))
+      .map((contrast) => contrast.id);
+    const laterScenes = pilot.scenes
+      .filter((scene) => resourceRecyclesLater(scene.targets, sense.id, introduction))
+      .map((scene) => scene.id);
+    const laterContrasts = pilot.contrasts
+      .filter((contrast) => resourceRecyclesLater(contrast.entries, sense.id, introduction))
+      .map((contrast) => contrast.id);
+    const gb = listeningFor(sense, "gb");
+    const us = listeningFor(sense, "us");
+    const heldOutReady = sense.check.length >= 3;
+    const productiveLessonCheck = lessonChecks.some(
+      (check) => check.type === "cloze" || check.type === "produce",
+    );
+    const gaps: string[] = [];
+
+    if (!introduction) gaps.push("not-introduced-in-curriculum");
+    if (!gb.complete) gaps.push("incomplete-gb-audio");
+    if (!us.complete) gaps.push("incomplete-us-audio");
+    if (flagged.has(sense.id)) gaps.push("audio-awaiting-human-listening");
+    if (!heldOutReady) gaps.push("insufficient-authored-checks");
+    if (!productiveLessonCheck) gaps.push("no-productive-lesson-check");
+    if (scenes.length === 0 && contrasts.length === 0) {
+      gaps.push("no-scene-or-contrast-practice");
+    }
+    if (laterScenes.length === 0 && laterContrasts.length === 0) {
+      gaps.push("no-later-recycling-candidate");
+    }
+    if (!entry.review) gaps.push("human-review-unrecorded");
+    else {
+      if (entry.review.bilingual !== "approved") {
+        gaps.push(`bilingual-review-${entry.review.bilingual}`);
+      }
+      if (entry.review.pronunciation !== "approved") {
+        gaps.push(`pronunciation-review-${entry.review.pronunciation}`);
+      }
+    }
+
+    return {
+      entryId: entry.id,
+      headword: entry.headword,
+      senseId: sense.id,
+      pos: sense.pos,
+      gloss: sense.gloss,
+      batch: planned.get(entry.id)?.batch ?? null,
+      introduction,
+      learningDependencies: {
+        prerequisiteEntries: curriculumEntries.get(entry.id)?.prerequisites ?? [],
+        authoredGrammarPatterns: sense.grammar?.map((item) => item.pattern) ?? [],
+      },
+      listening: {
+        gb,
+        us,
+        complete: gb.complete && us.complete,
+        flaggedForHumanListening: flagged.has(sense.id),
+      },
+      contextualPractice: {
+        lessonChecks,
+        productiveLessonCheck,
+        scenes,
+        contrasts,
+      },
+      laterRecyclingCandidates: {
+        basis: "later-introduced-co-target" as const,
+        scenes: laterScenes,
+        contrasts: laterContrasts,
+      },
+      assessment: {
+        reservedCheck: heldOut ? { id: heldOut.id, type: heldOut.type } : null,
+        authoredChecks: sense.check.length,
+        lessonOpportunities: lessonChecks.length,
+        heldOutReady,
+      },
+      content: {
+        version: entry.version,
+        released: entry.released,
+        review: entry.review ?? null,
+      },
+      gaps,
+    };
+  }),
+);
+
 const assignedMinimum = curriculum.assignedMinimum ?? 0;
 const summary = {
   total: coverage.length,
@@ -153,6 +305,49 @@ const summary = {
   released: coverage.filter((row) => row.released).length,
   fullAudio: coverage.filter((row) => row.fullAudio).length,
   heldOutReady: coverage.filter((row) => row.heldOutReady).length,
+  senses: {
+    total: senseCoverage.length,
+    introduced: senseCoverage.filter((row) => row.introduction).length,
+    completeListeningAssets: senseCoverage.filter((row) => row.listening.complete).length,
+    introducedWithCompleteListeningAssets: senseCoverage.filter(
+      (row) => row.introduction && row.listening.complete,
+    ).length,
+    productiveLessonPractice: senseCoverage.filter(
+      (row) => row.contextualPractice.productiveLessonCheck,
+    ).length,
+    introducedWithProductiveLessonPractice: senseCoverage.filter(
+      (row) => row.introduction && row.contextualPractice.productiveLessonCheck,
+    ).length,
+    withContextualPractice: senseCoverage.filter(
+      (row) =>
+        row.contextualPractice.scenes.length > 0 ||
+        row.contextualPractice.contrasts.length > 0,
+    ).length,
+    introducedWithContextualPractice: senseCoverage.filter(
+      (row) =>
+        row.introduction &&
+        (row.contextualPractice.scenes.length > 0 ||
+          row.contextualPractice.contrasts.length > 0),
+    ).length,
+    introducedWithLaterRecyclingCandidate: senseCoverage.filter(
+      (row) =>
+        row.introduction &&
+        (row.laterRecyclingCandidates.scenes.length > 0 ||
+          row.laterRecyclingCandidates.contrasts.length > 0),
+    ).length,
+    heldOutReady: senseCoverage.filter((row) => row.assessment.heldOutReady).length,
+    introducedHeldOutReady: senseCoverage.filter(
+      (row) => row.introduction && row.assessment.heldOutReady,
+    ).length,
+    released: senseCoverage.filter((row) => row.content.released).length,
+    bilingualApproved: senseCoverage.filter(
+      (row) => row.content.review?.bilingual === "approved",
+    ).length,
+    pronunciationApproved: senseCoverage.filter(
+      (row) => row.content.review?.pronunciation === "approved",
+    ).length,
+    withoutReportedGaps: senseCoverage.filter((row) => row.gaps.length === 0).length,
+  },
   calibration: {
     entries: calibration.length,
     released: calibration.filter((row) => row.released).length,
@@ -186,13 +381,31 @@ if (failures.length) {
 }
 
 if (process.argv.includes("--json")) {
-  console.log(JSON.stringify({ summary, units: curriculum.units, calibration, coverage }, null, 2));
+  console.log(JSON.stringify({
+    summary,
+    evidenceBoundary: {
+      structuralOnly: true,
+      humanApprovalInferred: false,
+      learnerEffectivenessInferred: false,
+      resourceTimingInferred: false,
+      senseIntroductionBasis: "entry",
+      reviewScope: "entry",
+      note: "This matrix reports repository evidence and explicit review state; it does not create human approval or learner-outcome evidence.",
+    },
+    units: curriculum.units,
+    calibration,
+    coverage,
+    senseCoverage,
+  }, null, 2));
 } else {
   console.log(
     `A1 curriculum OK: ${summary.assigned}/${summary.total} entries assigned (coverage ratchet ${summary.assignedMinimum}); ${summary.withContent} have enhanced content; ${summary.fullAudio} have complete audio; ${summary.heldOutReady} have >=3 checks per sense.`,
   );
   console.log(
     `Calibration slice: ${summary.calibration.entries}/20 structurally ready; ${summary.calibration.fullAudio}/20 full audio; ${summary.calibration.flaggedAudio} entries still have clips flagged for human listening; ${summary.calibration.released}/20 released.`,
+  );
+  console.log(
+    `Sense evidence: ${summary.senses.introduced}/${summary.senses.total} introduced; ${summary.senses.introducedWithContextualPractice}/${summary.senses.introduced} introduced senses have a scene or contrast; ${summary.senses.introducedWithLaterRecyclingCandidate}/${summary.senses.introduced} have a later co-target recycling candidate; ${summary.senses.introducedHeldOutReady}/${summary.senses.introduced} have a reserved assessment after at least two lesson checks.`,
   );
   if (summary.unassigned) console.log(`${summary.unassigned} A1 entries remain explicitly unassigned to curriculum units.`);
   if (summary.calibration.released < 20) {

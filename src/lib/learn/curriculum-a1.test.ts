@@ -14,12 +14,15 @@ const CALIBRATION = Array.from(
 );
 const UNIT_TWO = ["lex:A1:unit-two-a", "lex:A1:unit-two-b"];
 const UNIT_THREE = ["lex:A1:unit-three-a", "lex:A1:unit-three-b"];
+const A2_VISITOR = "lex:A2:visitor";
 
 type Options = {
   unitTwoIds?: string[];
   unitThreeIds?: string[];
   prerequisites?: Record<string, string[]>;
   assignedMinimum?: number;
+  coverageEntry?: boolean;
+  extraLevelEntry?: boolean;
 };
 
 function writeJson(root: string, relative: string, value: unknown): void {
@@ -89,37 +92,123 @@ function fixture(options: Options = {}): string {
     calibrationSlice: { unit: "01-calibration", entries: CALIBRATION },
   });
 
-  const entries = CALIBRATION.map((id) => ({
-    id,
-    headword: id.slice("lex:A1:".length),
-    version: "fixture-v1",
-    released: false,
-    senses: [
+  const entries = [
+    ...CALIBRATION.map((id) => ({
+      id,
+      headword: id.slice("lex:A1:".length),
+      version: "fixture-v1",
+      released: false,
+      review: null,
+      senses: [
+        {
+          id,
+          examples: [],
+          check: [{ id: "c1" }, { id: "c2" }, { id: "c3" }],
+        },
+      ],
+    })),
+    ...(options.coverageEntry
+      ? [
+          {
+            id: UNIT_TWO[0],
+            headword: "unit two a",
+            version: "fixture-v1",
+            released: false,
+            review: null,
+            senses: [
+              {
+                id: UNIT_TWO[0],
+                pos: "verb",
+                gloss: "نمونه",
+                grammar: [{ pattern: "I ___ at seven.", note: "الگوی نمونه" }],
+                examples: [
+                  { en: "Example one.", fa: "نمونهٔ یک." },
+                  { en: "Example two.", fa: "نمونهٔ دو." },
+                ],
+                check: [
+                  { id: "teach-choice", type: "choice" },
+                  { id: "teach-cloze", type: "cloze" },
+                  { id: "held-out", type: "produce" },
+                ],
+              },
+            ],
+          },
+        ]
+      : []),
+    ...(options.extraLevelEntry
+      ? [
+          {
+            id: A2_VISITOR,
+            headword: "visitor",
+            version: "fixture-v1",
+            released: false,
+            review: null,
+            senses: [
+              {
+                id: A2_VISITOR,
+                pos: "noun",
+                gloss: "مهمان",
+                grammar: [
+                  { pattern: "a visitor", note: "الگوی سطح بالاتر" },
+                ],
+                examples: [],
+                check: [
+                  { id: "a2-choice", type: "choice" },
+                  { id: "a2-cloze", type: "cloze" },
+                  { id: "a2-produce", type: "produce" },
+                ],
+              },
+            ],
+          },
+        ]
+      : []),
+  ];
+  const audio = Object.fromEntries(
+    entries.map((entry) => [
+      entry.id,
       {
-        id,
-        examples: [],
-        check: [{ id: "c1" }, { id: "c2" }, { id: "c3" }],
+        gb: {
+          word: "gb.mp3",
+          examples: entry.id === UNIT_TWO[0] ? ["gb-1.mp3", "gb-2.mp3"] : [],
+        },
+        us: {
+          word: "us.mp3",
+          examples: entry.id === UNIT_TWO[0] ? ["us-1.mp3", null] : [],
+        },
       },
-    ],
-  }));
+    ]),
+  );
   writeJson(root, "content/compiled/enhanced.json", {
     version: "fixture-v1",
     entries,
-    audio: Object.fromEntries(
-      entries.map((entry) => [
-        entry.id,
-        {
-          gb: { word: "gb.mp3", examples: [] },
-          us: { word: "us.mp3", examples: [] },
-        },
-      ]),
-    ),
+    audio,
+    scenes: options.coverageEntry
+      ? [
+          {
+            id: "scene:later",
+            targets: [UNIT_TWO[0], UNIT_THREE[0]],
+          },
+        ]
+      : [],
+    contrasts: options.coverageEntry
+      ? [
+          {
+            id: "contrast:later",
+            entries: [UNIT_TWO[0], UNIT_THREE[0]],
+          },
+        ]
+      : [],
   });
+  if (options.coverageEntry) {
+    writeJson(root, "content/pilot/audio-report.json", {
+      flagged: [{ sense: UNIT_TWO[0] }],
+    });
+  }
 
   return root;
 }
 
-function run(root: string) {
+function run(root: string, args = ["--check"]) {
   return spawnSync(
     process.execPath,
     [
@@ -128,11 +217,127 @@ function run(root: string) {
       "--import",
       REGISTER,
       SCRIPT,
-      "--check",
+      ...args,
     ],
     { cwd: root, encoding: "utf8" },
   );
 }
+
+test("the JSON matrix links each sense to evidence without inventing approval", () => {
+  const root = fixture({
+    unitThreeIds: UNIT_THREE,
+    coverageEntry: true,
+  });
+  try {
+    const result = run(root, ["--json"]);
+    assert.equal(result.status, 0, result.stderr);
+    const report = JSON.parse(result.stdout);
+    const row = report.senseCoverage.find(
+      (item: { senseId: string }) => item.senseId === UNIT_TWO[0],
+    );
+
+    assert.deepEqual(row.introduction, {
+      unit: "02-family-home",
+      unitOrder: 2,
+      entryOrder: 1,
+      curriculumOrder: 21,
+    });
+    assert.deepEqual(row.learningDependencies, {
+      prerequisiteEntries: [],
+      authoredGrammarPatterns: ["I ___ at seven."],
+    });
+    assert.deepEqual(row.listening, {
+      gb: { word: true, exampleClips: 2, examples: 2, complete: true },
+      us: { word: true, exampleClips: 1, examples: 2, complete: false },
+      complete: false,
+      flaggedForHumanListening: true,
+    });
+    assert.deepEqual(row.contextualPractice, {
+      lessonChecks: [
+        { id: "teach-choice", type: "choice" },
+        { id: "teach-cloze", type: "cloze" },
+      ],
+      productiveLessonCheck: true,
+      scenes: ["scene:later"],
+      contrasts: ["contrast:later"],
+    });
+    assert.deepEqual(row.laterRecyclingCandidates, {
+      basis: "later-introduced-co-target",
+      scenes: ["scene:later"],
+      contrasts: ["contrast:later"],
+    });
+    assert.deepEqual(row.assessment, {
+      reservedCheck: { id: "held-out", type: "produce" },
+      authoredChecks: 3,
+      lessonOpportunities: 2,
+      heldOutReady: true,
+    });
+    assert.deepEqual(row.content, {
+      version: "fixture-v1",
+      released: false,
+      review: null,
+    });
+    assert.deepEqual(row.gaps, [
+      "incomplete-us-audio",
+      "audio-awaiting-human-listening",
+      "human-review-unrecorded",
+    ]);
+    assert.equal(report.summary.senses.total, 21);
+    assert.equal(report.summary.senses.introducedWithContextualPractice, 1);
+    assert.equal(
+      report.summary.senses.introducedWithLaterRecyclingCandidate,
+      1,
+    );
+    assert.equal(report.evidenceBoundary.humanApprovalInferred, false);
+    assert.equal(report.evidenceBoundary.resourceTimingInferred, false);
+    assert.equal(report.evidenceBoundary.senseIntroductionBasis, "entry");
+    assert.equal(report.evidenceBoundary.reviewScope, "entry");
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("an unassigned co-target is not a later recycling candidate", () => {
+  const root = fixture({ coverageEntry: true });
+  try {
+    const result = run(root, ["--json"]);
+    assert.equal(result.status, 0, result.stderr);
+    const report = JSON.parse(result.stdout);
+    const row = report.senseCoverage.find(
+      (item: { senseId: string }) => item.senseId === UNIT_TWO[0],
+    );
+
+    assert.deepEqual(row.contextualPractice.scenes, ["scene:later"]);
+    assert.deepEqual(row.contextualPractice.contrasts, ["contrast:later"]);
+    assert.deepEqual(row.laterRecyclingCandidates, {
+      basis: "later-introduced-co-target",
+      scenes: [],
+      contrasts: [],
+    });
+    assert.ok(row.gaps.includes("no-later-recycling-candidate"));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("the A1 JSON matrix excludes enhanced senses from other levels", () => {
+  const root = fixture({ extraLevelEntry: true });
+  try {
+    const result = run(root, ["--json"]);
+    assert.equal(result.status, 0, result.stderr);
+    const report = JSON.parse(result.stdout);
+
+    assert.equal(report.summary.senses.total, CALIBRATION.length);
+    assert.equal(
+      report.senseCoverage.some(
+        (item: { entryId: string }) => item.entryId === A2_VISITOR,
+      ),
+      false,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test("a later A1 unit may depend on entries from an earlier unit", () => {
   const root = fixture({
