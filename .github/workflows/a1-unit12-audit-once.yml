@@ -1,7 +1,7 @@
-name: A1 Unit 12 audit once
+name: A1 Unit 12 regenerate once
 
 permissions:
-  contents: read
+  contents: write
 
 on:
   push:
@@ -9,35 +9,32 @@ on:
       - codex/a1-unit12-heldout-readiness
 
 jobs:
-  audit:
+  regenerate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: codex/a1-unit12-heldout-readiness
       - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Print compact Unit 12 qualification evidence
+      - name: Rebuild generated learning content
+        run: node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
+      - name: Rebuild coach evaluation cases
+        run: npm run --silent coach:cases
+      - name: Require Unit 12 machine readiness
+        run: npm run --silent content:qualification -- --unit 12-help-everyday-problems --require-ready
+      - name: Commit exact generated snapshots
         shell: bash
         run: |
-          npm run --silent content:qualification -- --unit 12-help-everyday-problems --json > /tmp/unit12.json
-          node --input-type=module <<'NODE'
-          import fs from "node:fs";
-          const report = JSON.parse(fs.readFileSync("/tmp/unit12.json", "utf8"));
-          const unit = report.units[0];
-          console.log("UNIT12_SUMMARY|" + JSON.stringify({
-            assigned: unit.assignedEntries,
-            target: unit.targetEntries,
-            content: unit.evidence.content,
-            heldOut: unit.evidence.heldOutAssessment,
-            audio: unit.evidence.audio,
-            review: unit.evidence.review,
-            machineReady: unit.machineReadyForReview,
-            blockers: unit.blockers,
-            nextActions: unit.nextActions,
-          }));
-          for (const sense of unit.evidence.heldOutAssessment.missingSenses) {
-            console.log("MISSING_SENSE|" + sense);
-          }
-          NODE
+          git add content/compiled/enhanced.json content/coach-eval/cases.json public/data/enhanced public/data/enhanced-order.json
+          if git diff --cached --quiet; then
+            echo "Generated snapshots already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Rebuild Unit 12 held-out readiness snapshots"
+          git push origin HEAD:codex/a1-unit12-heldout-readiness
