@@ -562,7 +562,135 @@
       "status": "planned",
       "objectiveEn": "Ask about prices, quantities, sizes, and simple purchases.",
       "objectiveFa": "دربارهٔ قیمت، مقدار، اندازه و خریدهای ساده سؤال کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:money",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:buy",
+          "prerequisites": [
+            "lex:A1:money"
+          ]
+        },
+        {
+          "id": "lex:A1:sell",
+          "prerequisites": [
+            "lex:A1:buy",
+            "lex:A1:money"
+          ]
+        },
+        {
+          "id": "lex:A1:need",
+          "prerequisites": [
+            "lex:A1:want"
+          ]
+        },
+        {
+          "id": "lex:A1:shop",
+          "prerequisites": [
+            "lex:A1:buy",
+            "lex:A1:money"
+          ]
+        },
+        {
+          "id": "lex:A1:shopping",
+          "prerequisites": [
+            "lex:A1:shop"
+          ]
+        },
+        {
+          "id": "lex:A1:market",
+          "prerequisites": [
+            "lex:A1:shop"
+          ]
+        },
+        {
+          "id": "lex:A1:supermarket",
+          "prerequisites": [
+            "lex:A1:shop",
+            "lex:A1:food"
+          ]
+        },
+        {
+          "id": "lex:A1:price",
+          "prerequisites": [
+            "lex:A1:money"
+          ]
+        },
+        {
+          "id": "lex:A1:cost",
+          "prerequisites": [
+            "lex:A1:price",
+            "lex:A1:money"
+          ]
+        },
+        {
+          "id": "lex:A1:cheap",
+          "prerequisites": [
+            "lex:A1:price"
+          ]
+        },
+        {
+          "id": "lex:A1:expensive",
+          "prerequisites": [
+            "lex:A1:price"
+          ]
+        },
+        {
+          "id": "lex:A1:pay",
+          "prerequisites": [
+            "lex:A1:money",
+            "lex:A1:cost"
+          ]
+        },
+        {
+          "id": "lex:A1:card",
+          "prerequisites": [
+            "lex:A1:pay"
+          ]
+        },
+        {
+          "id": "lex:A1:clothes",
+          "prerequisites": [
+            "lex:A1:shop"
+          ]
+        },
+        {
+          "id": "lex:A1:shirt",
+          "prerequisites": [
+            "lex:A1:clothes",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:shoe",
+          "prerequisites": [
+            "lex:A1:clothes",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:dress",
+          "prerequisites": [
+            "lex:A1:clothes",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:one",
+          "prerequisites": [
+            "lex:A1:this"
+          ]
+        },
+        {
+          "id": "lex:A1:open",
+          "prerequisites": [
+            "lex:A1:shop",
+            "lex:A1:be"
+          ]
+        }
+      ]
     },
     {
       "id": "06-places-directions",
@@ -653,5 +781,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 80
+  "assignedMinimum": 100
 }
