@@ -1,0 +1,25 @@
+name: A1 Unit 7 qualification once
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - codex/a1-unit7-heldout-readiness
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Print Unit 7 qualification JSON
+        run: npm run --silent content:qualification -- --unit 07-travel-transport --json
+      - name: Confirm readiness gate currently reflects blockers
+        continue-on-error: true
+        run: npm run --silent content:qualification -- --unit 07-travel-transport --require-ready
