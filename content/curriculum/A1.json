@@ -1395,7 +1395,7 @@
           "id": "lex:A1:village",
           "prerequisites": [
             "lex:A1:place",
-            "lex:A1:town"
+            "lex:A1:country"
           ]
         },
         {
@@ -2004,7 +2004,7 @@
         {
           "id": "lex:A1:dictionary",
           "prerequisites": [
-            "lex:A1:language",
+            "lex:A1:study",
             "lex:A1:book"
           ]
         },
@@ -2997,7 +2997,7 @@
           "id": "lex:A1:check",
           "prerequisites": [
             "lex:A1:problem",
-            "lex:A1:correct"
+            "lex:A1:wrong"
           ]
         },
         {
