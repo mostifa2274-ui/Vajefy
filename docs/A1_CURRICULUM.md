@@ -27,17 +27,16 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Units 2–11 now each
-have a 20-entry **mapped** sequence, while their status remains `planned`:
-mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Unit 12
-remains planned and unassigned.
+All 12 curriculum units now have an initial 20-entry **mapped** sequence.
+Unit 1 remains the fixed calibration package; Units 2–12 remain `planned`.
+Mapping establishes curriculum order and prerequisites but does not mean the
+content has passed bilingual/pronunciation review or is released.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-220, so CI prevents total mapped A1 coverage from silently falling below the
-current eleven-unit baseline. It protects the count, not exact unit membership;
-the other 680 entries remain a visible curriculum backlog, not silently treated
-as complete.
+240, so CI prevents total mapped A1 coverage from silently falling below this
+twelve-unit seed baseline. It protects the count, not exact unit membership;
+the other 660 entries remain a visible curriculum expansion backlog, not
+silently treated as complete.
 
 ### Unit 2 — Family and home
 
@@ -185,6 +184,22 @@ descriptions. Earlier `hospital` and `sleep` entries are reused from prior
 units rather than duplicated. Broader problem-solving language such as
 `help`, `sorry`, and everyday repair/request language is intentionally
 reserved for Unit 12.
+
+### Unit 12 — Help and everyday problems
+
+The mapped sequence is:
+
+`help`, `problem`, `wrong`, `sorry`, `please`,
+`understand`, `cannot`, `language`, `speak`, `slow`,
+`again`, `repeat`, `ask`, `find`, `call`, `phone`,
+`number`, `police`, `door`, `key`.
+
+The final seed unit concentrates on communication repair and practical help:
+saying there is a problem, not understanding, asking someone to repeat or speak
+slowly, requesting help, making a phone call, contacting police, and handling a
+simple door/key problem. Earlier `where`, `how`, `address`, `right`,
+`answer`, `stop`, and `need` entries are reused from prior units rather
+than duplicated.
 
 ## First 20-entry calibration slice
 
