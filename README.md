@@ -54,7 +54,9 @@ practice), **Words** (search, saved entries and reference) and **Progress**
   a throttled phone ([docs/PERFORMANCE.md](docs/PERFORMANCE.md)).
 
 [docs/ANALYSIS.md](docs/ANALYSIS.md) records an in-depth review of the original
-code and how each finding was fixed.
+code and how each finding was fixed. [docs/A1_PLAN_STATUS.md](docs/A1_PLAN_STATUS.md)
+tracks the A1-first plan: what is done, what tooling can still do, and what
+needs people (reviews, listening, device sessions, the learning pilot).
 
 ## Running it
 

@@ -54,10 +54,16 @@ the README when you do.
 - every screen renders with its security headers;
 - the learning data and a pronunciation clip load;
 - the service worker and manifest are served;
-- the coach and sync status endpoints answer.
+- the coach and sync status endpoints answer;
+- `/api/version` reports the deployed revision (the first 12 characters of the
+  commit Cloudflare built) and the content channel. With `--expect-channel` or
+  `--expect-revision` (or `SMOKE_EXPECT_CHANNEL` / `SMOKE_EXPECT_REVISION`),
+  the check fails when the live site differs.
 
 `.github/workflows/smoke.yml` runs it every six hours and on demand once the
-repository variable `SITE_URL` is set. A failure there after a deployment is a
+repository variable `SITE_URL` is set. Set the repository variable
+`CONTENT_CHANNEL` to the channel production must serve (`released` for a public
+A1 release) and the workflow also fails when the live build uses another one. A failure there after a deployment is a
 regression to roll back in Cloudflare's **Deployments** tab.
 
 ### Offline release updates

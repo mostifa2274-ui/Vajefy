@@ -3,14 +3,25 @@
  * (docs/OPERATIONS.md):
  *
  *   node scripts/smoke.mjs https://vajefy.example.workers.dev
+ *   node scripts/smoke.mjs <url> --expect-channel released --expect-revision 1a2b3c4d5e6f
  *
  * Every screen renders with its security headers, the learning data and a
  * pronunciation clip load, the service worker and manifest are served, and the
- * optional services answer their status checks. Exits non-zero on any failure.
+ * optional services answer their status checks. The deployed revision and
+ * content channel are reported, and checked when expected values are given
+ * (also as SMOKE_EXPECT_CHANNEL and SMOKE_EXPECT_REVISION). Exits non-zero on
+ * any failure.
  */
 
-const base = (process.argv[2] ?? process.env.SITE_URL ?? "").replace(/\/+$/, "");
-if (!/^https?:\/\//.test(base)) {
+function option(flag) {
+  const at = process.argv.indexOf(flag);
+  return at >= 0 ? process.argv[at + 1] : undefined;
+}
+const expectChannel = option("--expect-channel") ?? process.env.SMOKE_EXPECT_CHANNEL ?? "";
+const expectRevision = option("--expect-revision") ?? process.env.SMOKE_EXPECT_REVISION ?? "";
+const base = (process.argv[2]?.startsWith("--") ? "" : (process.argv[2] ?? "")) || process.env.SITE_URL || "";
+const site = base.replace(/\/+$/, "");
+if (!/^https?:\/\//.test(site)) {
   console.error("Usage: node scripts/smoke.mjs <site URL>");
   process.exit(2);
 }
@@ -28,7 +39,7 @@ async function check(name, run) {
 }
 
 async function get(path, expectType) {
-  const response = await fetch(base + path, { redirect: "follow", headers: { "Accept-Encoding": "gzip, br" } });
+  const response = await fetch(site + path, { redirect: "follow", headers: { "Accept-Encoding": "gzip, br" } });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const type = response.headers.get("content-type") ?? "";
   if (expectType && !type.includes(expectType)) throw new Error(`content-type ${type}`);
@@ -82,6 +93,17 @@ await check("manifest", async () => {
   if (manifest.name !== "Vajefy") throw new Error(`name ${manifest.name}`);
 });
 
+let deployed = null;
+await check("deployed revision and channel", async () => {
+  deployed = await (await get("/api/version", "json")).json();
+  if (typeof deployed.revision !== "string" || !deployed.revision) throw new Error("no revision");
+  if (!["draft", "released", "none"].includes(deployed.channel)) throw new Error(`unknown channel ${deployed.channel}`);
+  if (expectChannel && deployed.channel !== expectChannel) throw new Error(`channel ${deployed.channel}, expected ${expectChannel}`);
+  if (expectRevision && !expectRevision.startsWith(deployed.revision) && !deployed.revision.startsWith(expectRevision)) {
+    throw new Error(`revision ${deployed.revision}, expected ${expectRevision}`);
+  }
+});
+
 for (const service of ["coach", "sync"]) {
   await check(`${service} status`, async () => {
     const status = await (await get(`/api/${service}/status`, "json")).json();
@@ -89,6 +111,7 @@ for (const service of ["coach", "sync"]) {
   });
 }
 
-console.log(`Smoke checks against ${base}: ${passed.length} passed, ${failures.length} failed.`);
+console.log(`Smoke checks against ${site}: ${passed.length} passed, ${failures.length} failed.`);
+if (deployed) console.log(`Deployed revision ${deployed.revision}, content channel ${deployed.channel}.`);
 for (const failure of failures) console.error(`  ✗ ${failure}`);
 process.exit(failures.length ? 1 : 0);
