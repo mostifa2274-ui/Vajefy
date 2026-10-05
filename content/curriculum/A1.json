@@ -976,7 +976,136 @@
       "status": "planned",
       "objectiveEn": "Talk about simple work, school, study, schedules, and tasks.",
       "objectiveFa": "دربارهٔ کار، مدرسه، مطالعه، برنامه و وظایف ساده صحبت کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:work",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:job",
+          "prerequisites": [
+            "lex:A1:work"
+          ]
+        },
+        {
+          "id": "lex:A1:office",
+          "prerequisites": [
+            "lex:A1:work"
+          ]
+        },
+        {
+          "id": "lex:A1:company",
+          "prerequisites": [
+            "lex:A1:job",
+            "lex:A1:office"
+          ]
+        },
+        {
+          "id": "lex:A1:computer",
+          "prerequisites": [
+            "lex:A1:work",
+            "lex:A1:study"
+          ]
+        },
+        {
+          "id": "lex:A1:email",
+          "prerequisites": [
+            "lex:A1:computer",
+            "lex:A1:write"
+          ]
+        },
+        {
+          "id": "lex:A1:study",
+          "prerequisites": [
+            "lex:A1:school"
+          ]
+        },
+        {
+          "id": "lex:A1:student",
+          "prerequisites": [
+            "lex:A1:school",
+            "lex:A1:study"
+          ]
+        },
+        {
+          "id": "lex:A1:teacher",
+          "prerequisites": [
+            "lex:A1:school",
+            "lex:A1:student"
+          ]
+        },
+        {
+          "id": "lex:A1:class",
+          "prerequisites": [
+            "lex:A1:school",
+            "lex:A1:teacher"
+          ]
+        },
+        {
+          "id": "lex:A1:lesson",
+          "prerequisites": [
+            "lex:A1:class"
+          ]
+        },
+        {
+          "id": "lex:A1:course",
+          "prerequisites": [
+            "lex:A1:class",
+            "lex:A1:study"
+          ]
+        },
+        {
+          "id": "lex:A1:learn",
+          "prerequisites": [
+            "lex:A1:study",
+            "lex:A1:lesson"
+          ]
+        },
+        {
+          "id": "lex:A1:book",
+          "prerequisites": [
+            "lex:A1:school"
+          ]
+        },
+        {
+          "id": "lex:A1:read",
+          "prerequisites": [
+            "lex:A1:book"
+          ]
+        },
+        {
+          "id": "lex:A1:write",
+          "prerequisites": [
+            "lex:A1:read"
+          ]
+        },
+        {
+          "id": "lex:A1:question",
+          "prerequisites": [
+            "lex:A1:class"
+          ]
+        },
+        {
+          "id": "lex:A1:answer",
+          "prerequisites": [
+            "lex:A1:question"
+          ]
+        },
+        {
+          "id": "lex:A1:test",
+          "prerequisites": [
+            "lex:A1:question",
+            "lex:A1:answer"
+          ]
+        },
+        {
+          "id": "lex:A1:homework",
+          "prerequisites": [
+            "lex:A1:lesson",
+            "lex:A1:write"
+          ]
+        }
+      ]
     },
     {
       "id": "09-leisure-people",
@@ -1040,5 +1169,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 140
+  "assignedMinimum": 160
 }
