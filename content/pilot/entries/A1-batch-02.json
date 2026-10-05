@@ -1865,6 +1865,15 @@
         "why": "more و er با هم نمی‌آیند."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "این کتاب از آن یکی جالب‌تر است.",
+      "frame": "This book is ___ interesting than that one.",
+      "answer": "more",
+      "accept": [],
+      "why": "برای صفت بلندِ interesting از more + adjective + than استفاده می‌کنیم."
      }
     ]
    }
@@ -9824,6 +9833,15 @@
         "why": "an one child غلط است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "او تنها پزشک روستاست.",
+      "frame": "She is the ___ doctor in the village.",
+      "answer": "only",
+      "accept": [],
+      "why": "the only + noun یعنی «تنها / یگانه»."
      }
     ]
    }
@@ -10982,6 +11000,17 @@
         "why": "very به‌تنهایی بعد از فعل نمی‌آید."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "قطار خیلی سریع‌تر است.",
+      "frame": "The train is ___ faster.",
+      "answer": "much",
+      "accept": [
+       "a lot"
+      ],
+      "why": "much + comparative یعنی «خیلی ...تر»؛ a lot هم پذیرفته است."
      }
     ]
    }
