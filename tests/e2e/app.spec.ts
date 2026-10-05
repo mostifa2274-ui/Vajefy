@@ -178,3 +178,11 @@ test("the Worker's own endpoints validate input and report optional services as 
   }
   expect((await request.get("/api/unknown")).status()).toBe(404);
 });
+
+test("the deployment reports its revision and content channel for release checks", async ({ request }) => {
+  const response = await request.get("/api/version");
+  expect(response.ok()).toBe(true);
+  expect(response.headers()["cache-control"]).toBe("no-store");
+  // A local build has no Cloudflare commit and the default draft channel.
+  expect(await response.json()).toEqual({ revision: "local", channel: "draft" });
+});
