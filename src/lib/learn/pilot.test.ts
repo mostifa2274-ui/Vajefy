@@ -2,10 +2,16 @@ import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import test from "node:test";
 import type { AudioPack, Pilot, PilotCatalogue, PilotPart } from "./content";
+import { versionOf } from "../../../scripts/catalogue.ts";
 import { buildLesson, contentIds, resolveItem } from "./lesson";
 import { hasContent, indexPilot, introductionOrder, loadAudioPack, loadPilot } from "./pilot";
 
 const pilot = JSON.parse(readFileSync("content/compiled/enhanced.json", "utf8")) as Pilot;
+const selection = JSON.parse(readFileSync("content/pilot-a1.json", "utf8")) as {
+  version: number;
+  level: "A1";
+  entries: { id: string; group: string }[];
+};
 const read = <T>(file: string) => JSON.parse(readFileSync(`public/data/${file}`, "utf8")) as T;
 const catalogue = read<PilotCatalogue>("enhanced/index.json");
 const T0 = 1_800_000_000_000;
@@ -28,6 +34,22 @@ function serve(fail?: string) {
   }) as typeof fetch;
   return { fetched, restore: () => (globalThis.fetch = original) };
 }
+
+test("compiled content is bound to the ordered A1 pilot selection", () => {
+  const expectedFingerprint = versionOf({
+    version: selection.version,
+    level: selection.level,
+    entries: selection.entries.map(({ id, group }) => ({ id, group })),
+  });
+  assert.deepEqual(pilot.pilotSelection, {
+    version: selection.version,
+    level: "A1",
+    entries: selection.entries.length,
+    fingerprint: expectedFingerprint,
+  });
+  assert.deepEqual(catalogue.pilotSelection, pilot.pilotSelection);
+  assert.match(pilot.pilotSelection.fingerprint, /^[a-f0-9]{12}$/);
+});
 
 test("the app's files hold the compiled content, each entry listed once and in one part", () => {
   assert.equal(catalogue.version, pilot.version);
