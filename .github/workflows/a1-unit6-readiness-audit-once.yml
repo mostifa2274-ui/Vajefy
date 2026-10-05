@@ -1,0 +1,50 @@
+name: A1 Unit 6 readiness audit once
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - codex/a1-unit6-heldout-readiness
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Print Unit 6 qualification gaps
+        shell: bash
+        run: |
+          npm run --silent content:qualification -- --unit 06-places-directions --json > /tmp/unit6.json
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const report = JSON.parse(fs.readFileSync("/tmp/unit6.json", "utf8"));
+          const unit = report.units[0];
+          console.log("UNIT6_SUMMARY|" + JSON.stringify({
+            assigned: unit.assignedEntries,
+            target: unit.targetEntries,
+            machineReady: unit.machineReadyForReview,
+            blockers: unit.blockers,
+            nextActions: unit.nextActions,
+            content: unit.evidence.content,
+            heldOut: unit.evidence.heldOutAssessment,
+            audio: unit.evidence.audio,
+            review: unit.evidence.review,
+            release: {
+              releasedEntries: unit.evidence.release.releasedEntries,
+              complete: unit.evidence.release.complete
+            }
+          }));
+          for (const sense of unit.evidence.heldOutAssessment.missingSenses) {
+            console.log("MISSING_SENSE|" + sense);
+          }
+          for (const entry of unit.evidence.audio.incompleteEntries) {
+            console.log("INCOMPLETE_AUDIO|" + entry);
+          }
+          NODE
