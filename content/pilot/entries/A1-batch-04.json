@@ -732,6 +732,15 @@
                 "why": "enoughly وجود ندارد."
               }
             ]
+          },
+          {
+            "type": "produce",
+            "id": "h1",
+            "prompt": "این اتاق به اندازهٔ کافی بزرگ است.",
+            "frame": "This room is big ___.",
+            "answer": "enough",
+            "accept": [],
+            "why": "enough بعد از صفت می‌آید: big enough."
           }
         ]
       }
@@ -4871,6 +4880,15 @@
                 "why": "a lot قبل از صفت عالی نمی‌آید."
               }
             ]
+          },
+          {
+            "type": "produce",
+            "id": "h1",
+            "prompt": "ما زیاد با هم صحبت می‌کنیم.",
+            "frame": "We talk a ___.",
+            "answer": "lot",
+            "accept": [],
+            "why": "verb + a lot یعنی انجام کاری به مقدار زیاد."
           }
         ]
       }
