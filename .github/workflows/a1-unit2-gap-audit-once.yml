@@ -1,0 +1,41 @@
+name: A1 Unit 2 held-out audit once
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - codex/a1-unit2-heldout-readiness
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Print Unit 2 qualification gaps
+        shell: bash
+        run: |
+          npm run --silent content:qualification -- --unit 02-family-home --json > /tmp/unit2.json
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const report = JSON.parse(fs.readFileSync("/tmp/unit2.json","utf8"));
+          const unit = report.units[0];
+          console.log("UNIT2_SUMMARY|" + JSON.stringify({
+            machineReadyForReview: unit.machineReadyForReview,
+            releaseQualified: unit.releaseQualified,
+            heldOut: unit.evidence.heldOutAssessment,
+            audio: unit.evidence.audio,
+            review: unit.evidence.review,
+            blockers: unit.blockers,
+            nextActions: unit.nextActions,
+          }));
+          for (const sense of unit.evidence.heldOutAssessment.missingSenses) {
+            console.log("MISSING_SENSE|" + sense);
+          }
+          NODE
