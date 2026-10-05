@@ -1114,7 +1114,126 @@
       "status": "planned",
       "objectiveEn": "Talk about friends, interests, sports, media, and simple plans.",
       "objectiveFa": "دربارهٔ دوستان، علایق، ورزش، رسانه و برنامه‌های ساده صحبت کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:person",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:people",
+          "prerequisites": [
+            "lex:A1:person"
+          ]
+        },
+        {
+          "id": "lex:A1:young",
+          "prerequisites": [
+            "lex:A1:person"
+          ]
+        },
+        {
+          "id": "lex:A1:man",
+          "prerequisites": [
+            "lex:A1:person"
+          ]
+        },
+        {
+          "id": "lex:A1:woman",
+          "prerequisites": [
+            "lex:A1:person"
+          ]
+        },
+        {
+          "id": "lex:A1:boy",
+          "prerequisites": [
+            "lex:A1:person",
+            "lex:A1:young"
+          ]
+        },
+        {
+          "id": "lex:A1:girl",
+          "prerequisites": [
+            "lex:A1:person",
+            "lex:A1:young"
+          ]
+        },
+        {
+          "id": "lex:A1:meet",
+          "prerequisites": [
+            "lex:A1:people"
+          ]
+        },
+        {
+          "id": "lex:A1:together",
+          "prerequisites": [
+            "lex:A1:meet",
+            "lex:A1:people"
+          ]
+        },
+        {
+          "id": "lex:A1:free",
+          "prerequisites": [
+            "lex:A1:time"
+          ]
+        },
+        {
+          "id": "lex:A1:fun",
+          "prerequisites": [
+            "lex:A1:free"
+          ]
+        },
+        {
+          "id": "lex:A1:listen",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:music",
+          "prerequisites": [
+            "lex:A1:listen"
+          ]
+        },
+        {
+          "id": "lex:A1:song",
+          "prerequisites": [
+            "lex:A1:music"
+          ]
+        },
+        {
+          "id": "lex:A1:watch",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:film",
+          "prerequisites": [
+            "lex:A1:watch"
+          ]
+        },
+        {
+          "id": "lex:A1:play",
+          "prerequisites": [
+            "lex:A1:free",
+            "lex:A1:fun"
+          ]
+        },
+        {
+          "id": "lex:A1:game",
+          "prerequisites": [
+            "lex:A1:play"
+          ]
+        },
+        {
+          "id": "lex:A1:sport",
+          "prerequisites": [
+            "lex:A1:play"
+          ]
+        },
+        {
+          "id": "lex:A1:football",
+          "prerequisites": [
+            "lex:A1:sport"
+          ]
+        }
+      ]
     },
     {
       "id": "10-weather-clothes",
@@ -1169,5 +1288,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 160
+  "assignedMinimum": 180
 }

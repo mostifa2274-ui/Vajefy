@@ -27,16 +27,16 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Units 2–8 now each
+Unit 1 remains the fixed 20-entry calibration package. Units 2–9 now each
 have a 20-entry **mapped** sequence, while their status remains `planned`:
 mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Units 9–12
+content has passed bilingual/pronunciation review or is released. Units 10–12
 remain planned and unassigned.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-160, so CI prevents total mapped A1 coverage from silently falling below the
-current eight-unit baseline. It protects the count, not exact unit membership;
-the other 740 entries remain a visible curriculum backlog, not silently treated
+180, so CI prevents total mapped A1 coverage from silently falling below the
+current nine-unit baseline. It protects the count, not exact unit membership;
+the other 720 entries remain a visible curriculum backlog, not silently treated
 as complete.
 
 ### Unit 2 — Family and home
@@ -139,6 +139,21 @@ basic work contexts, then builds a school/class sequence, adds core learning
 actions and materials, and finishes with retrieval/assessment language. Earlier
 `school`, `start`, `finish`, and `time` entries are reused as
 prerequisites rather than duplicated here.
+
+### Unit 9 — Leisure and people
+
+The mapped sequence is:
+
+`person`, `people`, `young`, `man`, `woman`, `boy`,
+`girl`, `meet`, `together`, `free`, `fun`, `listen`,
+`music`, `song`, `watch`, `film`, `play`, `game`,
+`sport`, `football`.
+
+The unit starts with basic people/social language, moves into meeting and shared
+free time, then introduces listening/music and film before finishing with games
+and sport. Earlier family, travel, and study words are intentionally not
+duplicated; later leisure vocabulary such as parties, cinema, swimming, and
+weekend activities remains available for recycling and expansion.
 
 ## First 20-entry calibration slice
 
