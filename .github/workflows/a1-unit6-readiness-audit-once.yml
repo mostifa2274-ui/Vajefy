@@ -18,33 +18,52 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Print Unit 6 qualification gaps
+      - name: Print Unit 6 missing-sense source context
         shell: bash
         run: |
-          npm run --silent content:qualification -- --unit 06-places-directions --json > /tmp/unit6.json
           node --input-type=module <<'NODE'
           import fs from "node:fs";
-          const report = JSON.parse(fs.readFileSync("/tmp/unit6.json", "utf8"));
-          const unit = report.units[0];
-          console.log("UNIT6_SUMMARY|" + JSON.stringify({
-            assigned: unit.assignedEntries,
-            target: unit.targetEntries,
-            machineReady: unit.machineReadyForReview,
-            blockers: unit.blockers,
-            nextActions: unit.nextActions,
-            content: unit.evidence.content,
-            heldOut: unit.evidence.heldOutAssessment,
-            audio: unit.evidence.audio,
-            review: unit.evidence.review,
-            release: {
-              releasedEntries: unit.evidence.release.releasedEntries,
-              complete: unit.evidence.release.complete
+          import path from "node:path";
+
+          const wanted = new Set([
+            "lex:A1:park#verb",
+            "lex:A1:way#method",
+            "lex:A1:right#direction",
+            "lex:A1:right#now",
+            "lex:A1:turn#noun",
+            "lex:A1:up#preposition",
+            "lex:A1:over#more-than",
+            "lex:A1:down#preposition",
+            "lex:A1:around#about",
+            "lex:A1:floor#storey",
+            "lex:A1:out#out-of",
+            "lex:A1:close#near"
+          ]);
+
+          const dir = "content/pilot/entries";
+          for (const name of fs.readdirSync(dir).filter((n) => n.endsWith(".json")).sort()) {
+            const file = path.join(dir, name);
+            const entries = JSON.parse(fs.readFileSync(file, "utf8"));
+            for (const entry of entries) {
+              for (const sense of entry.senses ?? []) {
+                if (!wanted.has(sense.id)) continue;
+                console.log("SENSE_CONTEXT|" + JSON.stringify({
+                  file,
+                  entryId: entry.id,
+                  headword: entry.headword,
+                  sense: {
+                    id: sense.id,
+                    pos: sense.pos,
+                    gloss: sense.gloss,
+                    meaning: sense.meaning,
+                    grammar: sense.grammar,
+                    examples: sense.examples,
+                    collocations: sense.collocations,
+                    mistake: sense.mistake,
+                    check: sense.check
+                  }
+                }));
+              }
             }
-          }));
-          for (const sense of unit.evidence.heldOutAssessment.missingSenses) {
-            console.log("MISSING_SENSE|" + sense);
-          }
-          for (const entry of unit.evidence.audio.incompleteEntries) {
-            console.log("INCOMPLETE_AUDIO|" + entry);
           }
           NODE
