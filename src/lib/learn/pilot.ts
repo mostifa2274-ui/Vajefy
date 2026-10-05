@@ -9,6 +9,7 @@ import type {
   PilotCatalogue,
   PilotEntry,
   PilotOrder,
+  PilotSelectionProvenance,
   PilotPart,
   Scene,
   Sense,
@@ -45,6 +46,8 @@ export type TargetContent = { sense: Sense; entry: PilotEntry; index: number };
 
 export type PilotIndex = {
   version: string;
+  /** Exact A1 pilot cohort identity bound into this content build. */
+  pilotSelection: PilotSelectionProvenance;
   /** Every learning target in curriculum order. */
   targets: PilotTarget[];
   bySense: Map<string, PilotTarget>;
@@ -62,7 +65,14 @@ export type PilotIndex = {
   parts: Map<string, string>;
 };
 
-function listIndex(version: string, entries: ListedEntry[], contrasts: Contrast[], scenes: Scene[], parts: Map<string, string>): PilotIndex {
+function listIndex(
+  version: string,
+  pilotSelection: PilotSelectionProvenance,
+  entries: ListedEntry[],
+  contrasts: Contrast[],
+  scenes: Scene[],
+  parts: Map<string, string>,
+): PilotIndex {
   const targets: PilotTarget[] = [];
   const bySense = new Map<string, PilotTarget>();
   const byEntry = new Map<string, ListedEntry>();
@@ -74,7 +84,19 @@ function listIndex(version: string, entries: ListedEntry[], contrasts: Contrast[
       bySense.set(sense.id, target);
     });
   }
-  return { version, targets, bySense, byEntry, contrasts, scenes, content: new Map(), entries: new Map(), audio: {}, parts };
+  return {
+    version,
+    pilotSelection,
+    targets,
+    bySense,
+    byEntry,
+    contrasts,
+    scenes,
+    content: new Map(),
+    entries: new Map(),
+    audio: {},
+    parts,
+  };
 }
 
 function addPart(index: PilotIndex, part: PilotPart) {
@@ -87,7 +109,14 @@ function addPart(index: PilotIndex, part: PilotPart) {
 
 /** An index with all the content loaded, from the single compiled file (scripts and tests). */
 export function indexPilot(pilot: Pilot): PilotIndex {
-  const index = listIndex(pilot.version, pilot.entries, pilot.contrasts, pilot.scenes, new Map());
+  const index = listIndex(
+    pilot.version,
+    pilot.pilotSelection,
+    pilot.entries,
+    pilot.contrasts,
+    pilot.scenes,
+    new Map(),
+  );
   addPart(index, { entries: pilot.entries, audio: pilot.audio });
   return index;
 }
@@ -107,7 +136,14 @@ export function loadPilot(ids: Iterable<string> = []): Promise<PilotIndex> {
   listing ??= loadJson<PilotCatalogue>("enhanced/index.json")
     .then((catalogue) => {
       const parts = new Map(catalogue.entries.map((entry) => [entry.id, catalogue.parts[entry.part]!]));
-      latest = listIndex(catalogue.version, catalogue.entries, catalogue.contrasts, catalogue.scenes, parts);
+      latest = listIndex(
+        catalogue.version,
+        catalogue.pilotSelection,
+        catalogue.entries,
+        catalogue.contrasts,
+        catalogue.scenes,
+        parts,
+      );
       return latest;
     })
     .catch((error: unknown) => {
