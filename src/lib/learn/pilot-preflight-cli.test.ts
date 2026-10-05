@@ -27,6 +27,12 @@ function writeJson(root: string, relative: string, value: unknown): void {
 function fixture(options: { approved?: boolean; released?: boolean } = {}) {
   const root = mkdtempSync(path.join(tmpdir(), "vajefy-pilot-preflight-"));
   writeJson(root, "public/data/meta.json", { levels: [] });
+  writeJson(root, "package.json", {
+    private: true,
+    scripts: {
+      "validate:data": "node -e \"process.exit(0)\"",
+    },
+  });
 
   const selection = {
     version: 1,
