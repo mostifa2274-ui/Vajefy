@@ -703,6 +703,28 @@
        "bright"
       ],
       "why": "جای پرنور."
+     },
+     {
+      "type": "choice",
+      "id": "h1",
+      "prompt": "Which phrase means «سبز روشن»?",
+      "options": [
+       {
+        "text": "light green",
+        "ok": true,
+        "why": "light + colour یعنی رنگ روشن/کم‌رنگ."
+       },
+       {
+        "text": "dark green",
+        "ok": false,
+        "why": "dark green یعنی سبز تیره."
+       },
+       {
+        "text": "bright green",
+        "ok": false,
+        "why": "bright green معمولاً سبز درخشان و پررنگ است، نه کم‌رنگ."
+       }
+      ]
      }
     ]
    }
@@ -790,6 +812,15 @@
         "why": "اینجا یعنی «جفت کردن»."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "دیشب یک مسابقهٔ فوتبال دیدیم.",
+      "frame": "We watched a football ___ last night.",
+      "answer": "match",
+      "accept": [],
+      "why": "football match = مسابقهٔ فوتبال."
      }
     ]
    },
@@ -850,6 +881,28 @@
       "answer": "Match",
       "accept": [],
       "why": "در دستور تمرین."
+     },
+     {
+      "type": "choice",
+      "id": "h1",
+      "prompt": "Which sentence means «این دو رنگ با هم جور هستند»?",
+      "options": [
+       {
+        "text": "These two colours match.",
+        "ok": true,
+        "why": "match به‌عنوان فعل یعنی جور یا هماهنگ بودن."
+       },
+       {
+        "text": "These two colours meet.",
+        "ok": false,
+        "why": "meet یعنی ملاقات کردن، نه هماهنگ بودن."
+       },
+       {
+        "text": "These two colours play.",
+        "ok": false,
+        "why": "play این معنا را نمی‌دهد."
+       }
+      ]
      }
     ]
    }
@@ -4022,6 +4075,17 @@
         "why": "اینجا قید و یعنی «با جدیت»."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "این تمرین برای من خیلی سخت است.",
+      "frame": "This exercise is very ___ for me.",
+      "answer": "hard",
+      "accept": [
+       "difficult"
+      ],
+      "why": "hard در اینجا یعنی «دشوار»."
      }
     ]
    },
@@ -4077,6 +4141,15 @@
       "answer": "hard",
       "accept": [],
       "why": "سفت."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "The floor is ___, not soft.",
+      "answer": "hard",
+      "accept": [],
+      "fa": "کف سفت است، نه نرم.",
+      "why": "hard در برابر soft یعنی «سفت»."
      }
     ]
    },
@@ -4150,6 +4223,15 @@
         "why": "معنای دیگری است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "باید خیلی سخت تلاش کنی.",
+      "frame": "You need to try ___.",
+      "answer": "hard",
+      "accept": [],
+      "why": "try hard = با جدیت زیاد تلاش کردن."
      }
     ]
    }
