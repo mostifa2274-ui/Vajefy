@@ -34,9 +34,10 @@ content has passed bilingual/pronunciation review or is released. Units 4–12
 remain planned and unassigned.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-60, so CI prevents later edits from silently dropping the calibration slice,
-Family & Home, or Daily Routine & Time. The other 840 entries remain a visible
-curriculum backlog, not silently treated as complete.
+60, so CI prevents total mapped A1 coverage from silently falling below the
+current three-unit baseline. It protects the count, not exact unit membership;
+the other 840 entries remain a visible curriculum backlog, not silently treated
+as complete.
 
 ### Unit 2 — Family and home
 
