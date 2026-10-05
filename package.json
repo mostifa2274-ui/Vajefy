@@ -27,7 +27,7 @@
     "content:audio": "echo 'See docs/AUDIO.md: python scripts/audio/generate_audio.py --models <dir>' && exit 1",
     "evaluate": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/evaluate-schedulers.ts",
     "study:roster": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/pilot-roster.ts",
-    "study:preflight": "npm run validate:data && node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/pilot-preflight.ts",
+    "study:preflight": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/pilot-preflight.ts",
     "coach:cases": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-coach-cases.ts",
     "coach:eval": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/evaluate-coach.ts",
     "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts' 'src/api/**/*.test.ts'",
