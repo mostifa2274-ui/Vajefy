@@ -488,7 +488,7 @@ test("the A1 JSON matrix excludes enhanced senses from other levels", () => {
   }
 });
 
-test("the repository Wave 1 manifest keeps balanced per-unit coverage", () => {
+test("the repository Wave 2 manifest keeps balanced per-unit coverage", () => {
   const curriculum = JSON.parse(
     readFileSync(path.join(ROOT, "content", "curriculum", "A1.json"), "utf8"),
   ) as {
@@ -496,14 +496,14 @@ test("the repository Wave 1 manifest keeps balanced per-unit coverage", () => {
     units: { id: string; entries: unknown[]; targetEntries: number }[];
   };
 
-  assert.equal(curriculum.assignedMinimum, 460);
+  assert.equal(curriculum.assignedMinimum, 680);
   assert.equal(curriculum.units[0]?.entries.length, 20);
   assert.equal(curriculum.units[0]?.targetEntries, 20);
   for (const unit of curriculum.units.slice(1)) {
     assert.equal(
       unit.entries.length,
-      40,
-      `${unit.id} should remain at the Wave 1 floor of 40 entries`,
+      60,
+      `${unit.id} should remain at the Wave 2 floor of 60 entries`,
     );
     assert.equal(unit.targetEntries, 80);
   }
