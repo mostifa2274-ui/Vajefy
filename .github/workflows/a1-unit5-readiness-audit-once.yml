@@ -18,33 +18,49 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Print Unit 5 qualification gaps
+      - name: Print Unit 5 missing-sense source context
         shell: bash
         run: |
-          npm run --silent content:qualification -- --unit 05-shopping-money --json > /tmp/unit5.json
           node --input-type=module <<'NODE'
           import fs from "node:fs";
-          const report = JSON.parse(fs.readFileSync("/tmp/unit5.json", "utf8"));
-          const unit = report.units[0];
-          console.log("UNIT5_SUMMARY|" + JSON.stringify({
-            assigned: unit.assignedEntries,
-            target: unit.targetEntries,
-            machineReady: unit.machineReadyForReview,
-            blockers: unit.blockers,
-            nextActions: unit.nextActions,
-            content: unit.evidence.content,
-            heldOut: unit.evidence.heldOutAssessment,
-            audio: unit.evidence.audio,
-            review: unit.evidence.review,
-            release: {
-              releasedEntries: unit.evidence.release.releasedEntries,
-              complete: unit.evidence.release.complete
+          import path from "node:path";
+
+          const wanted = new Set([
+            "lex:A1:shop#verb",
+            "lex:A1:cost#noun",
+            "lex:A1:one#pronoun",
+            "lex:A1:open#adjective",
+            "lex:A1:change",
+            "lex:A1:change#money",
+            "lex:A1:present#now",
+            "lex:A1:present#verb",
+            "lex:A1:show#noun"
+          ]);
+
+          const dir = "content/pilot/entries";
+          for (const name of fs.readdirSync(dir).filter((n) => n.endsWith(".json")).sort()) {
+            const file = path.join(dir, name);
+            const entries = JSON.parse(fs.readFileSync(file, "utf8"));
+            for (const entry of entries) {
+              for (const sense of entry.senses ?? []) {
+                if (!wanted.has(sense.id)) continue;
+                console.log("SENSE_CONTEXT|" + JSON.stringify({
+                  file,
+                  entryId: entry.id,
+                  headword: entry.headword,
+                  sense: {
+                    id: sense.id,
+                    pos: sense.pos,
+                    gloss: sense.gloss,
+                    meaning: sense.meaning,
+                    grammar: sense.grammar,
+                    examples: sense.examples,
+                    collocations: sense.collocations,
+                    mistake: sense.mistake,
+                    check: sense.check
+                  }
+                }));
+              }
             }
-          }));
-          for (const sense of unit.evidence.heldOutAssessment.missingSenses) {
-            console.log("MISSING_SENSE|" + sense);
-          }
-          for (const entry of unit.evidence.audio.incompleteEntries) {
-            console.log("INCOMPLETE_AUDIO|" + entry);
           }
           NODE
