@@ -11,6 +11,7 @@ import {
   type Entry,
   type Pilot,
   type PilotCatalogue,
+  type PilotSelectionProvenance,
   type PilotOrder,
   type PilotPart,
   type SenseAudio,
@@ -50,7 +51,46 @@ function read(file: string): unknown {
 
 // The pilot study's 150 entries must all have content; any other entry may be
 // added batch by batch, in the order of its level's plan (content/plans/).
-const selection = read(path.join(ROOT, "content", "pilot-a1.json")) as { entries: { id: string; group: string }[] };
+type PilotSelection = {
+  version: number;
+  level: string;
+  entries: { id: string; group: string }[];
+};
+const selection = read(
+  path.join(ROOT, "content", "pilot-a1.json"),
+) as PilotSelection;
+const selectionIds = selection.entries.map((item) => item.id);
+const selectionDuplicates = selectionIds.filter(
+  (id, index) => selectionIds.indexOf(id) !== index,
+);
+if (!Number.isInteger(selection.version) || selection.version < 1) {
+  failures.push("content/pilot-a1.json: version must be a positive integer");
+}
+if (selection.level !== "A1") {
+  failures.push("content/pilot-a1.json: level must be A1");
+}
+if (selection.entries.length !== 150) {
+  failures.push(
+    `content/pilot-a1.json: expected 150 entries, found ${selection.entries.length}`,
+  );
+}
+if (selectionDuplicates.length) {
+  failures.push(
+    `content/pilot-a1.json: duplicate selection id(s): ${[
+      ...new Set(selectionDuplicates),
+    ].join(", ")}`,
+  );
+}
+const pilotSelection: PilotSelectionProvenance = {
+  version: selection.version,
+  level: "A1",
+  entries: selection.entries.length,
+  fingerprint: versionOf({
+    version: selection.version,
+    level: selection.level,
+    entries: selection.entries.map(({ id, group }) => ({ id, group })),
+  }),
+};
 const order = catalogueOrder();
 
 const entries: Entry[] = [];
@@ -135,6 +175,7 @@ const audio = fs.existsSync(AUDIO)
 
 const compiled: Pilot = {
   version: "",
+  pilotSelection,
   entries: entries
     .sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0))
     .map((item) => {
@@ -186,7 +227,13 @@ for (const accent of ["gb", "us"] as const) {
     bytes: sorted.reduce((sum, file) => sum + (audio.clips?.[file.replace(/^pilot\//, "")]?.bytes ?? 0), 0),
   };
 }
-compiled.version = versionOf({ entries: compiled.entries.map((item) => item.version), contrasts, scenes, audio: compiled.audio });
+compiled.version = versionOf({
+  pilotSelection,
+  entries: compiled.entries.map((item) => item.version),
+  contrasts,
+  scenes,
+  audio: compiled.audio,
+});
 
 if (failures.length) {
   console.error(`Pilot content failed validation with ${failures.length} issue(s):\n- ${failures.join("\n- ")}`);
@@ -227,7 +274,14 @@ for (let start = 0; start < compiled.entries.length; start += PART_SIZE) {
   }
   parts.push([file, output]);
 }
-const catalogue: PilotCatalogue = { version: compiled.version, parts: parts.map(([file]) => file), entries: listed, contrasts, scenes };
+const catalogue: PilotCatalogue = {
+  version: compiled.version,
+  pilotSelection,
+  parts: parts.map(([file]) => file),
+  entries: listed,
+  contrasts,
+  scenes,
+};
 
 const outputs = new Map<string, string>([
   [OUT, `${JSON.stringify(compiled)}\n`],
