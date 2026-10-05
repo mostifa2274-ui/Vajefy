@@ -67,6 +67,15 @@ pilot selection for `pilot`, and the fixed calibration order for
 `validate:data`; CI therefore fails if curriculum membership drifts or any
 current A1 sense loses a reservable third authored check.
 
+The compiled enhanced catalogue also publishes a `pilotSelection` provenance
+record: manifest version, ordered entry count and fingerprint. The fingerprint
+covers the ordered pilot ids and study groups and is included in the overall
+`contentVersion`. This makes selection drift fail closed through the same
+version checks already used by the assessment bank, pilot roster and exported
+study data. Archive `content/pilot-a1.json` together with the roster and
+assessment-bank export for an independently inspectable study record.
+
+
 This manifest is **arm-invariant**: both pilot arms use the same reserved
 held-out source for the delayed use measure. It does not generate replacement
 questions. If the reserved item is unavailable or has already been exposed, the
