@@ -194,12 +194,16 @@ export function evaluatePilotPreflight(
       const rosterErrors = validatePilotRoster(input.roster, input.seed);
       blockers.push(...rosterErrors.map((error) => `pilot-roster:${error}`));
 
-      rosterParticipants = input.roster.assignments.length;
-      enhancedRosterParticipants = input.roster.assignments.filter(
-        (assignment) => assignment.arm === "enhanced",
+      const assignments = Array.isArray(input.roster.assignments)
+        ? input.roster.assignments
+        : [];
+      rosterParticipants = assignments.length;
+      enhancedRosterParticipants = assignments.filter(
+        (assignment) => assignment?.arm === "enhanced",
       ).length;
-      comparisonRosterParticipants =
-        rosterParticipants - enhancedRosterParticipants;
+      comparisonRosterParticipants = assignments.filter(
+        (assignment) => assignment?.arm === "comparison",
+      ).length;
 
       if (
         rosterParticipants < LEARNING_PILOT_MIN_PARTICIPANTS ||
@@ -210,20 +214,21 @@ export function evaluatePilotPreflight(
         );
         nextActions.push("use-documented-learning-pilot-size");
       }
-      if (input.roster.protocol.contentVersion !== input.pilot.version) {
+
+      const protocol = input.roster.protocol;
+      if (protocol?.contentVersion !== input.pilot.version) {
         blockers.push("pilot-roster-content-version-mismatch");
         nextActions.push("regenerate-roster-for-current-content");
       }
       if (
-        input.roster.protocol.assessment.bankContentVersion !==
-        input.pilot.version
+        protocol?.assessment?.bankContentVersion !== input.pilot.version
       ) {
         blockers.push("pilot-roster-assessment-bank-version-mismatch");
         nextActions.push("regenerate-roster-for-current-content");
       }
-      if (input.roster.protocol.enhancedChannel !== "released") {
+      if (protocol?.enhancedChannel !== "released") {
         blockers.push(
-          `pilot-roster-enhanced-channel:${input.roster.protocol.enhancedChannel}`,
+          `pilot-roster-enhanced-channel:${protocol?.enhancedChannel ?? "(missing)"}`,
         );
         nextActions.push("use-released-enhanced-channel-for-learning-pilot");
       }
