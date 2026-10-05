@@ -27,16 +27,16 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Units 2–9 now each
+Unit 1 remains the fixed 20-entry calibration package. Units 2–10 now each
 have a 20-entry **mapped** sequence, while their status remains `planned`:
 mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Units 10–12
+content has passed bilingual/pronunciation review or is released. Units 11–12
 remain planned and unassigned.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-180, so CI prevents total mapped A1 coverage from silently falling below the
-current nine-unit baseline. It protects the count, not exact unit membership;
-the other 720 entries remain a visible curriculum backlog, not silently treated
+200, so CI prevents total mapped A1 coverage from silently falling below the
+current ten-unit baseline. It protects the count, not exact unit membership;
+the other 700 entries remain a visible curriculum backlog, not silently treated
 as complete.
 
 ### Unit 2 — Family and home
@@ -154,6 +154,21 @@ free time, then introduces listening/music and film before finishing with games
 and sport. Earlier family, travel, and study words are intentionally not
 duplicated; later leisure vocabulary such as parties, cinema, swimming, and
 weekend activities remains available for recycling and expansion.
+
+### Unit 10 — Weather and clothes
+
+The mapped sequence is:
+
+`weather`, `hot`, `cold`, `warm`, `cool`, `sun`,
+`rain`, `snow`, `colour`, `red`, `blue`, `coat`,
+`jacket`, `hat`, `skirt`, `trousers`, `wear`, `put`,
+`on`, `off`.
+
+The unit first builds a compact weather/temperature system, then adds colour and
+everyday clothing, and finishes with the core dressing sequence needed for
+phrases such as `put on` and `take off`. Existing `clothes`, `shirt`,
+`dress`, and `shoe` entries from Unit 5 are reused rather than duplicated.
+Additional colours and clothing items remain available for later recycling.
 
 ## First 20-entry calibration slice
 
