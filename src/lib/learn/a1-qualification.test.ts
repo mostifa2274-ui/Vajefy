@@ -240,6 +240,31 @@ test("machine-ready gate does not require human approvals", () => {
   }
 });
 
+
+test("all-unit machine-ready gate fails if any unit loses machine evidence", () => {
+  const root = fixture();
+  try {
+    const result = run(root, ["--require-ready"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /not machine-ready for human review/);
+    assert.match(result.stderr, /02-family-home/);
+    assert.match(result.stderr, /held-out-assessment:1/);
+    assert.match(result.stderr, /audio-assets:1/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("all-unit machine-ready gate passes without human approvals when every unit is ready", () => {
+  const root = fixture({ unit2Ready: true });
+  try {
+    const result = run(root, ["--require-ready"]);
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("release-qualified gate requires current version-matched approvals", () => {
   const missing = fixture();
   try {
