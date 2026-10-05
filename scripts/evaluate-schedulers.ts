@@ -214,6 +214,7 @@ if (studyProtocols.length) {
     `- Export schema: ${protocol.exportVersions.join(", ")} (current supported: ${STUDY_VERSION})`,
     `- Content / assessment-bank version: ${protocol.contentVersions.join(", ")}`,
     `- Delayed-assessment protocol: ${protocol.assessmentProtocols.join(", ")} (current: ${ASSESSMENT_PROTOCOL_ID})`,
+    `- Minimum delayed-assessment interval: ${protocol.assessmentMinimumDelayDays.length ? protocol.assessmentMinimumDelayDays.join(", ") + " days" : "legacy export did not declare it"}`,
     `- Deployment builds observed: ${protocol.builds.length ? protocol.builds.join(", ") : "legacy exports did not record build ids"}`,
     `- Arms: ${armCounts.enhanced} enhanced, ${armCounts.comparison} comparison`,
     "",
