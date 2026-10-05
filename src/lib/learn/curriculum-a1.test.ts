@@ -14,6 +14,7 @@ const CALIBRATION = Array.from(
 );
 const UNIT_TWO = ["lex:A1:unit-two-a", "lex:A1:unit-two-b"];
 const UNIT_THREE = ["lex:A1:unit-three-a", "lex:A1:unit-three-b"];
+const A2_VISITOR = "lex:A2:visitor";
 
 type Options = {
   unitTwoIds?: string[];
@@ -21,6 +22,7 @@ type Options = {
   prerequisites?: Record<string, string[]>;
   assignedMinimum?: number;
   coverageEntry?: boolean;
+  extraLevelEntry?: boolean;
 };
 
 function writeJson(root: string, relative: string, value: unknown): void {
@@ -127,6 +129,33 @@ function fixture(options: Options = {}): string {
                   { id: "teach-choice", type: "choice" },
                   { id: "teach-cloze", type: "cloze" },
                   { id: "held-out", type: "produce" },
+                ],
+              },
+            ],
+          },
+        ]
+      : []),
+    ...(options.extraLevelEntry
+      ? [
+          {
+            id: A2_VISITOR,
+            headword: "visitor",
+            version: "fixture-v1",
+            released: false,
+            review: null,
+            senses: [
+              {
+                id: A2_VISITOR,
+                pos: "noun",
+                gloss: "مهمان",
+                grammar: [
+                  { pattern: "a visitor", note: "الگوی سطح بالاتر" },
+                ],
+                examples: [],
+                check: [
+                  { id: "a2-choice", type: "choice" },
+                  { id: "a2-cloze", type: "cloze" },
+                  { id: "a2-produce", type: "produce" },
                 ],
               },
             ],
@@ -286,6 +315,25 @@ test("an unassigned co-target is not a later recycling candidate", () => {
       contrasts: [],
     });
     assert.ok(row.gaps.includes("no-later-recycling-candidate"));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("the A1 JSON matrix excludes enhanced senses from other levels", () => {
+  const root = fixture({ extraLevelEntry: true });
+  try {
+    const result = run(root, ["--json"]);
+    assert.equal(result.status, 0, result.stderr);
+    const report = JSON.parse(result.stdout);
+
+    assert.equal(report.summary.senses.total, CALIBRATION.length);
+    assert.equal(
+      report.senseCoverage.some(
+        (item: { entryId: string }) => item.entryId === A2_VISITOR,
+      ),
+      false,
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

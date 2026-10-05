@@ -203,7 +203,7 @@ function resourceRecyclesLater(
   });
 }
 
-const senseCoverage = pilot.entries.flatMap((entry) =>
+const senseCoverage = pilot.entries.filter((entry) => planned.has(entry.id)).flatMap((entry) =>
   entry.senses.map((sense) => {
     const introduction = introductions.get(entry.id) ?? null;
     const lessonChecks = sense.check.slice(0, -1).map(({ id, type }) => ({ id, type }));
