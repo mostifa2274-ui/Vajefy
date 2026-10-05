@@ -10,6 +10,8 @@ type Unit = {
   status: "calibration" | "planned" | "active" | "complete";
   objectiveEn: string;
   objectiveFa: string;
+  /** Final number of A1 entries this unit must contain when the curriculum is complete. */
+  targetEntries: number;
   entries: CurriculumEntry[];
 };
 type Curriculum = {
@@ -63,6 +65,18 @@ for (const [unitIndex, unit] of curriculum.units.entries()) {
   if (!unit.titleEn.trim() || !unit.titleFa.trim() || !unit.objectiveEn.trim() || !unit.objectiveFa.trim()) {
     failures.push(`${unit.id}: titles and objectives are required in both languages`);
   }
+  if (!Number.isInteger(unit.targetEntries) || unit.targetEntries <= 0) {
+    failures.push(`${unit.id}: targetEntries must be a positive integer`);
+  } else if (unit.entries.length > unit.targetEntries) {
+    failures.push(
+      `${unit.id}: has ${unit.entries.length} entries but targetEntries is ${unit.targetEntries}`,
+    );
+  }
+  if (unit.status === "complete" && unit.entries.length !== unit.targetEntries) {
+    failures.push(
+      `${unit.id}: status complete requires exactly ${unit.targetEntries} entries, found ${unit.entries.length}`,
+    );
+  }
 
   for (const [entryIndex, item] of unit.entries.entries()) {
     curriculumOrder += 1;
@@ -103,7 +117,34 @@ if (calibrationUnit) {
   if (JSON.stringify(unitEntries) !== JSON.stringify(calibrationIds)) {
     failures.push("calibration slice order must exactly match its unit entries");
   }
+  if (calibrationUnit.targetEntries !== calibrationIds.length) {
+    failures.push(
+      `calibration unit targetEntries must equal the fixed slice length ${calibrationIds.length}, found ${calibrationUnit.targetEntries}`,
+    );
+  }
 }
+
+const targetTotal = curriculum.units.reduce(
+  (sum, unit) =>
+    sum +
+    (Number.isInteger(unit.targetEntries) && unit.targetEntries > 0
+      ? unit.targetEntries
+      : 0),
+  0,
+);
+if (targetTotal !== plannedRows.length) {
+  failures.push(
+    `A1 unit targetEntries must sum to the canonical plan size ${plannedRows.length}, found ${targetTotal}`,
+  );
+}
+
+const unitTargets = curriculum.units.map((unit) => ({
+  id: unit.id,
+  status: unit.status,
+  target: unit.targetEntries,
+  assigned: unit.entries.length,
+  remaining: Math.max(0, unit.targetEntries - unit.entries.length),
+}));
 
 function audioComplete(entry: Pilot["entries"][number]): boolean {
   return entry.senses.every((sense) => {
@@ -298,6 +339,8 @@ const senseCoverage = pilot.entries.filter((entry) => planned.has(entry.id)).fla
 const assignedMinimum = curriculum.assignedMinimum ?? 0;
 const summary = {
   total: coverage.length,
+  targetTotal,
+  targetRemaining: unitTargets.reduce((sum, unit) => sum + unit.remaining, 0),
   assignedMinimum,
   assigned: coverage.filter((row) => row.unit).length,
   unassigned: coverage.filter((row) => !row.unit).length,
@@ -371,8 +414,22 @@ if (
   );
 }
 
-if (process.argv.includes("--complete") && summary.assigned !== summary.total) {
-  failures.push(`A1 curriculum is not complete: ${summary.unassigned} of ${summary.total} entries remain unassigned`);
+if (process.argv.includes("--complete")) {
+  if (summary.assigned !== summary.total) {
+    failures.push(
+      `A1 curriculum is not complete: ${summary.unassigned} of ${summary.total} entries remain unassigned`,
+    );
+  }
+  const incompleteUnits = unitTargets.filter(
+    (unit) => unit.assigned !== unit.target,
+  );
+  if (incompleteUnits.length) {
+    failures.push(
+      `A1 curriculum unit targets are not complete: ${incompleteUnits
+        .map((unit) => `${unit.id} ${unit.assigned}/${unit.target}`)
+        .join(", ")}`,
+    );
+  }
 }
 
 if (failures.length) {
@@ -393,13 +450,19 @@ if (process.argv.includes("--json")) {
       note: "This matrix reports repository evidence and explicit review state; it does not create human approval or learner-outcome evidence.",
     },
     units: curriculum.units,
+    unitTargets,
     calibration,
     coverage,
     senseCoverage,
   }, null, 2));
 } else {
   console.log(
-    `A1 curriculum OK: ${summary.assigned}/${summary.total} entries assigned (coverage ratchet ${summary.assignedMinimum}); ${summary.withContent} have enhanced content; ${summary.fullAudio} have complete audio; ${summary.heldOutReady} have >=3 checks per sense.`,
+    `A1 curriculum OK: ${summary.assigned}/${summary.total} entries assigned (coverage ratchet ${summary.assignedMinimum}; final unit targets ${summary.targetTotal}); ${summary.withContent} have enhanced content; ${summary.fullAudio} have complete audio; ${summary.heldOutReady} have >=3 checks per sense.`,
+  );
+  console.log(
+    `Unit targets: ${unitTargets
+      .map((unit) => `${unit.id} ${unit.assigned}/${unit.target}`)
+      .join("; ")}. ${summary.targetRemaining} target slot(s) remain.`,
   );
   console.log(
     `Calibration slice: ${summary.calibration.entries}/20 structurally ready; ${summary.calibration.fullAudio}/20 full audio; ${summary.calibration.flaggedAudio} entries still have clips flagged for human listening; ${summary.calibration.released}/20 released.`,
