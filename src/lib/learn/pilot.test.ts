@@ -80,6 +80,7 @@ test("every target is listed at once, and content loads only for the targets ask
   const server = serve();
   try {
     const listed = await loadPilot();
+    assert.deepEqual(listed.pilotSelection, pilot.pilotSelection);
     assert.deepEqual(server.fetched, ["/data/enhanced/index.json"]);
     const whole = indexPilot(pilot);
     assert.deepEqual(listed.targets.map((target) => target.sense.id), whole.targets.map((target) => target.sense.id));
