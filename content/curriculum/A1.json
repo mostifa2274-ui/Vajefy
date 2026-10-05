@@ -1373,7 +1373,127 @@
       "status": "planned",
       "objectiveEn": "Describe basic feelings, needs, body states, and simple health problems.",
       "objectiveFa": "احساسات، نیازها، وضعیت بدن و مشکل‌های سادهٔ سلامتی را بیان کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:health",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:healthy",
+          "prerequisites": [
+            "lex:A1:health"
+          ]
+        },
+        {
+          "id": "lex:A1:sick",
+          "prerequisites": [
+            "lex:A1:health"
+          ]
+        },
+        {
+          "id": "lex:A1:well",
+          "prerequisites": [
+            "lex:A1:health",
+            "lex:A1:sick"
+          ]
+        },
+        {
+          "id": "lex:A1:doctor",
+          "prerequisites": [
+            "lex:A1:health",
+            "lex:A1:sick"
+          ]
+        },
+        {
+          "id": "lex:A1:feel",
+          "prerequisites": [
+            "lex:A1:health"
+          ]
+        },
+        {
+          "id": "lex:A1:happy",
+          "prerequisites": [
+            "lex:A1:feel"
+          ]
+        },
+        {
+          "id": "lex:A1:sad",
+          "prerequisites": [
+            "lex:A1:feel",
+            "lex:A1:happy"
+          ]
+        },
+        {
+          "id": "lex:A1:angry",
+          "prerequisites": [
+            "lex:A1:feel"
+          ]
+        },
+        {
+          "id": "lex:A1:tired",
+          "prerequisites": [
+            "lex:A1:feel"
+          ]
+        },
+        {
+          "id": "lex:A1:afraid",
+          "prerequisites": [
+            "lex:A1:feel"
+          ]
+        },
+        {
+          "id": "lex:A1:body",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:head",
+          "prerequisites": [
+            "lex:A1:body"
+          ]
+        },
+        {
+          "id": "lex:A1:face",
+          "prerequisites": [
+            "lex:A1:head"
+          ]
+        },
+        {
+          "id": "lex:A1:eye",
+          "prerequisites": [
+            "lex:A1:face"
+          ]
+        },
+        {
+          "id": "lex:A1:ear",
+          "prerequisites": [
+            "lex:A1:head"
+          ]
+        },
+        {
+          "id": "lex:A1:mouth",
+          "prerequisites": [
+            "lex:A1:face"
+          ]
+        },
+        {
+          "id": "lex:A1:hand",
+          "prerequisites": [
+            "lex:A1:body"
+          ]
+        },
+        {
+          "id": "lex:A1:leg",
+          "prerequisites": [
+            "lex:A1:body"
+          ]
+        },
+        {
+          "id": "lex:A1:foot",
+          "prerequisites": [
+            "lex:A1:leg"
+          ]
+        }
+      ]
     },
     {
       "id": "12-help-everyday-problems",
@@ -1410,5 +1530,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 200
+  "assignedMinimum": 220
 }
