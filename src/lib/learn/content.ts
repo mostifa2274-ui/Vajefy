@@ -180,6 +180,16 @@ export const review = z.object({
 export type Review = z.infer<typeof review>;
 
 export type PilotSense = Sense & { entry: string; headword: string; version: string; audio?: SenseAudio };
+
+/** Version-bound identity of the fixed A1 pilot cohort. */
+export type PilotSelectionProvenance = {
+  version: number;
+  level: "A1";
+  entries: number;
+  /** Hash of the ordered participant-facing selection ids and groups. */
+  fingerprint: string;
+};
+
 export type SenseAudio = {
   gb?: { word?: string; examples: (string | null)[] };
   us?: { word?: string; examples: (string | null)[] };
@@ -192,6 +202,8 @@ export type SenseAudio = {
  */
 export type Pilot = {
   version: string;
+  /** The exact A1 pilot selection included in this overall content identity. */
+  pilotSelection: PilotSelectionProvenance;
   entries: (Entry & { version: string; order: number; released: boolean; review: Review | null })[];
   contrasts: Contrast[];
   scenes: Scene[];
@@ -213,6 +225,8 @@ export type ListedEntry = Pick<PilotEntry, "id" | "headword" | "goals" | "versio
  */
 export type PilotCatalogue = {
   version: string;
+  /** Mirrors the compiled pilot selection provenance for runtime/archive checks. */
+  pilotSelection: PilotSelectionProvenance;
   /** Part files under `public/data/`, named by their content. */
   parts: string[];
   entries: (ListedEntry & { part: number })[];
