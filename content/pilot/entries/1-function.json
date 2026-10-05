@@ -3140,6 +3140,17 @@
         "why": "No با جملهٔ مثبت تناقض دارد."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "نه، ممنون.",
+      "frame": "___, thanks.",
+      "answer": "No",
+      "accept": [
+       "no"
+      ],
+      "why": "برای رد مؤدبانهٔ پیشنهاد می‌توان گفت No, thanks."
      }
     ]
    },
@@ -3200,6 +3211,15 @@
       "answer": "no",
       "accept": [],
       "why": "no پیش از اسم با فعل مثبت."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "There are ___ buses at this time.",
+      "answer": "no",
+      "accept": [],
+      "fa": "در این ساعت هیچ اتوبوسی نیست.",
+      "why": "no + اسم با فعل مثبت یعنی «هیچ ... نیست»."
      }
     ]
    }
@@ -4886,6 +4906,15 @@
         "why": "talk بدون about مفعول نمی‌گیرد."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "دربارهٔ فیلم صحبت کردیم.",
+      "frame": "We talked ___ the film.",
+      "answer": "about",
+      "accept": [],
+      "why": "talk about + موضوع."
      }
     ]
    },
@@ -4946,6 +4975,17 @@
        "Around"
       ],
       "why": "تقریب پیش از عدد."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "The walk takes ___ twenty minutes.",
+      "answer": "about",
+      "accept": [
+       "around"
+      ],
+      "fa": "پیاده‌روی حدود بیست دقیقه طول می‌کشد.",
+      "why": "about پیش از عدد یا زمان یعنی «حدوداً»."
      }
     ]
    }
