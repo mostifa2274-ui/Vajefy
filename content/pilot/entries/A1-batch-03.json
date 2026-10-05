@@ -2538,6 +2538,15 @@
         "why": "eat a cold ترجمهٔ تحت‌اللفظی و غلط است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "من سرما خورده‌ام.",
+      "frame": "I have a ___.",
+      "answer": "cold",
+      "accept": [],
+      "why": "have a cold = سرماخورده بودن."
      }
     ]
    }
@@ -3074,6 +3083,15 @@
         "why": "ساختار فعل غلط است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "دیروز تمام روز باران بارید.",
+      "frame": "It ___ all day yesterday.",
+      "answer": "rained",
+      "accept": [],
+      "why": "برای گذشتهٔ rain از rained استفاده می‌کنیم و فاعل it لازم است."
      }
     ]
    }
@@ -5281,6 +5299,28 @@
         "why": "most و est با هم نمی‌آیند."
        }
       ]
+     },
+     {
+      "type": "choice",
+      "id": "h1",
+      "prompt": "Which phrase correctly means «جالب‌ترین کتاب»?",
+      "options": [
+       {
+        "text": "the most interesting book",
+        "ok": true,
+        "why": "برای صفت بلند interesting از the most استفاده می‌کنیم."
+       },
+       {
+        "text": "the interestingest book",
+        "ok": false,
+        "why": "interesting صفت بلند است و -est نمی‌گیرد."
+       },
+       {
+        "text": "the most interestingest book",
+        "ok": false,
+        "why": "most و -est با هم به کار نمی‌روند."
+       }
+      ]
      }
     ]
    }
@@ -7274,6 +7314,15 @@
         "why": "clear یعنی خالی یا مرتب کردن."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "هر شنبه پنجره‌ها را تمیز می‌کنیم.",
+      "frame": "We ___ the windows every Saturday.",
+      "answer": "clean",
+      "accept": [],
+      "why": "clean the windows = پنجره‌ها را تمیز کردن."
      }
     ]
    }
