@@ -4,6 +4,15 @@ import { evaluateLearner, type Learner, type LearnerResult, type ReviewLog } fro
 import { bootstrapDifference, bootstrapMean } from "../src/lib/learn/eval/metrics.ts";
 import type { Rating } from "../src/lib/learn/eval/models.ts";
 import { fasterForgetting, simulateLearner } from "../src/lib/learn/eval/simulate.ts";
+import {
+  ASSESSMENT_PROTOCOL_ID,
+  STUDY_VERSION,
+} from "../src/lib/learn/study.ts";
+import {
+  validateAssessmentEvidence,
+  validateStudyProtocols,
+  type StudyProtocolRecord,
+} from "../src/lib/learn/study-protocol.ts";
 
 /**
  * The pilot study's analysis (docs/EVALUATION.md):
@@ -23,7 +32,13 @@ type Event = {
   item?: string;
   grade?: string;
   undone?: boolean;
-  context?: { responseMs?: number; session?: string };
+  context?: {
+    responseMs?: number;
+    session?: string;
+    prompt?: string;
+    promptId?: string;
+    contentVersion?: string;
+  };
   assessment?: { part: "meaning" | "use"; correct?: boolean; missing?: true; delayDays: number };
 };
 
@@ -33,11 +48,23 @@ const option = (flag: string) => {
   const at = args.indexOf(flag);
   return at >= 0 ? args[at + 1] : undefined;
 };
-const inputs = args.filter((arg, index) => !arg.startsWith("--") && !args[index - 1]?.startsWith("--"));
+const VALUE_FLAGS = new Set(["--out", "--simulate"]);
+const inputs: string[] = [];
+for (let index = 0; index < args.length; index++) {
+  const arg = args[index]!;
+  if (VALUE_FLAGS.has(arg)) {
+    index += 1;
+    continue;
+  }
+  if (!arg.startsWith("--")) inputs.push(arg);
+}
+const allowMixedProtocols = args.includes("--allow-mixed-protocols");
 
 type Outcome = { arm: string; checked: number; usable: number; missing: number; activeHours: number };
 const learners: Learner[] = [];
 const outcomes = new Map<string, Outcome>();
+const studyProtocols: StudyProtocolRecord[] = [];
+const protocolErrors: string[] = [];
 
 function files(target: string): string[] {
   if (!fs.existsSync(target)) return [];
@@ -48,11 +75,56 @@ function files(target: string): string[] {
 for (const file of inputs.flatMap(files)) {
   const data = JSON.parse(fs.readFileSync(file, "utf8")) as Record<string, unknown>;
   if (data.kind === "vajefy-study") {
-    const events = data.events as Event[];
+    const events = Array.isArray(data.events) ? (data.events as Event[]) : [];
+    const participant = typeof data.participant === "string" ? data.participant : "";
+    const exportVersion =
+      typeof data.version === "number" ? data.version : Number.NaN;
+    const app =
+      data.app && typeof data.app === "object"
+        ? (data.app as Record<string, unknown>)
+        : {};
+    const protocol =
+      data.protocol && typeof data.protocol === "object"
+        ? (data.protocol as Record<string, unknown>)
+        : {};
+    const assessment =
+      protocol.assessment && typeof protocol.assessment === "object"
+        ? (protocol.assessment as Record<string, unknown>)
+        : {};
+    const contentVersion =
+      typeof app.contentVersion === "string" && app.contentVersion
+        ? app.contentVersion
+        : null;
+    const channel =
+      typeof app.channel === "string" && app.channel ? app.channel : null;
+    const build =
+      typeof app.build === "string" && app.build ? app.build : null;
+    studyProtocols.push({
+      source: file,
+      participant,
+      version: exportVersion,
+      contentVersion,
+      channel,
+      build,
+      assessmentProtocol:
+        typeof assessment.id === "string" ? assessment.id : null,
+      assessmentMinimumDelayDays:
+        typeof assessment.minimumDelayDays === "number"
+          ? assessment.minimumDelayDays
+          : null,
+      assessmentBankContentVersion:
+        typeof assessment.bankContentVersion === "string"
+          ? assessment.bankContentVersion
+          : null,
+    });
+    if (exportVersion >= 2) {
+      protocolErrors.push(...validateAssessmentEvidence(file, events));
+    }
+
     const reviews: ReviewLog[] = events
       .filter((event) => event.type === "review" && !event.undone && event.item && event.grade && RATING[event.grade])
       .map((event) => ({ card: event.item!, at: event.at, rating: RATING[event.grade!]! }));
-    const id = String(data.participant);
+    const id = participant;
     learners.push({ id, reviews });
     // A word is usable after 30 days only when both required parts were
     // actually observed. Missing held-out evidence is reported, never scored
@@ -71,7 +143,7 @@ for (const file of inputs.flatMap(files)) {
     const results = [...parts.values()];
     const complete = results.filter((item) => item.meaning !== undefined && item.use !== undefined);
     const activeMs = events.reduce((sum, event) => sum + (event.context?.responseMs ?? 0), 0);
-    const arm = (data.app as { channel?: string } | undefined)?.channel === "none" ? "comparison (current flow)" : "enhanced";
+    const arm = channel === "none" ? "comparison (current flow)" : "enhanced";
     outcomes.set(id, {
       arm,
       checked: complete.length,
@@ -90,6 +162,21 @@ for (const file of inputs.flatMap(files)) {
   }
 }
 
+const protocolValidation = validateStudyProtocols(
+  studyProtocols,
+  allowMixedProtocols,
+);
+protocolErrors.push(...protocolValidation.errors);
+if (protocolErrors.length) {
+  console.error(
+    [
+      "Study protocol validation failed:",
+      ...protocolErrors.map((error) => `- ${error}`),
+    ].join("\n"),
+  );
+  process.exit(1);
+}
+
 const simulated = Number(option("--simulate") ?? 0);
 for (let index = 0; index < simulated; index++) {
   learners.push(
@@ -104,7 +191,9 @@ for (let index = 0; index < simulated; index++) {
 }
 
 if (!learners.length) {
-  console.error("Usage: npm run evaluate -- <study files or folders> [--out report.md] | --simulate <n>");
+  console.error(
+    "Usage: npm run evaluate -- <study files or folders> [--out report.md] [--allow-mixed-protocols] | --simulate <n>",
+  );
   process.exit(1);
 }
 
@@ -113,6 +202,31 @@ const fixed = (value: number | null | undefined, digits = 3) => (value == null |
 const lines: string[] = [];
 lines.push(`# Scheduler and learning evaluation`, "");
 if (simulated) lines.push(`**${simulated} of ${learners.length} learners are simulated**, to check the method; they are not evidence about real learners.`, "");
+if (studyProtocols.length) {
+  const protocol = protocolValidation.summary;
+  const armCounts = {
+    enhanced: studyProtocols.filter((item) => item.channel !== "none").length,
+    comparison: studyProtocols.filter((item) => item.channel === "none").length,
+  };
+  lines.push(
+    "## Study protocol integrity",
+    "",
+    `- Export schema: ${protocol.exportVersions.join(", ")} (current supported: ${STUDY_VERSION})`,
+    `- Content / assessment-bank version: ${protocol.contentVersions.join(", ")}`,
+    `- Delayed-assessment protocol: ${protocol.assessmentProtocols.join(", ")} (current: ${ASSESSMENT_PROTOCOL_ID})`,
+    `- Minimum delayed-assessment interval: ${protocol.assessmentMinimumDelayDays.length ? protocol.assessmentMinimumDelayDays.join(", ") + " days" : "legacy export did not declare it"}`,
+    `- Deployment builds observed: ${protocol.builds.length ? protocol.builds.join(", ") : "legacy exports did not record build ids"}`,
+    `- Arms: ${armCounts.enhanced} enhanced, ${armCounts.comparison} comparison`,
+    "",
+  );
+  if (protocolValidation.warnings.length) {
+    lines.push(
+      "**Exploratory mixed-protocol analysis:**",
+      ...protocolValidation.warnings.map((warning) => `- ${warning}`),
+      "",
+    );
+  }
+}
 lines.push(
   "Models are judged only on reviews after each learner's 70% time cut-off, at least a calendar day after the card's previous review. Personalised FSRS-6 is fitted on the reviews before the cut-off. Lower log loss and calibration error (RMSE) are better; AUC above 0.5 means recalled reviews were predicted higher. Reviews a day is a projection for the next 30 days at 90% retention if every review succeeds.",
   "",

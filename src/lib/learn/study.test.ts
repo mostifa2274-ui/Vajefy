@@ -2,7 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { StoredEvent } from "./ops";
 import type { SessionRecord } from "./session";
-import { buildStudyExport, studyFileName, validParticipant } from "./study";
+import {
+  ASSESSMENT_MIN_DELAY_DAYS,
+  ASSESSMENT_PROTOCOL_ID,
+  STUDY_VERSION,
+  buildStudyExport,
+  studyFileName,
+  validParticipant,
+} from "./study";
 
 const T0 = Date.UTC(2026, 9, 3, 9);
 const profile = { lang: "fa", focus: "A1", goal: "work", minutes: 10, requestRetention: 0.9, accent: "en-GB", sessionSize: 20, newPerDay: 5 };
@@ -21,12 +28,33 @@ const lesson = {
 } as unknown as SessionRecord;
 
 function build(includeWriting: boolean) {
-  return buildStudyExport({ participant: " P-017 ", includeWriting, events, sessions: [lesson], profile, contentVersion: "abc", channel: "draft", now: new Date(T0) });
+  return buildStudyExport({
+    participant: " P-017 ",
+    includeWriting,
+    events,
+    sessions: [lesson],
+    profile,
+    contentVersion: "abc",
+    channel: "draft",
+    build: "deadbeef1234",
+    now: new Date(T0),
+  });
 }
 
 test("a study export holds evidence only, in time order, under the participant code", () => {
   const data = build(false);
   assert.equal(data.participant, "P-017");
+  assert.equal(data.version, STUDY_VERSION);
+  assert.deepEqual(data.app, {
+    contentVersion: "abc",
+    channel: "draft",
+    build: "deadbeef1234",
+  });
+  assert.deepEqual(data.protocol.assessment, {
+    id: ASSESSMENT_PROTOCOL_ID,
+    minimumDelayDays: ASSESSMENT_MIN_DELAY_DAYS,
+    bankContentVersion: "abc",
+  });
   assert.deepEqual(data.events.map((event) => event.id), ["a", "b", "d", "e"], "settings changes are left out");
   assert.equal(data.events.at(-1)!.target, "a", "an undo names the answer it reverted");
   assert.deepEqual(data.profile, profile);
