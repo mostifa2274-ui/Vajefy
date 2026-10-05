@@ -488,7 +488,7 @@ test("the A1 JSON matrix excludes enhanced senses from other levels", () => {
   }
 });
 
-test("the repository Wave 2 manifest keeps balanced per-unit coverage", () => {
+test("the repository Wave 3 manifest fills every A1 unit target", () => {
   const curriculum = JSON.parse(
     readFileSync(path.join(ROOT, "content", "curriculum", "A1.json"), "utf8"),
   ) as {
@@ -496,17 +496,33 @@ test("the repository Wave 2 manifest keeps balanced per-unit coverage", () => {
     units: { id: string; entries: unknown[]; targetEntries: number }[];
   };
 
-  assert.equal(curriculum.assignedMinimum, 680);
+  assert.equal(curriculum.assignedMinimum, 900);
   assert.equal(curriculum.units[0]?.entries.length, 20);
   assert.equal(curriculum.units[0]?.targetEntries, 20);
   for (const unit of curriculum.units.slice(1)) {
     assert.equal(
       unit.entries.length,
-      60,
-      `${unit.id} should remain at the Wave 2 floor of 60 entries`,
+      80,
+      `${unit.id} should fill its final 80-entry target`,
     );
     assert.equal(unit.targetEntries, 80);
   }
+
+  const complete = spawnSync(
+    process.execPath,
+    [
+      "--experimental-strip-types",
+      "--no-warnings",
+      "--import",
+      REGISTER,
+      SCRIPT,
+      "--complete",
+    ],
+    { cwd: ROOT, encoding: "utf8" },
+  );
+  assert.equal(complete.status, 0, complete.stderr);
+  assert.match(complete.stdout, /900\/900 entries assigned/);
+  assert.match(complete.stdout, /target slot\(s\) remain/);
 });
 
 test("a later A1 unit may depend on entries from an earlier unit", () => {
