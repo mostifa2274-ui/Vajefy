@@ -125,6 +125,7 @@ npm run content:review-queue
 npm run content:review-queue -- --scope pilot
 npm run content:review-queue -- --scope all-a1 --json
 npm run content:review-queue -- --unit 08-work-study
+npm run content:review-queue -- --unit 08-work-study --packet
 ```
 
 The default scope is the fixed 20-entry calibration slice. `pilot` is the
@@ -138,6 +139,23 @@ is `missing`, `current` or `stale`, the current bilingual and pronunciation
 states, exact audio completeness, flagged clips that need listening, release
 state and the next evidence action. A stale record remains visible but is never
 treated as approval for the current version.
+
+For an actual reviewer, add `--packet` to produce a self-contained Markdown
+review packet for the selected calibration/pilot/unit scope. The packet includes
+the exact approval token, every current sense and Persian meaning, grammar,
+examples, collocations, mistake guidance, GB/US IPA, exact current word/example
+audio asset paths, listener flags, and the last authored check reserved as the
+held-out candidate. `--limit` can be combined with `--packet` to create a
+smaller review batch. For example:
+
+```sh
+npm run content:review-queue -- --unit 08-work-study --packet --limit 10 > unit-08-review.md
+```
+
+The packet is still read-only. It is evidence for a human reviewer, not a
+decision form: generating or saving it does not approve content, clear an audio
+flag, or change `review.json`. The decision commands printed inside the packet
+must only be run after a person has reviewed that exact `entry@version`.
 
 The queue is deliberately read-only. Complete audio means the required current
 files exist; it is not pronunciation approval. Likewise an automatic audio flag
