@@ -38,6 +38,28 @@ twelve-unit seed baseline. It protects the count, not exact unit membership;
 the other 660 entries remain a visible curriculum expansion backlog, not
 silently treated as complete.
 
+### Final A1 unit targets
+
+The seed map is not the finished curriculum. Each unit now declares a
+`targetEntries` value that defines its final structural capacity:
+
+- Unit 1 (the fixed calibration unit): 20 entries.
+- Units 2–12: 80 entries each.
+
+Those targets sum exactly to the canonical 900-entry A1 plan
+(`20 + 11 × 80 = 900`). CI rejects missing/invalid targets, targets whose sum
+does not equal the A1 plan, a unit that grows beyond its target, or a unit marked
+`complete` before it has filled its target. `npm run curriculum:complete`
+still fails until all 900 entries are actually assigned; a target is capacity,
+not evidence that its slots are already curated.
+
+The current 240-entry seed therefore leaves 660 target slots. The intended
+expansion is three balanced waves of 220 entries: add 20 entries to each of
+Units 2–12 per wave, moving coverage from 240 → 460 → 680 → 900. Individual
+entry placement and prerequisites still require editorial curriculum judgment;
+the target contract only prevents the remaining catalogue from becoming an
+unstructured catch-all.
+
 ### Unit 2 — Family and home
 
 The mapped sequence is:
