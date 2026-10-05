@@ -27,16 +27,16 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Units 2–4 now each
+Unit 1 remains the fixed 20-entry calibration package. Units 2–5 now each
 have a 20-entry **mapped** sequence, while their status remains `planned`:
 mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Units 5–12
+content has passed bilingual/pronunciation review or is released. Units 6–12
 remain planned and unassigned.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-80, so CI prevents total mapped A1 coverage from silently falling below the
-current four-unit baseline. It protects the count, not exact unit membership;
-the other 820 entries remain a visible curriculum backlog, not silently treated
+100, so CI prevents total mapped A1 coverage from silently falling below the
+current five-unit baseline. It protects the count, not exact unit membership;
+the other 800 entries remain a visible curriculum backlog, not silently treated
 as complete.
 
 ### Unit 2 — Family and home
@@ -79,6 +79,21 @@ food/drink actions and requests, adds common staples and meal words, and ends
 with hunger/thirst plus restaurant language. Broader food nouns and more
 count/mass grammar remain available for later recycling instead of crowding the
 first Food & Drink unit.
+
+### Unit 5 — Shopping and money
+
+The mapped sequence is:
+
+`money`, `buy`, `sell`, `need`, `shop`, `shopping`,
+`market`, `supermarket`, `price`, `cost`, `cheap`,
+`expensive`, `pay`, `card`, `clothes`, `shirt`,
+`shoe`, `dress`, `one`, `open`.
+
+The unit prioritizes transactional language over catalog breadth: asking for
+things, buying and selling, understanding price/cost, paying, locating common
+shops, and handling a small clothing-shopping scenario. More numbers, colours,
+sizes, and quantity language remain available for later recycling rather than
+being forced into the first shopping unit.
 
 ## First 20-entry calibration slice
 
