@@ -699,7 +699,131 @@
       "status": "planned",
       "objectiveEn": "Identify common places and ask for or follow simple directions.",
       "objectiveFa": "مکان‌های رایج را بشناس و مسیر ساده را بپرس یا دنبال کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:place",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:here",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:there",
+          "prerequisites": [
+            "lex:A1:here"
+          ]
+        },
+        {
+          "id": "lex:A1:road",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:street",
+          "prerequisites": [
+            "lex:A1:road"
+          ]
+        },
+        {
+          "id": "lex:A1:address",
+          "prerequisites": [
+            "lex:A1:street"
+          ]
+        },
+        {
+          "id": "lex:A1:building",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:hotel",
+          "prerequisites": [
+            "lex:A1:building"
+          ]
+        },
+        {
+          "id": "lex:A1:hospital",
+          "prerequisites": [
+            "lex:A1:building"
+          ]
+        },
+        {
+          "id": "lex:A1:park",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:centre",
+          "prerequisites": [
+            "lex:A1:city",
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:way",
+          "prerequisites": [
+            "lex:A1:where",
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:map",
+          "prerequisites": [
+            "lex:A1:way"
+          ]
+        },
+        {
+          "id": "lex:A1:near",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:far",
+          "prerequisites": [
+            "lex:A1:near"
+          ]
+        },
+        {
+          "id": "lex:A1:between",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:opposite",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:left",
+          "prerequisites": [
+            "lex:A1:map"
+          ]
+        },
+        {
+          "id": "lex:A1:right",
+          "prerequisites": [
+            "lex:A1:left",
+            "lex:A1:map"
+          ]
+        },
+        {
+          "id": "lex:A1:turn",
+          "prerequisites": [
+            "lex:A1:left",
+            "lex:A1:right",
+            "lex:A1:way"
+          ]
+        }
+      ]
     },
     {
       "id": "07-travel-transport",
@@ -781,5 +905,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 100
+  "assignedMinimum": 120
 }
