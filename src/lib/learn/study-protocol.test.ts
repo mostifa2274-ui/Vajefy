@@ -24,6 +24,7 @@ function record(
     channel,
     build: "abcdef123456",
     assessmentProtocol: ASSESSMENT_PROTOCOL_ID,
+    assessmentMinimumDelayDays: ASSESSMENT_MIN_DELAY_DAYS,
     assessmentBankContentVersion: "content-v1",
     ...overrides,
   };
@@ -80,6 +81,7 @@ test("duplicate participant codes and malformed v2 metadata fail", () => {
     record("P-001", "none", {
       build: null,
       assessmentProtocol: "other",
+      assessmentMinimumDelayDays: 12,
       assessmentBankContentVersion: "wrong",
     }),
   ]);
@@ -87,6 +89,7 @@ test("duplicate participant codes and malformed v2 metadata fail", () => {
   assert.match(errors, /duplicate participant P-001/);
   assert.match(errors, /missing app\.build/);
   assert.match(errors, new RegExp(ASSESSMENT_PROTOCOL_ID));
+  assert.match(errors, /minimum delay must be 30 days/);
   assert.match(errors, /assessment-bank version must match/);
 });
 
