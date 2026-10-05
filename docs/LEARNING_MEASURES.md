@@ -56,7 +56,9 @@ the lesson's other words so that no retrieval follows straight after its
 teaching card:
 
 1. **Teach:** the sense, its Persian meaning, examples, grammar and a common
-   mistake, with recorded audio.
+   mistake, with recorded audio. The model plays as the card appears, unless
+   the learner turned autoplay off on this device; it can be replayed and
+   slowed.
 2. **Written retrieval:** type the English word from its Persian meaning, with
    its part of speech and shape (first letter and one gap per letter) as a
    constrained cue. Every written form of the headword counts ("a" or "an").

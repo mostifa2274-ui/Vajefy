@@ -332,6 +332,23 @@ function Skip({ copy, onNext, code }: { copy: Copy; onNext: () => void; code: st
   );
 }
 
+/** Whether the teaching card stays silent until asked: a per-device choice. */
+const MUTE_KEY = "vajefy-lesson-muted";
+function readMuted(): boolean {
+  try {
+    return window.localStorage.getItem(MUTE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+function saveMuted(muted: boolean) {
+  try {
+    window.localStorage.setItem(MUTE_KEY, muted ? "1" : "0");
+  } catch {
+    // Storage can be blocked; the choice then lasts for this page only.
+  }
+}
+
 function Teach({
   target,
   index,
@@ -353,6 +370,15 @@ function Teach({
   // a background render, so the press that starts a lesson answers quickly
   // instead of waiting for the whole card's text to be laid out.
   const full = useDeferredValue(target, null) === target;
+  // The model plays once as the card appears, after the learner's own press,
+  // unless they turned that off; the button replays it. Its own key keeps a
+  // blocked autoplay from showing as a failed button press.
+  const [muted, setMuted] = useState(readMuted);
+  useEffect(() => {
+    if (!muted && clips.word) void play({ key: `autoplay|${clips.word}`, text: entry.headword, clip: clips.word });
+    // Once per card: muting later stops nothing that already played.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <article className="panel p-4 sm:p-6" aria-busy={!full}>
       <p className="text-sm text-muted">
@@ -366,8 +392,20 @@ function Teach({
         <h2 lang="en" dir="ltr" className="lex-word text-5xl text-balance">{entry.headword}</h2>
         <p lang="en" dir="ltr" className="mt-2 text-muted">{pronunciationFor(sense, accent)}</p>
         {sense.pronunciation.note ? <p lang="fa" dir="rtl" className="mt-1 text-xs text-pretty text-muted">{sense.pronunciation.note}</p> : null}
-        <div className="mt-3 flex justify-center">
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
           <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow item={sense.id} />
+          <button
+            type="button"
+            aria-pressed={!muted}
+            aria-label={copy.autoPlay}
+            onClick={() => {
+              saveMuted(!muted);
+              setMuted(!muted);
+            }}
+            className="min-h-11 rounded-md px-3 text-sm text-accent"
+          >
+            {copy.autoPlay}: {muted ? copy.autoPlayOff : copy.autoPlayOn}
+          </button>
         </div>
       </div>
       {full ? (
