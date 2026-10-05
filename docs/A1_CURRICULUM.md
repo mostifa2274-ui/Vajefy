@@ -397,6 +397,7 @@ release qualification:
 
 ```sh
 npm run content:qualification
+npm run content:qualification:ready
 npm run content:qualification -- --unit 01-introductions
 npm run content:qualification -- --unit 01-introductions --require-ready
 npm run content:qualification -- --unit 01-introductions --require-qualified
@@ -414,9 +415,16 @@ as an approval or rejection. The report also distinguishes qualification from
 the compiled `released` state, because a newly approved unit can still require
 a content rebuild before the released channel catches up.
 
-Normal CI runs this report in `--check` mode only. The stricter
-`--require-ready` and `--require-qualified` modes are deliberate editor or
-release gates and are never satisfied by inference.
+All 12 A1 units are now machine-ready for human review: every unit target is
+filled, current enhanced content exists for all 900 entries, every current
+sense has enough authored checks to reserve one held-out item, and all current
+GB/US word/example audio assets exist. Normal CI therefore runs both the
+read-only `--check` report and the all-course `--require-ready` gate so this
+machine-evidence baseline cannot silently regress.
+
+`--require-qualified` remains a deliberate human-review/release gate. It is
+not part of normal CI because it requires explicit, version-matched bilingual
+and pronunciation approvals and must never be satisfied by inference.
 
 ## Stage 3 exit
 
