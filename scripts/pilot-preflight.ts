@@ -36,20 +36,6 @@ function readJson<T>(file: string): T {
   }
 }
 
-const npm = process.platform === "win32" ? "npm.cmd" : "npm";
-const validation = spawnSync(npm, ["run", "--silent", "validate:data"], {
-  cwd: ROOT,
-  encoding: "utf8",
-});
-if (validation.error) {
-  fail(`could not run machine validation: ${validation.error.message}`);
-}
-if (validation.status !== 0) {
-  if (validation.stdout.trim()) console.error(validation.stdout.trim());
-  if (validation.stderr.trim()) console.error(validation.stderr.trim());
-  fail("pilot preflight stopped because validate:data failed");
-}
-
 const phaseRaw = option("--phase");
 if (phaseRaw !== "usability" && phaseRaw !== "learning") {
   fail(
@@ -64,6 +50,20 @@ if (phase === "usability" && rosterPath) {
 }
 if (seed && !rosterPath) {
   fail("--seed requires --roster");
+}
+
+const npm = process.platform === "win32" ? "npm.cmd" : "npm";
+const validation = spawnSync(npm, ["run", "--silent", "validate:data"], {
+  cwd: ROOT,
+  encoding: "utf8",
+});
+if (validation.error) {
+  fail(`could not run machine validation: ${validation.error.message}`);
+}
+if (validation.status !== 0) {
+  if (validation.stdout.trim()) console.error(validation.stdout.trim());
+  if (validation.stderr.trim()) console.error(validation.stderr.trim());
+  fail("pilot preflight stopped because validate:data failed");
 }
 
 const pilot = readJson<Pilot>(COMPILED);
