@@ -87,24 +87,52 @@ or evidence that the assessment has been administered to a learner.
 
 1. **Usability sessions.** Five to eight observed sessions with Persian-speaking
    learners: onboarding, a first lesson, a review, the Words page. Note where
-   help was needed. The release target is that at least 90% of pilot users
-   complete their first session without assistance.
+   help was needed. Draft enhanced content is allowed here because the question
+   is whether people can use the product, not whether the teaching treatment is
+   effective. Before a session, run the machine/evidence preflight:
+
+   ```sh
+   npm run study:preflight -- --phase usability
+   ```
+
+   The release target is that at least 90% of pilot users complete their first
+   session without assistance.
 2. **Learning pilot.** 20–40 learners for at least 30 days, assigned to two
-   arms with the same daily time setting. Before enrollment, create opaque
-   participant codes (no names/contact details in the file), put one code per
-   line in `participants.txt`, and freeze the allocation:
+   arms with the same daily time setting. This phase measures learning and is
+   stricter: the full 150-target pilot selection must have current bilingual
+   and pronunciation approval and must be rebuilt into the `released`
+   enhanced channel before enrollment.
+
+   Create opaque participant codes (no names/contact details in the file), put
+   one code per line in `participants.txt`, and freeze the allocation against
+   the current released content:
 
    ```sh
    npm run study:roster -- \
      --participants participants.txt \
      --seed "<private random seed>" \
-     --enhanced-channel draft \
+     --enhanced-channel released \
      --minutes 15 \
      --out pilot-roster.json
+
+   # Fail closed unless content, approvals, release state and roster provenance
+   # all match the learning-pilot protocol.
+   npm run study:preflight -- \
+     --phase learning \
+     --roster pilot-roster.json \
+     --seed "<private random seed>"
 
    # Later, prove that the archived seed regenerates the same assignment identity.
    npm run study:roster -- --check pilot-roster.json --seed "<private random seed>"
    ```
+
+   The preflight command runs the normal data/readiness gates first. For
+   usability it requires machine-ready content and exact pilot-selection
+   provenance. For a learning pilot it additionally requires all 150 selected
+   entries to have current human bilingual + pronunciation approval, all 150 to
+   be released, a valid 20–40 participant roster, the current content and
+   assessment-bank version, and `enhancedChannel=released`. It is read-only:
+   it never creates review decisions or learner-effectiveness evidence.
 
    The manifest stores only a memory-hard scrypt fingerprint of the seed, never
    the raw seed. Use a high-entropy random seed and archive it separately from
@@ -114,7 +142,7 @@ or evidence that the assessment has been administered to a learner.
 
    | Arm | Build | What learners get |
    |---|---|---|
-   | Enhanced | `VITE_CONTENT_CHANNEL=draft` (or `released` once reviewed) | Guided lessons for the pilot words |
+   | Enhanced | `VITE_CONTENT_CHANNEL=released` | Human-reviewed guided lessons for the frozen pilot words |
    | Comparison | `VITE_CONTENT_CHANNEL=none` | The current flow: the same pilot words, introduced in Review, in the same order, with the original cards |
 
    The roster freezes the enhanced channel, content/assessment-bank version,
