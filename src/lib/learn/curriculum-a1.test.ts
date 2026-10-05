@@ -300,10 +300,7 @@ test("a later A1 unit may depend on entries from an earlier unit", () => {
   try {
     const result = run(root);
     assert.equal(result.status, 0, result.stderr);
-    assert.match(
-      result.stdout,
-      /22\/24 entries assigned \(coverage ratchet 22\)/,
-    );
+    assert.match(result.stdout, /22\/24 entries assigned \(coverage ratchet 22\)/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
