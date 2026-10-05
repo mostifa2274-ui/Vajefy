@@ -3239,6 +3239,15 @@
         "why": "on حرکت رو به بالا را نشان نمی‌دهد."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "از پله‌ها بالا برو.",
+      "frame": "Go ___ the stairs.",
+      "answer": "up",
+      "accept": [],
+      "why": "go up the stairs = از پله‌ها بالا رفتن."
      }
     ]
    }
@@ -3412,6 +3421,15 @@
         "why": "of به‌تنهایی معنای حرکت ندارد."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "از ماشین پیاده شو.",
+      "frame": "Get ___ the car.",
+      "answer": "out of",
+      "accept": [],
+      "why": "get out of + vehicle = از وسیله بیرون آمدن."
      }
     ]
    }
@@ -9104,6 +9122,17 @@
         "why": "up به‌تنهایی معنای «بیش از» ندارد."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "بیش از صد نفر اینجا کار می‌کنند.",
+      "frame": "___ one hundred people work here.",
+      "answer": "over",
+      "accept": [
+       "more than"
+      ],
+      "why": "over + number = بیش ازِ یک عدد."
      }
     ]
    }
