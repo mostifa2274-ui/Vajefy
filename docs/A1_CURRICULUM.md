@@ -27,16 +27,16 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Units 2–10 now each
+Unit 1 remains the fixed 20-entry calibration package. Units 2–11 now each
 have a 20-entry **mapped** sequence, while their status remains `planned`:
 mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Units 11–12
-remain planned and unassigned.
+content has passed bilingual/pronunciation review or is released. Unit 12
+remains planned and unassigned.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-200, so CI prevents total mapped A1 coverage from silently falling below the
-current ten-unit baseline. It protects the count, not exact unit membership;
-the other 700 entries remain a visible curriculum backlog, not silently treated
+220, so CI prevents total mapped A1 coverage from silently falling below the
+current eleven-unit baseline. It protects the count, not exact unit membership;
+the other 680 entries remain a visible curriculum backlog, not silently treated
 as complete.
 
 ### Unit 2 — Family and home
@@ -169,6 +169,22 @@ everyday clothing, and finishes with the core dressing sequence needed for
 phrases such as `put on` and `take off`. Existing `clothes`, `shirt`,
 `dress`, and `shoe` entries from Unit 5 are reused rather than duplicated.
 Additional colours and clothing items remain available for later recycling.
+
+### Unit 11 — Health and feelings
+
+The mapped sequence is:
+
+`health`, `healthy`, `sick`, `well`, `doctor`, `feel`,
+`happy`, `sad`, `angry`, `tired`, `afraid`, `body`,
+`head`, `face`, `eye`, `ear`, `mouth`, `hand`,
+`leg`, `foot`.
+
+The unit starts with basic health states and a small set of high-frequency
+feelings, then anchors the body-part vocabulary most useful for simple health
+descriptions. Earlier `hospital` and `sleep` entries are reused from prior
+units rather than duplicated. Broader problem-solving language such as
+`help`, `sorry`, and everyday repair/request language is intentionally
+reserved for Unit 12.
 
 ## First 20-entry calibration slice
 
