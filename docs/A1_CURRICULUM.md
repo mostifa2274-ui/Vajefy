@@ -27,16 +27,16 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Units 2–7 now each
+Unit 1 remains the fixed 20-entry calibration package. Units 2–8 now each
 have a 20-entry **mapped** sequence, while their status remains `planned`:
 mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Units 8–12
+content has passed bilingual/pronunciation review or is released. Units 9–12
 remain planned and unassigned.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-140, so CI prevents total mapped A1 coverage from silently falling below the
-current seven-unit baseline. It protects the count, not exact unit membership;
-the other 760 entries remain a visible curriculum backlog, not silently treated
+160, so CI prevents total mapped A1 coverage from silently falling below the
+current eight-unit baseline. It protects the count, not exact unit membership;
+the other 740 entries remain a visible curriculum backlog, not silently treated
 as complete.
 
 ### Unit 2 — Family and home
@@ -124,6 +124,21 @@ station/stop concepts needed for public transport, followed by common transport
 modes and their basic action verbs. Local direction words remain in Unit 6, and
 social-purpose travel such as `visit` is left for later units so this unit
 stays focused on getting from one place to another.
+
+### Unit 8 — Work and study
+
+The mapped sequence is:
+
+`work`, `job`, `office`, `company`, `study`, `student`,
+`teacher`, `class`, `lesson`, `course`, `learn`, `book`,
+`read`, `write`, `computer`, `email`, `question`, `answer`,
+`test`, `homework`.
+
+This unit deliberately balances workplace and study language. It starts with
+basic work contexts, then builds a school/class sequence, adds core learning
+actions and materials, and finishes with retrieval/assessment language. Earlier
+`school`, `start`, `finish`, and `time` entries are reused as
+prerequisites rather than duplicated here.
 
 ## First 20-entry calibration slice
 

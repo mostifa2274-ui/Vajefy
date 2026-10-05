@@ -18,6 +18,7 @@ const UNIT_FOUR = ["lex:A1:unit-four-a", "lex:A1:unit-four-b"];
 const UNIT_FIVE = ["lex:A1:unit-five-a", "lex:A1:unit-five-b"];
 const UNIT_SIX = ["lex:A1:unit-six-a", "lex:A1:unit-six-b"];
 const UNIT_SEVEN = ["lex:A1:unit-seven-a", "lex:A1:unit-seven-b"];
+const UNIT_EIGHT = ["lex:A1:unit-eight-a", "lex:A1:unit-eight-b"];
 const A2_VISITOR = "lex:A2:visitor";
 
 type Options = {
@@ -27,6 +28,7 @@ type Options = {
   unitFiveIds?: string[];
   unitSixIds?: string[];
   unitSevenIds?: string[];
+  unitEightIds?: string[];
   prerequisites?: Record<string, string[]>;
   assignedMinimum?: number;
   coverageEntry?: boolean;
@@ -47,7 +49,8 @@ function fixture(options: Options = {}): string {
   const unitFiveIds = options.unitFiveIds ?? [];
   const unitSixIds = options.unitSixIds ?? [];
   const unitSevenIds = options.unitSevenIds ?? [];
-  const plannedIds = [...CALIBRATION, ...UNIT_TWO, ...UNIT_THREE, ...UNIT_FOUR, ...UNIT_FIVE, ...UNIT_SIX, ...UNIT_SEVEN];
+  const unitEightIds = options.unitEightIds ?? [];
+  const plannedIds = [...CALIBRATION, ...UNIT_TWO, ...UNIT_THREE, ...UNIT_FOUR, ...UNIT_FIVE, ...UNIT_SIX, ...UNIT_SEVEN, ...UNIT_EIGHT];
 
   writeJson(root, "content/plans/A1.json", {
     level: "A1",
@@ -144,6 +147,18 @@ function fixture(options: Options = {}): string {
         objectiveEn: "Add a seventh ordered curriculum unit.",
         objectiveFa: "هفتمین واحد مرتب برنامهٔ درسی را اضافه کن.",
         entries: unitSevenIds.map((id) => ({
+          id,
+          prerequisites: options.prerequisites?.[id] ?? [],
+        })),
+      },
+      {
+        id: "08-work-study",
+        titleEn: "Work and study",
+        titleFa: "کار و تحصیل",
+        status: "planned",
+        objectiveEn: "Add an eighth ordered curriculum unit.",
+        objectiveFa: "هشتمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        entries: unitEightIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
         })),
@@ -410,7 +425,7 @@ test("a later A1 unit may depend on entries from an earlier unit", () => {
   try {
     const result = run(root);
     assert.equal(result.status, 0, result.stderr);
-    assert.match(result.stdout, /22\/32 entries assigned \(coverage ratchet 22\)/);
+    assert.match(result.stdout, /22\/34 entries assigned \(coverage ratchet 22\)/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
@@ -430,7 +445,7 @@ test("a third A1 unit may depend on earlier units and earlier entries in itself"
     assert.equal(result.status, 0, result.stderr);
     assert.match(
       result.stdout,
-      /24\/32 entries assigned \(coverage ratchet 24\)/,
+      /24\/34 entries assigned \(coverage ratchet 24\)/,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -468,7 +483,7 @@ test("a fourth A1 unit may depend on earlier units and earlier entries in itself
     assert.equal(result.status, 0, result.stderr);
     assert.match(
       result.stdout,
-      /26\/32 entries assigned \(coverage ratchet 26\)/,
+      /26\/34 entries assigned \(coverage ratchet 26\)/,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -508,7 +523,7 @@ test("a fifth A1 unit may depend on earlier units and earlier entries in itself"
     assert.equal(result.status, 0, result.stderr);
     assert.match(
       result.stdout,
-      /28\/32 entries assigned \(coverage ratchet 28\)/,
+      /28\/34 entries assigned \(coverage ratchet 28\)/,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -550,7 +565,7 @@ test("a sixth A1 unit may depend on earlier units and earlier entries in itself"
     assert.equal(result.status, 0, result.stderr);
     assert.match(
       result.stdout,
-      /30\/32 entries assigned \(coverage ratchet 30\)/,
+      /30\/34 entries assigned \(coverage ratchet 30\)/,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -594,7 +609,7 @@ test("a seventh A1 unit may depend on earlier units and earlier entries in itsel
     assert.equal(result.status, 0, result.stderr);
     assert.match(
       result.stdout,
-      /32\/32 entries assigned \(coverage ratchet 32\)/,
+      /32\/34 entries assigned \(coverage ratchet 32\)/,
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -610,6 +625,53 @@ test("a seventh-unit prerequisite cannot point forward inside that unit", () => 
     unitSevenIds: UNIT_SEVEN,
     prerequisites: {
       [UNIT_SEVEN[0]]: [UNIT_SEVEN[1]],
+    },
+  });
+  try {
+    const result = run(root);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /must appear earlier in the curriculum/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("an eighth A1 unit may depend on earlier units and earlier entries in itself", () => {
+  const root = fixture({
+    unitThreeIds: UNIT_THREE,
+    unitFourIds: UNIT_FOUR,
+    unitFiveIds: UNIT_FIVE,
+    unitSixIds: UNIT_SIX,
+    unitSevenIds: UNIT_SEVEN,
+    unitEightIds: UNIT_EIGHT,
+    assignedMinimum: 34,
+    prerequisites: {
+      [UNIT_EIGHT[0]]: [CALIBRATION[0], UNIT_SEVEN[0]],
+      [UNIT_EIGHT[1]]: [UNIT_EIGHT[0], UNIT_FIVE[0]],
+    },
+  });
+  try {
+    const result = run(root);
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(
+      result.stdout,
+      /34\/34 entries assigned \(coverage ratchet 34\)/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("an eighth-unit prerequisite cannot point forward inside that unit", () => {
+  const root = fixture({
+    unitThreeIds: UNIT_THREE,
+    unitFourIds: UNIT_FOUR,
+    unitFiveIds: UNIT_FIVE,
+    unitSixIds: UNIT_SIX,
+    unitSevenIds: UNIT_SEVEN,
+    unitEightIds: UNIT_EIGHT,
+    prerequisites: {
+      [UNIT_EIGHT[0]]: [UNIT_EIGHT[1]],
     },
   });
   try {
