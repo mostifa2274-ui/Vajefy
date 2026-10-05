@@ -27,15 +27,17 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Wave 2 is now mapped. Unit 1 remains the fixed 20-entry calibration package,
-while Units 2–12 each contain 60 assigned entries and remain `planned`.
-Mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released.
+Wave 3 is now mapped. Unit 1 remains the fixed 20-entry calibration package,
+while Units 2–12 each contain their full 80 assigned entries and remain
+`planned`. The structural curriculum therefore covers all 900 canonical A1
+entries. Mapping establishes curriculum order and prerequisites but does not
+mean the content has passed bilingual/pronunciation review, learner validation,
+or release review.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-680, so CI prevents total mapped A1 coverage from silently falling below the
-completed second expansion wave. The final 220 entries remain a visible
-curriculum expansion backlog, not silently treated as complete.
+900, so CI prevents any mapped A1 entry from silently falling out of the
+curriculum. There is no unassigned structural backlog; the remaining work is
+quality qualification of the mapped entries, not catalogue assignment.
 
 ### Final A1 unit targets
 
@@ -52,18 +54,20 @@ does not equal the A1 plan, a unit that grows beyond its target, or a unit marke
 still fails until all 900 entries are actually assigned; a target is capacity,
 not evidence that its slots are already curated.
 
-The initial 240-entry seed has now completed two balanced expansion waves:
-each of Units 2–12 has gained 40 curated entries, moving coverage to 680/900 and
-leaving one final balanced +220 wave to reach 900. Individual entry placement
-and prerequisites still require editorial curriculum judgment; the target
-contract only prevents the remaining catalogue from becoming an unstructured
-catch-all.
+The initial 240-entry seed has now completed all three balanced expansion waves.
+Each of Units 2–12 gained 60 additional entries across Waves 1–3, moving
+coverage from 240 to 460, then 680, and finally 900/900. Wave 3 assigns the
+remaining long-tail A1 vocabulary by its most plausible practice context; some
+general discourse/support words therefore serve a unit pedagogically without
+claiming a narrow semantic-domain identity.
 
-These milestones are now machine-enforced as **balanced per-unit floors**, not
-just total counts: 240 requires 20 entries in every unit, 460 requires 40 in
-Units 2–12, 680 requires 60, and 900 requires all 80 target entries. This keeps
-a future edit from preserving the total ratchet by overfilling one unit while
-silently shrinking another.
+These milestones are machine-enforced as **balanced per-unit floors**, not just
+total counts: 240 requires 20 entries in every unit, 460 requires 40 in Units
+2–12, 680 requires 60, and 900 requires all 80 target entries. The repository
+regression also runs `curriculum:complete`, which now passes structurally.
+That result means every canonical A1 entry has a unit and every unit target is
+filled; it does **not** create human bilingual/pronunciation approval or mark
+the units released.
 
 ### Unit 2 — Family and home
 
