@@ -61,6 +61,8 @@ type ReviewRow = {
   id: string;
   headword: string;
   version: string;
+  /** Exact provenance token required for approved/changes decisions. */
+  approvalToken: string;
   released: boolean;
   curriculumUnit: string | null;
   ledgerState: LedgerState;
@@ -267,6 +269,7 @@ const allRows: ReviewRow[] = selectedIds.map((id, index) => {
     id,
     headword: entry.headword,
     version: entry.version,
+    approvalToken: `${id}@${entry.version}`,
     released: entry.released,
     curriculumUnit: unitByEntry.get(id) ?? null,
     ledgerState,
@@ -309,7 +312,7 @@ const queue: Queue = {
   },
   evidenceBoundary: {
     reviewAuthority:
-      "Only explicit version-matched records in content/pilot/review.json are approvals. This queue never creates or infers a review decision.",
+      "Only explicit version-matched records in content/pilot/review.json are approvals. This queue never creates or infers a review decision. Use each row's approvalToken when recording approved/changes decisions.",
     audioMeaning:
       "Complete audio means current files exist for every word and teaching example in both accents; it is not pronunciation approval.",
     flagMeaning:
@@ -374,4 +377,7 @@ console.log(
 );
 console.log(
   "Evidence boundary: this report is read-only. Only explicit version-matched human decisions in review.json can approve or release content.",
+);
+console.log(
+  "For approved/changes decisions, pass the exact entry@version token shown by this queue and --reviewer; changes also require --notes.",
 );
