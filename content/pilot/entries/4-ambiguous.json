@@ -1114,6 +1114,15 @@
       "answer": "close",
       "accept": [],
       "why": "رابطهٔ نزدیک."
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "هتل خیلی نزدیک ایستگاه است.",
+      "frame": "The hotel is very ___ to the station.",
+      "answer": "close",
+      "accept": [],
+      "why": "close to + place = نزدیکِ یک مکان."
      }
     ]
    }
@@ -1489,6 +1498,15 @@
       "answer": "right",
       "accept": [],
       "why": "on the right."
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "بعد از بانک به راست بپیچ.",
+      "frame": "Turn ___ after the bank.",
+      "answer": "right",
+      "accept": [],
+      "why": "turn right = به راست پیچیدن."
      }
     ]
    },
@@ -1545,6 +1563,15 @@
       "answer": "right",
       "accept": [],
       "why": "تأکید بر زمان."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "I'll send the email ___ away.",
+      "answer": "right",
+      "accept": [],
+      "fa": "همین حالا / فوراً ایمیل را می‌فرستم.",
+      "why": "right away = فوراً."
      }
     ]
    }

@@ -1560,6 +1560,15 @@
         "why": "from فقط مبدأ است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "از پله‌ها پایین برو.",
+      "frame": "Walk ___ the stairs.",
+      "answer": "down",
+      "accept": [],
+      "why": "walk down the stairs = از پله‌ها پایین رفتن."
      }
     ]
    }
@@ -6195,6 +6204,15 @@
         "why": "این ساختار غلط است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "لطفاً ماشین را نزدیک هتل پارک کن.",
+      "frame": "Please ___ the car near the hotel.",
+      "answer": "park",
+      "accept": [],
+      "why": "park + car = ماشین را پارک کردن."
      }
     ]
    }
@@ -6849,6 +6867,17 @@
         "why": "این ساختار غلط است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "حدود پنجاه دلار هزینه دارد.",
+      "frame": "It costs ___ fifty dollars.",
+      "answer": "around",
+      "accept": [
+       "about"
+      ],
+      "why": "around + number = حدودِ یک مقدار."
      }
     ]
    }
