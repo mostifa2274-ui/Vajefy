@@ -43,6 +43,37 @@ denominator rather than treated as a learner error. The result appears at the
 end and on Progress. Check-up answers are assessments only: they never change a
 due date, skill evidence, counts or XP, and a wrong answer gets no retry.
 
+### Version-bound assessment bank
+
+Researchers can inspect or freeze the exact held-out **use** bank without
+running a learner session:
+
+```sh
+npm run content:assessment-bank
+npm run content:assessment-bank -- --scope pilot --json > pilot-assessment-bank.json
+npm run content:assessment-bank -- --unit 08-work-study --json
+npm run content:assessment-bank -- --scope all-a1 --check
+```
+
+For every selected A1 sense, the bank records the entry and content version,
+curriculum unit, the teaching-check ids, the final authored check reserved from
+normal teaching/practice, and a version-bound assessment token of the form
+`entry@version/sense/check`. The JSON includes the full held-out item so a
+research protocol can archive exactly what was intended to be administered.
+
+The bank follows curriculum order for all-A1 and unit scopes, the original
+pilot selection for `pilot`, and the fixed calibration order for
+`calibration`. The all-A1 `--check` gate is part of normal
+`validate:data`; CI therefore fails if curriculum membership drifts or any
+current A1 sense loses a reservable third authored check.
+
+This manifest is **arm-invariant**: both pilot arms use the same reserved
+held-out source for the delayed use measure. It does not generate replacement
+questions. If the reserved item is unavailable or has already been exposed, the
+app records the use part as missing, exactly as described above. Exporting the
+bank is read-only and is not bilingual/pronunciation approval, release evidence,
+or evidence that the assessment has been administered to a learner.
+
 ## The pilot study
 
 1. **Usability sessions.** Five to eight observed sessions with Persian-speaking
