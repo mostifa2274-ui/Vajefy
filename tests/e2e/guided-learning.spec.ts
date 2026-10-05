@@ -223,6 +223,19 @@ test("the 30-day check-up measures retention without touching the schedule, and 
   const assessments = events.filter((event) => event.type === "assessment");
   expect(assessments).toHaveLength(8);
   expect(assessments.every((event) => event.assessment.delayDays === 35)).toBe(true);
+  const useAssessments = assessments.filter(
+    (event) => event.assessment.part === "use" && !event.assessment.missing,
+  );
+  expect(useAssessments).toHaveLength(4);
+  expect(
+    useAssessments.every(
+      (event) =>
+        typeof event.context?.contentVersion === "string" &&
+        event.context.contentVersion.length > 0 &&
+        typeof event.context?.promptId === "string" &&
+        event.context.promptId.startsWith(`${event.item}/`),
+    ),
+  ).toBe(true);
   // The seeded history was copied in as review events; the check-up adds none.
   expect(events.filter((event) => (event.type === "review" || event.type === "practice") && event.at >= started)).toHaveLength(0);
   expect(state.cards).toEqual(before);
@@ -239,7 +252,17 @@ test("the 30-day check-up measures retention without touching the schedule, and 
   expect(file.suggestedFilename()).toMatch(/^vajefy-study-P-017-\d{4}-\d{2}-\d{2}\.json$/);
   const data = JSON.parse(await readFile((await file.path())!, "utf8"));
   expect(data.kind).toBe("vajefy-study");
+  expect(data.version).toBe(2);
   expect(data.participant).toBe("P-017");
+  expect(data.app.contentVersion).toEqual(expect.any(String));
+  expect(data.app.contentVersion.length).toBeGreaterThan(0);
+  expect(data.app.channel).toBe("draft");
+  expect(data.app.build).toEqual(expect.any(String));
+  expect(data.protocol.assessment).toEqual({
+    id: "held-out-last-authored-v1",
+    minimumDelayDays: 30,
+    bankContentVersion: data.app.contentVersion,
+  });
   expect(data.events.filter((event: { type: string }) => event.type === "assessment")).toHaveLength(8);
   expect(data.sessions.find((session: { mode?: string }) => session.mode === "checkup").answers.every((answer: object) => !("given" in answer))).toBe(true);
 });
