@@ -288,7 +288,133 @@
       "status": "planned",
       "objectiveEn": "Describe a simple day, times, frequency, and common routine actions.",
       "objectiveFa": "یک روز ساده، زمان‌ها، تکرار و کارهای معمول روزانه را بیان کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:time",
+          "prerequisites": [
+            "lex:A1:what",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:day",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:morning",
+          "prerequisites": [
+            "lex:A1:day",
+            "lex:A1:in"
+          ]
+        },
+        {
+          "id": "lex:A1:afternoon",
+          "prerequisites": [
+            "lex:A1:day",
+            "lex:A1:in"
+          ]
+        },
+        {
+          "id": "lex:A1:evening",
+          "prerequisites": [
+            "lex:A1:day",
+            "lex:A1:in"
+          ]
+        },
+        {
+          "id": "lex:A1:night",
+          "prerequisites": [
+            "lex:A1:day"
+          ]
+        },
+        {
+          "id": "lex:A1:today",
+          "prerequisites": [
+            "lex:A1:day",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:every",
+          "prerequisites": [
+            "lex:A1:day"
+          ]
+        },
+        {
+          "id": "lex:A1:always",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:usually",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:sometimes",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:never",
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:before",
+          "prerequisites": [
+            "lex:A1:time"
+          ]
+        },
+        {
+          "id": "lex:A1:after",
+          "prerequisites": [
+            "lex:A1:time"
+          ]
+        },
+        {
+          "id": "lex:A1:start",
+          "prerequisites": [
+            "lex:A1:time"
+          ]
+        },
+        {
+          "id": "lex:A1:finish",
+          "prerequisites": [
+            "lex:A1:start"
+          ]
+        },
+        {
+          "id": "lex:A1:early",
+          "prerequisites": [
+            "lex:A1:time",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:late",
+          "prerequisites": [
+            "lex:A1:time",
+            "lex:A1:be"
+          ]
+        },
+        {
+          "id": "lex:A1:wake",
+          "prerequisites": [
+            "lex:A1:morning"
+          ]
+        },
+        {
+          "id": "lex:A1:sleep",
+          "prerequisites": [
+            "lex:A1:night"
+          ]
+        }
+      ]
     },
     {
       "id": "04-food-drink",
@@ -397,5 +523,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 40
+  "assignedMinimum": 60
 }
