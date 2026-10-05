@@ -172,13 +172,14 @@ sense. Each row links the sense to:
   contextual/later practice or an unrecorded human review.
 
 Scenes and contrasts have no curriculum schedule, so a candidate does not claim
-that the resource is actually delivered later. Grammar patterns are exposed as
-authored teaching evidence; the tool does not infer that a learner has mastered
-them. Likewise, a complete audio file set is not a pronunciation approval, a
-scene link is not proof that recycling was effective, and a structurally
-reserved check is not learner-outcome evidence. The report carries these
-boundaries in `evidenceBoundary` and copies only explicit review state from the
-compiled content.
+that the resource is actually delivered later. The manifest and review records
+are entry-scoped, so every sense row inherits its entry's introduction position
+and review object; the matrix does not create sense-specific approval. Grammar
+patterns are exposed as authored teaching evidence, not inferred mastery.
+Likewise, a complete audio file set is not a pronunciation approval, a scene
+link is not proof that recycling was effective, and a structurally reserved
+check is not learner-outcome evidence. The report carries these boundaries in
+`evidenceBoundary` and copies only explicit review state from compiled content.
 
 The status command summarizes sense evidence for the currently introduced
 curriculum while the JSON form retains all unassigned senses and their gaps.

@@ -388,6 +388,8 @@ if (process.argv.includes("--json")) {
       humanApprovalInferred: false,
       learnerEffectivenessInferred: false,
       resourceTimingInferred: false,
+      senseIntroductionBasis: "entry",
+      reviewScope: "entry",
       note: "This matrix reports repository evidence and explicit review state; it does not create human approval or learner-outcome evidence.",
     },
     units: curriculum.units,

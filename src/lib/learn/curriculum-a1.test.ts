@@ -261,6 +261,8 @@ test("the JSON matrix links each sense to evidence without inventing approval", 
     );
     assert.equal(report.evidenceBoundary.humanApprovalInferred, false);
     assert.equal(report.evidenceBoundary.resourceTimingInferred, false);
+    assert.equal(report.evidenceBoundary.senseIntroductionBasis, "entry");
+    assert.equal(report.evidenceBoundary.reviewScope, "entry");
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
