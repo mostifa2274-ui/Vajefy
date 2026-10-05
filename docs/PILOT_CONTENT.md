@@ -141,20 +141,29 @@ calibration and pilot queues in `--check` mode so their source membership
 cannot silently drift.
 
 A reviewer then reads the entry in the app (Words → the entry) or in its source
-file, listens to its clips in both accents, and records the outcome:
+file, listens to its clips in both accents, and records the outcome using the
+exact `entry@version` token printed by the queue:
 
 ```sh
-npm run content:approve -- --entry lex:A1:bring --bilingual approved --reviewer "Name"
-npm run content:approve -- --entry lex:A1:bring --pronunciation approved --reviewer "Name"
-npm run content:approve -- --entry lex:A1:close --pronunciation changes --notes "adjective clip says /kləʊz/"
+npm run content:approve -- --entry lex:A1:bring@<VERSION> --bilingual approved --reviewer "Name"
+npm run content:approve -- --entry lex:A1:bring@<VERSION> --pronunciation approved --reviewer "Name"
+npm run content:approve -- --entry lex:A1:close@<VERSION> --pronunciation changes --reviewer "Name" --notes "adjective clip says /kləʊz/"
 ```
 
-`--entry` may repeat. Statuses are `pending`, `approved` and `changes`. The script
-records the current content version, the reviewer and the date in `review.json`;
-then run `npm run content:build` to release approved entries. After the content
-changes, the old record stays in the ledger but no longer releases the entry, and
-the next review of the new version starts both statuses again from `pending`. Git
-history keeps every earlier record.
+`--entry` may repeat. Statuses are `pending`, `approved` and `changes`.
+An `approved` or `changes` decision requires both the exact current
+`entry@version` token and an explicit reviewer name; `changes` also requires
+notes explaining what must be corrected. The command preflights every target
+before writing the ledger, so a stale token cannot partially approve a batch.
+Bare entry IDs remain available only for setting/resetting a status to
+`pending`.
+
+The script records the reviewed content version, reviewer and date in
+`review.json`; then run `npm run content:build` to release entries whose
+current bilingual and pronunciation decisions are both approved. After content
+changes, the old record stays in the ledger but no longer releases the entry,
+and the next review of the new version starts both statuses again from
+`pending`. Git history keeps every earlier record.
 
 What reviewers check:
 
