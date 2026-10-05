@@ -457,7 +457,7 @@ if (process.argv.includes("--json")) {
   }, null, 2));
 } else {
   console.log(
-    `A1 curriculum OK: ${summary.assigned}/${summary.total} entries assigned (coverage ratchet ${summary.assignedMinimum}; final unit targets ${summary.targetTotal}); ${summary.withContent} have enhanced content; ${summary.fullAudio} have complete audio; ${summary.heldOutReady} have >=3 checks per sense.`,
+    `A1 curriculum OK: ${summary.assigned}/${summary.total} entries assigned (coverage ratchet ${summary.assignedMinimum}); final unit targets ${summary.targetTotal}; ${summary.withContent} have enhanced content; ${summary.fullAudio} have complete audio; ${summary.heldOutReady} have >=3 checks per sense.`,
   );
   console.log(
     `Unit targets: ${unitTargets
