@@ -147,6 +147,21 @@ queue must exactly match the canonical A1 plan while following curriculum
 order, so catalogue, curriculum and editorial membership cannot silently
 drift apart.
 
+For unit-level release decisions, pair the queue with the qualification report:
+
+```sh
+npm run content:qualification
+npm run content:qualification -- --unit 08-work-study
+npm run content:qualification -- --unit 08-work-study --require-ready
+npm run content:qualification -- --unit 08-work-study --require-qualified
+```
+
+`--require-ready` checks only machine evidence: filled unit target, current
+enhanced content, a reservable held-out check for every sense and complete
+current GB/US audio. `--require-qualified` additionally requires explicit
+current bilingual and pronunciation approvals for every entry. Neither mode
+creates a decision, clears an audio flag or proves learner effectiveness.
+
 A reviewer then reads the entry in the app (Words → the entry) or in its source
 file, listens to its clips in both accents, and records the outcome using the
 exact `entry@version` token printed by the queue:
