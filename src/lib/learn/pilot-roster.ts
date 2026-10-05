@@ -9,9 +9,17 @@ import {
   STUDY_CHANNELS,
   type StudyChannel,
 } from "./study-protocol";
+import { planFor } from "./planner";
 
 export const PILOT_ROSTER_KIND = "vajefy-pilot-roster";
-export const PILOT_ROSTER_VERSION = 1;
+/** Version 2 freezes the study's word set: the curriculum units both arms meet. */
+export const PILOT_ROSTER_VERSION = 2;
+/**
+ * The learning period the study's word set must last at the full daily
+ * allowance of new words, so neither arm runs past the reviewed, assessed
+ * words before the delayed check-up.
+ */
+export const STUDY_LEARNING_DAYS = 30;
 
 export type PilotArm = "enhanced" | "comparison";
 
@@ -31,6 +39,12 @@ export type PilotRoster = {
     enhancedChannel: Exclude<StudyChannel, "none">;
     comparisonChannel: "none";
     dailyMinutes: number;
+    /**
+     * The words the study measures (content/study-a1.json): its curriculum
+     * units, their entry count and the daily allowance of new words at the
+     * frozen daily time.
+     */
+    study: { units: string[]; entries: number; newWordsPerDay: number };
     assessment: {
       id: typeof ASSESSMENT_PROTOCOL_ID;
       minimumDelayDays: typeof ASSESSMENT_MIN_DELAY_DAYS;
@@ -89,12 +103,36 @@ function normalizedParticipants(participants: string[]): string[] {
   return participants.map((participant) => participant.trim()).filter(Boolean);
 }
 
+/** Problems with a study word set for the given daily time; empty when it fits. */
+function studyErrors(study: { units: unknown; entries: unknown; newWordsPerDay: unknown }, dailyMinutes: number): string[] {
+  const errors: string[] = [];
+  if (!Array.isArray(study.units) || !study.units.length || study.units.some((unit) => typeof unit !== "string" || !unit)) {
+    errors.push("study units must be a non-empty list of curriculum unit ids");
+  }
+  if (!Number.isInteger(study.entries) || (study.entries as number) < 1) {
+    errors.push("study entry count must be a positive integer");
+  }
+  const allowance = planFor(dailyMinutes).newPerDay;
+  if (study.newWordsPerDay !== allowance) {
+    errors.push(`study new words per day must be ${allowance}, the allowance at ${dailyMinutes} minutes a day`);
+  }
+  const needed = STUDY_LEARNING_DAYS * allowance;
+  if (Number.isInteger(study.entries) && (study.entries as number) < needed) {
+    errors.push(
+      `the study's ${String(study.entries)} words would run out before ${STUDY_LEARNING_DAYS} days at ${allowance} new words a day (${needed} needed): add curriculum units to content/study-a1.json or choose fewer daily minutes`,
+    );
+  }
+  return errors;
+}
+
 export function createPilotRoster(input: {
   participants: string[];
   seed: string;
   contentVersion: string;
   enhancedChannel: Exclude<StudyChannel, "none">;
   dailyMinutes: number;
+  /** The study's units and their entries, with whether each is released. */
+  study: { units: string[]; entries: { id: string; released: boolean }[] };
 }): PilotRoster {
   const participants = normalizedParticipants(input.participants);
   const errors: string[] = [];
@@ -109,6 +147,23 @@ export function createPilotRoster(input: {
   }
   if (participants.length < 2) {
     errors.push("at least two participant codes are required");
+  }
+  const study = {
+    units: [...input.study.units],
+    entries: input.study.entries.length,
+    newWordsPerDay: planFor(input.dailyMinutes).newPerDay,
+  };
+  if (Number.isInteger(input.dailyMinutes)) errors.push(...studyErrors(study, input.dailyMinutes));
+  // A released build introduces only reviewed entries, while the comparison
+  // arm meets every study word: the arms would learn different words.
+  const unreleased = input.study.entries.filter((entry) => !entry.released);
+  if (input.enhancedChannel === "released" && unreleased.length) {
+    errors.push(
+      `the released channel needs every study word released; ${unreleased.length} are not (first: ${unreleased
+        .slice(0, 3)
+        .map((entry) => entry.id)
+        .join(", ")})`,
+    );
   }
 
   const seen = new Set<string>();
@@ -155,6 +210,7 @@ export function createPilotRoster(input: {
       enhancedChannel: input.enhancedChannel,
       comparisonChannel: "none",
       dailyMinutes: input.dailyMinutes,
+      study,
       assessment: {
         id: ASSESSMENT_PROTOCOL_ID,
         minimumDelayDays: ASSESSMENT_MIN_DELAY_DAYS,
@@ -210,6 +266,11 @@ export function validatePilotRoster(
     protocol.dailyMinutes > 240
   ) {
     errors.push("roster daily minutes must be an integer from 1 to 240");
+  }
+  if (!protocol.study || typeof protocol.study !== "object") {
+    errors.push("roster study word set is missing");
+  } else if (Number.isInteger(protocol.dailyMinutes)) {
+    errors.push(...studyErrors(protocol.study, protocol.dailyMinutes).map((error) => `roster ${error}`));
   }
   if (protocol.assessment?.id !== ASSESSMENT_PROTOCOL_ID) {
     errors.push(

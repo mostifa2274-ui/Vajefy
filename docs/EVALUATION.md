@@ -50,7 +50,7 @@ running a learner session:
 
 ```sh
 npm run content:assessment-bank
-npm run content:assessment-bank -- --scope pilot --json > pilot-assessment-bank.json
+npm run content:assessment-bank -- --scope study --json > study-assessment-bank.json
 npm run content:assessment-bank -- --unit 08-work-study --json
 npm run content:assessment-bank -- --scope all-a1 --check
 ```
@@ -61,8 +61,8 @@ normal teaching/practice, and a version-bound assessment token of the form
 `entry@version/sense/check`. The JSON includes the full held-out item so a
 research protocol can archive exactly what was intended to be administered.
 
-The bank follows curriculum order for all-A1 and unit scopes, the original
-pilot selection for `pilot`, and the fixed calibration order for
+The bank follows curriculum order for the `study`, all-A1 and unit scopes, the
+original 150-entry selection for `pilot`, and the fixed calibration order for
 `calibration`. The all-A1 `--check` gate is part of normal
 `validate:data`; CI therefore fails if curriculum membership drifts or any
 current A1 sense loses a reservable third authored check.
@@ -75,6 +75,38 @@ bank is read-only and is not bilingual/pronunciation approval, release evidence,
 or evidence that the assessment has been administered to a learner.
 
 ## The pilot study
+
+### The study's words
+
+The study measures the **opening units of the A1 course**, listed in
+`content/study-a1.json`: Units 1–3 (Introductions, Family and home, Daily
+routine), 180 entries in curriculum order. Lessons follow the curriculum
+([A1_CURRICULUM.md](A1_CURRICULUM.md#course-order)), so every learner in either
+arm meets these words first, in this order, and every task uses only words
+already taught. The units must open the curriculum; the build and the review,
+assessment and roster tools reject any other set.
+
+The set is sized to last the learning period. At the frozen daily time a
+learner meets at most the planner's allowance of new words a day (3 at 5
+minutes, 5 at 10, 8 at 15 or more), so 30 days need at most 90, 150 or 240
+words. Units 1–3 cover 5 and 10 minutes a day; a 15-minute protocol needs Unit 4
+added to the study file. The roster tool refuses a protocol whose words would
+run out before 30 days.
+
+The compiled content version covers the course order, the curriculum units
+and prerequisites, and the study's word set, so a frozen roster, assessment
+bank or export can never silently refer to a different course. The original
+150-entry selection (`content/pilot-a1.json`) remains the first authoring batch
+and a review scope (`--scope pilot`); it no longer defines the study.
+
+The study's review gate is this word set:
+
+```sh
+npm run content:review-queue -- --scope study
+npm run content:review-queue -- --scope study --packet
+```
+
+### Procedure
 
 1. **Usability sessions.** Five to eight observed sessions with Persian-speaking
    learners: onboarding, a first lesson, a review, the Words page. Note where
@@ -90,7 +122,7 @@ or evidence that the assessment has been administered to a learner.
      --participants participants.txt \
      --seed "<private random seed>" \
      --enhanced-channel draft \
-     --minutes 15 \
+     --minutes 10 \
      --out pilot-roster.json
 
    # Later, prove that the archived seed regenerates the same assignment identity.
@@ -105,14 +137,19 @@ or evidence that the assessment has been administered to a learner.
 
    | Arm | Build | What learners get |
    |---|---|---|
-   | Enhanced | `VITE_CONTENT_CHANNEL=draft` (or `released` once reviewed) | Guided lessons for the pilot words |
-   | Comparison | `VITE_CONTENT_CHANNEL=none` | The current flow: the same pilot words, introduced in Review, in the same order, with the original cards |
+   | Enhanced | `VITE_CONTENT_CHANNEL=draft` (or `released` once reviewed) | Guided lessons for the study's words, in curriculum order |
+   | Comparison | `VITE_CONTENT_CHANNEL=none` | The current flow: the same words, introduced in Review, in the same order, with the original cards |
 
-   The roster freezes the enhanced channel, content/assessment-bank version,
-   delayed-assessment protocol, and daily minutes. Both arms use the same
-   scheduler and the same check-up. Vocabulary is comparable because both meet
-   the 150 pilot words. Compare on the first sense of each word, which both arms
-   learn. The enhanced arm also learns further senses (`#` ids).
+   The roster (version 2) freezes the enhanced channel, content/assessment-bank
+   version, delayed-assessment protocol, daily minutes and the study's word set:
+   its units, entry count and the daily allowance of new words. Creating it
+   fails when the words would run out within 30 days at that allowance, or when
+   the enhanced channel is `released` while any study word is unreleased (the
+   released build would skip words the comparison arm still meets). Both arms
+   use the same scheduler and the same check-up. Vocabulary is comparable
+   because both meet the study's words in the same order. Compare on the first
+   sense of each word, which both arms learn. The enhanced arm also learns a
+   word's further senses (`#` ids), one unit after its first.
 3. **Follow-up.** After 30 days, each learner completes the check-up, then
    exports their data: Progress → **Take part in the study**, with the
    participant code the researchers issued. Written answers are included only

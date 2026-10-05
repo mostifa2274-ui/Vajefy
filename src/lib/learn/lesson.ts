@@ -1,6 +1,7 @@
 import type { CheckItem, Contrast, Scene, Sense } from "./content";
 import type { PilotIndex, PilotTarget } from "./pilot";
 import { newId } from "./session";
+import { readyToIntroduce } from "./targets";
 import { bestSpelling, shuffle } from "./text";
 import type { AssessmentPart } from "./ops";
 import type { Grade, PracticeSkill } from "./types";
@@ -555,9 +556,15 @@ export function lessonSize(minutes: number, due: number, sessionSize: number): n
   return base;
 }
 
-/** Targets the learner has not met yet, in introduction order. */
+/**
+ * Targets the learner has not met yet, in introduction order. A further sense
+ * waits until its word's first sense has been met, so a lesson never teaches
+ * two meanings of one word.
+ */
 export function nextTargets(ordered: PilotTarget[], cards: Record<string, unknown>, count: number): PilotTarget[] {
-  return ordered.filter((target) => !cards[target.sense.id]).slice(0, count);
+  return ordered
+    .filter((target) => !cards[target.sense.id] && readyToIntroduce(target.sense.id, (id) => Boolean(cards[id])))
+    .slice(0, count);
 }
 
 export { shuffle };

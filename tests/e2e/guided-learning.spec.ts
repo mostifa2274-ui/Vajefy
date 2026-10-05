@@ -126,8 +126,9 @@ test("an authored A1 task shows Persian support before the learner answers", asy
   }
 
   await expect(support).toBeVisible();
-  await expect(support).toContainText(/apple|book/);
-  await expect(support).toContainText(/سیب|کتاب/);
+  // The first curriculum lesson teaches "I" and "you"; its tasks gloss "am".
+  await expect(support.getByText("am", { exact: true })).toBeVisible();
+  await expect(support.getByText("هستم", { exact: true })).toBeVisible();
   await accessible(page);
 });
 
@@ -149,6 +150,9 @@ test("a lesson left midway resumes at the same step", async ({ page }) => {
 test("the Words page shows every sense of a pilot entry with its teaching notes", async ({ page }) => {
   await seedNewLearner(page);
   await page.goto("/lexicon?q=close");
+  // Saved progress switches the page to English, which rebuilds it; open the
+  // word after that, or the rebuild closes it again.
+  await page.locator("html[data-progress-ready]").waitFor({ state: "attached" });
   await page.getByRole("button", { name: /^close/ }).first().click();
   const detail = page.locator("article");
   await expect(detail.getByText("بستن", { exact: true })).toBeVisible();

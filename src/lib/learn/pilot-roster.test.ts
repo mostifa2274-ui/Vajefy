@@ -13,6 +13,14 @@ import {
   STUDY_VERSION,
 } from "./study";
 
+/** A study word set of the given size, with every entry released or none. */
+function study(count = 240, released = false) {
+  return {
+    units: ["01-introductions", "02-family-home", "03-daily-routine", "04-food-drink"],
+    entries: Array.from({ length: count }, (_, index) => ({ id: `lex:A1:w${index}`, released })),
+  };
+}
+
 function observed(
   participant: string,
   channel: "draft" | "released" | "none",
@@ -39,6 +47,7 @@ test("pilot roster assignment is deterministic, balanced and does not store the 
     contentVersion: "content-v1",
     enhancedChannel: "draft" as const,
     dailyMinutes: 15,
+    study: study(),
   };
   const first = createPilotRoster(input);
   const second = createPilotRoster({
@@ -67,6 +76,7 @@ test("pilot roster creation rejects invalid or duplicate participant codes", () 
         contentVersion: "content-v1",
         enhancedChannel: "draft",
         dailyMinutes: 15,
+        study: study(),
       }),
     /duplicate participant code P-001/,
   );
@@ -78,6 +88,7 @@ test("pilot roster creation rejects invalid or duplicate participant codes", () 
         contentVersion: "content-v1",
         enhancedChannel: "draft",
         dailyMinutes: 15,
+        study: study(),
       }),
     /invalid participant code bad code/,
   );
@@ -90,6 +101,7 @@ test("roster validation detects the wrong archived seed without exposing it", ()
     contentVersion: "content-v1",
     enhancedChannel: "released",
     dailyMinutes: 20,
+    study: study(240, true),
   });
   assert.deepEqual(validatePilotRoster(roster, "correct-seed"), []);
   assert.match(
@@ -105,6 +117,7 @@ test("export evidence must follow the assigned arm and frozen pilot protocol", (
     contentVersion: "content-v1",
     enhancedChannel: "draft",
     dailyMinutes: 15,
+    study: study(),
   });
   const good = roster.assignments.slice(0, 2).map((row) =>
     observed(row.participant, row.channel),
@@ -136,6 +149,7 @@ test("missing participant exports are reported as attrition rather than protocol
     contentVersion: "content-v1",
     enhancedChannel: "draft",
     dailyMinutes: 15,
+    study: study(),
   });
   const first = roster.assignments[0]!;
   const result = validatePilotRosterEvidence(roster, [
@@ -148,5 +162,67 @@ test("missing participant exports are reported as attrition rather than protocol
   assert.equal(
     result.summary.missingEnhanced + result.summary.missingComparison,
     3,
+  );
+});
+
+test("the study's word set must last the learning period at the daily allowance", () => {
+  const input = {
+    participants: ["P-001", "P-002"],
+    seed: "capacity-seed",
+    contentVersion: "content-v1",
+    enhancedChannel: "draft" as const,
+  };
+  // Units 1–3 hold 180 words: enough for 30 days at 10 minutes (5 a day), not at 15 (8 a day).
+  const roster = createPilotRoster({ ...input, dailyMinutes: 10, study: study(180) });
+  assert.deepEqual(roster.protocol.study, {
+    units: ["01-introductions", "02-family-home", "03-daily-routine", "04-food-drink"],
+    entries: 180,
+    newWordsPerDay: 5,
+  });
+  assert.deepEqual(validatePilotRoster(roster), []);
+  assert.throws(
+    () => createPilotRoster({ ...input, dailyMinutes: 15, study: study(180) }),
+    /180 words would run out before 30 days at 8 new words a day \(240 needed\)/,
+  );
+});
+
+test("a released enhanced arm needs every study word released", () => {
+  const input = {
+    participants: ["P-001", "P-002"],
+    seed: "release-seed",
+    contentVersion: "content-v1",
+    dailyMinutes: 10,
+  };
+  const partly = study(180, true);
+  partly.entries[7]!.released = false;
+  assert.throws(
+    () => createPilotRoster({ ...input, enhancedChannel: "released", study: partly }),
+    /released channel needs every study word released; 1 are not \(first: lex:A1:w7\)/,
+  );
+  // A draft build shows every word, released or not.
+  assert.doesNotThrow(() => createPilotRoster({ ...input, enhancedChannel: "draft", study: partly }));
+});
+
+test("roster validation rejects a missing or altered study word set", () => {
+  const roster = createPilotRoster({
+    participants: ["P-001", "P-002"],
+    seed: "tamper-seed",
+    contentVersion: "content-v1",
+    enhancedChannel: "draft",
+    dailyMinutes: 10,
+    study: study(180),
+  });
+  const { study: _study, ...withoutStudy } = roster.protocol;
+  assert.match(
+    validatePilotRoster({ ...roster, protocol: withoutStudy } as unknown as typeof roster).join("\n"),
+    /study word set is missing/,
+  );
+  assert.match(
+    validatePilotRoster({ ...roster, protocol: { ...roster.protocol, study: { ...roster.protocol.study, newWordsPerDay: 3 } } }).join("\n"),
+    /new words per day must be 5/,
+  );
+  assert.match(
+    validatePilotRoster({ ...roster, version: 1 as never }).join("\n"),
+    /roster version must be 2/,
   );
 });

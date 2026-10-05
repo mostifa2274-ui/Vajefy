@@ -33,6 +33,9 @@ test("an A2 learner's lessons start with the A2 entries that have enhanced conte
     id: "lex:A2:ability",
     headword: "ability",
     order: compiled.entries.length,
+    // No A2 curriculum is mapped, so the entry has no unit or prerequisites.
+    unit: null,
+    prerequisites: [],
     senses: source.senses.map((sense: { id: string }, position: number) => ({
       ...sense,
       id: position === 0 ? "lex:A2:ability" : `lex:A2:ability#${sense.id.split("#")[1]}`,
@@ -46,6 +49,7 @@ test("an A2 learner's lessons start with the A2 entries that have enhanced conte
     goals: a2.goals,
     version: a2.version,
     released: a2.released,
+    unit: null,
     part: catalogue.parts.length,
     senses: a2.senses.map(({ id, pos, gloss }: { id: string; pos: string; gloss: string }) => ({ id, pos, gloss })),
   };
@@ -61,15 +65,19 @@ test("an A2 learner's lessons start with the A2 entries that have enhanced conte
   const upcoming = page.locator("main ul[lang=en] li");
   await expect(upcoming.first()).toContainText("ability");
   await expect(upcoming.first()).toContainText("توانایی");
-  // Today offers the same lesson, for this level's words only.
+  // Today offers the same lesson, for this level's words only. The word's
+  // further sense waits for a later lesson, once its first has been met.
   await page.goto("/");
-  await expect(page.getByRole("link", { name: `Start lesson · ${ids.length} new words`, exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Start lesson · 1 new words", exact: true })).toBeVisible();
 });
 
 test("reference notes a bilingual reviewer approved are marked as reviewed", async ({ page }) => {
   await page.route("**/data/reference-reviewed.json", (route) => route.fulfill({ json: { version: "test", reviewed: ["conf:do-make"] } }));
   await seed(page, "A1");
   await page.goto("/library?d=conf");
+  // Saved progress switches the page to English, which rebuilds it; open the
+  // note after that, or the rebuild closes it again.
+  await page.locator("html[data-progress-ready]").waitFor({ state: "attached" });
   await page.getByRole("button", { name: /do \/ make/ }).first().click();
   const detail = page.locator("article");
   await expect(detail.getByText("Reviewed", { exact: true })).toBeVisible();

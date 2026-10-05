@@ -47,11 +47,27 @@ export function planOf(level: Level): Plan {
   return read<Plan>(path.join(ROOT, "content", "plans", `${level}.json`));
 }
 
-/** Every planned entry's position in the curriculum: level by level, batch by batch. */
-export function catalogueOrder(): Map<string, number> {
+export type CurriculumUnit = { id: string; titleEn: string; titleFa: string; entries: { id: string; prerequisites: string[] }[] };
+export type Curriculum = { level: Level; units: CurriculumUnit[] };
+
+/** A level's curriculum (content/curriculum/, docs/A1_CURRICULUM.md), where one is mapped. */
+export function curriculumOf(level: Level): Curriculum | null {
+  const file = path.join(ROOT, "content", "curriculum", `${level}.json`);
+  return fs.existsSync(file) ? read<Curriculum>(file) : null;
+}
+
+/**
+ * Every planned entry's position in the course: level by level, each level's
+ * curriculum unit by unit where one is mapped, then the rest of its plan
+ * batch by batch.
+ */
+export function courseOrder(): Map<string, number> {
   const order = new Map<string, number>();
   for (const level of LEVELS) {
-    for (const batch of planOf(level).batches) for (const item of batch.entries) order.set(item.id, order.size);
+    for (const unit of curriculumOf(level)?.units ?? []) for (const item of unit.entries) order.set(item.id, order.size);
+    for (const batch of planOf(level).batches) {
+      for (const item of batch.entries) if (!order.has(item.id)) order.set(item.id, order.size);
+    }
   }
   return order;
 }

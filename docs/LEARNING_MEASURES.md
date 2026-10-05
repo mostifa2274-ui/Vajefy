@@ -66,8 +66,10 @@ History collected before a field existed is **unknown**, never zero.
 
 ## The A1 pilot
 
-`content/pilot-a1.json` lists the 150 A1 learning targets, by their stable entry
-IDs. `npm run validate:data` checks that every ID exists in A1, appears once and
+`content/pilot-a1.json` lists the first 150 A1 learning targets written, by
+their stable entry IDs. It was the first authoring batch; the learning study
+now measures the opening curriculum units instead
+([EVALUATION.md](EVALUATION.md#the-studys-words)). `npm run validate:data` checks that every ID exists in A1, appears once and
 belongs to a declared group. The groups are:
 
 | Group | Entries | Why |

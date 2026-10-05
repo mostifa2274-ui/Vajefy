@@ -14,6 +14,17 @@ export type DailyPlan = {
   estimatedMinutes: number;
 };
 
+/**
+ * The settings that fit the learner's daily time: new words and session
+ * length grow with the minutes available, and Review still comes first each
+ * day. The learning study sizes its word set by this allowance.
+ */
+export function planFor(minutes: number) {
+  if (minutes <= 5) return { newPerDay: 3, sessionSize: 10, dailyGoal: 10 };
+  if (minutes >= 15) return { newPerDay: 8, sessionSize: 30, dailyGoal: 30 };
+  return { newPerDay: 5, sessionSize: 20, dailyGoal: 20 };
+}
+
 function whole(value: number): number {
   return Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;
 }

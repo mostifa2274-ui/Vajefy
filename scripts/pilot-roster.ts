@@ -63,6 +63,7 @@ function printSummary(roster: PilotRoster): void {
       `content ${roster.protocol.contentVersion}`,
       `enhanced channel ${roster.protocol.enhancedChannel}`,
       `${roster.protocol.dailyMinutes} minutes/day`,
+      `study ${roster.protocol.study?.entries ?? "?"} words in ${roster.protocol.study?.units?.join(", ") ?? "?"} at ${roster.protocol.study?.newWordsPerDay ?? "?"} new a day`,
       `seed fingerprint ${roster.seedFingerprint}`,
     ].join("; "),
   );
@@ -108,6 +109,13 @@ if (!Number.isInteger(dailyMinutes)) fail("--minutes must be an integer");
 
 const pilot = JSON.parse(fs.readFileSync(COMPILED, "utf8")) as Pilot;
 if (!pilot.version) fail("compiled enhanced content has no version");
+if (!pilot.study?.entries?.length) fail("compiled enhanced content has no study word set; run npm run content:build");
+// The study's words (content/study-a1.json), with whether each is released.
+const released = new Map(pilot.entries.map((entry) => [entry.id, entry.released]));
+const study = {
+  units: pilot.study.units,
+  entries: pilot.study.entries.map((id) => ({ id, released: released.get(id) ?? false })),
+};
 
 let roster: PilotRoster;
 try {
@@ -117,6 +125,7 @@ try {
     contentVersion: pilot.version,
     enhancedChannel,
     dailyMinutes,
+    study,
   });
 } catch (error) {
   fail(error instanceof Error ? error.message : String(error));

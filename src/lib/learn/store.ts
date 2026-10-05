@@ -3,6 +3,7 @@ import { entryIdOf } from "./targets";
 import type { AnswerContext, AssessmentPart, ExposureKind, Op, SettingsPatch } from "./ops";
 import { CHANNEL, createPersistence, emptyMemory, type Memory } from "./persistence";
 import { DEFAULT_PROGRESS, savedProgress, type DayLog, type LearningGoal, type SavedProgress } from "./progress";
+import { planFor } from "./planner";
 import { newId, type SessionRecord } from "./session";
 import { isMastered } from "./srs";
 import { todayKey } from "./text";
@@ -168,16 +169,6 @@ export const persistence = createPersistence({
   },
   channel: () => (browser && "BroadcastChannel" in window ? new BroadcastChannel(CHANNEL) : undefined),
 });
-
-/**
- * A daily plan that fits the learner's time: new words and session length grow
- * with the minutes available, and Review still comes first each day.
- */
-export function planFor(minutes: number) {
-  if (minutes <= 5) return { newPerDay: 3, sessionSize: 10, dailyGoal: 10 };
-  if (minutes >= 15) return { newPerDay: 8, sessionSize: 30, dailyGoal: 30 };
-  return { newPerDay: 5, sessionSize: 20, dailyGoal: 20 };
-}
 
 export function todayLog(logs: DayLog[], today = todayKey()): DayLog {
   return (

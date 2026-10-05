@@ -141,7 +141,7 @@ test("the evaluator refuses an export that contradicts the frozen pilot roster",
       JSON.stringify(
         {
           kind: "vajefy-pilot-roster",
-          version: 1,
+          version: 2,
           seedFingerprint: "a".repeat(64),
           protocol: {
             studyExportVersion: 2,
@@ -149,6 +149,7 @@ test("the evaluator refuses an export that contradicts the frozen pilot roster",
             enhancedChannel: "draft",
             comparisonChannel: "none",
             dailyMinutes: 15,
+            study: { units: ["01-introductions"], entries: 240, newWordsPerDay: 8 },
             assessment: {
               id: "held-out-last-authored-v1",
               minimumDelayDays: 30,

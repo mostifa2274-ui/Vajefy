@@ -300,6 +300,31 @@ strict language gate is part of normal `validate:data`. A paired scaffold is
 still only a visibility fact, not evidence that a bilingual reviewer has
 approved the wording.
 
+## Course order
+
+Lessons follow this curriculum. `npm run content:build` compiles the course
+order from the manifest: Unit 1 to Unit 12, each unit's entries in manifest
+order, so every word comes after the words its lessons rely on. The order is
+the same for every learning goal: goals never reorder curriculum words,
+because the prerequisites and the language audit hold only for this exact
+sequence. Higher levels, which have no curriculum yet, follow A1 in plan order
+with goal ranking as before.
+
+A word's further senses (`#` ids) are introduced one unit after its first
+sense, after the next unit's first senses, and never in the same lesson as the
+first sense: a lesson picks a further sense only once its word has been met.
+Delaying a target can only add taught words before it, so prerequisites still
+hold.
+
+Each compiled entry carries its unit and prerequisite entries, and the app's
+index lists the units, so Learn shows the unit the next lesson belongs to and
+how much of it the learner has met. The content version covers the order,
+units and prerequisites.
+
+The learning study measures the opening units (`content/study-a1.json`:
+Units 1–3, 180 entries), which both study arms meet first and in this order
+([EVALUATION.md](EVALUATION.md#the-studys-words)).
+
 ## Coverage matrix
 
 The coverage matrix is computed from live repository data instead of being
@@ -365,8 +390,9 @@ The 20 calibration entries must be reviewed as a complete slice before this
 standard is scaled. Run `npm run content:review-queue` first to see each
 entry's exact current version, missing/current/stale ledger state, bilingual and
 pronunciation state, current audio completeness, listener flags and next review
-action. Use `--scope pilot` for the original 150-entry pilot. The report is
-read-only and cannot create an approval.
+action. Use `--scope study` for the learning study's words (Units 1–3) and
+`--scope pilot` for the original 150-entry selection. The report is read-only
+and cannot create an approval.
 
 Follow `docs/PILOT_CONTENT.md#reviewing` and record real reviewer decisions in
 `content/pilot/review.json`.
@@ -435,7 +461,9 @@ editorially complete until:
 - the first 20 entries have recorded current bilingual and pronunciation
   decisions;
 - problems found in that calibration review have been corrected and re-reviewed;
-- the original 150-entry pilot has current approvals;
+- the learning study's words (`--scope study`, Units 1–3) have current
+  approvals; they replace the original 150-entry pilot as the study's review
+  gate now that lessons follow the curriculum;
 - review then proceeds through the remaining curriculum units with
   version-matched decisions;
 - held-out assessment tasks remain independent and usable as content changes;

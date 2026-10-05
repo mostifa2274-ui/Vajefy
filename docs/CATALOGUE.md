@@ -19,7 +19,9 @@ for every level, and `npm run content:status` shows where each stands.
 `content/plans/<LEVEL>.json`. Each places every entry of the level in exactly
 one batch:
 
-- **A1:** the 150 pilot entries first, then `batch-02` … `batch-09`.
+- **A1:** the 150 pilot entries first, then `batch-02` … `batch-09`. Batches
+  are an authoring order only: learners meet A1 in curriculum order
+  ([A1_CURRICULUM.md](A1_CURRICULUM.md#course-order)).
 - **Other levels:** `batch-01` onwards.
 
 Batches hold 100 entries in order of usefulness (`public/data/usefulness.json`)
