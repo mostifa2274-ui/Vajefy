@@ -38,7 +38,61 @@ function entry(
     senses: [
       {
         id,
+        pos: "noun",
+        gloss: "نمونه",
+        meaning: "معنی دقیق نمونه برای بازبینی انسانی.",
+        grammar: [
+          {
+            pattern: "a sample `pattern`",
+            note: "الگوی نمونه برای بازبینی.",
+          },
+        ],
         examples: [{ en: "Example.", fa: "نمونه." }],
+        collocations: ["sample phrase"],
+        collocationFa: { "sample phrase": "عبارت نمونه" },
+        usage: "کاربرد نمونه.",
+        mistake: {
+          wrong: "Wrong example.",
+          wrongFa: "نمونهٔ نادرست.",
+          right: "Right example.",
+          rightFa: "نمونهٔ درست.",
+          why: "دلیل اصلاح نمونه.",
+        },
+        pronunciation: {
+          gb: "/sɑːmpl/",
+          us: "/sæmpl/",
+          note: "یادداشت تلفظ.",
+        },
+        check: [
+          {
+            type: "cloze",
+            id: "teach-1",
+            text: "This is a ___ sentence.",
+            answer: "sample",
+            accept: [],
+            fa: "این یک جملهٔ نمونه است.",
+            why: "تمرین آموزشی.",
+          },
+          {
+            type: "choice",
+            id: "teach-2",
+            prompt: "Choose the sample.",
+            options: [
+              { text: "sample", ok: true, why: "پاسخ درست." },
+              { text: "other", ok: false, why: "پاسخ نادرست." },
+            ],
+          },
+          {
+            type: "produce",
+            id: "held-out",
+            prompt: "یک نمونه بنویس.",
+            frame: "Write a ___.",
+            answer: "sample",
+            accept: [],
+            why: "نامزد مستقل ارزیابی تأخیری.",
+            support: [{ en: "write", fa: "نوشتن" }],
+          },
+        ],
       },
     ],
   };
@@ -278,6 +332,50 @@ test("unit queue selects one curriculum unit in curriculum order", () => {
       queue.entries.map((row) => [row.order, row.id, row.curriculumUnit]),
       [[1, C, "02-family-home"]],
     );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+
+test("review packet is self-contained, version-bound and respects limit", () => {
+  const root = fixture();
+  try {
+    const result = run(root, [
+      "--unit",
+      "01-introductions",
+      "--packet",
+      "--limit",
+      "1",
+    ]);
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /# A1 human review packet/);
+    assert.match(result.stdout, /Scope: \*\*unit:01-introductions\*\*/);
+    assert.match(result.stdout, /Showing: \*\*1\*\* of \*\*2\*\*/);
+    assert.match(result.stdout, /lex:A1:a@version-a/);
+    assert.match(result.stdout, /\*\*Meaning:\*\* معنی دقیق نمونه/);
+    assert.match(result.stdout, /sample \\`pattern\\`/);
+    assert.match(result.stdout, /a-gb\.mp3/);
+    assert.match(result.stdout, /a-us\.mp3/);
+    assert.match(result.stdout, /\*\*Reserved held-out candidate\*\*/);
+    assert.match(result.stdout, /held-out/);
+    assert.match(result.stdout, /Learner-visible task support/);
+    assert.match(
+      result.stdout,
+      /npm run content:approve -- --entry lex:A1:a@version-a --bilingual approved/,
+    );
+    assert.doesNotMatch(result.stdout, /lex:A1:b@version-b/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("review queue rejects conflicting output modes", () => {
+  const root = fixture();
+  try {
+    const result = run(root, ["--packet", "--json"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /choose only one output mode: --json, --packet|choose only one output mode: --packet, --json/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
