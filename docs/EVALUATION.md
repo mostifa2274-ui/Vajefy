@@ -103,6 +103,24 @@ or evidence that the assessment has been administered to a learner.
    and pronunciation approval and must be rebuilt into the `released`
    enhanced channel before enrollment.
 
+   Human review stays a separate evidence step. Before creating the learning
+   roster, generate the exact version-bound pilot packet and record only reviews
+   that a person has actually completed:
+
+   ```sh
+   npm run content:review-queue -- --scope pilot --packet > pilot-review-packet.md
+   # After a real review, use the packet's exact entry@version token:
+   npm run content:approve -- \
+     --entry 'lex:A1:example@<version>' \
+     --bilingual approved \
+     --reviewer '<reviewer name>'
+   ```
+
+   Repeat pronunciation review with the required listening evidence. Once all
+   150 selected entries have current bilingual + pronunciation approval,
+   rebuild the enhanced content so the released channel reflects those real
+   decisions. Do not replace this step with automated approval.
+
    Create opaque participant codes (no names/contact details in the file), put
    one code per line in `participants.txt`, and freeze the allocation against
    the current released content:
