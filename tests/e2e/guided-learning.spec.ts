@@ -147,6 +147,32 @@ test("a listening question can be skipped without an answer, and readiness is sh
   expect(events.some((event) => event.type === "practice" && event.skill === "spelling" && event.context?.prompt === "lesson:retrieve:recall")).toBe(true);
 });
 
+test("the teaching card plays its model on arrival unless the learner turns autoplay off", async ({ page }) => {
+  await seedNewLearner(page);
+  // Count clip playback attempts without real audio.
+  await page.addInitScript(() => {
+    (window as unknown as { plays: string[] }).plays = [];
+    HTMLMediaElement.prototype.play = function () {
+      (window as unknown as { plays: string[] }).plays.push(this.src);
+      return Promise.resolve();
+    };
+  });
+  await page.goto("/learn");
+  await page.getByRole("button", { name: /Start lesson/ }).click();
+  const autoplay = page.getByRole("button", { name: "Autoplay", exact: true });
+  await expect(autoplay).toHaveAttribute("aria-pressed", "true");
+  await expect.poll(() => page.evaluate(() => (window as unknown as { plays: string[] }).plays.length)).toBe(1);
+  await autoplay.click();
+  await expect(autoplay).toHaveAttribute("aria-pressed", "false");
+  await expect(autoplay).toContainText("off");
+  // The choice is kept on this device: the next card stays silent.
+  await page.reload();
+  await page.getByRole("button", { name: /Continue lesson/ }).click();
+  await expect(page.getByRole("button", { name: "Autoplay", exact: true })).toHaveAttribute("aria-pressed", "false");
+  await page.waitForTimeout(300);
+  expect(await page.evaluate(() => (window as unknown as { plays: string[] }).plays.length)).toBe(0);
+});
+
 test("an authored A1 task shows Persian support before the learner answers", async ({ page }) => {
   test.setTimeout(90_000);
   await page.setViewportSize({ width: 390, height: 844 });

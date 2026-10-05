@@ -35,7 +35,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 | 1. Protect learning records | Done | None required to exit |
 | 2. Unify the learning flow | Done | None required to exit |
 | 3. Establish the A1 standard | Done | Pending: no approvals recorded yet |
-| 4. Prove the pilot experience | Mostly done; scenes and teach-card audio open | Pending: device, usability and learning sessions |
+| 4. Prove the pilot experience | Mostly done; scene comprehension tasks open | Pending: device, usability and learning sessions |
 | 5. Complete A1 | Structurally done (900 / 900, all units machine-ready) | Pending: approvals, listening and scene review |
 | 6. Qualify the A1 release | Partly done; production configuration open | Pending: device matrix and sign-off |
 
@@ -117,6 +117,9 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
   - delayed retrieval, which starts the schedule.
 - Readiness for now ("unaided", "with help", "needs another try") is shown
   apart from long-term mastery ("Settled").
+- The teaching card plays the model when it appears, after the learner's own
+  press, with replay, slower playback and an autoplay switch. The switch is a
+  mute control, remembered on the device.
 - Restrained disclosure. Grammar, notes and contrasts appear in the lesson or on
   request; the daily workload shrinks as reviews accumulate.
 - Speaking practice records the learner and compares with the model, without
@@ -125,8 +128,6 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
   CI ([ACCESSIBILITY.md](ACCESSIBILITY.md), [PERFORMANCE.md](PERFORMANCE.md)).
 
 **Open (machine):**
-- The teach card should play the model when it appears, with a mute control
-  (plan step 1). Today it plays on request only.
 - Scenes need real comprehension tasks, not only recognition of the taught
   word, and more scenes against the coverage matrix. This is content authoring
   that then needs review.
