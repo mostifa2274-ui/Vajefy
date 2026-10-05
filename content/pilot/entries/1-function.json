@@ -781,6 +781,15 @@
         "why": "تضادی در کار نیست."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "خسته بودم، پس زود خوابیدم.",
+      "frame": "I was tired, ___ I went to bed early.",
+      "answer": "so",
+      "accept": [],
+      "why": "so نتیجهٔ علتِ گفته‌شده در بخش اول جمله را می‌آورد."
      }
     ]
    },
@@ -858,6 +867,15 @@
         "why": "ترتیب درست such a nice day است."
        }
       ]
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "It was ___ cold that we stayed home.",
+      "answer": "so",
+      "accept": [],
+      "fa": "هوا آن‌قدر سرد بود که خانه ماندیم.",
+      "why": "so + adjective + that برای «آن‌قدر … که …» به کار می‌رود."
      }
     ]
    }
