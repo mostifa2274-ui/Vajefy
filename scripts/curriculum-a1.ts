@@ -414,6 +414,24 @@ if (
   );
 }
 
+const balancedWaveFloor = new Map<number, number>([
+  [240, 20],
+  [460, 40],
+  [680, 60],
+  [900, 80],
+]).get(assignedMinimum);
+
+if (balancedWaveFloor) {
+  for (const unit of unitTargets) {
+    const floor = unit.id === curriculum.calibrationSlice.unit ? 20 : balancedWaveFloor;
+    if (unit.assigned < floor) {
+      failures.push(
+        `${unit.id}: balanced A1 wave at ${assignedMinimum} requires at least ${floor} assigned entries, found ${unit.assigned}`,
+      );
+    }
+  }
+}
+
 if (process.argv.includes("--complete")) {
   if (summary.assigned !== summary.total) {
     failures.push(
