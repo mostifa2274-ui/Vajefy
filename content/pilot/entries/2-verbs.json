@@ -822,6 +822,15 @@
         "why": "bring کارِ گارسون است، نه مشتری."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "امروز صبح یک ایمیل گرفتم.",
+      "frame": "I ___ an email this morning.",
+      "answer": "got",
+      "accept": [],
+      "why": "گذشتهٔ get، got است."
      }
     ]
    },
@@ -882,6 +891,15 @@
       "answer": "got",
       "accept": [],
       "why": "get home، گذشته: got."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "We ___ to the airport at eight.",
+      "answer": "got",
+      "accept": [],
+      "fa": "ساعت هشت به فرودگاه رسیدیم.",
+      "why": "get to + place یعنی رسیدن؛ گذشتهٔ get، got است."
      }
     ]
    },
@@ -939,6 +957,15 @@
       "answer": "get",
       "accept": [],
       "why": "get better = بهتر شدن."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "The children are ___ tired.",
+      "answer": "getting",
+      "accept": [],
+      "fa": "بچه‌ها دارند خسته می‌شوند.",
+      "why": "get + adjective یعنی تغییر حالت؛ در زمان استمراری getting."
      }
     ]
    }
@@ -1094,6 +1121,15 @@
       "answer": "take",
       "accept": [],
       "why": "take the train."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "We usually ___ the bus to work.",
+      "answer": "take",
+      "accept": [],
+      "fa": "ما معمولاً با اتوبوس سر کار می‌رویم.",
+      "why": "take the bus = از اتوبوس برای رفتن استفاده کردن."
      }
     ]
    }

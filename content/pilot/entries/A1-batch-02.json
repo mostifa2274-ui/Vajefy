@@ -1024,6 +1024,28 @@
         "why": "with معنای مکان ندارد."
        }
       ]
+     },
+     {
+      "type": "choice",
+      "id": "h1",
+      "prompt": "Our hotel is ___ the station, so we can walk there.",
+      "options": [
+       {
+        "text": "by",
+        "ok": true,
+        "why": "by = کنارِ / نزدیکِ."
+       },
+       {
+        "text": "from",
+        "ok": false,
+        "why": "from مبدأ را نشان می‌دهد، نه نزدیکی."
+       },
+       {
+        "text": "through",
+        "ok": false,
+        "why": "through یعنی از داخل چیزی عبور کردن."
+       }
+      ]
      }
     ]
    }
@@ -2629,6 +2651,15 @@
         "why": "plane هواپیماست."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "قبل از شروع به یک برنامهٔ خوب نیاز داریم.",
+      "frame": "We need a good ___ before we start.",
+      "answer": "plan",
+      "accept": [],
+      "why": "plan = برنامه یا نقشه برای کاری در آینده."
      }
     ]
    },
@@ -2703,6 +2734,15 @@
         "why": "last year گذشته می‌خواهد."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "قصد داریم فردا زود حرکت کنیم.",
+      "frame": "We ___ to leave early tomorrow.",
+      "answer": "plan",
+      "accept": [],
+      "why": "plan to + verb = قصد داشتن انجام کاری."
      }
     ]
    }
@@ -5696,6 +5736,15 @@
         "why": "این جواب «کی» است، نه «چه مدت»."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "پرواز چقدر طول می‌کشد؟",
+      "frame": "How ___ is the flight?",
+      "answer": "long",
+      "accept": [],
+      "why": "How long برای پرسیدن مدت زمان است."
      }
     ]
    }
