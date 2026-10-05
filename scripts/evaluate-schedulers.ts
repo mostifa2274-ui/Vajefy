@@ -108,6 +108,10 @@ for (const file of inputs.flatMap(files)) {
       build,
       assessmentProtocol:
         typeof assessment.id === "string" ? assessment.id : null,
+      assessmentMinimumDelayDays:
+        typeof assessment.minimumDelayDays === "number"
+          ? assessment.minimumDelayDays
+          : null,
       assessmentBankContentVersion:
         typeof assessment.bankContentVersion === "string"
           ? assessment.bankContentVersion
