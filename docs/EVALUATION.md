@@ -17,7 +17,7 @@ stay unknown.
 | Practice | Card, skill (meaning, spelling, listening, context), grade, prompt and prompt id, content version, response time; `hint` when a hint or the answer had been shown, for example a lesson retry after feedback |
 | Skip | A question that could not be answered (unheard audio): no credit, no penalty |
 | Exposure | Hearing a word or example, opening a word's detail, reading a reference note (at most once per item and kind in ten minutes) |
-| Assessment | A 30-day check-up answer: part (use or meaning), correct, days since the word was first met. It changes nothing else |
+| Assessment | A 30-day check-up answer: part (use or meaning), correct, days since first met, exact prompt id when observed, and the entry content version. It changes nothing else |
 | Undo | Which answer was withdrawn; the undone answer is marked |
 
 All records stay on the device in IndexedDB until the learner exports them.
@@ -102,12 +102,31 @@ The export holds no name or contact details, and Vajefy sends nothing by
 itself. Keep the code-to-person key apart from the data, and delete exports
 when the study ends.
 
+Study exports are schema-versioned. Version 2 records the deployment build,
+the whole-content/assessment-bank version, the content channel (study arm), and
+the delayed-assessment protocol id. The app refuses to create a study file if
+the content/bank version cannot be loaded. Each observed use assessment also
+carries the entry content version plus the exact `sense/check` prompt id, so
+researchers can reconcile exported evidence to the frozen assessment bank.
+
 ## Analysis
 
 ```sh
 npm run evaluate -- path/to/exports/ --out report.md
 npm run evaluate -- --simulate 6      # synthetic learners, to check the method
+# Exploratory only, when intentionally stratifying incompatible protocol files:
+npm run evaluate -- path/to/exports/ --allow-mixed-protocols
 ```
+
+Before pooling study exports, `scripts/evaluate-schedulers.ts` now validates
+protocol integrity. Duplicate participant codes, unknown/future export schemas,
+missing content-bank versions, malformed v2 held-out provenance, and mixed
+content/assessment protocols fail closed. The intended comparison and enhanced
+arms may differ by channel, but they must share the same content and assessment
+protocol. Mixing `draft` and `released` enhanced variants also fails by
+default. Deployment build ids are reported so code changes during a pilot stay
+visible. `--allow-mixed-protocols` exists only for explicitly exploratory,
+stratified analysis and prints a warning in the report.
 
 For each learner, `scripts/evaluate-schedulers.ts`:
 
