@@ -10,7 +10,9 @@ import type { SessionRecord } from "./session";
  */
 
 export const STUDY_KIND = "vajefy-study";
-export const STUDY_VERSION = 1;
+export const STUDY_VERSION = 2;
+export const ASSESSMENT_PROTOCOL_ID = "held-out-last-authored-v1";
+export const ASSESSMENT_MIN_DELAY_DAYS = 30;
 
 /** Evidence the study analyses; settings changes and restores are left out. */
 const STUDY_EVENTS = new Set(["review", "practice", "skip", "introduce", "exposure", "assessment", "undo", "forget", "reset"]);
@@ -32,7 +34,14 @@ export type StudyExport = {
   participant: string;
   exportedAt: string;
   includesWriting: boolean;
-  app: { contentVersion: string | null; channel: string };
+  app: { contentVersion: string; channel: string; build: string };
+  protocol: {
+    assessment: {
+      id: typeof ASSESSMENT_PROTOCOL_ID;
+      minimumDelayDays: typeof ASSESSMENT_MIN_DELAY_DAYS;
+      bankContentVersion: string;
+    };
+  };
   profile: StudyProfile;
   events: StoredEvent[];
   sessions: SessionRecord[];
@@ -60,8 +69,9 @@ export function buildStudyExport(input: {
   events: StoredEvent[];
   sessions: SessionRecord[];
   profile: StudyProfile;
-  contentVersion: string | null;
+  contentVersion: string;
   channel: string;
+  build: string;
   now: Date;
 }): StudyExport {
   return {
@@ -70,7 +80,18 @@ export function buildStudyExport(input: {
     participant: input.participant.trim(),
     exportedAt: input.now.toISOString(),
     includesWriting: input.includeWriting,
-    app: { contentVersion: input.contentVersion, channel: input.channel },
+    app: {
+      contentVersion: input.contentVersion,
+      channel: input.channel,
+      build: input.build,
+    },
+    protocol: {
+      assessment: {
+        id: ASSESSMENT_PROTOCOL_ID,
+        minimumDelayDays: ASSESSMENT_MIN_DELAY_DAYS,
+        bankContentVersion: input.contentVersion,
+      },
+    },
     profile: input.profile,
     events: input.events
       .filter((event) => STUDY_EVENTS.has(event.type))
