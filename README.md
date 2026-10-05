@@ -21,9 +21,9 @@ practice), **Words** (search, saved entries and reference) and **Progress**
   fallback.
 - **Review** (`/study`): scheduled cards use recall first and grade Again / Hard /
   Good / Easy; sessions resume where they stopped, and a grade can be undone.
-- **One-screen setup**: a learning goal, a starting level (with an optional
-  two-minute placement check) and 5, 10 or 15 minutes a day, which set the daily
-  plan.
+- **One-screen setup**: a learning goal and 5, 10 or 15 minutes a day, which set
+  the daily plan. Every new learner starts the A1 course; higher levels follow
+  once A1 is complete. Learners who set up earlier keep their saved level.
 - **Practice** (`/drill`): eleven practice modes, including Pairs and a 45-second
   spelling sprint, plus **Smart Practice**. Smart Practice selects studied words
   using FSRS memory estimates and real skill mistakes, then mixes spelling,
@@ -117,7 +117,6 @@ The app is fully client-side: no accounts, no server database, no AI service.
 | `src/lib/learn/lesson.ts` | Guided lesson steps, grading, retries and resume |
 | `src/lib/learn/speech.ts` | The single playback controller: recorded clips first, browser speech as fallback |
 | `src/lib/learn/audio-pack.ts` | Downloading and removing offline pronunciation |
-| `src/lib/learn/placement.ts` | The optional placement check at setup |
 | `src/lib/learn/measures.ts` | Learning measures from recorded evidence |
 | `content/pilot/` | Pilot source content, review ledger and audio manifest |
 | `scripts/audio/` | Pronunciation generation ([docs/AUDIO.md](docs/AUDIO.md)) |

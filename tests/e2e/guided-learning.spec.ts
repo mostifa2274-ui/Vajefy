@@ -67,17 +67,16 @@ async function step(page: Page): Promise<boolean> {
   throw new Error(`Unknown lesson step: ${(await main.innerText()).slice(0, 200)}`);
 }
 
-test("onboarding records the goal, a placement-suggested level and daily time", async ({ page }) => {
+test("onboarding starts every new learner at A1 and records the goal and daily time", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "سطح شروع", exact: true })).toBeVisible();
+  const level = page.getByRole("region", { name: "سطح شروع", exact: true });
+  await expect(level).toBeVisible();
+  await expect(level).toContainText("A1");
+  // The A1 course is the only starting point: no level grid, no placement check.
+  for (const other of ["A2", "B1", "B2", "C1"]) await expect(page.getByRole("button", { name: other })).toHaveCount(0);
   await accessible(page);
   await page.getByRole("button", { name: "کار", exact: true }).click();
-  await page.getByRole("button", { name: "مطمئن نیستی؟ سنجش دودقیقه‌ای", exact: true }).click();
-  const dontKnow = page.getByRole("button", { name: "نمی‌دانم", exact: true });
-  for (let i = 0; i < 15; i++) await dontKnow.click();
-  await expect(page.getByRole("status")).toContainText("A1");
-  await page.getByRole("button", { name: "همین سطح را انتخاب کن", exact: true }).click();
   await page.getByRole("button", { name: /^۵/ }).click();
   await page.getByRole("button", { name: "ورود", exact: true }).click();
   await expect.poll(async () => (await readProgress(page)).state?.goal).toBe("work");
