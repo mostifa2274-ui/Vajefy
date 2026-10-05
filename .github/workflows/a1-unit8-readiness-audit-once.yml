@@ -1,0 +1,48 @@
+name: A1 Unit 8 readiness audit once
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - codex/a1-unit8-heldout-readiness
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Print Unit 8 qualification gaps
+        shell: bash
+        run: |
+          npm run --silent content:qualification -- --unit 08-work-study --json > /tmp/unit8.json
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const report = JSON.parse(fs.readFileSync("/tmp/unit8.json","utf8"));
+          const unit = report.units[0];
+          console.log("UNIT8_SUMMARY|" + JSON.stringify({
+            assignedEntries: unit.assignedEntries,
+            targetEntries: unit.targetEntries,
+            machineReadyForReview: unit.machineReadyForReview,
+            blockers: unit.blockers,
+            nextActions: unit.nextActions,
+            totalSenses: unit.evidence.heldOutAssessment.totalSenses,
+            readySenses: unit.evidence.heldOutAssessment.readySenses,
+            missingSenses: unit.evidence.heldOutAssessment.missingSenses,
+            audioCompleteEntries: unit.evidence.audio.completeEntries,
+            audioIncompleteEntries: unit.evidence.audio.incompleteEntries,
+            flaggedEntries: unit.evidence.audio.flaggedEntries,
+            flaggedClips: unit.evidence.audio.flaggedClips,
+            bilingualApproved: unit.evidence.review.bilingualApproved,
+            pronunciationApproved: unit.evidence.review.pronunciationApproved
+          }));
+          NODE
+      - name: Require Unit 8 readiness
+        continue-on-error: true
+        run: npm run --silent content:qualification -- --unit 08-work-study --require-ready
