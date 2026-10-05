@@ -60,6 +60,12 @@ entry placement and prerequisites still require editorial curriculum judgment;
 the target contract only prevents the remaining catalogue from becoming an
 unstructured catch-all.
 
+These milestones are now machine-enforced as **balanced per-unit floors**, not
+just total counts: 240 requires 20 entries in every unit, 460 requires 40 in
+Units 2–12, 680 requires 60, and 900 requires all 80 target entries. This keeps
+a future edit from preserving the total ratchet by overfilling one unit while
+silently shrinking another.
+
 ### Unit 2 — Family and home
 
 The mapped sequence is:
