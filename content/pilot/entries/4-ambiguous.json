@@ -1262,6 +1262,15 @@
         "why": "معنی ندارد."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "او خیلی خوب پیانو می‌زند.",
+      "frame": "She plays the piano very ___.",
+      "answer": "well",
+      "accept": [],
+      "why": "well قیدِ good است و چگونگی انجام فعل را توصیف می‌کند."
      }
     ]
    },
@@ -1322,6 +1331,15 @@
       "answer": "well",
       "accept": [],
       "why": "Get well soon."
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "حالا دوباره حالم خوب است.",
+      "frame": "I'm ___ again now.",
+      "answer": "well",
+      "accept": [],
+      "why": "well بعد از be می‌تواند دربارهٔ سلامت و حال جسمی باشد."
      }
     ]
    },
@@ -1391,6 +1409,17 @@
       "answer": "Well",
       "accept": [],
       "why": "مکث در آغاز جمله."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "___, I need some time to decide.",
+      "answer": "Well",
+      "accept": [
+       "well"
+      ],
+      "fa": "خب، برای تصمیم گرفتن کمی وقت لازم دارم.",
+      "why": "Well در آغاز جمله برای مکث و فکر کردن طبیعی است."
      }
     ]
    }
@@ -1714,6 +1743,15 @@
         "why": "معنی ندارد."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "اشکالی ندارد.",
+      "frame": "That's ___.",
+      "answer": "fine",
+      "accept": [],
+      "why": "That's fine = مشکلی نیست / قبول است."
      }
     ]
    },
@@ -1777,6 +1815,15 @@
        "sunny"
       ],
       "why": "a fine day."
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "فردا هوا صاف خواهد بود.",
+      "frame": "The weather will be ___ tomorrow.",
+      "answer": "fine",
+      "accept": [],
+      "why": "در انگلیسی بریتانیایی fine دربارهٔ هوا یعنی صاف و بی‌باران."
      }
     ]
    }
@@ -2272,6 +2319,15 @@
         "why": "return اینجا جای back نمی‌نشیند."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "به خانه برگشتیم.",
+      "frame": "We went ___ home.",
+      "answer": "back",
+      "accept": [],
+      "why": "go back = به جای قبلی برگشتن."
      }
     ]
    },
@@ -2332,6 +2388,15 @@
       "answer": "back",
       "accept": [],
       "why": "at the back of."
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "کمرم درد می‌کند.",
+      "frame": "My ___ hurts.",
+      "answer": "back",
+      "accept": [],
+      "why": "back در این معنا بخش پشتی بدن / کمر است."
      }
     ]
    }
@@ -3003,6 +3068,15 @@
         "why": "املای ing می‌شود lying."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "تمام بعدازظهر روی تخت دراز کشیدم.",
+      "frame": "I ___ on the bed all afternoon.",
+      "answer": "lay",
+      "accept": [],
+      "why": "گذشتهٔ lie به معنی «دراز کشیدن» می‌شود lay."
      }
     ]
    },
@@ -3063,6 +3137,15 @@
       "answer": "lie",
       "accept": [],
       "why": "tell a lie."
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "به من دروغ نگو.",
+      "frame": "Don't ___ to me.",
+      "answer": "lie",
+      "accept": [],
+      "why": "lie to + person = به کسی دروغ گفتن."
      }
     ]
    }
