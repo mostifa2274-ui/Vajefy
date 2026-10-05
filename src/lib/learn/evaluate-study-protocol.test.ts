@@ -33,7 +33,7 @@ function exportFile(
         bankContentVersion: "content-v1",
       },
     },
-    profile: {},
+    profile: { minutes: 15 },
     events: [],
     sessions: [],
     ...overrides,
@@ -42,7 +42,7 @@ function exportFile(
   return file;
 }
 
-function run(files: string[]) {
+function run(files: string[], extraArgs: string[] = []) {
   return spawnSync(
     process.execPath,
     [
@@ -51,6 +51,7 @@ function run(files: string[]) {
       "--import",
       REGISTER,
       SCRIPT,
+      ...extraArgs,
       ...files,
     ],
     { cwd: ROOT, encoding: "utf8" },
@@ -125,6 +126,59 @@ test("the evaluator refuses v2 use evidence without the exact held-out prompt id
     const result = run([file]);
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /use evidence must name the exact held-out/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+
+test("the evaluator refuses an export that contradicts the frozen pilot roster", () => {
+  const root = mkdtempSync(path.join(os.tmpdir(), "vajefy-eval-roster-"));
+  try {
+    const rosterFile = path.join(root, "roster.json");
+    writeFileSync(
+      rosterFile,
+      JSON.stringify(
+        {
+          kind: "vajefy-pilot-roster",
+          version: 1,
+          seedFingerprint: "a".repeat(64),
+          protocol: {
+            studyExportVersion: 2,
+            contentVersion: "content-v1",
+            enhancedChannel: "draft",
+            comparisonChannel: "none",
+            dailyMinutes: 15,
+            assessment: {
+              id: "held-out-last-authored-v1",
+              minimumDelayDays: 30,
+              bankContentVersion: "content-v1",
+            },
+          },
+          assignments: [
+            { participant: "P-001", arm: "enhanced", channel: "draft" },
+            { participant: "P-002", arm: "comparison", channel: "none" },
+          ],
+        },
+        null,
+        2,
+      ) + "\n",
+    );
+    const file = exportFile(root, "P-001", {
+      app: {
+        contentVersion: "content-v1",
+        channel: "none",
+        build: "abcdef123456",
+      },
+      profile: { minutes: 30 },
+    });
+    const result = run([file], ["--roster", rosterFile]);
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /assigned to enhanced\/draft but exported channel none/,
+    );
+    assert.match(result.stderr, /daily minutes 30 do not match roster 15/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
