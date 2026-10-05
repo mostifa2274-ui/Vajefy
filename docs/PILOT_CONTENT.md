@@ -117,8 +117,31 @@ The build also checks that:
 
 ## Reviewing
 
-A reviewer reads the entry in the app (Words → the entry) or in its source file,
-listens to its clips in both accents, and records the outcome:
+Before recording any decision, generate the read-only queue for the scope being
+reviewed:
+
+```sh
+npm run content:review-queue
+npm run content:review-queue -- --scope pilot
+npm run content:review-queue -- --scope all-a1 --json
+```
+
+The default scope is the fixed 20-entry calibration slice. `pilot` is the
+original 150-entry pilot and `all-a1` covers all 900 A1 entries. The queue
+reports the exact current content version, whether the ledger record is
+`missing`, `current` or `stale`, the current bilingual and pronunciation
+states, exact audio completeness, flagged clips that need listening, release
+state and the next evidence action. A stale record remains visible but is never
+treated as approval for the current version.
+
+The queue is deliberately read-only. Complete audio means the required current
+files exist; it is not pronunciation approval. Likewise an automatic audio flag
+means “listen to this clip”, not “reject this clip”. Normal CI builds both the
+calibration and pilot queues in `--check` mode so their source membership
+cannot silently drift.
+
+A reviewer then reads the entry in the app (Words → the entry) or in its source
+file, listens to its clips in both accents, and records the outcome:
 
 ```sh
 npm run content:approve -- --entry lex:A1:bring --bilingual approved --reviewer "Name"
