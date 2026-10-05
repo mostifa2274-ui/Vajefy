@@ -27,16 +27,15 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-All 12 curriculum units now have an initial 20-entry **mapped** sequence.
-Unit 1 remains the fixed calibration package; Units 2–12 remain `planned`.
+Wave 1 is now mapped. Unit 1 remains the fixed 20-entry calibration package,
+while Units 2–12 each contain 40 assigned entries and remain `planned`.
 Mapping establishes curriculum order and prerequisites but does not mean the
 content has passed bilingual/pronunciation review or is released.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-240, so CI prevents total mapped A1 coverage from silently falling below this
-twelve-unit seed baseline. It protects the count, not exact unit membership;
-the other 660 entries remain a visible curriculum expansion backlog, not
-silently treated as complete.
+460, so CI prevents total mapped A1 coverage from silently falling below the
+completed first expansion wave. The other 440 entries remain a visible
+curriculum expansion backlog, not silently treated as complete.
 
 ### Final A1 unit targets
 
@@ -53,12 +52,12 @@ does not equal the A1 plan, a unit that grows beyond its target, or a unit marke
 still fails until all 900 entries are actually assigned; a target is capacity,
 not evidence that its slots are already curated.
 
-The current 240-entry seed therefore leaves 660 target slots. The intended
-expansion is three balanced waves of 220 entries: add 20 entries to each of
-Units 2–12 per wave, moving coverage from 240 → 460 → 680 → 900. Individual
-entry placement and prerequisites still require editorial curriculum judgment;
-the target contract only prevents the remaining catalogue from becoming an
-unstructured catch-all.
+The initial 240-entry seed has completed its first balanced expansion wave:
+each of Units 2–12 gained 20 curated entries, moving coverage to 460/900 and
+leaving 440 target slots. Two balanced +220 waves remain: 460 → 680 → 900.
+Individual entry placement and prerequisites still require editorial curriculum
+judgment; the target contract only prevents the remaining catalogue from
+becoming an unstructured catch-all.
 
 These milestones are now machine-enforced as **balanced per-unit floors**, not
 just total counts: 240 requires 20 entries in every unit, 460 requires 40 in
