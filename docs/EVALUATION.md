@@ -97,10 +97,11 @@ or evidence that the assessment has been administered to a learner.
    npm run study:roster -- --check pilot-roster.json --seed "<private random seed>"
    ```
 
-   The manifest stores only a SHA-256 fingerprint of the seed, never the raw
-   seed. Archive the raw seed separately from the roster and participant
-   identity key. Assignment is deterministic and balanced to within one learner,
-   so the same participant-code list plus seed always yields the same arms.
+   The manifest stores only a memory-hard scrypt fingerprint of the seed, never
+   the raw seed. Use a high-entropy random seed and archive it separately from
+   the roster and participant identity key. Assignment is deterministic and
+   balanced to within one learner, so the same participant-code list plus seed
+   always yields the same arms.
 
    | Arm | Build | What learners get |
    |---|---|---|
