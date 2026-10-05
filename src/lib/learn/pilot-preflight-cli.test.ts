@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   mkdtempSync,
   mkdirSync,
+  readFileSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
@@ -198,10 +199,7 @@ test("preflight CLI rejects a malformed pilot selection before evaluation", () =
   const root = fixture();
   try {
     const selection = JSON.parse(
-      require("node:fs").readFileSync(
-        path.join(root, "content/pilot-a1.json"),
-        "utf8",
-      ),
+      readFileSync(path.join(root, "content/pilot-a1.json"), "utf8"),
     ) as { entries: unknown[] };
     selection.entries.pop();
     writeJson(root, "content/pilot-a1.json", selection);
