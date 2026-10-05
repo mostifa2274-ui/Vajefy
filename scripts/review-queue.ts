@@ -8,7 +8,7 @@ import { review } from "../src/lib/learn/content.ts";
  *
  * Examples:
  *   npm run content:review-queue
- *   npm run content:review-queue -- --scope pilot
+ *   npm run content:review-queue -- --scope study
  *   npm run content:review-queue -- --scope all-a1 --json
  *   npm run content:review-queue -- --unit 08-work-study
  *   npm run content:review-queue -- --unit 08-work-study --packet
@@ -22,10 +22,11 @@ const COMPILED = path.join(ROOT, "content", "compiled", "enhanced.json");
 const LEDGER = path.join(ROOT, "content", "pilot", "review.json");
 const AUDIO_REPORT = path.join(ROOT, "content", "pilot", "audio-report.json");
 const PILOT_SELECTION = path.join(ROOT, "content", "pilot-a1.json");
+const STUDY = path.join(ROOT, "content", "study-a1.json");
 const A1_PLAN = path.join(ROOT, "content", "plans", "A1.json");
 const A1_CURRICULUM = path.join(ROOT, "content", "curriculum", "A1.json");
 
-const SCOPES = ["calibration", "pilot", "all-a1"] as const;
+const SCOPES = ["calibration", "study", "pilot", "all-a1"] as const;
 type Scope = (typeof SCOPES)[number];
 type QueueScope = Scope | `unit:${string}`;
 
@@ -190,6 +191,26 @@ for (const unit of curriculum.units) {
   for (const entry of unit.entries) unitByEntry.set(entry.id, unit.id);
 }
 
+/**
+ * The study's word set (content/study-a1.json): its units' entries in
+ * curriculum order. The units must open the curriculum, in order.
+ */
+function studyIds(): string[] {
+  if (!fs.existsSync(STUDY)) fail("content/study-a1.json is missing");
+  const study = read<{ level?: string; units?: unknown }>(STUDY);
+  const units = Array.isArray(study.units) ? study.units : [];
+  if (study.level !== "A1") fail("content/study-a1.json must be A1");
+  if (!units.length) fail("content/study-a1.json must list at least one unit");
+  units.forEach((id, index) => {
+    if (curriculum.units[index]?.id !== id) {
+      fail(
+        `content/study-a1.json units must be the first curriculum units, in order; expected ${curriculum.units[index]?.id ?? "no further unit"} at position ${index + 1}, found ${String(id)}`,
+      );
+    }
+  });
+  return curriculum.units.slice(0, units.length).flatMap((unit) => unit.entries.map((entry) => entry.id));
+}
+
 const selectedUnit = rawUnit ? unitById.get(rawUnit) : undefined;
 if (rawUnit && !selectedUnit) {
   fail(
@@ -204,9 +225,11 @@ const selectedIds = rawUnit
   ? selectedUnit!.entries.map((entry) => entry.id)
   : scope === "calibration"
     ? curriculum.calibrationSlice.entries
-    : scope === "pilot"
-      ? pilotSelection.entries.map((entry) => entry.id)
-      : curriculum.units.flatMap((unit) => unit.entries.map((entry) => entry.id));
+    : scope === "study"
+      ? studyIds()
+      : scope === "pilot"
+        ? pilotSelection.entries.map((entry) => entry.id)
+        : curriculum.units.flatMap((unit) => unit.entries.map((entry) => entry.id));
 
 const plannedIds = plan.batches.flatMap((batch) =>
   batch.entries.map((entry) => entry.id),

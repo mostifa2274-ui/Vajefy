@@ -99,7 +99,7 @@ function entry(
 }
 
 function fixture(
-  options: { withLedger?: boolean; planIds?: string[] } = {},
+  options: { withLedger?: boolean; planIds?: string[]; studyUnits?: string[] } = {},
 ): string {
   const root = mkdtempSync(path.join(tmpdir(), "vajefy-review-queue-"));
   writeJson(root, "content/compiled/enhanced.json", {
@@ -138,6 +138,10 @@ function fixture(
   });
   writeJson(root, "content/pilot-a1.json", {
     entries: [{ id: C }, { id: A }, { id: B }],
+  });
+  writeJson(root, "content/study-a1.json", {
+    level: "A1",
+    units: options.studyUnits ?? ["01-introductions"],
   });
   writeJson(root, "content/plans/A1.json", {
     level: "A1",
@@ -288,6 +292,39 @@ test("pilot queue follows the pilot selection order and treats no ledger as miss
   }
 });
 
+test("study queue selects the opening curriculum units in curriculum order", () => {
+  const root = fixture({ withLedger: false, planIds: [C, B, A], studyUnits: ["01-introductions"] });
+  try {
+    const result = run(root, ["--scope", "study", "--json"]);
+    assert.equal(result.status, 0, result.stderr);
+    const queue = JSON.parse(result.stdout) as {
+      scope: string;
+      entries: { id: string; order: number; curriculumUnit: string | null }[];
+    };
+    assert.equal(queue.scope, "study");
+    assert.deepEqual(
+      queue.entries.map((row) => [row.order, row.id, row.curriculumUnit]),
+      [
+        [1, A, "01-introductions"],
+        [2, B, "01-introductions"],
+      ],
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a study whose units do not open the curriculum is rejected", () => {
+  const root = fixture({ withLedger: false, studyUnits: ["02-family-home"] });
+  try {
+    const result = run(root, ["--scope", "study", "--check"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /must be the first curriculum units, in order/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("all-a1 queue follows curriculum order rather than catalogue batch order", () => {
   const root = fixture({ withLedger: false, planIds: [C, B, A] });
   try {
@@ -427,7 +464,7 @@ test("invalid scope is rejected", () => {
   try {
     const result = run(root, ["--scope", "later"]);
     assert.notEqual(result.status, 0);
-    assert.match(result.stderr, /--scope must be one of calibration, pilot, all-a1/);
+    assert.match(result.stderr, /--scope must be one of calibration, study, pilot, all-a1/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

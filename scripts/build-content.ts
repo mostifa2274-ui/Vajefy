@@ -8,6 +8,7 @@ import {
   orderForGoal,
   review,
   scene,
+  type CourseUnit,
   type Entry,
   type Pilot,
   type PilotCatalogue,
@@ -15,7 +16,7 @@ import {
   type PilotPart,
   type SenseAudio,
 } from "../src/lib/learn/content.ts";
-import { catalogueOrder, levelOfId, rowsOf, versionOf } from "./catalogue.ts";
+import { batchOf, courseOrder, curriculumOf, LEVELS, levelOfId, rowsOf, versionOf } from "./catalogue.ts";
 
 /**
  * Compile the enhanced content in `content/pilot/` (the A1 pilot first, then
@@ -26,7 +27,7 @@ import { catalogueOrder, levelOfId, rowsOf, versionOf } from "./catalogue.ts";
  *   tests and the coach;
  * - `public/data/enhanced/`, what the app loads: `index.json` lists every
  *   entry, and each part file holds the teaching content and audio of a run
- *   of entries in curriculum order, so a screen loads only the entries it
+ *   of entries in course order, so a screen loads only the entries it
  *   shows; `audio-pack.json` lists the clips for offline use;
  * - `public/data/enhanced-order.json`, the introduction order for Today.
  *
@@ -48,10 +49,40 @@ function read(file: string): unknown {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
-// The pilot study's 150 entries must all have content; any other entry may be
-// added batch by batch, in the order of its level's plan (content/plans/).
+// The pilot's 150 entries must all have content; any other entry may be added
+// batch by batch, in the order of its level's plan (content/plans/). The course
+// follows each level's curriculum where one is mapped (content/curriculum/).
 const selection = read(path.join(ROOT, "content", "pilot-a1.json")) as { entries: { id: string; group: string }[] };
-const order = catalogueOrder();
+const order = courseOrder();
+const planned = batchOf();
+
+// Curriculum units, level by level, and each mapped entry's unit and prerequisites.
+const units: CourseUnit[] = [];
+const unitOf = new Map<string, number>();
+const prerequisitesOf = new Map<string, string[]>();
+const unitIds = new Map<string, string[]>();
+for (const level of LEVELS) {
+  for (const unit of curriculumOf(level)?.units ?? []) {
+    unitIds.set(unit.id, unit.entries.map((item) => item.id));
+    for (const item of unit.entries) {
+      unitOf.set(item.id, units.length);
+      prerequisitesOf.set(item.id, item.prerequisites);
+    }
+    units.push({ id: unit.id, level, titleEn: unit.titleEn, titleFa: unit.titleFa });
+  }
+}
+
+// The words the learning study measures: the first units of the A1 course.
+const studyFile = read(path.join(ROOT, "content", "study-a1.json")) as { level?: string; units?: unknown };
+const studyUnits = Array.isArray(studyFile.units) ? studyFile.units.filter((id): id is string => typeof id === "string") : [];
+const a1Units = units.filter((unit) => unit.level === "A1").map((unit) => unit.id);
+if (studyFile.level !== "A1") failures.push("content/study-a1.json: level must be A1");
+if (!studyUnits.length || studyUnits.length !== (studyFile.units as unknown[]).length) {
+  failures.push("content/study-a1.json: units must be a non-empty list of unit ids");
+} else if (studyUnits.some((id, index) => a1Units[index] !== id)) {
+  failures.push(`content/study-a1.json: units must be the first units of the A1 curriculum, in order (${a1Units.slice(0, studyUnits.length).join(", ")})`);
+}
+const study = { units: studyUnits, entries: studyUnits.flatMap((id) => unitIds.get(id) ?? []) };
 
 const entries: Entry[] = [];
 const entryDir = path.join(SOURCE, "entries");
@@ -75,7 +106,7 @@ for (const item of entries) {
   if (seenEntries.has(item.id)) failures.push(`${item.id}: duplicate entry`);
   seenEntries.add(item.id);
   const level = levelOfId(item.id);
-  if (!order.has(item.id)) failures.push(`${item.id}: not in content/plans/${level ?? "<level>"}.json`);
+  if (!planned.has(item.id)) failures.push(`${item.id}: not in content/plans/${level ?? "<level>"}.json`);
   if (!level || !rowsOf(level).some((row) => row.id === item.id)) failures.push(`${item.id}: not an existing ${level ?? ""} entry`);
   if (item.senses[0]?.id !== item.id) failures.push(`${item.id}: the first sense must keep the entry id`);
   for (const [index, sense] of item.senses.entries()) {
@@ -99,6 +130,7 @@ for (const item of entries) {
   }
 }
 for (const { id } of selection.entries) if (!seenEntries.has(id)) failures.push(`${id}: selected for the pilot but has no content`);
+for (const id of study.entries) if (!seenEntries.has(id)) failures.push(`${id}: in the study's units but has no content`);
 
 function list<T>(file: string, schema: { safeParse: (value: unknown) => { success: true; data: T } | { success: false; error: { issues: { path: PropertyKey[]; message: string }[] } } }): T[] {
   const full = path.join(SOURCE, file);
@@ -145,8 +177,18 @@ const compiled: Pilot = {
       // An approval applies only to the exact content it reviewed.
       const current = record && record.version === version ? record : null;
       const released = Boolean(current && current.bilingual === "approved" && current.pronunciation === "approved");
-      return { ...item, version, order: order.get(item.id) ?? 0, released, review: current };
+      return {
+        ...item,
+        version,
+        order: order.get(item.id) ?? 0,
+        unit: unitOf.get(item.id) ?? null,
+        prerequisites: prerequisitesOf.get(item.id) ?? [],
+        released,
+        review: current,
+      };
     }),
+  units,
+  study,
   contrasts,
   scenes,
   audio: {},
@@ -186,7 +228,16 @@ for (const accent of ["gb", "us"] as const) {
     bytes: sorted.reduce((sum, file) => sum + (audio.clips?.[file.replace(/^pilot\//, "")]?.bytes ?? 0), 0),
   };
 }
-compiled.version = versionOf({ entries: compiled.entries.map((item) => item.version), contrasts, scenes, audio: compiled.audio });
+// The version covers the course itself: the order, units and prerequisites
+// learners meet, and the study's word set, as well as the content.
+compiled.version = versionOf({
+  entries: compiled.entries.map((item) => [item.version, item.unit, item.prerequisites]),
+  units,
+  study,
+  contrasts,
+  scenes,
+  audio: compiled.audio,
+});
 
 if (failures.length) {
   console.error(`Pilot content failed validation with ${failures.length} issue(s):\n- ${failures.join("\n- ")}`);
@@ -194,7 +245,7 @@ if (failures.length) {
 }
 
 // The introduction order per goal, small enough for Today to load at once.
-const targets = compiled.entries.flatMap((item) => item.senses.map((sense, position) => ({ id: sense.id, goals: item.goals, sense: position })));
+const targets = compiled.entries.flatMap((item) => item.senses.map((sense, position) => ({ id: sense.id, goals: item.goals, sense: position, unit: item.unit })));
 const pilotOrder: PilotOrder = {
   version: compiled.version,
   order: Object.fromEntries(GOALS.map((goal) => [goal, orderForGoal(targets, goal, (target) => target).map((target) => target.id)])) as PilotOrder["order"],
@@ -221,13 +272,14 @@ for (let start = 0; start < compiled.entries.length; start += PART_SIZE) {
       goals: item.goals,
       version: item.version,
       released: item.released,
+      unit: item.unit,
       part: parts.length,
       senses: item.senses.map((sense) => ({ id: sense.id, pos: sense.pos, gloss: sense.gloss })),
     });
   }
   parts.push([file, output]);
 }
-const catalogue: PilotCatalogue = { version: compiled.version, parts: parts.map(([file]) => file), entries: listed, contrasts, scenes };
+const catalogue: PilotCatalogue = { version: compiled.version, parts: parts.map(([file]) => file), units, entries: listed, contrasts, scenes };
 
 const outputs = new Map<string, string>([
   [OUT, `${JSON.stringify(compiled)}\n`],
@@ -261,5 +313,5 @@ if (process.argv.includes("--check")) {
 const released = compiled.entries.filter((item) => item.released).length;
 const senses = compiled.entries.reduce((sum, item) => sum + item.senses.length, 0);
 console.log(
-  `Pilot content OK: ${compiled.entries.length} entries in ${parts.length} parts, ${senses} senses, ${contrasts.length} contrasts, ${scenes.length} scenes; ${released} released, ${Object.keys(compiled.audio).length} senses with current audio.`,
+  `Pilot content OK: ${compiled.entries.length} entries in ${parts.length} parts, ${senses} senses, ${contrasts.length} contrasts, ${scenes.length} scenes; ${released} released, ${Object.keys(compiled.audio).length} senses with current audio; ${units.length} curriculum units, study ${study.entries.length} entries in ${study.units.join(", ")}.`,
 );

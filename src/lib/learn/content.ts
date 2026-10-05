@@ -192,7 +192,23 @@ export type SenseAudio = {
  */
 export type Pilot = {
   version: string;
-  entries: (Entry & { version: string; order: number; released: boolean; review: Review | null })[];
+  /**
+   * Each entry with its content version, course position, curriculum unit (an
+   * index into `units`, or null outside a curriculum) and the entries its
+   * lessons rely on, from the curriculum.
+   */
+  entries: (Entry & {
+    version: string;
+    order: number;
+    unit: number | null;
+    prerequisites: string[];
+    released: boolean;
+    review: Review | null;
+  })[];
+  /** Curriculum units, level by level, in course order. */
+  units: CourseUnit[];
+  /** The words the learning study measures: its curriculum units' entries, in course order. */
+  study: { units: string[]; entries: string[] };
   contrasts: Contrast[];
   scenes: Scene[];
   audio: Record<string, SenseAudio>;
@@ -200,12 +216,14 @@ export type Pilot = {
   audioPack: AudioPack;
 };
 export type AudioPack = Record<"gb" | "us", { files: string[]; bytes: number }>;
+/** A unit of a level's curriculum (content/curriculum/). */
+export type CourseUnit = { id: string; level: string; titleEn: string; titleFa: string };
 
 /** An entry as the app needs it for teaching, without its review record. */
 export type PilotEntry = Omit<Pilot["entries"][number], "review">;
 /** A sense as it is listed: enough to order, count, label and offer it as an option. */
 export type ListedSense = Pick<Sense, "id" | "pos" | "gloss">;
-export type ListedEntry = Pick<PilotEntry, "id" | "headword" | "goals" | "version" | "released"> & { senses: ListedSense[] };
+export type ListedEntry = Pick<PilotEntry, "id" | "headword" | "goals" | "version" | "released" | "unit"> & { senses: ListedSense[] };
 
 /**
  * `public/data/enhanced/index.json`: every entry listed, with the contrasts
@@ -215,6 +233,8 @@ export type PilotCatalogue = {
   version: string;
   /** Part files under `public/data/`, named by their content. */
   parts: string[];
+  /** Curriculum units, which listed entries refer to by index. */
+  units: CourseUnit[];
   entries: (ListedEntry & { part: number })[];
   contrasts: Contrast[];
   scenes: Scene[];

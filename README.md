@@ -12,7 +12,8 @@ practice), **Words** (search, saved entries and reference) and **Progress**
 - **2,950 reference notes**: phrasal verbs, collocations, prepositions, verb
   patterns, occupations, antonyms, common mix-ups, synonyms, word families,
   word formation and irregular verbs.
-- **Guided lessons** (`/learn`) for a 150-entry A1 pilot taught sense by sense:
+- **Guided lessons** (`/learn`) for the 900-word A1 course, in 12 curriculum
+  units with prerequisites, taught sense by sense:
   teach → hear → recall the meaning → feedback → use it in a new sentence →
   delayed recall, which becomes the word's first scheduled review. Comparison
   lessons (say/tell, bring/take …) and short scenes reuse what was learned.
@@ -113,7 +114,7 @@ The app is fully client-side: no accounts, no server database, no AI service.
 | `src/lib/learn/practice.ts` | Bounded prospective vocabulary skill evidence |
 | `src/lib/learn/backup.ts` | Export and import of progress files |
 | `src/lib/learn/content.ts` | Schema of the sense-level pilot content |
-| `src/lib/learn/pilot.ts` | Loading the compiled pilot, introduction order by goal, study cards |
+| `src/lib/learn/pilot.ts` | Loading the compiled content, curriculum units and introduction order, study cards |
 | `src/lib/learn/lesson.ts` | Guided lesson steps, grading, retries and resume |
 | `src/lib/learn/speech.ts` | The single playback controller: recorded clips first, browser speech as fallback |
 | `src/lib/learn/audio-pack.ts` | Downloading and removing offline pronunciation |
@@ -143,9 +144,9 @@ The app is fully client-side: no accounts, no server database, no AI service.
 - Scheduled Review and practice keep **separate counters and accuracy**. Practice
   cannot satisfy the daily review target or inflate measured retention.
 - A completely unseen word gets a short **teach → hide → recall → grade** flow
-  before it joins normal spaced review. Pilot words are introduced through
-  guided lessons instead, and Review does not offer them as new cards while the
-  pilot still has words to teach.
+  before it joins normal spaced review. Words with enhanced lessons are
+  introduced through guided lessons instead, and Review does not offer them as
+  new cards while lessons still have words to teach.
 - New words come in order of usefulness: how often the headword appears across
   the dataset's example sentences (`public/data/usefulness.json`), and for the
   pilot, the learner's goal. Fewer new words are offered when many reviews are

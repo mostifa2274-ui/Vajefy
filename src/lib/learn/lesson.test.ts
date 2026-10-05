@@ -3,7 +3,8 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
 import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, heldOutItem, lessonSize, nextTargets, resolveItem, seenPrompts, skillOf } from "./lesson";
-import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace } from "./pilot";
+import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace, unitOf } from "./pilot";
+import { orderForGoal } from "./targets";
 
 const pilot = JSON.parse(readFileSync("content/compiled/enhanced.json", "utf8")) as Pilot;
 const index = indexPilot(pilot);
@@ -104,12 +105,56 @@ test("lesson size follows the learner's time and backs off when reviews pile up"
   assert.equal(lessonSize(15, 45, 20), 0);
 });
 
-test("introduction order serves the goal and keeps further senses after first meetings", () => {
-  const work = introductionOrder(index.targets, "work");
-  const firstSecondSense = work.findIndex((target) => target.index > 0);
-  assert.ok(work.slice(0, firstSecondSense).every((target) => target.index === 0));
-  const known = Object.fromEntries(work.slice(0, 4).map((target) => [target.sense.id, {}]));
-  assert.deepEqual(nextTargets(work, known, 2).map((target) => target.sense.id), work.slice(4, 6).map((target) => target.sense.id));
+test("A1 lessons follow the curriculum unit by unit for every goal, after each word's prerequisites", () => {
+  const curriculum = JSON.parse(readFileSync("content/curriculum/A1.json", "utf8")) as {
+    units: { id: string; entries: { id: string; prerequisites: string[] }[] }[];
+  };
+  const sequence = curriculum.units.flatMap((unit) => unit.entries.map((entry) => entry.id));
+  for (const goal of GOALS) {
+    const first = introductionOrder(index.targets, goal).filter((target) => target.index === 0);
+    assert.deepEqual(first.map((target) => target.entry.id), sequence, goal);
+  }
+  const position = new Map(sequence.map((id, at) => [id, at]));
+  for (const entry of pilot.entries) {
+    assert.deepEqual(entry.prerequisites, curriculum.units.flatMap((unit) => unit.entries).find((item) => item.id === entry.id)!.prerequisites);
+    for (const required of entry.prerequisites) assert.ok(position.get(required)! < position.get(entry.id)!, `${required} before ${entry.id}`);
+  }
+  const first = index.targets[0]!;
+  assert.deepEqual(unitOf(index, first), { id: "01-introductions", level: "A1", titleEn: "Introductions and personal information", titleFa: "معرفی و اطلاعات شخصی", number: 1 });
+  assert.equal(unitOf(index, index.bySense.get("lex:A1:time")!)?.number, 3);
+});
+
+test("a further sense comes one unit after its word, and never in the same lesson", () => {
+  const ordered = introductionOrder(index.targets, "general");
+  const at = new Map(ordered.map((target, position) => [target.sense.id, position]));
+  const further = ordered.filter((target) => target.index > 0);
+  assert.ok(further.length > 0);
+  for (const target of further) {
+    const unit = target.entry.unit!;
+    const nextUnit = ordered.filter((other) => other.index === 0 && other.entry.unit === unit + 1);
+    for (const other of nextUnit) assert.ok(at.get(other.sense.id)! < at.get(target.sense.id)!, `${other.sense.id} before ${target.sense.id}`);
+  }
+  // Even when a further sense is next in line, it waits for its word's first sense.
+  const sense = further[0]!;
+  const word = index.bySense.get(sense.entry.id)!;
+  const known = Object.fromEntries(ordered.filter((target) => target !== sense && target !== word).map((target) => [target.sense.id, {}]));
+  assert.deepEqual(nextTargets([word, sense], known, 2).map((target) => target.sense.id), [word.sense.id]);
+  assert.deepEqual(nextTargets([word, sense], { ...known, [word.sense.id]: {} }, 2).map((target) => target.sense.id), [sense.sense.id]);
+  const known4 = Object.fromEntries(ordered.slice(0, 4).map((target) => [target.sense.id, {}]));
+  assert.deepEqual(nextTargets(ordered, known4, 2).map((target) => target.sense.id), ordered.slice(4, 6).map((target) => target.sense.id));
+});
+
+test("outside a curriculum, targets that serve the goal come first and further senses last", () => {
+  const targets = [
+    { id: "lex:A2:a", goals: ["everyday"] as const, sense: 0 },
+    { id: "lex:A2:a#two", goals: ["everyday"] as const, sense: 1 },
+    { id: "lex:A2:b", goals: ["work"] as const, sense: 0 },
+    { id: "lex:A1:c", goals: ["everyday"] as const, sense: 0, unit: 0 },
+  ];
+  assert.deepEqual(
+    orderForGoal(targets, "work", (target) => target).map((target) => target.id),
+    ["lex:A1:c", "lex:A2:b", "lex:A2:a", "lex:A2:a#two"],
+  );
 });
 
 test("enhanced content at another level is taught first to learners at that level", () => {

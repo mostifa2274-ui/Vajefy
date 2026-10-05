@@ -1,19 +1,26 @@
 # Enhanced content and editorial workflow
 
 Enhanced entries teach A1 vocabulary at the level of individual senses. The
-first 150 form the pilot (`content/pilot-a1.json`), which the pilot study
-measures. The rest of A1 follows in batches, as fast as editorial review allows
-([Expanding across A1](#expanding-across-a1)). The source lives in
+first 150 written formed the pilot (`content/pilot-a1.json`); the rest of A1
+followed in batches ([Expanding across A1](#expanding-across-a1)). Learners meet
+them in curriculum order ([A1_CURRICULUM.md](A1_CURRICULUM.md#course-order)),
+and the learning study measures the opening units (`content/study-a1.json`,
+[EVALUATION.md](EVALUATION.md#the-studys-words)). The source lives in
 `content/pilot/`, and `npm run content:build` compiles it into:
 
 - `content/compiled/enhanced.json`, all of it in one file, which the scripts,
   the tests and the coach read;
 - `public/data/enhanced/`, what the app loads: `index.json` lists every entry
   with its senses' meanings and parts of speech, plus the contrasts and
-  scenes; each part file (named by its content) holds the full content and
-  audio of 25 entries in curriculum order, so a screen loads only the entries
-  it shows; `audio-pack.json` lists the clips for offline download;
+  scenes, and the curriculum units entries belong to; each part file (named by
+  its content) holds the full content and audio of 25 entries in course order,
+  so a screen loads only the entries it shows; `audio-pack.json` lists the
+  clips for offline download;
 - `public/data/enhanced-order.json`, the introduction order Today reads.
+
+Each compiled entry carries its course position, its curriculum unit and the
+prerequisite entries the curriculum declares, and the compiled file names the
+study's word set. The content version covers all of these.
 
 | File | Contents |
 |---|---|
@@ -122,15 +129,17 @@ reviewed:
 
 ```sh
 npm run content:review-queue
+npm run content:review-queue -- --scope study
 npm run content:review-queue -- --scope pilot
 npm run content:review-queue -- --scope all-a1 --json
 npm run content:review-queue -- --unit 08-work-study
 npm run content:review-queue -- --unit 08-work-study --packet
 ```
 
-The default scope is the fixed 20-entry calibration slice. `pilot` is the
-original 150-entry pilot and `all-a1` covers all 900 A1 entries in **curriculum
-order**. Use `--unit <unit-id>` to generate the same evidence queue for one
+The default scope is the fixed 20-entry calibration slice. `study` is the
+learning study's word set (the opening curriculum units, 180 entries), `pilot`
+is the original 150-entry selection and `all-a1` covers all 900 A1 entries in
+**curriculum order**. Use `--unit <unit-id>` to generate the same evidence queue for one
 curriculum unit, for example `08-work-study`. Unit selection cannot be mixed
 with `--scope`, which keeps reviewer batches unambiguous.
 
@@ -279,7 +288,7 @@ The app's build chooses which content learners meet, with
 A public deployment set to `released` therefore grows exactly as fast as
 entries are approved, with no other change.
 
-A third value, `none`, turns guided lessons off. The pilot words are then
-introduced in Review with their original cards. This is the pilot study's
+A third value, `none`, turns guided lessons off. The same words are then
+introduced in Review, in curriculum order, with their original cards. This is the pilot study's
 comparison arm ([EVALUATION.md](EVALUATION.md#the-pilot-study)).
 

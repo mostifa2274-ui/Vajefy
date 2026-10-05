@@ -95,6 +95,7 @@ function entry(
 type FixtureOptions = {
   shortEntry?: string;
   planIds?: string[];
+  studyUnits?: string[];
 };
 
 function fixture(options: FixtureOptions = {}): string {
@@ -131,6 +132,10 @@ function fixture(options: FixtureOptions = {}): string {
   });
   writeJson(root, "content/pilot-a1.json", {
     entries: [{ id: C }, { id: A }],
+  });
+  writeJson(root, "content/study-a1.json", {
+    level: "A1",
+    units: options.studyUnits ?? ["01-introductions", "02-family-home"],
   });
   writeJson(root, "content/plans/A1.json", {
     level: "A1",
@@ -212,6 +217,36 @@ test("calibration bank reserves the final authored item and binds it to the cont
     assert.ok(!a.teachingCheckIds.includes(a.heldOut!.id));
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("study bank holds the opening curriculum units in curriculum order", () => {
+  const root = fixture({ studyUnits: ["01-introductions"] });
+  try {
+    const study = run(root, ["--scope", "study", "--json"]);
+    assert.equal(study.status, 0, study.stderr);
+    const bank = JSON.parse(study.stdout) as {
+      scope: string;
+      rows: { entryId: string; curriculumUnit: string | null }[];
+    };
+    assert.equal(bank.scope, "study");
+    assert.deepEqual(
+      bank.rows.map((row) => [row.entryId, row.curriculumUnit]),
+      [
+        [A, "01-introductions"],
+        [B, "01-introductions"],
+      ],
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+  const skipping = fixture({ studyUnits: ["01-introductions", "03-daily-routine"] });
+  try {
+    const result = run(skipping, ["--scope", "study", "--check"]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /must be the first curriculum units, in order/);
+  } finally {
+    rmSync(skipping, { recursive: true, force: true });
   }
 });
 
@@ -311,7 +346,7 @@ test("invalid scope and unknown unit are rejected", () => {
     assert.notEqual(scope.status, 0);
     assert.match(
       scope.stderr,
-      /--scope must be one of calibration, pilot, all-a1/,
+      /--scope must be one of calibration, study, pilot, all-a1/,
     );
 
     const unit = run(root, ["--unit", "99-missing"]);

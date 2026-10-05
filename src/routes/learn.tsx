@@ -16,7 +16,7 @@ import {
   seenPrompts,
   type LessonSession,
 } from "@/lib/learn/lesson";
-import { focusFirst, hasContent, introducible, introductionOrder, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
+import { focusFirst, hasContent, introducible, introductionOrder, loadPilot, unitOf, type PilotIndex } from "@/lib/learn/pilot";
 import { dailyPlan } from "@/lib/learn/planner";
 import { resumable } from "@/lib/learn/session";
 import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
@@ -141,6 +141,9 @@ function LearnPage() {
 
   const met = index.targets.filter((target) => cards[target.sense.id]).length;
   const remaining = nextTargets(ordered, cards, 1).length;
+  // The curriculum unit the next lesson belongs to, and how far into it the learner is.
+  const unit = upcoming[0] ? unitOf(index, upcoming[0]) : null;
+  const inUnit = unit ? index.targets.filter((target) => target.index === 0 && target.entry.unit === upcoming[0]!.entry.unit) : [];
 
   function start(session: LessonSession) {
     if (unfinished) saveSession({ ...unfinished, status: "done", updatedAt: timestamp() });
@@ -168,6 +171,17 @@ function LearnPage() {
             </Button>
           ) : upcoming.length ? (
             <>
+              {unit ? (
+                <div className="mb-3">
+                  <h2 className="text-base font-medium">
+                    {copy.courseUnit} <Num value={unit.number} />: {lang === "fa" ? unit.titleFa : unit.titleEn}
+                  </h2>
+                  <p className="text-xs text-muted">
+                    {copy.unitProgress}: <Num value={inUnit.filter((target) => cards[target.sense.id]).length} /> /{" "}
+                    <Num value={inUnit.length} />
+                  </p>
+                </div>
+              ) : null}
               <ul className="flex flex-wrap gap-2" lang="en" dir="ltr">
                 {upcoming.map((target) => (
                   <li

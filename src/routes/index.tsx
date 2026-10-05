@@ -12,6 +12,7 @@ import { CHECKUP_SIZE, checkupCandidates } from "@/lib/learn/lesson";
 import { dailyPlan } from "@/lib/learn/planner";
 import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
 import { loadPilotOrder } from "@/lib/learn/pilot";
+import { readyToIntroduce } from "@/lib/learn/targets";
 import { resumable } from "@/lib/learn/session";
 import { dayNumber } from "@/lib/learn/text";
 import type { LexWord, Meta, PairNote } from "@/lib/learn/types";
@@ -127,7 +128,13 @@ function Home() {
   // Lessons for the learner's own level use the same daily new-target budget as Review.
   const lessonCount = order
     ? order.order[goal ?? "general"]
-        .filter((id) => id.startsWith(`lex:${focus}:`) && !cards[id] && introducibleIn(CONTENT_CHANNEL, released.has(id)))
+        .filter(
+          (id) =>
+            id.startsWith(`lex:${focus}:`) &&
+            !cards[id] &&
+            readyToIntroduce(id, (entry) => Boolean(cards[entry])) &&
+            introducibleIn(CONTENT_CHANNEL, released.has(id)),
+        )
         .slice(0, plan.newLimit).length
     : 0;
   const planMinutes = plan.estimatedMinutes;

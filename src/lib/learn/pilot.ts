@@ -1,6 +1,7 @@
 import type {
   AudioPack,
   Contrast,
+  CourseUnit,
   Entry,
   Goal,
   ListedEntry,
@@ -45,8 +46,10 @@ export type TargetContent = { sense: Sense; entry: PilotEntry; index: number };
 
 export type PilotIndex = {
   version: string;
-  /** Every learning target in curriculum order. */
+  /** Every learning target in course order. */
   targets: PilotTarget[];
+  /** Curriculum units, which entries refer to by index. */
+  units: CourseUnit[];
   bySense: Map<string, PilotTarget>;
   byEntry: Map<string, ListedEntry>;
   contrasts: Contrast[];
@@ -62,7 +65,14 @@ export type PilotIndex = {
   parts: Map<string, string>;
 };
 
-function listIndex(version: string, entries: ListedEntry[], contrasts: Contrast[], scenes: Scene[], parts: Map<string, string>): PilotIndex {
+function listIndex(
+  version: string,
+  units: CourseUnit[],
+  entries: ListedEntry[],
+  contrasts: Contrast[],
+  scenes: Scene[],
+  parts: Map<string, string>,
+): PilotIndex {
   const targets: PilotTarget[] = [];
   const bySense = new Map<string, PilotTarget>();
   const byEntry = new Map<string, ListedEntry>();
@@ -74,7 +84,7 @@ function listIndex(version: string, entries: ListedEntry[], contrasts: Contrast[
       bySense.set(sense.id, target);
     });
   }
-  return { version, targets, bySense, byEntry, contrasts, scenes, content: new Map(), entries: new Map(), audio: {}, parts };
+  return { version, targets, units, bySense, byEntry, contrasts, scenes, content: new Map(), entries: new Map(), audio: {}, parts };
 }
 
 function addPart(index: PilotIndex, part: PilotPart) {
@@ -87,7 +97,7 @@ function addPart(index: PilotIndex, part: PilotPart) {
 
 /** An index with all the content loaded, from the single compiled file (scripts and tests). */
 export function indexPilot(pilot: Pilot): PilotIndex {
-  const index = listIndex(pilot.version, pilot.entries, pilot.contrasts, pilot.scenes, new Map());
+  const index = listIndex(pilot.version, pilot.units, pilot.entries, pilot.contrasts, pilot.scenes, new Map());
   addPart(index, { entries: pilot.entries, audio: pilot.audio });
   return index;
 }
@@ -107,7 +117,7 @@ export function loadPilot(ids: Iterable<string> = []): Promise<PilotIndex> {
   listing ??= loadJson<PilotCatalogue>("enhanced/index.json")
     .then((catalogue) => {
       const parts = new Map(catalogue.entries.map((entry) => [entry.id, catalogue.parts[entry.part]!]));
-      latest = listIndex(catalogue.version, catalogue.entries, catalogue.contrasts, catalogue.scenes, parts);
+      latest = listIndex(catalogue.version, catalogue.units, catalogue.entries, catalogue.contrasts, catalogue.scenes, parts);
       return latest;
     })
     .catch((error: unknown) => {
@@ -178,9 +188,16 @@ export function introducible(index: PilotIndex, channel: Channel = CONTENT_CHANN
   };
 }
 
-/** Pilot targets in the order to introduce them for the learner's goal. */
+/** Pilot targets in the order to introduce them for the learner's goal: the curriculum's, where one is mapped. */
 export function introductionOrder(targets: PilotTarget[], goal: Goal | undefined): PilotTarget[] {
-  return orderForGoal(targets, goal, (target) => ({ goals: target.entry.goals, sense: target.index }));
+  return orderForGoal(targets, goal, (target) => ({ goals: target.entry.goals, sense: target.index, unit: target.entry.unit }));
+}
+
+/** The curriculum unit a target belongs to, with its number within its level (1 for a level's first unit). */
+export function unitOf(index: Pick<PilotIndex, "units">, target: PilotTarget): (CourseUnit & { number: number }) | null {
+  const unit = target.entry.unit === null || target.entry.unit === undefined ? undefined : index.units[target.entry.unit];
+  if (!unit) return null;
+  return { ...unit, number: index.units.filter((other) => other.level === unit.level).indexOf(unit) + 1 };
 }
 
 /** Targets at one level of the catalogue. */
