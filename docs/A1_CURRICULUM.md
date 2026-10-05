@@ -330,8 +330,14 @@ the monotonic partial-coverage ratchet used while the syllabus expands.
 ## Human review queue
 
 The 20 calibration entries must be reviewed as a complete slice before this
-standard is scaled. Follow `docs/PILOT_CONTENT.md#reviewing` and record real
-reviewer decisions in `content/pilot/review.json`.
+standard is scaled. Run `npm run content:review-queue` first to see each
+entry's exact current version, missing/current/stale ledger state, bilingual and
+pronunciation state, current audio completeness, listener flags and next review
+action. Use `--scope pilot` for the original 150-entry pilot. The report is
+read-only and cannot create an approval.
+
+Follow `docs/PILOT_CONTENT.md#reviewing` and record real reviewer decisions in
+`content/pilot/review.json`.
 
 Current automated audio flags inside this slice include `a/an` and
 `family`. These flags require listening; they are not automatically
