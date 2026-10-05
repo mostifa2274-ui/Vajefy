@@ -2659,6 +2659,17 @@
         "why": "with the phone یعنی «با استفاده از گوشی»."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "شماره تلفنت چیست؟",
+      "frame": "What's your ___ number?",
+      "answer": "phone",
+      "accept": [
+       "telephone"
+      ],
+      "why": "phone number = شمارهٔ تلفن."
      }
     ]
    },
@@ -2720,6 +2731,18 @@
        "rang"
       ],
       "why": "phone؛ گذشته: phoned."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "I'll ___ you after work.",
+      "answer": "phone",
+      "accept": [
+       "call",
+       "ring"
+      ],
+      "fa": "بعد از کار به تو زنگ می‌زنم.",
+      "why": "phone + شخص = به کسی زنگ زدن."
      }
     ]
    }
