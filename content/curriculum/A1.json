@@ -832,7 +832,142 @@
       "status": "planned",
       "objectiveEn": "Handle basic travel, tickets, vehicles, arrivals, and departures.",
       "objectiveFa": "موقعیت‌های سادهٔ سفر، بلیت، وسیلهٔ نقلیه، رسیدن و رفتن را مدیریت کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:go",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:come",
+          "prerequisites": [
+            "lex:A1:go",
+            "lex:A1:here"
+          ]
+        },
+        {
+          "id": "lex:A1:travel",
+          "prerequisites": [
+            "lex:A1:go"
+          ]
+        },
+        {
+          "id": "lex:A1:trip",
+          "prerequisites": [
+            "lex:A1:travel"
+          ]
+        },
+        {
+          "id": "lex:A1:leave",
+          "prerequisites": [
+            "lex:A1:go",
+            "lex:A1:time"
+          ]
+        },
+        {
+          "id": "lex:A1:arrive",
+          "prerequisites": [
+            "lex:A1:leave",
+            "lex:A1:place"
+          ]
+        },
+        {
+          "id": "lex:A1:ticket",
+          "prerequisites": [
+            "lex:A1:travel",
+            "lex:A1:buy"
+          ]
+        },
+        {
+          "id": "lex:A1:station",
+          "prerequisites": [
+            "lex:A1:place",
+            "lex:A1:travel"
+          ]
+        },
+        {
+          "id": "lex:A1:stop",
+          "prerequisites": [
+            "lex:A1:station",
+            "lex:A1:go"
+          ]
+        },
+        {
+          "id": "lex:A1:bus",
+          "prerequisites": [
+            "lex:A1:station",
+            "lex:A1:ticket"
+          ]
+        },
+        {
+          "id": "lex:A1:train",
+          "prerequisites": [
+            "lex:A1:station",
+            "lex:A1:ticket"
+          ]
+        },
+        {
+          "id": "lex:A1:car",
+          "prerequisites": [
+            "lex:A1:road"
+          ]
+        },
+        {
+          "id": "lex:A1:taxi",
+          "prerequisites": [
+            "lex:A1:car",
+            "lex:A1:money"
+          ]
+        },
+        {
+          "id": "lex:A1:airport",
+          "prerequisites": [
+            "lex:A1:place",
+            "lex:A1:travel"
+          ]
+        },
+        {
+          "id": "lex:A1:plane",
+          "prerequisites": [
+            "lex:A1:airport",
+            "lex:A1:ticket"
+          ]
+        },
+        {
+          "id": "lex:A1:drive",
+          "prerequisites": [
+            "lex:A1:car",
+            "lex:A1:road"
+          ]
+        },
+        {
+          "id": "lex:A1:ride",
+          "prerequisites": [
+            "lex:A1:travel"
+          ]
+        },
+        {
+          "id": "lex:A1:bike",
+          "prerequisites": [
+            "lex:A1:ride",
+            "lex:A1:road"
+          ]
+        },
+        {
+          "id": "lex:A1:boat",
+          "prerequisites": [
+            "lex:A1:travel"
+          ]
+        },
+        {
+          "id": "lex:A1:holiday",
+          "prerequisites": [
+            "lex:A1:trip",
+            "lex:A1:travel"
+          ]
+        }
+      ]
     },
     {
       "id": "08-work-study",
@@ -905,5 +1040,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 120
+  "assignedMinimum": 140
 }
