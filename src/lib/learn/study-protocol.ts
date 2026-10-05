@@ -15,6 +15,7 @@ export type StudyProtocolRecord = {
   channel: string | null;
   build: string | null;
   assessmentProtocol: string | null;
+  assessmentMinimumDelayDays: number | null;
   assessmentBankContentVersion: string | null;
 };
 
@@ -113,6 +114,11 @@ export function validateStudyProtocols(
           `${record.source}: v2 assessment protocol must be ${ASSESSMENT_PROTOCOL_ID}`,
         );
       }
+      if (record.assessmentMinimumDelayDays !== ASSESSMENT_MIN_DELAY_DAYS) {
+        errors.push(
+          `${record.source}: v2 assessment minimum delay must be ${ASSESSMENT_MIN_DELAY_DAYS} days`,
+        );
+      }
       if (
         !record.assessmentBankContentVersion ||
         record.assessmentBankContentVersion !== record.contentVersion
@@ -132,6 +138,9 @@ export function validateStudyProtocols(
         record.version >= 2
           ? record.assessmentProtocol ?? "(missing)"
           : "legacy-v1-implicit",
+        record.version >= 2
+          ? record.assessmentMinimumDelayDays ?? "(missing)"
+          : "legacy-v1-implicit-delay",
         record.version >= 2
           ? record.assessmentBankContentVersion ?? "(missing)"
           : record.contentVersion ?? "(missing)",
