@@ -178,7 +178,7 @@ export function validatePilotRoster(
     errors.push(`roster version must be ${PILOT_ROSTER_VERSION}`);
   }
   if (!/^[a-f0-9]{64}$/.test(roster.seedFingerprint ?? "")) {
-    errors.push("roster seed fingerprint must be a SHA-256 hex digest");
+    errors.push("roster seed fingerprint must be a 64-character scrypt hex digest");
   }
   if (
     seed !== undefined &&
