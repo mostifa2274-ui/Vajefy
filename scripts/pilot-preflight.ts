@@ -64,6 +64,21 @@ if (!Number.isInteger(selection.version) || selection.version < 1) {
 if (selection.level !== "A1") {
   fail("content/pilot-a1.json must have level A1");
 }
+if (selection.entries.length !== 150) {
+  fail(
+    `content/pilot-a1.json must contain exactly 150 entries; found ${selection.entries.length}`,
+  );
+}
+const duplicateSelectionIds = selection.entries
+  .map((entry) => entry.id)
+  .filter((id, index, all) => all.indexOf(id) !== index);
+if (duplicateSelectionIds.length) {
+  fail(
+    `content/pilot-a1.json contains duplicate id(s): ${[
+      ...new Set(duplicateSelectionIds),
+    ].join(", ")}`,
+  );
+}
 
 const expectedProvenance: PilotSelectionProvenance = {
   version: selection.version,
