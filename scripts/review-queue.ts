@@ -368,7 +368,8 @@ const queue: Queue = {
 
 
 function mdInline(value: string): string {
-  return value.replace(/\r?\n/g, " ").replace(/\x60/g, "\\x60");
+  const tick = String.fromCharCode(96);
+  return value.replace(/\r?\n/g, " ").split(tick).join("\\" + tick);
 }
 
 function mdCode(value: string): string {
