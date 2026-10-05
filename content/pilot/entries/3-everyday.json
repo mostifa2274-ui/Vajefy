@@ -1301,6 +1301,17 @@
        "dad"
       ],
       "why": "پدر."
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "پدرِ علی در یک مدرسه کار می‌کند.",
+      "frame": "Ali's ___ works at a school.",
+      "answer": "father",
+      "accept": [
+       "dad"
+      ],
+      "why": "father یعنی پدر؛ در گفتار dad هم پذیرفته است."
      }
     ]
    }
@@ -3717,6 +3728,15 @@
         "why": "little دربارهٔ اندازه است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "مادربزرگم هشتاد سال دارد.",
+      "frame": "My grandmother is eighty years ___.",
+      "answer": "old",
+      "accept": [],
+      "why": "برای بیان سن از number + years old استفاده می‌کنیم."
      }
     ]
    },
@@ -3777,6 +3797,15 @@
       "answer": "old",
       "accept": [],
       "why": "an old friend."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "This coat is very ___. I bought it ten years ago.",
+      "answer": "old",
+      "accept": [],
+      "fa": "این کت خیلی قدیمی است. ده سال پیش آن را خریدم.",
+      "why": "برای چیزی که مدت زیادی از آن گذشته و دیگر new نیست، old می‌آید."
      }
     ]
    }

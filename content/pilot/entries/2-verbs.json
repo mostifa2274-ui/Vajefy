@@ -208,6 +208,15 @@
         "why": "در نوشتار سؤال بدون do ناقص است."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "من دو خواهر دارم.",
+      "frame": "I ___ two sisters.",
+      "answer": "have",
+      "accept": [],
+      "why": "برای داشتن و اعضای خانواده با I از have استفاده می‌کنیم."
      }
     ]
    },
@@ -269,6 +278,15 @@
       "answer": "Have",
       "accept": [],
       "why": "عبارت ثابت have a good time."
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "Let's ___ a party on Saturday.",
+      "answer": "have",
+      "accept": [],
+      "fa": "بیایید شنبه یک مهمانی داشته باشیم.",
+      "why": "have a party یک ترکیب رایج برای «مهمانی داشتن/گرفتن» است."
      }
     ]
    }
