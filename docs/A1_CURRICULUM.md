@@ -27,16 +27,16 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Units 2–5 now each
+Unit 1 remains the fixed 20-entry calibration package. Units 2–6 now each
 have a 20-entry **mapped** sequence, while their status remains `planned`:
 mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Units 6–12
+content has passed bilingual/pronunciation review or is released. Units 7–12
 remain planned and unassigned.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-100, so CI prevents total mapped A1 coverage from silently falling below the
-current five-unit baseline. It protects the count, not exact unit membership;
-the other 800 entries remain a visible curriculum backlog, not silently treated
+120, so CI prevents total mapped A1 coverage from silently falling below the
+current six-unit baseline. It protects the count, not exact unit membership;
+the other 780 entries remain a visible curriculum backlog, not silently treated
 as complete.
 
 ### Unit 2 — Family and home
@@ -94,6 +94,21 @@ things, buying and selling, understanding price/cost, paying, locating common
 shops, and handling a small clothing-shopping scenario. More numbers, colours,
 sizes, and quantity language remain available for later recycling rather than
 being forced into the first shopping unit.
+
+### Unit 6 — Places and directions
+
+The mapped sequence is:
+
+`place`, `here`, `there`, `road`, `street`, `address`,
+`building`, `hotel`, `hospital`, `park`, `centre`,
+`way`, `map`, `near`, `far`, `between`, `opposite`,
+`left`, `right`, `turn`.
+
+This unit separates local-navigation language from transport. It first anchors
+common place types and location words, then adds map/distance relations and the
+core left/right/turn sequence needed to follow simple directions. Transport
+nouns and journey verbs are reserved for Unit 7 so the two units remain
+pedagogically distinct.
 
 ## First 20-entry calibration slice
 
