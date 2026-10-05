@@ -14,9 +14,13 @@ practice), **Words** (search, saved entries and reference) and **Progress**
   word formation and irregular verbs.
 - **Guided lessons** (`/learn`) for the 900-word A1 course, in 12 curriculum
   units with prerequisites, taught sense by sense:
-  teach → hear → recall the meaning → feedback → use it in a new sentence →
-  delayed recall, which becomes the word's first scheduled review. Comparison
-  lessons (say/tell, bring/take …) and short scenes reuse what was learned.
+  teach → write the English word from its Persian meaning → hear the recorded
+  word and choose its meaning → use it in a new sentence → delayed recall,
+  which becomes the word's first scheduled review. A miss reteaches the word and
+  brings one prompted retry; the lesson ends with each word's readiness for now
+  (unaided, with help, or needs another try), labelled apart from long-term
+  mastery. Comparison lessons (say/tell, bring/take …) and short scenes reuse
+  what was learned.
 - **Recorded pronunciation** in British and American English for every pilot
   word and example, downloadable for offline use, with browser speech only as a
   fallback.

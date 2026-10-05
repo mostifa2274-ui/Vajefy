@@ -137,7 +137,9 @@ test("answering in a lesson and searching Words respond within budget", async ({
   await visit(page, "/learn");
   await page.getByRole("button", { name: /شروع درس/ }).click();
   await page.getByRole("button", { name: "حالا از حفظ بگو", exact: true }).click();
-  await page.locator("main").getByRole("group").getByRole("button").first().click();
+  // The first question is written retrieval: type the word and check it.
+  await page.getByRole("textbox", { name: "پاسخ تو", exact: true }).pressSequentially("I", { delay: 120 });
+  await page.getByRole("button", { name: "بررسی", exact: true }).click();
   await page.getByRole("button", { name: "بعدی", exact: true }).click();
   await page.waitForTimeout(500);
   const lesson = await page.evaluate(() => (window as unknown as VitalsWindow).__vitals);

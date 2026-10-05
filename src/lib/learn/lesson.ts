@@ -8,22 +8,35 @@ import type { Grade, PracticeSkill } from "./types";
 
 /**
  * A guided lesson. For each new target the sequence is: understand (teaching
- * card with audio) → retrieve the meaning → feedback → use it in a new
- * context → retrieve it again after the other words, which is the answer that
- * starts its spaced schedule. A wrong answer brings one more, different
- * opportunity later in the lesson. The lesson ends by applying the words in a
- * contrast lesson or a short scene when one fits.
+ * card with audio) → written retrieval (type the English word from its Persian
+ * meaning) → listening (hear the recorded word, without seeing it, and choose
+ * its meaning) → use it in a new context → retrieve it again after the other
+ * words, which is the answer that starts its spaced schedule. Steps of
+ * different words interleave. A wrong answer brings feedback that reteaches the
+ * word and one prompted retry later in the lesson; the lesson ends by applying
+ * the words in a contrast lesson or a short scene when one fits.
+ *
+ * Unaided answers and prompted retries are kept apart: a word is ready for now
+ * only when its latest unaided check succeeded (`lessonReadiness`), which is
+ * not long-term mastery.
  */
 
 export type ItemRef =
   | { from: "sense"; target: string; item: string }
   | { from: "contrast"; contrast: string; item: string; target: string }
   | { from: "scene"; scene: string; item: string; target: string }
-  /** A generated choice: Persian meaning for the word, or the word for a meaning. */
-  | { from: "generated"; target: string; mode: "meaning" | "form"; options: string[] };
+  /**
+   * A generated item: choose the Persian meaning of the word (`meaning`) or the
+   * word for a meaning (`form`), type the word from its meaning (`recall`, no
+   * options), or choose the meaning of the recorded word heard (`listen`).
+   */
+  | { from: "generated"; target: string; mode: "meaning" | "form" | "recall" | "listen"; options: string[] };
 
 /** Check-up roles measure retention (docs/LEARNING_MEASURES.md) and never schedule or teach. */
-export type Role = "retrieve" | "context" | "delayed" | "retry" | "apply" | "checkup-use" | "checkup-meaning";
+export type Role = "retrieve" | "listen" | "context" | "delayed" | "retry" | "apply" | "checkup-use" | "checkup-meaning";
+
+/** Roles whose answers are unaided: no answer was shown for the item before. */
+const UNAIDED: ReadonlySet<Role> = new Set(["retrieve", "listen", "context", "delayed"]);
 
 export type LessonStep =
   | { kind: "teach"; target: string }
@@ -35,8 +48,11 @@ export type LessonStep =
 export type LessonAnswer = {
   op: string;
   step: number;
-  /** `close`: right word with a small spelling slip. */
-  result: "correct" | "close" | "wrong";
+  /**
+   * `close`: right word with a small spelling slip. `skipped`: a listening
+   * question the learner could not hear, which is no evidence either way.
+   */
+  result: "correct" | "close" | "wrong" | "skipped";
   given?: string;
   at: number;
 };
@@ -62,10 +78,16 @@ export type LessonSession = {
 /** A resolved check item, ready to show. */
 type TaskSupport = { en: string; fa: string };
 
+type ChoiceOption = { text: string; ok: boolean; why: string; lang: "en" | "fa" };
+
 export type ResolvedItem =
-  | { type: "choice"; prompt: string; promptLang: "en" | "fa"; options: { text: string; ok: boolean; why: string; lang: "en" | "fa" }[]; support?: TaskSupport[] }
+  | { type: "choice"; prompt: string; promptLang: "en" | "fa"; options: ChoiceOption[]; support?: TaskSupport[] }
   | { type: "cloze"; text: string; answer: string; accept: string[]; fa: string; why: string; support?: TaskSupport[] }
-  | { type: "produce"; prompt: string; frame: string; answer: string; accept: string[]; why: string; support?: TaskSupport[] };
+  | { type: "produce"; prompt: string; frame: string; answer: string; accept: string[]; why: string; support?: TaskSupport[] }
+  /** Type the English word for a Persian meaning; `shape` shows its first letter and length. */
+  | { type: "recall"; prompt: string; pos: Sense["pos"]; shape: string; answer: string; accept: string[]; why: string; support?: undefined }
+  /** Hear the recorded word without seeing it (`word`, shown after answering) and choose its meaning. */
+  | { type: "listen"; target: string; word: string; options: ChoiceOption[]; support?: undefined };
 
 function findItem(items: CheckItem[], id: string) {
   return items.find((item) => item.id === id);
@@ -84,23 +106,59 @@ function fromContent(item: CheckItem): ResolvedItem {
   return item;
 }
 
+/**
+ * The ways of writing a headword that count as right: "a, an" accepts "a" and
+ * "an"; the first is the one shown as the answer.
+ */
+export function writtenForms(headword: string): string[] {
+  const parts = headword
+    .split(/\s*[,/]\s*/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  return parts.length ? parts : [headword];
+}
+
+/**
+ * A word's shape as a constrained cue: its first letter, then a gap per letter
+ * ("b _ _"). A word of one or two letters shows only gaps, so the cue never
+ * gives the answer away.
+ */
+export function shapeOf(word: string): string {
+  const letters = word.replace(/[^a-z]/gi, "").length;
+  return word
+    .split(" ")
+    .map((part, index) =>
+      [...part].map((letter, position) => (index === 0 && position === 0 && letters > 2 ? letter : /[a-z]/i.test(letter) ? "_" : letter)).join(" "),
+    )
+    .join("   ");
+}
+
 export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | null {
   if (ref.from === "generated") {
     const target = index.content.get(ref.target);
     if (!target) return null;
-    const options = ref.options.map((id) => index.bySense.get(id)).filter((option): option is PilotTarget => Boolean(option));
-    if (ref.mode === "meaning") {
+    if (ref.mode === "recall") {
+      const forms = writtenForms(target.entry.headword);
       return {
-        type: "choice",
-        prompt: target.entry.headword,
-        promptLang: "en",
-        options: options.map((option) => ({
-          text: option.sense.gloss,
-          ok: option.sense.id === target.sense.id,
-          why: option.sense.id === target.sense.id ? target.sense.meaning : `${option.entry.headword}: ${option.sense.gloss}`,
-          lang: "fa" as const,
-        })),
+        type: "recall",
+        prompt: target.sense.gloss,
+        pos: target.sense.pos,
+        shape: shapeOf(forms[0]!),
+        answer: forms[0]!,
+        accept: forms.slice(1),
+        why: target.sense.meaning,
       };
+    }
+    const options = ref.options.map((id) => index.bySense.get(id)).filter((option): option is PilotTarget => Boolean(option));
+    const meanings = options.map((option) => ({
+      text: option.sense.gloss,
+      ok: option.sense.id === target.sense.id,
+      why: option.sense.id === target.sense.id ? target.sense.meaning : `${option.entry.headword}: ${option.sense.gloss}`,
+      lang: "fa" as const,
+    }));
+    if (ref.mode === "listen") return { type: "listen", target: target.sense.id, word: target.entry.headword, options: meanings };
+    if (ref.mode === "meaning") {
+      return { type: "choice", prompt: target.entry.headword, promptLang: "en", options: meanings };
     }
     return {
       type: "choice",
@@ -128,7 +186,9 @@ export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | nul
 
 /** The skill an item gives evidence for. */
 export function skillOf(ref: ItemRef, item: ResolvedItem): PracticeSkill {
-  if (ref.from === "generated") return "meaning";
+  // Typing the word from its meaning is form recall, as in Smart Practice's
+  // spelling questions; hearing it is listening; choosing is meaning.
+  if (ref.from === "generated") return ref.mode === "recall" ? "spelling" : ref.mode === "listen" ? "listening" : "meaning";
   // Every authored check item puts the target in a sentence or situation.
   // Produce happens to be typed, but its construct is still context rather
   // than isolated spelling; response modality must not redefine the evidence.
@@ -137,6 +197,10 @@ export function skillOf(ref: ItemRef, item: ResolvedItem): PracticeSkill {
     case "cloze":
     case "produce":
       return "context";
+    case "recall":
+      return "spelling";
+    case "listen":
+      return "listening";
   }
 }
 
@@ -147,7 +211,7 @@ export function gradeTyped(typed: string, answer: string, accept: string[]): Les
   return result === "exact" ? "correct" : result === "close" ? "close" : "wrong";
 }
 
-export function gradeOf(result: LessonAnswer["result"]): Grade {
+export function gradeOf(result: Exclude<LessonAnswer["result"], "skipped">): Grade {
   return result === "correct" ? "good" : result === "close" ? "hard" : "again";
 }
 
@@ -263,19 +327,21 @@ export function buildLesson(
     return { kind: "check", role: "context", ref: { from: "generated", target: target.sense.id, mode: "form", options: distractors(index, target, random) } };
   };
 
+  // Listening uses the word's recorded clip; without one there is no step.
+  const listenStep = (target: PilotTarget): LessonStep[] =>
+    hasRecording(index, target.sense.id)
+      ? [{ kind: "check", role: "listen", ref: { from: "generated", target: target.sense.id, mode: "listen", options: distractors(index, target, random) } }]
+      : [];
+
   targets.forEach((target, position) => {
     steps.push({ kind: "teach", target: target.sense.id });
-    steps.push({
-      kind: "check",
-      role: "retrieve",
-      ref: { from: "generated", target: target.sense.id, mode: "meaning", options: distractors(index, target, random) },
-    });
-    // Interleave: the previous word comes back in a new context after this one is taught.
+    steps.push({ kind: "check", role: "retrieve", ref: { from: "generated", target: target.sense.id, mode: "recall", options: [] } });
+    // Interleave: the previous word is heard and used in a new context after this one is taught.
     const previous = targets[position - 1];
-    if (previous) steps.push(contextStep(previous));
+    if (previous) steps.push(...listenStep(previous), contextStep(previous));
   });
   const last = targets[targets.length - 1];
-  if (last) steps.push(contextStep(last));
+  if (last) steps.push(...listenStep(last), contextStep(last));
 
   for (const target of targets) {
     const item = contentItem(senseOf(target), ["produce", "cloze", "choice"], used.get(target.sense.id)!);
@@ -334,6 +400,12 @@ export function buildApplication(index: PilotIndex, kind: "contrast" | "scene", 
   };
 }
 
+/** Whether a sense has a recorded word clip in either accent. */
+export function hasRecording(index: Pick<PilotIndex, "audio">, senseId: string): boolean {
+  const clips = index.audio[senseId];
+  return Boolean(clips?.gb?.word || clips?.us?.word);
+}
+
 /** The targets whose content a session's steps show: the rest need only be listed. */
 export function contentIds(session: LessonSession): string[] {
   const ids = new Set<string>();
@@ -349,9 +421,11 @@ export function answerFor(session: LessonSession, step = session.index): LessonA
 }
 
 /**
- * Record an answer. A wrong retrieval or context answer earns one more,
- * different opportunity two steps later (never for the delayed retrieval,
- * which starts the schedule, and never twice for the same target).
+ * Record an answer. A wrong retrieval, listening or context answer earns one
+ * prompted retry two steps later, after feedback that showed the answer: typed
+ * recall again, or listening again (never for the delayed retrieval, which
+ * starts the schedule, and never twice for the same target). A skipped
+ * listening question earns nothing and costs nothing.
  */
 export function answerLesson(
   session: LessonSession,
@@ -362,13 +436,14 @@ export function answerLesson(
   if (answerFor(session)) return session;
   const step = session.steps[session.index];
   let steps = session.steps;
-  if (step?.kind === "check" && answer.result === "wrong" && (step.role === "retrieve" || step.role === "context")) {
+  if (step?.kind === "check" && answer.result === "wrong" && (step.role === "retrieve" || step.role === "listen" || step.role === "context")) {
     const target = step.ref.target;
     const retried = steps.some((other) => other.kind === "check" && other.role === "retry" && other.ref.target === target);
     const pilotTarget = index.bySense.get(target);
     if (!retried && pilotTarget) {
-      const mode = step.ref.from === "generated" && step.ref.mode === "meaning" ? "form" : "meaning";
-      const retry: LessonStep = { kind: "check", role: "retry", ref: { from: "generated", target, mode, options: distractors(index, pilotTarget, random) } };
+      const mode = step.role === "listen" ? "listen" : step.ref.from === "generated" && step.ref.mode === "meaning" ? "form" : "recall";
+      const options = mode === "recall" ? [] : distractors(index, pilotTarget, random);
+      const retry: LessonStep = { kind: "check", role: "retry", ref: { from: "generated", target, mode, options } };
       const at = Math.min(steps.length, session.index + 3);
       steps = [...steps.slice(0, at), retry, ...steps.slice(at)];
     }
@@ -387,7 +462,7 @@ export function advanceLesson(session: LessonSession, now: number): LessonSessio
 }
 
 export function lessonStats(session: LessonSession) {
-  const checks = session.answers;
+  const checks = session.answers.filter((answer) => answer.result !== "skipped");
   return {
     answered: checks.length,
     correct: checks.filter((answer) => answer.result !== "wrong").length,
@@ -401,6 +476,41 @@ export function lessonStats(session: LessonSession) {
         .filter((id): id is string => Boolean(id)),
     )],
   };
+}
+
+/**
+ * Immediate readiness of a lesson's words, from this lesson's answers alone:
+ *
+ * - `ready`: the word's latest unaided check (written retrieval, listening,
+ *   context or the delayed retrieval) succeeded;
+ * - `helped`: its latest unaided check failed, but a prompted retry after it
+ *   succeeded. A retry follows feedback that showed the answer, so the word
+ *   stays helped until an unaided attempt succeeds;
+ * - `again`: its latest unaided check failed and no retry has succeeded since.
+ *
+ * Skipped listening is no evidence. Words never checked are left out. This is
+ * readiness for now, not long-term mastery, which only spaced reviews show.
+ */
+export type Readiness = "ready" | "helped" | "again";
+
+export function lessonReadiness(session: LessonSession): Record<string, Readiness> {
+  const state = new Map<string, { unaided: boolean; helped: boolean }>();
+  const targets = new Set(session.targets);
+  for (const answer of session.answers) {
+    const step = session.steps[answer.step];
+    if (step?.kind !== "check" || answer.result === "skipped" || !targets.has(step.ref.target)) continue;
+    const ok = answer.result !== "wrong";
+    const current = state.get(step.ref.target);
+    if (UNAIDED.has(step.role)) state.set(step.ref.target, { unaided: ok, helped: false });
+    else if (step.role === "retry" && current) state.set(step.ref.target, { ...current, helped: current.helped || ok });
+  }
+  return Object.fromEntries(
+    session.targets.flatMap((id) => {
+      const entry = state.get(id);
+      if (!entry) return [];
+      return [[id, entry.unaided ? "ready" : entry.helped ? "helped" : "again"] as const];
+    }),
+  );
 }
 
 /** A word is ready for the delayed check-up this many days after it was first met. */

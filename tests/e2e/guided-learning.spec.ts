@@ -113,6 +113,40 @@ test("a guided lesson teaches, checks, applies and schedules its words", async (
   expect(sessions.find((session) => session.kind === "lesson")?.status).toBe("done");
 });
 
+test("a listening question can be skipped without an answer, and readiness is shown apart from mastery", async ({ page }) => {
+  test.setTimeout(90_000);
+  await seedNewLearner(page);
+  await page.goto("/learn");
+  await page.getByRole("button", { name: /Start lesson/ }).click();
+  const skip = page.getByRole("button", { name: "Skip listening", exact: true });
+  let skipped = 0;
+  for (let i = 0; i < 60; i++) {
+    await expect(page.locator("main").locator('[aria-busy="true"]')).toHaveCount(0);
+    if (!skipped && (await skip.isVisible())) {
+      // The word is heard, never shown, until the question is answered.
+      await expect(page.getByText("What did you hear?", { exact: true })).toBeVisible();
+      await skip.click();
+      skipped += 1;
+      continue;
+    }
+    if (!(await step(page))) break;
+  }
+  expect(skipped).toBe(1);
+  await expect(page.getByRole("heading", { name: "Lesson complete", exact: true })).toBeVisible();
+  // Readiness for now, from unaided answers, is labelled apart from long-term mastery.
+  await expect(page.getByRole("heading", { name: "Ready for now", exact: true })).toBeVisible();
+  await expect(page.getByText(/Long-term mastery comes only from reviews/)).toBeVisible();
+  await accessible(page);
+
+  const { events } = await readProgress(page);
+  const skips = events.filter((event) => event.type === "skip");
+  expect(skips).toHaveLength(1);
+  expect(skips[0].skill).toBe("listening");
+  expect(skips[0].context?.prompt).toBe("lesson:listen:listen");
+  // Typed written retrieval is recorded as its own skill, apart from context.
+  expect(events.some((event) => event.type === "practice" && event.skill === "spelling" && event.context?.prompt === "lesson:retrieve:recall")).toBe(true);
+});
+
 test("an authored A1 task shows Persian support before the learner answers", async ({ page }) => {
   test.setTimeout(90_000);
   await page.setViewportSize({ width: 390, height: 844 });
@@ -137,7 +171,9 @@ test("a lesson left midway resumes at the same step", async ({ page }) => {
   await page.goto("/learn");
   await page.getByRole("button", { name: /Start lesson/ }).click();
   await page.getByRole("button", { name: "Now recall it", exact: true }).click();
-  await page.locator("main").getByRole("group").getByRole("button").first().click();
+  // Written retrieval: the first curriculum word, "I", typed from its Persian meaning.
+  await page.getByRole("textbox", { name: "Your answer", exact: true }).fill("I");
+  await page.getByRole("button", { name: "Check", exact: true }).click();
   const counter = await page.locator("main").getByText(/^\d+ \/ \d+$/).first().innerText();
   await page.reload();
   await page.getByRole("button", { name: /Continue lesson/ }).click();

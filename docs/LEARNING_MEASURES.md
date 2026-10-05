@@ -49,6 +49,41 @@ Rules:
 | First-session success | Share of new learners who complete their first session without assistance |
 | Return | Share of learners who study again on days 1–2, 7 and 30 after the first session |
 
+## The lesson sequence
+
+A guided lesson takes each new meaning through these steps, interleaved with
+the lesson's other words so that no retrieval follows straight after its
+teaching card:
+
+1. **Teach:** the sense, its Persian meaning, examples, grammar and a common
+   mistake, with recorded audio.
+2. **Written retrieval:** type the English word from its Persian meaning, with
+   its part of speech and shape (first letter and one gap per letter) as a
+   constrained cue. Every written form of the headword counts ("a" or "an").
+   Recorded as practice of the `spelling` skill (form recall), as in Smart
+   Practice.
+3. **Listening:** the recorded word plays without its spelling, and the learner
+   chooses its meaning. Only the recorded clip is used, never browser speech.
+   A word without a recording has no listening step; a learner who cannot
+   listen skips it, which is recorded as a **skip**: no credit and no penalty.
+   Recorded as `listening`.
+4. **Apply:** an authored context item (cloze, choice or sentence frame),
+   recorded as `context`.
+5. **Feedback and retry:** a wrong answer shows the answer, reteaches the word
+   (form, sound, meaning and an example) and brings one prompted retry a few
+   steps later, typed again or heard again. The retry is recorded with `hint`
+   because the answer had been shown.
+6. **Later review:** the delayed retrieval after the other words is the word's
+   first scheduled review; FSRS schedules the rest.
+
+**Readiness for now** is computed from one lesson's answers: a word is
+*ready* when its latest unaided check (written retrieval, listening, context or
+the delayed retrieval) succeeded; *with help* when its latest unaided check
+failed but a prompted retry after it succeeded; and *needs another try*
+otherwise. A word stays "with help" until an unaided attempt succeeds. Skips are
+no evidence. Readiness is labelled apart from long-term mastery ("Settled"),
+which only spaced reviews establish, and neither replaces the delayed check-up.
+
 ## Evidence that must be recorded
 
 Every answer is an event with a unique id. Each event records:

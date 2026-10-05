@@ -1,4 +1,5 @@
 import { useDeferredValue, useEffect, useRef, useState, type ReactNode } from "react";
+import { play } from "@/lib/learn/speech";
 import type { CoachRequest } from "@/api/coach-core";
 import { useActiveTime } from "@/lib/learn/active-time";
 import { useFormat } from "@/lib/learn/format";
@@ -10,6 +11,7 @@ import {
   checkupResult,
   gradeOf,
   gradeTyped,
+  lessonReadiness,
   lessonStats,
   resolveItem,
   skillOf,
@@ -17,6 +19,7 @@ import {
   type LessonAnswer,
   type LessonSession,
   type LessonStep,
+  type Readiness,
   type ResolvedItem,
   type Role,
 } from "@/lib/learn/lesson";
@@ -38,6 +41,7 @@ function timestamp() {
 
 const ROLE_LABEL: Record<Role, keyof Copy> = {
   retrieve: "roleRetrieve",
+  listen: "roleListen",
   context: "roleContext",
   delayed: "roleDelayed",
   retry: "roleRetry",
@@ -70,6 +74,7 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
   const saveSession = useProgress((state) => state.saveSession);
   const assess = useProgress((state) => state.assess);
   const assessMissing = useProgress((state) => state.assessMissing);
+  const skip = useProgress((state) => state.skip);
   const [session, setSession] = useState(initial);
   const step = session.steps[session.index];
   const answered = answerFor(session);
@@ -107,7 +112,9 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
   function record(ref: ItemRef, item: ResolvedItem, role: Role, result: LessonAnswer["result"], given: string) {
     const at = timestamp();
     const op = newId();
-    const next = answerLesson(session, { op, result, given, at }, index);
+    const answeredNext = answerLesson(session, { op, result, given, at }, index);
+    // A skipped question has nothing to give feedback on: go straight on.
+    const next = result === "skipped" ? advanceLesson(answeredNext, at) : answeredNext;
     const extras = {
       id: op,
       at,
@@ -121,17 +128,21 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
       sessionState: next,
     };
     // A check-up only measures. The delayed retrieval is the scheduled answer;
-    // everything else is practice.
-    if (role === "checkup-use" || role === "checkup-meaning") {
+    // everything else is practice. A listening question that could not be
+    // heard is a skip: no credit, no penalty.
+    if (result === "skipped") skip(ref.target, skillOf(ref, item), extras);
+    else if (role === "checkup-use" || role === "checkup-meaning") {
       assess(ref.target, role === "checkup-use" ? "use" : "meaning", result !== "wrong", session.delays?.[ref.target] ?? 0, extras);
     } else if (role === "delayed") review(ref.target, gradeOf(result), extras);
     else practice(ref.target, gradeOf(result), skillOf(ref, item), extras);
     setSession(next);
+    if (result === "skipped") window.scrollTo?.({ top: 0 });
   }
 
   if (!step) {
     const stats = lessonStats(session);
     const checkup = session.mode === "checkup" ? checkupResult(session) : null;
+    const readiness = session.mode === "lesson" ? lessonReadiness(session) : {};
     return (
       <section className="mx-auto max-w-xl">
         <h1 className="text-3xl font-medium text-balance">{checkup ? copy.checkupDone : copy.lessonDone}</h1>
@@ -152,7 +163,8 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
           )}
         </p>
         {session.mode === "lesson" ? <p className="mt-2 text-sm text-pretty text-muted">{copy.lessonNext}</p> : null}
-        {stats.missed.length ? (
+        {Object.keys(readiness).length ? <ReadinessList readiness={readiness} index={index} copy={copy} /> : null}
+        {stats.missed.length && session.mode !== "lesson" ? (
           <div className="mt-6">
             <h2 className="text-sm text-muted">{copy.lessonMissed}</h2>
             <ul className="mt-2 divide-y divide-line border-y border-line">
@@ -271,12 +283,17 @@ function StepView({
   }
   const item = resolveItem(index, step.ref);
   if (!item) return <Skip copy={copy} onNext={onNext} code={stepCode(step)} />;
+  // A missed word is retaught briefly in the feedback; check-ups only measure.
+  const reteach = step.role.startsWith("checkup") || step.role === "apply" ? undefined : index.content.get(step.ref.target);
   return (
     <Check
       item={item}
       role={step.role}
       copy={copy}
       lang={lang}
+      accent={accent}
+      clip={item.type === "listen" ? senseAudio(index.audio, item.target, accent).word : undefined}
+      reteach={reteach}
       // The coach explains taught items, never check-up items.
       coach={step.ref.from === "sense" && !step.role.startsWith("checkup") ? { task: "fit", senses: [step.ref.target], text: filled(item) } : undefined}
       answered={answered}
@@ -290,6 +307,8 @@ function StepView({
 function filled(item: ResolvedItem): string {
   if (item.type === "cloze") return item.text.replace("___", item.answer).slice(0, 300);
   if (item.type === "produce") return item.frame.replace("___", item.answer).slice(0, 300);
+  if (item.type === "recall") return `${item.prompt} — ${item.answer}`.slice(0, 300);
+  if (item.type === "listen") return item.word.slice(0, 300);
   const right = item.options.find((option) => option.ok)?.text ?? "";
   return `${item.prompt} — ${right}`.slice(0, 300);
 }
@@ -424,6 +443,9 @@ function Check({
   role,
   copy,
   lang,
+  accent,
+  clip,
+  reteach,
   coach,
   answered,
   onAnswer,
@@ -433,6 +455,11 @@ function Check({
   role: Role;
   copy: Copy;
   lang: "fa" | "en";
+  accent: "en-GB" | "en-US";
+  /** The recorded word a listening question plays. */
+  clip?: string;
+  /** The word to show again if the answer is wrong. */
+  reteach?: TargetContent;
   coach?: Omit<CoachRequest, "lang">;
   answered: LessonAnswer | undefined;
   onAnswer: (result: LessonAnswer["result"], given: string) => void;
@@ -441,39 +468,48 @@ function Check({
   const [typed, setTyped] = useState("");
   const given = answered?.given ?? "";
   const locked = Boolean(answered);
+  const label = role === "retrieve" && item.type === "recall" ? copy.roleRecall : copy[ROLE_LABEL[role]];
 
   return (
     <div className="panel p-4 sm:p-6">
-      <p className="text-sm text-accent">{copy[ROLE_LABEL[role]]}</p>
-      {item.type === "choice" ? (
+      <p className="text-sm text-accent">{label}</p>
+      {item.type === "choice" || item.type === "listen" ? (
         <>
-          <p lang={item.promptLang} dir={item.promptLang === "fa" ? "rtl" : "ltr"} className={cn("mt-2 text-pretty", item.promptLang === "en" ? "lex-word text-3xl" : "text-xl font-medium")}>
-            {item.prompt}
-          </p>
-          <TaskSupport support={item.support} copy={copy} />
-          <div className="mt-4 grid gap-2" role="group" aria-label={copy.meaning}>
-            {item.options.map((option) => {
-              const chosen = locked && given === option.text;
-              return (
-                <button
-                  key={option.text}
-                  type="button"
-                  disabled={locked}
-                  lang={option.lang}
-                  dir={option.lang === "fa" ? "rtl" : "ltr"}
-                  onClick={() => onAnswer(option.ok ? "correct" : "wrong", option.text)}
-                  className={cn(
-                    "min-h-11 rounded-md border px-3 py-2 text-start text-pretty",
-                    locked && option.ok ? "border-good" : chosen ? "border-bad" : "border-line bg-paper",
-                  )}
-                >
-                  {locked && (option.ok || chosen) ? <Mark ok={option.ok} copy={copy} /> : null}
-                  {option.text}
-                  {chosen ? <span className="sr-only"> ({copy.yourAnswer})</span> : null}
-                </button>
-              );
-            })}
-          </div>
+          {item.type === "listen" ? (
+            <Listen item={item} clip={clip} copy={copy} locked={locked} onSkip={() => onAnswer("skipped", "")} />
+          ) : (
+            <>
+              <p lang={item.promptLang} dir={item.promptLang === "fa" ? "rtl" : "ltr"} className={cn("mt-2 text-pretty", item.promptLang === "en" ? "lex-word text-3xl" : "text-xl font-medium")}>
+                {item.prompt}
+              </p>
+              <TaskSupport support={item.support} copy={copy} />
+            </>
+          )}
+          {item.type === "listen" && !clip ? null : (
+            <div className="mt-4 grid gap-2" role="group" aria-label={copy.meaning}>
+              {item.options.map((option) => {
+                const chosen = locked && given === option.text;
+                return (
+                  <button
+                    key={option.text}
+                    type="button"
+                    disabled={locked}
+                    lang={option.lang}
+                    dir={option.lang === "fa" ? "rtl" : "ltr"}
+                    onClick={() => onAnswer(option.ok ? "correct" : "wrong", option.text)}
+                    className={cn(
+                      "min-h-11 rounded-md border px-3 py-2 text-start text-pretty",
+                      locked && option.ok ? "border-good" : chosen ? "border-bad" : "border-line bg-paper",
+                    )}
+                  >
+                    {locked && (option.ok || chosen) ? <Mark ok={option.ok} copy={copy} /> : null}
+                    {option.text}
+                    {chosen ? <span className="sr-only"> ({copy.yourAnswer})</span> : null}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </>
       ) : (
         <form
@@ -484,18 +520,38 @@ function Check({
             onAnswer(gradeTyped(typed, item.answer, item.accept), typed.trim());
           }}
         >
-          {item.type === "produce" ? (
-            <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">{item.prompt}</p>
-          ) : null}
-          <p lang="en" dir="ltr" className="mt-3 text-xl text-pretty">
-            {(item.type === "cloze" ? item.text : item.frame).split("___").map((part, position, parts) => (
-              <span key={position}>
-                {part}
-                {position < parts.length - 1 ? <span className="mx-1 inline-block min-w-16 border-b-2 border-accent text-center">{locked ? given : " "}</span> : null}
-              </span>
-            ))}
-          </p>
-          <TaskSupport support={item.support} copy={copy} />
+          {item.type === "recall" ? (
+            <>
+              <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">{item.prompt}</p>
+              <p className="mt-1 text-sm text-muted">{posLabel(POS_FA[item.pos], lang)}</p>
+              <p className="mt-3 text-sm text-muted">
+                {copy.recallShape}:{" "}
+                <span lang="en" dir="ltr" className="lex-word text-lg text-ink" aria-hidden>
+                  {item.shape}
+                </span>
+                {/* Read as "4 letters, b", not as a row of underscores. */}
+                <span className="sr-only">
+                  {item.shape.replace(/[^_a-z]/gi, "").length} {copy.recallLetters}
+                  {/^[a-z]/i.test(item.shape) ? `${lang === "fa" ? "،" : ","} ${item.shape[0]}` : ""}
+                </span>
+              </p>
+            </>
+          ) : (
+            <>
+              {item.type === "produce" ? (
+                <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">{item.prompt}</p>
+              ) : null}
+              <p lang="en" dir="ltr" className="mt-3 text-xl text-pretty">
+                {(item.type === "cloze" ? item.text : item.frame).split("___").map((part, position, parts) => (
+                  <span key={position}>
+                    {part}
+                    {position < parts.length - 1 ? <span className="mx-1 inline-block min-w-16 border-b-2 border-accent text-center">{locked ? given : " "}</span> : null}
+                  </span>
+                ))}
+              </p>
+              <TaskSupport support={item.support} copy={copy} />
+            </>
+          )}
           <input
             aria-label={copy.yourAnswer}
             value={locked ? given : typed}
@@ -518,9 +574,111 @@ function Check({
       )}
       {answered ? (
         <Feedback item={item} answered={answered} copy={copy} onNext={onNext}>
+          {answered.result === "wrong" && reteach ? <Reteach target={reteach} copy={copy} accent={accent} /> : null}
           {coach ? <CoachPanel request={coach} label={copy.coachAskFit} copy={copy} lang={lang} /> : null}
         </Feedback>
       ) : null}
+    </div>
+  );
+}
+
+/**
+ * A listening question: the recorded word plays once when the question
+ * appears and on request, never with its spelling. Without a recording, or
+ * when the learner cannot listen, the question is skipped without an answer.
+ */
+function Listen({
+  item,
+  clip,
+  copy,
+  locked,
+  onSkip,
+}: {
+  item: Extract<ResolvedItem, { type: "listen" }>;
+  clip?: string;
+  copy: Copy;
+  locked: boolean;
+  onSkip: () => void;
+}) {
+  useEffect(() => {
+    if (clip && !locked) void play({ key: `${clip}|${item.word}`, text: item.word, clip, clipOnly: true });
+    // Played once as the question appears; the button replays it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  if (!clip) {
+    return (
+      <div className="mt-3">
+        <p className="text-sm text-pretty text-muted">{copy.audioNoRecording}</p>
+        {!locked ? (
+          <Button className="mt-4 w-full" onClick={onSkip}>
+            {copy.continueLabel}
+          </Button>
+        ) : null}
+      </div>
+    );
+  }
+  return (
+    <div className="mt-3">
+      <p className="text-xl font-medium">{copy.listenPrompt}</p>
+      <div className="mt-3">
+        <SpeakButton text={item.word} label={copy.replay} clip={clip} clipOnly item={item.target} />
+        {!locked ? (
+          <button type="button" className="ms-2 min-h-11 px-2 text-sm text-accent" onClick={onSkip}>
+            {copy.skipAudio}
+          </button>
+        ) : null}
+        {!locked ? <p className="mt-1 text-xs text-muted">{copy.skipAudioHint}</p> : null}
+      </div>
+    </div>
+  );
+}
+
+/** A missed word, briefly: its form, sound, meaning and one example. */
+function Reteach({ target, copy, accent }: { target: TargetContent; copy: Copy; accent: "en-GB" | "en-US" }) {
+  const { sense, entry } = target;
+  const example = sense.examples[0];
+  return (
+    <div className="mt-3 rounded-md bg-paper-2 p-3 shadow-[var(--shadow-border)]">
+      <p className="text-xs font-semibold text-muted">{copy.reteachLabel}</p>
+      <p className="mt-1">
+        <span lang="en" dir="ltr" className="lex-word text-2xl">{entry.headword}</span>{" "}
+        <span lang="en" dir="ltr" className="text-sm text-muted">{pronunciationFor(sense, accent)}</span>
+      </p>
+      <p lang="fa" dir="rtl" className="mt-1 font-medium">{sense.gloss}</p>
+      {example ? (
+        <div className="mt-2 border-s-2 border-accent ps-3">
+          <p lang="en" dir="ltr" className="text-sm text-pretty">{example.en}</p>
+          <p lang="fa" dir="rtl" className="text-sm text-muted text-pretty">{example.fa}</p>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+/** Each lesson word's readiness for now, apart from long-term mastery. */
+function ReadinessList({ readiness, index, copy }: { readiness: Record<string, Readiness>; index: PilotIndex; copy: Copy }) {
+  const label: Record<Readiness, string> = { ready: copy.readyNow, helped: copy.readyHelped, again: copy.readyAgain };
+  return (
+    <div className="mt-6">
+      <h2 className="text-sm font-medium">{copy.readinessTitle}</h2>
+      <ul className="mt-2 divide-y divide-line border-y border-line">
+        {Object.entries(readiness).map(([id, state]) => {
+          const target = index.bySense.get(id);
+          return target ? (
+            <li key={id} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 py-2">
+              <span>
+                <span lang="en" dir="ltr" className="lex-word text-lg">{target.entry.headword}</span>{" "}
+                <span lang="fa" dir="rtl" className="text-sm text-muted">{target.sense.gloss}</span>
+              </span>
+              <span className={cn("text-sm", state === "ready" ? "text-good" : state === "again" ? "text-bad" : "text-muted")}>
+                {state === "ready" ? <Mark ok copy={copy} /> : null}
+                {label[state]}
+              </span>
+            </li>
+          ) : null;
+        })}
+      </ul>
+      <p className="mt-2 text-xs text-pretty text-muted">{copy.readinessNote}</p>
     </div>
   );
 }
@@ -579,7 +737,12 @@ function Feedback({
       nextLabel={copy.next}
       onNext={onNext}
     >
-      {item.type === "choice" ? (
+      {item.type === "listen" ? (
+        <p className="mt-1">
+          {copy.wordHeard}: <span lang="en" dir="ltr" className="lex-word text-lg">{item.word}</span>
+        </p>
+      ) : null}
+      {item.type === "choice" || item.type === "listen" ? (
         <ul className="mt-2 grid gap-2 text-sm">
           {item.options
             .filter((option) => option.ok || option.text === answered.given)
@@ -595,8 +758,11 @@ function Feedback({
         </ul>
       ) : (
         <>
-          <p lang="en" dir="ltr" className="mt-1">
-            {copy.answerLabel}: {item.answer}
+          <p className="mt-1">
+            {copy.answerLabel}:{" "}
+            <span lang="en" dir="ltr" className="lex-word text-lg">
+              {item.answer}
+            </span>
           </p>
           {item.type === "cloze" ? <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty">{item.fa}</p> : null}
           <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty">{item.why}</p>
