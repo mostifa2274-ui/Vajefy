@@ -2054,6 +2054,15 @@
         "why": "بعد از صفت it نمی‌آید."
        }
       ]
+     },
+     {
+      "type": "produce",
+      "id": "h1",
+      "prompt": "گوشی‌ام قدیمی است. یکی جدید می‌خواهم.",
+      "frame": "My phone is old. I want a new ___.",
+      "answer": "one",
+      "accept": [],
+      "why": "one به جای اسم مفردِ phone می‌آید."
      }
     ]
    }
@@ -7945,6 +7954,15 @@
         "why": "tall برای قد و ارتفاع است."
        }
       ]
+     },
+     {
+      "type": "cloze",
+      "id": "h1",
+      "text": "The total ___ was fifty dollars.",
+      "answer": "cost",
+      "accept": [],
+      "fa": "هزینهٔ کل پنجاه دلار بود.",
+      "why": "total cost = هزینهٔ کل."
      }
     ]
    }
