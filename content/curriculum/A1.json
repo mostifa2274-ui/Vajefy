@@ -1001,20 +1001,6 @@
           ]
         },
         {
-          "id": "lex:A1:computer",
-          "prerequisites": [
-            "lex:A1:work",
-            "lex:A1:study"
-          ]
-        },
-        {
-          "id": "lex:A1:email",
-          "prerequisites": [
-            "lex:A1:computer",
-            "lex:A1:write"
-          ]
-        },
-        {
           "id": "lex:A1:study",
           "prerequisites": [
             "lex:A1:school"
@@ -1077,6 +1063,20 @@
           "id": "lex:A1:write",
           "prerequisites": [
             "lex:A1:read"
+          ]
+        },
+        {
+          "id": "lex:A1:computer",
+          "prerequisites": [
+            "lex:A1:work",
+            "lex:A1:study"
+          ]
+        },
+        {
+          "id": "lex:A1:email",
+          "prerequisites": [
+            "lex:A1:computer",
+            "lex:A1:write"
           ]
         },
         {
