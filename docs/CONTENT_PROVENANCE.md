@@ -45,6 +45,17 @@ project as drafts for bilingual review. It refers to the Oxford list entries
 only by their headwords and stable ids. Every entry stays marked as a draft in
 the app until a reviewer approves it ([PILOT_CONTENT.md](PILOT_CONTENT.md)).
 
+The fixed 150-target study selection in `content/pilot-a1.json` is also
+provenance-sensitive. The build records its manifest version, ordered-entry
+count and a deterministic fingerprint in both `content/compiled/enhanced.json`
+and `public/data/enhanced/index.json`. That fingerprint participates in the
+overall enhanced-content version. Changing pilot membership, order or study
+grouping therefore changes `contentVersion` even when the teaching text itself
+does not change. Existing pilot rosters, held-out-bank archives and study
+exports then fail their normal version checks instead of silently continuing
+against a different cohort.
+
+
 The pronunciation clips in `public/audio/pilot/` are synthesised with Kokoro
 v1.0, whose weights are released under Apache 2.0 ([AUDIO.md](AUDIO.md)). The
 same rights review applies to them before a public or commercial release.
