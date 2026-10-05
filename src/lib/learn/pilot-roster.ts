@@ -1,4 +1,4 @@
-import { createHash, createHmac } from "node:crypto";
+import { createHmac, scryptSync } from "node:crypto";
 import {
   ASSESSMENT_MIN_DELAY_DAYS,
   ASSESSMENT_PROTOCOL_ID,
@@ -65,7 +65,11 @@ export type PilotRosterValidationSummary = {
 };
 
 export function pilotRosterSeedFingerprint(seed: string): string {
-  return createHash("sha256").update(seed, "utf8").digest("hex");
+  return scryptSync(
+    seed,
+    "vajefy-pilot-roster-seed-fingerprint-v1",
+    32,
+  ).toString("hex");
 }
 
 function allocationKey(seed: string, participant: string): string {
