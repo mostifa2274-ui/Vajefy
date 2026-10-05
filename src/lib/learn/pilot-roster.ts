@@ -234,6 +234,10 @@ export function validatePilotRoster(
   let enhanced = 0;
   let comparison = 0;
   for (const assignment of roster.assignments) {
+    if (!assignment || typeof assignment !== "object") {
+      errors.push("roster assignment must be an object");
+      continue;
+    }
     if (!validParticipant(assignment.participant ?? "")) {
       errors.push(`invalid roster participant code ${assignment.participant ?? "(missing)"}`);
     }
@@ -286,6 +290,22 @@ export function validatePilotRosterEvidence(
   summary: PilotRosterValidationSummary;
 } {
   const errors = validatePilotRoster(roster);
+  if (errors.length) {
+    return {
+      errors,
+      summary: {
+        assigned: Array.isArray(roster.assignments) ? roster.assignments.length : 0,
+        assignedEnhanced: 0,
+        assignedComparison: 0,
+        observed: 0,
+        observedEnhanced: 0,
+        observedComparison: 0,
+        missing: Array.isArray(roster.assignments) ? roster.assignments.length : 0,
+        missingEnhanced: 0,
+        missingComparison: 0,
+      },
+    };
+  }
   const assignmentByParticipant = new Map(
     roster.assignments.map((assignment) => [assignment.participant, assignment]),
   );
