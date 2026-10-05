@@ -423,7 +423,137 @@
       "status": "planned",
       "objectiveEn": "Ask for, choose, and talk about basic food and drink.",
       "objectiveFa": "خوراکی و نوشیدنی ساده را درخواست، انتخاب و توصیف کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:food",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:water",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:eat",
+          "prerequisites": [
+            "lex:A1:food"
+          ]
+        },
+        {
+          "id": "lex:A1:drink",
+          "prerequisites": [
+            "lex:A1:water"
+          ]
+        },
+        {
+          "id": "lex:A1:want",
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:you",
+            "lex:A1:food",
+            "lex:A1:water"
+          ]
+        },
+        {
+          "id": "lex:A1:some",
+          "prerequisites": [
+            "lex:A1:food",
+            "lex:A1:water"
+          ]
+        },
+        {
+          "id": "lex:A1:tea",
+          "prerequisites": [
+            "lex:A1:drink"
+          ]
+        },
+        {
+          "id": "lex:A1:coffee",
+          "prerequisites": [
+            "lex:A1:drink"
+          ]
+        },
+        {
+          "id": "lex:A1:milk",
+          "prerequisites": [
+            "lex:A1:drink"
+          ]
+        },
+        {
+          "id": "lex:A1:bread",
+          "prerequisites": [
+            "lex:A1:eat"
+          ]
+        },
+        {
+          "id": "lex:A1:rice",
+          "prerequisites": [
+            "lex:A1:eat"
+          ]
+        },
+        {
+          "id": "lex:A1:fruit",
+          "prerequisites": [
+            "lex:A1:eat"
+          ]
+        },
+        {
+          "id": "lex:A1:apple",
+          "prerequisites": [
+            "lex:A1:fruit",
+            "lex:A1:a-an"
+          ]
+        },
+        {
+          "id": "lex:A1:breakfast",
+          "prerequisites": [
+            "lex:A1:eat",
+            "lex:A1:morning"
+          ]
+        },
+        {
+          "id": "lex:A1:lunch",
+          "prerequisites": [
+            "lex:A1:eat",
+            "lex:A1:afternoon"
+          ]
+        },
+        {
+          "id": "lex:A1:dinner",
+          "prerequisites": [
+            "lex:A1:eat",
+            "lex:A1:evening"
+          ]
+        },
+        {
+          "id": "lex:A1:hungry",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:eat"
+          ]
+        },
+        {
+          "id": "lex:A1:thirsty",
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:drink"
+          ]
+        },
+        {
+          "id": "lex:A1:restaurant",
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:eat",
+            "lex:A1:drink"
+          ]
+        },
+        {
+          "id": "lex:A1:menu",
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:restaurant"
+          ]
+        }
+      ]
     },
     {
       "id": "05-shopping-money",
@@ -523,5 +653,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 60
+  "assignedMinimum": 80
 }
