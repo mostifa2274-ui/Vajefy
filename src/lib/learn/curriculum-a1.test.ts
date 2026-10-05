@@ -39,6 +39,8 @@ type Options = {
   unitTwelveIds?: string[];
   prerequisites?: Record<string, string[]>;
   assignedMinimum?: number;
+  targetEntries?: Record<string, number>;
+  status?: Record<string, "calibration" | "planned" | "active" | "complete">;
   coverageEntry?: boolean;
   extraLevelEntry?: boolean;
 };
@@ -86,18 +88,20 @@ function fixture(options: Options = {}): string {
         id: "01-calibration",
         titleEn: "Calibration",
         titleFa: "کالیبراسیون",
-        status: "calibration",
+        status: options.status?.["01-calibration"] ?? "calibration",
         objectiveEn: "Calibrate the sequence.",
         objectiveFa: "توالی را کالیبره کن.",
+        targetEntries: options.targetEntries?.["01-calibration"] ?? 20,
         entries: CALIBRATION.map((id) => ({ id, prerequisites: [] })),
       },
       {
         id: "02-family-home",
         titleEn: "Family and home",
         titleFa: "خانواده و خانه",
-        status: "planned",
+        status: options.status?.["02-family-home"] ?? "planned",
         objectiveEn: "Continue the curriculum.",
         objectiveFa: "برنامهٔ درسی را ادامه بده.",
+        targetEntries: options.targetEntries?.["02-family-home"] ?? 2,
         entries: unitTwoIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -107,9 +111,10 @@ function fixture(options: Options = {}): string {
         id: "03-daily-routine",
         titleEn: "Daily routine and time",
         titleFa: "برنامهٔ روزانه و زمان",
-        status: "planned",
+        status: options.status?.["03-daily-routine"] ?? "planned",
         objectiveEn: "Add a third ordered curriculum unit.",
         objectiveFa: "سومین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["03-daily-routine"] ?? 2,
         entries: unitThreeIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -119,9 +124,10 @@ function fixture(options: Options = {}): string {
         id: "04-food-drink",
         titleEn: "Food and drink",
         titleFa: "غذا و نوشیدنی",
-        status: "planned",
+        status: options.status?.["04-food-drink"] ?? "planned",
         objectiveEn: "Add a fourth ordered curriculum unit.",
         objectiveFa: "چهارمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["04-food-drink"] ?? 2,
         entries: unitFourIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -131,9 +137,10 @@ function fixture(options: Options = {}): string {
         id: "05-shopping-money",
         titleEn: "Shopping and money",
         titleFa: "خرید و پول",
-        status: "planned",
+        status: options.status?.["05-shopping-money"] ?? "planned",
         objectiveEn: "Add a fifth ordered curriculum unit.",
         objectiveFa: "پنجمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["05-shopping-money"] ?? 2,
         entries: unitFiveIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -143,9 +150,10 @@ function fixture(options: Options = {}): string {
         id: "06-places-directions",
         titleEn: "Places and directions",
         titleFa: "مکان‌ها و مسیرها",
-        status: "planned",
+        status: options.status?.["06-places-directions"] ?? "planned",
         objectiveEn: "Add a sixth ordered curriculum unit.",
         objectiveFa: "ششمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["06-places-directions"] ?? 2,
         entries: unitSixIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -155,9 +163,10 @@ function fixture(options: Options = {}): string {
         id: "07-travel-transport",
         titleEn: "Travel and transport",
         titleFa: "سفر و حمل‌ونقل",
-        status: "planned",
+        status: options.status?.["07-travel-transport"] ?? "planned",
         objectiveEn: "Add a seventh ordered curriculum unit.",
         objectiveFa: "هفتمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["07-travel-transport"] ?? 2,
         entries: unitSevenIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -167,9 +176,10 @@ function fixture(options: Options = {}): string {
         id: "08-work-study",
         titleEn: "Work and study",
         titleFa: "کار و تحصیل",
-        status: "planned",
+        status: options.status?.["08-work-study"] ?? "planned",
         objectiveEn: "Add an eighth ordered curriculum unit.",
         objectiveFa: "هشتمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["08-work-study"] ?? 2,
         entries: unitEightIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -179,9 +189,10 @@ function fixture(options: Options = {}): string {
         id: "09-leisure-people",
         titleEn: "Leisure and people",
         titleFa: "اوقات فراغت و آدم‌ها",
-        status: "planned",
+        status: options.status?.["09-leisure-people"] ?? "planned",
         objectiveEn: "Add a ninth ordered curriculum unit.",
         objectiveFa: "نهمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["09-leisure-people"] ?? 2,
         entries: unitNineIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -191,9 +202,10 @@ function fixture(options: Options = {}): string {
         id: "10-weather-clothes",
         titleEn: "Weather and clothes",
         titleFa: "هوا و لباس",
-        status: "planned",
+        status: options.status?.["10-weather-clothes"] ?? "planned",
         objectiveEn: "Add a tenth ordered curriculum unit.",
         objectiveFa: "دهمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["10-weather-clothes"] ?? 2,
         entries: unitTenIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -203,9 +215,10 @@ function fixture(options: Options = {}): string {
         id: "11-health-feelings",
         titleEn: "Health and feelings",
         titleFa: "سلامت و احساسات",
-        status: "planned",
+        status: options.status?.["11-health-feelings"] ?? "planned",
         objectiveEn: "Add an eleventh ordered curriculum unit.",
         objectiveFa: "یازدهمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["11-health-feelings"] ?? 2,
         entries: unitElevenIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -215,9 +228,10 @@ function fixture(options: Options = {}): string {
         id: "12-help-everyday-problems",
         titleEn: "Help and everyday problems",
         titleFa: "کمک و مشکل‌های روزمره",
-        status: "planned",
+        status: options.status?.["12-help-everyday-problems"] ?? "planned",
         objectiveEn: "Add a twelfth ordered curriculum unit.",
         objectiveFa: "دوازدهمین واحد مرتب برنامهٔ درسی را اضافه کن.",
+        targetEntries: options.targetEntries?.["12-help-everyday-problems"] ?? 2,
         entries: unitTwelveIds.map((id) => ({
           id,
           prerequisites: options.prerequisites?.[id] ?? [],
@@ -961,6 +975,71 @@ test("a prerequisite must still appear earlier in the full curriculum", () => {
     const result = run(root);
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /must appear earlier in the curriculum/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("unit targets must sum to the canonical A1 plan size", () => {
+  const root = fixture({
+    targetEntries: { "12-help-everyday-problems": 3 },
+  });
+  try {
+    const result = run(root);
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /unit targetEntries must sum to the canonical plan size 42, found 43/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a unit cannot contain more entries than its final target", () => {
+  const root = fixture({
+    targetEntries: { "02-family-home": 1, "12-help-everyday-problems": 3 },
+  });
+  try {
+    const result = run(root);
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /02-family-home: has 2 entries but targetEntries is 1/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a complete unit must actually fill its final target", () => {
+  const root = fixture({
+    unitThreeIds: [UNIT_THREE[0]],
+    status: { "03-daily-routine": "complete" },
+  });
+  try {
+    const result = run(root);
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /03-daily-routine: status complete requires exactly 2 entries, found 1/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("the fixed calibration unit target must remain exactly 20", () => {
+  const root = fixture({
+    targetEntries: { "01-calibration": 21, "12-help-everyday-problems": 1 },
+  });
+  try {
+    const result = run(root);
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /calibration unit targetEntries must equal the fixed slice length 20, found 21/,
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
