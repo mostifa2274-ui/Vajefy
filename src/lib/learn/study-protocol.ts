@@ -42,6 +42,7 @@ export type StudyProtocolSummary = {
   exportVersions: number[];
   contentVersions: string[];
   assessmentProtocols: string[];
+  assessmentMinimumDelayDays: number[];
   builds: string[];
   channels: StudyChannel[];
   enhancedChannels: Exclude<StudyChannel, "none">[];
@@ -189,6 +190,13 @@ export function validateStudyProtocols(
           record.version >= 2
             ? record.assessmentProtocol ?? "(missing)"
             : "legacy-v1-implicit",
+        ),
+      ),
+      assessmentMinimumDelayDays: sorted(
+        records.flatMap((record) =>
+          record.assessmentMinimumDelayDays == null
+            ? []
+            : [record.assessmentMinimumDelayDays],
         ),
       ),
       builds: sorted(
