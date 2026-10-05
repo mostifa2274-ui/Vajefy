@@ -1242,7 +1242,129 @@
       "status": "planned",
       "objectiveEn": "Describe basic weather and choose or describe everyday clothing.",
       "objectiveFa": "هوای ساده را توصیف کن و لباس روزمره را انتخاب یا توصیف کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:weather",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:hot",
+          "prerequisites": [
+            "lex:A1:weather"
+          ]
+        },
+        {
+          "id": "lex:A1:cold",
+          "prerequisites": [
+            "lex:A1:weather"
+          ]
+        },
+        {
+          "id": "lex:A1:warm",
+          "prerequisites": [
+            "lex:A1:hot",
+            "lex:A1:cold"
+          ]
+        },
+        {
+          "id": "lex:A1:cool",
+          "prerequisites": [
+            "lex:A1:warm",
+            "lex:A1:cold"
+          ]
+        },
+        {
+          "id": "lex:A1:sun",
+          "prerequisites": [
+            "lex:A1:weather"
+          ]
+        },
+        {
+          "id": "lex:A1:rain",
+          "prerequisites": [
+            "lex:A1:weather"
+          ]
+        },
+        {
+          "id": "lex:A1:snow",
+          "prerequisites": [
+            "lex:A1:weather",
+            "lex:A1:cold"
+          ]
+        },
+        {
+          "id": "lex:A1:colour",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:red",
+          "prerequisites": [
+            "lex:A1:colour"
+          ]
+        },
+        {
+          "id": "lex:A1:blue",
+          "prerequisites": [
+            "lex:A1:colour"
+          ]
+        },
+        {
+          "id": "lex:A1:coat",
+          "prerequisites": [
+            "lex:A1:clothes",
+            "lex:A1:cold"
+          ]
+        },
+        {
+          "id": "lex:A1:jacket",
+          "prerequisites": [
+            "lex:A1:clothes",
+            "lex:A1:cold"
+          ]
+        },
+        {
+          "id": "lex:A1:hat",
+          "prerequisites": [
+            "lex:A1:clothes"
+          ]
+        },
+        {
+          "id": "lex:A1:skirt",
+          "prerequisites": [
+            "lex:A1:clothes"
+          ]
+        },
+        {
+          "id": "lex:A1:trousers",
+          "prerequisites": [
+            "lex:A1:clothes"
+          ]
+        },
+        {
+          "id": "lex:A1:wear",
+          "prerequisites": [
+            "lex:A1:clothes"
+          ]
+        },
+        {
+          "id": "lex:A1:put",
+          "prerequisites": [
+            "lex:A1:wear"
+          ]
+        },
+        {
+          "id": "lex:A1:on",
+          "prerequisites": [
+            "lex:A1:put"
+          ]
+        },
+        {
+          "id": "lex:A1:off",
+          "prerequisites": [
+            "lex:A1:on"
+          ]
+        }
+      ]
     },
     {
       "id": "11-health-feelings",
@@ -1288,5 +1410,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 180
+  "assignedMinimum": 200
 }
