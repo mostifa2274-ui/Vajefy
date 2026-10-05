@@ -1502,7 +1502,124 @@
       "status": "planned",
       "objectiveEn": "Ask for help, clarify misunderstandings, and handle common everyday problems.",
       "objectiveFa": "کمک بخواه، سوءتفاهم ساده را روشن کن و مشکل‌های روزمره را مدیریت کن.",
-      "entries": []
+      "entries": [
+        {
+          "id": "lex:A1:help",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:problem",
+          "prerequisites": [
+            "lex:A1:help"
+          ]
+        },
+        {
+          "id": "lex:A1:wrong",
+          "prerequisites": [
+            "lex:A1:problem"
+          ]
+        },
+        {
+          "id": "lex:A1:sorry",
+          "prerequisites": [
+            "lex:A1:problem"
+          ]
+        },
+        {
+          "id": "lex:A1:please",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:understand",
+          "prerequisites": []
+        },
+        {
+          "id": "lex:A1:cannot",
+          "prerequisites": [
+            "lex:A1:understand"
+          ]
+        },
+        {
+          "id": "lex:A1:language",
+          "prerequisites": [
+            "lex:A1:understand"
+          ]
+        },
+        {
+          "id": "lex:A1:speak",
+          "prerequisites": [
+            "lex:A1:language"
+          ]
+        },
+        {
+          "id": "lex:A1:slow",
+          "prerequisites": [
+            "lex:A1:speak"
+          ]
+        },
+        {
+          "id": "lex:A1:again",
+          "prerequisites": [
+            "lex:A1:speak"
+          ]
+        },
+        {
+          "id": "lex:A1:repeat",
+          "prerequisites": [
+            "lex:A1:again",
+            "lex:A1:please"
+          ]
+        },
+        {
+          "id": "lex:A1:ask",
+          "prerequisites": [
+            "lex:A1:please"
+          ]
+        },
+        {
+          "id": "lex:A1:find",
+          "prerequisites": [
+            "lex:A1:problem"
+          ]
+        },
+        {
+          "id": "lex:A1:call",
+          "prerequisites": [
+            "lex:A1:help"
+          ]
+        },
+        {
+          "id": "lex:A1:phone",
+          "prerequisites": [
+            "lex:A1:call"
+          ]
+        },
+        {
+          "id": "lex:A1:number",
+          "prerequisites": [
+            "lex:A1:phone"
+          ]
+        },
+        {
+          "id": "lex:A1:police",
+          "prerequisites": [
+            "lex:A1:call",
+            "lex:A1:phone"
+          ]
+        },
+        {
+          "id": "lex:A1:door",
+          "prerequisites": [
+            "lex:A1:problem"
+          ]
+        },
+        {
+          "id": "lex:A1:key",
+          "prerequisites": [
+            "lex:A1:door"
+          ]
+        }
+      ]
     }
   ],
   "calibrationSlice": {
@@ -1530,5 +1647,5 @@
       "lex:A1:how"
     ]
   },
-  "assignedMinimum": 220
+  "assignedMinimum": 240
 }
