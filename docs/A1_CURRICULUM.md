@@ -27,16 +27,16 @@ than around the source dataset's batch boundaries:
 11. Health and feelings
 12. Help and everyday problems
 
-Unit 1 remains the fixed 20-entry calibration package. Units 2 and 3 now each
+Unit 1 remains the fixed 20-entry calibration package. Units 2–4 now each
 have a 20-entry **mapped** sequence, while their status remains `planned`:
 mapping establishes curriculum order and prerequisites but does not mean the
-content has passed bilingual/pronunciation review or is released. Units 4–12
+content has passed bilingual/pronunciation review or is released. Units 5–12
 remain planned and unassigned.
 
 The manifest carries an `assignedMinimum` coverage ratchet. It is now set to
-60, so CI prevents total mapped A1 coverage from silently falling below the
-current three-unit baseline. It protects the count, not exact unit membership;
-the other 840 entries remain a visible curriculum backlog, not silently treated
+80, so CI prevents total mapped A1 coverage from silently falling below the
+current four-unit baseline. It protects the count, not exact unit membership;
+the other 820 entries remain a visible curriculum backlog, not silently treated
 as complete.
 
 ### Unit 2 — Family and home
@@ -64,6 +64,21 @@ small set of routine verbs. It is designed to support beginner present-time
 routines before later units add food, work/study, travel, and other domains.
 Prerequisites reuse foundations already mapped in Units 1–2 and earlier targets
 inside Unit 3; no forward prerequisite is permitted.
+
+### Unit 4 — Food and drink
+
+The mapped sequence is:
+
+`food`, `water`, `eat`, `drink`, `want`, `some`,
+`tea`, `coffee`, `milk`, `bread`, `rice`, `fruit`,
+`apple`, `breakfast`, `lunch`, `dinner`, `hungry`,
+`thirsty`, `restaurant`, `menu`.
+
+This unit is deliberately functional rather than encyclopedic. It begins with
+food/drink actions and requests, adds common staples and meal words, and ends
+with hunger/thirst plus restaurant language. Broader food nouns and more
+count/mass grammar remain available for later recycling instead of crowding the
+first Food & Drink unit.
 
 ## First 20-entry calibration slice
 
