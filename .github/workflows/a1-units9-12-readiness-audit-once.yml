@@ -1,0 +1,47 @@
+name: A1 Units 9-12 readiness audit once
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - codex/a1-unit9-heldout-readiness
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Print remaining unit qualification gaps
+        shell: bash
+        run: |
+          npm run --silent content:qualification -- --json > /tmp/a1-qualification.json
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const report=JSON.parse(fs.readFileSync("/tmp/a1-qualification.json","utf8"));
+          for(const id of ["09-leisure-people","10-weather-clothes","11-health-feelings","12-help-everyday-problems"]){
+            const unit=report.units.find(x=>x.id===id);
+            console.log("UNIT_READY_AUDIT|" + id + "|" + JSON.stringify({
+              assignedEntries: unit.assignedEntries,
+              targetEntries: unit.targetEntries,
+              machineReadyForReview: unit.machineReadyForReview,
+              blockers: unit.blockers,
+              nextActions: unit.nextActions,
+              totalSenses: unit.evidence.heldOutAssessment.totalSenses,
+              readySenses: unit.evidence.heldOutAssessment.readySenses,
+              missingSenses: unit.evidence.heldOutAssessment.missingSenses,
+              audioCompleteEntries: unit.evidence.audio.completeEntries,
+              audioIncompleteEntries: unit.evidence.audio.incompleteEntries,
+              flaggedEntries: unit.evidence.audio.flaggedEntries,
+              flaggedClips: unit.evidence.audio.flaggedClips,
+              bilingualApproved: unit.evidence.review.bilingualApproved,
+              pronunciationApproved: unit.evidence.review.pronunciationApproved
+            }));
+          }
+          NODE
