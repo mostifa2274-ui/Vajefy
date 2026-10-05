@@ -156,6 +156,7 @@ test("calibration queue distinguishes current, stale, audio and flag evidence", 
       };
       entries: {
         id: string;
+        approvalToken: string;
         ledgerState: string;
         bilingual: string;
         pronunciation: string;
@@ -181,6 +182,7 @@ test("calibration queue distinguishes current, stale, audio and flag evidence", 
     });
 
     const current = queue.entries.find((row) => row.id === A)!;
+    assert.equal(current.approvalToken, `${A}@version-a`);
     assert.equal(current.ledgerState, "current");
     assert.equal(current.bilingual, "approved");
     assert.equal(current.pronunciation, "pending");
