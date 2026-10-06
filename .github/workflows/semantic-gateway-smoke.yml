@@ -39,36 +39,30 @@ jobs:
           echo "Production did not reach exact revision $EXPECTED." >&2
           exit 1
 
-      - name: Obtain short-lived GitHub OIDC identity
-        id: oidc
+      - name: Verify authenticated keyless gateway contract without inference
         shell: bash
-        env:
-          REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
-          REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
         run: |
           set -euo pipefail
+
+          REQUEST_URL="${ACTIONS_ID_TOKEN_REQUEST_URL:-}"
+          REQUEST_TOKEN="${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}"
           test -n "$REQUEST_URL"
           test -n "$REQUEST_TOKEN"
+
           SEP='?'
           case "$REQUEST_URL" in
             *\?*) SEP='&' ;;
           esac
+
           RESPONSE="$(curl -fsS \
             -H "Authorization: Bearer $REQUEST_TOKEN" \
             -H "Accept: application/json" \
             "${REQUEST_URL}${SEP}audience=vajefy-semantic-gateway")"
           TOKEN="$(node -e 'const x=JSON.parse(process.argv[1]); if(!x.value) process.exit(2); process.stdout.write(x.value)' "$RESPONSE")"
           echo "::add-mask::$TOKEN"
-          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
 
-      - name: Verify authenticated keyless gateway contract without inference
-        shell: bash
-        env:
-          OIDC_TOKEN: ${{ steps.oidc.outputs.token }}
-        run: |
-          set -euo pipefail
           BODY="$(curl -fsS --max-time 20 \
-            -H "Authorization: Bearer $OIDC_TOKEN" \
+            -H "Authorization: Bearer $TOKEN" \
             https://vajefy.mostifa2273.workers.dev/api/internal/semantic-judge)"
 
           node <<'NODE' "$BODY"
