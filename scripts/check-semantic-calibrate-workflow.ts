@@ -26,6 +26,8 @@ const required = [
   "github.ref == 'refs/heads/main'",
   "permissions:\n  contents: write\n  id-token: write",
   "SEMANTIC_JUDGE_TRANSPORT: keyless",
+  "Verify zero-cost Neuron budget",
+  "assurance:semantic:keyless:budget",
   "Keyless no-inference gateway preflight",
   "Run three isolated calibration repeats",
   "Score against pre-registered Vajefy gate",
