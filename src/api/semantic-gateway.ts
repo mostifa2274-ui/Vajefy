@@ -194,11 +194,16 @@ export function semanticResponseFormat(userPayload: unknown) {
               evidence: {
                 type: "array",
                 minItems: 1,
-                items: { type: "string", minLength: 1 },
+                maxItems: 3,
+                items: {
+                  type: "string",
+                  minLength: 1,
+                  maxLength: 120,
+                },
               },
               reasonCode: {
                 anyOf: [
-                  { type: "string", minLength: 1 },
+                  { type: "string", minLength: 1, maxLength: 96 },
                   { type: "null" },
                 ],
               },

@@ -127,6 +127,11 @@ test("semantic response format binds criteria and exact array size", () => {
           properties: {
             criterion: { enum: string[] };
             result: { enum: string[] };
+            evidence: {
+              minItems: number;
+              maxItems: number;
+              items: { maxLength: number };
+            };
           };
         };
       };
@@ -143,6 +148,9 @@ test("semantic response format binds criteria and exact array size", () => {
     "FAIL",
     "UNCERTAIN",
   ]);
+  assert.equal(criteria.items.properties.evidence.minItems, 1);
+  assert.equal(criteria.items.properties.evidence.maxItems, 3);
+  assert.equal(criteria.items.properties.evidence.items.maxLength, 120);
 });
 
 test("semantic response format rejects missing or duplicate criteria", () => {
