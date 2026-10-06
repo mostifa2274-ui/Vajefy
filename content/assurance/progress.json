@@ -137,15 +137,22 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "main",
-    "objective": "Make keyless calibration provably fit the Cloudflare Workers AI free daily allocation before any inference.",
+    "branch": "codex/keyless-free-neuron-budget",
+    "objective": "Validate and merge fail-closed zero-cost Neuron budgeting before any keyless calibration inference.",
     "blocked": false,
-    "nextSteps": [
-      "Replace the high-Neuron adversarial Qwen 3.8 candidate with a lower-Neuron reasoning Qwen candidate if calibration quality remains plausible.",
-      "Add machine-readable current Neuron rates and conservative full-calibration budget calculation.",
-      "Fail CI if the maximum planned calibration budget exceeds the zero-cost ceiling.",
-      "Re-run full CI and post-deploy OIDC smoke.",
-      "Only then permit calibration inference."
+    "completedOnBranch": [
+      "Replaced high-Neuron Qwen 3.8 adversarial candidate with Qwen3 30B A3B reasoning model.",
+      "Added current Cloudflare per-model Neuron rates and 10,000/day free allocation policy.",
+      "Added conservative packet-derived full-calibration budget calculator.",
+      "Reserved at least 1,000 Neurons of daily free headroom.",
+      "Calibration workflow runs the budget gate before OIDC preflight or inference.",
+      "Normal CI now fails on free-budget regression."
+    ],
+    "pending": [
+      "Pass full CI and confirm the computed full-calibration maximum is below 9,000 Neurons.",
+      "Merge if green.",
+      "Observe automatic exact-revision/OIDC post-deploy smoke with the new model map.",
+      "Then proceed to keyless calibration."
     ]
   },
   "endpointResolution": {
@@ -216,5 +223,15 @@
     "smokeRunId": 37465617586,
     "smokeResult": "PASS",
     "inferenceRun": false
+  },
+  "keylessFreeBudget": {
+    "status": "IMPLEMENTED_ON_BRANCH_PENDING_CI",
+    "dailyFreeNeurons": 10000,
+    "maxPlannedCalibrationNeurons": 9000,
+    "requiredReserveNeurons": 1000,
+    "pricingVerifiedAt": "2026-10-06",
+    "budgetFile": "content/assurance/semantic/keyless-neuron-budget.json",
+    "adversarialCandidate": "@cf/qwen/qwen3-30b-a3b-fp8",
+    "accounting": "UTF-8 byte upper bound + 512 framing tokens/request + maximum configured output tokens"
   }
 }
