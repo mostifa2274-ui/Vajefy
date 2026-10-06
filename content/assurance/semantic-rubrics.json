@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "requiredRoles": [
+    "english",
+    "persian",
+    "pedagogical",
+    "adversarial"
+  ],
+  "vetoConfidence": 0.9,
+  "roles": [
+    {
+      "role": "english",
+      "rubricVersion": "english-a1-v1",
+      "promptVersion": "english-a1-prompt-v1",
+      "criteria": [
+        "grammar",
+        "naturalness",
+        "register",
+        "collocation",
+        "sense_fidelity",
+        "grammatical_pattern",
+        "example_validity",
+        "common_error_validity"
+      ]
+    },
+    {
+      "role": "persian",
+      "rubricVersion": "persian-a1-v1",
+      "promptVersion": "persian-a1-prompt-v1",
+      "criteria": [
+        "translation_correctness",
+        "naturalness",
+        "educational_clarity",
+        "formality_fit",
+        "ambiguity_control",
+        "false_friend_safety",
+        "literal_translation_safety"
+      ]
+    },
+    {
+      "role": "pedagogical",
+      "rubricVersion": "pedagogy-a1-v1",
+      "promptVersion": "pedagogy-a1-prompt-v1",
+      "criteria": [
+        "a1_suitability",
+        "cognitive_load",
+        "target_teaching_value",
+        "distractor_validity",
+        "mistake_explanation_value",
+        "example_distinctness",
+        "persian_learner_fit"
+      ]
+    },
+    {
+      "role": "adversarial",
+      "rubricVersion": "adversarial-a1-v1",
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "criteria": [
+        "no_mistranslation",
+        "no_misleading_gloss",
+        "no_collocation_error",
+        "no_sense_mismatch",
+        "no_curriculum_leak",
+        "no_ambiguous_task",
+        "no_answer_leakage",
+        "no_mistake_explanation_error",
+        "no_syntactic_mismatch",
+        "no_persian_contradiction"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "b8da6dcfd154df32082157f26ebd084944bc01b9",
+  "authoritativeMain": "6714cce4a36939c38a3ede0afa3bbc57eb62efe3",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -15,6 +15,12 @@
       "pr": 83,
       "mergeCommit": "b8da6dcfd154df32082157f26ebd084944bc01b9",
       "summary": "No-regression ratchet for measured deterministic A1 defect classes."
+    },
+    {
+      "id": "unit1-deterministic-certification",
+      "pr": 84,
+      "mergeCommit": "6714cce4a36939c38a3ede0afa3bbc57eb62efe3",
+      "summary": "Unit 1 repaired to zero deterministic findings, controlled GB/US example audio regenerated, version-bound artifacts refreshed, and strict Unit 1 assurance locked into validate:data."
     }
   ],
   "doNotRepeat": [
@@ -22,7 +28,8 @@
     "Do not recreate Gate 0 provenance scaffolding.",
     "Do not recreate PASS/FAIL/UNCERTAIN/DISAGREEMENT/QUARANTINED assurance states.",
     "Do not re-run the broad Unit 1 diagnosis unless source content changed.",
-    "Do not build new work on stale draft PR #75; reassess or close it separately."
+    "Do not build new work on stale draft PR #75; reassess or close it separately.",
+    "Do not redo Unit 1 deterministic repairs, controlled-audio regeneration or version-bound artifact refresh unless Unit 1 source content changes or CI reports drift."
   ],
   "blockers": [
     {
@@ -43,7 +50,7 @@
       "missingWrongFa": 0,
       "missingRightFa": 0
     },
-    "status": "IN_PROGRESS",
+    "status": "DETERMINISTIC_CERTIFIED",
     "target": "Zero deterministic Unit 1 findings before semantic-judge certification.",
     "current": {
       "deterministicFindings": 0,
@@ -59,33 +66,27 @@
         "heuristicFlagsAfter": 292,
         "note": "First temporary audio run failed only because ffmpeg was absent on the runner; workflow was corrected with ffmpeg installation and then succeeded."
       }
-    }
+    },
+    "mergeCommit": "6714cce4a36939c38a3ede0afa3bbc57eb62efe3",
+    "pr": 84
   },
   "currentWork": {
-    "branch": "codex/unit1-autonomous-certification",
-    "objective": "Pass final exact-head CI and merge PR #84.",
+    "branch": "codex/semantic-assurance-foundation",
+    "objective": "Validate and merge the independent semantic-assurance foundation.",
     "completedOnBranch": [
-      "Added durable progress ledgers.",
-      "Repaired all 20 Unit 1 senses.",
-      "Fixed false-positive English mistake comparison that erased case distinctions.",
-      "Added unit-scoped assurance and npm run assurance:unit1.",
-      "Wired Unit 1 zero-defect gate into validate:data.",
-      "Regenerated derived enhanced-content artifacts using the repository compiler.",
-      "Generated 38 missing controlled GB/US example clips with the pinned Kokoro pipeline.",
-      "Rebuilt derived content with the new controlled audio.",
-      "Removed all temporary regeneration workflows.",
-      "Refreshed safe version-bound generated artifacts: coach evaluation cases, reviewed-reference output and usefulness ordering.",
-      "Removed the temporary derived-artifact workflow."
+      "Recorded PR #84 exact merge commit and marked Unit 1 deterministically certified.",
+      "Added versioned English, Persian, pedagogical and adversarial rubric manifest.",
+      "Added sense-level semantic judge records with model/prompt/rubric/context/run provenance.",
+      "Added fail-closed arbitration: missing/stale/non-independent evidence quarantines; high-confidence failure vetoes; conflict becomes disagreement; uncertainty never passes.",
+      "Added unit tests for pass, veto, disagreement, uncertainty, missing role and shared-context paths.",
+      "Added Unit 1 semantic evidence checker with current content-version and input-hash binding.",
+      "Added semantic evidence contract documentation.",
+      "Wired semantic evidence consistency checking into validate:data without fabricating PASS evidence."
     ],
-    "generatedArtifactsCommit": "5d51bd4d60909d46ed23cbd0bbe755594fcb921c",
-    "controlledAudioCommit": "455ab84dd7b9ae1c20a3e5eca19d8e24dcdcc5d3",
-    "temporaryAudioWorkflowRemovalCommit": "f3f53e16564ba5e60090c3361fd35bc1ea801909",
     "pending": [
-      "Pass final exact-head CI: generated-content consistency, validate:data, typecheck, lint, unit tests, production build, Playwright and Workers contract.",
-      "Merge PR #84 if all gates pass.",
-      "Record exact merge commit and next objective."
-    ],
-    "derivedArtifactsCommit": "41689afc9000b80fc7d9355bb77c9a2321faa77d",
-    "temporaryDerivedWorkflowRemovalCommit": "598e14b0a09cd2db9e82dbea533415324ba425de"
+      "Pass full CI on the semantic-assurance foundation.",
+      "Merge the foundation PR if all gates pass.",
+      "Record the merge commit and continue to producing independent Unit 1 judge evidence through isolated model runs."
+    ]
   }
 }

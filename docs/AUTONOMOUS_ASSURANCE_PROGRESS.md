@@ -138,3 +138,48 @@ Refreshed writers:
 The temporary workflow was removed in `598e14b0a09cd2db9e82dbea533415324ba425de`.
 
 Current resume point: **exact-head CI for PR #84**. Do not regenerate these artifacts again unless a source edit or CI explicitly reports them stale.
+
+## Completed — PR #84 Unit 1 deterministic certification
+
+PR #84 merged as `6714cce4a36939c38a3ede0afa3bbc57eb62efe3`.
+
+Unit `01-introductions` is now **deterministically certified** under the current structural assurance contract:
+
+- 20/20 senses repaired;
+- strict Unit 1 deterministic findings = 0;
+- controlled GB/US audio complete for the edited examples;
+- 38 new controlled clips generated, 5,888 clips total;
+- heuristic audio flags remained 292 before/after;
+- version-bound generated artifacts refreshed;
+- generated-content consistency, `validate:data`, typecheck, lint, unit tests, production build, Playwright and Workers build contract all passed on the exact merged head.
+
+Do not repeat Unit 1 deterministic repairs or audio regeneration unless its source content changes or CI reports drift.
+
+## Current work — semantic assurance foundation
+
+Branch: `codex/semantic-assurance-foundation`.
+
+Next unrepeated objective:
+
+1. define versioned independent judge rubrics for English, Persian, pedagogy and adversarial review;
+2. store complete judge provenance and evidence;
+3. implement fail-closed arbitration with disagreement/uncertainty/quarantine states;
+4. add fixture-based tests for every arbitration path;
+5. add a Unit 1 semantic-assurance command that cannot produce PASS without complete independent evidence.
+
+Gate 0 remains blocked and Unit 1's certified source content should not be edited during this foundation slice.
+
+## In-progress checkpoint — semantic assurance foundation
+
+On branch `codex/semantic-assurance-foundation`:
+
+- PR #84 is recorded as merged at `6714cce4a36939c38a3ede0afa3bbc57eb62efe3`;
+- Unit 1 is marked deterministically certified and must not be re-repaired unless its source changes;
+- four versioned judge roles now exist: English, Persian, pedagogical and adversarial;
+- each judge record is bound to the exact sense input hash and entry content version;
+- evaluator provenance includes provider, model id/version, prompt version, rubric version, isolated context key and run id;
+- arbitration is fail-closed: missing or stale evidence is quarantined, high-confidence failures veto, lower-confidence conflict becomes disagreement, and uncertainty never becomes PASS;
+- CI now validates any committed semantic evidence for consistency, but semantic PASS is **not** claimed because no independent Unit 1 judge evidence has been committed yet;
+- a strict semantic command exists for the later certification gate and will fail until every Unit 1 sense has complete independent evidence.
+
+Current resume point: validate this foundation in CI, merge it if green, then produce independent Unit 1 judge evidence without editing the deterministically certified source content.
