@@ -166,3 +166,38 @@ This is a **candidate** change, not a qualification. The model must still pass
 the unchanged `vajefy-semantic-v1` calibration thresholds. If it fails, do not
 lower the thresholds; select another candidate or create a new pre-registered
 calibration version only for a justified gold-set change.
+
+
+## English candidate replacement after live calibration transport evidence — 2026-10-06
+
+`@cf/openai/gpt-oss-120b` is no longer the English candidate.
+
+Live keyless calibration run `37473550090` repeatedly reached GPT-OSS after
+budget and OIDC preflight passed. The safe structural diagnostic on the latest
+attempt showed:
+
+- `prompt_tokens=1073`;
+- `completion_tokens=900`;
+- configured `maxTokens=900`;
+- one final candidate;
+- zero canonical semantic JSON candidates.
+
+Cloudflare's current Workers AI JSON Mode documentation does not list GPT-OSS
+120B among supported JSON Mode models. The model therefore consumed the entire
+completion allowance without producing the required criteria JSON.
+
+English candidate is now:
+
+`@cf/meta/llama-3.3-70b-instruct-fp8-fast`
+
+Reasons:
+
+- Cloudflare explicitly lists it as JSON Mode supported;
+- 70B scale remains suitable for English linguistic judgment;
+- the binding returns the standard Workers AI response shape;
+- a 500-token cap is sufficient for the bounded eight-criterion JSON schema;
+- regenerated full-campaign budget remains below Vajefy's 8,500-Neuron safety
+  ceiling.
+
+This is still only a **candidate**. It must pass all frozen
+`vajefy-semantic-v1` thresholds before qualification.
