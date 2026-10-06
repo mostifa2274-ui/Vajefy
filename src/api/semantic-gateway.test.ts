@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   extractWorkersAiContent,
   semanticResponseFormat,
+  workersAiDiagnostic,
 } from "./semantic-gateway";
 
 test("extracts Cloudflare Responses API output_text content", () => {
@@ -310,5 +311,41 @@ test("ignores reasoning text when final assistant message contains semantic JSON
       ],
     }),
     payload,
+  );
+});
+
+
+test("Workers AI diagnostic exposes structure but never response text", () => {
+  const secretText =
+    '{"criteria":[{"criterion":"grammar","result":"PASS"}],"secret":"DO_NOT_LOG"}';
+  const diagnostic = workersAiDiagnostic({
+    status: "incomplete",
+    incomplete_details: { reason: "max_output_tokens" },
+    output_text: secretText,
+    output: [
+      {
+        type: "message",
+        role: "assistant",
+        status: "incomplete",
+        content: [{ type: "output_text", text: secretText }],
+      },
+    ],
+    usage: { input_tokens: 100, output_tokens: 900 },
+  });
+
+  const serialized = JSON.stringify(diagnostic);
+  assert.equal(serialized.includes("DO_NOT_LOG"), false);
+  assert.equal(serialized.includes(secretText), false);
+  assert.equal(diagnostic.status, "incomplete");
+  assert.deepEqual(diagnostic.incompleteDetails, {
+    reason: "max_output_tokens",
+  });
+  assert.equal(
+    (diagnostic.outputTextShape as { type?: string; length?: number }).type,
+    "string",
+  );
+  assert.equal(
+    (diagnostic.outputTextShape as { type?: string; length?: number }).length,
+    secretText.length,
   );
 });
