@@ -582,3 +582,27 @@ No model inference has been run on this branch.
 
 Current resume point: full CI -> merge -> exact production revision check ->
 OIDC no-inference gateway smoke -> keyless calibration.
+
+
+## Completed — PR #93 zero-key semantic gateway
+
+PR #93 merged as `593ef00c452b4e1467782520bf1314caa62d73b5`.
+
+Semantic provider API keys are no longer part of the authoritative path.
+GitHub Actions uses short-lived OIDC identity; the Vajefy Worker verifies it and
+calls Workers AI through the `AI` binding.
+
+## In-progress — automatic keyless production smoke
+
+Branch: `codex/keyless-gateway-smoke`.
+
+Added an exact-revision, no-inference deployment smoke. It waits for production
+`/api/version` to equal the triggering `main` SHA prefix, then uses GitHub
+OIDC to GET the internal semantic gateway and verifies all model provenance.
+
+The smoke identity is server-side GET-only: it is not in the inference workflow
+allowlist, so it cannot POST model requests even when manually dispatched.
+
+Current resume point: CI/merge this smoke hardening, observe the automatic
+production smoke pass, then proceed to frozen keyless calibration. Do not ask
+for semantic API keys.
