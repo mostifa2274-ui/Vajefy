@@ -249,3 +249,26 @@ The repository now has a complete fail-closed path from certified Unit 1 source 
 Current branch: `codex/semantic-endpoint-resolution`.
 
 Next unrepeated objective: inventory actual connected inference options, distinguish no-cost/local execution from billed services, and resolve explicit endpoint/model/version provenance for all four judge roles. Do not rebuild the packet, runner, ingestion validator or preflight.
+
+## In-progress checkpoint — semantic endpoint resolution
+
+Branch: `codex/semantic-endpoint-resolution`.
+
+Endpoint investigation is now recorded and should not be repeated unless the plugin/provider landscape changes:
+
+- GitHub Models is retired and is not a candidate;
+- Hugging Face Jobs are billable compute, so no job was launched;
+- no installed generic Groq/OpenRouter/Together inference connector was discovered;
+- real semantic evidence therefore remains blocked on explicit endpoint configuration, not on repository infrastructure.
+
+Implemented on this branch:
+
+- role-scoped no-inference preflight;
+- manual-only `.github/workflows/semantic-judge.yml`;
+- explicit `acknowledge_inference` dispatch gate;
+- read-only repository permission;
+- one-role-per-run structured evidence artifact upload;
+- CI safety checker that forbids push/pull_request/schedule/workflow_run triggers and `contents: write`;
+- endpoint variables/secrets and resume sequence documented in `content/assurance/semantic/ENDPOINT_RESOLUTION.md`.
+
+No model inference has been run. Current resume point: CI/merge this slice, then wait for explicit endpoint configuration/authorization before evidence execution.
