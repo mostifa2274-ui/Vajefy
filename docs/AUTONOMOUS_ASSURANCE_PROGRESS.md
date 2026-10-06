@@ -873,3 +873,16 @@ Merged as `cb789e6358128e9485e59eeed2b1a290cab5236e`.
   studied words. Pairs, the sprint, meaning and cloze quizzes and the deck
   drills are removed with their components and 50 unused copy keys.
 - XP no longer shows on Progress; the stored count is kept.
+
+## Completed — PR #110 example diversity and three-mode Practice
+
+Merged as `26ca377bd464ed7640603e0582169635614eea76`.
+
+## A1-only loading and feature ledger — plan §41 item 9 and §30
+
+- The service worker installs only the A1 course data (meta, `lex-a1.json`,
+  enhanced index/order/audio-pack, `usefulness.json`), about 3.2 MB less.
+  Higher levels and reference decks are cached on first use. An e2e test
+  guards the first load.
+- `docs/FEATURES.md` lists 19 features with measures and removal conditions;
+  `npm run features:check` keeps it in step with the screens.
