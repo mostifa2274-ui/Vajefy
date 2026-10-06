@@ -4,6 +4,7 @@ import {
   extractWorkersAiContent,
   semanticResponseFormat,
   workersAiDiagnostic,
+  workersAiUsage,
 } from "./semantic-gateway";
 
 test("extracts Cloudflare Responses API output_text content", () => {
@@ -352,4 +353,18 @@ test("safe Workers AI diagnostic exposes structure but not generated text", () =
   assert.ok(serialized.includes("max_output_tokens"));
   assert.ok(!serialized.includes("sensitive generated answer"));
   assert.ok(!serialized.includes("secret reasoning text"));
+});
+
+test("token usage is read from chat-completion and Responses results", () => {
+  assert.deepEqual(
+    workersAiUsage({ response: "{}", usage: { prompt_tokens: 812, completion_tokens: 140, total_tokens: 952 } }),
+    { inputTokens: 812, outputTokens: 140 },
+  );
+  assert.deepEqual(
+    workersAiUsage({ output: [], usage: { input_tokens: 900, output_tokens: 600 } }),
+    { inputTokens: 900, outputTokens: 600 },
+  );
+  assert.equal(workersAiUsage({ response: "{}" }), null);
+  assert.equal(workersAiUsage({ usage: { prompt_tokens: "812", completion_tokens: 1 } }), null);
+  assert.equal(workersAiUsage("text"), null);
 });

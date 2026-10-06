@@ -168,31 +168,10 @@ GitHub Actions variable, not a secret.
 
 Do **not** run Unit 1 judging first.
 
-Open GitHub Actions and run:
-
-**Semantic judge calibration and qualification**
-
-Run it once for each role:
-
-1. `english`
-2. `persian`
-3. `pedagogical`
-4. `adversarial`
-
-For every dispatch:
-
-- run from `main`;
-- set `acknowledge_inference=true`;
-- leave `replace_existing=false` for the first qualification.
-
-Each dispatch automatically:
-
-- runs three independent calibration repeats;
-- scores against the frozen `vajefy-semantic-v1` thresholds;
-- rejects a model on any threshold miss;
-- records qualification only after a complete PASS;
-- commits only the qualification ledger and auditable role report;
-- uploads the three raw evidence bundles and report.
+Calibration no longer needs these values or a person to dispatch it. The
+keyless **Semantic judge calibration and qualification** workflow runs on a
+schedule and qualifies or rejects each role's candidates by itself. See
+`AUTOMATION.md`.
 
 After all four roles qualify, use the existing:
 

@@ -18,6 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: content/assurance/semantic/keyless-provider-presets.json
+          sparse-checkout-cone-mode: false
+
       - name: Wait for exact production revision
         id: revision
         shell: bash
@@ -71,15 +76,26 @@ jobs:
           if (body.transport !== "cloudflare-workers-ai-binding") {
             throw new Error("unexpected transport");
           }
-          const expected = {
-            english: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-            persian: "@cf/zai-org/glm-4.7-flash",
-            pedagogical: "@cf/google/gemma-4-26b-a4b-it",
-            adversarial: "@cf/qwen/qwen3-30b-a3b-fp8",
-          };
-          for (const [role, model] of Object.entries(expected)) {
-            if (body.roles?.[role]?.model !== model) {
-              throw new Error(`${role} model contract mismatch`);
+          // The deployed allowlist must be exactly the pre-registered candidates.
+          const presets = JSON.parse(
+            require("node:fs").readFileSync("content/assurance/semantic/keyless-provider-presets.json", "utf8"),
+          );
+          for (const [role, registered] of Object.entries(presets.candidates)) {
+            const candidates = body.candidates?.[role];
+            const expected = registered.map(({ provider, modelFamily, model, modelVersion, maxTokens }) => ({
+              provider,
+              modelFamily,
+              model,
+              modelVersion,
+              maxTokens,
+            }));
+            if (JSON.stringify(candidates) !== JSON.stringify(expected)) {
+              throw new Error(`${role} candidate allowlist mismatch`);
+            }
+            for (const candidate of candidates) {
+              if (candidate.provider !== "cloudflare-workers-ai" || !String(candidate.model).startsWith("@cf/")) {
+                throw new Error(`${role} candidate is not a Cloudflare-hosted model`);
+              }
             }
           }
           console.log("Authenticated keyless gateway contract: PASS (no inference).");

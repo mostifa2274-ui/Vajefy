@@ -36,6 +36,7 @@ type Presets = {
   gatewayOrigin: string;
   audience: string;
   roles: Record<SemanticJudgeRole, Preset>;
+  candidates: Record<SemanticJudgeRole, Preset[]>;
 };
 
 function fail(message: string): never {
@@ -71,17 +72,40 @@ const paidOnly = new Set([
   "@cf/deepseek-ai/deepseek-v4-pro-0813",
 ]);
 
+function checkPreset(label: string, preset: Preset) {
+  if (preset.provider !== "cloudflare-workers-ai") {
+    fail(`${label}: keyless provider must be cloudflare-workers-ai.`);
+  }
+  if (!preset.model.startsWith("@cf/")) fail(`${label}: model must be Cloudflare-hosted.`);
+  if (paidOnly.has(preset.model)) fail(`${label}: model currently requires paid billing.`);
+  if (!preset.modelVersion.includes(preset.model)) fail(`${label}: modelVersion must name the model.`);
+  if (!preset.modelFamily) fail(`${label}: modelFamily is required.`);
+  if (!Number.isInteger(preset.maxTokens) || preset.maxTokens < 256 || preset.maxTokens > 1200) {
+    fail(`${label}: maxTokens must be an integer from 256 through 1200.`);
+  }
+}
+
+let candidateCount = 0;
 for (const role of roles) {
+  const candidates = data.candidates?.[role];
+  if (!candidates?.length) fail(`${role}: no pre-registered candidates.`);
+  if (new Set(candidates.map((item) => item.model)).size !== candidates.length) {
+    fail(`${role}: a model is registered twice.`);
+  }
+  for (const candidate of candidates) checkPreset(`${role} candidate ${candidate.model}`, candidate);
+  candidateCount += candidates.length;
+
   const preset = data.roles[role];
   if (!preset) fail(`Missing keyless preset for ${role}.`);
-  if (preset.provider !== "cloudflare-workers-ai") {
-    fail(`${role}: keyless provider must be cloudflare-workers-ai.`);
-  }
-  if (!preset.model.startsWith("@cf/")) fail(`${role}: model must be Cloudflare-hosted.`);
-  if (paidOnly.has(preset.model)) fail(`${role}: model currently requires paid billing.`);
-  if (!preset.modelVersion.includes(preset.model)) fail(`${role}: modelVersion must name the model.`);
-  if (!Number.isInteger(preset.maxTokens) || preset.maxTokens < 256 || preset.maxTokens > 1200) {
-    fail(`${role}: maxTokens must be an integer from 256 through 1200.`);
+  checkPreset(role, preset);
+  const registered = candidates.find((item) => item.model === preset.model);
+  if (
+    !registered ||
+    registered.modelVersion !== preset.modelVersion ||
+    registered.modelFamily !== preset.modelFamily ||
+    registered.maxTokens !== preset.maxTokens
+  ) {
+    fail(`${role}: the active judge must be one of its pre-registered candidates.`);
   }
   models.add(preset.model);
   families.add(preset.modelFamily);
@@ -138,5 +162,5 @@ if (!/branches:\s*\n\s*- main/.test(smoke)) {
 }
 
 console.log(
-  `Keyless semantic contract: PASS (OIDC + Workers AI binding, 4 model families, no semantic API keys, verified ${data.verifiedAt}).`,
+  `Keyless semantic contract: PASS (OIDC + Workers AI binding, 4 model families, ${candidateCount} pre-registered candidates, no semantic API keys, verified ${data.verifiedAt}).`,
 );

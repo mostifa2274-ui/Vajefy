@@ -13,6 +13,10 @@ scope is A1 only (plan §4 and §32).
 2. For semantic-assurance work, also read `content/assurance/progress.json`
    (`currentWork`, `doNotRepeat`, `blockers`) and
    [docs/AUTONOMOUS_ASSURANCE_PROGRESS.md](docs/AUTONOMOUS_ASSURANCE_PROGRESS.md).
+   Judge calibration runs by itself
+   ([content/assurance/semantic/AUTOMATION.md](content/assurance/semantic/AUTOMATION.md)):
+   check `content/assurance/semantic/calibration/` for its latest outcomes
+   before doing calibration work.
 3. Check the current `main`. Repository evidence beats memory of an earlier
    session.
 
@@ -34,9 +38,15 @@ scope is A1 only (plan §4 and §32).
   semantic PASS evidence.
 - Change frozen calibration thresholds or gold labels after seeing model
   output. Create a new calibration version instead.
-- Add push, schedule or repository_dispatch triggers to inference workflows,
-  or API-key model providers. Never run paid inference without the owner's
-  explicit authorization.
+- Add push or repository_dispatch triggers to inference workflows, or API-key
+  model providers. The only scheduled inference is `semantic-calibrate.yml`,
+  which the owner authorized in `content/assurance/semantic/automation.json`
+  for free-allocation judge calibration. Do not schedule any other inference.
+  Never run paid inference without the owner's explicit authorization.
+- Edit the active judges (`roles` in
+  `content/assurance/semantic/keyless-provider-presets.json`) by hand, or
+  re-order candidates after they have produced results. Run
+  `npm run assurance:semantic:automation -- plan` instead.
 - Raise a ratchet baseline, or skip, disable or quarantine a test to get CI
   green.
 

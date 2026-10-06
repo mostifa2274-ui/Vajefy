@@ -7,7 +7,7 @@ Vajefy's semantic judge path no longer requires provider API keys.
 ## Architecture
 
 ```text
-GitHub Actions workflow_dispatch
+GitHub Actions (workflow_dispatch, or the calibration schedule)
         |
         | GitHub OIDC (short-lived signed identity)
         v
@@ -15,7 +15,7 @@ https://vajefy.mostifa2273.workers.dev/api/internal/semantic-judge
         |
         | Cloudflare Workers AI binding (env.AI)
         v
-fixed free-allocation model for the selected judge role
+an allowlisted free-allocation candidate for the selected judge role
 ```
 
 There are no Groq, Gemini, OpenRouter or Cloudflare AI API tokens in the
@@ -29,13 +29,20 @@ GitHub's JWKS and checks:
 - audience;
 - repository;
 - `refs/heads/main`;
-- `workflow_dispatch`;
+- the event: `workflow_dispatch`; `schedule` only for
+  `semantic-calibrate.yml`; `push` only for the smoke test's status check,
+  which runs no inference;
 - exact allowed workflow path;
 - expiration / issued-at / not-before times.
 
-The Worker chooses the model. A workflow cannot send an arbitrary model id.
+The workflow names the role's active judge, and the Worker runs it only if
+it is on that role's allowlist. A workflow cannot send an arbitrary model id.
 
-## Fixed keyless role map
+## Keyless role map (historical)
+
+The active judges and every role's candidates now live in
+`keyless-provider-presets.json`. The calibration automation chooses them
+(`AUTOMATION.md`). The map below was the first selection.
 
 | Role | Workers AI model family | Model |
 |---|---|---|
@@ -82,7 +89,8 @@ repository variable is required for semantic judging.
 - fixed server-side model allowlist;
 - no arbitrary public inference endpoint;
 - no inference on push or pull request;
-- calibration still requires explicit workflow dispatch;
+- scheduled inference only from `semantic-calibrate.yml`, only while
+  `automation.json` enables it, and only within the free daily allocation;
 - Unit 1 still requires a current qualification record.
 
 ## Authoritative commands
@@ -189,3 +197,28 @@ Regenerated full-campaign upper bound:
 - free reserve: **1,930**;
 - Vajefy safety ceiling: 8,500;
 - safety reserve: **430**.
+
+
+## Candidate registry and unattended calibration — 2026-10-06
+
+The owner asked for calibration without a person in the loop, at the highest
+quality the free allocation allows. Each role now has pre-registered free
+candidates, strongest first. They were registered before any of them produced
+results.
+
+| Role | Candidates in order |
+|---|---|
+| English | Llama 3.3 70B (rejected), Nemotron 3 120B, Mistral Small 3.1, Llama 4 Scout |
+| Persian | Kimi K2.5, GLM 4.7 Flash, Qwen 3.8 27B, Mistral Small 3.1, Nemotron 3 120B |
+| Pedagogical | Nemotron 3 120B, Gemma 4 26B, Qwen 3.8 27B, Llama 4 Scout, Mistral Small 3.1 |
+| Adversarial | Nemotron 3 120B, Qwen3 30B, GPT-OSS 120B, Mistral Small 3.1, Llama 4 Scout |
+
+Each candidate's token limit is set so that its full v1 campaign fits the
+8,500-Neuron ceiling. Kimi K2.5, at 8,202 Neurons, is the largest. GPT-OSS 120B
+stays rejected for English, and that rejection does not carry over to the
+adversarial role, which has its own prompt.
+
+The calibration workflow now runs on a schedule. `AUTOMATION.md` describes how
+it chooses a judge, keeps to the free allocation and handles failures. The
+Worker also returns the token usage Workers AI reports, so each attempt's
+measured cost is logged next to its upper-bound charge.

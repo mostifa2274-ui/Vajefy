@@ -1,17 +1,21 @@
 import {
   KEYLESS_SEMANTIC_AUDIENCE,
-  KEYLESS_SEMANTIC_MODELS,
+  KEYLESS_SEMANTIC_CANDIDATES,
   KEYLESS_SEMANTIC_REF,
   KEYLESS_SEMANTIC_REPOSITORY,
   KEYLESS_SEMANTIC_STATUS_WORKFLOWS,
   KEYLESS_SEMANTIC_WORKFLOWS,
   isKeylessSemanticRole,
+  keylessSemanticCandidate,
+  keylessSemanticEventAllowed,
 } from "./semantic-gateway-config";
 import { canonicalizeSemanticJudgeContent } from "../lib/learn/semantic-judge-json";
 import { verifyGitHubActionsRequest } from "./github-oidc";
 
 type GatewayBody = {
   role?: unknown;
+  /** One of the role's allowlisted candidate models. */
+  model?: unknown;
   systemPrompt?: unknown;
   userPayload?: unknown;
 };
@@ -152,6 +156,28 @@ export function workersAiDiagnostic(value: unknown): Record<string, unknown> {
   };
 }
 
+/**
+ * Token usage a Workers AI result reports, in either the chat-completion
+ * (prompt/completion) or the Responses (input/output) naming. Calibration
+ * records it next to its upper-bound charge.
+ */
+export function workersAiUsage(
+  value: unknown,
+): { inputTokens: number; outputTokens: number } | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const usage = (value as Record<string, unknown>).usage;
+  if (!usage || typeof usage !== "object") return null;
+  const record = usage as Record<string, unknown>;
+  const inputTokens = record.prompt_tokens ?? record.input_tokens;
+  const outputTokens = record.completion_tokens ?? record.output_tokens;
+  return Number.isInteger(inputTokens) &&
+    Number.isInteger(outputTokens) &&
+    (inputTokens as number) >= 0 &&
+    (outputTokens as number) >= 0
+    ? { inputTokens: inputTokens as number, outputTokens: outputTokens as number }
+    : null;
+}
+
 export function semanticResponseFormat(userPayload: unknown) {
   const payload =
     userPayload && typeof userPayload === "object" && !Array.isArray(userPayload)
@@ -227,7 +253,7 @@ async function authenticate(
   request: Request,
   mode: "status" | "inference",
 ) {
-  return verifyGitHubActionsRequest(request, {
+  const claims = await verifyGitHubActionsRequest(request, {
     audience: KEYLESS_SEMANTIC_AUDIENCE,
     repository: KEYLESS_SEMANTIC_REPOSITORY,
     ref: KEYLESS_SEMANTIC_REF,
@@ -235,8 +261,14 @@ async function authenticate(
       mode === "status"
         ? [...KEYLESS_SEMANTIC_STATUS_WORKFLOWS]
         : [...KEYLESS_SEMANTIC_WORKFLOWS],
-    events: mode === "status" ? ["workflow_dispatch", "push"] : ["workflow_dispatch"],
+    events: ["workflow_dispatch", "schedule", "push"],
   });
+  // Each workflow may only use its own events: a schedule only for
+  // calibration, a push only for the no-inference smoke.
+  if (!keylessSemanticEventAllowed(claims.workflow_ref, claims.event_name, mode)) {
+    throw new Error("oidc-event");
+  }
+  return claims;
 }
 
 export async function handleSemanticGateway(
@@ -266,18 +298,7 @@ export async function handleSemanticGateway(
         transport: "cloudflare-workers-ai-binding",
         repository: claims.repository,
         workflowRef: claims.workflow_ref,
-        roles: Object.fromEntries(
-          Object.entries(KEYLESS_SEMANTIC_MODELS).map(([role, preset]) => [
-            role,
-            {
-              provider: preset.provider,
-              modelFamily: preset.modelFamily,
-              model: preset.model,
-              modelVersion: preset.modelVersion,
-              maxTokens: preset.maxTokens,
-            },
-          ]),
-        ),
+        candidates: KEYLESS_SEMANTIC_CANDIDATES,
       },
       { headers: { "Cache-Control": "no-store" } },
     );
@@ -307,7 +328,8 @@ export async function handleSemanticGateway(
     return jsonError("invalid-payload", 400);
   }
 
-  const preset = KEYLESS_SEMANTIC_MODELS[body.role];
+  const preset = keylessSemanticCandidate(body.role, body.model);
+  if (!preset) return jsonError("invalid-model", 400);
 
   let responseFormat;
   try {
@@ -362,6 +384,7 @@ export async function handleSemanticGateway(
       modelId: preset.model,
       modelVersion: preset.modelVersion,
       workflowRunId: claims.run_id ?? null,
+      usage: workersAiUsage(result),
     },
     { headers: { "Cache-Control": "no-store" } },
   );

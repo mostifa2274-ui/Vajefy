@@ -63,9 +63,10 @@ if (!response.ok) {
 const status = (await response.json()) as {
   ok?: boolean;
   transport?: string;
-  roles?: Record<string, Preset>;
+  candidates?: Record<string, Preset[]>;
 };
-const remote = status.roles?.[role];
+// The deployed Worker must allowlist the active candidate with identical settings.
+const remote = status.candidates?.[role]?.find((item) => item.model === preset.model);
 if (
   status.ok !== true ||
   status.transport !== presets.transport ||

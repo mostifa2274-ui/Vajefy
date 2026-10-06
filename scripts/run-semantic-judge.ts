@@ -78,6 +78,66 @@ function fail(message: string): never {
   process.exit(1);
 }
 
+/**
+ * With --attempt-output, the runner also writes what it spent and, on a
+ * failure, whether the model's output or the gateway around it failed.
+ * Calibration logs this for the daily Neuron ceiling and the retry rule.
+ */
+type AttemptRecord = {
+  schemaVersion: 1;
+  role: string;
+  runId: string;
+  model: string | null;
+  status: "complete" | "failed";
+  failure?: {
+    kind: "model" | "gateway";
+    code: string;
+    targetId: string | null;
+    detail: string;
+  };
+  requestsSent: number;
+  usage: {
+    responses: number;
+    responsesWithUsage: number;
+    inputTokens: number;
+    outputTokens: number;
+  };
+};
+
+const attempt: AttemptRecord = {
+  schemaVersion: 1,
+  role: option("--role") ?? "",
+  runId: option("--run-id") ?? "",
+  model: null,
+  status: "failed",
+  requestsSent: 0,
+  usage: { responses: 0, responsesWithUsage: 0, inputTokens: 0, outputTokens: 0 },
+};
+let attemptWritten = false;
+
+function writeAttempt(record: AttemptRecord) {
+  const file = option("--attempt-output");
+  if (!file || attemptWritten) return;
+  attemptWritten = true;
+  const full = path.resolve(file);
+  fs.mkdirSync(path.dirname(full), { recursive: true });
+  fs.writeFileSync(full, `${JSON.stringify(record, null, 2)}\n`);
+}
+
+function judgeFailure(
+  kind: "model" | "gateway",
+  code: string,
+  targetId: string | null,
+  message: string,
+): never {
+  writeAttempt({
+    ...attempt,
+    status: "failed",
+    failure: { kind, code, targetId, detail: message.slice(0, 500) },
+  });
+  fail(message);
+}
+
 function read<T>(file: string): T {
   return JSON.parse(fs.readFileSync(file, "utf8")) as T;
 }
@@ -101,7 +161,7 @@ async function main() {
   const outputPath = option("--output");
   if (!roleRaw || !packetPath || !runId || !outputPath) {
     fail(
-      "Usage: run-semantic-judge.ts --role <english|persian|pedagogical|adversarial> --packet <file> --run-id <id> --output <file>",
+      "Usage: run-semantic-judge.ts --role <english|persian|pedagogical|adversarial> --packet <file> --run-id <id> --output <file> [--attempt-output <file>]",
     );
   }
 
@@ -191,6 +251,7 @@ async function main() {
     fail("Judge context must differ from the source-generation context.");
   }
 
+  attempt.model = model;
   const judgments = [];
   for (const [index, target] of packet.targets.entries()) {
     const userPayload = buildSemanticJudgeUserPayload(
@@ -204,10 +265,22 @@ async function main() {
     };
     let body: unknown;
     if (transport === "keyless") {
-      const oidcToken = await requestGitHubActionsOidcToken(keylessAudience!);
+      let oidcToken: string;
+      try {
+        oidcToken = await requestGitHubActionsOidcToken(keylessAudience!);
+      } catch (error) {
+        judgeFailure(
+          "gateway",
+          "oidc",
+          target.targetId,
+          `GitHub OIDC token request failed: ${error instanceof Error ? error.message : String(error)}`,
+        );
+      }
       headers.authorization = `Bearer ${oidcToken}`;
       body = {
         role,
+        // The gateway runs only allowlisted candidates; name the active one.
+        model,
         systemPrompt: prompt,
         userPayload,
       };
@@ -228,17 +301,41 @@ async function main() {
       };
     }
 
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(body),
-    });
-
-    if (!response.ok) {
-      fail(
-        `${role} judge request failed for ${target.targetId}: HTTP ${response.status} ${await response.text()}`,
+    attempt.requestsSent += 1;
+    let response: Response;
+    try {
+      response = await fetch(endpoint, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(body),
+      });
+    } catch (error) {
+      judgeFailure(
+        "gateway",
+        "network",
+        target.targetId,
+        `${role} judge request could not reach ${endpoint}: ${error instanceof Error ? error.message : String(error)}`,
       );
     }
+
+    if (!response.ok) {
+      const text = await response.text();
+      let error: string | undefined;
+      try {
+        error = (JSON.parse(text) as { error?: string }).error;
+      } catch {
+        error = undefined;
+      }
+      // Only an empty final answer is the model's own failure; anything else
+      // (auth, capacity, allocation, outage) is the gateway's and is retried.
+      judgeFailure(
+        error === "empty-model-content" ? "model" : "gateway",
+        `http-${response.status}${error ? `-${error}` : ""}`,
+        target.targetId,
+        `${role} judge request failed for ${target.targetId}: HTTP ${response.status} ${text}`,
+      );
+    }
+    attempt.usage.responses += 1;
 
     let content: string | undefined;
     if (transport === "keyless") {
@@ -247,13 +344,25 @@ async function main() {
         provider?: string;
         modelId?: string;
         modelVersion?: string;
+        usage?: { inputTokens?: unknown; outputTokens?: unknown } | null;
       };
       if (
         completion.provider !== provider ||
         completion.modelId !== model ||
         completion.modelVersion !== modelVersion
       ) {
-        fail(`${role} keyless gateway returned unexpected model provenance.`);
+        judgeFailure(
+          "gateway",
+          "unexpected-provenance",
+          target.targetId,
+          `${role} keyless gateway returned unexpected model provenance.`,
+        );
+      }
+      const { inputTokens, outputTokens } = completion.usage ?? {};
+      if (Number.isInteger(inputTokens) && Number.isInteger(outputTokens)) {
+        attempt.usage.responsesWithUsage += 1;
+        attempt.usage.inputTokens += inputTokens as number;
+        attempt.usage.outputTokens += outputTokens as number;
       }
       content = completion.content;
     } else {
@@ -262,13 +371,18 @@ async function main() {
       };
       content = completion.choices?.[0]?.message?.content;
     }
-    if (!content) fail(`${role} judge returned no content for ${target.targetId}`);
+    if (!content) {
+      judgeFailure("model", "no-content", target.targetId, `${role} judge returned no content for ${target.targetId}`);
+    }
 
     let raw: unknown;
     try {
       raw = parseSemanticJudgeJson(content);
     } catch {
-      fail(
+      judgeFailure(
+        "model",
+        "invalid-json",
+        target.targetId,
         `${role} judge returned content that is not a single JSON payload for ${target.targetId}`,
       );
     }
@@ -276,7 +390,10 @@ async function main() {
     const criteriaRaw = (raw as { criteria?: unknown })?.criteria;
     const criteriaParsed = semanticCriterionJudgment.array().safeParse(criteriaRaw);
     if (!criteriaParsed.success) {
-      fail(
+      judgeFailure(
+        "model",
+        "invalid-criteria",
+        target.targetId,
         `${role} judge criteria invalid for ${target.targetId}: ${criteriaParsed.error.issues
           .map((issue) => `${issue.path.join(".")}: ${issue.message}`)
           .join("; ")}`,
@@ -290,7 +407,10 @@ async function main() {
         roleSpec.criteria,
       )
     ) {
-      fail(
+      judgeFailure(
+        "model",
+        "wrong-criteria",
+        target.targetId,
         `${role} judge did not return the exact required criteria for ${target.targetId}`,
       );
     }
@@ -332,11 +452,14 @@ async function main() {
   const fullOutput = path.resolve(outputPath);
   fs.mkdirSync(path.dirname(fullOutput), { recursive: true });
   fs.writeFileSync(fullOutput, `${JSON.stringify(bundle, null, 2)}\n`);
+  writeAttempt({ ...attempt, status: "complete" });
   console.log(
     `Semantic judge run complete: ${role}, ${judgments.length} judgment(s), run ${runId}; wrote ${fullOutput}.`,
   );
 }
 
 main().catch((error: unknown) => {
-  fail(error instanceof Error ? error.stack ?? error.message : String(error));
+  const message = error instanceof Error ? error.stack ?? error.message : String(error);
+  if (attempt.requestsSent) judgeFailure("gateway", "runner-error", null, message);
+  fail(message);
 });
