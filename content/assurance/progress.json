@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "7f790753a9f0a0905f37183742c3b94a7ebc87c8",
+  "authoritativeMain": "5ecdb83013d217365369235823de81d0deb285ae",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -75,6 +75,12 @@
       "pr": 95,
       "mergeCommit": "7f790753a9f0a0905f37183742c3b94a7ebc87c8",
       "summary": "Automatic main-push exact-revision wait plus GitHub OIDC authenticated GET-only semantic gateway contract smoke; no inference."
+    },
+    {
+      "id": "keyless-free-budget-gate",
+      "pr": 97,
+      "mergeCommit": "5ecdb83013d217365369235823de81d0deb285ae",
+      "summary": "Fail-closed Workers AI Neuron budget: 84 frozen calibration requests bounded at 7,788 Neurons, current-rate freshness gate, lower-Neuron Qwen3 adversarial candidate, and runtime budget preflight."
     }
   ],
   "doNotRepeat": [
@@ -138,26 +144,15 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/keyless-free-budget",
-    "objective": "Validate and merge the fail-closed Workers AI free-allocation budget gate before any semantic inference.",
+    "branch": "main",
+    "objective": "Run frozen keyless calibration once per role through the existing manual workflow; qualify only models that pass all pre-registered thresholds.",
     "blocked": false,
-    "completedOnBranch": [
-      "Verified current Cloudflare Workers AI free allocation and Neuron rates from the official pricing table.",
-      "Changed adversarial candidate from Qwen 3.8 27B to reasoning-capable Qwen3 30B-A3B FP8 because of much lower Neuron rates.",
-      "Reduced role output caps to English 900, Persian 800, pedagogical 800, adversarial 1000 tokens.",
-      "Recorded machine-readable current Neuron rates and 10,000/day free allocation.",
-      "Added deterministic request-size budgeting from the same payload builder used by the real judge runner.",
-      "Budget uses UTF-8 bytes as a conservative input-token upper bound plus 512 protocol tokens/request.",
-      "Generated frozen calibration budget: 84 requests, 7,788 Neurons upper bound, 2,212 Neurons free-allocation reserve.",
-      "Set stricter calibration safety ceiling to 8,500 Neurons.",
-      "Normal validate:data checks budget drift; calibration requires pricing verification <=30 days old before inference."
-    ],
-    "pending": [
-      "Pass full CI for the budget gate and Qwen candidate change.",
-      "Merge if exact-head CI, Workers contract and Playwright are green.",
-      "Verify automatic exact-revision OIDC smoke after merge.",
-      "Record the merge/smoke checkpoint.",
-      "Only then move to keyless judge calibration inference."
+    "nextSteps": [
+      "Use .github/workflows/semantic-calibrate.yml from main for English, Persian, pedagogical and adversarial roles.",
+      "Each role workflow automatically verifies current pricing/budget, performs OIDC preflight, runs three isolated repeats, scores frozen v1, and records qualification only on strict PASS.",
+      "Do not modify calibration v1 thresholds after seeing results.",
+      "Do not run Unit 1 semantic judging for a role until qualification is committed.",
+      "If this execution environment lacks workflow_dispatch capability, preserve the manual-only inference guard rather than adding an automatic inference trigger."
     ]
   },
   "endpointResolution": {
@@ -203,7 +198,7 @@
   },
   "credentialSetupRunbook": "content/assurance/semantic/FREE_CREDENTIAL_SETUP.md",
   "keylessGateway": {
-    "status": "DEPLOYED_AND_OIDC_SMOKE_PASS",
+    "status": "DEPLOYED_OIDC_SMOKE_AND_FREE_BUDGET_PASS",
     "branch": "codex/keyless-semantic-gateway",
     "productionOrigin": "https://vajefy.mostifa2273.workers.dev",
     "audience": "vajefy-semantic-gateway",
@@ -224,8 +219,8 @@
       "no semantic provider secrets"
     ],
     "mergeCommit": "7f790753a9f0a0905f37183742c3b94a7ebc87c8",
-    "productionRevision": "7f790753a9f0",
-    "smokeRunId": 37465617586,
+    "productionRevision": "5ecdb83013d",
+    "smokeRunId": 37469172696,
     "smokeResult": "PASS",
     "inferenceRun": false,
     "budget": {
@@ -238,8 +233,10 @@
       "freeAllocationReserveNeurons": 2212,
       "safetyCeilingReserveNeurons": 712,
       "snapshot": "content/assurance/semantic/calibration/v1/neuron-budget.json",
-      "rates": "content/assurance/semantic/workers-ai-neuron-rates.json",
-      "policy": "Calibration blocks if the snapshot drifts, exceeds 8,500 Neurons, selects a paid-billing-required model, or pricing verification is older than 30 days."
+      "smokeRunId": 37469172696,
+      "smokeResult": "PASS",
+      "postMergeCiRunId": 37469172510,
+      "postMergeCiResult": "PASS"
     }
   }
 }
