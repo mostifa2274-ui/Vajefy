@@ -86,13 +86,25 @@
   },
   "currentWork": {
     "branch": "codex/semantic-evidence-ingestion",
-    "objective": "Harden semantic evidence ingestion and preflight before real model execution.",
-    "nextSteps": [
-      "Add deterministic validation for externally produced role bundles before merge.",
-      "Add tests for target hash, wrong unit, duplicate role/target, stale content version, stale input hash and shared context rejection.",
-      "Add a preflight command that reports exactly what endpoint/model metadata is still required per role without making inference calls.",
-      "Keep inference opt-in; do not spend paid credits or fabricate semantic PASS evidence.",
-      "After merge, resolve real independent judge endpoints and produce evidence."
+    "objective": "Validate and merge hardened semantic evidence ingestion/preflight.",
+    "completedOnBranch": [
+      "Recorded PR #86 exact merge commit.",
+      "Added pure semantic evidence ingestion validator.",
+      "Merge now rejects stale content versions and stale curriculum-aware input hashes.",
+      "Merge now rejects mixed-role run bundles, duplicate target/role evidence, source-context reuse and cross-role context reuse.",
+      "Added fixture tests for valid ingestion and every major rejection path.",
+      "Centralized endpoint configuration with role-specific overrides and generic fallback.",
+      "Added no-inference endpoint preflight that never exposes API key values.",
+      "Added JSON response-format compatibility switch for OpenAI-compatible endpoints.",
+      "Wired no-inference preflight execution into validate:data.",
+      "Documented ingestion barriers and endpoint preflight."
+    ],
+    "pending": [
+      "Pass full CI for ingestion/preflight hardening.",
+      "Merge the hardening PR if green.",
+      "Record exact merge commit.",
+      "Resolve actual independent judge endpoints before any inference; do not silently spend paid credits.",
+      "Generate four isolated Unit 1 role bundles only after endpoint provenance is explicit."
     ]
   }
 }
