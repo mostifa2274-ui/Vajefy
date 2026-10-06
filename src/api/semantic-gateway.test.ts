@@ -19,7 +19,7 @@ test("extracts Cloudflare Responses API output_text content", () => {
         content: [
           {
             type: "output_text",
-            text: '{"targetId":"cal-en-clean-i","status":"PASS"}',
+            text: '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
           },
         ],
       },
@@ -28,30 +28,38 @@ test("extracts Cloudflare Responses API output_text content", () => {
 
   assert.equal(
     extractWorkersAiContent(result),
-    '{"targetId":"cal-en-clean-i","status":"PASS"}',
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
   );
 });
 
 test("extracts top-level Responses API output_text", () => {
   assert.equal(
-    extractWorkersAiContent({ output_text: '{"status":"PASS"}' }),
-    '{"status":"PASS"}',
+    extractWorkersAiContent({ output_text: '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}' }),
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
   );
 });
 
 test("preserves legacy Workers AI response strings", () => {
   assert.equal(
-    extractWorkersAiContent({ response: '{"status":"PASS"}' }),
-    '{"status":"PASS"}',
+    extractWorkersAiContent({ response: '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}' }),
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
   );
 });
 
 test("preserves Chat Completions message content", () => {
   assert.equal(
     extractWorkersAiContent({
-      choices: [{ message: { content: '{"status":"PASS"}' } }],
+      choices: [{ message: { content: '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}' } }],
     }),
-    '{"status":"PASS"}',
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
+  );
+});
+
+
+test("rejects non-semantic JSON without criteria", () => {
+  assert.equal(
+    extractWorkersAiContent({ output_text: '{"status":"PASS"}' }),
+    null,
   );
 });
 
@@ -194,5 +202,113 @@ test("prefers structured response string over alternate output fields", () => {
       output_text: "non-json transport noise",
     }),
     structured,
+  );
+});
+
+
+test("collapses identical structured payloads across final response fields", () => {
+  const payload = {
+    criteria: [
+      {
+        criterion: "grammar",
+        result: "PASS",
+        confidence: 0.95,
+        evidence: ["sense.examples.0.en"],
+        reasonCode: null,
+      },
+    ],
+  };
+  const json = JSON.stringify(payload);
+
+  assert.equal(
+    extractWorkersAiContent({
+      response: payload,
+      output_text: json,
+      output: [
+        {
+          type: "reasoning",
+          summary: [{ type: "summary_text", text: "not final evidence" }],
+        },
+        {
+          type: "message",
+          role: "assistant",
+          content: [{ type: "output_text", text: json }],
+        },
+      ],
+    }),
+    json,
+  );
+});
+
+test("canonicalizes one final JSON payload even when model adds prose", () => {
+  const payload =
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":0.9,"evidence":["sense"],"reasonCode":null}]}';
+
+  assert.equal(
+    extractWorkersAiContent({
+      output: [
+        {
+          type: "message",
+          role: "assistant",
+          content: [
+            {
+              type: "output_text",
+              text: `Here is the requested JSON:\n${payload}\nDone.`,
+            },
+          ],
+        },
+      ],
+    }),
+    payload,
+  );
+});
+
+test("rejects conflicting final semantic payloads", () => {
+  assert.equal(
+    extractWorkersAiContent({
+      output_text:
+        '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":0.9,"evidence":["sense"],"reasonCode":null}]}',
+      output: [
+        {
+          type: "message",
+          role: "assistant",
+          content: [
+            {
+              type: "output_text",
+              text:
+                '{"criteria":[{"criterion":"grammar","result":"FAIL","confidence":0.9,"evidence":["sense"],"reasonCode":"fixture"}]}',
+            },
+          ],
+        },
+      ],
+    }),
+    null,
+  );
+});
+
+test("ignores reasoning text when final assistant message contains semantic JSON", () => {
+  const payload =
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}';
+
+  assert.equal(
+    extractWorkersAiContent({
+      output: [
+        {
+          type: "reasoning",
+          summary: [
+            {
+              type: "summary_text",
+              text: '{"criteria":[{"criterion":"grammar","result":"FAIL"}]}',
+            },
+          ],
+        },
+        {
+          type: "message",
+          role: "assistant",
+          content: [{ type: "output_text", text: payload }],
+        },
+      ],
+    }),
+    payload,
   );
 });
