@@ -5,6 +5,7 @@ export const KEYLESS_SEMANTIC_REF = "refs/heads/main";
 export const KEYLESS_SEMANTIC_WORKFLOWS = [
   "mostifa2274-ui/Vajefy/.github/workflows/semantic-calibrate.yml@refs/heads/main",
   "mostifa2274-ui/Vajefy/.github/workflows/semantic-judge.yml@refs/heads/main",
+  "mostifa2274-ui/Vajefy/.github/workflows/semantic-gateway-smoke.yml@refs/heads/main",
 ] as const;
 
 export const KEYLESS_SEMANTIC_MODELS = {
