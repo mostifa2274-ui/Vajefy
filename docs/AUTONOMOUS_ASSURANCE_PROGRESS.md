@@ -104,3 +104,21 @@ The repository compiler regenerated the derived enhanced-content outputs and com
 The one-use regeneration workflow was then removed in `edfbfeff4c3a810ba82a8d3ad54b6cae71f80f22`.
 
 Current resume point: **final exact-head CI for PR #84**. Do not regenerate Unit 1 source content or derived artifacts again unless CI reports them stale or a later source edit changes them.
+
+## Checkpoint — Unit 1 controlled audio complete
+
+The first temporary audio run exposed a runner-only dependency issue: `ffmpeg` was not installed. The temporary workflow was corrected; no product/audio generator code was weakened.
+
+Successful audio generation commit: `455ab84dd7b9ae1c20a3e5eca19d8e24dcdcc5d3`.
+
+Evidence from the successful job:
+
+- 38 new controlled clips generated;
+- 5,888 clips total;
+- about 50.6 MB total audio;
+- heuristic flagged count stayed at 292 before/after, so the new example clips added no new heuristic flags;
+- content rebuilt after synthesis, so Unit 1's third examples now have controlled GB/US audio attached.
+
+The temporary audio workflow was removed in `f3f53e16564ba5e60090c3361fd35bc1ea801909`.
+
+Current resume point: **final exact-head CI for PR #84**. Do not rerun Unit 1 audio generation unless content or CI proves the manifests are stale/incomplete.
