@@ -57,7 +57,7 @@ export function parseSemanticJudgeJson(content: string): unknown {
     // Continue with narrowly scoped transport normalizations.
   }
 
-  const fenced = trimmed.match(/^\`\`\`(?:json)?\s*\n([\s\S]*?)\n\`\`\`$/i);
+  const fenced = trimmed.match(/^```(?:json)?\s*\n([\s\S]*?)\n```$/i);
   if (fenced) {
     return JSON.parse(fenced[1]!.trim());
   }
