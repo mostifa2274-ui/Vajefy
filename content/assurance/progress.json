@@ -39,6 +39,12 @@
       "pr": 87,
       "mergeCommit": "eaa36a7f57f0f50426cf3c6789d1c40262fceda1",
       "summary": "Fail-closed external evidence ingestion, stale hash/version rejection, cross-role isolation checks, endpoint preflight, compatibility switch, and tests."
+    },
+    {
+      "id": "semantic-endpoint-resolution",
+      "pr": 88,
+      "mergeCommit": "0704d5fd85a194578cac03f42e981f1a4536a38e",
+      "summary": "Manual-only semantic judge execution workflow, role-scoped preflight, automatic-trigger/write-permission safety gate, and recorded endpoint-resolution contract."
     }
   ],
   "doNotRepeat": [
@@ -50,7 +56,12 @@
     "Do not redo Unit 1 deterministic repairs, controlled-audio regeneration or version-bound artifact refresh unless Unit 1 source content changes or CI reports drift.",
     "Do not rebuild the semantic assurance schemas/arbitration from PR #85; continue with prompt packets and independent judge execution.",
     "Do not regenerate the Unit 1 semantic packet or rebuild the provider-independent runner from PR #86 unless packet freshness CI fails.",
-    "Do not rebuild semantic packet, runner, ingestion validator, or endpoint preflight from PRs #86-#87; actual independent endpoint resolution is the next step."
+    "Do not rebuild semantic packet, runner, ingestion validator, or endpoint preflight from PRs #86-#87; actual independent endpoint resolution is the next step.",
+    "Do not repeat Unit 1 deterministic repair/audio work from PR #84.",
+    "Do not rebuild semantic schemas/arbitration from PR #85.",
+    "Do not rebuild semantic packets/runner from PR #86.",
+    "Do not rebuild ingestion/preflight from PR #87.",
+    "Do not redo endpoint investigation/manual workflow from PR #88 unless provider availability changes."
   ],
   "blockers": [
     {
@@ -92,33 +103,30 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/semantic-endpoint-resolution",
-    "objective": "Validate and merge manual-only semantic judge execution workflow and endpoint-resolution record.",
-    "completedOnBranch": [
-      "Recorded PR #87 exact merge commit and marked evidence ingestion/preflight complete.",
-      "Verified GitHub Models is retired and excluded it from endpoint candidates.",
-      "Verified Hugging Face Jobs are billable compute and did not launch a job.",
-      "Verified no installed generic Groq/OpenRouter/Together text-inference connector was discovered.",
-      "Added role-scoped endpoint preflight.",
-      "Added manual-only GitHub semantic judge workflow with explicit inference acknowledgement.",
-      "Workflow has contents:read only and uploads evidence artifacts instead of committing.",
-      "Added CI safety checker forbidding automatic triggers and contents:write.",
-      "Documented endpoint acceptance criteria, GitHub variables/secrets, and exact resume sequence."
-    ],
-    "endpointResolution": {
-      "status": "BLOCKED_ON_EXPLICIT_ENDPOINT_CONFIG",
-      "inferenceRun": false,
-      "githubModels": "RETIRED",
-      "huggingFaceJobs": "AVAILABLE_BUT_BILLED_NOT_INVOKED",
-      "installedGenericTextInferenceConnector": "NOT_DISCOVERED",
-      "manualWorkflow": ".github/workflows/semantic-judge.yml",
-      "setupDocument": "content/assurance/semantic/ENDPOINT_RESOLUTION.md"
-    },
-    "pending": [
-      "Pass full CI for the endpoint-resolution/manual-workflow slice.",
-      "Merge the PR if green and record exact merge commit.",
-      "Do not run inference until endpoint variables/secrets are explicitly configured and execution is authorized.",
-      "Once configured, run four isolated manual role workflows and merge their artifacts through the existing fail-closed ingestion path."
+    "branch": "main",
+    "objective": "Resume only when explicit independent semantic judge endpoint configuration/authorization is available.",
+    "blocked": true,
+    "blocker": "Four independent judge endpoint configurations (base URL, model id, model version and any required API keys) are not currently available to the repository.",
+    "nextSteps": [
+      "Configure repository variables/secrets documented in content/assurance/semantic/ENDPOINT_RESOLUTION.md.",
+      "Manually dispatch .github/workflows/semantic-judge.yml once for each role with acknowledge_inference=true.",
+      "Download the four role evidence artifacts.",
+      "Merge them with assurance:semantic:merge --require-complete.",
+      "Run assurance:semantic:unit1:check and assurance:semantic:unit1:strict.",
+      "Commit semantic evidence only if fail-closed arbitration accepts it.",
+      "Do not edit deterministically certified Unit 1 source unless a judge returns a concrete defect requiring repair."
     ]
+  },
+  "endpointResolution": {
+    "status": "BLOCKED_ON_EXPLICIT_ENDPOINT_CONFIG",
+    "lastInfrastructureMerge": "0704d5fd85a194578cac03f42e981f1a4536a38e",
+    "semanticInferenceRun": false,
+    "semanticEvidenceCommitted": false,
+    "githubModels": "RETIRED",
+    "huggingFaceJobs": "BILLABLE_NOT_INVOKED",
+    "genericInstalledInferenceConnector": "NOT_DISCOVERED_2026-10-06",
+    "manualWorkflow": ".github/workflows/semantic-judge.yml",
+    "setupDocument": "content/assurance/semantic/ENDPOINT_RESOLUTION.md",
+    "packet": "content/assurance/semantic/packets/01-introductions.json"
   }
 }
