@@ -399,3 +399,68 @@ export const semanticEvidenceBundle = z.object({
 });
 
 export type SemanticEvidenceBundle = z.infer<typeof semanticEvidenceBundle>;
+
+/**
+ * Generation provenance (plan §18): what produced each content entry. A
+ * generator is named once; each entry records which generator last changed
+ * it, when, and the content hashes before and after.
+ */
+export const HISTORICAL_GENERATOR = "historical-unknown";
+
+export const contentGenerator = z.discriminatedUnion("kind", [
+  z.object({
+    kind: z.literal("model"),
+    provider: text,
+    modelId: text,
+    modelVersion: text,
+    promptVersion: text,
+    parameters: z.record(z.string(), z.unknown()).default({}),
+    contextKey: text,
+  }),
+  /** An agent session; its model identifier is recorded where the tool allows. */
+  z.object({
+    kind: z.literal("agent"),
+    provider: text,
+    tool: text,
+    session: text,
+    modelId: text.optional(),
+    promptVersion: text.optional(),
+    contextKey: text,
+  }),
+  z.object({ kind: z.literal("human"), note: text, contextKey: text }),
+  /** Only for content that existed before generation provenance was kept. */
+  z.object({ kind: z.literal("unknown"), note: text, contextKey: text }),
+]);
+
+const sha256Hex = z.string().regex(/^[0-9a-f]{64}$/);
+
+export const generationRecord = z.object({
+  generator: text,
+  recordedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  /** The entry's hash before this change; null when it was first recorded. */
+  sourceHash: sha256Hex.nullable(),
+  outputHash: sha256Hex,
+});
+
+export const generationManifest = z
+  .object({
+    schemaVersion: z.literal(1),
+    generators: z.record(z.string(), contentGenerator),
+    entries: z.record(z.string(), generationRecord),
+  })
+  .superRefine((manifest, ctx) => {
+    for (const [id, record] of Object.entries(manifest.entries)) {
+      const generator = manifest.generators[record.generator];
+      if (!generator) {
+        ctx.addIssue({ code: "custom", path: ["entries", id], message: `unknown generator ${record.generator}` });
+      } else if (generator.kind === "unknown" && record.sourceHash !== null) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["entries", id],
+          message: "a change after provenance began must name a real generator, not an unknown one",
+        });
+      }
+    }
+  });
+
+export type GenerationManifest = z.infer<typeof generationManifest>;

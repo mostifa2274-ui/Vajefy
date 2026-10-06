@@ -45,6 +45,13 @@ scope is A1 only (plan §4 and §32).
 - `npm run validate:data`, `npm run typecheck`, `npm run lint`, `npm test`,
   `npm run build` and `npx playwright test`.
 - Content lives in `content/pilot/entries/*.json`. Edit strings in place and
-  keep the file formatting. Then run `npm run content:build`,
-  `npm run coach:cases` and `npm run validate:data`. CI rejects generated
-  content that is out of date.
+  keep the file formatting. Then run, in order:
+  1. `npm run content:build`;
+  2. `npm run coach:cases`;
+  3. `npm run content:provenance -- --generator <id>`, after naming the model,
+     agent session or person in `content/assurance/generation.json`;
+  4. `npm run assurance:records`;
+  5. `npm run validate:data`.
+
+  CI rejects generated content, provenance or assurance records that are out of
+  date.
