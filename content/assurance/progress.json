@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "eaa36a7f57f0f50426cf3c6789d1c40262fceda1",
+  "authoritativeMain": "c6c0682d331c9fb1634a890595ee5ff2933909d6",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -45,6 +45,12 @@
       "pr": 88,
       "mergeCommit": "0704d5fd85a194578cac03f42e981f1a4536a38e",
       "summary": "Manual-only semantic judge execution workflow, role-scoped preflight, automatic-trigger/write-permission safety gate, and recorded endpoint-resolution contract."
+    },
+    {
+      "id": "zero-cost-semantic-providers",
+      "pr": 89,
+      "mergeCommit": "c6c0682d331c9fb1634a890595ee5ff2933909d6",
+      "summary": "Verified four-provider zero-cost judge allocation, machine-readable presets, automatic workflow defaults, and CI enforcement of zero-cost-only distinct provider/model policy."
     }
   ],
   "doNotRepeat": [
@@ -61,7 +67,8 @@
     "Do not rebuild semantic schemas/arbitration from PR #85.",
     "Do not rebuild semantic packets/runner from PR #86.",
     "Do not rebuild ingestion/preflight from PR #87.",
-    "Do not redo endpoint investigation/manual workflow from PR #88 unless provider availability changes."
+    "Do not redo endpoint investigation/manual workflow from PR #88 unless provider availability changes.",
+    "Do not redo free-provider research from PR #89 unless availability/pricing changes or the preset verification date is intentionally refreshed."
   ],
   "blockers": [
     {
@@ -103,27 +110,22 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/free-semantic-providers",
-    "objective": "Validate and merge zero-cost semantic provider presets.",
-    "blocked": false,
-    "completedOnBranch": [
-      "Verified four distinct zero-cost provider/model paths from current official provider documentation.",
-      "Added machine-readable zero-cost provider presets.",
-      "Manual judge workflow now applies free defaults unless explicitly overridden.",
-      "Added CI validation that all four presets remain distinct providers/models and policy remains zero-cost-only.",
-      "Updated endpoint resolution so paid inference is no longer treated as the blocker."
-    ],
-    "pending": [
-      "Pass full CI for zero-cost provider presets/workflow changes.",
-      "Merge the free-provider PR and record exact merge commit.",
-      "Create/configure the four free API keys and Cloudflare account id.",
-      "Run the four isolated manual judge workflows.",
-      "Merge artifacts and run strict Unit 1 semantic certification."
+    "branch": "main",
+    "objective": "Configure free credentials and execute the four isolated semantic judges.",
+    "blocked": true,
+    "blocker": "Only free API credentials/account id are missing; provider/model selection and all repository infrastructure are complete.",
+    "nextSteps": [
+      "Create free Groq API key and save as SEMANTIC_JUDGE_ENGLISH_API_KEY.",
+      "Create free Google AI Studio API key and save as SEMANTIC_JUDGE_PERSIAN_API_KEY.",
+      "Create free OpenRouter API key and save as SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY.",
+      "Create Cloudflare API token and save as SEMANTIC_JUDGE_ADVERSARIAL_API_KEY; set SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID.",
+      "Manually dispatch .github/workflows/semantic-judge.yml for all four roles with acknowledge_inference=true.",
+      "Merge the four evidence artifacts and run strict Unit 1 semantic certification."
     ]
   },
   "endpointResolution": {
     "status": "FREE_PROVIDERS_VERIFIED_CREDENTIALS_REQUIRED",
-    "lastInfrastructureMerge": "0704d5fd85a194578cac03f42e981f1a4536a38e",
+    "lastInfrastructureMerge": "c6c0682d331c9fb1634a890595ee5ff2933909d6",
     "semanticInferenceRun": false,
     "semanticEvidenceCommitted": false,
     "githubModels": "RETIRED",
