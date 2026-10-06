@@ -19,7 +19,7 @@ test("extracts Cloudflare Responses API output_text content", () => {
         content: [
           {
             type: "output_text",
-            text: '{"targetId":"cal-en-clean-i","status":"PASS"}',
+            text: '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
           },
         ],
       },
@@ -28,30 +28,38 @@ test("extracts Cloudflare Responses API output_text content", () => {
 
   assert.equal(
     extractWorkersAiContent(result),
-    '{"targetId":"cal-en-clean-i","status":"PASS"}',
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
   );
 });
 
 test("extracts top-level Responses API output_text", () => {
   assert.equal(
-    extractWorkersAiContent({ output_text: '{"status":"PASS"}' }),
-    '{"status":"PASS"}',
+    extractWorkersAiContent({ output_text: '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}' }),
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
   );
 });
 
 test("preserves legacy Workers AI response strings", () => {
   assert.equal(
-    extractWorkersAiContent({ response: '{"status":"PASS"}' }),
-    '{"status":"PASS"}',
+    extractWorkersAiContent({ response: '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}' }),
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
   );
 });
 
 test("preserves Chat Completions message content", () => {
   assert.equal(
     extractWorkersAiContent({
-      choices: [{ message: { content: '{"status":"PASS"}' } }],
+      choices: [{ message: { content: '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}' } }],
     }),
-    '{"status":"PASS"}',
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}',
+  );
+});
+
+
+test("rejects non-semantic JSON without criteria", () => {
+  assert.equal(
+    extractWorkersAiContent({ output_text: '{"status":"PASS"}' }),
+    null,
   );
 });
 
