@@ -26,6 +26,10 @@ jobs:
           cache: pip
           cache-dependency-path: scripts/audio/requirements.txt
       - run: npm ci
+      - name: Install system audio dependency
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
       - name: Install audio dependencies
         run: pip install -r scripts/audio/requirements.txt
       - name: Download pinned Kokoro model assets
