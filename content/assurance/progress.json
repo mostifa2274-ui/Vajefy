@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "c6c0682d331c9fb1634a890595ee5ff2933909d6",
+  "authoritativeMain": "5111c83aca61cb84f502e7b7c3edc7222fa15588",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -51,6 +51,12 @@
       "pr": 89,
       "mergeCommit": "c6c0682d331c9fb1634a890595ee5ff2933909d6",
       "summary": "Verified four-provider zero-cost judge allocation, machine-readable presets, automatic workflow defaults, and CI enforcement of zero-cost-only distinct provider/model policy."
+    },
+    {
+      "id": "stronger-zero-cost-semantic-judges",
+      "pr": 90,
+      "mergeCommit": "5111c83aca61cb84f502e7b7c3edc7222fa15588",
+      "summary": "Re-ranked free judges by role fit; upgraded Persian to Gemini 3.8 Flash, pedagogy to MiniMax M2.7 Free, adversarial to Qwen 3.8 27B; retained GPT-OSS 120B for English."
     }
   ],
   "doNotRepeat": [
@@ -68,7 +74,8 @@
     "Do not rebuild semantic packets/runner from PR #86.",
     "Do not rebuild ingestion/preflight from PR #87.",
     "Do not redo endpoint investigation/manual workflow from PR #88 unless provider availability changes.",
-    "Do not redo free-provider research from PR #89 unless availability/pricing changes or the preset verification date is intentionally refreshed."
+    "Do not redo free-provider research from PR #89 unless availability/pricing changes or the preset verification date is intentionally refreshed.",
+    "Do not redo the PR #90 judge re-ranking unless provider/model availability changes or Vajefy-specific calibration evidence justifies a new champion."
   ],
   "blockers": [
     {
@@ -110,23 +117,15 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/better-free-semantic-judges",
-    "objective": "Validate and merge stronger zero-cost judge defaults; then calibrate on Vajefy-specific fixtures before large-scale trust.",
+    "branch": "main",
+    "objective": "Build a frozen Vajefy-specific judge calibration set, then configure free credentials and qualify the four current champions before semantic certification.",
     "blocked": false,
-    "completedOnBranch": [
-      "Re-ranked zero-cost judge candidates by role fit rather than provider convenience.",
-      "Kept Groq GPT-OSS 120B as English champion.",
-      "Upgraded Persian judge from Gemini 3.5 Flash-Lite to Gemini 3.8 Flash.",
-      "Upgraded pedagogical judge from Gemma 4 31B to MiniMax M2.7 Free.",
-      "Upgraded adversarial judge from GLM-4.7-Flash to Qwen 3.8 27B on Cloudflare.",
-      "Recorded role-specific selection rationale and public benchmark limitations."
-    ],
-    "pending": [
-      "Pass full CI for stronger judge defaults.",
-      "Merge the stronger-judge PR and record exact merge commit.",
-      "Create/configure free credentials.",
-      "Before broad certification, build a frozen Vajefy-specific judge calibration set and measure defect recall, false-positive rate, abstention calibration and schema reliability.",
-      "Run the four isolated Unit 1 judges only after credentials exist."
+    "nextSteps": [
+      "Create a frozen calibration set with known-good senses and seeded English/Persian/pedagogical/adversarial defects.",
+      "Measure per-role defect recall, false-positive rate, abstention calibration, schema compliance and repeat-run stability.",
+      "Keep or replace each champion based on Vajefy-specific calibration rather than generic public benchmarks.",
+      "Configure the free API credentials and Cloudflare account id.",
+      "Run the qualified four judges on the Unit 1 packet and execute strict semantic certification."
     ]
   },
   "endpointResolution": {
