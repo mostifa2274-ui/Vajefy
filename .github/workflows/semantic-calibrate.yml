@@ -155,8 +155,8 @@ jobs:
             --run "calibration-${ROLE}-1.json" \
             --run "calibration-${ROLE}-2.json" \
             --run "calibration-${ROLE}-3.json" \
-            --json \
-            --require-promote > "calibration-report-${ROLE}.json"
+            --output "calibration-report-${ROLE}.json" \
+            --require-promote
 
       - name: Record qualification only after strict promotion
         shell: bash
