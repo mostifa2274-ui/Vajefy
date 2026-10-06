@@ -125,15 +125,16 @@
   },
   "currentWork": {
     "branch": "main",
-    "objective": "Configure free credentials, run calibration three times per role, and qualify only models that pass v1 before Unit 1 semantic judging.",
+    "objective": "Await free credential setup, then run calibration_v1 before any Unit 1 semantic judging.",
     "blocked": true,
-    "blocker": "External free API credentials/account metadata are required before inference; repository calibration/qualification infrastructure is complete.",
+    "blocker": "All four semantic judge API-key secrets and the Cloudflare account-id variable were confirmed absent on 2026-10-06.",
     "nextSteps": [
-      "Check whether required GitHub secret/variable names already exist.",
-      "If missing, configure the free credentials documented in ENDPOINT_RESOLUTION.md.",
+      "Create the four free credentials using the provider links in content/assurance/semantic/ENDPOINT_RESOLUTION.md.",
+      "Add the four keys as GitHub Actions secrets using the exact documented names.",
+      "Add SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID as a repository Actions variable.",
       "Run three calibration_v1 executions per role with unique run ids.",
-      "Score each role and record qualification only if all pre-registered thresholds pass.",
-      "Run Unit 1 semantic judges only for qualified roles."
+      "Record qualification only for roles that pass every frozen v1 threshold.",
+      "Run Unit 1 semantic judging only after qualification."
     ]
   },
   "endpointResolution": {
@@ -165,5 +166,14 @@
     ],
     "note": "No paid tier is required by the current design. Free-tier availability/pricing must be re-verified before later large reruns.",
     "judgeSelection": "content/assurance/semantic/JUDGE_SELECTION.md"
+  },
+  "credentialPresence": {
+    "checkedAt": "2026-10-06",
+    "method": "One-use GitHub Actions presence probe; values were never printed.",
+    "SEMANTIC_JUDGE_ENGLISH_API_KEY": "absent",
+    "SEMANTIC_JUDGE_PERSIAN_API_KEY": "absent",
+    "SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY": "absent",
+    "SEMANTIC_JUDGE_ADVERSARIAL_API_KEY": "absent",
+    "SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID": "absent"
   }
 }
