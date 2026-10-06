@@ -131,27 +131,25 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/keyless-semantic-gateway",
-    "objective": "Validate and merge the zero-key GitHub OIDC -> Workers AI semantic gateway.",
+    "branch": "codex/keyless-postdeploy-smoke",
+    "objective": "Validate and merge automatic no-inference post-deploy OIDC smoke.",
     "blocked": false,
     "completedOnBranch": [
-      "Verified production Worker origin without SITE_URL variable.",
-      "Added Cloudflare Workers AI binding in wrangler.jsonc.",
-      "Added GitHub Actions OIDC JWT signature and claim verification.",
-      "Added OIDC-protected internal semantic gateway.",
-      "Fixed four keyless model families server-side.",
-      "Judge runner now supports keyless transport and requests fresh OIDC identity per call.",
-      "Both semantic workflows removed provider API-key secrets and require id-token: write.",
-      "Qualification freshness now tracks keyless champions.",
-      "Added offline zero-key contract checks and online no-inference OIDC preflight.",
-      "Marked old credential setup and external endpoint plan as legacy fallback."
+      "Separated OIDC status authorization from inference authorization.",
+      "GET status permits only exact manual workflows plus semantic-gateway-smoke.yml; POST inference remains workflow_dispatch-only.",
+      "Added OIDC tests proving push is accepted only when explicitly allowed and rejected by the default inference policy.",
+      "Added main-push semantic-gateway-smoke workflow.",
+      "Smoke waits for the exact main SHA to reach production before checking the gateway.",
+      "Smoke obtains a short-lived GitHub OIDC identity and keeps the token process-local.",
+      "Smoke performs authenticated GET only and verifies the fixed four-model contract without inference.",
+      "CI keyless checker forbids repository secrets and POST/inference behavior in the smoke workflow."
     ],
     "pending": [
-      "Pass full CI and Workers build for keyless gateway.",
-      "Merge keyless PR if green.",
-      "Verify Cloudflare production deploy reaches the exact merge revision.",
-      "Run an OIDC no-inference gateway smoke after deploy.",
-      "Then calibrate keyless candidates; Unit 1 remains locked until qualification."
+      "Pass full CI for automatic post-deploy smoke.",
+      "Merge PR if green.",
+      "Observe the automatic main-push smoke result after Cloudflare deploy.",
+      "Record exact smoke run and deployment revision.",
+      "Then keyless calibration remains the next inference-bearing step."
     ]
   },
   "endpointResolution": {
