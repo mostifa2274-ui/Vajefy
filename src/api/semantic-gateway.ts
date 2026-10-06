@@ -82,7 +82,7 @@ function collectTextParts(value: unknown, depth = 0): string[] {
   return direct;
 }
 
-function hasCriteriaArray(value: unknown): value is Record<string, unknown> {
+function hasCriteriaArray(value: unknown): boolean {
   return (
     Boolean(value) &&
     typeof value === "object" &&
