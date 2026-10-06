@@ -168,3 +168,18 @@ Next unrepeated objective:
 5. add a Unit 1 semantic-assurance command that cannot produce PASS without complete independent evidence.
 
 Gate 0 remains blocked and Unit 1's certified source content should not be edited during this foundation slice.
+
+## In-progress checkpoint — semantic assurance foundation
+
+On branch `codex/semantic-assurance-foundation`:
+
+- PR #84 is recorded as merged at `6714cce4a36939c38a3ede0afa3bbc57eb62efe3`;
+- Unit 1 is marked deterministically certified and must not be re-repaired unless its source changes;
+- four versioned judge roles now exist: English, Persian, pedagogical and adversarial;
+- each judge record is bound to the exact sense input hash and entry content version;
+- evaluator provenance includes provider, model id/version, prompt version, rubric version, isolated context key and run id;
+- arbitration is fail-closed: missing or stale evidence is quarantined, high-confidence failures veto, lower-confidence conflict becomes disagreement, and uncertainty never becomes PASS;
+- CI now validates any committed semantic evidence for consistency, but semantic PASS is **not** claimed because no independent Unit 1 judge evidence has been committed yet;
+- a strict semantic command exists for the later certification gate and will fail until every Unit 1 sense has complete independent evidence.
+
+Current resume point: validate this foundation in CI, merge it if green, then produce independent Unit 1 judge evidence without editing the deterministically certified source content.
