@@ -13,11 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Full commit history without old trees or blobs, so the status
+          # ledger can verify the commits it records.
+          fetch-depth: 0
+          filter: tree:0
       - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Check the status ledger against git history
+        run: npm run status:check -- --require-history
       - name: Rebuild generated learning content
         run: node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
       - name: Upload generated learning content
