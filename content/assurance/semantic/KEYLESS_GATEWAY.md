@@ -157,3 +157,35 @@ before OIDC preflight or inference. It fails if:
 - pricing verification is older than 30 days.
 
 Normal CI also verifies the committed budget snapshot for drift.
+
+
+## English JSON Mode compatibility correction — 2026-10-06
+
+English now uses:
+
+`@cf/meta/llama-3.3-70b-instruct-fp8-fast`
+
+instead of GPT-OSS 120B.
+
+The change was driven by live calibration evidence, not a generic benchmark:
+GPT-OSS consumed its entire 900-token completion allowance on the first clean
+case without producing canonical structured output. Cloudflare's current JSON
+Mode support list explicitly includes Llama 3.3 70B FP8 Fast and does not list
+GPT-OSS.
+
+The semantic JSON transport was also bounded to keep structured output compact:
+
+- exact criteria count remains unchanged;
+- evidence: 1–3 paths, each <=120 characters;
+- reasonCode: <=96 characters;
+- English max output: 500 tokens.
+
+Frozen calibration thresholds and gold labels are unchanged.
+
+Regenerated full-campaign upper bound:
+
+- total: **8,070 Neurons**;
+- free daily allocation: 10,000;
+- free reserve: **1,930**;
+- Vajefy safety ceiling: 8,500;
+- safety reserve: **430**.
