@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-06",
+  "source": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+  "freeDailyAllocationNeurons": 10000,
+  "calibrationSafetyCeilingNeurons": 8500,
+  "protocolOverheadTokensPerRequest": 512,
+  "currentRates": {
+    "@cf/openai/gpt-oss-120b": {
+      "inputNeuronsPerMillionTokens": 31818,
+      "outputNeuronsPerMillionTokens": 68182,
+      "paidBillingRequired": false
+    },
+    "@cf/zai-org/glm-4.7-flash": {
+      "inputNeuronsPerMillionTokens": 5500,
+      "outputNeuronsPerMillionTokens": 36400,
+      "paidBillingRequired": false
+    },
+    "@cf/google/gemma-4-26b-a4b-it": {
+      "inputNeuronsPerMillionTokens": 9091,
+      "outputNeuronsPerMillionTokens": 27273,
+      "paidBillingRequired": false
+    },
+    "@cf/qwen/qwen3-30b-a3b-fp8": {
+      "inputNeuronsPerMillionTokens": 4625,
+      "outputNeuronsPerMillionTokens": 30475,
+      "paidBillingRequired": false
+    }
+  },
+  "assumptions": [
+    "Input token upper bound uses UTF-8 byte length plus fixed protocol overhead; this intentionally overestimates normal tokenization.",
+    "Output usage is budgeted at each role's configured maxTokens, not expected average output.",
+    "All frozen calibration cases and all three required repeats for all four roles are included in one daily campaign budget.",
+    "If pricing is older than 30 days, calibration inference must stop until rates are re-verified."
+  ]
+}
