@@ -489,3 +489,39 @@ or threshold correction must create a new calibration version.
 Current resume point: inspect free credential/variable availability, run
 `calibration_v1` first, qualify passing champions, then and only then run Unit
 1 semantic judging.
+
+
+## In-progress checkpoint — one-dispatch semantic calibration automation
+
+Branch: `codex/semantic-calibration-automation`.
+
+The manual burden after credentials are added has been reduced further.
+
+New workflow: `.github/workflows/semantic-calibrate.yml`.
+
+For one selected role, a single manual dispatch now:
+
+1. requires execution from `main`;
+2. requires explicit inference acknowledgement;
+3. applies the verified zero-cost provider preset;
+4. preflights the selected endpoint;
+5. runs exactly three isolated `calibration_v1` repeats with distinct run ids;
+6. scores the candidate against the frozen pre-registered v1 thresholds;
+7. stops if any promotion criterion fails;
+8. records qualification only after strict promotion;
+9. writes an auditable JSON calibration report;
+10. permits Git writes only to:
+    - `content/assurance/semantic/calibration/qualified.json`;
+    - `content/assurance/semantic/calibration/results/<role>.json`;
+11. commits the qualification to `main`;
+12. uploads the three raw calibration evidence bundles and report as a retained artifact.
+
+A dedicated CI checker prevents the workflow from gaining automatic triggers,
+broad git staging, or bypassing `--require-promote`.
+
+The scorer writes the report file directly, avoiding npm/stdout contamination.
+
+Once the five missing free credential/account names are configured, calibration
+requires four manual dispatches total—one per role—not twelve individual runs.
+
+No inference has been run yet.
