@@ -13,6 +13,13 @@ const PRESETS = path.join(
 const WRANGLER = path.join(ROOT, "wrangler.jsonc");
 const CALIBRATE = path.join(ROOT, ".github", "workflows", "semantic-calibrate.yml");
 const JUDGE = path.join(ROOT, ".github", "workflows", "semantic-judge.yml");
+const SMOKE = path.join(
+  ROOT,
+  ".github",
+  "workflows",
+  "semantic-gateway-smoke.yml",
+);
+const SMOKE_SCRIPT = path.join(ROOT, "scripts", "smoke-keyless-semantic-gateway.ts");
 
 type Preset = {
   provider: string;
@@ -102,6 +109,34 @@ for (const workflowFile of [CALIBRATE, JUDGE]) {
   }
 }
 
+const smokeWorkflow = fs.readFileSync(SMOKE, "utf8");
+if (!smokeWorkflow.includes("push:") || !smokeWorkflow.includes("- main")) {
+  fail("Keyless gateway smoke must run automatically on main pushes.");
+}
+if (!smokeWorkflow.includes("id-token: write")) {
+  fail("Keyless gateway smoke must request GitHub OIDC id-token: write.");
+}
+if (!smokeWorkflow.includes("contents: read") || /contents:\s*write/.test(smokeWorkflow)) {
+  fail("Keyless gateway smoke must keep repository contents read-only.");
+}
+if (/secrets\.|API_KEY|SEMANTIC_JUDGE_.*API_KEY/.test(smokeWorkflow)) {
+  fail("Keyless gateway smoke must not reference secrets or API keys.");
+}
+if (!smokeWorkflow.includes("scripts/smoke-keyless-semantic-gateway.ts")) {
+  fail("Keyless gateway smoke must run the exact-revision smoke script.");
+}
+
+const smokeScript = fs.readFileSync(SMOKE_SCRIPT, "utf8");
+if (!smokeScript.includes('method: "GET"')) {
+  fail("Keyless gateway smoke must verify the gateway using GET.");
+}
+if (/method:\s*["']POST["']|assurance:semantic:judge|\.run\(/.test(smokeScript)) {
+  fail("Keyless gateway smoke must never execute model inference.");
+}
+if (!smokeScript.includes("expectedRevision")) {
+  fail("Keyless gateway smoke must wait for the exact deployed revision.");
+}
+
 console.log(
-  `Keyless semantic contract: PASS (OIDC + Workers AI binding, 4 model families, no semantic API keys, verified ${data.verifiedAt}).`,
+  `Keyless semantic contract: PASS (OIDC + Workers AI binding, 4 model families, no semantic API keys, exact-revision no-inference smoke, verified ${data.verifiedAt}).`,
 );
