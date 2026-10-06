@@ -122,3 +122,19 @@ Evidence from the successful job:
 The temporary audio workflow was removed in `f3f53e16564ba5e60090c3361fd35bc1ea801909`.
 
 Current resume point: **final exact-head CI for PR #84**. Do not rerun Unit 1 audio generation unless content or CI proves the manifests are stale/incomplete.
+
+## Checkpoint — version-bound derived artifacts refreshed
+
+After controlled audio became complete, `validate:data` advanced to a stale `content/coach-eval/cases.json` snapshot. The safe content-derived artifacts were refreshed without modifying review decisions, release state, audit baselines or learner evidence.
+
+Generated commit: `41689afc9000b80fc7d9355bb77c9a2321faa77d`.
+
+Refreshed writers:
+
+- `npm run coach:cases`;
+- `scripts/reference-notes.ts build`;
+- `scripts/build-usefulness.mjs`.
+
+The temporary workflow was removed in `598e14b0a09cd2db9e82dbea533415324ba425de`.
+
+Current resume point: **exact-head CI for PR #84**. Do not regenerate these artifacts again unless a source edit or CI explicitly reports them stale.
