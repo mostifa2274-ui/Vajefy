@@ -1,0 +1,3237 @@
+{
+  "schemaVersion": 1,
+  "calibrationVersion": "vajefy-semantic-v1",
+  "frozenAt": "2026-10-06",
+  "sourcePacket": "content/assurance/semantic/packets/01-introductions.json",
+  "sourcePacketCommit": "bfb97f7af404f23d92f7c15d0ca96de583551fa4",
+  "goldPolicy": {
+    "clean": "All role criteria should PASS; any FAIL counts as a false positive. UNCERTAIN is recorded separately.",
+    "defect": "The expectedCriterion must be FAIL. Additional justified FAIL/UNCERTAIN criteria do not invalidate detection.",
+    "abstain": "The expectedCriterion should be UNCERTAIN rather than an invented PASS/FAIL."
+  },
+  "cases": [
+    {
+      "id": "cal-en-clean-i",
+      "role": "english",
+      "category": "clean",
+      "sourceTargetId": "lex:A1:i",
+      "expectedCriterion": null,
+      "expectedResult": "PASS",
+      "severity": "control",
+      "mutationDescription": "Unmodified certified A1 control.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:i",
+          "headword": "I",
+          "contentVersion": "68c31b0e1449",
+          "order": 0,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:i",
+          "pos": "pronoun",
+          "gloss": "من (فاعل)",
+          "meaning": "ضمیر فاعلی اول‌شخص مفرد. همیشه با حرف بزرگ نوشته می‌شود و فقط در جای فاعل می‌آید؛ در جای مفعول me به کار می‌رود.",
+          "grammar": [
+            {
+              "pattern": "I + verb",
+              "note": "فعل be با I می‌شود am: I am / I'm."
+            },
+            {
+              "pattern": "I versus me",
+              "note": "فاعل I؛ بعد از فعل یا حرف اضافه me: She called me."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I am a student.",
+              "fa": "من دانشجو هستم."
+            },
+            {
+              "en": "I live with my parents.",
+              "fa": "من با پدر و مادرم زندگی می‌کنم."
+            },
+            {
+              "en": "I am from Tabriz.",
+              "fa": "من اهل تبریز هستم."
+            }
+          ],
+          "collocations": [
+            "I'm",
+            "I think",
+            "I don't know",
+            "me too"
+          ],
+          "collocationFa": {
+            "I'm": "شکل کوتاه I am: «من هستم / منم»",
+            "I think": "فکر می‌کنم",
+            "I don't know": "نمی‌دانم",
+            "me too": "من هم"
+          },
+          "usage": "در فارسی می‌توان «من» را حذف کرد (دانشجو هستم)، اما در انگلیسی فاعل باید گفته شود: I am a student.",
+          "mistake": {
+            "wrong": "i like tea.",
+            "wrongFa": "من چای را دوست دارم؛ در انگلیسیِ غلط، i با حرف کوچک نوشته شده است.",
+            "right": "I like tea.",
+            "rightFa": "من چای را دوست دارم؛ در انگلیسی، I همیشه با حرف بزرگ نوشته می‌شود.",
+            "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود، حتی وسط جمله."
+          },
+          "pronunciation": {
+            "gb": "/aɪ/",
+            "us": "/aɪ/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ am Sara.",
+              "answer": "I",
+              "accept": [],
+              "fa": "من سارا هستم.",
+              "why": "وقتی گوینده دربارهٔ خودش حرف می‌زند، فاعل I است.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "Sara",
+                  "fa": "سارا"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام شکلِ ضمیر «من» درست نوشته شده است؟",
+              "options": [
+                {
+                  "text": "I",
+                  "ok": true,
+                  "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود."
+                },
+                {
+                  "text": "i",
+                  "ok": false,
+                  "why": "ضمیر I حتی وسط جمله هم باید با حرف بزرگ نوشته شود."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من دانشجو هستم.",
+              "frame": "___ am a student.",
+              "answer": "I",
+              "accept": [],
+              "why": "فاعلِ جمله «من» است، پس I می‌نویسیم.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "a",
+                  "fa": "یک"
+                },
+                {
+                  "en": "student",
+                  "fa": "دانشجو"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-en-clean-a-an",
+      "role": "english",
+      "category": "clean",
+      "sourceTargetId": "lex:A1:a-an",
+      "expectedCriterion": null,
+      "expectedResult": "PASS",
+      "severity": "control",
+      "mutationDescription": "Unmodified certified A1 control.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:a-an",
+          "headword": "a, an",
+          "contentVersion": "69fa9030d23f",
+          "order": 2,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:a-an",
+          "pos": "article",
+          "gloss": "یک (حرف تعریف نامعین)",
+          "meaning": "پیش از اسم مفردِ قابل‌شمارش می‌آید، وقتی از یک چیز یا یک نفرِ نامشخص حرف می‌زنیم یا برای اولین بار از آن نام می‌بریم. پیش از صدای صامت a و پیش از صدای مصوت an می‌آید.",
+          "grammar": [
+            {
+              "pattern": "a + consonant sound / an + vowel sound",
+              "note": "انتخاب a یا an به صدای اولِ کلمهٔ بعد بستگی دارد، نه به حرفِ نوشته‌شده: a university (با صدای «یو»)، an hour (h خوانده نمی‌شود)."
+            },
+            {
+              "pattern": "be + a/an + job",
+              "note": "در فارسی می‌گوییم «او پزشک است»، اما در انگلیسی پیش از شغل a/an لازم است: She is a doctor."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I have a sister and an older brother.",
+              "fa": "من یک خواهر و یک برادرِ بزرگ‌تر دارم."
+            },
+            {
+              "en": "She is an engineer.",
+              "fa": "او مهندس است."
+            },
+            {
+              "en": "This is a new book.",
+              "fa": "این یک کتاب جدید است."
+            }
+          ],
+          "collocations": [
+            "a lot of",
+            "an hour",
+            "once a week",
+            "a little"
+          ],
+          "collocationFa": {
+            "a lot of": "مقدار یا تعداد زیادی از",
+            "an hour": "یک ساعت",
+            "once a week": "هفته‌ای یک‌بار",
+            "a little": "کمی"
+          },
+          "usage": "a/an فقط پیش از اسم مفردِ قابل‌شمارش می‌آید. با اسم جمع یا اسم غیرقابل‌شمارش معمولاً a/an نمی‌آید.",
+          "mistake": {
+            "wrong": "He is teacher.",
+            "wrongFa": "او معلم است؛ در جملهٔ انگلیسیِ غلط، پیش از teacher حرف تعریف نیامده است.",
+            "right": "He is a teacher.",
+            "rightFa": "او یک معلم است؛ در انگلیسی پیش از teacher حرف تعریف a آمده است.",
+            "why": "برای گفتن شغل یا نوعِ چیزی، پیش از اسم مفرد a/an لازم است، حتی وقتی در فارسی «یک» نمی‌گوییم."
+          },
+          "pronunciation": {
+            "gb": "/ə/, /ən/; stressed /eɪ/, /æn/",
+            "us": "/ə/, /ən/; stressed /eɪ/, /æn/",
+            "note": "معمولاً ضعیف و بی‌تأکید خوانده می‌شود: «اِ» و «اِن»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ apple",
+              "answer": "an",
+              "accept": [],
+              "fa": "یک سیب",
+              "why": "apple با صدای مصوت شروع می‌شود، پس an می‌آید.",
+              "support": [
+                {
+                  "en": "apple",
+                  "fa": "سیب"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "پیش از book کدام حرف تعریف درست است؟",
+              "options": [
+                {
+                  "text": "a",
+                  "ok": true,
+                  "why": "book با صدای صامت /b/ شروع می‌شود."
+                },
+                {
+                  "text": "an",
+                  "ok": false,
+                  "why": "an پیش از صدای مصوت می‌آید."
+                }
+              ],
+              "support": [
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«یک مهندس» را کامل کن.",
+              "frame": "___ engineer",
+              "answer": "an",
+              "accept": [],
+              "why": "engineer با صدای مصوت شروع می‌شود، پس an می‌آید.",
+              "support": [
+                {
+                  "en": "engineer",
+                  "fa": "مهندس"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-en-grammar-agreement",
+      "role": "english",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:i",
+      "expectedCriterion": "grammar",
+      "expectedResult": "FAIL",
+      "severity": "material",
+      "mutationDescription": "Seeded subject–verb agreement error in an otherwise simple example.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:i",
+          "headword": "I",
+          "contentVersion": "68c31b0e1449",
+          "order": 0,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:i",
+          "pos": "pronoun",
+          "gloss": "من (فاعل)",
+          "meaning": "ضمیر فاعلی اول‌شخص مفرد. همیشه با حرف بزرگ نوشته می‌شود و فقط در جای فاعل می‌آید؛ در جای مفعول me به کار می‌رود.",
+          "grammar": [
+            {
+              "pattern": "I + verb",
+              "note": "فعل be با I می‌شود am: I am / I'm."
+            },
+            {
+              "pattern": "I versus me",
+              "note": "فاعل I؛ بعد از فعل یا حرف اضافه me: She called me."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I is a student.",
+              "fa": "من دانشجو هستم."
+            },
+            {
+              "en": "I live with my parents.",
+              "fa": "من با پدر و مادرم زندگی می‌کنم."
+            },
+            {
+              "en": "I am from Tabriz.",
+              "fa": "من اهل تبریز هستم."
+            }
+          ],
+          "collocations": [
+            "I'm",
+            "I think",
+            "I don't know",
+            "me too"
+          ],
+          "collocationFa": {
+            "I'm": "شکل کوتاه I am: «من هستم / منم»",
+            "I think": "فکر می‌کنم",
+            "I don't know": "نمی‌دانم",
+            "me too": "من هم"
+          },
+          "usage": "در فارسی می‌توان «من» را حذف کرد (دانشجو هستم)، اما در انگلیسی فاعل باید گفته شود: I am a student.",
+          "mistake": {
+            "wrong": "i like tea.",
+            "wrongFa": "من چای را دوست دارم؛ در انگلیسیِ غلط، i با حرف کوچک نوشته شده است.",
+            "right": "I like tea.",
+            "rightFa": "من چای را دوست دارم؛ در انگلیسی، I همیشه با حرف بزرگ نوشته می‌شود.",
+            "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود، حتی وسط جمله."
+          },
+          "pronunciation": {
+            "gb": "/aɪ/",
+            "us": "/aɪ/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ am Sara.",
+              "answer": "I",
+              "accept": [],
+              "fa": "من سارا هستم.",
+              "why": "وقتی گوینده دربارهٔ خودش حرف می‌زند، فاعل I است.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "Sara",
+                  "fa": "سارا"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام شکلِ ضمیر «من» درست نوشته شده است؟",
+              "options": [
+                {
+                  "text": "I",
+                  "ok": true,
+                  "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود."
+                },
+                {
+                  "text": "i",
+                  "ok": false,
+                  "why": "ضمیر I حتی وسط جمله هم باید با حرف بزرگ نوشته شود."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من دانشجو هستم.",
+              "frame": "___ am a student.",
+              "answer": "I",
+              "accept": [],
+              "why": "فاعلِ جمله «من» است، پس I می‌نویسیم.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "a",
+                  "fa": "یک"
+                },
+                {
+                  "en": "student",
+                  "fa": "دانشجو"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-en-collocation-friend",
+      "role": "english",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:friend",
+      "expectedCriterion": "collocation",
+      "expectedResult": "FAIL",
+      "severity": "material",
+      "mutationDescription": "Seeded unnatural/incorrect collocation in the collocation list.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:friend",
+          "headword": "friend",
+          "contentVersion": "9c240540dbba",
+          "order": 18,
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:my",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:friend",
+          "pos": "noun",
+          "gloss": "دوست",
+          "meaning": "کسی که او را می‌شناسید و دوستش دارید و با او وقت می‌گذرانید.",
+          "grammar": [
+            {
+              "pattern": "a friend of mine",
+              "note": "یکی از دوستانم"
+            },
+            {
+              "pattern": "make friends (with)",
+              "note": "دوست پیدا کردن"
+            },
+            {
+              "pattern": "best friend",
+              "note": "بهترین دوست"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Sara is my best friend.",
+              "fa": "سارا بهترین دوست من است."
+            },
+            {
+              "en": "I met an old friend in the street.",
+              "fa": "در خیابان یک دوست قدیمی را دیدم."
+            },
+            {
+              "en": "This is my friend, Reza.",
+              "fa": "این دوست من، رضا، است."
+            }
+          ],
+          "collocations": [
+            "best friend",
+            "make a friend with",
+            "old friend",
+            "a friend of mine"
+          ],
+          "collocationFa": {
+            "best friend": "بهترین دوست",
+            "old friend": "دوست قدیمی",
+            "a friend of mine": "یکی از دوستانم",
+            "make a friend with": "دوست شدن / دوست پیدا کردن"
+          },
+          "mistake": {
+            "wrong": "I made a friend with Sara.",
+            "wrongFa": "با سارا «یک دوست ساختم»؛ ترجمهٔ لفظیِ ساخت غلط انگلیسی طبیعی نیست.",
+            "right": "I made friends with Sara.",
+            "rightFa": "با سارا دوست شدم؛ make friends with ساخت طبیعی انگلیسی است.",
+            "why": "برای «دوست شدن/دوست پیدا کردن» معمولاً make friends with به کار می‌رود."
+          },
+          "pronunciation": {
+            "gb": "/frend/",
+            "us": "/frend/",
+            "note": "ie در friend مثل «اِ» خوانده می‌شود: «فرِند»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "This is my ___.",
+              "answer": "friend",
+              "accept": [],
+              "fa": "این دوست من است.",
+              "why": "friend یعنی «دوست»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «He is my ___» با معنی «او دوست من است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "friend",
+                  "ok": true,
+                  "why": "friend یعنی «دوست»."
+                },
+                {
+                  "text": "family",
+                  "ok": false,
+                  "why": "family یعنی «خانواده»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "دوستم در این شهر است.",
+              "frame": "My ___ is in this city.",
+              "answer": "friend",
+              "accept": [],
+              "why": "friend یعنی «دوست»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-en-sense-live",
+      "role": "english",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:live",
+      "expectedCriterion": "sense_fidelity",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded mismatch between /lɪv/ verb target and /laɪv/ adjective meaning.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:live",
+          "headword": "live",
+          "contentVersion": "e58d7f25a052",
+          "order": 16,
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:in",
+            "lex:A1:city"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:live",
+          "pos": "verb",
+          "gloss": "زندگی کردن؛ ساکن بودن",
+          "meaning": "پخش زنده بودنِ یک برنامه یا رویداد؛ مثل a live concert.",
+          "grammar": [
+            {
+              "pattern": "live in + city / country",
+              "note": "برای شهر یا کشور بعد از live از in استفاده می‌کنیم: We live in Karaj."
+            },
+            {
+              "pattern": "live with + person",
+              "note": "برای کسی که با او زندگی می‌کنیم از with استفاده می‌کنیم: I live with my parents."
+            },
+            {
+              "pattern": "live at + address",
+              "note": "برای نشانی دقیق می‌توان از at استفاده کرد: She lives at 12 Park Street."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where do you live?",
+              "fa": "کجا زندگی می‌کنی؟"
+            },
+            {
+              "en": "My grandmother lives alone.",
+              "fa": "مادربزرگم تنها زندگی می‌کند."
+            },
+            {
+              "en": "He lives in this city.",
+              "fa": "او در این شهر زندگی می‌کند."
+            }
+          ],
+          "collocations": [
+            "live in",
+            "live with",
+            "live alone"
+          ],
+          "collocationFa": {
+            "live in": "در … زندگی کردن",
+            "live with": "با … زندگی کردن",
+            "live alone": "تنها زندگی کردن"
+          },
+          "mistake": {
+            "wrong": "I live at Tehran.",
+            "wrongFa": "من در تهران زندگی می‌کنم؛ در انگلیسیِ غلط برای شهر از at استفاده شده است.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم؛ در انگلیسی برای شهر از in استفاده می‌شود.",
+            "why": "برای شهر و کشور بعد از live معمولاً in می‌آید: live in Tehran, live in Iran. at بیشتر برای نشانی دقیق است."
+          },
+          "pronunciation": {
+            "gb": "/lɪv/",
+            "us": "/lɪv/",
+            "note": "i کوتاه است: «لیو»؛ صفتِ live (زنده، پخش زنده) /laɪv/ خوانده می‌شود."
+          },
+          "tts": {
+            "gb": "lˈɪv",
+            "us": "lˈɪv"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I ___ in this city.",
+              "answer": "live",
+              "accept": [],
+              "fa": "من در این شهر زندگی می‌کنم.",
+              "why": "live یعنی «زندگی کردن؛ ساکن بودن»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من در این شهر زندگی می‌کنم» کدام جمله درست است؟",
+              "options": [
+                {
+                  "text": "I live in this city.",
+                  "ok": true,
+                  "why": "این جمله محل زندگی را بیان می‌کند."
+                },
+                {
+                  "text": "I am in this city.",
+                  "ok": false,
+                  "why": "این جمله فقط می‌گوید اکنون در این شهر هستم."
+                },
+                {
+                  "text": "Where is this city?",
+                  "ok": false,
+                  "why": "این یک سؤال دربارهٔ مکان شهر است."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اینجا زندگی می‌کنم.",
+              "frame": "I ___ here.",
+              "answer": "live",
+              "accept": [],
+              "why": "برای گفتن محل زندگی از live استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "here",
+                  "fa": "اینجا"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-en-abstain-underdetermined",
+      "role": "english",
+      "category": "abstain",
+      "sourceTargetId": "lex:A1:city",
+      "expectedCriterion": "sense_fidelity",
+      "expectedResult": "UNCERTAIN",
+      "severity": "calibration",
+      "mutationDescription": "Target deliberately withholds the intended sense; a calibrated judge should abstain rather than invent it.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "cal:lead",
+          "headword": "lead",
+          "contentVersion": "3533be666583",
+          "order": 15,
+          "prerequisites": [
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "cal:lead",
+          "pos": "noun",
+          "gloss": "—",
+          "meaning": "اطلاعات کافی برای مشخص کردن معنای دقیق این واژه در این کاربرد ارائه نشده است.",
+          "grammar": [
+            {
+              "pattern": "in the city",
+              "note": "برای مکان می‌گوییم in the city: I live in the city."
+            },
+            {
+              "pattern": "city centre (BrE) / downtown (AmE)",
+              "note": "مرکز شهر"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            },
+            {
+              "en": "The city centre is busy at night.",
+              "fa": "مرکز شهر شب‌ها شلوغ است."
+            },
+            {
+              "en": "I live in a small city.",
+              "fa": "من در یک شهر کوچک زندگی می‌کنم."
+            }
+          ],
+          "collocations": [
+            "city centre",
+            "capital city",
+            "big city",
+            "city life"
+          ],
+          "collocationFa": {
+            "city centre": "مرکز شهر",
+            "capital city": "پایتخت / شهرِ پایتخت",
+            "big city": "شهر بزرگ",
+            "city life": "زندگی شهری"
+          },
+          "mistake": {
+            "wrong": "I live in Tehran city.",
+            "wrongFa": "من در «شهر تهران» زندگی می‌کنم.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم.",
+            "why": "بعد از نام شهر معمولاً دوباره city نمی‌آوریم: in Tehran, in Shiraz."
+          },
+          "pronunciation": {
+            "gb": "/ˈsɪti/",
+            "us": "/ˈsɪti/, /ˈsɪdi/",
+            "note": "در آمریکایی t نرم است: «سیدی»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is in this ___.",
+              "answer": "city",
+              "accept": [],
+              "fa": "او در این شهر است.",
+              "why": "city یعنی «شهر»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «This is a ___» با معنی «این یک شهر است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "city",
+                  "ok": true,
+                  "why": "city یعنی «شهر»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این شهر من است.",
+              "frame": "This is my ___.",
+              "answer": "city",
+              "accept": [],
+              "why": "city یعنی «شهر»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-fa-clean-from",
+      "role": "persian",
+      "category": "clean",
+      "sourceTargetId": "lex:A1:from",
+      "expectedCriterion": null,
+      "expectedResult": "PASS",
+      "severity": "control",
+      "mutationDescription": "Unmodified certified A1 control.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:from",
+          "headword": "from",
+          "contentVersion": "10f0cf91c4a7",
+          "order": 12,
+          "prerequisites": [
+            "lex:A1:where",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:from",
+          "pos": "preposition",
+          "gloss": "از",
+          "meaning": "نقطهٔ شروع (مکان یا زمان) یا منشأ: be from (اهل جایی بودن)، from … to …، a letter from Ali.",
+          "grammar": [
+            {
+              "pattern": "be from + place",
+              "note": "برای گفتن مبدأ یا اهل جایی بودن از be from استفاده می‌کنیم: I'm from Ahvaz."
+            },
+            {
+              "pattern": "from … to / until …",
+              "note": "برای نشان دادن بازهٔ شروع تا پایان از from … to/until … استفاده می‌کنیم: from 9 to 5, from Monday to Friday."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where are you from?",
+              "fa": "اهل کجایی؟"
+            },
+            {
+              "en": "I work from nine to five.",
+              "fa": "از نه تا پنج کار می‌کنم."
+            },
+            {
+              "en": "This letter is from my friend.",
+              "fa": "این نامه از طرف دوستم است."
+            }
+          ],
+          "collocations": [
+            "from … to …",
+            "far from",
+            "different from",
+            "a message from"
+          ],
+          "collocationFa": {
+            "from … to …": "از … تا …",
+            "far from": "دور از",
+            "different from": "متفاوت از",
+            "a message from": "پیامی از طرفِ"
+          },
+          "usage": "from مبدأِ مکان یا زمان و نیز فرستنده را نشان می‌دهد: from Tehran, from nine, a message from Sara.",
+          "mistake": {
+            "wrong": "I got a message of my friend.",
+            "wrongFa": "پیامی «متعلق به» دوستم گرفتم؛ of فرستنده را درست نشان نمی‌دهد.",
+            "right": "I got a message from my friend.",
+            "rightFa": "از دوستم پیامی گرفتم؛ from فرستنده را نشان می‌دهد.",
+            "why": "برای فرستنده from به کار می‌رود، نه of."
+          },
+          "pronunciation": {
+            "gb": "/frəm/; stressed /frɒm/",
+            "us": "/frəm/; stressed /frʌm/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I am ___ Iran.",
+              "answer": "from",
+              "accept": [],
+              "fa": "من اهل ایران هستم.",
+              "why": "be from برای گفتن محلِ اصلی یا زادگاه به کار می‌رود.",
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من اهل ایران هستم»، جای خالی را کامل کن: I am ___ Iran.",
+              "options": [
+                {
+                  "text": "from",
+                  "ok": true,
+                  "why": "I am from Iran یعنی «من اهل ایران هستم»."
+                },
+                {
+                  "text": "where",
+                  "ok": false,
+                  "why": "where واژهٔ پرسشیِ مکان است."
+                },
+                {
+                  "text": "what",
+                  "ok": false,
+                  "why": "what برای این ساختار مناسب نیست."
+                }
+              ],
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اهل یزد هستم.",
+              "frame": "I am ___ Yazd.",
+              "answer": "from",
+              "accept": [],
+              "why": "برای گفتن اهل کجا بودن، پس از be از from استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Yazd",
+                  "fa": "یزد"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-fa-clean-city",
+      "role": "persian",
+      "category": "clean",
+      "sourceTargetId": "lex:A1:city",
+      "expectedCriterion": null,
+      "expectedResult": "PASS",
+      "severity": "control",
+      "mutationDescription": "Unmodified certified A1 control.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:city",
+          "headword": "city",
+          "contentVersion": "3533be666583",
+          "order": 15,
+          "prerequisites": [
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:city",
+          "pos": "noun",
+          "gloss": "شهر (بزرگ)",
+          "meaning": "شهر؛ معمولاً از town بزرگ‌تر است، اما مرز دقیق این دو در کشورها متفاوت است.",
+          "grammar": [
+            {
+              "pattern": "in the city",
+              "note": "برای مکان می‌گوییم in the city: I live in the city."
+            },
+            {
+              "pattern": "city centre (BrE) / downtown (AmE)",
+              "note": "مرکز شهر"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            },
+            {
+              "en": "The city centre is busy at night.",
+              "fa": "مرکز شهر شب‌ها شلوغ است."
+            },
+            {
+              "en": "I live in a small city.",
+              "fa": "من در یک شهر کوچک زندگی می‌کنم."
+            }
+          ],
+          "collocations": [
+            "city centre",
+            "capital city",
+            "big city",
+            "city life"
+          ],
+          "collocationFa": {
+            "city centre": "مرکز شهر",
+            "capital city": "پایتخت / شهرِ پایتخت",
+            "big city": "شهر بزرگ",
+            "city life": "زندگی شهری"
+          },
+          "mistake": {
+            "wrong": "I live in Tehran city.",
+            "wrongFa": "من در «شهر تهران» زندگی می‌کنم.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم.",
+            "why": "بعد از نام شهر معمولاً دوباره city نمی‌آوریم: in Tehran, in Shiraz."
+          },
+          "pronunciation": {
+            "gb": "/ˈsɪti/",
+            "us": "/ˈsɪti/, /ˈsɪdi/",
+            "note": "در آمریکایی t نرم است: «سیدی»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is in this ___.",
+              "answer": "city",
+              "accept": [],
+              "fa": "او در این شهر است.",
+              "why": "city یعنی «شهر»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «This is a ___» با معنی «این یک شهر است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "city",
+                  "ok": true,
+                  "why": "city یعنی «شهر»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این شهر من است.",
+              "frame": "This is my ___.",
+              "answer": "city",
+              "accept": [],
+              "why": "city یعنی «شهر»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-fa-mistranslation-city",
+      "role": "persian",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:city",
+      "expectedCriterion": "translation_correctness",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded noun mistranslation: city is translated as school in one example.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:city",
+          "headword": "city",
+          "contentVersion": "3533be666583",
+          "order": 15,
+          "prerequisites": [
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:city",
+          "pos": "noun",
+          "gloss": "شهر (بزرگ)",
+          "meaning": "شهر؛ معمولاً از town بزرگ‌تر است، اما مرز دقیق این دو در کشورها متفاوت است.",
+          "grammar": [
+            {
+              "pattern": "in the city",
+              "note": "برای مکان می‌گوییم in the city: I live in the city."
+            },
+            {
+              "pattern": "city centre (BrE) / downtown (AmE)",
+              "note": "مرکز شهر"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            },
+            {
+              "en": "The city centre is busy at night.",
+              "fa": "مرکز شهر شب‌ها شلوغ است."
+            },
+            {
+              "en": "I live in a small city.",
+              "fa": "من در یک مدرسهٔ کوچک زندگی می‌کنم."
+            }
+          ],
+          "collocations": [
+            "city centre",
+            "capital city",
+            "big city",
+            "city life"
+          ],
+          "collocationFa": {
+            "city centre": "مرکز شهر",
+            "capital city": "پایتخت / شهرِ پایتخت",
+            "big city": "شهر بزرگ",
+            "city life": "زندگی شهری"
+          },
+          "mistake": {
+            "wrong": "I live in Tehran city.",
+            "wrongFa": "من در «شهر تهران» زندگی می‌کنم.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم.",
+            "why": "بعد از نام شهر معمولاً دوباره city نمی‌آوریم: in Tehran, in Shiraz."
+          },
+          "pronunciation": {
+            "gb": "/ˈsɪti/",
+            "us": "/ˈsɪti/, /ˈsɪdi/",
+            "note": "در آمریکایی t نرم است: «سیدی»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is in this ___.",
+              "answer": "city",
+              "accept": [],
+              "fa": "او در این شهر است.",
+              "why": "city یعنی «شهر»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «This is a ___» با معنی «این یک شهر است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "city",
+                  "ok": true,
+                  "why": "city یعنی «شهر»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این شهر من است.",
+              "frame": "This is my ___.",
+              "answer": "city",
+              "accept": [],
+              "why": "city یعنی «شهر»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-fa-unnatural-friend",
+      "role": "persian",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:friend",
+      "expectedCriterion": "naturalness",
+      "expectedResult": "FAIL",
+      "severity": "material",
+      "mutationDescription": "Seeded Persian that is semantically recoverable but conspicuously unnatural for an A1 learner.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:friend",
+          "headword": "friend",
+          "contentVersion": "9c240540dbba",
+          "order": 18,
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:my",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:friend",
+          "pos": "noun",
+          "gloss": "دوست",
+          "meaning": "کسی که او را می‌شناسید و دوستش دارید و با او وقت می‌گذرانید.",
+          "grammar": [
+            {
+              "pattern": "a friend of mine",
+              "note": "یکی از دوستانم"
+            },
+            {
+              "pattern": "make friends (with)",
+              "note": "دوست پیدا کردن"
+            },
+            {
+              "pattern": "best friend",
+              "note": "بهترین دوست"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Sara is my best friend.",
+              "fa": "سارا بهترین دوست من است."
+            },
+            {
+              "en": "I met an old friend in the street.",
+              "fa": "در خیابان یک دوست قدیمی را دیدم."
+            },
+            {
+              "en": "This is my friend, Reza.",
+              "fa": "این یک دوست مال من، رضا، می‌باشد."
+            }
+          ],
+          "collocations": [
+            "best friend",
+            "make friends",
+            "old friend",
+            "a friend of mine"
+          ],
+          "collocationFa": {
+            "best friend": "بهترین دوست",
+            "make friends": "دوست پیدا کردن / دوست شدن",
+            "old friend": "دوست قدیمی",
+            "a friend of mine": "یکی از دوستانم"
+          },
+          "mistake": {
+            "wrong": "I made a friend with Sara.",
+            "wrongFa": "با سارا «یک دوست ساختم»؛ ترجمهٔ لفظیِ ساخت غلط انگلیسی طبیعی نیست.",
+            "right": "I made friends with Sara.",
+            "rightFa": "با سارا دوست شدم؛ make friends with ساخت طبیعی انگلیسی است.",
+            "why": "برای «دوست شدن/دوست پیدا کردن» معمولاً make friends with به کار می‌رود."
+          },
+          "pronunciation": {
+            "gb": "/frend/",
+            "us": "/frend/",
+            "note": "ie در friend مثل «اِ» خوانده می‌شود: «فرِند»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "This is my ___.",
+              "answer": "friend",
+              "accept": [],
+              "fa": "این دوست من است.",
+              "why": "friend یعنی «دوست»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «He is my ___» با معنی «او دوست من است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "friend",
+                  "ok": true,
+                  "why": "friend یعنی «دوست»."
+                },
+                {
+                  "text": "family",
+                  "ok": false,
+                  "why": "family یعنی «خانواده»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "دوستم در این شهر است.",
+              "frame": "My ___ is in this city.",
+              "answer": "friend",
+              "accept": [],
+              "why": "friend یعنی «دوست»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-fa-formality-i",
+      "role": "persian",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:i",
+      "expectedCriterion": "formality_fit",
+      "expectedResult": "FAIL",
+      "severity": "material",
+      "mutationDescription": "Seeded overly bureaucratic/formal Persian for a basic everyday A1 example.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:i",
+          "headword": "I",
+          "contentVersion": "68c31b0e1449",
+          "order": 0,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:i",
+          "pos": "pronoun",
+          "gloss": "من (فاعل)",
+          "meaning": "ضمیر فاعلی اول‌شخص مفرد. همیشه با حرف بزرگ نوشته می‌شود و فقط در جای فاعل می‌آید؛ در جای مفعول me به کار می‌رود.",
+          "grammar": [
+            {
+              "pattern": "I + verb",
+              "note": "فعل be با I می‌شود am: I am / I'm."
+            },
+            {
+              "pattern": "I versus me",
+              "note": "فاعل I؛ بعد از فعل یا حرف اضافه me: She called me."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I am a student.",
+              "fa": "اینجانب محصل می‌باشم."
+            },
+            {
+              "en": "I live with my parents.",
+              "fa": "من با پدر و مادرم زندگی می‌کنم."
+            },
+            {
+              "en": "I am from Tabriz.",
+              "fa": "من اهل تبریز هستم."
+            }
+          ],
+          "collocations": [
+            "I'm",
+            "I think",
+            "I don't know",
+            "me too"
+          ],
+          "collocationFa": {
+            "I'm": "شکل کوتاه I am: «من هستم / منم»",
+            "I think": "فکر می‌کنم",
+            "I don't know": "نمی‌دانم",
+            "me too": "من هم"
+          },
+          "usage": "در فارسی می‌توان «من» را حذف کرد (دانشجو هستم)، اما در انگلیسی فاعل باید گفته شود: I am a student.",
+          "mistake": {
+            "wrong": "i like tea.",
+            "wrongFa": "من چای را دوست دارم؛ در انگلیسیِ غلط، i با حرف کوچک نوشته شده است.",
+            "right": "I like tea.",
+            "rightFa": "من چای را دوست دارم؛ در انگلیسی، I همیشه با حرف بزرگ نوشته می‌شود.",
+            "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود، حتی وسط جمله."
+          },
+          "pronunciation": {
+            "gb": "/aɪ/",
+            "us": "/aɪ/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ am Sara.",
+              "answer": "I",
+              "accept": [],
+              "fa": "من سارا هستم.",
+              "why": "وقتی گوینده دربارهٔ خودش حرف می‌زند، فاعل I است.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "Sara",
+                  "fa": "سارا"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام شکلِ ضمیر «من» درست نوشته شده است؟",
+              "options": [
+                {
+                  "text": "I",
+                  "ok": true,
+                  "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود."
+                },
+                {
+                  "text": "i",
+                  "ok": false,
+                  "why": "ضمیر I حتی وسط جمله هم باید با حرف بزرگ نوشته شود."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من دانشجو هستم.",
+              "frame": "___ am a student.",
+              "answer": "I",
+              "accept": [],
+              "why": "فاعلِ جمله «من» است، پس I می‌نویسیم.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "a",
+                  "fa": "یک"
+                },
+                {
+                  "en": "student",
+                  "fa": "دانشجو"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-fa-abstain-missing-translation",
+      "role": "persian",
+      "category": "abstain",
+      "sourceTargetId": "lex:A1:live",
+      "expectedCriterion": "translation_correctness",
+      "expectedResult": "UNCERTAIN",
+      "severity": "calibration",
+      "mutationDescription": "Persian semantic evidence is deliberately withheld; judge should abstain instead of inferring a translation.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:live",
+          "headword": "live",
+          "contentVersion": "e58d7f25a052",
+          "order": 16,
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:in",
+            "lex:A1:city"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:live",
+          "pos": "verb",
+          "gloss": "—",
+          "meaning": "ترجمه و توضیح فارسی عمداً برای این مورد از ورودی آزمون حذف شده است.",
+          "grammar": [
+            {
+              "pattern": "live in + city / country",
+              "note": "برای شهر یا کشور بعد از live از in استفاده می‌کنیم: We live in Karaj."
+            },
+            {
+              "pattern": "live with + person",
+              "note": "برای کسی که با او زندگی می‌کنیم از with استفاده می‌کنیم: I live with my parents."
+            },
+            {
+              "pattern": "live at + address",
+              "note": "برای نشانی دقیق می‌توان از at استفاده کرد: She lives at 12 Park Street."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where do you live?",
+              "fa": "کجا زندگی می‌کنی؟"
+            },
+            {
+              "en": "My grandmother lives alone.",
+              "fa": "مادربزرگم تنها زندگی می‌کند."
+            },
+            {
+              "en": "He lives in this city.",
+              "fa": "او در این شهر زندگی می‌کند."
+            }
+          ],
+          "collocations": [
+            "live in",
+            "live with",
+            "live alone"
+          ],
+          "collocationFa": {
+            "live in": "در … زندگی کردن",
+            "live with": "با … زندگی کردن",
+            "live alone": "تنها زندگی کردن"
+          },
+          "mistake": {
+            "wrong": "I live at Tehran.",
+            "wrongFa": "من در تهران زندگی می‌کنم؛ در انگلیسیِ غلط برای شهر از at استفاده شده است.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم؛ در انگلیسی برای شهر از in استفاده می‌شود.",
+            "why": "برای شهر و کشور بعد از live معمولاً in می‌آید: live in Tehran, live in Iran. at بیشتر برای نشانی دقیق است."
+          },
+          "pronunciation": {
+            "gb": "/lɪv/",
+            "us": "/lɪv/",
+            "note": "i کوتاه است: «لیو»؛ صفتِ live (زنده، پخش زنده) /laɪv/ خوانده می‌شود."
+          },
+          "tts": {
+            "gb": "lˈɪv",
+            "us": "lˈɪv"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I ___ in this city.",
+              "answer": "live",
+              "accept": [],
+              "fa": "من در این شهر زندگی می‌کنم.",
+              "why": "live یعنی «زندگی کردن؛ ساکن بودن»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من در این شهر زندگی می‌کنم» کدام جمله درست است؟",
+              "options": [
+                {
+                  "text": "I live in this city.",
+                  "ok": true,
+                  "why": "این جمله محل زندگی را بیان می‌کند."
+                },
+                {
+                  "text": "I am in this city.",
+                  "ok": false,
+                  "why": "این جمله فقط می‌گوید اکنون در این شهر هستم."
+                },
+                {
+                  "text": "Where is this city?",
+                  "ok": false,
+                  "why": "این یک سؤال دربارهٔ مکان شهر است."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اینجا زندگی می‌کنم.",
+              "frame": "I ___ here.",
+              "answer": "live",
+              "accept": [],
+              "why": "برای گفتن محل زندگی از live استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "here",
+                  "fa": "اینجا"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-ped-clean-a-an",
+      "role": "pedagogical",
+      "category": "clean",
+      "sourceTargetId": "lex:A1:a-an",
+      "expectedCriterion": null,
+      "expectedResult": "PASS",
+      "severity": "control",
+      "mutationDescription": "Unmodified certified A1 control.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:a-an",
+          "headword": "a, an",
+          "contentVersion": "69fa9030d23f",
+          "order": 2,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:a-an",
+          "pos": "article",
+          "gloss": "یک (حرف تعریف نامعین)",
+          "meaning": "پیش از اسم مفردِ قابل‌شمارش می‌آید، وقتی از یک چیز یا یک نفرِ نامشخص حرف می‌زنیم یا برای اولین بار از آن نام می‌بریم. پیش از صدای صامت a و پیش از صدای مصوت an می‌آید.",
+          "grammar": [
+            {
+              "pattern": "a + consonant sound / an + vowel sound",
+              "note": "انتخاب a یا an به صدای اولِ کلمهٔ بعد بستگی دارد، نه به حرفِ نوشته‌شده: a university (با صدای «یو»)، an hour (h خوانده نمی‌شود)."
+            },
+            {
+              "pattern": "be + a/an + job",
+              "note": "در فارسی می‌گوییم «او پزشک است»، اما در انگلیسی پیش از شغل a/an لازم است: She is a doctor."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I have a sister and an older brother.",
+              "fa": "من یک خواهر و یک برادرِ بزرگ‌تر دارم."
+            },
+            {
+              "en": "She is an engineer.",
+              "fa": "او مهندس است."
+            },
+            {
+              "en": "This is a new book.",
+              "fa": "این یک کتاب جدید است."
+            }
+          ],
+          "collocations": [
+            "a lot of",
+            "an hour",
+            "once a week",
+            "a little"
+          ],
+          "collocationFa": {
+            "a lot of": "مقدار یا تعداد زیادی از",
+            "an hour": "یک ساعت",
+            "once a week": "هفته‌ای یک‌بار",
+            "a little": "کمی"
+          },
+          "usage": "a/an فقط پیش از اسم مفردِ قابل‌شمارش می‌آید. با اسم جمع یا اسم غیرقابل‌شمارش معمولاً a/an نمی‌آید.",
+          "mistake": {
+            "wrong": "He is teacher.",
+            "wrongFa": "او معلم است؛ در جملهٔ انگلیسیِ غلط، پیش از teacher حرف تعریف نیامده است.",
+            "right": "He is a teacher.",
+            "rightFa": "او یک معلم است؛ در انگلیسی پیش از teacher حرف تعریف a آمده است.",
+            "why": "برای گفتن شغل یا نوعِ چیزی، پیش از اسم مفرد a/an لازم است، حتی وقتی در فارسی «یک» نمی‌گوییم."
+          },
+          "pronunciation": {
+            "gb": "/ə/, /ən/; stressed /eɪ/, /æn/",
+            "us": "/ə/, /ən/; stressed /eɪ/, /æn/",
+            "note": "معمولاً ضعیف و بی‌تأکید خوانده می‌شود: «اِ» و «اِن»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ apple",
+              "answer": "an",
+              "accept": [],
+              "fa": "یک سیب",
+              "why": "apple با صدای مصوت شروع می‌شود، پس an می‌آید.",
+              "support": [
+                {
+                  "en": "apple",
+                  "fa": "سیب"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "پیش از book کدام حرف تعریف درست است؟",
+              "options": [
+                {
+                  "text": "a",
+                  "ok": true,
+                  "why": "book با صدای صامت /b/ شروع می‌شود."
+                },
+                {
+                  "text": "an",
+                  "ok": false,
+                  "why": "an پیش از صدای مصوت می‌آید."
+                }
+              ],
+              "support": [
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«یک مهندس» را کامل کن.",
+              "frame": "___ engineer",
+              "answer": "an",
+              "accept": [],
+              "why": "engineer با صدای مصوت شروع می‌شود، پس an می‌آید.",
+              "support": [
+                {
+                  "en": "engineer",
+                  "fa": "مهندس"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-ped-clean-live",
+      "role": "pedagogical",
+      "category": "clean",
+      "sourceTargetId": "lex:A1:live",
+      "expectedCriterion": null,
+      "expectedResult": "PASS",
+      "severity": "control",
+      "mutationDescription": "Unmodified certified A1 control.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:live",
+          "headword": "live",
+          "contentVersion": "e58d7f25a052",
+          "order": 16,
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:in",
+            "lex:A1:city"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:live",
+          "pos": "verb",
+          "gloss": "زندگی کردن؛ ساکن بودن",
+          "meaning": "خانه داشتن در جایی، یا زنده بودن.",
+          "grammar": [
+            {
+              "pattern": "live in + city / country",
+              "note": "برای شهر یا کشور بعد از live از in استفاده می‌کنیم: We live in Karaj."
+            },
+            {
+              "pattern": "live with + person",
+              "note": "برای کسی که با او زندگی می‌کنیم از with استفاده می‌کنیم: I live with my parents."
+            },
+            {
+              "pattern": "live at + address",
+              "note": "برای نشانی دقیق می‌توان از at استفاده کرد: She lives at 12 Park Street."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where do you live?",
+              "fa": "کجا زندگی می‌کنی؟"
+            },
+            {
+              "en": "My grandmother lives alone.",
+              "fa": "مادربزرگم تنها زندگی می‌کند."
+            },
+            {
+              "en": "He lives in this city.",
+              "fa": "او در این شهر زندگی می‌کند."
+            }
+          ],
+          "collocations": [
+            "live in",
+            "live with",
+            "live alone"
+          ],
+          "collocationFa": {
+            "live in": "در … زندگی کردن",
+            "live with": "با … زندگی کردن",
+            "live alone": "تنها زندگی کردن"
+          },
+          "mistake": {
+            "wrong": "I live at Tehran.",
+            "wrongFa": "من در تهران زندگی می‌کنم؛ در انگلیسیِ غلط برای شهر از at استفاده شده است.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم؛ در انگلیسی برای شهر از in استفاده می‌شود.",
+            "why": "برای شهر و کشور بعد از live معمولاً in می‌آید: live in Tehran, live in Iran. at بیشتر برای نشانی دقیق است."
+          },
+          "pronunciation": {
+            "gb": "/lɪv/",
+            "us": "/lɪv/",
+            "note": "i کوتاه است: «لیو»؛ صفتِ live (زنده، پخش زنده) /laɪv/ خوانده می‌شود."
+          },
+          "tts": {
+            "gb": "lˈɪv",
+            "us": "lˈɪv"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I ___ in this city.",
+              "answer": "live",
+              "accept": [],
+              "fa": "من در این شهر زندگی می‌کنم.",
+              "why": "live یعنی «زندگی کردن؛ ساکن بودن»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من در این شهر زندگی می‌کنم» کدام جمله درست است؟",
+              "options": [
+                {
+                  "text": "I live in this city.",
+                  "ok": true,
+                  "why": "این جمله محل زندگی را بیان می‌کند."
+                },
+                {
+                  "text": "I am in this city.",
+                  "ok": false,
+                  "why": "این جمله فقط می‌گوید اکنون در این شهر هستم."
+                },
+                {
+                  "text": "Where is this city?",
+                  "ok": false,
+                  "why": "این یک سؤال دربارهٔ مکان شهر است."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اینجا زندگی می‌کنم.",
+              "frame": "I ___ here.",
+              "answer": "live",
+              "accept": [],
+              "why": "برای گفتن محل زندگی از live استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "here",
+                  "fa": "اینجا"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-ped-cognitive-load",
+      "role": "pedagogical",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:i",
+      "expectedCriterion": "cognitive_load",
+      "expectedResult": "FAIL",
+      "severity": "material",
+      "mutationDescription": "Seeded advanced linguistic metalanguage irrelevant to A1 instruction.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:i",
+          "headword": "I",
+          "contentVersion": "68c31b0e1449",
+          "order": 0,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:i",
+          "pos": "pronoun",
+          "gloss": "من (فاعل)",
+          "meaning": "ضمیر فاعلی اول‌شخص مفرد. همیشه با حرف بزرگ نوشته می‌شود و فقط در جای فاعل می‌آید؛ در جای مفعول me به کار می‌رود.",
+          "grammar": [
+            {
+              "pattern": "I + verb",
+              "note": "فعل be با I می‌شود am: I am / I'm."
+            },
+            {
+              "pattern": "I versus me",
+              "note": "فاعل I؛ بعد از فعل یا حرف اضافه me: She called me."
+            },
+            {
+              "pattern": "pro-drop parameter and nominative case assignment",
+              "note": "برای تحلیل این ضمیر، تفاوت زبان‌های pro-drop و نظریهٔ حاکمیت و مرجع‌گزینی را با case assignment مقایسه کنید."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I am a student.",
+              "fa": "من دانشجو هستم."
+            },
+            {
+              "en": "I live with my parents.",
+              "fa": "من با پدر و مادرم زندگی می‌کنم."
+            },
+            {
+              "en": "I am from Tabriz.",
+              "fa": "من اهل تبریز هستم."
+            }
+          ],
+          "collocations": [
+            "I'm",
+            "I think",
+            "I don't know",
+            "me too"
+          ],
+          "collocationFa": {
+            "I'm": "شکل کوتاه I am: «من هستم / منم»",
+            "I think": "فکر می‌کنم",
+            "I don't know": "نمی‌دانم",
+            "me too": "من هم"
+          },
+          "usage": "در فارسی می‌توان «من» را حذف کرد (دانشجو هستم)، اما در انگلیسی فاعل باید گفته شود: I am a student.",
+          "mistake": {
+            "wrong": "i like tea.",
+            "wrongFa": "من چای را دوست دارم؛ در انگلیسیِ غلط، i با حرف کوچک نوشته شده است.",
+            "right": "I like tea.",
+            "rightFa": "من چای را دوست دارم؛ در انگلیسی، I همیشه با حرف بزرگ نوشته می‌شود.",
+            "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود، حتی وسط جمله."
+          },
+          "pronunciation": {
+            "gb": "/aɪ/",
+            "us": "/aɪ/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ am Sara.",
+              "answer": "I",
+              "accept": [],
+              "fa": "من سارا هستم.",
+              "why": "وقتی گوینده دربارهٔ خودش حرف می‌زند، فاعل I است.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "Sara",
+                  "fa": "سارا"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام شکلِ ضمیر «من» درست نوشته شده است؟",
+              "options": [
+                {
+                  "text": "I",
+                  "ok": true,
+                  "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود."
+                },
+                {
+                  "text": "i",
+                  "ok": false,
+                  "why": "ضمیر I حتی وسط جمله هم باید با حرف بزرگ نوشته شود."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من دانشجو هستم.",
+              "frame": "___ am a student.",
+              "answer": "I",
+              "accept": [],
+              "why": "فاعلِ جمله «من» است، پس I می‌نویسیم.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "a",
+                  "fa": "یک"
+                },
+                {
+                  "en": "student",
+                  "fa": "دانشجو"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-ped-ambiguous-distractor",
+      "role": "pedagogical",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:in",
+      "expectedCriterion": "distractor_validity",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded assessment item with two options marked correct.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:in",
+          "headword": "in",
+          "contentVersion": "d7771c100883",
+          "order": 13,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:in",
+          "pos": "preposition",
+          "gloss": "در؛ داخلِ",
+          "meaning": "برای داخل یک فضا یا محدوده (in the box, in Tehran) و برای بازه‌های بزرگ زمانی: ماه، سال، فصل و بخش‌های روز (in May, in 2020, in the morning).",
+          "grammar": [
+            {
+              "pattern": "in + city / country / room",
+              "note": "برای شهر، کشور یا فضای درونی از in استفاده می‌کنیم: in Shiraz, in Iran, in the kitchen."
+            },
+            {
+              "pattern": "in + month / year / season",
+              "note": "برای ماه، سال و فصل از in استفاده می‌کنیم: in July, in 1999, in summer."
+            },
+            {
+              "pattern": "in the morning / afternoon / evening",
+              "note": "اما at night"
+            }
+          ],
+          "examples": [
+            {
+              "en": "My parents live in Kerman.",
+              "fa": "پدر و مادرم در کرمان زندگی می‌کنند."
+            },
+            {
+              "en": "I was born in 2005.",
+              "fa": "من در سال ۲۰۰۵ به دنیا آمدم."
+            },
+            {
+              "en": "The keys are in my bag.",
+              "fa": "کلیدها داخل کیف من هستند."
+            }
+          ],
+          "collocations": [
+            "in the morning",
+            "in time",
+            "in English",
+            "in front of"
+          ],
+          "collocationFa": {
+            "in the morning": "صبح / در صبح",
+            "in time": "به‌موقع؛ پیش از دیر شدن",
+            "in English": "به انگلیسی",
+            "in front of": "جلوی / روبه‌روی"
+          },
+          "usage": "برای شهر و کشور و نیز ماه و سال معمولاً in می‌آید؛ برای روزهای هفته on و برای ساعت مشخص at به کار می‌رود.",
+          "mistake": {
+            "wrong": "I'll see you in Monday.",
+            "wrongFa": "دوشنبه می‌بینمت؛ در انگلیسیِ غلط پیش از Monday از in استفاده شده است.",
+            "right": "I'll see you on Monday.",
+            "rightFa": "دوشنبه می‌بینمت؛ در انگلیسی پیش از Monday از on استفاده می‌شود.",
+            "why": "برای روزهای هفته on به کار می‌رود، نه in."
+          },
+          "pronunciation": {
+            "gb": "/ɪn/",
+            "us": "/ɪn/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is ___ Iran.",
+              "answer": "in",
+              "accept": [],
+              "fa": "او در ایران است.",
+              "why": "برای بودن داخل یک کشور یا محدوده از in استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «او در ایران است»، جای خالی را کامل کن: He is ___ Iran.",
+              "options": [
+                {
+                  "text": "in",
+                  "ok": true,
+                  "why": "in مکانِ داخل یک کشور یا محدوده را نشان می‌دهد."
+                },
+                {
+                  "text": "from",
+                  "ok": true,
+                  "why": "این گزینه هم به‌عنوان پاسخ درست علامت‌گذاری شده است."
+                },
+                {
+                  "text": "where",
+                  "ok": false,
+                  "why": "where واژهٔ پرسشی است."
+                }
+              ],
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "او داخل این مدرسه است.",
+              "frame": "He is ___ this school.",
+              "answer": "in",
+              "accept": [],
+              "why": "برای بودن داخل یک مکان از in استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "school",
+                  "fa": "مدرسه"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-ped-wrong-mistake-explanation",
+      "role": "pedagogical",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:from",
+      "expectedCriterion": "mistake_explanation_value",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded explanation teaches the exact opposite of the corrected sentence.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:from",
+          "headword": "from",
+          "contentVersion": "10f0cf91c4a7",
+          "order": 12,
+          "prerequisites": [
+            "lex:A1:where",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:from",
+          "pos": "preposition",
+          "gloss": "از",
+          "meaning": "نقطهٔ شروع (مکان یا زمان) یا منشأ: be from (اهل جایی بودن)، from … to …، a letter from Ali.",
+          "grammar": [
+            {
+              "pattern": "be from + place",
+              "note": "برای گفتن مبدأ یا اهل جایی بودن از be from استفاده می‌کنیم: I'm from Ahvaz."
+            },
+            {
+              "pattern": "from … to / until …",
+              "note": "برای نشان دادن بازهٔ شروع تا پایان از from … to/until … استفاده می‌کنیم: from 9 to 5, from Monday to Friday."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where are you from?",
+              "fa": "اهل کجایی؟"
+            },
+            {
+              "en": "I work from nine to five.",
+              "fa": "از نه تا پنج کار می‌کنم."
+            },
+            {
+              "en": "This letter is from my friend.",
+              "fa": "این نامه از طرف دوستم است."
+            }
+          ],
+          "collocations": [
+            "from … to …",
+            "far from",
+            "different from",
+            "a message from"
+          ],
+          "collocationFa": {
+            "from … to …": "از … تا …",
+            "far from": "دور از",
+            "different from": "متفاوت از",
+            "a message from": "پیامی از طرفِ"
+          },
+          "usage": "from مبدأِ مکان یا زمان و نیز فرستنده را نشان می‌دهد: from Tehran, from nine, a message from Sara.",
+          "mistake": {
+            "wrong": "I got a message of my friend.",
+            "wrongFa": "پیامی «متعلق به» دوستم گرفتم؛ of فرستنده را درست نشان نمی‌دهد.",
+            "right": "I got a message from my friend.",
+            "rightFa": "از دوستم پیامی گرفتم؛ from فرستنده را نشان می‌دهد.",
+            "why": "برای نشان دادن فرستنده باید of به کار ببریم و from در اینجا غلط است."
+          },
+          "pronunciation": {
+            "gb": "/frəm/; stressed /frɒm/",
+            "us": "/frəm/; stressed /frʌm/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I am ___ Iran.",
+              "answer": "from",
+              "accept": [],
+              "fa": "من اهل ایران هستم.",
+              "why": "be from برای گفتن محلِ اصلی یا زادگاه به کار می‌رود.",
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من اهل ایران هستم»، جای خالی را کامل کن: I am ___ Iran.",
+              "options": [
+                {
+                  "text": "from",
+                  "ok": true,
+                  "why": "I am from Iran یعنی «من اهل ایران هستم»."
+                },
+                {
+                  "text": "where",
+                  "ok": false,
+                  "why": "where واژهٔ پرسشیِ مکان است."
+                },
+                {
+                  "text": "what",
+                  "ok": false,
+                  "why": "what برای این ساختار مناسب نیست."
+                }
+              ],
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اهل یزد هستم.",
+              "frame": "I am ___ Yazd.",
+              "answer": "from",
+              "accept": [],
+              "why": "برای گفتن اهل کجا بودن، پس از be از from استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Yazd",
+                  "fa": "یزد"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-ped-duplicate-examples",
+      "role": "pedagogical",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:city",
+      "expectedCriterion": "example_distinctness",
+      "expectedResult": "FAIL",
+      "severity": "material",
+      "mutationDescription": "Seeded three identical examples to test pedagogical diversity detection.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:city",
+          "headword": "city",
+          "contentVersion": "3533be666583",
+          "order": 15,
+          "prerequisites": [
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:city",
+          "pos": "noun",
+          "gloss": "شهر (بزرگ)",
+          "meaning": "شهر؛ معمولاً از town بزرگ‌تر است، اما مرز دقیق این دو در کشورها متفاوت است.",
+          "grammar": [
+            {
+              "pattern": "in the city",
+              "note": "برای مکان می‌گوییم in the city: I live in the city."
+            },
+            {
+              "pattern": "city centre (BrE) / downtown (AmE)",
+              "note": "مرکز شهر"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            },
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            },
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            }
+          ],
+          "collocations": [
+            "city centre",
+            "capital city",
+            "big city",
+            "city life"
+          ],
+          "collocationFa": {
+            "city centre": "مرکز شهر",
+            "capital city": "پایتخت / شهرِ پایتخت",
+            "big city": "شهر بزرگ",
+            "city life": "زندگی شهری"
+          },
+          "mistake": {
+            "wrong": "I live in Tehran city.",
+            "wrongFa": "من در «شهر تهران» زندگی می‌کنم.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم.",
+            "why": "بعد از نام شهر معمولاً دوباره city نمی‌آوریم: in Tehran, in Shiraz."
+          },
+          "pronunciation": {
+            "gb": "/ˈsɪti/",
+            "us": "/ˈsɪti/, /ˈsɪdi/",
+            "note": "در آمریکایی t نرم است: «سیدی»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is in this ___.",
+              "answer": "city",
+              "accept": [],
+              "fa": "او در این شهر است.",
+              "why": "city یعنی «شهر»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «This is a ___» با معنی «این یک شهر است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "city",
+                  "ok": true,
+                  "why": "city یعنی «شهر»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این شهر من است.",
+              "frame": "This is my ___.",
+              "answer": "city",
+              "accept": [],
+              "why": "city یعنی «شهر»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-adv-clean-school",
+      "role": "adversarial",
+      "category": "clean",
+      "sourceTargetId": "lex:A1:school",
+      "expectedCriterion": null,
+      "expectedResult": "PASS",
+      "severity": "control",
+      "mutationDescription": "Unmodified certified A1 control.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:school",
+          "headword": "school",
+          "contentVersion": "01c0efca9fb6",
+          "order": 14,
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:school",
+          "pos": "noun",
+          "gloss": "مدرسه",
+          "meaning": "جایی که بچه‌ها درس می‌خوانند. برای «درس خواندن در مدرسه» بدون the: go to school, at school.",
+          "grammar": [
+            {
+              "pattern": "go to / be at / leave school",
+              "note": "بدون the: My son is at school."
+            },
+            {
+              "pattern": "the school (the building)",
+              "note": "وقتی منظور ساختمان مدرسه است، the می‌آید: I went to the school to meet the teacher."
+            }
+          ],
+          "examples": [
+            {
+              "en": "My children walk to school.",
+              "fa": "بچه‌هایم پیاده به مدرسه می‌روند."
+            },
+            {
+              "en": "What did you learn at school today?",
+              "fa": "امروز در مدرسه چه یاد گرفتی؟"
+            },
+            {
+              "en": "My school is in the city.",
+              "fa": "مدرسهٔ من در شهر است."
+            }
+          ],
+          "collocations": [
+            "go to school",
+            "at school",
+            "after school",
+            "high school"
+          ],
+          "collocationFa": {
+            "go to school": "به مدرسه رفتن (برای درس)",
+            "at school": "در مدرسه",
+            "after school": "بعد از مدرسه",
+            "high school": "دبیرستان"
+          },
+          "mistake": {
+            "wrong": "My daughter goes to the school by bus.",
+            "wrongFa": "دخترم با اتوبوس به «ساختمان آن مدرسه» می‌رود؛ the روی ساختمان مشخص تأکید می‌کند.",
+            "right": "My daughter goes to school by bus.",
+            "rightFa": "دخترم با اتوبوس به مدرسه می‌رود؛ برای هدفِ درس خواندن school بدون the می‌آید.",
+            "why": "وقتی برای درس خواندن می‌رود، school بدون the می‌آید."
+          },
+          "pronunciation": {
+            "gb": "/skuːl/",
+            "us": "/skuːl/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "Where is my ___?",
+              "answer": "school",
+              "accept": [],
+              "fa": "مدرسهٔ من کجاست؟",
+              "why": "school یعنی «مدرسه»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «He is in ___» با معنی «او در مدرسه است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "school",
+                  "ok": true,
+                  "why": "school یعنی «مدرسه» و جملهٔ He is in school را کامل می‌کند."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام» و معنی جمله را عوض می‌کند."
+                },
+                {
+                  "text": "who",
+                  "ok": false,
+                  "why": "who واژهٔ پرسشی برای آدم‌هاست."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این مدرسهٔ من است.",
+              "frame": "This is my ___.",
+              "answer": "school",
+              "accept": [],
+              "why": "school یعنی «مدرسه»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-adv-mistranslation",
+      "role": "adversarial",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:city",
+      "expectedCriterion": "no_mistranslation",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded translation reverses both time and busy/quiet meaning.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:city",
+          "headword": "city",
+          "contentVersion": "3533be666583",
+          "order": 15,
+          "prerequisites": [
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:city",
+          "pos": "noun",
+          "gloss": "شهر (بزرگ)",
+          "meaning": "شهر؛ معمولاً از town بزرگ‌تر است، اما مرز دقیق این دو در کشورها متفاوت است.",
+          "grammar": [
+            {
+              "pattern": "in the city",
+              "note": "برای مکان می‌گوییم in the city: I live in the city."
+            },
+            {
+              "pattern": "city centre (BrE) / downtown (AmE)",
+              "note": "مرکز شهر"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            },
+            {
+              "en": "The city centre is busy at night.",
+              "fa": "مرکز شهر صبح‌ها خلوت است."
+            },
+            {
+              "en": "I live in a small city.",
+              "fa": "من در یک شهر کوچک زندگی می‌کنم."
+            }
+          ],
+          "collocations": [
+            "city centre",
+            "capital city",
+            "big city",
+            "city life"
+          ],
+          "collocationFa": {
+            "city centre": "مرکز شهر",
+            "capital city": "پایتخت / شهرِ پایتخت",
+            "big city": "شهر بزرگ",
+            "city life": "زندگی شهری"
+          },
+          "mistake": {
+            "wrong": "I live in Tehran city.",
+            "wrongFa": "من در «شهر تهران» زندگی می‌کنم.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم.",
+            "why": "بعد از نام شهر معمولاً دوباره city نمی‌آوریم: in Tehran, in Shiraz."
+          },
+          "pronunciation": {
+            "gb": "/ˈsɪti/",
+            "us": "/ˈsɪti/, /ˈsɪdi/",
+            "note": "در آمریکایی t نرم است: «سیدی»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is in this ___.",
+              "answer": "city",
+              "accept": [],
+              "fa": "او در این شهر است.",
+              "why": "city یعنی «شهر»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «This is a ___» با معنی «این یک شهر است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "city",
+                  "ok": true,
+                  "why": "city یعنی «شهر»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این شهر من است.",
+              "frame": "This is my ___.",
+              "answer": "city",
+              "accept": [],
+              "why": "city یعنی «شهر»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-adv-misleading-gloss",
+      "role": "adversarial",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:from",
+      "expectedCriterion": "no_misleading_gloss",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded incorrect primary Persian gloss for from.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:from",
+          "headword": "from",
+          "contentVersion": "10f0cf91c4a7",
+          "order": 12,
+          "prerequisites": [
+            "lex:A1:where",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:from",
+          "pos": "preposition",
+          "gloss": "برای",
+          "meaning": "نقطهٔ شروع (مکان یا زمان) یا منشأ: be from (اهل جایی بودن)، from … to …، a letter from Ali.",
+          "grammar": [
+            {
+              "pattern": "be from + place",
+              "note": "برای گفتن مبدأ یا اهل جایی بودن از be from استفاده می‌کنیم: I'm from Ahvaz."
+            },
+            {
+              "pattern": "from … to / until …",
+              "note": "برای نشان دادن بازهٔ شروع تا پایان از from … to/until … استفاده می‌کنیم: from 9 to 5, from Monday to Friday."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where are you from?",
+              "fa": "اهل کجایی؟"
+            },
+            {
+              "en": "I work from nine to five.",
+              "fa": "از نه تا پنج کار می‌کنم."
+            },
+            {
+              "en": "This letter is from my friend.",
+              "fa": "این نامه از طرف دوستم است."
+            }
+          ],
+          "collocations": [
+            "from … to …",
+            "far from",
+            "different from",
+            "a message from"
+          ],
+          "collocationFa": {
+            "from … to …": "از … تا …",
+            "far from": "دور از",
+            "different from": "متفاوت از",
+            "a message from": "پیامی از طرفِ"
+          },
+          "usage": "from مبدأِ مکان یا زمان و نیز فرستنده را نشان می‌دهد: from Tehran, from nine, a message from Sara.",
+          "mistake": {
+            "wrong": "I got a message of my friend.",
+            "wrongFa": "پیامی «متعلق به» دوستم گرفتم؛ of فرستنده را درست نشان نمی‌دهد.",
+            "right": "I got a message from my friend.",
+            "rightFa": "از دوستم پیامی گرفتم؛ from فرستنده را نشان می‌دهد.",
+            "why": "برای فرستنده from به کار می‌رود، نه of."
+          },
+          "pronunciation": {
+            "gb": "/frəm/; stressed /frɒm/",
+            "us": "/frəm/; stressed /frʌm/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I am ___ Iran.",
+              "answer": "from",
+              "accept": [],
+              "fa": "من اهل ایران هستم.",
+              "why": "be from برای گفتن محلِ اصلی یا زادگاه به کار می‌رود.",
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من اهل ایران هستم»، جای خالی را کامل کن: I am ___ Iran.",
+              "options": [
+                {
+                  "text": "from",
+                  "ok": true,
+                  "why": "I am from Iran یعنی «من اهل ایران هستم»."
+                },
+                {
+                  "text": "where",
+                  "ok": false,
+                  "why": "where واژهٔ پرسشیِ مکان است."
+                },
+                {
+                  "text": "what",
+                  "ok": false,
+                  "why": "what برای این ساختار مناسب نیست."
+                }
+              ],
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اهل یزد هستم.",
+              "frame": "I am ___ Yazd.",
+              "answer": "from",
+              "accept": [],
+              "why": "برای گفتن اهل کجا بودن، پس از be از from استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Yazd",
+                  "fa": "یزد"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-adv-curriculum-leak",
+      "role": "adversarial",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:live",
+      "expectedCriterion": "no_curriculum_leak",
+      "expectedResult": "FAIL",
+      "severity": "material",
+      "mutationDescription": "Seeded clearly above-A1 vocabulary into an A1 example.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:live",
+          "headword": "live",
+          "contentVersion": "e58d7f25a052",
+          "order": 16,
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:in",
+            "lex:A1:city"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:live",
+          "pos": "verb",
+          "gloss": "زندگی کردن؛ ساکن بودن",
+          "meaning": "خانه داشتن در جایی، یا زنده بودن.",
+          "grammar": [
+            {
+              "pattern": "live in + city / country",
+              "note": "برای شهر یا کشور بعد از live از in استفاده می‌کنیم: We live in Karaj."
+            },
+            {
+              "pattern": "live with + person",
+              "note": "برای کسی که با او زندگی می‌کنیم از with استفاده می‌کنیم: I live with my parents."
+            },
+            {
+              "pattern": "live at + address",
+              "note": "برای نشانی دقیق می‌توان از at استفاده کرد: She lives at 12 Park Street."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where do you live?",
+              "fa": "کجا زندگی می‌کنی؟"
+            },
+            {
+              "en": "My grandmother lives alone.",
+              "fa": "مادربزرگم تنها زندگی می‌کند."
+            },
+            {
+              "en": "He resides in this ubiquitous metropolitan conurbation.",
+              "fa": "او در این کلان‌شهر فراگیر زندگی می‌کند."
+            }
+          ],
+          "collocations": [
+            "live in",
+            "live with",
+            "live alone"
+          ],
+          "collocationFa": {
+            "live in": "در … زندگی کردن",
+            "live with": "با … زندگی کردن",
+            "live alone": "تنها زندگی کردن"
+          },
+          "mistake": {
+            "wrong": "I live at Tehran.",
+            "wrongFa": "من در تهران زندگی می‌کنم؛ در انگلیسیِ غلط برای شهر از at استفاده شده است.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم؛ در انگلیسی برای شهر از in استفاده می‌شود.",
+            "why": "برای شهر و کشور بعد از live معمولاً in می‌آید: live in Tehran, live in Iran. at بیشتر برای نشانی دقیق است."
+          },
+          "pronunciation": {
+            "gb": "/lɪv/",
+            "us": "/lɪv/",
+            "note": "i کوتاه است: «لیو»؛ صفتِ live (زنده، پخش زنده) /laɪv/ خوانده می‌شود."
+          },
+          "tts": {
+            "gb": "lˈɪv",
+            "us": "lˈɪv"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I ___ in this city.",
+              "answer": "live",
+              "accept": [],
+              "fa": "من در این شهر زندگی می‌کنم.",
+              "why": "live یعنی «زندگی کردن؛ ساکن بودن»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من در این شهر زندگی می‌کنم» کدام جمله درست است؟",
+              "options": [
+                {
+                  "text": "I live in this city.",
+                  "ok": true,
+                  "why": "این جمله محل زندگی را بیان می‌کند."
+                },
+                {
+                  "text": "I am in this city.",
+                  "ok": false,
+                  "why": "این جمله فقط می‌گوید اکنون در این شهر هستم."
+                },
+                {
+                  "text": "Where is this city?",
+                  "ok": false,
+                  "why": "این یک سؤال دربارهٔ مکان شهر است."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اینجا زندگی می‌کنم.",
+              "frame": "I ___ here.",
+              "answer": "live",
+              "accept": [],
+              "why": "برای گفتن محل زندگی از live استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "here",
+                  "fa": "اینجا"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-adv-answer-leakage",
+      "role": "adversarial",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:city",
+      "expectedCriterion": "no_answer_leakage",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded direct answer leakage in the learner-facing prompt.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:city",
+          "headword": "city",
+          "contentVersion": "3533be666583",
+          "order": 15,
+          "prerequisites": [
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:city",
+          "pos": "noun",
+          "gloss": "شهر (بزرگ)",
+          "meaning": "شهر؛ معمولاً از town بزرگ‌تر است، اما مرز دقیق این دو در کشورها متفاوت است.",
+          "grammar": [
+            {
+              "pattern": "in the city",
+              "note": "برای مکان می‌گوییم in the city: I live in the city."
+            },
+            {
+              "pattern": "city centre (BrE) / downtown (AmE)",
+              "note": "مرکز شهر"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            },
+            {
+              "en": "The city centre is busy at night.",
+              "fa": "مرکز شهر شب‌ها شلوغ است."
+            },
+            {
+              "en": "I live in a small city.",
+              "fa": "من در یک شهر کوچک زندگی می‌کنم."
+            }
+          ],
+          "collocations": [
+            "city centre",
+            "capital city",
+            "big city",
+            "city life"
+          ],
+          "collocationFa": {
+            "city centre": "مرکز شهر",
+            "capital city": "پایتخت / شهرِ پایتخت",
+            "big city": "شهر بزرگ",
+            "city life": "زندگی شهری"
+          },
+          "mistake": {
+            "wrong": "I live in Tehran city.",
+            "wrongFa": "من در «شهر تهران» زندگی می‌کنم.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم.",
+            "why": "بعد از نام شهر معمولاً دوباره city نمی‌آوریم: in Tehran, in Shiraz."
+          },
+          "pronunciation": {
+            "gb": "/ˈsɪti/",
+            "us": "/ˈsɪti/, /ˈsɪdi/",
+            "note": "در آمریکایی t نرم است: «سیدی»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is in this ___.",
+              "answer": "city",
+              "accept": [],
+              "fa": "او در این شهر است.",
+              "why": "city یعنی «شهر»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام واژه درست است؟ (پاسخ درست: city)",
+              "options": [
+                {
+                  "text": "city",
+                  "ok": true,
+                  "why": "city یعنی «شهر»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این شهر من است.",
+              "frame": "This is my ___.",
+              "answer": "city",
+              "accept": [],
+              "why": "city یعنی «شهر»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-adv-persian-contradiction",
+      "role": "adversarial",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:in",
+      "expectedCriterion": "no_persian_contradiction",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded Persian usage note contradicts the same target's mistake explanation and correct rule.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:in",
+          "headword": "in",
+          "contentVersion": "d7771c100883",
+          "order": 13,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:in",
+          "pos": "preposition",
+          "gloss": "در؛ داخلِ",
+          "meaning": "برای داخل یک فضا یا محدوده (in the box, in Tehran) و برای بازه‌های بزرگ زمانی: ماه، سال، فصل و بخش‌های روز (in May, in 2020, in the morning).",
+          "grammar": [
+            {
+              "pattern": "in + city / country / room",
+              "note": "برای شهر، کشور یا فضای درونی از in استفاده می‌کنیم: in Shiraz, in Iran, in the kitchen."
+            },
+            {
+              "pattern": "in + month / year / season",
+              "note": "برای ماه، سال و فصل از in استفاده می‌کنیم: in July, in 1999, in summer."
+            },
+            {
+              "pattern": "in the morning / afternoon / evening",
+              "note": "اما at night"
+            }
+          ],
+          "examples": [
+            {
+              "en": "My parents live in Kerman.",
+              "fa": "پدر و مادرم در کرمان زندگی می‌کنند."
+            },
+            {
+              "en": "I was born in 2005.",
+              "fa": "من در سال ۲۰۰۵ به دنیا آمدم."
+            },
+            {
+              "en": "The keys are in my bag.",
+              "fa": "کلیدها داخل کیف من هستند."
+            }
+          ],
+          "collocations": [
+            "in the morning",
+            "in time",
+            "in English",
+            "in front of"
+          ],
+          "collocationFa": {
+            "in the morning": "صبح / در صبح",
+            "in time": "به‌موقع؛ پیش از دیر شدن",
+            "in English": "به انگلیسی",
+            "in front of": "جلوی / روبه‌روی"
+          },
+          "usage": "برای روزهای هفته همیشه in به کار می‌رود؛ مثال: in Monday.",
+          "mistake": {
+            "wrong": "I'll see you in Monday.",
+            "wrongFa": "دوشنبه می‌بینمت؛ در انگلیسیِ غلط پیش از Monday از in استفاده شده است.",
+            "right": "I'll see you on Monday.",
+            "rightFa": "دوشنبه می‌بینمت؛ در انگلیسی پیش از Monday از on استفاده می‌شود.",
+            "why": "برای روزهای هفته on به کار می‌رود، نه in."
+          },
+          "pronunciation": {
+            "gb": "/ɪn/",
+            "us": "/ɪn/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is ___ Iran.",
+              "answer": "in",
+              "accept": [],
+              "fa": "او در ایران است.",
+              "why": "برای بودن داخل یک کشور یا محدوده از in استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «او در ایران است»، جای خالی را کامل کن: He is ___ Iran.",
+              "options": [
+                {
+                  "text": "in",
+                  "ok": true,
+                  "why": "in مکانِ داخل یک کشور یا محدوده را نشان می‌دهد."
+                },
+                {
+                  "text": "from",
+                  "ok": false,
+                  "why": "from در این ساختار یعنی «اهلِ ایران»."
+                },
+                {
+                  "text": "where",
+                  "ok": false,
+                  "why": "where واژهٔ پرسشی است."
+                }
+              ],
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "او داخل این مدرسه است.",
+              "frame": "He is ___ this school.",
+              "answer": "in",
+              "accept": [],
+              "why": "برای بودن داخل یک مکان از in استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "school",
+                  "fa": "مدرسه"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cal-adv-ambiguous-task",
+      "role": "adversarial",
+      "category": "defect",
+      "sourceTargetId": "lex:A1:a-an",
+      "expectedCriterion": "no_ambiguous_task",
+      "expectedResult": "FAIL",
+      "severity": "critical",
+      "mutationDescription": "Seeded learner task with mutually exclusive options both marked correct.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:a-an",
+          "headword": "a, an",
+          "contentVersion": "69fa9030d23f",
+          "order": 2,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:a-an",
+          "pos": "article",
+          "gloss": "یک (حرف تعریف نامعین)",
+          "meaning": "پیش از اسم مفردِ قابل‌شمارش می‌آید، وقتی از یک چیز یا یک نفرِ نامشخص حرف می‌زنیم یا برای اولین بار از آن نام می‌بریم. پیش از صدای صامت a و پیش از صدای مصوت an می‌آید.",
+          "grammar": [
+            {
+              "pattern": "a + consonant sound / an + vowel sound",
+              "note": "انتخاب a یا an به صدای اولِ کلمهٔ بعد بستگی دارد، نه به حرفِ نوشته‌شده: a university (با صدای «یو»)، an hour (h خوانده نمی‌شود)."
+            },
+            {
+              "pattern": "be + a/an + job",
+              "note": "در فارسی می‌گوییم «او پزشک است»، اما در انگلیسی پیش از شغل a/an لازم است: She is a doctor."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I have a sister and an older brother.",
+              "fa": "من یک خواهر و یک برادرِ بزرگ‌تر دارم."
+            },
+            {
+              "en": "She is an engineer.",
+              "fa": "او مهندس است."
+            },
+            {
+              "en": "This is a new book.",
+              "fa": "این یک کتاب جدید است."
+            }
+          ],
+          "collocations": [
+            "a lot of",
+            "an hour",
+            "once a week",
+            "a little"
+          ],
+          "collocationFa": {
+            "a lot of": "مقدار یا تعداد زیادی از",
+            "an hour": "یک ساعت",
+            "once a week": "هفته‌ای یک‌بار",
+            "a little": "کمی"
+          },
+          "usage": "a/an فقط پیش از اسم مفردِ قابل‌شمارش می‌آید. با اسم جمع یا اسم غیرقابل‌شمارش معمولاً a/an نمی‌آید.",
+          "mistake": {
+            "wrong": "He is teacher.",
+            "wrongFa": "او معلم است؛ در جملهٔ انگلیسیِ غلط، پیش از teacher حرف تعریف نیامده است.",
+            "right": "He is a teacher.",
+            "rightFa": "او یک معلم است؛ در انگلیسی پیش از teacher حرف تعریف a آمده است.",
+            "why": "برای گفتن شغل یا نوعِ چیزی، پیش از اسم مفرد a/an لازم است، حتی وقتی در فارسی «یک» نمی‌گوییم."
+          },
+          "pronunciation": {
+            "gb": "/ə/, /ən/; stressed /eɪ/, /æn/",
+            "us": "/ə/, /ən/; stressed /eɪ/, /æn/",
+            "note": "معمولاً ضعیف و بی‌تأکید خوانده می‌شود: «اِ» و «اِن»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ apple",
+              "answer": "an",
+              "accept": [],
+              "fa": "یک سیب",
+              "why": "apple با صدای مصوت شروع می‌شود، پس an می‌آید.",
+              "support": [
+                {
+                  "en": "apple",
+                  "fa": "سیب"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "پیش از book کدام حرف تعریف درست است؟",
+              "options": [
+                {
+                  "text": "a",
+                  "ok": true,
+                  "why": "book با صدای صامت /b/ شروع می‌شود."
+                },
+                {
+                  "text": "an",
+                  "ok": true,
+                  "why": "an پیش از صدای مصوت می‌آید."
+                }
+              ],
+              "support": [
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«یک مهندس» را کامل کن.",
+              "frame": "___ engineer",
+              "answer": "an",
+              "accept": [],
+              "why": "engineer با صدای مصوت شروع می‌شود، پس an می‌آید.",
+              "support": [
+                {
+                  "en": "engineer",
+                  "fa": "مهندس"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
