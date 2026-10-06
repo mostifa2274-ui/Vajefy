@@ -919,3 +919,42 @@ no longer flag. `generate_audio.py --rescore` re-checked the committed report
 without the model: 292 flags became 174 (114 US, 60 GB, 123 senses). Real
 differences (strong/weak forms, dropped sounds, vowel quality) still flag and
 await audio certification (plan §12).
+
+## Completed — PR #113 Pronunciation notation
+
+Merged as `046eecb358f3cb3622fa558d29b900d533394f72`.
+
+## Unattended judge calibration and qualification
+
+The owner asked for calibration and qualification with no person in the loop,
+at the highest quality the free allocation allows. There is no longer a manual
+dispatch step. `content/assurance/semantic/AUTOMATION.md` has the full design.
+
+- **Candidates.** Each role has free Workers AI candidates, strongest first.
+  They were registered before any fallback produced results, and they are
+  mirrored exactly in the Worker's allowlist. Paid-only models are excluded.
+  Each candidate's token limit keeps its full v1 campaign at or under 8,500
+  Neurons.
+- **Planner.** The planner keeps qualified judges. For each other role, it
+  activates the first candidate that is not rejected, is eligible, and uses a
+  model family no other judge uses. Roles settle in order, so a later role
+  never takes a weaker judge while an earlier role might still free a stronger
+  family. Each run calibrates at most one role, and only if that role's
+  campaign fits what the day's usage log leaves under the ceiling.
+- **Outcomes.** Each campaign is scored against the frozen v1 gate. The
+  candidate is then qualified (`qualified.json` and `results/`) or rejected
+  (`rejected.json` with metrics). Model-output failures reject a candidate only
+  after 3 attempts on 2 UTC days. Gateway faults never reject one.
+- **Spending.** Attempts are charged at their upper bound. Measured Workers AI
+  token usage is logged next to each charge. The rates and paid-only list are
+  re-verified from Cloudflare's pricing page before each campaign. The check
+  fails closed if the free allocation falls below the ceiling.
+- **Seeded state.** English rejections: GPT-OSS 120B (no valid output, 900/900
+  tokens) and Llama 3.3 70B (did not promote: 0.0% defect recall), both run
+  37473550090. The 2026-10-06 allocation is reserved as spent, because that
+  day's manual attempts were not measured.
+
+Active judges are English Nemotron 3 120B, Persian Kimi K2.5, pedagogy
+Gemma 4 26B and adversarial Qwen3 30B. Pedagogy and adversarial rank
+Nemotron first, so they wait until English settles. Thresholds and gold labels
+are unchanged.

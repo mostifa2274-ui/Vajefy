@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "3bd542860f5a317caef30341a81c9132157e1b36",
+  "authoritativeMain": "046eecb358f3cb3622fa558d29b900d533394f72",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -111,6 +111,12 @@
       "mergeCommit": "3bd542860f5a317caef30341a81c9132157e1b36",
       "pr": 112,
       "summary": "Per-sense fail-closed Machine Assurance Records bound to semantic input hashes; generation provenance for every A1 entry. First implementation package (plan §41) complete except Gate 0 rights."
+    },
+    {
+      "id": "pronunciation-normalization",
+      "mergeCommit": "046eecb358f3cb3622fa558d29b900d533394f72",
+      "pr": 113,
+      "summary": "Audio flags separate notation differences from real pronunciation mismatches: 292 flags became 174."
     }
   ],
   "doNotRepeat": [
@@ -140,7 +146,10 @@
     "Do not promote or re-run Llama 3.3 70B as the English v1 judge: frozen v1 scoring rejected it on run 37473550090 attempt 10 (defect recall 0.0%).",
     "Do not rebuild the status ledger or its CI check; update rows in docs/A1_PLAN_STATUS.md in the same pull request as the work.",
     "Do not rebuild the C1 ratchet or the course-wide curriculum-frontier check; repair content against them and lower the baseline with npm run assurance:content:baseline.",
-    "Do not rebuild Machine Assurance Records or generation provenance; regenerate with npm run assurance:records and record content changes with npm run content:provenance -- --generator <id>."
+    "Do not rebuild Machine Assurance Records or generation provenance; regenerate with npm run assurance:records and record content changes with npm run content:provenance -- --generator <id>.",
+    "Do not rebuild the unattended calibration (planner, record/reserve/check, rates refresh, scheduled semantic-calibrate.yml); see content/assurance/semantic/AUTOMATION.md.",
+    "Do not dispatch calibration by hand to work around the planner's order or the daily ceiling, and do not edit presets roles by hand; run npm run assurance:semantic:automation -- plan.",
+    "Do not re-order or remove pre-registered candidates after they have produced results; add new ones at the end, or create a new calibration version."
   ],
   "blockers": [
     {
@@ -184,14 +193,17 @@
   "currentWork": {
     "blocked": false,
     "branch": "claude/analysis-in-depth-maqczd",
-    "objective": "Plan Phase 1 pronunciation normalization: separate notation differences from real pronunciation mismatches in audio flags.",
+    "objective": "Unattended semantic judge calibration and qualification at no charge (owner request, 2026-10-06).",
     "completedOnBranch": [
-      "generate_audio.py treats syllabic consonants, NEAR/CURE notation, final happY and multi-form headwords as notation; --rescore re-checks existing flags without the model.",
-      "audio-report.json: 292 -> 174 flags; dependent checks unchanged; records regenerated."
+      "Gateway candidate registry: each role has pre-registered free Workers AI candidates, strongest first; the Worker runs only allowlisted candidates and returns measured token usage.",
+      "Planner (src/lib/learn/semantic-automation.ts): keeps qualified judges, activates the first unrejected, eligible, family-distinct candidate per role, settles roles in order, and picks one campaign that fits the day's remaining 8,500-Neuron ceiling.",
+      "scripts/semantic-automation.ts plan/record/reserve/check; scripts/semantic-rates.ts --refresh re-verifies Workers AI rates and paid-only models from Cloudflare's pricing page.",
+      "semantic-calibrate.yml runs on schedule 17 */6 * * * under content/assurance/semantic/automation.json and commits only its own records.",
+      "Ledgers: calibration/rejected.json (GPT-OSS 120B and Llama 3.3 70B for English), calibration/automation-log.json (2026-10-06 reserved as spent)."
     ],
     "pending": [
+      "After merge and Worker deploy: the first scheduled run on or after 2026-10-07 00:17 UTC calibrates English with Nemotron 3 120B; Persian (Kimi K2.5) runs on another day; pedagogy and adversarial wait for English to settle.",
       "Owner decisions: Gate 0 rights; A1-FRONTIER-REPAIR (move late high-frequency words earlier, which changes the curriculum version and frozen study roster); P1-CHUNK-DECKS (reduce the Library to material linked from A1).",
-      "Semantic lane: English needs a new candidate that is not GPT-OSS 120B or Llama 3.3 70B, without changing frozen v1; Persian, pedagogical and adversarial each need one owner workflow_dispatch.",
       "P2-REPAIR-LOOP: automated field-level repair (plan §8); it needs qualified judges to verify repairs, so it waits on P2-CALIBRATION.",
       "P3-AUDIO-CERT: audio certification (plan §12) for the remaining 174 flags."
     ]
@@ -232,12 +244,7 @@
     "transport": "github-actions-oidc -> vajefy Worker -> Workers AI binding",
     "apiKeysRequired": false,
     "repositoryVariablesRequired": false,
-    "models": {
-      "english": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-      "persian": "@cf/zai-org/glm-4.7-flash",
-      "pedagogical": "@cf/google/gemma-4-26b-a4b-it",
-      "adversarial": "@cf/qwen/qwen3-30b-a3b-fp8"
-    },
+    "models": "Active judges and every role's candidates: content/assurance/semantic/keyless-provider-presets.json (roles, candidates).",
     "security": [
       "GitHub OIDC signature/JWKS verification",
       "exact repository/main/workflow claims",
@@ -268,14 +275,10 @@
   },
   "executionBoundary": {
     "checkedAt": "2026-10-06",
-    "connectedGithubWorkflowDispatchCapability": false,
-    "availableGithubActionsWrites": [
-      "rerun failed workflow jobs",
-      "rerun individual workflow job"
-    ],
-    "unavailableRequiredAction": "workflow_dispatch with inputs",
-    "policy": "Do not add automatic inference triggers or weaken workflow_dispatch/OIDC restrictions to compensate for connector limitations.",
-    "nextHumanAction": "From GitHub Actions on main, run 'Semantic judge calibration and qualification' once for each role: english, persian, pedagogical, adversarial, with acknowledge_inference=true."
+    "calibration": "Unattended: semantic-calibrate.yml runs on its schedule under content/assurance/semantic/automation.json, within the free daily Workers AI allocation, and commits its outcomes to main.",
+    "unit1Judging": "semantic-judge.yml stays workflow_dispatch-only with explicit acknowledge_inference; it needs all four roles qualified.",
+    "policy": "No push, pull_request or repository_dispatch inference triggers; no schedule other than semantic-calibrate.yml; no API-key providers; no paid inference.",
+    "nextHumanAction": "None for calibration. A person is needed only if a role runs out of candidates (status exhausted) or to set enabled=false in automation.json."
   },
   "calibrationExecution": {
     "english": {
@@ -342,6 +345,24 @@
         "note": "No repeat produced FAIL on a defect case's expected criterion. Overall FAIL statuses on cal-en-grammar-agreement (repeats 2-3) and cal-en-sense-live (repeat 1) do not count toward recall, which is criterion-level.",
         "qualificationRecorded": false
       }
+    },
+    "automation": {
+      "status": "BUILT_NOT_YET_RUN",
+      "config": "content/assurance/semantic/automation.json",
+      "schedule": "17 */6 * * *",
+      "dailyNeuronCeiling": 8500,
+      "failurePolicy": "Reject as no-valid-output after 3 model-output failures on at least 2 UTC days; gateway faults never reject.",
+      "activeJudges": {
+        "english": "@cf/nvidia/nemotron-3-120b-a12b",
+        "persian": "@cf/moonshotai/kimi-k2.5",
+        "pedagogical": "@cf/google/gemma-4-26b-a4b-it",
+        "adversarial": "@cf/qwen/qwen3-30b-a3b-fp8"
+      },
+      "ledgers": [
+        "content/assurance/semantic/calibration/qualified.json",
+        "content/assurance/semantic/calibration/rejected.json",
+        "content/assurance/semantic/calibration/automation-log.json"
+      ]
     }
   },
   "statusLedger": {

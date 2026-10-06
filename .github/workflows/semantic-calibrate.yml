@@ -1,43 +1,44 @@
 name: Semantic judge calibration and qualification
 
+# Unattended under content/assurance/semantic/automation.json. Each run, the
+# planner picks at most one pre-registered free Workers AI candidate whose
+# frozen v1 campaign fits what is left of the day's free Neuron ceiling, then
+# qualifies or rejects it, or logs a failed attempt, and commits the outcome
+# to main. See content/assurance/semantic/AUTOMATION.md.
+
 on:
+  schedule:
+    - cron: "17 */6 * * *"
   workflow_dispatch:
     inputs:
       role:
-        description: Judge role to calibrate and qualify
+        description: Role to calibrate; auto lets the planner choose
         required: true
         type: choice
+        default: auto
         options:
+          - auto
           - english
           - persian
           - pedagogical
           - adversarial
-      replace_existing:
-        description: Replace an existing qualification only after intentional re-calibration
-        required: true
-        type: boolean
-        default: false
-      acknowledge_inference:
-        description: I explicitly authorize three free-allocation calibration inference runs for this role
-        required: true
-        type: boolean
-        default: false
 
 permissions:
   contents: write
   id-token: write
 
 concurrency:
-  group: semantic-calibration-${{ inputs.role }}
+  group: semantic-calibration
   cancel-in-progress: false
 
 jobs:
   calibrate:
-    if: ${{ github.ref == 'refs/heads/main' && inputs.acknowledge_inference }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 75
     env:
       SEMANTIC_JUDGE_TRANSPORT: keyless
+      ROLE_INPUT: ${{ inputs.role || 'auto' }}
 
     steps:
       - uses: actions/checkout@v5
@@ -52,128 +53,123 @@ jobs:
 
       - run: npm ci
 
-      - name: Select frozen calibration packet
-        shell: bash
-        env:
-          ROLE: ${{ inputs.role }}
-        run: |
-          set -euo pipefail
-          PACKET="content/assurance/semantic/calibration/v1/packets/${ROLE}.json"
-          test -f "$PACKET"
-          echo "SEMANTIC_PACKET=$PACKET" >> "$GITHUB_ENV"
+      - name: Plan without network or inference
+        id: first
+        run: npm run assurance:semantic:automation -- plan --role "$ROLE_INPUT" --github-output
+
+      - name: Re-verify Workers AI rates
+        id: rates
+        if: ${{ steps.first.outputs.action == 'calibrate' }}
+        run: npm run assurance:semantic:rates:refresh -- --github-output
+
+      - name: Re-plan on verified rates
+        id: plan
+        if: ${{ steps.first.outputs.action == 'calibrate' }}
+        run: npm run assurance:semantic:automation -- plan --role "$ROLE_INPUT" --github-output
 
       - name: Verify current zero-cost calibration budget
+        if: ${{ steps.plan.outputs.action == 'calibrate' }}
         run: npm run assurance:semantic:budget:current
 
       - name: Keyless no-inference gateway preflight
+        if: ${{ steps.plan.outputs.action == 'calibrate' }}
         env:
-          ROLE: ${{ inputs.role }}
+          ROLE: ${{ steps.plan.outputs.role }}
         run: npm run assurance:semantic:keyless:preflight -- --role "$ROLE"
 
-      - name: Run three isolated calibration repeats
+      # Write-ahead: the campaign's full Neuron bound is charged on main before
+      # any inference, so a run that later fails to record cannot hide its
+      # usage from the next run. No push, no inference.
+      - name: Reserve the campaign on main before inference
+        if: ${{ steps.plan.outputs.action == 'calibrate' }}
         shell: bash
         env:
-          ROLE: ${{ inputs.role }}
+          ROLE: ${{ steps.plan.outputs.role }}
+          NEURONS: ${{ steps.plan.outputs.neurons }}
         run: |
           set -euo pipefail
+          npm run assurance:semantic:automation -- reserve \
+            --run-id "${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT}" \
+            --neurons "$NEURONS"
+          scripts/semantic-calibration-commit.sh "$ROLE" \
+            "Semantic calibration: reserve ${ROLE} (run ${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT})"
+
+      - name: Run three isolated calibration repeats
+        id: repeats
+        if: ${{ steps.plan.outputs.action == 'calibrate' }}
+        timeout-minutes: 45
+        continue-on-error: true
+        shell: bash
+        env:
+          ROLE: ${{ steps.plan.outputs.role }}
+        run: |
+          set -uo pipefail
+          PACKET="content/assurance/semantic/calibration/v1/packets/${ROLE}.json"
+          test -f "$PACKET"
           for REPEAT in 1 2 3; do
-            RUN_ID="cal-v1-${ROLE}-${GITHUB_RUN_ID}-${REPEAT}"
-            npm run assurance:semantic:judge -- \
+            ATTEMPT="calibration-attempt-${ROLE}-${REPEAT}.json"
+            # Marks the repeat as started; the runner overwrites it with what it spent.
+            echo '{"status":"started"}' > "$ATTEMPT"
+            if ! npm run assurance:semantic:judge -- \
               --role "$ROLE" \
-              --packet "$SEMANTIC_PACKET" \
-              --run-id "$RUN_ID" \
-              --output "calibration-${ROLE}-${REPEAT}.json"
+              --packet "$PACKET" \
+              --run-id "cal-v1-${ROLE}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${REPEAT}" \
+              --output "calibration-${ROLE}-${REPEAT}.json" \
+              --attempt-output "$ATTEMPT"; then
+              echo "Repeat ${REPEAT} failed; the remaining repeats are skipped to save the allocation."
+              exit 1
+            fi
           done
 
-      - name: Score against pre-registered Vajefy gate
+      - name: Record the outcome and activate the next judges
+        id: record
+        if: ${{ !cancelled() && steps.repeats.outcome != 'skipped' && steps.plan.outputs.action == 'calibrate' }}
         shell: bash
         env:
-          ROLE: ${{ inputs.role }}
-        run: |
-          set -euo pipefail
-          npm run assurance:semantic:calibration:score -- \
-            --role "$ROLE" \
-            --run "calibration-${ROLE}-1.json" \
-            --run "calibration-${ROLE}-2.json" \
-            --run "calibration-${ROLE}-3.json" \
-            --output "calibration-report-${ROLE}.json" \
-            --require-promote
-
-      - name: Record qualification only after strict promotion
-        shell: bash
-        env:
-          ROLE: ${{ inputs.role }}
-          REPLACE: ${{ inputs.replace_existing }}
+          ROLE: ${{ steps.plan.outputs.role }}
         run: |
           set -euo pipefail
           ARGS=(
             --role "$ROLE"
-            --run "calibration-${ROLE}-1.json"
-            --run "calibration-${ROLE}-2.json"
-            --run "calibration-${ROLE}-3.json"
+            --run-id "${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT}"
+            --report "calibration-report-${ROLE}.json"
+            --github-output
           )
-          if [ "$REPLACE" = "true" ]; then
-            ARGS+=(--replace)
+          for REPEAT in 1 2 3; do
+            ARGS+=(--run "calibration-${ROLE}-${REPEAT}.json")
+            ARGS+=(--attempt "calibration-attempt-${ROLE}-${REPEAT}.json")
+          done
+          npm run assurance:semantic:automation -- record "${ARGS[@]}"
+
+      - name: Commit only automation records
+        if: ${{ always() && steps.first.outputs.action == 'calibrate' }}
+        shell: bash
+        env:
+          ROLE: ${{ steps.plan.outputs.role }}
+          OUTCOME: ${{ steps.record.outputs.outcome }}
+          RECORD: ${{ steps.record.outcome }}
+        run: |
+          set -euo pipefail
+          if [ "$RECORD" = "failure" ]; then
+            # Keep the reservation already on main; drop partial writes.
+            git checkout -- content/assurance/semantic
+            git clean -fdq -- content/assurance/semantic
           fi
-          npm run assurance:semantic:qualification:record -- "${ARGS[@]}"
-          npm run assurance:semantic:qualification:check -- --role "$ROLE"
-
-      - name: Stage auditable result
-        shell: bash
-        env:
-          ROLE: ${{ inputs.role }}
-        run: |
-          set -euo pipefail
-          mkdir -p content/assurance/semantic/calibration/results
-          cp "calibration-report-${ROLE}.json" \
-            "content/assurance/semantic/calibration/results/${ROLE}.json"
-
-      - name: Verify only qualification artifacts changed
-        shell: bash
-        env:
-          ROLE: ${{ inputs.role }}
-        run: |
-          set -euo pipefail
-          git add content/assurance/semantic/calibration/qualified.json
-          git add "content/assurance/semantic/calibration/results/${ROLE}.json"
-
-          CHANGED="$(git diff --cached --name-only)"
-          echo "$CHANGED"
-
-          while IFS= read -r FILE; do
-            [ -z "$FILE" ] && continue
-            case "$FILE" in
-              content/assurance/semantic/calibration/qualified.json) ;;
-              content/assurance/semantic/calibration/results/"$ROLE".json) ;;
-              *)
-                echo "Unexpected calibration write: $FILE" >&2
-                exit 1
-                ;;
-            esac
-          done <<< "$CHANGED"
-
-          test -n "$CHANGED"
-
-      - name: Commit qualification to main
-        shell: bash
-        env:
-          ROLE: ${{ inputs.role }}
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Qualify semantic judge: ${ROLE} on vajefy-semantic-v1"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          scripts/semantic-calibration-commit.sh "$ROLE" \
+            "Semantic calibration: ${ROLE:-rates} ${OUTCOME:-updated} (run ${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT})"
 
       - name: Upload calibration evidence
+        if: ${{ always() && steps.repeats.outcome != 'skipped' && steps.plan.outputs.action == 'calibrate' }}
         uses: actions/upload-artifact@v4
         with:
-          name: semantic-calibration-${{ inputs.role }}-${{ github.run_id }}
+          name: semantic-calibration-${{ steps.plan.outputs.role }}-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
-            calibration-${{ inputs.role }}-1.json
-            calibration-${{ inputs.role }}-2.json
-            calibration-${{ inputs.role }}-3.json
-            calibration-report-${{ inputs.role }}.json
-          if-no-files-found: error
+            calibration-*.json
+          if-no-files-found: warn
           retention-days: 30
+
+      - name: Fail the run on a gateway fault
+        if: ${{ steps.record.outputs.failure_kind == 'gateway' }}
+        run: |
+          echo "The gateway, not the model, failed. The attempt is logged and will be retried; nothing was rejected." >&2
+          exit 1

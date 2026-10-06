@@ -6,19 +6,39 @@
   "calibrationSafetyCeilingNeurons": 8500,
   "protocolOverheadTokensPerRequest": 512,
   "currentRates": {
-    "@cf/openai/gpt-oss-120b": {
-      "inputNeuronsPerMillionTokens": 31818,
-      "outputNeuronsPerMillionTokens": 68182,
-      "paidBillingRequired": false
-    },
-    "@cf/zai-org/glm-4.7-flash": {
-      "inputNeuronsPerMillionTokens": 5500,
-      "outputNeuronsPerMillionTokens": 36400,
-      "paidBillingRequired": false
-    },
     "@cf/google/gemma-4-26b-a4b-it": {
       "inputNeuronsPerMillionTokens": 9091,
       "outputNeuronsPerMillionTokens": 27273,
+      "paidBillingRequired": false
+    },
+    "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
+      "inputNeuronsPerMillionTokens": 26668,
+      "outputNeuronsPerMillionTokens": 204805,
+      "paidBillingRequired": false
+    },
+    "@cf/meta/llama-4-scout-17b-16e-instruct": {
+      "inputNeuronsPerMillionTokens": 24545,
+      "outputNeuronsPerMillionTokens": 77273,
+      "paidBillingRequired": false
+    },
+    "@cf/mistralai/mistral-small-3.1-24b-instruct": {
+      "inputNeuronsPerMillionTokens": 31876,
+      "outputNeuronsPerMillionTokens": 50488,
+      "paidBillingRequired": false
+    },
+    "@cf/moonshotai/kimi-k2.5": {
+      "inputNeuronsPerMillionTokens": 54545,
+      "outputNeuronsPerMillionTokens": 272727,
+      "paidBillingRequired": false
+    },
+    "@cf/nvidia/nemotron-3-120b-a12b": {
+      "inputNeuronsPerMillionTokens": 45455,
+      "outputNeuronsPerMillionTokens": 136364,
+      "paidBillingRequired": false
+    },
+    "@cf/openai/gpt-oss-120b": {
+      "inputNeuronsPerMillionTokens": 31818,
+      "outputNeuronsPerMillionTokens": 68182,
       "paidBillingRequired": false
     },
     "@cf/qwen/qwen3-30b-a3b-fp8": {
@@ -26,9 +46,14 @@
       "outputNeuronsPerMillionTokens": 30475,
       "paidBillingRequired": false
     },
-    "@cf/meta/llama-3.3-70b-instruct-fp8-fast": {
-      "inputNeuronsPerMillionTokens": 26668,
-      "outputNeuronsPerMillionTokens": 204805,
+    "@cf/qwen/qwen3.8-27b": {
+      "inputNeuronsPerMillionTokens": 40909,
+      "outputNeuronsPerMillionTokens": 290909,
+      "paidBillingRequired": false
+    },
+    "@cf/zai-org/glm-4.7-flash": {
+      "inputNeuronsPerMillionTokens": 5500,
+      "outputNeuronsPerMillionTokens": 36400,
       "paidBillingRequired": false
     }
   },

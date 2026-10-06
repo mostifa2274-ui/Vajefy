@@ -77,7 +77,10 @@ rubrics/prompts:
 npm run assurance:semantic:calibration:packets:check
 ```
 
-Run a candidate manually through the existing GitHub workflow:
+Calibration normally runs unattended (`../../AUTOMATION.md`): the scheduled
+workflow scores each campaign and records qualification or rejection. To
+score a candidate by hand instead, run it through the existing GitHub
+workflow:
 
 1. open **Semantic judge (manual)**;
 2. choose a role;
