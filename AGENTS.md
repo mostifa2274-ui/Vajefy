@@ -22,6 +22,8 @@ scope is A1 only (plan §4 and §32).
   evidence and note. After the merge, record the merge commit as the
   completion commit in the next pull request.
 - Run `npm run status:check`.
+- If you add, remove or switch off a feature, update
+  [docs/FEATURES.md](docs/FEATURES.md) and run `npm run features:check`.
 - For semantic-assurance work, also update both progress files.
 
 ## Never
