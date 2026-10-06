@@ -14,6 +14,30 @@ import { semanticInputHash } from "./semantic-input";
 
 const ROOT = process.cwd();
 const RUBRICS = path.join(ROOT, "content", "assurance", "semantic-rubrics.json");
+const KEYLESS_PRESETS = path.join(
+  ROOT,
+  "content",
+  "assurance",
+  "semantic",
+  "keyless-provider-presets.json",
+);
+
+type KeylessPreset = {
+  provider: string;
+  modelFamily: string;
+  model: string;
+  modelVersion: string;
+  maxTokens: number;
+};
+
+type KeylessPresetFile = {
+  schemaVersion: 1;
+  policy: "zero-cost-keyless";
+  transport: "cloudflare-workers-ai-binding";
+  gatewayOrigin: string;
+  audience: string;
+  roles: Record<SemanticJudgeRole, KeylessPreset>;
+};
 
 type PacketRole = {
   role: SemanticJudgeRole;
@@ -116,17 +140,51 @@ async function main() {
     }
   }
 
-  const config = semanticEndpointConfig(role);
-  if (!config.ready || !config.baseUrl || !config.model || !config.modelVersion) {
-    fail(
-      `Missing/invalid judge configuration for ${role}: ${config.missing.join(", ")}. Run npm run assurance:semantic:preflight for a no-inference report.`,
-    );
+  const transport = process.env.SEMANTIC_JUDGE_TRANSPORT ?? "external";
+  let provider: string;
+  let model: string;
+  let modelVersion: string;
+  let maxTokens: number;
+  let endpoint: string;
+  let apiKey: string | undefined;
+  let keylessToken: string | undefined;
+
+  if (transport === "keyless") {
+    const presets = read<KeylessPresetFile>(KEYLESS_PRESETS);
+    if (
+      presets.schemaVersion !== 1 ||
+      presets.policy !== "zero-cost-keyless" ||
+      presets.transport !== "cloudflare-workers-ai-binding"
+    ) {
+      fail("Invalid keyless semantic provider preset file.");
+    }
+    const preset = presets.roles[role];
+    if (!preset) fail(`Missing keyless preset for ${role}.`);
+    provider = preset.provider;
+    model = preset.model;
+    modelVersion = preset.modelVersion;
+    maxTokens = preset.maxTokens;
+    endpoint = `${presets.gatewayOrigin.replace(/\/$/, "")}/api/internal/semantic-judge`;
+    keylessToken = process.env.SEMANTIC_GATEWAY_OIDC_TOKEN;
+    if (!keylessToken) {
+      fail("SEMANTIC_GATEWAY_OIDC_TOKEN is required for keyless judge transport.");
+    }
+  } else {
+    const config = semanticEndpointConfig(role);
+    if (!config.ready || !config.baseUrl || !config.model || !config.modelVersion) {
+      fail(
+        `Missing/invalid judge configuration for ${role}: ${config.missing.join(", ")}. Run npm run assurance:semantic:preflight for a no-inference report.`,
+      );
+    }
+    provider = config.provider;
+    model = config.model;
+    modelVersion = config.modelVersion;
+    maxTokens = config.maxTokens;
+    apiKey =
+      process.env[`SEMANTIC_JUDGE_${role.toUpperCase()}_API_KEY`] ??
+      process.env.SEMANTIC_JUDGE_API_KEY;
+    endpoint = `${config.baseUrl.replace(/\/$/, "")}/chat/completions`;
   }
-  const { baseUrl, model, modelVersion, provider, maxTokens } = config;
-  const apiKey =
-    process.env[`SEMANTIC_JUDGE_${role.toUpperCase()}_API_KEY`] ??
-    process.env.SEMANTIC_JUDGE_API_KEY;
-  const endpoint = `${baseUrl.replace(/\/$/, "")}/chat/completions`;
 
   const contextIsolationKey = `judge:${role}:${runId}`;
   if (contextIsolationKey === packet.generationContextKey) {
@@ -145,12 +203,18 @@ async function main() {
     const headers: Record<string, string> = {
       "content-type": "application/json",
     };
-    if (apiKey) headers.authorization = `Bearer ${apiKey}`;
-
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({
+    let body: unknown;
+    if (transport === "keyless") {
+      headers.authorization = `Bearer ${keylessToken!}`;
+      body = {
+        role,
+        systemPrompt: prompt,
+        userPayload,
+      };
+    } else {
+      if (apiKey) headers.authorization = `Bearer ${apiKey}`;
+      const config = semanticEndpointConfig(role);
+      body = {
         model,
         temperature: 0,
         max_tokens: maxTokens,
@@ -161,7 +225,13 @@ async function main() {
           { role: "system", content: prompt },
           { role: "user", content: JSON.stringify(userPayload) },
         ],
-      }),
+      };
+    }
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
     });
 
     if (!response.ok) {
@@ -170,10 +240,28 @@ async function main() {
       );
     }
 
-    const completion = (await response.json()) as {
-      choices?: { message?: { content?: string } }[];
-    };
-    const content = completion.choices?.[0]?.message?.content;
+    let content: string | undefined;
+    if (transport === "keyless") {
+      const completion = (await response.json()) as {
+        content?: string;
+        provider?: string;
+        modelId?: string;
+        modelVersion?: string;
+      };
+      if (
+        completion.provider !== provider ||
+        completion.modelId !== model ||
+        completion.modelVersion !== modelVersion
+      ) {
+        fail(`${role} keyless gateway returned unexpected model provenance.`);
+      }
+      content = completion.content;
+    } else {
+      const completion = (await response.json()) as {
+        choices?: { message?: { content?: string } }[];
+      };
+      content = completion.choices?.[0]?.message?.content;
+    }
     if (!content) fail(`${role} judge returned no content for ${target.targetId}`);
 
     let raw: unknown;
