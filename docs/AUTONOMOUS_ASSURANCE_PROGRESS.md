@@ -239,3 +239,13 @@ Completed on this branch:
 - the no-inference preflight is exercised by `validate:data`.
 
 Current resume point: full CI/merge this hardening branch. After merge, actual judge execution remains blocked only on selecting/connecting explicit independent model endpoints; do not repeat packet, runner or ingestion infrastructure.
+
+## Completed — PR #87 semantic evidence ingestion hardening
+
+PR #87 merged as `eaa36a7f57f0f50426cf3c6789d1c40262fceda1`.
+
+The repository now has a complete fail-closed path from certified Unit 1 source -> deterministic judge packet -> isolated role runner -> external evidence ingestion -> semantic arbitration. No semantic evidence has been fabricated and no model inference has been run.
+
+Current branch: `codex/semantic-endpoint-resolution`.
+
+Next unrepeated objective: inventory actual connected inference options, distinguish no-cost/local execution from billed services, and resolve explicit endpoint/model/version provenance for all four judge roles. Do not rebuild the packet, runner, ingestion validator or preflight.
