@@ -905,3 +905,17 @@ Merged as `48168506acf43cce5524b69c8d0475040a615d42`.
 
 With these, all twelve first-package items (plan §41) are DONE. Gate 0
 rights remain BLOCKED on the owner. Automated repair (plan §8) may start.
+
+## Completed — PR #112 Machine Assurance Records and generation provenance
+
+Merged as `3bd542860f5a317caef30341a81c9132157e1b36`. All twelve
+first-package items (plan §41) are DONE; Gate 0 rights remain BLOCKED.
+
+## Pronunciation notation — plan Phase 1
+
+The audio flag comparison now separates notation from pronunciation:
+syllabic consonants, NEAR/CURE spelling, final happY and multi-form headwords
+no longer flag. `generate_audio.py --rescore` re-checked the committed report
+without the model: 292 flags became 174 (114 US, 60 GB, 123 senses). Real
+differences (strong/weak forms, dropped sounds, vowel quality) still flag and
+await audio certification (plan §12).

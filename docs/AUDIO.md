@@ -72,17 +72,32 @@ Every clip is checked for:
 
 For word clips, the phonemes Kokoro produced are compared with every
 pronunciation the sense lists, for example both the weak and the stressed form.
-The comparison ignores stress, length and syllable marks, and maps notation
-differences such as Kokoro's /a/ for the British TRAP vowel to /æ/.
+The comparison ignores stress, length and syllable marks, and removes
+differences of notation only:
+
+- Kokoro's /a/ for the British TRAP vowel is /æ/;
+- a syllabic consonant written /l/ or /l̩/ equals /əl/ (*table*, *cousin*);
+- the NEAR and CURE vowels may be written /ɪə/ or /iə/, /ʊə/ or /uə/ (*dear*);
+- a word-final happY vowel may be /i/ or /ɪ/ (*every*);
+- a headword with several forms (*a, an*) is phonemized as a list, and each
+  form must match one the entry lists.
+
+Strong and weak forms, dropped or added sounds, and different vowels still
+count as mismatches.
 
 Clips with a fault or a mismatch are listed in `content/pilot/audio-report.json`.
-The current report flags 292 word clips and no technical faults. Most are
-expected:
+The report flags 174 word clips (114 US, 60 GB, across 123 senses) and no
+technical faults. Before the notation rules above it flagged 292; the 118
+cleared were notation alone. Most of the rest are expected:
 
-- function words said in isolation use their strong form (*a* /eɪ/, *that*
-  /ðæt/), while the entry lists the weak form first;
-- some flags come from vowel notation that differs between Kokoro and the
-  dictionary.
+- function words said in isolation use their strong form (*that* /ðæt/), while
+  the entry lists only the weak form;
+- unstressed vowels differ (*family*, *welcome*), or a sound is dropped in the
+  dictionary form (*grandfather*);
+- the US voice sometimes drops /r/ (*her*), which is a real fault.
+
+`python3 scripts/audio/generate_audio.py --rescore` re-checks the flags already
+in the report with the current comparison, without the model.
 
 A listener still has to confirm each one. The pronunciation review of an entry
 ([PILOT_CONTENT.md](PILOT_CONTENT.md)) includes hearing its flagged clips.
