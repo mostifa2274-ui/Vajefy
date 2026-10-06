@@ -52,7 +52,9 @@
     "assurance:semantic:packets": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-semantic-packets.ts --unit 01-introductions",
     "assurance:semantic:packets:check": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-semantic-packets.ts --unit 01-introductions --check",
     "assurance:semantic:judge": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/run-semantic-judge.ts",
-    "assurance:semantic:merge": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/merge-semantic-evidence.ts"
+    "assurance:semantic:merge": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/merge-semantic-evidence.ts",
+    "assurance:semantic:preflight": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/semantic-preflight.ts --unit 01-introductions",
+    "assurance:semantic:preflight:strict": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/semantic-preflight.ts --unit 01-introductions --require-ready"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
