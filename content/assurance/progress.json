@@ -147,16 +147,25 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "main",
-    "objective": "Rerun English frozen keyless calibration after the deployed Responses API extractor fix.",
-    "blocked": true,
-    "blocker": "The connected GitHub toolset cannot issue workflow_dispatch with inputs; the repair is deployed and verified, but a fresh manual English calibration dispatch is required.",
-    "nextSteps": [
-      "From GitHub Actions on main, run 'Semantic judge calibration and qualification' with role=english, replace_existing=false, acknowledge_inference=true.",
-      "Do not rerun the old failed job; it is pinned to pre-fix commit 5743a014c04527cc523bf3d6580d8005b6a48abe.",
-      "Inspect the fresh English run. If it reaches scoring, preserve frozen v1 thresholds exactly.",
-      "If English qualifies, continue with Persian, pedagogical and adversarial manual dispatches.",
-      "If English fails again, diagnose the new concrete failure; do not revisit the resolved Responses API extraction issue unless evidence points back to it."
+    "branch": "codex/workers-ai-structured-json",
+    "objective": "Enforce structured JSON at Workers AI generation time, validate, merge, deploy, then rerun English frozen calibration.",
+    "blocked": false,
+    "completedOnBranch": [
+      "Inspected rerun of workflow 37473550090 after PR #99.",
+      "Confirmed budget and keyless OIDC preflight still pass.",
+      "Confirmed Responses API extraction fix works: failure moved from empty-model-content to strict non-JSON rejection.",
+      "Verified current Cloudflare GPT-OSS model schema exposes response_format.",
+      "Added response_format=json_schema for semantic judge calls.",
+      "Structured schema constrains criteria count, criterion names, PASS/FAIL/UNCERTAIN, confidence, evidence and reasonCode.",
+      "Added extraction for JSON-mode response objects and direct structured judge objects.",
+      "Added regression tests for schema construction and structured response shapes."
+    ],
+    "pending": [
+      "Pass full CI for structured-output enforcement.",
+      "Merge if exact-head CI, Workers contract and Playwright are green.",
+      "Verify automatic exact-revision OIDC gateway smoke after deployment.",
+      "Rerun failed English calibration workflow against current main.",
+      "Inspect calibration scoring honestly; do not alter frozen v1 thresholds."
     ]
   },
   "endpointResolution": {
@@ -242,7 +251,7 @@
   },
   "calibrationExecution": {
     "english": {
-      "status": "READY_FOR_RETRY_AFTER_TRANSPORT_FIX",
+      "status": "FAILED_NON_JSON_MODEL_OUTPUT_FIX_IN_PROGRESS",
       "runId": 37473550090,
       "startedAt": "2026-10-06T13:47:05Z",
       "failedStep": "Run three isolated calibration repeats",
@@ -253,14 +262,26 @@
       "failure": "HTTP 502 empty-model-content on cal-en-clean-i during repeat 1",
       "rootCause": "Gateway omitted Cloudflare Responses API output extraction.",
       "fixBranch": "codex/workers-ai-responses-extractor",
-      "retryPolicy": "Do not rerun until extractor fix is merged and exact production OIDC smoke passes.",
+      "retryPolicy": "Do not rerun until structured JSON fix is merged and exact production OIDC smoke passes.",
       "failedRunId": 37473550090,
       "fixPr": 99,
       "fixMergeCommit": "24e123d8194935c4ba85eb42ad76f14134c9b048",
       "fixCiResult": "PASS",
       "postMergeOidcSmokeRunId": 37476270004,
       "postMergeOidcSmokeResult": "PASS",
-      "productionReadyForRetry": true
+      "productionReadyForRetry": true,
+      "rerunAttemptAt": "2026-10-06T16:00Z",
+      "rerunReachedInference": true,
+      "latestFailure": "english judge returned non-JSON content for cal-en-clean-i",
+      "previousTransportExtractionFixed": true,
+      "currentRootCause": "GPT-OSS returned unstructured final text; strict runner correctly rejected it.",
+      "structuredFixBranch": "codex/workers-ai-structured-json",
+      "remediation": [
+        "Use Workers AI response_format=json_schema at generation time.",
+        "Schema requires exact criteria array length and criterion/result/confidence/evidence/reasonCode fields.",
+        "Keep strict downstream JSON/Zod parser unchanged.",
+        "Support Cloudflare JSON-mode wrapped response objects and direct structured objects."
+      ]
     }
   }
 }
