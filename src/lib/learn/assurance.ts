@@ -385,3 +385,17 @@ export function arbitrateSemanticJudgments(
     vetoes: [],
   };
 }
+
+
+export const semanticEvidenceBundle = z.object({
+  schemaVersion: z.literal(1),
+  unitId: text,
+  /**
+   * Context identifier for the process that authored/generated the source
+   * content. Judge contexts must differ from it.
+   */
+  generationContextKey: text,
+  judgments: z.array(semanticJudgeRecord),
+});
+
+export type SemanticEvidenceBundle = z.infer<typeof semanticEvidenceBundle>;
