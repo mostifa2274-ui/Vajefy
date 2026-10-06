@@ -22,7 +22,7 @@ export const KEYLESS_SEMANTIC_MODELS = {
     model: "@cf/openai/gpt-oss-120b",
     modelVersion:
       "@cf/openai/gpt-oss-120b@cloudflare-catalog-2026-10-06",
-    maxTokens: 1200,
+    maxTokens: 900,
   },
   persian: {
     provider: "cloudflare-workers-ai",
@@ -30,7 +30,7 @@ export const KEYLESS_SEMANTIC_MODELS = {
     model: "@cf/zai-org/glm-4.7-flash",
     modelVersion:
       "@cf/zai-org/glm-4.7-flash@cloudflare-catalog-2026-10-06",
-    maxTokens: 1200,
+    maxTokens: 800,
   },
   pedagogical: {
     provider: "cloudflare-workers-ai",
@@ -38,15 +38,15 @@ export const KEYLESS_SEMANTIC_MODELS = {
     model: "@cf/google/gemma-4-26b-a4b-it",
     modelVersion:
       "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06",
-    maxTokens: 1200,
+    maxTokens: 800,
   },
   adversarial: {
     provider: "cloudflare-workers-ai",
     modelFamily: "qwen",
-    model: "@cf/qwen/qwen3.8-27b",
+    model: "@cf/qwen/qwen3-30b-a3b-fp8",
     modelVersion:
-      "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06",
-    maxTokens: 1200,
+      "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
+    maxTokens: 1000,
   },
 } as const;
 

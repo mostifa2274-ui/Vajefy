@@ -26,6 +26,8 @@ const required = [
   "github.ref == 'refs/heads/main'",
   "permissions:\n  contents: write\n  id-token: write",
   "SEMANTIC_JUDGE_TRANSPORT: keyless",
+  "Verify current zero-cost calibration budget",
+  "assurance:semantic:budget:current",
   "Keyless no-inference gateway preflight",
   "Run three isolated calibration repeats",
   "Score against pre-registered Vajefy gate",

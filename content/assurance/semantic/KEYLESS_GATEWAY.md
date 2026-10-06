@@ -106,3 +106,54 @@ SEMANTIC_JUDGE_TRANSPORT=keyless npm run assurance:semantic:judge -- ...
 ```
 
 The workflows set the transport automatically.
+
+
+## Free-allocation budget gate — 2026-10-06
+
+Cloudflare Workers AI currently provides 10,000 Neurons/day at no charge on
+Workers Free. Vajefy uses a stricter calibration ceiling of **8,500 Neurons/day**
+to preserve safety reserve.
+
+The current machine-readable pricing source is:
+
+`content/assurance/semantic/workers-ai-neuron-rates.json`
+
+The deterministic frozen-calibration budget is:
+
+`content/assurance/semantic/calibration/v1/neuron-budget.json`
+
+Current full calibration campaign:
+
+- 84 requests total;
+- English: 3,936 Neurons upper bound;
+- Persian: 1,014;
+- pedagogical: 1,398;
+- adversarial: 1,440;
+- total: **7,788 Neurons upper bound**;
+- free-allocation reserve: **2,212 Neurons**;
+- safety-ceiling reserve: **712 Neurons**.
+
+The input bound intentionally treats every UTF-8 byte as up to one token and
+adds another 512 protocol tokens/request. Output is budgeted at each role's
+configured maximum, not expected average output.
+
+To fit the free allocation with reserve, the adversarial candidate is:
+
+`@cf/qwen/qwen3-30b-a3b-fp8`
+
+rather than the much higher-Neuron Qwen 3.8 27B candidate.
+
+Calibration execution runs:
+
+```sh
+npm run assurance:semantic:budget:current
+```
+
+before OIDC preflight or inference. It fails if:
+
+- the committed budget is stale;
+- the campaign exceeds the 8,500-Neuron safety ceiling;
+- a selected model is marked paid-billing-required;
+- pricing verification is older than 30 days.
+
+Normal CI also verifies the committed budget snapshot for drift.

@@ -95,7 +95,8 @@
     "Do not redo free-provider research from PR #89 unless availability/pricing changes or the preset verification date is intentionally refreshed.",
     "Do not redo the PR #90 judge re-ranking unless provider/model availability changes or Vajefy-specific calibration evidence justifies a new champion.",
     "Do not rebuild semantic calibration v1 or alter its thresholds after observing model outputs; create v2 for any justified corpus/threshold change.",
-    "Do not rebuild semantic calibration automation from PR #92; after credentials exist, use .github/workflows/semantic-calibrate.yml once per role."
+    "Do not rebuild semantic calibration automation from PR #92; after credentials exist, use .github/workflows/semantic-calibrate.yml once per role.",
+    "Do not restore Qwen 3.8 27B as the default adversarial keyless calibration candidate without re-running the Neuron budget; PR budget work replaced it because the full frozen campaign would not safely fit the free daily allocation."
   ],
   "blockers": [
     {
@@ -137,15 +138,26 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "main",
-    "objective": "Make keyless calibration provably fit the Cloudflare Workers AI free daily allocation before any inference.",
+    "branch": "codex/keyless-free-budget",
+    "objective": "Validate and merge the fail-closed Workers AI free-allocation budget gate before any semantic inference.",
     "blocked": false,
-    "nextSteps": [
-      "Replace the high-Neuron adversarial Qwen 3.8 candidate with a lower-Neuron reasoning Qwen candidate if calibration quality remains plausible.",
-      "Add machine-readable current Neuron rates and conservative full-calibration budget calculation.",
-      "Fail CI if the maximum planned calibration budget exceeds the zero-cost ceiling.",
-      "Re-run full CI and post-deploy OIDC smoke.",
-      "Only then permit calibration inference."
+    "completedOnBranch": [
+      "Verified current Cloudflare Workers AI free allocation and Neuron rates from the official pricing table.",
+      "Changed adversarial candidate from Qwen 3.8 27B to reasoning-capable Qwen3 30B-A3B FP8 because of much lower Neuron rates.",
+      "Reduced role output caps to English 900, Persian 800, pedagogical 800, adversarial 1000 tokens.",
+      "Recorded machine-readable current Neuron rates and 10,000/day free allocation.",
+      "Added deterministic request-size budgeting from the same payload builder used by the real judge runner.",
+      "Budget uses UTF-8 bytes as a conservative input-token upper bound plus 512 protocol tokens/request.",
+      "Generated frozen calibration budget: 84 requests, 7,788 Neurons upper bound, 2,212 Neurons free-allocation reserve.",
+      "Set stricter calibration safety ceiling to 8,500 Neurons.",
+      "Normal validate:data checks budget drift; calibration requires pricing verification <=30 days old before inference."
+    ],
+    "pending": [
+      "Pass full CI for the budget gate and Qwen candidate change.",
+      "Merge if exact-head CI, Workers contract and Playwright are green.",
+      "Verify automatic exact-revision OIDC smoke after merge.",
+      "Record the merge/smoke checkpoint.",
+      "Only then move to keyless judge calibration inference."
     ]
   },
   "endpointResolution": {
@@ -202,7 +214,7 @@
       "english": "@cf/openai/gpt-oss-120b",
       "persian": "@cf/zai-org/glm-4.7-flash",
       "pedagogical": "@cf/google/gemma-4-26b-a4b-it",
-      "adversarial": "@cf/qwen/qwen3.8-27b"
+      "adversarial": "@cf/qwen/qwen3-30b-a3b-fp8"
     },
     "security": [
       "GitHub OIDC signature/JWKS verification",
@@ -215,6 +227,19 @@
     "productionRevision": "7f790753a9f0",
     "smokeRunId": 37465617586,
     "smokeResult": "PASS",
-    "inferenceRun": false
+    "inferenceRun": false,
+    "budget": {
+      "pricingVerifiedAt": "2026-10-06",
+      "pricingSource": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+      "freeDailyAllocationNeurons": 10000,
+      "calibrationSafetyCeilingNeurons": 8500,
+      "totalCalibrationRequests": 84,
+      "totalCalibrationNeuronsUpperBound": 7788,
+      "freeAllocationReserveNeurons": 2212,
+      "safetyCeilingReserveNeurons": 712,
+      "snapshot": "content/assurance/semantic/calibration/v1/neuron-budget.json",
+      "rates": "content/assurance/semantic/workers-ai-neuron-rates.json",
+      "policy": "Calibration blocks if the snapshot drifts, exceeds 8,500 Neurons, selects a paid-billing-required model, or pricing verification is older than 30 days."
+    }
   }
 }

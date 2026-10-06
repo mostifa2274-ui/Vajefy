@@ -148,3 +148,21 @@ qualification record will therefore use `cloudflare-workers-ai` as provider
 for all four roles while preserving distinct model IDs/families.
 
 No candidate is trusted until it passes `vajefy-semantic-v1`.
+
+
+## Budget-driven adversarial candidate change — 2026-10-06
+
+The keyless adversarial candidate changed from
+`@cf/qwen/qwen3.8-27b` to
+`@cf/qwen/qwen3-30b-a3b-fp8`.
+
+Reason: Cloudflare's current Neuron rates make Qwen 3.8 27B too expensive for
+the complete frozen three-repeat calibration campaign under the Workers Free
+10,000-Neuron/day allocation. Qwen3 30B-A3B remains reasoning-capable and
+multilingual while reducing the adversarial role's worst-case calibration
+budget enough for the entire four-role campaign to fit with reserve.
+
+This is a **candidate** change, not a qualification. The model must still pass
+the unchanged `vajefy-semantic-v1` calibration thresholds. If it fails, do not
+lower the thresholds; select another candidate or create a new pre-registered
+calibration version only for a justified gold-set change.
