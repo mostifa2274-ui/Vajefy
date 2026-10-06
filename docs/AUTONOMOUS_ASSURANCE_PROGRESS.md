@@ -306,3 +306,39 @@ Resume only at endpoint configuration/execution:
 7. edit Unit 1 source only if the judges produce a concrete defect that survives arbitration.
 
 Current blocker: explicit independent judge endpoint configuration/authorization. This blocker is external configuration, not missing repository implementation.
+
+
+## In-progress checkpoint — verified zero-cost semantic providers
+
+Branch: `codex/free-semantic-providers`.
+
+The earlier endpoint blocker has been narrowed materially: **paid inference is
+not required**.
+
+Verified 2026-10-06 zero-cost allocation:
+
+- English -> Groq Free / `openai/gpt-oss-120b`;
+- Persian -> Gemini Developer API Free Tier / `gemini-3.5-flash-lite`;
+- Pedagogical -> OpenRouter Free / `google/gemma-4-31b-it:free`;
+- Adversarial -> Cloudflare Workers AI Free / `@cf/zai-org/glm-4.7-flash`.
+
+The machine-readable defaults are in
+`content/assurance/semantic/free-provider-presets.json`.
+
+The manual judge workflow now applies those presets automatically and keeps
+explicit repository variables as overrides. CI checks that the preset policy is
+`zero-cost-only` and that the four role defaults use four distinct provider
+profiles and model ids.
+
+Remaining external setup is only free credentials:
+
+- three free API keys (Groq, Google AI Studio, OpenRouter);
+- one Cloudflare API token;
+- one Cloudflare account id repository variable.
+
+No inference has been run and no semantic evidence has been fabricated.
+
+Current resume point: CI/merge this zero-cost provider slice, then configure the
+free credentials and execute the existing manual judge workflow. Do not repeat
+provider research unless availability/pricing changes or the preset verification
+date is intentionally refreshed.

@@ -6,10 +6,72 @@ This file records the endpoint investigation so future work does not repeat it.
 
 ## Current conclusion
 
-The semantic assurance infrastructure is ready, but real judge evidence is still
-blocked on explicit model endpoint credentials/configuration.
+The semantic assurance infrastructure is ready and four viable **zero-cost**
+provider/model paths have now been verified. Paid inference is no longer a
+design dependency.
+
+Real judge evidence is blocked only on creating/configuring the free API
+credentials and, for Cloudflare, the account id.
 
 No model inference was launched during this investigation.
+
+## Verified zero-cost judge allocation
+
+The machine-readable source of truth is:
+
+`content/assurance/semantic/free-provider-presets.json`
+
+Recommended role allocation as verified on 2026-10-06:
+
+| Role | Provider | Model | Free constraint |
+|---|---|---|---|
+| English | Groq Free Plan | `openai/gpt-oss-120b` | Free-plan limits currently list 30 RPM, 1,000 RPD and 200,000 TPD |
+| Persian | Google Gemini Developer API Free Tier | `gemini-3.5-flash-lite` | Input/output are free of charge on the Free Tier; model is optimized for translation/high-volume tasks |
+| Pedagogical | OpenRouter Free | `google/gemma-4-31b-it:free` | Named model is $0/M input and output; Free plan currently permits 50 requests/day |
+| Adversarial | Cloudflare Workers AI Free | `@cf/zai-org/glm-4.7-flash` | Workers Free includes 10,000 Neurons/day and GLM-4.7-Flash remains allowed on the Free plan |
+
+Official references:
+
+- Groq free limits: https://console.groq.com/docs/rate-limits
+- Groq billing FAQ: https://console.groq.com/docs/billing-faqs
+- Gemini pricing: https://ai.google.dev/gemini-api/docs/pricing
+- Gemini OpenAI compatibility: https://ai.google.dev/gemini-api/docs/openai
+- OpenRouter pricing: https://openrouter.ai/pricing
+- OpenRouter Gemma 4 31B free: https://openrouter.ai/google/gemma-4-31b-it:free
+- Cloudflare Workers AI pricing: https://developers.cloudflare.com/workers-ai/platform/pricing/
+- Cloudflare OpenAI compatibility: https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/
+- Cloudflare GLM-4.7-Flash: https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/
+
+These are free tiers/allocations, not permanent contractual guarantees. Before
+a future large rerun, re-check provider availability/pricing and update the
+preset verification date rather than silently assuming the 2026-10-06 state.
+
+### Why these four
+
+The allocation deliberately avoids using one provider or one model family for
+all judgments:
+
+- Groq + GPT-OSS for strong English reasoning;
+- Google's own Gemini endpoint for Persian/translation;
+- OpenRouter + Gemma for an independent pedagogical view;
+- Cloudflare + GLM for adversarial multilingual reasoning.
+
+This improves failure independence while keeping normal Unit 1 evaluation at
+zero inference cost within the stated free limits.
+
+### Free credentials still required
+
+Free does not mean anonymous. The following credentials must be created:
+
+- Groq free API key -> `SEMANTIC_JUDGE_ENGLISH_API_KEY`
+- Google AI Studio free API key -> `SEMANTIC_JUDGE_PERSIAN_API_KEY`
+- OpenRouter free API key -> `SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY`
+- Cloudflare API token -> `SEMANTIC_JUDGE_ADVERSARIAL_API_KEY`
+- Cloudflare account id (repository variable) ->
+  `SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID`
+
+No payment method is required by the design. Do not upgrade a provider to a
+paid tier merely to make semantic certification pass.
 
 ### GitHub Models
 
@@ -77,7 +139,15 @@ npm run assurance:semantic:workflow:check
 
 ## Repository Variables
 
-Configure these per role in GitHub Actions repository variables:
+The verified zero-cost presets now provide the normal base URL/model/provider
+defaults automatically. Role-specific variables below are optional overrides,
+not required configuration.
+
+The only required non-secret variable for the default zero-cost allocation is:
+
+- `SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID`
+
+Optional overrides:
 
 ### English
 

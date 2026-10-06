@@ -20,6 +20,7 @@ const required = [
   "acknowledge_inference:",
   "if: ${{ inputs.acknowledge_inference }}",
   "permissions:\n  contents: read",
+  "Apply verified zero-cost provider defaults",
   "No-inference role preflight",
   "Run isolated semantic judge",
   "Upload structured role evidence",

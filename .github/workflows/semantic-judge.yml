@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
+      SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID: ${{ vars.SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID }}
+
       ENGLISH_BASE_URL: ${{ vars.SEMANTIC_JUDGE_ENGLISH_BASE_URL }}
       ENGLISH_MODEL: ${{ vars.SEMANTIC_JUDGE_ENGLISH_MODEL }}
       ENGLISH_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_ENGLISH_MODEL_VERSION }}
@@ -106,6 +108,11 @@ jobs:
               printf 'SEMANTIC_JUDGE_%s=%s\n' "$KEY" "$VALUE" >> "$GITHUB_ENV"
             fi
           done
+
+      - name: Apply verified zero-cost provider defaults
+        env:
+          ROLE: ${{ inputs.role }}
+        run: npm run assurance:semantic:free-preset -- --role "$ROLE" --github-env
 
       - name: No-inference role preflight
         env:
