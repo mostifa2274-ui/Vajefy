@@ -735,3 +735,36 @@ strict scoring and qualification recording.
 After any role result exists, resume from that evidence. Do not repeat the
 keyless architecture, calibration corpus, budget work, or workflow-dispatch
 capability investigation.
+
+
+## In-progress checkpoint — Workers AI Responses API extraction fix
+
+Failed calibration run: `37473550090` (English).
+
+What passed before the failure:
+
+- frozen packet selection;
+- current free-budget check: PASS;
+- keyless GitHub OIDC gateway preflight: PASS.
+
+Failure occurred on repeat 1, first target
+`cal-en-clean-i` after the Workers AI model call:
+
+`HTTP 502 {"error":"empty-model-content"}`
+
+Root cause is transport-shape handling, not calibration quality. Cloudflare
+GPT-OSS through the Workers AI binding returns the Responses API shape. The
+gateway extractor handled legacy `response` strings and Chat Completions
+`choices[].message.content`, but did not read Responses API
+`output_text` / `output[].content[].text`.
+
+Branch `codex/workers-ai-responses-extractor`:
+
+- adds Responses API extraction;
+- preserves legacy and Chat Completions extraction;
+- ignores reasoning-only output as final text;
+- adds safe diagnostics for status/incomplete_details/output types/usage;
+- adds regression tests.
+
+No calibration threshold or gold label changed. No qualification was recorded.
+Do not rerun English until this fix is merged and deployed.
