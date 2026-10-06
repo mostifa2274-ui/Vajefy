@@ -46,6 +46,7 @@ export async function verifyGitHubOidcToken(
     repository: string;
     ref: string;
     workflows: string[];
+    events: string[];
     nowSeconds?: number;
   },
 ): Promise<GitHubOidcClaims> {
@@ -81,7 +82,7 @@ export async function verifyGitHubOidcToken(
   if (!audienceIncludes(claims.aud, expected.audience)) throw new Error("oidc-audience");
   if (claims.repository !== expected.repository) throw new Error("oidc-repository");
   if (claims.ref !== expected.ref) throw new Error("oidc-ref");
-  if (claims.event_name !== "workflow_dispatch") throw new Error("oidc-event");
+  if (!expected.events.includes(claims.event_name)) throw new Error("oidc-event");
   if (!expected.workflows.includes(claims.workflow_ref)) throw new Error("oidc-workflow");
   if (!Number.isFinite(claims.exp) || claims.exp < now - 30) throw new Error("oidc-expired");
   if (!Number.isFinite(claims.iat) || claims.iat > now + 60 || claims.iat < now - 900) {
@@ -99,6 +100,7 @@ export async function verifyGitHubActionsRequest(
     repository: string;
     ref: string;
     workflows: string[];
+    events: string[];
   },
 ): Promise<GitHubOidcClaims> {
   const authorization = request.headers.get("authorization") ?? "";
