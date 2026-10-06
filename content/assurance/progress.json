@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "fb31a9969463b1f69969b6be9b039c55b55f84cf",
+  "authoritativeMain": "593ef00c452b4e1467782520bf1314caa62d73b5",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -69,6 +69,12 @@
       "pr": 92,
       "mergeCommit": "fb31a9969463b1f69969b6be9b039c55b55f84cf",
       "summary": "One-dispatch-per-role calibration automation: three repeats, strict scoring, qualification recording, allowlisted commit, and retained raw evidence."
+    },
+    {
+      "id": "keyless-semantic-gateway",
+      "pr": 93,
+      "mergeCommit": "593ef00c452b4e1467782520bf1314caa62d73b5",
+      "summary": "Replaced semantic provider API keys with GitHub Actions OIDC, an authenticated Vajefy Worker gateway, and Cloudflare Workers AI binding using fixed server-side model mappings."
     }
   ],
   "doNotRepeat": [
@@ -89,7 +95,9 @@
     "Do not redo free-provider research from PR #89 unless availability/pricing changes or the preset verification date is intentionally refreshed.",
     "Do not redo the PR #90 judge re-ranking unless provider/model availability changes or Vajefy-specific calibration evidence justifies a new champion.",
     "Do not rebuild semantic calibration v1 or alter its thresholds after observing model outputs; create v2 for any justified corpus/threshold change.",
-    "Do not rebuild semantic calibration automation from PR #92; after credentials exist, use .github/workflows/semantic-calibrate.yml once per role."
+    "Do not rebuild semantic calibration automation from PR #92; after credentials exist, use .github/workflows/semantic-calibrate.yml once per role.",
+    "Do not return to semantic provider API-key setup from pre-PR #93 unless the keyless OIDC/Workers AI architecture is intentionally retired.",
+    "Do not repeat production Worker URL discovery; canonical keyless gateway origin is https://vajefy.mostifa2273.workers.dev."
   ],
   "blockers": [
     {
@@ -131,27 +139,22 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/keyless-semantic-gateway",
-    "objective": "Validate and merge the zero-key GitHub OIDC -> Workers AI semantic gateway.",
+    "branch": "codex/keyless-gateway-smoke",
+    "objective": "Validate and merge automatic exact-revision, no-inference OIDC production smoke for the keyless semantic gateway.",
     "blocked": false,
     "completedOnBranch": [
-      "Verified production Worker origin without SITE_URL variable.",
-      "Added Cloudflare Workers AI binding in wrangler.jsonc.",
-      "Added GitHub Actions OIDC JWT signature and claim verification.",
-      "Added OIDC-protected internal semantic gateway.",
-      "Fixed four keyless model families server-side.",
-      "Judge runner now supports keyless transport and requests fresh OIDC identity per call.",
-      "Both semantic workflows removed provider API-key secrets and require id-token: write.",
-      "Qualification freshness now tracks keyless champions.",
-      "Added offline zero-key contract checks and online no-inference OIDC preflight.",
-      "Marked old credential setup and external endpoint plan as legacy fallback."
+      "Recorded PR #93 exact merge commit.",
+      "Added permanent keyless gateway smoke workflow for relevant main changes.",
+      "Smoke waits for exact production GITHUB_SHA revision before authentication check.",
+      "Smoke obtains short-lived GitHub OIDC identity and performs GET only.",
+      "Server explicitly prevents smoke workflow identity from POST inference even when manually dispatched.",
+      "CI enforces read-only contents, no secrets/API keys, GET-only behavior and no model execution."
     ],
     "pending": [
-      "Pass full CI and Workers build for keyless gateway.",
-      "Merge keyless PR if green.",
-      "Verify Cloudflare production deploy reaches the exact merge revision.",
-      "Run an OIDC no-inference gateway smoke after deploy.",
-      "Then calibrate keyless candidates; Unit 1 remains locked until qualification."
+      "Pass full CI for automatic smoke hardening.",
+      "Merge the smoke PR if green.",
+      "Observe the automatic main smoke reach exact Cloudflare revision and PASS OIDC gateway contract.",
+      "Then keyless calibration can begin without API keys."
     ]
   },
   "endpointResolution": {
@@ -197,7 +200,7 @@
   },
   "credentialSetupRunbook": "content/assurance/semantic/FREE_CREDENTIAL_SETUP.md",
   "keylessGateway": {
-    "status": "IMPLEMENTED_ON_BRANCH_PENDING_CI",
+    "status": "MERGED_PR_93_SMOKE_AUTOMATION_IN_PROGRESS",
     "branch": "codex/keyless-semantic-gateway",
     "productionOrigin": "https://vajefy.mostifa2273.workers.dev",
     "audience": "vajefy-semantic-gateway",
@@ -216,6 +219,7 @@
       "fixed server-side model allowlist",
       "fresh OIDC token per inference call",
       "no semantic provider secrets"
-    ]
+    ],
+    "mergeCommit": "593ef00c452b4e1467782520bf1314caa62d73b5"
   }
 }
