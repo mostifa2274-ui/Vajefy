@@ -147,21 +147,23 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/workers-ai-structured-response-priority",
-    "objective": "Prefer Cloudflare structured response objects over duplicate Responses API text, validate, deploy, then rerun the already-authorized English calibration.",
+    "branch": "codex/semantic-canonical-json",
+    "objective": "Canonicalize exactly one unique semantic criteria JSON across Workers AI final response fields, validate, deploy, then rerun English calibration.",
     "blocked": false,
     "completedOnBranch": [
-      "Reran failed English workflow 37473550090 after Responses API extraction and structured JSON fixes were deployed.",
-      "Confirmed zero-cost budget PASS and keyless OIDC preflight PASS.",
-      "Confirmed inference reached GPT-OSS but strict runner still rejected cal-en-clean-i as not a single JSON payload.",
-      "Verified Cloudflare JSON Mode documents validated structured output under a response object.",
-      "Identified extractor ambiguity: it can serialize response object and also collect alternate output/output_text representations, then join them.",
-      "Changed extraction to prefer a structured criteria response object/string and stop before alternate representations.",
-      "Added regression tests proving response object/string wins over duplicate/noisy output fields.",
-      "Downstream exact-criteria/Zod schema validation remains unchanged."
+      "Inspected latest English rerun after structured response priority fix.",
+      "Confirmed budget PASS, OIDC preflight PASS and inference reached GPT-OSS.",
+      "Confirmed strict runner still rejected cal-en-clean-i as not a single JSON payload.",
+      "Added transport-only canonicalizer that finds criteria JSON objects without relaxing the downstream evidence parser.",
+      "Identical duplicate criteria payloads collapse to one canonical JSON object.",
+      "Conflicting distinct criteria payloads fail closed.",
+      "Gateway now considers only direct structured response, output_text, Chat Completions assistant content, and Responses API final assistant message output.",
+      "Reasoning blocks are explicitly ignored as evidence transport.",
+      "Added candidate/canonical-count diagnostics without logging model content.",
+      "Added regression tests for duplicate representations, prose-wrapped single payload, conflicting payloads and reasoning exclusion."
     ],
     "pending": [
-      "Pass full CI for structured-response priority fix.",
+      "Pass full CI for canonical semantic transport.",
       "Merge exact head only if core CI, Workers contract and Playwright pass.",
       "Verify automatic exact-revision OIDC smoke after deploy.",
       "Rerun failed English workflow 37473550090 again using its original manual authorization.",
@@ -251,7 +253,7 @@
   },
   "calibrationExecution": {
     "english": {
-      "status": "FAILED_MULTIPLE_RESPONSE_REPRESENTATIONS_FIX_IN_PROGRESS",
+      "status": "FAILED_MULTIPLE_JSON_REPRESENTATIONS_CANONICALIZER_IN_PROGRESS",
       "runId": 37473550090,
       "startedAt": "2026-10-06T13:47:05Z",
       "failedStep": "Run three isolated calibration repeats",
@@ -262,7 +264,7 @@
       "failure": "HTTP 502 empty-model-content on cal-en-clean-i during repeat 1",
       "rootCause": "Gateway omitted Cloudflare Responses API output extraction.",
       "fixBranch": "codex/workers-ai-structured-response-priority",
-      "retryPolicy": "Do not change calibration gold/thresholds. Rerun only after structured-response priority fix is merged and exact production OIDC smoke passes.",
+      "retryPolicy": "Do not alter calibration v1. Rerun only after canonical transport fix is merged and exact production OIDC smoke passes.",
       "failedRunId": 37473550090,
       "fixPr": 99,
       "fixMergeCommit": "24e123d8194935c4ba85eb42ad76f14134c9b048",
@@ -274,7 +276,7 @@
       "rerunReachedInference": true,
       "latestFailure": "english judge returned content that is not a single JSON payload for cal-en-clean-i",
       "previousTransportExtractionFixed": true,
-      "currentRootCause": "Cloudflare JSON-mode structured response can coexist with alternate Responses API output fields; extractor could concatenate multiple representations into one non-JSON string.",
+      "currentRootCause": "Workers AI can expose the same semantic answer through multiple final response representations; transport must canonicalize one unique criteria JSON and reject conflicting payloads.",
       "structuredFixBranch": "codex/workers-ai-structured-json",
       "remediation": [
         "Use Workers AI response_format=json_schema at generation time.",
@@ -282,12 +284,13 @@
         "Keep strict downstream JSON/Zod parser unchanged.",
         "Support Cloudflare JSON-mode wrapped response objects and direct structured objects."
       ],
-      "latestJobId": 112373105914,
-      "latestAttemptAt": "2026-10-06T16:12:37Z",
+      "latestJobId": 112380376612,
+      "latestAttemptAt": "2026-10-06T16:28Z",
       "latestAttemptCheckout": "8ba220c530126d134edd0954c6c00e0d65c6084b",
       "budgetCheck": "PASS",
       "oidcPreflight": "PASS",
-      "structuredJsonEnabled": true
+      "structuredJsonEnabled": true,
+      "canonicalFixBranch": "codex/semantic-canonical-json"
     }
   }
 }
