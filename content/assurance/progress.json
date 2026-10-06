@@ -47,8 +47,9 @@
     "target": "Zero deterministic Unit 1 findings before semantic-judge certification.",
     "current": {
       "deterministicFindings": 0,
-      "status": "SOURCE_REPAIRS_COMPLETE_PENDING_CI",
-      "note": "20/20 Unit 1 senses repaired for grammar-note Persian, third examples, required usage and mistake translation distinctions. Case-sensitive mistake validation fixed."
+      "status": "FINAL_CI_PENDING",
+      "note": "20/20 Unit 1 senses repaired for grammar-note Persian, third examples, required usage and mistake translation distinctions. Case-sensitive mistake validation fixed.",
+      "generatedArtifactsCommitted": true
     }
   },
   "currentWork": {
@@ -59,12 +60,15 @@
       "Repaired all 20 Unit 1 senses.",
       "Fixed false-positive English mistake comparison that erased case distinctions.",
       "Added unit-scoped assurance and npm run assurance:unit1.",
-      "Wired Unit 1 zero-defect gate into validate:data."
+      "Wired Unit 1 zero-defect gate into validate:data.",
+      "Regenerated derived enhanced-content artifacts using the repository compiler in GitHub Actions.",
+      "Removed the temporary regeneration workflow."
     ],
+    "generatedArtifactsCommit": "5d51bd4d60909d46ed23cbd0bbe755594fcb921c",
+    "temporaryWorkflowRemovalCommit": "edfbfeff4c3a810ba82a8d3ad54b6cae71f80f22",
     "pending": [
-      "Regenerate and commit derived enhanced-content artifacts.",
-      "Pass full CI including Playwright and Workers contract.",
-      "Merge the Unit 1 certification PR.",
+      "Pass final exact-head CI: generated-content consistency, validate:data, typecheck, lint, unit tests, production build, Playwright and Workers contract.",
+      "Merge PR #84 if all gates pass.",
       "Record exact merge commit and next objective."
     ]
   }
