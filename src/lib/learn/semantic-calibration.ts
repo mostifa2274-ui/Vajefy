@@ -37,7 +37,7 @@ export type SemanticCalibrationRoleSpec = {
   criteria: string[];
 };
 
-export type SemanticCalibrationPacket = SemanticPacketReference & {
+export type SemanticCalibrationPacket = Omit<SemanticPacketReference, "roles"> & {
   roles: SemanticCalibrationRoleSpec[];
 };
 
