@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-06",
+  "policy": "zero-cost-only",
+  "roles": {
+    "english": {
+      "provider": "groq-free",
+      "baseUrl": "https://api.groq.com/openai/v1",
+      "model": "openai/gpt-oss-120b",
+      "modelVersion": "openai/gpt-oss-120b@groq-catalog-2026-10-06",
+      "jsonResponseFormat": true,
+      "maxTokens": 2400,
+      "auth": "api-key",
+      "secret": "SEMANTIC_JUDGE_ENGLISH_API_KEY",
+      "freeTier": "Groq Free Plan",
+      "freeLimitNote": "Official Free Plan table lists 30 RPM, 1,000 RPD and 200,000 TPD for openai/gpt-oss-120b.",
+      "rationale": "Strong English reasoning model on a provider with a high enough free daily request allowance for all 20 Unit 1 targets plus retries.",
+      "provenanceCaveat": "Provider does not expose an immutable weight hash through the configured contract; evidence records the provider model id plus catalog verification date."
+    },
+    "persian": {
+      "provider": "google-ai-studio-free",
+      "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "model": "gemini-3.5-flash-lite",
+      "modelVersion": "gemini-3.5-flash-lite@google-catalog-2026-10-06",
+      "jsonResponseFormat": true,
+      "maxTokens": 2400,
+      "auth": "api-key",
+      "secret": "SEMANTIC_JUDGE_PERSIAN_API_KEY",
+      "freeTier": "Gemini Developer API Free Tier",
+      "freeLimitNote": "Official pricing lists input and output as free of charge on the Free Tier. Flash-Lite is optimized for translation and high-volume tasks.",
+      "rationale": "Best fit for Persian semantic/translation judgment among the verified no-cost endpoints, with native Google multilingual support and an OpenAI-compatible API.",
+      "provenanceCaveat": "Provider-hosted model id is recorded with catalog date; no immutable served-weight hash is exposed by the compatibility API."
+    },
+    "pedagogical": {
+      "provider": "openrouter-free",
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "model": "google/gemma-4-31b-it:free",
+      "modelVersion": "google/gemma-4-31b-it:free@openrouter-2026-10-06",
+      "jsonResponseFormat": true,
+      "maxTokens": 2400,
+      "auth": "api-key",
+      "secret": "SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY",
+      "freeTier": "OpenRouter Free",
+      "freeLimitNote": "OpenRouter Free includes API access, 25+ free models and 50 requests/day. Gemma 4 31B free is $0/M input and output and supports JSON response_format.",
+      "rationale": "A distinct free provider/model family with multilingual instruction following and structured-output support; 20 Unit 1 requests fit inside the current 50 RPD free allowance.",
+      "provenanceCaveat": "OpenRouter can route a named free model among upstream providers. Evidence records the named model and OpenRouter catalog date, not an immutable upstream deployment hash."
+    },
+    "adversarial": {
+      "provider": "cloudflare-workers-ai-free",
+      "baseUrlTemplate": "https://api.cloudflare.com/client/v4/accounts/${SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID}/ai/v1",
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "modelVersion": "@cf/zai-org/glm-4.7-flash@cloudflare-catalog-2026-10-06",
+      "jsonResponseFormat": true,
+      "maxTokens": 2400,
+      "auth": "api-token",
+      "accountVariable": "SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID",
+      "secret": "SEMANTIC_JUDGE_ADVERSARIAL_API_KEY",
+      "freeTier": "Cloudflare Workers AI Free allocation",
+      "freeLimitNote": "Workers AI provides 10,000 Neurons/day free; GLM-4.7-Flash remains available on Workers Free and is a multilingual reasoning model.",
+      "rationale": "Independent serving stack and model family for adversarial review; the user's product already uses Cloudflare, while Workers AI's daily free allocation avoids paid inference.",
+      "provenanceCaveat": "Cloudflare-hosted model id and catalog date are recorded; the public API does not expose an immutable weight hash."
+    }
+  }
+}
