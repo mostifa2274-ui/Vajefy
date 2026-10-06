@@ -22,11 +22,11 @@ const required = [
   "unit1",
   "acknowledge_inference:",
   "if: ${{ inputs.acknowledge_inference }}",
-  "permissions:\n  contents: read",
-  "Apply verified zero-cost provider defaults",
+  "permissions:\n  contents: read\n  id-token: write",
+  "SEMANTIC_JUDGE_TRANSPORT: keyless",
   "Check role qualification before Unit 1",
   "assurance:semantic:qualification:check",
-  "No-inference role preflight",
+  "Keyless no-inference gateway preflight",
   "Run isolated semantic judge",
   "Upload structured role evidence",
 ];
@@ -53,6 +53,10 @@ for (const pattern of forbiddenTriggers) {
 
 if (/contents:\s*write/.test(text)) {
   fail("Semantic judge workflow must never have contents: write permission.");
+}
+
+if (/secrets\.SEMANTIC_JUDGE_|SEMANTIC_JUDGE_.*API_KEY/.test(text)) {
+  fail("Semantic judge workflow must not reference semantic API-key secrets.");
 }
 
 if (!/retention-days:\s*30/.test(text)) {
