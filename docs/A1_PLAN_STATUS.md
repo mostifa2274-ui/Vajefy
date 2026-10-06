@@ -1,5 +1,19 @@
 # A1-first plan: status
 
+> **Autonomous-assurance migration started 6 October 2026.** The implementation roadmap is [AUTONOMOUS_ASSURANCE_PLAN.md](AUTONOMOUS_ASSURANCE_PLAN.md). Human review is no longer the intended routine release gate; machine certification will replace it in staged PRs. Current human-review counts below remain historical baseline evidence until the qualification pipeline is migrated.
+
+## Autonomous assurance migration
+
+| Item | State | Evidence |
+|---|---|---|
+| Gate 0 provenance manifest | IN_PROGRESS | `content/assurance/provenance.json` exists; current Oxford-derived source intentionally remains `unverified` |
+| Fail-closed assurance schema | IN_PROGRESS | `src/lib/learn/assurance.ts` defines PASS/FAIL/UNCERTAIN/DISAGREEMENT/QUARANTINED and machine-assurance records |
+| Deterministic A1 assurance audit | IN_PROGRESS | `scripts/content-assurance.ts` reports structural/Persian/mistake/example/usage defects without pretending the current corpus is certified |
+| Autonomous semantic judges | NOT_STARTED | English, Persian, pedagogical and adversarial judges still to be implemented |
+| Audio certification | NOT_STARTED | Existing heuristic remains provisional |
+| Autonomous UX agents | NOT_STARTED | Existing Playwright/axe remains the foundation |
+| Machine-certified release qualification | NOT_STARTED | Existing human approval gate remains active until replacement evidence is complete |
+
 This file tracks the A1-first product plan (4 October 2026) against the
 repository. Each stage and gate item is marked as one of:
 
