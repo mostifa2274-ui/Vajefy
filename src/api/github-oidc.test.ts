@@ -138,3 +138,33 @@ test("rejects a token for a non-main ref", async () => {
     /oidc-ref/,
   );
 });
+
+
+test("accepts push only when the caller explicitly allows push", async () => {
+  const pushWorkflow =
+    "mostifa2274-ui/Vajefy/.github/workflows/semantic-gateway-smoke.yml@refs/heads/main";
+  const fixture = await fixtureToken(
+    claims({
+      event_name: "push",
+      workflow_ref: pushWorkflow,
+    }),
+  );
+  const verified = await verifyGitHubOidcToken(
+    fixture.token,
+    fixture.jwks,
+    {
+      ...expected,
+      workflows: [pushWorkflow],
+      events: ["push"],
+    },
+  );
+  assert.equal(verified.event_name, "push");
+});
+
+test("rejects push under the default inference event policy", async () => {
+  const fixture = await fixtureToken(claims({ event_name: "push" }));
+  await assert.rejects(
+    verifyGitHubOidcToken(fixture.token, fixture.jwks, expected),
+    /oidc-event/,
+  );
+});
