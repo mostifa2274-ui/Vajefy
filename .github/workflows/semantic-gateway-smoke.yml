@@ -75,7 +75,7 @@ jobs:
             english: "@cf/openai/gpt-oss-120b",
             persian: "@cf/zai-org/glm-4.7-flash",
             pedagogical: "@cf/google/gemma-4-26b-a4b-it",
-            adversarial: "@cf/qwen/qwen3.8-27b",
+            adversarial: "@cf/qwen/qwen3-30b-a3b-fp8",
           };
           for (const [role, model] of Object.entries(expected)) {
             if (body.roles?.[role]?.model !== model) {
