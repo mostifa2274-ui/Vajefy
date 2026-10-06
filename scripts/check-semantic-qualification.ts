@@ -76,6 +76,7 @@ if (
 const ledger = JSON.parse(fs.readFileSync(QUALIFIED, "utf8")) as QualificationFile;
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, "utf8")) as {
   calibrationVersion: string;
+  requiredRunsPerRole: number;
 };
 const presets = JSON.parse(fs.readFileSync(PRESETS, "utf8")) as Presets;
 
@@ -107,14 +108,21 @@ for (const role of semanticJudgeRole.options) {
       `${role}: qualification is stale against current free-provider champion`,
     );
   }
-  if (record.runIds.length < 2 || new Set(record.runIds).size !== record.runIds.length) {
-    fail(`${role}: qualification requires distinct repeated run ids`);
+  if (
+    record.runIds.length < manifest.requiredRunsPerRole ||
+    new Set(record.runIds).size !== record.runIds.length
+  ) {
+    fail(
+      `${role}: qualification requires at least ${manifest.requiredRunsPerRole} distinct run ids`,
+    );
   }
   if (
-    record.contextKeys.length < 2 ||
+    record.contextKeys.length < manifest.requiredRunsPerRole ||
     new Set(record.contextKeys).size !== record.contextKeys.length
   ) {
-    fail(`${role}: qualification requires distinct repeated judge contexts`);
+    fail(
+      `${role}: qualification requires at least ${manifest.requiredRunsPerRole} distinct judge contexts`,
+    );
   }
 }
 
