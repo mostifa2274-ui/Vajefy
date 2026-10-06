@@ -211,3 +211,13 @@ Provider-independent execution infrastructure is present but **no model inferenc
 GitHub Models is not a candidate: the standalone inference service was retired on 30 July 2026. No paid endpoint should be invoked without explicit authorization.
 
 Current resume point: CI/merge this infrastructure, then resolve actual independent model endpoints before producing evidence. Do not rebuild the packet unless source/rubric/prompt drift makes its CI check fail.
+
+## Completed — PR #86 reproducible semantic judge packets and runner
+
+PR #86 merged as `2a9677a78a458b04a504b9e5d8f52433f4e811d5`.
+
+Do not repeat packet generation or runner construction unless packet freshness CI fails. The current Unit 1 packet remains the authoritative judge input.
+
+Current branch: `codex/semantic-evidence-ingestion`.
+
+Next unrepeated objective: harden evidence ingestion/preflight with deterministic tests before any real model endpoint is invoked. No paid inference or semantic PASS evidence should be created implicitly.
