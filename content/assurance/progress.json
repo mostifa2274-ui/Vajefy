@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "82038312e6e80b059ad1a69c1a3ef5cee8bd1162",
+  "authoritativeMain": "dc47f1cfbc3da6a3b38ff61f2cb3d27c61005f23",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -81,6 +81,12 @@
       "pr": 97,
       "mergeCommit": "5ecdb83013d217365369235823de81d0deb285ae",
       "summary": "Fail-closed Workers AI Neuron budget: 84 frozen calibration requests bounded at 7,788 Neurons, current-rate freshness gate, lower-Neuron Qwen3 adversarial candidate, and runtime budget preflight."
+    },
+    {
+      "id": "status-ledger",
+      "mergeCommit": "dc47f1cfbc3da6a3b38ff61f2cb3d27c61005f23",
+      "pr": 108,
+      "summary": "docs/A1_PLAN_STATUS.md status ledger in the plan §31 state model, checked by npm run status:check in validate:data and in CI with full history; AGENTS.md/CLAUDE.md point every session at it."
     }
   ],
   "doNotRepeat": [
@@ -108,7 +114,8 @@
     "Do not re-diagnose English run 37473550090 empty-model-content: PR #99 fixed missing Workers AI Responses API extraction and post-merge OIDC smoke 37476270004 passed.",
     "Do not restore GPT-OSS 120B as the English keyless calibration judge unless Cloudflare adds official JSON Mode support and a new calibration/budget analysis justifies it; repeated run 37473550090 exhausted 900/900 completion tokens without canonical JSON.",
     "Do not promote or re-run Llama 3.3 70B as the English v1 judge: frozen v1 scoring rejected it on run 37473550090 attempt 10 (defect recall 0.0%).",
-    "Do not rebuild the status ledger or its CI check; update rows in docs/A1_PLAN_STATUS.md in the same pull request as the work."
+    "Do not rebuild the status ledger or its CI check; update rows in docs/A1_PLAN_STATUS.md in the same pull request as the work.",
+    "Do not rebuild the C1 ratchet or the course-wide curriculum-frontier check; repair content against them and lower the baseline with npm run assurance:content:baseline."
   ],
   "blockers": [
     {
@@ -152,19 +159,16 @@
   "currentWork": {
     "blocked": false,
     "branch": "claude/analysis-in-depth-maqczd",
-    "objective": "Plan §41 item 12: migrate docs/A1_PLAN_STATUS.md to the plan §31 state model with a CI consistency check, and record the English Llama rejection.",
+    "objective": "Plan §41 items 3 and 5: bound every deterministic finding code, add Unicode/direction/script checks, and check every A1 task and scene against the curriculum frontier.",
     "completedOnBranch": [
-      "Status ledger table in docs/A1_PLAN_STATUS.md covering the §41 first package, Phase 1-8 work, Gate 0 and scope deferrals.",
-      "scripts/plan-status.ts and src/lib/learn/status-ledger.ts: states, commits, evidence paths, notes, Gate 0 and progress-blocker consistency, calibration qualification consistency.",
-      "CI check job fetches full commit history (tree:0) and runs npm run status:check -- --require-history.",
-      "AGENTS.md (shared instructions) and CLAUDE.md (imports AGENTS.md) point every session at the ledger.",
-      "Recorded the English Llama 3.3 70B frozen-v1 rejection from run 37473550090 attempt 10."
+      "Ratchet bounds every finding code (unknown codes at zero) and requires fixes to be recorded with npm run assurance:content:baseline, which only lowers maximums.",
+      "MALFORMED_UNICODE, BIDI_CONTROL, UNICODE_NOT_NFC at zero; PERSIAN_IN_ENGLISH at 4.",
+      "FRONTIER_TASK_VOCABULARY (5,341) and FRONTIER_SCENE_VOCABULARY (65) course-wide; Unit 1 zero.",
+      "Lexical helpers shared by the calibration audit and the frontier check in src/lib/learn/learner-language.ts; calibration output unchanged."
     ],
     "pending": [
-      "After merge: mark F12 DONE with the merge commit.",
-      "F03: bound every deterministic finding code in the ratchet, unknown codes at zero.",
-      "F05: course-wide curriculum-frontier validator.",
       "F06: near-duplicate example detection.",
+      "A1-FRONTIER-REPAIR: decide whether to move late high-frequency words (do, not, can, please, to, at, for) earlier in the curriculum; this changes the curriculum version and the frozen study roster.",
       "F07/F08: three-mode Practice and removal of deprecated A1 modes.",
       "F09: A1-only initial data loading.",
       "Semantic lane: English needs a new candidate that is not GPT-OSS 120B or Llama 3.3 70B, without changing frozen v1; Persian, pedagogical and adversarial each need one owner workflow_dispatch."

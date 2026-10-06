@@ -47,6 +47,7 @@
     "assurance:content": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/content-assurance.ts",
     "assurance:content:strict": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/content-assurance.ts --strict",
     "assurance:content:ratchet": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/content-assurance.ts --ratchet",
+    "assurance:content:baseline": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/content-assurance.ts --update-baseline",
     "assurance:unit1": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/content-assurance.ts --unit 01-introductions --strict",
     "assurance:semantic:unit1": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/semantic-assurance.ts --unit 01-introductions",
     "assurance:semantic:unit1:check": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/semantic-assurance.ts --unit 01-introductions --check",

@@ -841,3 +841,23 @@ ledger first and update it in the same pull request as the work.
 
 This file and `progress.json` remain the semantic-assurance handoff. The
 ledger is where implementation state is decided.
+
+## Completed — PR #108 status ledger
+
+Merged as `dc47f1cfbc3da6a3b38ff61f2cb3d27c61005f23`. The ledger in
+`docs/A1_PLAN_STATUS.md` is the authoritative implementation state.
+
+## C1 ratchet and curriculum frontier — plan §41 items 3 and 5
+
+- Every deterministic finding code is now bounded; a code missing from
+  `content/assurance/deterministic-baseline.json` has a maximum of zero. A
+  fixed defect fails CI until `npm run assurance:content:baseline` records it.
+  That command only lowers maximums.
+- New C1/C2 codes: `MALFORMED_UNICODE`, `BIDI_CONTROL`, `UNICODE_NOT_NFC`
+  (all zero) and `PERSIAN_IN_ENGLISH` (4).
+- New C3 codes: `FRONTIER_TASK_VOCABULARY` (5,341) and
+  `FRONTIER_SCENE_VOCABULARY` (65). Every task in all 900 entries and every
+  scene task is checked against the curriculum. Unit 1 has zero findings.
+- 41% of entry-task frontier findings come from 30 high-frequency words placed
+  late in the curriculum (do, not, can, please in Unit 12; to, at, for in
+  Unit 7). The repair is tracked as `A1-FRONTIER-REPAIR`.
