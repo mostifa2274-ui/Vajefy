@@ -8,11 +8,11 @@
   "roles": {
     "english": {
       "provider": "cloudflare-workers-ai",
-      "modelFamily": "openai-gpt-oss",
-      "model": "@cf/openai/gpt-oss-120b",
-      "modelVersion": "@cf/openai/gpt-oss-120b@cloudflare-catalog-2026-10-06",
-      "maxTokens": 900,
-      "rationale": "High-capability open-weight reasoning model for English linguistic review."
+      "modelFamily": "meta-llama",
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "modelVersion": "@cf/meta/llama-3.3-70b-instruct-fp8-fast@cloudflare-catalog-2026-10-06",
+      "maxTokens": 500,
+      "rationale": "Cloudflare officially lists Llama 3.3 70B FP8 Fast as supporting Workers AI JSON Mode. Selected after GPT-OSS 120B repeatedly exhausted its 900-token completion budget without producing valid schema output."
     },
     "persian": {
       "provider": "cloudflare-workers-ai",
