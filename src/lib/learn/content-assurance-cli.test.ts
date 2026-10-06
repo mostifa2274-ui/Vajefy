@@ -27,10 +27,11 @@ function entry(examples: number) {
         gloss: "گربه",
         meaning: "یک حیوان خانگی",
         grammar: [],
-        examples: Array.from({ length: examples }, (_, index) => ({
-          en: `I see cat number ${index + 1}.`,
-          fa: `من گربه شماره ${index + 1} را می‌بینم.`,
-        })),
+        examples: [
+          { en: "I see a cat.", fa: "من یک گربه می‌بینم." },
+          { en: "Our cat is black and very small.", fa: "گربهٔ ما سیاه و خیلی کوچک است." },
+          { en: "Do you have a cat at home?", fa: "در خانه گربه داری؟" },
+        ].slice(0, examples),
         mistake: { wrong: "a cats", right: "a cat", why: "بعد از a اسم مفرد می‌آید." },
         check: [],
       },
@@ -268,6 +269,69 @@ test("tasks may only use vocabulary the learner has met, glossed support or docu
       'lex:A1:see#1.check[3] "dog" is taught later (lex:A1:dog)',
       // The second sense comes a unit later: all of unit 1 is known, "dog" is not.
       'lex:A1:see#2.check[0] "dog" is taught later (lex:A1:dog)',
+    ]);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("near-duplicate examples and sentences reused from an earlier word are reported", () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "vajefy-examples-"));
+  try {
+    mkdirSync(path.join(dir, "content", "pilot", "entries"), { recursive: true });
+    mkdirSync(path.join(dir, "content", "curriculum"), { recursive: true });
+    const sense = (id: string, examples: string[]) => ({
+      ...entry(3).senses[0],
+      id,
+      examples: examples.map((en, index) => ({ en, fa: `جمله ${index + 1}` })),
+    });
+    writeFileSync(
+      path.join(dir, "content", "pilot", "entries", "a.json"),
+      JSON.stringify([
+        {
+          id: "lex:A1:cat",
+          headword: "cat",
+          senses: [
+            sense("lex:A1:cat#1", [
+              "I have a cat.",
+              "I have a dog.",
+              "My cat sleeps on the sofa every afternoon.",
+              "My cat sleeps on the bed every morning.",
+              "The dog and the cat play in the garden.",
+            ]),
+          ],
+        },
+        {
+          id: "lex:A1:dog",
+          headword: "dog",
+          senses: [
+            sense("lex:A1:dog#1", [
+              "The dog and the cat play in the garden.",
+              "Our dog is very old.",
+              "Dogs like long walks.",
+            ]),
+          ],
+        },
+      ]),
+    );
+    // The dog is taught first, so the cat's copy of the shared sentence is the reuse.
+    writeFileSync(
+      path.join(dir, "content", "curriculum", "A1.json"),
+      JSON.stringify({ units: [{ id: "u1", entries: [{ id: "lex:A1:dog" }, { id: "lex:A1:cat" }] }] }),
+    );
+    const result = spawnSync(
+      process.execPath,
+      ["--experimental-strip-types", "--no-warnings", "--import", REGISTER, SCRIPT, "--json"],
+      { cwd: dir, encoding: "utf8" },
+    );
+    const report = JSON.parse(result.stdout) as { details: { code: string; where: string; message: string }[] };
+    const examples = report.details
+      .filter((item) => item.code.startsWith("EXAMPLE_") && item.code !== "EXAMPLE_COUNT")
+      .map((item) => `${item.code} ${item.where} ${item.message.split(";")[0]}`);
+    assert.deepEqual(examples, [
+      "EXAMPLE_NEAR_DUPLICATE lex:A1:cat#1.examples[1] differs from examples[0] by 1 word(s)",
+      "EXAMPLE_NEAR_DUPLICATE lex:A1:cat#1.examples[3] differs from examples[2] by 2 word(s)",
+      "EXAMPLE_REUSED lex:A1:cat#1.examples[4] same sentence as an example of lex:A1:dog#1, taught earlier",
     ]);
   } finally {
     rmSync(dir, { recursive: true, force: true });
