@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "98c4121de458e1ae9117138b26642ccb7d7f8c84",
+  "authoritativeMain": "fb31a9969463b1f69969b6be9b039c55b55f84cf",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -63,6 +63,12 @@
       "pr": 91,
       "mergeCommit": "98c4121de458e1ae9117138b26642ccb7d7f8c84",
       "summary": "Frozen 28-case Vajefy semantic calibration, pre-registered promotion thresholds, repeated-run stability checks, qualification ledger, and Unit 1 qualification gate."
+    },
+    {
+      "id": "semantic-calibration-automation",
+      "pr": 92,
+      "mergeCommit": "fb31a9969463b1f69969b6be9b039c55b55f84cf",
+      "summary": "One-dispatch-per-role calibration automation: three repeats, strict scoring, qualification recording, allowlisted commit, and retained raw evidence."
     }
   ],
   "doNotRepeat": [
@@ -82,7 +88,8 @@
     "Do not redo endpoint investigation/manual workflow from PR #88 unless provider availability changes.",
     "Do not redo free-provider research from PR #89 unless availability/pricing changes or the preset verification date is intentionally refreshed.",
     "Do not redo the PR #90 judge re-ranking unless provider/model availability changes or Vajefy-specific calibration evidence justifies a new champion.",
-    "Do not rebuild semantic calibration v1 or alter its thresholds after observing model outputs; create v2 for any justified corpus/threshold change."
+    "Do not rebuild semantic calibration v1 or alter its thresholds after observing model outputs; create v2 for any justified corpus/threshold change.",
+    "Do not rebuild semantic calibration automation from PR #92; after credentials exist, use .github/workflows/semantic-calibrate.yml once per role."
   ],
   "blockers": [
     {
@@ -124,25 +131,16 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/semantic-calibration-automation",
-    "objective": "Validate and merge one-dispatch semantic calibration automation.",
-    "blocked": false,
-    "completedOnBranch": [
-      "Added manual-only semantic-calibrate workflow for one selected role.",
-      "Workflow runs exactly three isolated calibration repeats with unique run ids.",
-      "Workflow scores against frozen v1 thresholds and stops on any promotion failure.",
-      "Qualification is recorded only after strict promotion passes.",
-      "Only qualified.json and the selected role calibration report may be committed.",
-      "Workflow runs only when dispatched from main with explicit inference acknowledgement.",
-      "Added dedicated CI safety checker forbidding automatic triggers and broad git staging.",
-      "Calibration scorer now writes audit reports directly as valid JSON instead of shell redirecting npm output."
-    ],
-    "pending": [
-      "Pass full CI for semantic calibration automation.",
-      "Merge the automation PR and record exact merge commit.",
-      "Configure the five missing free credential/account names.",
-      "Dispatch semantic calibration once per role; each dispatch performs all three required repeats automatically.",
-      "Only qualified roles can then run Unit 1 semantic judging."
+    "branch": "main",
+    "objective": "Obtain/configure the five free credential/account values, then run one semantic-calibrate dispatch per role.",
+    "blocked": true,
+    "blocker": "Repository-side calibration, qualification, and automation are complete. The four API keys and Cloudflare account-id variable are still absent.",
+    "nextSteps": [
+      "Check for any directly connectable provider integration that can eliminate manual API-key setup.",
+      "Otherwise create the free Groq, Google AI Studio, OpenRouter and Cloudflare credentials.",
+      "Set the four GitHub Actions secrets and SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID variable.",
+      "Dispatch Semantic judge calibration and qualification once per role from main.",
+      "Only qualified roles may then run Unit 1 semantic judging."
     ]
   },
   "endpointResolution": {
