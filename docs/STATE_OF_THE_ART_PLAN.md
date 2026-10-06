@@ -1,5 +1,7 @@
 # Vajefy: the state-of-the-art plan
 
+> **Superseded for implementation on 6 October 2026.** The authoritative roadmap is now [AUTONOMOUS_ASSURANCE_PLAN.md](AUTONOMOUS_ASSURANCE_PLAN.md). This file is retained as the measured baseline that motivated the autonomous-assurance redesign.
+
 Written 6 October 2026 against main at `62a416a`. This is an analysis of
 where the product stands and a plan for making it the best A1 English
 vocabulary course for Persian speakers in every aspect that matters, without
