@@ -8,7 +8,7 @@ test("parses direct JSON", () => {
 
 test("parses a single JSON markdown fence", () => {
   assert.deepEqual(
-    parseSemanticJudgeJson('\\`\\`\\`json\n{"criteria":[]}\n\\`\\`\\`'),
+    parseSemanticJudgeJson('```json\n{"criteria":[]}\n```'),
     { criteria: [] },
   );
 });
@@ -24,7 +24,7 @@ test("rejects multiple fenced payloads", () => {
   assert.throws(
     () =>
       parseSemanticJudgeJson(
-        '\\`\\`\\`json\n{"a":1}\n\\`\\`\\`\n\\`\\`\\`json\n{"b":2}\n\\`\\`\\`',
+        '```json\n{"a":1}\n```\n```json\n{"b":2}\n```',
       ),
   );
 });
