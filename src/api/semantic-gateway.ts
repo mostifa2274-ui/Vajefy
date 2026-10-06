@@ -3,6 +3,7 @@ import {
   KEYLESS_SEMANTIC_MODELS,
   KEYLESS_SEMANTIC_REF,
   KEYLESS_SEMANTIC_REPOSITORY,
+  KEYLESS_SEMANTIC_STATUS_WORKFLOWS,
   KEYLESS_SEMANTIC_WORKFLOWS,
   isKeylessSemanticRole,
 } from "./semantic-gateway-config";
@@ -49,12 +50,19 @@ function extractContent(value: unknown): string | null {
   return null;
 }
 
-async function authenticate(request: Request) {
+async function authenticate(
+  request: Request,
+  mode: "status" | "inference",
+) {
   return verifyGitHubActionsRequest(request, {
     audience: KEYLESS_SEMANTIC_AUDIENCE,
     repository: KEYLESS_SEMANTIC_REPOSITORY,
     ref: KEYLESS_SEMANTIC_REF,
-    workflows: [...KEYLESS_SEMANTIC_WORKFLOWS],
+    workflows:
+      mode === "status"
+        ? [...KEYLESS_SEMANTIC_STATUS_WORKFLOWS]
+        : [...KEYLESS_SEMANTIC_WORKFLOWS],
+    events: mode === "status" ? ["workflow_dispatch", "push"] : ["workflow_dispatch"],
   });
 }
 
@@ -64,9 +72,16 @@ export async function handleSemanticGateway(
 ): Promise<Response> {
   if (!ai) return jsonError("workers-ai-unavailable", 503);
 
+  if (request.method !== "GET" && request.method !== "POST") {
+    return jsonError("method-not-allowed", 405);
+  }
+
   let claims;
   try {
-    claims = await authenticate(request);
+    claims = await authenticate(
+      request,
+      request.method === "GET" ? "status" : "inference",
+    );
   } catch {
     return jsonError("unauthorized", 401);
   }
@@ -94,8 +109,6 @@ export async function handleSemanticGateway(
       { headers: { "Cache-Control": "no-store" } },
     );
   }
-
-  if (request.method !== "POST") return jsonError("method-not-allowed", 405);
 
   const raw = await request.text();
   if (!raw || raw.length > 180_000) return jsonError("invalid-body", 400);
