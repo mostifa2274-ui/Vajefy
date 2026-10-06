@@ -221,3 +221,21 @@ Do not repeat packet generation or runner construction unless packet freshness C
 Current branch: `codex/semantic-evidence-ingestion`.
 
 Next unrepeated objective: harden evidence ingestion/preflight with deterministic tests before any real model endpoint is invoked. No paid inference or semantic PASS evidence should be created implicitly.
+
+## In-progress checkpoint — semantic evidence ingestion hardening
+
+Branch: `codex/semantic-evidence-ingestion`.
+
+Completed on this branch:
+
+- external evidence merge now rejects stale content versions and curriculum-aware input hashes before writing output;
+- one run bundle may contain only one judge role;
+- different roles may not reuse the same judge context key;
+- source-generation context reuse, duplicate target/role pairs, wrong units/contexts and incomplete required evidence are rejected;
+- fixture tests cover the ingestion barriers;
+- endpoint configuration is centralized and test-covered;
+- `npm run assurance:semantic:preflight` reports readiness without inference and without exposing API key values;
+- JSON response-format mode can be disabled for compatible endpoints that do not implement that OpenAI extension;
+- the no-inference preflight is exercised by `validate:data`.
+
+Current resume point: full CI/merge this hardening branch. After merge, actual judge execution remains blocked only on selecting/connecting explicit independent model endpoints; do not repeat packet, runner or ingestion infrastructure.
