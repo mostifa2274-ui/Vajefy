@@ -1,0 +1,19 @@
+name: Temporary Vajefy worker URL probe
+on:
+  push:
+    branches: [codex/probe-vajefy-worker-url]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          set +e
+          for URL in             "https://vajefy.mostifa2273.workers.dev"             "https://vajefy.mostifa2274.workers.dev"             "https://vajefy.mostifa2274-ui.workers.dev"             "https://vajefy1.mostifa2273.workers.dev"             "https://vajefy1.mostifa2274.workers.dev"
+          do
+            CODE="$(curl -L -sS -o /tmp/body -w '%{http_code}' --max-time 15 "$URL/api/version")"
+            BODY="$(head -c 240 /tmp/body | tr '\n' ' ')"
+            echo "$URL code=$CODE body=$BODY"
+          done
