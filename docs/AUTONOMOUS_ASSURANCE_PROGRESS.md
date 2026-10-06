@@ -609,3 +609,41 @@ Security separation is explicit:
 - CI fails if the smoke gains a POST/inference path.
 
 No model inference has been run by this branch.
+
+
+## In-progress checkpoint — fail-closed Workers AI free budget
+
+Branch: `codex/keyless-free-budget`.
+
+Before any semantic inference, the complete frozen calibration campaign is now
+budgeted against Cloudflare Workers AI's current free allocation.
+
+Current machine-calculated upper bound:
+
+- 84 requests total;
+- English: 3,936 Neurons;
+- Persian: 1,014;
+- pedagogical: 1,398;
+- adversarial: 1,440;
+- total: **7,788 Neurons**;
+- Workers Free daily allocation: 10,000;
+- reserve: **2,212 Neurons**;
+- stricter Vajefy safety ceiling: 8,500;
+- safety-ceiling reserve: **712 Neurons**.
+
+Budget assumptions are deliberately conservative:
+
+- UTF-8 bytes are treated as an input-token upper bound;
+- another 512 protocol tokens are added per request;
+- every response is budgeted at its configured maximum output size;
+- all three required repeats for every role are included.
+
+To fit this boundary, the adversarial candidate changed from
+`@cf/qwen/qwen3.8-27b` to
+`@cf/qwen/qwen3-30b-a3b-fp8`.
+
+Calibration now runs `assurance:semantic:budget:current` before gateway
+preflight/inference and fails if the budget drifts above 8,500 Neurons, a model
+requires paid billing, or the pricing verification is older than 30 days.
+
+No semantic inference has been run.
