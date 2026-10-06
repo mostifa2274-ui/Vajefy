@@ -121,7 +121,7 @@ export function extractWorkersAiContent(value: unknown): string | null {
   return unique.length === 1 ? unique[0]! : null;
 }
 
-function workersAiDiagnostic(value: unknown): Record<string, unknown> {
+export function workersAiDiagnostic(value: unknown): Record<string, unknown> {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     return { valueType: Array.isArray(value) ? "array" : typeof value };
   }
@@ -340,7 +340,13 @@ export async function handleSemanticGateway(
       runId: claims.run_id ?? null,
       diagnostic: workersAiDiagnostic(result),
     });
-    return jsonError("empty-model-content", 502);
+    return Response.json(
+      {
+        error: "empty-model-content",
+        diagnostic: workersAiDiagnostic(result),
+      },
+      { status: 502, headers: { "Cache-Control": "no-store" } },
+    );
   }
 
   return Response.json(
