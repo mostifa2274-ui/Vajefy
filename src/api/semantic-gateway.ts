@@ -83,6 +83,15 @@ function collectTextParts(value: unknown, depth = 0): string[] {
 }
 
 export function extractWorkersAiContent(value: unknown): string | null {
+  if (
+    value &&
+    typeof value === "object" &&
+    !Array.isArray(value) &&
+    Array.isArray((value as Record<string, unknown>).criteria)
+  ) {
+    return JSON.stringify(value);
+  }
+
   const parts = collectTextParts(value);
   if (!parts.length) return null;
   return [...new Set(parts)].join("\n").trim() || null;
@@ -113,7 +122,7 @@ function workersAiDiagnostic(value: unknown): Record<string, unknown> {
   };
 }
 
-function semanticResponseFormat(userPayload: unknown) {
+export function semanticResponseFormat(userPayload: unknown) {
   const payload =
     userPayload && typeof userPayload === "object" && !Array.isArray(userPayload)
       ? (userPayload as Record<string, unknown>)
