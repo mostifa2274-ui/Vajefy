@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import type { Pilot } from "../src/lib/learn/content";
@@ -9,6 +8,7 @@ import {
   semanticRubricManifest,
   type SemanticJudgeRecord,
 } from "../src/lib/learn/assurance";
+import { semanticInputHash, semanticTargetInput } from "./semantic-input";
 
 const ROOT = process.cwd();
 const COMPILED = path.join(ROOT, "content", "compiled", "enhanced.json");
@@ -44,26 +44,6 @@ function has(flag: string): boolean {
   return process.argv.includes(flag);
 }
 
-function stable(value: unknown): string {
-  if (Array.isArray(value)) return `[${value.map(stable).join(",")}]`;
-  if (value && typeof value === "object") {
-    return `{${Object.keys(value as Record<string, unknown>)
-      .sort()
-      .map(
-        (key) =>
-          `${JSON.stringify(key)}:${stable(
-            (value as Record<string, unknown>)[key],
-          )}`,
-      )
-      .join(",")}}`;
-  }
-  return JSON.stringify(value);
-}
-
-function sha256(value: unknown): string {
-  return createHash("sha256").update(stable(value)).digest("hex");
-}
-
 function fail(message: string): never {
   console.error(message);
   process.exit(1);
@@ -97,12 +77,7 @@ const targets = selectedEntries.flatMap((entry) =>
     targetId: sense.id,
     entryId: entry.id,
     contentVersion: entry.version,
-    inputHash: sha256({
-      entryId: entry.id,
-      headword: entry.headword,
-      contentVersion: entry.version,
-      sense,
-    }),
+    inputHash: semanticInputHash(semanticTargetInput(entry, sense, unitId)),
   })),
 );
 const targetIds = new Set(targets.map((target) => target.targetId));
