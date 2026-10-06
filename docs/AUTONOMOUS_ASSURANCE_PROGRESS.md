@@ -183,3 +183,13 @@ On branch `codex/semantic-assurance-foundation`:
 - a strict semantic command exists for the later certification gate and will fail until every Unit 1 sense has complete independent evidence.
 
 Current resume point: validate this foundation in CI, merge it if green, then produce independent Unit 1 judge evidence without editing the deterministically certified source content.
+
+## Completed — PR #85 semantic assurance foundation
+
+PR #85 merged as `ee3e7afe764520a71b9cb7fe17fd1c1ea66c25f8`.
+
+The four-role semantic assurance schema, version/hash binding, fail-closed arbitration, evidence consistency checker and fixture tests are now on `main`. No semantic PASS judgments were fabricated or committed.
+
+Current branch: `codex/semantic-judge-packets`.
+
+Next unrepeated objective: produce deterministic judge packets and an opt-in provider-independent runner. GitHub Models must not be used: the standalone service was retired on 30 July 2026. No paid inference should be invoked without explicit authorization.
