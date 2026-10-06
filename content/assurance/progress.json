@@ -73,7 +73,9 @@
       "Regenerated derived enhanced-content artifacts using the repository compiler.",
       "Generated 38 missing controlled GB/US example clips with the pinned Kokoro pipeline.",
       "Rebuilt derived content with the new controlled audio.",
-      "Removed all temporary regeneration workflows."
+      "Removed all temporary regeneration workflows.",
+      "Refreshed safe version-bound generated artifacts: coach evaluation cases, reviewed-reference output and usefulness ordering.",
+      "Removed the temporary derived-artifact workflow."
     ],
     "generatedArtifactsCommit": "5d51bd4d60909d46ed23cbd0bbe755594fcb921c",
     "controlledAudioCommit": "455ab84dd7b9ae1c20a3e5eca19d8e24dcdcc5d3",
@@ -82,6 +84,8 @@
       "Pass final exact-head CI: generated-content consistency, validate:data, typecheck, lint, unit tests, production build, Playwright and Workers contract.",
       "Merge PR #84 if all gates pass.",
       "Record exact merge commit and next objective."
-    ]
+    ],
+    "derivedArtifactsCommit": "41689afc9000b80fc7d9355bb77c9a2321faa77d",
+    "temporaryDerivedWorkflowRemovalCommit": "598e14b0a09cd2db9e82dbea533415324ba425de"
   }
 }
