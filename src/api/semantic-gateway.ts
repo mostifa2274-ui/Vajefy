@@ -82,15 +82,55 @@ function collectTextParts(value: unknown, depth = 0): string[] {
   return direct;
 }
 
-export function extractWorkersAiContent(value: unknown): string | null {
-  if (
-    value &&
+function hasCriteriaArray(value: unknown): value is Record<string, unknown> {
+  return (
+    Boolean(value) &&
     typeof value === "object" &&
     !Array.isArray(value) &&
     Array.isArray((value as Record<string, unknown>).criteria)
-  ) {
-    return JSON.stringify(value);
+  );
+}
+
+function structuredResponseCandidate(value: unknown): string | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+
+  const record = value as Record<string, unknown>;
+  if (hasCriteriaArray(record)) return JSON.stringify(record);
+
+  const response = record.response;
+  if (hasCriteriaArray(response)) return JSON.stringify(response);
+
+  if (typeof response === "string") {
+    const trimmed = response.trim();
+    if (trimmed) {
+      try {
+        const parsed = JSON.parse(trimmed) as unknown;
+        if (hasCriteriaArray(parsed)) return trimmed;
+      } catch {
+        // Fall through to alternate response representations.
+      }
+    }
   }
+
+  const outputText = record.output_text;
+  if (typeof outputText === "string") {
+    const trimmed = outputText.trim();
+    if (trimmed) {
+      try {
+        const parsed = JSON.parse(trimmed) as unknown;
+        if (hasCriteriaArray(parsed)) return trimmed;
+      } catch {
+        // Fall through to alternate response representations.
+      }
+    }
+  }
+
+  return null;
+}
+
+export function extractWorkersAiContent(value: unknown): string | null {
+  const structured = structuredResponseCandidate(value);
+  if (structured) return structured;
 
   const parts = collectTextParts(value);
   if (!parts.length) return null;
