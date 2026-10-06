@@ -1,3 +1,4 @@
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import type { Entry, Sense } from "../src/lib/learn/content";
@@ -53,8 +54,90 @@ function needsPersian(value: string | undefined, where: string, code: string) {
   }
 }
 
+/** A lone surrogate, U+FFFD, or a control character other than a newline. */
+function malformed(value: string): boolean {
+  for (const char of value) {
+    // Iterating by code point pairs valid surrogates, so any left are lone.
+    const code = char.codePointAt(0) ?? 0;
+    if (
+      (code >= 0xd800 && code <= 0xdfff) ||
+      code === 0xfffd ||
+      (code < 0x20 && code !== 0x0a) ||
+      (code >= 0x7f && code <= 0x9f)
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+// Explicit embeddings, overrides and isolates. Direction belongs to the
+// interface (dir and bdi), not to stored text.
+const BIDI_CONTROL = /[\u202A-\u202E\u2066-\u2069]/u;
+
+function strings(value: unknown, where: string, out: [string, string][]) {
+  if (typeof value === "string") out.push([where, value]);
+  else if (Array.isArray(value)) {
+    value.forEach((item, index) => strings(item, `${where}[${index}]`, out));
+  } else if (value && typeof value === "object") {
+    for (const [key, item] of Object.entries(value)) {
+      strings(item, `${where}.${key}`, out);
+    }
+  }
+  return out;
+}
+
+function checkText(sense: Sense) {
+  for (const [where, value] of strings(sense, sense.id, [])) {
+    if (malformed(value)) {
+      add("MALFORMED_UNICODE", where, "contains a lone surrogate, U+FFFD or a control character");
+    }
+    if (BIDI_CONTROL.test(value)) {
+      add("BIDI_CONTROL", where, "contains an explicit bidirectional embedding, override or isolate");
+    }
+    if (value.normalize("NFC") !== value) {
+      add("UNICODE_NOT_NFC", where, "is not in Unicode normalization form C");
+    }
+  }
+}
+
+/** English learner-facing text: the target-language side of every pair. */
+function englishFields(sense: Sense): [string, string][] {
+  const base = sense.id;
+  const fields: [string, string][] = [
+    [`${base}.mistake.wrong`, sense.mistake.wrong],
+    [`${base}.mistake.right`, sense.mistake.right],
+  ];
+  sense.examples.forEach((example, index) =>
+    fields.push([`${base}.examples[${index}].en`, example.en]),
+  );
+  (sense.collocations ?? []).forEach((collocation, index) =>
+    fields.push([`${base}.collocations[${index}]`, collocation]),
+  );
+  sense.grammar.forEach((grammar, index) =>
+    fields.push([`${base}.grammar[${index}].pattern`, grammar.pattern]),
+  );
+  sense.check.forEach((item, index) => {
+    const where = `${base}.check[${index}]`;
+    if (item.type === "cloze") {
+      fields.push([`${where}.text`, item.text], [`${where}.answer`, item.answer]);
+      (item.accept ?? []).forEach((form, at) => fields.push([`${where}.accept[${at}]`, form]));
+    } else if (item.type === "produce") {
+      fields.push([`${where}.frame`, item.frame], [`${where}.answer`, item.answer]);
+      (item.accept ?? []).forEach((form, at) => fields.push([`${where}.accept[${at}]`, form]));
+    }
+  });
+  return fields;
+}
+
 function checkSense(sense: Sense) {
   const base = sense.id;
+
+  checkText(sense);
+  for (const [where, value] of englishFields(sense)) {
+    if (value && PERSIAN.test(value)) {
+      add("PERSIAN_IN_ENGLISH", where, "English field contains Persian-script text; move it to its Persian field");
+    }
+  }
 
   needsPersian(sense.gloss, `${base}.gloss`, "PERSIAN_GLOSS");
   needsPersian(sense.meaning, `${base}.meaning`, "PERSIAN_MEANING");
@@ -272,7 +355,8 @@ type Baseline = {
   maximumByCode: Record<string, number>;
 };
 
-if (process.argv.includes("--ratchet")) {
+const updating = process.argv.includes("--update-baseline");
+if (process.argv.includes("--ratchet") || updating) {
   if (requestedUnit) {
     console.error("--ratchet compares the full A1 corpus and cannot be combined with --unit.");
     process.exit(1);
@@ -297,12 +381,24 @@ if (process.argv.includes("--ratchet")) {
     process.exit(1);
   }
 
-  const regressions = Object.entries(baseline.maximumByCode).flatMap(
-    ([code, maximum]) => {
-      const current = report.byCode[code] ?? 0;
-      return current > maximum ? [{ code, current, maximum }] : [];
-    },
-  );
+  // Every reported code is bounded. A code missing from the baseline has a
+  // maximum of zero, so a new defect class fails instead of going unnoticed.
+  const codes = [
+    ...new Set([
+      ...Object.keys(baseline.maximumByCode),
+      ...Object.keys(report.byCode),
+    ]),
+  ].sort((a, b) => a.localeCompare(b));
+  const regressions = codes.flatMap((code) => {
+    const current = report.byCode[code] ?? 0;
+    const maximum = baseline.maximumByCode[code] ?? 0;
+    return current > maximum ? [{ code, current, maximum }] : [];
+  });
+  const fixes = codes.flatMap((code) => {
+    const current = report.byCode[code] ?? 0;
+    const maximum = baseline.maximumByCode[code] ?? 0;
+    return current < maximum ? [{ code, current, maximum }] : [];
+  });
 
   if (regressions.length) {
     console.error(
@@ -313,12 +409,45 @@ if (process.argv.includes("--ratchet")) {
         `- ${regression.code}: ${regression.current} > ${regression.maximum}`,
       );
     }
+    if (updating) console.error("The baseline only shrinks; fix the content instead.");
     process.exit(1);
   }
 
-  if (!process.argv.includes("--json")) {
+  if (updating) {
+    if (fixes.length) {
+      const head = spawnSync("git", ["rev-parse", "--short", "HEAD"], {
+        cwd: ROOT,
+        encoding: "utf8",
+      });
+      const next: Baseline = {
+        ...baseline,
+        recordedAgainst:
+          head.status === 0 ? head.stdout.trim() : baseline.recordedAgainst,
+        maximumByCode: Object.fromEntries(
+          codes.map((code) => [code, report.byCode[code] ?? 0]),
+        ),
+      };
+      fs.writeFileSync(baselineFile, `${JSON.stringify(next, null, 2)}\n`);
+    }
     console.log(
-      `Deterministic assurance ratchet: PASS against ${baseline.recordedAgainst}; known defect classes did not increase.`,
+      fixes.length
+        ? `Deterministic assurance baseline lowered: ${fixes.map((fix) => `${fix.code} ${fix.maximum} -> ${fix.current}`).join(", ")}.`
+        : "Deterministic assurance baseline already matches the content.",
+    );
+  } else if (fixes.length) {
+    // Fixed defects must be recorded, or the old maximum would hide a later
+    // regression up to that count.
+    console.error(
+      `Deterministic assurance improved against ${baseline.recordedAgainst}; record it so the gain cannot be lost:`,
+    );
+    for (const fix of fixes) {
+      console.error(`- ${fix.code}: ${fix.current} < ${fix.maximum}`);
+    }
+    console.error("Run: npm run assurance:content:baseline");
+    process.exit(1);
+  } else if (!process.argv.includes("--json")) {
+    console.log(
+      `Deterministic assurance ratchet: PASS against ${baseline.recordedAgainst}; every finding code is at its recorded maximum.`,
     );
   }
 }
