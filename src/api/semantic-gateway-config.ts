@@ -15,6 +15,18 @@ export const KEYLESS_SEMANTIC_WORKFLOWS = [
   KEYLESS_SEMANTIC_SMOKE_WORKFLOW,
 ] as const;
 
+export function isKeylessInferenceWorkflow(
+  workflowRef: string,
+  eventName: string,
+): boolean {
+  return (
+    eventName === "workflow_dispatch" &&
+    (KEYLESS_SEMANTIC_INFERENCE_WORKFLOWS as readonly string[]).includes(
+      workflowRef,
+    )
+  );
+}
+
 export const KEYLESS_SEMANTIC_MODELS = {
   english: {
     provider: "cloudflare-workers-ai",
