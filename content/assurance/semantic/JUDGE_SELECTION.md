@@ -115,3 +115,36 @@ claims or aggregate benchmarks.
   https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/
 - Cloudflare Workers AI pricing:
   https://developers.cloudflare.com/workers-ai/platform/pricing/
+
+
+## Authoritative keyless candidates — 2026-10-06
+
+The external-provider allocation above is now historical candidate research.
+The authoritative execution path is keyless and uses Cloudflare Workers AI
+through the deployed Worker's `AI` binding.
+
+Current candidates:
+
+| Role | Model family | Keyless model |
+|---|---|---|
+| English | OpenAI GPT-OSS | `@cf/openai/gpt-oss-120b` |
+| Persian | Zhipu GLM | `@cf/zai-org/glm-4.7-flash` |
+| Pedagogical | Google Gemma | `@cf/google/gemma-4-26b-a4b-it` |
+| Adversarial | Qwen | `@cf/qwen/qwen3.8-27b` |
+
+Why the allocation changed:
+
+- eliminating long-lived provider credentials is now a hard architecture goal;
+- Workers AI bindings require no API key in Worker code;
+- GitHub Actions authenticates to the Worker with short-lived OIDC identity;
+- the four roles still use four different model families;
+- the frozen Vajefy calibration gate, not generic benchmark prestige, remains the
+  final judge-selection authority.
+
+Tradeoff: the four models share Cloudflare as a serving platform, so provider
+serving-stack independence is lower than in the earlier multi-provider plan.
+This is explicit and must not be disguised by relabeling the provider. The
+qualification record will therefore use `cloudflare-workers-ai` as provider
+for all four roles while preserving distinct model IDs/families.
+
+No candidate is trusted until it passes `vajefy-semantic-v1`.

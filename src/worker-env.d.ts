@@ -34,7 +34,20 @@ interface RateLimitLike {
   limit(options: { key: string }): Promise<{ success: boolean }>;
 }
 
+interface WorkersAiLike {
+  run(
+    model: string,
+    input: {
+      messages: { role: "system" | "user" | "assistant"; content: string }[];
+      temperature?: number;
+      max_tokens?: number;
+    },
+  ): Promise<unknown>;
+}
+
 interface WorkerEnv {
+  /** Workers AI binding used by the OIDC-protected semantic judge gateway. */
+  AI?: WorkersAiLike;
   /** Pronunciation clips moved out of the static assets into R2. */
   AUDIO?: R2BucketLike;
   /** "on" to log client error reports. */

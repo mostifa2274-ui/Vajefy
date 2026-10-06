@@ -1,3 +1,18 @@
+# Legacy fallback only — API keys are no longer required
+
+**Superseded on 2026-10-06 by
+`content/assurance/semantic/KEYLESS_GATEWAY.md`.**
+
+The authoritative semantic judge path now uses GitHub Actions OIDC plus the
+Cloudflare Workers AI binding and requires **no provider API keys** and no
+semantic repository secrets.
+
+Keep the material below only as a disaster-recovery fallback if the keyless
+Workers AI path is intentionally retired in a future version. Do not perform
+this setup for normal Vajefy operation.
+
+---
+
 # Free semantic judge credential setup
 
 Verified: 2026-10-06

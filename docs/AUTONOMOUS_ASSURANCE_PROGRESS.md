@@ -541,3 +541,44 @@ Do not repeat the calibration automation work.
 
 Current external blocker remains unchanged: all four API-key secrets and
 `SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID` were confirmed absent on 2026-10-06.
+
+
+## In-progress checkpoint — zero-key semantic gateway
+
+Branch: `codex/keyless-semantic-gateway`.
+
+The old four-provider API-key setup is superseded.
+
+Implemented on this branch:
+
+- production origin discovered and verified:
+  `https://vajefy.mostifa2273.workers.dev`;
+- `SITE_URL` is not required for semantic execution;
+- `wrangler.jsonc` now declares a Workers AI `AI` binding;
+- GitHub Actions authenticates with short-lived OIDC identity
+  (`id-token: write`), not provider API keys;
+- the Worker verifies GitHub OIDC signature/JWKS plus exact audience,
+  repository, main ref, workflow and timing claims;
+- internal endpoint:
+  `/api/internal/semantic-judge`;
+- model selection is fixed on the Worker and cannot be supplied by callers;
+- keyless role candidates:
+  - English -> `@cf/openai/gpt-oss-120b`;
+  - Persian -> `@cf/zai-org/glm-4.7-flash`;
+  - pedagogical -> `@cf/google/gemma-4-26b-a4b-it`;
+  - adversarial -> `@cf/qwen/qwen3.8-27b`;
+- each inference call obtains a fresh GitHub OIDC token;
+- semantic workflows contain no `SEMANTIC_JUDGE_*_API_KEY` references;
+- qualification freshness is now tied to the keyless candidate map;
+- CI rejects currently documented paid-only Workers AI model IDs and caps
+  judge output to 1,200 tokens/request;
+- old credential/setup documentation is explicitly marked legacy fallback.
+
+Tradeoff recorded explicitly: model-family diversity remains four-way, but the
+serving platform is Cloudflare for all four candidates. The frozen
+`vajefy-semantic-v1` calibration remains the authority for promotion.
+
+No model inference has been run on this branch.
+
+Current resume point: full CI -> merge -> exact production revision check ->
+OIDC no-inference gateway smoke -> keyless calibration.
