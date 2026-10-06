@@ -2,7 +2,12 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
-import { KEYLESS_SEMANTIC_MODELS } from "./semantic-gateway-config";
+import {
+  KEYLESS_SEMANTIC_INFERENCE_WORKFLOWS,
+  KEYLESS_SEMANTIC_MODELS,
+  KEYLESS_SEMANTIC_SMOKE_WORKFLOW,
+  isKeylessInferenceWorkflow,
+} from "./semantic-gateway-config";
 
 type Presets = {
   roles: Record<
@@ -42,4 +47,24 @@ test("Worker keyless model map matches assurance presets exactly", () => {
     assert.equal(actual.modelVersion, expected.modelVersion);
     assert.equal(actual.maxTokens, expected.maxTokens);
   }
+});
+
+
+test("only manual judge workflows can authorize keyless inference", () => {
+  for (const workflow of KEYLESS_SEMANTIC_INFERENCE_WORKFLOWS) {
+    assert.equal(isKeylessInferenceWorkflow(workflow, "workflow_dispatch"), true);
+    assert.equal(isKeylessInferenceWorkflow(workflow, "push"), false);
+  }
+
+  assert.equal(
+    isKeylessInferenceWorkflow(KEYLESS_SEMANTIC_SMOKE_WORKFLOW, "push"),
+    false,
+  );
+  assert.equal(
+    isKeylessInferenceWorkflow(
+      KEYLESS_SEMANTIC_SMOKE_WORKFLOW,
+      "workflow_dispatch",
+    ),
+    false,
+  );
 });
