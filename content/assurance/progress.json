@@ -117,15 +117,40 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "main",
-    "objective": "Build a frozen Vajefy-specific judge calibration set, then configure free credentials and qualify the four current champions before semantic certification.",
+    "branch": "codex/semantic-judge-calibration",
+    "objective": "Validate and merge frozen semantic judge calibration and qualification gating.",
     "blocked": false,
-    "nextSteps": [
-      "Create a frozen calibration set with known-good senses and seeded English/Persian/pedagogical/adversarial defects.",
-      "Measure per-role defect recall, false-positive rate, abstention calibration, schema compliance and repeat-run stability.",
-      "Keep or replace each champion based on Vajefy-specific calibration rather than generic public benchmarks.",
-      "Configure the free API credentials and Cloudflare account id.",
-      "Run the qualified four judges on the Unit 1 packet and execute strict semantic certification."
+    "completedOnBranch": [
+      "Created frozen vajefy-semantic-v1 calibration set with 28 cases: 8 clean, 16 seeded defects, 4 abstention cases.",
+      "Pre-registered strict promotion thresholds before any model calibration run.",
+      "Added calibration schema/content validator.",
+      "Added deterministic per-role calibration packet builder and committed four packets.",
+      "Added calibration scorer with same-candidate, independent-run and stability enforcement.",
+      "Added unit tests for perfect promotion, seeded-defect miss, clean false positive, replayed run, mixed model versions and invalid schema.",
+      "Added qualification ledger, qualification recorder and freshness checker.",
+      "Updated manual semantic workflow with calibration_v1/unit1 target sets.",
+      "Unit 1 semantic runs now require current role qualification first.",
+      "Updated workflow safety checker to require the calibration gate."
+    ],
+    "calibration": {
+      "version": "vajefy-semantic-v1",
+      "totalCases": 28,
+      "clean": 8,
+      "defects": 16,
+      "abstain": 4,
+      "requiredRunsPerRole": 3,
+      "packetsCommit": "a02892ff11a24a820447efe51533d6661eca7c8f",
+      "qualificationLedger": "content/assurance/semantic/calibration/qualified.json",
+      "qualifiedRoles": 0,
+      "inferenceRun": false
+    },
+    "pending": [
+      "Pass full CI for calibration/qualification infrastructure.",
+      "Merge the calibration PR if green and record exact merge commit.",
+      "Configure the free provider credentials.",
+      "Run three calibration runs per role.",
+      "Promote only roles that pass every pre-registered threshold.",
+      "Run Unit 1 semantic judges only after role qualification."
     ]
   },
   "endpointResolution": {
