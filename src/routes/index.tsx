@@ -76,9 +76,6 @@ function Home() {
     void loadPilotOrder()
       .then(setOrder)
       .catch(() => setOrder(false));
-    // Started now rather than after progress loads, so the daily cards follow
-    // the first card closely.
-    void loadPairs("synonyms.json").catch(() => undefined);
   }, []);
 
   // Today's entry comes from the learner's own level, once it is known.
@@ -87,7 +84,12 @@ function Home() {
     let alive = true;
     void (async () => {
       try {
-        const [words, notes] = await Promise.all([loadLevel(focus), loadPairs("synonyms.json")]);
+        // The synonym notes are reference material beyond A1, so an A1
+        // learner's Today does not fetch them.
+        const [words, notes] = await Promise.all([
+          loadLevel(focus),
+          focus === "A1" ? Promise.resolve([]) : loadPairs("synonyms.json"),
+        ]);
         if (!alive) return;
         setWord(words[dayNumber() % words.length] ?? null);
         setNuance(notes[dayNumber() % notes.length] ?? null);

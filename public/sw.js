@@ -5,29 +5,14 @@ const COMPLETE_MARKER = "/__vajefy_release_complete__";
 const BUILD_ASSETS = /* __VAJEFY_BUILD_ASSETS__ */ [];
 const ROUTES = ["/", "/learn", "/lexicon", "/study", "/drill", "/library", "/progress"];
 const SHELL = ["/manifest.json", "/favicon.svg", "/icon-192.png", "/icon-512.png", "/icon-512-maskable.png"];
+// Only what the A1 course needs is installed up front (plan §16 P1). Higher
+// levels and the reference decks are cached the first time they are opened.
 const DATA = [
   "/data/meta.json",
   "/data/lex-a1.json",
-  "/data/lex-a2.json",
-  "/data/lex-b1.json",
-  "/data/lex-b2.json",
-  "/data/lex-b2x.json",
-  "/data/lex-c1.json",
-  "/data/occupations.json",
-  "/data/phrasal.json",
-  "/data/collocations.json",
-  "/data/prepositions.json",
-  "/data/antonyms.json",
-  "/data/confusing.json",
-  "/data/verb-patterns.json",
-  "/data/irregular.json",
-  "/data/formation.json",
-  "/data/synonyms.json",
-  "/data/families.json",
   "/data/enhanced/index.json",
   "/data/enhanced/audio-pack.json",
   "/data/enhanced-order.json",
-  "/data/reference-reviewed.json",
   "/data/usefulness.json",
 ];
 // Pronunciation clips are named by their content hash, so they never change

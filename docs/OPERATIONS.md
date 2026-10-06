@@ -88,6 +88,12 @@ unrelated origin caches. Old hashed assets can fall back to that retained
 complete release when the network no longer has them. Runtime navigation never
 overwrites the validated offline documents.
 
+The listed learning data is the A1 course only: `meta.json`, `lex-a1.json`,
+the enhanced-content index, order and audio-pack manifest, and
+`usefulness.json`. Higher-level lexicons and the reference decks are not
+installed. Each is cached in the current release the first time it is fetched,
+and offline it falls back to the retained earlier release.
+
 Pronunciation audio is separate from the required application release. A clip
 is available offline only when it has already played successfully or when the
 audio-pack downloader reports every clip cached. Merely loading the audio-pack

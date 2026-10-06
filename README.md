@@ -34,8 +34,9 @@ practice), **Words** (search, saved entries and reference) and **Progress**
   mistakes, then mixes spelling, listening, meaning and context. **Listening**
   and **Spelling** practise one skill. Practice is measured separately from
   retention.
-- **Offline-first PWA**: the app shell and all learning datasets are cached for
-  offline study after the first successful load.
+- **Offline-first PWA**: the app shell and the A1 course data are cached for
+  offline study after the first successful load. Higher levels and the
+  reference decks are cached the first time they are opened.
 - Persian or English interface, right-to-left aware throughout, with selectable
   British or American pronunciation.
 - **Built to be evaluated**: answers record their evidence, a 30-day check-up
