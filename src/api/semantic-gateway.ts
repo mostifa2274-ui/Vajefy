@@ -7,6 +7,7 @@ import {
   KEYLESS_SEMANTIC_WORKFLOWS,
   isKeylessSemanticRole,
 } from "./semantic-gateway-config";
+import { canonicalizeSemanticJudgeContent } from "../lib/learn/semantic-judge-json";
 import { verifyGitHubActionsRequest } from "./github-oidc";
 
 type GatewayBody = {
@@ -22,67 +23,7 @@ function jsonError(error: string, status: number): Response {
   );
 }
 
-function collectTextParts(value: unknown, depth = 0): string[] {
-  if (depth > 6) return [];
-  if (typeof value === "string") {
-    const trimmed = value.trim();
-    return trimmed ? [trimmed] : [];
-  }
-  if (!value || typeof value !== "object") return [];
-
-  if (Array.isArray(value)) {
-    return value.flatMap((item) => collectTextParts(item, depth + 1));
-  }
-
-  const record = value as Record<string, unknown>;
-  const direct: string[] = [];
-
-  if (typeof record.output_text === "string" && record.output_text.trim()) {
-    direct.push(record.output_text.trim());
-  }
-
-  if (typeof record.response === "string" && record.response.trim()) {
-    direct.push(record.response.trim());
-  } else if (
-    record.response &&
-    typeof record.response === "object" &&
-    !Array.isArray(record.response)
-  ) {
-    direct.push(JSON.stringify(record.response));
-  }
-
-  if (typeof record.text === "string" && record.text.trim()) {
-    const type = typeof record.type === "string" ? record.type : "";
-    if (
-      !type ||
-      type === "output_text" ||
-      type === "text" ||
-      type === "message"
-    ) {
-      direct.push(record.text.trim());
-    }
-  }
-
-  const choices = record.choices;
-  if (Array.isArray(choices)) {
-    for (const choice of choices) {
-      if (!choice || typeof choice !== "object") continue;
-      const choiceRecord = choice as Record<string, unknown>;
-      direct.push(...collectTextParts(choiceRecord.message, depth + 1));
-      direct.push(...collectTextParts(choiceRecord.text, depth + 1));
-    }
-  }
-
-  for (const key of ["output", "content", "result"]) {
-    if (record[key] != null) {
-      direct.push(...collectTextParts(record[key], depth + 1));
-    }
-  }
-
-  return direct;
-}
-
-function hasCriteriaArray(value: unknown): boolean {
+function hasCriteriaArray(value: unknown): value is Record<string, unknown> {
   return (
     Boolean(value) &&
     typeof value === "object" &&
@@ -91,50 +32,93 @@ function hasCriteriaArray(value: unknown): boolean {
   );
 }
 
-function structuredResponseCandidate(value: unknown): string | null {
-  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+function pushTextCandidate(target: string[], value: unknown) {
+  if (typeof value === "string" && value.trim()) {
+    target.push(value.trim());
+  }
+}
+
+function pushContentCandidates(target: string[], value: unknown) {
+  if (typeof value === "string") {
+    pushTextCandidate(target, value);
+    return;
+  }
+  if (!Array.isArray(value)) return;
+
+  for (const item of value) {
+    if (!item || typeof item !== "object" || Array.isArray(item)) continue;
+    const record = item as Record<string, unknown>;
+    const type = typeof record.type === "string" ? record.type : "";
+    if (type === "output_text" || type === "text" || !type) {
+      pushTextCandidate(target, record.text);
+    }
+  }
+}
+
+function finalSemanticCandidates(value: unknown): string[] {
+  if (typeof value === "string") return value.trim() ? [value.trim()] : [];
+  if (!value || typeof value !== "object" || Array.isArray(value)) return [];
 
   const record = value as Record<string, unknown>;
-  if (hasCriteriaArray(record)) return JSON.stringify(record);
+  const candidates: string[] = [];
+
+  if (hasCriteriaArray(record)) candidates.push(JSON.stringify(record));
 
   const response = record.response;
-  if (hasCriteriaArray(response)) return JSON.stringify(response);
+  if (hasCriteriaArray(response)) {
+    candidates.push(JSON.stringify(response));
+  } else {
+    pushTextCandidate(candidates, response);
+  }
 
-  if (typeof response === "string") {
-    const trimmed = response.trim();
-    if (trimmed) {
-      try {
-        const parsed = JSON.parse(trimmed) as unknown;
-        if (hasCriteriaArray(parsed)) return trimmed;
-      } catch {
-        // Fall through to alternate response representations.
+  pushTextCandidate(candidates, record.output_text);
+
+  const choices = record.choices;
+  if (Array.isArray(choices)) {
+    for (const choice of choices) {
+      if (!choice || typeof choice !== "object" || Array.isArray(choice)) {
+        continue;
+      }
+      const choiceRecord = choice as Record<string, unknown>;
+      const message = choiceRecord.message;
+      if (message && typeof message === "object" && !Array.isArray(message)) {
+        const messageRecord = message as Record<string, unknown>;
+        pushContentCandidates(candidates, messageRecord.content);
+      } else {
+        pushTextCandidate(candidates, message);
+      }
+      pushTextCandidate(candidates, choiceRecord.text);
+    }
+  }
+
+  const output = record.output;
+  if (Array.isArray(output)) {
+    for (const item of output) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) continue;
+      const itemRecord = item as Record<string, unknown>;
+      const type = typeof itemRecord.type === "string" ? itemRecord.type : "";
+      const role = typeof itemRecord.role === "string" ? itemRecord.role : "";
+      if (type === "message" || role === "assistant") {
+        pushContentCandidates(candidates, itemRecord.content);
       }
     }
   }
 
-  const outputText = record.output_text;
-  if (typeof outputText === "string") {
-    const trimmed = outputText.trim();
-    if (trimmed) {
-      try {
-        const parsed = JSON.parse(trimmed) as unknown;
-        if (hasCriteriaArray(parsed)) return trimmed;
-      } catch {
-        // Fall through to alternate response representations.
-      }
-    }
+  const result = record.result;
+  if (result && result !== value) {
+    candidates.push(...finalSemanticCandidates(result));
   }
 
-  return null;
+  return candidates;
 }
 
 export function extractWorkersAiContent(value: unknown): string | null {
-  const structured = structuredResponseCandidate(value);
-  if (structured) return structured;
+  const canonical = finalSemanticCandidates(value)
+    .map((candidate) => canonicalizeSemanticJudgeContent(candidate))
+    .filter((candidate): candidate is string => Boolean(candidate));
 
-  const parts = collectTextParts(value);
-  if (!parts.length) return null;
-  return [...new Set(parts)].join("\n").trim() || null;
+  const unique = [...new Set(canonical)];
+  return unique.length === 1 ? unique[0]! : null;
 }
 
 function workersAiDiagnostic(value: unknown): Record<string, unknown> {
@@ -143,6 +127,10 @@ function workersAiDiagnostic(value: unknown): Record<string, unknown> {
   }
   const record = value as Record<string, unknown>;
   const output = Array.isArray(record.output) ? record.output : [];
+  const candidates = finalSemanticCandidates(value);
+  const canonical = candidates
+    .map((candidate) => canonicalizeSemanticJudgeContent(candidate))
+    .filter((candidate): candidate is string => Boolean(candidate));
   return {
     keys: Object.keys(record).sort(),
     status: typeof record.status === "string" ? record.status : null,
@@ -157,6 +145,8 @@ function workersAiDiagnostic(value: unknown): Record<string, unknown> {
           : typeof item,
       )
       .filter((type) => type != null),
+    candidateCount: candidates.length,
+    canonicalCandidateCount: new Set(canonical).size,
     usage:
       record.usage && typeof record.usage === "object" ? record.usage : null,
   };
