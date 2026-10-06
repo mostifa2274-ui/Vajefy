@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "fb31a9969463b1f69969b6be9b039c55b55f84cf",
+  "authoritativeMain": "7f790753a9f0a0905f37183742c3b94a7ebc87c8",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -69,6 +69,12 @@
       "pr": 92,
       "mergeCommit": "fb31a9969463b1f69969b6be9b039c55b55f84cf",
       "summary": "One-dispatch-per-role calibration automation: three repeats, strict scoring, qualification recording, allowlisted commit, and retained raw evidence."
+    },
+    {
+      "id": "automatic-keyless-postdeploy-smoke",
+      "pr": 95,
+      "mergeCommit": "7f790753a9f0a0905f37183742c3b94a7ebc87c8",
+      "summary": "Automatic main-push exact-revision wait plus GitHub OIDC authenticated GET-only semantic gateway contract smoke; no inference."
     }
   ],
   "doNotRepeat": [
@@ -131,25 +137,15 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/keyless-postdeploy-smoke",
-    "objective": "Validate and merge automatic no-inference post-deploy OIDC smoke.",
+    "branch": "main",
+    "objective": "Make keyless calibration provably fit the Cloudflare Workers AI free daily allocation before any inference.",
     "blocked": false,
-    "completedOnBranch": [
-      "Separated OIDC status authorization from inference authorization.",
-      "GET status permits only exact manual workflows plus semantic-gateway-smoke.yml; POST inference remains workflow_dispatch-only.",
-      "Added OIDC tests proving push is accepted only when explicitly allowed and rejected by the default inference policy.",
-      "Added main-push semantic-gateway-smoke workflow.",
-      "Smoke waits for the exact main SHA to reach production before checking the gateway.",
-      "Smoke obtains a short-lived GitHub OIDC identity and keeps the token process-local.",
-      "Smoke performs authenticated GET only and verifies the fixed four-model contract without inference.",
-      "CI keyless checker forbids repository secrets and POST/inference behavior in the smoke workflow."
-    ],
-    "pending": [
-      "Pass full CI for automatic post-deploy smoke.",
-      "Merge PR if green.",
-      "Observe the automatic main-push smoke result after Cloudflare deploy.",
-      "Record exact smoke run and deployment revision.",
-      "Then keyless calibration remains the next inference-bearing step."
+    "nextSteps": [
+      "Replace the high-Neuron adversarial Qwen 3.8 candidate with a lower-Neuron reasoning Qwen candidate if calibration quality remains plausible.",
+      "Add machine-readable current Neuron rates and conservative full-calibration budget calculation.",
+      "Fail CI if the maximum planned calibration budget exceeds the zero-cost ceiling.",
+      "Re-run full CI and post-deploy OIDC smoke.",
+      "Only then permit calibration inference."
     ]
   },
   "endpointResolution": {
@@ -195,7 +191,7 @@
   },
   "credentialSetupRunbook": "content/assurance/semantic/FREE_CREDENTIAL_SETUP.md",
   "keylessGateway": {
-    "status": "IMPLEMENTED_ON_BRANCH_PENDING_CI",
+    "status": "DEPLOYED_AND_OIDC_SMOKE_PASS",
     "branch": "codex/keyless-semantic-gateway",
     "productionOrigin": "https://vajefy.mostifa2273.workers.dev",
     "audience": "vajefy-semantic-gateway",
@@ -214,6 +210,11 @@
       "fixed server-side model allowlist",
       "fresh OIDC token per inference call",
       "no semantic provider secrets"
-    ]
+    ],
+    "mergeCommit": "7f790753a9f0a0905f37183742c3b94a7ebc87c8",
+    "productionRevision": "7f790753a9f0",
+    "smokeRunId": 37465617586,
+    "smokeResult": "PASS",
+    "inferenceRun": false
   }
 }
