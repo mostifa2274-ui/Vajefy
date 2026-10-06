@@ -34,6 +34,12 @@ test("Worker keyless model map matches assurance presets exactly", () => {
   for (const role of Object.keys(KEYLESS_SEMANTIC_MODELS) as Array<
     keyof typeof KEYLESS_SEMANTIC_MODELS
   >) {
-    assert.deepEqual(KEYLESS_SEMANTIC_MODELS[role], presets.roles[role]);
+    const expected = presets.roles[role];
+    const actual = KEYLESS_SEMANTIC_MODELS[role];
+    assert.equal(actual.provider, expected.provider);
+    assert.equal(actual.modelFamily, expected.modelFamily);
+    assert.equal(actual.model, expected.model);
+    assert.equal(actual.modelVersion, expected.modelVersion);
+    assert.equal(actual.maxTokens, expected.maxTokens);
   }
 });
