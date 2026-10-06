@@ -48,3 +48,28 @@ the app until a reviewer approves it ([PILOT_CONTENT.md](PILOT_CONTENT.md)).
 The pronunciation clips in `public/audio/pilot/` are synthesised with Kokoro
 v1.0, whose weights are released under Apache 2.0 ([AUDIO.md](AUDIO.md)). The
 same rights review applies to them before a public or commercial release.
+
+
+## Autonomous Gate 0
+
+The autonomous-assurance roadmap treats rights as a release gate rather than a
+manual checklist. The machine-readable source manifest is:
+
+`content/assurance/provenance.json`
+
+Run:
+
+```sh
+npm run assurance:provenance
+npm run assurance:gate0
+```
+
+`assurance:provenance` validates the manifest and reports blockers without
+pretending they have been resolved. `assurance:gate0` fails until every
+distributed source has explicit redistribution and derivative-work permission.
+
+The current Oxford-derived workbook is deliberately recorded as `unverified`.
+That is not an approval and must not be converted to `cleared` without
+documented evidence. The preferred long-term path is to migrate the canonical
+selection to sources whose redistribution and derivative rights are explicit,
+while preserving learner-stable internal ids where technically safe.
