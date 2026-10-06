@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "calibrationVersion": "vajefy-semantic-v1",
+  "frozenAt": "2026-10-06",
+  "casesFile": "content/assurance/semantic/calibration/v1/cases.json",
+  "requiredRunsPerRole": 3,
+  "thresholds": {
+    "schemaComplianceRate": 1,
+    "defectRecall": 1,
+    "cleanFalsePositiveRateMax": 0,
+    "cleanUncertainRateMax": 0,
+    "abstainAccuracy": 1,
+    "expectedLabelStability": 1
+  },
+  "promotionPolicy": "Every threshold must pass. No post-hoc threshold changes after model outputs are inspected; changing thresholds requires a new calibration version.",
+  "notes": [
+    "Gold labels come from controlled seeded mutations and deliberately withheld evidence, not from another model's approval.",
+    "Clean controls are frozen snapshots from deterministically certified Unit 1 content.",
+    "Additional justified FAIL/UNCERTAIN criteria on defect cases are allowed; the seeded expected criterion must still be detected as FAIL.",
+    "Generic public benchmarks do not override Vajefy-specific calibration results."
+  ]
+}

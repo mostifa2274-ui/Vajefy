@@ -22,7 +22,9 @@ function fail(message: string): never {
   process.exit(1);
 }
 
-const unitId = option("--unit") ?? "01-introductions";
+const requestedUnit = option("--unit");
+const explicitPacket = option("--packet");
+const unitId = requestedUnit ?? "01-introductions";
 const requestedRole = option("--role") as SemanticJudgeRole | undefined;
 if (
   requestedRole &&
@@ -31,7 +33,7 @@ if (
   fail(`Unknown semantic judge role: ${requestedRole}`);
 }
 const packetPath =
-  option("--packet") ??
+  explicitPacket ??
   path.join(
     ROOT,
     "content",
@@ -42,8 +44,9 @@ const packetPath =
   );
 
 const packet = JSON.parse(fs.readFileSync(path.resolve(packetPath), "utf8")) as Packet;
-if (packet.schemaVersion !== 1 || packet.unitId !== unitId) {
-  fail(`Semantic packet does not match requested unit ${unitId}.`);
+const effectiveUnitId = requestedUnit ?? (explicitPacket ? packet.unitId : unitId);
+if (packet.schemaVersion !== 1 || packet.unitId !== effectiveUnitId) {
+  fail(`Semantic packet does not match requested unit ${effectiveUnitId}.`);
 }
 
 const selectedRoles = requestedRole
@@ -60,7 +63,7 @@ const roles = selectedRoles.map((role) => ({
 }));
 
 const report = {
-  unitId,
+  unitId: effectiveUnitId,
   packet: path.relative(ROOT, path.resolve(packetPath)).replaceAll("\\", "/"),
   targets: packet.targets.length,
   readyRoles: roles.filter((role) => role.ready).length,
@@ -71,7 +74,7 @@ if (process.argv.includes("--json")) {
   console.log(JSON.stringify(report, null, 2));
 } else {
   console.log(
-    `Semantic judge preflight [${unitId}]: ${report.readyRoles}/${roles.length} role endpoint(s) configured; ${report.targets} target(s).`,
+    `Semantic judge preflight [${effectiveUnitId}]: ${report.readyRoles}/${roles.length} role endpoint(s) configured; ${report.targets} target(s).`,
   );
   for (const role of roles) {
     const endpoint = role.baseUrl ?? "MISSING";

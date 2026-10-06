@@ -17,10 +17,15 @@ const text = fs.readFileSync(WORKFLOW, "utf8");
 
 const required = [
   "workflow_dispatch:",
+  "target_set:",
+  "calibration_v1",
+  "unit1",
   "acknowledge_inference:",
   "if: ${{ inputs.acknowledge_inference }}",
   "permissions:\n  contents: read",
   "Apply verified zero-cost provider defaults",
+  "Check role qualification before Unit 1",
+  "assurance:semantic:qualification:check",
   "No-inference role preflight",
   "Run isolated semantic judge",
   "Upload structured role evidence",

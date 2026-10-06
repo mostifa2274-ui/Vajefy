@@ -12,6 +12,13 @@ on:
           - persian
           - pedagogical
           - adversarial
+      target_set:
+        description: Calibration must be passed before Unit 1 judging
+        required: true
+        type: choice
+        options:
+          - calibration_v1
+          - unit1
       run_id:
         description: Stable run identifier recorded in evidence provenance
         required: true
@@ -114,26 +121,54 @@ jobs:
           ROLE: ${{ inputs.role }}
         run: npm run assurance:semantic:free-preset -- --role "$ROLE" --github-env
 
+      - name: Select judge packet
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+          TARGET_SET: ${{ inputs.target_set }}
+        run: |
+          set -euo pipefail
+          case "$TARGET_SET" in
+            calibration_v1)
+              PACKET="content/assurance/semantic/calibration/v1/packets/${ROLE}.json"
+              ;;
+            unit1)
+              PACKET="content/assurance/semantic/packets/01-introductions.json"
+              ;;
+            *)
+              echo "Unsupported target set: $TARGET_SET" >&2
+              exit 1
+              ;;
+          esac
+          echo "SEMANTIC_PACKET=$PACKET" >> "$GITHUB_ENV"
+
+      - name: Check role qualification before Unit 1
+        if: ${{ inputs.target_set == 'unit1' }}
+        env:
+          ROLE: ${{ inputs.role }}
+        run: npm run assurance:semantic:qualification:check -- --role "$ROLE"
+
       - name: No-inference role preflight
         env:
           ROLE: ${{ inputs.role }}
-        run: npm run assurance:semantic:preflight -- --role "$ROLE" --require-ready
+        run: npm run assurance:semantic:preflight -- --packet "$SEMANTIC_PACKET" --role "$ROLE" --require-ready
 
       - name: Run isolated semantic judge
         env:
           ROLE: ${{ inputs.role }}
           RUN_ID: ${{ inputs.run_id }}
+          TARGET_SET: ${{ inputs.target_set }}
         run: |
           npm run assurance:semantic:judge -- \
             --role "$ROLE" \
-            --packet content/assurance/semantic/packets/01-introductions.json \
+            --packet "$SEMANTIC_PACKET" \
             --run-id "$RUN_ID" \
-            --output "semantic-${ROLE}.json"
+            --output "semantic-${TARGET_SET}-${ROLE}.json"
 
       - name: Upload structured role evidence
         uses: actions/upload-artifact@v4
         with:
-          name: semantic-unit1-${{ inputs.role }}-${{ inputs.run_id }}
-          path: semantic-${{ inputs.role }}.json
+          name: semantic-${{ inputs.target_set }}-${{ inputs.role }}-${{ inputs.run_id }}
+          path: semantic-${{ inputs.target_set }}-${{ inputs.role }}.json
           if-no-files-found: error
           retention-days: 30
