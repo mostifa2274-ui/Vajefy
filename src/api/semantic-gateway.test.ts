@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   extractWorkersAiContent,
   semanticResponseFormat,
+  workersAiDiagnostic,
 } from "./semantic-gateway";
 
 test("extracts Cloudflare Responses API output_text content", () => {
