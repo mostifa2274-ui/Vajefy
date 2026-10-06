@@ -62,6 +62,9 @@ jobs:
           test -f "$PACKET"
           echo "SEMANTIC_PACKET=$PACKET" >> "$GITHUB_ENV"
 
+      - name: Verify current zero-cost calibration budget
+        run: npm run assurance:semantic:budget:current
+
       - name: Keyless no-inference gateway preflight
         env:
           ROLE: ${{ inputs.role }}
