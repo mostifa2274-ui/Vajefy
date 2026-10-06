@@ -37,10 +37,18 @@ function collectTextParts(value: unknown, depth = 0): string[] {
   const record = value as Record<string, unknown>;
   const direct: string[] = [];
 
-  for (const key of ["output_text", "response"]) {
-    if (typeof record[key] === "string" && record[key]!.trim()) {
-      direct.push(record[key]!.trim());
-    }
+  if (typeof record.output_text === "string" && record.output_text.trim()) {
+    direct.push(record.output_text.trim());
+  }
+
+  if (typeof record.response === "string" && record.response.trim()) {
+    direct.push(record.response.trim());
+  } else if (
+    record.response &&
+    typeof record.response === "object" &&
+    !Array.isArray(record.response)
+  ) {
+    direct.push(JSON.stringify(record.response));
   }
 
   if (typeof record.text === "string" && record.text.trim()) {
@@ -102,6 +110,72 @@ function workersAiDiagnostic(value: unknown): Record<string, unknown> {
       .filter((type) => type != null),
     usage:
       record.usage && typeof record.usage === "object" ? record.usage : null,
+  };
+}
+
+function semanticResponseFormat(userPayload: unknown) {
+  const payload =
+    userPayload && typeof userPayload === "object" && !Array.isArray(userPayload)
+      ? (userPayload as Record<string, unknown>)
+      : null;
+  const criteria = Array.isArray(payload?.requiredCriteria)
+    ? payload!.requiredCriteria.filter(
+        (item): item is string => typeof item === "string" && item.length > 0,
+      )
+    : [];
+
+  if (!criteria.length || new Set(criteria).size !== criteria.length) {
+    throw new Error("invalid-required-criteria");
+  }
+
+  return {
+    type: "json_schema" as const,
+    json_schema: {
+      type: "object",
+      additionalProperties: false,
+      properties: {
+        criteria: {
+          type: "array",
+          minItems: criteria.length,
+          maxItems: criteria.length,
+          items: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              criterion: { type: "string", enum: criteria },
+              result: {
+                type: "string",
+                enum: ["PASS", "FAIL", "UNCERTAIN"],
+              },
+              confidence: {
+                type: "number",
+                minimum: 0,
+                maximum: 1,
+              },
+              evidence: {
+                type: "array",
+                minItems: 1,
+                items: { type: "string", minLength: 1 },
+              },
+              reasonCode: {
+                anyOf: [
+                  { type: "string", minLength: 1 },
+                  { type: "null" },
+                ],
+              },
+            },
+            required: [
+              "criterion",
+              "result",
+              "confidence",
+              "evidence",
+              "reasonCode",
+            ],
+          },
+        },
+      },
+      required: ["criteria"],
+    },
   };
 }
 
@@ -191,6 +265,13 @@ export async function handleSemanticGateway(
 
   const preset = KEYLESS_SEMANTIC_MODELS[body.role];
 
+  let responseFormat;
+  try {
+    responseFormat = semanticResponseFormat(body.userPayload);
+  } catch {
+    return jsonError("invalid-required-criteria", 400);
+  }
+
   let result: unknown;
   try {
     result = await ai.run(preset.model, {
@@ -200,6 +281,7 @@ export async function handleSemanticGateway(
       ],
       temperature: 0,
       max_tokens: preset.maxTokens,
+      response_format: responseFormat,
     });
   } catch (error) {
     console.error("Semantic Workers AI call failed", {
