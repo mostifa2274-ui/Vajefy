@@ -93,6 +93,13 @@ const report = scoreSemanticCalibration(
   runInputs,
 );
 
+const outputPath = option("--output");
+if (outputPath) {
+  const fullOutput = path.resolve(outputPath);
+  fs.mkdirSync(path.dirname(fullOutput), { recursive: true });
+  fs.writeFileSync(fullOutput, `${JSON.stringify(report, null, 2)}\n`);
+}
+
 if (process.argv.includes("--json")) {
   console.log(JSON.stringify(report, null, 2));
 } else {

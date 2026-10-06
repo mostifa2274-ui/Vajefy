@@ -124,17 +124,25 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "main",
-    "objective": "Await free credential setup, then run calibration_v1 before any Unit 1 semantic judging.",
-    "blocked": true,
-    "blocker": "All four semantic judge API-key secrets and the Cloudflare account-id variable were confirmed absent on 2026-10-06.",
-    "nextSteps": [
-      "Create the four free credentials using the provider links in content/assurance/semantic/ENDPOINT_RESOLUTION.md.",
-      "Add the four keys as GitHub Actions secrets using the exact documented names.",
-      "Add SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID as a repository Actions variable.",
-      "Run three calibration_v1 executions per role with unique run ids.",
-      "Record qualification only for roles that pass every frozen v1 threshold.",
-      "Run Unit 1 semantic judging only after qualification."
+    "branch": "codex/semantic-calibration-automation",
+    "objective": "Validate and merge one-dispatch semantic calibration automation.",
+    "blocked": false,
+    "completedOnBranch": [
+      "Added manual-only semantic-calibrate workflow for one selected role.",
+      "Workflow runs exactly three isolated calibration repeats with unique run ids.",
+      "Workflow scores against frozen v1 thresholds and stops on any promotion failure.",
+      "Qualification is recorded only after strict promotion passes.",
+      "Only qualified.json and the selected role calibration report may be committed.",
+      "Workflow runs only when dispatched from main with explicit inference acknowledgement.",
+      "Added dedicated CI safety checker forbidding automatic triggers and broad git staging.",
+      "Calibration scorer now writes audit reports directly as valid JSON instead of shell redirecting npm output."
+    ],
+    "pending": [
+      "Pass full CI for semantic calibration automation.",
+      "Merge the automation PR and record exact merge commit.",
+      "Configure the five missing free credential/account names.",
+      "Dispatch semantic calibration once per role; each dispatch performs all three required repeats automatically.",
+      "Only qualified roles can then run Unit 1 semantic judging."
     ]
   },
   "endpointResolution": {
