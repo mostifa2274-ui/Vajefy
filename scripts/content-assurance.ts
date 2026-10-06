@@ -35,13 +35,16 @@ function add(code: string, where: string, message: string) {
   findings.push({ code, where, message });
 }
 
-function normalize(value: string): string {
+function normalized(value: string): string {
   return value
     .normalize("NFKC")
     .replace(/[\u200c\u200f\u202a-\u202e\u2066-\u2069]/g, "")
     .replace(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
+    .trim();
+}
+
+function normalize(value: string): string {
+  return normalized(value).toLowerCase();
 }
 
 function needsPersian(value: string | undefined, where: string, code: string) {
@@ -151,7 +154,8 @@ function checkSense(sense: Sense) {
     );
   }
 
-  if (normalize(sense.mistake.wrong) === normalize(sense.mistake.right)) {
+  // Case can be the pedagogical distinction (for example "i" versus "I").
+  if (normalized(sense.mistake.wrong) === normalized(sense.mistake.right)) {
     add(
       "MISTAKE_EN_IDENTICAL",
       `${base}.mistake`,
@@ -181,6 +185,26 @@ function checkSense(sense: Sense) {
   }
 }
 
+function option(flag: string): string | undefined {
+  const at = process.argv.indexOf(flag);
+  return at >= 0 ? process.argv[at + 1] : undefined;
+}
+
+const requestedUnit = option("--unit");
+let selectedIds: Set<string> | null = null;
+if (requestedUnit) {
+  const curriculumFile = path.join(ROOT, "content", "curriculum", "A1.json");
+  const curriculum = JSON.parse(fs.readFileSync(curriculumFile, "utf8")) as {
+    units: { id: string; entries: { id: string }[] }[];
+  };
+  const unit = curriculum.units.find((candidate) => candidate.id === requestedUnit);
+  if (!unit) {
+    console.error(`Unknown A1 unit: ${requestedUnit}`);
+    process.exit(1);
+  }
+  selectedIds = new Set(unit.entries.map((item) => item.id));
+}
+
 const files = fs
   .readdirSync(ENTRY_DIR)
   .filter((name) => name.endsWith(".json"))
@@ -191,7 +215,13 @@ for (const file of files) {
   const rows = JSON.parse(
     fs.readFileSync(path.join(ENTRY_DIR, file), "utf8"),
   ) as Entry[];
-  entries.push(...rows.filter((entry) => entry.id.startsWith("lex:A1:")));
+  entries.push(
+    ...rows.filter(
+      (entry) =>
+        entry.id.startsWith("lex:A1:") &&
+        (!selectedIds || selectedIds.has(entry.id)),
+    ),
+  );
 }
 
 let senses = 0;
@@ -221,7 +251,7 @@ if (process.argv.includes("--json")) {
   console.log(JSON.stringify(report, null, 2));
 } else {
   console.log(
-    `A1 deterministic assurance: ${report.entries} entries, ${report.senses} senses, ${report.findings} finding(s).`,
+    `A1 deterministic assurance${requestedUnit ? ` [${requestedUnit}]` : ""}: ${report.entries} entries, ${report.senses} senses, ${report.findings} finding(s).`,
   );
   for (const [code, count] of Object.entries(report.byCode)) {
     console.log(`! ${code}: ${count}`);
@@ -243,6 +273,10 @@ type Baseline = {
 };
 
 if (process.argv.includes("--ratchet")) {
+  if (requestedUnit) {
+    console.error("--ratchet compares the full A1 corpus and cannot be combined with --unit.");
+    process.exit(1);
+  }
   const baselineFile = path.join(
     ROOT,
     "content",
