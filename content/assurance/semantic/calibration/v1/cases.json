@@ -3232,6 +3232,269 @@
           ]
         }
       }
+    },
+    {
+      "id": "cal-ped-abstain-missing-learning-evidence",
+      "role": "pedagogical",
+      "category": "abstain",
+      "sourceTargetId": "lex:A1:live",
+      "expectedCriterion": "target_teaching_value",
+      "expectedResult": "UNCERTAIN",
+      "severity": "calibration",
+      "mutationDescription": "Examples and checks are deliberately removed, leaving insufficient evidence to judge teaching value without inventing missing pedagogy.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:live",
+          "headword": "live",
+          "contentVersion": "e58d7f25a052",
+          "order": 16,
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:in",
+            "lex:A1:city"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:live",
+          "pos": "verb",
+          "gloss": "زندگی کردن؛ ساکن بودن",
+          "meaning": "خانه داشتن در جایی، یا زنده بودن.",
+          "grammar": [
+            {
+              "pattern": "live in + city / country",
+              "note": "برای شهر یا کشور بعد از live از in استفاده می‌کنیم: We live in Karaj."
+            },
+            {
+              "pattern": "live with + person",
+              "note": "برای کسی که با او زندگی می‌کنیم از with استفاده می‌کنیم: I live with my parents."
+            },
+            {
+              "pattern": "live at + address",
+              "note": "برای نشانی دقیق می‌توان از at استفاده کرد: She lives at 12 Park Street."
+            }
+          ],
+          "examples": [],
+          "collocations": [
+            "live in",
+            "live with",
+            "live alone"
+          ],
+          "collocationFa": {
+            "live in": "در … زندگی کردن",
+            "live with": "با … زندگی کردن",
+            "live alone": "تنها زندگی کردن"
+          },
+          "mistake": {
+            "wrong": "I live at Tehran.",
+            "wrongFa": "من در تهران زندگی می‌کنم؛ در انگلیسیِ غلط برای شهر از at استفاده شده است.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم؛ در انگلیسی برای شهر از in استفاده می‌شود.",
+            "why": "برای شهر و کشور بعد از live معمولاً in می‌آید: live in Tehran, live in Iran. at بیشتر برای نشانی دقیق است."
+          },
+          "pronunciation": {
+            "gb": "/lɪv/",
+            "us": "/lɪv/",
+            "note": "i کوتاه است: «لیو»؛ صفتِ live (زنده، پخش زنده) /laɪv/ خوانده می‌شود."
+          },
+          "tts": {
+            "gb": "lˈɪv",
+            "us": "lˈɪv"
+          },
+          "check": []
+        }
+      }
+    },
+    {
+      "id": "cal-adv-abstain-underdetermined-sense",
+      "role": "adversarial",
+      "category": "abstain",
+      "sourceTargetId": "lex:A1:school",
+      "expectedCriterion": "no_sense_mismatch",
+      "expectedResult": "UNCERTAIN",
+      "severity": "calibration",
+      "mutationDescription": "Intended sense is deliberately withheld; adversarial judge should not invent enough evidence to claim the no_sense_mismatch safety property.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "cal:unknown-sense",
+          "headword": "set",
+          "contentVersion": "01c0efca9fb6",
+          "order": 14,
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "cal:unknown-sense",
+          "pos": "noun",
+          "gloss": "—",
+          "meaning": "معنای موردنظر عمداً از ورودی آزمون حذف شده است.",
+          "grammar": [
+            {
+              "pattern": "go to / be at / leave school",
+              "note": "بدون the: My son is at school."
+            },
+            {
+              "pattern": "the school (the building)",
+              "note": "وقتی منظور ساختمان مدرسه است، the می‌آید: I went to the school to meet the teacher."
+            }
+          ],
+          "examples": [],
+          "collocations": [],
+          "collocationFa": {},
+          "mistake": {
+            "wrong": "My daughter goes to the school by bus.",
+            "wrongFa": "دخترم با اتوبوس به «ساختمان آن مدرسه» می‌رود؛ the روی ساختمان مشخص تأکید می‌کند.",
+            "right": "My daughter goes to school by bus.",
+            "rightFa": "دخترم با اتوبوس به مدرسه می‌رود؛ برای هدفِ درس خواندن school بدون the می‌آید.",
+            "why": "وقتی برای درس خواندن می‌رود، school بدون the می‌آید."
+          },
+          "pronunciation": {
+            "gb": "/skuːl/",
+            "us": "/skuːl/"
+          },
+          "check": []
+        }
+      }
+    },
+    {
+      "id": "cal-adv-clean-from",
+      "role": "adversarial",
+      "category": "clean",
+      "sourceTargetId": "lex:A1:from",
+      "expectedCriterion": null,
+      "expectedResult": "PASS",
+      "severity": "control",
+      "mutationDescription": "Unmodified certified A1 control.",
+      "target": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:from",
+          "headword": "from",
+          "contentVersion": "10f0cf91c4a7",
+          "order": 12,
+          "prerequisites": [
+            "lex:A1:where",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:from",
+          "pos": "preposition",
+          "gloss": "از",
+          "meaning": "نقطهٔ شروع (مکان یا زمان) یا منشأ: be from (اهل جایی بودن)، from … to …، a letter from Ali.",
+          "grammar": [
+            {
+              "pattern": "be from + place",
+              "note": "برای گفتن مبدأ یا اهل جایی بودن از be from استفاده می‌کنیم: I'm from Ahvaz."
+            },
+            {
+              "pattern": "from … to / until …",
+              "note": "برای نشان دادن بازهٔ شروع تا پایان از from … to/until … استفاده می‌کنیم: from 9 to 5, from Monday to Friday."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where are you from?",
+              "fa": "اهل کجایی؟"
+            },
+            {
+              "en": "I work from nine to five.",
+              "fa": "از نه تا پنج کار می‌کنم."
+            },
+            {
+              "en": "This letter is from my friend.",
+              "fa": "این نامه از طرف دوستم است."
+            }
+          ],
+          "collocations": [
+            "from … to …",
+            "far from",
+            "different from",
+            "a message from"
+          ],
+          "collocationFa": {
+            "from … to …": "از … تا …",
+            "far from": "دور از",
+            "different from": "متفاوت از",
+            "a message from": "پیامی از طرفِ"
+          },
+          "usage": "from مبدأِ مکان یا زمان و نیز فرستنده را نشان می‌دهد: from Tehran, from nine, a message from Sara.",
+          "mistake": {
+            "wrong": "I got a message of my friend.",
+            "wrongFa": "پیامی «متعلق به» دوستم گرفتم؛ of فرستنده را درست نشان نمی‌دهد.",
+            "right": "I got a message from my friend.",
+            "rightFa": "از دوستم پیامی گرفتم؛ from فرستنده را نشان می‌دهد.",
+            "why": "برای فرستنده from به کار می‌رود، نه of."
+          },
+          "pronunciation": {
+            "gb": "/frəm/; stressed /frɒm/",
+            "us": "/frəm/; stressed /frʌm/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I am ___ Iran.",
+              "answer": "from",
+              "accept": [],
+              "fa": "من اهل ایران هستم.",
+              "why": "be from برای گفتن محلِ اصلی یا زادگاه به کار می‌رود.",
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من اهل ایران هستم»، جای خالی را کامل کن: I am ___ Iran.",
+              "options": [
+                {
+                  "text": "from",
+                  "ok": true,
+                  "why": "I am from Iran یعنی «من اهل ایران هستم»."
+                },
+                {
+                  "text": "where",
+                  "ok": false,
+                  "why": "where واژهٔ پرسشیِ مکان است."
+                },
+                {
+                  "text": "what",
+                  "ok": false,
+                  "why": "what برای این ساختار مناسب نیست."
+                }
+              ],
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اهل یزد هستم.",
+              "frame": "I am ___ Yazd.",
+              "answer": "from",
+              "accept": [],
+              "why": "برای گفتن اهل کجا بودن، پس از be از from استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Yazd",
+                  "fa": "یزد"
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   ]
 }
