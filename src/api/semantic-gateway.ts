@@ -121,9 +121,37 @@ export function extractWorkersAiContent(value: unknown): string | null {
   return unique.length === 1 ? unique[0]! : null;
 }
 
-function workersAiDiagnostic(value: unknown): Record<string, unknown> {
+function safeValueShape(value: unknown): Record<string, unknown> {
+  if (value == null) return { type: value === null ? "null" : "undefined" };
+  if (typeof value === "string") {
+    return { type: "string", length: value.length };
+  }
+  if (Array.isArray(value)) {
+    return {
+      type: "array",
+      length: value.length,
+      items: value.slice(0, 8).map((item) => safeValueShape(item)),
+    };
+  }
+  if (typeof value !== "object") return { type: typeof value };
+
+  const record = value as Record<string, unknown>;
+  return {
+    type: "object",
+    keys: Object.keys(record).sort(),
+    ...(typeof record.type === "string" ? { itemType: record.type } : {}),
+    ...(typeof record.role === "string" ? { role: record.role } : {}),
+    ...(typeof record.status === "string" ? { status: record.status } : {}),
+    ...(record.content != null
+      ? { content: safeValueShape(record.content) }
+      : {}),
+    ...(record.text != null ? { text: safeValueShape(record.text) } : {}),
+  };
+}
+
+export function workersAiDiagnostic(value: unknown): Record<string, unknown> {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
-    return { valueType: Array.isArray(value) ? "array" : typeof value };
+    return { valueShape: safeValueShape(value) };
   }
   const record = value as Record<string, unknown>;
   const output = Array.isArray(record.output) ? record.output : [];
@@ -131,6 +159,7 @@ function workersAiDiagnostic(value: unknown): Record<string, unknown> {
   const canonical = candidates
     .map((candidate) => canonicalizeSemanticJudgeContent(candidate))
     .filter((candidate): candidate is string => Boolean(candidate));
+
   return {
     keys: Object.keys(record).sort(),
     status: typeof record.status === "string" ? record.status : null,
@@ -138,13 +167,15 @@ function workersAiDiagnostic(value: unknown): Record<string, unknown> {
       record.incomplete_details && typeof record.incomplete_details === "object"
         ? record.incomplete_details
         : null,
-    outputTypes: output
-      .map((item) =>
-        item && typeof item === "object"
-          ? (item as Record<string, unknown>).type
-          : typeof item,
-      )
-      .filter((type) => type != null),
+    responseShape:
+      record.response != null ? safeValueShape(record.response) : null,
+    outputTextShape:
+      record.output_text != null ? safeValueShape(record.output_text) : null,
+    choicesShape:
+      record.choices != null ? safeValueShape(record.choices) : null,
+    outputShape: safeValueShape(output),
+    resultShape:
+      record.result != null ? safeValueShape(record.result) : null,
     candidateCount: candidates.length,
     canonicalCandidateCount: new Set(canonical).size,
     usage:
@@ -340,7 +371,13 @@ export async function handleSemanticGateway(
       runId: claims.run_id ?? null,
       diagnostic: workersAiDiagnostic(result),
     });
-    return jsonError("empty-model-content", 502);
+    return Response.json(
+      {
+        error: "empty-model-content",
+        diagnostic: workersAiDiagnostic(result),
+      },
+      { status: 502, headers: { "Cache-Control": "no-store" } },
+    );
   }
 
   return Response.json(
