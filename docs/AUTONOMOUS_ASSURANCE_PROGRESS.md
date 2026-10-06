@@ -272,3 +272,37 @@ Implemented on this branch:
 - endpoint variables/secrets and resume sequence documented in `content/assurance/semantic/ENDPOINT_RESOLUTION.md`.
 
 No model inference has been run. Current resume point: CI/merge this slice, then wait for explicit endpoint configuration/authorization before evidence execution.
+
+
+## Completed — PR #88 manual semantic judge execution
+
+PR #88 merged as `0704d5fd85a194578cac03f42e981f1a4536a38e`.
+
+The semantic-assurance infrastructure is now complete through the explicit inference boundary:
+
+- Unit 1 deterministic certification is already merged;
+- four-role semantic schemas and fail-closed arbitration are merged;
+- deterministic Unit 1 judge packet and versioned prompts are merged;
+- isolated provider-independent judge runner is merged;
+- stale/non-independent evidence ingestion barriers are merged and tested;
+- no-inference endpoint preflight is merged;
+- manual-only GitHub judge workflow is merged;
+- CI prevents that workflow from gaining automatic triggers or repository write permission.
+
+**No semantic model inference has been run and no semantic PASS evidence has been committed.**
+
+### Authoritative resume point
+
+Do not repeat PRs #84–#88 or their analysis.
+
+Resume only at endpoint configuration/execution:
+
+1. read `content/assurance/progress.json`;
+2. read `content/assurance/semantic/ENDPOINT_RESOLUTION.md`;
+3. configure the documented per-role variables/secrets;
+4. manually dispatch `.github/workflows/semantic-judge.yml` for English, Persian, pedagogical and adversarial roles;
+5. merge the four structured artifacts with the existing fail-closed merge command;
+6. run semantic Unit 1 strict certification;
+7. edit Unit 1 source only if the judges produce a concrete defect that survives arbitration.
+
+Current blocker: explicit independent judge endpoint configuration/authorization. This blocker is external configuration, not missing repository implementation.
