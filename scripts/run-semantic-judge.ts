@@ -9,6 +9,7 @@ import {
   semanticRubricManifest,
   type SemanticJudgeRole,
 } from "../src/lib/learn/assurance";
+import { semanticEndpointConfig } from "./semantic-endpoint-config";
 import { semanticInputHash } from "./semantic-input";
 
 const ROOT = process.cwd();
@@ -56,11 +57,6 @@ function read<T>(file: string): T {
 
 function sha256Text(value: string): string {
   return createHash("sha256").update(value).digest("hex");
-}
-
-function roleEnv(role: string, name: string): string | undefined {
-  const scoped = `SEMANTIC_JUDGE_${role.toUpperCase()}_${name}`;
-  return process.env[scoped] ?? process.env[`SEMANTIC_JUDGE_${name}`];
 }
 
 function exactCriteria(actual: string[], required: string[]): boolean {
@@ -120,22 +116,17 @@ async function main() {
     }
   }
 
-  const baseUrl = roleEnv(role, "BASE_URL");
-  const model = roleEnv(role, "MODEL");
-  const modelVersion = roleEnv(role, "MODEL_VERSION");
-  const provider = roleEnv(role, "PROVIDER") ?? "openai-compatible";
-  const apiKey = roleEnv(role, "API_KEY");
-  if (!baseUrl || !model || !modelVersion) {
+  const config = semanticEndpointConfig(role);
+  if (!config.ready || !config.baseUrl || !config.model || !config.modelVersion) {
     fail(
-      `Missing judge configuration for ${role}. Set SEMANTIC_JUDGE_${role.toUpperCase()}_BASE_URL, _MODEL and _MODEL_VERSION (or generic SEMANTIC_JUDGE_* fallbacks).`,
+      `Missing/invalid judge configuration for ${role}: ${config.missing.join(", ")}. Run npm run assurance:semantic:preflight for a no-inference report.`,
     );
   }
-
+  const { baseUrl, model, modelVersion, provider, maxTokens } = config;
+  const apiKey =
+    process.env[`SEMANTIC_JUDGE_${role.toUpperCase()}_API_KEY`] ??
+    process.env.SEMANTIC_JUDGE_API_KEY;
   const endpoint = `${baseUrl.replace(/\/$/, "")}/chat/completions`;
-  const maxTokens = Number(roleEnv(role, "MAX_TOKENS") ?? "2400");
-  if (!Number.isInteger(maxTokens) || maxTokens < 256) {
-    fail("SEMANTIC_JUDGE_MAX_TOKENS must be an integer >= 256.");
-  }
 
   const contextIsolationKey = `judge:${role}:${runId}`;
   if (contextIsolationKey === packet.generationContextKey) {
@@ -163,7 +154,9 @@ async function main() {
         model,
         temperature: 0,
         max_tokens: maxTokens,
-        response_format: { type: "json_object" },
+        ...(config.jsonResponseFormat
+          ? { response_format: { type: "json_object" } }
+          : {}),
         messages: [
           { role: "system", content: prompt },
           { role: "user", content: JSON.stringify(userPayload) },
