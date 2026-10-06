@@ -145,7 +145,7 @@ test("an accidental grade can be undone and graded again", async ({ page }) => {
 
 test("a practice round resumes at the question where it was left", async ({ page }) => {
   await seed(page);
-  await page.goto("/drill?play=studied");
+  await page.goto("/drill?play=listen");
   await page.getByRole("button", { name: "10", exact: true }).click();
   await page.getByRole("button", { name: "Begin", exact: true }).click();
   await expect(page.getByText(/^1 \/ \d+$/)).toBeVisible();

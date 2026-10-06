@@ -861,3 +861,15 @@ Merged as `dc47f1cfbc3da6a3b38ff61f2cb3d27c61005f23`. The ledger in
 - 41% of entry-task frontier findings come from 30 high-frequency words placed
   late in the curriculum (do, not, can, please in Unit 12; to, at, for in
   Unit 7). The repair is tracked as `A1-FRONTIER-REPAIR`.
+
+## Completed — PR #109 C1 ratchet and curriculum frontier
+
+Merged as `cb789e6358128e9485e59eeed2b1a290cab5236e`.
+
+## Example diversity and three-mode Practice — plan §41 items 6, 7 and 8
+
+- `EXAMPLE_NEAR_DUPLICATE` (0) and `EXAMPLE_REUSED` (32) join the ratchet.
+- Practice has three modes: Smart Practice, Listening and Spelling, all over
+  studied words. Pairs, the sprint, meaning and cloze quizzes and the deck
+  drills are removed with their components and 50 unused copy keys.
+- XP no longer shows on Progress; the stored count is kept.

@@ -231,9 +231,6 @@ function Home() {
               {copy.smartPractice}
             </Link>
           ) : null}
-          <Link to="/drill" search={{ play: "match" }} className="inline-flex min-h-11 items-center px-1 text-sm text-accent">
-            {copy.openMatch}
-          </Link>
         </div>
         {hydrated && (due > 0 || lessonCount > 0) ? (
           <p className="mt-4 text-sm">

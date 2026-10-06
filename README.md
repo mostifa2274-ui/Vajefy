@@ -29,10 +29,11 @@ practice), **Words** (search, saved entries and reference) and **Progress**
 - **One-screen setup**: a learning goal and 5, 10 or 15 minutes a day, which set
   the daily plan. Every new learner starts the A1 course; higher levels follow
   once A1 is complete. Learners who set up earlier keep their saved level.
-- **Practice** (`/drill`): eleven practice modes, including Pairs and a 45-second
-  spelling sprint, plus **Smart Practice**. Smart Practice selects studied words
-  using FSRS memory estimates and real skill mistakes, then mixes spelling,
-  listening, meaning and context. Practice is measured separately from retention.
+- **Practice** (`/drill`): three modes over the words a learner has studied.
+  **Smart Practice** selects words using FSRS memory estimates and real skill
+  mistakes, then mixes spelling, listening, meaning and context. **Listening**
+  and **Spelling** practise one skill. Practice is measured separately from
+  retention.
 - **Offline-first PWA**: the app shell and all learning datasets are cached for
   offline study after the first successful load.
 - Persian or English interface, right-to-left aware throughout, with selectable
@@ -105,7 +106,7 @@ The app is fully client-side: no accounts, no server database, no AI service.
 | Path | Contents |
 |---|---|
 | `src/routes/` | One file per screen: Today, Lessons, Review, Practice, Lexicon, Reference, Progress |
-| `src/components/` | Shell, section tabs, setup, guided lesson, review session, practice runner, Pairs, sprint |
+| `src/components/` | Shell, section tabs, setup, guided lesson, review session, practice runner |
 | `src/components/feedback.tsx` | Shared answer feedback, progress meter and right/wrong markers |
 | `src/lib/sections.ts`, `src/lib/focus.ts` | Which destination a screen belongs to; keeping focus in the task |
 | `src/lib/learn/srs.ts` | FSRS-6 scheduler, legacy SM-2 bridge, retrievability |
@@ -147,8 +148,8 @@ The app is fully client-side: no accounts, no server database, no AI service.
   event (rating, actual elapsed time, next interval, and FSRS memory state where
   available). The history is capped to protect browser storage and can later be
   used for evidence-based parameter tuning.
-- Only **Review** moves a card's schedule. **Practice, Pairs and the sprint are
-  practice**: they never push a review later. A miss on a scheduled word makes
+- Only **Review** moves a card's schedule. **Practice** never pushes a review
+  later. A miss on a scheduled word makes
   it due now, so the next Review asks it properly.
 - Scheduled Review and practice keep **separate counters and accuracy**. Practice
   cannot satisfy the daily review target or inflate measured retention.

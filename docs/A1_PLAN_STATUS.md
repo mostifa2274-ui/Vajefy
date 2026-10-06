@@ -67,20 +67,20 @@ not squash-merge: the check would then fail on main.
 | F03 | C1 strict deterministic validator | DONE | `c426776` | `948daba` | #82; #83; `scripts/content-assurance.ts`; `content/assurance/deterministic-baseline.json`; `scripts/build-content.ts`; `scripts/curriculum-a1.ts` | release-gate | Plan §7 C1 map: `scripts/build-content.ts` covers the schema, duplicate IDs, unresolved references and version-bound review records. `scripts/curriculum-a1.ts` covers prerequisites. `scripts/content-assurance.ts` covers the rest, plus C2 Persian-in-English, and every finding code is ratcheted, unknown codes at zero. Untaught target references are F05. |
 | F04 | Translation and wrong/right sanity validation | DONE | `c426776` | `6e6a44b` | #82; #83; `scripts/content-assurance.ts` | none | Deterministic checks only: missing or identical `wrongFa`/`rightFa`, identical English pairs. Semantic translation checks belong to P2-SEMANTIC-UNIT1. |
 | F05 | Curriculum-frontier validator | DONE | `ac90c46` | `d3f6bb0` | `scripts/content-assurance.ts`; `src/lib/learn/learner-language.ts`; `scripts/a1-calibration.ts` | release-gate | Every entry task and scene task is checked course-wide (`FRONTIER_TASK_VOCABULARY`, `FRONTIER_SCENE_VOCABULARY`). Teaching copy is exempt because it is paired with its Persian translation. The repair is A1-FRONTIER-REPAIR. |
-| F06 | Example duplication and diversity detection | IN_PROGRESS | `c426776` | — | #82; `scripts/content-assurance.ts` | release-gate | Exact duplicate English and Persian examples are detected. Near-duplicates, superficial noun substitution and repeated patterns (plan §9) are not. |
-| F07 | Three-mode Practice: Smart Practice, Listening, Spelling | NOT_STARTED | — | — | — | scope | — |
-| F08 | Remove deprecated A1 routes and code (match, sprint, extra decks and quiz modes) | NOT_STARTED | — | — | — | scope | — |
+| F06 | Example duplication and diversity detection | DONE | `c426776` | `b649c42` | #82; `scripts/content-assurance.ts` | release-gate | Exact duplicates, near-duplicates (one or two changed words) and sentences reused from an earlier word are detected and ratcheted. Repeated grammatical patterns and examples that obscure a distinction need semantic judgment, so they belong to the pedagogical judge (plan §7 C7). |
+| F07 | Three-mode Practice: Smart Practice, Listening, Spelling | DONE | `86f86ca` | `86f86ca` | `src/routes/drill.tsx`; `tests/e2e/smart-practice.spec.ts` | scope | — |
+| F08 | Remove deprecated A1 routes and code (match, sprint, extra decks and quiz modes) | DONE | `86f86ca` | `86f86ca` | `src/routes/drill.tsx`; `src/lib/learn/quiz.ts`; `src/lib/learn/i18n.ts` | scope | Pairs, the sprint, meaning and cloze quizzes and the deck drills are gone from Practice, with their components, builders and 50 unused copy keys. The reference decks still load in the Library; that is P1-CHUNK-DECKS. |
 | F09 | A1-only initial data loading | NOT_STARTED | — | — | — | scope | — |
 | F10 | Machine Assurance Record infrastructure | IN_PROGRESS | `a2d5b50` | — | #82; `src/lib/learn/assurance.ts` | release-gate | The record schema and aggregation exist. No per-sense records are generated, stored or invalidated on content change yet (plan §17). |
 | F11 | Model, prompt and rubric provenance | IN_PROGRESS | `066d7a3` | — | #85; #86; `content/assurance/semantic-rubrics.json`; `content/assurance/semantic/prompts` | release-gate | Judge records carry model, prompt and rubric versions. Generated content has no generation provenance yet; it is needed before the repair loop (plan §8, §18). |
 | F12 | Status ledger with the plan's state model, checked in CI | DONE | `03a8659` | `dc47f1c` | #108; `docs/A1_PLAN_STATUS.md`; `scripts/plan-status.ts`; `src/lib/learn/status-ledger.ts` | none | — |
 | P1-PERSIAN-FIELDS | Persian-script checks on learner-facing Persian fields | DONE | `c426776` | `6e6a44b` | #82; `scripts/content-assurance.ts` | none | — |
 | P1-CHUNK-DECKS | Keep chunk decks out of A1 loading | NOT_STARTED | — | — | — | scope | — |
-| P1-XP | Remove XP from primary screens | NOT_STARTED | — | — | — | scope | — |
+| P1-XP | Remove XP from primary screens | DONE | `86f86ca` | `86f86ca` | `src/routes/progress.tsx` | scope | The Progress stat was the only place XP showed. The stored count stays for backups and older saves. |
 | P1-FEATURES | Feature ledger `docs/FEATURES.md` (plan §30) | NOT_STARTED | — | — | — | scope | — |
 | P1-PRONUNCIATION | Pronunciation normalization that removes notation noise from audio flags | NOT_STARTED | — | — | — | none | — |
 | UNIT1-DETERMINISTIC | Unit 1 content passes every deterministic check | MACHINE_PASS | `eea2301` | `6714cce` | #84; `scripts/content-assurance.ts` | canary-gate | — |
-| A1-DETERMINISTIC | All A1 content passes every deterministic check | IN_PROGRESS | `c426776` | — | #82; #84; `scripts/content-assurance.ts`; `content/assurance/deterministic-baseline.json` | release-gate | Unit 1 passes. The full corpus has 10,350 findings across 1,027 senses and 14 scenes (`npm run assurance:content`), including the frontier findings in A1-FRONTIER-REPAIR. |
+| A1-DETERMINISTIC | All A1 content passes every deterministic check | IN_PROGRESS | `c426776` | — | #82; #84; #109; `scripts/content-assurance.ts`; `content/assurance/deterministic-baseline.json` | release-gate | Unit 1 passes. The full corpus has 10,382 findings across 1,027 senses and 14 scenes (`npm run assurance:content`), including 32 reused example sentences and the frontier findings in A1-FRONTIER-REPAIR. |
 | A1-FRONTIER-REPAIR | Tasks and scenes use only vocabulary taught by that point | NOT_STARTED | — | — | — | release-gate | 5,341 entry-task and 65 scene-task findings. 41% of the entry-task findings come from 30 high-frequency words the curriculum places late: do, not, can and please in Unit 12, and to, at and for in Unit 7. Moving them earlier is likely the cheapest repair. It changes the curriculum version and the frozen Units 1–3 study roster, so it needs its own slice. |
 | P2-SEMANTIC-STACK | Semantic judge roles, rubrics, arbitration, packets, runner and evidence ingestion | DONE | `066d7a3` | `0704d5f` | #85; #86; #87; #88; `scripts/semantic-assurance.ts`; `scripts/run-semantic-judge.ts`; `scripts/merge-semantic-evidence.ts` | none | — |
 | P2-KEYLESS-GATEWAY | Keyless GitHub OIDC to Workers AI judge gateway with a Neuron budget gate | DONE | `9cd71f4` | `8203831` | #93; #95; #97; #99; #107; `content/assurance/semantic/KEYLESS_GATEWAY.md`; `scripts/semantic-neuron-budget.ts` | none | — |
@@ -175,7 +175,8 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 - **Done**: each skill is recorded separately: recognition, typed form recall
   (`spelling`), listening, context and productive use (#22, #23, #78).
 - **Done**: practice modes are disclosed progressively. Smart Practice is the
-  main action and the other modes are folded away.
+  main action and the other modes are folded away. (Later replaced by the three
+  Practice modes; see F07 in the status ledger.)
 - **Done**: F6 no longer arises, because new learners no longer get a
   higher-level onboarding (#76).
 

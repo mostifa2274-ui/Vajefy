@@ -136,6 +136,28 @@ function englishFields(sense: Sense): [string, string][] {
   return fields;
 }
 
+/** Lower-case word tokens, for comparing sentences rather than spellings. */
+function words(value: string): string[] {
+  return normalize(value).replaceAll("’", "'").match(/[\p{L}\p{N}']+/gu) ?? [];
+}
+
+/** Word-level edit distance: insertions, deletions and substitutions. */
+function wordDistance(a: string[], b: string[]): number {
+  let previous = Array.from({ length: b.length + 1 }, (_, index) => index);
+  for (let i = 1; i <= a.length; i += 1) {
+    const current = [i];
+    for (let j = 1; j <= b.length; j += 1) {
+      current[j] = Math.min(
+        previous[j] + 1,
+        current[j - 1] + 1,
+        previous[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1),
+      );
+    }
+    previous = current;
+  }
+  return previous[b.length];
+}
+
 function checkSense(sense: Sense) {
   const base = sense.id;
 
@@ -191,6 +213,25 @@ function checkSense(sense: Sense) {
     }
     seenEnglish.add(en);
     seenPersian.add(fa);
+  }
+
+  // Plan §9: examples must differ in more than a word or two. One changed,
+  // added or removed word ("I have a cat." / "I have a dog.") is superficial
+  // substitution; two is still too close in a sentence of six words or more.
+  const tokens = sense.examples.map((example) => words(example.en));
+  for (let j = 1; j < tokens.length; j += 1) {
+    for (let i = 0; i < j; i += 1) {
+      const distance = wordDistance(tokens[i], tokens[j]);
+      const limit = Math.min(tokens[i].length, tokens[j].length) >= 6 ? 2 : 1;
+      if (distance > 0 && distance <= limit) {
+        add(
+          "EXAMPLE_NEAR_DUPLICATE",
+          `${base}.examples[${j}]`,
+          `differs from examples[${i}] by ${distance} word(s); vary the structure or context, not just a word`,
+        );
+        break;
+      }
+    }
   }
 
   if (USAGE_REQUIRED.has(sense.pos) && !sense.usage) {
@@ -478,6 +519,35 @@ for (const entry of entries) {
         sense.check,
         frontier,
         exceptionsByEntry.get(entry.id),
+      );
+    }
+  }
+}
+
+// An example sentence already used for a word taught earlier makes a review
+// answerable from memory of the sentence; the later word needs its own.
+const firstUse = new Map<string, string>();
+const inCourseOrder = allA1
+  .flatMap((entry) =>
+    entry.senses.map((sense, index) => ({
+      entry,
+      sense,
+      at:
+        (index === 0 ? position.get(entry.id) : unitEnd.get(entry.id)) ??
+        Number.MAX_SAFE_INTEGER,
+    })),
+  )
+  .sort((a, b) => a.at - b.at);
+for (const { entry, sense } of inCourseOrder) {
+  for (const [index, example] of sense.examples.entries()) {
+    const key = words(example.en).join(" ");
+    const earlier = firstUse.get(key);
+    if (earlier === undefined) firstUse.set(key, sense.id);
+    else if (earlier !== sense.id && (!selectedIds || selectedIds.has(entry.id))) {
+      add(
+        "EXAMPLE_REUSED",
+        `${sense.id}.examples[${index}]`,
+        `same sentence as an example of ${earlier}, taught earlier`,
       );
     }
   }
