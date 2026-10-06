@@ -647,3 +647,48 @@ preflight/inference and fails if the budget drifts above 8,500 Neurons, a model
 requires paid billing, or the pricing verification is older than 30 days.
 
 No semantic inference has been run.
+
+
+## Completed — PR #97 fail-closed keyless free-budget gate
+
+PR #97 merged as `5ecdb83013d217365369235823de81d0deb285ae`.
+
+Post-merge evidence:
+
+- CI run `37469172510`: PASS;
+- core validation/typecheck/lint/tests/build: PASS;
+- Workers build contract: PASS;
+- Playwright: PASS;
+- automatic keyless gateway smoke run `37469172696`: PASS;
+- production exact revision: `5ecdb83013d`;
+- authenticated GitHub OIDC GET to the gateway: PASS;
+- no model inference occurred during the smoke.
+
+The frozen calibration campaign now has a deterministic fail-closed budget:
+
+- 84 requests total;
+- 7,788 Neurons upper bound;
+- 10,000 Neurons/day Workers Free allocation;
+- 2,212 Neurons free-allocation reserve;
+- stricter Vajefy ceiling: 8,500;
+- 712 Neurons safety-ceiling reserve.
+
+Current keyless judge candidates:
+
+- English: `@cf/openai/gpt-oss-120b`;
+- Persian: `@cf/zai-org/glm-4.7-flash`;
+- pedagogical: `@cf/google/gemma-4-26b-a4b-it`;
+- adversarial: `@cf/qwen/qwen3-30b-a3b-fp8`.
+
+Calibration itself remains intentionally manual-dispatch-only. The currently
+connected GitHub tool can inspect/rerun existing workflow runs but exposes no
+`workflow_dispatch` action. Plugin discovery on 2026-10-06 found no alternate
+GitHub Actions dispatch connector.
+
+Do not weaken the inference guard with a push/schedule trigger merely to bypass
+that tool limitation.
+
+Authoritative resume point: dispatch
+`.github/workflows/semantic-calibrate.yml` once per role from `main`.
+Each dispatch performs all three frozen repeats, current pricing/budget check,
+OIDC gateway preflight, strict calibration scoring and qualification recording.
