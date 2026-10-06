@@ -106,3 +106,32 @@ SEMANTIC_JUDGE_TRANSPORT=keyless npm run assurance:semantic:judge -- ...
 ```
 
 The workflows set the transport automatically.
+
+
+## Automatic exact-revision production smoke
+
+The keyless gateway has a dedicated workflow:
+
+`.github/workflows/semantic-gateway-smoke.yml`
+
+It runs automatically when keyless gateway code/configuration changes on
+`main`, and can also be dispatched manually.
+
+The workflow:
+
+1. has `contents: read` only;
+2. has `id-token: write` only for short-lived GitHub identity;
+3. waits until `/api/version` reports the exact first 12 characters of
+   `GITHUB_SHA`;
+4. obtains a fresh OIDC token;
+5. performs **GET only** against `/api/internal/semantic-judge`;
+6. verifies the deployed transport and every role/model/version/token cap;
+7. executes no model inference and consumes no Workers AI inference quota.
+
+The Worker accepts the smoke workflow identity for authenticated GET status, but
+the smoke workflow is explicitly excluded from the server-side
+inference-authorized workflow set. Even a manually dispatched smoke token cannot
+POST inference.
+
+CI checks these properties and fails if the smoke path gains secrets, write
+permission, POST behavior, or model execution.
