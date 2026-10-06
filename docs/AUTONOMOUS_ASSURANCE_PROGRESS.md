@@ -138,3 +138,33 @@ Refreshed writers:
 The temporary workflow was removed in `598e14b0a09cd2db9e82dbea533415324ba425de`.
 
 Current resume point: **exact-head CI for PR #84**. Do not regenerate these artifacts again unless a source edit or CI explicitly reports them stale.
+
+## Completed — PR #84 Unit 1 deterministic certification
+
+PR #84 merged as `6714cce4a36939c38a3ede0afa3bbc57eb62efe3`.
+
+Unit `01-introductions` is now **deterministically certified** under the current structural assurance contract:
+
+- 20/20 senses repaired;
+- strict Unit 1 deterministic findings = 0;
+- controlled GB/US audio complete for the edited examples;
+- 38 new controlled clips generated, 5,888 clips total;
+- heuristic audio flags remained 292 before/after;
+- version-bound generated artifacts refreshed;
+- generated-content consistency, `validate:data`, typecheck, lint, unit tests, production build, Playwright and Workers build contract all passed on the exact merged head.
+
+Do not repeat Unit 1 deterministic repairs or audio regeneration unless its source content changes or CI reports drift.
+
+## Current work — semantic assurance foundation
+
+Branch: `codex/semantic-assurance-foundation`.
+
+Next unrepeated objective:
+
+1. define versioned independent judge rubrics for English, Persian, pedagogy and adversarial review;
+2. store complete judge provenance and evidence;
+3. implement fail-closed arbitration with disagreement/uncertainty/quarantine states;
+4. add fixture-based tests for every arbitration path;
+5. add a Unit 1 semantic-assurance command that cannot produce PASS without complete independent evidence.
+
+Gate 0 remains blocked and Unit 1's certified source content should not be edited during this foundation slice.
