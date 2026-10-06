@@ -132,15 +132,16 @@
   },
   "currentWork": {
     "branch": "main",
-    "objective": "Obtain/configure the five free credential/account values, then run one semantic-calibrate dispatch per role.",
+    "objective": "User/account owner adds the five free credential/account values using FREE_CREDENTIAL_SETUP.md; then run one automated calibration dispatch per role.",
     "blocked": true,
-    "blocker": "Repository-side calibration, qualification, and automation are complete. The four API keys and Cloudflare account-id variable are still absent.",
+    "blocker": "The four free API keys and Cloudflare Account ID are account-specific values and are not present in GitHub Actions. This environment cannot create or write those secrets.",
     "nextSteps": [
-      "Check for any directly connectable provider integration that can eliminate manual API-key setup.",
-      "Otherwise create the free Groq, Google AI Studio, OpenRouter and Cloudflare credentials.",
-      "Set the four GitHub Actions secrets and SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID variable.",
-      "Dispatch Semantic judge calibration and qualification once per role from main.",
-      "Only qualified roles may then run Unit 1 semantic judging."
+      "Follow content/assurance/semantic/FREE_CREDENTIAL_SETUP.md.",
+      "Add the four exact GitHub Actions repository secrets.",
+      "Add SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID as a repository Actions variable.",
+      "Run Semantic judge calibration and qualification once for each role.",
+      "Let the frozen v1 gate automatically qualify or reject each champion.",
+      "Run Unit 1 semantic judging only for qualified roles."
     ]
   },
   "endpointResolution": {
@@ -181,5 +182,6 @@
     "SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY": "absent",
     "SEMANTIC_JUDGE_ADVERSARIAL_API_KEY": "absent",
     "SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID": "absent"
-  }
+  },
+  "credentialSetupRunbook": "content/assurance/semantic/FREE_CREDENTIAL_SETUP.md"
 }
