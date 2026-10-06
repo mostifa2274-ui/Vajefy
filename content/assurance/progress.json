@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "26ca377bd464ed7640603e0582169635614eea76",
+  "authoritativeMain": "48168506acf43cce5524b69c8d0475040a615d42",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -99,6 +99,12 @@
       "mergeCommit": "26ca377bd464ed7640603e0582169635614eea76",
       "pr": 110,
       "summary": "EXAMPLE_NEAR_DUPLICATE and EXAMPLE_REUSED ratcheted; Practice reduced to Smart Practice, Listening and Spelling; deprecated modes, components and copy removed; XP off Progress."
+    },
+    {
+      "id": "a1-only-loading-and-feature-ledger",
+      "mergeCommit": "48168506acf43cce5524b69c8d0475040a615d42",
+      "pr": 111,
+      "summary": "Service worker installs only A1 course data; docs/FEATURES.md with features:check in CI."
     }
   ],
   "doNotRepeat": [
@@ -127,7 +133,8 @@
     "Do not restore GPT-OSS 120B as the English keyless calibration judge unless Cloudflare adds official JSON Mode support and a new calibration/budget analysis justifies it; repeated run 37473550090 exhausted 900/900 completion tokens without canonical JSON.",
     "Do not promote or re-run Llama 3.3 70B as the English v1 judge: frozen v1 scoring rejected it on run 37473550090 attempt 10 (defect recall 0.0%).",
     "Do not rebuild the status ledger or its CI check; update rows in docs/A1_PLAN_STATUS.md in the same pull request as the work.",
-    "Do not rebuild the C1 ratchet or the course-wide curriculum-frontier check; repair content against them and lower the baseline with npm run assurance:content:baseline."
+    "Do not rebuild the C1 ratchet or the course-wide curriculum-frontier check; repair content against them and lower the baseline with npm run assurance:content:baseline.",
+    "Do not rebuild Machine Assurance Records or generation provenance; regenerate with npm run assurance:records and record content changes with npm run content:provenance -- --generator <id>."
   ],
   "blockers": [
     {
@@ -171,16 +178,16 @@
   "currentWork": {
     "blocked": false,
     "branch": "claude/analysis-in-depth-maqczd",
-    "objective": "Plan §41 item 9 and §30: A1-only initial loading and the feature ledger.",
+    "objective": "Plan §41 items 10 and 11: per-sense Machine Assurance Records and generation provenance. Completes the first implementation package except the Gate 0 legal blocker.",
     "completedOnBranch": [
-      "Service worker installs only the A1 course data; higher levels and reference decks are cached on first use; Today skips synonym notes for A1 learners.",
-      "docs/FEATURES.md with npm run features:check in validate:data."
+      "content/assurance/records/A1.json: 1,027 fail-closed records bound to semantic input hashes; validate:data checks freshness.",
+      "content/assurance/generation.json: every A1 entry bound to its generator (900 historical-unknown); content changes fail CI until recorded."
     ],
     "pending": [
-      "F10/F11: per-sense Machine Assurance Records and generation provenance before the repair loop (plan §41: repair starts only after the first package).",
-      "P1-CHUNK-DECKS: decide whether the Library is reduced to material linked from A1 and stops adding deck items to Review.",
-      "P1-PRONUNCIATION: normalise pronunciation notation so audio flags lose notation noise.",
+      "P2-REPAIR-LOOP: automated field-level repair (plan §8) may now start, recording each change with content:provenance.",
       "A1-FRONTIER-REPAIR: decide whether to move late high-frequency words earlier in the curriculum.",
+      "P1-CHUNK-DECKS: decide whether the Library is reduced to material linked from A1.",
+      "P1-PRONUNCIATION and P3-AUDIO-CERT.",
       "Semantic lane: English needs a new candidate that is not GPT-OSS 120B or Llama 3.3 70B, without changing frozen v1; Persian, pedagogical and adversarial each need one owner workflow_dispatch."
     ]
   },

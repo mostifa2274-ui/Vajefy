@@ -886,3 +886,22 @@ Merged as `26ca377bd464ed7640603e0582169635614eea76`.
   guards the first load.
 - `docs/FEATURES.md` lists 19 features with measures and removal conditions;
   `npm run features:check` keeps it in step with the screens.
+
+## Completed — PR #111 A1-only loading and feature ledger
+
+Merged as `48168506acf43cce5524b69c8d0475040a615d42`.
+
+## Machine Assurance Records and generation provenance — plan §41 items 10 and 11
+
+- `content/assurance/records/A1.json`: one fail-closed record per A1 sense
+  (1,027), bound to the semantic input hash judges sign. Criteria: Gate 0
+  rights, generation provenance, schema, five deterministic groups, four
+  semantic roles and audio per accent. Today 0 PASS, 20 UNCERTAIN, 1,007 FAIL.
+  `npm run assurance:records` regenerates; `validate:data` checks freshness.
+- `content/assurance/generation.json`: every A1 entry's content hash bound to
+  its generator. Existing content is honestly `historical-unknown`; a content
+  change fails CI until `npm run content:provenance -- --generator <id>`
+  records a real generator.
+
+With these, all twelve first-package items (plan §41) are DONE. Gate 0
+rights remain BLOCKED on the owner. Automated repair (plan §8) may start.
