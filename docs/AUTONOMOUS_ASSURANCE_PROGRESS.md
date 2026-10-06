@@ -420,3 +420,47 @@ schema reliability and repeat-run stability on that set.
 
 No semantic inference has been run and no semantic PASS evidence has been
 committed.
+
+
+## In-progress checkpoint — frozen semantic judge calibration v1
+
+Branch: `codex/semantic-judge-calibration`.
+
+Implemented without running model inference:
+
+- frozen calibration version: `vajefy-semantic-v1`;
+- 28 cases total:
+  - 8 clean controls;
+  - 16 deliberately seeded defects;
+  - 4 deliberate abstention cases;
+- role distribution:
+  - English 6;
+  - Persian 6;
+  - pedagogical 7;
+  - adversarial 9;
+- gold labels are controlled mutations/withheld evidence, not another model's votes;
+- expected labels are not included in judge packets;
+- three independent runs are required for each role;
+- pre-registered promotion thresholds are strict:
+  - 100% schema-complete runs;
+  - 100% seeded-defect recall;
+  - 0% false positives on clean controls;
+  - 0% uncertainty on clean controls;
+  - 100% correct abstention;
+  - 100% expected-label stability;
+- repeated runs must use the same candidate model/version/prompt/rubric but distinct run ids and isolated context keys;
+- four calibration packets are committed and freshness-checked;
+- the qualification ledger starts empty;
+- changing a champion model automatically makes an existing qualification stale;
+- the manual semantic workflow supports `calibration_v1` and `unit1`;
+- `unit1` execution is blocked until the selected role has a current qualification record;
+- workflow CI now requires this calibration gate to remain present.
+
+Calibration packet generation commit:
+`a02892ff11a24a820447efe51533d6661eca7c8f`.
+
+No model inference has been run and no semantic qualification has been fabricated.
+
+Current resume point: full CI/merge this branch. After merge, configure the free
+credentials and run calibration first. Do not run release-bound Unit 1 semantic
+judging before qualification.
