@@ -1,0 +1,92 @@
+name: Keyless semantic gateway smoke
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: keyless-semantic-gateway-smoke
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Wait for exact production revision
+        id: revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED="${GITHUB_SHA:0:12}"
+          URL="https://vajefy.mostifa2273.workers.dev/api/version"
+
+          for ATTEMPT in $(seq 1 60); do
+            BODY="$(curl -fsS --max-time 20 "$URL" || true)"
+            REVISION="$(node -e 'try{const x=JSON.parse(process.argv[1]||"{}");process.stdout.write(x.revision||"")}catch{}' "$BODY")"
+            if [ "$REVISION" = "$EXPECTED" ]; then
+              echo "Production revision matches $EXPECTED."
+              exit 0
+            fi
+            sleep 10
+          done
+
+          echo "Production did not reach exact revision $EXPECTED." >&2
+          exit 1
+
+      - name: Obtain short-lived GitHub OIDC identity
+        id: oidc
+        shell: bash
+        env:
+          REQUEST_URL: ${{ env.ACTIONS_ID_TOKEN_REQUEST_URL }}
+          REQUEST_TOKEN: ${{ env.ACTIONS_ID_TOKEN_REQUEST_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$REQUEST_URL"
+          test -n "$REQUEST_TOKEN"
+          SEP='?'
+          case "$REQUEST_URL" in
+            *\?*) SEP='&' ;;
+          esac
+          RESPONSE="$(curl -fsS \
+            -H "Authorization: Bearer $REQUEST_TOKEN" \
+            -H "Accept: application/json" \
+            "${REQUEST_URL}${SEP}audience=vajefy-semantic-gateway")"
+          TOKEN="$(node -e 'const x=JSON.parse(process.argv[1]); if(!x.value) process.exit(2); process.stdout.write(x.value)' "$RESPONSE")"
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Verify authenticated keyless gateway contract without inference
+        shell: bash
+        env:
+          OIDC_TOKEN: ${{ steps.oidc.outputs.token }}
+        run: |
+          set -euo pipefail
+          BODY="$(curl -fsS --max-time 20 \
+            -H "Authorization: Bearer $OIDC_TOKEN" \
+            https://vajefy.mostifa2273.workers.dev/api/internal/semantic-judge)"
+
+          node <<'NODE' "$BODY"
+          const body = JSON.parse(process.argv[2]);
+          if (body.ok !== true) throw new Error("gateway not ok");
+          if (body.transport !== "cloudflare-workers-ai-binding") {
+            throw new Error("unexpected transport");
+          }
+          const expected = {
+            english: "@cf/openai/gpt-oss-120b",
+            persian: "@cf/zai-org/glm-4.7-flash",
+            pedagogical: "@cf/google/gemma-4-26b-a4b-it",
+            adversarial: "@cf/qwen/qwen3.8-27b",
+          };
+          for (const [role, model] of Object.entries(expected)) {
+            if (body.roles?.[role]?.model !== model) {
+              throw new Error(`${role} model contract mismatch`);
+            }
+          }
+          console.log("Authenticated keyless gateway contract: PASS (no inference).");
+          NODE
