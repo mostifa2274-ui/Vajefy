@@ -8,7 +8,7 @@
 |---|---|---|
 | Gate 0 provenance manifest | IN_PROGRESS | `content/assurance/provenance.json` exists; current Oxford-derived source intentionally remains `unverified` |
 | Fail-closed assurance schema | IN_PROGRESS | `src/lib/learn/assurance.ts` defines PASS/FAIL/UNCERTAIN/DISAGREEMENT/QUARANTINED and machine-assurance records |
-| Deterministic A1 assurance audit | IN_PROGRESS | `scripts/content-assurance.ts` reports structural/Persian/mistake/example/usage defects without pretending the current corpus is certified |
+| Deterministic A1 assurance audit | IN_PROGRESS | `scripts/content-assurance.ts` reports structural/Persian/mistake/example/usage defects; `content/assurance/deterministic-baseline.json` now ratchets the measured defect classes so CI fails if they increase |
 | Autonomous semantic judges | NOT_STARTED | English, Persian, pedagogical and adversarial judges still to be implemented |
 | Audio certification | NOT_STARTED | Existing heuristic remains provisional |
 | Autonomous UX agents | NOT_STARTED | Existing Playwright/axe remains the foundation |
