@@ -1,0 +1,41 @@
+name: Keyless semantic gateway smoke
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/semantic-gateway-smoke.yml"
+      - "content/assurance/semantic/keyless-provider-presets.json"
+      - "src/api/github-oidc.ts"
+      - "src/api/semantic-gateway.ts"
+      - "src/api/semantic-gateway-config.ts"
+      - "src/api/index.ts"
+      - "src/worker-env.d.ts"
+      - "wrangler.jsonc"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: keyless-semantic-gateway-smoke
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Wait for exact production revision and verify OIDC gateway
+        run: node --experimental-strip-types --no-warnings scripts/smoke-keyless-semantic-gateway.ts
