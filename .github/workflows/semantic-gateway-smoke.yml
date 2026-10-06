@@ -72,7 +72,7 @@ jobs:
             throw new Error("unexpected transport");
           }
           const expected = {
-            english: "@cf/openai/gpt-oss-120b",
+            english: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
             persian: "@cf/zai-org/glm-4.7-flash",
             pedagogical: "@cf/google/gemma-4-26b-a4b-it",
             adversarial: "@cf/qwen/qwen3-30b-a3b-fp8",
