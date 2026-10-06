@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-06",
+  "source": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+  "dailyFreeNeurons": 10000,
+  "maxPlannedCalibrationNeurons": 9000,
+  "requiredReserveNeurons": 1000,
+  "inputAccounting": {
+    "policy": "utf8-bytes-as-token-upper-bound-plus-fixed-overhead",
+    "perRequestOverheadTokens": 512,
+    "note": "UTF-8 byte length is used as a conservative token upper bound, then 512 tokens/request are added for message framing/tokenizer overhead."
+  },
+  "modelRates": {
+    "@cf/openai/gpt-oss-120b": {
+      "inputNeuronsPerMillionTokens": 31818,
+      "outputNeuronsPerMillionTokens": 68182
+    },
+    "@cf/zai-org/glm-4.7-flash": {
+      "inputNeuronsPerMillionTokens": 5500,
+      "outputNeuronsPerMillionTokens": 36400
+    },
+    "@cf/google/gemma-4-26b-a4b-it": {
+      "inputNeuronsPerMillionTokens": 9091,
+      "outputNeuronsPerMillionTokens": 27273
+    },
+    "@cf/qwen/qwen3-30b-a3b-fp8": {
+      "inputNeuronsPerMillionTokens": 4625,
+      "outputNeuronsPerMillionTokens": 30475
+    }
+  },
+  "paidOnlyDenylist": [
+    "@cf/moonshotai/kimi-k2.6",
+    "@cf/moonshotai/kimi-k2.7-code",
+    "@cf/zai-org/glm-5.2",
+    "@cf/zai-org/glm-5.3",
+    "@cf/zai-org/glm-5.3-flash",
+    "@cf/deepseek-ai/deepseek-v4-flash-0731",
+    "@cf/deepseek-ai/deepseek-v4-pro-0813"
+  ]
+}
