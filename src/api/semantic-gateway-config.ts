@@ -18,11 +18,11 @@ export const KEYLESS_SEMANTIC_STATUS_WORKFLOWS = [
 export const KEYLESS_SEMANTIC_MODELS = {
   english: {
     provider: "cloudflare-workers-ai",
-    modelFamily: "openai-gpt-oss",
-    model: "@cf/openai/gpt-oss-120b",
+    modelFamily: "meta-llama",
+    model: "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     modelVersion:
-      "@cf/openai/gpt-oss-120b@cloudflare-catalog-2026-10-06",
-    maxTokens: 900,
+      "@cf/meta/llama-3.3-70b-instruct-fp8-fast@cloudflare-catalog-2026-10-06",
+    maxTokens: 500,
   },
   persian: {
     provider: "cloudflare-workers-ai",
