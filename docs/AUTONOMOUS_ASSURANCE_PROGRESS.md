@@ -342,3 +342,35 @@ Current resume point: CI/merge this zero-cost provider slice, then configure the
 free credentials and execute the existing manual judge workflow. Do not repeat
 provider research unless availability/pricing changes or the preset verification
 date is intentionally refreshed.
+
+
+## Completed — PR #89 verified zero-cost semantic providers
+
+PR #89 merged as `c6c0682d331c9fb1634a890595ee5ff2933909d6`.
+
+The semantic judge design no longer depends on paid inference.
+
+Authoritative zero-cost defaults, verified 2026-10-06:
+
+- English -> Groq Free / `openai/gpt-oss-120b`;
+- Persian -> Gemini Free / `gemini-3.5-flash-lite`;
+- Pedagogical -> OpenRouter Free / `google/gemma-4-31b-it:free`;
+- Adversarial -> Cloudflare Workers AI Free / `@cf/zai-org/glm-4.7-flash`.
+
+CI now enforces the `zero-cost-only` preset policy and requires four distinct
+provider/model defaults. The manual workflow applies these presets automatically.
+
+### Authoritative resume point
+
+Do not repeat provider discovery or PRs #84–#89.
+
+Only free credential setup remains:
+
+1. `SEMANTIC_JUDGE_ENGLISH_API_KEY` (Groq Free);
+2. `SEMANTIC_JUDGE_PERSIAN_API_KEY` (Google AI Studio Free);
+3. `SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY` (OpenRouter Free);
+4. `SEMANTIC_JUDGE_ADVERSARIAL_API_KEY` (Cloudflare API token);
+5. `SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID`.
+
+After those are configured, run the four existing manual judge workflows, merge
+their structured artifacts, and execute strict Unit 1 semantic certification.
