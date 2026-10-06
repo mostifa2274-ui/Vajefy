@@ -7,7 +7,7 @@ export function parseSemanticJudgeJson(content: string): unknown {
   try {
     return JSON.parse(trimmed);
   } catch {
-    const fenced = trimmed.match(/^\`\`\`(?:json)?\s*\n([\s\S]*?)\n\`\`\`$/i);
+    const fenced = trimmed.match(/^```(?:json)?\s*\n([\s\S]*?)\n```$/i);
     if (!fenced) {
       throw new Error("semantic judge content is not a single JSON value");
     }
