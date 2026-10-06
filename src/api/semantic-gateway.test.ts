@@ -196,3 +196,111 @@ test("prefers structured response string over alternate output fields", () => {
     structured,
   );
 });
+
+
+test("collapses identical structured payloads across final response fields", () => {
+  const payload = {
+    criteria: [
+      {
+        criterion: "grammar",
+        result: "PASS",
+        confidence: 0.95,
+        evidence: ["sense.examples.0.en"],
+        reasonCode: null,
+      },
+    ],
+  };
+  const json = JSON.stringify(payload);
+
+  assert.equal(
+    extractWorkersAiContent({
+      response: payload,
+      output_text: json,
+      output: [
+        {
+          type: "reasoning",
+          summary: [{ type: "summary_text", text: "not final evidence" }],
+        },
+        {
+          type: "message",
+          role: "assistant",
+          content: [{ type: "output_text", text: json }],
+        },
+      ],
+    }),
+    json,
+  );
+});
+
+test("canonicalizes one final JSON payload even when model adds prose", () => {
+  const payload =
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":0.9,"evidence":["sense"],"reasonCode":null}]}';
+
+  assert.equal(
+    extractWorkersAiContent({
+      output: [
+        {
+          type: "message",
+          role: "assistant",
+          content: [
+            {
+              type: "output_text",
+              text: `Here is the requested JSON:\n${payload}\nDone.`,
+            },
+          ],
+        },
+      ],
+    }),
+    payload,
+  );
+});
+
+test("rejects conflicting final semantic payloads", () => {
+  assert.equal(
+    extractWorkersAiContent({
+      output_text:
+        '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":0.9,"evidence":["sense"],"reasonCode":null}]}',
+      output: [
+        {
+          type: "message",
+          role: "assistant",
+          content: [
+            {
+              type: "output_text",
+              text:
+                '{"criteria":[{"criterion":"grammar","result":"FAIL","confidence":0.9,"evidence":["sense"],"reasonCode":"fixture"}]}',
+            },
+          ],
+        },
+      ],
+    }),
+    null,
+  );
+});
+
+test("ignores reasoning text when final assistant message contains semantic JSON", () => {
+  const payload =
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":1,"evidence":["sense"],"reasonCode":null}]}';
+
+  assert.equal(
+    extractWorkersAiContent({
+      output: [
+        {
+          type: "reasoning",
+          summary: [
+            {
+              type: "summary_text",
+              text: '{"criteria":[{"criterion":"grammar","result":"FAIL"}]}',
+            },
+          ],
+        },
+        {
+          type: "message",
+          role: "assistant",
+          content: [{ type: "output_text", text: payload }],
+        },
+      ],
+    }),
+    payload,
+  );
+});
