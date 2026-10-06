@@ -525,3 +525,19 @@ Once the five missing free credential/account names are configured, calibration
 requires four manual dispatches total—one per role—not twelve individual runs.
 
 No inference has been run yet.
+
+
+## Completed — PR #92 one-dispatch semantic calibration automation
+
+PR #92 merged as `fb31a9969463b1f69969b6be9b039c55b55f84cf`.
+
+After credentials are configured, semantic judge qualification now requires only
+one manual dispatch per role. Each dispatch performs all three frozen v1
+repeats, scores them against the pre-registered gate, records qualification only
+after strict promotion, commits only allowlisted qualification/report files, and
+uploads the raw evidence.
+
+Do not repeat the calibration automation work.
+
+Current external blocker remains unchanged: all four API-key secrets and
+`SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID` were confirmed absent on 2026-10-06.
