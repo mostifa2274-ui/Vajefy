@@ -82,3 +82,17 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 8. Merge.
 9. Update this ledger with the merge commit and the next unrepeated objective.
 
+
+## In-progress checkpoint — Unit 1 certification
+
+On branch `codex/unit1-autonomous-certification`:
+
+- all 20 Unit 1 senses have source repairs applied;
+- the measured Unit 1 deterministic findings are now 0 in the repaired source;
+- a validator false positive was fixed so capitalization mistakes such as `i` → `I` remain detectable as meaningful differences;
+- `scripts/content-assurance.ts --unit 01-introductions --strict` is now supported;
+- `npm run assurance:unit1` is wired into `validate:data` so Unit 1 cannot regress once merged;
+- derived enhanced-content artifacts still need regeneration and commit before merge;
+- full CI has not yet completed for this branch.
+
+If work resumes before this branch merges, continue from artifact regeneration/CI. Do not redo the Unit 1 content diagnosis or source repairs.
