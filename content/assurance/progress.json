@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "2a9677a78a458b04a504b9e5d8f52433f4e811d5",
+  "authoritativeMain": "eaa36a7f57f0f50426cf3c6789d1c40262fceda1",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -33,6 +33,12 @@
       "pr": 86,
       "mergeCommit": "2a9677a78a458b04a504b9e5d8f52433f4e811d5",
       "summary": "Curriculum-aware semantic packets, four versioned role prompts, opt-in isolated OpenAI-compatible/local runner, evidence merge command, and packet freshness CI."
+    },
+    {
+      "id": "semantic-evidence-ingestion",
+      "pr": 87,
+      "mergeCommit": "eaa36a7f57f0f50426cf3c6789d1c40262fceda1",
+      "summary": "Fail-closed external evidence ingestion, stale hash/version rejection, cross-role isolation checks, endpoint preflight, compatibility switch, and tests."
     }
   ],
   "doNotRepeat": [
@@ -43,7 +49,8 @@
     "Do not build new work on stale draft PR #75; reassess or close it separately.",
     "Do not redo Unit 1 deterministic repairs, controlled-audio regeneration or version-bound artifact refresh unless Unit 1 source content changes or CI reports drift.",
     "Do not rebuild the semantic assurance schemas/arbitration from PR #85; continue with prompt packets and independent judge execution.",
-    "Do not regenerate the Unit 1 semantic packet or rebuild the provider-independent runner from PR #86 unless packet freshness CI fails."
+    "Do not regenerate the Unit 1 semantic packet or rebuild the provider-independent runner from PR #86 unless packet freshness CI fails.",
+    "Do not rebuild semantic packet, runner, ingestion validator, or endpoint preflight from PRs #86-#87; actual independent endpoint resolution is the next step."
   ],
   "blockers": [
     {
@@ -85,26 +92,14 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/semantic-evidence-ingestion",
-    "objective": "Validate and merge hardened semantic evidence ingestion/preflight.",
-    "completedOnBranch": [
-      "Recorded PR #86 exact merge commit.",
-      "Added pure semantic evidence ingestion validator.",
-      "Merge now rejects stale content versions and stale curriculum-aware input hashes.",
-      "Merge now rejects mixed-role run bundles, duplicate target/role evidence, source-context reuse and cross-role context reuse.",
-      "Added fixture tests for valid ingestion and every major rejection path.",
-      "Centralized endpoint configuration with role-specific overrides and generic fallback.",
-      "Added no-inference endpoint preflight that never exposes API key values.",
-      "Added JSON response-format compatibility switch for OpenAI-compatible endpoints.",
-      "Wired no-inference preflight execution into validate:data.",
-      "Documented ingestion barriers and endpoint preflight."
-    ],
-    "pending": [
-      "Pass full CI for ingestion/preflight hardening.",
-      "Merge the hardening PR if green.",
-      "Record exact merge commit.",
-      "Resolve actual independent judge endpoints before any inference; do not silently spend paid credits.",
-      "Generate four isolated Unit 1 role bundles only after endpoint provenance is explicit."
+    "branch": "codex/semantic-endpoint-resolution",
+    "objective": "Resolve independent semantic judge endpoints without triggering paid inference.",
+    "nextSteps": [
+      "Inventory connected inference-capable providers/plugins and distinguish free/local from billed execution.",
+      "Document four-role endpoint selection criteria and provenance requirements.",
+      "Run no-inference preflight only after endpoint metadata is available.",
+      "Do not make any paid model call without explicit authorization.",
+      "If no suitable no-cost connected inference exists, preserve the blocker explicitly instead of fabricating evidence."
     ]
   }
 }
