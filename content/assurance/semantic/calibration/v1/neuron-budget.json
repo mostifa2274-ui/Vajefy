@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "calibrationVersion": "vajefy-semantic-v1",
+  "generatedFrom": {
+    "presets": "content/assurance/semantic/keyless-provider-presets.json",
+    "rates": "content/assurance/semantic/workers-ai-neuron-rates.json",
+    "manifest": "content/assurance/semantic/calibration/v1/manifest.json"
+  },
+  "pricingVerifiedAt": "2026-10-06",
+  "pricingSource": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+  "freeDailyAllocationNeurons": 10000,
+  "calibrationSafetyCeilingNeurons": 8500,
+  "protocolOverheadTokensPerRequest": 512,
+  "tokenBoundPolicy": "UTF-8 bytes + fixed protocol overhead; output at configured maxTokens.",
+  "requiredRunsPerRole": 3,
+  "totalRequests": 84,
+  "roles": {
+    "english": {
+      "model": "@cf/openai/gpt-oss-120b",
+      "modelVersion": "@cf/openai/gpt-oss-120b@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 900,
+      "rate": {
+        "inputNeuronsPerMillionTokens": 31818,
+        "outputNeuronsPerMillionTokens": 68182,
+        "paidBillingRequired": false
+      },
+      "requestsPerRun": 6,
+      "repeats": 3,
+      "totalRequests": 18,
+      "maxRequestUtf8Bytes": 4933,
+      "maxInputTokensUpperBound": 5445,
+      "inputTokensUpperBoundTotal": 88755,
+      "outputTokensUpperBoundTotal": 16200,
+      "neuronsUpperBound": 3936
+    },
+    "persian": {
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "modelVersion": "@cf/zai-org/glm-4.7-flash@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 800,
+      "rate": {
+        "inputNeuronsPerMillionTokens": 5500,
+        "outputNeuronsPerMillionTokens": 36400,
+        "paidBillingRequired": false
+      },
+      "requestsPerRun": 6,
+      "repeats": 3,
+      "totalRequests": 18,
+      "maxRequestUtf8Bytes": 4778,
+      "maxInputTokensUpperBound": 5290,
+      "inputTokensUpperBoundTotal": 87246,
+      "outputTokensUpperBoundTotal": 14400,
+      "neuronsUpperBound": 1014
+    },
+    "pedagogical": {
+      "model": "@cf/google/gemma-4-26b-a4b-it",
+      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 800,
+      "rate": {
+        "inputNeuronsPerMillionTokens": 9091,
+        "outputNeuronsPerMillionTokens": 27273,
+        "paidBillingRequired": false
+      },
+      "requestsPerRun": 7,
+      "repeats": 3,
+      "totalRequests": 21,
+      "maxRequestUtf8Bytes": 4843,
+      "maxInputTokensUpperBound": 5355,
+      "inputTokensUpperBoundTotal": 102390,
+      "outputTokensUpperBoundTotal": 16800,
+      "neuronsUpperBound": 1398
+    },
+    "adversarial": {
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "modelVersion": "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 1000,
+      "rate": {
+        "inputNeuronsPerMillionTokens": 4625,
+        "outputNeuronsPerMillionTokens": 30475,
+        "paidBillingRequired": false
+      },
+      "requestsPerRun": 9,
+      "repeats": 3,
+      "totalRequests": 27,
+      "maxRequestUtf8Bytes": 4948,
+      "maxInputTokensUpperBound": 5460,
+      "inputTokensUpperBoundTotal": 130494,
+      "outputTokensUpperBoundTotal": 27000,
+      "neuronsUpperBound": 1440
+    }
+  },
+  "totalNeuronsUpperBound": 7788,
+  "reserveToFreeAllocationNeurons": 2212,
+  "reserveToSafetyCeilingNeurons": 712,
+  "freeAllocationUtilization": 0.7788,
+  "safetyCeilingUtilization": 0.916235294117647,
+  "status": "PASS"
+}
