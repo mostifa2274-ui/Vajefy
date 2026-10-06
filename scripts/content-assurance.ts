@@ -235,6 +235,60 @@ if (process.argv.includes("--json")) {
   }
 }
 
+type Baseline = {
+  schemaVersion: 1;
+  recordedAgainst: string;
+  evidence: string;
+  maximumByCode: Record<string, number>;
+};
+
+if (process.argv.includes("--ratchet")) {
+  const baselineFile = path.join(
+    ROOT,
+    "content",
+    "assurance",
+    "deterministic-baseline.json",
+  );
+  const baseline = JSON.parse(fs.readFileSync(baselineFile, "utf8")) as Baseline;
+  if (
+    baseline.schemaVersion !== 1 ||
+    !baseline.recordedAgainst ||
+    !baseline.evidence ||
+    !baseline.maximumByCode ||
+    Object.values(baseline.maximumByCode).some(
+      (value) => !Number.isInteger(value) || value < 0,
+    )
+  ) {
+    console.error("Deterministic assurance baseline is invalid.");
+    process.exit(1);
+  }
+
+  const regressions = Object.entries(baseline.maximumByCode).flatMap(
+    ([code, maximum]) => {
+      const current = report.byCode[code] ?? 0;
+      return current > maximum ? [{ code, current, maximum }] : [];
+    },
+  );
+
+  if (regressions.length) {
+    console.error(
+      `Deterministic assurance regressed against ${baseline.recordedAgainst}:`,
+    );
+    for (const regression of regressions) {
+      console.error(
+        `- ${regression.code}: ${regression.current} > ${regression.maximum}`,
+      );
+    }
+    process.exit(1);
+  }
+
+  if (!process.argv.includes("--json")) {
+    console.log(
+      `Deterministic assurance ratchet: PASS against ${baseline.recordedAgainst}; known defect classes did not increase.`,
+    );
+  }
+}
+
 if (process.argv.includes("--strict") && report.findings) {
   console.error("A1 content is not machine-certifiable yet.");
   process.exit(1);
