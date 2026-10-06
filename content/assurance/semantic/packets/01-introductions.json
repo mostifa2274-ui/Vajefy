@@ -1,0 +1,2567 @@
+{
+  "schemaVersion": 1,
+  "unitId": "01-introductions",
+  "contentBuildVersion": "0dc8fb36b08a",
+  "generationContextKey": "source-content:01-introductions:eb4d6476149ab0171f8b",
+  "rubricManifest": "content/assurance/semantic-rubrics.json",
+  "rubricManifestHash": "522dbe11f152633c03683f1d5dc2ff977a528f0d47b700995a86d832d9b321e0",
+  "roles": [
+    {
+      "role": "english",
+      "promptVersion": "english-a1-prompt-v1",
+      "rubricVersion": "english-a1-v1",
+      "criteria": [
+        "grammar",
+        "naturalness",
+        "register",
+        "collocation",
+        "sense_fidelity",
+        "grammatical_pattern",
+        "example_validity",
+        "common_error_validity"
+      ],
+      "promptFile": "content/assurance/semantic/prompts/english-a1-prompt-v1.md",
+      "promptHash": "00d8d86908c28b3e6c0dc340b3713a8b93297a22a9dc14ca95480975deff96cd"
+    },
+    {
+      "role": "persian",
+      "promptVersion": "persian-a1-prompt-v1",
+      "rubricVersion": "persian-a1-v1",
+      "criteria": [
+        "translation_correctness",
+        "naturalness",
+        "educational_clarity",
+        "formality_fit",
+        "ambiguity_control",
+        "false_friend_safety",
+        "literal_translation_safety"
+      ],
+      "promptFile": "content/assurance/semantic/prompts/persian-a1-prompt-v1.md",
+      "promptHash": "1415e25397350e357e68ef56beb864dabdfd907cf75302e0f09bc8172c5a2caa"
+    },
+    {
+      "role": "pedagogical",
+      "promptVersion": "pedagogy-a1-prompt-v1",
+      "rubricVersion": "pedagogy-a1-v1",
+      "criteria": [
+        "a1_suitability",
+        "cognitive_load",
+        "target_teaching_value",
+        "distractor_validity",
+        "mistake_explanation_value",
+        "example_distinctness",
+        "persian_learner_fit"
+      ],
+      "promptFile": "content/assurance/semantic/prompts/pedagogy-a1-prompt-v1.md",
+      "promptHash": "47bc1dd2720783451263d43db48c1482753787a9024ba0f081ac21117dc9c1ca"
+    },
+    {
+      "role": "adversarial",
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "rubricVersion": "adversarial-a1-v1",
+      "criteria": [
+        "no_mistranslation",
+        "no_misleading_gloss",
+        "no_collocation_error",
+        "no_sense_mismatch",
+        "no_curriculum_leak",
+        "no_ambiguous_task",
+        "no_answer_leakage",
+        "no_mistake_explanation_error",
+        "no_syntactic_mismatch",
+        "no_persian_contradiction"
+      ],
+      "promptFile": "content/assurance/semantic/prompts/adversarial-a1-prompt-v1.md",
+      "promptHash": "9d215c85db42fc5390e86152a4faf3826bac06bfa54c1d4d6cabc42f594dc1b8"
+    }
+  ],
+  "targets": [
+    {
+      "targetId": "lex:A1:i",
+      "entryId": "lex:A1:i",
+      "contentVersion": "68c31b0e1449",
+      "inputHash": "8123e1135498cb174309630fb8644cb6a9592d2db97351099135172298f56107",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:i",
+          "headword": "I",
+          "contentVersion": "68c31b0e1449",
+          "order": 0,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:i",
+          "pos": "pronoun",
+          "gloss": "من (فاعل)",
+          "meaning": "ضمیر فاعلی اول‌شخص مفرد. همیشه با حرف بزرگ نوشته می‌شود و فقط در جای فاعل می‌آید؛ در جای مفعول me به کار می‌رود.",
+          "grammar": [
+            {
+              "pattern": "I + verb",
+              "note": "فعل be با I می‌شود am: I am / I'm."
+            },
+            {
+              "pattern": "I versus me",
+              "note": "فاعل I؛ بعد از فعل یا حرف اضافه me: She called me."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I am a student.",
+              "fa": "من دانشجو هستم."
+            },
+            {
+              "en": "I live with my parents.",
+              "fa": "من با پدر و مادرم زندگی می‌کنم."
+            },
+            {
+              "en": "I am from Tabriz.",
+              "fa": "من اهل تبریز هستم."
+            }
+          ],
+          "collocations": [
+            "I'm",
+            "I think",
+            "I don't know",
+            "me too"
+          ],
+          "collocationFa": {
+            "I'm": "شکل کوتاه I am: «من هستم / منم»",
+            "I think": "فکر می‌کنم",
+            "I don't know": "نمی‌دانم",
+            "me too": "من هم"
+          },
+          "usage": "در فارسی می‌توان «من» را حذف کرد (دانشجو هستم)، اما در انگلیسی فاعل باید گفته شود: I am a student.",
+          "mistake": {
+            "wrong": "i like tea.",
+            "wrongFa": "من چای را دوست دارم؛ در انگلیسیِ غلط، i با حرف کوچک نوشته شده است.",
+            "right": "I like tea.",
+            "rightFa": "من چای را دوست دارم؛ در انگلیسی، I همیشه با حرف بزرگ نوشته می‌شود.",
+            "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود، حتی وسط جمله."
+          },
+          "pronunciation": {
+            "gb": "/aɪ/",
+            "us": "/aɪ/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ am Sara.",
+              "answer": "I",
+              "accept": [],
+              "fa": "من سارا هستم.",
+              "why": "وقتی گوینده دربارهٔ خودش حرف می‌زند، فاعل I است.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "Sara",
+                  "fa": "سارا"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام شکلِ ضمیر «من» درست نوشته شده است؟",
+              "options": [
+                {
+                  "text": "I",
+                  "ok": true,
+                  "why": "ضمیر I همیشه با حرف بزرگ نوشته می‌شود."
+                },
+                {
+                  "text": "i",
+                  "ok": false,
+                  "why": "ضمیر I حتی وسط جمله هم باید با حرف بزرگ نوشته شود."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من دانشجو هستم.",
+              "frame": "___ am a student.",
+              "answer": "I",
+              "accept": [],
+              "why": "فاعلِ جمله «من» است، پس I می‌نویسیم.",
+              "support": [
+                {
+                  "en": "am",
+                  "fa": "هستم"
+                },
+                {
+                  "en": "a",
+                  "fa": "یک"
+                },
+                {
+                  "en": "student",
+                  "fa": "دانشجو"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:you",
+      "entryId": "lex:A1:you",
+      "contentVersion": "11d1f9c51424",
+      "inputHash": "fd98f5e4460f6ac8a00647161edae62cf201522a8a37438c9431d0d5d462a983",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:you",
+          "headword": "you",
+          "contentVersion": "11d1f9c51424",
+          "order": 1,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:you",
+          "pos": "pronoun",
+          "gloss": "تو؛ شما",
+          "meaning": "ضمیر دوم‌شخص؛ برای یک نفر و چند نفر یکسان است و هم فاعل و هم مفعول است. انگلیسی برای «تو» و «شمای مؤدبانه» یک کلمه دارد.",
+          "grammar": [
+            {
+              "pattern": "you + are (singular and plural)",
+              "note": "You are kind. (حتی برای یک نفر are)"
+            },
+            {
+              "pattern": "you as object",
+              "note": "you در جای مفعول هم همان شکل را دارد: I'll call you later."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Are you ready?",
+              "fa": "آماده‌ای؟"
+            },
+            {
+              "en": "Nice to meet you.",
+              "fa": "از آشنایی با شما خوشوقتم."
+            },
+            {
+              "en": "You live in a big city.",
+              "fa": "تو در یک شهر بزرگ زندگی می‌کنی."
+            }
+          ],
+          "collocations": [
+            "thank you",
+            "you know",
+            "see you",
+            "are you OK?"
+          ],
+          "collocationFa": {
+            "thank you": "ممنون / متشکرم",
+            "you know": "می‌دانی / می‌دانید",
+            "see you": "می‌بینمت / می‌بینمتان؛ فعلاً",
+            "are you OK?": "حالت خوب است؟ / حالتان خوب است؟"
+          },
+          "usage": "احترام در انگلیسی با کلماتی مثل please و could و لحن نشان داده می‌شود، نه با تفاوت «تو» و «شما».",
+          "mistake": {
+            "wrong": "You is my friend.",
+            "wrongFa": "تو دوست من «است»؛ فعل با فاعل دوم‌شخص هماهنگ نیست.",
+            "right": "You are my friend.",
+            "rightFa": "تو دوست من هستی؛ در انگلیسی با you از are استفاده می‌شود.",
+            "why": "با you همیشه are می‌آید، حتی وقتی منظور یک نفر است."
+          },
+          "pronunciation": {
+            "gb": "/juː/; weak /jə/",
+            "us": "/juː/; weak /jə/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ are ready.",
+              "answer": "You",
+              "accept": [],
+              "fa": "تو آماده‌ای / شما آماده‌اید.",
+              "why": "فاعلِ «تو / شما» در انگلیسی you است.",
+              "support": [
+                {
+                  "en": "are",
+                  "fa": "هستی / هستید"
+                },
+                {
+                  "en": "ready",
+                  "fa": "آماده"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام ضمیر یعنی «تو / شما»؟",
+              "options": [
+                {
+                  "text": "you",
+                  "ok": true,
+                  "why": "you هم برای «تو» و هم برای «شما» به کار می‌رود."
+                },
+                {
+                  "text": "I",
+                  "ok": false,
+                  "why": "I یعنی «من»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "تو سارا هستی.",
+              "frame": "___ are Sara.",
+              "answer": "You",
+              "accept": [],
+              "why": "فاعلِ «تو» برابر you است.",
+              "support": [
+                {
+                  "en": "are",
+                  "fa": "هستی"
+                },
+                {
+                  "en": "Sara",
+                  "fa": "سارا"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:a-an",
+      "entryId": "lex:A1:a-an",
+      "contentVersion": "69fa9030d23f",
+      "inputHash": "bef28d5583b5cf954174fde48e62fe5d1b3f4a2807da7b182a3fe597c7da410c",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:a-an",
+          "headword": "a, an",
+          "contentVersion": "69fa9030d23f",
+          "order": 2,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:a-an",
+          "pos": "article",
+          "gloss": "یک (حرف تعریف نامعین)",
+          "meaning": "پیش از اسم مفردِ قابل‌شمارش می‌آید، وقتی از یک چیز یا یک نفرِ نامشخص حرف می‌زنیم یا برای اولین بار از آن نام می‌بریم. پیش از صدای صامت a و پیش از صدای مصوت an می‌آید.",
+          "grammar": [
+            {
+              "pattern": "a + consonant sound / an + vowel sound",
+              "note": "انتخاب a یا an به صدای اولِ کلمهٔ بعد بستگی دارد، نه به حرفِ نوشته‌شده: a university (با صدای «یو»)، an hour (h خوانده نمی‌شود)."
+            },
+            {
+              "pattern": "be + a/an + job",
+              "note": "در فارسی می‌گوییم «او پزشک است»، اما در انگلیسی پیش از شغل a/an لازم است: She is a doctor."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I have a sister and an older brother.",
+              "fa": "من یک خواهر و یک برادرِ بزرگ‌تر دارم."
+            },
+            {
+              "en": "She is an engineer.",
+              "fa": "او مهندس است."
+            },
+            {
+              "en": "This is a new book.",
+              "fa": "این یک کتاب جدید است."
+            }
+          ],
+          "collocations": [
+            "a lot of",
+            "an hour",
+            "once a week",
+            "a little"
+          ],
+          "collocationFa": {
+            "a lot of": "مقدار یا تعداد زیادی از",
+            "an hour": "یک ساعت",
+            "once a week": "هفته‌ای یک‌بار",
+            "a little": "کمی"
+          },
+          "usage": "a/an فقط پیش از اسم مفردِ قابل‌شمارش می‌آید. با اسم جمع یا اسم غیرقابل‌شمارش معمولاً a/an نمی‌آید.",
+          "mistake": {
+            "wrong": "He is teacher.",
+            "wrongFa": "او معلم است؛ در جملهٔ انگلیسیِ غلط، پیش از teacher حرف تعریف نیامده است.",
+            "right": "He is a teacher.",
+            "rightFa": "او یک معلم است؛ در انگلیسی پیش از teacher حرف تعریف a آمده است.",
+            "why": "برای گفتن شغل یا نوعِ چیزی، پیش از اسم مفرد a/an لازم است، حتی وقتی در فارسی «یک» نمی‌گوییم."
+          },
+          "pronunciation": {
+            "gb": "/ə/, /ən/; stressed /eɪ/, /æn/",
+            "us": "/ə/, /ən/; stressed /eɪ/, /æn/",
+            "note": "معمولاً ضعیف و بی‌تأکید خوانده می‌شود: «اِ» و «اِن»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ apple",
+              "answer": "an",
+              "accept": [],
+              "fa": "یک سیب",
+              "why": "apple با صدای مصوت شروع می‌شود، پس an می‌آید.",
+              "support": [
+                {
+                  "en": "apple",
+                  "fa": "سیب"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "پیش از book کدام حرف تعریف درست است؟",
+              "options": [
+                {
+                  "text": "a",
+                  "ok": true,
+                  "why": "book با صدای صامت /b/ شروع می‌شود."
+                },
+                {
+                  "text": "an",
+                  "ok": false,
+                  "why": "an پیش از صدای مصوت می‌آید."
+                }
+              ],
+              "support": [
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«یک مهندس» را کامل کن.",
+              "frame": "___ engineer",
+              "answer": "an",
+              "accept": [],
+              "why": "engineer با صدای مصوت شروع می‌شود، پس an می‌آید.",
+              "support": [
+                {
+                  "en": "engineer",
+                  "fa": "مهندس"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:be",
+      "entryId": "lex:A1:be",
+      "contentVersion": "e49f80789568",
+      "inputHash": "aa39055884a61c04dc9bf96d9c38af751528962a1ea57567bf98d68ed98f1bf4",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:be",
+          "headword": "be",
+          "contentVersion": "e49f80789568",
+          "order": 3,
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:you"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:be",
+          "pos": "verb",
+          "gloss": "بودن",
+          "meaning": "برای گفتن اینکه کسی یا چیزی چیست، کجاست یا چه حالی دارد. در زمان حال سه شکل دارد: am (با I)، is (با he/she/it) و are (با you/we/they).",
+          "grammar": [
+            {
+              "pattern": "I am / he, she, it is / you, we, they are",
+              "note": "شکل be با فاعل عوض می‌شود: I am / he, she, it is / you, we, they are. مثال: I'm a student. / She's tired. / They're at home."
+            },
+            {
+              "pattern": "there is / there are",
+              "note": "برای «وجود داشتن»: There is a bank near here."
+            },
+            {
+              "pattern": "past: was / were",
+              "note": "در گذشته برای I/he/she/it از was و برای you/we/they از were استفاده می‌کنیم: I was at home. / They were late."
+            }
+          ],
+          "examples": [
+            {
+              "en": "I'm twenty years old.",
+              "fa": "من بیست سال دارم."
+            },
+            {
+              "en": "There is a good café near the station.",
+              "fa": "نزدیک ایستگاه یک کافهٔ خوب هست."
+            },
+            {
+              "en": "My friends are at school.",
+              "fa": "دوستانم در مدرسه هستند."
+            }
+          ],
+          "collocations": [
+            "be careful",
+            "be late",
+            "be ready",
+            "there is / there are"
+          ],
+          "collocationFa": {
+            "be careful": "مواظب باش / باشید",
+            "be late": "دیر بودن",
+            "be ready": "آماده بودن",
+            "there is / there are": "هست / وجود دارد؛ هستند / وجود دارند"
+          },
+          "mistake": {
+            "wrong": "I have twenty years.",
+            "wrongFa": "من بیست سال دارم.",
+            "right": "I am twenty years old. / I'm twenty.",
+            "rightFa": "من بیست ساله‌ام.",
+            "why": "سن در انگلیسی با be گفته می‌شود، نه با have (در فارسی «بیست سال دارم»)."
+          },
+          "pronunciation": {
+            "gb": "/biː/; am /æm/, is /ɪz/, are /ɑː/",
+            "us": "/biː/; am /æm/, is /ɪz/, are /ɑːr/",
+            "note": "در گفتار شکل‌های کوتاه رایج‌اند: I'm, he's, they're."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I ___ here.",
+              "answer": "am",
+              "accept": [
+                "'m"
+              ],
+              "fa": "من اینجا هستم.",
+              "why": "با I شکل am از فعل be می‌آید.",
+              "support": [
+                {
+                  "en": "here",
+                  "fa": "اینجا"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "با you کدام شکلِ be درست است؟",
+              "options": [
+                {
+                  "text": "are",
+                  "ok": true,
+                  "why": "با you از are استفاده می‌کنیم."
+                },
+                {
+                  "text": "am",
+                  "ok": false,
+                  "why": "am با I می‌آید."
+                },
+                {
+                  "text": "is",
+                  "ok": false,
+                  "why": "is با he / she / it می‌آید."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "تو آماده‌ای.",
+              "frame": "You ___ ready.",
+              "answer": "are",
+              "accept": [
+                "'re"
+              ],
+              "why": "با you شکل are می‌آید.",
+              "support": [
+                {
+                  "en": "ready",
+                  "fa": "آماده"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:my",
+      "entryId": "lex:A1:my",
+      "contentVersion": "2c6b4d4331df",
+      "inputHash": "eaa37a4db2a61776f91c847954a8b4103a493d558f28a8e44086d1ed2e650dfc",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:my",
+          "headword": "my",
+          "contentVersion": "2c6b4d4331df",
+          "order": 4,
+          "prerequisites": [
+            "lex:A1:i"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:my",
+          "pos": "determiner",
+          "gloss": "ـَم؛ مالِ من",
+          "meaning": "صفت ملکی اول‌شخص: پیش از اسم می‌آید و مالکیت را نشان می‌دهد. فارسی آن را با «ـم» در آخر اسم می‌گوید (کتابم)، اما انگلیسی آن را پیش از اسم می‌آورد.",
+          "grammar": [
+            {
+              "pattern": "my + noun",
+              "note": "my پیش از اسم مفرد یا جمع می‌آید: my book, my friends."
+            },
+            {
+              "pattern": "my versus mine",
+              "note": "پیش از اسم my؛ بدون اسم mine: This is my bag. It's mine."
+            }
+          ],
+          "examples": [
+            {
+              "en": "My name is Ali.",
+              "fa": "اسمم علی است."
+            },
+            {
+              "en": "I left my keys at home.",
+              "fa": "کلیدهایم را خانه جا گذاشتم."
+            },
+            {
+              "en": "My school is in this city.",
+              "fa": "مدرسهٔ من در این شهر است."
+            }
+          ],
+          "collocations": [
+            "my name is",
+            "my own",
+            "my family"
+          ],
+          "collocationFa": {
+            "my name is": "اسم من … است",
+            "my own": "مال خودم / خودِ من",
+            "my family": "خانوادهٔ من"
+          },
+          "usage": "my همیشه پیش از اسم می‌آید: my name. اگر اسم بعد از واژه نیاید، mine به کار می‌رود: It's mine.",
+          "mistake": {
+            "wrong": "This is the book of me.",
+            "wrongFa": "«این کتابِ من» با ساختِ of me؛ این ساخت در انگلیسی طبیعی نیست.",
+            "right": "This is my book.",
+            "rightFa": "این کتابِ من است؛ در انگلیسی my پیش از book می‌آید.",
+            "why": "در انگلیسی برای مالکیت پیش از اسم my می‌آید، نه the … of me."
+          },
+          "pronunciation": {
+            "gb": "/maɪ/",
+            "us": "/maɪ/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ book",
+              "answer": "My",
+              "accept": [],
+              "fa": "کتاب من",
+              "why": "برای مالکیت پیش از اسم از my استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام عبارت یعنی «کتاب من»؟",
+              "options": [
+                {
+                  "text": "my book",
+                  "ok": true,
+                  "why": "my پیش از اسم مالکیت را نشان می‌دهد."
+                },
+                {
+                  "text": "I book",
+                  "ok": false,
+                  "why": "I ضمیر فاعلی است و پیش از اسم مالکیت نمی‌سازد."
+                },
+                {
+                  "text": "you book",
+                  "ok": false,
+                  "why": "you ضمیر شخصی است؛ برای مالکیت به شکل دیگری نیاز است."
+                }
+              ],
+              "support": [
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«نام من» را کامل کن.",
+              "frame": "___ name",
+              "answer": "My",
+              "accept": [],
+              "why": "برای «نام من» می‌گوییم my name.",
+              "support": [
+                {
+                  "en": "name",
+                  "fa": "نام"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:your",
+      "entryId": "lex:A1:your",
+      "contentVersion": "7089d6d48742",
+      "inputHash": "94a502d7bcb638e90054ce918f9ffb156cc63df42a2399af5dd60a49a2cb3d41",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:your",
+          "headword": "your",
+          "contentVersion": "7089d6d48742",
+          "order": 5,
+          "prerequisites": [
+            "lex:A1:you"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:your",
+          "pos": "determiner",
+          "gloss": "ـَت؛ مالِ تو/شما",
+          "meaning": "صفت ملکی دوم‌شخص، برای یک نفر یا چند نفر، پیش از اسم.",
+          "grammar": [
+            {
+              "pattern": "your + noun",
+              "note": "your پیش از اسم مفرد یا جمع می‌آید: your house, your children."
+            },
+            {
+              "pattern": "your versus you're",
+              "note": "your = مالِ تو؛ you're = you are"
+            }
+          ],
+          "examples": [
+            {
+              "en": "What's your phone number?",
+              "fa": "شماره تلفنت چند است؟"
+            },
+            {
+              "en": "Please write your name here.",
+              "fa": "لطفاً اسمتان را اینجا بنویسید."
+            },
+            {
+              "en": "Is this your name?",
+              "fa": "آیا این اسم شماست؟"
+            }
+          ],
+          "collocations": [
+            "your own",
+            "your name",
+            "yours"
+          ],
+          "collocationFa": {
+            "your own": "مال خودت / خودتان",
+            "your name": "اسم تو / شما",
+            "yours": "مال تو / شما"
+          },
+          "usage": "your همیشه پیش از اسم می‌آید: your name. اگر اسم بعد از واژه نیاید، yours به کار می‌رود: It's yours.",
+          "mistake": {
+            "wrong": "Your welcome.",
+            "wrongFa": "عبارتِ غلط your welcome معنای «خوش‌آمد/استقبالِ تو» می‌دهد، نه پاسخ به تشکر.",
+            "right": "You're welcome.",
+            "rightFa": "خواهش می‌کنم؛ پاسخ درست You're welcome است.",
+            "why": "در پاسخ به thank you، you're (= you are) welcome درست است، نه your."
+          },
+          "pronunciation": {
+            "gb": "/jɔː/; weak /jə/",
+            "us": "/jʊr/, /jɔːr/; weak /jɚ/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "Is this ___ book?",
+              "answer": "your",
+              "accept": [],
+              "fa": "این کتابِ توست؟",
+              "why": "your پیش از اسم، مالکیتِ مخاطب را نشان می‌دهد.",
+              "support": [
+                {
+                  "en": "this",
+                  "fa": "این"
+                },
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای «اسمِ تو/شما» کدام گزینه درست است؟",
+              "options": [
+                {
+                  "text": "your",
+                  "ok": true,
+                  "why": "your پیش از اسم، مالکیتِ مخاطب را نشان می‌دهد."
+                },
+                {
+                  "text": "you're",
+                  "ok": false,
+                  "why": "you're کوتاه‌شدهٔ you are است."
+                },
+                {
+                  "text": "you",
+                  "ok": false,
+                  "why": "you ضمیر است؛ اینجا صفت ملکی لازم است."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«کتابت را باز کن» را کامل کن.",
+              "frame": "Open ___ book.",
+              "answer": "your",
+              "accept": [],
+              "why": "کتابِ تو = your book.",
+              "support": [
+                {
+                  "en": "Open",
+                  "fa": "باز کن"
+                },
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:name",
+      "entryId": "lex:A1:name",
+      "contentVersion": "99a550d4d32a",
+      "inputHash": "0c8d3a1bd9da3908fb6cfed21b6a5b34d93d8114a47948cef7182eeb62651897",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:name",
+          "headword": "name",
+          "contentVersion": "99a550d4d32a",
+          "order": 6,
+          "prerequisites": [
+            "lex:A1:my",
+            "lex:A1:your",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:name",
+          "pos": "noun",
+          "gloss": "نام؛ اسم",
+          "meaning": "کلمه یا کلمه‌هایی که با آن کسی یا چیزی را صدا می‌زنیم.",
+          "grammar": [
+            {
+              "pattern": "My name is …",
+              "note": "برای معرفی نام خود از My name is … استفاده می‌کنیم: My name is Reza."
+            },
+            {
+              "pattern": "first name / last name (surname)",
+              "note": "نام / نام خانوادگی"
+            }
+          ],
+          "examples": [
+            {
+              "en": "What's your name?",
+              "fa": "اسمت چیست؟"
+            },
+            {
+              "en": "Please write your first name and last name.",
+              "fa": "لطفاً نام و نام خانوادگی‌تان را بنویسید."
+            },
+            {
+              "en": "Write your name here.",
+              "fa": "اسمتان را اینجا بنویسید."
+            }
+          ],
+          "collocations": [
+            "first name",
+            "last name",
+            "full name",
+            "family name"
+          ],
+          "collocationFa": {
+            "first name": "نام کوچک",
+            "last name": "نام خانوادگی",
+            "full name": "نام کامل",
+            "family name": "نام خانوادگی"
+          },
+          "mistake": {
+            "wrong": "My name's is Ali.",
+            "wrongFa": "اسم من علی است؛ در انگلیسیِ غلط is دوبار آمده است.",
+            "right": "My name is Ali. / My name's Ali.",
+            "rightFa": "اسم من علی است؛ در انگلیسی فقط یک‌بار is می‌آید.",
+            "why": "name's خودش یعنی name is؛ is دوباره نمی‌آید."
+          },
+          "pronunciation": {
+            "gb": "/neɪm/",
+            "us": "/neɪm/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "My ___ is Reza.",
+              "answer": "name",
+              "accept": [],
+              "fa": "اسم من رضا است.",
+              "why": "برای معرفی اسم می‌گوییم My name is …",
+              "support": [
+                {
+                  "en": "Reza",
+                  "fa": "رضا (نام)"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام واژه یعنی «نام»؟",
+              "options": [
+                {
+                  "text": "name",
+                  "ok": true,
+                  "why": "name یعنی «نام/اسم»."
+                },
+                {
+                  "text": "my",
+                  "ok": false,
+                  "why": "my یعنی «مالِ من/ـم»."
+                },
+                {
+                  "text": "your",
+                  "ok": false,
+                  "why": "your یعنی «مالِ تو/شما»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«اسم شما سارا است» را کامل کن.",
+              "frame": "Your ___ is Sara.",
+              "answer": "name",
+              "accept": [],
+              "why": "your name یعنی «اسم تو/شما».",
+              "support": [
+                {
+                  "en": "Sara",
+                  "fa": "سارا (نام)"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:what",
+      "entryId": "lex:A1:what",
+      "contentVersion": "ca92f0faa3bd",
+      "inputHash": "080a2c861b9aee74fdbc4c26811648fd8c2b5891794b5534f14130723a189256",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:what",
+          "headword": "what",
+          "contentVersion": "ca92f0faa3bd",
+          "order": 7,
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:your",
+            "lex:A1:name"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:what",
+          "pos": "pronoun",
+          "gloss": "چه؛ چه چیزی",
+          "meaning": "برای پرسیدن دربارهٔ چیزها، اطلاعات یا کارها. پیش از اسم هم می‌آید: What time …? What colour …?",
+          "grammar": [
+            {
+              "pattern": "What + do/does/did + subject + verb?",
+              "note": "What do you want? (در سؤال با فعل اصلی، فعل کمکی لازم است)"
+            },
+            {
+              "pattern": "What + noun …?",
+              "note": "برای پرسیدن نوعِ اطلاعات، what پیش از اسم می‌آید: What time is it? / What colour is your car?"
+            }
+          ],
+          "examples": [
+            {
+              "en": "What is your name?",
+              "fa": "اسمت چیست؟"
+            },
+            {
+              "en": "What time does the film start?",
+              "fa": "فیلم چه ساعتی شروع می‌شود؟"
+            },
+            {
+              "en": "What do you do after school?",
+              "fa": "بعد از مدرسه چه کار می‌کنی؟"
+            }
+          ],
+          "collocations": [
+            "what time",
+            "what kind of",
+            "what about …?",
+            "what's wrong?"
+          ],
+          "collocationFa": {
+            "what time": "چه ساعتی؟ / ساعت چند؟",
+            "what kind of": "چه نوع …؟",
+            "what about …?": "… چطور؟ / دربارهٔ … چه؟",
+            "what's wrong?": "چی شده؟ / مشکل چیست؟"
+          },
+          "usage": "What about …? برای پیشنهاد است: What about pizza? = نظرت دربارهٔ پیتزا چیست؟",
+          "mistake": {
+            "wrong": "What you want?",
+            "wrongFa": "چه می‌خواهی؟ در جملهٔ انگلیسیِ غلط، فعل کمکی do حذف شده است.",
+            "right": "What do you want?",
+            "rightFa": "چه می‌خواهی؟ در جملهٔ انگلیسیِ درست، فعل کمکی do آمده است.",
+            "why": "در سؤال انگلیسی با فعل اصلی، do/does/did لازم است."
+          },
+          "pronunciation": {
+            "gb": "/wɒt/",
+            "us": "/wʌt/, /wɑːt/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ is your job?",
+              "answer": "What",
+              "accept": [],
+              "fa": "شغلت چیست؟",
+              "why": "برای پرسیدن دربارهٔ یک چیز یا اطلاعات از what استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "job",
+                  "fa": "شغل"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای پرسیدن «اسم تو چیست؟» کدام کلمه در ابتدای جمله می‌آید؟",
+              "options": [
+                {
+                  "text": "What",
+                  "ok": true,
+                  "why": "What is your name? سؤال درست است."
+                },
+                {
+                  "text": "You",
+                  "ok": false,
+                  "why": "you یعنی «تو/شما» و واژهٔ پرسشی نیست."
+                },
+                {
+                  "text": "Your",
+                  "ok": false,
+                  "why": "your مالکیت را نشان می‌دهد و واژهٔ پرسشی نیست."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«این چیست؟» را کامل کن.",
+              "frame": "___ is this?",
+              "answer": "What",
+              "accept": [],
+              "why": "برای پرسیدن «چه چیزی؟» از what استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "this",
+                  "fa": "این"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:this",
+      "entryId": "lex:A1:this",
+      "contentVersion": "21d725ff2ea3",
+      "inputHash": "45198b7cc14143fb979cad25ebfa86aefea090554645764e0860eeace0f791d5",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:this",
+          "headword": "this",
+          "contentVersion": "21d725ff2ea3",
+          "order": 8,
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:this",
+          "pos": "determiner",
+          "gloss": "این",
+          "meaning": "به چیز یا کسی اشاره می‌کند که نزدیک گوینده است، یا به زمانی که الان در آن هستیم (this week). جمع آن these است.",
+          "grammar": [
+            {
+              "pattern": "this + singular noun / these + plural noun",
+              "note": "برای اسم مفرد this و برای اسم جمع these می‌آید: this book / these books."
+            },
+            {
+              "pattern": "This is + person",
+              "note": "برای معرفی کسی: This is my friend Sara. پشت تلفن: Hello, this is Ali."
+            }
+          ],
+          "examples": [
+            {
+              "en": "This is my sister, Mina.",
+              "fa": "این خواهرم میناست."
+            },
+            {
+              "en": "I'm very busy this week.",
+              "fa": "این هفته خیلی سرم شلوغ است."
+            },
+            {
+              "en": "Is this your bag?",
+              "fa": "آیا این کیف شماست؟"
+            }
+          ],
+          "collocations": [
+            "this morning",
+            "this week",
+            "this one",
+            "like this"
+          ],
+          "collocationFa": {
+            "this morning": "امروز صبح",
+            "this week": "این هفته",
+            "this one": "این یکی",
+            "like this": "این‌طور / مثل این"
+          },
+          "usage": "پشت تلفن خودتان را با This is … معرفی می‌کنید، نه I am …",
+          "mistake": {
+            "wrong": "This shoes are new.",
+            "wrongFa": "این کفش‌ها نو هستند؛ در انگلیسیِ غلط برای اسم جمع از this استفاده شده است.",
+            "right": "These shoes are new.",
+            "rightFa": "این کفش‌ها نو هستند؛ در انگلیسی برای اسم جمع these درست است.",
+            "why": "برای اسم جمع these به کار می‌رود، نه this."
+          },
+          "pronunciation": {
+            "gb": "/ðɪs/",
+            "us": "/ðɪs/",
+            "note": "i کوتاه است؛ these /ðiːz/ با i کشیده و صدای «ز» فرق دارد."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ is my book.",
+              "answer": "This",
+              "accept": [],
+              "fa": "این کتابِ من است.",
+              "why": "برای اشاره به چیزی نزدیک از this استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "book",
+                  "fa": "کتاب"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای اشاره به یک چیز نزدیک، کدام گزینه درست است؟",
+              "options": [
+                {
+                  "text": "This",
+                  "ok": true,
+                  "why": "this برای یک چیز نزدیک به کار می‌رود."
+                },
+                {
+                  "text": "What",
+                  "ok": false,
+                  "why": "what واژهٔ پرسشی است."
+                },
+                {
+                  "text": "Your",
+                  "ok": false,
+                  "why": "your مالکیتِ مخاطب را نشان می‌دهد."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«این اسم» را کامل کن.",
+              "frame": "___ name",
+              "answer": "This",
+              "accept": [],
+              "why": "this پیش از اسم مفرد می‌آید."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:he",
+      "entryId": "lex:A1:he",
+      "contentVersion": "d0a743a5a5c0",
+      "inputHash": "3353a69b32d7fed9b7cb276604359408e9385af3c9ae29d8350d0fbb803c04a1",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:he",
+          "headword": "he",
+          "contentVersion": "d0a743a5a5c0",
+          "order": 9,
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:he",
+          "pos": "pronoun",
+          "gloss": "او (مرد)",
+          "meaning": "ضمیر فاعلی سوم‌شخص مفرد برای مرد یا پسر. فارسی «او» را برای مرد و زن یکسان به کار می‌برد، اما انگلیسی he و she را جدا می‌کند.",
+          "grammar": [
+            {
+              "pattern": "he + verb-s (present simple)",
+              "note": "در زمان حال ساده بعد از he معمولاً به فعل -s اضافه می‌شود: he works, he lives."
+            },
+            {
+              "pattern": "he → him (object) / his (possessive)",
+              "note": "در جای مفعول him و برای مالکیت پیش از اسم his می‌آید: I know him. / his car."
+            }
+          ],
+          "examples": [
+            {
+              "en": "He is my uncle.",
+              "fa": "او عموی من است."
+            },
+            {
+              "en": "My brother works in a bank. He likes his job.",
+              "fa": "برادرم در بانک کار می‌کند. کارش را دوست دارد."
+            },
+            {
+              "en": "He is from Mashhad.",
+              "fa": "او اهل مشهد است."
+            }
+          ],
+          "collocations": [
+            "he's",
+            "he says",
+            "he and I"
+          ],
+          "collocationFa": {
+            "he's": "شکل کوتاه he is یا he has",
+            "he says": "او می‌گوید",
+            "he and I": "او و من"
+          },
+          "usage": "برای مرد یا پسر از he استفاده می‌شود؛ برای زن یا دختر she می‌آید. در فارسی هر دو معمولاً با «او» ترجمه می‌شوند.",
+          "mistake": {
+            "wrong": "My sister is a doctor. He works at a hospital.",
+            "wrongFa": "خواهرم پزشک است؛ در انگلیسیِ غلط برای او ضمیر مذکر he آمده است.",
+            "right": "My sister is a doctor. She works at a hospital.",
+            "rightFa": "خواهرم پزشک است؛ در انگلیسی برای او ضمیر مؤنث she آمده است.",
+            "why": "در فارسی «او» برای هر دو جنس است؛ در انگلیسی برای زن she و برای مرد he."
+          },
+          "pronunciation": {
+            "gb": "/hiː/; weak /i/",
+            "us": "/hiː/; weak /i/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "This is Ali. ___ is here.",
+              "answer": "He",
+              "accept": [],
+              "fa": "این علی است. او اینجاست.",
+              "why": "برای یک مرد یا پسر از he استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Ali",
+                  "fa": "علی (نام)"
+                },
+                {
+                  "en": "here",
+                  "fa": "اینجا"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای اشاره به یک مرد، کدام ضمیر درست است؟",
+              "options": [
+                {
+                  "text": "He",
+                  "ok": true,
+                  "why": "he برای یک مرد یا پسر است."
+                },
+                {
+                  "text": "You",
+                  "ok": false,
+                  "why": "you برای مخاطب است."
+                },
+                {
+                  "text": "This",
+                  "ok": false,
+                  "why": "this برای اشاره به شخص یا چیز نزدیک است، نه ضمیر شخصیِ «او»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "«او علی است» را کامل کن.",
+              "frame": "___ is Ali.",
+              "answer": "He",
+              "accept": [],
+              "why": "برای «او» دربارهٔ یک مرد از he استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Ali",
+                  "fa": "علی (نام)"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:who",
+      "entryId": "lex:A1:who",
+      "contentVersion": "bda7fc8a1735",
+      "inputHash": "5f342801a96684f81969027ea397de728f1b2363ee729dc5e5584264e44822c9",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:who",
+          "headword": "who",
+          "contentVersion": "bda7fc8a1735",
+          "order": 10,
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:he"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:who",
+          "pos": "pronoun",
+          "gloss": "چه کسی؛ که",
+          "meaning": "برای پرسیدن دربارهٔ آدم‌ها. همچنین «که» دربارهٔ آدم‌ها برای توضیح دادن کسی: the man who lives here.",
+          "grammar": [
+            {
+              "pattern": "Who + verb …? (who is the subject)",
+              "note": "Who called you? (بدون did، چون who خودش فاعل است)"
+            },
+            {
+              "pattern": "Who + did + subject + verb? (who is the object)",
+              "note": "Who did you call? = به چه کسی زنگ زدی؟"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Who is your English teacher?",
+              "fa": "معلم انگلیسی‌ات کیست؟"
+            },
+            {
+              "en": "The woman who lives next door is a doctor.",
+              "fa": "زنی که همسایهٔ بغلی ماست پزشک است."
+            },
+            {
+              "en": "Who is that man?",
+              "fa": "آن مرد کیست؟"
+            }
+          ],
+          "collocations": [
+            "who is …?",
+            "who else",
+            "someone who"
+          ],
+          "collocationFa": {
+            "who is …?": "… کیست؟",
+            "who else": "دیگر چه کسی؟",
+            "someone who": "کسی که"
+          },
+          "usage": "در سؤال‌های روزمره who برای پرسیدن دربارهٔ آدم‌ها به کار می‌رود؛ برای چیزها معمولاً what به کار می‌رود.",
+          "mistake": {
+            "wrong": "Who did call you?",
+            "wrongFa": "چه کسی به تو زنگ زد؟ در انگلیسیِ غلط، did بی‌دلیل آمده است.",
+            "right": "Who called you?",
+            "rightFa": "چه کسی به تو زنگ زد؟ وقتی who فاعل است، در انگلیسی did نمی‌آید.",
+            "why": "وقتی who خودش فاعل است (چه کسی زنگ زد؟)، did لازم نیست."
+          },
+          "pronunciation": {
+            "gb": "/huː/",
+            "us": "/huː/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ is this?",
+              "answer": "Who",
+              "accept": [
+                "who"
+              ],
+              "fa": "این کیست؟",
+              "why": "برای پرسیدن دربارهٔ هویت یک آدم از Who استفاده می‌کنیم."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای پرسیدن «او کیست؟» کدام واژه جای خالی می‌آید؟",
+              "options": [
+                {
+                  "text": "Who",
+                  "ok": true,
+                  "why": "Who برای پرسیدن دربارهٔ هویت یک آدم است."
+                },
+                {
+                  "text": "What",
+                  "ok": false,
+                  "why": "What دربارهٔ چیز یا اطلاعات می‌پرسد."
+                },
+                {
+                  "text": "This",
+                  "ok": false,
+                  "why": "This واژهٔ پرسشی نیست."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "او کیست؟",
+              "frame": "___ is he?",
+              "answer": "Who",
+              "accept": [],
+              "why": "برای پرسیدن «چه کسی؟» از Who استفاده می‌کنیم."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:where",
+      "entryId": "lex:A1:where",
+      "contentVersion": "b508c0fe1713",
+      "inputHash": "ac6cd2edab6afe5ceb4e83d40976cc088e8ae449126a7d2a64be221bfc5eaafb",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:where",
+          "headword": "where",
+          "contentVersion": "b508c0fe1713",
+          "order": 11,
+          "prerequisites": [
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:where",
+          "pos": "adverb",
+          "gloss": "کجا",
+          "meaning": "برای پرسیدن دربارهٔ مکان. همچنین «جایی که» در توصیف مکان.",
+          "grammar": [
+            {
+              "pattern": "Where + be + subject?",
+              "note": "با فعل be، where در آغاز سؤال می‌آید: Where is the station?"
+            },
+            {
+              "pattern": "Where + do/does + subject + verb?",
+              "note": "با فعل اصلی از do/does استفاده می‌کنیم: Where do you live?"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where is the nearest bank?",
+              "fa": "نزدیک‌ترین بانک کجاست؟"
+            },
+            {
+              "en": "This is the café where we met.",
+              "fa": "این همان کافه‌ای است که با هم آشنا شدیم."
+            },
+            {
+              "en": "Where do your friends live?",
+              "fa": "دوستانت کجا زندگی می‌کنند؟"
+            }
+          ],
+          "collocations": [
+            "where from",
+            "where else",
+            "where to"
+          ],
+          "collocationFa": {
+            "where from": "از کجا؟",
+            "where else": "کجای دیگر؟",
+            "where to": "به کجا؟"
+          },
+          "usage": "Where are you from? برای پرسیدن اهل کجا بودن است.",
+          "mistake": {
+            "wrong": "Where you live?",
+            "wrongFa": "کجا زندگی می‌کنی؟ در جملهٔ انگلیسیِ غلط، do حذف شده است.",
+            "right": "Where do you live?",
+            "rightFa": "کجا زندگی می‌کنی؟ در جملهٔ انگلیسیِ درست، do آمده است.",
+            "why": "در سؤال با فعل اصلی، do/does لازم است."
+          },
+          "pronunciation": {
+            "gb": "/weə/",
+            "us": "/wer/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ are you?",
+              "answer": "Where",
+              "accept": [
+                "where"
+              ],
+              "fa": "کجایی؟",
+              "why": "برای پرسیدن دربارهٔ مکان از Where استفاده می‌کنیم."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای پرسیدن «کجایی؟» کدام جمله درست است؟",
+              "options": [
+                {
+                  "text": "Where are you?",
+                  "ok": true,
+                  "why": "Where دربارهٔ مکان می‌پرسد."
+                },
+                {
+                  "text": "Who are you?",
+                  "ok": false,
+                  "why": "Who دربارهٔ هویت یک آدم می‌پرسد."
+                },
+                {
+                  "text": "What are you?",
+                  "ok": false,
+                  "why": "What در اینجا معنی «کجا» نمی‌دهد."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "او کجاست؟",
+              "frame": "___ is he?",
+              "answer": "Where",
+              "accept": [],
+              "why": "برای پرسیدن مکانِ او از Where استفاده می‌کنیم."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:from",
+      "entryId": "lex:A1:from",
+      "contentVersion": "10f0cf91c4a7",
+      "inputHash": "07c6bb8144730363fcf555316358d54681dd813d8f884503caeae03a7e424527",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:from",
+          "headword": "from",
+          "contentVersion": "10f0cf91c4a7",
+          "order": 12,
+          "prerequisites": [
+            "lex:A1:where",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:from",
+          "pos": "preposition",
+          "gloss": "از",
+          "meaning": "نقطهٔ شروع (مکان یا زمان) یا منشأ: be from (اهل جایی بودن)، from … to …، a letter from Ali.",
+          "grammar": [
+            {
+              "pattern": "be from + place",
+              "note": "برای گفتن مبدأ یا اهل جایی بودن از be from استفاده می‌کنیم: I'm from Ahvaz."
+            },
+            {
+              "pattern": "from … to / until …",
+              "note": "برای نشان دادن بازهٔ شروع تا پایان از from … to/until … استفاده می‌کنیم: from 9 to 5, from Monday to Friday."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where are you from?",
+              "fa": "اهل کجایی؟"
+            },
+            {
+              "en": "I work from nine to five.",
+              "fa": "از نه تا پنج کار می‌کنم."
+            },
+            {
+              "en": "This letter is from my friend.",
+              "fa": "این نامه از طرف دوستم است."
+            }
+          ],
+          "collocations": [
+            "from … to …",
+            "far from",
+            "different from",
+            "a message from"
+          ],
+          "collocationFa": {
+            "from … to …": "از … تا …",
+            "far from": "دور از",
+            "different from": "متفاوت از",
+            "a message from": "پیامی از طرفِ"
+          },
+          "usage": "from مبدأِ مکان یا زمان و نیز فرستنده را نشان می‌دهد: from Tehran, from nine, a message from Sara.",
+          "mistake": {
+            "wrong": "I got a message of my friend.",
+            "wrongFa": "پیامی «متعلق به» دوستم گرفتم؛ of فرستنده را درست نشان نمی‌دهد.",
+            "right": "I got a message from my friend.",
+            "rightFa": "از دوستم پیامی گرفتم؛ from فرستنده را نشان می‌دهد.",
+            "why": "برای فرستنده from به کار می‌رود، نه of."
+          },
+          "pronunciation": {
+            "gb": "/frəm/; stressed /frɒm/",
+            "us": "/frəm/; stressed /frʌm/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I am ___ Iran.",
+              "answer": "from",
+              "accept": [],
+              "fa": "من اهل ایران هستم.",
+              "why": "be from برای گفتن محلِ اصلی یا زادگاه به کار می‌رود.",
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من اهل ایران هستم»، جای خالی را کامل کن: I am ___ Iran.",
+              "options": [
+                {
+                  "text": "from",
+                  "ok": true,
+                  "why": "I am from Iran یعنی «من اهل ایران هستم»."
+                },
+                {
+                  "text": "where",
+                  "ok": false,
+                  "why": "where واژهٔ پرسشیِ مکان است."
+                },
+                {
+                  "text": "what",
+                  "ok": false,
+                  "why": "what برای این ساختار مناسب نیست."
+                }
+              ],
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اهل یزد هستم.",
+              "frame": "I am ___ Yazd.",
+              "answer": "from",
+              "accept": [],
+              "why": "برای گفتن اهل کجا بودن، پس از be از from استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Yazd",
+                  "fa": "یزد"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:in",
+      "entryId": "lex:A1:in",
+      "contentVersion": "d7771c100883",
+      "inputHash": "581c900b302f36087ecbbef61075bf3df48a9c84acedee201fc32ad2f8a7ef5f",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:in",
+          "headword": "in",
+          "contentVersion": "d7771c100883",
+          "order": 13,
+          "prerequisites": []
+        },
+        "sense": {
+          "id": "lex:A1:in",
+          "pos": "preposition",
+          "gloss": "در؛ داخلِ",
+          "meaning": "برای داخل یک فضا یا محدوده (in the box, in Tehran) و برای بازه‌های بزرگ زمانی: ماه، سال، فصل و بخش‌های روز (in May, in 2020, in the morning).",
+          "grammar": [
+            {
+              "pattern": "in + city / country / room",
+              "note": "برای شهر، کشور یا فضای درونی از in استفاده می‌کنیم: in Shiraz, in Iran, in the kitchen."
+            },
+            {
+              "pattern": "in + month / year / season",
+              "note": "برای ماه، سال و فصل از in استفاده می‌کنیم: in July, in 1999, in summer."
+            },
+            {
+              "pattern": "in the morning / afternoon / evening",
+              "note": "اما at night"
+            }
+          ],
+          "examples": [
+            {
+              "en": "My parents live in Kerman.",
+              "fa": "پدر و مادرم در کرمان زندگی می‌کنند."
+            },
+            {
+              "en": "I was born in 2005.",
+              "fa": "من در سال ۲۰۰۵ به دنیا آمدم."
+            },
+            {
+              "en": "The keys are in my bag.",
+              "fa": "کلیدها داخل کیف من هستند."
+            }
+          ],
+          "collocations": [
+            "in the morning",
+            "in time",
+            "in English",
+            "in front of"
+          ],
+          "collocationFa": {
+            "in the morning": "صبح / در صبح",
+            "in time": "به‌موقع؛ پیش از دیر شدن",
+            "in English": "به انگلیسی",
+            "in front of": "جلوی / روبه‌روی"
+          },
+          "usage": "برای شهر و کشور و نیز ماه و سال معمولاً in می‌آید؛ برای روزهای هفته on و برای ساعت مشخص at به کار می‌رود.",
+          "mistake": {
+            "wrong": "I'll see you in Monday.",
+            "wrongFa": "دوشنبه می‌بینمت؛ در انگلیسیِ غلط پیش از Monday از in استفاده شده است.",
+            "right": "I'll see you on Monday.",
+            "rightFa": "دوشنبه می‌بینمت؛ در انگلیسی پیش از Monday از on استفاده می‌شود.",
+            "why": "برای روزهای هفته on به کار می‌رود، نه in."
+          },
+          "pronunciation": {
+            "gb": "/ɪn/",
+            "us": "/ɪn/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is ___ Iran.",
+              "answer": "in",
+              "accept": [],
+              "fa": "او در ایران است.",
+              "why": "برای بودن داخل یک کشور یا محدوده از in استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «او در ایران است»، جای خالی را کامل کن: He is ___ Iran.",
+              "options": [
+                {
+                  "text": "in",
+                  "ok": true,
+                  "why": "in مکانِ داخل یک کشور یا محدوده را نشان می‌دهد."
+                },
+                {
+                  "text": "from",
+                  "ok": false,
+                  "why": "from در این ساختار یعنی «اهلِ ایران»."
+                },
+                {
+                  "text": "where",
+                  "ok": false,
+                  "why": "where واژهٔ پرسشی است."
+                }
+              ],
+              "support": [
+                {
+                  "en": "Iran",
+                  "fa": "ایران"
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "او داخل این مدرسه است.",
+              "frame": "He is ___ this school.",
+              "answer": "in",
+              "accept": [],
+              "why": "برای بودن داخل یک مکان از in استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "school",
+                  "fa": "مدرسه"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:school",
+      "entryId": "lex:A1:school",
+      "contentVersion": "01c0efca9fb6",
+      "inputHash": "487af0eb996949ac1247e426adbd14f4e832ffedb2723de233a0d24ddde985fc",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:school",
+          "headword": "school",
+          "contentVersion": "01c0efca9fb6",
+          "order": 14,
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:school",
+          "pos": "noun",
+          "gloss": "مدرسه",
+          "meaning": "جایی که بچه‌ها درس می‌خوانند. برای «درس خواندن در مدرسه» بدون the: go to school, at school.",
+          "grammar": [
+            {
+              "pattern": "go to / be at / leave school",
+              "note": "بدون the: My son is at school."
+            },
+            {
+              "pattern": "the school (the building)",
+              "note": "وقتی منظور ساختمان مدرسه است، the می‌آید: I went to the school to meet the teacher."
+            }
+          ],
+          "examples": [
+            {
+              "en": "My children walk to school.",
+              "fa": "بچه‌هایم پیاده به مدرسه می‌روند."
+            },
+            {
+              "en": "What did you learn at school today?",
+              "fa": "امروز در مدرسه چه یاد گرفتی؟"
+            },
+            {
+              "en": "My school is in the city.",
+              "fa": "مدرسهٔ من در شهر است."
+            }
+          ],
+          "collocations": [
+            "go to school",
+            "at school",
+            "after school",
+            "high school"
+          ],
+          "collocationFa": {
+            "go to school": "به مدرسه رفتن (برای درس)",
+            "at school": "در مدرسه",
+            "after school": "بعد از مدرسه",
+            "high school": "دبیرستان"
+          },
+          "mistake": {
+            "wrong": "My daughter goes to the school by bus.",
+            "wrongFa": "دخترم با اتوبوس به «ساختمان آن مدرسه» می‌رود؛ the روی ساختمان مشخص تأکید می‌کند.",
+            "right": "My daughter goes to school by bus.",
+            "rightFa": "دخترم با اتوبوس به مدرسه می‌رود؛ برای هدفِ درس خواندن school بدون the می‌آید.",
+            "why": "وقتی برای درس خواندن می‌رود، school بدون the می‌آید."
+          },
+          "pronunciation": {
+            "gb": "/skuːl/",
+            "us": "/skuːl/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "Where is my ___?",
+              "answer": "school",
+              "accept": [],
+              "fa": "مدرسهٔ من کجاست؟",
+              "why": "school یعنی «مدرسه»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «He is in ___» با معنی «او در مدرسه است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "school",
+                  "ok": true,
+                  "why": "school یعنی «مدرسه» و جملهٔ He is in school را کامل می‌کند."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام» و معنی جمله را عوض می‌کند."
+                },
+                {
+                  "text": "who",
+                  "ok": false,
+                  "why": "who واژهٔ پرسشی برای آدم‌هاست."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این مدرسهٔ من است.",
+              "frame": "This is my ___.",
+              "answer": "school",
+              "accept": [],
+              "why": "school یعنی «مدرسه»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:city",
+      "entryId": "lex:A1:city",
+      "contentVersion": "3533be666583",
+      "inputHash": "eceada6b04bf56417fe30ee699cd12f8df4318319a7944f6578b9ea820113556",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:city",
+          "headword": "city",
+          "contentVersion": "3533be666583",
+          "order": 15,
+          "prerequisites": [
+            "lex:A1:in"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:city",
+          "pos": "noun",
+          "gloss": "شهر (بزرگ)",
+          "meaning": "شهر؛ معمولاً از town بزرگ‌تر است، اما مرز دقیق این دو در کشورها متفاوت است.",
+          "grammar": [
+            {
+              "pattern": "in the city",
+              "note": "برای مکان می‌گوییم in the city: I live in the city."
+            },
+            {
+              "pattern": "city centre (BrE) / downtown (AmE)",
+              "note": "مرکز شهر"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Isfahan is a beautiful city.",
+              "fa": "اصفهان شهر زیبایی است."
+            },
+            {
+              "en": "The city centre is busy at night.",
+              "fa": "مرکز شهر شب‌ها شلوغ است."
+            },
+            {
+              "en": "I live in a small city.",
+              "fa": "من در یک شهر کوچک زندگی می‌کنم."
+            }
+          ],
+          "collocations": [
+            "city centre",
+            "capital city",
+            "big city",
+            "city life"
+          ],
+          "collocationFa": {
+            "city centre": "مرکز شهر",
+            "capital city": "پایتخت / شهرِ پایتخت",
+            "big city": "شهر بزرگ",
+            "city life": "زندگی شهری"
+          },
+          "mistake": {
+            "wrong": "I live in Tehran city.",
+            "wrongFa": "من در «شهر تهران» زندگی می‌کنم.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم.",
+            "why": "بعد از نام شهر معمولاً دوباره city نمی‌آوریم: in Tehran, in Shiraz."
+          },
+          "pronunciation": {
+            "gb": "/ˈsɪti/",
+            "us": "/ˈsɪti/, /ˈsɪdi/",
+            "note": "در آمریکایی t نرم است: «سیدی»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "He is in this ___.",
+              "answer": "city",
+              "accept": [],
+              "fa": "او در این شهر است.",
+              "why": "city یعنی «شهر»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «This is a ___» با معنی «این یک شهر است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "city",
+                  "ok": true,
+                  "why": "city یعنی «شهر»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این شهر من است.",
+              "frame": "This is my ___.",
+              "answer": "city",
+              "accept": [],
+              "why": "city یعنی «شهر»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:live",
+      "entryId": "lex:A1:live",
+      "contentVersion": "e58d7f25a052",
+      "inputHash": "f2ae107f8df015b3dcba289d3af006566b95645ed6b229c37316cdb5e0a12913",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:live",
+          "headword": "live",
+          "contentVersion": "e58d7f25a052",
+          "order": 16,
+          "prerequisites": [
+            "lex:A1:i",
+            "lex:A1:in",
+            "lex:A1:city"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:live",
+          "pos": "verb",
+          "gloss": "زندگی کردن؛ ساکن بودن",
+          "meaning": "خانه داشتن در جایی، یا زنده بودن.",
+          "grammar": [
+            {
+              "pattern": "live in + city / country",
+              "note": "برای شهر یا کشور بعد از live از in استفاده می‌کنیم: We live in Karaj."
+            },
+            {
+              "pattern": "live with + person",
+              "note": "برای کسی که با او زندگی می‌کنیم از with استفاده می‌کنیم: I live with my parents."
+            },
+            {
+              "pattern": "live at + address",
+              "note": "برای نشانی دقیق می‌توان از at استفاده کرد: She lives at 12 Park Street."
+            }
+          ],
+          "examples": [
+            {
+              "en": "Where do you live?",
+              "fa": "کجا زندگی می‌کنی؟"
+            },
+            {
+              "en": "My grandmother lives alone.",
+              "fa": "مادربزرگم تنها زندگی می‌کند."
+            },
+            {
+              "en": "He lives in this city.",
+              "fa": "او در این شهر زندگی می‌کند."
+            }
+          ],
+          "collocations": [
+            "live in",
+            "live with",
+            "live alone"
+          ],
+          "collocationFa": {
+            "live in": "در … زندگی کردن",
+            "live with": "با … زندگی کردن",
+            "live alone": "تنها زندگی کردن"
+          },
+          "mistake": {
+            "wrong": "I live at Tehran.",
+            "wrongFa": "من در تهران زندگی می‌کنم؛ در انگلیسیِ غلط برای شهر از at استفاده شده است.",
+            "right": "I live in Tehran.",
+            "rightFa": "من در تهران زندگی می‌کنم؛ در انگلیسی برای شهر از in استفاده می‌شود.",
+            "why": "برای شهر و کشور بعد از live معمولاً in می‌آید: live in Tehran, live in Iran. at بیشتر برای نشانی دقیق است."
+          },
+          "pronunciation": {
+            "gb": "/lɪv/",
+            "us": "/lɪv/",
+            "note": "i کوتاه است: «لیو»؛ صفتِ live (زنده، پخش زنده) /laɪv/ خوانده می‌شود."
+          },
+          "tts": {
+            "gb": "lˈɪv",
+            "us": "lˈɪv"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "I ___ in this city.",
+              "answer": "live",
+              "accept": [],
+              "fa": "من در این شهر زندگی می‌کنم.",
+              "why": "live یعنی «زندگی کردن؛ ساکن بودن»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای گفتن «من در این شهر زندگی می‌کنم» کدام جمله درست است؟",
+              "options": [
+                {
+                  "text": "I live in this city.",
+                  "ok": true,
+                  "why": "این جمله محل زندگی را بیان می‌کند."
+                },
+                {
+                  "text": "I am in this city.",
+                  "ok": false,
+                  "why": "این جمله فقط می‌گوید اکنون در این شهر هستم."
+                },
+                {
+                  "text": "Where is this city?",
+                  "ok": false,
+                  "why": "این یک سؤال دربارهٔ مکان شهر است."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "من اینجا زندگی می‌کنم.",
+              "frame": "I ___ here.",
+              "answer": "live",
+              "accept": [],
+              "why": "برای گفتن محل زندگی از live استفاده می‌کنیم.",
+              "support": [
+                {
+                  "en": "here",
+                  "fa": "اینجا"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:family",
+      "entryId": "lex:A1:family",
+      "contentVersion": "ebcfa6cbf845",
+      "inputHash": "748d9efbba576ef072a36b8cca82471ce0563644783a71c86bcd3cff1cb390f9",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:family",
+          "headword": "family",
+          "contentVersion": "ebcfa6cbf845",
+          "order": 17,
+          "prerequisites": [
+            "lex:A1:my",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:family",
+          "pos": "noun",
+          "gloss": "خانواده",
+          "meaning": "پدر، مادر، فرزندان و دیگر خویشاوندان. در انگلیسی بریتانیایی فعلش گاهی جمع است.",
+          "grammar": [
+            {
+              "pattern": "my / your family",
+              "note": "برای گفتن دربارهٔ خانوادهٔ خود یا دیگری از صفت ملکی استفاده می‌کنیم: My family is big."
+            },
+            {
+              "pattern": "have a family",
+              "note": "خانواده داشتن؛ در بافت روزمره اغلب منظور داشتن همسر یا فرزند است."
+            }
+          ],
+          "examples": [
+            {
+              "en": "There are five people in my family.",
+              "fa": "خانوادهٔ ما پنج نفر است."
+            },
+            {
+              "en": "I spend the weekends with my family.",
+              "fa": "آخر هفته‌ها را با خانواده‌ام می‌گذرانم."
+            },
+            {
+              "en": "My family lives in this city.",
+              "fa": "خانوادهٔ من در این شهر زندگی می‌کند."
+            }
+          ],
+          "collocations": [
+            "family name",
+            "family member",
+            "a big family"
+          ],
+          "collocationFa": {
+            "family name": "نام خانوادگی",
+            "family member": "عضو خانواده",
+            "a big family": "خانوادهٔ بزرگ / پرجمعیت"
+          },
+          "mistake": {
+            "wrong": "We are five persons in our family.",
+            "wrongFa": "ما در خانواده‌مان پنج نفر هستیم.",
+            "right": "There are five people in my family.",
+            "rightFa": "در خانوادهٔ من پنج نفر هستند.",
+            "why": "برای گفتن تعداد اعضای خانواده There are … people in my family طبیعی است."
+          },
+          "pronunciation": {
+            "gb": "/ˈfæməli/",
+            "us": "/ˈfæməli/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "My ___ is in this city.",
+              "answer": "family",
+              "accept": [],
+              "fa": "خانوادهٔ من در این شهر است.",
+              "why": "family یعنی «خانواده»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «My ___ lives in this city» با معنی «خانواده‌ام در این شهر زندگی می‌کند»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "family",
+                  "ok": true,
+                  "why": "family یعنی «خانواده»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                },
+                {
+                  "text": "name",
+                  "ok": false,
+                  "why": "name یعنی «نام»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "این خانوادهٔ من است.",
+              "frame": "This is my ___.",
+              "answer": "family",
+              "accept": [],
+              "why": "my family یعنی «خانوادهٔ من»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:friend",
+      "entryId": "lex:A1:friend",
+      "contentVersion": "9c240540dbba",
+      "inputHash": "05f06dbae3b1c5e0d576aa2eb576838d9afd8056fcd6c40980882048f3c420a7",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:friend",
+          "headword": "friend",
+          "contentVersion": "9c240540dbba",
+          "order": 18,
+          "prerequisites": [
+            "lex:A1:a-an",
+            "lex:A1:my",
+            "lex:A1:be"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:friend",
+          "pos": "noun",
+          "gloss": "دوست",
+          "meaning": "کسی که او را می‌شناسید و دوستش دارید و با او وقت می‌گذرانید.",
+          "grammar": [
+            {
+              "pattern": "a friend of mine",
+              "note": "یکی از دوستانم"
+            },
+            {
+              "pattern": "make friends (with)",
+              "note": "دوست پیدا کردن"
+            },
+            {
+              "pattern": "best friend",
+              "note": "بهترین دوست"
+            }
+          ],
+          "examples": [
+            {
+              "en": "Sara is my best friend.",
+              "fa": "سارا بهترین دوست من است."
+            },
+            {
+              "en": "I met an old friend in the street.",
+              "fa": "در خیابان یک دوست قدیمی را دیدم."
+            },
+            {
+              "en": "This is my friend, Reza.",
+              "fa": "این دوست من، رضا، است."
+            }
+          ],
+          "collocations": [
+            "best friend",
+            "make friends",
+            "old friend",
+            "a friend of mine"
+          ],
+          "collocationFa": {
+            "best friend": "بهترین دوست",
+            "make friends": "دوست پیدا کردن / دوست شدن",
+            "old friend": "دوست قدیمی",
+            "a friend of mine": "یکی از دوستانم"
+          },
+          "mistake": {
+            "wrong": "I made a friend with Sara.",
+            "wrongFa": "با سارا «یک دوست ساختم»؛ ترجمهٔ لفظیِ ساخت غلط انگلیسی طبیعی نیست.",
+            "right": "I made friends with Sara.",
+            "rightFa": "با سارا دوست شدم؛ make friends with ساخت طبیعی انگلیسی است.",
+            "why": "برای «دوست شدن/دوست پیدا کردن» معمولاً make friends with به کار می‌رود."
+          },
+          "pronunciation": {
+            "gb": "/frend/",
+            "us": "/frend/",
+            "note": "ie در friend مثل «اِ» خوانده می‌شود: «فرِند»."
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "This is my ___.",
+              "answer": "friend",
+              "accept": [],
+              "fa": "این دوست من است.",
+              "why": "friend یعنی «دوست»."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "برای کامل کردن «He is my ___» با معنی «او دوست من است»، کدام واژه درست است؟",
+              "options": [
+                {
+                  "text": "friend",
+                  "ok": true,
+                  "why": "friend یعنی «دوست»."
+                },
+                {
+                  "text": "family",
+                  "ok": false,
+                  "why": "family یعنی «خانواده»."
+                },
+                {
+                  "text": "school",
+                  "ok": false,
+                  "why": "school یعنی «مدرسه»."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "دوستم در این شهر است.",
+              "frame": "My ___ is in this city.",
+              "answer": "friend",
+              "accept": [],
+              "why": "friend یعنی «دوست»."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "targetId": "lex:A1:how",
+      "entryId": "lex:A1:how",
+      "contentVersion": "0b72d846b5cd",
+      "inputHash": "e8aff8232ad289c4d210d4e2f22bb60f5414d5c7834fe20b37a3e02bef157f6b",
+      "input": {
+        "unitId": "01-introductions",
+        "entry": {
+          "id": "lex:A1:how",
+          "headword": "how",
+          "contentVersion": "0b72d846b5cd",
+          "order": 19,
+          "prerequisites": [
+            "lex:A1:be",
+            "lex:A1:you"
+          ]
+        },
+        "sense": {
+          "id": "lex:A1:how",
+          "pos": "adverb",
+          "gloss": "چطور؛ چگونه",
+          "meaning": "برای پرسیدن روش یا حالت. همچنین با صفت یا قید برای پرسیدن مقدار: how old, how much, how many, how long.",
+          "grammar": [
+            {
+              "pattern": "How + do/does + subject + verb?",
+              "note": "برای پرسیدن روش انجام کار با فعل اصلی از do/does استفاده می‌کنیم: How do you go to work?"
+            },
+            {
+              "pattern": "How + adjective/adverb …?",
+              "note": "برای پرسیدن مقدار یا ویژگی، how پیش از صفت یا قید می‌آید: How old are you? / How much is it?"
+            }
+          ],
+          "examples": [
+            {
+              "en": "How are you today?",
+              "fa": "امروز حالت چطور است؟"
+            },
+            {
+              "en": "How much is this jacket?",
+              "fa": "این کت چند است؟"
+            },
+            {
+              "en": "How do you spell your name?",
+              "fa": "اسمت را چطور هجی می‌کنی؟"
+            }
+          ],
+          "collocations": [
+            "how much",
+            "how many",
+            "how old",
+            "how long",
+            "how about …?"
+          ],
+          "collocationFa": {
+            "how much": "چقدر؟",
+            "how many": "چند تا؟ / چند نفر؟",
+            "how old": "چند ساله؟",
+            "how long": "چه مدت؟ / چقدر طول می‌کشد؟",
+            "how about …?": "… چطور؟"
+          },
+          "mistake": {
+            "wrong": "How many money do you have?",
+            "wrongFa": "«چند» پول داری؟ این ساخت برای اسم قابل‌شمارش مناسب است.",
+            "right": "How much money do you have?",
+            "rightFa": "چقدر پول داری؟ برای money از how much استفاده می‌شود.",
+            "why": "money غیرقابل‌شمارش است؛ پس how much نه how many."
+          },
+          "pronunciation": {
+            "gb": "/haʊ/",
+            "us": "/haʊ/"
+          },
+          "check": [
+            {
+              "type": "cloze",
+              "id": "c1",
+              "text": "___ are you?",
+              "answer": "How",
+              "accept": [
+                "how"
+              ],
+              "fa": "حالت چطور است؟",
+              "why": "How are you? برای پرسیدن حالِ کسی است."
+            },
+            {
+              "type": "choice",
+              "id": "q1",
+              "prompt": "کدام جمله یعنی «حالت چطور است؟»؟",
+              "options": [
+                {
+                  "text": "How are you?",
+                  "ok": true,
+                  "why": "How دربارهٔ حالت یا چگونگی می‌پرسد."
+                },
+                {
+                  "text": "Where are you?",
+                  "ok": false,
+                  "why": "Where دربارهٔ مکان می‌پرسد."
+                },
+                {
+                  "text": "Who are you?",
+                  "ok": false,
+                  "why": "Who دربارهٔ هویتِ آدم می‌پرسد."
+                }
+              ]
+            },
+            {
+              "type": "produce",
+              "id": "p1",
+              "prompt": "خانواده‌ات چطور است؟",
+              "frame": "___ is your family?",
+              "answer": "How",
+              "accept": [],
+              "why": "برای پرسیدن حال یا وضعیت از How استفاده می‌کنیم."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
