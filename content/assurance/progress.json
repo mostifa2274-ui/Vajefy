@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-06",
+  "authoritativeMain": "b8da6dcfd154df32082157f26ebd084944bc01b9",
+  "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
+  "completed": [
+    {
+      "id": "foundation",
+      "pr": 82,
+      "mergeCommit": "6e6a44bf74c251615f21bc70939873ea54b059f9",
+      "summary": "Autonomous assurance foundation: Gate 0 provenance, fail-closed assurance schema, deterministic A1 auditor, tests and docs."
+    },
+    {
+      "id": "deterministic-ratchet",
+      "pr": 83,
+      "mergeCommit": "b8da6dcfd154df32082157f26ebd084944bc01b9",
+      "summary": "No-regression ratchet for measured deterministic A1 defect classes."
+    }
+  ],
+  "doNotRepeat": [
+    "Do not rebuild the autonomous assurance foundation.",
+    "Do not recreate Gate 0 provenance scaffolding.",
+    "Do not recreate PASS/FAIL/UNCERTAIN/DISAGREEMENT/QUARANTINED assurance states.",
+    "Do not re-run the broad Unit 1 diagnosis unless source content changed.",
+    "Do not build new work on stale draft PR #75; reassess or close it separately."
+  ],
+  "blockers": [
+    {
+      "id": "gate0-rights",
+      "status": "BLOCKED",
+      "detail": "Oxford-derived workbook remains UNVERIFIED; public release must remain blocked."
+    }
+  ],
+  "unit1": {
+    "id": "01-introductions",
+    "entries": 20,
+    "senses": 20,
+    "baseline": {
+      "grammarNotesWithoutPersian": 24,
+      "sensesBelowThreeExamples": 20,
+      "identicalWrongRightPersian": 17,
+      "requiredUsageMissing": 7,
+      "missingWrongFa": 0,
+      "missingRightFa": 0
+    },
+    "status": "IN_PROGRESS",
+    "target": "Zero deterministic Unit 1 findings before semantic-judge certification."
+  },
+  "currentWork": {
+    "branch": "codex/unit1-autonomous-certification",
+    "objective": "Repair and deterministically certify Unit 1, then regenerate derived artifacts and pass full CI.",
+    "nextSteps": [
+      "Add durable progress ledger.",
+      "Repair Unit 1 grammar-note Persian, examples, usage and mistake translations.",
+      "Add Unit 1 zero-defect gate.",
+      "Regenerate derived enhanced content.",
+      "Run full CI including Playwright and Workers contract.",
+      "Merge only after all gates pass.",
+      "Update this progress file after merge with exact commit and next objective."
+    ]
+  }
+}
