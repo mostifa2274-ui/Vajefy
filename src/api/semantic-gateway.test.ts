@@ -312,3 +312,35 @@ test("ignores reasoning text when final assistant message contains semantic JSON
     payload,
   );
 });
+
+
+test("safe Workers AI diagnostic exposes structure but not generated text", () => {
+  const diagnostic = workersAiDiagnostic({
+    status: "incomplete",
+    incomplete_details: { reason: "max_output_tokens" },
+    output: [
+      { type: "reasoning", summary: ["secret reasoning text"] },
+      {
+        type: "message",
+        content: [
+          { type: "output_text", text: "sensitive generated answer" },
+        ],
+      },
+    ],
+    usage: {
+      input_tokens: 123,
+      output_tokens: 900,
+      total_tokens: 1023,
+      output_tokens_details: { reasoning_tokens: 899 },
+    },
+  });
+
+  const serialized = JSON.stringify(diagnostic);
+  assert.equal(diagnostic.status, "incomplete");
+  assert.deepEqual(diagnostic.outputTypes, ["reasoning", "message"]);
+  assert.equal(diagnostic.candidateCount, 1);
+  assert.equal(diagnostic.canonicalCandidateCount, 0);
+  assert.ok(serialized.includes("max_output_tokens"));
+  assert.ok(!serialized.includes("sensitive generated answer"));
+  assert.ok(!serialized.includes("secret reasoning text"));
+});
