@@ -93,13 +93,32 @@
   },
   "currentWork": {
     "branch": "codex/semantic-endpoint-resolution",
-    "objective": "Resolve independent semantic judge endpoints without triggering paid inference.",
-    "nextSteps": [
-      "Inventory connected inference-capable providers/plugins and distinguish free/local from billed execution.",
-      "Document four-role endpoint selection criteria and provenance requirements.",
-      "Run no-inference preflight only after endpoint metadata is available.",
-      "Do not make any paid model call without explicit authorization.",
-      "If no suitable no-cost connected inference exists, preserve the blocker explicitly instead of fabricating evidence."
+    "objective": "Validate and merge manual-only semantic judge execution workflow and endpoint-resolution record.",
+    "completedOnBranch": [
+      "Recorded PR #87 exact merge commit and marked evidence ingestion/preflight complete.",
+      "Verified GitHub Models is retired and excluded it from endpoint candidates.",
+      "Verified Hugging Face Jobs are billable compute and did not launch a job.",
+      "Verified no installed generic Groq/OpenRouter/Together text-inference connector was discovered.",
+      "Added role-scoped endpoint preflight.",
+      "Added manual-only GitHub semantic judge workflow with explicit inference acknowledgement.",
+      "Workflow has contents:read only and uploads evidence artifacts instead of committing.",
+      "Added CI safety checker forbidding automatic triggers and contents:write.",
+      "Documented endpoint acceptance criteria, GitHub variables/secrets, and exact resume sequence."
+    ],
+    "endpointResolution": {
+      "status": "BLOCKED_ON_EXPLICIT_ENDPOINT_CONFIG",
+      "inferenceRun": false,
+      "githubModels": "RETIRED",
+      "huggingFaceJobs": "AVAILABLE_BUT_BILLED_NOT_INVOKED",
+      "installedGenericTextInferenceConnector": "NOT_DISCOVERED",
+      "manualWorkflow": ".github/workflows/semantic-judge.yml",
+      "setupDocument": "content/assurance/semantic/ENDPOINT_RESOLUTION.md"
+    },
+    "pending": [
+      "Pass full CI for the endpoint-resolution/manual-workflow slice.",
+      "Merge the PR if green and record exact merge commit.",
+      "Do not run inference until endpoint variables/secrets are explicitly configured and execution is authorized.",
+      "Once configured, run four isolated manual role workflows and merge their artifacts through the existing fail-closed ingestion path."
     ]
   }
 }
