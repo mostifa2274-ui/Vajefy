@@ -28,6 +28,7 @@ const required = [
   "Run three isolated calibration repeats",
   "Score against pre-registered Vajefy gate",
   "--require-promote",
+  "--output \"calibration-report-${ROLE}.json\"",
   "Record qualification only after strict promotion",
   "assurance:semantic:qualification:record",
   "assurance:semantic:qualification:check",
