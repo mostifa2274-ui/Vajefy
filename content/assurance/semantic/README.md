@@ -172,3 +172,53 @@ npm run assurance:semantic:unit1:strict
 The strict command is the semantic certification gate and remains expected to
 fail until genuine independent evidence has been produced for every Unit 1
 sense.
+
+
+## Endpoint preflight
+
+Before any judge execution, run the no-inference preflight:
+
+```sh
+npm run assurance:semantic:preflight
+```
+
+It reports, for each role:
+
+- provider label;
+- base URL;
+- model id;
+- explicit model/build version;
+- whether an API key is present (never the key itself);
+- max token setting;
+- whether OpenAI JSON response-format mode is enabled;
+- exactly which required settings are still missing.
+
+Use the strict variant only when all four independent endpoints are expected to be
+configured:
+
+```sh
+npm run assurance:semantic:preflight:strict
+```
+
+The runner also supports endpoints that reject
+`response_format: {"type":"json_object"}`: set the role-specific or generic
+`SEMANTIC_JUDGE_JSON_RESPONSE_FORMAT=false`. The model must still return JSON;
+the repository parser remains fail-closed.
+
+## Ingestion barriers
+
+External role bundles are validated before the merge command writes anything.
+The merge is rejected when any of these conditions occurs:
+
+- wrong unit or source-generation context;
+- unknown target or role;
+- stale entry content version;
+- stale curriculum-aware input hash;
+- a run bundle mixes multiple judge roles;
+- two different roles reuse one judge context key;
+- a judge context matches the source-generation context;
+- duplicate target/role evidence;
+- `--require-complete` is used while any target/role pair is missing.
+
+These checks duplicate some final arbitration protections intentionally. Bad
+external evidence should be stopped both at ingestion and at certification.
