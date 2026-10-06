@@ -13,6 +13,12 @@ const PRESETS = path.join(
 const WRANGLER = path.join(ROOT, "wrangler.jsonc");
 const CALIBRATE = path.join(ROOT, ".github", "workflows", "semantic-calibrate.yml");
 const JUDGE = path.join(ROOT, ".github", "workflows", "semantic-judge.yml");
+const SMOKE = path.join(
+  ROOT,
+  ".github",
+  "workflows",
+  "semantic-gateway-smoke.yml",
+);
 
 type Preset = {
   provider: string;
@@ -100,6 +106,35 @@ for (const workflowFile of [CALIBRATE, JUDGE]) {
   if (/secrets\.SEMANTIC_JUDGE_|SEMANTIC_JUDGE_.*API_KEY/.test(workflow)) {
     fail(`${path.basename(workflowFile)} must not reference semantic API-key secrets.`);
   }
+}
+
+
+const smoke = fs.readFileSync(SMOKE, "utf8");
+const smokeRequired = [
+  "push:",
+  "- main",
+  "id-token: write",
+  "Wait for exact production revision",
+  "/api/version",
+  "ACTIONS_ID_TOKEN_REQUEST_URL",
+  "audience=vajefy-semantic-gateway",
+  "/api/internal/semantic-judge",
+  "Authenticated keyless gateway contract: PASS (no inference).",
+];
+
+for (const marker of smokeRequired) {
+  if (!smoke.includes(marker)) {
+    fail(`semantic-gateway-smoke.yml missing safety marker: ${marker}`);
+  }
+}
+if (/secrets\./.test(smoke)) {
+  fail("Keyless gateway smoke must not use repository secrets.");
+}
+if (/curl[^\n]*(?:-X|--request)\s+POST|method\s*:\s*POST/i.test(smoke)) {
+  fail("Keyless gateway smoke must remain GET-only and never invoke inference.");
+}
+if (!/branches:\s*\n\s*- main/.test(smoke)) {
+  fail("Keyless gateway smoke must run only for pushes to main.");
 }
 
 console.log(

@@ -582,3 +582,30 @@ No model inference has been run on this branch.
 
 Current resume point: full CI -> merge -> exact production revision check ->
 OIDC no-inference gateway smoke -> keyless calibration.
+
+
+## In-progress checkpoint — automatic keyless post-deploy smoke
+
+Branch: `codex/keyless-postdeploy-smoke`.
+
+This removes the manual no-inference gateway verification step.
+
+On every push to `main`, the new
+`.github/workflows/semantic-gateway-smoke.yml`:
+
+1. waits until `/api/version` reports the exact pushed SHA;
+2. requests a short-lived GitHub OIDC identity;
+3. performs authenticated **GET-only** access to the internal semantic gateway;
+4. verifies the Workers AI transport and all four fixed model IDs;
+5. performs no model inference.
+
+Security separation is explicit:
+
+- the smoke workflow's `push` OIDC identity is accepted only for gateway
+  status GETs;
+- inference POSTs still require the exact manual semantic workflows and
+  `workflow_dispatch`;
+- the smoke contains no repository secrets;
+- CI fails if the smoke gains a POST/inference path.
+
+No model inference has been run by this branch.
