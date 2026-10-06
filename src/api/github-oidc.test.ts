@@ -80,6 +80,7 @@ const expected = {
   repository: "mostifa2274-ui/Vajefy",
   ref: "refs/heads/main",
   workflows: [workflow],
+  events: ["workflow_dispatch"],
   nowSeconds: now,
 };
 
@@ -137,4 +138,23 @@ test("rejects a token for a non-main ref", async () => {
     verifyGitHubOidcToken(fixture.token, fixture.jwks, expected),
     /oidc-ref/,
   );
+});
+
+
+test("rejects a disallowed GitHub event", async () => {
+  const fixture = await fixtureToken(claims({ event_name: "push" }));
+  await assert.rejects(
+    verifyGitHubOidcToken(fixture.token, fixture.jwks, expected),
+    /oidc-event/,
+  );
+});
+
+test("can explicitly authorize a push event for a no-inference smoke", async () => {
+  const fixture = await fixtureToken(claims({ event_name: "push" }));
+  const verified = await verifyGitHubOidcToken(
+    fixture.token,
+    fixture.jwks,
+    { ...expected, events: ["push"] },
+  );
+  assert.equal(verified.event_name, "push");
 });
