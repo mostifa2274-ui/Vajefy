@@ -105,7 +105,8 @@
     "Do not restore Qwen 3.8 27B as the default adversarial keyless calibration candidate without re-running the Neuron budget; PR budget work replaced it because the full frozen campaign would not safely fit the free daily allocation.",
     "Do not return to API-key setup unless the keyless OIDC Workers AI path is intentionally retired; legacy credential fields are no longer authoritative.",
     "Do not add push/schedule/repository_dispatch inference triggers just because the connected GitHub toolset lacks workflow_dispatch.",
-    "Do not re-diagnose English run 37473550090 empty-model-content: PR #99 fixed missing Workers AI Responses API extraction and post-merge OIDC smoke 37476270004 passed."
+    "Do not re-diagnose English run 37473550090 empty-model-content: PR #99 fixed missing Workers AI Responses API extraction and post-merge OIDC smoke 37476270004 passed.",
+    "Do not restore GPT-OSS 120B as the English keyless calibration judge unless Cloudflare adds official JSON Mode support and a new calibration/budget analysis justifies it; repeated run 37473550090 exhausted 900/900 completion tokens without canonical JSON."
   ],
   "blockers": [
     {
@@ -147,27 +148,25 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/semantic-canonical-json",
-    "objective": "Canonicalize exactly one unique semantic criteria JSON across Workers AI final response fields, validate, deploy, then rerun English calibration.",
+    "branch": "codex/english-json-mode-judge",
+    "objective": "Replace English GPT-OSS judge with JSON-Mode-supported Llama 3.3 70B, preserve frozen v1, validate budget and deploy before retry.",
     "blocked": false,
     "completedOnBranch": [
-      "Inspected latest English rerun after structured response priority fix.",
-      "Confirmed budget PASS, OIDC preflight PASS and inference reached GPT-OSS.",
-      "Confirmed strict runner still rejected cal-en-clean-i as not a single JSON payload.",
-      "Added transport-only canonicalizer that finds criteria JSON objects without relaxing the downstream evidence parser.",
-      "Identical duplicate criteria payloads collapse to one canonical JSON object.",
-      "Conflicting distinct criteria payloads fail closed.",
-      "Gateway now considers only direct structured response, output_text, Chat Completions assistant content, and Responses API final assistant message output.",
-      "Reasoning blocks are explicitly ignored as evidence transport.",
-      "Added candidate/canonical-count diagnostics without logging model content.",
-      "Added regression tests for duplicate representations, prose-wrapped single payload, conflicting payloads and reasoning exclusion."
+      "Captured safe structural diagnostic from English GPT-OSS failure.",
+      "Confirmed GPT-OSS used exactly 900/900 completion tokens on cal-en-clean-i and produced no canonical criteria JSON.",
+      "Verified Cloudflare current JSON Mode supported-model list does not include GPT-OSS 120B.",
+      "Selected @cf/meta/llama-3.3-70b-instruct-fp8-fast, which Cloudflare explicitly lists as JSON Mode supported.",
+      "Set English max output to 500 tokens.",
+      "Bound evidence to max 3 paths of 120 chars and reasonCode to 96 chars without changing rubric criteria.",
+      "Recorded current Llama 3.3 70B Neuron rates.",
+      "Regenerated frozen calibration budget: 8,070 total Neurons, 1,930 free-allocation reserve, 430 safety-ceiling reserve."
     ],
     "pending": [
-      "Pass full CI for canonical semantic transport.",
-      "Merge exact head only if core CI, Workers contract and Playwright pass.",
+      "Pass full CI, Workers contract and Playwright for English Llama replacement.",
+      "Merge exact head only if green.",
       "Verify automatic exact-revision OIDC smoke after deploy.",
-      "Rerun failed English workflow 37473550090 again using its original manual authorization.",
-      "Reach frozen scoring; do not modify v1 thresholds if model quality fails."
+      "Rerun already-authorized English workflow 37473550090.",
+      "Reach frozen scoring; if Llama fails quality thresholds, reject it without lowering v1 thresholds."
     ]
   },
   "endpointResolution": {
@@ -207,7 +206,7 @@
     "apiKeysRequired": false,
     "repositoryVariablesRequired": false,
     "models": {
-      "english": "@cf/openai/gpt-oss-120b",
+      "english": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
       "persian": "@cf/zai-org/glm-4.7-flash",
       "pedagogical": "@cf/google/gemma-4-26b-a4b-it",
       "adversarial": "@cf/qwen/qwen3-30b-a3b-fp8"
@@ -230,9 +229,9 @@
       "freeDailyAllocationNeurons": 10000,
       "calibrationSafetyCeilingNeurons": 8500,
       "totalCalibrationRequests": 84,
-      "totalCalibrationNeuronsUpperBound": 7788,
-      "freeAllocationReserveNeurons": 2212,
-      "safetyCeilingReserveNeurons": 712,
+      "totalCalibrationNeuronsUpperBound": 8070,
+      "freeAllocationReserveNeurons": 1930,
+      "safetyCeilingReserveNeurons": 430,
       "snapshot": "content/assurance/semantic/calibration/v1/neuron-budget.json",
       "smokeRunId": 37469172696,
       "smokeResult": "PASS",
@@ -253,44 +252,48 @@
   },
   "calibrationExecution": {
     "english": {
-      "status": "FAILED_MULTIPLE_JSON_REPRESENTATIONS_CANONICALIZER_IN_PROGRESS",
+      "status": "CANDIDATE_REPLACED_BEFORE_NEXT_RETRY",
       "runId": 37473550090,
-      "startedAt": "2026-10-06T13:47:05Z",
-      "failedStep": "Run three isolated calibration repeats",
-      "failedTarget": "cal-en-clean-i",
-      "repeat": 1,
+      "latestJobId": 112393210304,
+      "latestAttemptAt": "2026-10-06T16:57:33Z",
+      "latestAttemptCheckout": "542bf9a07f8f359e2d3ea7bfab9082c4873866bf",
       "inferenceReached": true,
-      "qualificationRecorded": false,
-      "failure": "HTTP 502 empty-model-content on cal-en-clean-i during repeat 1",
-      "rootCause": "Gateway omitted Cloudflare Responses API output extraction.",
-      "fixBranch": "codex/workers-ai-structured-response-priority",
-      "retryPolicy": "Do not alter calibration v1. Rerun only after canonical transport fix is merged and exact production OIDC smoke passes.",
-      "failedRunId": 37473550090,
-      "fixPr": 99,
-      "fixMergeCommit": "24e123d8194935c4ba85eb42ad76f14134c9b048",
-      "fixCiResult": "PASS",
-      "postMergeOidcSmokeRunId": 37476270004,
-      "postMergeOidcSmokeResult": "PASS",
-      "productionReadyForRetry": true,
-      "rerunAttemptAt": "2026-10-06T16:00Z",
-      "rerunReachedInference": true,
-      "latestFailure": "english judge returned content that is not a single JSON payload for cal-en-clean-i",
-      "previousTransportExtractionFixed": true,
-      "currentRootCause": "Workers AI can expose the same semantic answer through multiple final response representations; transport must canonicalize one unique criteria JSON and reject conflicting payloads.",
-      "structuredFixBranch": "codex/workers-ai-structured-json",
-      "remediation": [
-        "Use Workers AI response_format=json_schema at generation time.",
-        "Schema requires exact criteria array length and criterion/result/confidence/evidence/reasonCode fields.",
-        "Keep strict downstream JSON/Zod parser unchanged.",
-        "Support Cloudflare JSON-mode wrapped response objects and direct structured objects."
-      ],
-      "latestJobId": 112380376612,
-      "latestAttemptAt": "2026-10-06T16:28Z",
-      "latestAttemptCheckout": "8ba220c530126d134edd0954c6c00e0d65c6084b",
       "budgetCheck": "PASS",
       "oidcPreflight": "PASS",
-      "structuredJsonEnabled": true,
-      "canonicalFixBranch": "codex/semantic-canonical-json"
+      "failedTarget": "cal-en-clean-i",
+      "repeat": 1,
+      "qualificationRecorded": false,
+      "diagnostic": {
+        "topLevelKeys": [
+          "choices",
+          "created",
+          "ec_transfer_params",
+          "id",
+          "kv_transfer_params",
+          "metrics",
+          "model",
+          "object",
+          "prompt_logprobs",
+          "prompt_text",
+          "prompt_token_ids",
+          "service_tier",
+          "usage"
+        ],
+        "candidateCount": 1,
+        "canonicalCandidateCount": 0,
+        "completionTokens": 900,
+        "configuredMaxTokens": 900,
+        "promptTokens": 1073,
+        "neurons": 95.50433349609375
+      },
+      "conclusion": "GPT-OSS 120B exhausted the full 900-token completion budget on the first clean calibration target without producing canonical semantic JSON. Cloudflare's current JSON Mode support list does not include GPT-OSS 120B.",
+      "replacement": {
+        "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "modelFamily": "meta-llama",
+        "maxTokens": 500,
+        "reason": "Cloudflare officially lists Llama 3.3 70B FP8 Fast as JSON Mode supported; compact 8-criterion schema fits 500 tokens and full 84-request campaign remains under the 8,500-Neuron safety ceiling."
+      },
+      "retryPolicy": "Do not alter calibration v1. Retry only after Llama replacement PR passes full CI and exact production OIDC smoke."
     }
   }
 }
