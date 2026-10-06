@@ -238,3 +238,25 @@ Do not treat this ranking as permanent. The next quality step is a frozen
 Vajefy-specific judge calibration set; model promotion after that should be
 based on defect recall, false-positive rate, abstention calibration and schema
 reliability rather than generic benchmark prestige.
+
+
+## Credential presence check — 2026-10-06
+
+A one-use GitHub Actions probe checked only whether the required names were
+non-empty. It did **not** print or expose secret values.
+
+Result:
+
+- `SEMANTIC_JUDGE_ENGLISH_API_KEY` — absent
+- `SEMANTIC_JUDGE_PERSIAN_API_KEY` — absent
+- `SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY` — absent
+- `SEMANTIC_JUDGE_ADVERSARIAL_API_KEY` — absent
+- `SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID` — absent
+
+Do not repeat this probe unless credentials have been added or repository
+settings have materially changed.
+
+Once the five names are configured, the next action is **calibration_v1**, not
+Unit 1: each role must complete three independent calibration runs and pass the
+frozen v1 promotion thresholds before the workflow will permit release-bound
+Unit 1 judging.
