@@ -65,7 +65,7 @@ jobs:
             -H "Authorization: Bearer $TOKEN" \
             https://vajefy.mostifa2273.workers.dev/api/internal/semantic-judge)"
 
-          node <<'NODE' "$BODY"
+          node - "$BODY" <<'NODE'
           const body = JSON.parse(process.argv[2]);
           if (body.ok !== true) throw new Error("gateway not ok");
           if (body.transport !== "cloudflare-workers-ai-binding") {
