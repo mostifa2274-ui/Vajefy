@@ -62,6 +62,9 @@ jobs:
           test -f "$PACKET"
           echo "SEMANTIC_PACKET=$PACKET" >> "$GITHUB_ENV"
 
+      - name: Verify zero-cost Neuron budget
+        run: npm run assurance:semantic:keyless:budget
+
       - name: Keyless no-inference gateway preflight
         env:
           ROLE: ${{ inputs.role }}
