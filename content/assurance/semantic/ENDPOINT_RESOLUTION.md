@@ -26,21 +26,23 @@ Recommended role allocation as verified on 2026-10-06:
 | Role | Provider | Model | Free constraint |
 |---|---|---|---|
 | English | Groq Free Plan | `openai/gpt-oss-120b` | Free-plan limits currently list 30 RPM, 1,000 RPD and 200,000 TPD |
-| Persian | Google Gemini Developer API Free Tier | `gemini-3.5-flash-lite` | Input/output are free of charge on the Free Tier; model is optimized for translation/high-volume tasks |
-| Pedagogical | OpenRouter Free | `google/gemma-4-31b-it:free` | Named model is $0/M input and output; Free plan currently permits 50 requests/day |
-| Adversarial | Cloudflare Workers AI Free | `@cf/zai-org/glm-4.7-flash` | Workers Free includes 10,000 Neurons/day and GLM-4.7-Flash remains allowed on the Free plan |
+| Persian | Google Gemini Developer API Free Tier | `gemini-3.8-flash` | Official pricing lists input/output/context caching as free of charge on the Free Tier |
+| Pedagogical | OpenRouter Free | `minimax/minimax-m2.7:free` | Model endpoint is $0 input/output; OpenRouter Free currently permits 50 requests/day |
+| Adversarial | Cloudflare Workers AI Free | `@cf/qwen/qwen3.8-27b` | Workers Free includes 10,000 Neurons/day; Qwen 3.8 27B is not on the paid-billing-only model list |
 
 Official references:
 
+- Groq supported models: https://console.groq.com/docs/models
 - Groq free limits: https://console.groq.com/docs/rate-limits
-- Groq billing FAQ: https://console.groq.com/docs/billing-faqs
+- Gemini 3.8 Flash: https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash
 - Gemini pricing: https://ai.google.dev/gemini-api/docs/pricing
 - Gemini OpenAI compatibility: https://ai.google.dev/gemini-api/docs/openai
-- OpenRouter pricing: https://openrouter.ai/pricing
-- OpenRouter MiniMax M2.7 free: https://openrouter.ai/google/gemma-4-31b-it:free
+- OpenRouter pricing: https://openrouter.ai/pricing/
+- OpenRouter MiniMax M2.7 free: https://openrouter.ai/minimax/minimax-m2.7:free
+- OpenRouter MiniMax M2.7 performance: https://openrouter.ai/minimax/minimax-m2.7/performance
+- Cloudflare Qwen 3.8 27B: https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/
 - Cloudflare Workers AI pricing: https://developers.cloudflare.com/workers-ai/platform/pricing/
 - Cloudflare OpenAI compatibility: https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/
-- Cloudflare GLM-4.7-Flash: https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/
 
 These are free tiers/allocations, not permanent contractual guarantees. Before
 a future large rerun, re-check provider availability/pricing and update the
@@ -51,10 +53,11 @@ preset verification date rather than silently assuming the 2026-10-06 state.
 The allocation deliberately avoids using one provider or one model family for
 all judgments:
 
-- Groq + GPT-OSS for strong English reasoning;
-- Google's own Gemini endpoint for Persian/translation;
-- OpenRouter + Gemma for an independent pedagogical view;
-- Cloudflare + GLM for adversarial multilingual reasoning.
+- Groq + GPT-OSS 120B for English linguistic/reasoning precision;
+- Google + Gemini 3.8 Flash for nuanced Persian semantic/translation judgment;
+- OpenRouter + MiniMax M2.7 for pedagogical evaluation with strong current
+  instruction-following/reasoning/non-hallucination signals;
+- Cloudflare + Qwen 3.8 27B for independent high-reasoning adversarial review.
 
 This improves failure independence while keeping normal Unit 1 evaluation at
 zero inference cost within the stated free limits.
