@@ -103,22 +103,26 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "main",
-    "objective": "Resume only when explicit independent semantic judge endpoint configuration/authorization is available.",
-    "blocked": true,
-    "blocker": "Four independent judge endpoint configurations (base URL, model id, model version and any required API keys) are not currently available to the repository.",
-    "nextSteps": [
-      "Configure repository variables/secrets documented in content/assurance/semantic/ENDPOINT_RESOLUTION.md.",
-      "Manually dispatch .github/workflows/semantic-judge.yml once for each role with acknowledge_inference=true.",
-      "Download the four role evidence artifacts.",
-      "Merge them with assurance:semantic:merge --require-complete.",
-      "Run assurance:semantic:unit1:check and assurance:semantic:unit1:strict.",
-      "Commit semantic evidence only if fail-closed arbitration accepts it.",
-      "Do not edit deterministically certified Unit 1 source unless a judge returns a concrete defect requiring repair."
+    "branch": "codex/free-semantic-providers",
+    "objective": "Validate and merge zero-cost semantic provider presets.",
+    "blocked": false,
+    "completedOnBranch": [
+      "Verified four distinct zero-cost provider/model paths from current official provider documentation.",
+      "Added machine-readable zero-cost provider presets.",
+      "Manual judge workflow now applies free defaults unless explicitly overridden.",
+      "Added CI validation that all four presets remain distinct providers/models and policy remains zero-cost-only.",
+      "Updated endpoint resolution so paid inference is no longer treated as the blocker."
+    ],
+    "pending": [
+      "Pass full CI for zero-cost provider presets/workflow changes.",
+      "Merge the free-provider PR and record exact merge commit.",
+      "Create/configure the four free API keys and Cloudflare account id.",
+      "Run the four isolated manual judge workflows.",
+      "Merge artifacts and run strict Unit 1 semantic certification."
     ]
   },
   "endpointResolution": {
-    "status": "BLOCKED_ON_EXPLICIT_ENDPOINT_CONFIG",
+    "status": "FREE_PROVIDERS_VERIFIED_CREDENTIALS_REQUIRED",
     "lastInfrastructureMerge": "0704d5fd85a194578cac03f42e981f1a4536a38e",
     "semanticInferenceRun": false,
     "semanticEvidenceCommitted": false,
@@ -127,6 +131,23 @@
     "genericInstalledInferenceConnector": "NOT_DISCOVERED_2026-10-06",
     "manualWorkflow": ".github/workflows/semantic-judge.yml",
     "setupDocument": "content/assurance/semantic/ENDPOINT_RESOLUTION.md",
-    "packet": "content/assurance/semantic/packets/01-introductions.json"
+    "packet": "content/assurance/semantic/packets/01-introductions.json",
+    "paidInferenceRequired": false,
+    "verifiedAt": "2026-10-06",
+    "freePresets": "content/assurance/semantic/free-provider-presets.json",
+    "providers": {
+      "english": "Groq Free / openai/gpt-oss-120b",
+      "persian": "Gemini Free / gemini-3.5-flash-lite",
+      "pedagogical": "OpenRouter Free / google/gemma-4-31b-it:free",
+      "adversarial": "Cloudflare Workers AI Free / @cf/zai-org/glm-4.7-flash"
+    },
+    "remainingSetup": [
+      "SEMANTIC_JUDGE_ENGLISH_API_KEY",
+      "SEMANTIC_JUDGE_PERSIAN_API_KEY",
+      "SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY",
+      "SEMANTIC_JUDGE_ADVERSARIAL_API_KEY",
+      "SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID"
+    ],
+    "note": "No paid tier is required by the current design. Free-tier availability/pricing must be re-verified before later large reruns."
   }
 }
