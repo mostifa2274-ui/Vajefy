@@ -1,7 +1,14 @@
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import type { Entry, Sense } from "../src/lib/learn/content";
+import type { CheckItem, Entry, Scene, Sense } from "../src/lib/learn/content";
+import {
+  authoredTaskText,
+  buildHeadwordIndex,
+  englishTokens,
+  lexicalForms,
+  resolveA1Entry,
+} from "../src/lib/learn/learner-language";
 
 type Finding = {
   code: string;
@@ -274,12 +281,14 @@ function option(flag: string): string | undefined {
 }
 
 const requestedUnit = option("--unit");
+const curriculumFile = path.join(ROOT, "content", "curriculum", "A1.json");
+const curriculum = fs.existsSync(curriculumFile)
+  ? (JSON.parse(fs.readFileSync(curriculumFile, "utf8")) as {
+      units: { id: string; entries: { id: string }[] }[];
+    })
+  : { units: [] };
 let selectedIds: Set<string> | null = null;
 if (requestedUnit) {
-  const curriculumFile = path.join(ROOT, "content", "curriculum", "A1.json");
-  const curriculum = JSON.parse(fs.readFileSync(curriculumFile, "utf8")) as {
-    units: { id: string; entries: { id: string }[] }[];
-  };
   const unit = curriculum.units.find((candidate) => candidate.id === requestedUnit);
   if (!unit) {
     console.error(`Unknown A1 unit: ${requestedUnit}`);
@@ -293,25 +302,206 @@ const files = fs
   .filter((name) => name.endsWith(".json"))
   .sort();
 
-const entries: Entry[] = [];
+const allA1: Entry[] = [];
 for (const file of files) {
   const rows = JSON.parse(
     fs.readFileSync(path.join(ENTRY_DIR, file), "utf8"),
   ) as Entry[];
-  entries.push(
-    ...rows.filter(
-      (entry) =>
-        entry.id.startsWith("lex:A1:") &&
-        (!selectedIds || selectedIds.has(entry.id)),
-    ),
-  );
+  allA1.push(...rows.filter((entry) => entry.id.startsWith("lex:A1:")));
+}
+const entries = allA1.filter((entry) => !selectedIds || selectedIds.has(entry.id));
+
+// Curriculum frontier (plan §7 C3). An entry's first sense is taught at its
+// place in the curriculum; further senses come one unit later, so by then
+// the whole of the entry's own unit is known.
+const position = new Map<string, number>();
+const unitEnd = new Map<string, number>();
+for (const unit of curriculum.units) {
+  for (const item of unit.entries) position.set(item.id, position.size);
+  for (const item of unit.entries) unitEnd.set(item.id, position.size - 1);
+}
+
+/** Irregular past forms from the A1 irregular-verb collection (went -> go). */
+const irregularForms = new Map<string, string>();
+const irregularFile = path.join(ROOT, "public", "data", "irregular.json");
+if (fs.existsSync(irregularFile)) {
+  for (const row of JSON.parse(fs.readFileSync(irregularFile, "utf8")) as {
+    base: string;
+    past: string;
+    pp: string;
+  }[]) {
+    for (const form of `${row.past}/${row.pp}`.toLowerCase().split("/")) {
+      if (form.trim()) irregularForms.set(form.trim(), row.base.toLowerCase());
+    }
+  }
+}
+
+// Forms the shared morphology does not cover.
+for (const [form, base] of Object.entries({ these: "this", those: "that" })) {
+  irregularForms.set(form, base);
+}
+
+/** Plain ASCII letters, so "café" is read as "cafe", not "caf". */
+function unaccented(value: string): string {
+  return value.normalize("NFD").replace(/\p{M}/gu, "");
+}
+
+const headwordIndex = buildHeadwordIndex(
+  allA1.map((entry) => ({ id: entry.id, headword: unaccented(entry.headword) })),
+);
+
+/** The forms a token stands for, adding "'d" contractions (I'd -> I would). */
+function forms(raw: string): string[] {
+  const token = raw.toLowerCase().replaceAll("’", "'");
+  if (token.endsWith("'d") && token.length > 2) return [token.slice(0, -2), "would"];
+  return lexicalForms(raw);
+}
+
+/** Resolves a form to an A1 entry, including comparatives and superlatives. */
+function resolveForm(form: string): string | undefined {
+  const direct = resolveA1Entry(form, headwordIndex, irregularForms);
+  if (direct) return direct;
+  for (const suffix of ["est", "er"]) {
+    if (!form.endsWith(suffix) || form.length <= suffix.length + 2) continue;
+    const stem = form.slice(0, -suffix.length);
+    const candidates = [stem, `${stem}e`];
+    if (stem.at(-1) === stem.at(-2)) candidates.push(stem.slice(0, -1));
+    if (stem.endsWith("i")) candidates.push(`${stem.slice(0, -1)}y`);
+    for (const candidate of candidates) {
+      const id = headwordIndex.get(candidate);
+      if (id) return id;
+    }
+  }
+  return undefined;
+}
+
+/** Documented learner-language exceptions from the calibration slice. */
+const exceptionsByEntry = new Map<string, Set<string>>();
+const calibrationFile = path.join(ROOT, "content", "calibration", "a1-20.json");
+if (fs.existsSync(calibrationFile)) {
+  const slice = JSON.parse(fs.readFileSync(calibrationFile, "utf8")) as {
+    units: { entries: { id: string; languageExceptions?: { token: string }[] }[] }[];
+  };
+  for (const item of slice.units.flatMap((unit) => unit.entries)) {
+    exceptionsByEntry.set(
+      item.id,
+      new Set(
+        (item.languageExceptions ?? []).map((exception) =>
+          exception.token.toLowerCase().replaceAll("’", "'").trim(),
+        ),
+      ),
+    );
+  }
+}
+
+/**
+ * Reports words in tasks that the learner has not met by `frontier` (a
+ * curriculum position), unless the task glosses them in its support.
+ */
+function checkTasks(
+  code: string,
+  where: string,
+  items: readonly CheckItem[],
+  frontier: number,
+  exceptions: ReadonlySet<string> = new Set(),
+) {
+  for (const [index, item] of items.entries()) {
+    const glossed = new Set<string>();
+    for (const support of item.support ?? []) {
+      for (const raw of englishTokens(unaccented(support.en))) {
+        for (const form of forms(raw)) glossed.add(form);
+      }
+    }
+    const reported = new Set<string>();
+    // A wrong option may be a deliberately malformed form ("fastly"); only
+    // real later vocabulary in it is a dependency.
+    const distractors =
+      item.type === "choice"
+        ? new Set(
+            item.options
+              .filter((option) => !option.ok)
+              .flatMap((option) => englishTokens(unaccented(option.text)))
+              .flatMap(forms),
+          )
+        : new Set<string>();
+    // Dialogue speaker labels ("A: ... B: ...") are not vocabulary.
+    const text = unaccented(authoredTaskText(item)).replace(
+      /(^|[\s"“'‘])[A-Z]:/g,
+      "$1",
+    );
+    for (const raw of englishTokens(text)) {
+      // A hyphenated word nobody lists whole ("twenty-five") is its parts.
+      const whole = forms(raw);
+      const split = whole.flatMap((form) =>
+        form.includes("-") && !resolveForm(form) ? form.split("-") : [form],
+      );
+      for (const form of split) {
+        // Single letters name letters ("the letter B"); "a" and "I" resolve.
+        if (form.length === 1) continue;
+        if (reported.has(form) || glossed.has(form) || exceptions.has(form)) continue;
+        const id = resolveForm(form);
+        if (!id && distractors.has(form)) continue;
+        const at = id === undefined ? undefined : position.get(id);
+        if (at !== undefined && at <= frontier) continue;
+        reported.add(form);
+        add(
+          code,
+          `${where}.check[${index}]`,
+          id
+            ? `"${form}" is taught later (${id}); gloss it in support or reword`
+            : `"${form}" is not an A1 word; gloss it in support or reword`,
+        );
+      }
+    }
+  }
+}
+
+/** Where a sense is taught: its entry's place, or its unit's end for a further sense. */
+function senseFrontier(senseId: string): number | undefined {
+  const [entryId, label] = senseId.split("#");
+  const entry = allA1.find((candidate) => candidate.id === entryId);
+  const first = !label || entry?.senses[0]?.id === senseId;
+  return first ? position.get(entryId) : unitEnd.get(entryId);
 }
 
 let senses = 0;
 for (const entry of entries) {
-  for (const sense of entry.senses) {
+  for (const [index, sense] of entry.senses.entries()) {
     senses += 1;
     checkSense(sense);
+    const frontier =
+      index === 0 ? position.get(entry.id) : unitEnd.get(entry.id);
+    if (frontier !== undefined) {
+      checkTasks(
+        "FRONTIER_TASK_VOCABULARY",
+        sense.id,
+        sense.check,
+        frontier,
+        exceptionsByEntry.get(entry.id),
+      );
+    }
+  }
+}
+
+// A scene comes after all its targets, so its tasks may use anything taught
+// up to the latest of them. Its lines carry Persian translations.
+const scenesFile = path.join(ROOT, "content", "pilot", "scenes.json");
+let scenes = 0;
+if (fs.existsSync(scenesFile)) {
+  for (const scene of JSON.parse(fs.readFileSync(scenesFile, "utf8")) as Scene[]) {
+    const reach = scene.targets.map(senseFrontier);
+    if (reach.some((at) => at === undefined)) continue;
+    const frontier = Math.max(...(reach as number[]));
+    const lastTarget = scene.targets[reach.indexOf(frontier)].split("#")[0];
+    if (selectedIds && !selectedIds.has(lastTarget)) continue;
+    scenes += 1;
+    // Speaker names are declared named entities, so the scene's tasks may use them.
+    const speakers = new Set(
+      scene.lines
+        .flatMap((line) => englishTokens(unaccented(line.speaker ?? "")))
+        .flatMap(forms),
+    );
+    checkTasks("FRONTIER_SCENE_VOCABULARY", scene.id, scene.check, frontier, speakers);
   }
 }
 
@@ -334,7 +524,7 @@ if (process.argv.includes("--json")) {
   console.log(JSON.stringify(report, null, 2));
 } else {
   console.log(
-    `A1 deterministic assurance${requestedUnit ? ` [${requestedUnit}]` : ""}: ${report.entries} entries, ${report.senses} senses, ${report.findings} finding(s).`,
+    `A1 deterministic assurance${requestedUnit ? ` [${requestedUnit}]` : ""}: ${report.entries} entries, ${report.senses} senses, ${scenes} scene(s), ${report.findings} finding(s).`,
   );
   for (const [code, count] of Object.entries(report.byCode)) {
     console.log(`! ${code}: ${count}`);
