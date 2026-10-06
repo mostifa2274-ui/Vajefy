@@ -21,7 +21,7 @@ const required = [
   "calibration_v1",
   "unit1",
   "acknowledge_inference:",
-  "if: ${{ inputs.acknowledge_inference }}",
+  "if: ${{ github.ref == 'refs/heads/main' && inputs.acknowledge_inference }}",
   "permissions:\n  contents: read\n  id-token: write",
   "SEMANTIC_JUDGE_TRANSPORT: keyless",
   "Check role qualification before Unit 1",
