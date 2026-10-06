@@ -89,3 +89,86 @@ certification gate.
 
 No human approval, legal clearance, learner outcome, or audio certification is
 inferred from semantic evidence.
+
+
+## Reproducible judge packet
+
+Unit 1's committed packet is:
+
+`content/assurance/semantic/packets/01-introductions.json`
+
+It contains 20 sense targets and four role specifications. Every target is bound
+to the exact certified sense plus its unit, course order and prerequisites.
+Every role records the expected prompt and rubric hashes.
+
+CI runs:
+
+```sh
+npm run assurance:semantic:packets:check
+```
+
+A source, curriculum, rubric or prompt change therefore makes the packet stale
+instead of silently reusing old judgment evidence.
+
+## Isolated judge runner
+
+The repository includes an opt-in OpenAI-compatible/local endpoint adapter. CI
+does not call it and no endpoint or credential is committed.
+
+Run one role in one process/context, for example:
+
+```sh
+SEMANTIC_JUDGE_ENGLISH_BASE_URL=http://localhost:8000/v1 \
+SEMANTIC_JUDGE_ENGLISH_MODEL=my-model \
+SEMANTIC_JUDGE_ENGLISH_MODEL_VERSION=model-build-id \
+SEMANTIC_JUDGE_ENGLISH_PROVIDER=local \
+npm run assurance:semantic:judge -- \
+  --role english \
+  --packet content/assurance/semantic/packets/01-introductions.json \
+  --run-id unit1-english-run-001 \
+  --output /tmp/unit1-english.json
+```
+
+The role-specific variables may fall back to generic
+`SEMANTIC_JUDGE_BASE_URL`, `SEMANTIC_JUDGE_MODEL`,
+`SEMANTIC_JUDGE_MODEL_VERSION`, `SEMANTIC_JUDGE_PROVIDER` and
+`SEMANTIC_JUDGE_API_KEY`.
+
+The runner:
+
+- verifies the current rubric, prompt and target hashes before inference;
+- supplies one exact role rubric;
+- derives overall judge status locally from criterion results;
+- fills evaluator provenance itself rather than trusting model-supplied metadata;
+- rejects missing/extra criteria or invalid structured output;
+- writes one role evidence bundle only after every requested target succeeds.
+
+No model call is automatic. In particular, repository CI must not silently spend
+credits or use a paid provider.
+
+## Merge isolated role runs
+
+After all independent role runs exist, combine them with:
+
+```sh
+npm run assurance:semantic:merge -- \
+  --unit 01-introductions \
+  --run /tmp/unit1-english.json \
+  --run /tmp/unit1-persian.json \
+  --run /tmp/unit1-pedagogical.json \
+  --run /tmp/unit1-adversarial.json \
+  --require-complete
+```
+
+The merge command rejects duplicate target/role pairs, unknown targets, wrong
+units and mismatched source-generation contexts. The merged evidence is then
+checked with:
+
+```sh
+npm run assurance:semantic:unit1:check
+npm run assurance:semantic:unit1:strict
+```
+
+The strict command is the semantic certification gate and remains expected to
+fail until genuine independent evidence has been produced for every Unit 1
+sense.
