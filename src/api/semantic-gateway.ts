@@ -1,6 +1,6 @@
 import {
   KEYLESS_SEMANTIC_AUDIENCE,
-  KEYLESS_SEMANTIC_INFERENCE_WORKFLOWS,
+  isKeylessInferenceWorkflow,
   KEYLESS_SEMANTIC_MODELS,
   KEYLESS_SEMANTIC_REF,
   KEYLESS_SEMANTIC_REPOSITORY,
@@ -98,12 +98,7 @@ export async function handleSemanticGateway(
   }
 
   if (request.method !== "POST") return jsonError("method-not-allowed", 405);
-  if (
-    claims.event_name !== "workflow_dispatch" ||
-    !KEYLESS_SEMANTIC_INFERENCE_WORKFLOWS.includes(
-      claims.workflow_ref as (typeof KEYLESS_SEMANTIC_INFERENCE_WORKFLOWS)[number],
-    )
-  ) {
+  if (!isKeylessInferenceWorkflow(claims.workflow_ref, claims.event_name)) {
     return jsonError("inference-requires-authorized-manual-dispatch", 403);
   }
 
