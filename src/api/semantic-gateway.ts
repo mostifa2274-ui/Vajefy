@@ -22,32 +22,87 @@ function jsonError(error: string, status: number): Response {
   );
 }
 
-function extractContent(value: unknown): string | null {
-  if (typeof value === "string") return value;
-  if (!value || typeof value !== "object") return null;
+function collectTextParts(value: unknown, depth = 0): string[] {
+  if (depth > 6) return [];
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return trimmed ? [trimmed] : [];
+  }
+  if (!value || typeof value !== "object") return [];
+
+  if (Array.isArray(value)) {
+    return value.flatMap((item) => collectTextParts(item, depth + 1));
+  }
 
   const record = value as Record<string, unknown>;
-  if (typeof record.response === "string") return record.response;
+  const direct: string[] = [];
 
-  const choices = record.choices;
-  if (Array.isArray(choices)) {
-    const first = choices[0];
-    if (first && typeof first === "object") {
-      const message = (first as Record<string, unknown>).message;
-      if (message && typeof message === "object") {
-        const content = (message as Record<string, unknown>).content;
-        if (typeof content === "string") return content;
-      }
+  for (const key of ["output_text", "response"]) {
+    if (typeof record[key] === "string" && record[key]!.trim()) {
+      direct.push(record[key]!.trim());
     }
   }
 
-  const result = record.result;
-  if (result && typeof result === "object") {
-    const response = (result as Record<string, unknown>).response;
-    if (typeof response === "string") return response;
+  if (typeof record.text === "string" && record.text.trim()) {
+    const type = typeof record.type === "string" ? record.type : "";
+    if (
+      !type ||
+      type === "output_text" ||
+      type === "text" ||
+      type === "message"
+    ) {
+      direct.push(record.text.trim());
+    }
   }
 
-  return null;
+  const choices = record.choices;
+  if (Array.isArray(choices)) {
+    for (const choice of choices) {
+      if (!choice || typeof choice !== "object") continue;
+      const choiceRecord = choice as Record<string, unknown>;
+      direct.push(...collectTextParts(choiceRecord.message, depth + 1));
+      direct.push(...collectTextParts(choiceRecord.text, depth + 1));
+    }
+  }
+
+  for (const key of ["output", "content", "result"]) {
+    if (record[key] != null) {
+      direct.push(...collectTextParts(record[key], depth + 1));
+    }
+  }
+
+  return direct;
+}
+
+export function extractWorkersAiContent(value: unknown): string | null {
+  const parts = collectTextParts(value);
+  if (!parts.length) return null;
+  return [...new Set(parts)].join("\n").trim() || null;
+}
+
+function workersAiDiagnostic(value: unknown): Record<string, unknown> {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return { valueType: Array.isArray(value) ? "array" : typeof value };
+  }
+  const record = value as Record<string, unknown>;
+  const output = Array.isArray(record.output) ? record.output : [];
+  return {
+    keys: Object.keys(record).sort(),
+    status: typeof record.status === "string" ? record.status : null,
+    incompleteDetails:
+      record.incomplete_details && typeof record.incomplete_details === "object"
+        ? record.incomplete_details
+        : null,
+    outputTypes: output
+      .map((item) =>
+        item && typeof item === "object"
+          ? (item as Record<string, unknown>).type
+          : typeof item,
+      )
+      .filter((type) => type != null),
+    usage:
+      record.usage && typeof record.usage === "object" ? record.usage : null,
+  };
 }
 
 async function authenticate(
@@ -156,8 +211,16 @@ export async function handleSemanticGateway(
     return jsonError("inference-failed", 502);
   }
 
-  const content = extractContent(result);
-  if (!content) return jsonError("empty-model-content", 502);
+  const content = extractWorkersAiContent(result);
+  if (!content) {
+    console.error("Semantic Workers AI returned no extractable final text", {
+      role: body.role,
+      model: preset.model,
+      runId: claims.run_id ?? null,
+      diagnostic: workersAiDiagnostic(result),
+    });
+    return jsonError("empty-model-content", 502);
+  }
 
   return Response.json(
     {
