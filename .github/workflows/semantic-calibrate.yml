@@ -1,0 +1,238 @@
+name: Semantic judge calibration and qualification
+
+on:
+  workflow_dispatch:
+    inputs:
+      role:
+        description: Judge role to calibrate and qualify
+        required: true
+        type: choice
+        options:
+          - english
+          - persian
+          - pedagogical
+          - adversarial
+      replace_existing:
+        description: Replace an existing qualification only after intentional re-calibration
+        required: true
+        type: boolean
+        default: false
+      acknowledge_inference:
+        description: I explicitly authorize three free-tier calibration inference runs for this role
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: semantic-calibration-${{ inputs.role }}
+  cancel-in-progress: false
+
+jobs:
+  calibrate:
+    if: ${{ github.ref == 'refs/heads/main' && inputs.acknowledge_inference }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID: ${{ vars.SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID }}
+
+      ENGLISH_BASE_URL: ${{ vars.SEMANTIC_JUDGE_ENGLISH_BASE_URL }}
+      ENGLISH_MODEL: ${{ vars.SEMANTIC_JUDGE_ENGLISH_MODEL }}
+      ENGLISH_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_ENGLISH_MODEL_VERSION }}
+      ENGLISH_PROVIDER: ${{ vars.SEMANTIC_JUDGE_ENGLISH_PROVIDER }}
+      ENGLISH_MAX_TOKENS: ${{ vars.SEMANTIC_JUDGE_ENGLISH_MAX_TOKENS }}
+      ENGLISH_JSON_RESPONSE_FORMAT: ${{ vars.SEMANTIC_JUDGE_ENGLISH_JSON_RESPONSE_FORMAT }}
+      ENGLISH_API_KEY: ${{ secrets.SEMANTIC_JUDGE_ENGLISH_API_KEY }}
+
+      PERSIAN_BASE_URL: ${{ vars.SEMANTIC_JUDGE_PERSIAN_BASE_URL }}
+      PERSIAN_MODEL: ${{ vars.SEMANTIC_JUDGE_PERSIAN_MODEL }}
+      PERSIAN_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_PERSIAN_MODEL_VERSION }}
+      PERSIAN_PROVIDER: ${{ vars.SEMANTIC_JUDGE_PERSIAN_PROVIDER }}
+      PERSIAN_MAX_TOKENS: ${{ vars.SEMANTIC_JUDGE_PERSIAN_MAX_TOKENS }}
+      PERSIAN_JSON_RESPONSE_FORMAT: ${{ vars.SEMANTIC_JUDGE_PERSIAN_JSON_RESPONSE_FORMAT }}
+      PERSIAN_API_KEY: ${{ secrets.SEMANTIC_JUDGE_PERSIAN_API_KEY }}
+
+      PEDAGOGICAL_BASE_URL: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_BASE_URL }}
+      PEDAGOGICAL_MODEL: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_MODEL }}
+      PEDAGOGICAL_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_MODEL_VERSION }}
+      PEDAGOGICAL_PROVIDER: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_PROVIDER }}
+      PEDAGOGICAL_MAX_TOKENS: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_MAX_TOKENS }}
+      PEDAGOGICAL_JSON_RESPONSE_FORMAT: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_JSON_RESPONSE_FORMAT }}
+      PEDAGOGICAL_API_KEY: ${{ secrets.SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY }}
+
+      ADVERSARIAL_BASE_URL: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_BASE_URL }}
+      ADVERSARIAL_MODEL: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_MODEL }}
+      ADVERSARIAL_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_MODEL_VERSION }}
+      ADVERSARIAL_PROVIDER: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_PROVIDER }}
+      ADVERSARIAL_MAX_TOKENS: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_MAX_TOKENS }}
+      ADVERSARIAL_JSON_RESPONSE_FORMAT: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_JSON_RESPONSE_FORMAT }}
+      ADVERSARIAL_API_KEY: ${{ secrets.SEMANTIC_JUDGE_ADVERSARIAL_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Select isolated endpoint configuration
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+        run: |
+          set -euo pipefail
+          case "$ROLE" in
+            english) PREFIX=ENGLISH ;;
+            persian) PREFIX=PERSIAN ;;
+            pedagogical) PREFIX=PEDAGOGICAL ;;
+            adversarial) PREFIX=ADVERSARIAL ;;
+            *)
+              echo "Unsupported role: $ROLE" >&2
+              exit 1
+              ;;
+          esac
+
+          for KEY in BASE_URL MODEL MODEL_VERSION PROVIDER MAX_TOKENS JSON_RESPONSE_FORMAT API_KEY; do
+            VAR_NAME="${PREFIX}_${KEY}"
+            VALUE="${!VAR_NAME-}"
+            if [ -n "$VALUE" ]; then
+              echo "::add-mask::$VALUE"
+              printf 'SEMANTIC_JUDGE_%s=%s\n' "$KEY" "$VALUE" >> "$GITHUB_ENV"
+            fi
+          done
+
+      - name: Apply verified zero-cost provider defaults
+        env:
+          ROLE: ${{ inputs.role }}
+        run: npm run assurance:semantic:free-preset -- --role "$ROLE" --github-env
+
+      - name: Select frozen calibration packet
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+        run: |
+          set -euo pipefail
+          PACKET="content/assurance/semantic/calibration/v1/packets/${ROLE}.json"
+          test -f "$PACKET"
+          echo "SEMANTIC_PACKET=$PACKET" >> "$GITHUB_ENV"
+
+      - name: No-inference role preflight
+        env:
+          ROLE: ${{ inputs.role }}
+        run: npm run assurance:semantic:preflight -- --packet "$SEMANTIC_PACKET" --role "$ROLE" --require-ready
+
+      - name: Run three isolated calibration repeats
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+        run: |
+          set -euo pipefail
+          for REPEAT in 1 2 3; do
+            RUN_ID="cal-v1-${ROLE}-${GITHUB_RUN_ID}-${REPEAT}"
+            npm run assurance:semantic:judge -- \
+              --role "$ROLE" \
+              --packet "$SEMANTIC_PACKET" \
+              --run-id "$RUN_ID" \
+              --output "calibration-${ROLE}-${REPEAT}.json"
+          done
+
+      - name: Score against pre-registered Vajefy gate
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+        run: |
+          set -euo pipefail
+          npm run assurance:semantic:calibration:score -- \
+            --role "$ROLE" \
+            --run "calibration-${ROLE}-1.json" \
+            --run "calibration-${ROLE}-2.json" \
+            --run "calibration-${ROLE}-3.json" \
+            --json \
+            --require-promote > "calibration-report-${ROLE}.json"
+
+      - name: Record qualification only after strict promotion
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+          REPLACE: ${{ inputs.replace_existing }}
+        run: |
+          set -euo pipefail
+          ARGS=(
+            --role "$ROLE"
+            --run "calibration-${ROLE}-1.json"
+            --run "calibration-${ROLE}-2.json"
+            --run "calibration-${ROLE}-3.json"
+          )
+          if [ "$REPLACE" = "true" ]; then
+            ARGS+=(--replace)
+          fi
+          npm run assurance:semantic:qualification:record -- "${ARGS[@]}"
+          npm run assurance:semantic:qualification:check -- --role "$ROLE"
+
+      - name: Stage auditable result
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+        run: |
+          set -euo pipefail
+          mkdir -p content/assurance/semantic/calibration/results
+          cp "calibration-report-${ROLE}.json" \
+            "content/assurance/semantic/calibration/results/${ROLE}.json"
+
+      - name: Verify only qualification artifacts changed
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+        run: |
+          set -euo pipefail
+          git add content/assurance/semantic/calibration/qualified.json
+          git add "content/assurance/semantic/calibration/results/${ROLE}.json"
+
+          CHANGED="$(git diff --cached --name-only)"
+          echo "$CHANGED"
+
+          while IFS= read -r FILE; do
+            [ -z "$FILE" ] && continue
+            case "$FILE" in
+              content/assurance/semantic/calibration/qualified.json) ;;
+              content/assurance/semantic/calibration/results/"$ROLE".json) ;;
+              *)
+                echo "Unexpected calibration write: $FILE" >&2
+                exit 1
+                ;;
+            esac
+          done <<< "$CHANGED"
+
+          test -n "$CHANGED"
+
+      - name: Commit qualification to main
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Qualify semantic judge: ${ROLE} on vajefy-semantic-v1"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Upload calibration evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: semantic-calibration-${{ inputs.role }}-${{ github.run_id }}
+          path: |
+            calibration-${{ inputs.role }}-1.json
+            calibration-${{ inputs.role }}-2.json
+            calibration-${{ inputs.role }}-3.json
+            calibration-report-${{ inputs.role }}.json
+          if-no-files-found: error
+          retention-days: 30
