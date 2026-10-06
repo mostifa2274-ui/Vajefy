@@ -13,6 +13,7 @@ import { semanticEndpointConfig } from "./semantic-endpoint-config";
 import { requestGitHubActionsOidcToken } from "./github-actions-oidc";
 import { buildSemanticJudgeUserPayload } from "./semantic-judge-request";
 import { semanticInputHash } from "./semantic-input";
+import { parseSemanticJudgeJson } from "../src/lib/learn/semantic-judge-json";
 
 const ROOT = process.cwd();
 const RUBRICS = path.join(ROOT, "content", "assurance", "semantic-rubrics.json");
@@ -265,9 +266,11 @@ async function main() {
 
     let raw: unknown;
     try {
-      raw = JSON.parse(content);
+      raw = parseSemanticJudgeJson(content);
     } catch {
-      fail(`${role} judge returned non-JSON content for ${target.targetId}`);
+      fail(
+        `${role} judge returned content that is not a single JSON payload for ${target.targetId}`,
+      );
     }
 
     const criteriaRaw = (raw as { criteria?: unknown })?.criteria;
