@@ -798,3 +798,46 @@ gold labels and promotion thresholds are unchanged.
 
 Resume point: full CI -> merge -> exact production OIDC smoke -> rerun the same
 already-authorized failed English workflow.
+
+
+## Checkpoint — English Llama 3.3 70B rejected under frozen v1
+
+English workflow `37473550090` was re-run (attempt 10, job `112401239923`)
+after PR #107 deployed, checking out main at
+`82038312e6e80b059ad1a69c1a3ef5cee8bd1162`.
+
+- Neuron budget gate: PASS. Keyless OIDC preflight: PASS.
+- Inference reached `@cf/meta/llama-3.3-70b-instruct-fp8-fast`. All three
+  repeats produced valid, schema-compliant output.
+- Frozen v1 scoring: **DO NOT PROMOTE**. Defect recall 0.0%, clean
+  false-positive rate 0.0%, clean uncertain rate 16.7%, abstain accuracy
+  100.0%, expected-label stability 66.7%.
+
+No repeat produced FAIL on a defect case's expected criterion. Overall FAIL
+statuses on `cal-en-grammar-agreement` (repeats 2–3) and
+`cal-en-sense-live` (repeat 1) do not count, because recall is measured on the
+expected criterion. No qualification was recorded and no v1 threshold or gold
+label changed.
+
+English has now rejected GPT-OSS 120B and Llama 3.3 70B. The next English
+candidate needs a fresh budget check, and v1 stays frozen.
+
+## Status ledger — plan §41 item 12
+
+`docs/A1_PLAN_STATUS.md` now holds the authoritative status ledger in the plan
+§31 state model. It covers the §41 first package, the later phases, Gate 0 and
+the scope deferrals. `npm run status:check` runs in `validate:data`. The CI
+check job fetches full commit history and runs it with `--require-history`.
+
+- The check fails on unknown states, malformed or unknown commits, a first
+  commit that is not an ancestor of its completion commit, missing evidence
+  paths, and unfinished rows without a note.
+- GATE0-RIGHTS must be BLOCKED exactly while provenance has blockers.
+- Every BLOCKED blocker in `progress.json` needs a matching BLOCKED row.
+- P2-CALIBRATION cannot be claimed complete until all four roles are qualified.
+
+`AGENTS.md` (with `CLAUDE.md` importing it) tells every session to read the
+ledger first and update it in the same pull request as the work.
+
+This file and `progress.json` remain the semantic-assurance handoff. The
+ledger is where implementation state is decided.

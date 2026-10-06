@@ -1,21 +1,105 @@
-# A1-first plan: status
+# A1 plan: status
 
-> **Autonomous-assurance migration started 6 October 2026.** The implementation roadmap is [AUTONOMOUS_ASSURANCE_PLAN.md](AUTONOMOUS_ASSURANCE_PLAN.md). Human review is no longer the intended routine release gate; machine certification will replace it in staged PRs. Current human-review counts below remain historical baseline evidence until the qualification pipeline is migrated.
+This file is the authoritative record of implementation state (plan §31 of
+[AUTONOMOUS_ASSURANCE_PLAN.md](AUTONOMOUS_ASSURANCE_PLAN.md)). Read it before
+starting work, and update it in the same pull request as the work. The ledger
+below is checked in CI by `npm run status:check`.
 
-## Autonomous assurance migration
+For a semantic-assurance session handoff (current branch, what was tried,
+what not to repeat), also read `content/assurance/progress.json` and
+[AUTONOMOUS_ASSURANCE_PROGRESS.md](AUTONOMOUS_ASSURANCE_PROGRESS.md).
 
-| Item | State | Evidence |
-|---|---|---|
-| Gate 0 provenance manifest | IN_PROGRESS | `content/assurance/provenance.json` exists; current Oxford-derived source intentionally remains `unverified` |
-| Fail-closed assurance schema | IN_PROGRESS | `src/lib/learn/assurance.ts` defines PASS/FAIL/UNCERTAIN/DISAGREEMENT/QUARANTINED and machine-assurance records |
-| Deterministic A1 assurance audit | IN_PROGRESS | `scripts/content-assurance.ts` reports structural/Persian/mistake/example/usage defects; `content/assurance/deterministic-baseline.json` now ratchets the measured defect classes so CI fails if they increase |
-| Autonomous semantic judges | NOT_STARTED | English, Persian, pedagogical and adversarial judges still to be implemented |
-| Audio certification | NOT_STARTED | Existing heuristic remains provisional |
-| Autonomous UX agents | NOT_STARTED | Existing Playwright/axe remains the foundation |
-| Machine-certified release qualification | NOT_STARTED | Existing human approval gate remains active until replacement evidence is complete |
+Nothing in this file is a reviewer approval, a listening result, a device
+result or a learning outcome. MACHINE_PASS means machine checks pass, nothing
+more.
 
-This file tracks the A1-first product plan (4 October 2026) against the
-repository. Each stage and gate item is marked as one of:
+## Status ledger
+
+States:
+
+- **NOT_STARTED**: nothing merged.
+- **IN_PROGRESS**: partly merged. The note says what remains.
+- **BLOCKED**: cannot proceed without a decision or action outside the
+  repository. The note names it.
+- **MACHINE_PASS**: built and passing every machine check, and not yet
+  deployed to a canary.
+- **CANARY**: deployed to a canary cohort (plan §20, R3).
+- **DONE**: finished. Nothing remains.
+- **DEFERRED**: postponed by the plan. The note says until when.
+- **REMOVED**: dropped. The note says why.
+
+Release impact:
+
+- **release-gate**: public release (R4) waits until the row is DONE, and a
+  canary (R3) waits until it is MACHINE_PASS or later.
+- **canary-gate**: a canary waits until the row is MACHINE_PASS or later.
+- **scope**: product surface and focus. Does not gate a release by itself.
+- **none**: supporting work.
+
+Rules that CI enforces:
+
+- IDs are unique, and rows F01–F12 (the first implementation package, plan
+  §41), GATE0-RIGHTS and P2-CALIBRATION exist.
+- MACHINE_PASS, CANARY and DONE rows have a first and a completion commit.
+  Other rows have no completion commit, except REMOVED.
+- NOT_STARTED rows have no commits. Every other row names evidence: pull
+  requests (`#84`) or backticked paths that exist.
+- IN_PROGRESS, BLOCKED, DEFERRED and REMOVED rows have a note.
+- Commits exist and are in the history of the checked revision. The first
+  commit comes before the completion commit.
+- GATE0-RIGHTS is BLOCKED exactly while `content/assurance/provenance.json`
+  has blockers. Each BLOCKED blocker in `content/assurance/progress.json` has
+  a BLOCKED row with the same ID in capitals.
+- P2-CALIBRATION is not MACHINE_PASS or later until all four judge roles are
+  qualified in `content/assurance/semantic/calibration/qualified.json`.
+
+When a pull request merges, record its merge commit as the completion commit
+in the next pull request.
+
+<!-- status-ledger:start -->
+| ID | Task | State | First commit | Completion commit | Evidence | Release impact | Notes |
+|---|---|---|---|---|---|---|---|
+| F01 | Gate 0 provenance framework | DONE | `a2d5b50` | `6e6a44b` | #82; `content/assurance/provenance.json`; `scripts/assurance-gate.ts`; `docs/CONTENT_PROVENANCE.md` | release-gate | — |
+| GATE0-RIGHTS | Gate 0 rights for every distributed source | BLOCKED | `a2d5b50` | — | `content/assurance/provenance.json` | release-gate | The Oxford-derived workbook's licence, redistribution and derivative rights are UNVERIFIED. Needs the owner to document the rights, or a migration to an openly licensed source (plan §5). Never mark it cleared without evidence. |
+| F02 | Content assurance schema (PASS/FAIL/UNCERTAIN/DISAGREEMENT/QUARANTINED) | DONE | `a2d5b50` | `6e6a44b` | #82; `src/lib/learn/assurance.ts`; `src/lib/learn/assurance.test.ts` | none | — |
+| F03 | C1 strict deterministic validator | IN_PROGRESS | `c426776` | — | #82; #83; `scripts/content-assurance.ts`; `content/assurance/deterministic-baseline.json` | release-gate | The ratchet bounds only 3 of the 7 finding codes the audit reports. `MISTAKE_RIGHT_FA_MISSING`, `PERSIAN_CHECK_FEEDBACK`, `PERSIAN_MISTAKE_WHY` and `USAGE_REQUIRED` can grow unnoticed. Next: bound every code, with unknown codes at zero. |
+| F04 | Translation and wrong/right sanity validation | DONE | `c426776` | `6e6a44b` | #82; #83; `scripts/content-assurance.ts` | none | Deterministic checks only: missing or identical `wrongFa`/`rightFa`, identical English pairs. Semantic translation checks belong to P2-SEMANTIC-UNIT1. |
+| F05 | Curriculum-frontier validator | IN_PROGRESS | `ac90c46` | — | `scripts/a1-calibration.ts` | release-gate | Task language is checked against the curriculum only for the 20-entry calibration slice (`npm run content:calibration:language`). No course-wide check for all 900 entries' tasks and scenes yet. |
+| F06 | Example duplication and diversity detection | IN_PROGRESS | `c426776` | — | #82; `scripts/content-assurance.ts` | release-gate | Exact duplicate English and Persian examples are detected. Near-duplicates, superficial noun substitution and repeated patterns (plan §9) are not. |
+| F07 | Three-mode Practice: Smart Practice, Listening, Spelling | NOT_STARTED | — | — | — | scope | — |
+| F08 | Remove deprecated A1 routes and code (match, sprint, extra decks and quiz modes) | NOT_STARTED | — | — | — | scope | — |
+| F09 | A1-only initial data loading | NOT_STARTED | — | — | — | scope | — |
+| F10 | Machine Assurance Record infrastructure | IN_PROGRESS | `a2d5b50` | — | #82; `src/lib/learn/assurance.ts` | release-gate | The record schema and aggregation exist. No per-sense records are generated, stored or invalidated on content change yet (plan §17). |
+| F11 | Model, prompt and rubric provenance | IN_PROGRESS | `066d7a3` | — | #85; #86; `content/assurance/semantic-rubrics.json`; `content/assurance/semantic/prompts` | release-gate | Judge records carry model, prompt and rubric versions. Generated content has no generation provenance yet; it is needed before the repair loop (plan §8, §18). |
+| F12 | Status ledger with the plan's state model, checked in CI | IN_PROGRESS | — | — | `docs/A1_PLAN_STATUS.md`; `scripts/plan-status.ts`; `src/lib/learn/status-ledger.ts` | none | Introduced by this table. Record the merge commit and mark it DONE in the next pull request. |
+| P1-PERSIAN-FIELDS | Persian-script checks on learner-facing Persian fields | DONE | `c426776` | `6e6a44b` | #82; `scripts/content-assurance.ts` | none | — |
+| P1-CHUNK-DECKS | Keep chunk decks out of A1 loading | NOT_STARTED | — | — | — | scope | — |
+| P1-XP | Remove XP from primary screens | NOT_STARTED | — | — | — | scope | — |
+| P1-FEATURES | Feature ledger `docs/FEATURES.md` (plan §30) | NOT_STARTED | — | — | — | scope | — |
+| P1-PRONUNCIATION | Pronunciation normalization that removes notation noise from audio flags | NOT_STARTED | — | — | — | none | — |
+| UNIT1-DETERMINISTIC | Unit 1 content passes every deterministic check | MACHINE_PASS | `eea2301` | `6714cce` | #84; `scripts/content-assurance.ts` | canary-gate | — |
+| A1-DETERMINISTIC | All A1 content passes every deterministic check | IN_PROGRESS | `c426776` | — | #82; #84; `scripts/content-assurance.ts` | release-gate | Unit 1 passes. The full corpus has 4,940 findings across 1,027 senses (`npm run assurance:content`). |
+| P2-SEMANTIC-STACK | Semantic judge roles, rubrics, arbitration, packets, runner and evidence ingestion | DONE | `066d7a3` | `0704d5f` | #85; #86; #87; #88; `scripts/semantic-assurance.ts`; `scripts/run-semantic-judge.ts`; `scripts/merge-semantic-evidence.ts` | none | — |
+| P2-KEYLESS-GATEWAY | Keyless GitHub OIDC to Workers AI judge gateway with a Neuron budget gate | DONE | `9cd71f4` | `8203831` | #93; #95; #97; #99; #107; `content/assurance/semantic/KEYLESS_GATEWAY.md`; `scripts/semantic-neuron-budget.ts` | none | — |
+| P2-CALIBRATION | Judge calibration v1 qualifies all four roles | IN_PROGRESS | `90e06f2` | — | #91; #92; `content/assurance/semantic/calibration/qualified.json` | release-gate | 0 of 4 roles qualified. English: GPT-OSS 120B and Llama 3.3 70B were both rejected under frozen v1 (Llama: 0% defect recall, run 37473550090 attempt 10). Persian, pedagogical and adversarial have not run; each needs one owner `workflow_dispatch`. |
+| P2-SEMANTIC-UNIT1 | Unit 1 semantic certification by the qualified judges | NOT_STARTED | — | — | — | canary-gate | — |
+| P2-REPAIR-LOOP | Automatic repair loop (plan §8) | NOT_STARTED | — | — | — | none | — |
+| P3-AUDIO-CERT | Audio certification (plan §12, A1–A8) | NOT_STARTED | — | — | — | release-gate | — |
+| P4-LESSON-CALIBRATION | Measured lesson time, recycling and backlog-aware load (plan §11) | NOT_STARTED | — | — | — | none | — |
+| P5-UX-AGENTS | Autonomous usability, bidi and device-profile tests (plan §14) | NOT_STARTED | — | — | — | canary-gate | — |
+| P6-CANARY | Production canary with rollback (plan §20–22) | NOT_STARTED | — | — | — | release-gate | — |
+| P8-OUTCOME-PILOT | 30-day learner outcome pilot (plan §24) | NOT_STARTED | — | — | — | none | — |
+| SCOPE-SYNC | Sync engineering | DEFERRED | — | — | `docs/AUTONOMOUS_ASSURANCE_PLAN.md` | scope | Off the A1 roadmap (plan §4, §32). The code stays off behind `SYNC=on`. |
+| SCOPE-COACH | AI coach | DEFERRED | — | — | `docs/AUTONOMOUS_ASSURANCE_PLAN.md` | scope | Kept off; not needed for A1 mastery (plan §4). |
+| SCOPE-A2-C1 | A2–C1 curriculum work | DEFERRED | — | — | `docs/AUTONOMOUS_ASSURANCE_PLAN.md` | scope | Frozen until the A1 completion gate (plan §4, §32). |
+<!-- status-ledger:end -->
+
+## A1-first plan history (4–5 October 2026)
+
+The sections below record the earlier A1-first plan, before the
+autonomous-assurance migration. Human-review counts in them are historical
+baseline evidence; routine human review is no longer the intended release
+gate. Each item there was marked:
 
 - **Done**: implemented and tested, with the pull request or file that shows it.
 - **Open (machine)**: work that code or content tooling can still do.
@@ -26,7 +110,7 @@ The status is as of 5 October 2026. Nothing here is a reviewer approval, a
 listening result, a device result or a learning outcome. Where a script reports
 readiness, that is machine readiness only.
 
-## Where things stand
+### Where things stand
 
 | Item | Plan baseline (4 Oct) | Now |
 |---|---:|---:|
@@ -53,7 +137,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 | 5. Complete A1 | Structurally done (900 / 900, all units machine-ready) | Pending: approvals, listening and scene review |
 | 6. Qualify the A1 release | Partly done; production configuration open | Pending: device matrix and sign-off |
 
-## Product decision
+### Product decision
 
 - **Done**: new learners start the A1 course only. Onboarding no longer offers
   higher levels or the placement check (#76). Higher-level data, and learners'
@@ -62,7 +146,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
   after its prerequisites, for every learning goal. A word's further senses come
   one unit later. Learn shows the current unit.
 
-## Stage 1: protect progress and offline access
+### Stage 1: protect progress and offline access
 
 - **Done**: F1 and F2 were resolved in #21.
   - Failed journal operations stay visible, exportable and retryable.
@@ -73,7 +157,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
     open tabs. See [PROGRESS_STORAGE.md](PROGRESS_STORAGE.md) and the offline
     section of [OPERATIONS.md](OPERATIONS.md).
 
-## Stage 2: one target, one plan
+### Stage 2: one target, one plan
 
 - **Done**: one daily plan (`src/lib/learn/planner.ts`) decides new words for
   Today, Learn and Review (#22). It respects the daily allowance, session time
@@ -92,7 +176,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 - **Done**: F6 no longer arises, because new learners no longer get a
   higher-level onboarding (#76).
 
-## Stage 3: the A1 standard
+### Stage 3: the A1 standard
 
 **Done:**
 - The curriculum: 12 practical units covering all 900 entries, with explicit
@@ -118,7 +202,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
   for each entry's current version, corrections, then re-review.
 - Approve the study's 180 entries (`npm run content:review-queue -- --scope study --packet`).
 
-## Stage 4: the lesson and the pilot
+### Stage 4: the lesson and the pilot
 
 **Done:**
 - The lesson sequence (#78), for each word:
@@ -155,7 +239,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 - The 30-day delayed-learning pilot, run with `npm run study:roster` and the
   roster checks.
 
-## Stage 5: all 900 entries
+### Stage 5: all 900 entries
 
 **Done:**
 - Batches 7–9 were written with audio (#18–#20), so 900 / 900 entries have
@@ -174,7 +258,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 - Compare the provisional voices with Persian learners.
 - Review only the reference notes relevant to the A1 path.
 
-## Stage 6: qualify the release
+### Stage 6: qualify the release
 
 **Done:**
 - The smoke check and workflow: `scripts/smoke.mjs` and `.github/workflows/smoke.yml`.
@@ -201,7 +285,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 - Device matrix: Android Chrome, Android tablet, iPhone with Safari, desktop.
 - Recorded release sign-off.
 
-## A1 completion gate
+### A1 completion gate
 
 | Gate | Status |
 |---|---|
@@ -213,7 +297,7 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 | Learning | Pending: thresholds, then the pilot (human) |
 | Operations | Partly done: revision and channel are verifiable; the production channel choice, `SITE_URL` and field vitals are open |
 
-## Deferred, as planned
+### Deferred, as planned
 
 - A2+ content and onboarding are not offered to new learners. Existing data and
   progress are kept.
