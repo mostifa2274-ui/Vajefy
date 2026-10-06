@@ -53,8 +53,10 @@ Rules that CI enforces:
 - P2-CALIBRATION is not MACHINE_PASS or later until all four judge roles are
   qualified in `content/assurance/semantic/calibration/qualified.json`.
 
-When a pull request merges, record its merge commit as the completion commit
-in the next pull request.
+The completion commit is the commit that finished the work. It can be a
+commit in the same pull request, since merges keep branch commits in main's
+history. Or it can be the merge commit, recorded in the next pull request. Do
+not squash-merge: the check would then fail on main.
 
 <!-- status-ledger:start -->
 | ID | Task | State | First commit | Completion commit | Evidence | Release impact | Notes |
@@ -62,23 +64,24 @@ in the next pull request.
 | F01 | Gate 0 provenance framework | DONE | `a2d5b50` | `6e6a44b` | #82; `content/assurance/provenance.json`; `scripts/assurance-gate.ts`; `docs/CONTENT_PROVENANCE.md` | release-gate | — |
 | GATE0-RIGHTS | Gate 0 rights for every distributed source | BLOCKED | `a2d5b50` | — | `content/assurance/provenance.json` | release-gate | The Oxford-derived workbook's licence, redistribution and derivative rights are UNVERIFIED. Needs the owner to document the rights, or a migration to an openly licensed source (plan §5). Never mark it cleared without evidence. |
 | F02 | Content assurance schema (PASS/FAIL/UNCERTAIN/DISAGREEMENT/QUARANTINED) | DONE | `a2d5b50` | `6e6a44b` | #82; `src/lib/learn/assurance.ts`; `src/lib/learn/assurance.test.ts` | none | — |
-| F03 | C1 strict deterministic validator | IN_PROGRESS | `c426776` | — | #82; #83; `scripts/content-assurance.ts`; `content/assurance/deterministic-baseline.json` | release-gate | The ratchet bounds only 3 of the 7 finding codes the audit reports. `MISTAKE_RIGHT_FA_MISSING`, `PERSIAN_CHECK_FEEDBACK`, `PERSIAN_MISTAKE_WHY` and `USAGE_REQUIRED` can grow unnoticed. Next: bound every code, with unknown codes at zero. |
+| F03 | C1 strict deterministic validator | DONE | `c426776` | `948daba` | #82; #83; `scripts/content-assurance.ts`; `content/assurance/deterministic-baseline.json`; `scripts/build-content.ts`; `scripts/curriculum-a1.ts` | release-gate | Plan §7 C1 map: `scripts/build-content.ts` covers the schema, duplicate IDs, unresolved references and version-bound review records. `scripts/curriculum-a1.ts` covers prerequisites. `scripts/content-assurance.ts` covers the rest, plus C2 Persian-in-English, and every finding code is ratcheted, unknown codes at zero. Untaught target references are F05. |
 | F04 | Translation and wrong/right sanity validation | DONE | `c426776` | `6e6a44b` | #82; #83; `scripts/content-assurance.ts` | none | Deterministic checks only: missing or identical `wrongFa`/`rightFa`, identical English pairs. Semantic translation checks belong to P2-SEMANTIC-UNIT1. |
-| F05 | Curriculum-frontier validator | IN_PROGRESS | `ac90c46` | — | `scripts/a1-calibration.ts` | release-gate | Task language is checked against the curriculum only for the 20-entry calibration slice (`npm run content:calibration:language`). No course-wide check for all 900 entries' tasks and scenes yet. |
+| F05 | Curriculum-frontier validator | DONE | `ac90c46` | `d3f6bb0` | `scripts/content-assurance.ts`; `src/lib/learn/learner-language.ts`; `scripts/a1-calibration.ts` | release-gate | Every entry task and scene task is checked course-wide (`FRONTIER_TASK_VOCABULARY`, `FRONTIER_SCENE_VOCABULARY`). Teaching copy is exempt because it is paired with its Persian translation. The repair is A1-FRONTIER-REPAIR. |
 | F06 | Example duplication and diversity detection | IN_PROGRESS | `c426776` | — | #82; `scripts/content-assurance.ts` | release-gate | Exact duplicate English and Persian examples are detected. Near-duplicates, superficial noun substitution and repeated patterns (plan §9) are not. |
 | F07 | Three-mode Practice: Smart Practice, Listening, Spelling | NOT_STARTED | — | — | — | scope | — |
 | F08 | Remove deprecated A1 routes and code (match, sprint, extra decks and quiz modes) | NOT_STARTED | — | — | — | scope | — |
 | F09 | A1-only initial data loading | NOT_STARTED | — | — | — | scope | — |
 | F10 | Machine Assurance Record infrastructure | IN_PROGRESS | `a2d5b50` | — | #82; `src/lib/learn/assurance.ts` | release-gate | The record schema and aggregation exist. No per-sense records are generated, stored or invalidated on content change yet (plan §17). |
 | F11 | Model, prompt and rubric provenance | IN_PROGRESS | `066d7a3` | — | #85; #86; `content/assurance/semantic-rubrics.json`; `content/assurance/semantic/prompts` | release-gate | Judge records carry model, prompt and rubric versions. Generated content has no generation provenance yet; it is needed before the repair loop (plan §8, §18). |
-| F12 | Status ledger with the plan's state model, checked in CI | IN_PROGRESS | — | — | `docs/A1_PLAN_STATUS.md`; `scripts/plan-status.ts`; `src/lib/learn/status-ledger.ts` | none | Introduced by this table. Record the merge commit and mark it DONE in the next pull request. |
+| F12 | Status ledger with the plan's state model, checked in CI | DONE | `03a8659` | `dc47f1c` | #108; `docs/A1_PLAN_STATUS.md`; `scripts/plan-status.ts`; `src/lib/learn/status-ledger.ts` | none | — |
 | P1-PERSIAN-FIELDS | Persian-script checks on learner-facing Persian fields | DONE | `c426776` | `6e6a44b` | #82; `scripts/content-assurance.ts` | none | — |
 | P1-CHUNK-DECKS | Keep chunk decks out of A1 loading | NOT_STARTED | — | — | — | scope | — |
 | P1-XP | Remove XP from primary screens | NOT_STARTED | — | — | — | scope | — |
 | P1-FEATURES | Feature ledger `docs/FEATURES.md` (plan §30) | NOT_STARTED | — | — | — | scope | — |
 | P1-PRONUNCIATION | Pronunciation normalization that removes notation noise from audio flags | NOT_STARTED | — | — | — | none | — |
 | UNIT1-DETERMINISTIC | Unit 1 content passes every deterministic check | MACHINE_PASS | `eea2301` | `6714cce` | #84; `scripts/content-assurance.ts` | canary-gate | — |
-| A1-DETERMINISTIC | All A1 content passes every deterministic check | IN_PROGRESS | `c426776` | — | #82; #84; `scripts/content-assurance.ts` | release-gate | Unit 1 passes. The full corpus has 4,940 findings across 1,027 senses (`npm run assurance:content`). |
+| A1-DETERMINISTIC | All A1 content passes every deterministic check | IN_PROGRESS | `c426776` | — | #82; #84; `scripts/content-assurance.ts`; `content/assurance/deterministic-baseline.json` | release-gate | Unit 1 passes. The full corpus has 10,350 findings across 1,027 senses and 14 scenes (`npm run assurance:content`), including the frontier findings in A1-FRONTIER-REPAIR. |
+| A1-FRONTIER-REPAIR | Tasks and scenes use only vocabulary taught by that point | NOT_STARTED | — | — | — | release-gate | 5,341 entry-task and 65 scene-task findings. 41% of the entry-task findings come from 30 high-frequency words the curriculum places late: do, not, can and please in Unit 12, and to, at and for in Unit 7. Moving them earlier is likely the cheapest repair. It changes the curriculum version and the frozen Units 1–3 study roster, so it needs its own slice. |
 | P2-SEMANTIC-STACK | Semantic judge roles, rubrics, arbitration, packets, runner and evidence ingestion | DONE | `066d7a3` | `0704d5f` | #85; #86; #87; #88; `scripts/semantic-assurance.ts`; `scripts/run-semantic-judge.ts`; `scripts/merge-semantic-evidence.ts` | none | — |
 | P2-KEYLESS-GATEWAY | Keyless GitHub OIDC to Workers AI judge gateway with a Neuron budget gate | DONE | `9cd71f4` | `8203831` | #93; #95; #97; #99; #107; `content/assurance/semantic/KEYLESS_GATEWAY.md`; `scripts/semantic-neuron-budget.ts` | none | — |
 | P2-CALIBRATION | Judge calibration v1 qualifies all four roles | IN_PROGRESS | `90e06f2` | — | #91; #92; `content/assurance/semantic/calibration/qualified.json` | release-gate | 0 of 4 roles qualified. English: GPT-OSS 120B and Llama 3.3 70B were both rejected under frozen v1 (Llama: 0% defect recall, run 37473550090 attempt 10). Persian, pedagogical and adversarial have not run; each needs one owner `workflow_dispatch`. |
