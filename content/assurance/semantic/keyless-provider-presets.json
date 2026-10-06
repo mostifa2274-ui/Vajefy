@@ -33,10 +33,10 @@
     "adversarial": {
       "provider": "cloudflare-workers-ai",
       "modelFamily": "qwen",
-      "model": "@cf/qwen/qwen3.8-27b",
-      "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06",
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "modelVersion": "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
       "maxTokens": 1200,
-      "rationale": "Newer Qwen reasoning model for independent adversarial defect discovery."
+      "rationale": "Qwen3 MoE reasoning/instruction-following/multilingual model selected as the adversarial candidate because it preserves the Qwen family while reducing worst-case Neuron usage enough for all frozen calibration repeats to fit inside the daily free-allocation budget."
     }
   }
 }
