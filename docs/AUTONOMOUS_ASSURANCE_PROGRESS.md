@@ -692,3 +692,46 @@ Authoritative resume point: dispatch
 `.github/workflows/semantic-calibrate.yml` once per role from `main`.
 Each dispatch performs all three frozen repeats, current pricing/budget check,
 OIDC gateway preflight, strict calibration scoring and qualification recording.
+
+
+## Checkpoint — keyless calibration execution boundary
+
+Date: 2026-10-06.
+
+The repository/runtime path is now complete through the calibration boundary:
+
+- PR #97 free-budget gate is merged;
+- full calibration upper bound is 7,788 Neurons for 84 requests;
+- Cloudflare Workers Free allocation is 10,000 Neurons/day;
+- current main post-merge CI is green;
+- automatic exact-revision OIDC gateway smoke is green;
+- no semantic API keys or repository variables are required;
+- the qualification ledger is still empty;
+- no semantic inference has been run.
+
+The connected GitHub toolset was checked again and **does not expose
+workflow_dispatch with inputs**. It can read workflow runs and rerun existing
+jobs, but it cannot legitimately start the manual calibration workflow.
+
+Do not weaken the inference boundary to work around that tooling limitation:
+
+- do not add push/schedule/repository_dispatch inference triggers;
+- do not create a temporary automatic calibration workflow;
+- do not reintroduce API-key providers.
+
+The next action is exactly four manual GitHub Actions dispatches from `main`:
+
+1. English;
+2. Persian;
+3. pedagogical;
+4. adversarial.
+
+Workflow: **Semantic judge calibration and qualification**
+
+For each dispatch set `acknowledge_inference=true`. The workflow itself
+performs the current-budget check, OIDC preflight, three frozen repeats,
+strict scoring and qualification recording.
+
+After any role result exists, resume from that evidence. Do not repeat the
+keyless architecture, calibration corpus, budget work, or workflow-dispatch
+capability investigation.
