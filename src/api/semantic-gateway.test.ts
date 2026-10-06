@@ -149,3 +149,50 @@ test("semantic response format rejects missing or duplicate criteria", () => {
     /invalid-required-criteria/,
   );
 });
+
+
+test("prefers structured response object over duplicate Responses API text", () => {
+  const structured = {
+    criteria: [
+      {
+        criterion: "grammar",
+        result: "PASS",
+        confidence: 0.95,
+        evidence: ["sense.examples.0.en"],
+        reasonCode: null,
+      },
+    ],
+  };
+
+  assert.equal(
+    extractWorkersAiContent({
+      response: structured,
+      output_text: JSON.stringify(structured),
+      output: [
+        {
+          type: "message",
+          content: [
+            {
+              type: "output_text",
+              text: JSON.stringify(structured),
+            },
+          ],
+        },
+      ],
+    }),
+    JSON.stringify(structured),
+  );
+});
+
+test("prefers structured response string over alternate output fields", () => {
+  const structured =
+    '{"criteria":[{"criterion":"grammar","result":"PASS","confidence":0.95,"evidence":["sense"],"reasonCode":null}]}';
+
+  assert.equal(
+    extractWorkersAiContent({
+      response: structured,
+      output_text: "non-json transport noise",
+    }),
+    structured,
+  );
+});

@@ -147,25 +147,25 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/workers-ai-structured-json",
-    "objective": "Enforce structured JSON at Workers AI generation time, validate, merge, deploy, then rerun English frozen calibration.",
+    "branch": "codex/workers-ai-structured-response-priority",
+    "objective": "Prefer Cloudflare structured response objects over duplicate Responses API text, validate, deploy, then rerun the already-authorized English calibration.",
     "blocked": false,
     "completedOnBranch": [
-      "Inspected rerun of workflow 37473550090 after PR #99.",
-      "Confirmed budget and keyless OIDC preflight still pass.",
-      "Confirmed Responses API extraction fix works: failure moved from empty-model-content to strict non-JSON rejection.",
-      "Verified current Cloudflare GPT-OSS model schema exposes response_format.",
-      "Added response_format=json_schema for semantic judge calls.",
-      "Structured schema constrains criteria count, criterion names, PASS/FAIL/UNCERTAIN, confidence, evidence and reasonCode.",
-      "Added extraction for JSON-mode response objects and direct structured judge objects.",
-      "Added regression tests for schema construction and structured response shapes."
+      "Reran failed English workflow 37473550090 after Responses API extraction and structured JSON fixes were deployed.",
+      "Confirmed zero-cost budget PASS and keyless OIDC preflight PASS.",
+      "Confirmed inference reached GPT-OSS but strict runner still rejected cal-en-clean-i as not a single JSON payload.",
+      "Verified Cloudflare JSON Mode documents validated structured output under a response object.",
+      "Identified extractor ambiguity: it can serialize response object and also collect alternate output/output_text representations, then join them.",
+      "Changed extraction to prefer a structured criteria response object/string and stop before alternate representations.",
+      "Added regression tests proving response object/string wins over duplicate/noisy output fields.",
+      "Downstream exact-criteria/Zod schema validation remains unchanged."
     ],
     "pending": [
-      "Pass full CI for structured-output enforcement.",
-      "Merge if exact-head CI, Workers contract and Playwright are green.",
-      "Verify automatic exact-revision OIDC gateway smoke after deployment.",
-      "Rerun failed English calibration workflow against current main.",
-      "Inspect calibration scoring honestly; do not alter frozen v1 thresholds."
+      "Pass full CI for structured-response priority fix.",
+      "Merge exact head only if core CI, Workers contract and Playwright pass.",
+      "Verify automatic exact-revision OIDC smoke after deploy.",
+      "Rerun failed English workflow 37473550090 again using its original manual authorization.",
+      "Reach frozen scoring; do not modify v1 thresholds if model quality fails."
     ]
   },
   "endpointResolution": {
@@ -251,7 +251,7 @@
   },
   "calibrationExecution": {
     "english": {
-      "status": "FAILED_NON_JSON_MODEL_OUTPUT_FIX_IN_PROGRESS",
+      "status": "FAILED_MULTIPLE_RESPONSE_REPRESENTATIONS_FIX_IN_PROGRESS",
       "runId": 37473550090,
       "startedAt": "2026-10-06T13:47:05Z",
       "failedStep": "Run three isolated calibration repeats",
@@ -261,8 +261,8 @@
       "qualificationRecorded": false,
       "failure": "HTTP 502 empty-model-content on cal-en-clean-i during repeat 1",
       "rootCause": "Gateway omitted Cloudflare Responses API output extraction.",
-      "fixBranch": "codex/workers-ai-responses-extractor",
-      "retryPolicy": "Do not rerun until structured JSON fix is merged and exact production OIDC smoke passes.",
+      "fixBranch": "codex/workers-ai-structured-response-priority",
+      "retryPolicy": "Do not change calibration gold/thresholds. Rerun only after structured-response priority fix is merged and exact production OIDC smoke passes.",
       "failedRunId": 37473550090,
       "fixPr": 99,
       "fixMergeCommit": "24e123d8194935c4ba85eb42ad76f14134c9b048",
@@ -272,16 +272,22 @@
       "productionReadyForRetry": true,
       "rerunAttemptAt": "2026-10-06T16:00Z",
       "rerunReachedInference": true,
-      "latestFailure": "english judge returned non-JSON content for cal-en-clean-i",
+      "latestFailure": "english judge returned content that is not a single JSON payload for cal-en-clean-i",
       "previousTransportExtractionFixed": true,
-      "currentRootCause": "GPT-OSS returned unstructured final text; strict runner correctly rejected it.",
+      "currentRootCause": "Cloudflare JSON-mode structured response can coexist with alternate Responses API output fields; extractor could concatenate multiple representations into one non-JSON string.",
       "structuredFixBranch": "codex/workers-ai-structured-json",
       "remediation": [
         "Use Workers AI response_format=json_schema at generation time.",
         "Schema requires exact criteria array length and criterion/result/confidence/evidence/reasonCode fields.",
         "Keep strict downstream JSON/Zod parser unchanged.",
         "Support Cloudflare JSON-mode wrapped response objects and direct structured objects."
-      ]
+      ],
+      "latestJobId": 112373105914,
+      "latestAttemptAt": "2026-10-06T16:12:37Z",
+      "latestAttemptCheckout": "8ba220c530126d134edd0954c6c00e0d65c6084b",
+      "budgetCheck": "PASS",
+      "oidcPreflight": "PASS",
+      "structuredJsonEnabled": true
     }
   }
 }
