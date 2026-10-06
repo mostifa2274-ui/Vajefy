@@ -1,0 +1,19 @@
+name: Temporary SITE_URL check
+on:
+  push:
+    branches: [codex/check-site-url]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+    steps:
+      - shell: bash
+        run: |
+          if [ -n "$SITE_URL" ]; then
+            echo "SITE_URL=$SITE_URL"
+          else
+            echo "SITE_URL=absent"
+          fi
