@@ -464,3 +464,28 @@ No model inference has been run and no semantic qualification has been fabricate
 Current resume point: full CI/merge this branch. After merge, configure the free
 credentials and run calibration first. Do not run release-bound Unit 1 semantic
 judging before qualification.
+
+
+## Completed — PR #91 frozen semantic judge calibration v1
+
+PR #91 merged as `98c4121de458e1ae9117138b26642ccb7d7f8c84`.
+
+The judge-calibration gate is now authoritative on `main`:
+
+- 28 frozen cases;
+- 8 clean controls;
+- 16 seeded defects;
+- 4 abstention cases;
+- three independent runs required per role;
+- strict pre-registered promotion thresholds;
+- repeated-run replay and model-version mixing are rejected;
+- an empty qualification ledger is present by design;
+- changing a champion invalidates its prior qualification;
+- Unit 1 judge execution is blocked until the selected role/model/version has passed calibration.
+
+Do not modify calibration v1 after seeing candidate outputs. Any justified gold
+or threshold correction must create a new calibration version.
+
+Current resume point: inspect free credential/variable availability, run
+`calibration_v1` first, qualify passing champions, then and only then run Unit
+1 semantic judging.
