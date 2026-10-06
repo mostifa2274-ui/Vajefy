@@ -20,45 +20,45 @@
     "persian": {
       "provider": "google-ai-studio-free",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
-      "model": "gemini-3.5-flash-lite",
-      "modelVersion": "gemini-3.5-flash-lite@google-catalog-2026-10-06",
+      "model": "gemini-3.8-flash",
+      "modelVersion": "gemini-3.8-flash@google-stable-2026-10-06",
       "jsonResponseFormat": true,
       "maxTokens": 2400,
       "auth": "api-key",
       "secret": "SEMANTIC_JUDGE_PERSIAN_API_KEY",
       "freeTier": "Gemini Developer API Free Tier",
-      "freeLimitNote": "Official pricing lists input and output as free of charge on the Free Tier. Flash-Lite is optimized for translation and high-volume tasks.",
-      "rationale": "Best fit for Persian semantic/translation judgment among the verified no-cost endpoints, with native Google multilingual support and an OpenAI-compatible API.",
-      "provenanceCaveat": "Provider-hosted model id is recorded with catalog date; no immutable served-weight hash is exposed by the compatibility API."
+      "freeLimitNote": "Official pricing lists Gemini 3.8 Flash input, output and context caching as free of charge on the Free Tier.",
+      "rationale": "Upgraded from Flash-Lite. Gemini 3.8 Flash is Google's current most intelligent stable Flash model, supports structured outputs and tunable thinking, and is a better fit for nuanced Persian semantic/translation review while remaining free-tier eligible.",
+      "provenanceCaveat": "Stable provider-hosted model id is recorded with the verification date; Google does not expose an immutable served-weight hash through the OpenAI compatibility API."
     },
     "pedagogical": {
       "provider": "openrouter-free",
       "baseUrl": "https://openrouter.ai/api/v1",
-      "model": "google/gemma-4-31b-it:free",
-      "modelVersion": "google/gemma-4-31b-it:free@openrouter-2026-10-06",
+      "model": "minimax/minimax-m2.7:free",
+      "modelVersion": "minimax/minimax-m2.7:free@openrouter-2026-10-06",
       "jsonResponseFormat": true,
       "maxTokens": 2400,
       "auth": "api-key",
       "secret": "SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY",
       "freeTier": "OpenRouter Free",
-      "freeLimitNote": "OpenRouter Free includes API access, 25+ free models and 50 requests/day. Gemma 4 31B free is $0/M input and output and supports JSON response_format.",
-      "rationale": "A distinct free provider/model family with multilingual instruction following and structured-output support; 20 Unit 1 requests fit inside the current 50 RPD free allowance.",
-      "provenanceCaveat": "OpenRouter can route a named free model among upstream providers. Evidence records the named model and OpenRouter catalog date, not an immutable upstream deployment hash."
+      "freeLimitNote": "OpenRouter's Free plan currently permits 50 requests/day; MiniMax M2.7 has a zero-priced :free endpoint and supports response_format/structured output.",
+      "rationale": "Upgraded from Gemma 4 31B. MiniMax M2.7 has stronger current evaluator-style reasoning signals, including 75.7 IFBench, 87.4 GPQA Diamond, 29.6 HLE and a 64.4 non-hallucination rate in OpenRouter's displayed Artificial Analysis results, while retaining multilingual capability and structured output.",
+      "provenanceCaveat": "OpenRouter may route the named free model among upstream providers. Evidence records the named model and OpenRouter catalog date rather than an immutable upstream deployment hash."
     },
     "adversarial": {
       "provider": "cloudflare-workers-ai-free",
       "baseUrlTemplate": "https://api.cloudflare.com/client/v4/accounts/${SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID}/ai/v1",
-      "model": "@cf/zai-org/glm-4.7-flash",
-      "modelVersion": "@cf/zai-org/glm-4.7-flash@cloudflare-catalog-2026-10-06",
+      "model": "@cf/qwen/qwen3.8-27b",
+      "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06",
       "jsonResponseFormat": true,
       "maxTokens": 2400,
       "auth": "api-token",
       "accountVariable": "SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID",
       "secret": "SEMANTIC_JUDGE_ADVERSARIAL_API_KEY",
       "freeTier": "Cloudflare Workers AI Free allocation",
-      "freeLimitNote": "Workers AI provides 10,000 Neurons/day free; GLM-4.7-Flash remains available on Workers Free and is a multilingual reasoning model.",
-      "rationale": "Independent serving stack and model family for adversarial review; the user's product already uses Cloudflare, while Workers AI's daily free allocation avoids paid inference.",
-      "provenanceCaveat": "Cloudflare-hosted model id and catalog date are recorded; the public API does not expose an immutable weight hash."
+      "freeLimitNote": "Workers AI provides 10,000 Neurons/day free. Qwen 3.8 27B is not listed among the Workers AI models that require a paid billing method.",
+      "rationale": "Upgraded from GLM-4.7-Flash. Qwen 3.8 27B is a newer reasoning model with a 262k context window and configurable reasoning up to xhigh/default, making it a stronger adversarial error-finding candidate while preserving a distinct provider/model family.",
+      "provenanceCaveat": "Cloudflare-hosted model id and catalog date are recorded; the public API does not expose an immutable served-weight hash."
     }
   }
 }

@@ -374,3 +374,27 @@ Only free credential setup remains:
 
 After those are configured, run the four existing manual judge workflows, merge
 their structured artifacts, and execute strict Unit 1 semantic certification.
+
+
+## In-progress checkpoint — stronger zero-cost judges
+
+Branch: `codex/better-free-semantic-judges`.
+
+The free judges were re-ranked by role fit rather than convenience.
+
+Current champions:
+
+- English: Groq Free / `openai/gpt-oss-120b` (unchanged);
+- Persian: Google Free / `gemini-3.8-flash` (upgraded from Flash-Lite);
+- Pedagogical: OpenRouter Free / `minimax/minimax-m2.7:free` (upgraded from Gemma 4 31B);
+- Adversarial: Cloudflare Workers AI Free / `@cf/qwen/qwen3.8-27b` (upgraded from GLM-4.7-Flash).
+
+Selection rationale and benchmark caveats are recorded in
+`content/assurance/semantic/JUDGE_SELECTION.md`.
+
+Do not treat generic public benchmarks as release evidence. The next quality
+step after this branch is a frozen Vajefy-specific judge calibration set that
+measures defect recall, false-positive rate, abstention calibration and exact
+schema reliability.
+
+No inference has been run and no semantic evidence has been fabricated.
