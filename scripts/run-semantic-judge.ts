@@ -10,6 +10,7 @@ import {
   type SemanticJudgeRole,
 } from "../src/lib/learn/assurance";
 import { semanticEndpointConfig } from "./semantic-endpoint-config";
+import { requestGitHubActionsOidcToken } from "./github-actions-oidc";
 import { semanticInputHash } from "./semantic-input";
 
 const ROOT = process.cwd();
@@ -147,7 +148,7 @@ async function main() {
   let maxTokens: number;
   let endpoint: string;
   let apiKey: string | undefined;
-  let keylessToken: string | undefined;
+  let keylessAudience: string | undefined;
 
   if (transport === "keyless") {
     const presets = read<KeylessPresetFile>(KEYLESS_PRESETS);
@@ -165,10 +166,7 @@ async function main() {
     modelVersion = preset.modelVersion;
     maxTokens = preset.maxTokens;
     endpoint = `${presets.gatewayOrigin.replace(/\/$/, "")}/api/internal/semantic-judge`;
-    keylessToken = process.env.SEMANTIC_GATEWAY_OIDC_TOKEN;
-    if (!keylessToken) {
-      fail("SEMANTIC_GATEWAY_OIDC_TOKEN is required for keyless judge transport.");
-    }
+    keylessAudience = presets.audience;
   } else {
     const config = semanticEndpointConfig(role);
     if (!config.ready || !config.baseUrl || !config.model || !config.modelVersion) {
@@ -205,7 +203,8 @@ async function main() {
     };
     let body: unknown;
     if (transport === "keyless") {
-      headers.authorization = `Bearer ${keylessToken!}`;
+      const oidcToken = await requestGitHubActionsOidcToken(keylessAudience!);
+      headers.authorization = `Bearer ${oidcToken}`;
       body = {
         role,
         systemPrompt: prompt,
