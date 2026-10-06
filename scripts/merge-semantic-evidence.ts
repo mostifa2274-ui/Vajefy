@@ -3,7 +3,6 @@ import path from "node:path";
 import {
   semanticEvidenceBundle,
   type SemanticEvidenceBundle,
-  type SemanticJudgeRole,
 } from "../src/lib/learn/assurance";
 import {
   validateSemanticEvidenceBundles,
