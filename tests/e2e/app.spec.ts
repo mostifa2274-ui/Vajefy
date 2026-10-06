@@ -120,6 +120,32 @@ test("installed app can reopen the lexicon while offline", async ({ page, contex
   }
 });
 
+test("an A1 learner's first load installs only A1 data", async ({ page }) => {
+  await seed(page);
+  const requested: string[] = [];
+  page.on("request", (request) => {
+    const path = new URL(request.url()).pathname;
+    if (path.startsWith("/data/")) requested.push(path);
+  });
+  await page.goto("/");
+  await page.waitForFunction(
+    () => document.documentElement.dataset.offlineReady === "true" && navigator.serviceWorker.controller !== null,
+    undefined,
+    { timeout: 20_000 },
+  );
+  await expect(page.getByText("Today's entry", { exact: true })).toBeVisible();
+  const cached = await page.evaluate(async () => {
+    const name = (await caches.keys()).find((key) => key.startsWith("vajefy-offline-"));
+    const keys = name ? await (await caches.open(name)).keys() : [];
+    return keys.map((request) => new URL(request.url).pathname).filter((path) => path.startsWith("/data/"));
+  });
+  expect(cached).toContain("/data/lex-a1.json");
+  // Higher levels and the reference decks wait until they are opened (plan §16 P1).
+  const beyondA1 = /\/data\/(lex-(a2|b1|b2|b2x|c1)|occupations|phrasal|collocations|prepositions|antonyms|confusing|verb-patterns|irregular|formation|synonyms|families|reference-reviewed)\.json$/;
+  expect(cached.filter((path) => beyondA1.test(path))).toEqual([]);
+  expect(requested.filter((path) => beyondA1.test(path))).toEqual([]);
+});
+
 test("critical pages stay free of runtime console errors", async ({ page }) => {
   await seed(page);
   const errors: string[] = [];
