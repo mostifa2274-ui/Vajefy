@@ -3,6 +3,7 @@ import { CONTENT_CHANNEL } from "@/lib/learn/channel";
 import { handleAudio } from "./audio";
 import { handleCoach } from "./coach";
 import { handleSync } from "./sync";
+import { handleSemanticGateway } from "./semantic-gateway";
 import { handleTelemetry } from "./telemetry";
 
 export const coachEnabled = () => env.COACH === "on" && Boolean(env.ANTHROPIC_API_KEY) && Boolean(env.COACH_LIMITER);
@@ -21,6 +22,9 @@ export async function handleApi(request: Request): Promise<Response | null> {
   // Optional services report whether they are configured, so the app can offer them.
   if (pathname === "/api/coach") return coachEnabled() ? handleCoach(request) : Response.json({ error: "unavailable" }, { status: 503 });
   if (pathname === "/api/coach/status") return Response.json({ enabled: coachEnabled() }, { headers: { "Cache-Control": "no-store" } });
+  if (pathname === "/api/internal/semantic-judge") {
+    return handleSemanticGateway(request, env.AI);
+  }
   if (pathname.startsWith("/api/sync/") && pathname !== "/api/sync/status") {
     if (!syncEnabled()) return Response.json({ error: "unavailable" }, { status: 503 });
     if (env.SYNC_LIMITER) {
