@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "90cb92df2902",
+ "contentVersion": "0dc8fb36b08a",
  "cases": [
   {
    "id": "2b1078906b",
@@ -22,6 +22,18 @@
     "lex:A1:i"
    ],
    "text": "I live with my parents.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cf048b92b3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:i"
+   ],
+   "text": "I am from Tabriz.",
    "expect": [
     "natural"
    ]
@@ -75,6 +87,18 @@
    ]
   },
   {
+   "id": "7d93ad81ed",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:you"
+   ],
+   "text": "You live in a big city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "34e6492223",
    "split": "test",
    "source": "mistake-right",
@@ -118,6 +142,18 @@
     "lex:A1:a-an"
    ],
    "text": "She is an engineer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "991d201162",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:a-an"
+   ],
+   "text": "This is a new book.",
    "expect": [
     "natural"
    ]
@@ -171,6 +207,18 @@
    ]
   },
   {
+   "id": "f8b219abd5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:be"
+   ],
+   "text": "My friends are at school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6dedddf00a",
    "split": "dev",
    "source": "mistake-right",
@@ -214,6 +262,18 @@
     "lex:A1:my"
    ],
    "text": "I left my keys at home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "616af40579",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:my"
+   ],
+   "text": "My school is in this city.",
    "expect": [
     "natural"
    ]
@@ -267,6 +327,18 @@
    ]
   },
   {
+   "id": "b33ad9bd29",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:your"
+   ],
+   "text": "Is this your name?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "82cedb5b17",
    "split": "dev",
    "source": "mistake-right",
@@ -310,6 +382,18 @@
     "lex:A1:name"
    ],
    "text": "Please write your first name and last name.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8bc6879dd1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:name"
+   ],
+   "text": "Write your name here.",
    "expect": [
     "natural"
    ]
@@ -363,6 +447,18 @@
    ]
   },
   {
+   "id": "d6b7f83bed",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:what"
+   ],
+   "text": "What do you do after school?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "0eb19c08d4",
    "split": "test",
    "source": "mistake-right",
@@ -406,6 +502,18 @@
     "lex:A1:this"
    ],
    "text": "I'm very busy this week.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "19c9820e63",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:this"
+   ],
+   "text": "Is this your bag?",
    "expect": [
     "natural"
    ]
@@ -459,6 +567,18 @@
    ]
   },
   {
+   "id": "467dd6a4b7",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:he"
+   ],
+   "text": "He is from Mashhad.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "89c030403b",
    "split": "dev",
    "source": "mistake-right",
@@ -502,6 +622,18 @@
     "lex:A1:who"
    ],
    "text": "The woman who lives next door is a doctor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ce6dcde9f1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:who"
+   ],
+   "text": "Who is that man?",
    "expect": [
     "natural"
    ]
@@ -555,6 +687,18 @@
    ]
   },
   {
+   "id": "3a3db394c2",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:where"
+   ],
+   "text": "Where do your friends live?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "1f7c35f1b5",
    "split": "test",
    "source": "mistake-right",
@@ -598,6 +742,18 @@
     "lex:A1:from"
    ],
    "text": "I work from nine to five.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3bf31cd98e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:from"
+   ],
+   "text": "This letter is from my friend.",
    "expect": [
     "natural"
    ]
@@ -651,6 +807,18 @@
    ]
   },
   {
+   "id": "4e3c139b83",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:in"
+   ],
+   "text": "The keys are in my bag.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "3580add931",
    "split": "test",
    "source": "mistake-right",
@@ -694,6 +862,18 @@
     "lex:A1:school"
    ],
    "text": "What did you learn at school today?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3d227bdab8",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:school"
+   ],
+   "text": "My school is in the city.",
    "expect": [
     "natural"
    ]
@@ -747,6 +927,18 @@
    ]
   },
   {
+   "id": "d96802d484",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:city"
+   ],
+   "text": "I live in a small city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "23278ee6a6",
    "split": "test",
    "source": "mistake-right",
@@ -790,6 +982,18 @@
     "lex:A1:live"
    ],
    "text": "My grandmother lives alone.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "20ada45967",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:live"
+   ],
+   "text": "He lives in this city.",
    "expect": [
     "natural"
    ]
@@ -843,6 +1047,18 @@
    ]
   },
   {
+   "id": "7d0f1eb4c0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:family"
+   ],
+   "text": "My family lives in this city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6019b5c721",
    "split": "dev",
    "source": "mistake-wrong",
@@ -874,6 +1090,18 @@
     "lex:A1:friend"
    ],
    "text": "I met an old friend in the street.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "33e6a1a87c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:friend"
+   ],
+   "text": "This is my friend, Reza.",
    "expect": [
     "natural"
    ]
@@ -922,6 +1150,18 @@
     "lex:A1:how"
    ],
    "text": "How much is this jacket?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3ab960e6ba",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:how"
+   ],
+   "text": "How do you spell your name?",
    "expect": [
     "natural"
    ]
