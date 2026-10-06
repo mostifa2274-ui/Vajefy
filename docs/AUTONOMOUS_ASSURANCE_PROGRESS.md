@@ -398,3 +398,25 @@ measures defect recall, false-positive rate, abstention calibration and exact
 schema reliability.
 
 No inference has been run and no semantic evidence has been fabricated.
+
+
+## Completed — PR #90 stronger zero-cost judge champions
+
+PR #90 merged as `5111c83aca61cb84f502e7b7c3edc7222fa15588`.
+
+Authoritative free judge champions:
+
+- English -> Groq Free / `openai/gpt-oss-120b`;
+- Persian -> Google Free / `gemini-3.8-flash`;
+- Pedagogical -> OpenRouter Free / `minimax/minimax-m2.7:free`;
+- Adversarial -> Cloudflare Workers AI Free / `@cf/qwen/qwen3.8-27b`.
+
+Three defaults were upgraded; GPT-OSS 120B remained the English champion.
+
+Do not repeat this re-ranking from public model pages. The next quality step is a
+frozen Vajefy-specific judge calibration set. Future champion changes should be
+driven by measured defect recall, false-positive rate, abstention calibration,
+schema reliability and repeat-run stability on that set.
+
+No semantic inference has been run and no semantic PASS evidence has been
+committed.
