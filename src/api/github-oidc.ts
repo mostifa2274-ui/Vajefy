@@ -66,8 +66,8 @@ export async function verifyGitHubOidcToken(
     false,
     ["verify"],
   );
-  const signed = new TextEncoder().encode(`${parts[0]}.${parts[1]}`);
-  const signature = decodeBase64Url(parts[2]!);
+  const signed = new TextEncoder().encode(`${parts[0]}.${parts[1]}`).buffer;
+  const signature = decodeBase64Url(parts[2]!).buffer;
   const valid = await crypto.subtle.verify(
     "RSASSA-PKCS1-v1_5",
     publicKey,
