@@ -43,9 +43,9 @@ export const KEYLESS_SEMANTIC_MODELS = {
   adversarial: {
     provider: "cloudflare-workers-ai",
     modelFamily: "qwen",
-    model: "@cf/qwen/qwen3.8-27b",
+    model: "@cf/qwen/qwen3-30b-a3b-fp8",
     modelVersion:
-      "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06",
+      "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
     maxTokens: 1200,
   },
 } as const;
