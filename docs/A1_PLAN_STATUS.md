@@ -175,7 +175,8 @@ Sources: `npm run curriculum:status`, `npm run content:qualification`,
 - **Done**: each skill is recorded separately: recognition, typed form recall
   (`spelling`), listening, context and productive use (#22, #23, #78).
 - **Done**: practice modes are disclosed progressively. Smart Practice is the
-  main action and the other modes are folded away.
+  main action and the other modes are folded away. (Later replaced by the three
+  Practice modes; see F07 in the status ledger.)
 - **Done**: F6 no longer arises, because new learners no longer get a
   higher-level onboarding (#76).
 

@@ -46,7 +46,6 @@ function ProgressPage() {
   const cards = useProgress((state) => state.cards);
   const logs = useProgress((state) => state.logs);
   const lifetime = useProgress((state) => state.lifetime);
-  const xp = useProgress((state) => state.xp);
   const streak = useProgress((state) => state.streak);
   const lastStudyDate = useProgress((state) => state.lastStudyDate);
   const focus = useProgress((state) => state.focus);
@@ -86,13 +85,12 @@ function ProgressPage() {
   return (
     <div>
       <PageHeader title={copy.progress} lede={copy.accuracyHint} />
-      <section className="panel grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+      <section className="panel grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
         <Stat label={copy.streakLabel} value={<Num value={hydrated ? liveStreak(streak, lastStudyDate) : 0} />} />
         <Stat label={copy.masteredLabel} value={<Num value={hydrated ? all.mastered : 0} />} />
         <Stat label={copy.reviewsLabel} value={<Num value={hydrated ? lifetime.reviews : 0} />} />
         <Stat label={copy.practiceLabel} value={<Num value={hydrated ? lifetime.practice : 0} />} />
         <Stat label={copy.reviewEvidence} value={<Num value={hydrated ? reviewHistory.length : 0} />} />
-        <Stat label={copy.xpLabel} value={<Num value={hydrated ? xp : 0} />} />
       </section>
       <p className="mt-3 text-sm text-muted">
         {copy.accuracyLabel}: {accuracy === null ? "–" : pct(accuracy)}

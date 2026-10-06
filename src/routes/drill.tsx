@@ -1,32 +1,30 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { MatchBoard } from "@/components/match-board";
+import { useState } from "react";
 import { QuizRun } from "@/components/quiz-run";
-import { SprintRun } from "@/components/sprint-run";
 import { PageHeader } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { rankSmartPractice, smartPracticeQuestions, type SmartPracticeTarget } from "@/lib/learn/adaptive";
 import { useFormat } from "@/lib/learn/format";
 import { useCopy, type Copy, type CopyKey } from "@/lib/learn/i18n";
-import { DECK_FILE, loadAntonyms, loadIrregular, loadLevel, loadPairs, loadPatterns } from "@/lib/learn/load";
+import { loadLevel } from "@/lib/learn/load";
 import { loadPilot, pronunciationFor, senseAudio } from "@/lib/learn/pilot";
-import { playPairs, type PlayPair } from "@/lib/learn/play";
-import {
-  antonymQuestions,
-  chunkQuestions,
-  confusingQuestions,
-  irregularQuestions,
-  lexQuestions,
-} from "@/lib/learn/quiz";
+import { lexQuestion } from "@/lib/learn/quiz";
 import { resumable, startQuiz, type QuizSession } from "@/lib/learn/session";
 import { useProgress } from "@/lib/learn/store";
+import { shuffle } from "@/lib/learn/text";
 import type { Lang, LevelId, Question } from "@/lib/learn/types";
 
-type DrillSearch = { play?: "match" | "sprint" | "studied" | "smart" };
+/**
+ * Practice has three modes (plan §4): Smart Practice, which chooses the skill
+ * each word needs, and Listening and Spelling for a learner who wants one
+ * skill. Every mode practises words the learner has already studied.
+ */
+type Mode = "smart" | "listen" | "spell";
+type DrillSearch = { play?: Mode };
 
 export const Route = createFileRoute("/drill")({
   validateSearch: (search: Record<string, unknown>): DrillSearch => {
-    if (search.play === "match" || search.play === "sprint" || search.play === "studied" || search.play === "smart") {
+    if (search.play === "smart" || search.play === "listen" || search.play === "spell") {
       return { play: search.play };
     }
     return {};
@@ -35,76 +33,26 @@ export const Route = createFileRoute("/drill")({
 });
 
 const LEVELS: LevelId[] = ["A1", "A2", "B1", "B2", "B2x", "C1"];
-const LEVEL_LABEL: Record<LevelId, string> = {
-  A1: "A1",
-  A2: "A2",
-  B1: "B1",
-  B2: "B2",
-  B2x: "B2+",
-  C1: "C1",
-};
-
-type Mode = "smart" | "match" | "sprint" | "to-fa" | "to-en" | "spell" | "cloze" | "listen" | "irr" | "ant" | "conf" | "chunk";
-type Chunk = "pv" | "col" | "prep" | "vp" | "occ";
 
 const MODES: { id: Mode; title: CopyKey; hint: CopyKey }[] = [
   { id: "smart", title: "smartPractice", hint: "smartPracticeHint" },
-  { id: "match", title: "matchMode", hint: "matchHint" },
-  { id: "sprint", title: "sprintMode", hint: "sprintHint" },
-  { id: "to-fa", title: "modeToFa", hint: "hintToFa" },
-  { id: "to-en", title: "modeToEn", hint: "hintToEn" },
-  { id: "spell", title: "modeSpell", hint: "hintSpell" },
-  { id: "cloze", title: "modeCloze", hint: "hintCloze" },
   { id: "listen", title: "modeListen", hint: "hintListen" },
-  { id: "irr", title: "modeIrr", hint: "hintIrr" },
-  { id: "ant", title: "modeAnt", hint: "hintAnt" },
-  { id: "conf", title: "modeConf", hint: "hintConf" },
-  { id: "chunk", title: "modeChunk", hint: "hintChunk" },
+  { id: "spell", title: "modeSpell", hint: "hintSpell" },
 ];
-
-const CHUNKS: { id: Chunk; label: CopyKey }[] = [
-  { id: "pv", label: "phrasal" },
-  { id: "col", label: "collocations" },
-  { id: "prep", label: "prepositions" },
-  { id: "vp", label: "patterns" },
-  { id: "occ", label: "occupations" },
-];
-
-function needsLevel(mode: Mode) {
-  return mode === "match" || mode === "sprint" || mode === "to-fa" || mode === "to-en" || mode === "spell" || mode === "cloze" || mode === "listen";
-}
-
-type Arena =
-  | { kind: "quiz"; session: QuizSession }
-  | { kind: "match"; pairs: PlayPair[] }
-  | { kind: "sprint"; pairs: PlayPair[] };
 
 function DrillPage() {
   const initial = Route.useSearch();
   const lang = useProgress((state) => state.lang);
-  const focus = useProgress((state) => state.focus);
   const hydrated = useProgress((state) => state.hydrated);
-  const practice = useProgress((state) => state.practice);
   const saveSession = useProgress((state) => state.saveSession);
   const sessions = useProgress((state) => state.sessions);
   const copy = useCopy(lang);
   const { num, sep } = useFormat();
-  const [mode, setMode] = useState<Mode>(initial.play === "match" ? "match" : initial.play === "sprint" ? "sprint" : initial.play === "studied" ? "to-fa" : "smart");
-  const [level, setLevel] = useState<LevelId>(focus);
+  const [mode, setMode] = useState<Mode>(initial.play ?? "smart");
   const [count, setCount] = useState(10);
-  const [chunk, setChunk] = useState<Chunk>("col");
-  const [direction, setDirection] = useState<"to-fa" | "to-en">("to-fa");
-  const [studiedOnly, setStudiedOnly] = useState(initial.play === "studied");
-  const [arena, setArena] = useState<Arena | null>(null);
+  const [arena, setArena] = useState<QuizSession | null>(null);
   const [error, setError] = useState<"load" | "empty" | null>(null);
   const [busy, setBusy] = useState(false);
-
-  // The saved level is only known after hydration; adopt it once, unless the
-  // learner already picked a level on this page.
-  const levelTouched = useRef(false);
-  useEffect(() => {
-    if (hydrated && !levelTouched.current) setLevel(focus);
-  }, [hydrated, focus]);
 
   // Opened once per page view; a round finished elsewhere drops out by itself.
   const [now] = useState(() => Date.now());
@@ -115,14 +63,13 @@ function DrillPage() {
     if (unfinished) saveSession({ ...unfinished, status: "done", updatedAt: at });
     const session = startQuiz(questions, mode, smart, at);
     saveSession(session);
-    setArena({ kind: "quiz", session });
+    setArena(session);
   }
 
   async function start() {
     setBusy(true);
     setError(null);
     try {
-      const cards = useProgress.getState().cards;
       if (mode === "smart") {
         // Rank first so enhanced content is loaded only for plausible questions,
         // not for every word the learner has ever studied.
@@ -174,19 +121,8 @@ function DrillPage() {
         } else {
           begin(built, true);
         }
-      } else if (mode === "match" || mode === "sprint") {
-        const words = await loadLevel(level);
-        const pool = studiedOnly ? words.filter((word) => cards[word.id]) : words;
-        const pairs = playPairs(pool, mode === "match" ? 6 : 40);
-        const minimum = mode === "match" ? 4 : 8;
-        if (pairs.length < minimum) {
-          setError("empty");
-          setArena(null);
-        } else {
-          setArena({ kind: mode, pairs });
-        }
       } else {
-        const built = await build(mode, level, count, chunk, direction, copy, lang, studiedOnly, cards);
+        const built = await studiedQuestions(mode, count, copy, lang);
         if (!built.length) {
           setError("empty");
           setArena(null);
@@ -201,36 +137,14 @@ function DrillPage() {
     }
   }
 
-  if (arena?.kind === "quiz") {
+  if (arena) {
     return (
       <QuizRun
-        key={arena.session.id}
-        initial={arena.session}
+        key={arena.id}
+        initial={arena}
         lang={lang}
         onDone={() => setArena(null)}
-        title={arena.session.smart ? copy.smartPractice : undefined}
-      />
-    );
-  }
-
-  if (arena?.kind === "match") {
-    return (
-      <MatchBoard
-        pairs={arena.pairs}
-        lang={lang}
-        onPair={(id) => practice(id, "good", "meaning")}
-        onExit={() => setArena(null)}
-      />
-    );
-  }
-
-  if (arena?.kind === "sprint") {
-    return (
-      <SprintRun
-        pairs={arena.pairs}
-        lang={lang}
-        onResult={(id, ok) => practice(id, ok ? "good" : "again", "spelling")}
-        onExit={() => setArena(null)}
+        title={arena.smart ? copy.smartPractice : undefined}
       />
     );
   }
@@ -253,120 +167,58 @@ function DrillPage() {
           </p>
           <button
             type="button"
-            onClick={() => setArena({ kind: "quiz", session: unfinished })}
+            onClick={() => setArena(unfinished)}
             className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-fg"
           >
             {copy.resumeQuiz}
           </button>
         </div>
       ) : null}
-      <button
-        type="button"
-        aria-pressed={mode === "smart"}
-        disabled={busy}
-        onClick={() => {
-          setMode("smart");
-          setError(null);
-        }}
-        className={cn("w-full min-h-11 rounded-lg p-3 text-start", mode === "smart" ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]")}
-      >
-        <span className="block text-sm font-medium">{copy.smartPractice}</span>
-        <span className={cn("mt-1 block text-xs text-pretty", mode === "smart" ? "text-paper/70" : "text-muted")}>{copy.smartPracticeHint}</span>
-      </button>
-      <details className="mt-3" open={mode !== "smart"}>
-        <summary className="min-h-11 py-3 text-sm font-medium text-accent">{copy.otherPracticeFormats}</summary>
-        <div className="mt-2 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {MODES.filter((item) => item.id !== "smart").map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              aria-pressed={mode === item.id}
-              disabled={busy}
-              onClick={() => {
-                setMode(item.id);
-                setError(null);
-              }}
-              className={cn(
-                "min-h-11 rounded-lg p-3 text-start",
-                mode === item.id ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]",
-              )}
-            >
-              <span className="block text-sm font-medium">{copy[item.title]}</span>
-              <span className={cn("mt-1 block text-xs text-pretty", mode === item.id ? "text-paper/70" : "text-muted")}>{copy[item.hint]}</span>
-            </button>
-          ))}
-        </div>
-      </details>
+      <div role="group" aria-label={copy.drill} className="grid gap-2 sm:grid-cols-3">
+        {MODES.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            aria-pressed={mode === item.id}
+            disabled={busy}
+            onClick={() => {
+              setMode(item.id);
+              setError(null);
+            }}
+            className={cn(
+              "min-h-11 rounded-lg p-3 text-start",
+              mode === item.id ? "bg-ink text-paper" : "bg-paper-2 shadow-[var(--shadow-border)]",
+            )}
+          >
+            <span className="block text-sm font-medium">{copy[item.title]}</span>
+            <span className={cn("mt-1 block text-xs text-pretty", mode === item.id ? "text-paper/70" : "text-muted")}>{copy[item.hint]}</span>
+          </button>
+        ))}
+      </div>
 
       {mode === "smart" ? (
         <p className="mt-4 max-w-2xl text-sm text-pretty text-muted">{copy.smartPracticeLead}</p>
       ) : null}
 
-      {(mode === "smart" || needsLevel(mode)) && mode !== "match" && mode !== "sprint" ? (
-        <div className="mt-5 flex flex-wrap gap-2">
-          {[10, 20].map((n) => (
-            <Choice key={n} active={count === n} disabled={busy} onClick={() => setCount(n)}>
-              {num(n)}
-            </Choice>
-          ))}
-        </div>
-      ) : null}
-
-      {needsLevel(mode) ? (
-        <>
-          <div className="mt-3 flex gap-2 overflow-x-auto">
-            {LEVELS.map((id) => (
-              <Choice
-                key={id}
-                active={level === id}
-                disabled={busy}
-                onClick={() => {
-                  levelTouched.current = true;
-                  setLevel(id);
-                }}
-              >
-                {LEVEL_LABEL[id]}
-              </Choice>
-            ))}
-          </div>
-          <div className="mt-3 flex gap-2">
-            <Choice active={studiedOnly} disabled={busy} onClick={() => setStudiedOnly(true)}>
-              {copy.studiedOnly}
-            </Choice>
-            <Choice active={!studiedOnly} disabled={busy} onClick={() => setStudiedOnly(false)}>
-              {copy.wholeLevel}
-            </Choice>
-          </div>
-        </>
-      ) : null}
-
-      {mode === "chunk" ? (
-        <>
-          <div className="mt-3 flex gap-2 overflow-x-auto">
-            {CHUNKS.map((item) => (
-              <Choice key={item.id} active={chunk === item.id} disabled={busy} onClick={() => setChunk(item.id)}>
-                {copy[item.label]}
-              </Choice>
-            ))}
-          </div>
-          <div className="mt-3 flex gap-2">
-            <Choice active={direction === "to-fa"} disabled={busy} onClick={() => setDirection("to-fa")}>
-              {copy.toFa}
-            </Choice>
-            <Choice active={direction === "to-en"} disabled={busy} onClick={() => setDirection("to-en")}>
-              {copy.toEn}
-            </Choice>
-          </div>
-        </>
-      ) : null}
+      <div className="mt-5 flex flex-wrap gap-2">
+        {[10, 20].map((n) => (
+          <Choice key={n} active={count === n} disabled={busy} onClick={() => setCount(n)}>
+            {num(n)}
+          </Choice>
+        ))}
+      </div>
 
       {error ? (
         <div className="mt-4" role="status">
           <p className={error === "load" ? "text-sm text-bad" : "text-sm text-muted"}>
-            {error === "load" ? copy.loadFailed : mode === "smart" ? copy.smartPracticeEmpty : needsLevel(mode) ? copy.thinPool : copy.noResults}
+            {error === "load" ? copy.loadFailed : mode === "smart" ? copy.smartPracticeEmpty : copy.thinPool}
           </p>
-          {mode === "smart" && error === "empty" ? (
-            <Link to="/study" className="mt-2 inline-flex min-h-11 items-center text-sm text-accent">{copy.startSession}</Link>
+          {error === "empty" ? (
+            mode === "smart" ? (
+              <Link to="/study" className="mt-2 inline-flex min-h-11 items-center text-sm text-accent">{copy.startSession}</Link>
+            ) : (
+              <Link to="/learn" className="mt-2 inline-flex min-h-11 items-center text-sm text-accent">{copy.learn}</Link>
+            )
           ) : null}
         </div>
       ) : null}
@@ -399,23 +251,34 @@ function Choice({ active, onClick, children, disabled }: { active: boolean; onCl
   );
 }
 
-async function build(
-  mode: Exclude<Mode, "smart">,
-  level: LevelId,
-  count: number,
-  chunk: Chunk,
-  direction: "to-fa" | "to-en",
-  copy: Copy,
-  lang: Lang,
-  studiedOnly: boolean,
-  cards: Record<string, unknown>,
-): Promise<Question[]> {
-  if (mode === "irr") return irregularQuestions(await loadIrregular(), count);
-  if (mode === "ant") return antonymQuestions(await loadAntonyms(), count);
-  if (mode === "conf") return confusingQuestions(await loadPairs("confusing.json"), count);
-  if (mode === "chunk") return chunkQuestions(await loadPatterns(DECK_FILE[chunk]), direction, count);
-  if (mode === "match" || mode === "sprint") return [];
-  const words = await loadLevel(level);
-  const pool = studiedOnly ? words.filter((word) => cards[word.id]) : words;
-  return lexQuestions(pool, mode, count, copy, lang);
+/**
+ * Listening or spelling questions for words the learner has studied, with
+ * wrong options drawn from the rest of their level.
+ */
+async function studiedQuestions(mode: "listen" | "spell", count: number, copy: Copy, lang: Lang): Promise<Question[]> {
+  const cards = useProgress.getState().cards;
+  const studied = Object.keys(cards);
+  const levels = LEVELS.filter((id) => studied.some((key) => key.startsWith(`lex:${id}:`)));
+  const pool = (await Promise.all(levels.map(loadLevel))).flat();
+  const questions: Question[] = [];
+  for (const word of shuffle(pool.filter((item) => cards[item.id]))) {
+    if (questions.length >= count) break;
+    const question = lexQuestion(word, pool, mode, copy, lang);
+    if (question) questions.push(question);
+  }
+  if (mode === "spell") return questions;
+
+  // Listening uses the recorded clip where one exists, else the device voice.
+  try {
+    const { accent } = useProgress.getState();
+    const pilot = await loadPilot(questions.map((question) => question.id));
+    for (const question of questions) {
+      const clip = senseAudio(pilot.audio, question.id, accent).word;
+      if (clip && question.kind === "mcq") question.clip = clip;
+    }
+  } catch {
+    // Without enhanced audio, the device voice still reads each word.
+  }
+  const voice = typeof window !== "undefined" && Boolean(window.speechSynthesis);
+  return questions.filter((question) => voice || (question.kind === "mcq" && question.clip));
 }

@@ -145,15 +145,57 @@ test("unheard listening can be skipped without fabricating a mistake or awarding
   expect(after.state.reviewHistory).toEqual([]);
 });
 
-test("manual formats remain keyboard-accessible beside the focused Smart Practice entry", async ({ page }) => {
+test("Listening and Spelling are keyboard-accessible beside Smart Practice", async ({ page }) => {
   await seedSmart(page);
   await page.goto("/drill?play=smart");
-  const chooser = page.locator("summary").filter({ hasText: "Choose another format" });
-  await chooser.focus();
-  await chooser.press("Enter");
-  await page.getByRole("button", { name: /^Spelling Type / }).click();
-  await expect(page.getByRole("button", { name: /^Spelling Type / })).toHaveAttribute("aria-pressed", "true");
+  const spelling = page.getByRole("button", { name: /^Spelling Type / });
+  await spelling.focus();
+  await spelling.press("Enter");
+  await expect(spelling).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("button", { name: /^Smart Practice/ })).toHaveAttribute("aria-pressed", "false");
+  const listening = page.getByRole("button", { name: /^Listening Listen/ });
+  await listening.focus();
+  await listening.press("Space");
+  await expect(listening).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("button", { name: /^Smart Practice/ }).click();
-  await expect(page.locator("details")).not.toHaveAttribute("open");
   await expect(page.getByRole("button", { name: "Begin", exact: true })).toBeInViewport();
+});
+
+test("Practice offers exactly Smart Practice, Listening and Spelling over studied words", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedSmart(page);
+  await page.goto("/drill");
+  const modes = page.getByRole("group", { name: "Practice", exact: true }).getByRole("button");
+  await expect(modes).toHaveCount(3);
+  await expect(modes.nth(0)).toContainText("Smart Practice");
+  await expect(modes.nth(1)).toContainText("Listening");
+  await expect(modes.nth(2)).toContainText("Spelling");
+  await expect(page.getByText("Choose another format")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "A2", exact: true })).toHaveCount(0);
+
+  // Spelling asks only about the one studied word, so the round has one question.
+  await modes.nth(2).click();
+  await expect(modes.nth(2)).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "Begin", exact: true }).click();
+  await expect(page.getByText("1 / 1", { exact: true })).toBeVisible();
+  await page.getByRole("textbox", { name: "Your answer", exact: true }).fill("about");
+  await page.getByRole("button", { name: "Check", exact: true }).click();
+  await expect.poll(async () => (await saved(page)).state.practiceSkills[ID]?.spelling?.attempts).toBe(1);
+});
+
+test("Listening and Spelling send a learner with no studied words to Learn", async ({ page }) => {
+  await page.addInitScript(() => {
+    if (localStorage.getItem("roshana-v1")) return;
+    localStorage.setItem("roshana-v1", JSON.stringify({ version: 3, state: {
+      cards: {}, logs: [], lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
+      streak: 0, lastStudyDate: null, xp: 0, lang: "en", focus: "A1",
+      sessionSize: 20, newPerDay: 10, voice: false, accent: "en-GB", bookmarks: [],
+      dailyGoal: 20, requestRetention: 0.9, reviewHistory: [], onboarded: true,
+    } }));
+  });
+  await page.goto("/drill?play=listen");
+  await expect(page.getByRole("button", { name: /^Listening/ })).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "Begin", exact: true }).click();
+  await expect(page.getByRole("status")).toContainText("Not enough studied words for this round yet.");
+  await expect(page.getByRole("status").getByRole("link", { name: "Learn", exact: true })).toBeVisible();
 });

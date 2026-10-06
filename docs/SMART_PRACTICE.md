@@ -54,9 +54,11 @@ Near-correct spelling retains the `hard` grade, so an accepted typo can still
 be selected for extra spelling practice. These counts describe drills, not
 scheduled retention, and are never fed into FSRS as invented reviews.
 
-Manual vocabulary quizzes also label their actual question skill. Pairs records
-meaning recognition; the sprint records spelling. Reference drills and older
-unlabelled aggregate attempts do not manufacture vocabulary skill observations.
+Listening and Spelling, the two single-skill modes beside Smart Practice, also
+label their question skill. Practice has only these three modes (plan §4);
+Pairs, the sprint, meaning and cloze quizzes and the reference-deck drills were
+removed. Older unlabelled aggregate attempts do not manufacture vocabulary
+skill observations.
 Each word has at most four skill aggregates; the map is bounded to the newest
 6,000 words. Forget and reset remove corresponding evidence.
 
@@ -64,7 +66,7 @@ Correct practice preserves the saved schedule. A miss makes an existing word
 due now, preserving FSRS stability/difficulty until a real Review answer updates
 them. Review totals, the daily review goal, and scheduled review history remain
 independent. Listening questions can be skipped when sound is unavailable;
-skips generate no answer or XP and are excluded from the result denominator.
+skips generate no answer and are excluded from the result denominator.
 Words without recorded audio still use the device's speech voices, which vary.
 
 ## Migration and verification
