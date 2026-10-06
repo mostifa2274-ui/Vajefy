@@ -222,3 +222,24 @@ The merge is rejected when any of these conditions occurs:
 
 These checks duplicate some final arbitration protections intentionally. Bad
 external evidence should be stopped both at ingestion and at certification.
+
+
+## Manual GitHub judge execution
+
+The repository also provides `.github/workflows/semantic-judge.yml`.
+
+This workflow is deliberately manual-only:
+
+- trigger: `workflow_dispatch` only;
+- explicit boolean acknowledgement is required before the judge job runs;
+- repository permission is `contents: read`;
+- it runs exactly one selected role;
+- it uploads structured evidence as an artifact;
+- it never commits evidence or modifies `main`.
+
+Endpoint variables and API-key secret names are documented in
+`content/assurance/semantic/ENDPOINT_RESOLUTION.md`.
+
+The workflow safety contract is checked on every normal CI run. Do not add
+`push`, `pull_request`, `schedule` or `workflow_run` triggers to the
+semantic judge workflow.
