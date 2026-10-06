@@ -131,17 +131,27 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "main",
-    "objective": "User/account owner adds the five free credential/account values using FREE_CREDENTIAL_SETUP.md; then run one automated calibration dispatch per role.",
-    "blocked": true,
-    "blocker": "The four free API keys and Cloudflare Account ID are account-specific values and are not present in GitHub Actions. This environment cannot create or write those secrets.",
-    "nextSteps": [
-      "Follow content/assurance/semantic/FREE_CREDENTIAL_SETUP.md.",
-      "Add the four exact GitHub Actions repository secrets.",
-      "Add SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID as a repository Actions variable.",
-      "Run Semantic judge calibration and qualification once for each role.",
-      "Let the frozen v1 gate automatically qualify or reject each champion.",
-      "Run Unit 1 semantic judging only for qualified roles."
+    "branch": "codex/keyless-semantic-gateway",
+    "objective": "Validate and merge the zero-key GitHub OIDC -> Workers AI semantic gateway.",
+    "blocked": false,
+    "completedOnBranch": [
+      "Verified production Worker origin without SITE_URL variable.",
+      "Added Cloudflare Workers AI binding in wrangler.jsonc.",
+      "Added GitHub Actions OIDC JWT signature and claim verification.",
+      "Added OIDC-protected internal semantic gateway.",
+      "Fixed four keyless model families server-side.",
+      "Judge runner now supports keyless transport and requests fresh OIDC identity per call.",
+      "Both semantic workflows removed provider API-key secrets and require id-token: write.",
+      "Qualification freshness now tracks keyless champions.",
+      "Added offline zero-key contract checks and online no-inference OIDC preflight.",
+      "Marked old credential setup and external endpoint plan as legacy fallback."
+    ],
+    "pending": [
+      "Pass full CI and Workers build for keyless gateway.",
+      "Merge keyless PR if green.",
+      "Verify Cloudflare production deploy reaches the exact merge revision.",
+      "Run an OIDC no-inference gateway smoke after deploy.",
+      "Then calibrate keyless candidates; Unit 1 remains locked until qualification."
     ]
   },
   "endpointResolution": {
@@ -181,7 +191,31 @@
     "SEMANTIC_JUDGE_PERSIAN_API_KEY": "absent",
     "SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY": "absent",
     "SEMANTIC_JUDGE_ADVERSARIAL_API_KEY": "absent",
-    "SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID": "absent"
+    "SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID": "absent",
+    "status": "HISTORICAL_NO_LONGER_REQUIRED",
+    "note": "Old API-key names were absent, but the authoritative keyless path no longer requires them."
   },
-  "credentialSetupRunbook": "content/assurance/semantic/FREE_CREDENTIAL_SETUP.md"
+  "credentialSetupRunbook": "content/assurance/semantic/FREE_CREDENTIAL_SETUP.md",
+  "keylessGateway": {
+    "status": "IMPLEMENTED_ON_BRANCH_PENDING_CI",
+    "branch": "codex/keyless-semantic-gateway",
+    "productionOrigin": "https://vajefy.mostifa2273.workers.dev",
+    "audience": "vajefy-semantic-gateway",
+    "transport": "github-actions-oidc -> vajefy Worker -> Workers AI binding",
+    "apiKeysRequired": false,
+    "repositoryVariablesRequired": false,
+    "models": {
+      "english": "@cf/openai/gpt-oss-120b",
+      "persian": "@cf/zai-org/glm-4.7-flash",
+      "pedagogical": "@cf/google/gemma-4-26b-a4b-it",
+      "adversarial": "@cf/qwen/qwen3.8-27b"
+    },
+    "security": [
+      "GitHub OIDC signature/JWKS verification",
+      "exact repository/main/workflow claims",
+      "fixed server-side model allowlist",
+      "fresh OIDC token per inference call",
+      "no semantic provider secrets"
+    ]
+  }
 }
