@@ -7,6 +7,7 @@ import { test } from "node:test";
 
 const ROOT = process.cwd();
 const SCRIPT = path.join(ROOT, "scripts", "assurance-records.ts");
+const PROVENANCE_SCRIPT = path.join(ROOT, "scripts", "generation-provenance.ts");
 const REGISTER = path.join(ROOT, "scripts", "ts-test-register.mjs");
 
 const UNVERIFIED = {
@@ -59,6 +60,7 @@ function workspace(senses: ReturnType<typeof sense>[], audio: Record<string, unk
     JSON.stringify({ units: [{ id: "01-introductions", entries: [{ id: "lex:A1:cat" }] }] }),
   );
   writeFileSync(path.join(dir, "content", "assurance", "provenance.json"), JSON.stringify(UNVERIFIED));
+  spawnSync(process.execPath, ["--experimental-strip-types", "--no-warnings", "--import", REGISTER, PROVENANCE_SCRIPT, "--init"], { cwd: dir });
   return {
     dir,
     run: (...args) => {
@@ -89,6 +91,7 @@ test("a sense that passes every deterministic check stays UNCERTAIN without sema
     assert.equal(record.status, "UNCERTAIN");
     const result = Object.fromEntries(record.criteria.map((item) => [item.criterion, `${item.result}${item.reasonCode ? `:${item.reasonCode}` : ""}`]));
     assert.equal(result["provenance.rights"], "UNCERTAIN:gate0-unverified");
+    assert.equal(result["provenance.generation"], "UNCERTAIN:generation-unknown");
     assert.equal(result["structure.examples"], "PASS");
     assert.equal(result["semantic.english"], "UNCERTAIN:semantic-not-run");
     assert.equal(result["semantic.adversarial"], "UNCERTAIN:semantic-not-run");

@@ -5,13 +5,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   aggregateAssurance,
+  generationManifest,
   machineAssuranceRecord,
   provenanceBlockers,
   provenanceManifest,
   type MachineAssuranceRecord,
 } from "../src/lib/learn/assurance";
 import type { Pilot } from "../src/lib/learn/content";
-import { semanticInputHash, semanticTargetInput } from "./semantic-input";
+import { semanticInputHash, semanticStableJson, semanticTargetInput } from "./semantic-input";
 
 /**
  * Machine Assurance Records (plan §17): one fail-closed record per A1 sense.
@@ -35,6 +36,8 @@ const REGISTER = path.join(SCRIPTS, "ts-test-register.mjs");
 const COMPILED = path.join(ROOT, "content", "compiled", "enhanced.json");
 const CURRICULUM = path.join(ROOT, "content", "curriculum", "A1.json");
 const PROVENANCE = path.join(ROOT, "content", "assurance", "provenance.json");
+const GENERATION = path.join(ROOT, "content", "assurance", "generation.json");
+const ENTRY_DIR = path.join(ROOT, "content", "pilot", "entries");
 const SEMANTIC_DIR = path.join(ROOT, "content", "assurance", "semantic");
 const AUDIO_REPORT = path.join(ROOT, "content", "pilot", "audio-report.json");
 const OUTPUT = path.join(ROOT, "content", "assurance", "records", "A1.json");
@@ -128,6 +131,26 @@ const auditVersion = sha256(fs.readFileSync(path.join(SCRIPTS, "content-assuranc
 const manifest = provenanceManifest.parse(read<unknown>(PROVENANCE));
 const rightsBlockers = provenanceBlockers(manifest);
 
+// Generation provenance: who or what made each source entry's current content.
+const generation = fs.existsSync(GENERATION) ? generationManifest.parse(read<unknown>(GENERATION)) : null;
+const sourceHash = new Map<string, string>();
+for (const file of fs.readdirSync(ENTRY_DIR).filter((name) => name.endsWith(".json"))) {
+  for (const entry of read<{ id: string }[]>(path.join(ENTRY_DIR, file))) {
+    sourceHash.set(entry.id, sha256(semanticStableJson(entry)));
+  }
+}
+
+function generationCriterion(entryId: string): Criterion {
+  const record = generation?.entries[entryId];
+  const generator = record ? generation?.generators[record.generator] : undefined;
+  if (!record || !generator || record.outputHash !== sourceHash.get(entryId)) {
+    return { criterion: "provenance.generation", result: "FAIL", evidence: [], reasonCode: "generation-unrecorded" };
+  }
+  return generator.kind === "unknown"
+    ? { criterion: "provenance.generation", result: "UNCERTAIN", evidence: [record.generator], reasonCode: "generation-unknown" }
+    : { criterion: "provenance.generation", result: "PASS", evidence: [record.generator], reasonCode: null };
+}
+
 // Semantic judgments, per unit with committed evidence.
 const semanticByTarget = new Map<string, { status: Criterion["result"]; blockers: string[] }>();
 const semanticFiles: Record<string, string> = {};
@@ -172,6 +195,7 @@ for (const entry of entries) {
             reasonCode: null,
           },
     );
+    criteria.push(generationCriterion(entry.id));
     criteria.push({
       criterion: "structure.schema",
       result: "PASS",
@@ -261,6 +285,7 @@ const summary = {
   // rubric versions are in the evidence each record's sourceHash binds to.
   evaluators: {
     "provenance.rights": { kind: "deterministic", id: "scripts/assurance-gate.ts", blockers: rightsBlockers },
+    "provenance.generation": { kind: "deterministic", id: "scripts/generation-provenance.ts", manifest: "content/assurance/generation.json" },
     "structure.schema": { kind: "deterministic", id: "scripts/build-content.ts" },
     "structure.*": { kind: "deterministic", id: "scripts/content-assurance.ts", version: auditVersion },
     "semantic.*": { kind: "model", id: "scripts/semantic-assurance.ts", evidence: "content/assurance/semantic/<unit>.json" },
