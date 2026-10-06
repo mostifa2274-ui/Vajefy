@@ -1,3 +1,24 @@
+# Superseded endpoint plan — keyless path is authoritative
+
+**As of 2026-10-06, provider API keys are no longer required.**
+
+The authoritative design is documented in
+`content/assurance/semantic/KEYLESS_GATEWAY.md` and uses:
+
+- GitHub Actions OIDC for short-lived workflow identity;
+- Vajefy's deployed Cloudflare Worker as the authenticated gateway;
+- Cloudflare Workers AI through the `AI` binding;
+- fixed server-side model IDs;
+- no semantic provider API keys;
+- no `SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID` variable;
+- no `SITE_URL` variable for semantic execution.
+
+Everything below is retained only as historical/fallback research. Do not ask
+the user to create the old keys unless the keyless architecture is intentionally
+retired.
+
+---
+
 # Semantic judge endpoint resolution
 
 Recorded: 2026-10-06
