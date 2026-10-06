@@ -48,24 +48,36 @@
     "current": {
       "deterministicFindings": 0,
       "status": "FINAL_CI_PENDING",
-      "note": "20/20 Unit 1 senses repaired for grammar-note Persian, third examples, required usage and mistake translation distinctions. Case-sensitive mistake validation fixed.",
-      "generatedArtifactsCommitted": true
+      "generatedArtifactsCommitted": true,
+      "controlledAudioComplete": true,
+      "audioGeneration": {
+        "commit": "455ab84dd7b9ae1c20a3e5eca19d8e24dcdcc5d3",
+        "newClips": 38,
+        "totalClips": 5888,
+        "approximateMegabytes": 50.6,
+        "heuristicFlagsBefore": 292,
+        "heuristicFlagsAfter": 292,
+        "note": "First temporary audio run failed only because ffmpeg was absent on the runner; workflow was corrected with ffmpeg installation and then succeeded."
+      }
     }
   },
   "currentWork": {
     "branch": "codex/unit1-autonomous-certification",
-    "objective": "Finish Unit 1 deterministic certification and merge.",
+    "objective": "Pass final exact-head CI and merge PR #84.",
     "completedOnBranch": [
       "Added durable progress ledgers.",
       "Repaired all 20 Unit 1 senses.",
       "Fixed false-positive English mistake comparison that erased case distinctions.",
       "Added unit-scoped assurance and npm run assurance:unit1.",
       "Wired Unit 1 zero-defect gate into validate:data.",
-      "Regenerated derived enhanced-content artifacts using the repository compiler in GitHub Actions.",
-      "Removed the temporary regeneration workflow."
+      "Regenerated derived enhanced-content artifacts using the repository compiler.",
+      "Generated 38 missing controlled GB/US example clips with the pinned Kokoro pipeline.",
+      "Rebuilt derived content with the new controlled audio.",
+      "Removed all temporary regeneration workflows."
     ],
     "generatedArtifactsCommit": "5d51bd4d60909d46ed23cbd0bbe755594fcb921c",
-    "temporaryWorkflowRemovalCommit": "edfbfeff4c3a810ba82a8d3ad54b6cae71f80f22",
+    "controlledAudioCommit": "455ab84dd7b9ae1c20a3e5eca19d8e24dcdcc5d3",
+    "temporaryAudioWorkflowRemovalCommit": "f3f53e16564ba5e60090c3361fd35bc1ea801909",
     "pending": [
       "Pass final exact-head CI: generated-content consistency, validate:data, typecheck, lint, unit tests, production build, Playwright and Workers contract.",
       "Merge PR #84 if all gates pass.",
