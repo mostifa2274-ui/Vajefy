@@ -32,7 +32,7 @@ Quality ranking then emphasizes different signals per role:
 | English | Groq Free / `openai/gpt-oss-120b` | Large high-capability reasoning model, JSON Schema/Object support, generous Groq free request allowance |
 | Persian | Google Free / `gemini-3.8-flash` | Current most intelligent stable Gemini Flash, free-tier input/output, structured outputs and tunable thinking |
 | Pedagogical | OpenRouter Free / `minimax/minimax-m2.7:free` | Strong evaluator-style reasoning/instruction-following and non-hallucination signals, structured output, multilingual capability |
-| Adversarial | Cloudflare Workers AI Free / `@cf/qwen/qwen3.8-27b` | New reasoning model, 262k context, high reasoning mode, multilingual model family, separate serving stack |
+| Adversarial | Cloudflare Workers AI Free / `@cf/qwen/qwen3-30b-a3b-fp8` | New reasoning model, 262k context, high reasoning mode, multilingual model family, separate serving stack |
 
 ## Replaced defaults
 
@@ -58,9 +58,9 @@ The model also supports structured output through OpenRouter.
 This is not proof that M2.7 is universally better at language teaching. It is a
 better current default for the role, pending direct Vajefy calibration.
 
-### Adversarial: GLM-4.7-Flash -> Qwen 3.8 27B
+### Adversarial: GLM-4.7-Flash -> Qwen3 30B A3B
 
-GLM-4.7-Flash remains an acceptable fallback. Qwen 3.8 27B is newer, supports
+GLM-4.7-Flash remains an acceptable fallback. Qwen3 30B A3B is newer, supports
 reasoning and a 262k context window, and Cloudflare exposes high reasoning
 settings. It is not on Cloudflare's list of models requiring paid billing, so
 the normal 10,000-Neuron/day free allocation applies.
@@ -111,7 +111,7 @@ claims or aggregate benchmarks.
   https://openrouter.ai/minimax/minimax-m2.7/performance
 - OpenRouter free-plan limits:
   https://openrouter.ai/pricing/
-- Cloudflare Qwen 3.8 27B:
+- Cloudflare Qwen3 30B A3B:
   https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/
 - Cloudflare Workers AI pricing:
   https://developers.cloudflare.com/workers-ai/platform/pricing/
@@ -130,7 +130,7 @@ Current candidates:
 | English | OpenAI GPT-OSS | `@cf/openai/gpt-oss-120b` |
 | Persian | Zhipu GLM | `@cf/zai-org/glm-4.7-flash` |
 | Pedagogical | Google Gemma | `@cf/google/gemma-4-26b-a4b-it` |
-| Adversarial | Qwen | `@cf/qwen/qwen3.8-27b` |
+| Adversarial | Qwen | `@cf/qwen/qwen3-30b-a3b-fp8` |
 
 Why the allocation changed:
 
@@ -148,3 +148,27 @@ qualification record will therefore use `cloudflare-workers-ai` as provider
 for all four roles while preserving distinct model IDs/families.
 
 No candidate is trusted until it passes `vajefy-semantic-v1`.
+
+
+## Free Neuron budget — 2026-10-06
+
+The authoritative calibration path now has a fail-closed machine-readable budget
+at `content/assurance/semantic/keyless-neuron-budget.json`.
+
+Cloudflare currently provides 10,000 free Workers AI Neurons/day. Vajefy sets a
+stricter 9,000-Neuron maximum planned calibration ceiling and reserves at least
+1,000 Neurons of headroom.
+
+The budget checker derives usage from the frozen calibration packets, current
+prompt bytes, three required repeats, current model output caps and the verified
+per-model Neuron rates. UTF-8 bytes are treated as a conservative input-token
+upper bound, plus 512 framing tokens per request.
+
+The adversarial candidate was changed from Qwen 3.8 27B to Qwen3 30B A3B
+because the former made the full calibration exceed the free allocation under
+the conservative maximum-output calculation. The Qwen3 30B A3B candidate keeps
+Qwen reasoning, instruction-following and multilingual capability while
+dramatically lowering Neuron cost.
+
+Calibration must fail before inference if the calculated maximum exceeds the
+configured zero-cost ceiling.
