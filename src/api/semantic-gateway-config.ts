@@ -2,10 +2,17 @@ export const KEYLESS_SEMANTIC_AUDIENCE = "vajefy-semantic-gateway";
 export const KEYLESS_SEMANTIC_REPOSITORY = "mostifa2274-ui/Vajefy";
 export const KEYLESS_SEMANTIC_REF = "refs/heads/main";
 
-export const KEYLESS_SEMANTIC_WORKFLOWS = [
+export const KEYLESS_SEMANTIC_INFERENCE_WORKFLOWS = [
   "mostifa2274-ui/Vajefy/.github/workflows/semantic-calibrate.yml@refs/heads/main",
   "mostifa2274-ui/Vajefy/.github/workflows/semantic-judge.yml@refs/heads/main",
-  "mostifa2274-ui/Vajefy/.github/workflows/semantic-gateway-smoke.yml@refs/heads/main",
+] as const;
+
+export const KEYLESS_SEMANTIC_SMOKE_WORKFLOW =
+  "mostifa2274-ui/Vajefy/.github/workflows/semantic-gateway-smoke.yml@refs/heads/main";
+
+export const KEYLESS_SEMANTIC_WORKFLOWS = [
+  ...KEYLESS_SEMANTIC_INFERENCE_WORKFLOWS,
+  KEYLESS_SEMANTIC_SMOKE_WORKFLOW,
 ] as const;
 
 export const KEYLESS_SEMANTIC_MODELS = {
