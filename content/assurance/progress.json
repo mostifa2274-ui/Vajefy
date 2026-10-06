@@ -102,7 +102,9 @@
     "Do not redo the PR #90 judge re-ranking unless provider/model availability changes or Vajefy-specific calibration evidence justifies a new champion.",
     "Do not rebuild semantic calibration v1 or alter its thresholds after observing model outputs; create v2 for any justified corpus/threshold change.",
     "Do not rebuild semantic calibration automation from PR #92; after credentials exist, use .github/workflows/semantic-calibrate.yml once per role.",
-    "Do not restore Qwen 3.8 27B as the default adversarial keyless calibration candidate without re-running the Neuron budget; PR budget work replaced it because the full frozen campaign would not safely fit the free daily allocation."
+    "Do not restore Qwen 3.8 27B as the default adversarial keyless calibration candidate without re-running the Neuron budget; PR budget work replaced it because the full frozen campaign would not safely fit the free daily allocation.",
+    "Do not return to API-key setup unless the keyless OIDC Workers AI path is intentionally retired; legacy credential fields are no longer authoritative.",
+    "Do not add push/schedule/repository_dispatch inference triggers just because the connected GitHub toolset lacks workflow_dispatch."
   ],
   "blockers": [
     {
@@ -145,45 +147,33 @@
   },
   "currentWork": {
     "branch": "main",
-    "objective": "Run frozen keyless calibration once per role through the existing manual workflow; qualify only models that pass all pre-registered thresholds.",
-    "blocked": false,
+    "objective": "Execute frozen keyless calibration once per role through the existing manual workflow; qualify only models that pass all pre-registered thresholds.",
+    "blocked": true,
+    "blocker": "The connected GitHub toolset cannot issue workflow_dispatch with inputs. Repository/runtime infrastructure is complete and green; inference must remain manual-only by policy.",
     "nextSteps": [
-      "Use .github/workflows/semantic-calibrate.yml from main for English, Persian, pedagogical and adversarial roles.",
-      "Each role workflow automatically verifies current pricing/budget, performs OIDC preflight, runs three isolated repeats, scores frozen v1, and records qualification only on strict PASS.",
+      "From GitHub Actions on main, dispatch 'Semantic judge calibration and qualification' for english with acknowledge_inference=true.",
+      "Repeat once each for persian, pedagogical and adversarial.",
+      "Each dispatch automatically verifies current pricing/budget, performs OIDC preflight, runs three isolated repeats, scores frozen v1, and records qualification only on strict PASS.",
       "Do not modify calibration v1 thresholds after seeing results.",
       "Do not run Unit 1 semantic judging for a role until qualification is committed.",
-      "If this execution environment lacks workflow_dispatch capability, preserve the manual-only inference guard rather than adding an automatic inference trigger."
+      "After any role run, inspect its calibration result and continue only with qualified models."
     ]
   },
   "endpointResolution": {
-    "status": "BETTER_FREE_JUDGES_VERIFIED_CREDENTIALS_REQUIRED",
-    "lastInfrastructureMerge": "c6c0682d331c9fb1634a890595ee5ff2933909d6",
+    "status": "KEYLESS_OIDC_WORKERS_AI_AUTHORITATIVE",
+    "paidInferenceRequired": false,
+    "apiKeysRequired": false,
+    "repositoryVariablesRequired": false,
+    "manualWorkflow": ".github/workflows/semantic-calibrate.yml",
+    "unit1Workflow": ".github/workflows/semantic-judge.yml",
+    "setupDocument": "content/assurance/semantic/KEYLESS_GATEWAY.md",
+    "calibrationPacketDirectory": "content/assurance/semantic/calibration/v1/packets",
+    "transport": "GitHub Actions OIDC -> Vajefy Worker -> Cloudflare Workers AI binding",
+    "productionOrigin": "https://vajefy.mostifa2273.workers.dev",
+    "verifiedAt": "2026-10-06",
     "semanticInferenceRun": false,
     "semanticEvidenceCommitted": false,
-    "githubModels": "RETIRED",
-    "huggingFaceJobs": "BILLABLE_NOT_INVOKED",
-    "genericInstalledInferenceConnector": "NOT_DISCOVERED_2026-10-06",
-    "manualWorkflow": ".github/workflows/semantic-judge.yml",
-    "setupDocument": "content/assurance/semantic/ENDPOINT_RESOLUTION.md",
-    "packet": "content/assurance/semantic/packets/01-introductions.json",
-    "paidInferenceRequired": false,
-    "verifiedAt": "2026-10-06",
-    "freePresets": "content/assurance/semantic/free-provider-presets.json",
-    "providers": {
-      "english": "Groq Free / openai/gpt-oss-120b",
-      "persian": "Gemini Free / gemini-3.8-flash",
-      "pedagogical": "OpenRouter Free / minimax/minimax-m2.7:free",
-      "adversarial": "Cloudflare Workers AI Free / @cf/qwen/qwen3.8-27b"
-    },
-    "remainingSetup": [
-      "SEMANTIC_JUDGE_ENGLISH_API_KEY",
-      "SEMANTIC_JUDGE_PERSIAN_API_KEY",
-      "SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY",
-      "SEMANTIC_JUDGE_ADVERSARIAL_API_KEY",
-      "SEMANTIC_JUDGE_CLOUDFLARE_ACCOUNT_ID"
-    ],
-    "note": "No paid tier is required by the current design. Free-tier availability/pricing must be re-verified before later large reruns.",
-    "judgeSelection": "content/assurance/semantic/JUDGE_SELECTION.md"
+    "note": "Legacy external-provider/API-key research is retained only as historical fallback; it is not the authoritative execution path."
   },
   "credentialPresence": {
     "checkedAt": "2026-10-06",
@@ -196,7 +186,7 @@
     "status": "HISTORICAL_NO_LONGER_REQUIRED",
     "note": "Old API-key names were absent, but the authoritative keyless path no longer requires them."
   },
-  "credentialSetupRunbook": "content/assurance/semantic/FREE_CREDENTIAL_SETUP.md",
+  "credentialSetupRunbook": "content/assurance/semantic/FREE_CREDENTIAL_SETUP.md (legacy fallback only)",
   "keylessGateway": {
     "status": "DEPLOYED_OIDC_SMOKE_AND_FREE_BUDGET_PASS",
     "branch": "codex/keyless-semantic-gateway",
@@ -238,5 +228,16 @@
       "postMergeCiRunId": 37469172510,
       "postMergeCiResult": "PASS"
     }
+  },
+  "executionBoundary": {
+    "checkedAt": "2026-10-06",
+    "connectedGithubWorkflowDispatchCapability": false,
+    "availableGithubActionsWrites": [
+      "rerun failed workflow jobs",
+      "rerun individual workflow job"
+    ],
+    "unavailableRequiredAction": "workflow_dispatch with inputs",
+    "policy": "Do not add automatic inference triggers or weaken workflow_dispatch/OIDC restrictions to compensate for connector limitations.",
+    "nextHumanAction": "From GitHub Actions on main, run 'Semantic judge calibration and qualification' once for each role: english, persian, pedagogical, adversarial, with acknowledge_inference=true."
   }
 }
