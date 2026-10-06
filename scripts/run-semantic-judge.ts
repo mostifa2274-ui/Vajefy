@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {
@@ -54,19 +55,7 @@ function read<T>(file: string): T {
 }
 
 function sha256Text(value: string): string {
-  const { createHash } = requireHash();
   return createHash("sha256").update(value).digest("hex");
-}
-
-function requireHash() {
-  // Kept behind a tiny function so the rest of the runner stays runtime-only.
-  return {
-    createHash: (
-      algorithm: string,
-    ): import("node:crypto").Hash =>
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      require("node:crypto").createHash(algorithm),
-  };
 }
 
 function roleEnv(role: string, name: string): string | undefined {
