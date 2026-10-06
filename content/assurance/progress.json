@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "5111c83aca61cb84f502e7b7c3edc7222fa15588",
+  "authoritativeMain": "98c4121de458e1ae9117138b26642ccb7d7f8c84",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -57,6 +57,12 @@
       "pr": 90,
       "mergeCommit": "5111c83aca61cb84f502e7b7c3edc7222fa15588",
       "summary": "Re-ranked free judges by role fit; upgraded Persian to Gemini 3.8 Flash, pedagogy to MiniMax M2.7 Free, adversarial to Qwen 3.8 27B; retained GPT-OSS 120B for English."
+    },
+    {
+      "id": "semantic-judge-calibration-v1",
+      "pr": 91,
+      "mergeCommit": "98c4121de458e1ae9117138b26642ccb7d7f8c84",
+      "summary": "Frozen 28-case Vajefy semantic calibration, pre-registered promotion thresholds, repeated-run stability checks, qualification ledger, and Unit 1 qualification gate."
     }
   ],
   "doNotRepeat": [
@@ -75,7 +81,8 @@
     "Do not rebuild ingestion/preflight from PR #87.",
     "Do not redo endpoint investigation/manual workflow from PR #88 unless provider availability changes.",
     "Do not redo free-provider research from PR #89 unless availability/pricing changes or the preset verification date is intentionally refreshed.",
-    "Do not redo the PR #90 judge re-ranking unless provider/model availability changes or Vajefy-specific calibration evidence justifies a new champion."
+    "Do not redo the PR #90 judge re-ranking unless provider/model availability changes or Vajefy-specific calibration evidence justifies a new champion.",
+    "Do not rebuild semantic calibration v1 or alter its thresholds after observing model outputs; create v2 for any justified corpus/threshold change."
   ],
   "blockers": [
     {
@@ -117,40 +124,16 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/semantic-judge-calibration",
-    "objective": "Validate and merge frozen semantic judge calibration and qualification gating.",
-    "blocked": false,
-    "completedOnBranch": [
-      "Created frozen vajefy-semantic-v1 calibration set with 28 cases: 8 clean, 16 seeded defects, 4 abstention cases.",
-      "Pre-registered strict promotion thresholds before any model calibration run.",
-      "Added calibration schema/content validator.",
-      "Added deterministic per-role calibration packet builder and committed four packets.",
-      "Added calibration scorer with same-candidate, independent-run and stability enforcement.",
-      "Added unit tests for perfect promotion, seeded-defect miss, clean false positive, replayed run, mixed model versions and invalid schema.",
-      "Added qualification ledger, qualification recorder and freshness checker.",
-      "Updated manual semantic workflow with calibration_v1/unit1 target sets.",
-      "Unit 1 semantic runs now require current role qualification first.",
-      "Updated workflow safety checker to require the calibration gate."
-    ],
-    "calibration": {
-      "version": "vajefy-semantic-v1",
-      "totalCases": 28,
-      "clean": 8,
-      "defects": 16,
-      "abstain": 4,
-      "requiredRunsPerRole": 3,
-      "packetsCommit": "a02892ff11a24a820447efe51533d6661eca7c8f",
-      "qualificationLedger": "content/assurance/semantic/calibration/qualified.json",
-      "qualifiedRoles": 0,
-      "inferenceRun": false
-    },
-    "pending": [
-      "Pass full CI for calibration/qualification infrastructure.",
-      "Merge the calibration PR if green and record exact merge commit.",
-      "Configure the free provider credentials.",
-      "Run three calibration runs per role.",
-      "Promote only roles that pass every pre-registered threshold.",
-      "Run Unit 1 semantic judges only after role qualification."
+    "branch": "main",
+    "objective": "Configure free credentials, run calibration three times per role, and qualify only models that pass v1 before Unit 1 semantic judging.",
+    "blocked": true,
+    "blocker": "External free API credentials/account metadata are required before inference; repository calibration/qualification infrastructure is complete.",
+    "nextSteps": [
+      "Check whether required GitHub secret/variable names already exist.",
+      "If missing, configure the free credentials documented in ENDPOINT_RESOLUTION.md.",
+      "Run three calibration_v1 executions per role with unique run ids.",
+      "Score each role and record qualification only if all pre-registered thresholds pass.",
+      "Run Unit 1 semantic judges only for qualified roles."
     ]
   },
   "endpointResolution": {
