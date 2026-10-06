@@ -1,0 +1,32 @@
+name: Temporary post-93 keyless smoke
+
+on:
+  push:
+    branches:
+      - codex/post93-keyless-smoke
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify exact production revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXPECTED="593ef00c452b"
+          BODY="$(curl -fsS --retry 5 --retry-delay 3 --max-time 20 https://vajefy.mostifa2273.workers.dev/api/version)"
+          echo "version=$BODY"
+          REVISION="$(node -e 'const x=JSON.parse(process.argv[1]); process.stdout.write(x.revision||"")' "$BODY")"
+          test "$REVISION" = "$EXPECTED"
+
+      - name: Verify internal semantic gateway rejects anonymous requests
+        shell: bash
+        run: |
+          set -euo pipefail
+          CODE="$(curl -sS -o /tmp/gateway-body -w '%{http_code}' --max-time 20 https://vajefy.mostifa2273.workers.dev/api/internal/semantic-judge)"
+          echo "gateway_status=$CODE"
+          cat /tmp/gateway-body
+          test "$CODE" = "401"
