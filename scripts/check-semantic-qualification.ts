@@ -20,7 +20,7 @@ const PRESETS = path.join(
   "content",
   "assurance",
   "semantic",
-  "free-provider-presets.json",
+  "keyless-provider-presets.json",
 );
 
 type Candidate = {
@@ -105,7 +105,7 @@ for (const role of semanticJudgeRole.options) {
     record.candidate.modelVersion !== preset.modelVersion
   ) {
     fail(
-      `${role}: qualification is stale against current free-provider champion`,
+      `${role}: qualification is stale against current keyless champion`,
     );
   }
   if (
