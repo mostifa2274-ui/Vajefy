@@ -42,7 +42,7 @@ The Worker chooses the model. A workflow cannot send an arbitrary model id.
 | English | OpenAI GPT-OSS | `@cf/openai/gpt-oss-120b` |
 | Persian | Zhipu GLM | `@cf/zai-org/glm-4.7-flash` |
 | Pedagogical | Google Gemma | `@cf/google/gemma-4-26b-a4b-it` |
-| Adversarial | Qwen | `@cf/qwen/qwen3.8-27b` |
+| Adversarial | Qwen | `@cf/qwen/qwen3-30b-a3b-fp8` |
 
 All four are Cloudflare-hosted, but they are four distinct model families.
 
@@ -106,3 +106,27 @@ SEMANTIC_JUDGE_TRANSPORT=keyless npm run assurance:semantic:judge -- ...
 ```
 
 The workflows set the transport automatically.
+
+
+## Free Neuron budget — 2026-10-06
+
+The authoritative calibration path now has a fail-closed machine-readable budget
+at `content/assurance/semantic/keyless-neuron-budget.json`.
+
+Cloudflare currently provides 10,000 free Workers AI Neurons/day. Vajefy sets a
+stricter 9,000-Neuron maximum planned calibration ceiling and reserves at least
+1,000 Neurons of headroom.
+
+The budget checker derives usage from the frozen calibration packets, current
+prompt bytes, three required repeats, current model output caps and the verified
+per-model Neuron rates. UTF-8 bytes are treated as a conservative input-token
+upper bound, plus 512 framing tokens per request.
+
+The adversarial candidate was changed from Qwen 3.8 27B to Qwen3 30B A3B
+because the former made the full calibration exceed the free allocation under
+the conservative maximum-output calculation. The Qwen3 30B A3B candidate keeps
+Qwen reasoning, instruction-following and multilingual capability while
+dramatically lowering Neuron cost.
+
+Calibration must fail before inference if the calculated maximum exceeds the
+configured zero-cost ceiling.
