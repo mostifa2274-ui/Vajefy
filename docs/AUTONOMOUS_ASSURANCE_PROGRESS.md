@@ -768,3 +768,33 @@ Branch `codex/workers-ai-responses-extractor`:
 
 No calibration threshold or gold label changed. No qualification was recorded.
 Do not rerun English until this fix is merged and deployed.
+
+
+## In-progress checkpoint — structured response priority
+
+English workflow `37473550090` was rerun after the Responses API extraction
+and structured JSON changes reached production.
+
+The rerun proved:
+
+- current Neuron budget gate: PASS;
+- keyless GitHub OIDC preflight: PASS;
+- inference reached `@cf/openai/gpt-oss-120b`;
+- failure moved to strict transport parsing:
+  `cal-en-clean-i` was not seen as one JSON payload.
+
+Cloudflare JSON Mode may return the validated object under `response` while
+other Responses API representations are also present. The gateway previously
+could serialize `response` and then append `output` / `output_text`,
+creating multiple payloads.
+
+Current branch `codex/workers-ai-structured-response-priority` now gives a
+valid structured `criteria` response object/string strict priority and stops
+before collecting alternate representations. Regression tests cover duplicate
+structured representations plus noisy alternate output.
+
+The downstream semantic schema, exact criteria requirements, frozen calibration
+gold labels and promotion thresholds are unchanged.
+
+Resume point: full CI -> merge -> exact production OIDC smoke -> rerun the same
+already-authorized failed English workflow.
