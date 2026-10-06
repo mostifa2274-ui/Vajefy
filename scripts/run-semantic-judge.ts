@@ -11,6 +11,7 @@ import {
 } from "../src/lib/learn/assurance";
 import { semanticEndpointConfig } from "./semantic-endpoint-config";
 import { requestGitHubActionsOidcToken } from "./github-actions-oidc";
+import { buildSemanticJudgeUserPayload } from "./semantic-judge-request";
 import { semanticInputHash } from "./semantic-input";
 
 const ROOT = process.cwd();
@@ -191,12 +192,11 @@ async function main() {
 
   const judgments = [];
   for (const [index, target] of packet.targets.entries()) {
-    const userPayload = {
-      task: "Judge the supplied target using every required criterion exactly once.",
+    const userPayload = buildSemanticJudgeUserPayload(
       role,
-      requiredCriteria: roleSpec.criteria,
-      target: target.input,
-    };
+      roleSpec.criteria,
+      target.input,
+    );
 
     const headers: Record<string, string> = {
       "content-type": "application/json",
