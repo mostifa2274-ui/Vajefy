@@ -55,6 +55,7 @@ async function authenticate(request: Request) {
     repository: KEYLESS_SEMANTIC_REPOSITORY,
     ref: KEYLESS_SEMANTIC_REF,
     workflows: [...KEYLESS_SEMANTIC_WORKFLOWS],
+    events: ["workflow_dispatch", "push"],
   });
 }
 
@@ -96,6 +97,9 @@ export async function handleSemanticGateway(
   }
 
   if (request.method !== "POST") return jsonError("method-not-allowed", 405);
+  if (claims.event_name !== "workflow_dispatch") {
+    return jsonError("inference-requires-manual-dispatch", 403);
+  }
 
   const raw = await request.text();
   if (!raw || raw.length > 180_000) return jsonError("invalid-body", 400);
