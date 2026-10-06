@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "6714cce4a36939c38a3ede0afa3bbc57eb62efe3",
+  "authoritativeMain": "ee3e7afe764520a71b9cb7fe17fd1c1ea66c25f8",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -21,6 +21,12 @@
       "pr": 84,
       "mergeCommit": "6714cce4a36939c38a3ede0afa3bbc57eb62efe3",
       "summary": "Unit 1 repaired to zero deterministic findings, controlled GB/US example audio regenerated, version-bound artifacts refreshed, and strict Unit 1 assurance locked into validate:data."
+    },
+    {
+      "id": "semantic-assurance-foundation",
+      "pr": 85,
+      "mergeCommit": "ee3e7afe764520a71b9cb7fe17fd1c1ea66c25f8",
+      "summary": "Versioned four-role semantic judge schemas, fail-closed arbitration, hash/version evidence binding, semantic evidence consistency check and tests."
     }
   ],
   "doNotRepeat": [
@@ -29,7 +35,8 @@
     "Do not recreate PASS/FAIL/UNCERTAIN/DISAGREEMENT/QUARANTINED assurance states.",
     "Do not re-run the broad Unit 1 diagnosis unless source content changed.",
     "Do not build new work on stale draft PR #75; reassess or close it separately.",
-    "Do not redo Unit 1 deterministic repairs, controlled-audio regeneration or version-bound artifact refresh unless Unit 1 source content changes or CI reports drift."
+    "Do not redo Unit 1 deterministic repairs, controlled-audio regeneration or version-bound artifact refresh unless Unit 1 source content changes or CI reports drift.",
+    "Do not rebuild the semantic assurance schemas/arbitration from PR #85; continue with prompt packets and independent judge execution."
   ],
   "blockers": [
     {
@@ -71,22 +78,31 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/semantic-assurance-foundation",
-    "objective": "Validate and merge the independent semantic-assurance foundation.",
+    "branch": "codex/semantic-judge-packets",
+    "objective": "Validate and merge reproducible semantic judge packet/execution infrastructure.",
     "completedOnBranch": [
-      "Recorded PR #84 exact merge commit and marked Unit 1 deterministically certified.",
-      "Added versioned English, Persian, pedagogical and adversarial rubric manifest.",
-      "Added sense-level semantic judge records with model/prompt/rubric/context/run provenance.",
-      "Added fail-closed arbitration: missing/stale/non-independent evidence quarantines; high-confidence failure vetoes; conflict becomes disagreement; uncertainty never passes.",
-      "Added unit tests for pass, veto, disagreement, uncertainty, missing role and shared-context paths.",
-      "Added Unit 1 semantic evidence checker with current content-version and input-hash binding.",
-      "Added semantic evidence contract documentation.",
-      "Wired semantic evidence consistency checking into validate:data without fabricating PASS evidence."
+      "Recorded PR #85 exact merge commit and semantic foundation completion.",
+      "Expanded semantic target hashes to include unit, course order and prerequisites.",
+      "Added four immutable versioned role prompts.",
+      "Added deterministic Unit 1 semantic packet builder and CI --check.",
+      "Generated and committed Unit 1 packet with 20 targets and four role specs.",
+      "Added opt-in isolated OpenAI-compatible/local endpoint judge runner; CI never invokes inference.",
+      "Added merge command for separately produced role bundles with duplicate/unit/source-context checks.",
+      "Documented execution and merge commands without introducing a paid provider."
     ],
+    "semanticPacket": {
+      "commit": "9c75db47b44f6f2031ca9fb88763b16843e8fea7",
+      "path": "content/assurance/semantic/packets/01-introductions.json",
+      "targets": 20,
+      "roles": 4,
+      "generationContextKey": "source-content:01-introductions:eb4d6476149ab0171f8b"
+    },
     "pending": [
-      "Pass full CI on the semantic-assurance foundation.",
-      "Merge the foundation PR if all gates pass.",
-      "Record the merge commit and continue to producing independent Unit 1 judge evidence through isolated model runs."
+      "Pass full CI for packet builder, runner and merge infrastructure.",
+      "Merge the infrastructure PR if green.",
+      "Record exact merge commit.",
+      "Choose or connect genuinely independent model endpoints before any inference run; do not silently spend paid credits.",
+      "Generate isolated English/Persian/pedagogical/adversarial Unit 1 evidence only after endpoint provenance is resolved."
     ]
   }
 }

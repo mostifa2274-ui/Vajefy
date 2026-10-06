@@ -183,3 +183,31 @@ On branch `codex/semantic-assurance-foundation`:
 - a strict semantic command exists for the later certification gate and will fail until every Unit 1 sense has complete independent evidence.
 
 Current resume point: validate this foundation in CI, merge it if green, then produce independent Unit 1 judge evidence without editing the deterministically certified source content.
+
+## Completed — PR #85 semantic assurance foundation
+
+PR #85 merged as `ee3e7afe764520a71b9cb7fe17fd1c1ea66c25f8`.
+
+The four-role semantic assurance schema, version/hash binding, fail-closed arbitration, evidence consistency checker and fixture tests are now on `main`. No semantic PASS judgments were fabricated or committed.
+
+Current branch: `codex/semantic-judge-packets`.
+
+Next unrepeated objective: produce deterministic judge packets and an opt-in provider-independent runner. GitHub Models must not be used: the standalone service was retired on 30 July 2026. No paid inference should be invoked without explicit authorization.
+
+## In-progress checkpoint — semantic judge packet and runner
+
+Branch: `codex/semantic-judge-packets`.
+
+The first deterministic Unit 1 packet was generated and committed as `9c75db47b44f6f2031ca9fb88763b16843e8fea7`:
+
+- 20 sense targets;
+- 4 role specifications;
+- curriculum-aware source hashes include unit, course order and prerequisites;
+- exact prompt and rubric hashes are embedded;
+- source generation context: `source-content:01-introductions:eb4d6476149ab0171f8b`.
+
+Provider-independent execution infrastructure is present but **no model inference has been run**. The runner accepts an explicitly configured OpenAI-compatible/local endpoint, one isolated role per process, and writes schema-valid role evidence only after exact packet/prompt/rubric validation. A separate merge command combines isolated role bundles.
+
+GitHub Models is not a candidate: the standalone inference service was retired on 30 July 2026. No paid endpoint should be invoked without explicit authorization.
+
+Current resume point: CI/merge this infrastructure, then resolve actual independent model endpoints before producing evidence. Do not rebuild the packet unless source/rubric/prompt drift makes its CI check fail.
