@@ -1,0 +1,132 @@
+name: Semantic judge (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      role:
+        description: Independent judge role to run
+        required: true
+        type: choice
+        options:
+          - english
+          - persian
+          - pedagogical
+          - adversarial
+      run_id:
+        description: Stable run identifier recorded in evidence provenance
+        required: true
+        type: string
+      acknowledge_inference:
+        description: I explicitly authorize this configured endpoint inference run
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  judge:
+    if: ${{ inputs.acknowledge_inference }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ENGLISH_BASE_URL: ${{ vars.SEMANTIC_JUDGE_ENGLISH_BASE_URL }}
+      ENGLISH_MODEL: ${{ vars.SEMANTIC_JUDGE_ENGLISH_MODEL }}
+      ENGLISH_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_ENGLISH_MODEL_VERSION }}
+      ENGLISH_PROVIDER: ${{ vars.SEMANTIC_JUDGE_ENGLISH_PROVIDER }}
+      ENGLISH_MAX_TOKENS: ${{ vars.SEMANTIC_JUDGE_ENGLISH_MAX_TOKENS }}
+      ENGLISH_JSON_RESPONSE_FORMAT: ${{ vars.SEMANTIC_JUDGE_ENGLISH_JSON_RESPONSE_FORMAT }}
+      ENGLISH_API_KEY: ${{ secrets.SEMANTIC_JUDGE_ENGLISH_API_KEY }}
+
+      PERSIAN_BASE_URL: ${{ vars.SEMANTIC_JUDGE_PERSIAN_BASE_URL }}
+      PERSIAN_MODEL: ${{ vars.SEMANTIC_JUDGE_PERSIAN_MODEL }}
+      PERSIAN_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_PERSIAN_MODEL_VERSION }}
+      PERSIAN_PROVIDER: ${{ vars.SEMANTIC_JUDGE_PERSIAN_PROVIDER }}
+      PERSIAN_MAX_TOKENS: ${{ vars.SEMANTIC_JUDGE_PERSIAN_MAX_TOKENS }}
+      PERSIAN_JSON_RESPONSE_FORMAT: ${{ vars.SEMANTIC_JUDGE_PERSIAN_JSON_RESPONSE_FORMAT }}
+      PERSIAN_API_KEY: ${{ secrets.SEMANTIC_JUDGE_PERSIAN_API_KEY }}
+
+      PEDAGOGICAL_BASE_URL: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_BASE_URL }}
+      PEDAGOGICAL_MODEL: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_MODEL }}
+      PEDAGOGICAL_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_MODEL_VERSION }}
+      PEDAGOGICAL_PROVIDER: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_PROVIDER }}
+      PEDAGOGICAL_MAX_TOKENS: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_MAX_TOKENS }}
+      PEDAGOGICAL_JSON_RESPONSE_FORMAT: ${{ vars.SEMANTIC_JUDGE_PEDAGOGICAL_JSON_RESPONSE_FORMAT }}
+      PEDAGOGICAL_API_KEY: ${{ secrets.SEMANTIC_JUDGE_PEDAGOGICAL_API_KEY }}
+
+      ADVERSARIAL_BASE_URL: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_BASE_URL }}
+      ADVERSARIAL_MODEL: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_MODEL }}
+      ADVERSARIAL_MODEL_VERSION: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_MODEL_VERSION }}
+      ADVERSARIAL_PROVIDER: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_PROVIDER }}
+      ADVERSARIAL_MAX_TOKENS: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_MAX_TOKENS }}
+      ADVERSARIAL_JSON_RESPONSE_FORMAT: ${{ vars.SEMANTIC_JUDGE_ADVERSARIAL_JSON_RESPONSE_FORMAT }}
+      ADVERSARIAL_API_KEY: ${{ secrets.SEMANTIC_JUDGE_ADVERSARIAL_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Select isolated endpoint configuration
+        shell: bash
+        env:
+          ROLE: ${{ inputs.role }}
+        run: |
+          set -euo pipefail
+          case "$ROLE" in
+            english)
+              PREFIX=ENGLISH
+              ;;
+            persian)
+              PREFIX=PERSIAN
+              ;;
+            pedagogical)
+              PREFIX=PEDAGOGICAL
+              ;;
+            adversarial)
+              PREFIX=ADVERSARIAL
+              ;;
+            *)
+              echo "Unsupported role: $ROLE" >&2
+              exit 1
+              ;;
+          esac
+
+          for KEY in BASE_URL MODEL MODEL_VERSION PROVIDER MAX_TOKENS JSON_RESPONSE_FORMAT API_KEY; do
+            VAR_NAME="${PREFIX}_${KEY}"
+            VALUE="${!VAR_NAME-}"
+            if [ -n "$VALUE" ]; then
+              echo "::add-mask::$VALUE"
+              printf 'SEMANTIC_JUDGE_%s=%s\n' "$KEY" "$VALUE" >> "$GITHUB_ENV"
+            fi
+          done
+
+      - name: No-inference role preflight
+        env:
+          ROLE: ${{ inputs.role }}
+        run: npm run assurance:semantic:preflight -- --role "$ROLE" --require-ready
+
+      - name: Run isolated semantic judge
+        env:
+          ROLE: ${{ inputs.role }}
+          RUN_ID: ${{ inputs.run_id }}
+        run: |
+          npm run assurance:semantic:judge -- \
+            --role "$ROLE" \
+            --packet content/assurance/semantic/packets/01-introductions.json \
+            --run-id "$RUN_ID" \
+            --output "semantic-${ROLE}.json"
+
+      - name: Upload structured role evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: semantic-unit1-${{ inputs.role }}-${{ inputs.run_id }}
+          path: semantic-${{ inputs.role }}.json
+          if-no-files-found: error
+          retention-days: 30
