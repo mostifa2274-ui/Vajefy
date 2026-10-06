@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "dc47f1cfbc3da6a3b38ff61f2cb3d27c61005f23",
+  "authoritativeMain": "cb789e6358128e9485e59eeed2b1a290cab5236e",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -87,6 +87,12 @@
       "mergeCommit": "dc47f1cfbc3da6a3b38ff61f2cb3d27c61005f23",
       "pr": 108,
       "summary": "docs/A1_PLAN_STATUS.md status ledger in the plan §31 state model, checked by npm run status:check in validate:data and in CI with full history; AGENTS.md/CLAUDE.md point every session at it."
+    },
+    {
+      "id": "c1-ratchet-and-curriculum-frontier",
+      "mergeCommit": "cb789e6358128e9485e59eeed2b1a290cab5236e",
+      "pr": 109,
+      "summary": "Every deterministic finding code ratcheted (unknown codes at zero, fixes must be recorded); Unicode/bidi/NFC and Persian-in-English checks; course-wide curriculum frontier for entry and scene tasks."
     }
   ],
   "doNotRepeat": [
@@ -159,18 +165,17 @@
   "currentWork": {
     "blocked": false,
     "branch": "claude/analysis-in-depth-maqczd",
-    "objective": "Plan §41 items 3 and 5: bound every deterministic finding code, add Unicode/direction/script checks, and check every A1 task and scene against the curriculum frontier.",
+    "objective": "Plan §41 items 6, 7 and 8 and Phase 1 XP: example diversity checks, three-mode Practice, removal of deprecated Practice modes, XP off Progress.",
     "completedOnBranch": [
-      "Ratchet bounds every finding code (unknown codes at zero) and requires fixes to be recorded with npm run assurance:content:baseline, which only lowers maximums.",
-      "MALFORMED_UNICODE, BIDI_CONTROL, UNICODE_NOT_NFC at zero; PERSIAN_IN_ENGLISH at 4.",
-      "FRONTIER_TASK_VOCABULARY (5,341) and FRONTIER_SCENE_VOCABULARY (65) course-wide; Unit 1 zero.",
-      "Lexical helpers shared by the calibration audit and the frontier check in src/lib/learn/learner-language.ts; calibration output unchanged."
+      "EXAMPLE_NEAR_DUPLICATE (0) and EXAMPLE_REUSED (32) ratcheted.",
+      "Practice reduced to Smart Practice, Listening and Spelling over studied words; Pairs, sprint, meaning/cloze quizzes and deck drills removed with their components and 50 unused copy keys.",
+      "XP stat removed from Progress; stored count kept."
     ],
     "pending": [
-      "F06: near-duplicate example detection.",
-      "A1-FRONTIER-REPAIR: decide whether to move late high-frequency words (do, not, can, please, to, at, for) earlier in the curriculum; this changes the curriculum version and the frozen study roster.",
-      "F07/F08: three-mode Practice and removal of deprecated A1 modes.",
-      "F09: A1-only initial data loading.",
+      "F09: A1-only initial data loading (Today still loads synonyms.json; Library loads reference decks).",
+      "P1-CHUNK-DECKS and P1-FEATURES (docs/FEATURES.md).",
+      "A1-FRONTIER-REPAIR: decide whether to move late high-frequency words earlier in the curriculum.",
+      "F10/F11: per-sense Machine Assurance Records and generation provenance before the repair loop.",
       "Semantic lane: English needs a new candidate that is not GPT-OSS 120B or Llama 3.3 70B, without changing frozen v1; Persian, pedagogical and adversarial each need one owner workflow_dispatch."
     ]
   },
