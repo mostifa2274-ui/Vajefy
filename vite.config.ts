@@ -13,7 +13,13 @@ export default defineConfig({
   plugins: [
     // Runs TanStack Start's SSR environment in the Workers runtime during
     // development and emits standard Cloudflare Build Output for deployment.
-    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    cloudflare({
+      // Workers AI has no local simulator. Disable remote binding sessions in
+      // CI/browser preview so tests never require a Cloudflare API token.
+      // Production deployment still receives the real AI binding from Wrangler.
+      remoteBindings: process.env.CI !== "true",
+      viteEnvironment: { name: "ssr" },
+    }),
     tailwindcss(),
     // No prerendering: Quiz, Words and Notebook read their starting state from
     // the query string, which static HTML would ignore. Pages are rendered by
