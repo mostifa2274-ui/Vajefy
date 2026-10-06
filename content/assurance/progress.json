@@ -104,7 +104,8 @@
     "Do not rebuild semantic calibration automation from PR #92; after credentials exist, use .github/workflows/semantic-calibrate.yml once per role.",
     "Do not restore Qwen 3.8 27B as the default adversarial keyless calibration candidate without re-running the Neuron budget; PR budget work replaced it because the full frozen campaign would not safely fit the free daily allocation.",
     "Do not return to API-key setup unless the keyless OIDC Workers AI path is intentionally retired; legacy credential fields are no longer authoritative.",
-    "Do not add push/schedule/repository_dispatch inference triggers just because the connected GitHub toolset lacks workflow_dispatch."
+    "Do not add push/schedule/repository_dispatch inference triggers just because the connected GitHub toolset lacks workflow_dispatch.",
+    "Do not re-diagnose English run 37473550090 empty-model-content: PR #99 fixed missing Workers AI Responses API extraction and post-merge OIDC smoke 37476270004 passed."
   ],
   "blockers": [
     {
@@ -146,24 +147,16 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "codex/workers-ai-responses-extractor",
-    "objective": "Fix confirmed Workers AI Responses API extraction mismatch, validate, merge, deploy, then rerun English frozen calibration.",
-    "blocked": false,
-    "completedOnBranch": [
-      "Inspected failed workflow_dispatch run 37473550090.",
-      "Confirmed budget-current PASS and keyless OIDC preflight PASS.",
-      "Confirmed first English inference reached Workers AI and failed only at gateway output extraction.",
-      "Verified Cloudflare GPT-OSS Workers AI binding returns Responses API output.",
-      "Extended gateway extraction for top-level output_text and nested output[].content[].text while preserving legacy response and Chat Completions formats.",
-      "Added safe incomplete/status/usage diagnostics without logging model content.",
-      "Added regression tests for Responses API, legacy, Chat Completions and reasoning-only/incomplete output."
-    ],
-    "pending": [
-      "Pass full CI for Responses API extractor fix.",
-      "Merge if exact-head CI, Workers contract and Playwright are green.",
-      "Verify automatic exact-revision OIDC gateway smoke after deployment.",
-      "Rerun English 'Semantic judge calibration and qualification' manually with acknowledge_inference=true.",
-      "Inspect calibration quality result; do not alter frozen v1 thresholds."
+    "branch": "main",
+    "objective": "Rerun English frozen keyless calibration after the deployed Responses API extractor fix.",
+    "blocked": true,
+    "blocker": "The connected GitHub toolset cannot issue workflow_dispatch with inputs; the repair is deployed and verified, but a fresh manual English calibration dispatch is required.",
+    "nextSteps": [
+      "From GitHub Actions on main, run 'Semantic judge calibration and qualification' with role=english, replace_existing=false, acknowledge_inference=true.",
+      "Do not rerun the old failed job; it is pinned to pre-fix commit 5743a014c04527cc523bf3d6580d8005b6a48abe.",
+      "Inspect the fresh English run. If it reaches scoring, preserve frozen v1 thresholds exactly.",
+      "If English qualifies, continue with Persian, pedagogical and adversarial manual dispatches.",
+      "If English fails again, diagnose the new concrete failure; do not revisit the resolved Responses API extraction issue unless evidence points back to it."
     ]
   },
   "endpointResolution": {
@@ -249,7 +242,7 @@
   },
   "calibrationExecution": {
     "english": {
-      "status": "FAILED_TRANSPORT_EXTRACTION",
+      "status": "READY_FOR_RETRY_AFTER_TRANSPORT_FIX",
       "runId": 37473550090,
       "startedAt": "2026-10-06T13:47:05Z",
       "failedStep": "Run three isolated calibration repeats",
@@ -257,10 +250,17 @@
       "repeat": 1,
       "inferenceReached": true,
       "qualificationRecorded": false,
-      "failure": "HTTP 502 empty-model-content",
-      "rootCause": "Cloudflare GPT-OSS Workers AI binding returns Responses API output; gateway extractor supported legacy response strings and Chat Completions choices but not Responses API output/output_text.",
+      "failure": "HTTP 502 empty-model-content on cal-en-clean-i during repeat 1",
+      "rootCause": "Gateway omitted Cloudflare Responses API output extraction.",
       "fixBranch": "codex/workers-ai-responses-extractor",
-      "retryPolicy": "Do not rerun until extractor fix is merged and exact production OIDC smoke passes."
+      "retryPolicy": "Do not rerun until extractor fix is merged and exact production OIDC smoke passes.",
+      "failedRunId": 37473550090,
+      "fixPr": 99,
+      "fixMergeCommit": "24e123d8194935c4ba85eb42ad76f14134c9b048",
+      "fixCiResult": "PASS",
+      "postMergeOidcSmokeRunId": 37476270004,
+      "postMergeOidcSmokeResult": "PASS",
+      "productionReadyForRetry": true
     }
   }
 }
