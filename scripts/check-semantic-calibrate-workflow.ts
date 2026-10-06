@@ -24,7 +24,9 @@ const required = [
   "workflow_dispatch:",
   "acknowledge_inference:",
   "github.ref == 'refs/heads/main'",
-  "permissions:\n  contents: write",
+  "permissions:\n  contents: write\n  id-token: write",
+  "SEMANTIC_JUDGE_TRANSPORT: keyless",
+  "Keyless no-inference gateway preflight",
   "Run three isolated calibration repeats",
   "Score against pre-registered Vajefy gate",
   "--require-promote",
@@ -59,6 +61,10 @@ for (const pattern of forbiddenTriggers) {
       `Semantic calibration workflow contains forbidden automatic trigger: ${pattern}`,
     );
   }
+}
+
+if (/secrets\.SEMANTIC_JUDGE_|SEMANTIC_JUDGE_.*API_KEY/.test(text)) {
+  fail("Semantic calibration workflow must not reference semantic API-key secrets.");
 }
 
 if (!/for REPEAT in 1 2 3;/.test(text)) {
