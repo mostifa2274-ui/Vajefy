@@ -146,17 +146,24 @@
     "pr": 84
   },
   "currentWork": {
-    "branch": "main",
-    "objective": "Execute frozen keyless calibration once per role through the existing manual workflow; qualify only models that pass all pre-registered thresholds.",
-    "blocked": true,
-    "blocker": "The connected GitHub toolset cannot issue workflow_dispatch with inputs. Repository/runtime infrastructure is complete and green; inference must remain manual-only by policy.",
-    "nextSteps": [
-      "From GitHub Actions on main, dispatch 'Semantic judge calibration and qualification' for english with acknowledge_inference=true.",
-      "Repeat once each for persian, pedagogical and adversarial.",
-      "Each dispatch automatically verifies current pricing/budget, performs OIDC preflight, runs three isolated repeats, scores frozen v1, and records qualification only on strict PASS.",
-      "Do not modify calibration v1 thresholds after seeing results.",
-      "Do not run Unit 1 semantic judging for a role until qualification is committed.",
-      "After any role run, inspect its calibration result and continue only with qualified models."
+    "branch": "codex/workers-ai-responses-extractor",
+    "objective": "Fix confirmed Workers AI Responses API extraction mismatch, validate, merge, deploy, then rerun English frozen calibration.",
+    "blocked": false,
+    "completedOnBranch": [
+      "Inspected failed workflow_dispatch run 37473550090.",
+      "Confirmed budget-current PASS and keyless OIDC preflight PASS.",
+      "Confirmed first English inference reached Workers AI and failed only at gateway output extraction.",
+      "Verified Cloudflare GPT-OSS Workers AI binding returns Responses API output.",
+      "Extended gateway extraction for top-level output_text and nested output[].content[].text while preserving legacy response and Chat Completions formats.",
+      "Added safe incomplete/status/usage diagnostics without logging model content.",
+      "Added regression tests for Responses API, legacy, Chat Completions and reasoning-only/incomplete output."
+    ],
+    "pending": [
+      "Pass full CI for Responses API extractor fix.",
+      "Merge if exact-head CI, Workers contract and Playwright are green.",
+      "Verify automatic exact-revision OIDC gateway smoke after deployment.",
+      "Rerun English 'Semantic judge calibration and qualification' manually with acknowledge_inference=true.",
+      "Inspect calibration quality result; do not alter frozen v1 thresholds."
     ]
   },
   "endpointResolution": {
@@ -239,5 +246,21 @@
     "unavailableRequiredAction": "workflow_dispatch with inputs",
     "policy": "Do not add automatic inference triggers or weaken workflow_dispatch/OIDC restrictions to compensate for connector limitations.",
     "nextHumanAction": "From GitHub Actions on main, run 'Semantic judge calibration and qualification' once for each role: english, persian, pedagogical, adversarial, with acknowledge_inference=true."
+  },
+  "calibrationExecution": {
+    "english": {
+      "status": "FAILED_TRANSPORT_EXTRACTION",
+      "runId": 37473550090,
+      "startedAt": "2026-10-06T13:47:05Z",
+      "failedStep": "Run three isolated calibration repeats",
+      "failedTarget": "cal-en-clean-i",
+      "repeat": 1,
+      "inferenceReached": true,
+      "qualificationRecorded": false,
+      "failure": "HTTP 502 empty-model-content",
+      "rootCause": "Cloudflare GPT-OSS Workers AI binding returns Responses API output; gateway extractor supported legacy response strings and Chat Completions choices but not Responses API output/output_text.",
+      "fixBranch": "codex/workers-ai-responses-extractor",
+      "retryPolicy": "Do not rerun until extractor fix is merged and exact production OIDC smoke passes."
+    }
   }
 }
