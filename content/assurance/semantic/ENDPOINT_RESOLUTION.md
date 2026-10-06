@@ -37,7 +37,7 @@ Official references:
 - Gemini pricing: https://ai.google.dev/gemini-api/docs/pricing
 - Gemini OpenAI compatibility: https://ai.google.dev/gemini-api/docs/openai
 - OpenRouter pricing: https://openrouter.ai/pricing
-- OpenRouter Gemma 4 31B free: https://openrouter.ai/google/gemma-4-31b-it:free
+- OpenRouter MiniMax M2.7 free: https://openrouter.ai/google/gemma-4-31b-it:free
 - Cloudflare Workers AI pricing: https://developers.cloudflare.com/workers-ai/platform/pricing/
 - Cloudflare OpenAI compatibility: https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/
 - Cloudflare GLM-4.7-Flash: https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/
@@ -211,3 +211,27 @@ Once endpoints are configured:
 7. commit evidence only if the fail-closed checks accept it;
 8. never convert FAIL, UNCERTAIN, DISAGREEMENT or QUARANTINED into PASS by
    editorial override.
+
+
+## Quality re-ranking on 2026-10-06
+
+The zero-cost candidates were re-ranked by role fit after the initial provider
+selection.
+
+Three defaults were upgraded:
+
+- Persian: `gemini-3.5-flash-lite` -> `gemini-3.8-flash`;
+- Pedagogical: `google/gemma-4-31b-it:free` ->
+  `minimax/minimax-m2.7:free`;
+- Adversarial: `@cf/zai-org/glm-4.7-flash` ->
+  `@cf/qwen/qwen3.8-27b`.
+
+English remains `openai/gpt-oss-120b` on Groq Free.
+
+The rationale and fallback policy are recorded in
+`content/assurance/semantic/JUDGE_SELECTION.md`.
+
+Do not treat this ranking as permanent. The next quality step is a frozen
+Vajefy-specific judge calibration set; model promotion after that should be
+based on defect recall, false-positive rate, abstention calibration and schema
+reliability rather than generic benchmark prestige.
