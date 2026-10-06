@@ -41,6 +41,10 @@ interface WorkersAiLike {
       messages: { role: "system" | "user" | "assistant"; content: string }[];
       temperature?: number;
       max_tokens?: number;
+      response_format?: {
+        type: "json_object" | "json_schema";
+        json_schema?: Record<string, unknown>;
+      };
     },
   ): Promise<unknown>;
 }
