@@ -1,0 +1,38 @@
+name: Temporary semantic Neuron budget generation
+
+on:
+  push:
+    branches:
+      - codex/keyless-free-budget
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: codex/keyless-free-budget
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Generate deterministic calibration Neuron budget
+        run: npm run assurance:semantic:budget
+      - name: Commit budget snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/assurance/semantic/calibration/v1/neuron-budget.json
+          if git diff --cached --quiet; then
+            echo "Budget already current."
+            exit 0
+          fi
+          git commit -m "chore: generate semantic calibration Neuron budget"
+          git push origin HEAD:codex/keyless-free-budget
