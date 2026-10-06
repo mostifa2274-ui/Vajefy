@@ -16,6 +16,10 @@ Usage:
     .venv-audio/bin/python scripts/audio/generate_audio.py --models DIR
 DIR must contain kokoro-v1.0.onnx and voices-v1.0.bin from
 https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.0
+
+    python3 scripts/audio/generate_audio.py --rescore [--report FILE]
+re-checks the pronunciation flags already in the report with the current
+comparison, without the model or any audio dependency.
 """
 
 import argparse
@@ -26,10 +30,6 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
-
-import numpy as np
-import soundfile as sf
-from kokoro_onnx import Kokoro
 
 ROOT = Path(__file__).resolve().parents[2]
 PILOT = ROOT / "content" / "compiled" / "enhanced.json"
@@ -72,13 +72,71 @@ def strip_ipa(value: str) -> str:
     return re.sub(r"a(?![ɪʊ])", "æ", value)
 
 
+VOWELS = "aeiouæɑɒɔəɜɪʊʌ"
+
+
+def notation(value: str) -> str:
+    """Remove differences of notation only, never of pronunciation.
+
+    - A syllabic consonant is written /l/ or /l̩/ by dictionaries and /əl/ by
+      the phonemizer (table, cousin, often).
+    - The NEAR and CURE vowels are /ɪə/ and /ʊə/ or /iə/ and /uə/ (dear).
+    - The happY vowel ends a word as /i/ or /ɪ/ (every, early).
+
+    Strong and weak forms, dropped sounds and vowel quality still differ.
+    """
+    value = strip_ipa(value.replace("\u0329", ""))
+    previous = None
+    while previous != value:
+        previous = value
+        value = re.sub(rf"ə([lnm])(?![{VOWELS}])", r"\1", value)
+    value = value.replace("iə", "ɪə").replace("uə", "ʊə")
+    return re.sub(r"ɪ$", "i", value)
+
+
 def ipa_variants(value: str) -> set[str]:
     """Every pronunciation an entry lists, e.g. weak and stressed forms."""
-    return {strip_ipa(match) for match in re.findall(r"/([^/]+)/", value)} or {strip_ipa(value)}
+    return {notation(match) for match in re.findall(r"/([^/]+)/", value)} or {notation(value)}
+
+
+def pronunciation_matches(synthesized: str, ipa: str) -> bool:
+    """Whether the phonemizer's output is one of the entry's pronunciations.
+
+    A headword with several forms ("a, an") is phonemized as a comma list;
+    each form must match one the entry lists.
+    """
+    variants = ipa_variants(ipa)
+    return all(notation(part) in variants for part in synthesized.split(","))
+
+
+PRONUNCIATION_FLAG = re.compile(r"^pronunciation differs from IPA: synthesized /(.*)/, entry (.*)$")
+
+
+def rescore(report_path: Path) -> int:
+    """Drop recorded pronunciation flags that the current comparison accepts."""
+    report = json.loads(report_path.read_text())
+    before = len(report["flagged"])
+    kept = []
+    for flag in report["flagged"]:
+        issues = []
+        for issue in flag["issues"]:
+            match = PRONUNCIATION_FLAG.match(issue)
+            if match and pronunciation_matches(match.group(1), match.group(2)):
+                continue
+            issues.append(issue)
+        if issues:
+            kept.append({**flag, "issues": issues})
+    report["flagged"] = kept
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n")
+    print(f"{before} flagged before, {len(kept)} after re-checking pronunciation notation")
+    return 0
 
 
 def process(raw_wav: Path, mp3: Path) -> dict:
     """Trim silence, add short fades, normalise loudness and encode."""
+    import numpy as np
+    import soundfile as sf
+
     with tempfile.TemporaryDirectory() as tmp:
         clean = Path(tmp) / "clean.wav"
         trim = (
@@ -117,8 +175,17 @@ def faults(stats: dict, kind: str) -> list[str]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--models", required=True, type=Path)
+    parser.add_argument("--models", type=Path)
+    parser.add_argument("--rescore", action="store_true")
+    parser.add_argument("--report", type=Path, default=REPORT)
     args = parser.parse_args()
+    if args.rescore:
+        return rescore(args.report)
+    if not args.models:
+        parser.error("--models is required to generate audio")
+    import soundfile as sf
+    from kokoro_onnx import Kokoro
+
     for name, expected in MODEL_SHA256.items():
         actual = sha256(args.models / name)
         if actual != expected:
@@ -151,7 +218,7 @@ def main() -> int:
             stats = {key: known[key] for key in ("duration", "peak", "rms")}
         synthesized = text if phonemes else kokoro.tokenizer.phonemize(text, VOICES[accent][1])
         issues = faults(stats, kind)
-        if kind == "word" and ipa and strip_ipa(synthesized) not in ipa_variants(ipa):
+        if kind == "word" and ipa and not pronunciation_matches(synthesized, ipa):
             issues.append(f"pronunciation differs from IPA: synthesized /{synthesized}/, entry {ipa}")
         clips[name] = {**stats, "bytes": target.stat().st_size, "text": text, "accent": accent}
         if issues:
