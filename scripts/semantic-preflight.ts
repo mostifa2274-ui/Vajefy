@@ -23,6 +23,13 @@ function fail(message: string): never {
 }
 
 const unitId = option("--unit") ?? "01-introductions";
+const requestedRole = option("--role") as SemanticJudgeRole | undefined;
+if (
+  requestedRole &&
+  !["english", "persian", "pedagogical", "adversarial"].includes(requestedRole)
+) {
+  fail(`Unknown semantic judge role: ${requestedRole}`);
+}
 const packetPath =
   option("--packet") ??
   path.join(
@@ -39,7 +46,14 @@ if (packet.schemaVersion !== 1 || packet.unitId !== unitId) {
   fail(`Semantic packet does not match requested unit ${unitId}.`);
 }
 
-const roles = packet.roles.map((role) => ({
+const selectedRoles = requestedRole
+  ? packet.roles.filter((role) => role.role === requestedRole)
+  : packet.roles;
+if (requestedRole && selectedRoles.length !== 1) {
+  fail(`Semantic packet does not contain requested role ${requestedRole}.`);
+}
+
+const roles = selectedRoles.map((role) => ({
   ...semanticEndpointConfig(role.role),
   promptVersion: role.promptVersion,
   rubricVersion: role.rubricVersion,
