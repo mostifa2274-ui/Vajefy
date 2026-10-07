@@ -215,7 +215,21 @@ export type Pilot = {
   /** Every current clip per accent, for downloading pronunciation for offline use. */
   audioPack: AudioPack;
 };
-export type AudioPack = Record<"gb" | "us", { files: string[]; bytes: number }>;
+export type AudioPackVariant = { version: string; files: string[]; bytes: number };
+export type AudioPackUnit = CourseUnit & {
+  /** Stable 1-based position among units at the same level. */
+  number: number;
+  accents: Record<"gb" | "us", AudioPackVariant>;
+};
+/**
+ * Versioned pronunciation packs. Each unit/accent variant has its own content
+ * identity so a replacement can be staged completely before becoming active.
+ */
+export type AudioPack = {
+  schemaVersion: 2;
+  version: string;
+  units: AudioPackUnit[];
+};
 /** A unit of a level's curriculum (content/curriculum/). */
 export type CourseUnit = { id: string; level: string; titleEn: string; titleFa: string };
 
