@@ -605,7 +605,12 @@ function Check({
                 {/* Read as "4 letters, b", not as a row of underscores. */}
                 <span className="sr-only">
                   {item.shape.replace(/[^_a-z]/gi, "").length} {copy.recallLetters}
-                  {/^[a-z]/i.test(item.shape) ? `${lang === "fa" ? "،" : ","} ${item.shape[0]}` : ""}
+                  {/^[a-z]/i.test(item.shape) ? (
+                    <>
+                      {lang === "fa" ? "، " : ", "}
+                      <bdi lang="en" dir="ltr">{item.shape[0]}</bdi>
+                    </>
+                  ) : null}
                 </span>
               </p>
             </>
