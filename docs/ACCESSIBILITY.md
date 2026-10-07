@@ -25,6 +25,7 @@ accessibility steps inside the other browser tests check the following.
 | Text spacing | WCAG's increased line, letter, word and paragraph spacing causes no overflow | 1.4.12 |
 | Orientation | Landscape phone, portrait and landscape tablet, and desktop keep navigation and content usable | 1.3.4 |
 | Keyboard | A whole lesson and a review can be done with the keyboard alone | 2.1.1 |
+| Whole journeys | `tests/e2e/journeys.spec.ts` takes a new learner from first launch to a finished lesson at 200% text with reduced motion, and with the keyboard alone. It fails on sideways scrolling, a covered action or one Tab cannot reach ([INTERFACE.md](INTERFACE.md#synthetic-learner-journeys)) | 1.4.4, 2.1.1, 2.3.3, 2.4.11 |
 | Language of parts and direction | `tests/e2e/bidi.spec.ts` lints every screen, a word's detail, a whole lesson, a Review session and Smart Practice in both interface languages. It fails on Persian marked as English, on English inside Persian that is not marked as English, and on a run whose punctuation would land on the wrong side because it sits in the other language's direction | 3.1.2, 1.3.2 |
 
 The on-screen keyboard is handled too. While a text field has focus on a
