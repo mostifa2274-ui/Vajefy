@@ -120,35 +120,35 @@ function buildTargets() {
   const issues = new Map<string, string[]>();
   for (const flag of report.flagged ?? []) {
     if (flag.kind !== "word") continue;
-    issues.set(\`\${flag.sense}|\${flag.accent}\`, [...flag.issues]);
+    issues.set(`${flag.sense}|${flag.accent}`, [...flag.issues]);
   }
 
   const targets = [];
   for (const unitId of SCOPE_UNITS) {
     const unit = units.get(unitId);
-    if (!unit) fail(\`Missing required audio-certification unit \${unitId}.\`);
+    if (!unit) fail(`Missing required audio-certification unit ${unitId}.`);
     for (const item of unit.entries) {
       const entry = entries.get(item.id);
-      if (!entry) fail(\`\${unitId}: missing enhanced entry \${item.id}.\`);
+      if (!entry) fail(`${unitId}: missing enhanced entry ${item.id}.`);
       for (const sense of entry.senses) {
         const audio = manifest.senses[sense.id];
-        if (!audio) fail(\`\${sense.id}: missing audio manifest record.\`);
+        if (!audio) fail(`${sense.id}: missing audio manifest record.`);
         for (const accent of ["gb", "us"] as const) {
           const word = audio[accent]?.word;
-          if (!word) fail(\`\${sense.id}:\${accent}: missing word clip.\`);
+          if (!word) fail(`${sense.id}:${accent}: missing word clip.`);
           const clipName = path.basename(word.file);
           const metadata = manifest.clips[clipName];
-          if (!metadata) fail(\`\${sense.id}:\${accent}: manifest clip \${clipName} is missing.\`);
+          if (!metadata) fail(`${sense.id}:${accent}: manifest clip ${clipName} is missing.`);
           if (metadata.text !== word.text || metadata.accent !== accent) {
-            fail(\`\${sense.id}:\${accent}: clip metadata does not match its sense record.\`);
+            fail(`${sense.id}:${accent}: clip metadata does not match its sense record.`);
           }
           const disk = path.join(ROOT, "public", "audio", word.file);
-          if (!fs.existsSync(disk)) fail(\`\${sense.id}:\${accent}: audio file \${word.file} is missing.\`);
+          if (!fs.existsSync(disk)) fail(`${sense.id}:${accent}: audio file ${word.file} is missing.`);
           if (fs.statSync(disk).size !== metadata.bytes) {
-            fail(\`\${sense.id}:\${accent}: audio byte count differs from audio-manifest.json.\`);
+            fail(`${sense.id}:${accent}: audio byte count differs from audio-manifest.json.`);
           }
           targets.push({
-            targetId: \`\${sense.id}:\${accent}\`,
+            targetId: `${sense.id}:${accent}`,
             unitId,
             entryId: entry.id,
             senseId: sense.id,
@@ -162,7 +162,7 @@ function buildTargets() {
               peak: metadata.peak,
               rms: metadata.rms,
             },
-            legacyIssues: issues.get(\`\${sense.id}|\${accent}\`) ?? [],
+            legacyIssues: issues.get(`${sense.id}|${accent}`) ?? [],
           });
         }
       }
@@ -203,10 +203,10 @@ function expectedCertificates(recognition: AudioRecognitionManifest): AudioCerti
 
   const byTarget = new Map(recognition.clips.map((clip) => [clip.targetId, clip]));
   if (byTarget.size !== targets.length) {
-    fail(\`Audio recognition evidence must cover exactly \${targets.length} targets; found \${byTarget.size}.\`);
+    fail(`Audio recognition evidence must cover exactly ${targets.length} targets; found ${byTarget.size}.`);
   }
   const unknown = recognition.clips.filter((clip) => !targets.some((target) => target.targetId === clip.targetId));
-  if (unknown.length) fail(\`Audio recognition evidence contains unknown target \${unknown[0]!.targetId}.\`);
+  if (unknown.length) fail(`Audio recognition evidence contains unknown target ${unknown[0]!.targetId}.`);
 
   const records = targets.map((target) => deriveAudioCertificate(byTarget.get(target.targetId), target));
   const certified = records.filter((record) => record.status === "CERTIFIED").length;
@@ -233,9 +233,9 @@ if (!fs.existsSync(FILES.certificates)) fail("Missing content/assurance/audio/ce
 const recognitionResult = audioRecognitionManifest.safeParse(read<unknown>(FILES.recognition));
 if (!recognitionResult.success) {
   fail(
-    \`recognition.json is invalid:\\n\${recognitionResult.error.issues
-      .map((issue) => \`- \${issue.path.join(".")}: \${issue.message}\`)
-      .join("\\n")}\`,
+    `recognition.json is invalid:\\n${recognitionResult.error.issues
+      .map((issue) => `- ${issue.path.join(".")}: ${issue.message}`)
+      .join("\\n")}`,
   );
 }
 const recognition = recognitionResult.data;
@@ -249,31 +249,31 @@ const expected = expectedCertificates(recognition);
 const write = process.argv.includes("--write");
 if (write) {
   fs.mkdirSync(AUDIO, { recursive: true });
-  fs.writeFileSync(FILES.certificates, \`\${JSON.stringify(expected, null, 2)}\\n\`);
+  fs.writeFileSync(FILES.certificates, `${JSON.stringify(expected, null, 2)}\\n`);
   console.log(
-    \`Audio certificates written: \${expected.summary.certified}/\${expected.summary.targets} certified, \` +
-      \`\${expected.summary.uncertain} uncertain, \${expected.summary.quarantined} quarantined.\`,
+    `Audio certificates written: ${expected.summary.certified}/${expected.summary.targets} certified, ` +
+      `${expected.summary.uncertain} uncertain, ${expected.summary.quarantined} quarantined.`,
   );
 } else {
   const actualResult = audioCertificateManifest.safeParse(read<unknown>(FILES.certificates));
   if (!actualResult.success) {
     fail(
-      \`certificates.json is invalid:\\n\${actualResult.error.issues
-        .map((issue) => \`- \${issue.path.join(".")}: \${issue.message}\`)
-        .join("\\n")}\`,
+      `certificates.json is invalid:\\n${actualResult.error.issues
+        .map((issue) => `- ${issue.path.join(".")}: ${issue.message}`)
+        .join("\\n")}`,
     );
   }
   if (!same(actualResult.data, expected)) {
     fail("Audio certificates are stale. Run npm run assurance:audio -- --write and commit the result.");
   }
   console.log(
-    \`Audio certification evidence: \${expected.status} (\${expected.summary.certified}/\${expected.summary.targets} certified; \` +
-      \`\${expected.summary.uncertain} uncertain; \${expected.summary.quarantined} quarantined).\`,
+    `Audio certification evidence: ${expected.status} (${expected.summary.certified}/${expected.summary.targets} certified; ` +
+      `${expected.summary.uncertain} uncertain; ${expected.summary.quarantined} quarantined).`,
   );
 }
 
 if (process.argv.includes("--require-certified") && expected.status !== "CERTIFIED") {
   fail(
-    \`Audio certification gate is not satisfied: \${expected.summary.certified}/\${expected.summary.targets} targets are certified.\`,
+    `Audio certification gate is not satisfied: ${expected.summary.certified}/${expected.summary.targets} targets are certified.`,
   );
 }
