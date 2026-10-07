@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "evidenceVersion": "vajefy-audio-v1",
+  "generatedAt": null,
+  "scope": {
+    "units": [
+      "01-introductions",
+      "02-family-home",
+      "03-daily-routine"
+    ]
+  },
+  "sourceHashes": null,
+  "systems": {
+    "whisper": {
+      "engine": "faster-whisper",
+      "packageVersion": "1.2.1",
+      "model": "Systran/faster-whisper-small.en",
+      "modelVersion": "4e49ce629e3fa4c3da596c602b212cb026910443",
+      "modelSha256": null
+    },
+    "vosk": {
+      "engine": "vosk",
+      "packageVersion": "0.3.45",
+      "model": "vosk-model-small-en-us-0.15",
+      "modelVersion": "0.15",
+      "modelSha256": null
+    },
+    "alignment": {
+      "engine": "pocketsphinx",
+      "packageVersion": "5.1.1",
+      "model": "bundled-en-us",
+      "modelVersion": "pocketsphinx-5.1.1",
+      "modelSha256": null
+    }
+  },
+  "clips": []
+}
