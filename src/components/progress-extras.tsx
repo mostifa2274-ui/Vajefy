@@ -4,6 +4,7 @@ import type { AudioPack, AudioUnitPack } from "@/lib/learn/content";
 import { useFormat } from "@/lib/learn/format";
 import type { Copy } from "@/lib/learn/i18n";
 import { checkupResult, type LessonSession } from "@/lib/learn/lesson";
+import { learnerStateCounts } from "@/lib/learn/learner-state";
 import { measures } from "@/lib/learn/measures";
 import { CONTENT_CHANNEL } from "@/lib/learn/channel";
 import { downloadText } from "@/lib/learn/download-backup";
@@ -32,7 +33,9 @@ export function LearningSummary({ copy }: { copy: Copy }) {
   const practiceSkills = useProgress((state) => state.practiceSkills);
   const sessions = useProgress((state) => state.sessions);
   const { pct, sep } = useFormat();
+  const [opened] = useState(() => Date.now());
   const result = measures({ cards, reviewHistory, practiceSkills });
+  const states = learnerStateCounts(cards, reviewHistory, opened);
   const latestCheckup = Object.values(sessions)
     .filter((session): session is LessonSession => session.kind === "lesson" && session.mode === "checkup" && session.status === "done")
     .sort((a, b) => b.updatedAt - a.updatedAt)[0];
@@ -57,6 +60,32 @@ export function LearningSummary({ copy }: { copy: Copy }) {
           {copy.checkupLatest}: {copy.checkupUsable} <Num value={checkup.usable} /> / <Num value={checkup.checked} />
         </p>
       ) : null}
+      <h3 className="mt-5 text-sm font-medium">{copy.statesTitle}</h3>
+      <dl className="mt-2 grid gap-2 text-sm">
+        {([
+          [copy.stateNew, copy.stateNewHint, null],
+          [copy.stateLearning, copy.stateLearningHint, states.learning],
+          [copy.stateReady, copy.stateReadyHint, null],
+          [copy.stateDue, copy.stateDueHint, states.due],
+          [copy.stateRetained, copy.stateRetainedHint, states.retained],
+        ] as const).map(([label, hint, count]) => (
+          <div key={label} className="grid grid-cols-[minmax(0,9rem)_1fr] gap-x-3 gap-y-0.5">
+            <dt className="font-medium">
+              {label}
+              {count === null ? null : (
+                <span className="ms-1 text-muted">
+                  <Sep />
+                  <Num value={count} />
+                </span>
+              )}
+            </dt>
+            <dd className="text-pretty text-muted">{hint}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="mt-2 text-xs text-pretty text-muted">
+        {copy.masteredLabel}: {copy.settledHint}
+      </p>
       <h3 className="mt-5 text-sm font-medium">{copy.skillsTitle}</h3>
       <ul className="mt-2 grid gap-1 text-sm">
         {result.skills.map((item) => (
