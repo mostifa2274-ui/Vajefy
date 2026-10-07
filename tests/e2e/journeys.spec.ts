@@ -387,7 +387,7 @@ test("a lesson survives repeated online and offline transitions without losing p
 
     await context.setOffline(false);
     if (!reached) {
-      const finish = await runJourney(page, { budget: 40, errors, reached: visible(page, LESSON_DONE) });
+      const finish = await runJourney(page, { budget: 40, reached: visible(page, LESSON_DONE) });
       expect(finish.findings, report(finish)).toEqual([]);
     }
     await page.reload();
