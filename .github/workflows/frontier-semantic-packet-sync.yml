@@ -1,0 +1,41 @@
+name: Frontier semantic packet sync
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: [codex/frontier-safe-batch1]
+
+jobs:
+  sync:
+    if: ${{ !contains(github.event.head_commit.message, '[frontier-semantic-bot]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: codex/frontier-safe-batch1
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Regenerate scoped Unit 1 semantic packet
+        run: npm run assurance:semantic:packets
+      - name: Commit exact packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          file="content/assurance/semantic/packets/01-introductions.json"
+          changed="$(git status --porcelain -- "$file")"
+          if [ -z "$changed" ]; then
+            echo "Semantic packet already current."
+            exit 0
+          fi
+          printf '%s\n' "$changed"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$file"
+          git commit -m "[frontier-semantic-bot] Scope Unit 1 semantic packet identity"
+          git push origin HEAD:codex/frontier-safe-batch1
