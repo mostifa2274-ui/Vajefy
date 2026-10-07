@@ -109,6 +109,25 @@ test("PocketSphinx boundary tokens and alternate pronunciation labels do not fai
   assert.equal(certificate.criteria.forcedAlignment, true);
 });
 
+test("alignment normalization does not exempt boundary tokens from acoustic integrity", () => {
+  const certificate = deriveAudioCertificate(
+    {
+      ...evidence,
+      alignment: {
+        ...evidence.alignment,
+        words: [
+          { name: "i", start: 3, duration: 40, phones: [{ name: "AY", start: 3, duration: 40 }] },
+          { name: "<sil>", start: 43, duration: 0, phones: [{ name: "SIL", start: 43, duration: 0 }] },
+        ],
+      },
+    },
+    expected,
+  );
+  assert.equal(certificate.criteria.forcedAlignment, false);
+  assert.equal(certificate.status, "QUARANTINED");
+  assert.equal(certificate.blockers.includes("forced-alignment"), true);
+});
+
 test("two ASRs plus alignment can certify exact source-bound audio", () => {
   const certificate = deriveAudioCertificate(evidence, expected);
   assert.equal(certificate.status, "CERTIFIED");
