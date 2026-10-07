@@ -9,9 +9,20 @@ import {
   audioRepairPolicy,
   deriveAudioCertificate,
   MAX_AUDIO_AUTOMATION_ATTEMPTS,
+  normalizeAudioAlignmentWords,
   normalizeAudioTranscript,
   planAudioRepairs,
+  serializeAudioJson,
 } from "./audio-assurance";
+
+test("audio JSON serialization is parseable and ends with one real newline", () => {
+  const value = { status: "PARTIAL", summary: { certified: 0, targets: 386 } };
+  const serialized = serializeAudioJson(value);
+  assert.deepEqual(JSON.parse(serialized), value);
+  assert.equal(serialized.endsWith("\n"), true);
+  assert.equal(serialized.endsWith("\\n"), false);
+  assert.equal(serialized.slice(0, -1).includes("\n"), true);
+});
 
 test("audio transcript normalization is conservative but contraction-aware", () => {
   assert.equal(normalizeAudioTranscript("  I\u2019m HERE!  "), "i am here");
@@ -68,6 +79,35 @@ const evidence = {
     reason: null,
   },
 };
+
+test("PocketSphinx boundary tokens and alternate pronunciation labels do not fail lexical alignment", () => {
+  assert.deepEqual(
+    normalizeAudioAlignmentWords([
+      { name: "<s>" },
+      { name: "a(2)" },
+      { name: "an" },
+      { name: "<sil>" },
+    ]),
+    ["a", "an"],
+  );
+
+  const certificate = deriveAudioCertificate(
+    {
+      ...evidence,
+      alignment: {
+        ...evidence.alignment,
+        words: [
+          { name: "<s>", start: 0, duration: 2, phones: [{ name: "SIL", start: 0, duration: 2 }] },
+          { name: "i(2)", start: 3, duration: 40, phones: [{ name: "AY", start: 3, duration: 40 }] },
+          { name: "<sil>", start: 43, duration: 20, phones: [{ name: "SIL", start: 43, duration: 20 }] },
+        ],
+      },
+    },
+    expected,
+  );
+  assert.equal(certificate.status, "CERTIFIED");
+  assert.equal(certificate.criteria.forcedAlignment, true);
+});
 
 test("two ASRs plus alignment can certify exact source-bound audio", () => {
   const certificate = deriveAudioCertificate(evidence, expected);
