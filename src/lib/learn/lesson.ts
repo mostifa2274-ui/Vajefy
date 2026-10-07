@@ -55,6 +55,22 @@ export type LessonAnswer = {
   result: "correct" | "close" | "wrong" | "skipped";
   given?: string;
   at: number;
+  /** Active-visible time until the learner answered this step. */
+  responseMs?: number;
+};
+
+export type LessonTimingSample = {
+  step: number;
+  at: number;
+  kind: LessonStep["kind"];
+  role?: Role;
+  target?: string;
+  /** Active-visible time for the complete step, excluding hidden/idle time. */
+  activeMs: number;
+  /** Active-visible time before the answer, when this was an answered check. */
+  responseMs?: number;
+  /** Time spent reading correction/feedback after answering. */
+  feedbackMs?: number;
 };
 
 export type LessonSession = {
@@ -73,6 +89,11 @@ export type LessonSession = {
   steps: LessonStep[];
   index: number;
   answers: LessonAnswer[];
+  /**
+   * Completed-step timing evidence. Optional for saved sessions created before
+   * P4 timing existed; missing history is unknown, never zero.
+   */
+  timing?: LessonTimingSample[];
 };
 
 /** A resolved check item, ready to show. */
