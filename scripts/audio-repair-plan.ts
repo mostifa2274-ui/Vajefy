@@ -38,6 +38,21 @@ if (log.data.policyVersion !== policy.data.policyVersion) {
   fail("Audio repair log and policy versions differ.");
 }
 
+// A candidate promoted into the current manifest gets one final full-corpus
+// certification before any bot commit. If that exact candidate SHA is current,
+// its final certificate must still be CERTIFIED.
+for (const record of certificates.data.records) {
+  const promoted = log.data.attempts.find(
+    (attempt) =>
+      attempt.targetId === record.targetId &&
+      attempt.outcome === "CERTIFIED" &&
+      attempt.candidateClipSha256 === record.clipSha256,
+  );
+  if (promoted && record.status !== "CERTIFIED") {
+    fail(record.targetId + ": promoted candidate is not certified by the final full-corpus pass.");
+  }
+}
+
 const plan = audioRepairPlan.parse({
   schemaVersion: 1,
   policyVersion: policy.data.policyVersion,
