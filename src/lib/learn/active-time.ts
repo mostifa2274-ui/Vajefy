@@ -1,37 +1,97 @@
 import { useEffect, useRef } from "react";
 
-/** Longest single response counted as active; longer gaps are treated as idle. */
-export const MAX_ACTIVE_MS = 120_000;
+/**
+ * A visible step remains active for at most this long after the learner's most
+ * recent interaction. This matches docs/LEARNING_MEASURES.md: idle time beyond
+ * 60 seconds is excluded rather than merely capped after the fact.
+ */
+export const IDLE_TIMEOUT_MS = 60_000;
+
+export class ActiveTimeCounter {
+  private last: number;
+  private activeUntil: number;
+  private hidden: boolean;
+  private total = 0;
+
+  constructor(now: number, hidden = false) {
+    this.last = now;
+    this.hidden = hidden;
+    this.activeUntil = hidden ? now : now + IDLE_TIMEOUT_MS;
+  }
+
+  private accrue(now: number) {
+    const safe = Math.max(this.last, now);
+    if (!this.hidden) {
+      const activeEnd = Math.min(safe, this.activeUntil);
+      if (activeEnd > this.last) this.total += activeEnd - this.last;
+    }
+    this.last = safe;
+  }
+
+  /** A learner interaction extends the active window from this instant. */
+  activity(now: number) {
+    this.accrue(now);
+    this.activeUntil = Math.max(this.activeUntil, now + IDLE_TIMEOUT_MS);
+  }
+
+  hide(now: number) {
+    this.accrue(now);
+    this.hidden = true;
+  }
+
+  /**
+   * Returning to the page is itself intentional activity: reading may continue
+   * without an immediate key/pointer event.
+   */
+  show(now: number) {
+    this.last = Math.max(this.last, now);
+    this.hidden = false;
+    this.activeUntil = Math.max(this.activeUntil, now + IDLE_TIMEOUT_MS);
+  }
+
+  /** Active-visible milliseconds accumulated up to now. */
+  value(now: number): number {
+    this.accrue(now);
+    return Math.max(0, Math.round(this.total));
+  }
+}
 
 /**
- * Time spent on the current question while the page was visible, in
- * milliseconds. It restarts whenever `key` changes and ignores time the tab
- * spent hidden, so it measures attention rather than wall-clock time.
+ * Active-visible time for one lesson step. The clock restarts when `key`
+ * changes, excludes hidden-tab intervals and stops accruing after 60 seconds
+ * without interaction. Pointer, keyboard, input, scroll and touch activity
+ * resume the active window.
  */
 export function useActiveTime(key: string | undefined) {
-  const state = useRef({ start: 0, hiddenAt: 0, hidden: 0 });
+  const counter = useRef<ActiveTimeCounter | null>(null);
 
   useEffect(() => {
-    state.current = { start: performance.now(), hiddenAt: 0, hidden: 0 };
+    counter.current = new ActiveTimeCounter(performance.now(), document.hidden);
   }, [key]);
 
   useEffect(() => {
-    function onVisibility() {
+    const activity = () => counter.current?.activity(performance.now());
+    const visibility = () => {
       const now = performance.now();
-      if (document.hidden) state.current.hiddenAt = now;
-      else if (state.current.hiddenAt) {
-        state.current.hidden += now - state.current.hiddenAt;
-        state.current.hiddenAt = 0;
-      }
-    }
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => document.removeEventListener("visibilitychange", onVisibility);
+      if (document.hidden) counter.current?.hide(now);
+      else counter.current?.show(now);
+    };
+
+    document.addEventListener("visibilitychange", visibility);
+    document.addEventListener("pointerdown", activity, { capture: true, passive: true });
+    document.addEventListener("keydown", activity, { capture: true });
+    document.addEventListener("input", activity, { capture: true });
+    document.addEventListener("wheel", activity, { capture: true, passive: true });
+    document.addEventListener("touchstart", activity, { capture: true, passive: true });
+    return () => {
+      document.removeEventListener("visibilitychange", visibility);
+      document.removeEventListener("pointerdown", activity, true);
+      document.removeEventListener("keydown", activity, true);
+      document.removeEventListener("input", activity, true);
+      document.removeEventListener("wheel", activity, true);
+      document.removeEventListener("touchstart", activity, true);
+    };
   }, []);
 
-  return () => {
-    const now = performance.now();
-    const hiddenNow = state.current.hiddenAt ? now - state.current.hiddenAt : 0;
-    const active = now - state.current.start - state.current.hidden - hiddenNow;
-    return Math.max(0, Math.min(MAX_ACTIVE_MS, Math.round(active)));
-  };
+  return () => counter.current?.value(performance.now()) ?? 0;
 }
