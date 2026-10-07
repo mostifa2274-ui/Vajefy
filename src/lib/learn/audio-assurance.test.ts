@@ -324,6 +324,26 @@ test("audio repair planner picks the first untried candidate deterministically",
   assert.equal(planAudioRepairs(partialCertificate(), repairPolicy, once)[0]?.candidate.id, "gb-two");
 });
 
+test("audio repair planner pauses after isolated certification until final-pass rollback is recorded", () => {
+  const log = audioRepairLog.parse({
+    schemaVersion: 1,
+    policyVersion: "test-policy",
+    policySha256: "a".repeat(64),
+    attempts: [
+      {
+        targetId: "lex:A1:i:gb",
+        sourceClipSha256: "8".repeat(64),
+        candidateId: "gb-one",
+        candidateClipSha256: "9".repeat(64),
+        at: "2026-10-07T00:01:00Z",
+        outcome: "CERTIFIED",
+        blockers: [],
+      },
+    ],
+  });
+  assert.deepEqual(planAudioRepairs(partialCertificate(), repairPolicy, log), []);
+});
+
 test("audio repair planner advances after an isolated certified candidate is rolled back", () => {
   const log = audioRepairLog.parse({
     schemaVersion: 1,
