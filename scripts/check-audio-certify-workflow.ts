@@ -4,6 +4,8 @@ import path from "node:path";
 const ROOT = process.cwd();
 const WORKFLOW = path.join(ROOT, ".github", "workflows", "audio-certify.yml");
 const COMMIT = path.join(ROOT, "scripts", "audio-certification-commit.sh");
+const AUTHORITY = path.join(ROOT, "scripts", "audio-certification.ts");
+const RECOGNIZER = path.join(ROOT, "scripts", "audio", "certify_audio.py");
 
 function fail(message: string): never {
   console.error(message);
@@ -14,6 +16,8 @@ if (!fs.existsSync(WORKFLOW)) fail("Missing .github/workflows/audio-certify.yml"
 if (!fs.existsSync(COMMIT)) fail("Missing scripts/audio-certification-commit.sh");
 const workflow = fs.readFileSync(WORKFLOW, "utf8");
 const commit = fs.readFileSync(COMMIT, "utf8");
+const authority = fs.readFileSync(AUTHORITY, "utf8");
+const recognizer = fs.readFileSync(RECOGNIZER, "utf8");
 
 for (const marker of [
   "branches: [main]",
@@ -66,4 +70,14 @@ if (/git add\s+(-A|--all|\.)(\s|$)/m.test(commit)) {
 }
 if (/push\s+(-f|--force)/.test(commit)) fail("Audio evidence commit script must never force-push.");
 
-console.log("Audio certification workflow safety: PASS (offline recognizers, main/path gated, allowlisted evidence commits).");
+if (!authority.includes("expectedText: entry.headword")) {
+  fail("TypeScript audio authority must compare ASR with the learner-facing entry headword.");
+}
+if (!recognizer.includes('"expectedText": entry["headword"]')) {
+  fail("Python recognizer must compare ASR with the learner-facing entry headword.");
+}
+if (authority.includes("expectedText: word.text") || recognizer.includes('"expectedText": word["text"]')) {
+  fail("Synthesis text/phonemes must never become the lexical ASR target.");
+}
+
+console.log("Audio certification workflow safety: PASS (offline recognizers, lexical headword targets, main/path gated, allowlisted evidence commits).");
