@@ -3,5 +3,18 @@
   "policyVersion": "kokoro-v1-unit123-r1",
   "policySha256": null,
   "attempts": [],
-  "automationAttempts": []
+  "automationAttempts": [
+    {
+      "runId": "37666057982",
+      "runAttempt": 1,
+      "at": "2026-10-07T18:33:25.478Z",
+      "event": "push",
+      "headSha": "8dcb476be850ee0adcfb02e5b993633bc853ef65",
+      "jobStatus": "failure",
+      "certificateStatus": "PENDING_RECOGNITION",
+      "certified": 0,
+      "targets": 386,
+      "recognitionGeneratedAt": null
+    }
+  ]
 }
