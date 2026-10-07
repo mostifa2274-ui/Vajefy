@@ -78,6 +78,15 @@ teaching card:
 6. **Later review:** the delayed retrieval after the other words is the word's
    first scheduled review; FSRS schedules the rest.
 
+When a learner has both new material and due reviews, a guided lesson may also
+**recycle up to two due known meanings** in fresh authored sentence context.
+The oldest due enhanced cards are considered first. A candidate is included
+only when a non-held-out authored choice, cloze or production item is available;
+the reserved delayed-assessment item is never consumed. These answers are real
+scheduled reviews and therefore update FSRS exactly as Review would. They do not
+increase the new-word allowance, and a wrong recycled answer may receive a
+prompted retry only after its scheduled review has already been recorded.
+
 **Readiness for now** is computed from one lesson's answers: a word is
 *ready* when its latest unaided check (written retrieval, listening, context or
 the delayed retrieval) succeeded; *with help* when its latest unaided check
