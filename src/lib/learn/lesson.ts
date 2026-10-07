@@ -4,7 +4,7 @@ import { newId } from "./session";
 import { readyToIntroduce } from "./targets";
 import { bestSpelling, shuffle } from "./text";
 import type { AssessmentPart } from "./ops";
-import type { Grade, PracticeSkill } from "./types";
+import type { CardProg, Grade, PracticeSkill } from "./types";
 
 /**
  * A guided lesson. For each new target the sequence is: understand (teaching
@@ -297,6 +297,36 @@ export function heldOutItem(sense: Sense | undefined): CheckItem | undefined {
 
 function teachingChecks(sense: Sense | undefined): CheckItem[] {
   return sense?.check.slice(0, -1) ?? [];
+}
+
+/** Whether a loaded target has meaningful authored context safe for recycling. */
+export function hasRecycleContext(index: Pick<PilotIndex, "content">, senseId: string): boolean {
+  return teachingChecks(index.content.get(senseId)?.sense).some(
+    (item) => item.type === "produce" || item.type === "cloze" || item.type === "choice",
+  );
+}
+
+/**
+ * Up to `limit` oldest due enhanced targets. Selection needs only the small
+ * catalogue listing; callers load these entries and then use
+ * `hasRecycleContext` before putting them into a lesson.
+ */
+export function recycleCandidates(
+  index: Pick<PilotIndex, "bySense">,
+  cards: Record<string, CardProg | undefined>,
+  now: number,
+  limit = 2,
+): PilotTarget[] {
+  const take = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : 0;
+  if (!take) return [];
+  return Object.entries(cards)
+    .flatMap(([id, card]) => {
+      const target = index.bySense.get(id);
+      return card && card.due <= now && target ? [{ target, due: card.due }] : [];
+    })
+    .sort((a, b) => a.due - b.due || a.target.sense.id.localeCompare(b.target.sense.id))
+    .slice(0, take)
+    .map(({ target }) => target);
 }
 
 function contentItem(sense: Sense | undefined, types: CheckItem["type"][], used: Set<string>): CheckItem | undefined {
