@@ -5,6 +5,8 @@ const ROOT = process.cwd();
 const WORKFLOW = path.join(ROOT, ".github", "workflows", "audio-certify.yml");
 const COMMIT = path.join(ROOT, "scripts", "audio-certification-commit.sh");
 const AUTHORITY = path.join(ROOT, "scripts", "audio-certification.ts");
+const SOURCE_HASHES = path.join(ROOT, "scripts", "audio-source-hashes.ts");
+const SOURCE_SCOPE = path.join(ROOT, "src", "lib", "learn", "audio-source-scope.ts");
 const RECOGNIZER = path.join(ROOT, "scripts", "audio", "certify_audio.py");
 const CANDIDATE_GENERATOR = path.join(ROOT, "scripts", "audio", "generate_repair_candidates.py");
 const PROMOTER = path.join(ROOT, "scripts", "audio", "promote_repair_candidates.py");
@@ -17,9 +19,13 @@ function fail(message: string): never {
 
 if (!fs.existsSync(WORKFLOW)) fail("Missing .github/workflows/audio-certify.yml");
 if (!fs.existsSync(COMMIT)) fail("Missing scripts/audio-certification-commit.sh");
+if (!fs.existsSync(SOURCE_HASHES)) fail("Missing scripts/audio-source-hashes.ts");
+if (!fs.existsSync(SOURCE_SCOPE)) fail("Missing src/lib/learn/audio-source-scope.ts");
 const workflow = fs.readFileSync(WORKFLOW, "utf8");
 const commit = fs.readFileSync(COMMIT, "utf8");
 const authority = fs.readFileSync(AUTHORITY, "utf8");
+const sourceHashes = fs.readFileSync(SOURCE_HASHES, "utf8");
+const sourceScope = fs.readFileSync(SOURCE_SCOPE, "utf8");
 const recognizer = fs.readFileSync(RECOGNIZER, "utf8");
 const candidateGenerator = fs.readFileSync(CANDIDATE_GENERATOR, "utf8");
 const promoter = fs.readFileSync(PROMOTER, "utf8");
@@ -37,6 +43,11 @@ for (const marker of [
   "KOKORO_MODEL_SHA256",
   "KOKORO_VOICES_SHA256",
   "scripts/audio/certify_audio.py",
+  "scripts/audio-source-hashes.ts",
+  "src/lib/learn/audio-source-scope.ts",
+  "assurance:audio:scope",
+  "--source-hashes .audio-repair/source-hashes.json",
+  "Build scoped Unit 1-3 source identity",
   "scripts/audio/generate_repair_candidates.py",
   "scripts/audio/promote_repair_candidates.py",
   "assurance:audio:repair:plan",
@@ -116,8 +127,41 @@ if (/push\s+(-f|--force)/.test(commit)) fail("Audio evidence commit script must 
 if (!authority.includes("expectedText: entry.headword")) {
   fail("TypeScript audio authority must compare ASR with the learner-facing entry headword.");
 }
+if (!authority.includes("buildAudioSourceHashes(ROOT)")) {
+  fail("TypeScript audio authority must bind evidence to the canonical scoped source hashes.");
+}
+for (const marker of [
+  "audioSourceScopeProjection",
+  "AUDIO_CERTIFICATION_UNITS",
+  "headword",
+  "pronunciation",
+  "duration",
+  "peak",
+  "rms",
+  "bytes",
+  "flagged",
+]) {
+  if (!sourceScope.includes(marker)) fail("Scoped audio source projection marker missing: " + marker);
+}
+if (!sourceHashes.includes("audioSourceScopeProjection")) {
+  fail("Scoped audio source hash builder must consume the canonical projection.");
+}
 if (!recognizer.includes('"expectedText": entry["headword"]')) {
   fail("Python recognizer must compare ASR with the learner-facing entry headword.");
+}
+if (!recognizer.includes('parser.add_argument("--source-hashes", type=Path, required=True)')) {
+  fail("Python recognizer must require the precomputed scoped source identity.");
+}
+if (!recognizer.includes('"sourceHashes": source_hashes')) {
+  fail("Python recognizer must emit the supplied scoped source identity.");
+}
+if (
+  recognizer.includes('"curriculumSha256": sha256(CURRICULUM)') ||
+  recognizer.includes('"enhancedSha256": sha256(ENHANCED)') ||
+  recognizer.includes('"audioManifestSha256": sha256(MANIFEST)') ||
+  recognizer.includes('"audioReportSha256": sha256(REPORT)')
+) {
+  fail("Python recognizer must not bind Unit 1-3 evidence to full-corpus file hashes.");
 }
 if (authority.includes("expectedText: word.text") || recognizer.includes('"expectedText": word["text"]')) {
   fail("Synthesis text/phonemes must never become the lexical ASR target.");
