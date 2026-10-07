@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "14f5956d01dc",
+ "contentVersion": "4b038cf8ac92",
  "cases": [
   {
    "id": "2b1078906b",
@@ -48879,6 +48879,42 @@
    ]
   },
   {
+   "id": "e60dfdb946",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:spell"
+   ],
+   "text": "How do you spell your name?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0f3a88df89",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:spell"
+   ],
+   "text": "Can you spell 'beautiful' for me?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ff8bc690b7",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:spell"
+   ],
+   "text": "How do you write the spell of your name?",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
    "id": "0951f07fa8",
    "split": "test",
    "source": "example",
@@ -48922,42 +48958,6 @@
     "lex:A1:spelling"
    ],
    "text": "I made a lot of spell mistakes.",
-   "expect": [
-    "needs-change"
-   ]
-  },
-  {
-   "id": "e60dfdb946",
-   "split": "dev",
-   "source": "example",
-   "senses": [
-    "lex:A1:spell"
-   ],
-   "text": "How do you spell your name?",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "0f3a88df89",
-   "split": "test",
-   "source": "example",
-   "senses": [
-    "lex:A1:spell"
-   ],
-   "text": "Can you spell 'beautiful' for me?",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "ff8bc690b7",
-   "split": "dev",
-   "source": "mistake-wrong",
-   "senses": [
-    "lex:A1:spell"
-   ],
-   "text": "How do you write the spell of your name?",
    "expect": [
     "needs-change"
    ]
