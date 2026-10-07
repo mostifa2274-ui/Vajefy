@@ -67,3 +67,27 @@ test("non-guided or unfinished sessions are excluded", () => {
   const active = { ...lesson("c", 90_000, 1), status: "active" as const };
   assert.equal(lessonTimeProfile([guided, checkup, active]).sessions, 1);
 });
+
+
+test("recycled review time is reported but not attributed to new-word duration", () => {
+  const sessions = [lesson("a", 60_000, 1), lesson("b", 60_000, 1), lesson("c", 60_000, 1)];
+  for (const session of sessions) {
+    session.timing = [
+      ...(session.timing ?? []),
+      {
+        step: 1,
+        at: 3,
+        kind: "check",
+        role: "recycle",
+        target: "lex:A1:old",
+        activeMs: 120_000,
+        responseMs: 100_000,
+        feedbackMs: 20_000,
+      },
+    ];
+  }
+  const profile = lessonTimeProfile(sessions);
+  assert.equal(profile.totalActiveMs, 540_000, "overall observed lesson time still includes due reviews");
+  assert.equal(profile.p50ActiveMsPerTarget, 60_000, "per-new estimate excludes separately budgeted review time");
+  assert.equal(measuredSecondsPerNew(sessions), 60);
+});
