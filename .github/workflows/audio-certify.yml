@@ -13,7 +13,9 @@ on:
       - "content/curriculum/A1.json"
       - "content/assurance/audio/repair-policy.json"
       - "src/lib/learn/audio-assurance.ts"
+      - "src/lib/learn/audio-source-scope.ts"
       - "scripts/audio-certification.ts"
+      - "scripts/audio-source-hashes.ts"
       - "scripts/audio-repair-plan.ts"
       - "scripts/audio-repair-evaluate.ts"
       - "scripts/audio/certify_audio.py"
@@ -81,6 +83,10 @@ jobs:
           echo "reason=$REASON" >> "$GITHUB_OUTPUT"
           echo "Audio certification plan: run=$RUN reason=$REASON"
 
+      - name: Build scoped Unit 1-3 source identity
+        if: ${{ steps.plan.outputs.run == 'true' }}
+        run: npm run -s assurance:audio:scope -- --output .audio-repair/source-hashes.json
+
       - name: Install offline recognition and synthesis dependencies
         if: ${{ steps.plan.outputs.run == 'true' }}
         run: |
@@ -126,7 +132,8 @@ jobs:
         run: |
           python scripts/audio/certify_audio.py \
             --vosk-model /tmp/vosk-model-small-en-us-0.15 \
-            --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip
+            --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip \
+            --source-hashes .audio-repair/source-hashes.json
           npm run assurance:audio -- --write
 
       - name: Run bounded candidate repair loop
@@ -155,6 +162,7 @@ jobs:
             python scripts/audio/certify_audio.py \
               --vosk-model /tmp/vosk-model-small-en-us-0.15 \
               --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip \
+              --source-hashes .audio-repair/source-hashes.json \
               --candidate-manifest .audio-repair/candidates.json \
               --candidate-root .audio-repair/candidates \
               --output .audio-repair/candidate-recognition.json
@@ -178,7 +186,8 @@ jobs:
           node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
           python scripts/audio/certify_audio.py \
             --vosk-model /tmp/vosk-model-small-en-us-0.15 \
-            --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip
+            --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip \
+            --source-hashes .audio-repair/source-hashes.json
           npm run assurance:audio -- --write
 
       - name: Validate exact evidence and promotions
@@ -203,6 +212,7 @@ jobs:
             content/assurance/audio/recognition.json
             content/assurance/audio/certificates.json
             content/assurance/audio/repair-log.json
+            .audio-repair/source-hashes.json
             .audio-repair/plan.json
             .audio-repair/candidates.json
             .audio-repair/candidate-recognition.json

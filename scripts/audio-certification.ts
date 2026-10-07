@@ -7,10 +7,12 @@ import {
   audioRecognitionManifest,
   audioRepairLog,
   deriveAudioCertificate,
+  serializeAudioJson,
   type AudioAccent,
   type AudioCertificateManifest,
   type AudioRecognitionManifest,
 } from "../src/lib/learn/audio-assurance";
+import { buildAudioSourceHashes } from "./audio-source-hashes";
 
 const ROOT = process.cwd();
 const AUDIO = path.join(ROOT, "content", "assurance", "audio");
@@ -146,12 +148,7 @@ function systemsMatch(recognition: AudioRecognitionManifest): boolean {
 }
 
 function sourceHashes() {
-  return {
-    curriculumSha256: sha256File(FILES.curriculum),
-    enhancedSha256: sha256File(FILES.enhanced),
-    audioManifestSha256: sha256File(FILES.manifest),
-    audioReportSha256: sha256File(FILES.report),
-  };
+  return buildAudioSourceHashes(ROOT);
 }
 
 function buildTargets() {
@@ -300,7 +297,7 @@ const expected = expectedCertificates(recognition);
 const write = process.argv.includes("--write");
 if (write) {
   fs.mkdirSync(AUDIO, { recursive: true });
-  fs.writeFileSync(FILES.certificates, `${JSON.stringify(expected, null, 2)}\\n`);
+  fs.writeFileSync(FILES.certificates, serializeAudioJson(expected));
   console.log(
     `Audio certificates written: ${expected.summary.certified}/${expected.summary.targets} certified, ` +
       `${expected.summary.uncertain} uncertain, ${expected.summary.quarantined} quarantined.`,

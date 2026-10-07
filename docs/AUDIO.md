@@ -119,12 +119,26 @@ pair from the shipped MP3 bytes with three offline systems:
   `30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498`;
 - PocketSphinx 5.1.1 forced word/phone alignment.
 
+PocketSphinx alignment output is normalized before lexical comparison:
+boundary/silence markers such as `<s>` and `<sil>` are excluded, and
+dictionary alternate-pronunciation suffixes such as `a(2)` are compared as
+their lexical token (`a`). Segment/phone durations and coverage are still
+validated; only non-lexical labels are removed from the word sequence.
+
 All inference runs locally on the GitHub runner: there is no speech API key or
 hosted inference provider. The evidence records the exact shipped clip
 SHA-256, decoded signal statistics, both unconstrained ASR transcripts and
 alignment timings. ASR always compares against the learner-facing
 entry headword. A phoneme-level `tts` override is synthesis input only and can
 never become the expected lexical transcript.
+
+Source identity is scoped to the exact Unit 1–3 inputs consumed by this gate:
+the scoped unit membership/order, learner-facing headwords and pronunciations,
+word-clip references and signal metadata, and relevant word-level audio flags.
+Edits confined to Units 4–12 therefore do not invalidate Unit 1–3 audio
+evidence, while any change that can alter a scoped target still changes the
+recorded source hashes. The Node release authority and Python recognizer both
+consume the same generated scoped-hash file.
 
 `scripts/audio-certification.ts` is the release authority. A target is
 `CERTIFIED` only when:
