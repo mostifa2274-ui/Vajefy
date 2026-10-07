@@ -303,6 +303,85 @@ export const audioRepairPlan = z
 export type AudioRepairPlanItem = z.infer<typeof audioRepairPlanItem>;
 export type AudioRepairPlan = z.infer<typeof audioRepairPlan>;
 
+export const audioRepairCandidateArtifact = z
+  .object({
+    targetId: text,
+    unitId: text,
+    entryId: text,
+    senseId: text,
+    accent: audioAccent,
+    sourceClipFile: text,
+    sourceClipSha256: sha256,
+    candidateId: text,
+    expectedText: text,
+    pronunciation: text,
+    synthesisText: text,
+    isPhonemes: z.boolean(),
+    clipFile: text,
+    clipSha256: sha256,
+    signal: z
+      .object({
+        duration: z.number().positive(),
+        peak: z.number().nonnegative(),
+        rms: z.number().nonnegative(),
+      })
+      .strict(),
+    generation: z
+      .object({
+        model: text,
+        modelSha256: sha256,
+        voicesSha256: sha256,
+        packageVersion: text,
+        voice: text,
+        lang: z.enum(["en-gb", "en-us"]),
+        speed: z.number().positive(),
+        bitrate: text,
+      })
+      .strict(),
+    issues: z.array(z.string()),
+  })
+  .strict();
+
+export const audioRepairCandidateManifest = z
+  .object({
+    schemaVersion: z.literal(1),
+    policyVersion: text,
+    generatedAt: text,
+    items: z.array(audioRepairCandidateArtifact),
+  })
+  .strict()
+  .superRefine((manifest, ctx) => {
+    const targets = manifest.items.map((item) => item.targetId);
+    if (new Set(targets).size !== targets.length) {
+      ctx.addIssue({ code: "custom", path: ["items"], message: "one repair candidate per target is allowed in a round" });
+    }
+  });
+
+export type AudioRepairCandidateArtifact = z.infer<typeof audioRepairCandidateArtifact>;
+export type AudioRepairCandidateManifest = z.infer<typeof audioRepairCandidateManifest>;
+
+export const audioRepairRoundResult = z
+  .object({
+    schemaVersion: z.literal(1),
+    policyVersion: text,
+    evaluatedAt: text,
+    items: z.array(
+      z
+        .object({
+          targetId: text,
+          sourceClipSha256: sha256,
+          candidateId: text,
+          candidateClipSha256: sha256,
+          outcome: z.enum(["CERTIFIED", "QUARANTINED"]),
+          blockers: z.array(text),
+        })
+        .strict(),
+    ),
+  })
+  .strict();
+
+export type AudioRepairRoundResult = z.infer<typeof audioRepairRoundResult>;
+
 const REPAIRABLE_AUDIO_BLOCKERS = new Set([
   "signal-integrity",
   "whisper-lexical",
