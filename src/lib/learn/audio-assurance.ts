@@ -259,12 +259,31 @@ export const audioRepairAttempt = z
   })
   .strict();
 
+export const audioAutomationAttempt = z
+  .object({
+    runId: text,
+    runAttempt: z.number().int().positive(),
+    at: text,
+    event: z.enum(["push", "workflow_dispatch", "schedule"]),
+    headSha: z.string().regex(/^[a-f0-9]{40}$/),
+    jobStatus: z.enum(["success", "failure", "cancelled"]),
+    certificateStatus: z.enum(["PENDING_RECOGNITION", "PARTIAL", "CERTIFIED"]),
+    certified: z.number().int().nonnegative(),
+    targets: z.number().int().nonnegative(),
+    recognitionGeneratedAt: z.string().nullable(),
+  })
+  .strict();
+
+export type AudioAutomationAttempt = z.infer<typeof audioAutomationAttempt>;
+export const MAX_AUDIO_AUTOMATION_ATTEMPTS = 100;
+
 export const audioRepairLog = z
   .object({
     schemaVersion: z.literal(1),
     policyVersion: text,
     policySha256: sha256.nullable(),
     attempts: z.array(audioRepairAttempt),
+    automationAttempts: z.array(audioAutomationAttempt).default([]),
   })
   .strict()
   .superRefine((log, ctx) => {
@@ -280,6 +299,20 @@ export const audioRepairLog = z
   });
 
 export type AudioRepairLog = z.infer<typeof audioRepairLog>;
+
+export function appendAudioAutomationAttempt(
+  log: AudioRepairLog,
+  attempt: AudioAutomationAttempt,
+): AudioRepairLog {
+  const key = (item: AudioAutomationAttempt) => item.runId + "." + item.runAttempt;
+  const wanted = key(attempt);
+  return audioRepairLog.parse({
+    ...log,
+    automationAttempts: [...log.automationAttempts.filter((item) => key(item) !== wanted), attempt]
+      .sort((left, right) => left.at.localeCompare(right.at) || key(left).localeCompare(key(right)))
+      .slice(-MAX_AUDIO_AUTOMATION_ATTEMPTS),
+  });
+}
 
 export const audioRepairPlanItem = z
   .object({
