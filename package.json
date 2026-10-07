@@ -84,7 +84,8 @@
     "assurance:audio:strict": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/audio-certification.ts --check --require-certified",
     "assurance:audio:workflow:check": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/check-audio-certify-workflow.ts",
     "assurance:audio:repair:plan": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/audio-repair-plan.ts",
-    "assurance:audio:repair:check": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/audio-repair-plan.ts --check"
+    "assurance:audio:repair:check": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/audio-repair-plan.ts --check",
+    "assurance:audio:repair:evaluate": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/audio-repair-evaluate.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
