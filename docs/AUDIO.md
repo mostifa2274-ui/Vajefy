@@ -174,7 +174,10 @@ bounded by `content/assurance/audio/repair-policy.json`:
 
 The bot commit guard stages only allowlisted generated audio/evidence files,
 never broad repository changes and never force-pushes. Unresolved targets stay
-on their previous working clips and keep the release gate red.
+on their previous working clips and keep the release gate red. A later full
+Kokoro regeneration also preserves a promoted repair by its per-clip
+`repairPolicyVersion` and generation provenance instead of silently replacing
+it with the default voice.
 
 This implements the automatic A2/A6 repair machinery but does **not** itself
 claim Phase 3 completion. The current committed production evidence remains
