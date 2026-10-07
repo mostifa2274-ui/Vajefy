@@ -192,7 +192,7 @@ const compiled: Pilot = {
   contrasts,
   scenes,
   audio: {},
-  audioPack: { gb: { files: [], bytes: 0 }, us: { files: [], bytes: 0 } },
+  audioPack: { schemaVersion: 2, contentVersion: "", units: [] },
 };
 // A clip is attached only while its text still matches the content exactly,
 // so editing a word or example can never leave outdated audio behind.
@@ -215,19 +215,6 @@ for (const item of compiled.entries) {
     if (attached.gb || attached.us) compiled.audio[sense.id] = attached;
   }
 }
-for (const accent of ["gb", "us"] as const) {
-  const files = new Set<string>();
-  for (const clips of Object.values(compiled.audio)) {
-    const recorded = clips[accent];
-    if (recorded?.word) files.add(recorded.word);
-    for (const file of recorded?.examples ?? []) if (file) files.add(file);
-  }
-  const sorted = [...files].sort();
-  compiled.audioPack[accent] = {
-    files: sorted,
-    bytes: sorted.reduce((sum, file) => sum + (audio.clips?.[file.replace(/^pilot\//, "")]?.bytes ?? 0), 0),
-  };
-}
 // The version covers the course itself: the order, units and prerequisites
 // learners meet, and the study's word set, as well as the content.
 compiled.version = versionOf({
@@ -238,6 +225,55 @@ compiled.version = versionOf({
   scenes,
   audio: compiled.audio,
 });
+
+// A8: offline audio is replaceable one curriculum unit at a time. Each pack
+// version covers the exact content-hashed filenames and their expected byte
+// lengths. The browser validates every downloaded response before committing
+// the pack marker, so an interrupted/new pack never displaces the previous
+// complete version.
+function audioPackFor(unitIndex: number, accent: "gb" | "us") {
+  const files = new Set<string>();
+  for (const item of compiled.entries) {
+    if (item.unit !== unitIndex) continue;
+    for (const sense of item.senses) {
+      const recorded = compiled.audio[sense.id]?.[accent];
+      if (recorded?.word) files.add(recorded.word);
+      for (const file of recorded?.examples ?? []) if (file) files.add(file);
+    }
+  }
+  const manifest = [...files].sort().map((file) => {
+    const bytes = audio.clips?.[file.replace(/^pilot\//, "")]?.bytes;
+    if (!Number.isInteger(bytes) || (bytes ?? 0) <= 0) {
+      failures.push(`${units[unitIndex]?.id ?? unitIndex}:${accent}: missing byte metadata for ${file}`);
+    }
+    return { file, bytes: Number(bytes ?? 0) };
+  });
+  const version = createHash("sha256")
+    .update(JSON.stringify([units[unitIndex]?.id ?? unitIndex, accent, manifest]))
+    .digest("hex")
+    .slice(0, 16);
+  return {
+    unitId: units[unitIndex]!.id,
+    accent,
+    version,
+    files: manifest,
+    bytes: manifest.reduce((sum, file) => sum + file.bytes, 0),
+  };
+}
+
+compiled.audioPack = {
+  schemaVersion: 2,
+  contentVersion: compiled.version,
+  units: units
+    .map((unit, index) => ({ unit, index }))
+    .filter(({ unit }) => unit.level === "A1")
+    .map(({ unit, index }, number) => ({
+      ...unit,
+      number: number + 1,
+      gb: audioPackFor(index, "gb"),
+      us: audioPackFor(index, "us"),
+    })),
+};
 
 if (failures.length) {
   console.error(`Pilot content failed validation with ${failures.length} issue(s):\n- ${failures.join("\n- ")}`);
