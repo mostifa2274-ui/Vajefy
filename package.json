@@ -89,7 +89,8 @@
     "assurance:audio:runtime:check": "python3 -m py_compile scripts/audio/generate_audio.py scripts/audio/certify_audio.py scripts/audio/generate_repair_candidates.py scripts/audio/promote_repair_candidates.py && bash -n scripts/audio-certification-commit.sh",
     "assurance:scene-coverage": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/scene-coverage.ts",
     "assurance:scene-coverage:check": "npm run assurance:scene-coverage -- --check",
-    "assurance:frontier:plan": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/frontier-repair.ts"
+    "assurance:frontier:plan": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/frontier-repair.ts",
+    "assurance:frontier:promote": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/frontier-promote.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
