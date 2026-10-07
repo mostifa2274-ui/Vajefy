@@ -194,9 +194,19 @@ bounded by `content/assurance/audio/repair-policy.json`:
    still matches the source SHA-256 that was judged.
 6. After every promotion round, generated content is rebuilt. After the last
    bounded round, all 386 current Unit 1–3 word/accent targets are certified
-   again from the exact promoted repository state. Normal validation forbids a
-   promoted candidate from remaining current unless this final full-corpus
-   certificate also says `CERTIFIED`.
+   again from the exact promoted repository state. Isolated candidate
+   certification is provisional until this final full-corpus pass.
+7. Before the first promotion, the workflow snapshots the exact scoped release
+   MP3 bytes, manifest, report and baseline certificates. If a promoted
+   candidate loses `CERTIFIED` status in the final full-corpus pass, only that
+   target is restored from the SHA-bound snapshot. The instability is recorded
+   in `repair-log.json.finalFailures`, stable promotions remain in place, and
+   the rolled-back exact state is rebuilt, rebound to fresh scoped source
+   identity and re-certified before commit.
+8. A rolled-back candidate remains a tried candidate. A later unattended
+   `PARTIAL` run proceeds only when the repair planner still has an untried
+   frozen candidate, so the next candidate may be evaluated without repeating
+   the unstable one or burning compute when the bounded policy is exhausted.
 
 The bot commit guard stages only allowlisted generated audio/evidence files,
 never broad repository changes and never force-pushes. Unresolved targets stay
