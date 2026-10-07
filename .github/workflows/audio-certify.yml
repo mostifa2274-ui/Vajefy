@@ -21,6 +21,7 @@ on:
       - "scripts/audio/certify_audio.py"
       - "scripts/audio/generate_repair_candidates.py"
       - "scripts/audio/promote_repair_candidates.py"
+      - "scripts/audio/rollback_unstable_promotions.py"
       - "scripts/audio/requirements-certify.txt"
       - "scripts/audio-certification-commit.sh"
       - "scripts/check-audio-certify-workflow.ts"
