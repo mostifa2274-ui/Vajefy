@@ -6,6 +6,7 @@ import { loadPilot } from "@/lib/learn/pilot";
 import { levelOf } from "@/lib/learn/text";
 import type { LevelId } from "@/lib/learn/types";
 import { Num } from "./ui";
+import { Fa } from "./mixed-text";
 
 export function LabeledWords({
   ids,
@@ -60,7 +61,7 @@ export function LabeledWords({
                 {row.w}
               </span>
               <span lang="fa" dir="rtl" className="block truncate text-sm text-muted">
-                {row.fa}
+                <Fa text={row.fa} />
               </span>
             </span>
             {meta?.[row.id] != null ? (

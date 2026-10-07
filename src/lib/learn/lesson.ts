@@ -1,5 +1,5 @@
 import type { CheckItem, Contrast, Scene, Sense } from "./content";
-import type { PilotIndex, PilotTarget } from "./pilot";
+import type { PilotIndex, PilotTarget, TargetContent } from "./pilot";
 import { newId } from "./session";
 import { readyToIntroduce } from "./targets";
 import { bestSpelling, shuffle } from "./text";
@@ -78,7 +78,8 @@ export type LessonSession = {
 /** A resolved check item, ready to show. */
 type TaskSupport = { en: string; fa: string };
 
-type ChoiceOption = { text: string; ok: boolean; why: string; lang: "en" | "fa" };
+/** `why` is Persian; for a wrong option it is the gloss of `whyWord`. */
+type ChoiceOption = { text: string; ok: boolean; why: string; whyWord?: string; lang: "en" | "fa" };
 
 export type ResolvedItem =
   | { type: "choice"; prompt: string; promptLang: "en" | "fa"; options: ChoiceOption[]; support?: TaskSupport[] }
@@ -88,6 +89,13 @@ export type ResolvedItem =
   | { type: "recall"; prompt: string; pos: Sense["pos"]; shape: string; answer: string; accept: string[]; why: string; support?: undefined }
   /** Hear the recorded word without seeing it (`word`, shown after answering) and choose its meaning. */
   | { type: "listen"; target: string; word: string; options: ChoiceOption[]; support?: undefined };
+
+/** Why an option is right (the target's meaning) or what a wrong one means. */
+function explainOption(option: PilotTarget, target: TargetContent): { why: string; whyWord?: string } {
+  return option.sense.id === target.sense.id
+    ? { why: target.sense.meaning }
+    : { why: option.sense.gloss, whyWord: option.entry.headword };
+}
 
 function findItem(items: CheckItem[], id: string) {
   return items.find((item) => item.id === id);
@@ -153,7 +161,7 @@ export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | nul
     const meanings = options.map((option) => ({
       text: option.sense.gloss,
       ok: option.sense.id === target.sense.id,
-      why: option.sense.id === target.sense.id ? target.sense.meaning : `${option.entry.headword}: ${option.sense.gloss}`,
+      ...explainOption(option, target),
       lang: "fa" as const,
     }));
     if (ref.mode === "listen") return { type: "listen", target: target.sense.id, word: target.entry.headword, options: meanings };
@@ -167,7 +175,7 @@ export function resolveItem(index: PilotIndex, ref: ItemRef): ResolvedItem | nul
       options: options.map((option) => ({
         text: option.entry.headword,
         ok: option.sense.id === target.sense.id,
-        why: option.sense.id === target.sense.id ? target.sense.meaning : `${option.entry.headword}: ${option.sense.gloss}`,
+        ...explainOption(option, target),
         lang: "en" as const,
       })),
     };

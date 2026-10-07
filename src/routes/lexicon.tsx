@@ -10,6 +10,7 @@ import { loadLevel, loadMeta } from "@/lib/learn/load";
 import { useProgress } from "@/lib/learn/store";
 import { levelOf, POS_FILTERS, searchKey } from "@/lib/learn/text";
 import type { LevelId, LexWord, Meta } from "@/lib/learn/types";
+import { Fa } from "@/components/mixed-text";
 
 export const Route = createFileRoute("/lexicon")({
   validateSearch: (search: Record<string, unknown>): { q?: string; saved?: boolean } => {
@@ -175,7 +176,7 @@ function LexiconPage() {
           {copy.bandAll}
         </Chip>
         {(meta?.levels ?? []).map((level) => (
-          <Chip key={level.id} active={scope === level.id} onClick={() => pickScope(level.id)}>
+          <Chip key={level.id} active={scope === level.id} onClick={() => pickScope(level.id)} dir="ltr">
             {level.label}
           </Chip>
         ))}
@@ -221,10 +222,10 @@ function LexiconPage() {
                         {word.w}
                       </span>
                       <span lang="fa" dir="rtl" className="mt-1 block truncate text-sm text-muted">
-                        {word.fa}
+                        <Fa text={word.fa} />
                       </span>
                     </span>
-                    <span className="shrink-0 text-xs text-muted">{levelLabel(word.id)}</span>
+                    <span dir="ltr" className="shrink-0 text-xs text-muted">{levelLabel(word.id)}</span>
                   </button>
                   <button
                     type="button"
@@ -260,7 +261,7 @@ function LexiconPage() {
                 {copy.back}
               </button>
               <p className="text-xs text-muted">
-                {levelLabel(selected.id)}
+                <bdi>{levelLabel(selected.id)}</bdi>
                 {selected.pos ? (
                   <>
                     <Sep />
@@ -274,8 +275,11 @@ function LexiconPage() {
               <p lang="en" dir="ltr" className="mt-1 text-muted">
                 {selected.ipa}
               </p>
-              <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted">
-                {copy.pron}: {selected.pr}
+              <p className="mt-1 text-sm text-muted">
+                {copy.pron}:{" "}
+                <bdi lang="fa" dir="rtl">
+                  {selected.pr}
+                </bdi>
               </p>
               {pilot?.byEntry.has(selected.id) && unloadable !== selected.id ? (
                 pilot.entries.get(selected.id) ? (
@@ -291,13 +295,13 @@ function LexiconPage() {
                     <SpeakButton text={selected.w} label={copy.listen} item={selected.id} />
                   </div>
                   <p lang="fa" dir="rtl" className="mt-4 text-xl font-medium text-pretty">
-                    {selected.fa}
+                    <Fa text={selected.fa} />
                   </p>
                   <blockquote lang="en" dir="ltr" className="mt-4 border-s-2 border-accent ps-3 text-pretty">
                     {selected.ex}
                   </blockquote>
                   <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
-                    {selected.tr}
+                    <Fa text={selected.tr} />
                   </p>
                 </>
               )}
@@ -333,15 +337,19 @@ function Chip({
   active,
   onClick,
   children,
+  dir,
 }: {
   active: boolean;
   onClick: () => void;
   children: string;
+  /** Set for labels whose direction differs from the page, such as "B2+". */
+  dir?: "ltr";
 }) {
   return (
     <button
       type="button"
       aria-pressed={active}
+      dir={dir}
       onClick={onClick}
       className={cn(
         "min-h-11 shrink-0 rounded-md px-3 text-sm",

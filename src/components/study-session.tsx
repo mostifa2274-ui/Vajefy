@@ -19,6 +19,7 @@ import type { CardProg, Grade, Lang, StudyFace } from "@/lib/learn/types";
 import { useKeepFocus } from "@/lib/focus";
 import { ProgressMeter } from "./feedback";
 import { Button, SpeakButton } from "./ui";
+import { Fa } from "./mixed-text";
 
 const GRADES: Grade[] = ["again", "hard", "good", "easy"];
 
@@ -264,7 +265,7 @@ export function StudySession({
           ) : null}
           {face.pron ? (
             <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted">
-              {face.pron}
+              <Fa text={face.pron} />
             </p>
           ) : null}
           <div className="mt-4 flex justify-center">
@@ -343,11 +344,11 @@ function Meaning({
   return (
     <div className="border-t border-line pt-4">
       <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">
-        {face.meaning}
+        <Fa text={face.meaning} />
       </p>
       {face.detail ? (
         <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
-          {face.detail}
+          <Fa text={face.detail} />
         </p>
       ) : null}
       {face.example ? (
@@ -357,7 +358,7 @@ function Meaning({
       ) : null}
       {face.exampleFa ? (
         <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty text-muted">
-          {face.exampleFa}
+          <Fa text={face.exampleFa} />
         </p>
       ) : null}
       {face.example && face.exampleClip ? (
@@ -369,7 +370,7 @@ function Meaning({
         <details className="mt-3">
           <summary className="min-h-11 text-sm text-muted">{noteLabel}</summary>
           <p lang="fa" dir="rtl" className="mt-2 text-sm whitespace-pre-wrap text-pretty text-muted">
-            {face.note}
+            <Fa text={face.note} />
           </p>
         </details>
       ) : null}

@@ -1,6 +1,8 @@
 import type { Lang } from "./types";
 
 const fa = {
+  /** The interface language, for UI words placed inside content in the other language. */
+  uiLang: "fa",
   today: "امروز",
   lexicon: "واژه‌نامه",
   navLexicon: "واژه‌ها",
@@ -392,6 +394,7 @@ const fa = {
 };
 
 const en: typeof fa = {
+  uiLang: "en",
   today: "Today",
   lexicon: "Lexicon",
   navLexicon: "Words",
@@ -808,6 +811,7 @@ const POS_EN: Record<string, string> = {
   "عبارت ندایی": "exclamation",
   "فعل وجهی": "modal verb",
   "فعل کمکی": "auxiliary verb",
+  "حرف تعریف": "article",
   "حرف تعریف نامعین": "indefinite article",
   "حرف تعریف معین": "definite article",
   "نشانهٔ مصدر": "infinitive marker",

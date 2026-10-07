@@ -20,6 +20,7 @@ import { focusFirst, hasContent, introducible, introductionOrder, loadPilot, uni
 import { dailyPlan } from "@/lib/learn/planner";
 import { resumable } from "@/lib/learn/session";
 import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
+import { Fa } from "@/components/mixed-text";
 
 export const Route = createFileRoute("/learn")({ component: LearnPage });
 
@@ -190,7 +191,7 @@ function LearnPage() {
                   >
                     <span className="lex-word">{target.entry.headword}</span>
                     <span lang="fa" dir="rtl" className="text-muted">
-                      {target.sense.gloss}
+                      <Fa text={target.sense.gloss} />
                     </span>
                   </li>
                 ))}
@@ -275,7 +276,7 @@ function LearnPage() {
                       {scene.title}
                     </span>
                     <span lang="fa" dir="rtl" className="block text-sm text-muted">
-                      {scene.titleFa}
+                      <Fa text={scene.titleFa} />
                     </span>
                   </span>
                   <button
