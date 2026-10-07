@@ -8,6 +8,7 @@ const AUTHORITY = path.join(ROOT, "scripts", "audio-certification.ts");
 const RECOGNIZER = path.join(ROOT, "scripts", "audio", "certify_audio.py");
 const CANDIDATE_GENERATOR = path.join(ROOT, "scripts", "audio", "generate_repair_candidates.py");
 const PROMOTER = path.join(ROOT, "scripts", "audio", "promote_repair_candidates.py");
+const PRODUCTION_GENERATOR = path.join(ROOT, "scripts", "audio", "generate_audio.py");
 
 function fail(message: string): never {
   console.error(message);
@@ -22,6 +23,7 @@ const authority = fs.readFileSync(AUTHORITY, "utf8");
 const recognizer = fs.readFileSync(RECOGNIZER, "utf8");
 const candidateGenerator = fs.readFileSync(CANDIDATE_GENERATOR, "utf8");
 const promoter = fs.readFileSync(PROMOTER, "utf8");
+const productionGenerator = fs.readFileSync(PRODUCTION_GENERATOR, "utf8");
 
 for (const marker of [
   "branches: [main]",
@@ -124,5 +126,11 @@ if (!promoter.includes('sha256(source) != candidate["sourceClipSha256"]')) {
 if (!promoter.includes('sha256(generated) != candidate["clipSha256"]')) {
   fail("Candidate promotion must verify the certified candidate SHA-256.");
 }
+if (
+  !productionGenerator.includes('prior_meta.get("repairPolicyVersion")') ||
+  !productionGenerator.includes('repaired = True')
+) {
+  fail("Full audio regeneration must preserve independently certified repaired clips.");
+}
 
-console.log("Audio certification workflow safety: PASS (offline recognizers, bounded certify-before-promote repair, lexical headword targets, main/path gated, narrow bot commits).");
+console.log("Audio certification workflow safety: PASS (offline recognizers, bounded certify-before-promote repair, durable repaired clips, lexical headword targets, main/path gated, narrow bot commits).");
