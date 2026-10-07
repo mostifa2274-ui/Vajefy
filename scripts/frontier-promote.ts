@@ -180,7 +180,6 @@ export function applyPilotSafePromotions(
         continue;
       }
       if (promotion.changesFrozenPilotRoster || targetUnit < 3) continue;
-      if (dependencyUnit !== targetUnit) continue;
 
       if (dependencyAt < anchorAt) {
         alreadySatisfied.push(dependencyId);
@@ -188,6 +187,7 @@ export function applyPilotSafePromotions(
         changed = true;
         continue;
       }
+      if (dependencyUnit !== targetUnit) continue;
 
       const sourceUnit = next.units[dependencyUnit]!;
       const sourceIndex = sourceUnit.entries.findIndex((entry) => entry.id === dependencyId);
