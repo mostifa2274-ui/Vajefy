@@ -141,12 +141,12 @@ jobs:
               --result .audio-repair/result.json \
               --candidate-root .audio-repair/candidates
 
-            npm run -s content:build
+            node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
           done
 
       - name: Re-certify exact promoted state
         run: |
-          npm run -s content:build
+          node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
           python scripts/audio/certify_audio.py \
             --vosk-model /tmp/vosk-model-small-en-us-0.15 \
             --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip
