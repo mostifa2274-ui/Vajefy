@@ -119,6 +119,12 @@ pair from the shipped MP3 bytes with three offline systems:
   `30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498`;
 - PocketSphinx 5.1.1 forced word/phone alignment.
 
+PocketSphinx alignment output is normalized before lexical comparison:
+boundary/silence markers such as `<s>` and `<sil>` are excluded, and
+dictionary alternate-pronunciation suffixes such as `a(2)` are compared as
+their lexical token (`a`). Segment/phone durations and coverage are still
+validated; only non-lexical labels are removed from the word sequence.
+
 All inference runs locally on the GitHub runner: there is no speech API key or
 hosted inference provider. The evidence records the exact shipped clip
 SHA-256, decoded signal statistics, both unconstrained ASR transcripts and
