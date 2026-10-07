@@ -8,11 +8,25 @@
       "note": "Manual English calibration attempts of run 37473550090 used an unmeasured share of this day's free allocation, so the whole day is treated as spent."
     },
     {
-      "kind": "reservation",
+      "kind": "calibration",
       "date": "2026-10-07",
+      "at": "2026-10-07T06:05:43.298Z",
       "runId": "37579589803.1",
-      "neuronsCharged": 6993,
-      "note": "Calibration run 37579589803.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
+      "role": "english",
+      "model": "@cf/nvidia/nemotron-3-120b-a12b",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06",
+      "maxTokens": 1200,
+      "promptVersion": "english-a1-prompt-v1",
+      "rubricVersion": "english-a1-v1",
+      "outcome": "failed",
+      "failure": {
+        "kind": "model",
+        "code": "http-502-empty-model-content",
+        "detail": "english judge request failed for cal-en-clean-i: HTTP 502 {\"error\":\"empty-model-content\",\"diagnostic\":{\"keys\":[\"choices\",\"created\",\"id\",\"kv_transfer_params\",\"model\",\"object\",\"prompt_logprobs\",\"prompt_token_ids\",\"service_tier\",\"system_fingerprint\",\"usage\"],\"status\":null,\"incompleteDetails\":null,\"outputTypes\":[],\"candidateCount\":0,\"canonicalCandidateCount\":0,\"usage\":{\"prompt_tokens\":1073,\"completion_tokens\":1200,\"total_tokens\":2273,\"prompt_tokens_details\":{\"cached_tokens\":0},\"neurons\":211.485}}}"
+      },
+      "requestsSent": 1,
+      "neuronsCharged": 412,
+      "measured": null
     }
   ]
 }
