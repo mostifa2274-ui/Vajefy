@@ -468,10 +468,11 @@ export function answerFor(session: LessonSession, step = session.index): LessonA
 }
 
 /**
- * Record an answer. A wrong retrieval, listening or context answer earns one
- * prompted retry two steps later, after feedback that showed the answer: typed
- * recall again, or listening again (never for the delayed retrieval, which
- * starts the schedule, and never twice for the same target). A skipped
+ * Record an answer. A wrong retrieval, listening, new-word context or recycled
+ * context answer earns one prompted retry two steps later, after feedback that
+ * showed the answer: typed recall again, or listening again (never for the
+ * delayed retrieval, which starts the schedule, and never twice for the same
+ * target). A skipped
  * listening question earns nothing and costs nothing.
  */
 export function answerLesson(
