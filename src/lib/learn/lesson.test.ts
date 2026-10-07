@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
-import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, hasRecycleContext, heldOutItem, lessonReadiness, lessonSize, lessonStats, nextTargets, recycleCandidates, resolveItem, seenPrompts, shapeOf, skillOf, writtenForms } from "./lesson";
+import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, hasRecycleContext, heldOutItem, lessonReadiness, lessonSize, lessonStats, nextTargets, recycleCandidates, resolveItem, seenPrompts, shapeOf, shortPathEligible, skillOf, writtenForms, type LessonSession } from "./lesson";
 import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace, unitOf } from "./pilot";
 import { orderForGoal } from "./targets";
 import type { CardProg } from "./types";
@@ -410,6 +410,71 @@ test("recycle context exists only when a non-held-out authored task is available
   localTarget.check = localTarget.check.slice(-1);
   const localIndex = indexPilot(localPilot);
   assert.equal(hasRecycleContext(localIndex, localTarget.id), false);
+});
+
+function shortPathSession(result: "correct" | "close" | "wrong" = "correct", responseMs = 1_000): LessonSession {
+  const target = "lex:A1:test";
+  const ref = (mode: "recall" | "listen" | "form") => ({
+    from: "generated" as const,
+    target,
+    mode,
+    options: [] as string[],
+  });
+  return {
+    id: "short-path",
+    kind: "lesson",
+    status: "active",
+    createdAt: T0,
+    updatedAt: T0,
+    mode: "lesson",
+    targets: [target],
+    steps: [
+      { kind: "teach", target },
+      { kind: "check", role: "retrieve", ref: ref("recall") },
+      { kind: "check", role: "listen", ref: ref("listen") },
+      { kind: "check", role: "context", ref: ref("form") },
+      { kind: "check", role: "delayed", ref: ref("form") },
+      { kind: "scene", scene: "scene:optional" },
+    ],
+    index: 4,
+    answers: [
+      { op: "r", step: 1, result: "correct", at: T0, responseMs },
+      { op: "l", step: 2, result: "correct", at: T0, responseMs },
+      { op: "c", step: 3, result, at: T0, responseMs },
+      { op: "d", step: 4, result: "correct", at: T0, responseMs },
+    ],
+  };
+}
+
+test("the adaptive short path removes only the optional application tail after strong evidence", () => {
+  const session = shortPathSession();
+  assert.equal(shortPathEligible(session), true);
+  const next = advanceLesson(session, T0 + 1);
+  assert.equal(next.index, session.steps.length);
+  assert.equal(next.status, "done");
+});
+
+test("delayed retrieval remains mandatory before the adaptive short path can finish", () => {
+  const session = shortPathSession();
+  const beforeDelayed = {
+    ...session,
+    index: 3,
+    answers: session.answers.filter((answer) => answer.step < 4),
+  };
+  assert.equal(shortPathEligible(beforeDelayed), false);
+  const next = advanceLesson(beforeDelayed, T0 + 1);
+  assert.equal(next.index, 4);
+  assert.equal(next.steps[next.index]?.kind, "check");
+  assert.equal(next.steps[next.index]?.kind === "check" && next.steps[next.index]?.role, "delayed");
+});
+
+test("a close first attempt blocks the short path, while response speed never decides eligibility", () => {
+  const close = shortPathSession("close", 100);
+  assert.equal(shortPathEligible(close), false);
+  assert.equal(advanceLesson(close, T0 + 1).index, 5);
+
+  const careful = shortPathSession("correct", 120_000);
+  assert.equal(shortPathEligible(careful), true, "slow/careful response latency is not a mastery criterion");
 });
 
 test("a due known word is recycled in authored context without weakening new-word checks", () => {
