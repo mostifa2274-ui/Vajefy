@@ -58,6 +58,7 @@ for (const marker of [
   "--record-automation",
   "AUDIO_AUTOMATION_JOB_STATUS",
   "always() && steps.plan.outputs.run == 'true'",
+  "git clean -fdq -- .audio-repair public/data/enhanced",
   "[audio-bot]",
   "assurance:audio -- --write",
   "scripts/audio-certification-commit.sh",
@@ -109,6 +110,16 @@ for (const sourceInput of [
 }
 if (!workflow.includes("!contains(github.event.head_commit.message, '[audio-bot]')")) {
   fail("Audio bot commits must be prevented from recursively running certification.");
+}
+
+const recertifyBlock =
+  /- name: Re-certify exact promoted state[\s\S]*?(?=\n {6}- name: Validate exact evidence and promotions)/.exec(workflow)?.[0] ?? "";
+if (!recertifyBlock) fail("Audio workflow must contain the exact promoted-state re-certification step.");
+const buildAt = recertifyBlock.indexOf("scripts/build-content.ts");
+const sourceAt = recertifyBlock.indexOf("assurance:audio:scope -- --output .audio-repair/source-hashes.json");
+const recognizeAt = recertifyBlock.indexOf("scripts/audio/certify_audio.py");
+if (!(buildAt >= 0 && sourceAt > buildAt && recognizeAt > sourceAt)) {
+  fail("Final audio re-certification must rebuild content, then scoped source identity, then recognition.");
 }
 
 for (const marker of [

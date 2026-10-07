@@ -184,6 +184,9 @@ jobs:
         if: ${{ steps.plan.outputs.run == 'true' }}
         run: |
           node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
+          # Promotions change the shipped manifest/MP3 bytes. Rebuild the
+          # scoped identity from that exact promoted state before recognition.
+          npm run -s assurance:audio:scope -- --output .audio-repair/source-hashes.json
           python scripts/audio/certify_audio.py \
             --vosk-model /tmp/vosk-model-small-en-us-0.15 \
             --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip \
@@ -237,7 +240,10 @@ jobs:
           # Any uncommitted partial mutations were already captured by the
           # artifact upload. Keep only evidence that reached a bot commit.
           git reset --hard HEAD
-          git clean -fdq -- .audio-repair
+          # build-content may have created content-hashed part files while
+          # evaluating promoted audio. They are untracked after reset and must
+          # not poison the fail-closed evidence commit check.
+          git clean -fdq -- .audio-repair public/data/enhanced
           npm run assurance:audio -- --record-automation
           bash scripts/audio-certification-commit.sh \
             "[audio-bot] Audio assurance automation outcome (run ${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT})"
