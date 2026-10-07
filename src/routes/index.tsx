@@ -9,6 +9,7 @@ import { loadLevel, loadMeta, loadPairs } from "@/lib/learn/load";
 import { countLevel, dueIds, liveStreak, todayLog, totals, useProgress, weakIds } from "@/lib/learn/store";
 import type { PilotOrder } from "@/lib/learn/content";
 import { CHECKUP_SIZE, checkupCandidates } from "@/lib/learn/lesson";
+import { measuredSecondsPerNew } from "@/lib/learn/lesson-time";
 import { dailyPlan } from "@/lib/learn/planner";
 import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
 import { loadPilotOrder } from "@/lib/learn/pilot";
@@ -125,7 +126,15 @@ function Home() {
   const due = hydrated ? dueIds(cards).length : 0;
   const introducedToday = hydrated ? todayLog(logs).introduced : 0;
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
-  const plan = dailyPlan({ due, introducedToday, newPerDay, sessionSize, minutes });
+  const secondsPerNew = measuredSecondsPerNew(Object.values(sessions));
+  const plan = dailyPlan({
+    due,
+    introducedToday,
+    newPerDay,
+    sessionSize,
+    minutes,
+    ...(secondsPerNew === null ? {} : { secondsPerNew }),
+  });
   const released = new Set(order ? order.released : []);
   const checkupReady = order && !unfinishedLesson ? checkupCandidates(order.order.general, reviewHistory, Object.values(sessions), opened).length : 0;
   // Lessons for the learner's own level use the same daily new-target budget as Review.
