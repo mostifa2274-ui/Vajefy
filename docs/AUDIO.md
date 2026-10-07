@@ -99,8 +99,53 @@ cleared were notation alone. Most of the rest are expected:
 `python3 scripts/audio/generate_audio.py --rescore` re-checks the flags already
 in the report with the current comparison, without the model.
 
-A listener still has to confirm each one. The pronunciation review of an entry
-([PILOT_CONTENT.md](PILOT_CONTENT.md)) includes hearing its flagged clips.
+The old process required a listener to confirm each remaining flag. That is no
+longer the target release gate. `content/assurance/audio/` now defines a
+fail-closed machine certificate for Units 1–3. Until independent recognizer
+evidence has run, the committed state is honestly
+`PENDING_RECOGNITION`: no clip is certified merely because Kokoro's own
+phonemizer agrees with the entry.
+
+### Independent audio certification
+
+`scripts/audio/certify_audio.py` evaluates every Unit 1–3 **word/accent**
+pair from the shipped MP3 bytes with three offline systems:
+
+- faster-whisper 1.2.1 with the pinned
+  `Systran/faster-whisper-small.en` revision
+  `4e49ce629e3fa4c3da596c602b212cb026910443`;
+- Vosk 0.3.45 with `vosk-model-small-en-us-0.15`, whose downloaded archive
+  must match SHA-256
+  `30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498`;
+- PocketSphinx 5.1.1 forced word/phone alignment.
+
+All inference runs locally on the GitHub runner: there is no speech API key or
+hosted inference provider. The evidence records the exact shipped clip
+SHA-256, decoded signal statistics, both unconstrained ASR transcripts and
+alignment timings.
+
+`scripts/audio-certification.ts` is the release authority. A target is
+`CERTIFIED` only when:
+
+1. the evidence is bound to the current curriculum, enhanced content, audio
+   manifest, audio report and exact MP3 bytes;
+2. the decoded MP3 passes signal-integrity thresholds;
+3. **both** independent ASRs lexically match the intended form;
+4. forced word/phone alignment is complete and non-degenerate; and
+5. all three systems agree. Missing evidence is `UNCERTAIN`; disagreement,
+   stale identity or a failed check is `QUARANTINED`, never averaged into a
+   pass.
+
+The automatic `audio-certify.yml` workflow runs only when audio or its
+certification inputs change, commits only
+`recognition.json` and `certificates.json`, and then keeps the workflow red
+until every scoped pair is certified. Generated evidence does not retrigger
+the expensive recognizers.
+
+This completes the certification **foundation**, not Phase 3 itself. The Phase
+3 exit still requires every Unit 1–3 word/accent pair to be certified, and A8
+still requires versioned per-unit offline audio packs that survive interrupted
+replacement.
 
 ## Regenerating
 
