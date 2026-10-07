@@ -263,6 +263,17 @@ export const audioRepairAttempt = z
   })
   .strict();
 
+export const audioRepairFinalFailure = z
+  .object({
+    targetId: text,
+    sourceClipSha256: sha256,
+    candidateId: text,
+    candidateClipSha256: sha256,
+    at: text,
+    blockers: z.array(text).min(1),
+  })
+  .strict();
+
 export const audioAutomationAttempt = z
   .object({
     runId: text,
@@ -287,6 +298,7 @@ export const audioRepairLog = z
     policyVersion: text,
     policySha256: sha256.nullable(),
     attempts: z.array(audioRepairAttempt),
+    finalFailures: z.array(audioRepairFinalFailure).default([]),
     automationAttempts: z.array(audioAutomationAttempt).default([]),
   })
   .strict()
@@ -297,7 +309,13 @@ export const audioRepairLog = z
     if (new Set(keys).size !== keys.length) {
       ctx.addIssue({ code: "custom", path: ["attempts"], message: "audio repair attempts must be unique per source/candidate" });
     }
-    if (log.attempts.length > 0 && log.policySha256 === null) {
+    const finalKeys = log.finalFailures.map(
+      (failure) => failure.targetId + "|" + failure.sourceClipSha256 + "|" + failure.candidateId,
+    );
+    if (new Set(finalKeys).size !== finalKeys.length) {
+      ctx.addIssue({ code: "custom", path: ["finalFailures"], message: "final-pass failures must be unique per source/candidate" });
+    }
+    if ((log.attempts.length > 0 || log.finalFailures.length > 0) && log.policySha256 === null) {
       ctx.addIssue({ code: "custom", path: ["policySha256"], message: "repair history must bind to the exact policy SHA-256" });
     }
   });
@@ -453,8 +471,10 @@ export function planAudioRepairs(
     const history = log.attempts.filter(
       (attempt) => attempt.targetId === record.targetId && attempt.sourceClipSha256 === record.clipSha256,
     );
-    if (history.some((attempt) => attempt.outcome === "CERTIFIED")) return [];
-
+    // An isolated candidate can certify and still fail the final full-corpus
+    // pass. If that promotion was rolled back, the source SHA becomes current
+    // again; the certified attempt is still "tried", but must not prevent the
+    // next frozen candidate from being selected.
     const candidate = policy.candidates[record.accent].find(
       (item) => !history.some((attempt) => attempt.candidateId === item.id),
     );
