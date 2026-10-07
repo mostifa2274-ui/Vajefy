@@ -199,6 +199,151 @@ export const audioCertificateManifest = z
 export type AudioCertificateManifest = z.infer<typeof audioCertificateManifest>;
 export type AudioCertificateRecord = z.infer<typeof audioCertificateRecord>;
 
+export const audioRepairCandidate = z
+  .object({
+    id: text,
+    voice: text,
+    lang: z.enum(["en-gb", "en-us"]),
+    speed: z.number().positive().min(0.75).max(1.25),
+  })
+  .strict();
+
+export const audioRepairPolicy = z
+  .object({
+    schemaVersion: z.literal(1),
+    policyVersion: text,
+    model: z
+      .object({
+        name: text,
+        modelFile: text,
+        modelSha256: sha256,
+        voicesFile: text,
+        voicesSha256: sha256,
+        packageVersion: text,
+        bitrate: text,
+      })
+      .strict(),
+    candidates: z
+      .object({
+        gb: z.array(audioRepairCandidate).min(1).max(8),
+        us: z.array(audioRepairCandidate).min(1).max(8),
+      })
+      .strict(),
+  })
+  .strict()
+  .superRefine((policy, ctx) => {
+    const ids = [...policy.candidates.gb, ...policy.candidates.us].map((candidate) => candidate.id);
+    if (new Set(ids).size !== ids.length) {
+      ctx.addIssue({ code: "custom", path: ["candidates"], message: "audio repair candidate ids must be globally unique" });
+    }
+    if (policy.candidates.gb.some((candidate) => candidate.lang !== "en-gb")) {
+      ctx.addIssue({ code: "custom", path: ["candidates", "gb"], message: "GB repair candidates must use en-gb" });
+    }
+    if (policy.candidates.us.some((candidate) => candidate.lang !== "en-us")) {
+      ctx.addIssue({ code: "custom", path: ["candidates", "us"], message: "US repair candidates must use en-us" });
+    }
+  });
+
+export type AudioRepairPolicy = z.infer<typeof audioRepairPolicy>;
+export type AudioRepairCandidate = z.infer<typeof audioRepairCandidate>;
+
+export const audioRepairAttempt = z
+  .object({
+    targetId: text,
+    sourceClipSha256: sha256,
+    candidateId: text,
+    candidateClipSha256: sha256,
+    at: text,
+    outcome: z.enum(["CERTIFIED", "QUARANTINED"]),
+    blockers: z.array(text),
+  })
+  .strict();
+
+export const audioRepairLog = z
+  .object({
+    schemaVersion: z.literal(1),
+    policyVersion: text,
+    attempts: z.array(audioRepairAttempt),
+  })
+  .strict()
+  .superRefine((log, ctx) => {
+    const keys = log.attempts.map(
+      (attempt) => attempt.targetId + "|" + attempt.sourceClipSha256 + "|" + attempt.candidateId,
+    );
+    if (new Set(keys).size !== keys.length) {
+      ctx.addIssue({ code: "custom", path: ["attempts"], message: "audio repair attempts must be unique per source/candidate" });
+    }
+  });
+
+export type AudioRepairLog = z.infer<typeof audioRepairLog>;
+
+export type AudioRepairPlanItem = {
+  targetId: string;
+  unitId: string;
+  entryId: string;
+  senseId: string;
+  accent: AudioAccent;
+  sourceClipFile: string;
+  sourceClipSha256: string;
+  expectedText: string;
+  pronunciation: string;
+  candidate: AudioRepairCandidate;
+};
+
+const REPAIRABLE_AUDIO_BLOCKERS = new Set([
+  "signal-integrity",
+  "whisper-lexical",
+  "vosk-lexical",
+  "forced-alignment",
+  "multi-system-disagreement",
+]);
+
+/**
+ * Select at most one deterministic next candidate for each quarantined target.
+ * Missing/stale source evidence is never repaired by synthesising new audio:
+ * that is an assurance-pipeline fault and must stay fail-closed.
+ */
+export function planAudioRepairs(
+  certificates: AudioCertificateManifest,
+  policy: AudioRepairPolicy,
+  log: AudioRepairLog,
+): AudioRepairPlanItem[] {
+  if (certificates.status === "PENDING_RECOGNITION") return [];
+  if (log.policyVersion !== policy.policyVersion) {
+    throw new Error("audio repair log policy " + log.policyVersion + " does not match " + policy.policyVersion);
+  }
+
+  return certificates.records.flatMap((record) => {
+    if (record.status !== "QUARANTINED") return [];
+    if (!record.blockers.length || record.blockers.some((blocker) => !REPAIRABLE_AUDIO_BLOCKERS.has(blocker))) return [];
+
+    const history = log.attempts.filter(
+      (attempt) => attempt.targetId === record.targetId && attempt.sourceClipSha256 === record.clipSha256,
+    );
+    if (history.some((attempt) => attempt.outcome === "CERTIFIED")) return [];
+
+    const candidate = policy.candidates[record.accent].find(
+      (item) => !history.some((attempt) => attempt.candidateId === item.id),
+    );
+    if (!candidate) return [];
+
+    return [
+      {
+        targetId: record.targetId,
+        unitId: record.unitId,
+        entryId: record.entryId,
+        senseId: record.senseId,
+        accent: record.accent,
+        sourceClipFile: record.clipFile,
+        sourceClipSha256: record.clipSha256,
+        expectedText: record.expectedText,
+        pronunciation: record.pronunciation,
+        candidate,
+      },
+    ];
+  });
+}
+
 const APOSTROPHE = /[\u2018\u2019\u02bc]/g;
 const NON_WORD = /[^a-z0-9']+/g;
 
