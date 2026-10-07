@@ -71,6 +71,14 @@ function LearnPage() {
   // Lessons at the learner's level first, then the other levels' lessons.
   const ordered = index ? focusFirst(introductionOrder(index.targets, goal), focus) : [];
   const upcoming = nextTargets(ordered, cards, plan.newLimit);
+  // Recycle at most two of the oldest due enhanced targets inside a new-word
+  // lesson. This consumes the existing review budget; it never raises newLimit.
+  const recycleIds =
+    upcoming.length && index
+      ? dueIds(cards, opened)
+          .filter((id) => index.bySense.has(id))
+          .slice(0, Math.min(2, plan.reviewTake))
+      : [];
   const checkup =
     unfinished || !full
       ? []
@@ -88,6 +96,7 @@ function LearnPage() {
       ? contentIds(active)
       : [
           ...upcoming.map((target) => target.sense.id),
+          ...recycleIds,
           ...(unfinished ? contentIds(unfinished) : []),
           ...(checkup.length >= MIN_CHECKUP ? checkup.slice(0, CHECKUP_SIZE).map((candidate) => candidate.id) : []),
         ];
@@ -143,6 +152,10 @@ function LearnPage() {
       />
     );
 
+  const recycled = recycleIds.flatMap((id) => {
+    const target = full.bySense.get(id);
+    return target ? [target] : [];
+  });
   const met = index.targets.filter((target) => cards[target.sense.id]).length;
   const remaining = nextTargets(ordered, cards, 1).length;
   // The curriculum unit the next lesson belongs to, and how far into it the learner is.
@@ -199,10 +212,15 @@ function LearnPage() {
                   </li>
                 ))}
               </ul>
+              {recycled.length ? (
+                <p className="mt-3 text-xs text-muted">
+                  <Num value={recycled.length} /> {copy.lessonRecycleIncluded}
+                </p>
+              ) : null}
               <Button
                 className="mt-4"
                 onClick={() =>
-                  start(buildLesson(index, upcoming, new Set(Object.keys(cards)), Date.now()))
+                  start(buildLesson(index, upcoming, new Set(Object.keys(cards)), Date.now(), Math.random, recycled))
                 }
               >
                 {copy.startLesson}
