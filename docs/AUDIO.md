@@ -185,10 +185,32 @@ unavailable with a reason.
 
 ## Offline audio
 
-The service worker keeps clips in their own cache, `vajefy-audio-v1`, which
-survives app updates. A clip played once is cached. **Progress → Pronunciation
-offline** downloads every clip for the selected accent: about 25.9 MB for
-British, 24.3 MB for American. Each accent can also be removed again.
+Ordinary playback still uses the small opportunistic `vajefy-audio-v1`
+cache, but explicit offline downloads now follow A8's unit-pack protocol.
+
+`public/data/enhanced/audio-pack.json` contains one independently versioned
+pack for each A1 curriculum unit and accent. A unit version covers the exact
+content-hashed filenames plus each file's expected byte length. **Progress →
+Pronunciation offline** therefore downloads only the units a learner wants
+instead of one 24–26 MB all-course pack.
+
+Each unit/accent/version is installed transactionally in its own
+`vajefy-audio-unit-v2:...` Cache Storage namespace:
+
+1. a replacement downloads into a candidate cache;
+2. any resumable candidate file is re-read and its byte length revalidated;
+3. every newly fetched response must match the manifest byte length;
+4. after a full second integrity pass, a completion marker records the unit,
+   accent, version, file manifest and install time;
+5. only after that marker exists are older versions of the same unit/accent
+   removed.
+
+If a tab closes, the connection fails or storage interrupts the candidate,
+there is no completion marker. The service worker ignores incomplete
+candidates and continues serving the previous complete unit pack. The next
+download resumes from already validated candidate files. Removing a unit pack
+deletes all explicit versions for that unit/accent; clips cached naturally by
+ordinary playback may remain in the lightweight legacy cache.
 
 ## Speaking practice
 
