@@ -277,6 +277,8 @@ def main() -> int:
     parser.add_argument("--vosk-model", type=Path, required=True)
     parser.add_argument("--vosk-archive", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--candidate-manifest", type=Path)
+    parser.add_argument("--candidate-root", type=Path)
     args = parser.parse_args()
 
     if not args.vosk_model.is_dir():
@@ -313,8 +315,43 @@ def main() -> int:
     vosk = Model(str(args.vosk_model))
 
     rows = []
-    all_targets = targets()
-    print(f"Certifying {len(all_targets)} Unit 1-3 word/accent targets with independent offline recognizers.")
+    if args.candidate_manifest:
+        if not args.candidate_root:
+            parser.error("--candidate-root is required with --candidate-manifest")
+        candidate_manifest = read_json(args.candidate_manifest)
+        if candidate_manifest.get("schemaVersion") != 1:
+            raise RuntimeError("candidate manifest schema is unsupported")
+        all_targets = []
+        for item in candidate_manifest.get("items", []):
+            clip = args.candidate_root / Path(item["clipFile"]).name
+            if not clip.is_file():
+                raise RuntimeError(f"{item['targetId']}: candidate file is missing")
+            actual_sha = sha256(clip)
+            if actual_sha != item["clipSha256"]:
+                raise RuntimeError(
+                    f"{item['targetId']}: candidate SHA-256 {actual_sha} does not match manifest {item['clipSha256']}"
+                )
+            all_targets.append(
+                {
+                    "targetId": item["targetId"],
+                    "unitId": item["unitId"],
+                    "entryId": item["entryId"],
+                    "senseId": item["senseId"],
+                    "accent": item["accent"],
+                    "clipFile": item["clipFile"],
+                    "expectedText": item["expectedText"],
+                    "pronunciation": item["pronunciation"],
+                    "path": clip,
+                }
+            )
+        if not all_targets:
+            raise RuntimeError("candidate recognition requires at least one candidate")
+        scope_units = list(dict.fromkeys(target["unitId"] for target in all_targets))
+        print(f"Certifying {len(all_targets)} isolated audio repair candidate(s).")
+    else:
+        all_targets = targets()
+        scope_units = list(SCOPE_UNITS)
+        print(f"Certifying {len(all_targets)} Unit 1-3 word/accent targets with independent offline recognizers.")
     for index, target in enumerate(all_targets, 1):
         raw = ffmpeg_pcm(target["path"])
         row = {
@@ -343,7 +380,7 @@ def main() -> int:
         "schemaVersion": 1,
         "evidenceVersion": "vajefy-audio-v1",
         "generatedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
-        "scope": {"units": list(SCOPE_UNITS)},
+        "scope": {"units": scope_units},
         "sourceHashes": {
             "curriculumSha256": sha256(CURRICULUM),
             "enhancedSha256": sha256(ENHANCED),

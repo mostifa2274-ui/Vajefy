@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "kokoro-v1-unit123-r1",
+  "model": {
+    "name": "kokoro-v1.0",
+    "modelFile": "kokoro-v1.0.onnx",
+    "modelSha256": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+    "voicesFile": "voices-v1.0.bin",
+    "voicesSha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d",
+    "packageVersion": "0.6.1",
+    "bitrate": "40k"
+  },
+  "candidates": {
+    "gb": [
+      {
+        "id": "gb-bf-isabella-095",
+        "voice": "bf_isabella",
+        "lang": "en-gb",
+        "speed": 0.95
+      },
+      {
+        "id": "gb-bm-george-095",
+        "voice": "bm_george",
+        "lang": "en-gb",
+        "speed": 0.95
+      },
+      {
+        "id": "gb-bm-lewis-095",
+        "voice": "bm_lewis",
+        "lang": "en-gb",
+        "speed": 0.95
+      },
+      {
+        "id": "gb-bf-emma-090",
+        "voice": "bf_emma",
+        "lang": "en-gb",
+        "speed": 0.9
+      }
+    ],
+    "us": [
+      {
+        "id": "us-af-bella-095",
+        "voice": "af_bella",
+        "lang": "en-us",
+        "speed": 0.95
+      },
+      {
+        "id": "us-af-sarah-095",
+        "voice": "af_sarah",
+        "lang": "en-us",
+        "speed": 0.95
+      },
+      {
+        "id": "us-am-michael-095",
+        "voice": "am_michael",
+        "lang": "en-us",
+        "speed": 0.95
+      },
+      {
+        "id": "us-af-nicole-095",
+        "voice": "af_nicole",
+        "lang": "en-us",
+        "speed": 0.95
+      }
+    ]
+  }
+}

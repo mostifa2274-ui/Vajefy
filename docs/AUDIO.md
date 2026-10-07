@@ -139,15 +139,51 @@ never become the expected lexical transcript.
    pass.
 
 The automatic `audio-certify.yml` workflow runs only when audio or its
-certification inputs change, commits only
-`recognition.json` and `certificates.json`, and then keeps the workflow red
-until every scoped pair is certified. Generated evidence does not retrigger
-the expensive recognizers.
+certification inputs change. Bot-generated evidence/promotions carry
+`[audio-bot]` and are explicitly prevented from recursively starting the
+expensive workflow.
 
-This completes the certification **foundation**, not Phase 3 itself. The Phase
-3 exit still requires every Unit 1–3 word/accent pair to be certified. A8 is
-implemented with versioned per-unit offline audio packs and transactional
-replacement; automatic candidate regeneration remains open.
+### Automatic audio repair
+
+Independent certification, not the legacy pronunciation report, decides
+whether a Unit 1–3 word/accent target needs repair. A repair round is strictly
+bounded by `content/assurance/audio/repair-policy.json`:
+
+1. `audio-repair-plan.ts` selects only `QUARANTINED` targets whose blockers
+   are acoustic/recognition/alignment failures. Missing or stale identity
+   evidence is never repaired by synthesis.
+2. The planner chooses the first **untried** pre-registered candidate for that
+   target and exact source-clip SHA-256. There are four fixed candidates per
+   accent; there is no random search or indefinite retry.
+3. `generate_repair_candidates.py` verifies the pinned Kokoro model/voice
+   checksums and writes candidates under the private workflow workspace, never
+   under `public/audio`.
+4. The same pinned Whisper, Vosk and PocketSphinx systems independently
+   evaluate those candidate bytes. `audio-repair-evaluate.ts` reuses the
+   release certificate logic and rejects synthesis/recognizer provenance
+   drift.
+5. `promote_repair_candidates.py` records every attempt in
+   `repair-log.json`. A candidate is copied into the product only when it is
+   `CERTIFIED`, its candidate SHA-256 still matches, and the old source clip
+   still matches the source SHA-256 that was judged.
+6. After every promotion round, generated content is rebuilt. After the last
+   bounded round, all 386 current Unit 1–3 word/accent targets are certified
+   again from the exact promoted repository state. Normal validation forbids a
+   promoted candidate from remaining current unless this final full-corpus
+   certificate also says `CERTIFIED`.
+
+The bot commit guard stages only allowlisted generated audio/evidence files,
+never broad repository changes and never force-pushes. Unresolved targets stay
+on their previous working clips and keep the release gate red. A later full
+Kokoro regeneration also preserves a promoted repair by its per-clip
+`repairPolicyVersion` and generation provenance instead of silently replacing
+it with the default voice.
+
+This implements the automatic A2/A6 repair machinery but does **not** itself
+claim Phase 3 completion. The current committed production evidence remains
+`PENDING_RECOGNITION` until a main-branch run writes real recognizer results.
+Phase 3 exits only at 386/386 certified targets. A8 is already implemented with
+versioned per-unit offline packs and transactional replacement.
 
 ## Regenerating
 
