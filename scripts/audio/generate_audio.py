@@ -206,6 +206,34 @@ def main() -> int:
         name = clip_name(accent, text, phonemes)
         target = OUT / name
         known = previous.get("clips", {}).get(name)
+
+        # A repair candidate reaches the public manifest only after independent
+        # certification. Preserve that exact candidate on later full Kokoro
+        # runs instead of silently reverting it to the default voice.
+        repaired = False
+        if kind == "word":
+            prior_word = (
+                previous.get("senses", {})
+                .get(sense_id, {})
+                .get(accent, {})
+                .get("word")
+            )
+            if prior_word and prior_word.get("text") == text:
+                prior_name = Path(prior_word.get("file", "")).name
+                prior_meta = previous.get("clips", {}).get(prior_name)
+                prior_target = OUT / prior_name
+                if (
+                    prior_meta
+                    and prior_meta.get("repairPolicyVersion")
+                    and prior_target.is_file()
+                    and prior_meta.get("text") == text
+                    and prior_meta.get("accent") == accent
+                ):
+                    name = prior_name
+                    target = prior_target
+                    known = prior_meta
+                    repaired = True
+
         if not target.exists() or not known:
             voice, lang = VOICES[accent]
             samples, rate = kokoro.create(text, voice=voice, speed=SPEED, lang=lang, is_phonemes=phonemes)
@@ -218,9 +246,14 @@ def main() -> int:
             stats = {key: known[key] for key in ("duration", "peak", "rms")}
         synthesized = text if phonemes else kokoro.tokenizer.phonemize(text, VOICES[accent][1])
         issues = faults(stats, kind)
-        if kind == "word" and ipa and not pronunciation_matches(synthesized, ipa):
+        if kind == "word" and ipa and not repaired and not pronunciation_matches(synthesized, ipa):
             issues.append(f"pronunciation differs from IPA: synthesized /{synthesized}/, entry {ipa}")
-        clips[name] = {**stats, "bytes": target.stat().st_size, "text": text, "accent": accent}
+        metadata = {**stats, "bytes": target.stat().st_size, "text": text, "accent": accent}
+        if repaired:
+            for key in ("generation", "repairPolicyVersion"):
+                if key in known:
+                    metadata[key] = known[key]
+        clips[name] = metadata
         if issues:
             review.append({"sense": sense_id, "accent": accent, "kind": kind, "text": text, "file": name, "issues": issues})
         return {"text": text, "file": f"pilot/{name}"}
