@@ -239,6 +239,55 @@ compiled.version = versionOf({
   audio: compiled.audio,
 });
 
+// A8: offline audio is replaceable one curriculum unit at a time. Each pack
+// version covers the exact content-hashed filenames and their expected byte
+// lengths. The browser validates every downloaded response before committing
+// the pack marker, so an interrupted/new pack never displaces the previous
+// complete version.
+function audioPackFor(unitIndex: number, accent: "gb" | "us") {
+  const files = new Set<string>();
+  for (const item of compiled.entries) {
+    if (item.unit !== unitIndex) continue;
+    for (const sense of item.senses) {
+      const recorded = compiled.audio[sense.id]?.[accent];
+      if (recorded?.word) files.add(recorded.word);
+      for (const file of recorded?.examples ?? []) if (file) files.add(file);
+    }
+  }
+  const manifest = [...files].sort().map((file) => {
+    const bytes = audio.clips?.[file.replace(/^pilot\//, "")]?.bytes;
+    if (!Number.isInteger(bytes) || (bytes ?? 0) <= 0) {
+      failures.push(`${units[unitIndex]?.id ?? unitIndex}:${accent}: missing byte metadata for ${file}`);
+    }
+    return { file, bytes: Number(bytes ?? 0) };
+  });
+  const version = createHash("sha256")
+    .update(JSON.stringify([units[unitIndex]?.id ?? unitIndex, accent, manifest]))
+    .digest("hex")
+    .slice(0, 16);
+  return {
+    unitId: units[unitIndex]!.id,
+    accent,
+    version,
+    files: manifest,
+    bytes: manifest.reduce((sum, file) => sum + file.bytes, 0),
+  };
+}
+
+const publicAudioPack = {
+  schemaVersion: 2 as const,
+  contentVersion: compiled.version,
+  units: units
+    .map((unit, index) => ({ unit, index }))
+    .filter(({ unit }) => unit.level === "A1")
+    .map(({ unit, index }, number) => ({
+      ...unit,
+      number: number + 1,
+      gb: audioPackFor(index, "gb"),
+      us: audioPackFor(index, "us"),
+    })),
+};
+
 if (failures.length) {
   console.error(`Pilot content failed validation with ${failures.length} issue(s):\n- ${failures.join("\n- ")}`);
   process.exit(1);
@@ -284,7 +333,7 @@ const catalogue: PilotCatalogue = { version: compiled.version, parts: parts.map(
 const outputs = new Map<string, string>([
   [OUT, `${JSON.stringify(compiled)}\n`],
   [path.join(PUBLIC_DIR, "index.json"), `${JSON.stringify(catalogue)}\n`],
-  [path.join(PUBLIC_DIR, "audio-pack.json"), `${JSON.stringify(compiled.audioPack)}\n`],
+  [path.join(PUBLIC_DIR, "audio-pack.json"), `${JSON.stringify(publicAudioPack)}\n`],
   ...parts.map(([file, output]): [string, string] => [path.join(ROOT, "public", "data", file), output]),
   [ORDER_OUT, `${JSON.stringify(pilotOrder)}\n`],
 ]);

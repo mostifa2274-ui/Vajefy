@@ -224,27 +224,51 @@ test("the Words page shows every sense of a pilot entry with its teaching notes"
   await expect(detail.getByText("Common mistake", { exact: true }).first()).toBeVisible();
 });
 
-test("recorded pronunciation downloads for offline use and plays from the cache", async ({ page, context }) => {
+test("recorded pronunciation downloads one unit transactionally and plays offline", async ({ page, context }) => {
   test.setTimeout(90_000);
   await seedNewLearner(page);
   await page.goto("/progress");
   await page.evaluate(() => navigator.serviceWorker.ready);
-  const download = page.getByRole("button", { name: /^Download · / });
-  await expect(download).toBeVisible();
-  await download.click();
-  await expect(page.getByText(/✓ Downloaded/)).toBeVisible({ timeout: 60_000 });
-  const cached = await page.evaluate(async () => (await (await caches.open("vajefy-audio-v1")).keys()).length);
-  expect(cached).toBeGreaterThan(500);
+
+  const unit1Download = page.getByRole("button", { name: /^Download · / }).first();
+  await expect(unit1Download).toBeVisible();
+  await unit1Download.click();
+  await expect(page.getByText(/✓ Downloaded/).first()).toBeVisible({ timeout: 60_000 });
+
+  const committed = await page.evaluate(async () => {
+    const manifest = await (await fetch("/data/enhanced/audio-pack.json")).json() as {
+      units: {
+        id: string;
+        gb: { version: string; files: { file: string; bytes: number }[] };
+      }[];
+    };
+    const pack = manifest.units[0]!.gb;
+    const cacheName = `vajefy-audio-unit-v2:${manifest.units[0]!.id}:gb:${pack.version}`;
+    const cache = await caches.open(cacheName);
+    const marker = await cache.match("/__vajefy_audio_pack_complete__");
+    return {
+      cacheName,
+      marker: Boolean(marker),
+      cached: (await cache.keys()).length,
+      files: pack.files.length,
+      file: pack.files[0]!.file,
+      expectedBytes: pack.files[0]!.bytes,
+    };
+  });
+  expect(committed.marker).toBe(true);
+  expect(committed.cached).toBe(committed.files + 1);
 
   await context.setOffline(true);
-  const offline = await page.evaluate(async () => {
-    const pack = await (await fetch("/data/enhanced/audio-pack.json")).json();
-    const file = pack.gb.files[0];
+  const offline = await page.evaluate(async ({ file }) => {
     const response = await fetch(`/audio/${file}`);
-    return { ok: response.ok, type: response.headers.get("content-type"), bytes: (await response.arrayBuffer()).byteLength };
-  });
+    return {
+      ok: response.ok,
+      type: response.headers.get("content-type"),
+      bytes: (await response.arrayBuffer()).byteLength,
+    };
+  }, { file: committed.file });
   expect(offline.ok).toBe(true);
-  expect(offline.bytes).toBeGreaterThan(1000);
+  expect(offline.bytes).toBe(committed.expectedBytes);
   await context.setOffline(false);
 });
 

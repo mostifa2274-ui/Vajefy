@@ -8,6 +8,7 @@ import { hasContent, indexPilot, introductionOrder, loadAudioPack, loadPilot } f
 const pilot = JSON.parse(readFileSync("content/compiled/enhanced.json", "utf8")) as Pilot;
 const read = <T>(file: string) => JSON.parse(readFileSync(`public/data/${file}`, "utf8")) as T;
 const catalogue = read<PilotCatalogue>("enhanced/index.json");
+const audioPack = read<AudioPack>("enhanced/audio-pack.json");
 const T0 = 1_800_000_000_000;
 const seeded = () => {
   let seed = 7;
@@ -51,7 +52,37 @@ test("the app's files hold the compiled content, each entry listed once and in o
   // Parts follow the curriculum, so the next lesson's words are usually in one.
   assert.deepEqual(catalogue.entries.map((entry) => entry.part), [...catalogue.entries.map((entry) => entry.part)].sort((a, b) => a - b));
   assert.deepEqual(Object.assign({}, ...parts.map((part) => part.audio)), pilot.audio);
-  assert.deepEqual(read<AudioPack>("enhanced/audio-pack.json"), pilot.audioPack);
+  assert.equal(audioPack.schemaVersion, 2);
+  assert.equal(audioPack.contentVersion, pilot.version);
+  const a1Units = pilot.units.filter((unit) => unit.level === "A1");
+  assert.equal(audioPack.units.length, a1Units.length);
+  audioPack.units.forEach((unit, index) => {
+    assert.deepEqual(
+      [unit.id, unit.level, unit.titleEn, unit.titleFa, unit.number],
+      [a1Units[index]!.id, a1Units[index]!.level, a1Units[index]!.titleEn, a1Units[index]!.titleFa, index + 1],
+    );
+    for (const accent of ["gb", "us"] as const) {
+      const pack = unit[accent];
+      assert.equal(pack.unitId, unit.id);
+      assert.equal(pack.accent, accent);
+      assert.match(pack.version, /^[a-f0-9]{16}$/);
+      assert.equal(pack.bytes, pack.files.reduce((sum, file) => sum + file.bytes, 0));
+      assert.ok(pack.files.every((file) => file.file.startsWith("pilot/") && file.bytes > 0));
+      assert.deepEqual(
+        pack.files.map((file) => file.file),
+        [...pack.files.map((file) => file.file)].sort(),
+        `${unit.id}:${accent} pack is deterministic`,
+      );
+    }
+  });
+  for (const accent of ["gb", "us"] as const) {
+    const publicFiles = new Set(audioPack.units.flatMap((unit) => unit[accent].files.map((file) => file.file)));
+    assert.deepEqual(
+      [...publicFiles].sort(),
+      pilot.audioPack[accent].files,
+      `unit packs cover every current ${accent} clip`,
+    );
+  }
 });
 
 test("every target is listed at once, and content loads only for the targets asked for", async () => {
@@ -86,7 +117,7 @@ test("every target is listed at once, and content loads only for the targets ask
     assert.ok(hasContent(listed, ["lex:B2:nonexistent"]));
     assert.equal(await loadPilot(["lex:B2:nonexistent"]), loaded);
 
-    assert.deepEqual(await loadAudioPack(), pilot.audioPack);
+    assert.deepEqual(await loadAudioPack(), audioPack);
   } finally {
     server.restore();
   }

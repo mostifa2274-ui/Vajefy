@@ -213,9 +213,28 @@ export type Pilot = {
   scenes: Scene[];
   audio: Record<string, SenseAudio>;
   /** Every current clip per accent, for downloading pronunciation for offline use. */
-  audioPack: AudioPack;
+  audioPack: LegacyAudioPack;
 };
-export type AudioPack = Record<"gb" | "us", { files: string[]; bytes: number }>;
+export type LegacyAudioPack = Record<"gb" | "us", { files: string[]; bytes: number }>;
+export type AudioPackFile = { file: string; bytes: number };
+export type AudioUnitPack = {
+  unitId: string;
+  accent: "gb" | "us";
+  /** Changes only when this unit/accent's exact file-and-byte manifest changes. */
+  version: string;
+  files: AudioPackFile[];
+  bytes: number;
+};
+export type AudioPack = {
+  schemaVersion: 2;
+  /** Whole-course version for traceability; unit versions remain independently replaceable. */
+  contentVersion: string;
+  units: (CourseUnit & {
+    number: number;
+    gb: AudioUnitPack;
+    us: AudioUnitPack;
+  })[];
+};
 /** A unit of a level's curriculum (content/curriculum/). */
 export type CourseUnit = { id: string; level: string; titleEn: string; titleFa: string };
 

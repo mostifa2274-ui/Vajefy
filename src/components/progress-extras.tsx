@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { downloadPack, packStatus, removePack, type PackStatus } from "@/lib/learn/audio-pack";
+import type { AudioPack, AudioUnitPack } from "@/lib/learn/content";
 import { useFormat } from "@/lib/learn/format";
 import type { Copy } from "@/lib/learn/i18n";
 import { checkupResult, type LessonSession } from "@/lib/learn/lesson";
@@ -78,98 +79,153 @@ export function LearningSummary({ copy }: { copy: Copy }) {
   );
 }
 
-/** Download the pilot's recorded pronunciation for the learner's accent. */
+/** Download recorded pronunciation one curriculum unit at a time. */
 export function OfflineAudio({ copy }: { copy: Copy }) {
   const accent = useProgress((state) => state.accent);
+  const lang = useProgress((state) => state.lang);
   const { num, sep } = useFormat();
-  const [pack, setPack] = useState<{ files: string[]; bytes: number } | null>(null);
-  const [status, setStatus] = useState<PackStatus | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [units, setUnits] = useState<AudioPack["units"]>([]);
+  const [statuses, setStatuses] = useState<Record<string, PackStatus>>({});
+  const [statusAccent, setStatusAccent] = useState<"gb" | "us" | null>(null);
+  const [busy, setBusy] = useState<string | null>(null);
+  const [failed, setFailed] = useState<string | null>(null);
   const abort = useRef<AbortController | null>(null);
+  const accentKey = accent === "en-US" ? "us" : "gb";
 
   useEffect(() => {
     let alive = true;
     void loadAudioPack()
       .then(async (audioPack) => {
-        const chosen = audioPack[accent === "en-US" ? "us" : "gb"];
+        const rows = await Promise.all(
+          audioPack.units.map(async (unit) => [unit.id, await packStatus(unit[accentKey])] as const),
+        );
         if (!alive) return;
-        setPack(chosen);
-        setStatus(await packStatus(chosen.files));
+        setUnits(audioPack.units);
+        setStatuses(Object.fromEntries(rows));
+        setStatusAccent(accentKey);
       })
       .catch(() => undefined);
     return () => {
       alive = false;
       abort.current?.abort();
     };
-  }, [accent]);
+  }, [accentKey]);
 
-  if (!pack || !status || typeof caches === "undefined") return null;
-  const megabytes = (pack.bytes / 1e6).toFixed(1);
-  const complete = status.cached >= status.total;
+  if (!units.length || statusAccent !== accentKey || typeof caches === "undefined") return null;
 
-  async function download() {
-    if (!pack) return;
-    setBusy(true);
-    setFailed(false);
+  async function download(pack: AudioUnitPack) {
+    setBusy(pack.unitId);
+    setFailed(null);
+    abort.current?.abort();
     abort.current = new AbortController();
     try {
-      setStatus(await downloadPack(pack.files, setStatus, abort.current.signal));
-    } catch {
-      setFailed(true);
+      const status = await downloadPack(
+        pack,
+        (progress) => setStatuses((current) => ({ ...current, [pack.unitId]: progress })),
+        abort.current.signal,
+      );
+      setStatuses((current) => ({ ...current, [pack.unitId]: status }));
+    } catch (error) {
+      if (!(error instanceof DOMException && error.name === "AbortError")) {
+        setFailed(pack.unitId);
+      }
     } finally {
-      setBusy(false);
+      setBusy((current) => (current === pack.unitId ? null : current));
     }
+  }
+
+  async function remove(pack: AudioUnitPack) {
+    await removePack(pack);
+    setStatuses((current) => ({
+      ...current,
+      [pack.unitId]: {
+        cached: 0,
+        total: pack.files.length,
+        current: false,
+        activeVersion: null,
+        previous: false,
+      },
+    }));
   }
 
   return (
     <div className="mt-6 rounded-lg border border-line p-3">
       <h3 className="text-sm font-medium">{copy.offlineTitle}</h3>
       <p className="mt-1 text-xs text-pretty text-muted">{copy.offlineHint}</p>
-      <div className="mt-3 flex flex-wrap items-center gap-3">
-        {complete ? (
-          <>
-            <span className="text-sm text-good">✓ {copy.downloaded}
-              {sep}
-              {num(Number(megabytes))} <bdi lang="en">MB</bdi></span>
-            <button
-              type="button"
-              className="min-h-11 text-sm text-muted"
-              onClick={() => void removePack(pack.files).then(async () => setStatus(await packStatus(pack.files)))}
-            >
-              {copy.removeAudio}
-            </button>
-          </>
-        ) : (
-          <button
-            type="button"
-            disabled={busy}
-            onClick={() => void download()}
-            className="min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)] disabled:opacity-60"
-          >
-            {busy ? (
-              copy.downloading
-            ) : (
-              <>
-                {copy.downloadAudio}
-                {sep}
-                {num(Number(megabytes))} <bdi lang="en">MB</bdi>
-              </>
-            )}
-          </button>
-        )}
-        {busy || (!complete && status.cached > 0) ? (
-          <span role="status" className="text-xs text-muted tabular-nums">
-            <Num value={status.cached} /> / <Num value={status.total} />
-          </span>
-        ) : null}
+      <div className="mt-3 divide-y divide-line">
+        {units.map((unit) => {
+          const pack = unit[accentKey];
+          const status = statuses[unit.id];
+          const busyHere = busy === unit.id;
+          const megabytes = (pack.bytes / 1e6).toFixed(1);
+          return (
+            <div key={unit.id} className="py-3 first:pt-0 last:pb-0">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="min-w-0 text-sm">
+                  <span className="text-muted"><Num value={unit.number} />.</span>{" "}
+                  <span>{lang === "fa" ? unit.titleFa : unit.titleEn}</span>
+                </span>
+                <div className="flex flex-wrap items-center justify-end gap-2">
+                  {status?.current ? (
+                    <>
+                      <span className="text-xs text-good">
+                        ✓ {copy.downloaded}
+                        {sep}
+                        {num(Number(megabytes))} <bdi lang="en">MB</bdi>
+                      </span>
+                      <button
+                        type="button"
+                        className="min-h-11 px-2 text-sm text-muted"
+                        onClick={() => void remove(pack)}
+                      >
+                        {copy.removeAudio}
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      {status?.previous ? (
+                        <span className="text-xs text-good">✓ {copy.downloaded}</span>
+                      ) : null}
+                      <button
+                        type="button"
+                        disabled={busy !== null && !busyHere}
+                        onClick={() => void download(pack)}
+                        className="min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)] disabled:opacity-60"
+                      >
+                        {busyHere ? (
+                          copy.downloading
+                        ) : (
+                          <>
+                            {copy.downloadAudio}
+                            {sep}
+                            {num(Number(megabytes))} <bdi lang="en">MB</bdi>
+                          </>
+                        )}
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+              {status && (busyHere || (!status.current && status.cached > 0)) ? (
+                <>
+                  <div className="mt-2 flex items-center justify-between gap-3 text-xs text-muted tabular-nums">
+                    <span role="status"><Num value={status.cached} /> / <Num value={status.total} /></span>
+                  </div>
+                  <div className="mt-1 h-1 rounded-full bg-line" aria-hidden>
+                    <div
+                      className="h-1 rounded-full bg-accent"
+                      style={{ width: Math.round((100 * status.cached) / Math.max(1, status.total)) + "%" }}
+                    />
+                  </div>
+                </>
+              ) : null}
+              {failed === unit.id ? (
+                <p className="mt-2 text-sm text-bad" role="alert">{copy.downloadFailed}</p>
+              ) : null}
+            </div>
+          );
+        })}
       </div>
-      {busy ? (
-        <div className="mt-2 h-1 rounded-full bg-line" aria-hidden>
-          <div className="h-1 rounded-full bg-accent" style={{ width: `${Math.round((100 * status.cached) / Math.max(1, status.total))}%` }} />
-        </div>
-      ) : null}
-      {failed ? <p className="mt-2 text-sm text-bad" role="alert">{copy.downloadFailed}</p> : null}
     </div>
   );
 }
