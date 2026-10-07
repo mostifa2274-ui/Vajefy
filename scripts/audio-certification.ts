@@ -7,6 +7,7 @@ import {
   audioRecognitionManifest,
   audioRepairLog,
   deriveAudioCertificate,
+  serializeAudioJson,
   type AudioAccent,
   type AudioCertificateManifest,
   type AudioRecognitionManifest,
@@ -300,7 +301,7 @@ const expected = expectedCertificates(recognition);
 const write = process.argv.includes("--write");
 if (write) {
   fs.mkdirSync(AUDIO, { recursive: true });
-  fs.writeFileSync(FILES.certificates, `${JSON.stringify(expected, null, 2)}\\n`);
+  fs.writeFileSync(FILES.certificates, serializeAudioJson(expected));
   console.log(
     `Audio certificates written: ${expected.summary.certified}/${expected.summary.targets} certified, ` +
       `${expected.summary.uncertain} uncertain, ${expected.summary.quarantined} quarantined.`,
