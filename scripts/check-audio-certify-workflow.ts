@@ -72,13 +72,18 @@ for (const generated of [
   "content/assurance/audio/recognition.json",
   "content/assurance/audio/certificates.json",
   "content/assurance/audio/repair-log.json",
-  "content/pilot/audio-manifest.json",
-  "public/audio/pilot/*.mp3",
-  "[audio-bot]",
-  "content/assurance/audio/repair-log.json",
 ]) {
   if (pathsBlock.includes(generated)) {
-    fail("Generated audio evidence must not retrigger the expensive certification workflow: " + generated);
+    fail("Generated evidence ledgers must not retrigger the expensive certification workflow: " + generated);
+  }
+}
+for (const sourceInput of [
+  "content/pilot/audio-manifest.json",
+  "content/pilot/audio-report.json",
+  "public/audio/pilot/**",
+]) {
+  if (!pathsBlock.includes(sourceInput)) {
+    fail("Changing shipped audio inputs must retrigger certification: " + sourceInput);
   }
 }
 if (!workflow.includes("!contains(github.event.head_commit.message, '[audio-bot]')")) {
