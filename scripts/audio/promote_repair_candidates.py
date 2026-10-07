@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "content" / "pilot" / "audio-manifest.json"
 REPORT = ROOT / "content" / "pilot" / "audio-report.json"
 LOG = ROOT / "content" / "assurance" / "audio" / "repair-log.json"
+POLICY = ROOT / "content" / "assurance" / "audio" / "repair-policy.json"
 PUBLIC_AUDIO = ROOT / "public" / "audio" / "pilot"
 
 
@@ -71,6 +72,12 @@ def main() -> int:
     policy = candidates.get("policyVersion")
     if result.get("policyVersion") != policy or log.get("policyVersion") != policy:
         raise RuntimeError("audio repair policy versions differ")
+    policy_sha256 = sha256(POLICY)
+    recorded_policy_sha256 = log.get("policySha256")
+    if recorded_policy_sha256 is not None and recorded_policy_sha256 != policy_sha256:
+        raise RuntimeError("audio repair history belongs to different repair-policy.json bytes")
+    if log.get("attempts") and recorded_policy_sha256 is None:
+        raise RuntimeError("existing audio repair history is not bound to exact policy bytes")
 
     manifest = read_json(MANIFEST)
     report = read_json(REPORT)
@@ -107,6 +114,8 @@ def main() -> int:
         if previous is not None and previous != attempt:
             raise RuntimeError(f"{candidate['targetId']}: repair attempt key already has different evidence")
         if previous is None:
+            if log.get("policySha256") is None:
+                log["policySha256"] = policy_sha256
             log.setdefault("attempts", []).append(attempt)
             existing_attempts[key] = attempt
 
