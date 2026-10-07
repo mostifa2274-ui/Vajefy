@@ -16,18 +16,20 @@ const curriculum: FrontierCurriculum = {
     { id: "01-one", targetEntries: 1, entries: [entry("u1")] },
     { id: "02-two", targetEntries: 1, entries: [entry("u2", ["u1"])] },
     { id: "03-three", targetEntries: 1, entries: [entry("u3", ["u2"])] },
-    { id: "04-four", targetEntries: 1, entries: [entry("anchor", ["u3"])] },
-    { id: "05-five", targetEntries: 1, entries: [entry("late-prereq", ["anchor"])] },
     {
-      id: "06-six",
-      targetEntries: 4,
+      id: "04-four",
+      targetEntries: 6,
       entries: [
-        entry("first", ["u3"]),
-        entry("second", ["first"]),
+        entry("base", ["u3"]),
+        entry("anchor", ["base"]),
+        entry("late-prereq", ["anchor"]),
         entry("blocked", ["late-prereq"]),
-        entry("pilot-sensitive", ["u1"]),
+        entry("first", ["base"]),
+        entry("second", ["first"]),
       ],
     },
+    { id: "05-five", targetEntries: 1, entries: [entry("cross", ["u3"])] },
+    { id: "06-six", targetEntries: 1, entries: [entry("pilot-sensitive", ["u1"])] },
   ],
 };
 
@@ -51,6 +53,12 @@ const promotions: FrontierPromotion[] = [
     changesFrozenPilotRoster: false,
   },
   {
+    dependencyId: "cross",
+    beforeEntryId: "anchor",
+    targetUnit: "04-four",
+    changesFrozenPilotRoster: false,
+  },
+  {
     dependencyId: "pilot-sensitive",
     beforeEntryId: "u2",
     targetUnit: "02-two",
@@ -58,22 +66,33 @@ const promotions: FrontierPromotion[] = [
   },
 ];
 
-test("pilot-safe promotions iterate through prerequisite closure without touching Units 1-3", () => {
+test("pilot-safe promotions iterate within a unit without changing the frozen roster or wave sizes", () => {
   const result = applyPilotSafePromotions(curriculum, promotions);
 
   assert.deepEqual(result.curriculum.units.slice(0, 3), curriculum.units.slice(0, 3));
   assert.deepEqual(
     result.curriculum.units[3]?.entries.map((item) => item.id),
-    ["first", "second", "anchor"],
+    ["base", "first", "second", "anchor", "late-prereq", "blocked"],
   );
   assert.deepEqual(result.moved, ["first", "second"]);
   assert.deepEqual(result.alreadySatisfied, []);
   assert.deepEqual(result.blocked, [
     { dependencyId: "blocked", reason: "unmet-prerequisites:late-prereq" },
+    { dependencyId: "cross", reason: "balanced-wave-required" },
     { dependencyId: "pilot-sensitive", reason: "frozen-pilot-roster" },
   ]);
-  assert.equal(result.curriculum.units[3]?.targetEntries, 3);
-  assert.equal(result.curriculum.units[5]?.targetEntries, 2);
+  assert.deepEqual(
+    result.curriculum.units.map((unit) => ({
+      id: unit.id,
+      targetEntries: unit.targetEntries,
+      entries: unit.entries.length,
+    })),
+    curriculum.units.map((unit) => ({
+      id: unit.id,
+      targetEntries: unit.targetEntries,
+      entries: unit.entries.length,
+    })),
+  );
 });
 
 test("already-satisfied recommendations remain accounted for without reordering", () => {
@@ -90,7 +109,6 @@ test("already-satisfied recommendations remain accounted for without reordering"
   assert.deepEqual(result.blocked, []);
   assert.deepEqual(result.curriculum, curriculum);
 });
-
 
 test("stale or duplicate promotion plans fail closed", () => {
   assert.throws(
