@@ -70,7 +70,7 @@ export function Onboard() {
 
       <section aria-labelledby="time-title" className="mt-8">
         <h2 id="time-title" className="text-base font-medium">{copy.timeTitle}</h2>
-        <div className="mt-3 flex gap-2">
+        <div className="mt-3 flex flex-wrap gap-2">
           {STUDY_MINUTES.map((item) => (
             <Choice key={item} active={minutes === item} onClick={() => setMinutes(item)} className="min-w-20 text-center">
               <span className="text-sm">
