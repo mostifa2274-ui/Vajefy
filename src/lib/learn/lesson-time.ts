@@ -48,7 +48,12 @@ export type LessonTimeProfile = {
 export function lessonTimeProfile(sessions: readonly SessionRecord[]): LessonTimeProfile {
   const lessons = completedTimedLessons(sessions);
   const activePerTarget = lessons.flatMap((lesson) => {
-    const active = (lesson.timing ?? []).reduce((sum, sample) => sum + sample.activeMs, 0);
+    // Due-word recycling consumes the review budget and is estimated
+    // separately by dailyPlan. Do not charge that time to newly taught words
+    // or the displayed duration would double-count review work.
+    const active = (lesson.timing ?? [])
+      .filter((sample) => !(sample.kind === "check" && sample.role === "recycle"))
+      .reduce((sum, sample) => sum + sample.activeMs, 0);
     return active > 0 ? [active / lesson.targets.length] : [];
   });
   const stepTimes = lessons.flatMap((lesson) => (lesson.timing ?? []).map((sample) => sample.activeMs).filter((ms) => ms > 0));
