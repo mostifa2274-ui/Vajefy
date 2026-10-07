@@ -25,6 +25,7 @@ accessibility steps inside the other browser tests check the following.
 | Text spacing | WCAG's increased line, letter, word and paragraph spacing causes no overflow | 1.4.12 |
 | Orientation | Landscape phone, portrait and landscape tablet, and desktop keep navigation and content usable | 1.3.4 |
 | Keyboard | A whole lesson and a review can be done with the keyboard alone | 2.1.1 |
+| Language of parts and direction | `tests/e2e/bidi.spec.ts` lints every screen, a word's detail, a whole lesson, a Review session and Smart Practice in both interface languages. It fails on Persian marked as English, on English inside Persian that is not marked as English, and on a run whose punctuation would land on the wrong side because it sits in the other language's direction | 3.1.2, 1.3.2 |
 
 The on-screen keyboard is handled too. While a text field has focus on a
 narrow screen, the dock steps aside, so the answer field and its **Check**
@@ -39,6 +40,17 @@ Persian and English share most screens, so direction is handled explicitly:
   `lang="en" dir="ltr"`. Every Persian gloss inside English carries
   `lang="fa" dir="rtl"`. Elements with `dir` are isolated by the browser, so
   punctuation stays with its own language.
+- Persian content often embeds English ("ضمیر I همیشه با حرف بزرگ نوشته
+  می‌شود."). Render it with `<Fa text={…} />` inside a `lang="fa" dir="rtl"`
+  element: each English run becomes `<bdi lang="en">`, so it keeps its own
+  direction and full stop, and screen readers voice it in English. Text whose
+  language varies from item to item, such as a Practice prompt, uses
+  `<Varied text={…} />`, which picks the language from the script.
+- An interface word placed inside content of the other language, such as the
+  screen-reader "Right" or "Your answer" beside a Persian option, carries
+  `lang={copy.uiLang}`.
+- Level codes such as `B2+` sit in `dir="ltr"`, or the `+` would be drawn
+  before the `B` in Persian.
 - Items in a line are separated with the Persian comma (`، `) in Persian and a
   middle dot (`·`) in English. Beside Persian digits, a middle dot reads as the
   Persian zero (`۰`). Use `<Sep />` or `sep` from `useFormat()`.

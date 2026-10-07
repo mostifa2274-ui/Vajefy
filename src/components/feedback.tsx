@@ -3,6 +3,7 @@ import { cn } from "@/lib/cn";
 import { useFormat } from "@/lib/learn/format";
 import type { Copy } from "@/lib/learn/i18n";
 import { Button } from "./ui";
+import { Fa } from "./mixed-text";
 
 /** How far through a session the learner is, as a bar and a count. */
 export function ProgressMeter({ value, max, label, count = true }: { value: number; max: number; label: string; count?: boolean }) {
@@ -39,7 +40,7 @@ export function Mark({ ok, copy }: { ok: boolean; copy: Copy }) {
   return (
     <>
       <span aria-hidden>{ok ? "✓ " : "✗ "}</span>
-      <span className="sr-only">{ok ? copy.markRight : copy.markWrong}: </span>
+      <span className="sr-only" lang={copy.uiLang}>{ok ? copy.markRight : copy.markWrong}: </span>
     </>
   );
 }
@@ -69,7 +70,7 @@ export function WrongRight({
         </p>
         {wrongFa ? (
           <p lang="fa" dir="rtl" className="mt-0.5 text-xs text-muted text-pretty">
-            {wrongFa}
+            <Fa text={wrongFa} />
           </p>
         ) : null}
       </div>
@@ -80,12 +81,12 @@ export function WrongRight({
         </p>
         {rightFa ? (
           <p lang="fa" dir="rtl" className="mt-0.5 text-xs text-muted text-pretty">
-            {rightFa}
+            <Fa text={rightFa} />
           </p>
         ) : null}
       </div>
       <p lang="fa" dir="rtl" className="text-muted text-pretty">
-        {why}
+        <Fa text={why} />
       </p>
     </div>
   );

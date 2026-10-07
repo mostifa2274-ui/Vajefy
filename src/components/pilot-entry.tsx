@@ -3,6 +3,7 @@ import { POS_FA, pronunciationFor, senseAudio, type PilotEntry, type PilotIndex 
 import { WrongRight } from "./feedback";
 import { SayIt } from "./say-it";
 import { Sep, SpeakButton } from "./ui";
+import { Fa } from "./mixed-text";
 
 /** Every sense of an enhanced pilot entry, as reference in the Words page. */
 export function PilotEntryDetail({
@@ -29,8 +30,8 @@ export function PilotEntryDetail({
               <Sep />
               <span lang="en" dir="ltr">{pronunciationFor(sense, accent)}</span>
             </p>
-            <p lang="fa" dir="rtl" className="mt-1 text-lg font-medium">{sense.gloss}</p>
-            <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty">{sense.meaning}</p>
+            <p lang="fa" dir="rtl" className="mt-1 text-lg font-medium"><Fa text={sense.gloss} /></p>
+            <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty"><Fa text={sense.meaning} /></p>
             <div className="mt-2">
               <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow item={sense.id} />
               <SayIt text={entry.headword} clip={clips.word} copy={copy} />
@@ -39,7 +40,7 @@ export function PilotEntryDetail({
               {sense.grammar.map((item) => (
                 <li key={item.pattern}>
                   <span lang="en" dir="ltr" className="font-medium">{item.pattern}</span>
-                  <span lang="fa" dir="rtl" className="block text-muted text-pretty">{item.note}</span>
+                  <span lang="fa" dir="rtl" className="block text-muted text-pretty"><Fa text={item.note} /></span>
                 </li>
               ))}
             </ul>
@@ -47,16 +48,16 @@ export function PilotEntryDetail({
               {sense.examples.map((example, at) => (
                 <li key={example.en} className="border-s-2 border-accent ps-3 text-sm">
                   <span lang="en" dir="ltr" className="block text-pretty">{example.en}</span>
-                  <span lang="fa" dir="rtl" className="block text-muted text-pretty">{example.fa}</span>
+                  <span lang="fa" dir="rtl" className="block text-muted text-pretty"><Fa text={example.fa} /></span>
                   <SpeakButton text={example.en} label={copy.listenExample} clip={clips.examples[at]} item={sense.id} exposure="example" />
                 </li>
               ))}
             </ul>
             <p lang="en" dir="ltr" className="mt-3 text-sm text-pretty">
-              <span className="text-muted">{copy.collocationsLabel}: </span>
+              <span className="text-muted" lang={copy.uiLang} dir={copy.uiLang === "fa" ? "rtl" : "ltr"}>{copy.collocationsLabel}: </span>
               {sense.collocations.join(" · ")}
             </p>
-            {sense.usage ? <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty">{sense.usage}</p> : null}
+            {sense.usage ? <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty"><Fa text={sense.usage} /></p> : null}
             <div className="mt-3 rounded-md bg-paper-2 p-3 text-sm">
               <p className="text-xs text-muted">{copy.mistakeLabel}</p>
               <WrongRight wrong={sense.mistake.wrong} right={sense.mistake.right} why={sense.mistake.why} copy={copy} />

@@ -958,3 +958,11 @@ Active judges are English Nemotron 3 120B, Persian Kimi K2.5, pedagogy
 Gemma 4 26B and adversarial Qwen3 30B. Pedagogy and adversarial rank
 Nemotron first, so they wait until English settles. Thresholds and gold labels
 are unchanged.
+
+## Completed — PR #114 Unattended judge calibration
+
+Merged as `e2261f429eb08e10c6a100bb1fec512783e4d8d3`. Post-merge CI passed. The
+gateway smoke test (run 37545667281) confirmed the deployed allowlist matches
+the pre-registered candidates. The first scheduled campaign (English,
+Nemotron 3 120B) runs on the `17 */6 * * *` schedule. Its outcome lands in
+`content/assurance/semantic/calibration/`.

@@ -9,6 +9,7 @@ import { loadJson, loadMeta } from "@/lib/learn/load";
 import { searchKey } from "@/lib/learn/text";
 import { useProgress } from "@/lib/learn/store";
 import type { LibDeckId, Meta, RefEntry } from "@/lib/learn/types";
+import { Fa } from "@/components/mixed-text";
 
 export const Route = createFileRoute("/library")({
   validateSearch: (search: Record<string, unknown>): { d?: string; q?: string } => {
@@ -132,7 +133,7 @@ function LibraryPage() {
                   {meta?.counts[item.countKey] != null ? <Num value={meta.counts[item.countKey]!} /> : null}
                 </span>
               </span>
-              <span className="mt-1 block text-sm text-pretty text-muted">{copy[item.hint]}</span>
+              <span className="mt-1 block text-sm text-pretty text-muted"><Fa text={copy[item.hint]} /></span>
             </button>
           ))}
         </div>
@@ -189,7 +190,7 @@ function LibraryPage() {
                     {entry.title}
                   </span>
                   <span lang="fa" dir="rtl" className="mt-1 block truncate text-sm text-muted">
-                    {entry.subtitle}
+                    <Fa text={entry.subtitle} />
                   </span>
                 </button>
               </li>
@@ -225,7 +226,7 @@ function LibraryPage() {
               </h2>
               {selected.subtitle ? (
                 <p lang="fa" dir="rtl" className="mt-2 text-pretty">
-                  {selected.subtitle}
+                  <Fa text={selected.subtitle} />
                 </p>
               ) : null}
               <div className="mt-3">

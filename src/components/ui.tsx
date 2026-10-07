@@ -6,6 +6,7 @@ import { useFormat } from "@/lib/learn/format";
 import { useCopy } from "@/lib/learn/i18n";
 import { play, stop, usePlayback } from "@/lib/learn/speech";
 import { useProgress } from "@/lib/learn/store";
+import { Fa } from "./mixed-text";
 
 const buttonClass = {
   primary: "bg-accent text-accent-fg hover:bg-ink",
@@ -193,7 +194,11 @@ export function PageHeader({
     <header className="mb-6 max-w-2xl">
       {kicker ? <p className="text-sm text-accent">{kicker}</p> : null}
       <h1 className="mt-1 text-3xl font-medium text-balance">{title}</h1>
-      {lede ? <p className="mt-2 max-w-xl text-pretty text-muted">{lede}</p> : null}
+      {lede ? (
+        <p className="mt-2 max-w-xl text-pretty text-muted">
+          <Fa text={lede} />
+        </p>
+      ) : null}
     </header>
   );
 }

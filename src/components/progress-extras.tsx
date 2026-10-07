@@ -15,6 +15,7 @@ const APP_BUILD =
   ((import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env
     ?.VITE_APP_VERSION ?? "local");
 import { Num, Sep } from "./ui";
+import { Fa } from "./mixed-text";
 
 const SKILL_LABEL: Record<PracticeSkill, keyof Copy> = {
   meaning: "skillMeaning",
@@ -130,7 +131,7 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
           <>
             <span className="text-sm text-good">✓ {copy.downloaded}
               {sep}
-              {num(Number(megabytes))} MB</span>
+              {num(Number(megabytes))} <bdi lang="en">MB</bdi></span>
             <button
               type="button"
               className="min-h-11 text-sm text-muted"
@@ -146,7 +147,15 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
             onClick={() => void download()}
             className="min-h-11 rounded-md bg-paper-2 px-3 text-sm shadow-[var(--shadow-border)] disabled:opacity-60"
           >
-            {busy ? copy.downloading : `${copy.downloadAudio}${sep}${num(Number(megabytes))} MB`}
+            {busy ? (
+              copy.downloading
+            ) : (
+              <>
+                {copy.downloadAudio}
+                {sep}
+                {num(Number(megabytes))} <bdi lang="en">MB</bdi>
+              </>
+            )}
           </button>
         )}
         {busy || (!complete && status.cached > 0) ? (
@@ -215,7 +224,7 @@ export function StudyPanel({ copy }: { copy: Copy }) {
       <h3 id="study-title" className="text-sm font-medium">
         {copy.studyTitle}
       </h3>
-      <p className="mt-1 text-sm text-pretty text-muted">{copy.studyHint}</p>
+      <p className="mt-1 text-sm text-pretty text-muted"><Fa text={copy.studyHint} /></p>
       <label className="mt-3 block text-sm">
         <span>{copy.studyCode}</span>
         <input

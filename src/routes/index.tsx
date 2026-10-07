@@ -16,6 +16,7 @@ import { readyToIntroduce } from "@/lib/learn/targets";
 import { resumable } from "@/lib/learn/session";
 import { dayNumber } from "@/lib/learn/text";
 import type { LexWord, Meta, PairNote } from "@/lib/learn/types";
+import { Fa } from "@/components/mixed-text";
 
 export const Route = createFileRoute("/")({
   // Today needs both before it can draw its first card.
@@ -273,7 +274,7 @@ function Home() {
                   {word.ipa}
                 </p>
                 <p lang="fa" dir="rtl" className="mt-3 text-lg text-pretty">
-                  {word.fa}
+                  <Fa text={word.fa} />
                 </p>
                 <p lang="en" dir="ltr" className="mt-3 border-s-2 border-accent ps-3 text-pretty">
                   {word.ex}
@@ -298,7 +299,7 @@ function Home() {
                   {nuance.title}
                 </h2>
                 <p lang="fa" dir="rtl" className="mt-3 line-clamp-4 text-pretty text-muted">
-                  {nuance.guide}
+                  <Fa text={nuance.guide} />
                 </p>
                 <p lang="en" dir="ltr" className="mt-3 text-pretty">
                   {nuance.ex}
@@ -344,7 +345,7 @@ function Home() {
                     }
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-x-2">
-                      <span className="lex-word text-2xl">{level.label}</span>
+                      <span dir="ltr" className="lex-word text-2xl">{level.label}</span>
                       <span className={active ? "text-xs text-paper/70" : "text-xs text-muted"}>
                         <Num value={counts.mastered} /> / <Num value={level.count} />
                       </span>

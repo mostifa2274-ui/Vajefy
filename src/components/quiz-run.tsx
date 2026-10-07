@@ -11,6 +11,8 @@ import { cn } from "@/lib/cn";
 import { useKeepFocus } from "@/lib/focus";
 import { AnswerFeedback, Mark, ProgressMeter } from "./feedback";
 import { Button, SpeakButton } from "./ui";
+import { Fa } from "./mixed-text";
+import { Varied } from "./mixed-text";
 
 type Miss = { prompt: string; answer: string };
 
@@ -144,12 +146,8 @@ export function QuizRun({
             <ul className="mt-2 divide-y divide-line border-y border-line">
               {misses.map((miss, i) => (
                 <li key={`${miss.prompt}-${i}`} className="py-3">
-                  <p dir="auto" className="text-pretty">
-                    {miss.prompt}
-                  </p>
-                  <p dir="auto" className="mt-1 text-sm text-good">
-                    {miss.answer}
-                  </p>
+                  <Varied text={miss.prompt} className="text-pretty" />
+                  <Varied text={miss.answer} className="mt-1 text-sm text-good" />
                 </li>
               ))}
             </ul>
@@ -178,7 +176,7 @@ export function QuizRun({
               {question.base}
             </h2>
             <p lang="fa" dir="rtl" className="mt-2 text-muted">
-              {question.fa}
+              <Fa text={question.fa} />
             </p>
             <div className="mt-5 grid gap-3">
               <label className="block text-sm">
@@ -236,9 +234,7 @@ export function QuizRun({
               {question.prompt}
             </p>
             {question.kind === "mcq" && question.hint ? (
-              <p className="mt-2 text-sm text-muted" dir="auto">
-                {question.hint}
-              </p>
+              <Varied text={question.hint} className="mt-2 text-sm text-muted" />
             ) : null}
             {question.kind === "type" && question.hint ? (
               <p lang="en" dir="ltr" className="mt-2 text-sm text-muted">
@@ -279,7 +275,7 @@ export function QuizRun({
                     >
                       {right || wrong ? <Mark ok={right} copy={copy} /> : null}
                       {option.text}
-                      {chosen && locked ? <span className="sr-only"> ({copy.yourAnswer})</span> : null}
+                      {chosen && locked ? <span className="sr-only" lang={copy.uiLang}> ({copy.yourAnswer})</span> : null}
                     </button>
                   );
                 })}
@@ -333,7 +329,7 @@ export function QuizRun({
               </p>
             ) : null}
             {question.kind !== "irregular" && question.explain ? (
-              <p dir="auto" className="mt-2 text-sm text-pretty text-muted">
+              <p lang="en" dir="ltr" className="mt-2 text-sm text-pretty text-muted">
                 {question.explain}
               </p>
             ) : null}

@@ -23,6 +23,7 @@ import {
 } from "@/lib/learn/store";
 import { todayKey } from "@/lib/learn/text";
 import type { Lang, Meta } from "@/lib/learn/types";
+import { Fa } from "@/components/mixed-text";
 
 export const Route = createFileRoute("/progress")({ component: ProgressPage });
 
@@ -138,7 +139,7 @@ function ProgressPage() {
           const width = level.count ? Math.round((100 * counts.mastered) / level.count) : 0;
           return (
             <div key={level.id} className="grid grid-cols-[4rem_minmax(0,1fr)_auto] items-center gap-3">
-              <span className={cn("lex-word text-lg", focus === level.id && "text-accent")}>{level.label}</span>
+              <span dir="ltr" className={cn("lex-word text-lg", focus === level.id && "text-accent")}>{level.label}</span>
               <div className="h-1 rounded-full bg-line">
                 <div className="h-1 rounded-full bg-accent" style={{ width: `${width}%` }} />
               </div>
@@ -180,9 +181,9 @@ function ProgressPage() {
             </Toggle>
           ))}
         </Setting>
-        <p className="mt-1 text-xs text-pretty text-muted">{copy.retentionHint}</p>
+        <p className="mt-1 text-xs text-pretty text-muted"><Fa text={copy.retentionHint} /></p>
         <p className="mt-3 text-xs text-muted">
-          {copy.schedulerLabel}: {copy.schedulerFsrs}
+          {copy.schedulerLabel}: <Fa text={copy.schedulerFsrs} />
         </p>
         <Setting label={copy.accent}>
           <Toggle active={accent === "en-GB"} onClick={() => setAccent("en-GB")}>
@@ -199,7 +200,12 @@ function ProgressPage() {
           </span>
           <input type="checkbox" checked={voice} onChange={(event) => setVoice(event.target.checked)} className="size-5" />
         </label>
-        <button type="button" className="mt-2 min-h-11 text-sm text-muted" onClick={() => setLang(lang === "fa" ? "en" : "fa")}>
+        <button
+          type="button"
+          lang={lang === "fa" ? "en" : "fa"}
+          className="mt-2 min-h-11 text-sm text-muted"
+          onClick={() => setLang(lang === "fa" ? "en" : "fa")}
+        >
           {lang === "fa" ? "English" : "فارسی"}
         </button>
 

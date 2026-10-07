@@ -162,7 +162,7 @@ export function Shell({ children }: { children: ReactNode }) {
         <Link to="/" className="mb-8 flex items-center gap-3 px-2">
           <Mark />
           <span>
-            <span className="lex-word block text-2xl leading-none">Vajefy</span>
+            <span lang="en" className="lex-word block text-2xl leading-none">Vajefy</span>
             <span className="mt-1 block text-xs text-paper/70">{copy.brandLine}</span>
           </span>
         </Link>
@@ -175,6 +175,7 @@ export function Shell({ children }: { children: ReactNode }) {
           <button
             type="button"
             onClick={() => setLang(lang === "fa" ? "en" : "fa")}
+            lang={lang === "fa" ? "en" : "fa"}
             className="min-h-11 text-sm text-paper/70"
           >
             {lang === "fa" ? "EN" : "فا"}
@@ -184,7 +185,7 @@ export function Shell({ children }: { children: ReactNode }) {
 
       <div className="md:ps-60">
         <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-3 bg-paper/95 px-4 md:hidden">
-          <Link to="/" className="lex-word inline-flex min-h-11 items-center text-xl leading-none">
+          <Link to="/" lang="en" className="lex-word inline-flex min-h-11 items-center text-xl leading-none">
             Vajefy
           </Link>
           <span className="text-sm text-muted tabular-nums">

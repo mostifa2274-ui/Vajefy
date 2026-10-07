@@ -13,6 +13,7 @@ import { resumable, startQuiz, type QuizSession } from "@/lib/learn/session";
 import { useProgress } from "@/lib/learn/store";
 import { shuffle } from "@/lib/learn/text";
 import type { Lang, LevelId, Question } from "@/lib/learn/types";
+import { Fa } from "@/components/mixed-text";
 
 /**
  * Practice has three modes (plan §4): Smart Practice, which chooses the skill
@@ -191,7 +192,7 @@ function DrillPage() {
             )}
           >
             <span className="block text-sm font-medium">{copy[item.title]}</span>
-            <span className={cn("mt-1 block text-xs text-pretty", mode === item.id ? "text-paper/70" : "text-muted")}>{copy[item.hint]}</span>
+            <span className={cn("mt-1 block text-xs text-pretty", mode === item.id ? "text-paper/70" : "text-muted")}><Fa text={copy[item.hint]} /></span>
           </button>
         ))}
       </div>

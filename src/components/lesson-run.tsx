@@ -33,6 +33,7 @@ import { AnswerFeedback, Mark, ProgressMeter, WrongRight } from "./feedback";
 import { CoachPanel } from "./coach-panel";
 import { SayIt } from "./say-it";
 import { Button, Sep, SpeakButton } from "./ui";
+import { Fa } from "./mixed-text";
 
 /** Event handlers read the clock through this, outside render. */
 function timestamp() {
@@ -173,7 +174,7 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
                 return target ? (
                   <li key={id} className="flex items-baseline justify-between gap-3 py-2">
                     <span lang="en" dir="ltr" className="lex-word text-lg">{target.entry.headword}</span>
-                    <span lang="fa" dir="rtl" className="text-sm text-muted">{target.sense.gloss}</span>
+                    <span lang="fa" dir="rtl" className="text-sm text-muted"><Fa text={target.sense.gloss} /></span>
                   </li>
                 ) : null;
               })}
@@ -242,14 +243,14 @@ function StepView({
         <p className="text-sm text-accent">{copy.compareLabel}</p>
         <h2 lang="en" dir="ltr" className="lex-word mt-1 text-3xl">{contrast.title}</h2>
         <h3 className="mt-4 text-sm font-medium">{copy.sharedLabel}</h3>
-        <p lang="fa" dir="rtl" className="mt-1 text-pretty">{contrast.shared}</p>
+        <p lang="fa" dir="rtl" className="mt-1 text-pretty"><Fa text={contrast.shared} /></p>
         <h3 className="mt-4 text-sm font-medium">{copy.differenceLabel}</h3>
-        <p lang="fa" dir="rtl" className="mt-1 text-pretty">{contrast.difference}</p>
+        <p lang="fa" dir="rtl" className="mt-1 text-pretty"><Fa text={contrast.difference} /></p>
         <ul className="mt-4 grid gap-3">
           {contrast.patterns.map((pattern) => (
             <li key={pattern.en} className="border-s-2 border-accent ps-3">
               <p lang="en" dir="ltr" className="text-pretty">{pattern.en}</p>
-              <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty">{pattern.fa}</p>
+              <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty"><Fa text={pattern.fa} /></p>
             </li>
           ))}
         </ul>
@@ -391,7 +392,7 @@ function Teach({
       <div className="mt-4 text-center">
         <h2 lang="en" dir="ltr" className="lex-word text-5xl text-balance">{entry.headword}</h2>
         <p lang="en" dir="ltr" className="mt-2 text-muted">{pronunciationFor(sense, accent)}</p>
-        {sense.pronunciation.note ? <p lang="fa" dir="rtl" className="mt-1 text-xs text-pretty text-muted">{sense.pronunciation.note}</p> : null}
+        {sense.pronunciation.note ? <p lang="fa" dir="rtl" className="mt-1 text-xs text-pretty text-muted"><Fa text={sense.pronunciation.note} /></p> : null}
         <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
           <SpeakButton text={entry.headword} label={copy.listen} clip={clips.word} slow item={sense.id} />
           <button
@@ -412,15 +413,15 @@ function Teach({
         <>
           <SayIt text={entry.headword} clip={clips.word} copy={copy} />
           <div className="mt-5 border-t border-line pt-4">
-            <p lang="fa" dir="rtl" className="text-xl font-medium">{sense.gloss}</p>
-            <p lang="fa" dir="rtl" className="mt-2 text-pretty">{sense.meaning}</p>
+            <p lang="fa" dir="rtl" className="text-xl font-medium"><Fa text={sense.gloss} /></p>
+            <p lang="fa" dir="rtl" className="mt-2 text-pretty"><Fa text={sense.meaning} /></p>
           </div>
           <h3 className="mt-5 text-sm font-medium">{copy.grammarLabel}</h3>
           <ul className="mt-2 grid gap-2">
             {sense.grammar.map((item) => (
               <li key={item.pattern} className="text-sm">
                 <p lang="en" dir="ltr" className="font-medium">{item.pattern}</p>
-                <p lang="fa" dir="rtl" className="text-muted text-pretty">{item.note}</p>
+                <p lang="fa" dir="rtl" className="text-muted text-pretty"><Fa text={item.note} /></p>
               </li>
             ))}
           </ul>
@@ -429,7 +430,7 @@ function Teach({
             {sense.examples.map((example, position) => (
               <li key={example.en} className="border-s-2 border-accent ps-3">
                 <p lang="en" dir="ltr" className="text-pretty">{example.en}</p>
-                <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty">{example.fa}</p>
+                <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty"><Fa text={example.fa} /></p>
                 <div className="mt-1">
                   <SpeakButton text={example.en} label={copy.listenExample} clip={clips.examples[position]} item={sense.id} exposure="example" />
                 </div>
@@ -443,7 +444,7 @@ function Teach({
                 <li key={item} className="rounded-md bg-paper-2 px-3 py-2 text-sm shadow-[var(--shadow-border)]">
                   <p lang="en" dir="ltr" className="font-medium text-pretty">{item}</p>
                   <p lang="fa" dir="rtl" className="mt-0.5 text-xs text-muted text-pretty">
-                    {sense.collocationFa?.[item]}
+                    <Fa text={sense.collocationFa?.[item]} />
                   </p>
                 </li>
               ))}
@@ -454,7 +455,7 @@ function Teach({
           {sense.usage ? (
             <>
               <h3 className="mt-5 text-sm font-medium">{copy.usageLabel}</h3>
-              <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty">{sense.usage}</p>
+              <p lang="fa" dir="rtl" className="mt-1 text-sm text-pretty"><Fa text={sense.usage} /></p>
             </>
           ) : null}
           <h3 className="mt-5 text-sm font-medium">{copy.mistakeLabel}</h3>
@@ -518,7 +519,7 @@ function Check({
           ) : (
             <>
               <p lang={item.promptLang} dir={item.promptLang === "fa" ? "rtl" : "ltr"} className={cn("mt-2 text-pretty", item.promptLang === "en" ? "lex-word text-3xl" : "text-xl font-medium")}>
-                {item.prompt}
+                {item.promptLang === "fa" ? <Fa text={item.prompt} /> : item.prompt}
               </p>
               <TaskSupport support={item.support} copy={copy} />
             </>
@@ -542,7 +543,7 @@ function Check({
                   >
                     {locked && (option.ok || chosen) ? <Mark ok={option.ok} copy={copy} /> : null}
                     {option.text}
-                    {chosen ? <span className="sr-only"> ({copy.yourAnswer})</span> : null}
+                    {chosen ? <span className="sr-only" lang={copy.uiLang}> ({copy.yourAnswer})</span> : null}
                   </button>
                 );
               })}
@@ -560,7 +561,7 @@ function Check({
         >
           {item.type === "recall" ? (
             <>
-              <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">{item.prompt}</p>
+              <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty"><Fa text={item.prompt} /></p>
               <p className="mt-1 text-sm text-muted">{posLabel(POS_FA[item.pos], lang)}</p>
               <p className="mt-3 text-sm text-muted">
                 {copy.recallShape}:{" "}
@@ -577,7 +578,7 @@ function Check({
           ) : (
             <>
               {item.type === "produce" ? (
-                <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty">{item.prompt}</p>
+                <p lang="fa" dir="rtl" className="text-xl font-medium text-pretty"><Fa text={item.prompt} /></p>
               ) : null}
               <p lang="en" dir="ltr" className="mt-3 text-xl text-pretty">
                 {(item.type === "cloze" ? item.text : item.frame).split("___").map((part, position, parts) => (
@@ -682,11 +683,11 @@ function Reteach({ target, copy, accent }: { target: TargetContent; copy: Copy; 
         <span lang="en" dir="ltr" className="lex-word text-2xl">{entry.headword}</span>{" "}
         <span lang="en" dir="ltr" className="text-sm text-muted">{pronunciationFor(sense, accent)}</span>
       </p>
-      <p lang="fa" dir="rtl" className="mt-1 font-medium">{sense.gloss}</p>
+      <p lang="fa" dir="rtl" className="mt-1 font-medium"><Fa text={sense.gloss} /></p>
       {example ? (
         <div className="mt-2 border-s-2 border-accent ps-3">
           <p lang="en" dir="ltr" className="text-sm text-pretty">{example.en}</p>
-          <p lang="fa" dir="rtl" className="text-sm text-muted text-pretty">{example.fa}</p>
+          <p lang="fa" dir="rtl" className="text-sm text-muted text-pretty"><Fa text={example.fa} /></p>
         </div>
       ) : null}
     </div>
@@ -706,7 +707,7 @@ function ReadinessList({ readiness, index, copy }: { readiness: Record<string, R
             <li key={id} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 py-2">
               <span>
                 <span lang="en" dir="ltr" className="lex-word text-lg">{target.entry.headword}</span>{" "}
-                <span lang="fa" dir="rtl" className="text-sm text-muted">{target.sense.gloss}</span>
+                <span lang="fa" dir="rtl" className="text-sm text-muted"><Fa text={target.sense.gloss} /></span>
               </span>
               <span className={cn("text-sm", state === "ready" ? "text-good" : state === "again" ? "text-bad" : "text-muted")}>
                 {state === "ready" ? <Mark ok copy={copy} /> : null}
@@ -746,7 +747,7 @@ function TaskSupport({
               {item.en}
             </dt>
             <dd lang="fa" dir="rtl" className="text-sm text-muted">
-              {item.fa}
+              <Fa text={item.fa} />
             </dd>
           </div>
         ))}
@@ -790,7 +791,14 @@ function Feedback({
                   <Mark ok={option.ok} copy={copy} />
                   {option.text}
                 </span>
-                <p dir="auto" className="text-muted text-pretty">{option.why}</p>
+                <p lang="fa" dir="rtl" className="text-muted text-pretty">
+                  {option.whyWord ? (
+                    <>
+                      <bdi lang="en">{option.whyWord}</bdi>:{" "}
+                    </>
+                  ) : null}
+                  <Fa text={option.why} />
+                </p>
               </li>
             ))}
         </ul>
@@ -802,8 +810,8 @@ function Feedback({
               {item.answer}
             </span>
           </p>
-          {item.type === "cloze" ? <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty">{item.fa}</p> : null}
-          <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty">{item.why}</p>
+          {item.type === "cloze" ? <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty"><Fa text={item.fa} /></p> : null}
+          <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty"><Fa text={item.why} /></p>
         </>
       )}
       {children}
@@ -817,7 +825,7 @@ function SceneRead({ scene, copy, lang, onNext }: { scene: Scene; copy: Copy; la
     <div className="panel p-4 sm:p-6">
       <p className="text-sm text-accent">{scene.kind === "dialogue" ? copy.dialogueLabel : copy.passageLabel}</p>
       <h2 lang="en" dir="ltr" className="lex-word mt-1 text-3xl">{scene.title}</h2>
-      <p lang="fa" dir="rtl" className="text-sm text-muted">{scene.titleFa}</p>
+      <p lang="fa" dir="rtl" className="text-sm text-muted"><Fa text={scene.titleFa} /></p>
       <button type="button" className="mt-2 min-h-11 text-sm text-accent" onClick={() => setTranslate((value) => !value)}>
         {translate ? copy.hideTranslation : copy.showTranslation}
       </button>
@@ -828,7 +836,7 @@ function SceneRead({ scene, copy, lang, onNext }: { scene: Scene; copy: Copy; la
               {line.speaker ? <span className="font-medium">{line.speaker}: </span> : null}
               {line.en}
             </p>
-            {translate ? <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty">{line.fa}</p> : null}
+            {translate ? <p lang="fa" dir="rtl" className="mt-1 text-sm text-muted text-pretty"><Fa text={line.fa} /></p> : null}
             <div className="mt-1">
               <SpeakButton text={line.en} label={copy.listen} />
             </div>
@@ -871,7 +879,7 @@ function WriteTask({
   return (
     <div className="panel p-4 sm:p-6">
       <p className="text-sm text-accent">{copy.writeTitle}</p>
-      <p lang="fa" dir="rtl" className="mt-2 text-pretty">{scene.write.prompt}</p>
+      <p lang="fa" dir="rtl" className="mt-2 text-pretty"><Fa text={scene.write.prompt} /></p>
       <textarea
         aria-label={copy.writeTitle}
         value={written}
