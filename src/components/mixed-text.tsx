@@ -4,6 +4,7 @@ import { scriptLang, scriptRuns } from "@/lib/learn/bidi";
 /**
  * Persian text with each embedded English run isolated and marked as English,
  * so it keeps its own direction and punctuation and is voiced in English.
+ * English phrases of three words or more are kept in one block.
  * Use it inside a `lang="fa" dir="rtl"` element.
  */
 export function Fa({ text }: { text: string | null | undefined }) {
@@ -14,7 +15,9 @@ export function Fa({ text }: { text: string | null | undefined }) {
     <>
       {runs.map((run, index) =>
         run.latin ? (
-          <bdi key={index} lang="en">
+          // A phrase stays in one block: wrapped across lines inside Persian,
+          // its parts would sit at opposite ends of each line.
+          <bdi key={index} lang="en" className={run.long ? "inline-block max-w-full" : undefined}>
             {run.text}
           </bdi>
         ) : (
