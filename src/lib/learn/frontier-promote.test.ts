@@ -117,3 +117,61 @@ test("stale or duplicate promotion plans fail closed", () => {
     /duplicate dependency ids/,
   );
 });
+
+
+test("balanced-wave floors block underfilling source units but allow true surplus", () => {
+  const entries = (prefix: string, count: number) =>
+    Array.from({ length: count }, (_, index) => entry(prefix + "-" + index));
+
+  const balanced: FrontierCurriculum = {
+    version: 1,
+    assignedMinimum: 240,
+    calibrationSlice: { unit: "01-one" },
+    units: [
+      { id: "01-one", targetEntries: 20, entries: entries("u1", 20) },
+      { id: "02-two", targetEntries: 20, entries: entries("u2", 20) },
+      { id: "03-three", targetEntries: 20, entries: entries("u3", 20) },
+      {
+        id: "04-four",
+        targetEntries: 20,
+        entries: [entry("anchor"), ...entries("u4", 19)],
+      },
+      {
+        id: "05-five",
+        targetEntries: 20,
+        entries: [entry("floor-dep"), ...entries("u5", 19)],
+      },
+      {
+        id: "06-six",
+        targetEntries: 21,
+        entries: [entry("movable-dep"), ...entries("u6", 20)],
+      },
+    ],
+  };
+
+  const result = applyPilotSafePromotions(balanced, [
+    {
+      dependencyId: "floor-dep",
+      beforeEntryId: "anchor",
+      targetUnit: "04-four",
+      changesFrozenPilotRoster: false,
+    },
+    {
+      dependencyId: "movable-dep",
+      beforeEntryId: "anchor",
+      targetUnit: "04-four",
+      changesFrozenPilotRoster: false,
+    },
+  ]);
+
+  assert.deepEqual(result.moved, ["movable-dep"]);
+  assert.deepEqual(result.blocked, [
+    { dependencyId: "floor-dep", reason: "source-balanced-wave-floor:20" },
+  ]);
+  assert.equal(result.curriculum.units[4]?.entries.length, 20);
+  assert.equal(result.curriculum.units[5]?.entries.length, 20);
+  assert.equal(result.curriculum.units[3]?.entries.length, 21);
+  assert.equal(result.curriculum.units[4]?.targetEntries, 20);
+  assert.equal(result.curriculum.units[5]?.targetEntries, 20);
+  assert.equal(result.curriculum.units[3]?.targetEntries, 21);
+});

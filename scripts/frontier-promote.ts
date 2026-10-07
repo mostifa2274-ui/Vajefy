@@ -17,6 +17,8 @@ type CurriculumUnit = {
 
 export type FrontierCurriculum = {
   version: number;
+  assignedMinimum?: number;
+  calibrationSlice?: { unit: string; [key: string]: unknown };
   units: CurriculumUnit[];
   [key: string]: unknown;
 };
@@ -94,6 +96,21 @@ function assertCurriculumIntegrity(
   for (const unit of after.units) {
     if ((beforeSpare.get(unit.id) ?? Number.NaN) !== unit.targetEntries - unit.entries.length) {
       throw new Error(unit.id + ": pilot-safe promotion changed planned spare capacity");
+    }
+  }
+
+  const balancedWaveFloor = new Map<number, number>([
+    [240, 20],
+    [460, 40],
+    [680, 60],
+    [900, 80],
+  ]).get(after.assignedMinimum ?? 0);
+  if (balancedWaveFloor) {
+    for (const unit of after.units) {
+      const floor = unit.id === after.calibrationSlice?.unit ? 20 : balancedWaveFloor;
+      if (unit.entries.length < floor) {
+        throw new Error(unit.id + ": pilot-safe promotion broke balanced-wave floor " + floor);
+      }
     }
   }
 
@@ -193,6 +210,22 @@ export function applyPilotSafePromotions(
       if (sourceIndex < 0) continue;
       const entry = sourceUnit.entries[sourceIndex]!;
 
+      const balancedWaveFloor = new Map<number, number>([
+        [240, 20],
+        [460, 40],
+        [680, 60],
+        [900, 80],
+      ]).get(next.assignedMinimum ?? 0);
+      const sourceFloor =
+        balancedWaveFloor === undefined
+          ? 0
+          : sourceUnit.id === next.calibrationSlice?.unit
+            ? 20
+            : balancedWaveFloor;
+      if (dependencyUnit !== targetUnit && sourceUnit.entries.length - 1 < sourceFloor) {
+        continue;
+      }
+
       const prerequisitesReady = entry.prerequisites.every((prerequisite) => {
         const at = state.global.get(prerequisite);
         return at !== undefined && at < anchorAt;
@@ -232,6 +265,27 @@ export function applyPilotSafePromotions(
 
     const entry = flattened(next).find((candidate) => candidate.id === dependencyId);
     if (!entry) return { dependencyId, reason: "dependency-missing" };
+
+    const dependencyUnit = state.unit.get(dependencyId);
+    if (dependencyUnit !== undefined && dependencyUnit !== targetUnit) {
+      const sourceUnit = next.units[dependencyUnit]!;
+      const balancedWaveFloor = new Map<number, number>([
+        [240, 20],
+        [460, 40],
+        [680, 60],
+        [900, 80],
+      ]).get(next.assignedMinimum ?? 0);
+      const sourceFloor =
+        balancedWaveFloor === undefined
+          ? 0
+          : sourceUnit.id === next.calibrationSlice?.unit
+            ? 20
+            : balancedWaveFloor;
+      if (sourceUnit.entries.length - 1 < sourceFloor) {
+        return { dependencyId, reason: "source-balanced-wave-floor:" + sourceFloor };
+      }
+    }
+
     const unmet = entry.prerequisites.filter((prerequisite) => {
       const at = state.global.get(prerequisite);
       return at === undefined || at >= anchorAt;
