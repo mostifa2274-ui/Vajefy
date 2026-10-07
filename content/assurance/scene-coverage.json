@@ -1,0 +1,6376 @@
+{
+  "schemaVersion": 1,
+  "sourceFiles": {
+    "catalogue": "public/data/enhanced/index.json",
+    "curriculum": "content/curriculum/A1.json",
+    "scenes": "content/pilot/scenes.json"
+  },
+  "threshold": null,
+  "thresholdStatus": "UNSET",
+  "summary": {
+    "senses": 1027,
+    "scenes": 14,
+    "covered": 51,
+    "uncovered": 976,
+    "coverageRatio": 0.049659,
+    "coveredByTwoOrMore": 5,
+    "maxScenesPerSense": 2
+  },
+  "scenes": [
+    {
+      "id": "scene:at-the-doctor",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:birthday",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:cafe-order",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:directions",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:in-class",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:lost-phone",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:morning-routine",
+      "kind": "passage",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:my-family",
+      "kind": "passage",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:new-colleague",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:phone-message",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:shopping",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:study-plan",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:team-meeting",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    },
+    {
+      "id": "scene:weekend-plans",
+      "kind": "dialogue",
+      "targetCount": 5,
+      "checkCount": 3
+    }
+  ],
+  "senses": [
+    {
+      "id": "lex:A1:a-an",
+      "entryId": "lex:A1:a-an",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:about",
+      "entryId": "lex:A1:about",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:about#approximately",
+      "entryId": "lex:A1:about",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:above",
+      "entryId": "lex:A1:above",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:across",
+      "entryId": "lex:A1:across",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:action",
+      "entryId": "lex:A1:action",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:activity",
+      "entryId": "lex:A1:activity",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:actor",
+      "entryId": "lex:A1:actor",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:actress",
+      "entryId": "lex:A1:actress",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:add",
+      "entryId": "lex:A1:add",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:address",
+      "entryId": "lex:A1:address",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:adult",
+      "entryId": "lex:A1:adult",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:advice",
+      "entryId": "lex:A1:advice",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:afraid",
+      "entryId": "lex:A1:afraid",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:after",
+      "entryId": "lex:A1:after",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:afternoon",
+      "entryId": "lex:A1:afternoon",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:again",
+      "entryId": "lex:A1:again",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:age",
+      "entryId": "lex:A1:age",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ago",
+      "entryId": "lex:A1:ago",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:agree",
+      "entryId": "lex:A1:agree",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:air",
+      "entryId": "lex:A1:air",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:airport",
+      "entryId": "lex:A1:airport",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:all",
+      "entryId": "lex:A1:all",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:also",
+      "entryId": "lex:A1:also",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:always",
+      "entryId": "lex:A1:always",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:amazing",
+      "entryId": "lex:A1:amazing",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:and",
+      "entryId": "lex:A1:and",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:angry",
+      "entryId": "lex:A1:angry",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:animal",
+      "entryId": "lex:A1:animal",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:another",
+      "entryId": "lex:A1:another",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:answer",
+      "entryId": "lex:A1:answer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:answer#verb",
+      "entryId": "lex:A1:answer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:any",
+      "entryId": "lex:A1:any",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:anyone",
+      "entryId": "lex:A1:anyone",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:anything",
+      "entryId": "lex:A1:anything",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:apartment",
+      "entryId": "lex:A1:apartment",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:apple",
+      "entryId": "lex:A1:apple",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:april",
+      "entryId": "lex:A1:april",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:area",
+      "entryId": "lex:A1:area",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:arm",
+      "entryId": "lex:A1:arm",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:around",
+      "entryId": "lex:A1:around",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:around#about",
+      "entryId": "lex:A1:around",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:arrive",
+      "entryId": "lex:A1:arrive",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:art",
+      "entryId": "lex:A1:art",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:article",
+      "entryId": "lex:A1:article",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:artist",
+      "entryId": "lex:A1:artist",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:as",
+      "entryId": "lex:A1:as",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ask",
+      "entryId": "lex:A1:ask",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:at",
+      "entryId": "lex:A1:at",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:august",
+      "entryId": "lex:A1:august",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:aunt",
+      "entryId": "lex:A1:aunt",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:autumn",
+      "entryId": "lex:A1:autumn",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:away",
+      "entryId": "lex:A1:away",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:baby",
+      "entryId": "lex:A1:baby",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:back",
+      "entryId": "lex:A1:back",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:phone-message"
+      ]
+    },
+    {
+      "id": "lex:A1:back#body",
+      "entryId": "lex:A1:back",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bad",
+      "entryId": "lex:A1:bad",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bag",
+      "entryId": "lex:A1:bag",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ball",
+      "entryId": "lex:A1:ball",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:banana",
+      "entryId": "lex:A1:banana",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:band",
+      "entryId": "lex:A1:band",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bank-money",
+      "entryId": "lex:A1:bank-money",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bath",
+      "entryId": "lex:A1:bath",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bathroom",
+      "entryId": "lex:A1:bathroom",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:be",
+      "entryId": "lex:A1:be",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:beach",
+      "entryId": "lex:A1:beach",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:beautiful",
+      "entryId": "lex:A1:beautiful",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:because",
+      "entryId": "lex:A1:because",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:study-plan"
+      ]
+    },
+    {
+      "id": "lex:A1:become",
+      "entryId": "lex:A1:become",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bed",
+      "entryId": "lex:A1:bed",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bedroom",
+      "entryId": "lex:A1:bedroom",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:beer",
+      "entryId": "lex:A1:beer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:before",
+      "entryId": "lex:A1:before",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:begin",
+      "entryId": "lex:A1:begin",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:beginning",
+      "entryId": "lex:A1:beginning",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:behind",
+      "entryId": "lex:A1:behind",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:believe",
+      "entryId": "lex:A1:believe",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:below",
+      "entryId": "lex:A1:below",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:best",
+      "entryId": "lex:A1:best",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:better",
+      "entryId": "lex:A1:better",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:between",
+      "entryId": "lex:A1:between",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bicycle",
+      "entryId": "lex:A1:bicycle",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:big",
+      "entryId": "lex:A1:big",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bike",
+      "entryId": "lex:A1:bike",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bill",
+      "entryId": "lex:A1:bill",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bird",
+      "entryId": "lex:A1:bird",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:birthday",
+      "entryId": "lex:A1:birthday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:black",
+      "entryId": "lex:A1:black",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:blog",
+      "entryId": "lex:A1:blog",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:blonde",
+      "entryId": "lex:A1:blonde",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:blue",
+      "entryId": "lex:A1:blue",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:boat",
+      "entryId": "lex:A1:boat",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:body",
+      "entryId": "lex:A1:body",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:book",
+      "entryId": "lex:A1:book",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:boot",
+      "entryId": "lex:A1:boot",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bored",
+      "entryId": "lex:A1:bored",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:boring",
+      "entryId": "lex:A1:boring",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:born",
+      "entryId": "lex:A1:born",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:both",
+      "entryId": "lex:A1:both",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bottle",
+      "entryId": "lex:A1:bottle",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:box",
+      "entryId": "lex:A1:box",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:boy",
+      "entryId": "lex:A1:boy",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:boyfriend",
+      "entryId": "lex:A1:boyfriend",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bread",
+      "entryId": "lex:A1:bread",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:break",
+      "entryId": "lex:A1:break",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:break#noun",
+      "entryId": "lex:A1:break",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:breakfast",
+      "entryId": "lex:A1:breakfast",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bring",
+      "entryId": "lex:A1:bring",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:brother",
+      "entryId": "lex:A1:brother",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:brown",
+      "entryId": "lex:A1:brown",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:build",
+      "entryId": "lex:A1:build",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:building",
+      "entryId": "lex:A1:building",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bus",
+      "entryId": "lex:A1:bus",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:directions"
+      ]
+    },
+    {
+      "id": "lex:A1:business",
+      "entryId": "lex:A1:business",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:busy",
+      "entryId": "lex:A1:busy",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:but",
+      "entryId": "lex:A1:but",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:butter",
+      "entryId": "lex:A1:butter",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:buy",
+      "entryId": "lex:A1:buy",
+      "sceneCount": 2,
+      "scenes": [
+        "scene:birthday",
+        "scene:shopping"
+      ]
+    },
+    {
+      "id": "lex:A1:by",
+      "entryId": "lex:A1:by",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:by#near",
+      "entryId": "lex:A1:by",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:bye",
+      "entryId": "lex:A1:bye",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cafe",
+      "entryId": "lex:A1:cafe",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cake",
+      "entryId": "lex:A1:cake",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:call",
+      "entryId": "lex:A1:call",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:call#name",
+      "entryId": "lex:A1:call",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:call#noun",
+      "entryId": "lex:A1:call",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:camera",
+      "entryId": "lex:A1:camera",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:can",
+      "entryId": "lex:A1:can",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cannot",
+      "entryId": "lex:A1:cannot",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:capital",
+      "entryId": "lex:A1:capital",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:capital#letter",
+      "entryId": "lex:A1:capital",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:car",
+      "entryId": "lex:A1:car",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:card",
+      "entryId": "lex:A1:card",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:career",
+      "entryId": "lex:A1:career",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:carrot",
+      "entryId": "lex:A1:carrot",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:carry",
+      "entryId": "lex:A1:carry",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cat",
+      "entryId": "lex:A1:cat",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cd",
+      "entryId": "lex:A1:cd",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cent",
+      "entryId": "lex:A1:cent",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:centre",
+      "entryId": "lex:A1:centre",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:century",
+      "entryId": "lex:A1:century",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:chair",
+      "entryId": "lex:A1:chair",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:change",
+      "entryId": "lex:A1:change",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:change#money",
+      "entryId": "lex:A1:change",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:chart",
+      "entryId": "lex:A1:chart",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cheap",
+      "entryId": "lex:A1:cheap",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:shopping"
+      ]
+    },
+    {
+      "id": "lex:A1:check",
+      "entryId": "lex:A1:check",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:team-meeting"
+      ]
+    },
+    {
+      "id": "lex:A1:check#bill",
+      "entryId": "lex:A1:check",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:cafe-order"
+      ]
+    },
+    {
+      "id": "lex:A1:cheese",
+      "entryId": "lex:A1:cheese",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:chicken",
+      "entryId": "lex:A1:chicken",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:child",
+      "entryId": "lex:A1:child",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:my-family"
+      ]
+    },
+    {
+      "id": "lex:A1:chocolate",
+      "entryId": "lex:A1:chocolate",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:choose",
+      "entryId": "lex:A1:choose",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cinema",
+      "entryId": "lex:A1:cinema",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:city",
+      "entryId": "lex:A1:city",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:class",
+      "entryId": "lex:A1:class",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:classroom",
+      "entryId": "lex:A1:classroom",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:clean",
+      "entryId": "lex:A1:clean",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:clean#verb",
+      "entryId": "lex:A1:clean",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:climb",
+      "entryId": "lex:A1:climb",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:clock",
+      "entryId": "lex:A1:clock",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:close",
+      "entryId": "lex:A1:close",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:close#near",
+      "entryId": "lex:A1:close",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:directions"
+      ]
+    },
+    {
+      "id": "lex:A1:clothes",
+      "entryId": "lex:A1:clothes",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:club",
+      "entryId": "lex:A1:club",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:coat",
+      "entryId": "lex:A1:coat",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:coffee",
+      "entryId": "lex:A1:coffee",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cold",
+      "entryId": "lex:A1:cold",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cold#noun",
+      "entryId": "lex:A1:cold",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:college",
+      "entryId": "lex:A1:college",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:colour",
+      "entryId": "lex:A1:colour",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:come",
+      "entryId": "lex:A1:come",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:weekend-plans"
+      ]
+    },
+    {
+      "id": "lex:A1:common",
+      "entryId": "lex:A1:common",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:company",
+      "entryId": "lex:A1:company",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:compare",
+      "entryId": "lex:A1:compare",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:complete",
+      "entryId": "lex:A1:complete",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:complete#adjective",
+      "entryId": "lex:A1:complete",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:computer",
+      "entryId": "lex:A1:computer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:concert",
+      "entryId": "lex:A1:concert",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:conversation",
+      "entryId": "lex:A1:conversation",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cook",
+      "entryId": "lex:A1:cook",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cook#person",
+      "entryId": "lex:A1:cook",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cooking",
+      "entryId": "lex:A1:cooking",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cool",
+      "entryId": "lex:A1:cool",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cool#great",
+      "entryId": "lex:A1:cool",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:correct",
+      "entryId": "lex:A1:correct",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:correct#verb",
+      "entryId": "lex:A1:correct",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cost",
+      "entryId": "lex:A1:cost",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cost#noun",
+      "entryId": "lex:A1:cost",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:could",
+      "entryId": "lex:A1:could",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:could#past",
+      "entryId": "lex:A1:could",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:country",
+      "entryId": "lex:A1:country",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:course",
+      "entryId": "lex:A1:course",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:course#of-course",
+      "entryId": "lex:A1:course",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cousin",
+      "entryId": "lex:A1:cousin",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cow",
+      "entryId": "lex:A1:cow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cream",
+      "entryId": "lex:A1:cream",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:create",
+      "entryId": "lex:A1:create",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:culture",
+      "entryId": "lex:A1:culture",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cup",
+      "entryId": "lex:A1:cup",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:customer",
+      "entryId": "lex:A1:customer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:cut",
+      "entryId": "lex:A1:cut",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dad",
+      "entryId": "lex:A1:dad",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dance",
+      "entryId": "lex:A1:dance",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dance#noun",
+      "entryId": "lex:A1:dance",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dancer",
+      "entryId": "lex:A1:dancer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dancing",
+      "entryId": "lex:A1:dancing",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dangerous",
+      "entryId": "lex:A1:dangerous",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dark",
+      "entryId": "lex:A1:dark",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:date",
+      "entryId": "lex:A1:date",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:daughter",
+      "entryId": "lex:A1:daughter",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:day",
+      "entryId": "lex:A1:day",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dear",
+      "entryId": "lex:A1:dear",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:december",
+      "entryId": "lex:A1:december",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:decide",
+      "entryId": "lex:A1:decide",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:delicious",
+      "entryId": "lex:A1:delicious",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:describe",
+      "entryId": "lex:A1:describe",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:description",
+      "entryId": "lex:A1:description",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:design",
+      "entryId": "lex:A1:design",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:design#verb",
+      "entryId": "lex:A1:design",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:desk",
+      "entryId": "lex:A1:desk",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:detail",
+      "entryId": "lex:A1:detail",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dialogue",
+      "entryId": "lex:A1:dialogue",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dictionary",
+      "entryId": "lex:A1:dictionary",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:die",
+      "entryId": "lex:A1:die",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:diet",
+      "entryId": "lex:A1:diet",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:difference",
+      "entryId": "lex:A1:difference",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:different",
+      "entryId": "lex:A1:different",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:difficult",
+      "entryId": "lex:A1:difficult",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:in-class"
+      ]
+    },
+    {
+      "id": "lex:A1:dinner",
+      "entryId": "lex:A1:dinner",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dirty",
+      "entryId": "lex:A1:dirty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:discuss",
+      "entryId": "lex:A1:discuss",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dish",
+      "entryId": "lex:A1:dish",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dish#food",
+      "entryId": "lex:A1:dish",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:do",
+      "entryId": "lex:A1:do",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:do#auxiliary",
+      "entryId": "lex:A1:do",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:doctor",
+      "entryId": "lex:A1:doctor",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dog",
+      "entryId": "lex:A1:dog",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dollar",
+      "entryId": "lex:A1:dollar",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:door",
+      "entryId": "lex:A1:door",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:down",
+      "entryId": "lex:A1:down",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:down#preposition",
+      "entryId": "lex:A1:down",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:downstairs",
+      "entryId": "lex:A1:downstairs",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:draw",
+      "entryId": "lex:A1:draw",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dress",
+      "entryId": "lex:A1:dress",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dress#verb",
+      "entryId": "lex:A1:dress",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:drink",
+      "entryId": "lex:A1:drink",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:drink#noun",
+      "entryId": "lex:A1:drink",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:drive",
+      "entryId": "lex:A1:drive",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:driver",
+      "entryId": "lex:A1:driver",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:during",
+      "entryId": "lex:A1:during",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:dvd",
+      "entryId": "lex:A1:dvd",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:each",
+      "entryId": "lex:A1:each",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ear",
+      "entryId": "lex:A1:ear",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:early",
+      "entryId": "lex:A1:early",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:east",
+      "entryId": "lex:A1:east",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:easy",
+      "entryId": "lex:A1:easy",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:eat",
+      "entryId": "lex:A1:eat",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:at-the-doctor"
+      ]
+    },
+    {
+      "id": "lex:A1:egg",
+      "entryId": "lex:A1:egg",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:eight",
+      "entryId": "lex:A1:eight",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:eighteen",
+      "entryId": "lex:A1:eighteen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:eighty",
+      "entryId": "lex:A1:eighty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:elephant",
+      "entryId": "lex:A1:elephant",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:eleven",
+      "entryId": "lex:A1:eleven",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:else",
+      "entryId": "lex:A1:else",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:email",
+      "entryId": "lex:A1:email",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:email#verb",
+      "entryId": "lex:A1:email",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:end",
+      "entryId": "lex:A1:end",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:end#verb",
+      "entryId": "lex:A1:end",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:enjoy",
+      "entryId": "lex:A1:enjoy",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:enough",
+      "entryId": "lex:A1:enough",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:enough#adverb",
+      "entryId": "lex:A1:enough",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:euro",
+      "entryId": "lex:A1:euro",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:even",
+      "entryId": "lex:A1:even",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:evening",
+      "entryId": "lex:A1:evening",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:event",
+      "entryId": "lex:A1:event",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ever",
+      "entryId": "lex:A1:ever",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:every",
+      "entryId": "lex:A1:every",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:everybody",
+      "entryId": "lex:A1:everybody",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:everyone",
+      "entryId": "lex:A1:everyone",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:everything",
+      "entryId": "lex:A1:everything",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:exam",
+      "entryId": "lex:A1:exam",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:example",
+      "entryId": "lex:A1:example",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:excited",
+      "entryId": "lex:A1:excited",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:exciting",
+      "entryId": "lex:A1:exciting",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:exercise",
+      "entryId": "lex:A1:exercise",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:exercise#task",
+      "entryId": "lex:A1:exercise",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:expensive",
+      "entryId": "lex:A1:expensive",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:shopping"
+      ]
+    },
+    {
+      "id": "lex:A1:explain",
+      "entryId": "lex:A1:explain",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:extra",
+      "entryId": "lex:A1:extra",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:eye",
+      "entryId": "lex:A1:eye",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:face",
+      "entryId": "lex:A1:face",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fact",
+      "entryId": "lex:A1:fact",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fall",
+      "entryId": "lex:A1:fall",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:false",
+      "entryId": "lex:A1:false",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:family",
+      "entryId": "lex:A1:family",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:my-family"
+      ]
+    },
+    {
+      "id": "lex:A1:famous",
+      "entryId": "lex:A1:famous",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fantastic",
+      "entryId": "lex:A1:fantastic",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:far",
+      "entryId": "lex:A1:far",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:farm",
+      "entryId": "lex:A1:farm",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:farmer",
+      "entryId": "lex:A1:farmer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fast",
+      "entryId": "lex:A1:fast",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fast#adverb",
+      "entryId": "lex:A1:fast",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fat",
+      "entryId": "lex:A1:fat",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:father",
+      "entryId": "lex:A1:father",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:favourite",
+      "entryId": "lex:A1:favourite",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:february",
+      "entryId": "lex:A1:february",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:feel",
+      "entryId": "lex:A1:feel",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:feeling",
+      "entryId": "lex:A1:feeling",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:festival",
+      "entryId": "lex:A1:festival",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:few",
+      "entryId": "lex:A1:few",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:few#not-many",
+      "entryId": "lex:A1:few",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fifteen",
+      "entryId": "lex:A1:fifteen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fifth",
+      "entryId": "lex:A1:fifth",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fifty",
+      "entryId": "lex:A1:fifty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fill",
+      "entryId": "lex:A1:fill",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:film",
+      "entryId": "lex:A1:film",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:final",
+      "entryId": "lex:A1:final",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:find",
+      "entryId": "lex:A1:find",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fine",
+      "entryId": "lex:A1:fine",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fine#weather",
+      "entryId": "lex:A1:fine",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:finish",
+      "entryId": "lex:A1:finish",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fire",
+      "entryId": "lex:A1:fire",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:first",
+      "entryId": "lex:A1:first",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:first#adverb",
+      "entryId": "lex:A1:first",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fish",
+      "entryId": "lex:A1:fish",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:five",
+      "entryId": "lex:A1:five",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:flat",
+      "entryId": "lex:A1:flat",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:flight",
+      "entryId": "lex:A1:flight",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:floor",
+      "entryId": "lex:A1:floor",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:floor#storey",
+      "entryId": "lex:A1:floor",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:flower",
+      "entryId": "lex:A1:flower",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fly",
+      "entryId": "lex:A1:fly",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:follow",
+      "entryId": "lex:A1:follow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:food",
+      "entryId": "lex:A1:food",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:foot",
+      "entryId": "lex:A1:foot",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:football",
+      "entryId": "lex:A1:football",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:for",
+      "entryId": "lex:A1:for",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:forget",
+      "entryId": "lex:A1:forget",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:form",
+      "entryId": "lex:A1:form",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:forty",
+      "entryId": "lex:A1:forty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:four",
+      "entryId": "lex:A1:four",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fourteen",
+      "entryId": "lex:A1:fourteen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fourth",
+      "entryId": "lex:A1:fourth",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:free",
+      "entryId": "lex:A1:free",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:free#not-busy",
+      "entryId": "lex:A1:free",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:weekend-plans"
+      ]
+    },
+    {
+      "id": "lex:A1:friday",
+      "entryId": "lex:A1:friday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:friend",
+      "entryId": "lex:A1:friend",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:friendly",
+      "entryId": "lex:A1:friendly",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:from",
+      "entryId": "lex:A1:from",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:front",
+      "entryId": "lex:A1:front",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fruit",
+      "entryId": "lex:A1:fruit",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:full",
+      "entryId": "lex:A1:full",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:fun",
+      "entryId": "lex:A1:fun",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:funny",
+      "entryId": "lex:A1:funny",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:future",
+      "entryId": "lex:A1:future",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:game",
+      "entryId": "lex:A1:game",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:garden",
+      "entryId": "lex:A1:garden",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:geography",
+      "entryId": "lex:A1:geography",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:get",
+      "entryId": "lex:A1:get",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:get#arrive",
+      "entryId": "lex:A1:get",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:get#become",
+      "entryId": "lex:A1:get",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:girl",
+      "entryId": "lex:A1:girl",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:girlfriend",
+      "entryId": "lex:A1:girlfriend",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:give",
+      "entryId": "lex:A1:give",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:birthday"
+      ]
+    },
+    {
+      "id": "lex:A1:glass",
+      "entryId": "lex:A1:glass",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:glass#material",
+      "entryId": "lex:A1:glass",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:go",
+      "entryId": "lex:A1:go",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:morning-routine"
+      ]
+    },
+    {
+      "id": "lex:A1:good",
+      "entryId": "lex:A1:good",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:goodbye",
+      "entryId": "lex:A1:goodbye",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:grandfather",
+      "entryId": "lex:A1:grandfather",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:grandmother",
+      "entryId": "lex:A1:grandmother",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:grandparent",
+      "entryId": "lex:A1:grandparent",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:great",
+      "entryId": "lex:A1:great",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:green",
+      "entryId": "lex:A1:green",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:grey",
+      "entryId": "lex:A1:grey",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:group",
+      "entryId": "lex:A1:group",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:grow",
+      "entryId": "lex:A1:grow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:grow#plants",
+      "entryId": "lex:A1:grow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:guess",
+      "entryId": "lex:A1:guess",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:guess#noun",
+      "entryId": "lex:A1:guess",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:guitar",
+      "entryId": "lex:A1:guitar",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:gym",
+      "entryId": "lex:A1:gym",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hair",
+      "entryId": "lex:A1:hair",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:half",
+      "entryId": "lex:A1:half",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:half#time",
+      "entryId": "lex:A1:half",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hand",
+      "entryId": "lex:A1:hand",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:happen",
+      "entryId": "lex:A1:happen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:happy",
+      "entryId": "lex:A1:happy",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:birthday"
+      ]
+    },
+    {
+      "id": "lex:A1:hard",
+      "entryId": "lex:A1:hard",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hard#adverb",
+      "entryId": "lex:A1:hard",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hard#solid",
+      "entryId": "lex:A1:hard",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hat",
+      "entryId": "lex:A1:hat",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hate",
+      "entryId": "lex:A1:hate",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:have",
+      "entryId": "lex:A1:have",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:have-to",
+      "entryId": "lex:A1:have-to",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:have#activity",
+      "entryId": "lex:A1:have",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:morning-routine"
+      ]
+    },
+    {
+      "id": "lex:A1:he",
+      "entryId": "lex:A1:he",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:head",
+      "entryId": "lex:A1:head",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:health",
+      "entryId": "lex:A1:health",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:healthy",
+      "entryId": "lex:A1:healthy",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hear",
+      "entryId": "lex:A1:hear",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hello",
+      "entryId": "lex:A1:hello",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:help",
+      "entryId": "lex:A1:help",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:in-class"
+      ]
+    },
+    {
+      "id": "lex:A1:her",
+      "entryId": "lex:A1:her",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:her#determiner",
+      "entryId": "lex:A1:her",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:here",
+      "entryId": "lex:A1:here",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hey",
+      "entryId": "lex:A1:hey",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hi",
+      "entryId": "lex:A1:hi",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:high",
+      "entryId": "lex:A1:high",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:him",
+      "entryId": "lex:A1:him",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:his",
+      "entryId": "lex:A1:his",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:history",
+      "entryId": "lex:A1:history",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hobby",
+      "entryId": "lex:A1:hobby",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:holiday",
+      "entryId": "lex:A1:holiday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:home",
+      "entryId": "lex:A1:home",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:homework",
+      "entryId": "lex:A1:homework",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hope",
+      "entryId": "lex:A1:hope",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:horse",
+      "entryId": "lex:A1:horse",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hospital",
+      "entryId": "lex:A1:hospital",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hot",
+      "entryId": "lex:A1:hot",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hotel",
+      "entryId": "lex:A1:hotel",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hour",
+      "entryId": "lex:A1:hour",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:house",
+      "entryId": "lex:A1:house",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:how",
+      "entryId": "lex:A1:how",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:however",
+      "entryId": "lex:A1:however",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hundred",
+      "entryId": "lex:A1:hundred",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:hungry",
+      "entryId": "lex:A1:hungry",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:husband",
+      "entryId": "lex:A1:husband",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:i",
+      "entryId": "lex:A1:i",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ice",
+      "entryId": "lex:A1:ice",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ice-cream",
+      "entryId": "lex:A1:ice-cream",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:idea",
+      "entryId": "lex:A1:idea",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:if",
+      "entryId": "lex:A1:if",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:imagine",
+      "entryId": "lex:A1:imagine",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:important",
+      "entryId": "lex:A1:important",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:improve",
+      "entryId": "lex:A1:improve",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:in",
+      "entryId": "lex:A1:in",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:include",
+      "entryId": "lex:A1:include",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:information",
+      "entryId": "lex:A1:information",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:interest",
+      "entryId": "lex:A1:interest",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:interested",
+      "entryId": "lex:A1:interested",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:interesting",
+      "entryId": "lex:A1:interesting",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:internet",
+      "entryId": "lex:A1:internet",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:interview",
+      "entryId": "lex:A1:interview",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:interview#verb",
+      "entryId": "lex:A1:interview",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:into",
+      "entryId": "lex:A1:into",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:introduce",
+      "entryId": "lex:A1:introduce",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:island",
+      "entryId": "lex:A1:island",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:it",
+      "entryId": "lex:A1:it",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:its",
+      "entryId": "lex:A1:its",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:jacket",
+      "entryId": "lex:A1:jacket",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:january",
+      "entryId": "lex:A1:january",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:jeans",
+      "entryId": "lex:A1:jeans",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:job",
+      "entryId": "lex:A1:job",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:join",
+      "entryId": "lex:A1:join",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:journey",
+      "entryId": "lex:A1:journey",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:juice",
+      "entryId": "lex:A1:juice",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:july",
+      "entryId": "lex:A1:july",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:june",
+      "entryId": "lex:A1:june",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:just",
+      "entryId": "lex:A1:just",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:just#recently",
+      "entryId": "lex:A1:just",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:lost-phone"
+      ]
+    },
+    {
+      "id": "lex:A1:keep",
+      "entryId": "lex:A1:keep",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:key",
+      "entryId": "lex:A1:key",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:kilometre",
+      "entryId": "lex:A1:kilometre",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:kind-type",
+      "entryId": "lex:A1:kind-type",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:kitchen",
+      "entryId": "lex:A1:kitchen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:know",
+      "entryId": "lex:A1:know",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:land",
+      "entryId": "lex:A1:land",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:language",
+      "entryId": "lex:A1:language",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:large",
+      "entryId": "lex:A1:large",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:last-final",
+      "entryId": "lex:A1:last-final",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:last-final#previous",
+      "entryId": "lex:A1:last-final",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:late",
+      "entryId": "lex:A1:late",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:later",
+      "entryId": "lex:A1:later",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:laugh",
+      "entryId": "lex:A1:laugh",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:laugh#noun",
+      "entryId": "lex:A1:laugh",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:learn",
+      "entryId": "lex:A1:learn",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:leave",
+      "entryId": "lex:A1:leave",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:leave#somewhere",
+      "entryId": "lex:A1:leave",
+      "sceneCount": 2,
+      "scenes": [
+        "scene:lost-phone",
+        "scene:phone-message"
+      ]
+    },
+    {
+      "id": "lex:A1:left",
+      "entryId": "lex:A1:left",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:leg",
+      "entryId": "lex:A1:leg",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lesson",
+      "entryId": "lex:A1:lesson",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:let",
+      "entryId": "lex:A1:let",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:letter",
+      "entryId": "lex:A1:letter",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:letter#alphabet",
+      "entryId": "lex:A1:letter",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:library",
+      "entryId": "lex:A1:library",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lie",
+      "entryId": "lex:A1:lie",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lie#untrue",
+      "entryId": "lex:A1:lie",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:life",
+      "entryId": "lex:A1:life",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:light-from-the-sun-a-lamp",
+      "entryId": "lex:A1:light-from-the-sun-a-lamp",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:light-from-the-sun-a-lamp#bright",
+      "entryId": "lex:A1:light-from-the-sun-a-lamp",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:like-find-sb-sth-pleasant",
+      "entryId": "lex:A1:like-find-sb-sth-pleasant",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:like-similar",
+      "entryId": "lex:A1:like-similar",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:line",
+      "entryId": "lex:A1:line",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lion",
+      "entryId": "lex:A1:lion",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:list",
+      "entryId": "lex:A1:list",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:list#verb",
+      "entryId": "lex:A1:list",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:listen",
+      "entryId": "lex:A1:listen",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:in-class"
+      ]
+    },
+    {
+      "id": "lex:A1:little",
+      "entryId": "lex:A1:little",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:little#quantity",
+      "entryId": "lex:A1:little",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:live",
+      "entryId": "lex:A1:live",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:my-family"
+      ]
+    },
+    {
+      "id": "lex:A1:local",
+      "entryId": "lex:A1:local",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:long",
+      "entryId": "lex:A1:long",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:long#how-long",
+      "entryId": "lex:A1:long",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:look",
+      "entryId": "lex:A1:look",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lose",
+      "entryId": "lex:A1:lose",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lose#game",
+      "entryId": "lex:A1:lose",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lot",
+      "entryId": "lex:A1:lot",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lot#adverb",
+      "entryId": "lex:A1:lot",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:love",
+      "entryId": "lex:A1:love",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:lunch",
+      "entryId": "lex:A1:lunch",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:machine",
+      "entryId": "lex:A1:machine",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:magazine",
+      "entryId": "lex:A1:magazine",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:main",
+      "entryId": "lex:A1:main",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:make",
+      "entryId": "lex:A1:make",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:man",
+      "entryId": "lex:A1:man",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:many",
+      "entryId": "lex:A1:many",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:map",
+      "entryId": "lex:A1:map",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:march",
+      "entryId": "lex:A1:march",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:market",
+      "entryId": "lex:A1:market",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:married",
+      "entryId": "lex:A1:married",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:match-contest-correspond",
+      "entryId": "lex:A1:match-contest-correspond",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:match-contest-correspond#go-together",
+      "entryId": "lex:A1:match-contest-correspond",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:may",
+      "entryId": "lex:A1:may",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:maybe",
+      "entryId": "lex:A1:maybe",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:me",
+      "entryId": "lex:A1:me",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:meal",
+      "entryId": "lex:A1:meal",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mean",
+      "entryId": "lex:A1:mean",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:in-class"
+      ]
+    },
+    {
+      "id": "lex:A1:mean#unkind",
+      "entryId": "lex:A1:mean",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:meaning",
+      "entryId": "lex:A1:meaning",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:meat",
+      "entryId": "lex:A1:meat",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:meet",
+      "entryId": "lex:A1:meet",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:meeting",
+      "entryId": "lex:A1:meeting",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:member",
+      "entryId": "lex:A1:member",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:menu",
+      "entryId": "lex:A1:menu",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:message",
+      "entryId": "lex:A1:message",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:metre",
+      "entryId": "lex:A1:metre",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:midnight",
+      "entryId": "lex:A1:midnight",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mile",
+      "entryId": "lex:A1:mile",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:milk",
+      "entryId": "lex:A1:milk",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:million",
+      "entryId": "lex:A1:million",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:minute",
+      "entryId": "lex:A1:minute",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:miss",
+      "entryId": "lex:A1:miss",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:lost-phone"
+      ]
+    },
+    {
+      "id": "lex:A1:miss#feel-sad",
+      "entryId": "lex:A1:miss",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mistake",
+      "entryId": "lex:A1:mistake",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:model",
+      "entryId": "lex:A1:model",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:modern",
+      "entryId": "lex:A1:modern",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:moment",
+      "entryId": "lex:A1:moment",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:monday",
+      "entryId": "lex:A1:monday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:money",
+      "entryId": "lex:A1:money",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:month",
+      "entryId": "lex:A1:month",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:more",
+      "entryId": "lex:A1:more",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:more#comparative",
+      "entryId": "lex:A1:more",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:morning",
+      "entryId": "lex:A1:morning",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:morning-routine"
+      ]
+    },
+    {
+      "id": "lex:A1:most",
+      "entryId": "lex:A1:most",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:most#superlative",
+      "entryId": "lex:A1:most",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mother",
+      "entryId": "lex:A1:mother",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mountain",
+      "entryId": "lex:A1:mountain",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mouse",
+      "entryId": "lex:A1:mouse",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mouse#computer",
+      "entryId": "lex:A1:mouse",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mouth",
+      "entryId": "lex:A1:mouth",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:move",
+      "entryId": "lex:A1:move",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:movie",
+      "entryId": "lex:A1:movie",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:much",
+      "entryId": "lex:A1:much",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:much#adverb",
+      "entryId": "lex:A1:much",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:mum",
+      "entryId": "lex:A1:mum",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:museum",
+      "entryId": "lex:A1:museum",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:music",
+      "entryId": "lex:A1:music",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:must",
+      "entryId": "lex:A1:must",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:team-meeting"
+      ]
+    },
+    {
+      "id": "lex:A1:my",
+      "entryId": "lex:A1:my",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:name",
+      "entryId": "lex:A1:name",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:new-colleague"
+      ]
+    },
+    {
+      "id": "lex:A1:natural",
+      "entryId": "lex:A1:natural",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:near",
+      "entryId": "lex:A1:near",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:need",
+      "entryId": "lex:A1:need",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:study-plan"
+      ]
+    },
+    {
+      "id": "lex:A1:negative",
+      "entryId": "lex:A1:negative",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:neighbour",
+      "entryId": "lex:A1:neighbour",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:never",
+      "entryId": "lex:A1:never",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:new",
+      "entryId": "lex:A1:new",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:news",
+      "entryId": "lex:A1:news",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:newspaper",
+      "entryId": "lex:A1:newspaper",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:next",
+      "entryId": "lex:A1:next",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:next-to",
+      "entryId": "lex:A1:next-to",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:next#adverb",
+      "entryId": "lex:A1:next",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:nice",
+      "entryId": "lex:A1:nice",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:night",
+      "entryId": "lex:A1:night",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:nine",
+      "entryId": "lex:A1:nine",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:nineteen",
+      "entryId": "lex:A1:nineteen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ninety",
+      "entryId": "lex:A1:ninety",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:no",
+      "entryId": "lex:A1:no",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:no-one",
+      "entryId": "lex:A1:no-one",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:no#none",
+      "entryId": "lex:A1:no",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:nobody",
+      "entryId": "lex:A1:nobody",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:north",
+      "entryId": "lex:A1:north",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:nose",
+      "entryId": "lex:A1:nose",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:not",
+      "entryId": "lex:A1:not",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:note",
+      "entryId": "lex:A1:note",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:nothing",
+      "entryId": "lex:A1:nothing",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:november",
+      "entryId": "lex:A1:november",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:now",
+      "entryId": "lex:A1:now",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:number",
+      "entryId": "lex:A1:number",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:nurse",
+      "entryId": "lex:A1:nurse",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:o-clock",
+      "entryId": "lex:A1:o-clock",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:object",
+      "entryId": "lex:A1:object",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:october",
+      "entryId": "lex:A1:october",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:of",
+      "entryId": "lex:A1:of",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:off",
+      "entryId": "lex:A1:off",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:office",
+      "entryId": "lex:A1:office",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:often",
+      "entryId": "lex:A1:often",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:oh",
+      "entryId": "lex:A1:oh",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ok",
+      "entryId": "lex:A1:ok",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ok#adjective",
+      "entryId": "lex:A1:ok",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:old",
+      "entryId": "lex:A1:old",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:my-family"
+      ]
+    },
+    {
+      "id": "lex:A1:old#not-new",
+      "entryId": "lex:A1:old",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:on",
+      "entryId": "lex:A1:on",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:team-meeting"
+      ]
+    },
+    {
+      "id": "lex:A1:once",
+      "entryId": "lex:A1:once",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:one",
+      "entryId": "lex:A1:one",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:one#pronoun",
+      "entryId": "lex:A1:one",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:onion",
+      "entryId": "lex:A1:onion",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:online",
+      "entryId": "lex:A1:online",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:only",
+      "entryId": "lex:A1:only",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:only#adjective",
+      "entryId": "lex:A1:only",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:open",
+      "entryId": "lex:A1:open",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:open#adjective",
+      "entryId": "lex:A1:open",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:opinion",
+      "entryId": "lex:A1:opinion",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:opposite",
+      "entryId": "lex:A1:opposite",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:opposite#noun",
+      "entryId": "lex:A1:opposite",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:or",
+      "entryId": "lex:A1:or",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:orange",
+      "entryId": "lex:A1:orange",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:orange#colour",
+      "entryId": "lex:A1:orange",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:order",
+      "entryId": "lex:A1:order",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:cafe-order"
+      ]
+    },
+    {
+      "id": "lex:A1:order#arrangement",
+      "entryId": "lex:A1:order",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:other",
+      "entryId": "lex:A1:other",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:our",
+      "entryId": "lex:A1:our",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:out",
+      "entryId": "lex:A1:out",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:out#out-of",
+      "entryId": "lex:A1:out",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:outside",
+      "entryId": "lex:A1:outside",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:over",
+      "entryId": "lex:A1:over",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:over#more-than",
+      "entryId": "lex:A1:over",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:own",
+      "entryId": "lex:A1:own",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:page",
+      "entryId": "lex:A1:page",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:paint",
+      "entryId": "lex:A1:paint",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:paint#noun",
+      "entryId": "lex:A1:paint",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:painting",
+      "entryId": "lex:A1:painting",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pair",
+      "entryId": "lex:A1:pair",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:paper",
+      "entryId": "lex:A1:paper",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:paragraph",
+      "entryId": "lex:A1:paragraph",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:parent",
+      "entryId": "lex:A1:parent",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:park",
+      "entryId": "lex:A1:park",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:park#verb",
+      "entryId": "lex:A1:park",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:part",
+      "entryId": "lex:A1:part",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:partner",
+      "entryId": "lex:A1:partner",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:party",
+      "entryId": "lex:A1:party",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:passport",
+      "entryId": "lex:A1:passport",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:past",
+      "entryId": "lex:A1:past",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:past#time",
+      "entryId": "lex:A1:past",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pay",
+      "entryId": "lex:A1:pay",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pen",
+      "entryId": "lex:A1:pen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pencil",
+      "entryId": "lex:A1:pencil",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:people",
+      "entryId": "lex:A1:people",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pepper",
+      "entryId": "lex:A1:pepper",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:perfect",
+      "entryId": "lex:A1:perfect",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:period",
+      "entryId": "lex:A1:period",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:person",
+      "entryId": "lex:A1:person",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:personal",
+      "entryId": "lex:A1:personal",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:phone",
+      "entryId": "lex:A1:phone",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:phone#verb",
+      "entryId": "lex:A1:phone",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:photo",
+      "entryId": "lex:A1:photo",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:photograph",
+      "entryId": "lex:A1:photograph",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:phrase",
+      "entryId": "lex:A1:phrase",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:piano",
+      "entryId": "lex:A1:piano",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:picture",
+      "entryId": "lex:A1:picture",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:piece",
+      "entryId": "lex:A1:piece",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pig",
+      "entryId": "lex:A1:pig",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pink",
+      "entryId": "lex:A1:pink",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:place",
+      "entryId": "lex:A1:place",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:plan",
+      "entryId": "lex:A1:plan",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:plan#verb",
+      "entryId": "lex:A1:plan",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:plane",
+      "entryId": "lex:A1:plane",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:plant",
+      "entryId": "lex:A1:plant",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:play",
+      "entryId": "lex:A1:play",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:weekend-plans"
+      ]
+    },
+    {
+      "id": "lex:A1:play#instrument",
+      "entryId": "lex:A1:play",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:play#theatre",
+      "entryId": "lex:A1:play",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:player",
+      "entryId": "lex:A1:player",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:please",
+      "entryId": "lex:A1:please",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:point",
+      "entryId": "lex:A1:point",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:point#score",
+      "entryId": "lex:A1:point",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:police",
+      "entryId": "lex:A1:police",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:policeman",
+      "entryId": "lex:A1:policeman",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pool",
+      "entryId": "lex:A1:pool",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:poor",
+      "entryId": "lex:A1:poor",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:popular",
+      "entryId": "lex:A1:popular",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:positive",
+      "entryId": "lex:A1:positive",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:possible",
+      "entryId": "lex:A1:possible",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:post",
+      "entryId": "lex:A1:post",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:post#verb",
+      "entryId": "lex:A1:post",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:potato",
+      "entryId": "lex:A1:potato",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pound",
+      "entryId": "lex:A1:pound",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:practice",
+      "entryId": "lex:A1:practice",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:practise",
+      "entryId": "lex:A1:practise",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:prefer",
+      "entryId": "lex:A1:prefer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:prepare",
+      "entryId": "lex:A1:prepare",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:present",
+      "entryId": "lex:A1:present",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:birthday"
+      ]
+    },
+    {
+      "id": "lex:A1:present#now",
+      "entryId": "lex:A1:present",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:present#verb",
+      "entryId": "lex:A1:present",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pretty",
+      "entryId": "lex:A1:pretty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:pretty#adverb",
+      "entryId": "lex:A1:pretty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:price",
+      "entryId": "lex:A1:price",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:probably",
+      "entryId": "lex:A1:probably",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:problem",
+      "entryId": "lex:A1:problem",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:product",
+      "entryId": "lex:A1:product",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:programme",
+      "entryId": "lex:A1:programme",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:project",
+      "entryId": "lex:A1:project",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:purple",
+      "entryId": "lex:A1:purple",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:put",
+      "entryId": "lex:A1:put",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:quarter",
+      "entryId": "lex:A1:quarter",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:question",
+      "entryId": "lex:A1:question",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:quick",
+      "entryId": "lex:A1:quick",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:quickly",
+      "entryId": "lex:A1:quickly",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:quiet",
+      "entryId": "lex:A1:quiet",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:quite",
+      "entryId": "lex:A1:quite",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:quite#completely",
+      "entryId": "lex:A1:quite",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:radio",
+      "entryId": "lex:A1:radio",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:rain",
+      "entryId": "lex:A1:rain",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:rain#verb",
+      "entryId": "lex:A1:rain",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:read",
+      "entryId": "lex:A1:read",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:reader",
+      "entryId": "lex:A1:reader",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:reading",
+      "entryId": "lex:A1:reading",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ready",
+      "entryId": "lex:A1:ready",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:real",
+      "entryId": "lex:A1:real",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:really",
+      "entryId": "lex:A1:really",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:reason",
+      "entryId": "lex:A1:reason",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:red",
+      "entryId": "lex:A1:red",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:relax",
+      "entryId": "lex:A1:relax",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:remember",
+      "entryId": "lex:A1:remember",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:repeat",
+      "entryId": "lex:A1:repeat",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:report",
+      "entryId": "lex:A1:report",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:restaurant",
+      "entryId": "lex:A1:restaurant",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:result",
+      "entryId": "lex:A1:result",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:return",
+      "entryId": "lex:A1:return",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:return#give",
+      "entryId": "lex:A1:return",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:rice",
+      "entryId": "lex:A1:rice",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:rich",
+      "entryId": "lex:A1:rich",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ride",
+      "entryId": "lex:A1:ride",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:right",
+      "entryId": "lex:A1:right",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:right#direction",
+      "entryId": "lex:A1:right",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:directions"
+      ]
+    },
+    {
+      "id": "lex:A1:right#now",
+      "entryId": "lex:A1:right",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:river",
+      "entryId": "lex:A1:river",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:road",
+      "entryId": "lex:A1:road",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:room",
+      "entryId": "lex:A1:room",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:routine",
+      "entryId": "lex:A1:routine",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:rule",
+      "entryId": "lex:A1:rule",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:run",
+      "entryId": "lex:A1:run",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sad",
+      "entryId": "lex:A1:sad",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:salad",
+      "entryId": "lex:A1:salad",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:salt",
+      "entryId": "lex:A1:salt",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:same",
+      "entryId": "lex:A1:same",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sandwich",
+      "entryId": "lex:A1:sandwich",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:saturday",
+      "entryId": "lex:A1:saturday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:say",
+      "entryId": "lex:A1:say",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:school",
+      "entryId": "lex:A1:school",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:science",
+      "entryId": "lex:A1:science",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:scientist",
+      "entryId": "lex:A1:scientist",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sea",
+      "entryId": "lex:A1:sea",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:second-next-after-the-first",
+      "entryId": "lex:A1:second-next-after-the-first",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:second-unit-of-time",
+      "entryId": "lex:A1:second-unit-of-time",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:section",
+      "entryId": "lex:A1:section",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:see",
+      "entryId": "lex:A1:see",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sell",
+      "entryId": "lex:A1:sell",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:send",
+      "entryId": "lex:A1:send",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sentence",
+      "entryId": "lex:A1:sentence",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:september",
+      "entryId": "lex:A1:september",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:seven",
+      "entryId": "lex:A1:seven",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:seventeen",
+      "entryId": "lex:A1:seventeen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:seventy",
+      "entryId": "lex:A1:seventy",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:share",
+      "entryId": "lex:A1:share",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:she",
+      "entryId": "lex:A1:she",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sheep",
+      "entryId": "lex:A1:sheep",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:shirt",
+      "entryId": "lex:A1:shirt",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:shoe",
+      "entryId": "lex:A1:shoe",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:shop",
+      "entryId": "lex:A1:shop",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:shop#verb",
+      "entryId": "lex:A1:shop",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:shopping",
+      "entryId": "lex:A1:shopping",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:short",
+      "entryId": "lex:A1:short",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:should",
+      "entryId": "lex:A1:should",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:at-the-doctor"
+      ]
+    },
+    {
+      "id": "lex:A1:show",
+      "entryId": "lex:A1:show",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:show#noun",
+      "entryId": "lex:A1:show",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:shower",
+      "entryId": "lex:A1:shower",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sick",
+      "entryId": "lex:A1:sick",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:similar",
+      "entryId": "lex:A1:similar",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sing",
+      "entryId": "lex:A1:sing",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:singer",
+      "entryId": "lex:A1:singer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sister",
+      "entryId": "lex:A1:sister",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sit",
+      "entryId": "lex:A1:sit",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:situation",
+      "entryId": "lex:A1:situation",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:six",
+      "entryId": "lex:A1:six",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sixteen",
+      "entryId": "lex:A1:sixteen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sixty",
+      "entryId": "lex:A1:sixty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:skill",
+      "entryId": "lex:A1:skill",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:skirt",
+      "entryId": "lex:A1:skirt",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sleep",
+      "entryId": "lex:A1:sleep",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:slow",
+      "entryId": "lex:A1:slow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:small",
+      "entryId": "lex:A1:small",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:snake",
+      "entryId": "lex:A1:snake",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:snow",
+      "entryId": "lex:A1:snow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:snow#verb",
+      "entryId": "lex:A1:snow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:so",
+      "entryId": "lex:A1:so",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:study-plan"
+      ]
+    },
+    {
+      "id": "lex:A1:so#very",
+      "entryId": "lex:A1:so",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:some",
+      "entryId": "lex:A1:some",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:cafe-order"
+      ]
+    },
+    {
+      "id": "lex:A1:somebody",
+      "entryId": "lex:A1:somebody",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:someone",
+      "entryId": "lex:A1:someone",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:something",
+      "entryId": "lex:A1:something",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sometimes",
+      "entryId": "lex:A1:sometimes",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:son",
+      "entryId": "lex:A1:son",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:song",
+      "entryId": "lex:A1:song",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:soon",
+      "entryId": "lex:A1:soon",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sorry",
+      "entryId": "lex:A1:sorry",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sorry#pardon",
+      "entryId": "lex:A1:sorry",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sound",
+      "entryId": "lex:A1:sound",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sound#seem",
+      "entryId": "lex:A1:sound",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:soup",
+      "entryId": "lex:A1:soup",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:south",
+      "entryId": "lex:A1:south",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:space",
+      "entryId": "lex:A1:space",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:space#universe",
+      "entryId": "lex:A1:space",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:speak",
+      "entryId": "lex:A1:speak",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:phone-message"
+      ]
+    },
+    {
+      "id": "lex:A1:special",
+      "entryId": "lex:A1:special",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:spell",
+      "entryId": "lex:A1:spell",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:spelling",
+      "entryId": "lex:A1:spelling",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:spend",
+      "entryId": "lex:A1:spend",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:spend#time",
+      "entryId": "lex:A1:spend",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sport",
+      "entryId": "lex:A1:sport",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:spring",
+      "entryId": "lex:A1:spring",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:stand",
+      "entryId": "lex:A1:stand",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:star",
+      "entryId": "lex:A1:star",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:star#famous",
+      "entryId": "lex:A1:star",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:start",
+      "entryId": "lex:A1:start",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:statement",
+      "entryId": "lex:A1:statement",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:station",
+      "entryId": "lex:A1:station",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:stay",
+      "entryId": "lex:A1:stay",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:still",
+      "entryId": "lex:A1:still",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:lost-phone"
+      ]
+    },
+    {
+      "id": "lex:A1:stop",
+      "entryId": "lex:A1:stop",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:stop#noun",
+      "entryId": "lex:A1:stop",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:story",
+      "entryId": "lex:A1:story",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:street",
+      "entryId": "lex:A1:street",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:strong",
+      "entryId": "lex:A1:strong",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:student",
+      "entryId": "lex:A1:student",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:study",
+      "entryId": "lex:A1:study",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:style",
+      "entryId": "lex:A1:style",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:subject",
+      "entryId": "lex:A1:subject",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:success",
+      "entryId": "lex:A1:success",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sugar",
+      "entryId": "lex:A1:sugar",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:summer",
+      "entryId": "lex:A1:summer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sun",
+      "entryId": "lex:A1:sun",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sunday",
+      "entryId": "lex:A1:sunday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:supermarket",
+      "entryId": "lex:A1:supermarket",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sure",
+      "entryId": "lex:A1:sure",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:sweater",
+      "entryId": "lex:A1:sweater",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:swim",
+      "entryId": "lex:A1:swim",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:swimming",
+      "entryId": "lex:A1:swimming",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:t-shirt",
+      "entryId": "lex:A1:t-shirt",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:table",
+      "entryId": "lex:A1:table",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:take",
+      "entryId": "lex:A1:take",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:take#transport",
+      "entryId": "lex:A1:take",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:directions"
+      ]
+    },
+    {
+      "id": "lex:A1:talk",
+      "entryId": "lex:A1:talk",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tall",
+      "entryId": "lex:A1:tall",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:taxi",
+      "entryId": "lex:A1:taxi",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tea",
+      "entryId": "lex:A1:tea",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:teach",
+      "entryId": "lex:A1:teach",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:teacher",
+      "entryId": "lex:A1:teacher",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:team",
+      "entryId": "lex:A1:team",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:teenager",
+      "entryId": "lex:A1:teenager",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:telephone",
+      "entryId": "lex:A1:telephone",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:television",
+      "entryId": "lex:A1:television",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tell",
+      "entryId": "lex:A1:tell",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ten",
+      "entryId": "lex:A1:ten",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tennis",
+      "entryId": "lex:A1:tennis",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:terrible",
+      "entryId": "lex:A1:terrible",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:test",
+      "entryId": "lex:A1:test",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:test#verb",
+      "entryId": "lex:A1:test",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:text",
+      "entryId": "lex:A1:text",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:text#message",
+      "entryId": "lex:A1:text",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:than",
+      "entryId": "lex:A1:than",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:thank",
+      "entryId": "lex:A1:thank",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:thanks",
+      "entryId": "lex:A1:thanks",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:that",
+      "entryId": "lex:A1:that",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:that#conjunction",
+      "entryId": "lex:A1:that",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:the",
+      "entryId": "lex:A1:the",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:theatre",
+      "entryId": "lex:A1:theatre",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:their",
+      "entryId": "lex:A1:their",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:them",
+      "entryId": "lex:A1:them",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:then",
+      "entryId": "lex:A1:then",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:there",
+      "entryId": "lex:A1:there",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:there#there-is",
+      "entryId": "lex:A1:there",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:they",
+      "entryId": "lex:A1:they",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:thing",
+      "entryId": "lex:A1:thing",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:think",
+      "entryId": "lex:A1:think",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:third",
+      "entryId": "lex:A1:third",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:thirsty",
+      "entryId": "lex:A1:thirsty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:thirteen",
+      "entryId": "lex:A1:thirteen",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:thirty",
+      "entryId": "lex:A1:thirty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:this",
+      "entryId": "lex:A1:this",
+      "sceneCount": 2,
+      "scenes": [
+        "scene:new-colleague",
+        "scene:phone-message"
+      ]
+    },
+    {
+      "id": "lex:A1:thousand",
+      "entryId": "lex:A1:thousand",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:three",
+      "entryId": "lex:A1:three",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:through",
+      "entryId": "lex:A1:through",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:thursday",
+      "entryId": "lex:A1:thursday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:ticket",
+      "entryId": "lex:A1:ticket",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:time",
+      "entryId": "lex:A1:time",
+      "sceneCount": 2,
+      "scenes": [
+        "scene:morning-routine",
+        "scene:team-meeting"
+      ]
+    },
+    {
+      "id": "lex:A1:time#occasion",
+      "entryId": "lex:A1:time",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tired",
+      "entryId": "lex:A1:tired",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:at-the-doctor"
+      ]
+    },
+    {
+      "id": "lex:A1:title",
+      "entryId": "lex:A1:title",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:to",
+      "entryId": "lex:A1:to",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:to#infinitive",
+      "entryId": "lex:A1:to",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:today",
+      "entryId": "lex:A1:today",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:together",
+      "entryId": "lex:A1:together",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:toilet",
+      "entryId": "lex:A1:toilet",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tomato",
+      "entryId": "lex:A1:tomato",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tomorrow",
+      "entryId": "lex:A1:tomorrow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tonight",
+      "entryId": "lex:A1:tonight",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:too",
+      "entryId": "lex:A1:too",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:too#excess",
+      "entryId": "lex:A1:too",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:shopping"
+      ]
+    },
+    {
+      "id": "lex:A1:tooth",
+      "entryId": "lex:A1:tooth",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:topic",
+      "entryId": "lex:A1:topic",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tourist",
+      "entryId": "lex:A1:tourist",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:town",
+      "entryId": "lex:A1:town",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:traffic",
+      "entryId": "lex:A1:traffic",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:train",
+      "entryId": "lex:A1:train",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:travel",
+      "entryId": "lex:A1:travel",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:travel#noun",
+      "entryId": "lex:A1:travel",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tree",
+      "entryId": "lex:A1:tree",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:trip",
+      "entryId": "lex:A1:trip",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:trousers",
+      "entryId": "lex:A1:trousers",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:true",
+      "entryId": "lex:A1:true",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:try",
+      "entryId": "lex:A1:try",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:try#test",
+      "entryId": "lex:A1:try",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tuesday",
+      "entryId": "lex:A1:tuesday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:turn",
+      "entryId": "lex:A1:turn",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:turn#noun",
+      "entryId": "lex:A1:turn",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:tv",
+      "entryId": "lex:A1:tv",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:twelve",
+      "entryId": "lex:A1:twelve",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:twenty",
+      "entryId": "lex:A1:twenty",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:twice",
+      "entryId": "lex:A1:twice",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:two",
+      "entryId": "lex:A1:two",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:type",
+      "entryId": "lex:A1:type",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:umbrella",
+      "entryId": "lex:A1:umbrella",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:uncle",
+      "entryId": "lex:A1:uncle",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:under",
+      "entryId": "lex:A1:under",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:understand",
+      "entryId": "lex:A1:understand",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:university",
+      "entryId": "lex:A1:university",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:until",
+      "entryId": "lex:A1:until",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:up",
+      "entryId": "lex:A1:up",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:up#preposition",
+      "entryId": "lex:A1:up",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:upstairs",
+      "entryId": "lex:A1:upstairs",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:us",
+      "entryId": "lex:A1:us",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:use",
+      "entryId": "lex:A1:use",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:useful",
+      "entryId": "lex:A1:useful",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:usually",
+      "entryId": "lex:A1:usually",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:vacation",
+      "entryId": "lex:A1:vacation",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:vegetable",
+      "entryId": "lex:A1:vegetable",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:very",
+      "entryId": "lex:A1:very",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:video",
+      "entryId": "lex:A1:video",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:village",
+      "entryId": "lex:A1:village",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:visit",
+      "entryId": "lex:A1:visit",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:visit#noun",
+      "entryId": "lex:A1:visit",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:visitor",
+      "entryId": "lex:A1:visitor",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wait",
+      "entryId": "lex:A1:wait",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:waiter",
+      "entryId": "lex:A1:waiter",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wake",
+      "entryId": "lex:A1:wake",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:walk",
+      "entryId": "lex:A1:walk",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:walk#noun",
+      "entryId": "lex:A1:walk",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wall",
+      "entryId": "lex:A1:wall",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:want",
+      "entryId": "lex:A1:want",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:study-plan"
+      ]
+    },
+    {
+      "id": "lex:A1:warm",
+      "entryId": "lex:A1:warm",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wash",
+      "entryId": "lex:A1:wash",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:watch",
+      "entryId": "lex:A1:watch",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:watch#noun",
+      "entryId": "lex:A1:watch",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:water",
+      "entryId": "lex:A1:water",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:way",
+      "entryId": "lex:A1:way",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:way#method",
+      "entryId": "lex:A1:way",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:we",
+      "entryId": "lex:A1:we",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wear",
+      "entryId": "lex:A1:wear",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:weather",
+      "entryId": "lex:A1:weather",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:website",
+      "entryId": "lex:A1:website",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wednesday",
+      "entryId": "lex:A1:wednesday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:week",
+      "entryId": "lex:A1:week",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:weekend",
+      "entryId": "lex:A1:weekend",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:welcome",
+      "entryId": "lex:A1:welcome",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:welcome#thanks",
+      "entryId": "lex:A1:welcome",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:well",
+      "entryId": "lex:A1:well",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:well#discourse",
+      "entryId": "lex:A1:well",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:well#healthy",
+      "entryId": "lex:A1:well",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:at-the-doctor"
+      ]
+    },
+    {
+      "id": "lex:A1:west",
+      "entryId": "lex:A1:west",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:what",
+      "entryId": "lex:A1:what",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:when",
+      "entryId": "lex:A1:when",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:where",
+      "entryId": "lex:A1:where",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:new-colleague"
+      ]
+    },
+    {
+      "id": "lex:A1:which",
+      "entryId": "lex:A1:which",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:white",
+      "entryId": "lex:A1:white",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:who",
+      "entryId": "lex:A1:who",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:why",
+      "entryId": "lex:A1:why",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wife",
+      "entryId": "lex:A1:wife",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:will",
+      "entryId": "lex:A1:will",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:win",
+      "entryId": "lex:A1:win",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:window",
+      "entryId": "lex:A1:window",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wine",
+      "entryId": "lex:A1:wine",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:winter",
+      "entryId": "lex:A1:winter",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:with",
+      "entryId": "lex:A1:with",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:without",
+      "entryId": "lex:A1:without",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:woman",
+      "entryId": "lex:A1:woman",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wonderful",
+      "entryId": "lex:A1:wonderful",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:word",
+      "entryId": "lex:A1:word",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:work",
+      "entryId": "lex:A1:work",
+      "sceneCount": 1,
+      "scenes": [
+        "scene:new-colleague"
+      ]
+    },
+    {
+      "id": "lex:A1:work#noun",
+      "entryId": "lex:A1:work",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:worker",
+      "entryId": "lex:A1:worker",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:world",
+      "entryId": "lex:A1:world",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:would",
+      "entryId": "lex:A1:would",
+      "sceneCount": 2,
+      "scenes": [
+        "scene:cafe-order",
+        "scene:weekend-plans"
+      ]
+    },
+    {
+      "id": "lex:A1:write",
+      "entryId": "lex:A1:write",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:writer",
+      "entryId": "lex:A1:writer",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:writing",
+      "entryId": "lex:A1:writing",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:wrong",
+      "entryId": "lex:A1:wrong",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:yeah",
+      "entryId": "lex:A1:yeah",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:year",
+      "entryId": "lex:A1:year",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:yellow",
+      "entryId": "lex:A1:yellow",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:yes",
+      "entryId": "lex:A1:yes",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:yesterday",
+      "entryId": "lex:A1:yesterday",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:you",
+      "entryId": "lex:A1:you",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:young",
+      "entryId": "lex:A1:young",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:your",
+      "entryId": "lex:A1:your",
+      "sceneCount": 0,
+      "scenes": []
+    },
+    {
+      "id": "lex:A1:yourself",
+      "entryId": "lex:A1:yourself",
+      "sceneCount": 0,
+      "scenes": []
+    }
+  ]
+}
