@@ -277,18 +277,31 @@ export const audioRepairLog = z
 
 export type AudioRepairLog = z.infer<typeof audioRepairLog>;
 
-export type AudioRepairPlanItem = {
-  targetId: string;
-  unitId: string;
-  entryId: string;
-  senseId: string;
-  accent: AudioAccent;
-  sourceClipFile: string;
-  sourceClipSha256: string;
-  expectedText: string;
-  pronunciation: string;
-  candidate: AudioRepairCandidate;
-};
+export const audioRepairPlanItem = z
+  .object({
+    targetId: text,
+    unitId: text,
+    entryId: text,
+    senseId: text,
+    accent: audioAccent,
+    sourceClipFile: text,
+    sourceClipSha256: sha256,
+    expectedText: text,
+    pronunciation: text,
+    candidate: audioRepairCandidate,
+  })
+  .strict();
+
+export const audioRepairPlan = z
+  .object({
+    schemaVersion: z.literal(1),
+    policyVersion: text,
+    items: z.array(audioRepairPlanItem),
+  })
+  .strict();
+
+export type AudioRepairPlanItem = z.infer<typeof audioRepairPlanItem>;
+export type AudioRepairPlan = z.infer<typeof audioRepairPlan>;
 
 const REPAIRABLE_AUDIO_BLOCKERS = new Set([
   "signal-integrity",
