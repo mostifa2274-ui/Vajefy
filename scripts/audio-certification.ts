@@ -12,6 +12,7 @@ import {
   type AudioCertificateManifest,
   type AudioRecognitionManifest,
 } from "../src/lib/learn/audio-assurance";
+import { buildAudioSourceHashes } from "./audio-source-hashes";
 
 const ROOT = process.cwd();
 const AUDIO = path.join(ROOT, "content", "assurance", "audio");
@@ -147,12 +148,7 @@ function systemsMatch(recognition: AudioRecognitionManifest): boolean {
 }
 
 function sourceHashes() {
-  return {
-    curriculumSha256: sha256File(FILES.curriculum),
-    enhancedSha256: sha256File(FILES.enhanced),
-    audioManifestSha256: sha256File(FILES.manifest),
-    audioReportSha256: sha256File(FILES.report),
-  };
+  return buildAudioSourceHashes(ROOT);
 }
 
 function buildTargets() {
