@@ -17,6 +17,7 @@ import {
   type LessonSession,
 } from "@/lib/learn/lesson";
 import { focusFirst, hasContent, introducible, introductionOrder, loadPilot, unitOf, type PilotIndex } from "@/lib/learn/pilot";
+import { measuredSecondsPerNew } from "@/lib/learn/lesson-time";
 import { dailyPlan } from "@/lib/learn/planner";
 import { resumable } from "@/lib/learn/session";
 import { dueIds, todayLog, useProgress } from "@/lib/learn/store";
@@ -58,12 +59,14 @@ function LearnPage() {
 
   const unfinished = resumable(sessions, "lesson", opened);
   const due = dueIds(cards, opened).length;
+  const secondsPerNew = measuredSecondsPerNew(Object.values(sessions));
   const plan = dailyPlan({
     due,
     introducedToday: todayLog(logs).introduced,
     newPerDay,
     sessionSize,
     minutes,
+    ...(secondsPerNew === null ? {} : { secondsPerNew }),
   });
   // Lessons at the learner's level first, then the other levels' lessons.
   const ordered = index ? focusFirst(introductionOrder(index.targets, goal), focus) : [];
