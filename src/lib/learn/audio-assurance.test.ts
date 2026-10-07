@@ -197,12 +197,13 @@ function partialCertificate(blockers = ["whisper-lexical", "multi-system-disagre
 }
 
 test("audio repair planner picks the first untried candidate deterministically", () => {
-  const empty = audioRepairLog.parse({ schemaVersion: 1, policyVersion: "test-policy", attempts: [] });
+  const empty = audioRepairLog.parse({ schemaVersion: 1, policyVersion: "test-policy", policySha256: null, attempts: [] });
   assert.equal(planAudioRepairs(partialCertificate(), repairPolicy, empty)[0]?.candidate.id, "gb-one");
 
   const once = audioRepairLog.parse({
     schemaVersion: 1,
     policyVersion: "test-policy",
+    policySha256: "a".repeat(64),
     attempts: [
       {
         targetId: "lex:A1:i:gb",
@@ -222,6 +223,7 @@ test("audio repair planner stops after a certified candidate for the same source
   const log = audioRepairLog.parse({
     schemaVersion: 1,
     policyVersion: "test-policy",
+    policySha256: "a".repeat(64),
     attempts: [
       {
         targetId: "lex:A1:i:gb",
@@ -238,7 +240,7 @@ test("audio repair planner stops after a certified candidate for the same source
 });
 
 test("audio repair planner never synthesises around source-identity failures", () => {
-  const log = audioRepairLog.parse({ schemaVersion: 1, policyVersion: "test-policy", attempts: [] });
+  const log = audioRepairLog.parse({ schemaVersion: 1, policyVersion: "test-policy", policySha256: null, attempts: [] });
   assert.deepEqual(
     planAudioRepairs(partialCertificate(["source-identity-mismatch"]), repairPolicy, log),
     [],
