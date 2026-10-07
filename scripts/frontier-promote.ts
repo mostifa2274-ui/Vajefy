@@ -88,6 +88,14 @@ function assertCurriculumIntegrity(
   if (beforeTargetTotal !== afterTargetTotal) {
     throw new Error("pilot-safe promotion changed total targetEntries");
   }
+  const beforeSpare = new Map(
+    before.units.map((unit) => [unit.id, unit.targetEntries - unit.entries.length] as const),
+  );
+  for (const unit of after.units) {
+    if ((beforeSpare.get(unit.id) ?? Number.NaN) !== unit.targetEntries - unit.entries.length) {
+      throw new Error(unit.id + ": pilot-safe promotion changed planned spare capacity");
+    }
+  }
 
   const positions = indexState(after).global;
   for (const entry of flattened(after)) {
