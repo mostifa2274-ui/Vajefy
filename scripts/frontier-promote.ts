@@ -83,18 +83,18 @@ function assertCurriculumIntegrity(
     throw new Error("pilot-safe promotion changed the frozen Units 1-3 roster");
   }
 
-  const beforeTargetTotal = before.units.reduce((sum, unit) => sum + unit.targetEntries, 0);
-  const afterTargetTotal = after.units.reduce((sum, unit) => sum + unit.targetEntries, 0);
-  if (beforeTargetTotal !== afterTargetTotal) {
-    throw new Error("pilot-safe promotion changed total targetEntries");
-  }
-  const beforeSpare = new Map(
-    before.units.map((unit) => [unit.id, unit.targetEntries - unit.entries.length] as const),
-  );
-  for (const unit of after.units) {
-    if ((beforeSpare.get(unit.id) ?? Number.NaN) !== unit.targetEntries - unit.entries.length) {
-      throw new Error(unit.id + ": pilot-safe promotion changed planned spare capacity");
-    }
+  const beforeShape = before.units.map((unit) => ({
+    id: unit.id,
+    targetEntries: unit.targetEntries,
+    entries: unit.entries.length,
+  }));
+  const afterShape = after.units.map((unit) => ({
+    id: unit.id,
+    targetEntries: unit.targetEntries,
+    entries: unit.entries.length,
+  }));
+  if (JSON.stringify(beforeShape) !== JSON.stringify(afterShape)) {
+    throw new Error("pilot-safe promotion changed unit sizes or targetEntries");
   }
 
   const positions = indexState(after).global;
@@ -180,6 +180,7 @@ export function applyPilotSafePromotions(
         continue;
       }
       if (promotion.changesFrozenPilotRoster || targetUnit < 3) continue;
+      if (dependencyUnit !== targetUnit) continue;
 
       if (dependencyAt < anchorAt) {
         alreadySatisfied.push(dependencyId);
@@ -207,11 +208,6 @@ export function applyPilotSafePromotions(
       if (anchorIndex < 0) throw new Error("missing target anchor " + promotion.beforeEntryId);
       target.entries.splice(anchorIndex, 0, removed);
 
-      if (dependencyUnit !== targetUnit) {
-        sourceUnit.targetEntries -= 1;
-        target.targetEntries += 1;
-      }
-
       moved.push(dependencyId);
       pending.delete(dependencyId);
       changed = true;
@@ -228,6 +224,11 @@ export function applyPilotSafePromotions(
     if (targetUnit === undefined) return { dependencyId, reason: "target-unit-missing" };
     if (promotion.changesFrozenPilotRoster || targetUnit < 3) {
       return { dependencyId, reason: "frozen-pilot-roster" };
+    }
+    const dependencyUnit = state.unit.get(dependencyId);
+    if (dependencyUnit === undefined) return { dependencyId, reason: "dependency-unit-missing" };
+    if (dependencyUnit !== targetUnit) {
+      return { dependencyId, reason: "balanced-wave-required" };
     }
 
     const entry = flattened(next).find((candidate) => candidate.id === dependencyId);
