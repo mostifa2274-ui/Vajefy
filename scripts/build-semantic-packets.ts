@@ -108,7 +108,9 @@ const sourceStateHash = sha256Text(
 const packet = {
   schemaVersion: 1,
   unitId,
-  contentBuildVersion: pilot.version,
+  // Packet identity is scoped to this unit's exact target inputs. A global
+  // compiled-build version would invalidate unchanged Unit 1 evidence when
+  // later curriculum units are merely reordered.
   generationContextKey: `source-content:${unitId}:${sourceStateHash.slice(0, 20)}`,
   rubricManifest: path.relative(ROOT, RUBRICS).replaceAll("\\", "/"),
   rubricManifestHash: sha256Text(fs.readFileSync(RUBRICS, "utf8")),
