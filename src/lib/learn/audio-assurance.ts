@@ -263,6 +263,7 @@ export const audioRepairLog = z
   .object({
     schemaVersion: z.literal(1),
     policyVersion: text,
+    policySha256: sha256.nullable(),
     attempts: z.array(audioRepairAttempt),
   })
   .strict()
@@ -272,6 +273,9 @@ export const audioRepairLog = z
     );
     if (new Set(keys).size !== keys.length) {
       ctx.addIssue({ code: "custom", path: ["attempts"], message: "audio repair attempts must be unique per source/candidate" });
+    }
+    if (log.attempts.length > 0 && log.policySha256 === null) {
+      ctx.addIssue({ code: "custom", path: ["policySha256"], message: "repair history must bind to the exact policy SHA-256" });
     }
   });
 
