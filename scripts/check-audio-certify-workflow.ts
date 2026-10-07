@@ -22,6 +22,7 @@ if (!fs.existsSync(WORKFLOW)) fail("Missing .github/workflows/audio-certify.yml"
 if (!fs.existsSync(COMMIT)) fail("Missing scripts/audio-certification-commit.sh");
 if (!fs.existsSync(SOURCE_HASHES)) fail("Missing scripts/audio-source-hashes.ts");
 if (!fs.existsSync(SOURCE_SCOPE)) fail("Missing src/lib/learn/audio-source-scope.ts");
+if (!fs.existsSync(ROLLBACK)) fail("Missing scripts/audio/rollback_unstable_promotions.py");
 const workflow = fs.readFileSync(WORKFLOW, "utf8");
 const commit = fs.readFileSync(COMMIT, "utf8");
 const authority = fs.readFileSync(AUTHORITY, "utf8");
@@ -98,6 +99,9 @@ const pathsBlock = /paths:\n((?: {6}- .*\n)+)/.exec(workflow)?.[1] ?? "";
 if (!pathsBlock) fail("Audio certification push trigger needs an explicit path allowlist.");
 if (!pathsBlock.includes("content/assurance/audio/repair-policy.json")) {
   fail("Changing the frozen repair policy must retrigger audio certification.");
+}
+if (!pathsBlock.includes("scripts/audio/rollback_unstable_promotions.py")) {
+  fail("Changing final-pass rollback logic must retrigger audio certification.");
 }
 for (const generated of [
   "content/assurance/audio/recognition.json",
