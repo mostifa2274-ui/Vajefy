@@ -29,3 +29,35 @@ test("invalid counts degrade to a safe empty plan", () => {
   const plan = dailyPlan({ due: Number.NaN, introducedToday: -3, newPerDay: Number.NaN, sessionSize: -1, minutes: -5 });
   assert.deepEqual(plan, { due: 0, reviewTake: 0, remainingNewAllowance: 0, newLimit: 0, estimatedMinutes: 0 });
 });
+
+
+test("measured lesson timing calibrates duration estimates but not the new-word cap", () => {
+  const fallback = dailyPlan({ due: 0, introducedToday: 0, newPerDay: 20, sessionSize: 20, minutes: 10 });
+  const measured = dailyPlan({
+    due: 0,
+    introducedToday: 0,
+    newPerDay: 20,
+    sessionSize: 20,
+    minutes: 10,
+    secondsPerNew: 120,
+  });
+  assert.equal(fallback.newLimit, 3);
+  assert.equal(measured.newLimit, 3);
+  assert.equal(fallback.estimatedMinutes, 5);
+  assert.equal(measured.estimatedMinutes, 6);
+});
+
+test("invalid or extreme timing evidence is bounded safely", () => {
+  assert.equal(
+    dailyPlan({ due: 0, introducedToday: 0, newPerDay: 5, sessionSize: 20, minutes: 10, secondsPerNew: Number.NaN }).estimatedMinutes,
+    5,
+  );
+  assert.equal(
+    dailyPlan({ due: 0, introducedToday: 0, newPerDay: 5, sessionSize: 20, minutes: 10, secondsPerNew: 1 }).estimatedMinutes,
+    2,
+  );
+  assert.equal(
+    dailyPlan({ due: 0, introducedToday: 0, newPerDay: 5, sessionSize: 20, minutes: 10, secondsPerNew: 9999 }).estimatedMinutes,
+    15,
+  );
+});
