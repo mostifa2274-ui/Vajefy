@@ -192,7 +192,7 @@ const compiled: Pilot = {
   contrasts,
   scenes,
   audio: {},
-  audioPack: { schemaVersion: 2, contentVersion: "", units: [] },
+  audioPack: { gb: { files: [], bytes: 0 }, us: { files: [], bytes: 0 } },
 };
 // A clip is attached only while its text still matches the content exactly,
 // so editing a word or example can never leave outdated audio behind.
@@ -214,6 +214,19 @@ for (const item of compiled.entries) {
     }
     if (attached.gb || attached.us) compiled.audio[sense.id] = attached;
   }
+}
+for (const accent of ["gb", "us"] as const) {
+  const files = new Set<string>();
+  for (const clips of Object.values(compiled.audio)) {
+    const recorded = clips[accent];
+    if (recorded?.word) files.add(recorded.word);
+    for (const file of recorded?.examples ?? []) if (file) files.add(file);
+  }
+  const sorted = [...files].sort();
+  compiled.audioPack[accent] = {
+    files: sorted,
+    bytes: sorted.reduce((sum, file) => sum + (audio.clips?.[file.replace(/^pilot\//, "")]?.bytes ?? 0), 0),
+  };
 }
 // The version covers the course itself: the order, units and prerequisites
 // learners meet, and the study's word set, as well as the content.
@@ -261,8 +274,8 @@ function audioPackFor(unitIndex: number, accent: "gb" | "us") {
   };
 }
 
-compiled.audioPack = {
-  schemaVersion: 2,
+const publicAudioPack = {
+  schemaVersion: 2 as const,
   contentVersion: compiled.version,
   units: units
     .map((unit, index) => ({ unit, index }))
@@ -320,7 +333,7 @@ const catalogue: PilotCatalogue = { version: compiled.version, parts: parts.map(
 const outputs = new Map<string, string>([
   [OUT, `${JSON.stringify(compiled)}\n`],
   [path.join(PUBLIC_DIR, "index.json"), `${JSON.stringify(catalogue)}\n`],
-  [path.join(PUBLIC_DIR, "audio-pack.json"), `${JSON.stringify(compiled.audioPack)}\n`],
+  [path.join(PUBLIC_DIR, "audio-pack.json"), `${JSON.stringify(publicAudioPack)}\n`],
   ...parts.map(([file, output]): [string, string] => [path.join(ROOT, "public", "data", file), output]),
   [ORDER_OUT, `${JSON.stringify(pilotOrder)}\n`],
 ]);
