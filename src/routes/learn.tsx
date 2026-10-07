@@ -76,9 +76,12 @@ function LearnPage() {
   // Recycle at most two of the oldest due enhanced targets inside a new-word
   // lesson. Selection is deterministic and consumes the existing review
   // budget; it never raises newLimit.
+  const recycleLimit = Math.min(2, plan.reviewTake);
+  // Scan a few more due targets than we will show so an old card that lacks a
+  // safe authored context item does not block the next eligible due card.
   const recyclePool =
-    upcoming.length && full
-      ? recycleCandidates(full, cards, opened, Math.min(2, plan.reviewTake))
+    upcoming.length && full && recycleLimit
+      ? recycleCandidates(full, cards, opened, Math.min(6, due))
       : [];
   const recycleIds = recyclePool.map((target) => target.sense.id);
   const checkup =
@@ -154,7 +157,9 @@ function LearnPage() {
       />
     );
 
-  const recycled = recyclePool.filter((target) => hasRecycleContext(full, target.sense.id));
+  const recycled = recyclePool
+    .filter((target) => hasRecycleContext(full, target.sense.id))
+    .slice(0, recycleLimit);
   const met = index.targets.filter((target) => cards[target.sense.id]).length;
   const remaining = nextTargets(ordered, cards, 1).length;
   // The curriculum unit the next lesson belongs to, and how far into it the learner is.
