@@ -86,6 +86,7 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
   const { num, sep } = useFormat();
   const [units, setUnits] = useState<AudioPack["units"]>([]);
   const [statuses, setStatuses] = useState<Record<string, PackStatus>>({});
+  const [statusAccent, setStatusAccent] = useState<"gb" | "us" | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [failed, setFailed] = useState<string | null>(null);
   const abort = useRef<AbortController | null>(null);
@@ -93,7 +94,6 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
 
   useEffect(() => {
     let alive = true;
-    setStatuses({});
     void loadAudioPack()
       .then(async (audioPack) => {
         const rows = await Promise.all(
@@ -102,6 +102,7 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
         if (!alive) return;
         setUnits(audioPack.units);
         setStatuses(Object.fromEntries(rows));
+        setStatusAccent(accentKey);
       })
       .catch(() => undefined);
     return () => {
@@ -110,7 +111,7 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
     };
   }, [accentKey]);
 
-  if (!units.length || typeof caches === "undefined") return null;
+  if (!units.length || statusAccent !== accentKey || typeof caches === "undefined") return null;
 
   async function download(pack: AudioUnitPack) {
     setBusy(pack.unitId);
