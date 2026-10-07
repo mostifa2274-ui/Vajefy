@@ -534,8 +534,63 @@ export function answerLesson(
   };
 }
 
+const SHORT_PATH_ROLES: ReadonlySet<Role> = new Set(["retrieve", "listen", "context", "delayed"]);
+
+/**
+ * Strong first-session evidence for every newly taught target.
+ *
+ * Only required core checks count. Every core check that exists for a target
+ * must have a first-attempt exact success; close answers, misses, skips and
+ * prompted retries are not strong evidence. Response latency is deliberately
+ * ignored so accessibility needs and slower devices cannot block the path.
+ */
+export function shortPathEligible(session: LessonSession): boolean {
+  if (session.mode !== "lesson" || !session.targets.length) return false;
+  const targetSet = new Set(session.targets);
+  const byTarget = new Map<string, { required: number; correct: number; retried: boolean }>(
+    session.targets.map((id) => [id, { required: 0, correct: 0, retried: false }]),
+  );
+
+  for (const step of session.steps) {
+    if (step.kind !== "check" || !targetSet.has(step.ref.target)) continue;
+    const state = byTarget.get(step.ref.target)!;
+    if (SHORT_PATH_ROLES.has(step.role)) state.required += 1;
+    else if (step.role === "retry") state.retried = true;
+  }
+
+  for (const answer of session.answers) {
+    const step = session.steps[answer.step];
+    if (step?.kind !== "check" || !targetSet.has(step.ref.target) || !SHORT_PATH_ROLES.has(step.role)) continue;
+    if (answer.result === "correct") byTarget.get(step.ref.target)!.correct += 1;
+  }
+
+  return [...byTarget.values()].every(
+    (state) => state.required >= 3 && state.correct === state.required && !state.retried,
+  );
+}
+
+function optionalApplicationTail(steps: LessonStep[], from: number): boolean {
+  return steps.slice(from).every(
+    (step) =>
+      step.kind === "contrast" ||
+      step.kind === "scene" ||
+      step.kind === "write" ||
+      (step.kind === "check" && step.role === "apply"),
+  );
+}
+
 export function advanceLesson(session: LessonSession, now: number): LessonSession {
-  const index = Math.min(session.steps.length, session.index + 1);
+  let index = Math.min(session.steps.length, session.index + 1);
+  // The shortcut can only happen after every required core check, including
+  // delayed retrieval, is already answered. It removes only the optional
+  // contrast/scene application tail; it never removes a required check.
+  if (
+    index < session.steps.length &&
+    optionalApplicationTail(session.steps, index) &&
+    shortPathEligible(session)
+  ) {
+    index = session.steps.length;
+  }
   return { ...session, index, status: index >= session.steps.length ? "done" : "active", updatedAt: now };
 }
 

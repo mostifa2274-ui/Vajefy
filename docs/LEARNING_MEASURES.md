@@ -87,6 +87,16 @@ scheduled reviews and therefore update FSRS exactly as Review would. They do not
 increase the new-word allowance, and a wrong recycled answer may receive a
 prompted retry only after its scheduled review has already been recorded.
 
+A guided lesson may take an **adaptive short path** only after every newly taught
+target has already completed every required core check present in that lesson:
+typed retrieval, listening when available, context/use and delayed retrieval.
+Each first attempt must be exactly correct; a close answer, miss, skip or
+prompted retry blocks the shortcut. The shortcut removes only the optional
+contrast/scene application tail after those required checks are complete.
+Delayed retrieval is therefore never skipped. Response latency is not used in
+this decision, so careful readers, accessibility users and slower devices are
+not penalized.
+
 **Readiness for now** is computed from one lesson's answers: a word is
 *ready* when its latest unaided check (written retrieval, listening, context or
 the delayed retrieval) succeeded; *with help* when its latest unaided check
