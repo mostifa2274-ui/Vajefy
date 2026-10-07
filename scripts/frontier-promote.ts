@@ -127,9 +127,29 @@ export function applyPilotSafePromotions(
   promotions: readonly FrontierPromotion[],
 ): PilotSafePromotionResult {
   const next = cloneCurriculum(curriculum);
+  const initial = indexState(next);
   const pending = new Map(
     promotions.map((promotion) => [promotion.dependencyId, promotion] as const),
   );
+  if (pending.size !== promotions.length) {
+    throw new Error("frontier promotion plan contains duplicate dependency ids");
+  }
+  for (const promotion of promotions) {
+    const anchorUnitIndex = initial.unit.get(promotion.beforeEntryId);
+    if (anchorUnitIndex === undefined) {
+      throw new Error("frontier promotion anchor is missing: " + promotion.beforeEntryId);
+    }
+    const actualTargetUnit = next.units[anchorUnitIndex]?.id;
+    if (actualTargetUnit !== promotion.targetUnit) {
+      throw new Error(
+        promotion.dependencyId +
+          ": stale target unit " +
+          promotion.targetUnit +
+          "; anchor is now in " +
+          actualTargetUnit,
+      );
+    }
+  }
   const moved: string[] = [];
   const alreadySatisfied: string[] = [];
 
