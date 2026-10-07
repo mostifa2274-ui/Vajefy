@@ -1,0 +1,40 @@
+name: Frontier baseline sync
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches: [codex/frontier-safe-batch1]
+
+jobs:
+  sync:
+    if: ${{ !contains(github.event.head_commit.message, '[frontier-baseline-bot]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: codex/frontier-safe-batch1
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Lower deterministic assurance baseline to current content
+        run: npm run assurance:content:baseline
+      - name: Commit exact baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git status --porcelain -- content/assurance/deterministic-baseline.json)"
+          if [ -z "$changed" ]; then
+            echo "Deterministic baseline already current."
+            exit 0
+          fi
+          printf '%s\n' "$changed"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- content/assurance/deterministic-baseline.json
+          git commit -m "[frontier-baseline-bot] Lock lower frontier finding maximum"
+          git push origin HEAD:codex/frontier-safe-batch1
