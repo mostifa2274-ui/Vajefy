@@ -74,6 +74,16 @@ jobs:
             STATUS="$(node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("content/assurance/audio/certificates.json","utf8")); process.stdout.write(c.status);')"
             if [ "$STATUS" = "PENDING_RECOGNITION" ]; then
               REASON=pending-recognition
+            elif [ "$STATUS" = "PARTIAL" ]; then
+              mkdir -p .audio-repair
+              npm run -s assurance:audio:repair:plan -- --output .audio-repair/preflight-plan.json
+              COUNT="$(node -e 'const fs=require("node:fs"); const p=JSON.parse(fs.readFileSync(".audio-repair/preflight-plan.json","utf8")); process.stdout.write(String(p.items.length));')"
+              if [ "$COUNT" -gt 0 ]; then
+                REASON=partial-with-untried-candidates
+              else
+                RUN=false
+                REASON=current-PARTIAL-no-untried-candidates
+              fi
             else
               RUN=false
               REASON=current-"$STATUS"
@@ -136,6 +146,12 @@ jobs:
             --source-hashes .audio-repair/source-hashes.json
           npm run assurance:audio -- --write
 
+      - name: Snapshot scoped release before repair promotion
+        if: ${{ steps.plan.outputs.run == 'true' }}
+        run: |
+          python scripts/audio/rollback_unstable_promotions.py snapshot \
+            --snapshot-dir .audio-repair/baseline
+
       - name: Run bounded candidate repair loop
         if: ${{ steps.plan.outputs.run == 'true' }}
         shell: bash
@@ -193,6 +209,28 @@ jobs:
             --source-hashes .audio-repair/source-hashes.json
           npm run assurance:audio -- --write
 
+      - name: Roll back final-pass-unstable promotions
+        if: ${{ steps.plan.outputs.run == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .audio-repair/rollback-applied
+          python scripts/audio/rollback_unstable_promotions.py rollback \
+            --snapshot-dir .audio-repair/baseline \
+            --changed-marker .audio-repair/rollback-applied
+          if [ -f .audio-repair/rollback-applied ]; then
+            echo "Rollback changed release bytes; rebuilding exact shipped state."
+            node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
+            npm run -s assurance:audio:scope -- --output .audio-repair/source-hashes.json
+            python scripts/audio/certify_audio.py \
+              --vosk-model /tmp/vosk-model-small-en-us-0.15 \
+              --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip \
+              --source-hashes .audio-repair/source-hashes.json
+            npm run assurance:audio -- --write
+          else
+            echo "No final-pass rollback required."
+          fi
+
       - name: Validate exact evidence and promotions
         if: ${{ steps.plan.outputs.run == 'true' }}
         run: |
@@ -220,6 +258,10 @@ jobs:
             .audio-repair/candidates.json
             .audio-repair/candidate-recognition.json
             .audio-repair/result.json
+            .audio-repair/rollback-applied
+            .audio-repair/baseline/certificates.json
+            .audio-repair/baseline/audio-manifest.json
+            .audio-repair/baseline/audio-report.json
           if-no-files-found: warn
           retention-days: 30
 
