@@ -44,7 +44,18 @@ Persian and English share most screens, so direction is handled explicitly:
 - Persian content often embeds English ("ضمیر I همیشه با حرف بزرگ نوشته
   می‌شود."). Render it with `<Fa text={…} />` inside a `lang="fa" dir="rtl"`
   element: each English run becomes `<bdi lang="en">`, so it keeps its own
-  direction and full stop, and screen readers voice it in English. Text whose
+  direction and screen readers voice it in English.
+  - A run carries on across spaces and punctuation up to the next Persian
+    letter. "am: I am / I'm." and "I'm a student. / She's tired." are each
+    one run. Separate isolates would lay the colons and slashes between them
+    out right to left, so the examples would read backwards.
+  - An English phrase keeps its own full stop. After a lone English word, the
+    full stop belongs to the Persian sentence.
+  - Phrases of three words or more are one inline block. Wrapped across lines
+    inside Persian, their parts would sit at opposite ends of each line.
+  - Put English pieces that belong together, such as a word and its
+    pronunciation, in one isolate. The bidi lint fails on two English
+    isolates with only spaces or punctuation between them (`SPLIT_RUN`). Text whose
   language varies from item to item, such as a Practice prompt, uses
   `<Varied text={…} />`, which picks the language from the script.
 - An interface word placed inside content of the other language, such as the

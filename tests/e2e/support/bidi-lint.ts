@@ -9,12 +9,16 @@ import type { Page } from "@playwright/test";
  *   or ends with punctuation, a symbol or a bracket. The bidi algorithm puts
  *   those on the wrong side, as in "B2+" shown as "+B2".
  * - LANG_FA_IN_EN: Persian script inside an element whose language is English.
+ * - SPLIT_RUN: two isolated English runs with only spaces or punctuation
+ *   between them. The separators then lay out right to left, so
+ *   "I'm a student. / She's tired." reads backwards and "am: I am" becomes
+ *   ":am". One English stretch must be one isolate.
  * - LANG_EN_IN_FA: English inside an element whose language is Persian,
  *   alone or embedded in Persian text. Screen readers read it with a Persian
  *   voice.
  */
 export type BidiFinding = {
-  rule: "DIRECTION" | "LANG_FA_IN_EN" | "LANG_EN_IN_FA";
+  rule: "DIRECTION" | "LANG_FA_IN_EN" | "LANG_EN_IN_FA" | "SPLIT_RUN";
   text: string;
   direction: string;
   lang: string;
@@ -90,6 +94,33 @@ export function bidiLint(page: Page): Promise<BidiFinding[]> {
       // does this for content. A word is two Latin letters or more, or a lone
       // letter such as "I"; a letter joined to digits ("A1") is a code.
       if (lang === "fa" && /(?<![A-Za-z0-9])(?:[A-Za-z]{2,}|[A-Za-z](?![A-Za-z0-9]))/.test(text)) report("LANG_EN_IN_FA");
+    }
+    for (const isolate of document.querySelectorAll("bdi[lang='en'], [lang='en'][dir='ltr']")) {
+      if (!visible(isolate)) continue;
+      let between = "";
+      let next: Node | null = isolate.nextSibling;
+      while (next && next.nodeType === Node.TEXT_NODE) {
+        between += next.textContent ?? "";
+        next = next.nextSibling;
+      }
+      if (!(next instanceof Element) || next.getAttribute("lang") !== "en") continue;
+      // Only pieces of one line: blocks, grid items and controls are separate.
+      const inline = (element: Element) =>
+        getComputedStyle(element).display.startsWith("inline") && !element.matches("button, a, input, textarea, select");
+      if (!inline(isolate) || !inline(next)) continue;
+      if (RTL.test(between) || /[A-Za-z]/.test(between)) continue;
+      if (getComputedStyle(isolate.parentElement ?? isolate).direction !== "rtl") continue;
+      const key = `SPLIT_RUN|${isolate.textContent}|${next.textContent}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      findings.push({
+        rule: "SPLIT_RUN",
+        text: `${isolate.textContent}${between}${next.textContent}`.slice(0, 80),
+        direction: "rtl",
+        lang: "en",
+        where: where(isolate),
+        html: (isolate.parentElement ?? isolate).outerHTML.replace(/\s+/g, " ").slice(0, 400),
+      });
     }
     return findings;
   });

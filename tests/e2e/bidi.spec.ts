@@ -67,9 +67,13 @@ for (const lang of ["fa", "en"] as const) {
       found.push(...(await bidiLint(page)).map((item) => ({ ...item, at: path })));
     }
 
-    await open(page, "/lexicon?q=you");
-    await page.locator("main ul button").first().click();
-    found.push(...(await bidiLint(page)).map((item) => ({ ...item, at: "word detail" })));
+    // "be" has the densest mixed notes: example lists, colons and slashes.
+    for (const word of ["you", "be"]) {
+      await open(page, `/lexicon?q=${word}`);
+      await page.locator("main ul button").filter({ hasText: new RegExp(`^${word}\\b`) }).first().click();
+      await expect(page.locator("main article h2").first()).toBeVisible();
+      found.push(...(await bidiLint(page)).map((item) => ({ ...item, at: `word detail: ${word}` })));
+    }
 
     await open(page, "/learn");
     await page.getByRole("button", { name: lang === "en" ? /Start lesson/ : /شروع درس/ }).click();

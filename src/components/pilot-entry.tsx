@@ -53,10 +53,12 @@ export function PilotEntryDetail({
                 </li>
               ))}
             </ul>
-            <p lang="en" dir="ltr" className="mt-3 text-sm text-pretty">
-              <span className="text-muted" lang={copy.uiLang} dir={copy.uiLang === "fa" ? "rtl" : "ltr"}>{copy.collocationsLabel}: </span>
-              {sense.collocations.join(" · ")}
-            </p>
+            <div className="mt-3 text-sm">
+              <p className="text-muted">{copy.collocationsLabel}</p>
+              <p lang="en" dir="ltr" className="text-pretty">
+                {sense.collocations.join(" · ")}
+              </p>
+            </div>
             {sense.usage ? <p lang="fa" dir="rtl" className="mt-2 text-sm text-pretty"><Fa text={sense.usage} /></p> : null}
             <div className="mt-3 rounded-md bg-paper-2 p-3 text-sm">
               <p className="text-xs text-muted">{copy.mistakeLabel}</p>

@@ -680,8 +680,11 @@ function Reteach({ target, copy, accent }: { target: TargetContent; copy: Copy; 
     <div className="mt-3 rounded-md bg-paper-2 p-3 shadow-[var(--shadow-border)]">
       <p className="text-xs font-semibold text-muted">{copy.reteachLabel}</p>
       <p className="mt-1">
-        <span lang="en" dir="ltr" className="lex-word text-2xl">{entry.headword}</span>{" "}
-        <span lang="en" dir="ltr" className="text-sm text-muted">{pronunciationFor(sense, accent)}</span>
+        {/* One English isolate, so the pronunciation follows the word in either direction. */}
+        <bdi lang="en" dir="ltr">
+          <span className="lex-word text-2xl">{entry.headword}</span>{" "}
+          <span className="text-sm text-muted">{pronunciationFor(sense, accent)}</span>
+        </bdi>
       </p>
       <p lang="fa" dir="rtl" className="mt-1 font-medium"><Fa text={sense.gloss} /></p>
       {example ? (
