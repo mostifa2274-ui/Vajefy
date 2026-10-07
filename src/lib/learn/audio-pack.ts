@@ -100,9 +100,9 @@ async function markerOf(cache: Cache): Promise<PackMarker | null> {
       unitId: value.unitId,
       accent: value.accent,
       version: value.version,
-      bytes: value.bytes,
+      bytes: Number(value.bytes),
       files,
-      installedAt: value.installedAt,
+      installedAt: Number(value.installedAt),
     };
   } catch {
     return null;
