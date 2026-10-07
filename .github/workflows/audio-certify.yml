@@ -89,7 +89,7 @@ jobs:
 
       - name: Commit only audio evidence
         run: |
-          scripts/audio-certification-commit.sh \
+          bash scripts/audio-certification-commit.sh \
             "Audio certification: refresh Unit 1-3 evidence (run ${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT})"
 
       - name: Upload certification evidence
