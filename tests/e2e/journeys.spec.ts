@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { expect, test, type Browser, type BrowserContextOptions, type Page } from "@playwright/test";
 import { LEGACY_KEY, readProgress } from "./progress-db";
 import { runJourney, watchErrors, type JourneyResult } from "./support/journey";
@@ -429,11 +430,10 @@ test("storage pressure keeps a lesson usable, exportable and retryable without l
     await page.waitForSelector("html[data-progress-ready]");
     const result = await runJourney(page, { budget: 40, errors, reached: visible(page, LESSON_DONE) });
     expect(result.findings, report(result)).toEqual([]);
-    const learned = await savedCards(page);
-    expect(learned.length).toBeGreaterThanOrEqual(1);
 
     // The emergency export must use live memory, including work that has not
-    // reached IndexedDB yet.
+    // reached IndexedDB yet. Read the downloaded artifact itself rather than
+    // IndexedDB: the whole point of this phase is that IndexedDB is failing.
     const liveAlert = page.getByRole("alert");
     await expect(liveAlert).toBeVisible();
     const [download] = await Promise.all([
@@ -442,6 +442,11 @@ test("storage pressure keeps a lesson usable, exportable and retryable without l
     ]);
     expect(await download.failure()).toBeNull();
     expect(download.suggestedFilename()).toMatch(/\.json$/);
+    const backupPath = await download.path();
+    expect(backupPath).toBeTruthy();
+    const backup = JSON.parse(await readFile(backupPath!, "utf8")) as { progress?: { cards?: Record<string, unknown> } };
+    const learned = Object.keys(backup.progress?.cards ?? {});
+    expect(learned.length).toBeGreaterThanOrEqual(1);
 
     // Free the storage and use the product's real retry path. It must flush
     // the ordered journal, dismiss the warning, and survive a reload.
