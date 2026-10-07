@@ -1,0 +1,70 @@
+name: Refresh frontier review correction
+
+on:
+  push:
+    branches: [codex/frontier-pilot-safe-apply-v2]
+    paths:
+      - ".github/workflows/frontier-review-refresh.yml"
+      - "content/curriculum/A1.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: frontier-review-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: codex/frontier-pilot-safe-apply-v2
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Rebuild order-dependent artifacts
+        run: |
+          node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
+          npm run assurance:records
+          npm run assurance:scene-coverage
+          npm run coach:cases
+          npm run assurance:content:baseline
+
+      - name: Verify deterministic assurance gates
+        run: npm run validate:data
+
+      - name: Commit only generated frontier artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- content/compiled/enhanced.json content/assurance/records/A1.json content/assurance/scene-coverage.json content/assurance/deterministic-baseline.json content/coach-eval/cases.json public/data/enhanced-order.json public/data/enhanced
+
+          UNEXPECTED="$(
+            {
+              git diff --name-only
+              git ls-files --others --exclude-standard
+            } | sort -u | grep -v '^$' || true
+          )"
+          if [ -n "$UNEXPECTED" ]; then
+            echo "Unexpected generated changes outside the frontier allowlist:" >&2
+            printf '%s\n' "$UNEXPECTED" >&2
+            exit 1
+          fi
+
+          if git diff --cached --quiet; then
+            echo "No generated frontier changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh frontier artifacts after spell ordering fix"
+          git push origin HEAD:codex/frontier-pilot-safe-apply-v2
