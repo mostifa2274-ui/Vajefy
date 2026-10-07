@@ -126,6 +126,9 @@ if (!promoter.includes('sha256(source) != candidate["sourceClipSha256"]')) {
 if (!promoter.includes('sha256(generated) != candidate["clipSha256"]')) {
   fail("Candidate promotion must verify the certified candidate SHA-256.");
 }
+if (!promoter.includes('policy_sha256 = sha256(POLICY)') || !promoter.includes('log["policySha256"] = policy_sha256')) {
+  fail("Repair history must bind its first attempt to the exact frozen policy SHA-256.");
+}
 if (
   !productionGenerator.includes('prior_meta.get("repairPolicyVersion")') ||
   !productionGenerator.includes('repaired = True')
