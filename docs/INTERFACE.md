@@ -72,6 +72,20 @@ Journeys:
   review sitting within budget.
 - **Wrong answers.** A learner who keeps answering wrongly still finishes, and
   every word stays scheduled.
+- **Update during a lesson.** A controlled lesson client asks the real service
+  worker registration to install an update under the same scope. The update
+  must remain waiting instead of swapping the controller under the learner;
+  the lesson then finishes and its progress survives reopening.
+- **Backup and restore.** A real browser export is captured, progress is changed
+  and committed, then the exported file is imported through the real file
+  picker and confirmation path. The earlier settings and cards must return.
+- **Intermittent connectivity.** A lesson alternates repeatedly between online
+  and offline bursts. The learner must keep moving through the cached course
+  and the resulting progress must survive a reload after connectivity returns.
+- **Storage pressure.** IndexedDB writes are forced to fail with a
+  `QuotaExceededError` at the browser API boundary. The app must enter its
+  session-only save mode, keep the lesson usable, export the live unsaved state,
+  flush the ordered journal after Retry, and keep all answers after reload.
 
 Each step is checked for:
 

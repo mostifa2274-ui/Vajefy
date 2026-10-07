@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { expect, test, type Browser, type BrowserContextOptions, type Page } from "@playwright/test";
 import { LEGACY_KEY, readProgress } from "./progress-db";
 import { runJourney, watchErrors, type JourneyResult } from "./support/journey";
@@ -235,4 +236,229 @@ test("a learner who keeps answering wrongly still finishes, and every word is st
   } finally {
     await page.context().close();
   }
+});
+
+
+test("an app update waits while a lesson is active, then progress survives reopening", async ({ browser }) => {
+  test.setTimeout(180_000);
+  const context = await browser.newContext({ ...PROFILES[1]!.context, serviceWorkers: "allow" });
+  const page = await context.newPage();
+  const errors = watchErrors(page);
+  try {
+    await seed(page, { lang: "en" });
+    await page.goto("/learn");
+    await page.waitForFunction(
+      () => document.documentElement.dataset.offlineReady === "true" && navigator.serviceWorker.controller !== null,
+      undefined,
+      { timeout: 30_000 },
+    );
+    // Reload once so this document is certainly controlled by the installed release.
+    await page.reload();
+    await page.waitForSelector("html[data-progress-ready]");
+
+    const first = await runJourney(page, { budget: 40, limit: 6, errors, reached: visible(page, LESSON_DONE) });
+    expect(first.reached).toBe(false);
+    expect(first.findings.filter((finding) => finding.kind !== "impossible-completion"), report(first)).toEqual([]);
+
+    const update = await page.evaluate(async () => {
+      const registration = await navigator.serviceWorker.getRegistration();
+      if (!registration || !navigator.serviceWorker.controller) throw new Error("service worker is not controlling the lesson");
+      const before = navigator.serviceWorker.controller.scriptURL;
+      let controllerChanges = 0;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        controllerChanges += 1;
+      });
+      // A different script URL on the same scope exercises the real update
+      // lifecycle without a production-only test hook. The response is the
+      // real worker; its install policy must leave an update waiting while
+      // this old-release client is active.
+      const updated = await navigator.serviceWorker.register("/sw.js?journey-update=1", { scope: "/" });
+      const deadline = Date.now() + 15_000;
+      while (!updated.waiting && updated.installing && Date.now() < deadline) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+      await new Promise((resolve) => setTimeout(resolve, 250));
+      return {
+        before,
+        controller: navigator.serviceWorker.controller?.scriptURL ?? null,
+        waiting: Boolean(updated.waiting),
+        controllerChanges,
+      };
+    });
+    expect(update.waiting).toBe(true);
+    expect(update.controller).toBe(update.before);
+    expect(update.controllerChanges).toBe(0);
+
+    const rest = await runJourney(page, { budget: 40, errors, reached: visible(page, LESSON_DONE) });
+    expect(rest.findings, report(rest)).toEqual([]);
+    const beforeClose = await savedCards(page);
+    expect(beforeClose.length).toBeGreaterThanOrEqual(1);
+
+    await page.close();
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    const reopened = await context.newPage();
+    await reopened.goto("/");
+    await reopened.waitForSelector("html[data-progress-ready]");
+    expect(await savedCards(reopened)).toEqual(expect.arrayContaining(beforeClose));
+    await reopened.close();
+  } finally {
+    await context.close();
+  }
+  expect(errors).toEqual([]);
+});
+
+test("a progress backup restores the exact saved settings and cards after later changes", async ({ browser }) => {
+  test.setTimeout(120_000);
+  const page = await open(browser, PROFILES[4]!);
+  try {
+    const now = Date.now();
+    await seed(page, {
+      lang: "en",
+      cards: {
+        "lex:A1:i": {
+          ease: 2.5,
+          interval: 1,
+          due: now,
+          reps: 1,
+          lapses: 0,
+          state: "learning",
+          step: 0,
+          last: now,
+          fsrs: { model: "fsrs6", stability: 1, difficulty: 5, scheduledDays: 1, learningSteps: 1, state: "learning", lastReview: now },
+        },
+      },
+    });
+    await page.goto("/progress");
+    await page.waitForSelector("html[data-progress-ready]");
+    const before = await readProgress(page);
+    expect(before.state.dailyGoal).toBe(10);
+    expect(Object.keys(before.state.cards)).toContain("lex:A1:i");
+
+    const fileInput = page.locator('input[type="file"][accept*="json"]');
+    const backupPanel = fileInput.locator("..").locator("..");
+    const [download] = await Promise.all([
+      page.waitForEvent("download"),
+      backupPanel.locator("button").first().click(),
+    ]);
+    const backupPath = await download.path();
+    expect(backupPath).toBeTruthy();
+
+    // Make a real saved change after the backup.
+    const settings = page.locator("section.max-w-xl");
+    await settings.locator('button[aria-pressed]').nth(1).click();
+    await expect.poll(async () => (await readProgress(page)).state.dailyGoal).toBe(20);
+
+    // Import the earlier export and confirm replacement through the real UI.
+    await fileInput.setInputFiles(backupPath!);
+    await backupPanel.locator("button.bg-accent").click();
+    await expect.poll(async () => (await readProgress(page)).state.dailyGoal).toBe(10);
+    const restored = await readProgress(page);
+    expect(Object.keys(restored.state.cards)).toContain("lex:A1:i");
+  } finally {
+    await page.context().close();
+  }
+});
+
+test("a lesson survives repeated online and offline transitions without losing progress", async ({ browser }) => {
+  test.setTimeout(180_000);
+  const page = await open(browser, PROFILES[1]!);
+  const context = page.context();
+  const errors = watchErrors(page);
+  try {
+    await seed(page, { lang: "en" });
+    await page.goto("/learn");
+    await page.waitForFunction(
+      () => document.documentElement.dataset.offlineReady === "true" && navigator.serviceWorker.controller !== null,
+      undefined,
+      { timeout: 30_000 },
+    );
+    await page.reload();
+    await page.waitForSelector("html[data-progress-ready]");
+
+    let reached = false;
+    for (const offline of [false, true, false, true]) {
+      await context.setOffline(offline);
+      const burst = await runJourney(page, { budget: 40, limit: 4, reached: visible(page, LESSON_DONE) });
+      const unexpected = burst.findings.filter((finding) => finding.kind !== "impossible-completion");
+      expect(unexpected, report(burst)).toEqual([]);
+      reached ||= burst.reached;
+      if (reached) break;
+    }
+
+    await context.setOffline(false);
+    if (!reached) {
+      const finish = await runJourney(page, { budget: 40, reached: visible(page, LESSON_DONE) });
+      expect(finish.findings, report(finish)).toEqual([]);
+    }
+    await page.reload();
+    expect((await savedCards(page)).length).toBeGreaterThanOrEqual(1);
+  } finally {
+    await context.setOffline(false);
+    await context.close();
+  }
+  expect(errors.filter((error) => !/Failed to load resource|ERR_INTERNET_DISCONNECTED|net::/.test(error))).toEqual([]);
+});
+
+test("storage pressure keeps a lesson usable, exportable and retryable without losing answers", async ({ browser }) => {
+  test.setTimeout(180_000);
+  const context = await browser.newContext({ ...PROFILES[0]!.context, serviceWorkers: "allow" });
+  const page = await context.newPage();
+  const errors = watchErrors(page);
+  await page.addInitScript(() => {
+    const original = IDBObjectStore.prototype.put;
+    IDBObjectStore.prototype.put = function (...args: Parameters<IDBObjectStore["put"]>) {
+      if (localStorage.getItem("__vajefy_test_quota") === "1") {
+        throw new DOMException("Synthetic quota pressure", "QuotaExceededError");
+      }
+      return original.apply(this, args);
+    };
+  });
+  try {
+    await seed(page, { lang: "en" });
+    await page.goto("/progress");
+    await page.waitForSelector("html[data-progress-ready]");
+    await page.evaluate(() => localStorage.setItem("__vajefy_test_quota", "1"));
+
+    // The first real settings write fails at the IndexedDB boundary and enters
+    // session-only mode. The in-memory choice must remain usable.
+    const settings = page.locator("section.max-w-xl");
+    await settings.locator('button[aria-pressed]').nth(1).click();
+    const alert = page.getByRole("alert");
+    await expect(alert).toBeVisible();
+
+    await page.goto("/learn");
+    await page.waitForSelector("html[data-progress-ready]");
+    const result = await runJourney(page, { budget: 40, errors, reached: visible(page, LESSON_DONE) });
+    expect(result.findings, report(result)).toEqual([]);
+
+    // The emergency export must use live memory, including work that has not
+    // reached IndexedDB yet. Read the downloaded artifact itself rather than
+    // IndexedDB: the whole point of this phase is that IndexedDB is failing.
+    const liveAlert = page.getByRole("alert");
+    await expect(liveAlert).toBeVisible();
+    const [download] = await Promise.all([
+      page.waitForEvent("download"),
+      liveAlert.locator("button").first().click(),
+    ]);
+    expect(await download.failure()).toBeNull();
+    expect(download.suggestedFilename()).toMatch(/\.json$/);
+    const backupPath = await download.path();
+    expect(backupPath).toBeTruthy();
+    const backup = JSON.parse(await readFile(backupPath!, "utf8")) as { progress?: { cards?: Record<string, unknown> } };
+    const learned = Object.keys(backup.progress?.cards ?? {});
+    expect(learned.length).toBeGreaterThanOrEqual(1);
+
+    // Free the storage and use the product's real retry path. It must flush
+    // the ordered journal, dismiss the warning, and survive a reload.
+    await page.evaluate(() => localStorage.removeItem("__vajefy_test_quota"));
+    await liveAlert.locator("button").nth(1).click();
+    await expect(liveAlert).toBeHidden({ timeout: 15_000 });
+    await page.reload();
+    await page.waitForSelector("html[data-progress-ready]");
+    expect(await savedCards(page)).toEqual(expect.arrayContaining(learned));
+    expect((await readProgress(page)).state.dailyGoal).toBe(20);
+  } finally {
+    await context.close();
+  }
+  expect(errors).toEqual([]);
 });
