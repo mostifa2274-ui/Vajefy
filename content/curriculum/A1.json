@@ -1845,12 +1845,6 @@
           ]
         },
         {
-          "id": "lex:A1:trousers",
-          "prerequisites": [
-            "lex:A1:clothes"
-          ]
-        },
-        {
           "id": "lex:A1:shirt",
           "prerequisites": [
             "lex:A1:clothes",
@@ -1930,13 +1924,6 @@
           "id": "lex:A1:eight",
           "prerequisites": [
             "lex:A1:five"
-          ]
-        },
-        {
-          "id": "lex:A1:age",
-          "prerequisites": [
-            "lex:A1:old",
-            "lex:A1:family"
           ]
         },
         {
@@ -2256,7 +2243,7 @@
           ]
         }
       ],
-      "targetEntries": 82
+      "targetEntries": 80
     },
     {
       "id": "06-places-directions",
@@ -2663,10 +2650,6 @@
           ]
         },
         {
-          "id": "lex:A1:understand",
-          "prerequisites": []
-        },
-        {
           "id": "lex:A1:see",
           "prerequisites": [
             "lex:A1:place"
@@ -2781,7 +2764,7 @@
           ]
         }
       ],
-      "targetEntries": 81
+      "targetEntries": 80
     },
     {
       "id": "07-travel-transport",
@@ -3729,10 +3712,6 @@
           ]
         },
         {
-          "id": "lex:A1:listen",
-          "prerequisites": []
-        },
-        {
           "id": "lex:A1:list",
           "prerequisites": [
             "lex:A1:write",
@@ -3752,10 +3731,6 @@
             "lex:A1:computer",
             "lex:A1:email"
           ]
-        },
-        {
-          "id": "lex:A1:health",
-          "prerequisites": []
         },
         {
           "id": "lex:A1:important",
@@ -3782,12 +3757,6 @@
           ]
         },
         {
-          "id": "lex:A1:reason",
-          "prerequisites": [
-            "lex:A1:health"
-          ]
-        },
-        {
           "id": "lex:A1:result",
           "prerequisites": [
             "lex:A1:work"
@@ -3809,12 +3778,6 @@
           "id": "lex:A1:success",
           "prerequisites": [
             "lex:A1:work"
-          ]
-        },
-        {
-          "id": "lex:A1:opinion",
-          "prerequisites": [
-            "lex:A1:health"
           ]
         },
         {
@@ -3884,7 +3847,7 @@
           ]
         }
       ],
-      "targetEntries": 84
+      "targetEntries": 80
     },
     {
       "id": "09-leisure-people",
@@ -3960,6 +3923,10 @@
           "prerequisites": [
             "lex:A1:free"
           ]
+        },
+        {
+          "id": "lex:A1:listen",
+          "prerequisites": []
         },
         {
           "id": "lex:A1:music",
@@ -4399,7 +4366,7 @@
           ]
         }
       ],
-      "targetEntries": 79
+      "targetEntries": 80
     },
     {
       "id": "10-weather-clothes",
@@ -4510,6 +4477,12 @@
         },
         {
           "id": "lex:A1:skirt",
+          "prerequisites": [
+            "lex:A1:clothes"
+          ]
+        },
+        {
+          "id": "lex:A1:trousers",
           "prerequisites": [
             "lex:A1:clothes"
           ]
@@ -4814,12 +4787,6 @@
           ]
         },
         {
-          "id": "lex:A1:language",
-          "prerequisites": [
-            "lex:A1:understand"
-          ]
-        },
-        {
           "id": "lex:A1:hard",
           "prerequisites": [
             "lex:A1:weather"
@@ -4922,19 +4889,13 @@
           ]
         },
         {
-          "id": "lex:A1:sure",
-          "prerequisites": [
-            "lex:A1:understand"
-          ]
-        },
-        {
           "id": "lex:A1:farmer",
           "prerequisites": [
             "lex:A1:weather"
           ]
         }
       ],
-      "targetEntries": 81
+      "targetEntries": 80
     },
     {
       "id": "11-health-feelings",
@@ -4944,6 +4905,10 @@
       "objectiveEn": "Describe basic feelings, needs, body states, and simple health problems.",
       "objectiveFa": "احساسات، نیازها، وضعیت بدن و مشکل‌های سادهٔ سلامتی را بیان کن.",
       "entries": [
+        {
+          "id": "lex:A1:health",
+          "prerequisites": []
+        },
         {
           "id": "lex:A1:healthy",
           "prerequisites": [
@@ -5190,6 +5155,13 @@
           ]
         },
         {
+          "id": "lex:A1:age",
+          "prerequisites": [
+            "lex:A1:old",
+            "lex:A1:family"
+          ]
+        },
+        {
           "id": "lex:A1:born",
           "prerequisites": [
             "lex:A1:family",
@@ -5365,7 +5337,19 @@
           ]
         },
         {
+          "id": "lex:A1:reason",
+          "prerequisites": [
+            "lex:A1:health"
+          ]
+        },
+        {
           "id": "lex:A1:true",
+          "prerequisites": [
+            "lex:A1:health"
+          ]
+        },
+        {
+          "id": "lex:A1:opinion",
           "prerequisites": [
             "lex:A1:health"
           ]
@@ -5425,7 +5409,7 @@
           ]
         }
       ],
-      "targetEntries": 76
+      "targetEntries": 80
     },
     {
       "id": "12-help-everyday-problems",
@@ -5462,7 +5446,17 @@
           "prerequisites": []
         },
         {
+          "id": "lex:A1:understand",
+          "prerequisites": []
+        },
+        {
           "id": "lex:A1:cannot",
+          "prerequisites": [
+            "lex:A1:understand"
+          ]
+        },
+        {
+          "id": "lex:A1:language",
           "prerequisites": [
             "lex:A1:understand"
           ]
@@ -5662,6 +5656,12 @@
           "prerequisites": [
             "lex:A1:help",
             "lex:A1:problem"
+          ]
+        },
+        {
+          "id": "lex:A1:sure",
+          "prerequisites": [
+            "lex:A1:understand"
           ]
         },
         {
@@ -5932,7 +5932,7 @@
           ]
         }
       ],
-      "targetEntries": 77
+      "targetEntries": 80
     }
   ],
   "calibrationSlice": {
