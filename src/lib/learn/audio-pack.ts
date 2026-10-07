@@ -183,11 +183,13 @@ export async function downloadPack(
   const cache = await caches.open(name);
   const initial = await packStatus(pack);
   let cached = 0;
+  const valid = new Set<string>();
 
   // Re-validate resumable candidate entries before counting them.
   for (const file of pack.files) {
     if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
     if (await verified(cache, file)) {
+      valid.add(file.file);
       cached += 1;
     } else {
       await cache.delete(audioPath(file.file), { ignoreVary: true });
@@ -195,13 +197,7 @@ export async function downloadPack(
   }
   onProgress({ ...initial, cached, total: pack.files.length, current: false });
 
-  const missing = pack.files.filter(async () => false);
-  // Array.filter cannot await; build the queue explicitly from current keys.
-  const queue: AudioPackFile[] = [];
-  for (const file of pack.files) {
-    if (!(await verified(cache, file))) queue.push(file);
-  }
-  void missing;
+  const queue = pack.files.filter((file) => !valid.has(file.file));
 
   let failed = 0;
   async function worker() {
