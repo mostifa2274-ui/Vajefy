@@ -122,7 +122,9 @@ pair from the shipped MP3 bytes with three offline systems:
 All inference runs locally on the GitHub runner: there is no speech API key or
 hosted inference provider. The evidence records the exact shipped clip
 SHA-256, decoded signal statistics, both unconstrained ASR transcripts and
-alignment timings.
+alignment timings. ASR always compares against the learner-facing
+entry headword. A phoneme-level `tts` override is synthesis input only and can
+never become the expected lexical transcript.
 
 `scripts/audio-certification.ts` is the release authority. A target is
 `CERTIFIED` only when:
@@ -143,9 +145,9 @@ until every scoped pair is certified. Generated evidence does not retrigger
 the expensive recognizers.
 
 This completes the certification **foundation**, not Phase 3 itself. The Phase
-3 exit still requires every Unit 1–3 word/accent pair to be certified, and A8
-still requires versioned per-unit offline audio packs that survive interrupted
-replacement.
+3 exit still requires every Unit 1–3 word/accent pair to be certified. A8 is
+implemented with versioned per-unit offline audio packs and transactional
+replacement; automatic candidate regeneration remains open.
 
 ## Regenerating
 
