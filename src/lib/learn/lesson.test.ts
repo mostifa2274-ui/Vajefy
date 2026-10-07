@@ -464,8 +464,9 @@ test("delayed retrieval remains mandatory before the adaptive short path can fin
   assert.equal(shortPathEligible(beforeDelayed), false);
   const next = advanceLesson(beforeDelayed, T0 + 1);
   assert.equal(next.index, 4);
-  assert.equal(next.steps[next.index]?.kind, "check");
-  assert.equal(next.steps[next.index]?.kind === "check" && next.steps[next.index]?.role, "delayed");
+  const delayed = next.steps[next.index];
+  assert.ok(delayed?.kind === "check");
+  assert.equal(delayed.role, "delayed");
 });
 
 test("a close first attempt blocks the short path, while response speed never decides eligibility", () => {
