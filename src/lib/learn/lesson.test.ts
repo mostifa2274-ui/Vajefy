@@ -365,3 +365,62 @@ test("authored task support survives content resolution for the learner UI", () 
   });
   assert.deepEqual(resolved?.support, [{ en: "helper", fa: "واژهٔ کمکی" }]);
 });
+
+
+test("a due known word is recycled in authored context without weakening new-word checks", () => {
+  const targets = introductionOrder(index.targets, "general").slice(0, 2);
+  const recycled = index.targets.find((candidate) => {
+    if (targets.some((target) => target.sense.id === candidate.sense.id)) return false;
+    const checks = index.content.get(candidate.sense.id)?.sense.check ?? [];
+    return checks.slice(0, -1).some((item) => ["choice", "cloze", "produce"].includes(item.type));
+  });
+  assert.ok(recycled);
+
+  const random = () => 0.37;
+  const baseline = buildLesson(index, targets, new Set(), T0, random);
+  const lesson = buildLesson(
+    index,
+    targets,
+    new Set([recycled.sense.id]),
+    T0,
+    random,
+    [recycled],
+  );
+
+  assert.deepEqual(lesson.targets, targets.map((target) => target.sense.id));
+  assert.deepEqual(lesson.recycled, [recycled.sense.id]);
+
+  const recycle = lesson.steps.find(
+    (step) => step.kind === "check" && step.role === "recycle" && step.ref.target === recycled.sense.id,
+  );
+  assert.ok(recycle?.kind === "check");
+  assert.equal(recycle.ref.from, "sense", "recycling must use authored context, not generated recognition");
+
+  if (recycle.ref.from === "sense") {
+    const heldOut = heldOutItem(index.content.get(recycled.sense.id)?.sense);
+    assert.notEqual(recycle.ref.item, heldOut?.id, "held-out assessment must remain untouched");
+  }
+
+  for (const target of targets) {
+    const roles = (session: typeof lesson) =>
+      session.steps.flatMap((step) =>
+        step.kind === "check" && step.ref.target === target.sense.id ? [step.role] : [],
+      );
+    assert.deepEqual(roles(lesson), roles(baseline), target.sense.id);
+  }
+});
+
+test("recycled review answers do not change readiness for newly taught targets", () => {
+  const targets = introductionOrder(index.targets, "general").slice(0, 1);
+  const recycled = index.targets.find((candidate) => {
+    if (candidate.sense.id === targets[0]!.sense.id) return false;
+    const checks = index.content.get(candidate.sense.id)?.sense.check ?? [];
+    return checks.length > 1;
+  });
+  assert.ok(recycled);
+  let lesson = buildLesson(index, targets, new Set([recycled.sense.id]), T0, () => 0.2, [recycled]);
+  const at = lesson.steps.findIndex((step) => step.kind === "check" && step.role === "recycle");
+  assert.ok(at >= 0);
+  lesson = answerLesson({ ...lesson, index: at }, { op: "recycle", result: "correct", at: T0 }, index);
+  assert.deepEqual(lessonReadiness(lesson), {});
+});
