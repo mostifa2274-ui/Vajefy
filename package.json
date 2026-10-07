@@ -90,7 +90,8 @@
     "assurance:scene-coverage": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/scene-coverage.ts",
     "assurance:scene-coverage:check": "npm run assurance:scene-coverage -- --check",
     "assurance:frontier:plan": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/frontier-repair.ts",
-    "assurance:frontier:promote": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/frontier-promote.ts"
+    "assurance:frontier:promote": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/frontier-promote.ts",
+    "assurance:audio:scope": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/audio-source-hashes.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
