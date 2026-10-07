@@ -27,7 +27,7 @@ for (const marker of [
   "scripts/audio-certification-commit.sh",
   "assurance:audio:strict",
 ]) {
-  if (!workflow.includes(marker)) fail(\`Audio certification workflow marker missing: ${marker}\`);
+  if (!workflow.includes(marker)) fail(`Audio certification workflow marker missing: ${marker}`);
 }
 
 if (/secrets\./.test(workflow)) fail("Audio certification must not use repository secrets.");
@@ -42,7 +42,7 @@ const triggerBlock = /^on:\n((?: {2}.*\n|\n)*)/m.exec(workflow)?.[1] ?? "";
 const triggers = [...triggerBlock.matchAll(/^ {2}([a-z_]+):/gm)].map((match) => match[1]);
 for (const trigger of triggers) {
   if (!["push", "workflow_dispatch"].includes(trigger!)) {
-    fail(\`Audio certification has forbidden trigger: ${trigger}\`);
+    fail(`Audio certification has forbidden trigger: ${trigger}`);
   }
 }
 if (!triggers.includes("push")) fail("Audio certification must run automatically on relevant main pushes.");
@@ -59,7 +59,7 @@ for (const marker of [
   "content/assurance/audio/recognition.json",
   "content/assurance/audio/certificates.json",
 ]) {
-  if (!commit.includes(marker)) fail(\`Audio evidence commit safety marker missing: ${marker}\`);
+  if (!commit.includes(marker)) fail(`Audio evidence commit safety marker missing: ${marker}`);
 }
 if (/git add\s+(-A|--all|\.)(\s|$)/m.test(commit)) {
   fail("Audio evidence commit script must never stage the repository broadly.");
