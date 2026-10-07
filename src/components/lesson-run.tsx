@@ -603,15 +603,13 @@ function Check({
                   {item.shape}
                 </span>
                 {/* Read as "4 letters, b", not as a row of underscores. */}
-                <span className="sr-only">
+                <span className="sr-only" lang={copy.uiLang}>
                   {item.shape.replace(/[^_a-z]/gi, "").length} {copy.recallLetters}
-                  {/^[a-z]/i.test(item.shape) ? (
-                    <>
-                      {lang === "fa" ? "، " : ", "}
-                      <bdi lang="en" dir="ltr">{item.shape[0]}</bdi>
-                    </>
-                  ) : null}
+                  {/^[a-z]/i.test(item.shape) ? (lang === "fa" ? "، " : ", ") : null}
                 </span>
+                {/^[a-z]/i.test(item.shape) ? (
+                  <span className="sr-only" lang="en" dir="ltr">{item.shape[0]}</span>
+                ) : null}
               </p>
             </>
           ) : (

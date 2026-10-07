@@ -102,8 +102,25 @@ not penalized.
 the delayed retrieval) succeeded; *with help* when its latest unaided check
 failed but a prompted retry after it succeeded; and *needs another try*
 otherwise. A word stays "with help" until an unaided attempt succeeds. Skips are
-no evidence. Readiness is labelled apart from long-term mastery ("Settled"),
-which only spaced reviews establish, and neither replaces the delayed check-up.
+no evidence.
+
+Learner-facing vocabulary states are formal and evidence-based:
+
+- **New** — no schedule card exists yet.
+- **Learning** — the target has been introduced but is neither due, currently
+  ready from this lesson, nor supported by current delayed-retention evidence.
+- **Ready for now** — the current lesson's required unaided checks succeeded.
+  This state is session-local and is never inferred from speed.
+- **Due** — the scheduled due time has arrived. Due takes precedence over older
+  retention evidence because a retrieval is required now.
+- **Retained** — the latest scheduled review succeeded after at least one day.
+  A later failed scheduled review clears this state until delayed success is
+  demonstrated again.
+
+`Settled` remains a separate, stricter long-term stability statistic: FSRS
+review state with at least 21 days of stability (or the equivalent legacy
+interval). It is not used as a synonym for **Retained**. Neither Ready nor
+Retained replaces the independent 30-day check-up.
 
 ## Evidence that must be recorded
 

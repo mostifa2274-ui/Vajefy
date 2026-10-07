@@ -478,6 +478,37 @@ test("a close first attempt blocks the short path, while response speed never de
   assert.equal(shortPathEligible(careful), true, "slow/careful response latency is not a mastery criterion");
 });
 
+test("recycled context skips prompts the learner has already answered", () => {
+  const targets = introductionOrder(index.targets, "general").slice(0, 1);
+  const recycled = index.targets.find((candidate) => {
+    if (candidate.sense.id === targets[0]!.sense.id) return false;
+    const checks = index.content.get(candidate.sense.id)?.sense.check ?? [];
+    return checks.slice(0, -1).filter((item) => ["choice", "cloze", "produce"].includes(item.type)).length >= 2;
+  });
+  assert.ok(recycled);
+  const authored = (index.content.get(recycled.sense.id)?.sense.check ?? [])
+    .slice(0, -1)
+    .filter((item) => ["choice", "cloze", "produce"].includes(item.type));
+  assert.ok(authored.length >= 2);
+  const seen = new Set([`${recycled.sense.id}/${authored[0]!.id}`]);
+
+  assert.equal(hasRecycleContext(index, recycled.sense.id, seen), true);
+  const lesson = buildLesson(index, targets, new Set([recycled.sense.id]), T0, () => 0.2, [recycled], seen);
+  const step = lesson.steps.find(
+    (candidate) => candidate.kind === "check" && candidate.role === "recycle" && candidate.ref.target === recycled.sense.id,
+  );
+  assert.ok(step?.kind === "check" && step.ref.from === "sense");
+  assert.notEqual(step.ref.item, authored[0]!.id);
+
+  const allSeen = new Set(authored.map((item) => `${recycled.sense.id}/${item.id}`));
+  assert.equal(hasRecycleContext(index, recycled.sense.id, allSeen), false);
+  const omitted = buildLesson(index, targets, new Set([recycled.sense.id]), T0, () => 0.2, [recycled], allSeen);
+  assert.equal(
+    omitted.steps.some((candidate) => candidate.kind === "check" && candidate.role === "recycle"),
+    false,
+  );
+});
+
 test("a due known word is recycled in authored context without weakening new-word checks", () => {
   const targets = introductionOrder(index.targets, "general").slice(0, 2);
   const recycled = index.targets.find((candidate) => {
