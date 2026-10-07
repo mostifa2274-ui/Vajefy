@@ -90,3 +90,30 @@ test("already-satisfied recommendations remain accounted for without reordering"
   assert.deepEqual(result.blocked, []);
   assert.deepEqual(result.curriculum, curriculum);
 });
+
+
+test("stale or duplicate promotion plans fail closed", () => {
+  assert.throws(
+    () =>
+      applyPilotSafePromotions(curriculum, [
+        {
+          dependencyId: "first",
+          beforeEntryId: "anchor",
+          targetUnit: "05-five",
+          changesFrozenPilotRoster: false,
+        },
+      ]),
+    /stale target unit/,
+  );
+
+  const duplicate: FrontierPromotion = {
+    dependencyId: "first",
+    beforeEntryId: "anchor",
+    targetUnit: "04-four",
+    changesFrozenPilotRoster: false,
+  };
+  assert.throws(
+    () => applyPilotSafePromotions(curriculum, [duplicate, duplicate]),
+    /duplicate dependency ids/,
+  );
+});
