@@ -213,7 +213,7 @@ export function OfflineAudio({ copy }: { copy: Copy }) {
                   <div className="mt-1 h-1 rounded-full bg-line" aria-hidden>
                     <div
                       className="h-1 rounded-full bg-accent"
-                      style={{ width: ${Math.round((100 * status.cached) / Math.max(1, status.total))}% }}
+                      style={{ width: Math.round((100 * status.cached) / Math.max(1, status.total)) + "%" }}
                     />
                   </div>
                 </>
