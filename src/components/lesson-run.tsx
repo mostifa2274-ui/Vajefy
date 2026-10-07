@@ -98,8 +98,32 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
     }
   }, [assessMissing, index, session.createdAt, session.delays, session.id, session.missing, session.mode]);
 
+  function withTiming(current: LessonSession, at: number): LessonSession {
+    const currentStep = current.steps[current.index];
+    if (!currentStep) return current;
+    const activeMs = elapsed();
+    const answer = answerFor(current);
+    const responseMs = answer?.responseMs;
+    const sample = {
+      step: current.index,
+      at,
+      kind: currentStep.kind,
+      ...(currentStep.kind === "check" ? { role: currentStep.role, target: currentStep.ref.target } : {}),
+      ...(currentStep.kind === "teach" ? { target: currentStep.target } : {}),
+      activeMs,
+      ...(responseMs === undefined ? {} : { responseMs }),
+      ...(answer && answer.result !== "skipped" && responseMs !== undefined
+        ? { feedbackMs: Math.max(0, activeMs - responseMs) }
+        : {}),
+    };
+    const timing = [...(current.timing ?? []).filter((entry) => entry.step !== current.index), sample];
+    return { ...current, timing, updatedAt: at };
+  }
+
   function advance() {
-    const next = advanceLesson(session, timestamp());
+    const at = timestamp();
+    const measured = withTiming(session, at);
+    const next = advanceLesson(measured, at);
     saveSession(next);
     setSession(next);
     window.scrollTo?.({ top: 0 });
@@ -113,16 +137,22 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
   function record(ref: ItemRef, item: ResolvedItem, role: Role, result: LessonAnswer["result"], given: string) {
     const at = timestamp();
     const op = newId();
-    const answeredNext = answerLesson(session, { op, result, given, at }, index);
-    // A skipped question has nothing to give feedback on: go straight on.
-    const next = result === "skipped" ? advanceLesson(answeredNext, at) : answeredNext;
+    const responseMs = elapsed();
+    const answeredNext = answerLesson(session, { op, result, given, at, responseMs }, index);
+    // A skipped question has nothing to give feedback on: record the step and
+    // go straight on. Other checks keep accruing active time while feedback is
+    // visible, and are measured when the learner presses Next.
+    const next =
+      result === "skipped"
+        ? advanceLesson(withTiming(answeredNext, at), at)
+        : answeredNext;
     const extras = {
       id: op,
       at,
       session: session.id,
       prompt: `lesson:${role}:${item.type}`,
       promptId: promptIdOf(ref),
-      responseMs: elapsed(),
+      responseMs,
       contentVersion: index.bySense.get(ref.target)?.entry.version,
       // A retry comes after feedback that showed the answer.
       ...(role === "retry" ? { hint: true } : {}),

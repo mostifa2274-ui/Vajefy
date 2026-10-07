@@ -1,9 +1,16 @@
+import { DEFAULT_SECONDS_PER_NEW } from "./lesson-time";
+
 export type DailyPlanInput = {
   due: number;
   introducedToday: number;
   newPerDay: number;
   sessionSize: number;
   minutes: number;
+  /**
+   * Robust measured active seconds per new target. Omit until enough completed
+   * timed lessons exist; the planner then uses the preregistered fallback.
+   */
+  secondsPerNew?: number;
 };
 
 export type DailyPlan = {
@@ -43,6 +50,10 @@ export function dailyPlan(input: DailyPlanInput): DailyPlan {
   const newPerDay = whole(input.newPerDay);
   const sessionSize = whole(input.sessionSize);
   const minutes = whole(input.minutes);
+  const secondsPerNew =
+    Number.isFinite(input.secondsPerNew) && (input.secondsPerNew ?? 0) > 0
+      ? Math.max(30, Math.min(300, input.secondsPerNew!))
+      : DEFAULT_SECONDS_PER_NEW;
 
   const reviewTake = Math.min(due, sessionSize);
   const remainingNewAllowance = Math.max(0, newPerDay - introducedToday);
@@ -54,12 +65,15 @@ export function dailyPlan(input: DailyPlanInput): DailyPlan {
   else if (due >= Math.ceil(sessionSize / 2)) backlogCap = Math.max(1, Math.floor(timeBase / 2));
 
   const newLimit = Math.min(remainingNewAllowance, sessionRoom, backlogCap);
-  // Planning estimate only: reviews are short recall events; guided new targets
-  // include teaching, retrieval, feedback and an applied use.
+  // Planning estimate only: reviews are short recall events. New-target time
+  // comes from the learner's completed active-visible lesson distribution once
+  // there is enough evidence, otherwise from the frozen 90-second fallback.
+  // It affects only the displayed duration estimate, never which checks a
+  // learner must pass or how many new targets backlog policy permits.
   const estimatedMinutes =
     reviewTake === 0 && newLimit === 0
       ? 0
-      : Math.max(1, Math.ceil((reviewTake * 8 + newLimit * 90) / 60));
+      : Math.max(1, Math.ceil((reviewTake * 8 + newLimit * secondsPerNew) / 60));
 
   return { due, reviewTake, remainingNewAllowance, newLimit, estimatedMinutes };
 }
