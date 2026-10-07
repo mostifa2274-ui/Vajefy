@@ -213,8 +213,9 @@ export type Pilot = {
   scenes: Scene[];
   audio: Record<string, SenseAudio>;
   /** Every current clip per accent, for downloading pronunciation for offline use. */
-  audioPack: AudioPack;
+  audioPack: LegacyAudioPack;
 };
+export type LegacyAudioPack = Record<"gb" | "us", { files: string[]; bytes: number }>;
 export type AudioPackFile = { file: string; bytes: number };
 export type AudioUnitPack = {
   unitId: string;
