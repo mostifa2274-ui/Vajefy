@@ -276,6 +276,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--vosk-model", type=Path, required=True)
     parser.add_argument("--vosk-archive", type=Path, required=True)
+    parser.add_argument("--source-hashes", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=OUTPUT)
     parser.add_argument("--candidate-manifest", type=Path)
     parser.add_argument("--candidate-root", type=Path)
@@ -285,6 +286,21 @@ def main() -> int:
         parser.error(f"--vosk-model is not a directory: {args.vosk_model}")
     if not args.vosk_archive.is_file():
         parser.error(f"--vosk-archive is not a file: {args.vosk_archive}")
+    source_hashes = read_json(args.source_hashes)
+    expected_hash_keys = {
+        "curriculumSha256",
+        "enhancedSha256",
+        "audioManifestSha256",
+        "audioReportSha256",
+    }
+    if set(source_hashes) != expected_hash_keys:
+        raise RuntimeError("--source-hashes must contain exactly the four scoped source hash fields")
+    for key, value in source_hashes.items():
+        if not isinstance(value, str) or len(value) != 64 or any(
+            char not in "0123456789abcdef" for char in value
+        ):
+            raise RuntimeError(f"--source-hashes {key} is not a lowercase SHA-256")
+
     archive_hash = sha256(args.vosk_archive)
     if archive_hash != VOSK_ARCHIVE_SHA256:
         raise RuntimeError(
@@ -381,12 +397,7 @@ def main() -> int:
         "evidenceVersion": "vajefy-audio-v1",
         "generatedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "scope": {"units": scope_units},
-        "sourceHashes": {
-            "curriculumSha256": sha256(CURRICULUM),
-            "enhancedSha256": sha256(ENHANCED),
-            "audioManifestSha256": sha256(MANIFEST),
-            "audioReportSha256": sha256(REPORT),
-        },
+        "sourceHashes": source_hashes,
         "systems": {
             "whisper": {
                 "engine": "faster-whisper",
