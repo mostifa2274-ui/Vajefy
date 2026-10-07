@@ -77,8 +77,9 @@ function LearnPage() {
   // lesson. Selection is deterministic and consumes the existing review
   // budget; it never raises newLimit.
   const recycleLimit = Math.min(2, plan.reviewTake);
+  const priorPrompts = seenPrompts(Object.values(sessions));
   // Scan a few more due targets than we will show so an old card that lacks a
-  // safe authored context item does not block the next eligible due card.
+  // safe unseen authored context item does not block the next eligible card.
   const recyclePool =
     upcoming.length && full && recycleLimit
       ? recycleCandidates(full, cards, opened, Math.min(6, due))
@@ -158,7 +159,7 @@ function LearnPage() {
     );
 
   const recycled = recyclePool
-    .filter((target) => hasRecycleContext(full, target.sense.id))
+    .filter((target) => hasRecycleContext(full, target.sense.id, priorPrompts))
     .slice(0, recycleLimit);
   const met = index.targets.filter((target) => cards[target.sense.id]).length;
   const remaining = nextTargets(ordered, cards, 1).length;
@@ -224,7 +225,17 @@ function LearnPage() {
               <Button
                 className="mt-4"
                 onClick={() =>
-                  start(buildLesson(index, upcoming, new Set(Object.keys(cards)), Date.now(), Math.random, recycled))
+                  start(
+                    buildLesson(
+                      index,
+                      upcoming,
+                      new Set(Object.keys(cards)),
+                      Date.now(),
+                      Math.random,
+                      recycled,
+                      priorPrompts,
+                    ),
+                  )
                 }
               >
                 {copy.startLesson}
