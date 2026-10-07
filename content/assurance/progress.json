@@ -198,20 +198,16 @@
   },
   "currentWork": {
     "blocked": false,
-    "branch": "claude/analysis-in-depth-maqczd",
-    "objective": "Unattended semantic judge calibration and qualification at no charge (owner request, 2026-10-06).",
+    "branch": "codex/semantic-unit-scoped-packet",
+    "objective": "Scope Unit 1 semantic packet identity to Unit 1 inputs so later-unit curriculum reordering does not invalidate unchanged Unit 1 semantic evidence.",
     "completedOnBranch": [
-      "Gateway candidate registry: each role has pre-registered free Workers AI candidates, strongest first; the Worker runs only allowlisted candidates and returns measured token usage.",
-      "Planner (src/lib/learn/semantic-automation.ts): keeps qualified judges, activates the first unrejected, eligible, family-distinct candidate per role, settles roles in order, and picks one campaign that fits the day's remaining 8,500-Neuron ceiling.",
-      "scripts/semantic-automation.ts plan/record/reserve/check; scripts/semantic-rates.ts --refresh re-verifies Workers AI rates and paid-only models from Cloudflare's pricing page.",
-      "semantic-calibrate.yml runs on schedule 17 */6 * * * under content/assurance/semantic/automation.json and commits only its own records.",
-      "Ledgers: calibration/rejected.json (GPT-OSS 120B and Llama 3.3 70B for English), calibration/automation-log.json (2026-10-06 reserved as spent)."
+      "Removed the global compiled-content version from the Unit 1 semantic packet identity.",
+      "Packet identity remains bound to Unit 1 target source state, prerequisites, rubric manifest and prompt/rubric hashes.",
+      "Unit 1 packet freshness CI now ignores unrelated Units 4-12 reorderings while still failing on Unit 1 semantic-input drift."
     ],
     "pending": [
-      "After merge and Worker deploy: the first scheduled run on or after 2026-10-07 00:17 UTC calibrates English with Nemotron 3 120B; Persian (Kimi K2.5) runs on another day; pedagogy and adversarial wait for English to settle.",
-      "Owner decisions: Gate 0 rights; A1-FRONTIER-REPAIR (move late high-frequency words earlier, which changes the curriculum version and frozen study roster); P1-CHUNK-DECKS (reduce the Library to material linked from A1).",
-      "P2-REPAIR-LOOP: automated field-level repair (plan §8); it needs qualified judges to verify repairs, so it waits on P2-CALIBRATION.",
-      "P3-AUDIO-CERT: audio certification (plan §12) for the remaining 174 flags."
+      "Merge PR #138 after exact-head CI.",
+      "Continue P2 calibration/qualification from the existing automation ledgers; do not regenerate Unit 1 semantic evidence unless scoped Unit 1 inputs change."
     ]
   },
   "endpointResolution": {
@@ -347,10 +343,10 @@
         "validRuns": "3/3",
         "decision": "DO NOT PROMOTE",
         "metrics": {
-          "defectRecall": 0.0,
-          "cleanFalsePositiveRate": 0.0,
+          "defectRecall": 0,
+          "cleanFalsePositiveRate": 0,
           "cleanUncertainRate": 0.167,
-          "abstainAccuracy": 1.0,
+          "abstainAccuracy": 1,
           "expectedLabelStability": 0.667
         },
         "note": "No repeat produced FAIL on a defect case's expected criterion. Overall FAIL statuses on cal-en-grammar-agreement (repeats 2-3) and cal-en-sense-live (repeat 1) do not count toward recall, which is criterion-level.",
