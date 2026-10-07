@@ -10,10 +10,19 @@ import {
   resolveA1Entry,
 } from "../src/lib/learn/learner-language";
 
+type FrontierDependency = {
+  token: string;
+  frontier: number;
+  frontierEntryId?: string;
+  dependencyId?: string;
+  dependencyAt?: number;
+};
+
 type Finding = {
   code: string;
   where: string;
   message: string;
+  frontier?: FrontierDependency;
 };
 
 type Report = {
@@ -39,8 +48,13 @@ const USAGE_REQUIRED = new Set([
 
 const findings: Finding[] = [];
 
-function add(code: string, where: string, message: string) {
-  findings.push({ code, where, message });
+function add(
+  code: string,
+  where: string,
+  message: string,
+  frontier?: FrontierDependency,
+) {
+  findings.push({ code, where, message, ...(frontier ? { frontier } : {}) });
 }
 
 function normalized(value: string): string {
@@ -355,11 +369,18 @@ const entries = allA1.filter((entry) => !selectedIds || selectedIds.has(entry.id
 // Curriculum frontier (plan §7 C3). An entry's first sense is taught at its
 // place in the curriculum; further senses come one unit later, so by then
 // the whole of the entry's own unit is known.
-const position = new Map<string, number>();
+const orderedEntryIds = curriculum.units.flatMap((unit) =>
+  unit.entries.map((item) => item.id),
+);
+const position = new Map(
+  orderedEntryIds.map((id, index) => [id, index] as const),
+);
 const unitEnd = new Map<string, number>();
+let curriculumOffset = 0;
 for (const unit of curriculum.units) {
-  for (const item of unit.entries) position.set(item.id, position.size);
-  for (const item of unit.entries) unitEnd.set(item.id, position.size - 1);
+  const end = curriculumOffset + unit.entries.length - 1;
+  for (const item of unit.entries) unitEnd.set(item.id, end);
+  curriculumOffset += unit.entries.length;
 }
 
 /** Irregular past forms from the A1 irregular-verb collection (went -> go). */
@@ -491,6 +512,12 @@ function checkTasks(
           id
             ? `"${form}" is taught later (${id}); gloss it in support or reword`
             : `"${form}" is not an A1 word; gloss it in support or reword`,
+          {
+            token: form,
+            frontier,
+            frontierEntryId: orderedEntryIds[frontier],
+            ...(id ? { dependencyId: id, dependencyAt: at } : {}),
+          },
         );
       }
     }
