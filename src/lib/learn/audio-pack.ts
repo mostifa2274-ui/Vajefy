@@ -40,15 +40,15 @@ function available(): boolean {
 }
 
 function identityPrefix(pack: Pick<AudioUnitPack, "unitId" | "accent">): string {
-  return ${AUDIO_PACK_CACHE_PREFIX}${pack.unitId}:${pack.accent}:;
+  return AUDIO_PACK_CACHE_PREFIX + pack.unitId + ":" + pack.accent + ":";
 }
 
 export function packCacheName(pack: Pick<AudioUnitPack, "unitId" | "accent" | "version">): string {
-  return ${identityPrefix(pack)}${pack.version};
+  return identityPrefix(pack) + pack.version;
 }
 
 function audioPath(file: string): string {
-  return $/audio/${file};
+  return "/audio/" + file;
 }
 
 function sameFiles(a: AudioPackFile[], b: AudioPackFile[]): boolean {
@@ -209,7 +209,7 @@ export async function downloadPack(
         if (!response.ok || response.status !== 200) throw new Error(String(response.status));
         const body = await response.arrayBuffer();
         if (body.byteLength !== file.bytes) {
-          throw new Error($byte-length mismatch for ${file.file}: ${body.byteLength} != ${file.bytes});
+          throw new Error("byte-length mismatch for " + file.file + ": " + body.byteLength + " != " + file.bytes);
         }
         await cache.put(
           audioPath(file.file),
@@ -229,12 +229,12 @@ export async function downloadPack(
 
   await Promise.all(Array.from({ length: 4 }, worker));
   if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
-  if (failed) throw new Error(${failed} files could not be downloaded.);
+  if (failed) throw new Error(failed + " files could not be downloaded.");
 
   // Full integrity pass before the version becomes active.
   for (const file of pack.files) {
     if (!(await verified(cache, file))) {
-      throw new Error($Integrity check failed for ${file.file}.);
+      throw new Error("Integrity check failed for " + file.file + ".");
     }
   }
 
