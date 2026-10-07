@@ -264,7 +264,7 @@ def targets() -> list[dict[str, Any]]:
                             "senseId": sense["id"],
                             "accent": accent,
                             "clipFile": word["file"],
-                            "expectedText": word["text"],
+                            "expectedText": entry["headword"],
                             "pronunciation": sense["pronunciation"][accent],
                             "path": clip,
                         }
