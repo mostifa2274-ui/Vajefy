@@ -12,7 +12,9 @@ import {
   CHECKUP_SIZE,
   checkupCandidates,
   contentIds,
+  hasRecycleContext,
   nextTargets,
+  recycleCandidates,
   seenPrompts,
   type LessonSession,
 } from "@/lib/learn/lesson";
@@ -72,13 +74,13 @@ function LearnPage() {
   const ordered = index ? focusFirst(introductionOrder(index.targets, goal), focus) : [];
   const upcoming = nextTargets(ordered, cards, plan.newLimit);
   // Recycle at most two of the oldest due enhanced targets inside a new-word
-  // lesson. This consumes the existing review budget; it never raises newLimit.
-  const recycleIds =
-    upcoming.length && index
-      ? dueIds(cards, opened)
-          .filter((id) => index.bySense.has(id))
-          .slice(0, Math.min(2, plan.reviewTake))
+  // lesson. Selection is deterministic and consumes the existing review
+  // budget; it never raises newLimit.
+  const recyclePool =
+    upcoming.length && full
+      ? recycleCandidates(full, cards, opened, Math.min(2, plan.reviewTake))
       : [];
+  const recycleIds = recyclePool.map((target) => target.sense.id);
   const checkup =
     unfinished || !full
       ? []
@@ -152,10 +154,7 @@ function LearnPage() {
       />
     );
 
-  const recycled = recycleIds.flatMap((id) => {
-    const target = full.bySense.get(id);
-    return target ? [target] : [];
-  });
+  const recycled = recyclePool.filter((target) => hasRecycleContext(full, target.sense.id));
   const met = index.targets.filter((target) => cards[target.sense.id]).length;
   const remaining = nextTargets(ordered, cards, 1).length;
   // The curriculum unit the next lesson belongs to, and how far into it the learner is.
