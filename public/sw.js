@@ -18,6 +18,8 @@ const DATA = [
 // Pronunciation clips are named by their content hash, so they never change
 // once published. They live in their own cache, which survives app updates.
 const AUDIO_CACHE = "vajefy-audio-v1";
+const AUDIO_PACK_CACHE_PREFIX = "vajefy-audio-unit-v2:";
+const AUDIO_PACK_MARKER = "/__vajefy_audio_pack_complete__";
 
 function sameOriginAsset(value) {
   try {
@@ -160,7 +162,28 @@ async function cacheFirst(request) {
   return (await previousReleaseMatch(request, { ignoreSearch: false, ignoreVary: true })) ?? response;
 }
 
+async function completeUnitPackMatch(request) {
+  const keys = await caches.keys();
+  // Incomplete replacement candidates intentionally have no marker and are
+  // invisible to playback. This preserves the previous working pack until the
+  // replacement validates and commits.
+  for (const key of keys.reverse()) {
+    if (!key.startsWith(AUDIO_PACK_CACHE_PREFIX)) continue;
+    const cache = await caches.open(key);
+    const marker = await cache.match(AUDIO_PACK_MARKER, { ignoreVary: true });
+    if (!marker) continue;
+    const cached = await cache.match(request, { ignoreVary: true });
+    if (cached) return cached;
+  }
+  return undefined;
+}
+
 async function cachedAudio(request) {
+  const packed = await completeUnitPackMatch(request);
+  if (packed) return packed;
+
+  // Clips played without an explicit unit download still get a lightweight
+  // opportunistic cache. It is separate from transactional unit packs.
   const cache = await caches.open(AUDIO_CACHE);
   const cached = await cache.match(request, { ignoreVary: true });
   if (cached) return cached;
