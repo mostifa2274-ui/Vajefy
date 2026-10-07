@@ -471,10 +471,23 @@ export function planAudioRepairs(
     const history = log.attempts.filter(
       (attempt) => attempt.targetId === record.targetId && attempt.sourceClipSha256 === record.clipSha256,
     );
-    // An isolated candidate can certify and still fail the final full-corpus
-    // pass. If that promotion was rolled back, the source SHA becomes current
-    // again; the certified attempt is still "tried", but must not prevent the
-    // next frozen candidate from being selected.
+    const certified = history.find((attempt) => attempt.outcome === "CERTIFIED");
+    if (certified) {
+      const rolledBack = log.finalFailures.some(
+        (failure) =>
+          failure.targetId === certified.targetId &&
+          failure.sourceClipSha256 === certified.sourceClipSha256 &&
+          failure.candidateId === certified.candidateId &&
+          failure.candidateClipSha256 === certified.candidateClipSha256,
+      );
+      // During the same four-round workflow the baseline certificate still
+      // describes the pre-promotion source. A certified promotion therefore
+      // pauses this target until the final full-corpus pass. Only a durable
+      // finalFailures record proves that exact promotion was rolled back and
+      // makes the next frozen candidate eligible on a later run.
+      if (!rolledBack) return [];
+    }
+
     const candidate = policy.candidates[record.accent].find(
       (item) => !history.some((attempt) => attempt.candidateId === item.id),
     );
