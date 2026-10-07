@@ -1,12 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  appendAudioAutomationAttempt,
   audioCertificateManifest,
   audioLexicalMatch,
   audioRecognitionManifest,
   audioRepairLog,
   audioRepairPolicy,
   deriveAudioCertificate,
+  MAX_AUDIO_AUTOMATION_ATTEMPTS,
   normalizeAudioTranscript,
   planAudioRepairs,
 } from "./audio-assurance";
@@ -195,6 +197,50 @@ function partialCertificate(blockers = ["whisper-lexical", "multi-system-disagre
     ],
   });
 }
+
+test("audio automation history is idempotent and bounded", () => {
+  let log = audioRepairLog.parse({
+    schemaVersion: 1,
+    policyVersion: "test-policy",
+    policySha256: null,
+    attempts: [],
+  });
+  const base = {
+    runAttempt: 1,
+    event: "schedule" as const,
+    headSha: "a".repeat(40),
+    certificateStatus: "PENDING_RECOGNITION" as const,
+    certified: 0,
+    targets: 386,
+    recognitionGeneratedAt: null,
+  };
+  log = appendAudioAutomationAttempt(log, {
+    ...base,
+    runId: "same",
+    at: "2026-10-07T00:00:00.000Z",
+    jobStatus: "failure",
+  });
+  log = appendAudioAutomationAttempt(log, {
+    ...base,
+    runId: "same",
+    at: "2026-10-07T01:00:00.000Z",
+    jobStatus: "success",
+  });
+  assert.equal(log.automationAttempts.length, 1);
+  assert.equal(log.automationAttempts[0]?.jobStatus, "success");
+
+  for (let i = 0; i < MAX_AUDIO_AUTOMATION_ATTEMPTS + 5; i += 1) {
+    log = appendAudioAutomationAttempt(log, {
+      ...base,
+      runId: String(i),
+      at: new Date(Date.UTC(2026, 9, 8, 0, i)).toISOString(),
+      jobStatus: "failure",
+    });
+  }
+  assert.equal(log.automationAttempts.length, MAX_AUDIO_AUTOMATION_ATTEMPTS);
+  assert.equal(log.automationAttempts.some((attempt) => attempt.runId === "same"), false);
+  assert.equal(log.automationAttempts.at(-1)?.runId, String(MAX_AUDIO_AUTOMATION_ATTEMPTS + 4));
+});
 
 test("audio repair planner picks the first untried candidate deterministically", () => {
   const empty = audioRepairLog.parse({ schemaVersion: 1, policyVersion: "test-policy", policySha256: null, attempts: [] });

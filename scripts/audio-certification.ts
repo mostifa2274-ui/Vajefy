@@ -2,8 +2,10 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {
+  appendAudioAutomationAttempt,
   audioCertificateManifest,
   audioRecognitionManifest,
+  audioRepairLog,
   deriveAudioCertificate,
   type AudioAccent,
   type AudioCertificateManifest,
@@ -19,6 +21,7 @@ const FILES = {
   report: path.join(ROOT, "content", "pilot", "audio-report.json"),
   recognition: path.join(AUDIO, "recognition.json"),
   certificates: path.join(AUDIO, "certificates.json"),
+  repairLog: path.join(AUDIO, "repair-log.json"),
 };
 
 const SCOPE_UNITS = ["01-introductions", "02-family-home", "03-daily-routine"] as const;
@@ -82,6 +85,48 @@ function sha256File(file: string): string {
 
 function same(a: unknown, b: unknown): boolean {
   return JSON.stringify(a) === JSON.stringify(b);
+}
+
+function requiredEnv(name: string): string {
+  const value = process.env[name]?.trim();
+  if (!value) fail("Missing required environment variable " + name + ".");
+  return value;
+}
+
+function recordAutomationAttempt(): void {
+  const certificates = audioCertificateManifest.safeParse(read<unknown>(FILES.certificates));
+  if (!certificates.success) fail("Cannot record automation against invalid audio certificates.");
+  const recognition = audioRecognitionManifest.safeParse(read<unknown>(FILES.recognition));
+  if (!recognition.success) fail("Cannot record automation against invalid recognition evidence.");
+  const log = audioRepairLog.safeParse(read<unknown>(FILES.repairLog));
+  if (!log.success) fail("Cannot record automation against invalid repair history.");
+
+  const runAttempt = Number(requiredEnv("GITHUB_RUN_ATTEMPT"));
+  if (!Number.isInteger(runAttempt) || runAttempt < 1) fail("GITHUB_RUN_ATTEMPT must be a positive integer.");
+  const next = appendAudioAutomationAttempt(log.data, {
+    runId: requiredEnv("GITHUB_RUN_ID"),
+    runAttempt,
+    at: new Date().toISOString(),
+    event: requiredEnv("GITHUB_EVENT_NAME") as "push" | "workflow_dispatch" | "schedule",
+    headSha: requiredEnv("GITHUB_SHA"),
+    jobStatus: requiredEnv("AUDIO_AUTOMATION_JOB_STATUS") as "success" | "failure" | "cancelled",
+    certificateStatus: certificates.data.status,
+    certified: certificates.data.summary.certified,
+    targets: certificates.data.summary.targets,
+    recognitionGeneratedAt: recognition.data.generatedAt,
+  });
+  fs.writeFileSync(FILES.repairLog, JSON.stringify(next, null, 2) + "\n");
+  console.log(
+    "Audio automation attempt recorded: " +
+      next.automationAttempts.at(-1)?.jobStatus +
+      ", certificates " +
+      certificates.data.status +
+      " (" +
+      certificates.data.summary.certified +
+      "/" +
+      certificates.data.summary.targets +
+      ").",
+  );
 }
 
 function fail(message: string): never {
@@ -229,6 +274,12 @@ function expectedCertificates(recognition: AudioRecognitionManifest): AudioCerti
 
 if (!fs.existsSync(FILES.recognition)) fail("Missing content/assurance/audio/recognition.json.");
 if (!fs.existsSync(FILES.certificates)) fail("Missing content/assurance/audio/certificates.json.");
+if (!fs.existsSync(FILES.repairLog)) fail("Missing content/assurance/audio/repair-log.json.");
+
+if (process.argv.includes("--record-automation")) {
+  recordAutomationAttempt();
+  process.exit(0);
+}
 
 const recognitionResult = audioRecognitionManifest.safeParse(read<unknown>(FILES.recognition));
 if (!recognitionResult.success) {

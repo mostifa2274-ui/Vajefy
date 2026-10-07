@@ -138,8 +138,20 @@ never become the expected lexical transcript.
    stale identity or a failed check is `QUARANTINED`, never averaged into a
    pass.
 
-The automatic `audio-certify.yml` workflow runs only when audio or its
-certification inputs change. Bot-generated evidence/promotions carry
+The automatic `audio-certify.yml` workflow runs when audio or its
+certification inputs change and also performs one scheduled check each day.
+The scheduled check is cheap when evidence is current: `CERTIFIED` or
+`PARTIAL` evidence exits before model/dependency setup. Expensive
+certification runs only while recognition is still pending or when committed
+evidence is stale/invalid. This gives infrastructure failures an unattended
+retry without repeatedly burning compute on a valid partial result.
+
+Every expensive attempt appends a bounded execution record to
+`repair-log.json`: GitHub run/attempt, trigger, source commit, job outcome and
+the certificate snapshot that actually existed at the end. If a run fails
+before evidence can be safely committed, partial working-tree mutations are
+discarded after their Actions artifact is uploaded and only the automation
+attempt is committed. Bot-generated evidence/promotions/outcome records carry
 `[audio-bot]` and are explicitly prevented from recursively starting the
 expensive workflow.
 

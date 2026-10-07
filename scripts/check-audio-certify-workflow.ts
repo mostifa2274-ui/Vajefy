@@ -27,6 +27,8 @@ const productionGenerator = fs.readFileSync(PRODUCTION_GENERATOR, "utf8");
 
 for (const marker of [
   "branches: [main]",
+  "schedule:",
+  'cron: "17 3 * * *"',
   "contents: write",
   "group: audio-certification",
   "cancel-in-progress: false",
@@ -40,6 +42,11 @@ for (const marker of [
   "assurance:audio:repair:plan",
   "assurance:audio:repair:evaluate",
   "assurance:audio:repair:check",
+  "Decide whether certification needs a retry",
+  "assurance:audio:check",
+  "--record-automation",
+  "AUDIO_AUTOMATION_JOB_STATUS",
+  "always() && steps.plan.outputs.run == 'true'",
   "[audio-bot]",
   "assurance:audio -- --write",
   "scripts/audio-certification-commit.sh",
@@ -59,11 +66,12 @@ if (/git (commit|push)/.test(workflow)) {
 const triggerBlock = /^on:\n((?: {2}.*\n|\n)*)/m.exec(workflow)?.[1] ?? "";
 const triggers = [...triggerBlock.matchAll(/^ {2}([a-z_]+):/gm)].map((match) => match[1]);
 for (const trigger of triggers) {
-  if (!["push", "workflow_dispatch"].includes(trigger!)) {
+  if (!["push", "schedule", "workflow_dispatch"].includes(trigger!)) {
     fail(`Audio certification has forbidden trigger: ${trigger}`);
   }
 }
 if (!triggers.includes("push")) fail("Audio certification must run automatically on relevant main pushes.");
+if (!triggers.includes("schedule")) fail("Pending or stale audio certification must retry on a bounded schedule.");
 
 const pathsBlock = /paths:\n((?: {6}- .*\n)+)/.exec(workflow)?.[1] ?? "";
 if (!pathsBlock) fail("Audio certification push trigger needs an explicit path allowlist.");
