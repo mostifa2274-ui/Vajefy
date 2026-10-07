@@ -42,6 +42,7 @@ jobs:
           node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
           npm run assurance:records
           npm run assurance:scene-coverage
+          npm run coach:cases
 
       - name: Verify deterministic assurance gates
         run: npm run validate:data
@@ -50,7 +51,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git add --             content/curriculum/A1.json             content/compiled/enhanced.json             content/assurance/records/A1.json             content/assurance/scene-coverage.json             public/data/enhanced-order.json             public/data/enhanced
+          git add --             content/curriculum/A1.json             content/compiled/enhanced.json             content/assurance/records/A1.json             content/assurance/scene-coverage.json             content/coach-eval/cases.json             public/data/enhanced-order.json             public/data/enhanced
 
           UNEXPECTED="$(
             {
