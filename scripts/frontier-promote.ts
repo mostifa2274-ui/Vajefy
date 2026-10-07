@@ -300,8 +300,25 @@ function main(): void {
         result.blocked.length +
         " blocked.",
     );
-    for (const item of result.blocked.slice(0, 20)) {
-      console.log("- " + item.dependencyId + ": " + item.reason);
+    if (result.moved.length) {
+      const moved = new Set(result.moved);
+      console.log("Movable promotion instructions:");
+      for (const promotion of plan.promotions.filter((item) => moved.has(item.dependencyId))) {
+        console.log(
+          "- " +
+            promotion.dependencyId +
+            " -> " +
+            promotion.targetUnit +
+            " before " +
+            promotion.beforeEntryId,
+        );
+      }
+    }
+    if (result.blocked.length) {
+      console.log("Top blocked promotions:");
+      for (const item of result.blocked.slice(0, 20)) {
+        console.log("- " + item.dependencyId + ": " + item.reason);
+      }
     }
   }
 
