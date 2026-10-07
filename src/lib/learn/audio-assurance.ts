@@ -199,6 +199,10 @@ export const audioCertificateManifest = z
 export type AudioCertificateManifest = z.infer<typeof audioCertificateManifest>;
 export type AudioCertificateRecord = z.infer<typeof audioCertificateRecord>;
 
+export function serializeAudioJson(value: unknown): string {
+  return JSON.stringify(value, null, 2) + "\n";
+}
+
 export const audioRepairCandidate = z
   .object({
     id: text,
@@ -498,6 +502,22 @@ export function normalizeAudioTranscript(value: string): string {
     .replace(/\s+/g, " ");
 }
 
+const ALIGNMENT_NON_LEXICAL = /^(?:<[^>]+>|\[[^\]]+\])$/;
+const ALIGNMENT_VARIANT_SUFFIX = /\(\d+\)$/;
+
+export function normalizeAudioAlignmentWords(
+  words: readonly { name: string }[],
+): string[] {
+  return words.flatMap((word) => {
+    const raw = word.name.trim();
+    if (!raw || ALIGNMENT_NON_LEXICAL.test(raw)) return [];
+    const normalized = normalizeAudioTranscript(
+      raw.replace(ALIGNMENT_VARIANT_SUFFIX, ""),
+    );
+    return normalized ? normalized.split(" ").filter(Boolean) : [];
+  });
+}
+
 function editDistance(a: string[], b: string[]): number {
   const row = Array.from({ length: b.length + 1 }, (_, index) => index);
   for (let i = 1; i <= a.length; i += 1) {
@@ -615,7 +635,7 @@ export function deriveAudioCertificate(
   const whisperLexical = audioLexicalMatch(expected.expectedText, clip.whisper.transcript);
   const voskLexical = audioLexicalMatch(expected.expectedText, clip.vosk.transcript);
   const expectedWords = normalizeAudioTranscript(expected.expectedText).split(" ").filter(Boolean);
-  const alignedWords = clip.alignment.words.map((word) => normalizeAudioTranscript(word.name)).filter(Boolean);
+  const alignedWords = normalizeAudioAlignmentWords(clip.alignment.words);
   const forcedAlignment =
     clip.alignment.status === "ok" &&
     clip.alignment.coverage !== null &&
