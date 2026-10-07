@@ -96,6 +96,24 @@ Every answer is an event with a unique id. Each event records:
 - whether the learner answered or skipped;
 - the active response time in milliseconds.
 
+Guided lessons additionally persist **per-step active-visible timing**. The
+clock stops when the tab is hidden and, while visible, stops accruing after
+60 seconds without pointer, keyboard, input, wheel or touch activity. Returning
+to a visible lesson starts a fresh active reading window. Completed steps record
+their total active time; answered checks also preserve response time and the
+remaining correction/feedback time. Teaching-card dwell and scene/contrast
+reading therefore remain distinguishable instead of being inferred from
+wall-clock session duration.
+
+After at least three completed timed guided lessons, the planner uses the
+median active time per new target to estimate how long today's plan will take.
+The estimate is bounded to 30–300 seconds per target and otherwise falls back
+to the preregistered 90-second assumption. **Measured speed never changes the
+required retrieval/listening/context/delayed checks or the backlog-based
+new-word cap.** This prevents careful readers, accessibility users and slower
+devices from being assigned an easier or harder learning path because of
+latency alone.
+
 History collected before a field existed is **unknown**, never zero.
 
 - `docs/PROGRESS_STORAGE.md` describes the event store.
