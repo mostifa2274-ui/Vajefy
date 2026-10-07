@@ -300,9 +300,15 @@ function teachingChecks(sense: Sense | undefined): CheckItem[] {
 }
 
 /** Whether a loaded target has meaningful authored context safe for recycling. */
-export function hasRecycleContext(index: Pick<PilotIndex, "content">, senseId: string): boolean {
+export function hasRecycleContext(
+  index: Pick<PilotIndex, "content">,
+  senseId: string,
+  seen: ReadonlySet<string> = new Set(),
+): boolean {
   return teachingChecks(index.content.get(senseId)?.sense).some(
-    (item) => item.type === "produce" || item.type === "cloze" || item.type === "choice",
+    (item) =>
+      (item.type === "produce" || item.type === "cloze" || item.type === "choice") &&
+      !seen.has(`${senseId}/${item.id}`),
   );
 }
 
@@ -376,6 +382,7 @@ export function buildLesson(
   now: number,
   random: () => number = Math.random,
   recycled: PilotTarget[] = [],
+  seen: ReadonlySet<string> = new Set(),
 ): LessonSession {
   const steps: LessonStep[] = [];
   const used = new Map<string, Set<string>>(targets.map((target) => [target.sense.id, new Set<string>()]));
@@ -393,7 +400,12 @@ export function buildLesson(
   // never the held-out final assessment item. Targets without an authored
   // teaching check are omitted rather than weakened.
   const recycleSteps = recycled.flatMap((target): LessonStep[] => {
-    const item = contentItem(senseOf(target), ["produce", "cloze", "choice"], new Set<string>());
+    const usedBefore = new Set(
+      [...seen]
+        .filter((prompt) => prompt.startsWith(`${target.sense.id}/`))
+        .map((prompt) => prompt.slice(target.sense.id.length + 1)),
+    );
+    const item = contentItem(senseOf(target), ["produce", "cloze", "choice"], usedBefore);
     return item
       ? [{ kind: "check", role: "recycle", ref: { from: "sense", target: target.sense.id, item: item.id } }]
       : [];
