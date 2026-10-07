@@ -966,3 +966,14 @@ gateway smoke test (run 37545667281) confirmed the deployed allowlist matches
 the pre-registered candidates. The first scheduled campaign (English,
 Nemotron 3 120B) runs on the `17 */6 * * *` schedule. Its outcome lands in
 `content/assurance/semantic/calibration/`.
+
+## Checkpoint — Unit 1 semantic packet identity scoped to Unit 1 inputs
+
+PR #138 hardens semantic packet provenance without changing any semantic judgment or qualification threshold.
+
+- The Unit 1 packet no longer embeds the global compiled-content build version.
+- Its generation context remains derived from the exact Unit 1 target source state and prerequisites, with rubric/prompt hashes preserved.
+- Reordering unrelated Units 4–12 therefore does not invalidate unchanged Unit 1 semantic evidence.
+- Any change to Unit 1 source/prerequisites, rubric manifest or prompt/rubric versions still invalidates the packet as before.
+
+Resume point: merge PR #138 after exact-head CI, then continue the existing P2 calibration/qualification automation. Do not regenerate Unit 1 semantic evidence merely because later A1 units move.
