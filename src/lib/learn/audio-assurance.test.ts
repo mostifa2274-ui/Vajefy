@@ -233,7 +233,7 @@ test("audio automation history is idempotent and bounded", () => {
     log = appendAudioAutomationAttempt(log, {
       ...base,
       runId: String(i),
-      at: new Date(Date.UTC(2026, 0, 2, 0, i)).toISOString(),
+      at: new Date(Date.UTC(2026, 9, 8, 0, i)).toISOString(),
       jobStatus: "failure",
     });
   }
