@@ -4,7 +4,7 @@ import { newId } from "./session";
 import { readyToIntroduce } from "./targets";
 import { bestSpelling, shuffle } from "./text";
 import type { AssessmentPart } from "./ops";
-import type { Grade, PracticeSkill } from "./types";
+import type { CardProg, Grade, PracticeSkill } from "./types";
 
 /**
  * A guided lesson. For each new target the sequence is: understand (teaching
@@ -33,10 +33,10 @@ export type ItemRef =
   | { from: "generated"; target: string; mode: "meaning" | "form" | "recall" | "listen"; options: string[] };
 
 /** Check-up roles measure retention (docs/LEARNING_MEASURES.md) and never schedule or teach. */
-export type Role = "retrieve" | "listen" | "context" | "delayed" | "retry" | "apply" | "checkup-use" | "checkup-meaning";
+export type Role = "retrieve" | "listen" | "context" | "recycle" | "delayed" | "retry" | "apply" | "checkup-use" | "checkup-meaning";
 
 /** Roles whose answers are unaided: no answer was shown for the item before. */
-const UNAIDED: ReadonlySet<Role> = new Set(["retrieve", "listen", "context", "delayed"]);
+const UNAIDED: ReadonlySet<Role> = new Set(["retrieve", "listen", "context", "recycle", "delayed"]);
 
 export type LessonStep =
   | { kind: "teach"; target: string }
@@ -86,6 +86,8 @@ export type LessonSession = {
   /** Required check-up evidence that was unavailable; absence is never scored as wrong. */
   missing?: Record<string, AssessmentPart[]>;
   targets: string[];
+  /** Previously learned due targets reviewed in authored context in this lesson. */
+  recycled?: string[];
   steps: LessonStep[];
   index: number;
   answers: LessonAnswer[];
@@ -297,6 +299,36 @@ function teachingChecks(sense: Sense | undefined): CheckItem[] {
   return sense?.check.slice(0, -1) ?? [];
 }
 
+/** Whether a loaded target has meaningful authored context safe for recycling. */
+export function hasRecycleContext(index: Pick<PilotIndex, "content">, senseId: string): boolean {
+  return teachingChecks(index.content.get(senseId)?.sense).some(
+    (item) => item.type === "produce" || item.type === "cloze" || item.type === "choice",
+  );
+}
+
+/**
+ * Up to `limit` oldest due enhanced targets. Selection needs only the small
+ * catalogue listing; callers load these entries and then use
+ * `hasRecycleContext` before putting them into a lesson.
+ */
+export function recycleCandidates(
+  index: Pick<PilotIndex, "bySense">,
+  cards: Record<string, CardProg | undefined>,
+  now: number,
+  limit = 2,
+): PilotTarget[] {
+  const take = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : 0;
+  if (!take) return [];
+  return Object.entries(cards)
+    .flatMap(([id, card]) => {
+      const target = index.bySense.get(id);
+      return card && card.due <= now && target ? [{ target, due: card.due }] : [];
+    })
+    .sort((a, b) => a.due - b.due || a.target.sense.id.localeCompare(b.target.sense.id))
+    .slice(0, take)
+    .map(({ target }) => target);
+}
+
 function contentItem(sense: Sense | undefined, types: CheckItem["type"][], used: Set<string>): CheckItem | undefined {
   const checks = teachingChecks(sense);
   for (const type of types) {
@@ -343,6 +375,7 @@ export function buildLesson(
   known: Set<string>,
   now: number,
   random: () => number = Math.random,
+  recycled: PilotTarget[] = [],
 ): LessonSession {
   const steps: LessonStep[] = [];
   const used = new Map<string, Set<string>>(targets.map((target) => [target.sense.id, new Set<string>()]));
@@ -356,6 +389,16 @@ export function buildLesson(
     return { kind: "check", role: "context", ref: { from: "generated", target: target.sense.id, mode: "form", options: distractors(index, target, random) } };
   };
 
+  // Recycling must be meaningful context, never generated recognition and
+  // never the held-out final assessment item. Targets without an authored
+  // teaching check are omitted rather than weakened.
+  const recycleSteps = recycled.flatMap((target): LessonStep[] => {
+    const item = contentItem(senseOf(target), ["produce", "cloze", "choice"], new Set<string>());
+    return item
+      ? [{ kind: "check", role: "recycle", ref: { from: "sense", target: target.sense.id, item: item.id } }]
+      : [];
+  });
+
   // Listening uses the word's recorded clip; without one there is no step.
   const listenStep = (target: PilotTarget): LessonStep[] =>
     hasRecording(index, target.sense.id)
@@ -365,12 +408,16 @@ export function buildLesson(
   targets.forEach((target, position) => {
     steps.push({ kind: "teach", target: target.sense.id });
     steps.push({ kind: "check", role: "retrieve", ref: { from: "generated", target: target.sense.id, mode: "recall", options: [] } });
+    // A due known word is recycled at a predictable boundary without reducing
+    // the new target's required checks or consuming the new-word allowance.
+    if (recycleSteps[position]) steps.push(recycleSteps[position]!);
     // Interleave: the previous word is heard and used in a new context after this one is taught.
     const previous = targets[position - 1];
     if (previous) steps.push(...listenStep(previous), contextStep(previous));
   });
   const last = targets[targets.length - 1];
   if (last) steps.push(...listenStep(last), contextStep(last));
+  if (recycleSteps.length > targets.length) steps.push(...recycleSteps.slice(targets.length));
 
   for (const target of targets) {
     const item = contentItem(senseOf(target), ["produce", "cloze", "choice"], used.get(target.sense.id)!);
@@ -404,6 +451,7 @@ export function buildLesson(
     updatedAt: now,
     mode: "lesson",
     targets: targets.map((target) => target.sense.id),
+    ...(recycleSteps.length ? { recycled: [...new Set(recycleSteps.map((step) => step.kind === "check" ? step.ref.target : "").filter(Boolean))] } : {}),
     steps,
     index: 0,
     answers: [],
@@ -450,10 +498,11 @@ export function answerFor(session: LessonSession, step = session.index): LessonA
 }
 
 /**
- * Record an answer. A wrong retrieval, listening or context answer earns one
- * prompted retry two steps later, after feedback that showed the answer: typed
- * recall again, or listening again (never for the delayed retrieval, which
- * starts the schedule, and never twice for the same target). A skipped
+ * Record an answer. A wrong retrieval, listening, new-word context or recycled
+ * context answer earns one prompted retry two steps later, after feedback that
+ * showed the answer: typed recall again, or listening again (never for the
+ * delayed retrieval, which starts the schedule, and never twice for the same
+ * target). A skipped
  * listening question earns nothing and costs nothing.
  */
 export function answerLesson(
@@ -465,7 +514,7 @@ export function answerLesson(
   if (answerFor(session)) return session;
   const step = session.steps[session.index];
   let steps = session.steps;
-  if (step?.kind === "check" && answer.result === "wrong" && (step.role === "retrieve" || step.role === "listen" || step.role === "context")) {
+  if (step?.kind === "check" && answer.result === "wrong" && (step.role === "retrieve" || step.role === "listen" || step.role === "context" || step.role === "recycle")) {
     const target = step.ref.target;
     const retried = steps.some((other) => other.kind === "check" && other.role === "retry" && other.ref.target === target);
     const pilotTarget = index.bySense.get(target);

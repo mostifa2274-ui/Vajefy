@@ -44,6 +44,7 @@ const ROLE_LABEL: Record<Role, keyof Copy> = {
   retrieve: "roleRetrieve",
   listen: "roleListen",
   context: "roleContext",
+  recycle: "roleRecycle",
   delayed: "roleDelayed",
   retry: "roleRetry",
   apply: "roleApply",
@@ -164,8 +165,11 @@ export function LessonRun({ initial, index, onExit }: { initial: LessonSession; 
     if (result === "skipped") skip(ref.target, skillOf(ref, item), extras);
     else if (role === "checkup-use" || role === "checkup-meaning") {
       assess(ref.target, role === "checkup-use" ? "use" : "meaning", result !== "wrong", session.delays?.[ref.target] ?? 0, extras);
-    } else if (role === "delayed") review(ref.target, gradeOf(result), extras);
-    else practice(ref.target, gradeOf(result), skillOf(ref, item), extras);
+    } else if (role === "delayed" || role === "recycle") {
+      // Recycled known words consume the real scheduled-review budget. They
+      // are not counted as new introductions or downgraded to practice.
+      review(ref.target, gradeOf(result), extras);
+    } else practice(ref.target, gradeOf(result), skillOf(ref, item), extras);
     setSession(next);
     if (result === "skipped") window.scrollTo?.({ top: 0 });
   }
@@ -601,7 +605,12 @@ function Check({
                 {/* Read as "4 letters, b", not as a row of underscores. */}
                 <span className="sr-only">
                   {item.shape.replace(/[^_a-z]/gi, "").length} {copy.recallLetters}
-                  {/^[a-z]/i.test(item.shape) ? `${lang === "fa" ? "،" : ","} ${item.shape[0]}` : ""}
+                  {/^[a-z]/i.test(item.shape) ? (
+                    <>
+                      {lang === "fa" ? "، " : ", "}
+                      <bdi lang="en" dir="ltr">{item.shape[0]}</bdi>
+                    </>
+                  ) : null}
                 </span>
               </p>
             </>

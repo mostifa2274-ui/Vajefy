@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { GOALS, type Pilot, type PilotOrder } from "./content";
-import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, heldOutItem, lessonReadiness, lessonSize, lessonStats, nextTargets, resolveItem, seenPrompts, shapeOf, skillOf, writtenForms } from "./lesson";
+import { advanceLesson, answerLesson, buildApplication, buildCheckup, buildLesson, checkupCandidates, checkupResult, gradeTyped, hasRecycleContext, heldOutItem, lessonReadiness, lessonSize, lessonStats, nextTargets, recycleCandidates, resolveItem, seenPrompts, shapeOf, skillOf, writtenForms } from "./lesson";
 import { focusFirst, indexPilot, introducible, introductionOrder, pilotFace, unitOf } from "./pilot";
 import { orderForGoal } from "./targets";
+import type { CardProg } from "./types";
 
 const pilot = JSON.parse(readFileSync("content/compiled/enhanced.json", "utf8")) as Pilot;
 const index = indexPilot(pilot);
@@ -364,4 +365,107 @@ test("authored task support survives content resolution for the learner UI", () 
     item: authored.id,
   });
   assert.deepEqual(resolved?.support, [{ en: "helper", fa: "واژهٔ کمکی" }]);
+});
+
+
+function testCard(due: number): CardProg {
+  return {
+    ease: 2.5,
+    interval: 1,
+    due,
+    reps: 1,
+    lapses: 0,
+    state: "review",
+    step: 0,
+  };
+}
+
+test("recycle candidates are the bounded oldest due enhanced targets", () => {
+  const ids = index.targets.slice(0, 4).map((target) => target.sense.id);
+  const cards: Record<string, CardProg> = {
+    [ids[0]!]: testCard(T0 - 1_000),
+    [ids[1]!]: testCard(T0 - 10_000),
+    [ids[2]!]: testCard(T0 + 1),
+    [ids[3]!]: testCard(T0 - 5_000),
+    "lex:A1:not-in-enhanced": testCard(T0 - 20_000),
+  };
+  assert.deepEqual(
+    recycleCandidates(index, cards, T0, 2).map((target) => target.sense.id),
+    [ids[1], ids[3]],
+  );
+  assert.deepEqual(recycleCandidates(index, cards, T0, 0), []);
+  assert.deepEqual(recycleCandidates(index, cards, T0, Number.NaN), []);
+});
+
+test("recycle context exists only when a non-held-out authored task is available", () => {
+  const withContext = index.targets.find((target) => {
+    const checks = index.content.get(target.sense.id)?.sense.check ?? [];
+    return checks.slice(0, -1).some((item) => item.type === "choice" || item.type === "cloze" || item.type === "produce");
+  });
+  assert.ok(withContext);
+  assert.equal(hasRecycleContext(index, withContext.sense.id), true);
+
+  const localPilot = structuredClone(pilot);
+  const localTarget = localPilot.entries[0]!.senses[0]!;
+  localTarget.check = localTarget.check.slice(-1);
+  const localIndex = indexPilot(localPilot);
+  assert.equal(hasRecycleContext(localIndex, localTarget.id), false);
+});
+
+test("a due known word is recycled in authored context without weakening new-word checks", () => {
+  const targets = introductionOrder(index.targets, "general").slice(0, 2);
+  const recycled = index.targets.find((candidate) => {
+    if (targets.some((target) => target.sense.id === candidate.sense.id)) return false;
+    const checks = index.content.get(candidate.sense.id)?.sense.check ?? [];
+    return checks.slice(0, -1).some((item) => ["choice", "cloze", "produce"].includes(item.type));
+  });
+  assert.ok(recycled);
+
+  const random = () => 0.37;
+  const baseline = buildLesson(index, targets, new Set(), T0, random);
+  const lesson = buildLesson(
+    index,
+    targets,
+    new Set([recycled.sense.id]),
+    T0,
+    random,
+    [recycled],
+  );
+
+  assert.deepEqual(lesson.targets, targets.map((target) => target.sense.id));
+  assert.deepEqual(lesson.recycled, [recycled.sense.id]);
+
+  const recycle = lesson.steps.find(
+    (step) => step.kind === "check" && step.role === "recycle" && step.ref.target === recycled.sense.id,
+  );
+  assert.ok(recycle?.kind === "check");
+  assert.equal(recycle.ref.from, "sense", "recycling must use authored context, not generated recognition");
+
+  if (recycle.ref.from === "sense") {
+    const heldOut = heldOutItem(index.content.get(recycled.sense.id)?.sense);
+    assert.notEqual(recycle.ref.item, heldOut?.id, "held-out assessment must remain untouched");
+  }
+
+  for (const target of targets) {
+    const roles = (session: typeof lesson) =>
+      session.steps.flatMap((step) =>
+        step.kind === "check" && step.ref.target === target.sense.id ? [step.role] : [],
+      );
+    assert.deepEqual(roles(lesson), roles(baseline), target.sense.id);
+  }
+});
+
+test("recycled review answers do not change readiness for newly taught targets", () => {
+  const targets = introductionOrder(index.targets, "general").slice(0, 1);
+  const recycled = index.targets.find((candidate) => {
+    if (candidate.sense.id === targets[0]!.sense.id) return false;
+    const checks = index.content.get(candidate.sense.id)?.sense.check ?? [];
+    return checks.length > 1;
+  });
+  assert.ok(recycled);
+  let lesson = buildLesson(index, targets, new Set([recycled.sense.id]), T0, () => 0.2, [recycled]);
+  const at = lesson.steps.findIndex((step) => step.kind === "check" && step.role === "recycle");
+  assert.ok(at >= 0);
+  lesson = answerLesson({ ...lesson, index: at }, { op: "recycle", result: "correct", at: T0 }, index);
+  assert.deepEqual(lessonReadiness(lesson), {});
 });
