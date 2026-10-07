@@ -306,11 +306,19 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("mode", choices=["snapshot", "rollback"])
     parser.add_argument("--snapshot-dir", type=Path, required=True)
+    parser.add_argument("--changed-marker", type=Path)
     args = parser.parse_args()
     snapshot_dir = args.snapshot_dir.resolve()
     if args.mode == "snapshot":
         return snapshot(snapshot_dir)
-    rollback(snapshot_dir)
+    rolled_back = rollback(snapshot_dir)
+    if args.changed_marker:
+        marker = args.changed_marker.resolve()
+        if rolled_back:
+            marker.parent.mkdir(parents=True, exist_ok=True)
+            marker.write_text(str(rolled_back) + "\n", encoding="utf8")
+        elif marker.exists():
+            marker.unlink()
     return 0
 
 
