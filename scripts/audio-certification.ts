@@ -155,7 +155,7 @@ function buildTargets() {
             accent,
             clipFile: word.file,
             clipSha256: sha256File(disk),
-            expectedText: word.text,
+            expectedText: entry.headword,
             pronunciation: sense.pronunciation[accent],
             manifestSignal: {
               duration: metadata.duration,
