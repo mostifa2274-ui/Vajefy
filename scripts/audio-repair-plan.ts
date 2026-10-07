@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {
@@ -36,6 +37,10 @@ if (!log.success) {
 }
 if (log.data.policyVersion !== policy.data.policyVersion) {
   fail("Audio repair log and policy versions differ.");
+}
+const policySha256 = crypto.createHash("sha256").update(fs.readFileSync(POLICY)).digest("hex");
+if (log.data.policySha256 !== null && log.data.policySha256 !== policySha256) {
+  fail("Audio repair history belongs to different repair-policy.json bytes; migrate or reset it explicitly.");
 }
 
 // A candidate promoted into the current manifest gets one final full-corpus
