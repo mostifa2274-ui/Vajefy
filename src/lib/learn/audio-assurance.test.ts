@@ -324,7 +324,7 @@ test("audio repair planner picks the first untried candidate deterministically",
   assert.equal(planAudioRepairs(partialCertificate(), repairPolicy, once)[0]?.candidate.id, "gb-two");
 });
 
-test("audio repair planner stops after a certified candidate for the same source", () => {
+test("audio repair planner pauses after isolated certification until final-pass rollback is recorded", () => {
   const log = audioRepairLog.parse({
     schemaVersion: 1,
     policyVersion: "test-policy",
@@ -342,6 +342,57 @@ test("audio repair planner stops after a certified candidate for the same source
     ],
   });
   assert.deepEqual(planAudioRepairs(partialCertificate(), repairPolicy, log), []);
+});
+
+test("audio repair planner advances after an isolated certified candidate is rolled back", () => {
+  const log = audioRepairLog.parse({
+    schemaVersion: 1,
+    policyVersion: "test-policy",
+    policySha256: "a".repeat(64),
+    attempts: [
+      {
+        targetId: "lex:A1:i:gb",
+        sourceClipSha256: "8".repeat(64),
+        candidateId: "gb-one",
+        candidateClipSha256: "9".repeat(64),
+        at: "2026-10-07T00:01:00Z",
+        outcome: "CERTIFIED",
+        blockers: [],
+      },
+    ],
+    finalFailures: [
+      {
+        targetId: "lex:A1:i:gb",
+        sourceClipSha256: "8".repeat(64),
+        candidateId: "gb-one",
+        candidateClipSha256: "9".repeat(64),
+        at: "2026-10-07T00:02:00Z",
+        blockers: ["vosk-lexical", "multi-system-disagreement"],
+      },
+    ],
+  });
+  assert.equal(planAudioRepairs(partialCertificate(), repairPolicy, log)[0]?.candidate.id, "gb-two");
+});
+
+test("audio repair final-pass failures are unique per source and candidate", () => {
+  const failure = {
+    targetId: "lex:A1:i:gb",
+    sourceClipSha256: "8".repeat(64),
+    candidateId: "gb-one",
+    candidateClipSha256: "9".repeat(64),
+    at: "2026-10-07T00:02:00Z",
+    blockers: ["vosk-lexical"],
+  };
+  assert.equal(
+    audioRepairLog.safeParse({
+      schemaVersion: 1,
+      policyVersion: "test-policy",
+      policySha256: "a".repeat(64),
+      attempts: [],
+      finalFailures: [failure, failure],
+    }).success,
+    false,
+  );
 });
 
 test("audio repair planner never synthesises around source-identity failures", () => {
