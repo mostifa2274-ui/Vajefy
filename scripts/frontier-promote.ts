@@ -128,9 +128,7 @@ export function applyPilotSafePromotions(
 ): PilotSafePromotionResult {
   const next = cloneCurriculum(curriculum);
   const pending = new Map(
-    promotions
-      .filter((promotion) => !promotion.changesFrozenPilotRoster)
-      .map((promotion) => [promotion.dependencyId, promotion] as const),
+    promotions.map((promotion) => [promotion.dependencyId, promotion] as const),
   );
   const moved: string[] = [];
   const alreadySatisfied: string[] = [];
@@ -153,7 +151,7 @@ export function applyPilotSafePromotions(
       ) {
         continue;
       }
-      if (targetUnit < 3) continue;
+      if (promotion.changesFrozenPilotRoster || targetUnit < 3) continue;
 
       if (dependencyAt < anchorAt) {
         alreadySatisfied.push(dependencyId);
@@ -200,7 +198,9 @@ export function applyPilotSafePromotions(
     if (dependencyAt === undefined) return { dependencyId, reason: "dependency-missing" };
     if (anchorAt === undefined) return { dependencyId, reason: "anchor-missing" };
     if (targetUnit === undefined) return { dependencyId, reason: "target-unit-missing" };
-    if (targetUnit < 3) return { dependencyId, reason: "frozen-pilot-roster" };
+    if (promotion.changesFrozenPilotRoster || targetUnit < 3) {
+      return { dependencyId, reason: "frozen-pilot-roster" };
+    }
 
     const entry = flattened(next).find((candidate) => candidate.id === dependencyId);
     if (!entry) return { dependencyId, reason: "dependency-missing" };
