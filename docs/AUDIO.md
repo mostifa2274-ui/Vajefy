@@ -132,6 +132,14 @@ alignment timings. ASR always compares against the learner-facing
 entry headword. A phoneme-level `tts` override is synthesis input only and can
 never become the expected lexical transcript.
 
+Source identity is scoped to the exact Unit 1–3 inputs consumed by this gate:
+the scoped unit membership/order, learner-facing headwords and pronunciations,
+word-clip references and signal metadata, and relevant word-level audio flags.
+Edits confined to Units 4–12 therefore do not invalidate Unit 1–3 audio
+evidence, while any change that can alter a scoped target still changes the
+recorded source hashes. The Node release authority and Python recognizer both
+consume the same generated scoped-hash file.
+
 `scripts/audio-certification.ts` is the release authority. A target is
 `CERTIFIED` only when:
 
