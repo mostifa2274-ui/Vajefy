@@ -53,6 +53,22 @@ class WordnetSourceSenseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "sense keys missing"):
             source_references(self.archive, self.intake)
 
+    def test_adjective_member_syntactic_marker_matches_bare_sense_lemma(self):
+        sat = self.root / "satellite.zip"
+        with ZipFile(sat, "w") as bundle:
+            bundle.writestr("dict/index.sense", "clear%5:00:02:free:00 00000001 1 0\\n")
+            bundle.writestr("dict/data.adj",
+                            "00000001 00 s 01 clear(p) 0 0 | not blocked\\n")
+        self.intake["sourceArchiveSha256"] = hashlib.sha256(sat.read_bytes()).hexdigest()
+        self.intake["candidates"] = [{
+            "lemma": "clear", "partOfSpeech": "adjective",
+            "wordNetSenseKey": "clear%5:00:02:free:00",
+        }]
+        self.intake["candidateCount"] = 1
+        report = source_references(sat, self.intake)
+        self.assertEqual(report["references"][0]["synsetMembers"], ["clear(p)"])
+        self.assertEqual(report["references"][0]["sourceGloss"], "not blocked")
+
     def test_rejects_wrong_synset_member(self):
         bad = self.root / "altered.zip"
         with ZipFile(bad, "w") as bundle:
