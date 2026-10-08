@@ -24,6 +24,17 @@ if (original.status !== "STAGING_ONLY_UNREVIEWED_NOT_RELEASE_CLEARED" ||
   throw new Error("The pinned WordNet candidate intake changed or is no longer staging-only.");
 }
 
+// Source excerpts must ship with the *exact* upstream legal notices.
+// Git blob hash pins the verbatim LICENSE.md from OEWN tag 2025-edition.
+const licenseFile = fs.readFileSync(path.join(staging, "OEWN-2025-LICENSE.md"));
+const licenseGitBlob = createHash("sha1")
+  .update("blob " + licenseFile.length + "\0")
+  .update(licenseFile)
+  .digest("hex");
+if (licenseGitBlob !== "fe4d1dce8109caa7016fca97f48e49a9ced36ad4") {
+  throw new Error("Pinned OEWN 2025/Princeton source licence notices are missing or altered.");
+}
+
 const data = JSON.parse(fs.readFileSync(
   path.join(staging, "independent-a1-editorial-drafts.json"), "utf8",
 )) as DraftManifest;
