@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { CheckItem, Contrast, Entry, Scene } from "../src/lib/learn/content.ts";
+import { taskSupportIssues } from "../src/lib/learn/task-support.ts";
 import { LEVELS, read, ROOT, type Level } from "./catalogue.ts";
 import { basesOf, irregular, lookup } from "./words.ts";
 
@@ -72,6 +73,7 @@ function sentenceOf(check: CheckItem): string | null {
 function checkItems(where: string, items: CheckItem[], examples: string[], allow: Set<string>, level: Level) {
   for (const item of items) {
     const at = `${where}/${item.id}`;
+    for (const issue of taskSupportIssues(item)) add("error", at, issue);
     const sentence = sentenceOf(item);
     if (sentence) {
       for (const example of examples) {
