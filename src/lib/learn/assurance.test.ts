@@ -33,6 +33,50 @@ test("cleared provenance requires explicit redistribution and derivative rights"
   assert.equal(parsed.success, false);
 });
 
+test("a rights source cannot be cleared without independent evidence and resolved attribution", () => {
+  const base = {
+    schemaVersion: 1 as const,
+    sources: [{
+      id: "source:licensed",
+      name: "Licensed language data",
+      version: "2025",
+      source: "https://example.org/download",
+      license: "CC BY 4.0",
+      redistribution: "allowed" as const,
+      derivatives: "allowed" as const,
+      attribution: "required" as const,
+      status: "cleared" as const,
+      evidence: ["https://example.org/LICENSE"],
+    }],
+  };
+  assert.deepEqual(provenanceBlockers(provenanceManifest.parse(base)), []);
+
+  const noEvidence = structuredClone(base);
+  noEvidence.sources[0]!.evidence = [];
+  assert.equal(provenanceManifest.safeParse(noEvidence).success, false);
+  assert.ok(provenanceBlockers(noEvidence).some(x => x.includes("evidence=missing")));
+
+  const unknownAttribution = {
+    ...base,
+    sources: [{ ...base.sources[0]!, attribution: "unknown" as const }],
+  };
+  assert.equal(provenanceManifest.safeParse(unknownAttribution).success, false);
+  assert.ok(provenanceBlockers(unknownAttribution).some(x => x.includes("attribution=unknown")));
+
+  const merelyUnverified = {
+    ...base,
+    sources: [{
+      ...base.sources[0]!,
+      status: "unverified" as const,
+      attribution: "unknown" as const,
+      evidence: [],
+    }],
+  };
+  // The historical unverified state remains structurally valid, but blocked.
+  assert.equal(provenanceManifest.safeParse(merelyUnverified).success, true);
+  assert.ok(provenanceBlockers(provenanceManifest.parse(merelyUnverified)).length > 0);
+});
+
 test("unverified provenance is structurally valid but blocks release", () => {
   const manifest = provenanceManifest.parse({
     schemaVersion: 1,
