@@ -287,3 +287,16 @@ test("a role that keeps failing does not starve a ready role that has not had it
   const next = plan(current, { log: { schemaVersion: 1, entries: [attempt("2026-10-05", "english"), attempt("2026-10-06", "persian")] } });
   assert.equal(next.action === "calibrate" && next.role, "english");
 });
+
+test("a reservation whose run never recorded an outcome still counts as that role's turn", () => {
+  const current = state({ rejected: [rejection("english", llama)] });
+  const log: SemanticAutomationLog = {
+    schemaVersion: 1,
+    entries: [
+      { kind: "reservation", date: "2026-10-05", runId: "1.1", role: "english", at: "2026-10-05T00:20:00Z", neuronsCharged: 7000, note: "test" },
+      { kind: "reservation", date: "2026-10-06", runId: "2.1", role: "persian", at: "2026-10-06T00:20:00Z", neuronsCharged: 8200, note: "test" },
+    ],
+  };
+  const next = plan(current, { log });
+  assert.equal(next.action === "calibrate" && next.role, "english");
+});

@@ -263,14 +263,14 @@ test("a reservation charges the campaign before inference and the record replace
   const space = workspace();
   try {
     space.run("plan", "--today", "2026-10-07");
-    assert.equal(space.run("reserve", "--run-id", "500.1", "--neurons", "1440", "--today", "2026-10-07").status, 0);
-    assert.equal(space.run("reserve", "--run-id", "500.1", "--neurons", "1440", "--today", "2026-10-07").status, 1);
+    assert.equal(space.run("reserve", "--role", "adversarial", "--run-id", "500.1", "--neurons", "1440", "--today", "2026-10-07").status, 0);
+    assert.equal(space.run("reserve", "--role", "adversarial", "--run-id", "500.1", "--neurons", "1440", "--today", "2026-10-07").status, 1);
     assert.deepEqual(
       space.log().map((entry) => [entry.kind, entry.runId, entry.neuronsCharged]),
       [["reservation", "500.1", 1440]],
     );
     // A reserved day leaves no room for a second campaign that would pass the ceiling.
-    const full = space.run("reserve", "--run-id", "501.1", "--neurons", "7000", "--today", "2026-10-07");
+    const full = space.run("reserve", "--role", "adversarial", "--run-id", "501.1", "--neurons", "7000", "--today", "2026-10-07");
     assert.equal(full.status, 0);
     const next = space.run("plan", "--today", "2026-10-07");
     assert.match(next.output, /Next: nothing \(daily-ceiling\)/);

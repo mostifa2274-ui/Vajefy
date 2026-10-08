@@ -90,6 +90,7 @@ jobs:
           set -euo pipefail
           npm run assurance:semantic:automation -- reserve \
             --run-id "${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT}" \
+            --role "$ROLE" \
             --neurons "$NEURONS"
           scripts/semantic-calibration-commit.sh "$ROLE" \
             "Semantic calibration: reserve ${ROLE} (run ${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT})"
