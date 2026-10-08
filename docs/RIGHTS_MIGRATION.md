@@ -14,12 +14,7 @@ association in `content/assurance/rights-lineage.json` is deliberately
 **conservative and unverified**, not proof that every individual expression
 originated in the workbook.
 
-`rights-lineage.json` now explicitly accounts for the 900 A1 source entries
-all 21 top-level public JSON files (including the non-A1 source catalogue),\nand two governed media groups: all published audio and published site artwork.
-Generated `public/data/enhanced/**` is tied to the A1 source entries; audio,
-illustration and any other media also need independent upstream/model/artist
-rights evidence before a public release is approved. Merely moving those assets
-outside this manifest is **not** legal clearance.
+`rights-lineage.json` now explicitly accounts for **900 A1 source entries**, **30 separately authored scenes and contrast lessons**, **59 public JSON assets** (21 top-level catalogue files and all 38 generated `public/data/enhanced/*.json` files), and two governed media groups (published audio and site artwork). All currently remain UNVERIFIED. Each derived JSON file is SHA-256 bound to its exact current bytes: clearing an upstream entry alone cannot automatically approve a published scene, lesson bundle or audio index. A regenerated lesson-part filename changes inventory coverage and fails CI until its source assignment is reviewed. Audio, illustrations and other media also require independent rights evidence. Merely changing a directory or copying an existing Oxford-derived lesson is **not** legal clearance.
 
 ## Technically usable open alternative: Open English WordNet
 
@@ -70,11 +65,11 @@ For every item and media group:
    `scripts/rights-lineage-audit.ts`; record `sourceReference`,
    `method` (`licensed-copy` or `independent-rebuild`), evidence locations,
    and `reviewedAt` under `clearedEvidence.entries` or
-   `clearedEvidence.publicData` or `clearedEvidence.mediaGroups`.
+   `clearedEvidence.publicData`, `clearedEvidence.curatedContent` or `clearedEvidence.mediaGroups`.
 3. Update the corresponding explicit `sourceAssignments` to a verifiably
    cleared `content/assurance/provenance.json` source. Keep any legacy
    attribution and historic proof separately; do not fabricate a source link.
-4. Repeat for public JSON files and separately governed media groups; audit shipped media,
+4. Repeat for every compiled lesson JSON file, authored scene and contrast, public data file and separately governed media group; audit shipped media,
    model/voice terms, illustrations, licence notices and generated works.
 5. Verify licence compatibility and attribution in the actual UI/build output.
    For a legal interpretation that remains ambiguous, obtain rights-holder
@@ -82,8 +77,8 @@ For every item and media group:
 
 ## Machine checks
 
-- `npm run assurance:rights:inventory -- --check` verifies no entry or
-  top-level public-data file is silently missing, that assigned sources exist,
+- `npm run assurance:rights:inventory -- --check` verifies no entry, authored scene/contrast, or
+  nested public-data JSON file is silently missing, that assigned sources exist,
   and that submitted item hash/evidence matches current content.
 - `npm run assurance:rights:inventory -- --require-cleared` **fails** until
   every tracked item and governed media group has a cleared source and\ncurrent item/group evidence.
