@@ -36,6 +36,18 @@ export const provenanceSource = z
         message: "a cleared source cannot use the UNVERIFIED licence marker",
       });
     }
+    if (source.status === "cleared" && source.evidence.length === 0) {
+      ctx.addIssue({
+        code: "custom",
+        message: "a cleared source requires verifiable licence/rights evidence references",
+      });
+    }
+    if (source.status === "cleared" && source.attribution === "unknown") {
+      ctx.addIssue({
+        code: "custom",
+        message: "a cleared source cannot leave its attribution requirement unknown",
+      });
+    }
   });
 
 export const provenanceManifest = z.object({
@@ -60,6 +72,14 @@ export function provenanceBlockers(manifest: ProvenanceManifest): string[] {
     }
     if (source.license === "UNVERIFIED") {
       blockers.push(`${source.id}:license=UNVERIFIED`);
+    }
+    // Defence in depth even when consumers bypass the schema parse:
+    // a rights label without evidence or attribution is never approval.
+    if (source.status === "cleared" && source.evidence.length === 0) {
+      blockers.push(`${source.id}:evidence=missing`);
+    }
+    if (source.status === "cleared" && source.attribution === "unknown") {
+      blockers.push(`${source.id}:attribution=unknown`);
     }
     return blockers;
   });

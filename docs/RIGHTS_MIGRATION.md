@@ -102,6 +102,15 @@ Until this happens, no staged draft is linked to the deployed app or to any
 cleared rights assignment. The old 900-item canonical corpus, its historical
 derivatives, and Gate 0 remain unchanged and blocked.
 
+**Source-level clearance rule:** The provenance manifest refuses a source
+labelled `cleared` unless its redistribution and derivative-work permissions
+are explicit, its licence is identified, at least one supporting licence/rights
+evidence reference is recorded, and its attribution requirement is resolved
+(`required` or `not-required`, never `unknown`). These are machine-enforced
+minimum fields, not verification of the authenticity or legal sufficiency of
+the provided documents. The independent draft stage and all legacy source
+assignments remain unapproved.
+
 ## Machine checks
 
 - `npm run assurance:rights:inventory -- --check` verifies no entry, authored scene/contrast, or
