@@ -27,11 +27,13 @@ export type RightsLineageManifest = {
   sourceAssignments: {
     entries: Record<string, string>;
     publicData: Record<string, string>;
+    curatedContent: Record<string, string>;
     mediaGroups: Record<string, string[]>;
   };
   clearedEvidence: {
     entries: Record<string, RightsLineageEvidence>;
     publicData: Record<string, RightsLineageEvidence>;
+    curatedContent: Record<string, RightsLineageEvidence>;
     mediaGroups: Record<string, RightsLineageEvidence>;
   };
   note?: string;
@@ -43,6 +45,8 @@ export type RightsLineageAudit = {
   entriesCleared: number;
   publicData: number;
   publicDataCleared: number;
+  curatedContent: number;
+  curatedContentCleared: number;
   mediaGroups: number;
   mediaGroupsCleared: number;
   structuralIssues: string[];
@@ -58,6 +62,7 @@ export function auditRightsLineage(
   currentEntries: ReadonlyMap<string, string>,
   currentPublicData: ReadonlyMap<string, string>,
   currentMediaGroups: ReadonlyMap<string, string>,
+  currentCuratedContent: ReadonlyMap<string, string> = new Map(),
 ): RightsLineageAudit {
   const issues: string[] = [];
   const blockers: string[] = [];
@@ -65,11 +70,13 @@ export function auditRightsLineage(
     issues.push("Incorrect rights lineage schema/scope.");
   }
   if (!manifest.sourceAssignments?.entries || !manifest.sourceAssignments?.publicData ||
-      !manifest.sourceAssignments?.mediaGroups || !manifest.clearedEvidence?.entries ||
+      !manifest.sourceAssignments?.mediaGroups || !manifest.sourceAssignments?.curatedContent ||
+      !manifest.clearedEvidence?.curatedContent || !manifest.clearedEvidence?.entries ||
       !manifest.clearedEvidence?.publicData || !manifest.clearedEvidence?.mediaGroups) {
     issues.push("Missing explicit source assignments or cleared evidence maps.");
     return { schemaVersion: 1, entries: currentEntries.size, entriesCleared: 0,
       publicData: currentPublicData.size, publicDataCleared: 0,
+      curatedContent: currentCuratedContent.size, curatedContentCleared: 0,
       mediaGroups: currentMediaGroups.size, mediaGroupsCleared: 0,
       structuralIssues: issues, blockers };
   }
@@ -77,7 +84,7 @@ export function auditRightsLineage(
   const sources = new Map(provenance.sources.map(s => [s.id, s]));
   if (sources.size !== provenance.sources.length) issues.push("Duplicate source IDs in provenance manifest.");
 
-  function inspect(kind: "entries" | "publicData", current: ReadonlyMap<string, string>): number {
+  function inspect(kind: "entries" | "publicData" | "curatedContent", current: ReadonlyMap<string, string>): number {
     const assignments = manifest.sourceAssignments[kind];
     const evidence = manifest.clearedEvidence[kind];
     let cleared = 0;
@@ -129,6 +136,7 @@ export function auditRightsLineage(
 
   const entriesCleared = inspect("entries", currentEntries);
   const publicDataCleared = inspect("publicData", currentPublicData);
+  const curatedContentCleared = inspect("curatedContent", currentCuratedContent);
   let mediaGroupsCleared = 0;
   const assignedMedia = manifest.sourceAssignments.mediaGroups;
   const mediaEvidence = manifest.clearedEvidence.mediaGroups;
@@ -171,6 +179,8 @@ export function auditRightsLineage(
     entriesCleared,
     publicData: currentPublicData.size,
     publicDataCleared,
+    curatedContent: currentCuratedContent.size,
+    curatedContentCleared,
     mediaGroups: currentMediaGroups.size,
     mediaGroupsCleared,
     structuralIssues: issues,
@@ -208,11 +218,43 @@ export function loadCurrentRightsAudit(root = process.cwd()): RightsLineageAudit
     if (!curriculumIds.includes(id)) structuralIssues.push("A1 rights target absent from curriculum " + id);
   }
 
+  // Every distributed JSON file counts, including content-hashed enhanced
+  // lesson parts, scenes, contrasts, and the public offline audio index.
+  // Top-level-only inventory would let unreviewed derived text bypass Gate 0.
   const publicData = new Map<string, string>();
-  const dataDir = path.join(root, "public", "data");
-  for (const name of fs.readdirSync(dataDir).filter(n => n.endsWith(".json")).sort()) {
-    const filename = path.join(dataDir, name);
-    publicData.set("public/data/" + name, createHash("sha256").update(fs.readFileSync(filename)).digest("hex"));
+  function visitPublicJson(dir: string) {
+    for (const file of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
+      const relative = path.posix.join(dir.replaceAll(path.sep, "/"), file.name);
+      if (file.isDirectory()) visitPublicJson(relative);
+      else if (file.isFile() && file.name.endsWith(".json")) {
+        publicData.set(relative, createHash("sha256")
+          .update(fs.readFileSync(path.join(root, relative))).digest("hex"));
+      }
+    }
+  }
+  visitPublicJson("public/data");
+
+  // Scenes and pedagogical contrast lessons are original instructional prose,
+  // not licensed merely because their referenced vocabulary items are cleared.
+  const curatedContent = new Map<string, string>();
+  for (const [file, prefix] of [
+    ["content/pilot/scenes.json", "scene:"],
+    ["content/pilot/contrasts.json", "contrast:"],
+  ] as const) {
+    const rows = read(file) as { id: string }[];
+    if (!Array.isArray(rows)) {
+      structuralIssues.push("Invalid curated content array: " + file);
+      continue;
+    }
+    for (const row of rows) {
+      if (typeof row?.id !== "string" || !row.id.startsWith(prefix)) {
+        structuralIssues.push("Invalid curated content ID in " + file);
+        continue;
+      }
+      if (curatedContent.has(row.id)) structuralIssues.push("Duplicate curated content ID " + row.id);
+      else curatedContent.set(row.id, createHash("sha256")
+        .update(semanticStableJson(row)).digest("hex"));
+    }
   }
   // Collect existing published media into two governed groups. New audio or
   // artwork changes the group hash and invalidates any earlier clearance.
@@ -235,7 +277,7 @@ export function loadCurrentRightsAudit(root = process.cwd()): RightsLineageAudit
   for (const [id, items] of mediaFiles) {
     mediaGroups.set(id, createHash("sha256").update(items.sort().join("\n")).digest("hex"));
   }
-  const audit = auditRightsLineage(lineage, provenance, entries, publicData, mediaGroups);
+  const audit = auditRightsLineage(lineage, provenance, entries, publicData, mediaGroups, curatedContent);
   audit.structuralIssues.push(...structuralIssues);
   return audit;
 }
