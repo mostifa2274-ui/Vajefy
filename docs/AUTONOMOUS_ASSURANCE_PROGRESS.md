@@ -988,8 +988,12 @@ The first unattended runs (2026-10-07) showed two problems.
   `chat_template_kwargs.enable_thinking` (on by default) for Nemotron 3,
   Gemma 4, GLM 4.7 Flash and Qwen 3.8. Those candidates now run with
   reasoning off. The `+no-thinking` suffix on `modelVersion` makes each one a
-  new candidate. Kimi K2.5 and Qwen3 30B document no such switch and are
-  unchanged.
+  new candidate. Qwen3 30B documents no such switch and is unchanged.
+- **Kimi K2.5 too.** Persian finally ran on 2026-10-08. Its first run failed
+  the same way: 700 of 700 completion tokens and no answer. K2.5 has no
+  catalog entry, but Cloudflare's Kimi K2.6 changelog says that K2.6 replaces
+  K2.5's `chat_template_kwargs.enable_thinking`. Kimi K2.5 now runs with
+  reasoning off too (`+no-thinking`).
 - **Starvation.** English, first in role order, went first every day, and its
   failed attempts left too little of the day for Persian's 8,202-Neuron
   campaign. Among ready roles, the least recently attempted now goes first.

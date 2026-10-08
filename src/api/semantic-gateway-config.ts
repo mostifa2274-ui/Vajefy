@@ -91,7 +91,7 @@ export const KEYLESS_SEMANTIC_CANDIDATES = {
     candidate("meta-llama", "@cf/meta/llama-4-scout-17b-16e-instruct", 600),
   ],
   persian: [
-    candidate("moonshot-kimi", "@cf/moonshotai/kimi-k2.5", 700),
+    candidate("moonshot-kimi", "@cf/moonshotai/kimi-k2.5", 700, { thinking: false }),
     candidate("zhipu-glm", "@cf/zai-org/glm-4.7-flash", 800, { thinking: false }),
     candidate("qwen", "@cf/qwen/qwen3.8-27b", 800, { thinking: false }),
     candidate("mistral", "@cf/mistralai/mistral-small-3.1-24b-instruct", 800),

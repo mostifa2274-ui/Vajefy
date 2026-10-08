@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "2c4d2228027763720e24a7e512989616485d6b62",
+  "authoritativeMain": "f47c9d9be3606d0064d5550a20f3113441624158",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -156,7 +156,7 @@
     "Do not rebuild the unattended calibration (planner, record/reserve/check, rates refresh, scheduled semantic-calibrate.yml); see content/assurance/semantic/AUTOMATION.md.",
     "Do not dispatch calibration by hand to work around the planner's order or the daily ceiling, and do not edit presets roles by hand; run npm run assurance:semantic:automation -- plan.",
     "Do not re-order or remove pre-registered candidates after they have produced results; add new ones at the end, or create a new calibration version.",
-    "Do not re-enable model reasoning for free-budget judges: Nemotron 3 with reasoning on used all 1,200 output tokens and returned no answer on three runs (2026-10-07). Candidates whose catalog documents chat_template_kwargs.enable_thinking run with +no-thinking."
+    "Do not re-enable model reasoning for free-budget judges: Nemotron 3 (2026-10-07, three runs) and Kimi K2.5 (2026-10-08) with reasoning on used every output token and returned no answer. Candidates whose catalog or Cloudflare changelog documents chat_template_kwargs.enable_thinking run with +no-thinking."
   ],
   "blockers": [
     {
@@ -371,7 +371,7 @@
         "content/assurance/semantic/calibration/rejected.json",
         "content/assurance/semantic/calibration/automation-log.json"
       ],
-      "observed": "2026-10-07: three English Nemotron 3 runs failed with empty-model-content (1,200/1,200 completion tokens spent reasoning); Persian never ran because English went first each day. 2026-10-08: reasoning switched off for Nemotron 3, Gemma 4, GLM 4.7 Flash and Qwen 3.8, and the least-recently-attempted ready role now goes first."
+      "observed": "2026-10-07: three English Nemotron 3 runs failed with empty-model-content (1,200/1,200 completion tokens spent reasoning); Persian never ran because English went first each day. 2026-10-08: reasoning switched off for Nemotron 3, Gemma 4, GLM 4.7 Flash and Qwen 3.8, and the least-recently-attempted ready role now goes first. Later on 2026-10-08 the first Persian run (Kimi K2.5) failed the same way (700/700 completion tokens, no answer), so Kimi K2.5 now also runs with reasoning off (+no-thinking): Cloudflare's Kimi K2.6 changelog records K2.5's chat_template_kwargs.enable_thinking."
     }
   },
   "statusLedger": {
