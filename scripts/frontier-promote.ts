@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { spawnSync } from "node:child_process";
@@ -371,7 +372,7 @@ export function applyMonotonicPromotions(
   return { curriculum: current, accepted, counts, rounds };
 }
 
-function readCounts(): FindingCounts {
+function readCounts(curriculumFile: string): FindingCounts {
   const result = spawnSync(
     process.execPath,
     [
@@ -381,6 +382,8 @@ function readCounts(): FindingCounts {
       REGISTER,
       path.join(ROOT, "scripts", "content-assurance.ts"),
       "--json",
+      "--curriculum",
+      curriculumFile,
     ],
     { cwd: ROOT, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
   );
@@ -391,29 +394,34 @@ function readCounts(): FindingCounts {
   return (JSON.parse(result.stdout) as { byCode: FindingCounts }).byCode;
 }
 
-function writeCurriculum(curriculum: FrontierCurriculum): void {
-  fs.writeFileSync(CURRICULUM, JSON.stringify(curriculum, null, 2) + "\n");
+function writeCurriculum(file: string, curriculum: FrontierCurriculum): void {
+  fs.writeFileSync(file, JSON.stringify(curriculum, null, 2) + "\n");
 }
 
 /**
- * The planner and the assurance report read the curriculum file, so each
- * candidate is written there in turn. The original is restored on failure.
+ * Candidates are written to a scratch copy that the planner and the
+ * assurance report read through --curriculum. The canonical curriculum is
+ * replaced once, at the end, by renaming a finished file over it, so an
+ * interrupted search leaves it untouched.
  */
 function monotonic(curriculum: FrontierCurriculum): void {
-  const original = fs.readFileSync(CURRICULUM, "utf8");
+  const scratch = fs.mkdtempSync(path.join(os.tmpdir(), "vajefy-frontier-"));
+  const candidateFile = path.join(scratch, "A1.json");
   try {
     const result = applyMonotonicPromotions(
       curriculum,
       (current) => {
-        writeCurriculum(current);
-        return readPlan().promotions;
+        writeCurriculum(candidateFile, current);
+        return readPlan(candidateFile).promotions;
       },
       (candidate) => {
-        writeCurriculum(candidate);
-        return readCounts();
+        writeCurriculum(candidateFile, candidate);
+        return readCounts(candidateFile);
       },
     );
-    writeCurriculum(result.curriculum);
+    const finished = CURRICULUM + ".monotonic";
+    writeCurriculum(finished, result.curriculum);
+    fs.renameSync(finished, CURRICULUM);
     console.log(
       `Monotonic frontier promotion: ${result.accepted.length} move(s) kept in ${result.rounds} round(s); ` +
         `frontier findings ${result.accepted[0]?.frontierBefore ?? frontierTotal(result.counts)} -> ${frontierTotal(result.counts)}.`,
@@ -421,13 +429,12 @@ function monotonic(curriculum: FrontierCurriculum): void {
     for (const move of result.accepted) {
       console.log(`- ${move.dependencyId}: ${move.frontierBefore} -> ${move.frontierAfter}`);
     }
-  } catch (error) {
-    fs.writeFileSync(CURRICULUM, original);
-    throw error;
+  } finally {
+    fs.rmSync(scratch, { recursive: true, force: true });
   }
 }
 
-function readPlan(): FrontierPlan {
+function readPlan(curriculumFile = CURRICULUM): FrontierPlan {
   const result = spawnSync(
     process.execPath,
     [
@@ -437,6 +444,8 @@ function readPlan(): FrontierPlan {
       REGISTER,
       path.join(ROOT, "scripts", "frontier-repair.ts"),
       "--json",
+      "--curriculum",
+      curriculumFile,
     ],
     { cwd: ROOT, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
   );
