@@ -48,7 +48,7 @@ class IndependentSourceTests(unittest.TestCase):
         # Zero tagged occurrences are *not* an A1 rating or evidence of
         # nonexistent words; the importer must preserve review candidates.
         zero_archive = self.root / "zero-tags.zip"
-        index = "\\n".join([
+        index = "\n".join([
             "book%1:10:00:: 00000001 1 0",
             "book%1:10:01:: 00000002 2 0",
             "tree%1:20:00:: 00000003 1 0",
