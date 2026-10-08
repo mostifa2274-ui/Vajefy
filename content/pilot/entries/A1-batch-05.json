@@ -1342,7 +1342,13 @@
       "answer": "clothes",
       "accept": [],
       "fa": "لباس‌های خیست را دربیاور و یک دوش آب گرم بگیر.",
-      "why": "clothes = لباس‌ها."
+      "why": "clothes = لباس‌ها.",
+      "support": [
+       {
+        "en": "wet",
+        "fa": "خیس"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2166,6 +2172,12 @@
         "ok": false,
         "why": "milk غیرقابل‌شمارش است."
        }
+      ],
+      "support": [
+       {
+        "en": "fridge",
+        "fa": "یخچال"
+       }
       ]
      },
      {
@@ -2841,7 +2853,13 @@
        "over"
       ],
       "fa": "چراغ بالای میز است.",
-      "why": "above = بالای."
+      "why": "above = بالای.",
+      "support": [
+       {
+        "en": "lamp",
+        "fa": "چراغ"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3427,7 +3445,13 @@
        "lift"
       ],
       "fa": "این کیف خیلی سنگین است. نمی‌توانم ببرمش.",
-      "why": "carry = حمل کردن."
+      "why": "carry = حمل کردن.",
+      "support": [
+       {
+        "en": "heavy",
+        "fa": "سنگین"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4019,7 +4043,13 @@
        "slip"
       ],
       "fa": "زمین خیس است. نیفتی!",
-      "why": "fall = افتادن."
+      "why": "fall = افتادن.",
+      "support": [
+       {
+        "en": "wet",
+        "fa": "خیس"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7332,7 +7362,13 @@
       "answer": "hair",
       "accept": [],
       "fa": "موهایت خیس است. از حوله استفاده کن.",
-      "why": "hair + is."
+      "why": "hair + is.",
+      "support": [
+       {
+        "en": "wet",
+        "fa": "خیس"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9514,7 +9550,13 @@
       "answer": "air",
       "accept": [],
       "fa": "پنجره را باز کن. هوای تازه لازم داریم.",
-      "why": "fresh air."
+      "why": "fresh air.",
+      "support": [
+       {
+        "en": "fresh",
+        "fa": "تازه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10139,7 +10181,13 @@
       "frame": "My whole ___ hurts.",
       "answer": "body",
       "accept": [],
-      "why": "body = بدن."
+      "why": "body = بدن.",
+      "support": [
+       {
+        "en": "hurts",
+        "fa": "درد می‌کند"
+       }
+      ]
      }
     ]
    }

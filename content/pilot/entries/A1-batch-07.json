@@ -1586,6 +1586,12 @@
                 "ok": false,
                 "why": "many با غیرقابل‌شمارش نمی‌آید."
               }
+            ],
+            "support": [
+              {
+                "en": "fridge",
+                "fa": "یخچال"
+              }
             ]
           },
           {
@@ -8066,7 +8072,13 @@
               "have"
             ],
             "fa": "اینجا نان می‌فروشید؟ — بله، هر صبح نانِ تازه.",
-            "why": "sell = فروختن."
+            "why": "sell = فروختن.",
+            "support": [
+              {
+                "en": "fresh",
+                "fa": "تازه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9178,7 +9190,13 @@
             "frame": "She ___ maths.",
             "answer": "teaches",
             "accept": [],
-            "why": "she + teaches."
+            "why": "she + teaches.",
+            "support": [
+              {
+                "en": "maths",
+                "fa": "ریاضی"
+              }
+            ]
           }
         ]
       }

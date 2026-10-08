@@ -84,6 +84,12 @@
         "ok": false,
         "why": "at برای گیرنده نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "boss",
+        "fa": "رئیس"
+       }
       ]
      },
      {
@@ -1619,7 +1625,13 @@
       "frame": "Walk ___ the stairs.",
       "answer": "down",
       "accept": [],
-      "why": "walk down the stairs = از پله‌ها پایین رفتن."
+      "why": "walk down the stairs = از پله‌ها پایین رفتن.",
+      "support": [
+       {
+        "en": "stairs",
+        "fa": "پله‌ها"
+       }
+      ]
      }
     ]
    }
@@ -1886,7 +1898,13 @@
       "answer": "Keep",
       "accept": [],
       "fa": "شیر را در یخچال نگه دار، وگرنه خراب می‌شود.",
-      "why": "keep + چیز + جا."
+      "why": "keep + چیز + جا.",
+      "support": [
+       {
+        "en": "fridge",
+        "fa": "یخچال"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2678,6 +2696,12 @@
         "text": "sign",
         "ok": false,
         "why": "sign یعنی علامت یا تابلو."
+       }
+      ],
+      "support": [
+       {
+        "en": "lamp",
+        "fa": "چراغ"
        }
       ]
      },
@@ -7149,7 +7173,13 @@
       "frame": "This ___ is very heavy.",
       "answer": "box",
       "accept": [],
-      "why": "box = جعبه."
+      "why": "box = جعبه.",
+      "support": [
+       {
+        "en": "heavy",
+        "fa": "سنگین"
+       }
+      ]
      }
     ]
    }
@@ -9763,7 +9793,13 @@
       "frame": "The ___ is heavy today.",
       "answer": "traffic",
       "accept": [],
-      "why": "heavy traffic."
+      "why": "heavy traffic.",
+      "support": [
+       {
+        "en": "heavy",
+        "fa": "سنگین"
+       }
+      ]
      }
     ]
    }
@@ -9832,7 +9868,13 @@
       "answer": "understand",
       "accept": [],
       "fa": "می‌شود آهسته صحبت کنی؟ نمی‌فهمم.",
-      "why": "I don't understand."
+      "why": "I don't understand.",
+      "support": [
+       {
+        "en": "slowly",
+        "fa": "آهسته"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10356,6 +10398,10 @@
        {
         "en": "Dubai",
         "fa": "دبی"
+       },
+       {
+        "en": "boss",
+        "fa": "رئیس"
        }
       ]
      },
