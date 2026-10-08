@@ -27,7 +27,7 @@ Obtain the official zip using its official URL, record its SHA-256 in a
 reviewed internal intake record, and run:
 
 ```bash
-python3 scripts/rights/oewn-candidates.py \
+python3 scripts/rights/oewn_candidates.py \
   --archive /path/to/english-wordnet-2025.zip \
   --expected-sha256 <reviewed-64-character-archive-sha256> \
   --output content/rights-staging/oewn-2025-candidates.json \
