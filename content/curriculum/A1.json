@@ -2526,6 +2526,12 @@
           ]
         },
         {
+          "id": "lex:A1:draw",
+          "prerequisites": [
+            "lex:A1:place"
+          ]
+        },
+        {
           "id": "lex:A1:line",
           "prerequisites": [
             "lex:A1:place"
@@ -2681,12 +2687,6 @@
         },
         {
           "id": "lex:A1:fall",
-          "prerequisites": [
-            "lex:A1:place"
-          ]
-        },
-        {
-          "id": "lex:A1:draw",
           "prerequisites": [
             "lex:A1:place"
           ]
@@ -3076,16 +3076,16 @@
           ]
         },
         {
-          "id": "lex:A1:rule",
-          "prerequisites": [
-            "lex:A1:travel"
-          ]
-        },
-        {
           "id": "lex:A1:follow",
           "prerequisites": [
             "lex:A1:go",
             "lex:A1:way"
+          ]
+        },
+        {
+          "id": "lex:A1:rule",
+          "prerequisites": [
+            "lex:A1:travel"
           ]
         },
         {
@@ -3793,13 +3793,13 @@
           ]
         },
         {
-          "id": "lex:A1:scientist",
+          "id": "lex:A1:science",
           "prerequisites": [
             "lex:A1:work"
           ]
         },
         {
-          "id": "lex:A1:science",
+          "id": "lex:A1:scientist",
           "prerequisites": [
             "lex:A1:work"
           ]

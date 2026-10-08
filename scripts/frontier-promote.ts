@@ -307,6 +307,126 @@ export function applyPilotSafePromotions(
   };
 }
 
+export type FindingCounts = Record<string, number>;
+
+const FRONTIER_CODES = ["FRONTIER_TASK_VOCABULARY", "FRONTIER_SCENE_VOCABULARY"] as const;
+
+function frontierTotal(counts: FindingCounts): number {
+  return FRONTIER_CODES.reduce((sum, code) => sum + (counts[code] ?? 0), 0);
+}
+
+/** A strict improvement: fewer frontier findings, and no finding code rises. */
+export function improves(before: FindingCounts, after: FindingCounts): boolean {
+  if (frontierTotal(after) >= frontierTotal(before)) return false;
+  return Object.keys({ ...before, ...after }).every((code) => (after[code] ?? 0) <= (before[code] ?? 0));
+}
+
+export type MonotonicPromotionResult = {
+  curriculum: FrontierCurriculum;
+  accepted: { dependencyId: string; frontierBefore: number; frontierAfter: number }[];
+  counts: FindingCounts;
+  rounds: number;
+};
+
+/**
+ * Apply pilot-safe promotions one at a time, keeping a move only when the
+ * assurance report strictly improves, then plan again from the new order.
+ *
+ * Moving an entry earlier can also move a task that uses an untaught word
+ * earlier, so a planned promotion can add findings: the first batch's
+ * `spelling` move did. Each kept move lowers the frontier total, so the
+ * process ends, and it never makes any finding code worse.
+ */
+export function applyMonotonicPromotions(
+  curriculum: FrontierCurriculum,
+  plan: (current: FrontierCurriculum) => readonly FrontierPromotion[],
+  evaluate: (candidate: FrontierCurriculum) => FindingCounts,
+): MonotonicPromotionResult {
+  let current = cloneCurriculum(curriculum);
+  let counts = evaluate(current);
+  const accepted: MonotonicPromotionResult["accepted"] = [];
+  let rounds = 0;
+  for (;;) {
+    rounds += 1;
+    let kept = false;
+    for (const promotion of plan(current)) {
+      const step = applyPilotSafePromotions(current, [promotion]);
+      if (!step.moved.length) continue;
+      const next = evaluate(step.curriculum);
+      if (!improves(counts, next)) continue;
+      accepted.push({
+        dependencyId: promotion.dependencyId,
+        frontierBefore: frontierTotal(counts),
+        frontierAfter: frontierTotal(next),
+      });
+      current = step.curriculum;
+      counts = next;
+      kept = true;
+      // The plan was made for the previous order; make a new one.
+      break;
+    }
+    if (!kept) break;
+  }
+  assertCurriculumIntegrity(curriculum, current);
+  return { curriculum: current, accepted, counts, rounds };
+}
+
+function readCounts(): FindingCounts {
+  const result = spawnSync(
+    process.execPath,
+    [
+      "--experimental-strip-types",
+      "--no-warnings",
+      "--import",
+      REGISTER,
+      path.join(ROOT, "scripts", "content-assurance.ts"),
+      "--json",
+    ],
+    { cwd: ROOT, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
+  );
+  if (result.status !== 0 || !result.stdout) {
+    process.stderr.write(result.stderr);
+    throw new Error("content assurance failed");
+  }
+  return (JSON.parse(result.stdout) as { byCode: FindingCounts }).byCode;
+}
+
+function writeCurriculum(curriculum: FrontierCurriculum): void {
+  fs.writeFileSync(CURRICULUM, JSON.stringify(curriculum, null, 2) + "\n");
+}
+
+/**
+ * The planner and the assurance report read the curriculum file, so each
+ * candidate is written there in turn. The original is restored on failure.
+ */
+function monotonic(curriculum: FrontierCurriculum): void {
+  const original = fs.readFileSync(CURRICULUM, "utf8");
+  try {
+    const result = applyMonotonicPromotions(
+      curriculum,
+      (current) => {
+        writeCurriculum(current);
+        return readPlan().promotions;
+      },
+      (candidate) => {
+        writeCurriculum(candidate);
+        return readCounts();
+      },
+    );
+    writeCurriculum(result.curriculum);
+    console.log(
+      `Monotonic frontier promotion: ${result.accepted.length} move(s) kept in ${result.rounds} round(s); ` +
+        `frontier findings ${result.accepted[0]?.frontierBefore ?? frontierTotal(result.counts)} -> ${frontierTotal(result.counts)}.`,
+    );
+    for (const move of result.accepted) {
+      console.log(`- ${move.dependencyId}: ${move.frontierBefore} -> ${move.frontierAfter}`);
+    }
+  } catch (error) {
+    fs.writeFileSync(CURRICULUM, original);
+    throw error;
+  }
+}
+
 function readPlan(): FrontierPlan {
   const result = spawnSync(
     process.execPath,
@@ -329,6 +449,10 @@ function readPlan(): FrontierPlan {
 
 function main(): void {
   const curriculum = JSON.parse(fs.readFileSync(CURRICULUM, "utf8")) as FrontierCurriculum;
+  if (process.argv.includes("--monotonic")) {
+    monotonic(curriculum);
+    return;
+  }
   const plan = readPlan();
   const result = applyPilotSafePromotions(curriculum, plan.promotions);
 

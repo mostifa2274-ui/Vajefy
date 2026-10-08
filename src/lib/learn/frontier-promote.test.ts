@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  applyMonotonicPromotions,
   applyPilotSafePromotions,
+  improves,
   type FrontierCurriculum,
   type FrontierPromotion,
 } from "../../../scripts/frontier-promote";
@@ -174,4 +176,51 @@ test("balanced-wave floors block underfilling source units but allow true surplu
   assert.equal(result.curriculum.units[4]?.targetEntries, 20);
   assert.equal(result.curriculum.units[5]?.targetEntries, 20);
   assert.equal(result.curriculum.units[3]?.targetEntries, 21);
+});
+
+test("a move is kept only when frontier findings fall and no other finding rises", () => {
+  assert.equal(improves({ FRONTIER_TASK_VOCABULARY: 10 }, { FRONTIER_TASK_VOCABULARY: 9 }), true);
+  assert.equal(improves({ FRONTIER_TASK_VOCABULARY: 10 }, { FRONTIER_TASK_VOCABULARY: 10 }), false);
+  assert.equal(
+    improves(
+      { FRONTIER_TASK_VOCABULARY: 10, EXAMPLE_REUSED: 2 },
+      { FRONTIER_TASK_VOCABULARY: 8, EXAMPLE_REUSED: 3 },
+    ),
+    false,
+  );
+  // Fewer findings of another kind never stand in for frontier progress.
+  assert.equal(
+    improves(
+      { FRONTIER_TASK_VOCABULARY: 10, EXAMPLE_REUSED: 2 },
+      { FRONTIER_TASK_VOCABULARY: 10, EXAMPLE_REUSED: 0 },
+    ),
+    false,
+  );
+});
+
+test("monotonic promotion keeps helpful moves, rejects a move that adds findings, and stops", () => {
+  const order = (current: FrontierCurriculum) => current.units.flatMap((unit) => unit.entries.map((item) => item.id));
+  const before = (current: FrontierCurriculum, id: string) => order(current).indexOf(id) < order(current).indexOf("anchor");
+  // Moving "first" fixes three findings; moving "second" then would add two,
+  // as moving spelling ahead of spell did.
+  const evaluate = (current: FrontierCurriculum) => ({
+    FRONTIER_TASK_VOCABULARY: 10 - (before(current, "first") ? 3 : 0) + (before(current, "second") ? 2 : 0),
+  });
+  let plans = 0;
+  const plan = () => {
+    plans += 1;
+    return promotions.filter((promotion) => !promotion.changesFrozenPilotRoster && promotion.dependencyId !== "blocked");
+  };
+
+  const result = applyMonotonicPromotions(curriculum, plan, evaluate);
+
+  assert.deepEqual(result.accepted, [{ dependencyId: "first", frontierBefore: 10, frontierAfter: 7 }]);
+  assert.deepEqual(result.counts, { FRONTIER_TASK_VOCABULARY: 7 });
+  assert.equal(before(result.curriculum, "first"), true);
+  assert.equal(before(result.curriculum, "second"), false);
+  // One round keeps "first"; the next finds nothing better and ends.
+  assert.equal(result.rounds, 2);
+  assert.equal(plans, 2);
+  // The input is not modified.
+  assert.equal(before(curriculum, "first"), false);
 });
