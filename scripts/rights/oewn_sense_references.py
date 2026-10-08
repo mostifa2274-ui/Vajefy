@@ -107,7 +107,7 @@ def source_references(archive: Path, intake: dict) -> dict:
         # Compare the normalized headword only; retain raw members as
         # literal evidence from the original pinned synset.
         normalized_members = [
-            re.sub(r"\\((?:a|p|ip)\\)$", "", w.lower()) for w in words
+            re.sub(r"\((?:a|p|ip)\)$", "", w.lower()) for w in words
         ]
         if lemma not in normalized_members:
             raise ValueError(
