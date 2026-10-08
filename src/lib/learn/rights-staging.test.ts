@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import test from "node:test";
-import { draftAudit, type DraftManifest } from "./rights-staging";
+import { auditOewnSenseReferences, draftAudit, type DraftManifest, type OewnSenseReferenceManifest } from "./rights-staging";
 
 const sourceSha = "a".repeat(64);
 const record = {
@@ -98,4 +99,62 @@ test("short generic Persian vocabulary is not treated as a copied sentence", () 
     "صبح خوش!",
   ]);
   assert.equal(errors.some(x => x.includes("ten-word Persian sequence")), false);
+});
+
+
+const hashGloss = (s: string) => createHash("sha256").update(s).digest("hex");
+function lexicalReferenceFixture(): OewnSenseReferenceManifest {
+  const gloss = "a building used as a home";
+  return {
+    schemaVersion: 1,
+    status: "STAGING_ONLY_LEXICAL_SOURCE_NOT_RELEASE_CLEARED",
+    sourceManifest: "content/rights-staging/oewn-2025-candidates.json",
+    sourceArchiveSha256: sourceSha,
+    sourceUrl: "https://en-word.net/static/english-wordnet-2025.zip",
+    licenseNotices: [
+      "https://github.com/globalwordnet/english-wordnet/blob/main/LICENSE.md",
+      "https://wordnet.princeton.edu/license-and-commercial-use",
+    ],
+    legalStatus: "No rights or CEFR approvals. External verification required.",
+    candidateCount: 1,
+    references: [{
+      candidate: { ...record },
+      dataFile: "data.noun",
+      synsetOffset: "01234567",
+      senseNumber: 3,
+      tagCount: 0,
+      synsetMembers: ["house"],
+      sourceGloss: gloss,
+      glossSha256: hashGloss(gloss),
+      reviewStatus: "SOURCE_SENSE_NOT_YET_EDITORIALLY_VERIFIED",
+    }],
+  };
+}
+
+test("source sense records preserve exact intake mapping without falsely approving the draft", () => {
+  const source = lexicalReferenceFixture();
+  assert.deepEqual(auditOewnSenseReferences(source, [record], sourceSha, hashGloss), []);
+  assert.equal(source.references[0]?.senseNumber, 3);
+  assert.equal(source.references[0]?.reviewStatus, "SOURCE_SENSE_NOT_YET_EDITORIALLY_VERIFIED");
+});
+
+test("source sense integrity rejects altered gloss, wrong mapping and forged source approval", () => {
+  const source = lexicalReferenceFixture();
+  source.references[0]!.sourceGloss = "different text";
+  source.references[0]!.candidate.wordNetSenseKey = "invented";
+  source.references[0]!.reviewStatus = "CLEARED";
+  const issues = auditOewnSenseReferences(source, [record], sourceSha, hashGloss);
+  assert.ok(issues.some(x => x.includes("exact pinned candidate sense")));
+  assert.ok(issues.some(x => x.includes("altered source gloss")));
+  assert.ok(issues.some(x => x.includes("improperly claims")));
+});
+
+test("source sense audit requires both licences and full inventory", () => {
+  const source = lexicalReferenceFixture();
+  source.licenseNotices = [];
+  source.references = [];
+  const issues = auditOewnSenseReferences(source, [record], sourceSha, hashGloss);
+  assert.ok(issues.some(x => x.includes("licence notices")));
+  assert.ok(issues.some(x => x.includes("count")));
+  assert.ok(issues.some(x => x.includes("Missing source sense evidence")));
 });
