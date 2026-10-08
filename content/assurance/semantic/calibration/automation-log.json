@@ -71,13 +71,25 @@
       "measured": null
     },
     {
-      "kind": "reservation",
+      "kind": "calibration",
       "date": "2026-10-08",
+      "at": "2026-10-08T06:11:25.750Z",
       "runId": "37736178852.1",
       "role": "persian",
-      "at": "2026-10-08T06:11:02.146Z",
-      "neuronsCharged": 8202,
-      "note": "Calibration run 37736178852.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
+      "model": "@cf/moonshotai/kimi-k2.5",
+      "modelVersion": "@cf/moonshotai/kimi-k2.5@cloudflare-catalog-2026-10-06",
+      "maxTokens": 700,
+      "promptVersion": "persian-a1-prompt-v1",
+      "rubricVersion": "persian-a1-v1",
+      "outcome": "failed",
+      "failure": {
+        "kind": "model",
+        "code": "http-502-empty-model-content",
+        "detail": "persian judge request failed for cal-fa-clean-from: HTTP 502 {\"error\":\"empty-model-content\",\"diagnostic\":{\"keys\":[\"choices\",\"created\",\"id\",\"model\",\"object\",\"usage\"],\"status\":null,\"incompleteDetails\":null,\"outputTypes\":[],\"candidateCount\":0,\"canonicalCandidateCount\":0,\"usage\":{\"prompt_tokens\":1162,\"completion_tokens\":700,\"total_tokens\":1862,\"prompt_tokens_details\":{\"cached_tokens\":0},\"neurons\":354.8999938964844}}}"
+      },
+      "requestsSent": 1,
+      "neuronsCharged": 480,
+      "measured": null
     }
   ]
 }
