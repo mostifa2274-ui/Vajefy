@@ -9,6 +9,7 @@ import {
 const HASH = "a".repeat(64);
 const CURRENT = new Map([["lex:A1:book", HASH]]);
 const PUBLIC = new Map([["public/data/lex-a1.json", HASH]]);
+const MEDIA = new Map([["public/audio", HASH], ["public/site-art", HASH]]);
 const open = provenanceManifest.parse({
   schemaVersion: 1,
   sources: [{
@@ -42,8 +43,9 @@ function lineage(): RightsLineageManifest {
     sourceAssignments: {
       entries: { "lex:A1:book": "source:fictional-open" },
       publicData: { "public/data/lex-a1.json": "source:fictional-open" },
+      mediaGroups: { "public/audio": ["source:fictional-open"], "public/site-art": ["source:fictional-open"] },
     },
-    clearedEvidence: { entries: {}, publicData: {} },
+    clearedEvidence: { entries: {}, publicData: {}, mediaGroups: {} },
   };
 }
 const proof = {
@@ -55,27 +57,27 @@ const proof = {
 };
 
 test("an open source licence alone never cleans a legacy or unreviewed item", () => {
-  const a = auditRightsLineage(lineage(), open, CURRENT, PUBLIC);
+  const a = auditRightsLineage(lineage(), open, CURRENT, PUBLIC, MEDIA);
   assert.equal(a.entriesCleared, 0);
   assert.equal(a.publicDataCleared, 0);
-  assert.equal(a.blockers.length, 2);
+  assert.equal(a.blockers.length, 4);
 });
 
 test("unverified original rights still block items even with hash-matching evidence", () => {
   const l = lineage();
   l.clearedEvidence.entries["lex:A1:book"] = proof;
   l.clearedEvidence.publicData["public/data/lex-a1.json"] = proof;
-  const a = auditRightsLineage(l, blocked, CURRENT, PUBLIC);
+  const a = auditRightsLineage(l, blocked, CURRENT, PUBLIC, MEDIA);
   assert.equal(a.entriesCleared, 0);
   assert.equal(a.publicDataCleared, 0);
-  assert.equal(a.blockers.length, 2);
+  assert.equal(a.blockers.length, 4);
 });
 
 test("stale or fabricated empty item evidence cannot clear a source", () => {
   const l = lineage();
   l.clearedEvidence.entries["lex:A1:book"] = { ...proof, artifactSha256: "b".repeat(64) };
   l.clearedEvidence.publicData["public/data/lex-a1.json"] = { ...proof, evidence: [] };
-  const a = auditRightsLineage(l, open, CURRENT, PUBLIC);
+  const a = auditRightsLineage(l, open, CURRENT, PUBLIC, MEDIA);
   assert.equal(a.entriesCleared, 0);
   assert.equal(a.publicDataCleared, 0);
   assert.ok(a.blockers.some(b => b.includes("item-hash-mismatch")));
@@ -86,8 +88,11 @@ test("current per-item proof plus independently authorized source can clear an i
   const l = lineage();
   l.clearedEvidence.entries["lex:A1:book"] = proof;
   l.clearedEvidence.publicData["public/data/lex-a1.json"] = proof;
-  const a = auditRightsLineage(l, open, CURRENT, PUBLIC);
-  assert.deepEqual(a.blockers, []);
+  const a = auditRightsLineage(l, open, CURRENT, PUBLIC, MEDIA);
+  l.clearedEvidence.mediaGroups["public/audio"] = proof;
+  l.clearedEvidence.mediaGroups["public/site-art"] = proof;
+  const withMedia = auditRightsLineage(l, open, CURRENT, PUBLIC, MEDIA);
+  assert.deepEqual(withMedia.blockers, []);
   assert.equal(a.entriesCleared, 1);
   assert.equal(a.publicDataCleared, 1);
 });
@@ -96,7 +101,7 @@ test("missing or orphaned lineage cannot pass structural checks", () => {
   const l = lineage();
   delete l.sourceAssignments.entries["lex:A1:book"];
   l.sourceAssignments.entries["lex:A1:missing"] = "source:fictional-open";
-  const a = auditRightsLineage(l, open, CURRENT, PUBLIC);
+  const a = auditRightsLineage(l, open, CURRENT, PUBLIC, MEDIA);
   assert.ok(a.structuralIssues.some(issue => issue.includes("stale assigned item")));
   assert.ok(a.structuralIssues.some(issue => issue.includes("missing source lineage")));
   assert.ok(a.blockers.length > 0);
