@@ -56,9 +56,9 @@ class WordnetSourceSenseTests(unittest.TestCase):
     def test_adjective_member_syntactic_marker_matches_bare_sense_lemma(self):
         sat = self.root / "satellite.zip"
         with ZipFile(sat, "w") as bundle:
-            bundle.writestr("dict/index.sense", "clear%5:00:02:free:00 00000001 1 0\\n")
+            bundle.writestr("dict/index.sense", "clear%5:00:02:free:00 00000001 1 0\n")
             bundle.writestr("dict/data.adj",
-                            "00000001 00 s 01 clear(p) 0 0 | not blocked\\n")
+                            "00000001 00 s 01 clear(p) 0 0 | not blocked\n")
         self.intake["sourceArchiveSha256"] = hashlib.sha256(sat.read_bytes()).hexdigest()
         self.intake["candidates"] = [{
             "lemma": "clear", "partOfSpeech": "adjective",
