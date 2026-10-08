@@ -1,6 +1,7 @@
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
+import { loadCurrentRightsAudit } from "./rights-lineage-audit";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -130,6 +131,15 @@ const auditVersion = sha256(fs.readFileSync(path.join(SCRIPTS, "content-assuranc
 // Gate 0: every distributed source must be cleared.
 const manifest = provenanceManifest.parse(read<unknown>(PROVENANCE));
 const rightsBlockers = provenanceBlockers(manifest);
+// A source-level licence can never clear items whose inherited lineage or
+// exact content evidence has not been individually verified.
+const itemRights = loadCurrentRightsAudit();
+if (itemRights.structuralIssues.length) {
+  throw new Error("A1 rights-lineage inventory is incomplete: " + itemRights.structuralIssues.slice(0, 10).join("; "));
+}
+if (itemRights.blockers.length && !rightsBlockers.length) {
+  rightsBlockers.push("item-level-rights-unverified");
+}
 
 // Generation provenance: who or what made each source entry's current content.
 const generation = fs.existsSync(GENERATION) ? generationManifest.parse(read<unknown>(GENERATION)) : null;
