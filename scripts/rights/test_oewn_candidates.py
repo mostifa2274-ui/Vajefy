@@ -42,6 +42,32 @@ class IndependentSourceTests(unittest.TestCase):
         self.assertEqual(rows[0]["wordNetSenseKey"], "dog%1:05:00::")
         self.assertEqual(rows[0]["status"], "AWAITING_A1_EDITORIAL_REVIEW")
 
+    def test_official_style_zero_tag_counts_do_not_erase_all_candidates(self):
+        # The real OEWN 2025 archive reports records like:
+        # "'hood%1:14:01:: 07568727 1 0".
+        # Zero tagged occurrences are *not* an A1 rating or evidence of
+        # nonexistent words; the importer must preserve review candidates.
+        zero_archive = self.root / "zero-tags.zip"
+        index = "\\n".join([
+            "book%1:10:00:: 00000001 1 0",
+            "book%1:10:01:: 00000002 2 0",
+            "tree%1:20:00:: 00000003 1 0",
+            "walk%2:38:00:: 00000004 1 0",
+            "'hood%1:14:01:: 00000005 1 0",
+            "two_words%1:10:00:: 00000006 1 0",
+            "",
+        ])
+        with ZipFile(zero_archive, "w") as archive:
+            archive.writestr("oewn2025/index.sense", index)
+        rows = rank_lemmas(read_sense_index(zero_archive), 3)
+        self.assertEqual([row["lemma"] for row in rows], ["book", "tree", "walk"])
+        self.assertTrue(all(row["taggedOccurrences"] == 0 for row in rows))
+        report = staging_manifest(zero_archive, hashlib.sha256(zero_archive.read_bytes()).hexdigest(), 3)
+        self.assertEqual(report["tagCountEvidence"], "absent-or-zero-for-selected-candidates")
+        self.assertEqual(report["candidateCount"], 3)
+        self.assertIn("NOT corpus frequency", report["selection"])
+        self.assertEqual(report["status"], "STAGING_ONLY_UNREVIEWED_NOT_RELEASE_CLEARED")
+
     def test_archive_fingerprint_and_upstream_notices_are_preserved(self):
         digest = hashlib.sha256(self.archive.read_bytes()).hexdigest()
         report = staging_manifest(self.archive, digest, 2)
