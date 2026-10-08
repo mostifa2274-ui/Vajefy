@@ -1,0 +1,75 @@
+import fs from "node:fs";
+import path from "node:path";
+import {
+  draftAudit,
+  type DraftManifest,
+  type IndependentWordnetCandidate,
+} from "../../src/lib/learn/rights-staging";
+
+const ROOT = process.cwd();
+const staging = path.join(ROOT, "content", "rights-staging");
+const original = JSON.parse(fs.readFileSync(
+  path.join(staging, "oewn-2025-candidates.json"), "utf8",
+)) as {
+  candidateCount: number;
+  candidates: IndependentWordnetCandidate[];
+  sourceArchiveSha256: string;
+  status: string;
+};
+if (original.status !== "STAGING_ONLY_UNREVIEWED_NOT_RELEASE_CLEARED" ||
+    original.candidateCount !== original.candidates.length) {
+  throw new Error("The pinned WordNet candidate intake changed or is no longer staging-only.");
+}
+
+const data = JSON.parse(fs.readFileSync(
+  path.join(staging, "independent-a1-editorial-drafts.json"), "utf8",
+)) as DraftManifest;
+const candidates = new Map(original.candidates.map(item =>
+  [item.lemma + "|" + item.partOfSpeech, item] as const,
+));
+const inheritedEnglish: string[] = [];
+const inheritedPersian: string[] = [];
+const englishFields = new Set(["en", "text", "prompt", "frame", "answer", "wrong", "right", "pattern", "headword"]);
+const persianFields = new Set(["fa", "gloss", "meaning", "why", "wrongFa", "rightFa", "note"]);
+function harvest(value: unknown): void {
+  if (Array.isArray(value)) {
+    value.forEach(harvest);
+  } else if (value && typeof value === "object") {
+    for (const [key, item] of Object.entries(value)) {
+      if (typeof item === "string") {
+        if (englishFields.has(key)) inheritedEnglish.push(item);
+        if (persianFields.has(key)) inheritedPersian.push(item);
+      } else harvest(item);
+    }
+  }
+}
+
+const dir = path.join(ROOT, "content", "pilot", "entries");
+for (const file of fs.readdirSync(dir).filter(name => name.endsWith(".json")).sort()) {
+  harvest(JSON.parse(fs.readFileSync(path.join(dir, file), "utf8")) as unknown);
+}
+for (const file of ["scenes.json", "contrasts.json"]) {
+  harvest(JSON.parse(fs.readFileSync(path.join(ROOT, "content", "pilot", file), "utf8")) as unknown);
+}
+
+const errors = draftAudit(data, candidates, original.sourceArchiveSha256,
+  inheritedEnglish, inheritedPersian);
+if (process.argv.includes("--json")) {
+  console.log(JSON.stringify({
+    status: data.status,
+    drafts: data.drafts?.length ?? 0,
+    candidates: original.candidates.length,
+    inheritedEnglishFields: inheritedEnglish.length,
+    inheritedPersianFields: inheritedPersian.length,
+    passed: errors.length === 0,
+    errors,
+  }, null, 2));
+} else {
+  console.log("Independent A1 editorial staging: " +
+    (errors.length ? "FAIL" : "PASS") +
+    " (" + data.drafts.length + " draft entries, " +
+    original.candidates.length + " pinned lexical candidates); " +
+    "rights approval: NONE; public release: FORBIDDEN.");
+  for (const error of errors.slice(0, 30)) console.error("! " + error);
+}
+if (errors.length) process.exitCode = 1;

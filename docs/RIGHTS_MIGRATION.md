@@ -75,6 +75,33 @@ For every item and media group:
    For a legal interpretation that remains ambiguous, obtain rights-holder
    confirmation or professional advice. An internal AI review is not a licence.
 
+## Independent A1 authoring staging — new, not approved
+
+`content/rights-staging/independent-a1-editorial-drafts.json` contains **25 newly
+drafted bilingual teaching entries** from the separate SHA-pinned OEWN 2025
+candidate pool. They were written as fresh examples rather than transplanted
+legacy exercises, but the automated checks **cannot prove clean-room
+independence**, verify the intended WordNet sense, or confirm translation
+quality. Each draft explicitly remains `A1_UNVERIFIED`,
+`NOT_YET_VERIFIED` for source-sense matching, and
+`DRAFT_NEEDS_HUMAN_PEDAGOGY_RIGHTS_AND_SENSE_REVIEW`.
+
+`npm run assurance:rights:drafts:check` runs in `validate:data`. It verifies
+the exact upstream lemma/POS/sense-key and archive hash, checks bilingual
+presence and duplicate copy, and refuses verbatim or eight-English-token
+reuse from the original lesson/scene/contrast sources. A regression suite
+covers forged source keys, unreviewed-to-cleared relabelling, and reuse. This
+does **not** remove legal/database selection risk or itself grant rights.
+
+**Required before use:** independently validate that each chosen lexical
+sense is correct and appropriate to A1; independently review and revise
+all Persian/English prose; settle attribution and commercial redistribution;
+author separate exercises and new media with appropriate permission; create
+SHA-bound evidence for final canonical assets and their public derivatives.
+Until this happens, no staged draft is linked to the deployed app or to any
+cleared rights assignment. The old 900-item canonical corpus, its historical
+derivatives, and Gate 0 remain unchanged and blocked.
+
 ## Machine checks
 
 - `npm run assurance:rights:inventory -- --check` verifies no entry, authored scene/contrast, or
