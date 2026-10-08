@@ -364,7 +364,13 @@
               "something"
             ],
             "fa": "در یخچال چیزی برای نوشیدن هست؟",
-            "why": "در سؤال: anything."
+            "why": "در سؤال: anything.",
+            "support": [
+              {
+                "en": "fridge",
+                "fa": "یخچال"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -591,7 +597,13 @@
             "frame": "My left ___ hurts.",
             "answer": "arm",
             "accept": [],
-            "why": "left arm."
+            "why": "left arm.",
+            "support": [
+              {
+                "en": "hurts",
+                "fa": "درد می‌کند"
+              }
+            ]
           }
         ]
       }
@@ -3607,7 +3619,13 @@
             "frame": "I like fresh ___.",
             "answer": "fish",
             "accept": [],
-            "why": "fresh fish."
+            "why": "fresh fish.",
+            "support": [
+              {
+                "en": "fresh",
+                "fa": "تازه"
+              }
+            ]
           }
         ]
       }
@@ -4778,7 +4796,13 @@
               "milk"
             ],
             "fa": "تشنه‌ام. در یخچال آبمیوه هست؟",
-            "why": "juice = آبمیوه."
+            "why": "juice = آبمیوه.",
+            "support": [
+              {
+                "en": "fridge",
+                "fa": "یخچال"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4809,7 +4833,13 @@
             "frame": "I like fresh ___.",
             "answer": "juice",
             "accept": [],
-            "why": "fresh juice."
+            "why": "fresh juice.",
+            "support": [
+              {
+                "en": "fresh",
+                "fa": "تازه"
+              }
+            ]
           }
         ]
       }
@@ -5104,7 +5134,13 @@
             "accept": [
               "foot"
             ],
-            "why": "leg = پا."
+            "why": "leg = پا.",
+            "support": [
+              {
+                "en": "hurts",
+                "fa": "درد می‌کند"
+              }
+            ]
           }
         ]
       }
@@ -6079,7 +6115,13 @@
             "frame": "There are ___ of stars in the sky.",
             "answer": "millions",
             "accept": [],
-            "why": "millions of."
+            "why": "millions of.",
+            "support": [
+              {
+                "en": "sky",
+                "fa": "آسمان"
+              }
+            ]
           }
         ]
       }
@@ -9067,6 +9109,12 @@
                 "ok": false,
                 "why": "sing فعل است."
               }
+            ],
+            "support": [
+              {
+                "en": "beautifully",
+                "fa": "به زیبایی"
+              }
             ]
           },
           {
@@ -10616,7 +10664,13 @@
               "correct"
             ],
             "fa": "«آب خیس است.» — بله، درست است.",
-            "why": "that's true."
+            "why": "that's true.",
+            "support": [
+              {
+                "en": "wet",
+                "fa": "خیس"
+              }
+            ]
           },
           {
             "type": "choice",
