@@ -977,3 +977,19 @@ PR #138 hardens semantic packet provenance without changing any semantic judgmen
 - Any change to Unit 1 source/prerequisites, rubric manifest or prompt/rubric versions still invalidates the packet as before.
 
 Resume point: merge PR #138 after exact-head CI, then continue the existing P2 calibration/qualification automation. Do not regenerate Unit 1 semantic evidence merely because later A1 units move.
+
+## Calibration: reasoning off, and fair turns
+
+The first unattended runs (2026-10-07) showed two problems.
+
+- **No answers.** English Nemotron 3 failed three times with
+  `empty-model-content`: 1,200 of 1,200 completion tokens were spent
+  reasoning, and no judgement was ever produced. Workers AI documents
+  `chat_template_kwargs.enable_thinking` (on by default) for Nemotron 3,
+  Gemma 4, GLM 4.7 Flash and Qwen 3.8. Those candidates now run with
+  reasoning off. The `+no-thinking` suffix on `modelVersion` makes each one a
+  new candidate. Kimi K2.5 and Qwen3 30B document no such switch and are
+  unchanged.
+- **Starvation.** English, first in role order, went first every day, and its
+  failed attempts left too little of the day for Persian's 8,202-Neuron
+  campaign. Among ready roles, the least recently attempted now goes first.

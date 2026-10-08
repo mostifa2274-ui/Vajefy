@@ -10,7 +10,7 @@
       "provider": "cloudflare-workers-ai",
       "modelFamily": "nvidia-nemotron",
       "model": "@cf/nvidia/nemotron-3-120b-a12b",
-      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
       "maxTokens": 1200,
       "status": "calibrating",
       "rationale": "Next to calibrate: candidate 2 of 4 in the pre-registered order, strongest first. Skipped: @cf/meta/llama-3.3-70b-instruct-fp8-fast (rejected: did-not-promote)."
@@ -28,7 +28,7 @@
       "provider": "cloudflare-workers-ai",
       "modelFamily": "google-gemma",
       "model": "@cf/google/gemma-4-26b-a4b-it",
-      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06",
+      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
       "maxTokens": 800,
       "status": "calibrating",
       "rationale": "Next to calibrate: candidate 2 of 5 in the pre-registered order, strongest first. Skipped: @cf/nvidia/nemotron-3-120b-a12b (family used by english)."
@@ -56,7 +56,7 @@
         "provider": "cloudflare-workers-ai",
         "modelFamily": "nvidia-nemotron",
         "model": "@cf/nvidia/nemotron-3-120b-a12b",
-        "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06",
+        "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
         "maxTokens": 1200
       },
       {
@@ -86,14 +86,14 @@
         "provider": "cloudflare-workers-ai",
         "modelFamily": "zhipu-glm",
         "model": "@cf/zai-org/glm-4.7-flash",
-        "modelVersion": "@cf/zai-org/glm-4.7-flash@cloudflare-catalog-2026-10-06",
+        "modelVersion": "@cf/zai-org/glm-4.7-flash@cloudflare-catalog-2026-10-06+no-thinking",
         "maxTokens": 800
       },
       {
         "provider": "cloudflare-workers-ai",
         "modelFamily": "qwen",
         "model": "@cf/qwen/qwen3.8-27b",
-        "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06",
+        "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06+no-thinking",
         "maxTokens": 800
       },
       {
@@ -107,7 +107,7 @@
         "provider": "cloudflare-workers-ai",
         "modelFamily": "nvidia-nemotron",
         "model": "@cf/nvidia/nemotron-3-120b-a12b",
-        "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06",
+        "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
         "maxTokens": 1200
       }
     ],
@@ -116,21 +116,21 @@
         "provider": "cloudflare-workers-ai",
         "modelFamily": "nvidia-nemotron",
         "model": "@cf/nvidia/nemotron-3-120b-a12b",
-        "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06",
+        "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
         "maxTokens": 1200
       },
       {
         "provider": "cloudflare-workers-ai",
         "modelFamily": "google-gemma",
         "model": "@cf/google/gemma-4-26b-a4b-it",
-        "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06",
+        "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
         "maxTokens": 800
       },
       {
         "provider": "cloudflare-workers-ai",
         "modelFamily": "qwen",
         "model": "@cf/qwen/qwen3.8-27b",
-        "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06",
+        "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06+no-thinking",
         "maxTokens": 700
       },
       {
@@ -153,7 +153,7 @@
         "provider": "cloudflare-workers-ai",
         "modelFamily": "nvidia-nemotron",
         "model": "@cf/nvidia/nemotron-3-120b-a12b",
-        "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06",
+        "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
         "maxTokens": 600
       },
       {
@@ -186,5 +186,5 @@
       }
     ]
   },
-  "candidateOrder": "Pre-registered on 2026-10-06, before any fallback produced results: each role's free Workers AI candidates, strongest first. Calibration activates, for each role not yet qualified, the first candidate that is not rejected, whose model family no other active judge uses, and whose full calibration fits the daily free Neuron ceiling. A qualified role keeps its judge."
+  "candidateOrder": "Pre-registered on 2026-10-06, before any fallback produced results: each role's free Workers AI candidates, strongest first. Calibration activates, for each role not yet qualified, the first candidate that is not rejected, whose model family no other active judge uses, and whose full calibration fits the daily free Neuron ceiling. A qualified role keeps its judge. On 2026-10-08 the candidates whose Workers AI catalog entry documents chat_template_kwargs.enable_thinking (Nemotron 3, Gemma 4, GLM 4.7 Flash, Qwen 3.8) were switched to reasoning off (+no-thinking): with reasoning on by default, Nemotron 3 spent all 1,200 output tokens reasoning and gave no answer on three runs, so no judgement was ever observed. Order is unchanged."
 }

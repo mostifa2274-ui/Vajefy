@@ -377,7 +377,16 @@ export function planNextCalibration(
     return none("waiting-for-earlier-role", `${role} waits for ${blockingRole(state, assignments, role)} to settle.`);
   }
 
-  for (const role of ready) {
+  // Each ready role takes its turn: the one attempted least recently goes
+  // first, so a role that keeps failing cannot use up every day while a
+  // larger campaign never fits. Role order breaks ties.
+  const lastAttempt = (role: SemanticJudgeRole) =>
+    options.log.entries.reduce(
+      (latest, entry) => (entry.kind === "calibration" && entry.role === role && entry.at > latest ? entry.at : latest),
+      "",
+    );
+  const turns = [...ready].sort((a, b) => lastAttempt(a).localeCompare(lastAttempt(b)));
+  for (const role of turns) {
     const assignment = assignments[role];
     const neurons = campaignFor(state, role, assignment.candidate).neuronsUpperBound;
     if (usedToday + neurons <= options.config.dailyNeuronCeiling) {
