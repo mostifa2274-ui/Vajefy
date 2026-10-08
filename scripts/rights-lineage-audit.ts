@@ -98,8 +98,8 @@ export function auditRightsLineage(
         source.derivatives === "allowed" &&
         source.license !== "UNVERIFIED" &&
         source.evidence.length > 0;
-      const itemReady = proof?.method === "licensed-copy" || proof?.method === "independent-rebuild";
-      const validEvidence = itemReady &&
+      const validEvidence = !!proof &&
+        (proof.method === "licensed-copy" || proof.method === "independent-rebuild") &&
         HASH.test(proof.artifactSha256) &&
         proof.artifactSha256 === currentHash &&
         typeof proof.sourceReference === "string" && proof.sourceReference.trim().length > 0 &&
