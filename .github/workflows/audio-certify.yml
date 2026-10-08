@@ -260,12 +260,7 @@ jobs:
           npm run assurance:audio:repair:check
           node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts --check
 
-      - name: Commit only audio assurance artifacts
-        if: ${{ steps.plan.outputs.run == 'true' }}
-        run: |
-          bash scripts/audio-certification-commit.sh \
-            "[audio-bot] Audio assurance: certify and repair Unit 1-3 (run ${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT})"
-
+      # Preserve all certification/repair diagnostics *before* ephemeral scratch cleanup.
       - name: Upload certification and repair evidence
         if: ${{ always() && steps.plan.outputs.run == 'true' }}
         uses: actions/upload-artifact@v4
@@ -290,6 +285,19 @@ jobs:
       # Evidence and any independently certified promotions are recorded even
       # when unresolved targets remain. The release gate stays red until every
       # Unit 1-3 word/accent pair is certified.
+      - name: Commit only audio assurance artifacts
+        if: ${{ steps.plan.outputs.run == 'true' }}
+        run: |
+          set -euo pipefail
+          # Upload has already preserved the full scratch evidence. The
+          # baseline MP3 copies and recognition intermediates in .audio-repair
+          # are never shippable, and must not fail the narrow commit allowlist.
+          # Remove *only untracked* scratch; tracked unauthorized writes must
+          # still be rejected by audio-certification-commit.sh.
+          git clean -fdq -- .audio-repair
+          bash scripts/audio-certification-commit.sh \
+            "[audio-bot] Audio assurance: certify and repair Unit 1-3 (run ${GITHUB_RUN_ID}.${GITHUB_RUN_ATTEMPT})"
+
       - name: Enforce Unit 1-3 audio gate
         if: ${{ steps.plan.outputs.run == 'true' }}
         run: npm run assurance:audio:strict
