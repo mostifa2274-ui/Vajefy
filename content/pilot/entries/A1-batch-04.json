@@ -61,7 +61,13 @@
       "answer": "turn",
       "accept": [],
       "fa": "مستقیم برو، بعد سر بیمارستان به راست بپیچ.",
-      "why": "turn right = به راست پیچیدن."
+      "why": "turn right = به راست پیچیدن.",
+      "support": [
+       {
+        "en": "straight",
+        "fa": "مستقیم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2677,7 +2683,13 @@
       "answer": "customer",
       "accept": [],
       "fa": "فروشنده دارد به یک مشتری کمک می‌کند.",
-      "why": "customer = مشتری."
+      "why": "customer = مشتری.",
+      "support": [
+       {
+        "en": "assistant",
+        "fa": "فروشنده"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8140,7 +8152,13 @@
       "frame": "Can I ___ in cash?",
       "answer": "pay",
       "accept": [],
-      "why": "pay in cash."
+      "why": "pay in cash.",
+      "support": [
+       {
+        "en": "cash",
+        "fa": "پول نقد"
+       }
+      ]
      }
     ]
    }
@@ -11014,7 +11032,13 @@
       "frame": "The ___ car is mine.",
       "answer": "red",
       "accept": [],
-      "why": "red + اسم."
+      "why": "red + اسم.",
+      "support": [
+       {
+        "en": "mine",
+        "fa": "مال من"
+       }
+      ]
      }
     ]
    }
