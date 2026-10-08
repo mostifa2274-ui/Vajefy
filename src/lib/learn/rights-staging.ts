@@ -72,10 +72,14 @@ export function draftAudit(
       !Array.isArray(data.requiredReviews) || data.requiredReviews.length < 3) {
     errors.push("Drafts need explicit non-clearance authoring and review requirements.");
   }
-  if (!Array.isArray(data.drafts) || !data.drafts.length ||
-      data.draftCount !== data.drafts.length) {
+  if (!Array.isArray(data.drafts) || !data.drafts.length) {
     errors.push("Draft count mismatch or empty draft list.");
     return errors;
+  }
+  if (data.draftCount !== data.drafts.length) {
+    errors.push("Draft count mismatch or empty draft list.");
+    // Continue inspecting actual draft entries; a count mismatch must not
+    // obscure duplicate items or inherited-content reuse in the same run.
   }
 
   const knownEnglish = new Set(inheritedEnglish.map(ascii).filter(Boolean));
