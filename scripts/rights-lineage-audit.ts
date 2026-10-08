@@ -223,7 +223,7 @@ export function loadCurrentRightsAudit(root = process.cwd()): RightsLineageAudit
       const relative = path.posix.join(dir.replaceAll(path.sep, "/"), item.name);
       if (item.isDirectory()) {
         if (relative !== "public/data") visit(relative);
-      } else if (/\\.(?:mp3|wav|ogg|m4a|png|jpg|jpeg|webp|svg|avif)$/i.test(item.name)) {
+      } else if (/\.(?:mp3|wav|ogg|m4a|png|jpg|jpeg|webp|svg|avif)$/i.test(item.name)) {
         const group = relative.startsWith("public/audio/") ? "public/audio" : "public/site-art";
         const checksum = createHash("sha256").update(fs.readFileSync(path.join(root, relative))).digest("hex");
         mediaFiles.get(group)!.push(relative + ":" + checksum);
@@ -233,7 +233,7 @@ export function loadCurrentRightsAudit(root = process.cwd()): RightsLineageAudit
   visit("public");
   const mediaGroups = new Map<string, string>();
   for (const [id, items] of mediaFiles) {
-    mediaGroups.set(id, createHash("sha256").update(items.sort().join("\\n")).digest("hex"));
+    mediaGroups.set(id, createHash("sha256").update(items.sort().join("\n")).digest("hex"));
   }
   const audit = auditRightsLineage(lineage, provenance, entries, publicData, mediaGroups);
   audit.structuralIssues.push(...structuralIssues);
