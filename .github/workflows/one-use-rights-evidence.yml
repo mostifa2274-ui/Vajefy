@@ -1,0 +1,36 @@
+name: One-use Rights Assurance Record Rebuild
+on:
+  push:
+    branches: [codex/gate0-rights-lineage-migration-20261008]
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    if: ${{ github.repository == 'mostifa2274-ui/Vajefy' && startsWith(github.event.head_commit.message, '[start-rights-evidence]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Recompute existing rights UNKNOWN evidence without fake approvals
+        run: |
+          set -euo pipefail
+          npm run assurance:rights:inventory -- --check
+          npm run assurance:records
+          npm run validate:data
+      - name: Commit only current machine records and remove one-use workflow
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -- .github/workflows/one-use-rights-evidence.yml
+          git add -- content/assurance/records/A1.json
+          git diff --cached --quiet && { echo "No assurance records changed"; exit 1; }
+          git commit -m "Gate 0: rebuild machine records against explicit unverified lineage"
+          git push origin HEAD:codex/gate0-rights-lineage-migration-20261008
