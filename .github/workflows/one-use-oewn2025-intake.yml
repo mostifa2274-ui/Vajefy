@@ -50,6 +50,9 @@ jobs:
           x = json.loads(Path('content/rights-staging/oewn-2025-candidates.json').read_text())
           assert x['status'] == 'STAGING_ONLY_UNREVIEWED_NOT_RELEASE_CLEARED'
           assert x['candidateCount'] == 250
+          assert all(row['status'] == 'AWAITING_A1_EDITORIAL_REVIEW' for row in x['candidates'])
+          assert x['tagCountEvidence'] in ('present', 'absent-or-zero-for-selected-candidates')
+          assert 'NOT corpus frequency' in x['selection']
           assert x['sourceArchivePreviouslyPinned'] is True
           assert len(x['sourceArchiveSha256']) == 64
           print('Staging-only 250-candidate source hash recorded; no legacy source touched.')
