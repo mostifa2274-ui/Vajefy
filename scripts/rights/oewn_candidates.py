@@ -89,16 +89,19 @@ def rank_lemmas(lines: list[str], limit: int) -> list[dict[str, object]]:
         ):
             row["topSenseTaggedOccurrences"] = tag_count
             row["wordNetSenseKey"] = parts[0]
+    # OEWN 2025's WNDB index.sense can contain ZERO tag counts across the
+    # entire distribution. Zero means there is no observed tag-frequency
+    # evidence in this source, not that the lemma should be discarded. The
+    # earlier positive-only filter silently rejected every official lemma.
+    # Polysemy is only a deterministic ordering proxy, never frequency/CEFR.
     ranked = sorted(groups.values(), key=lambda item: (
-        -int(item["taggedOccurrences"]), str(item["lemma"]),
-        str(item["partOfSpeech"]),
+        -int(item["taggedOccurrences"]), -int(item["senseCount"]),
+        str(item["lemma"]), str(item["partOfSpeech"]),
     ))
     output = []
     for row in ranked:
         if len(output) >= limit:
             break
-        if int(row["taggedOccurrences"]) < 1:
-            continue
         output.append({
             "lemma": row["lemma"],
             "partOfSpeech": row["partOfSpeech"],
@@ -126,7 +129,15 @@ def staging_manifest(archive: Path, expected_sha256: str | None,
         "sourceUrl": SOURCE_URL,
         "sourceArchiveSha256": observed,
         "sourceArchivePreviouslyPinned": bool(expected_sha256),
-        "selection": "Descending WNDB index.sense tagged occurrences; ties alphabetical. NOT a CEFR classifier.",
+        "selection": (
+            "Descending WNDB index.sense tagged occurrences, then sense count, "
+            "then alphabetic lemma/POS. Zero tag counts are retained. "
+            "Sense count is NOT corpus frequency, popularity or CEFR evidence."
+        ),
+        "tagCountEvidence": (
+            "present" if any(item["taggedOccurrences"] > 0 for item in items)
+            else "absent-or-zero-for-selected-candidates"
+        ),
         "licenses": [
             {"owner": "Open English WordNet team", "license": "CC BY 4.0",
              "noticeUrl": SOURCE_LICENSE_URL, "licenseUrl": CC_BY_LICENSE_URL},
