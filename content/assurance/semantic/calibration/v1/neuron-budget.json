@@ -6,7 +6,7 @@
     "rates": "content/assurance/semantic/workers-ai-neuron-rates.json",
     "manifest": "content/assurance/semantic/calibration/v1/manifest.json"
   },
-  "pricingVerifiedAt": "2026-10-06",
+  "pricingVerifiedAt": "2026-10-08",
   "pricingSource": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
   "freeDailyAllocationNeurons": 10000,
   "calibrationSafetyCeilingNeurons": 8500,
@@ -15,7 +15,7 @@
   "campaignPolicy": "One role campaign at a time. A candidate is eligible only if it needs no paid billing and its full campaign fits the safety ceiling; the automation's usage log keeps each UTC day under the ceiling.",
   "requiredRunsPerRole": 3,
   "activeJudgesTotalRequests": 84,
-  "activeJudgesNeuronsUpperBound": 18033,
+  "activeJudgesNeuronsUpperBound": 10845,
   "roles": {
     "english": {
       "model": "@cf/nvidia/nemotron-3-120b-a12b",
@@ -72,32 +72,33 @@
       ]
     },
     "persian": {
-      "model": "@cf/moonshotai/kimi-k2.5",
-      "modelVersion": "@cf/moonshotai/kimi-k2.5@cloudflare-catalog-2026-10-06",
-      "maxOutputTokensPerRequest": 700,
+      "model": "@cf/zai-org/glm-4.7-flash",
+      "modelVersion": "@cf/zai-org/glm-4.7-flash@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxOutputTokensPerRequest": 800,
       "requestsPerRun": 6,
       "repeats": 3,
       "totalRequests": 18,
       "maxRequestUtf8Bytes": 4778,
       "maxInputTokensUpperBound": 5290,
       "inputTokensUpperBoundTotal": 87246,
-      "outputTokensUpperBoundTotal": 12600,
+      "outputTokensUpperBoundTotal": 14400,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 54545,
-        "outputNeuronsPerMillionTokens": 272727,
+        "inputNeuronsPerMillionTokens": 5500,
+        "outputNeuronsPerMillionTokens": 36400,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 480,
-      "neuronsUpperBound": 8202,
+      "maxRequestNeuronsUpperBound": 59,
+      "neuronsUpperBound": 1014,
       "candidates": [
         {
           "model": "@cf/moonshotai/kimi-k2.5",
           "maxOutputTokensPerRequest": 700,
           "totalRequests": 18,
-          "maxRequestNeuronsUpperBound": 480,
-          "neuronsUpperBound": 8202,
-          "eligible": true
+          "maxRequestNeuronsUpperBound": 712,
+          "neuronsUpperBound": 12126,
+          "eligible": false,
+          "ineligibleReason": "paid-billing-required"
         },
         {
           "model": "@cf/zai-org/glm-4.7-flash",
@@ -259,6 +260,8 @@
     }
   },
   "ineligibleActiveJudges": [],
-  "ineligibleCandidates": [],
+  "ineligibleCandidates": [
+    "persian:@cf/moonshotai/kimi-k2.5 (paid-billing-required)"
+  ],
   "status": "PASS"
 }

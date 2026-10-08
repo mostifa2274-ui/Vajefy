@@ -1,10 +1,17 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-08",
   "source": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
   "freeDailyAllocationNeurons": 10000,
   "calibrationSafetyCeilingNeurons": 8500,
   "protocolOverheadTokensPerRequest": 512,
+  "servedBy": {
+    "@cf/moonshotai/kimi-k2.5": {
+      "model": "@cf/moonshotai/kimi-k2.6",
+      "since": "2026-05-30",
+      "source": "https://developers.cloudflare.com/changelog/post/2026-05-08-planned-model-deprecations/"
+    }
+  },
   "currentRates": {
     "@cf/google/gemma-4-26b-a4b-it": {
       "inputNeuronsPerMillionTokens": 9091,
@@ -27,9 +34,9 @@
       "paidBillingRequired": false
     },
     "@cf/moonshotai/kimi-k2.5": {
-      "inputNeuronsPerMillionTokens": 54545,
-      "outputNeuronsPerMillionTokens": 272727,
-      "paidBillingRequired": false
+      "inputNeuronsPerMillionTokens": 86364,
+      "outputNeuronsPerMillionTokens": 363636,
+      "paidBillingRequired": true
     },
     "@cf/nvidia/nemotron-3-120b-a12b": {
       "inputNeuronsPerMillionTokens": 45455,

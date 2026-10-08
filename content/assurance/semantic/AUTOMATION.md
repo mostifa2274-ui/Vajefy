@@ -97,6 +97,17 @@ what the planner selects. Run
 - Every candidate's campaign has a deterministic upper bound in
   `calibration/v1/neuron-budget.json`: each UTF-8 byte counts as one token,
   plus 512 tokens per request, with output at the token limit.
+- A model Cloudflare has retired can still answer under its old name, served
+  and billed as its replacement. `servedBy` in
+  [`workers-ai-neuron-rates.json`](workers-ai-neuron-rates.json) records each
+  such alias. The rates refresh then gives the old name the replacement's
+  rate and paid-billing status. Kimi K2.5 is one: since 2026-05-30 Cloudflare
+  serves it as Kimi K2.6
+  ([deprecation notice](https://developers.cloudflare.com/changelog/post/2026-05-08-planned-model-deprecations/)).
+  K2.6 needs a paid billing method and costs more, so the planner skips
+  Kimi as `paid-billing-required`. Its first Persian run was charged
+  354.9 Neurons, which is exactly K2.6's rate for 1,162 input and 700 output
+  tokens; K2.5's would have been 254.3.
 - [`calibration/automation-log.json`](calibration/automation-log.json) charges
   each attempt to its UTC day. Before inference starts, the full campaign is
   reserved on `main`. The record then replaces the reservation with the

@@ -26,6 +26,9 @@ function workspace() {
   cpSync(path.join(ROOT, SEMANTIC), path.join(dir, SEMANTIC), { recursive: true });
   // Start from an empty usage log, so no day is reserved.
   writeFileSync(path.join(dir, CALIBRATION, "automation-log.json"), JSON.stringify({ schemaVersion: 1, entries: [] }));
+  // The tests plan from 2026-10-07, so the rates count as verified that day.
+  const ratesFile = path.join(dir, SEMANTIC, "workers-ai-neuron-rates.json");
+  writeFileSync(ratesFile, JSON.stringify({ ...JSON.parse(readFileSync(ratesFile, "utf8")), verifiedAt: "2026-10-07" }));
   const json = <T,>(file: string): T => JSON.parse(readFileSync(path.join(dir, file), "utf8")) as T;
   const run = (...args: string[]) => {
     const result = spawnSync(

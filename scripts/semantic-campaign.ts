@@ -34,6 +34,12 @@ export type NeuronRates = {
   calibrationSafetyCeilingNeurons: number;
   protocolOverheadTokensPerRequest: number;
   currentRates: Record<string, NeuronRate>;
+  /**
+   * Models Cloudflare now serves with another model. Requests to the key run
+   * on, and are billed as, `model`, so the key takes its rate and paid-billing
+   * status.
+   */
+  servedBy?: Record<string, { model: string; since: string; source: string }>;
 };
 
 type Packet = {
