@@ -19,7 +19,7 @@
       "provider": "cloudflare-workers-ai",
       "modelFamily": "moonshot-kimi",
       "model": "@cf/moonshotai/kimi-k2.5",
-      "modelVersion": "@cf/moonshotai/kimi-k2.5@cloudflare-catalog-2026-10-06+no-thinking",
+      "modelVersion": "@cf/moonshotai/kimi-k2.5@cloudflare-catalog-2026-10-06",
       "maxTokens": 700,
       "status": "calibrating",
       "rationale": "Next to calibrate: candidate 1 of 5 in the pre-registered order, strongest first."
@@ -79,7 +79,7 @@
         "provider": "cloudflare-workers-ai",
         "modelFamily": "moonshot-kimi",
         "model": "@cf/moonshotai/kimi-k2.5",
-        "modelVersion": "@cf/moonshotai/kimi-k2.5@cloudflare-catalog-2026-10-06+no-thinking",
+        "modelVersion": "@cf/moonshotai/kimi-k2.5@cloudflare-catalog-2026-10-06",
         "maxTokens": 700
       },
       {
@@ -186,5 +186,5 @@
       }
     ]
   },
-  "candidateOrder": "Pre-registered on 2026-10-06, before any fallback produced results: each role's free Workers AI candidates, strongest first. Calibration activates, for each role not yet qualified, the first candidate that is not rejected, whose model family no other active judge uses, and whose full calibration fits the daily free Neuron ceiling. A qualified role keeps its judge. On 2026-10-08 the candidates whose Workers AI catalog entry documents chat_template_kwargs.enable_thinking (Nemotron 3, Gemma 4, GLM 4.7 Flash, Qwen 3.8) were switched to reasoning off (+no-thinking): with reasoning on by default, Nemotron 3 spent all 1,200 output tokens reasoning and gave no answer on three runs, so no judgement was ever observed. Kimi K2.5 followed on 2026-10-08 after the same failure on its first Persian run (700 of 700 output tokens, no answer); Cloudflare's Kimi K2.6 changelog records that K2.5 controls reasoning with chat_template_kwargs.enable_thinking. Order is unchanged."
+  "candidateOrder": "Pre-registered on 2026-10-06, before any fallback produced results: each role's free Workers AI candidates, strongest first. Calibration activates, for each role not yet qualified, the first candidate that is not rejected, whose model family no other active judge uses, and whose full calibration fits the daily free Neuron ceiling. A qualified role keeps its judge. On 2026-10-08 the candidates whose Workers AI catalog entry documents chat_template_kwargs.enable_thinking (Nemotron 3, Gemma 4, GLM 4.7 Flash, Qwen 3.8) were switched to reasoning off (+no-thinking): with reasoning on by default, Nemotron 3 spent all 1,200 output tokens reasoning and gave no answer on three runs, so no judgement was ever observed. Order is unchanged."
 }

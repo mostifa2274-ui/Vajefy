@@ -86,13 +86,6 @@ candidate from its reasoning-on version: earlier failures do not count
 against it. No judgement from any of them had been seen, and the candidate
 order did not change.
 
-Kimi K2.5 followed the same day. Its first Persian run, on 2026-10-08, used
-all 700 output tokens and returned no answer. K2.5 has no catalog entry, but
-Cloudflare's Kimi K2.6 changelog says that K2.6 "uses
-`chat_template_kwargs.thinking` to control reasoning, replacing
-`chat_template_kwargs.enable_thinking`". So K2.5 runs with `enable_thinking`
-off, as `+no-thinking`. Qwen3 30B documents no such switch and is unchanged.
-
 Do not edit `roles` in the presets by hand. CI fails unless `roles` is exactly
 what the planner selects. Run
 `npm run assurance:semantic:automation -- plan` to update it.
