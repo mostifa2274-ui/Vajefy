@@ -37,8 +37,12 @@ npm run assurance:rights:source:test
 ```
 
 The script reads **only** the WNDB `index.sense` inside that archive.
-It uses a reproducible proxy for sense familiarity: corpus-tagged occurrences
-and a stable alphabetical tie-break. It does **not** load the Oxford workbook,
+It uses corpus-tag-counts only when the archive actually supplies them.
+The verified OEWN 2025 WNDB archive's selected senses have **zero tag counts**;
+in this case it orders candidates by **number of recorded senses**, then
+alphabetically. Sense count is *not* a corpus frequency estimate, a familiarity
+measure or an A1/CEFR rating. This limitation is recorded in
+`tagCountEvidence` and `selection`. It does **not** load the Oxford workbook,
 the 900-entry legacy A1 roster or existing Vajefy lessons. Its staging JSON
 records the archive hash, sense keys, independent-source identifiers, original
 licence notices and the unreviewed selection method.
