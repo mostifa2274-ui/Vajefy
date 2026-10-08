@@ -1,0 +1,45 @@
+name: One-use reconcile independent WordNet PR with current generated coach evidence
+on:
+  push:
+    branches: [codex/oewn2025-independent-candidate-intake-20261008]
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    if: ${{ github.repository == 'mostifa2274-ui/Vajefy' && startsWith(github.event.head_commit.message, '[start-oewn-reconcile]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Rebuild coach cases after merging certified audio on main
+        run: |
+          set -euo pipefail
+          npm run coach:cases
+          npm run validate:data
+          npm run assurance:rights:source:test
+          test -f content/rights-staging/oewn-2025-candidates.json
+          node -e 'const x=require("./content/rights-staging/oewn-2025-candidates.json");if(x.candidateCount!==250||x.status!=="STAGING_ONLY_UNREVIEWED_NOT_RELEASE_CLEARED")process.exit(1)'
+      - name: Commit only refreshed, generated coach cases and remove one-use workflow
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Never commit any further edits to A1 learning sources, evidence, or rights manifest.
+          OTHER="$(git diff --name-only | grep -v '^content/coach-eval/cases.json$' || true)"
+          if [ -n "$OTHER" ]; then
+            echo "Unexpected regeneration outside coach cases:" >&2
+            printf '%s\n' "$OTHER" >&2
+            exit 1
+          fi
+          git rm -- .github/workflows/one-use-oewn2025-reconcile.yml
+          git add -- content/coach-eval/cases.json
+          git diff --cached --quiet && { echo 'No regenerated changes or workflow deletion'; exit 1; }
+          git commit -m 'Refresh coach cases against verified latest main audio state'
+          git push origin HEAD:codex/oewn2025-independent-candidate-intake-20261008
