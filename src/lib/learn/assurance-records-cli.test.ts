@@ -60,6 +60,19 @@ function workspace(senses: ReturnType<typeof sense>[], audio: Record<string, unk
     JSON.stringify({ units: [{ id: "01-introductions", entries: [{ id: "lex:A1:cat" }] }] }),
   );
   writeFileSync(path.join(dir, "content", "assurance", "provenance.json"), JSON.stringify(UNVERIFIED));
+  // Rights lineage is a required input even in a one-entry synthetic workspace.
+  mkdirSync(path.join(dir, "public", "data"), { recursive: true });
+  writeFileSync(path.join(dir, "content", "assurance", "rights-lineage.json"), JSON.stringify({
+    schemaVersion: 1,
+    scope: "repository-distributed-a1",
+    sourceAssignments: {
+      entries: { "lex:A1:cat": "workbook" },
+      publicData: {},
+      mediaGroups: { "public/audio": ["workbook"], "public/site-art": ["workbook"] },
+    },
+    clearedEvidence: { entries: {}, publicData: {}, mediaGroups: {} },
+  }));
+
   spawnSync(process.execPath, ["--experimental-strip-types", "--no-warnings", "--import", REGISTER, PROVENANCE_SCRIPT, "--init"], { cwd: dir });
   return {
     dir,
