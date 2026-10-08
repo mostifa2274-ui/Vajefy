@@ -146,3 +146,108 @@ export function draftAudit(
   }
   return errors;
 }
+
+
+/** Source-only OEWN evidence, never a legal, CEFR or semantic approval. */
+export type OewnSenseReference = {
+  candidate: IndependentWordnetCandidate;
+  dataFile: string;
+  synsetOffset: string;
+  senseNumber: number;
+  tagCount: number;
+  synsetMembers: string[];
+  sourceGloss: string;
+  glossSha256: string;
+  reviewStatus: string;
+};
+
+export type OewnSenseReferenceManifest = {
+  schemaVersion: number;
+  status: string;
+  sourceManifest: string;
+  sourceArchiveSha256: string;
+  sourceUrl: string;
+  licenseNotices: string[];
+  legalStatus: string;
+  candidateCount: number;
+  references: OewnSenseReference[];
+};
+
+/**
+ * SHA validates internal consistency with the pinned intake; the one-use
+ * GitHub generation run separately verified the official archive SHA.
+ * An accurate WordNet synset match does not mean the draft teaches that
+ * synset's sense, nor that the text is A1-ready.
+ */
+export function auditOewnSenseReferences(
+  manifest: OewnSenseReferenceManifest,
+  candidates: readonly IndependentWordnetCandidate[],
+  pinnedArchiveSha256: string,
+  digest: (content: string) => string,
+): string[] {
+  const errors: string[] = [];
+  if (manifest.schemaVersion !== 1 ||
+      manifest.status !== "STAGING_ONLY_LEXICAL_SOURCE_NOT_RELEASE_CLEARED" ||
+      manifest.sourceManifest !== "content/rights-staging/oewn-2025-candidates.json") {
+    errors.push("OEWN lexical reference evidence must remain in staging only.");
+  }
+  if (manifest.sourceArchiveSha256 !== pinnedArchiveSha256 || !sha256.test(pinnedArchiveSha256)) {
+    errors.push("Source references must be bound to the pinned OEWN archive SHA-256.");
+  }
+  if (manifest.sourceUrl !== "https://en-word.net/static/english-wordnet-2025.zip") {
+    errors.push("OEWN source archive URL mismatch.");
+  }
+  if (!manifest.legalStatus?.includes("No rights or CEFR approvals") ||
+      !Array.isArray(manifest.licenseNotices) ||
+      !manifest.licenseNotices.some(v => v.includes("globalwordnet/english-wordnet")) ||
+      !manifest.licenseNotices.some(v => v.includes("wordnet.princeton.edu"))) {
+    errors.push("Both upstream licence notices and non-clearance disclaimer are required.");
+  }
+  if (!Array.isArray(manifest.references) ||
+      manifest.candidateCount !== candidates.length ||
+      manifest.references.length !== candidates.length) {
+    errors.push("Staged reference count does not match the pinned candidate intake.");
+    if (!Array.isArray(manifest.references)) return errors;
+  }
+  const wanted = new Map(candidates.map(v => [v.lemma + "|" + v.partOfSpeech, v]));
+  const seen = new Set<string>();
+  for (const [index, record] of manifest.references.entries()) {
+    const key = record.candidate?.lemma + "|" + record.candidate?.partOfSpeech;
+    const candidate = wanted.get(key);
+    if (seen.has(key)) errors.push("Duplicate lexical reference " + key);
+    seen.add(key);
+    if (!candidate || candidate.wordNetSenseKey !== record.candidate?.wordNetSenseKey) {
+      errors.push("Reference[" + index + "] is not the exact pinned candidate sense key.");
+    }
+    const expectedFile: Record<string, string> = {
+      noun: "data.noun", verb: "data.verb",
+      adjective: "data.adj", adverb: "data.adv",
+    };
+    if (record.dataFile !== expectedFile[record.candidate?.partOfSpeech] ||
+        !/^[0-9]{8}$/.test(record.synsetOffset ?? "") ||
+        !Number.isInteger(record.senseNumber) || record.senseNumber < 1 ||
+        !Number.isInteger(record.tagCount) || record.tagCount < 0) {
+      errors.push("Reference[" + index + "] has invalid WNDB coordinates.");
+    }
+    const members = record.synsetMembers;
+    if (!Array.isArray(members) || members.length === 0 ||
+        !members.some(m => typeof m === "string" &&
+          m.toLowerCase().replace(/\((?:a|p|ip)\)$/, "") === record.candidate?.lemma)) {
+      errors.push("Reference[" + index + "] excludes the claimed WordNet lemma.");
+    }
+    if (!record.sourceGloss?.trim() ||
+        !sha256.test(record.glossSha256 ?? "") ||
+        record.glossSha256 !== digest(record.sourceGloss ?? "")) {
+      errors.push("Reference[" + index + "] has a missing or altered source gloss.");
+    }
+    if (record.reviewStatus !== "SOURCE_SENSE_NOT_YET_EDITORIALLY_VERIFIED") {
+      errors.push("Reference[" + index + "] improperly claims a reviewed or approved source sense.");
+    }
+  }
+  for (const candidate of candidates) {
+    if (!seen.has(candidate.lemma + "|" + candidate.partOfSpeech)) {
+      errors.push("Missing source sense evidence: " + candidate.wordNetSenseKey);
+    }
+  }
+  return errors;
+}
