@@ -62,9 +62,13 @@ type FrontierPlan = {
 };
 
 const ROOT = process.cwd();
-const curriculum = JSON.parse(
-  fs.readFileSync(path.join(ROOT, "content", "curriculum", "A1.json"), "utf8"),
-) as Curriculum;
+const curriculumAt = process.argv.indexOf("--curriculum");
+// --curriculum plans for another curriculum order; content-assurance assesses the same file.
+const curriculumFile =
+  curriculumAt >= 0 && process.argv[curriculumAt + 1]
+    ? path.resolve(process.argv[curriculumAt + 1]!)
+    : path.join(ROOT, "content", "curriculum", "A1.json");
+const curriculum = JSON.parse(fs.readFileSync(curriculumFile, "utf8")) as Curriculum;
 const ordered = curriculum.units.flatMap((unit) => unit.entries.map((entry) => entry.id));
 const position = new Map(ordered.map((id, index) => [id, index] as const));
 const unitByEntry = new Map<string, { id: string; ordinal: number }>();
@@ -82,6 +86,8 @@ function assurance(): AssuranceReport {
       "./scripts/ts-test-register.mjs",
       "scripts/content-assurance.ts",
       "--json",
+      "--curriculum",
+      curriculumFile,
     ],
     { cwd: ROOT, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 },
   );

@@ -336,7 +336,11 @@ function option(flag: string): string | undefined {
 }
 
 const requestedUnit = option("--unit");
-const curriculumFile = path.join(ROOT, "content", "curriculum", "A1.json");
+// --curriculum assesses another curriculum order against the same content,
+// as the frontier promotion search does with its candidates.
+const curriculumFile = option("--curriculum")
+  ? path.resolve(option("--curriculum")!)
+  : path.join(ROOT, "content", "curriculum", "A1.json");
 const curriculum = fs.existsSync(curriculumFile)
   ? (JSON.parse(fs.readFileSync(curriculumFile, "utf8")) as {
       units: { id: string; entries: { id: string }[] }[];

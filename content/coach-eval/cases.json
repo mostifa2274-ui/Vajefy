@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "4b038cf8ac92",
+ "contentVersion": "621fe32a12ea",
  "cases": [
   {
    "id": "2b1078906b",
@@ -20871,6 +20871,54 @@
    ]
   },
   {
+   "id": "adadf88713",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:draw"
+   ],
+   "text": "My daughter likes to draw animals.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "85e8ec46fd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:draw"
+   ],
+   "text": "He drew a map of the town for me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "938b09fd7c",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:draw"
+   ],
+   "text": "She drew a cat.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "273401fa3c",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:draw"
+   ],
+   "text": "She drawed a cat.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
    "id": "b0d80641a1",
    "split": "dev",
    "source": "example",
@@ -22210,54 +22258,6 @@
     "lex:A1:fall"
    ],
    "text": "I falled on the ice.",
-   "expect": [
-    "needs-change"
-   ]
-  },
-  {
-   "id": "adadf88713",
-   "split": "dev",
-   "source": "example",
-   "senses": [
-    "lex:A1:draw"
-   ],
-   "text": "My daughter likes to draw animals.",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "85e8ec46fd",
-   "split": "dev",
-   "source": "example",
-   "senses": [
-    "lex:A1:draw"
-   ],
-   "text": "He drew a map of the town for me.",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "938b09fd7c",
-   "split": "dev",
-   "source": "mistake-right",
-   "senses": [
-    "lex:A1:draw"
-   ],
-   "text": "She drew a cat.",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "273401fa3c",
-   "split": "test",
-   "source": "mistake-wrong",
-   "senses": [
-    "lex:A1:draw"
-   ],
-   "text": "She drawed a cat.",
    "expect": [
     "needs-change"
    ]
@@ -25479,54 +25479,6 @@
    ]
   },
   {
-   "id": "72996bd1a5",
-   "split": "dev",
-   "source": "example",
-   "senses": [
-    "lex:A1:rule"
-   ],
-   "text": "You must follow the school rules.",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "13348e86e7",
-   "split": "test",
-   "source": "example",
-   "senses": [
-    "lex:A1:rule"
-   ],
-   "text": "Do you know the rules of this game?",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "903421185e",
-   "split": "dev",
-   "source": "mistake-right",
-   "senses": [
-    "lex:A1:rule"
-   ],
-   "text": "You must follow the rules.",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "75b91f4dcc",
-   "split": "dev",
-   "source": "mistake-wrong",
-   "senses": [
-    "lex:A1:rule"
-   ],
-   "text": "You must do the rules.",
-   "expect": [
-    "needs-change"
-   ]
-  },
-  {
    "id": "0e1ea5e883",
    "split": "test",
    "source": "example",
@@ -25570,6 +25522,54 @@
     "lex:A1:follow"
    ],
    "text": "Follow after me.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "72996bd1a5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:rule"
+   ],
+   "text": "You must follow the school rules.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "13348e86e7",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:rule"
+   ],
+   "text": "Do you know the rules of this game?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "903421185e",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:rule"
+   ],
+   "text": "You must follow the rules.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "75b91f4dcc",
+   "split": "dev",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:rule"
+   ],
+   "text": "You must do the rules.",
    "expect": [
     "needs-change"
    ]
@@ -31383,54 +31383,6 @@
    ]
   },
   {
-   "id": "40334d5b16",
-   "split": "test",
-   "source": "example",
-   "senses": [
-    "lex:A1:scientist"
-   ],
-   "text": "My cousin is a scientist. She studies plants.",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "315f75373e",
-   "split": "test",
-   "source": "example",
-   "senses": [
-    "lex:A1:scientist"
-   ],
-   "text": "Scientists say the weather is getting hotter.",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "dff4486375",
-   "split": "dev",
-   "source": "mistake-right",
-   "senses": [
-    "lex:A1:scientist"
-   ],
-   "text": "He is a scientist.",
-   "expect": [
-    "natural"
-   ]
-  },
-  {
-   "id": "063c8fb47b",
-   "split": "test",
-   "source": "mistake-wrong",
-   "senses": [
-    "lex:A1:scientist"
-   ],
-   "text": "He is a science.",
-   "expect": [
-    "needs-change"
-   ]
-  },
-  {
    "id": "979dd87326",
    "split": "dev",
    "source": "example",
@@ -31472,6 +31424,54 @@
    "source": "mistake-wrong",
    "senses": [
     "lex:A1:science"
+   ],
+   "text": "He is a science.",
+   "expect": [
+    "needs-change"
+   ]
+  },
+  {
+   "id": "40334d5b16",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:scientist"
+   ],
+   "text": "My cousin is a scientist. She studies plants.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "315f75373e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:scientist"
+   ],
+   "text": "Scientists say the weather is getting hotter.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dff4486375",
+   "split": "dev",
+   "source": "mistake-right",
+   "senses": [
+    "lex:A1:scientist"
+   ],
+   "text": "He is a scientist.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "063c8fb47b",
+   "split": "test",
+   "source": "mistake-wrong",
+   "senses": [
+    "lex:A1:scientist"
    ],
    "text": "He is a science.",
    "expect": [
