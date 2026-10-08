@@ -54,7 +54,7 @@ test("a visible gloss containing a missing or accepted answer is rejected", () =
 
   const accepted: CheckItem = {
     ...cloze,
-    text: "We ___ ready.",
+    text: "We\u0027re ___ ready.",
     answer: "are",
     accept: ["we're"],
     support: [{ en: "we're", fa: "ما هستیم" }],
