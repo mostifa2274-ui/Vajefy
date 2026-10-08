@@ -926,11 +926,21 @@
       "public/data/synonyms.json": "legacy-oxford-3000-5000-workbook",
       "public/data/usefulness.json": "legacy-oxford-3000-5000-workbook",
       "public/data/verb-patterns.json": "legacy-oxford-3000-5000-workbook"
+    },
+    "mediaGroups": {
+      "public/audio": [
+        "legacy-oxford-3000-5000-workbook",
+        "unverified-tts-and-voice-rights"
+      ],
+      "public/site-art": [
+        "unverified-site-media"
+      ]
     }
   },
   "clearedEvidence": {
     "entries": {},
-    "publicData": {}
+    "publicData": {},
+    "mediaGroups": {}
   },
-  "note": "Conservative, unverified inherited source lineage. Assignments do NOT establish Oxford ownership of any individual expression or permission. Move to a cleared source only after an independently reconstructed/authorised artefact, item-specific evidence, and current SHA-256 are recorded."
+  "note": "Conservative, unverified inherited source lineage. Assignments do NOT establish Oxford ownership of any individual expression or permission. Move to a cleared source only after an independently reconstructed/authorised artefact, item-specific evidence, and current SHA-256 are recorded. Media groups cover the shipped audio directory and public graphics using hash-bound aggregate evidence; voice/model and asset licences remain unverified."
 }
