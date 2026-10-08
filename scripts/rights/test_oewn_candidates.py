@@ -13,7 +13,7 @@ from oewn_candidates import (
     staging_manifest,
 )
 
-SCRIPT = Path(__file__).resolve().with_name("oewn-candidates.py")
+SCRIPT = Path(__file__).resolve().with_name("oewn_candidates.py")
 INDEX = "\n".join([
     "dog%1:05:00:: 02084071 1 42",
     "dog%1:05:01:: 02084072 2 5",
