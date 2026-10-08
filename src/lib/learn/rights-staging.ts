@@ -41,6 +41,18 @@ const ascii = (s: string) => s
   .trim()
   .replace(/\s+/g, " ");
 const persian = (s: string) => s.replace(/\s+/g, " ").trim();
+// Detect *long* Persian phrase transplants embedded in a modified example.
+// Normalizing Arabic variants and punctuation prevents trivial evasion;
+// the ten-token threshold avoids treating ordinary short expressions
+// (e.g. «من به خانه می‌روم») as evidence of copying.
+const persianNgrams = (text: string, n: number): string[] => {
+  const tokens = text.normalize("NFKC")
+    .replace(/[يى]/g, "ی").replace(/ك/g, "ک")
+    .replace(/[^\p{L}\p{N}\u200c]+/gu, " ")
+    .trim().split(/\s+/u).filter(Boolean);
+  return Array.from({ length: Math.max(0, tokens.length - n + 1) }, (_, i) =>
+    tokens.slice(i, i + n).join(" "));
+};
 const sha256 = /^[a-f0-9]{64}$/;
 const persianGlyph = /[\u0600-\u06ff]/u;
 const englishGlyph = /[a-z]/i;
@@ -85,6 +97,7 @@ export function draftAudit(
   const knownEnglish = new Set(inheritedEnglish.map(ascii).filter(Boolean));
   const knownPersian = new Set(inheritedPersian.map(persian).filter(Boolean));
   const legacyLongPhrases = new Set(inheritedEnglish.flatMap(line => ngrams(line, 8)));
+  const legacyPersianLongPhrases = new Set(inheritedPersian.flatMap(line => persianNgrams(line, 10)));
   const seen = new Set<string>();
   const draftSentences = new Set<string>();
   for (const [i, row] of data.drafts.entries()) {
@@ -125,6 +138,9 @@ export function draftAudit(
       }
       if (ngrams(ex?.en ?? "", 8).some(segment => legacyLongPhrases.has(segment))) {
         errors.push(`draft[${i}].examples[${j}]: eight-word sequence reused from inherited content.`);
+      }
+      if (persianNgrams(ex?.fa ?? "", 10).some(segment => legacyPersianLongPhrases.has(segment))) {
+        errors.push(`draft[${i}].examples[${j}]: ten-word Persian sequence reused from inherited content.`);
       }
     }
   }

@@ -77,7 +77,7 @@ For every item and media group:
 
 ## Independent A1 authoring staging — new, not approved
 
-`content/rights-staging/independent-a1-editorial-drafts.json` contains **25 newly
+`content/rights-staging/independent-a1-editorial-drafts.json` contains **50 newly
 drafted bilingual teaching entries** from the separate SHA-pinned OEWN 2025
 candidate pool. They were written as fresh examples rather than transplanted
 legacy exercises, but the automated checks **cannot prove clean-room
@@ -93,7 +93,7 @@ reuse from the original lesson/scene/contrast sources. A regression suite
 covers forged source keys, unreviewed-to-cleared relabelling, and reuse. This
 does **not** remove legal/database selection risk or itself grant rights.
 
-**Required before use:** independently validate that each chosen lexical
+The second staging batch adds 25 more new Persian/English draft lessons for common daily verbs and concrete nouns. The 50/250 candidate coverage is **drafting progress only**, not a rights clearance fraction, CEFR qualification, licence finding or completed app migration. Source-sense keys are selected from a pinned independent intake but the intended definitions have **not** been checked against the corresponding WordNet synset glosses. No staged draft enters a public bundle.\n\n**Required before use:** independently validate that each chosen lexical
 sense is correct and appropriate to A1; independently review and revise
 all Persian/English prose; settle attribution and commercial redistribution;
 author separate exercises and new media with appropriate permission; create
