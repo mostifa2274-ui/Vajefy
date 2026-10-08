@@ -170,6 +170,37 @@ if (!rollbackBlock.includes("npm run -s assurance:audio:repair:check\n          
   fail("No-op rollback must also confirm the final audio repair guard before declaring stability.");
 }
 
+// A real 325/386 full-corpus pass (run 37793132202.1) passed both
+// independent recognition and final promotion guards, then the commit
+// allowlist rejected untracked .audio-repair/baseline MP3 snapshots.
+// Keep the artifacts, delete *only untracked scratch*, and retain the
+// strict commit allowlist. No audio evidence or threshold may be bypassed.
+const audioUploadAt = workflow.indexOf("- name: Upload certification and repair evidence");
+const audioCommitAt = workflow.indexOf("- name: Commit only audio assurance artifacts");
+const audioGateAt = workflow.indexOf("- name: Enforce Unit 1-3 audio gate");
+if (!(audioUploadAt > 0 && audioCommitAt > audioUploadAt && audioGateAt > audioCommitAt)) {
+  fail("Audio diagnostics must be uploaded before scratch cleanup and narrow evidence commit.");
+}
+const commitStep = workflow.slice(audioCommitAt, audioGateAt);
+const scratchCleanAt = commitStep.indexOf("git clean -fdq -- .audio-repair");
+const guardedCommitAt = commitStep.indexOf("bash scripts/audio-certification-commit.sh");
+if (!(scratchCleanAt > 0 && guardedCommitAt > scratchCleanAt)) {
+  fail("Audio commit must remove only untracked scratch before the checked allowlist commit.");
+}
+if (!commitStep.includes("set -euo pipefail")) {
+  fail("Audio evidence commit must fail closed on scratch-cleanup or commit errors.");
+}
+const uploadStep = workflow.slice(audioUploadAt, audioCommitAt);
+for (const marker of [
+  "always() && steps.plan.outputs.run == 'true'",
+  ".audio-repair/baseline/audio-manifest.json",
+  ".audio-repair/baseline/audio-report.json",
+  "content/assurance/audio/recognition.json",
+  "content/assurance/audio/certificates.json",
+]) {
+  if (!uploadStep.includes(marker)) fail("Required pre-cleanup evidence upload missing: " + marker);
+}
+
 for (const marker of [
   "npm run -s assurance:audio:check",
   "git push origin HEAD:main",
