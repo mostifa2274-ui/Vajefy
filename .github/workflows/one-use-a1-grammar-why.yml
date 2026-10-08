@@ -1,0 +1,41 @@
+name: One-use A1 Persian grammar why rebuild
+on:
+  push:
+    branches: [codex/a1-grammar-explanations-fa-20261008]
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    if: ${{ github.repository == 'mostifa2274-ui/Vajefy' && startsWith(github.event.head_commit.message, '[start-grammar-explanations]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Rebuild derived content, source provenance, and deterministic ratchets
+        run: |
+          set -euo pipefail
+          npm run content:build
+          npm run coach:cases
+          npm run content:provenance -- --generator chatgpt-2026-10-08-persian-grammar-why-seven
+          npm run assurance:records
+          npm run assurance:content:baseline
+          npm run assurance:scene-coverage
+          npm run validate:data
+          test "$(node -e 'const j=require("./content/assurance/deterministic-baseline.json");console.log(j.maximumByCode.PERSIAN_MISTAKE_WHY)')" = "0"
+      - name: Remove one-use workflow and commit exact reviewed changes
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -- .github/workflows/one-use-a1-grammar-why.yml
+          git add -A --             content/pilot/entries             content/assurance/deterministic-baseline.json             content/assurance/records/A1.json             content/assurance/generation.json             content/assurance/scene-coverage.json             content/compiled/enhanced.json             content/coach-eval/cases.json             public/data/enhanced             public/data/enhanced-order.json
+          git diff --cached --quiet && { echo "No grammar repair files changed"; exit 1; }
+          git commit -m "A1: explain seven grammar corrections in Persian"
+          git push origin HEAD:codex/a1-grammar-explanations-fa-20261008
