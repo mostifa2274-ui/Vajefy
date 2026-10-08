@@ -7,6 +7,7 @@
     "dev": "vite dev",
     "build": "node scripts/clean-build.mjs && vite build && node scripts/inject-sw-assets.mjs",
     "preview": "vite preview",
+    "rollback:rehearse": "node scripts/rollback-rehearsal.mjs",
     "deploy": "npm run build && wrangler deploy",
     "postinstall": "node scripts/cloudflare-ci-bootstrap.mjs",
     "verify:workers-build": "node scripts/verify-workers-build.mjs",

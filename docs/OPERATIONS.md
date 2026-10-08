@@ -64,7 +64,47 @@ the README when you do.
 repository variable `SITE_URL` is set. Set the repository variable
 `CONTENT_CHANNEL` to the channel production must serve (`released` for a public
 A1 release) and the workflow also fails when the live build uses another one. A failure there after a deployment is a
-regression to roll back in Cloudflare's **Deployments** tab.
+regression to roll back ([Rolling back](#rolling-back)).
+
+### Rolling back
+
+Rollback is rehearsed on every pull request and every push to `main`, by
+`.github/workflows/rollback-rehearsal.yml` (plan §22). It runs
+`npm run rollback:rehearse -- --previous <ref>`, which works like this:
+
+1. It builds the previous release (by default the first parent: `main` before
+   the change) in a git worktree under `.rollback/`, and builds the current
+   checkout next to it. Each build reports its own commit, as Workers Builds
+   does.
+2. It serves both with the Workers preview, behind one origin.
+3. A browser test (`tests/rollback/rollback.spec.ts`) studies on the current
+   release, then switches the origin to the previous release and back again.
+   At each step it checks:
+   - `/api/version` reports that release's revision and content channel;
+   - an open tab keeps its complete offline release while the other one
+     installs;
+   - once the tabs close, the newly deployed release serves the app offline
+     too;
+   - the learner's answers are all there, each recorded once, and studying
+     continues on either release;
+   - if a rollback ever crosses a progress-format change, the older release
+     holds the newer save unchanged and offers it as a download. The learner
+     is never stranded and the save is never overwritten.
+
+To roll production back:
+
+1. In Cloudflare, open **Workers → vajefy → Deployments** and roll back to the
+   last good version.
+2. Run **Production smoke checks** by hand with `expect_revision` set to that
+   version's commit (its first 12 characters). The check fails unless
+   `/api/version` reports it, every screen renders and the content channel is
+   the expected one.
+3. Learners' open tabs keep the release they have. Each device moves to the
+   rolled-back release once its tabs close, and its progress stays (see the
+   rehearsal above).
+
+The production half (steps 1 and 2) needs `SITE_URL` and a live deployment.
+It has not been exercised yet.
 
 ### Offline release updates
 
