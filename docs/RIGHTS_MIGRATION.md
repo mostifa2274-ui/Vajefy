@@ -93,7 +93,9 @@ reuse from the original lesson/scene/contrast sources. A regression suite
 covers forged source keys, unreviewed-to-cleared relabelling, and reuse. This
 does **not** remove legal/database selection risk or itself grant rights.
 
-The second staging batch adds 25 more new Persian/English draft lessons for common daily verbs and concrete nouns. The 50/250 candidate coverage is **drafting progress only**, not a rights clearance fraction, CEFR qualification, licence finding or completed app migration. Source-sense keys are selected from a pinned independent intake but the intended definitions have **not** been checked against the corresponding WordNet synset glosses. No staged draft enters a public bundle.\n\n**Required before use:** independently validate that each chosen lexical
+The second staging batch adds 25 more new Persian/English draft lessons for common daily verbs and concrete nouns. The 50/250 candidate coverage is **drafting progress only**, not a rights clearance fraction, CEFR qualification, licence finding or completed app migration. Source-sense keys are selected from a pinned independent intake but the intended definitions have **not** been checked against the corresponding WordNet synset glosses. No staged draft enters a public bundle.
+
+**Required before use:** independently validate that each chosen lexical
 sense is correct and appropriate to A1; independently review and revise
 all Persian/English prose; settle attribution and commercial redistribution;
 author separate exercises and new media with appropriate permission; create
@@ -111,13 +113,39 @@ minimum fields, not verification of the authenticity or legal sufficiency of
 the provided documents. The independent draft stage and all legacy source
 assignments remain unapproved.
 
+## Pinned synset verification — 2026-10-09
+
+A read-only staging reference manifest now records all **250 exact OEWN 2025
+source synsets**, including WNDB coordinates, synonym members, raw upstream
+definition, gloss SHA-256 and immutable unreviewed status. Generation used the
+official source archive with the pinned SHA-256 and offline regression tests;
+see `scripts/rights/oewn_sense_references.py` and
+`docs/OEWN_SOURCE_ATTRIBUTION.md` for full attribution and source links.
+
+**Major discovered risk:** all 50 current independent bilingual drafts were
+linked to WordNet sense numbers above 1. Several links are demonstrably
+incompatible with the meaning taught: for instance `run`, `plate`, `be`,
+`have` and `make`. This is a defect in the intake's **sense selection**,
+not merely a proofreading issue. Non-primary sense numbering alone does not
+prove an error; the actual synset must be checked independently. Do **not**
+silently promote or substitute synonyms, or claim any of these 50 drafts
+ready for A1. Selecting an actual intended sense and verifying translations
+remains mandatory.
+
+`npm run assurance:rights:drafts:check` now validates source-reference
+coverage and hashes and reports the high-risk non-primary count. The new
+source licence/attribution notice applies only to the OEWN-derived staging
+synsets, **not** to existing Oxford-derived content. Source rights and all
+existing learner-facing audio and content remain uncleared.
+
 ## Machine checks
 
 - `npm run assurance:rights:inventory -- --check` verifies no entry, authored scene/contrast, or
   nested public-data JSON file is silently missing, that assigned sources exist,
   and that submitted item hash/evidence matches current content.
 - `npm run assurance:rights:inventory -- --require-cleared` **fails** until
-  every tracked item and governed media group has a cleared source and\ncurrent item/group evidence.
+  every tracked item and governed media group has a cleared source and
+  current item/group evidence.
 - `npm run assurance:provenance` reports combined source/item blockers.
 - `npm run assurance:gate0` remains a hard release gate.
 - `npm run validate:data` includes the non-bypassable rights inventory
