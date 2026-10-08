@@ -25,6 +25,11 @@ created for this project.
   License and commercial-use notice:
   https://wordnet.princeton.edu/license-and-commercial-use
 
+The upstream `LICENSE.md` from OEWN tag `2025-edition` is preserved
+**verbatim** as `content/rights-staging/OEWN-2025-LICENSE.md`
+(upstream Git blob `fe4d1dce8109caa7016fca97f48e49a9ced36ad4`).
+The staging audit checks that its full contents have not been changed or dropped.
+
 These citations and the upstream licences govern the **OEWN-derived staged
 glosses only**. They do **not** confer rights to the pre-existing
 Oxford-derived vocabulary workbook, its adaptations, public lesson packages,
