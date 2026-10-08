@@ -1,0 +1,55 @@
+name: One-use pinned OEWN 2025 sense-reference intake
+on:
+  push:
+    branches: [codex/oewn-pinned-sense-verification-20261009]
+permissions:
+  contents: write
+jobs:
+  source-synsets:
+    if: ${{ github.repository == 'mostifa2274-ui/Vajefy' && startsWith(github.event.head_commit.message, '[start-oewn-sense-index]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Test source-only parser with offline fixtures
+        run: python -m unittest discover -s scripts/rights -p 'test_*.py'
+      - name: Fetch exactly pinned official independent lexical source
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 --max-time 180 \
+            https://en-word.net/static/english-wordnet-2025.zip -o /tmp/oewn-2025.zip
+          echo "38b16326159f51853626b7d24a44c453fa88ab33f06fce5ec8fc5996d1c2be93  /tmp/oewn-2025.zip" | sha256sum -c -
+      - name: Extract exact lexical sense evidence into staging only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/rights/oewn_sense_references.py \
+            --archive /tmp/oewn-2025.zip \
+            --intake content/rights-staging/oewn-2025-candidates.json \
+            --output content/rights-staging/oewn-2025-sense-references.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("content/rights-staging/oewn-2025-sense-references.json").read_text())
+          assert data["candidateCount"] == 250
+          assert len(data["references"]) == 250
+          assert all(x["reviewStatus"] == "SOURCE_SENSE_NOT_YET_EDITORIALLY_VERIFIED" for x in data["references"])
+          assert data["status"] == "STAGING_ONLY_LEXICAL_SOURCE_NOT_RELEASE_CLEARED"
+          PY
+      - name: Commit only source evidence; remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -- .github/workflows/one-use-oewn-sense-index.yml
+          git add -- content/rights-staging/oewn-2025-sense-references.json
+          test "$(git diff --cached --name-only | wc -l)" -eq 2
+          git commit -m "Rights staging: bind 250 candidates to pinned OEWN 2025 synset glosses"
+          git push origin HEAD:codex/oewn-pinned-sense-verification-20261009
