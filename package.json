@@ -30,7 +30,7 @@
     "study:roster": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/pilot-roster.ts",
     "coach:cases": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-coach-cases.ts",
     "coach:eval": "node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/evaluate-coach.ts",
-    "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts' 'src/api/**/*.test.ts'",
+    "test": "node --experimental-strip-types --import ./scripts/ts-test-register.mjs --test 'src/lib/learn/**/*.test.ts' 'src/api/**/*.test.ts' 'scripts/rights-lineage-audit.test.ts'",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "cf-typegen": "wrangler types",
