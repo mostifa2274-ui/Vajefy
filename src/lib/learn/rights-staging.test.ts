@@ -78,3 +78,24 @@ test("independent draft staging catches duplicate candidates, duplicate sentence
   assert.ok(a.some(x => x.includes("duplicate lemma/POS")));
   assert.ok(a.some(x => x.includes("duplicate draft example")));
 });
+
+test("independent staging detects longer Persian-source fragments despite extra prose", () => {
+  const proof = fixture();
+  const shared = "صبح زود همراه خانواده در یک پارک بزرگ قدم می زنیم و درباره برنامه سفر صحبت می کنیم";
+  proof.drafts[0]!.authoredTeaching.examples[0]!.fa =
+    "دیروز " + shared + " و سپس به خانه برمی‌گردیم.";
+  const inherited = "در خاطرات هفته قبل نوشته بودم که " +
+    shared.replaceAll("می", "مي").replaceAll("ک", "ك") +
+    " اما هوا ناگهان بارانی شد.";
+  const errors = draftAudit(proof, candidates, sourceSha, [], [inherited]);
+  assert.ok(errors.some(x => x.includes("ten-word Persian sequence")));
+});
+
+test("short generic Persian vocabulary is not treated as a copied sentence", () => {
+  const proof = fixture();
+  const errors = draftAudit(proof, candidates, sourceSha, [], [
+    "من به خانه می‌روم.",
+    "صبح خوش!",
+  ]);
+  assert.equal(errors.some(x => x.includes("ten-word Persian sequence")), false);
+});
