@@ -990,6 +990,15 @@ The first unattended runs (2026-10-07) showed two problems.
   reasoning off. The `+no-thinking` suffix on `modelVersion` makes each one a
   new candidate. Kimi K2.5 and Qwen3 30B document no such switch and are
   unchanged.
+- **Kimi K2.5 is really K2.6.** Persian finally ran on 2026-10-08. It returned
+  no answer (700 of 700 completion tokens) and was charged 354.9 Neurons.
+  That is Kimi K2.6's rate exactly; K2.5's would be 254.3. Cloudflare has
+  served `kimi-k2.5` as the paid-only `kimi-k2.6` since 2026-05-30. The
+  pricing page still lists K2.5 at its old rate, so the rates refresh could
+  not tell. `servedBy` in `workers-ai-neuron-rates.json` now records the
+  alias. The refresh prices K2.5 as K2.6, and the planner skips Kimi as
+  `paid-billing-required`. Persian moves to GLM 4.7 Flash with reasoning off
+  (≤ 1,014 Neurons).
 - **Starvation.** English, first in role order, went first every day, and its
   failed attempts left too little of the day for Persian's 8,202-Neuron
   campaign. Among ready roles, the least recently attempted now goes first.

@@ -12,6 +12,8 @@ import type { NeuronRates } from "./semantic-campaign";
  * page; a model the page no longer prices loses its rate and so becomes
  * ineligible. It fails closed, writing nothing, if the page cannot be read or
  * the free daily allocation no longer covers the calibration ceiling.
+ * A model listed in `servedBy` takes the rate and paid-billing status of the
+ * model Cloudflare now serves it with.
  * verifiedAt moves only when something changed or it is a week old, so a
  * calm week makes no commits.
  */
@@ -85,13 +87,16 @@ async function refresh() {
   const currentRates: NeuronRates["currentRates"] = {};
   const changes: string[] = [];
   for (const model of tracked) {
-    const page = pricing.rates[model];
+    // An aliased model is billed as the model that serves it, whatever the
+    // pricing page still lists for its old name.
+    const served = rates.servedBy?.[model]?.model ?? model;
+    const page = pricing.rates[served];
     const before = rates.currentRates[model];
     if (!page) {
       if (before) changes.push(`${model}: no longer priced; removed`);
       continue;
     }
-    const after = { ...page, paidBillingRequired: pricing.paidBillingRequired.includes(model) };
+    const after = { ...page, paidBillingRequired: pricing.paidBillingRequired.includes(served) };
     if (JSON.stringify(before) !== JSON.stringify(after)) {
       changes.push(`${model}: ${JSON.stringify(before ?? null)} -> ${JSON.stringify(after)}`);
     }

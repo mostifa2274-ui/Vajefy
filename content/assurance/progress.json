@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-06",
-  "authoritativeMain": "2c4d2228027763720e24a7e512989616485d6b62",
+  "authoritativeMain": "34a26354f10b73c9918f98db6b841e37a1e58f96",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -156,7 +156,8 @@
     "Do not rebuild the unattended calibration (planner, record/reserve/check, rates refresh, scheduled semantic-calibrate.yml); see content/assurance/semantic/AUTOMATION.md.",
     "Do not dispatch calibration by hand to work around the planner's order or the daily ceiling, and do not edit presets roles by hand; run npm run assurance:semantic:automation -- plan.",
     "Do not re-order or remove pre-registered candidates after they have produced results; add new ones at the end, or create a new calibration version.",
-    "Do not re-enable model reasoning for free-budget judges: Nemotron 3 with reasoning on used all 1,200 output tokens and returned no answer on three runs (2026-10-07). Candidates whose catalog documents chat_template_kwargs.enable_thinking run with +no-thinking."
+    "Do not re-enable model reasoning for free-budget judges: Nemotron 3 with reasoning on used all 1,200 output tokens and returned no answer on three runs (2026-10-07). Candidates whose catalog documents chat_template_kwargs.enable_thinking run with +no-thinking.",
+    "Do not treat a model id as the model that answers: Cloudflare aliases retired models (kimi-k2.5 has been served and billed as the paid-only kimi-k2.6 since 2026-05-30). Record aliases in workers-ai-neuron-rates.json servedBy, and check a run's charged Neurons against the rate before trusting the id."
   ],
   "blockers": [
     {
@@ -362,7 +363,7 @@
       "failurePolicy": "Reject as no-valid-output after 3 model-output failures on at least 2 UTC days; gateway faults never reject.",
       "activeJudges": {
         "english": "@cf/nvidia/nemotron-3-120b-a12b",
-        "persian": "@cf/moonshotai/kimi-k2.5",
+        "persian": "@cf/zai-org/glm-4.7-flash",
         "pedagogical": "@cf/google/gemma-4-26b-a4b-it",
         "adversarial": "@cf/qwen/qwen3-30b-a3b-fp8"
       },
@@ -371,7 +372,7 @@
         "content/assurance/semantic/calibration/rejected.json",
         "content/assurance/semantic/calibration/automation-log.json"
       ],
-      "observed": "2026-10-07: three English Nemotron 3 runs failed with empty-model-content (1,200/1,200 completion tokens spent reasoning); Persian never ran because English went first each day. 2026-10-08: reasoning switched off for Nemotron 3, Gemma 4, GLM 4.7 Flash and Qwen 3.8, and the least-recently-attempted ready role now goes first."
+      "observed": "2026-10-07: three English Nemotron 3 runs failed with empty-model-content (1,200/1,200 completion tokens spent reasoning); Persian never ran because English went first each day. 2026-10-08: reasoning switched off for Nemotron 3, Gemma 4, GLM 4.7 Flash and Qwen 3.8, and the least-recently-attempted ready role now goes first. Later on 2026-10-08 the first Persian run (Kimi K2.5) also returned no answer (700/700 completion tokens) and was charged 354.9 Neurons, exactly Kimi K2.6's rate: Cloudflare has served kimi-k2.5 as kimi-k2.6 since 2026-05-30, and K2.6 needs paid billing. workers-ai-neuron-rates.json now records that alias (servedBy), the rates refresh prices K2.5 as K2.6, and the planner skips Kimi as paid-billing-required; Persian moves to GLM 4.7 Flash (+no-thinking)."
     }
   },
   "statusLedger": {
