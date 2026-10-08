@@ -27,10 +27,12 @@ export type RightsLineageManifest = {
   sourceAssignments: {
     entries: Record<string, string>;
     publicData: Record<string, string>;
+    mediaGroups: Record<string, string[]>;
   };
   clearedEvidence: {
     entries: Record<string, RightsLineageEvidence>;
     publicData: Record<string, RightsLineageEvidence>;
+    mediaGroups: Record<string, RightsLineageEvidence>;
   };
   note?: string;
 };
@@ -41,6 +43,8 @@ export type RightsLineageAudit = {
   entriesCleared: number;
   publicData: number;
   publicDataCleared: number;
+  mediaGroups: number;
+  mediaGroupsCleared: number;
   structuralIssues: string[];
   blockers: string[];
 };
@@ -53,6 +57,7 @@ export function auditRightsLineage(
   provenance: ProvenanceManifest,
   currentEntries: ReadonlyMap<string, string>,
   currentPublicData: ReadonlyMap<string, string>,
+  currentMediaGroups: ReadonlyMap<string, string>,
 ): RightsLineageAudit {
   const issues: string[] = [];
   const blockers: string[] = [];
@@ -60,10 +65,13 @@ export function auditRightsLineage(
     issues.push("Incorrect rights lineage schema/scope.");
   }
   if (!manifest.sourceAssignments?.entries || !manifest.sourceAssignments?.publicData ||
-      !manifest.clearedEvidence?.entries || !manifest.clearedEvidence?.publicData) {
+      !manifest.sourceAssignments?.mediaGroups || !manifest.clearedEvidence?.entries ||
+      !manifest.clearedEvidence?.publicData || !manifest.clearedEvidence?.mediaGroups) {
     issues.push("Missing explicit source assignments or cleared evidence maps.");
     return { schemaVersion: 1, entries: currentEntries.size, entriesCleared: 0,
-      publicData: currentPublicData.size, publicDataCleared: 0, structuralIssues: issues, blockers };
+      publicData: currentPublicData.size, publicDataCleared: 0,
+      mediaGroups: currentMediaGroups.size, mediaGroupsCleared: 0,
+      structuralIssues: issues, blockers };
   }
 
   const sources = new Map(provenance.sources.map(s => [s.id, s]));
@@ -121,12 +129,50 @@ export function auditRightsLineage(
 
   const entriesCleared = inspect("entries", currentEntries);
   const publicDataCleared = inspect("publicData", currentPublicData);
+  let mediaGroupsCleared = 0;
+  const assignedMedia = manifest.sourceAssignments.mediaGroups;
+  const mediaEvidence = manifest.clearedEvidence.mediaGroups;
+  for (const group of Object.keys(assignedMedia)) {
+    if (!currentMediaGroups.has(group)) issues.push("mediaGroups: stale assigned group " + group);
+  }
+  for (const group of Object.keys(mediaEvidence)) {
+    if (!currentMediaGroups.has(group)) issues.push("mediaGroups: stale evidence " + group);
+  }
+  for (const [group, contentHash] of currentMediaGroups) {
+    const sourceIds = assignedMedia[group];
+    if (!Array.isArray(sourceIds) || !sourceIds.length) {
+      issues.push("mediaGroups: missing source assignment " + group);
+      blockers.push("mediaGroups:" + group + ":source-unassigned");
+      continue;
+    }
+    const missing = sourceIds.filter(id => !sources.has(id));
+    if (missing.length) issues.push("mediaGroups: unknown sources for " + group + ": " + missing.join(","));
+    const ready = !missing.length && sourceIds.every(id => {
+      const source = sources.get(id)!;
+      return source.status === "cleared" && source.redistribution === "allowed" &&
+        source.derivatives === "allowed" && source.license !== "UNVERIFIED" &&
+        source.evidence.length > 0;
+    });
+    const proof = mediaEvidence[group];
+    const verified = !!proof && HASH.test(proof.artifactSha256) &&
+      proof.artifactSha256 === contentHash &&
+      (proof.method === "licensed-copy" || proof.method === "independent-rebuild") &&
+      !!proof.sourceReference?.trim() && Array.isArray(proof.evidence) &&
+      proof.evidence.length > 0 && proof.evidence.every(x => !!x.trim()) &&
+      TODAY.test(proof.reviewedAt);
+    if (ready && verified) mediaGroupsCleared++;
+    else blockers.push("mediaGroups:" + group + ":" + (!ready ? "source-rights-unverified" :
+      !proof ? "item-evidence-missing" : proof.artifactSha256 !== contentHash ?
+      "item-hash-mismatch" : "item-evidence-invalid"));
+  }
   return {
     schemaVersion: 1,
     entries: currentEntries.size,
     entriesCleared,
     publicData: currentPublicData.size,
     publicDataCleared,
+    mediaGroups: currentMediaGroups.size,
+    mediaGroupsCleared,
     structuralIssues: issues,
     blockers,
   };
@@ -168,7 +214,28 @@ export function loadCurrentRightsAudit(root = process.cwd()): RightsLineageAudit
     const filename = path.join(dataDir, name);
     publicData.set("public/data/" + name, createHash("sha256").update(fs.readFileSync(filename)).digest("hex"));
   }
-  const audit = auditRightsLineage(lineage, provenance, entries, publicData);
+  // Collect existing published media into two governed groups. New audio or
+  // artwork changes the group hash and invalidates any earlier clearance.
+  const mediaFiles = new Map<string, string[]>();
+  for (const group of ["public/audio", "public/site-art"]) mediaFiles.set(group, []);
+  function visit(dir: string) {
+    for (const item of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
+      const relative = path.posix.join(dir.replaceAll(path.sep, "/"), item.name);
+      if (item.isDirectory()) {
+        if (relative !== "public/data") visit(relative);
+      } else if (/\\.(?:mp3|wav|ogg|m4a|png|jpg|jpeg|webp|svg|avif)$/i.test(item.name)) {
+        const group = relative.startsWith("public/audio/") ? "public/audio" : "public/site-art";
+        const checksum = createHash("sha256").update(fs.readFileSync(path.join(root, relative))).digest("hex");
+        mediaFiles.get(group)!.push(relative + ":" + checksum);
+      }
+    }
+  }
+  visit("public");
+  const mediaGroups = new Map<string, string>();
+  for (const [id, items] of mediaFiles) {
+    mediaGroups.set(id, createHash("sha256").update(items.sort().join("\\n")).digest("hex"));
+  }
+  const audit = auditRightsLineage(lineage, provenance, entries, publicData, mediaGroups);
   audit.structuralIssues.push(...structuralIssues);
   return audit;
 }
