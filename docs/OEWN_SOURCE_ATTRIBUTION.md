@@ -60,3 +60,40 @@ draft teaches the cited synset.
 **Gate 0 stays BLOCKED** until actual source/content/media licences,
 independent reconstruction, rights clearance, and exact artifact hashes are
 documented in the canonical rights-lineage inventory.
+
+## Unapproved alternative senses for the first 50 drafts
+
+The first 50 independent teaching drafts referenced source keys selected by a
+zero-tag-count heuristic. They cannot be treated as trustworthy lexical sense
+choices: for example, the original `run` key describes routing a wire rather
+than running on foot. Simply relabelling that key as `run` would perpetuate
+the error. Some non-primary senses can be legitimate, so neither "sense 1"
+nor any automatic keyword score is approval.
+
+`content/rights-staging/oewn-2025-draft-alternatives.json` is a reproducible,
+unapproved **editorial comparison set**, generated from the *same SHA-pinned
+official WNDB zip* and solely the independent staging draft roster. Each
+draft retains its exact originally referenced source sense and English
+authored teaching meaning, and includes all other source senses for that
+lemma and part of speech with precise sense keys, source synset offsets, source
+glosses, independent source hashes and licence attribution. It does **not**
+choose a sense, assert CEFR level, revise the Persian meaning or copy legacy
+lesson prose. No content in this file is a public lesson.
+
+`npm run assurance:rights:alternatives:check` checks cardinality, provenance,
+the original pinned reference, source gloss hashes and unapproved status
+offline; the Python unit suite also checks that forged approvals, drifted
+drafts, modified glosses and wrong archives fail. The original archive is
+verified **when generating** the comparison set; an offline hash of a copied
+gloss is structural integrity evidence, not proof of legal clearance or
+human lexical correctness. The one-use generation workflow checks the entire
+official archive SHA-256 before extracting any of these options.
+
+Next editorial action: inspect a draft's intended meaning against its
+available OEWN synsets, select a genuinely appropriate source key with
+documented justification and an independent reviewer, re-author or correct
+the bilingual lesson as needed, then document the final artifact's lineage
+and exact SHA-256. All 50 remain unapproved in the current staging system,
+and no existing learner-facing corpus, audio, public artwork, or Gate 0 status
+has been changed.
+
