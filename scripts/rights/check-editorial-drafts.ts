@@ -4,7 +4,7 @@ import {
   draftAudit,
   type DraftManifest,
   type IndependentWordnetCandidate,
-} from "../src/lib/learn/rights-staging";
+} from "../../src/lib/learn/rights-staging";
 
 const ROOT = process.cwd();
 const staging = path.join(ROOT, "content", "rights-staging");
