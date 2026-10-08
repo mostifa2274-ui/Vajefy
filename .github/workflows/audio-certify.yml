@@ -215,11 +215,24 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          rm -f .audio-repair/rollback-applied
-          python scripts/audio/rollback_unstable_promotions.py rollback \
-            --snapshot-dir .audio-repair/baseline \
-            --changed-marker .audio-repair/rollback-applied
-          if [ -f .audio-repair/rollback-applied ]; then
+          # Reverting some clips can change the next exact full-corpus result.
+          # Keep checking until every still-promoted clip remains certified.
+          # Three passes bound offline ASR time; exhaustion fails closed.
+          STABLE=false
+          for PASS in 1 2 3; do
+            echo "Final audio rollback convergence pass ${PASS}/3"
+            rm -f .audio-repair/rollback-applied
+            python scripts/audio/rollback_unstable_promotions.py rollback \
+              --snapshot-dir .audio-repair/baseline \
+              --changed-marker .audio-repair/rollback-applied
+            if [ ! -f .audio-repair/rollback-applied ]; then
+              # Fail closed if the rollback detector and final-pass guard disagree.
+              npm run -s assurance:audio:repair:check
+              STABLE=true
+              echo "All current promotions remained certified."
+              break
+            fi
+
             echo "Rollback changed release bytes; rebuilding exact shipped state."
             node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/build-content.ts
             npm run -s assurance:audio:scope -- --output .audio-repair/source-hashes.json
@@ -228,8 +241,16 @@ jobs:
               --vosk-archive /tmp/vosk-model-small-en-us-0.15.zip \
               --source-hashes .audio-repair/source-hashes.json
             npm run assurance:audio -- --write
-          else
-            echo "No final-pass rollback required."
+            if npm run -s assurance:audio:repair:check; then
+              STABLE=true
+              echo "Audio promotions certified after rollback pass ${PASS}."
+              break
+            fi
+            echo "A newly unstable promotion appeared after rollback pass ${PASS}; checking again."
+          done
+          if [ "$STABLE" != "true" ]; then
+            echo "Final audio rollback did not converge in three passes; refusing to publish." >&2
+            exit 1
           fi
 
       - name: Validate exact evidence and promotions
