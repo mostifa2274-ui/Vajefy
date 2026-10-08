@@ -8,12 +8,12 @@
   "roles": {
     "english": {
       "provider": "cloudflare-workers-ai",
-      "modelFamily": "nvidia-nemotron",
-      "model": "@cf/nvidia/nemotron-3-120b-a12b",
-      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
-      "maxTokens": 1200,
+      "modelFamily": "mistral",
+      "model": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+      "modelVersion": "@cf/mistralai/mistral-small-3.1-24b-instruct@cloudflare-catalog-2026-10-06",
+      "maxTokens": 600,
       "status": "calibrating",
-      "rationale": "Next to calibrate: candidate 2 of 4 in the pre-registered order, strongest first. Skipped: @cf/meta/llama-3.3-70b-instruct-fp8-fast (rejected: did-not-promote)."
+      "rationale": "Next to calibrate: candidate 3 of 4 in the pre-registered order, strongest first. Skipped: @cf/meta/llama-3.3-70b-instruct-fp8-fast (rejected: did-not-promote); @cf/nvidia/nemotron-3-120b-a12b (rejected: did-not-promote)."
     },
     "persian": {
       "provider": "cloudflare-workers-ai",
@@ -26,12 +26,12 @@
     },
     "pedagogical": {
       "provider": "cloudflare-workers-ai",
-      "modelFamily": "google-gemma",
-      "model": "@cf/google/gemma-4-26b-a4b-it",
-      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
-      "maxTokens": 800,
+      "modelFamily": "nvidia-nemotron",
+      "model": "@cf/nvidia/nemotron-3-120b-a12b",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 1200,
       "status": "calibrating",
-      "rationale": "Next to calibrate: candidate 2 of 5 in the pre-registered order, strongest first. Skipped: @cf/nvidia/nemotron-3-120b-a12b (family used by english)."
+      "rationale": "Next to calibrate: candidate 1 of 5 in the pre-registered order, strongest first."
     },
     "adversarial": {
       "provider": "cloudflare-workers-ai",
@@ -40,7 +40,7 @@
       "modelVersion": "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
       "maxTokens": 1000,
       "status": "calibrating",
-      "rationale": "Next to calibrate: candidate 2 of 5 in the pre-registered order, strongest first. Skipped: @cf/nvidia/nemotron-3-120b-a12b (family used by english)."
+      "rationale": "Next to calibrate: candidate 2 of 5 in the pre-registered order, strongest first. Skipped: @cf/nvidia/nemotron-3-120b-a12b (family used by pedagogical)."
     }
   },
   "candidates": {

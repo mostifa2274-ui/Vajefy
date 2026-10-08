@@ -15,27 +15,27 @@
   "campaignPolicy": "One role campaign at a time. A candidate is eligible only if it needs no paid billing and its full campaign fits the safety ceiling; the automation's usage log keeps each UTC day under the ceiling.",
   "requiredRunsPerRole": 3,
   "activeJudgesTotalRequests": 84,
-  "activeJudgesNeuronsUpperBound": 10845,
+  "activeJudgesNeuronsUpperBound": 13938,
   "roles": {
     "english": {
-      "model": "@cf/nvidia/nemotron-3-120b-a12b",
-      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
-      "maxOutputTokensPerRequest": 1200,
+      "model": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+      "modelVersion": "@cf/mistralai/mistral-small-3.1-24b-instruct@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 600,
       "requestsPerRun": 6,
       "repeats": 3,
       "totalRequests": 18,
       "maxRequestUtf8Bytes": 4933,
       "maxInputTokensUpperBound": 5445,
       "inputTokensUpperBoundTotal": 88755,
-      "outputTokensUpperBoundTotal": 21600,
+      "outputTokensUpperBoundTotal": 10800,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 45455,
-        "outputNeuronsPerMillionTokens": 136364,
+        "inputNeuronsPerMillionTokens": 31876,
+        "outputNeuronsPerMillionTokens": 50488,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 412,
-      "neuronsUpperBound": 6993,
+      "maxRequestNeuronsUpperBound": 204,
+      "neuronsUpperBound": 3381,
       "candidates": [
         {
           "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
@@ -135,24 +135,24 @@
       ]
     },
     "pedagogical": {
-      "model": "@cf/google/gemma-4-26b-a4b-it",
-      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
-      "maxOutputTokensPerRequest": 800,
+      "model": "@cf/nvidia/nemotron-3-120b-a12b",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxOutputTokensPerRequest": 1200,
       "requestsPerRun": 7,
       "repeats": 3,
       "totalRequests": 21,
       "maxRequestUtf8Bytes": 4843,
       "maxInputTokensUpperBound": 5355,
       "inputTokensUpperBoundTotal": 102390,
-      "outputTokensUpperBoundTotal": 16800,
+      "outputTokensUpperBoundTotal": 25200,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 9091,
-        "outputNeuronsPerMillionTokens": 27273,
+        "inputNeuronsPerMillionTokens": 45455,
+        "outputNeuronsPerMillionTokens": 136364,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 71,
-      "neuronsUpperBound": 1398,
+      "maxRequestNeuronsUpperBound": 408,
+      "neuronsUpperBound": 8103,
       "candidates": [
         {
           "model": "@cf/nvidia/nemotron-3-120b-a12b",
