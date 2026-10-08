@@ -15,7 +15,7 @@ association in `content/assurance/rights-lineage.json` is deliberately
 originated in the workbook.
 
 `rights-lineage.json` now explicitly accounts for the 900 A1 source entries
-and all 21 top-level public JSON files (including the non-A1 source catalogue).
+all 21 top-level public JSON files (including the non-A1 source catalogue),\nand two governed media groups: all published audio and published site artwork.
 Generated `public/data/enhanced/**` is tied to the A1 source entries; audio,
 illustration and any other media also need independent upstream/model/artist
 rights evidence before a public release is approved. Merely moving those assets
@@ -62,7 +62,7 @@ compatibility where that does not carry forward protected selection or
 expression. Identify replacement selections that differ from the existing
 roster, and record their independently sourced rationale.
 
-For every item:
+For every item and media group:
 1. Document `sourceId`, exact version and upstream identifier, licence notices,
    attribution, applicable commercial/derivative permission, and the actual
    independently authored/licensed transformation.
@@ -70,11 +70,11 @@ For every item:
    `scripts/rights-lineage-audit.ts`; record `sourceReference`,
    `method` (`licensed-copy` or `independent-rebuild`), evidence locations,
    and `reviewedAt` under `clearedEvidence.entries` or
-   `clearedEvidence.publicData`.
+   `clearedEvidence.publicData` or `clearedEvidence.mediaGroups`.
 3. Update the corresponding explicit `sourceAssignments` to a verifiably
    cleared `content/assurance/provenance.json` source. Keep any legacy
    attribution and historic proof separately; do not fabricate a source link.
-4. Repeat for public JSON files; additionally audit *all* shipped media,
+4. Repeat for public JSON files and separately governed media groups; audit shipped media,
    model/voice terms, illustrations, licence notices and generated works.
 5. Verify licence compatibility and attribution in the actual UI/build output.
    For a legal interpretation that remains ambiguous, obtain rights-holder
@@ -86,7 +86,7 @@ For every item:
   top-level public-data file is silently missing, that assigned sources exist,
   and that submitted item hash/evidence matches current content.
 - `npm run assurance:rights:inventory -- --require-cleared` **fails** until
-  every tracked item has a cleared source and current individual evidence.
+  every tracked item and governed media group has a cleared source and\ncurrent item/group evidence.
 - `npm run assurance:provenance` reports combined source/item blockers.
 - `npm run assurance:gate0` remains a hard release gate.
 - `npm run validate:data` includes the non-bypassable rights inventory
