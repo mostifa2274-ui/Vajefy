@@ -102,8 +102,18 @@ def source_references(archive: Path, intake: dict) -> dict:
             words = [synset[4 + k * 2].replace("_", " ") for k in range(count)]
         except (ValueError, IndexError) as exc:
             raise ValueError("Malformed synset member list for " + key) from exc
-        if lemma not in [w.lower() for w in words]:
-            raise ValueError("Sense-key lemma missing from source synset for " + key)
+        # WNDB adjective members sometimes carry the syntactic markers
+        # "(a)", "(p)" or "(ip)", while index.sense uses the bare lemma.
+        # Compare the normalized headword only; retain raw members as
+        # literal evidence from the original pinned synset.
+        normalized_members = [
+            re.sub(r"\\((?:a|p|ip)\\)$", "", w.lower()) for w in words
+        ]
+        if lemma not in normalized_members:
+            raise ValueError(
+                "Sense-key lemma missing from source synset for " + key +
+                "; members=" + repr(words[:12])
+            )
         if not gloss.strip() or len(gloss) > 10000:
             raise ValueError("Missing or excessive WordNet source gloss " + key)
         records.append({
