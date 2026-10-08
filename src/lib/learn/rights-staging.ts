@@ -40,7 +40,7 @@ const ascii = (s: string) => s
   .replace(/[^a-z0-9]+/g, " ")
   .trim()
   .replace(/\s+/g, " ");
-const persian = (s: string) => s.replace(/\\s+/g, " ").trim();
+const persian = (s: string) => s.replace(/\s+/g, " ").trim();
 // Detect *long* Persian phrase transplants embedded in a modified example.
 // Normalizing Arabic variants and punctuation prevents trivial evasion;
 // the ten-token threshold avoids treating ordinary short expressions
@@ -48,8 +48,8 @@ const persian = (s: string) => s.replace(/\\s+/g, " ").trim();
 const persianNgrams = (text: string, n: number): string[] => {
   const tokens = text.normalize("NFKC")
     .replace(/[يى]/g, "ی").replace(/ك/g, "ک")
-    .replace(/[^\\p{L}\\p{N}\\u200c]+/gu, " ")
-    .trim().split(/\\s+/u).filter(Boolean);
+    .replace(/[^\p{L}\p{N}\u200c]+/gu, " ")
+    .trim().split(/\s+/u).filter(Boolean);
   return Array.from({ length: Math.max(0, tokens.length - n + 1) }, (_, i) =>
     tokens.slice(i, i + n).join(" "));
 };
