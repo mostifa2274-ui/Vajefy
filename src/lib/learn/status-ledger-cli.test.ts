@@ -72,6 +72,8 @@ function run(fixture: Fixture = {}, ...args: string[]) {
       path.join(dir, "content", "pilot", "entries", "fixture.json"),
       JSON.stringify([{ id: "lex:A1:cat", headword: "cat", senses: [] }]),
     );
+    writeFileSync(path.join(dir, "content", "pilot", "scenes.json"), "[]");
+    writeFileSync(path.join(dir, "content", "pilot", "contrasts.json"), "[]");
     writeFileSync(
       path.join(dir, "content", "curriculum", "A1.json"),
       JSON.stringify({ units: [{ entries: [{ id: "lex:A1:cat" }] }] }),
@@ -84,9 +86,10 @@ function run(fixture: Fixture = {}, ...args: string[]) {
         sourceAssignments: {
           entries: { "lex:A1:cat": "workbook" },
           publicData: {},
+          curatedContent: {},
           mediaGroups: { "public/audio": ["workbook"], "public/site-art": ["workbook"] },
         },
-        clearedEvidence: { entries: {}, publicData: {}, mediaGroups: {} },
+        clearedEvidence: { entries: {}, publicData: {}, curatedContent: {}, mediaGroups: {} },
       }),
     );
     writeFileSync(

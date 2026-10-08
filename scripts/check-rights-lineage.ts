@@ -8,7 +8,8 @@ if (process.argv.includes("--json")) {
   console.log(
     "Rights lineage: " + report.entriesCleared + "/" + report.entries +
     " A1 entries and " + report.publicDataCleared + "/" + report.publicData +
-    " public JSON files and " + report.mediaGroupsCleared + "/" + report.mediaGroups +
+    " public JSON files and " + report.curatedContentCleared + "/" + report.curatedContent +
+    " scenes/contrasts and " + report.mediaGroupsCleared + "/" + report.mediaGroups +
     " media groups cleared; Gate 0 " + (releaseReady ? "READY" : "BLOCKED") + ".",
   );
   for (const issue of report.structuralIssues.slice(0, 20)) console.error("! " + issue);
