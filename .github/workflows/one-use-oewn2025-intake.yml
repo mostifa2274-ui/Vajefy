@@ -1,0 +1,54 @@
+name: One-use independent OEWN 2025 candidate intake
+on:
+  push:
+    branches: [codex/oewn2025-independent-candidate-intake-20261008]
+permissions:
+  contents: write
+jobs:
+  import-candidates:
+    if: ${{ github.repository == 'mostifa2274-ui/Vajefy' && startsWith(github.event.head_commit.message, '[start-oewn-intake]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Test fail-closed source staging without using the old corpus
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s scripts/rights -p 'test_*.py'
+      - name: Fetch verified-official-origin WNDB, stage only candidates
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 \
+            --max-time 180 --retry 3 --retry-all-errors \
+            https://en-word.net/static/english-wordnet-2025.zip \
+            --output /tmp/english-wordnet-2025.zip
+          sha256sum /tmp/english-wordnet-2025.zip
+          python3 scripts/rights/oewn_candidates.py \
+            --archive /tmp/english-wordnet-2025.zip \
+            --output content/rights-staging/oewn-2025-candidates.json \
+            --limit 250
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path('content/rights-staging/oewn-2025-candidates.json').read_text())
+          assert x['status'] == 'STAGING_ONLY_UNREVIEWED_NOT_RELEASE_CLEARED'
+          assert x['candidateCount'] == 250
+          assert x['sourceArchivePreviouslyPinned'] is False
+          assert len(x['sourceArchiveSha256']) == 64
+          print('Staging-only 250-candidate source hash recorded; no legacy source touched.')
+          PY
+      - name: Commit staged, licensable candidate evidence only
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/one-use-oewn2025-intake.yml
+          git add -- content/rights-staging/oewn-2025-candidates.json
+          git diff --cached --quiet && { echo 'No independent staging data generated'; exit 1; }
+          git commit -m "Gate 0: stage OEWN 2025 lexical candidates under explicit open licences"
+          git push origin HEAD:codex/oewn2025-independent-candidate-intake-20261008
