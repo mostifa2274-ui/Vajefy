@@ -7,6 +7,20 @@ const contract = JSON.parse(fs.readFileSync(new URL("./data-contract.json", impo
 const failures = [];
 const globalIds = new Map();
 
+/**
+ * The original Oxford-derived workbook had no documented public redistribution
+ * permission, yet this GitHub repository is public. Do not permit it to be
+ * reintroduced to the current tree while Gate 0 remains blocked. Rewriting
+ * historical Git objects is a separate owner-coordinated operation.
+ */
+const unlicensedWorkbook = path.join(
+  ROOT, "attachments", "Oxford_3000_5000_Clean_Final_RTL_Safe_Global_EN_FA.xlsx",
+);
+if (fs.existsSync(unlicensedWorkbook)) {
+  failures.push("Unverified Oxford-derived workbook must not be distributed in the public repository tree.");
+}
+
+
 function fail(message) {
   failures.push(message);
 }
