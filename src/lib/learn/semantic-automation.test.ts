@@ -261,3 +261,42 @@ test("measured usage converts to Neurons at the model's rate, rounded up", () =>
   assert.equal(measuredNeurons(1_000_000, 0, { inputNeuronsPerMillionTokens: 4625, outputNeuronsPerMillionTokens: 30475 }), 4625);
   assert.equal(measuredNeurons(10, 10, { inputNeuronsPerMillionTokens: 4625, outputNeuronsPerMillionTokens: 30475 }), 1);
 });
+
+test("a role that keeps failing does not starve a ready role that has not had its turn", () => {
+  const current = state({ rejected: [rejection("english", llama)] });
+  const attempt = (date: string, role: "english" | "persian") => ({
+    kind: "calibration" as const,
+    date,
+    at: `${date}T06:05:00Z`,
+    runId: `${role}-${date}`,
+    role,
+    model: role === "english" ? nemotron.model : kimi.model,
+    modelVersion: role === "english" ? nemotron.modelVersion : kimi.modelVersion,
+    maxTokens: 800,
+    ...VERSIONS,
+    outcome: "failed" as const,
+    failure: { kind: "model" as const, code: "http-502-empty-model-content", detail: "" },
+    requestsSent: 1,
+    neuronsCharged: 400,
+    measured: null,
+  });
+  // English failed yesterday; Persian has never run, so it goes first today.
+  const fresh = plan(current, { log: { schemaVersion: 1, entries: [attempt("2026-10-06", "english")] } });
+  assert.equal(fresh.action === "calibrate" && fresh.role, "persian");
+  // Once Persian has had its turn more recently, English goes next.
+  const next = plan(current, { log: { schemaVersion: 1, entries: [attempt("2026-10-05", "english"), attempt("2026-10-06", "persian")] } });
+  assert.equal(next.action === "calibrate" && next.role, "english");
+});
+
+test("a reservation whose run never recorded an outcome still counts as that role's turn", () => {
+  const current = state({ rejected: [rejection("english", llama)] });
+  const log: SemanticAutomationLog = {
+    schemaVersion: 1,
+    entries: [
+      { kind: "reservation", date: "2026-10-05", runId: "1.1", role: "english", at: "2026-10-05T00:20:00Z", neuronsCharged: 7000, note: "test" },
+      { kind: "reservation", date: "2026-10-06", runId: "2.1", role: "persian", at: "2026-10-06T00:20:00Z", neuronsCharged: 8200, note: "test" },
+    ],
+  };
+  const next = plan(current, { log });
+  assert.equal(next.action === "calibrate" && next.role, "english");
+});

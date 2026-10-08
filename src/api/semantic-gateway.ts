@@ -8,6 +8,7 @@ import {
   isKeylessSemanticRole,
   keylessSemanticCandidate,
   keylessSemanticEventAllowed,
+  reasoningOff,
 } from "./semantic-gateway-config";
 import { canonicalizeSemanticJudgeContent } from "../lib/learn/semantic-judge-json";
 import { verifyGitHubActionsRequest } from "./github-oidc";
@@ -341,6 +342,7 @@ export async function handleSemanticGateway(
   let result: unknown;
   try {
     result = await ai.run(preset.model, {
+      ...(reasoningOff(preset) ? { chat_template_kwargs: { enable_thinking: false } } : {}),
       messages: [
         { role: "system", content: body.systemPrompt },
         { role: "user", content: userJson },

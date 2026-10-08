@@ -69,6 +69,23 @@ holds Nemotron, so both wait until English qualifies or rejects it. This keeps
 the pre-registered order, so the strongest judge each role can get is the one
 it gets.
 
+Among the roles that are ready, the one attempted least recently goes first.
+A role that keeps failing then cannot take every day's allocation while a
+larger campaign never fits. Persian's 8,202-Neuron campaign waited two days
+behind English's failed attempts until this rule was added.
+
+### Reasoning off
+
+Nemotron 3, Gemma 4, GLM 4.7 Flash and Qwen 3.8 reason before answering by
+default. On 2026-10-07, Nemotron 3 used all 1,200 output tokens reasoning on
+three runs and returned no answer. A judge on the free budget has to answer
+directly, so these candidates run with `chat_template_kwargs.enable_thinking`
+off. Their catalog entries document that switch. The `+no-thinking` suffix on
+`modelVersion` records this, so a reasoning-off candidate is a different
+candidate from its reasoning-on version: earlier failures do not count
+against it. No judgement from any of them had been seen, and the candidate
+order did not change.
+
 Do not edit `roles` in the presets by hand. CI fails unless `roles` is exactly
 what the planner selects. Run
 `npm run assurance:semantic:automation -- plan` to update it.
