@@ -149,6 +149,27 @@ for (const marker of [
   if (!rollbackBlock.includes(marker)) fail("Audio rollback step missing marker: " + marker);
 }
 
+/**
+ * The 2026-10-08 corpus run rolled back two candidates and then found that
+ * lex:A1:new:gb lost certification only on the *next* full-corpus pass.
+ * A single rollback pass must not be allowed to strand a promoted clip.
+ */
+if (!rollbackBlock.includes("STABLE=false") ||
+    !rollbackBlock.includes("for PASS in 1 2 3; do") ||
+    !rollbackBlock.includes('if [ "$STABLE" != "true" ]; then') ||
+    !rollbackBlock.includes("exit 1")) {
+  fail("Final audio rollback must converge within three bounded, fail-closed passes.");
+}
+const rollbackAt = rollbackBlock.indexOf("rollback_unstable_promotions.py rollback");
+const recheckAt = rollbackBlock.indexOf("scripts/audio/certify_audio.py");
+const validateAt = rollbackBlock.lastIndexOf("if npm run -s assurance:audio:repair:check; then");
+if (!(rollbackAt >= 0 && recheckAt > rollbackAt && validateAt > recheckAt)) {
+  fail("Every final-pass rollback must re-certify the restored corpus and recheck active promotions.");
+}
+if (!rollbackBlock.includes("npm run -s assurance:audio:repair:check\n              STABLE=true")) {
+  fail("No-op rollback must also confirm the final audio repair guard before declaring stability.");
+}
+
 for (const marker of [
   "npm run -s assurance:audio:check",
   "git push origin HEAD:main",
