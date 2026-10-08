@@ -211,6 +211,34 @@ and `save-recovery.spec.ts`) cover:
 - two tabs changing progress together;
 - every kind of unreadable save.
 
+`tests/e2e/dependability.spec.ts` covers plan §15 (D2–D4):
+
+- **Long history (D2).** An older save holds two years of study: 2,000
+  scheduled cards, 10,000 reviews and 400 days of logs with a 400-day streak.
+  It migrates once and loads again from the database in under 5 seconds. A
+  new answer saves in under 5 seconds, once. After a reload the history holds
+  10,001 reviews, and a backup holds all of them. Day logs keep their 60-day
+  window; the reviews are the permanent record.
+- **Low storage (D3).**
+  - The browser refuses persistent storage. Answers still save, and no screen
+    claims they are protected.
+  - A unit's pronunciation download loses every fifth clip. The unit is never
+    marked downloaded and has no completion marker. A reload keeps the partial
+    download. A retry fetches only the missing clips, then completes.
+  - An app update cannot download one of its files. The new worker fails to
+    install and leaves no release cache behind. The installed release still
+    opens offline, and a later complete update installs normally.
+  - Storage running out before or during a lesson is covered by
+    `storage-recovery.spec.ts` and `journeys.spec.ts`.
+- **Crash and reload (D4).** A review tab is killed at each step: before an
+  answer, during it, after it but before the next word, during the schedule
+  update (the card write aborts the whole transaction), and while the sitting
+  completes. On reopening, every answer is recorded exactly once. Each
+  answered card carries its answer's schedule, unanswered cards are untouched
+  and the counters agree. The journal is empty, and the review resumes at the
+  right word or shows the sitting as finished. A second reload changes
+  nothing.
+
 ## Limits
 
 - The browser is still the only copy of progress. Clearing site data removes
