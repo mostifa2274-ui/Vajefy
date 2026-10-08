@@ -7,9 +7,15 @@ permissions:
 # (docs/OPERATIONS.md). Cloudflare deploys main itself, so this runs on a
 # schedule and on demand, and is skipped until the variable exists. When the
 # repository variable CONTENT_CHANNEL is set, the live content channel must
-# match it.
+# match it. After a rollback in Cloudflare, run it by hand with the revision
+# rolled back to (docs/OPERATIONS.md, "Rolling back").
 on:
   workflow_dispatch:
+    inputs:
+      expect_revision:
+        description: Revision /api/version must report (the first 12 characters of the commit)
+        required: false
+        default: ""
   schedule:
     - cron: "17 */6 * * *"
 
@@ -25,3 +31,4 @@ jobs:
       - run: node scripts/smoke.mjs "${{ vars.SITE_URL }}"
         env:
           SMOKE_EXPECT_CHANNEL: ${{ vars.CONTENT_CHANNEL }}
+          SMOKE_EXPECT_REVISION: ${{ inputs.expect_revision }}
