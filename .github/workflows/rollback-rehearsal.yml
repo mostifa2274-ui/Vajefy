@@ -25,9 +25,12 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 2
+      # A fetched ref is only named FETCH_HEAD, so the rehearsal is given that.
       - name: Fetch the requested previous release
         if: inputs.previous != ''
-        run: git fetch --no-tags origin "${{ inputs.previous }}"
+        env:
+          REF: ${{ inputs.previous }}
+        run: git fetch --no-tags origin "$REF"
       - uses: actions/setup-node@v5
         with:
           node-version: 22
@@ -36,7 +39,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Rehearse a rollback and a roll forward
         env:
-          PREVIOUS: ${{ inputs.previous || 'HEAD^1' }}
+          PREVIOUS: ${{ inputs.previous != '' && 'FETCH_HEAD' || 'HEAD^1' }}
         run: node scripts/rollback-rehearsal.mjs --previous "$PREVIOUS"
       - name: Upload rehearsal failure artifacts
         if: failure()
