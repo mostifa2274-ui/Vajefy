@@ -439,7 +439,13 @@
       "answer": "company",
       "accept": [],
       "fa": "رضا برای یک شرکت گوشی کار می‌کند. آن‌ها در سراسر کشور گوشی می‌فروشند.",
-      "why": "شرکتی که گوشی می‌فروشد = phone company."
+      "why": "شرکتی که گوشی می‌فروشد = phone company.",
+      "support": [
+       {
+        "en": "Reza",
+        "fa": "رضا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -634,7 +640,13 @@
       "answer": "there",
       "accept": [],
       "fa": "عمویم در مشهد زندگی می‌کند. تابستان‌ها اغلب آنجا می‌رویم.",
-      "why": "go there = به آنجا رفتن، بدون to."
+      "why": "go there = به آنجا رفتن، بدون to.",
+      "support": [
+       {
+        "en": "Mashhad",
+        "fa": "مشهد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -919,7 +931,13 @@
       "answer": "by",
       "accept": [],
       "fa": "رفتن به تبریز با هواپیما سریع‌تر است.",
-      "why": "by + وسیلهٔ سفر، بدون a/the."
+      "why": "by + وسیلهٔ سفر، بدون a/the.",
+      "support": [
+       {
+        "en": "Tabriz",
+        "fa": "تبریز"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2711,7 +2729,13 @@
       "answer": "plan",
       "accept": [],
       "fa": "قصد داریم بهار به شیراز سفر کنیم.",
-      "why": "plan to + فعل."
+      "why": "plan to + فعل.",
+      "support": [
+       {
+        "en": "Shiraz",
+        "fa": "شیراز"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2732,6 +2756,12 @@
         "text": "plan",
         "ok": false,
         "why": "last year گذشته می‌خواهد."
+       }
+      ],
+      "support": [
+       {
+        "en": "Turkey",
+        "fa": "ترکیه"
        }
       ]
      },
@@ -2926,6 +2956,12 @@
         "ok": false,
         "why": "make a course طبیعی نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "French",
+        "fa": "فرانسوی"
+       }
       ]
      },
      {
@@ -2935,7 +2971,13 @@
       "frame": "She is doing a short English ___.",
       "answer": "course",
       "accept": [],
-      "why": "do a course."
+      "why": "do a course.",
+      "support": [
+       {
+        "en": "English",
+        "fa": "انگلیسی"
+       }
+      ]
      }
     ]
    },
@@ -3364,7 +3406,13 @@
       "answer": "out",
       "accept": [],
       "fa": "الف: می‌توانم با مینا صحبت کنم؟ ب: ببخشید، بیرون است. ساعت شش برمی‌گردد.",
-      "why": "be out = خانه نبودن."
+      "why": "be out = خانه نبودن.",
+      "support": [
+       {
+        "en": "Mina",
+        "fa": "مینا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4799,6 +4847,16 @@
         "ok": false,
         "why": "student دانش‌آموز است."
        }
+      ],
+      "support": [
+       {
+        "en": "Mr",
+        "fa": "آقای"
+       },
+       {
+        "en": "Rezaei",
+        "fa": "رضایی"
+       }
       ]
      },
      {
@@ -4808,7 +4866,13 @@
       "frame": "She is an English ___.",
       "answer": "teacher",
       "accept": [],
-      "why": "an English teacher = معلم انگلیسی."
+      "why": "an English teacher = معلم انگلیسی.",
+      "support": [
+       {
+        "en": "English",
+        "fa": "انگلیسی"
+       }
+      ]
      }
     ]
    }
@@ -5571,6 +5635,12 @@
         "ok": false,
         "why": "finish فعل است یا خط پایان."
        }
+      ],
+      "support": [
+       {
+        "en": "Brazil",
+        "fa": "برزیل"
+       }
       ]
      },
      {
@@ -5752,6 +5822,12 @@
         "text": "Next week.",
         "ok": false,
         "why": "این جواب «کی» است، نه «چه مدت»."
+       }
+      ],
+      "support": [
+       {
+        "en": "Tabriz",
+        "fa": "تبریز"
        }
       ]
      },
@@ -6143,6 +6219,12 @@
         "text": "internet",
         "ok": false,
         "why": "internet course طبیعی نیست؛ online course می‌گوییم."
+       }
+      ],
+      "support": [
+       {
+        "en": "English",
+        "fa": "انگلیسی"
        }
       ]
      },
@@ -6708,7 +6790,13 @@
       "answer": "country",
       "accept": [],
       "fa": "کانادا کشور خیلی بزرگی است.",
-      "why": "country = کشور."
+      "why": "country = کشور.",
+      "support": [
+       {
+        "en": "Canada",
+        "fa": "کانادا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6729,6 +6817,12 @@
         "text": "town",
         "ok": false,
         "why": "town شهر کوچک است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Rome",
+        "fa": "رم"
        }
       ]
      },
@@ -7130,6 +7224,12 @@
         "text": "make",
         "ok": false,
         "why": "make a test یعنی امتحان طراحی کردن."
+       }
+      ],
+      "support": [
+       {
+        "en": "English",
+        "fa": "انگلیسی"
        }
       ]
      },
@@ -8034,7 +8134,13 @@
        "price"
       ],
       "fa": "هزینهٔ یک بلیت به مشهد چقدر است؟",
-      "why": "the cost of …"
+      "why": "the cost of …",
+      "support": [
+       {
+        "en": "Mashhad",
+        "fa": "مشهد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8431,6 +8537,12 @@
         "ok": false,
         "why": "whether یعنی «آیا» و فقط هم‌صداست."
        }
+      ],
+      "support": [
+       {
+        "en": "Tabriz",
+        "fa": "تبریز"
+       }
       ]
      },
      {
@@ -8712,7 +8824,13 @@
        "tall"
       ],
       "fa": "دماوند کوه خیلی بلندی است.",
-      "why": "ارتفاع کوه: high."
+      "why": "ارتفاع کوه: high.",
+      "support": [
+       {
+        "en": "Damavand",
+        "fa": "دماوند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9890,6 +10008,16 @@
         "ok": false,
         "why": "alone یعنی تنها و بدون همراه."
        }
+      ],
+      "support": [
+       {
+        "en": "French",
+        "fa": "فرانسوی"
+       },
+       {
+        "en": "English",
+        "fa": "انگلیسی"
+       }
       ]
      },
      {
@@ -9972,6 +10100,12 @@
         "text": "one",
         "ok": false,
         "why": "an one child غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Mina",
+        "fa": "مینا"
        }
       ]
      },
@@ -10176,7 +10310,13 @@
       "frame": "We went to Mashhad by ___.",
       "answer": "train",
       "accept": [],
-      "why": "by train، بدون the."
+      "why": "by train، بدون the.",
+      "support": [
+       {
+        "en": "Mashhad",
+        "fa": "مشهد"
+       }
+      ]
      }
     ]
    }
