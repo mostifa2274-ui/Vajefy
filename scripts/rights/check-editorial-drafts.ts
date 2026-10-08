@@ -1,7 +1,10 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {
   draftAudit,
+  auditOewnSenseReferences,
+  type OewnSenseReferenceManifest,
   type DraftManifest,
   type IndependentWordnetCandidate,
 } from "../../src/lib/learn/rights-staging";
@@ -52,8 +55,28 @@ for (const file of ["scenes.json", "contrasts.json"]) {
   harvest(JSON.parse(fs.readFileSync(path.join(ROOT, "content", "pilot", file), "utf8")) as unknown);
 }
 
-const errors = draftAudit(data, candidates, original.sourceArchiveSha256,
-  inheritedEnglish, inheritedPersian);
+const references = JSON.parse(fs.readFileSync(
+  path.join(staging, "oewn-2025-sense-references.json"), "utf8",
+)) as OewnSenseReferenceManifest;
+const digest = (value: string) => createHash("sha256").update(value).digest("hex");
+const sourceErrors = auditOewnSenseReferences(
+  references, original.candidates, original.sourceArchiveSha256, digest,
+);
+const errors = [
+  ...sourceErrors,
+  ...draftAudit(data, candidates, original.sourceArchiveSha256,
+    inheritedEnglish, inheritedPersian),
+];
+const bySourceKey = new Map(references.references.map(r =>
+  [r.candidate.wordNetSenseKey, r] as const,
+));
+const unresolvedSenseDrafts = data.drafts.filter(d =>
+  d.sourceSenseMatch !== "NOT_YET_VERIFIED" ||
+  !bySourceKey.has(d.candidate.wordNetSenseKey),
+).length;
+const nonPrimarySenseDrafts = data.drafts.filter(d =>
+  (bySourceKey.get(d.candidate.wordNetSenseKey)?.senseNumber ?? 0) > 1,
+).length;
 if (process.argv.includes("--json")) {
   console.log(JSON.stringify({
     status: data.status,
@@ -61,6 +84,11 @@ if (process.argv.includes("--json")) {
     candidates: original.candidates.length,
     inheritedEnglishFields: inheritedEnglish.length,
     inheritedPersianFields: inheritedPersian.length,
+    sourceReferenceCount: references.references.length,
+    sourceReferenceIntegrity: sourceErrors.length === 0,
+    editorialSenseReviewsPassed: 0,
+    nonPrimarySenseDrafts,
+    unresolvedSenseDrafts,
     passed: errors.length === 0,
     errors,
   }, null, 2));
@@ -69,6 +97,8 @@ if (process.argv.includes("--json")) {
     (errors.length ? "FAIL" : "PASS") +
     " (" + data.drafts.length + " draft entries, " +
     original.candidates.length + " pinned lexical candidates); " +
+    "WordNet source references: " + references.references.length + "; " +
+    "non-primary linked senses: " + nonPrimarySenseDrafts + "/" + data.drafts.length + "; " +
     "rights approval: NONE; public release: FORBIDDEN.");
   for (const error of errors.slice(0, 30)) console.error("! " + error);
 }
