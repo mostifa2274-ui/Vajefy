@@ -1,0 +1,45 @@
+name: One-use pinned OEWN alternative senses for 50 drafts
+on:
+  push:
+    branches: [codex/oewn-50-draft-alternative-senses-20261009]
+permissions:
+  contents: write
+jobs:
+  generate:
+    if: ${{ github.repository == 'mostifa2274-ui/Vajefy' && startsWith(github.event.head_commit.message, '[start-oewn-alternatives]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Download the pinned upstream independent WNDB source
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 --proto '=https' --tlsv1.2 \
+            https://en-word.net/static/english-wordnet-2025.zip \
+            -o /tmp/english-wordnet-2025.zip
+          echo '38b16326159f51853626b7d24a44c453fa88ab33f06fce5ec8fc5996d1c2be93  /tmp/english-wordnet-2025.zip' | sha256sum -c -
+      - name: Generate unapproved alternatives from the verified WordNet archive
+        run: |
+          set -euo pipefail
+          python3 scripts/rights/oewn_alternative_senses.py \
+            --archive /tmp/english-wordnet-2025.zip \
+            --output content/rights-staging/oewn-2025-draft-alternatives.json
+          python3 scripts/rights/oewn_alternative_senses.py \
+            --check content/rights-staging/oewn-2025-draft-alternatives.json
+          python3 -m unittest discover -s scripts/rights -p 'test_*.py'
+      - name: Commit only pinned staging evidence and retire this workflow
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -- .github/workflows/one-use-oewn-alternative-senses.yml
+          git add -- content/rights-staging/oewn-2025-draft-alternatives.json
+          git diff --cached --name-only
+          git diff --cached --quiet && { echo 'No pinned source evidence generated'; exit 1; }
+          git commit -m 'Stage verified OEWN source alternatives for 50 independent A1 drafts'
+          git push origin HEAD:codex/oewn-50-draft-alternative-senses-20261009
