@@ -144,7 +144,7 @@ test("a source licence alone cannot clear Gate 0 without exact item and media ev
     ],
   };
   const { output } = run({ provenance: cleared, gate: "IN_PROGRESS" });
-  assert.match(output, /GATE0-RIGHTS: provenance has \\d+ blocker\\(s\\), so the state must be BLOCKED, not IN_PROGRESS/);
+  assert.match(output, /GATE0-RIGHTS: provenance has \d+ blocker\(s\), so the state must be BLOCKED, not IN_PROGRESS/);
   assert.doesNotMatch(output, /provenance has no blockers/);
 });
 
