@@ -64,6 +64,31 @@ function run(fixture: Fixture = {}, ...args: string[]) {
         LEDGER_END,
       ].join("\n"),
     );
+    // Gate 0 now requires explicit item and media lineage in every workspace.
+    mkdirSync(path.join(dir, "content", "pilot", "entries"), { recursive: true });
+    mkdirSync(path.join(dir, "content", "curriculum"), { recursive: true });
+    mkdirSync(path.join(dir, "public", "data"), { recursive: true });
+    writeFileSync(
+      path.join(dir, "content", "pilot", "entries", "fixture.json"),
+      JSON.stringify([{ id: "lex:A1:cat", headword: "cat", senses: [] }]),
+    );
+    writeFileSync(
+      path.join(dir, "content", "curriculum", "A1.json"),
+      JSON.stringify({ units: [{ entries: [{ id: "lex:A1:cat" }] }] }),
+    );
+    writeFileSync(
+      path.join(dir, "content", "assurance", "rights-lineage.json"),
+      JSON.stringify({
+        schemaVersion: 1,
+        scope: "repository-distributed-a1",
+        sourceAssignments: {
+          entries: { "lex:A1:cat": "workbook" },
+          publicData: {},
+          mediaGroups: { "public/audio": ["workbook"], "public/site-art": ["workbook"] },
+        },
+        clearedEvidence: { entries: {}, publicData: {}, mediaGroups: {} },
+      }),
+    );
     writeFileSync(
       path.join(dir, "content", "assurance", "provenance.json"),
       JSON.stringify(fixture.provenance ?? UNVERIFIED),
@@ -103,7 +128,7 @@ test("Gate 0 must be BLOCKED while provenance has blockers", () => {
   assert.match(output, /GATE0-RIGHTS: provenance has \d+ blocker\(s\), so the state must be BLOCKED, not IN_PROGRESS/);
 });
 
-test("Gate 0 cannot stay BLOCKED once every source is cleared", () => {
+test("a source licence alone cannot clear Gate 0 without exact item and media evidence", () => {
   const cleared = {
     schemaVersion: 1,
     sources: [
@@ -118,8 +143,9 @@ test("Gate 0 cannot stay BLOCKED once every source is cleared", () => {
       },
     ],
   };
-  const { output } = run({ provenance: cleared });
-  assert.match(output, /GATE0-RIGHTS: provenance has no blockers/);
+  const { output } = run({ provenance: cleared, gate: "IN_PROGRESS" });
+  assert.match(output, /GATE0-RIGHTS: provenance has \d+ blocker\(s\), so the state must be BLOCKED, not IN_PROGRESS/);
+  assert.doesNotMatch(output, /provenance has no blockers/);
 });
 
 test("every BLOCKED blocker in the progress record needs a BLOCKED ledger row", () => {

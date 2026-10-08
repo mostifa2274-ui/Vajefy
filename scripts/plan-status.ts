@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { provenanceBlockers, provenanceManifest } from "../src/lib/learn/assurance";
+import { loadCurrentRightsAudit } from "./rights-lineage-audit";
 import {
   checkStatusLedger,
   LEDGER_STATES,
@@ -115,7 +116,12 @@ const manifest = provenanceManifest.safeParse(readJson<unknown>(PROVENANCE_FILE)
 if (!manifest.success) {
   fail(gate, "GATE0-RIGHTS: content/assurance/provenance.json is invalid; run npm run assurance:provenance");
 } else if (gate) {
-  const blockers = provenanceBlockers(manifest.data);
+  const lineage = loadCurrentRightsAudit();
+  const blockers = [
+    ...provenanceBlockers(manifest.data),
+    ...lineage.structuralIssues.map(issue => "rights-lineage:" + issue),
+    ...lineage.blockers,
+  ];
   if (blockers.length && gate.state !== "BLOCKED") {
     fail(gate, `GATE0-RIGHTS: provenance has ${blockers.length} blocker(s), so the state must be BLOCKED, not ${gate.state}`);
   }
