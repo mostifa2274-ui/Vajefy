@@ -44,7 +44,7 @@ import { estimateCampaign, type CampaignEstimate, type NeuronRates } from "./sem
  *          [--report <file>] [--github-output]
  *          score a finished campaign, then qualify or reject the candidate,
  *          or log a failed attempt; charge the day's Neurons either way
- *   reserve --run-id <id> --neurons <n>
+ *   reserve --run-id <id> --role <role> --neurons <n>
  *          charge a campaign's full upper bound before its inference starts;
  *          recording the campaign replaces the reservation
  *   check  fail unless the ledgers are valid and the active judges are the
@@ -451,13 +451,18 @@ function record() {
 function reserve() {
   const runId = option("--run-id");
   const neurons = Number(option("--neurons"));
-  if (!runId || !Number.isInteger(neurons) || neurons <= 0) fail("reserve needs --run-id <id> and --neurons <n>.");
+  const role = option("--role");
+  if (!runId || !Number.isInteger(neurons) || neurons <= 0 || !role || !semanticJudgeRole.safeParse(role).success) {
+    fail("reserve needs --run-id <id>, --role <role> and --neurons <n>.");
+  }
   const log = parse(semanticAutomationLog, FILES.log);
   if (log.entries.some((entry) => entry.runId === runId)) fail(`Run ${runId} is already in the log.`);
   log.entries.push({
     kind: "reservation",
     date: today,
     runId,
+    role: role as SemanticJudgeRole,
+    at: new Date().toISOString(),
     neuronsCharged: neurons,
     note: `Calibration run ${runId} reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged.`,
   });

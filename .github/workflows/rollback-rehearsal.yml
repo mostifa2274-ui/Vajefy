@@ -1,0 +1,51 @@
+name: Rollback rehearsal
+
+permissions:
+  contents: read
+
+# Plan §22: rollback is tested, not merely documented. Builds the previous
+# release (the first parent: main before this pull request or push) next to
+# this one, rolls the learner back and forward, and checks /api/version,
+# progress and the offline release at each step. No inference, no deployment.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      previous:
+        description: Git ref of the release to roll back to (default HEAD^1)
+        required: false
+        default: ""
+
+jobs:
+  rehearse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+      # A fetched ref is only named FETCH_HEAD, so the rehearsal is given that.
+      - name: Fetch the requested previous release
+        if: inputs.previous != ''
+        env:
+          REF: ${{ inputs.previous }}
+        run: git fetch --no-tags origin "$REF"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Rehearse a rollback and a roll forward
+        env:
+          PREVIOUS: ${{ inputs.previous != '' && 'FETCH_HEAD' || 'HEAD^1' }}
+        run: node scripts/rollback-rehearsal.mjs --previous "$PREVIOUS"
+      - name: Upload rehearsal failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rollback-rehearsal-failure
+          path: test-results
+          if-no-files-found: ignore
+          retention-days: 3

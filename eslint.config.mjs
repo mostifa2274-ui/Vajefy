@@ -15,6 +15,8 @@ export default tseslint.config(
       ".nitro/**",
       ".wrangler/**",
       "node_modules/**",
+      // The rollback rehearsal's checkout of the previous release.
+      ".rollback/**",
       "src/routeTree.gen.ts",
     ],
   },
