@@ -1,0 +1,1045 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_AI_SENSE_PROPOSALS_NOT_APPROVED",
+  "sourceArchiveSha256": "38b16326159f51853626b7d24a44c453fa88ab33f06fce5ec8fc5996d1c2be93",
+  "draftManifest": "content/rights-staging/independent-a1-editorial-drafts.json",
+  "alternativesManifest": "content/rights-staging/oewn-2025-draft-alternatives.json",
+  "proposalAuthor": "chatgpt-gpt6-2026-10-09",
+  "note": "Lexical editorial suggestions only; never a human or independent judge vote, CEFR assignment, rights clearance, or a change to the canonical/public corpus. See source licence notices in the alternatives manifest.",
+  "draftCount": 50,
+  "proposedCount": 46,
+  "requiresSplitCount": 4,
+  "approvedCount": 0,
+  "entries": [
+    {
+      "candidate": {
+        "lemma": "be",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "be%2:42:13::"
+      },
+      "authoredMeaningEn": "exist or have a particular identity or condition",
+      "originalWordNetSenseKey": "be%2:42:13::",
+      "disposition": "REQUIRES_MEANING_SPLIT",
+      "proposal": null,
+      "editorialRationale": "The authored meaning joins existence, identity, and a state/condition; OEWN treats these as distinct synsets. Split the learning sense and align examples first.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "have",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "have%2:42:12::"
+      },
+      "authoredMeaningEn": "possess something or experience something",
+      "originalWordNetSenseKey": "have%2:42:12::",
+      "disposition": "REQUIRES_MEANING_SPLIT",
+      "proposal": null,
+      "editorialRationale": "The authored meaning joins possession and undergoing an experience; these correspond to distinct synsets. Split and rewrite the single-sense draft first.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "do",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "do%2:42:02::"
+      },
+      "authoredMeaningEn": "perform an action or complete an activity",
+      "originalWordNetSenseKey": "do%2:42:02::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "do%2:36:01::",
+        "senseNumber": 2,
+        "sourceGlossSha256": "7eec852aa86dc1f2ca38d6938550c5fe23f22332934e80bd3730158a0d6f4a22",
+        "synsetOffset": "01769070"
+      },
+      "editorialRationale": "Preliminary wording match: \"perform an action or complete an activity\" against pinned OEWN sense 2. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "go",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "go%2:42:14::"
+      },
+      "authoredMeaningEn": "move or travel from one place to another",
+      "originalWordNetSenseKey": "go%2:42:14::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "go%2:38:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "296d9bd13a833a37e957c85c6c7f8d93db21f114579158301b5a4047a6d996d5",
+        "synsetOffset": "01894627"
+      },
+      "editorialRationale": "Preliminary wording match: \"move or travel from one place to another\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "come",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "come%2:42:15::"
+      },
+      "authoredMeaningEn": "move towards the speaker or a stated place",
+      "originalWordNetSenseKey": "come%2:42:15::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "come%2:38:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "9af259aabfcb6d4100981e1f81ded59a39551efb0129c59ebc89f9a596ac6a44",
+        "synsetOffset": "01908723"
+      },
+      "editorialRationale": "Preliminary wording match: \"move towards the speaker or a stated place\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "make",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "make%2:42:15::"
+      },
+      "authoredMeaningEn": "produce or prepare something",
+      "originalWordNetSenseKey": "make%2:42:15::",
+      "disposition": "REQUIRES_MEANING_SPLIT",
+      "proposal": null,
+      "editorialRationale": "The authored meaning joins production and preparation, and OEWN separates manufacturing, assembly, and cooking. Inspect each original example and split before linking.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "see",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "see%2:41:14::"
+      },
+      "authoredMeaningEn": "notice something using your eyes",
+      "originalWordNetSenseKey": "see%2:41:14::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "see%2:39:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "7bfafdb9630b7b59f61dac39706666e05b4585ddef320496c259df84cf530d97",
+        "synsetOffset": "02193259"
+      },
+      "editorialRationale": "Preliminary wording match: \"notice something using your eyes\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "feel",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "feel%2:42:00::"
+      },
+      "authoredMeaningEn": "experience a physical or emotional state",
+      "originalWordNetSenseKey": "feel%2:42:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "feel%2:29:00::",
+        "senseNumber": 4,
+        "sourceGlossSha256": "e2baa8727d0b2e04432bd2319f9cdb6b1e0b8a361a3bf8a8f0e230a851bc0728",
+        "synsetOffset": "00109021"
+      },
+      "editorialRationale": "Preliminary wording match: \"experience a physical or emotional state\" against pinned OEWN sense 4. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "good",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "good%5:00:01:sound:00"
+      },
+      "authoredMeaningEn": "pleasant, satisfactory or of suitable quality",
+      "originalWordNetSenseKey": "good%5:00:01:sound:00",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "good%3:00:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "2679d63826f8ff5af668bbb1c0aa6575808045f6fa1720d8a87733a6ab770c78",
+        "synsetOffset": "01131475"
+      },
+      "editorialRationale": "Preliminary wording match: \"pleasant, satisfactory or of suitable quality\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "bad",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "bad%5:00:02:unsound:00"
+      },
+      "authoredMeaningEn": "unpleasant, harmful or of poor quality",
+      "originalWordNetSenseKey": "bad%5:00:02:unsound:00",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "bad%3:00:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "0be8ba04622a9c9b00a974e509815184295f6f370427f9873e6c56818f79faf6",
+        "synsetOffset": "01133897"
+      },
+      "editorialRationale": "Preliminary wording match: \"unpleasant, harmful or of poor quality\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "big",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "big%5:00:02:proud:00"
+      },
+      "authoredMeaningEn": "large in size",
+      "originalWordNetSenseKey": "big%5:00:02:proud:00",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "big%3:00:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "f44dd9477157b115b6511b8bbd62ddb477ff7eb49d79a37116842b92b5794020",
+        "synsetOffset": "01390611"
+      },
+      "editorialRationale": "Preliminary wording match: \"large in size\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "easy",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "easy%5:00:01:undemanding:01"
+      },
+      "authoredMeaningEn": "not difficult to understand or do",
+      "originalWordNetSenseKey": "easy%5:00:01:undemanding:01",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "easy%3:00:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "07b19c099ca1bb9671f1aad2ffc7a30b73bdd40b6b77668bb4b45af3a7fb20f0",
+        "synsetOffset": "00756346"
+      },
+      "editorialRationale": "Preliminary wording match: \"not difficult to understand or do\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "clean",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "clean%5:00:01:pure:02"
+      },
+      "authoredMeaningEn": "free from dirt",
+      "originalWordNetSenseKey": "clean%5:00:01:pure:02",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "clean%3:00:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "2d6cf918b7a2d754430560ed78ab8cea70891585631b9c1de9548063c80195f5",
+        "synsetOffset": "00421268"
+      },
+      "editorialRationale": "Preliminary wording match: \"free from dirt\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "cold",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "cold%5:00:00:unoriginal:00"
+      },
+      "authoredMeaningEn": "having a low temperature",
+      "originalWordNetSenseKey": "cold%5:00:00:unoriginal:00",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "cold%3:00:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "f87a6f87e29f0a0309b06eedc6e9a26bcca9c1eb2dca3dbbb8f18ccf7bd2a5ac",
+        "synsetOffset": "01259420"
+      },
+      "editorialRationale": "Preliminary wording match: \"having a low temperature\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "hot",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "hot%5:00:00:warm:03"
+      },
+      "authoredMeaningEn": "having a high temperature",
+      "originalWordNetSenseKey": "hot%5:00:00:warm:03",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "hot%3:00:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "2d25a49a96929b410bdfeaa77315cb8a6ee5f7f4b11855da8c306c55812bdc32",
+        "synsetOffset": "01255422"
+      },
+      "editorialRationale": "Preliminary wording match: \"having a high temperature\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "black",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "black%5:00:00:unfortunate:00"
+      },
+      "authoredMeaningEn": "having the darkest colour",
+      "originalWordNetSenseKey": "black%5:00:00:unfortunate:00",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "black%3:00:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "0f070394f7217dcf88ab0af824b573b0163d8333d38cb679d5ffa0427da303d0",
+        "synsetOffset": "00395530"
+      },
+      "editorialRationale": "Preliminary wording match: \"having the darkest colour\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "white",
+        "partOfSpeech": "adjective",
+        "wordNetSenseKey": "white%5:00:02:colorless:02"
+      },
+      "authoredMeaningEn": "having the colour of snow or milk",
+      "originalWordNetSenseKey": "white%5:00:02:colorless:02",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "white%3:00:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "fa3e0fa20a6b0d4d5ee3dd0d6f5db5e72a6afcfa802ec2ff3f36f89931d38adf",
+        "synsetOffset": "00395823"
+      },
+      "editorialRationale": "Preliminary wording match: \"having the colour of snow or milk\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "house",
+        "partOfSpeech": "noun",
+        "wordNetSenseKey": "house%1:15:00::"
+      },
+      "authoredMeaningEn": "a building where people live",
+      "originalWordNetSenseKey": "house%1:15:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "house%1:06:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "495041e88914bf789d9692e0ba9879004cc537831db954df36ee0ba6f2a25508",
+        "synsetOffset": "02921208"
+      },
+      "editorialRationale": "Preliminary wording match: \"a building where people live\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "hand",
+        "partOfSpeech": "noun",
+        "wordNetSenseKey": "hand%1:23:00::"
+      },
+      "authoredMeaningEn": "the part of the body at the end of the arm",
+      "originalWordNetSenseKey": "hand%1:23:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "hand%1:08:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "0225911b19d9593861f4830a61c1a4fe39891ca6ef1f93c2b9185e6850c1e275",
+        "synsetOffset": "04945351"
+      },
+      "editorialRationale": "Preliminary wording match: \"the part of the body at the end of the arm\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "head",
+        "partOfSpeech": "noun",
+        "wordNetSenseKey": "head%1:26:00::"
+      },
+      "authoredMeaningEn": "the top part of the human body containing the face and brain",
+      "originalWordNetSenseKey": "head%1:26:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "head%1:08:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "5219e8f0f0185844dba1d20e23d9b54a43e153f25f7d5dd976a918f65c1268e1",
+        "synsetOffset": "04919063"
+      },
+      "editorialRationale": "Preliminary wording match: \"the top part of the human body containing the face and brain\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "foot",
+        "partOfSpeech": "noun",
+        "wordNetSenseKey": "foot%1:23:00::"
+      },
+      "authoredMeaningEn": "the part of the body used to stand and walk",
+      "originalWordNetSenseKey": "foot%1:23:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "foot%1:08:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "3a592121beadc7f003046530d366ff71f1c906b908c2c9422c9f53d779ba08af",
+        "synsetOffset": "04944027"
+      },
+      "editorialRationale": "Preliminary wording match: \"the part of the body used to stand and walk\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "body",
+        "partOfSpeech": "noun",
+        "wordNetSenseKey": "body%1:17:00::"
+      },
+      "authoredMeaningEn": "the whole physical structure of a person",
+      "originalWordNetSenseKey": "body%1:17:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "body%1:08:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "5e134decc60fe0fb1f0dce1a8ccbc8c53a9115b3465b8797280f966a00292235",
+        "synsetOffset": "04594888"
+      },
+      "editorialRationale": "Preliminary wording match: \"the whole physical structure of a person\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "wash",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "wash%2:42:12::"
+      },
+      "authoredMeaningEn": "clean something using water",
+      "originalWordNetSenseKey": "wash%2:42:12::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "wash%2:35:00::",
+        "senseNumber": 3,
+        "sourceGlossSha256": "f8dc215297ba53d26840fc58a361c7087c53cd320babd763313e031b34f9bf64",
+        "synsetOffset": "01586403"
+      },
+      "editorialRationale": "Preliminary wording match: \"clean something using water\" against pinned OEWN sense 3. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "play",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "play%2:42:00::"
+      },
+      "authoredMeaningEn": "take part in a game or enjoyable activity",
+      "originalWordNetSenseKey": "play%2:42:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "play%2:33:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "1ae340f94763e733b0ac19635a38dd9ef2f032cf0100ddbdefffff7c2a3b3185",
+        "synsetOffset": "01117068"
+      },
+      "editorialRationale": "Preliminary wording match: \"take part in a game or enjoyable activity\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "work",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "work%2:42:10::"
+      },
+      "authoredMeaningEn": "do a job or perform tasks",
+      "originalWordNetSenseKey": "work%2:42:10::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "work%2:41:02::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "cd7e3c8e444614ebef0ef84bc1e61cb1bc961bf9d0d4b37c61bfcf5e718f99cc",
+        "synsetOffset": "02486742"
+      },
+      "editorialRationale": "Preliminary wording match: \"do a job or perform tasks\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "give",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "give%2:41:10::"
+      },
+      "authoredMeaningEn": "hand something to someone",
+      "originalWordNetSenseKey": "give%2:41:10::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "give%2:40:00::",
+        "senseNumber": 3,
+        "sourceGlossSha256": "0fb75410e627a4294ed2d129f69c98313210abbfd5b8177b1ea3de6f83bb8061",
+        "synsetOffset": "02265502"
+      },
+      "editorialRationale": "Preliminary wording match: \"hand something to someone\" against pinned OEWN sense 3. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "take",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "take%2:42:15::"
+      },
+      "authoredMeaningEn": "pick something up or move it somewhere",
+      "originalWordNetSenseKey": "take%2:42:15::",
+      "disposition": "REQUIRES_MEANING_SPLIT",
+      "proposal": null,
+      "editorialRationale": "The authored meaning joins physical taking and transportation; the corresponding OEWN meanings are distinct. Split/re-author before choosing one source sense.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "cut",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "cut%2:42:00::"
+      },
+      "authoredMeaningEn": "divide something with a sharp object",
+      "originalWordNetSenseKey": "cut%2:42:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "cut%2:35:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "a85968e18f660eca807591b60573f34ab44b33107d53c03128574fb8b1766bc3",
+        "synsetOffset": "01604144"
+      },
+      "editorialRationale": "Preliminary wording match: \"divide something with a sharp object\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "run",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "run%2:42:08::"
+      },
+      "authoredMeaningEn": "move quickly using your legs",
+      "originalWordNetSenseKey": "run%2:42:08::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "run%2:38:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "f5fc4447e7ee201d95872c3d96eea626ac0bd98fb9fb5429fa93827f90388782",
+        "synsetOffset": "01986651"
+      },
+      "editorialRationale": "Preliminary wording match: \"move quickly using your legs\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "carry",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "carry%2:42:15::"
+      },
+      "authoredMeaningEn": "hold and transport something",
+      "originalWordNetSenseKey": "carry%2:42:15::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "carry%2:35:02::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "2aac8f5fe59d54600ea53309e77243c39b4ea1a643dcf7f2cb2eb5c11cb42b18",
+        "synsetOffset": "01500028"
+      },
+      "editorialRationale": "Preliminary wording match: \"hold and transport something\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "draw",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "draw%2:42:02::"
+      },
+      "authoredMeaningEn": "make a picture with a pen or pencil",
+      "originalWordNetSenseKey": "draw%2:42:02::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "draw%2:36:00::",
+        "senseNumber": 6,
+        "sourceGlossSha256": "575c7999b81652954831cad6a750e84cab366f31491775eb9129b10e2fb587ca",
+        "synsetOffset": "01745522"
+      },
+      "editorialRationale": "Preliminary wording match: \"make a picture with a pen or pencil\" against pinned OEWN sense 6. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "hold",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "hold%2:42:14::"
+      },
+      "authoredMeaningEn": "keep something in your hand",
+      "originalWordNetSenseKey": "hold%2:42:14::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "hold%2:35:00::",
+        "senseNumber": 2,
+        "sourceGlossSha256": "75c789c2c4a1bc57cc0beee34270f2c894d00d575e978cba4ef03e0b8d3ba095",
+        "synsetOffset": "01263405"
+      },
+      "editorialRationale": "Preliminary wording match: \"keep something in your hand\" against pinned OEWN sense 2. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "fall",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "fall%2:43:00::"
+      },
+      "authoredMeaningEn": "move down accidentally or under gravity",
+      "originalWordNetSenseKey": "fall%2:43:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "fall%2:38:03::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "663a4548beed6fd49e3047b7c89c7733795e5be8268163f191946f1e5aaf95c0",
+        "synsetOffset": "02033177"
+      },
+      "editorialRationale": "Preliminary wording match: \"move down accidentally or under gravity\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "call",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "call%2:42:09::"
+      },
+      "authoredMeaningEn": "contact someone by telephone",
+      "originalWordNetSenseKey": "call%2:42:09::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "call%2:32:01::",
+        "senseNumber": 3,
+        "sourceGlossSha256": "39faf1dc2a0c86d1b4e411927a4216b17a01d0c4f63541003d6777c1536a8c68",
+        "synsetOffset": "00824166"
+      },
+      "editorialRationale": "Preliminary wording match: \"contact someone by telephone\" against pinned OEWN sense 3. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "turn",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "turn%2:42:13::"
+      },
+      "authoredMeaningEn": "change direction",
+      "originalWordNetSenseKey": "turn%2:42:13::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "turn%2:38:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "47d1cf6b3bab180407f24dc908b4c40b360f8c855cf9611398029b41f328d6e1",
+        "synsetOffset": "01967576"
+      },
+      "editorialRationale": "Preliminary wording match: \"change direction\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "check",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "check%2:42:09::"
+      },
+      "authoredMeaningEn": "look at something to make sure it is correct",
+      "originalWordNetSenseKey": "check%2:42:09::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "check%2:31:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "f8d5df22406c9e8d2484c172e06bb08970fdcf4bdcaef13dafd1e7b838d4c7ba",
+        "synsetOffset": "00692807"
+      },
+      "editorialRationale": "Preliminary wording match: \"look at something to make sure it is correct\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "drive",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "drive%2:42:00::"
+      },
+      "authoredMeaningEn": "control a car or other road vehicle",
+      "originalWordNetSenseKey": "drive%2:42:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "drive%2:38:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "2df4cee04be7a4929f8db72eb36579f58181c84567d5f7caa2a978213ffb095c",
+        "synsetOffset": "01991235"
+      },
+      "editorialRationale": "Preliminary wording match: \"control a car or other road vehicle\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "keep",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "keep%2:42:12::"
+      },
+      "authoredMeaningEn": "continue to have or retain something",
+      "originalWordNetSenseKey": "keep%2:42:12::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "keep%2:40:00::",
+        "senseNumber": 3,
+        "sourceGlossSha256": "b149d75e3bda597807bfe45e9d24545a4147b6bb02f39655cc44242a2ab8855e",
+        "synsetOffset": "02268672"
+      },
+      "editorialRationale": "Preliminary wording match: \"continue to have or retain something\" against pinned OEWN sense 3. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "close",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "close%2:42:01::"
+      },
+      "authoredMeaningEn": "shut something that is open",
+      "originalWordNetSenseKey": "close%2:42:01::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "close%2:35:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "ac79c4e0afb29267a3b1c406c9eb0d13b8e5aac12d791c20a24b3f144573d4f7",
+        "synsetOffset": "01394043"
+      },
+      "editorialRationale": "Preliminary wording match: \"shut something that is open\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "pull",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "pull%2:41:00::"
+      },
+      "authoredMeaningEn": "move something towards you using force",
+      "originalWordNetSenseKey": "pull%2:41:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "pull%2:35:04::",
+        "senseNumber": 4,
+        "sourceGlossSha256": "0f413fd97c1a049306ea031d7a5b450b0e8df12d643a8ed5138c0f4fb4a904f2",
+        "synsetOffset": "01661798"
+      },
+      "editorialRationale": "Preliminary wording match: \"move something towards you using force\" against pinned OEWN sense 4. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "find",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "find%2:40:15::"
+      },
+      "authoredMeaningEn": "discover the location of something",
+      "originalWordNetSenseKey": "find%2:40:15::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "find%2:40:00::",
+        "senseNumber": 3,
+        "sourceGlossSha256": "b4dd46fd72063a63487515a566cd6da27705f520f31dd30863eff730459f8423",
+        "synsetOffset": "02353751"
+      },
+      "editorialRationale": "Preliminary wording match: \"discover the location of something\" against pinned OEWN sense 3. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "jump",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "jump%2:42:00::"
+      },
+      "authoredMeaningEn": "push yourself into the air with your legs",
+      "originalWordNetSenseKey": "jump%2:42:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "jump%2:38:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "b7baaf1e43c5587b75e9861707d1511ca5745778ee1c8d9391e30f65980a0513",
+        "synsetOffset": "02024701"
+      },
+      "editorialRationale": "Preliminary wording match: \"push yourself into the air with your legs\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "throw",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "throw%2:38:03::"
+      },
+      "authoredMeaningEn": "send something through the air with your hand",
+      "originalWordNetSenseKey": "throw%2:38:03::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "throw%2:35:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "ee38c3bfa2864c1e8f878fa6cc8dd07df0ca6eaa500538f5ffc2822f2bfe8a1e",
+        "synsetOffset": "01558997"
+      },
+      "editorialRationale": "Preliminary wording match: \"send something through the air with your hand\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "touch",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "touch%2:42:02::"
+      },
+      "authoredMeaningEn": "put your hand or finger against something",
+      "originalWordNetSenseKey": "touch%2:42:02::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "touch%2:35:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "604b6f6f71b4a5febda4dd742e0edecd59d95bfb21f42232bb158e2329cf311b",
+        "synsetOffset": "01252735"
+      },
+      "editorialRationale": "Preliminary wording match: \"put your hand or finger against something\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "leave",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "leave%2:42:03::"
+      },
+      "authoredMeaningEn": "go away from a place",
+      "originalWordNetSenseKey": "leave%2:42:03::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "leave%2:38:01::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "6791d1f70cb79b21f9a7d08b2e53d298595fc909ce1c8f7fc475d1a40804063d",
+        "synsetOffset": "02071181"
+      },
+      "editorialRationale": "Preliminary wording match: \"go away from a place\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "start",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "start%2:42:03::"
+      },
+      "authoredMeaningEn": "begin doing something",
+      "originalWordNetSenseKey": "start%2:42:03::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "start%2:30:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "101bc93c62d50f9a1eb1aa2ce4ea16ffa8ce3108b0fe7aefbfe5230311d62a8c",
+        "synsetOffset": "00359067"
+      },
+      "editorialRationale": "Preliminary wording match: \"begin doing something\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "pack",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "pack%2:42:00::"
+      },
+      "authoredMeaningEn": "put belongings into a bag or container",
+      "originalWordNetSenseKey": "pack%2:42:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "pack%2:35:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "c1b79ed5a89fbf9eb4dd760977a314393ffd51b8c66d5983de4290b3117a6d7f",
+        "synsetOffset": "01532784"
+      },
+      "editorialRationale": "Preliminary wording match: \"put belongings into a bag or container\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "face",
+        "partOfSpeech": "noun",
+        "wordNetSenseKey": "face%1:18:00::"
+      },
+      "authoredMeaningEn": "the front part of a person's head",
+      "originalWordNetSenseKey": "face%1:18:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "face%1:08:00::",
+        "senseNumber": 1,
+        "sourceGlossSha256": "3b311cfcb113101c7ce3aad1b171e8985cd06d816f51811fbadd65b2fc123d4a",
+        "synsetOffset": "04981618"
+      },
+      "editorialRationale": "Preliminary wording match: \"the front part of a person's head\" against pinned OEWN sense 1. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "plate",
+        "partOfSpeech": "noun",
+        "wordNetSenseKey": "plate%1:23:00::"
+      },
+      "authoredMeaningEn": "a flat dish used for food",
+      "originalWordNetSenseKey": "plate%1:23:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "plate%1:06:00::",
+        "senseNumber": 4,
+        "sourceGlossSha256": "af4be75dba218bf2c261bf42666ffae6df55350ff32dda62d5cac2c144d05cab",
+        "synsetOffset": "03332969"
+      },
+      "editorialRationale": "Preliminary wording match: \"a flat dish used for food\" against pinned OEWN sense 4. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    },
+    {
+      "candidate": {
+        "lemma": "offer",
+        "partOfSpeech": "verb",
+        "wordNetSenseKey": "offer%2:42:00::"
+      },
+      "authoredMeaningEn": "ask whether someone would like something",
+      "originalWordNetSenseKey": "offer%2:42:00::",
+      "disposition": "UNVERIFIED_PROPOSED_SENSE",
+      "proposal": {
+        "wordNetSenseKey": "offer%2:40:00::",
+        "senseNumber": 2,
+        "sourceGlossSha256": "1380fdbbce39ce270626c2f6f02e2772d9e56bf4df8f4c21a402e5c6b8add156",
+        "synsetOffset": "02365532"
+      },
+      "editorialRationale": "Preliminary wording match: \"ask whether someone would like something\" against pinned OEWN sense 2. An independent lexical reviewer must confirm the full source gloss and both English/Persian teaching examples.",
+      "reviewStatus": "NO_INDEPENDENT_REVIEW",
+      "levelStatus": "A1_NOT_VERIFIED",
+      "rightsStatus": "NOT_CLEARED",
+      "reviewEvidence": []
+    }
+  ]
+}
