@@ -136,6 +136,15 @@ export function auditUnreviewedNgslDrafts(
       issues.push(item.selectionId + ": two independently authored examples required");
       continue;
     }
+    // Two example slots must be genuinely different in both languages.
+    // This is an editorial quality invariant, not semantic or legal approval.
+    const [first, second] = item.examples;
+    if (first?.en && second?.en && normalize(first.en) === normalize(second.en)) {
+      issues.push(item.selectionId + ": duplicate English examples");
+    }
+    if (first?.fa && second?.fa && normalize(first.fa) === normalize(second.fa)) {
+      issues.push(item.selectionId + ": duplicate Persian examples");
+    }
     for (const [j, e] of item.examples.entries()) {
       if (!e || !e.en?.trim() || !e.fa?.trim() || !faLetters.test(e.fa)) {
         issues.push(item.selectionId + ": malformed bilingual example " + j);

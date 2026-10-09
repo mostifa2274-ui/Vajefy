@@ -158,3 +158,36 @@ previous source-led drafts. Its zero-review, zero-rights-approval and
 zero-publication requirements remain unchanged. These files are drafts and
 are not compiled into learner-facing content; the licensed source-selection
 record is not a licence for inherited Oxford-based material.
+
+
+## Seventh and eighth author-only batches — NGSL ranks 121–160
+
+The independently pinned NGSL 1.2 frequency-first syllabus now also has
+`content/rights-staging/ngsl-1.2/independent-ranks-121-140-drafts.json` and
+`content/rights-staging/ngsl-1.2/independent-ranks-141-160-drafts.json`.
+These files add **40 freshly composed, unreviewed bilingual sense drafts and
+80 paired example translations**. The cumulative replacement-writing inventory
+is **160/900 draft items, with 320 English–Persian example pairs**.
+
+Editorial choices explicitly disambiguate individual uses of terms including
+`lot` (quantity), `own` (possession), `point` (detail), `little` (small
+size), `interest` (curiosity), `while` (simultaneity), `might`
+(possibility) and `must` (obligation). This is **author-only** sense
+selection, not an independently qualified lexical judgment, complete sense
+inventory, or A1/CEFR classification. Example spelling and translations need
+independent professional review before any production use.
+
+`npm run assurance:ngsl:drafts:check` discovers both new files without manual
+roster changes and checks exact NGSL IDs/ranks, the frozen zero-approval state,
+the nine-token inherited/previous-batch copying guard, and distinct examples
+in both languages for each new draft. This mechanical check is useful evidence
+against accidental transcription; it cannot prove original copyright authorship
+or establish sufficient clearance by itself.
+
+No existing Oxford-derived source entry, curriculum, licence assignment,
+audio, media, production endpoint or release status is changed. The original
+redistribution rights, source-independent editorial approvals, complete media
+permissions and historically published content remain unverified. **Gate 0
+remains BLOCKED, with zero new rights approvals and zero published replacement
+lessons.** Do not use these draft files for a public release until their
+source rights and editorial dependencies are independently resolved.
