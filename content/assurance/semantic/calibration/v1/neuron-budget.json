@@ -15,11 +15,11 @@
   "campaignPolicy": "One role campaign at a time. A candidate is eligible only if it needs no paid billing and its full campaign fits the safety ceiling; the automation's usage log keeps each UTC day under the ceiling.",
   "requiredRunsPerRole": 3,
   "activeJudgesTotalRequests": 84,
-  "activeJudgesNeuronsUpperBound": 25626,
+  "activeJudgesNeuronsUpperBound": 25266,
   "roles": {
     "english": {
-      "model": "@cf/mistralai/mistral-small-3.1-24b-instruct",
-      "modelVersion": "@cf/mistralai/mistral-small-3.1-24b-instruct@cloudflare-catalog-2026-10-06",
+      "model": "@cf/meta/llama-4-scout-17b-16e-instruct",
+      "modelVersion": "@cf/meta/llama-4-scout-17b-16e-instruct@cloudflare-catalog-2026-10-06",
       "maxOutputTokensPerRequest": 600,
       "requestsPerRun": 6,
       "repeats": 3,
@@ -30,12 +30,12 @@
       "outputTokensUpperBoundTotal": 10800,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 31876,
-        "outputNeuronsPerMillionTokens": 50488,
+        "inputNeuronsPerMillionTokens": 24545,
+        "outputNeuronsPerMillionTokens": 77273,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 204,
-      "neuronsUpperBound": 3381,
+      "maxRequestNeuronsUpperBound": 181,
+      "neuronsUpperBound": 3021,
       "candidates": [
         {
           "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",

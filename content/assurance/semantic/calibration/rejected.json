@@ -79,6 +79,31 @@
         "abstainAccuracy": 0,
         "expectedLabelStability": 1
       }
+    },
+    {
+      "role": "english",
+      "model": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+      "modelVersion": "@cf/mistralai/mistral-small-3.1-24b-instruct@cloudflare-catalog-2026-10-06",
+      "maxTokens": 600,
+      "promptVersion": "english-a1-prompt-v1",
+      "rubricVersion": "english-a1-v1",
+      "reason": "did-not-promote",
+      "rejectedAt": "2026-10-09",
+      "runIds": [
+        "37892468224.1"
+      ],
+      "detail": "Missed the frozen vajefy-semantic-v1 gate on: defectRecall, cleanUncertain, abstainAccuracy.",
+      "metrics": {
+        "requestedRuns": 3,
+        "validRuns": 3,
+        "requiredRuns": 3,
+        "schemaComplianceRate": 1,
+        "defectRecall": 0,
+        "cleanFalsePositiveRate": 0,
+        "cleanUncertainRate": 0.5,
+        "abstainAccuracy": 0,
+        "expectedLabelStability": 1
+      }
     }
   ]
 }

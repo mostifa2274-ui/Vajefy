@@ -8,12 +8,12 @@
   "roles": {
     "english": {
       "provider": "cloudflare-workers-ai",
-      "modelFamily": "mistral",
-      "model": "@cf/mistralai/mistral-small-3.1-24b-instruct",
-      "modelVersion": "@cf/mistralai/mistral-small-3.1-24b-instruct@cloudflare-catalog-2026-10-06",
+      "modelFamily": "meta-llama",
+      "model": "@cf/meta/llama-4-scout-17b-16e-instruct",
+      "modelVersion": "@cf/meta/llama-4-scout-17b-16e-instruct@cloudflare-catalog-2026-10-06",
       "maxTokens": 600,
       "status": "calibrating",
-      "rationale": "Next to calibrate: candidate 3 of 4 in the pre-registered order, strongest first. Skipped: @cf/meta/llama-3.3-70b-instruct-fp8-fast (rejected: did-not-promote); @cf/nvidia/nemotron-3-120b-a12b (rejected: did-not-promote)."
+      "rationale": "Next to calibrate: candidate 4 of 4 in the pre-registered order, strongest first. Skipped: @cf/meta/llama-3.3-70b-instruct-fp8-fast (rejected: did-not-promote); @cf/nvidia/nemotron-3-120b-a12b (rejected: did-not-promote); @cf/mistralai/mistral-small-3.1-24b-instruct (rejected: did-not-promote)."
     },
     "persian": {
       "provider": "cloudflare-workers-ai",
