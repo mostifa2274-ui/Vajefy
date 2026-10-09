@@ -125,3 +125,19 @@ clean-source release can replace the inherited course.
 The third batch uses fresh source-selection IDs and frequency ranks. The existing `assurance:ngsl:drafts:check` now checks all **three** pinned, contiguous 20-item batches and screens the new examples for nine-word-or-longer verbatim overlap against the inherited A1 English/Persian material **and both earlier independent draft batches**. New unit tests reject wrong rank bindings, cross-batch long-form copying and fabricated semantic approvals. The inherited corpus was not an input to composing these drafts and was used only in the mechanical post-authoring comparison.
 
 **All 60 remain STAGING_ONLY_AI_DRAFT_UNREVIEWED.** There is still no independent English-sense, Persian, CEFR/pedagogical, legal, audio or artwork clearance; zero NGSL lessons have been promoted into the public A1 curriculum. The original public catalogue, source-rights lineage, provenance and legacy deployment prohibition remain unchanged. A source licence alone does not license AI-authored lesson texts or inherited lessons without a full provenance/derivation audit.
+
+## Contiguous-batch audit automation
+
+The draft-stage validator now discovers the first 20 plus all
+`independent-ranks-START-END-drafts.json` files directly from the pinned NGSL
+staging directory. It **rejects** any missing first batch, malformed or
+non-20-item rank interval, gap, overlap, duplicate rank range or rank beyond
+900. Each discovered 20-item batch must reproduce precisely its own contiguous
+source ranks and lemmas, keep every approval/release flag false, and pass
+English/Persian nine-word anti-reuse checks against the inherited content
+and **all previous independent batches**.
+
+This removes a manual validator code edit for future 20-entry drafting batches;
+merely adding a new file cannot make it disappear from the audit. It does not
+change the current 60/900 count, grant independent editorial approval or alter
+the blocked public-release status.
