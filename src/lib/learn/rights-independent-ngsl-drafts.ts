@@ -21,6 +21,46 @@ export type NgslDraftManifest = {
   lessons: NgslEditorialDraft[];
 };
 
+/** List source-pinned 20-item draft files without accepting skipped or malformed ranges. */
+export function ngslDraftBatchFiles(files: readonly string[]): {
+  filenames: string[];
+  issues: string[];
+} {
+  const issues: string[] = [];
+  const first = "independent-first-20-drafts.json";
+  if (!files.includes(first)) issues.push("Missing NGSL first-20 draft batch");
+  const ranges: { name: string; start: number; end: number }[] = [];
+  for (const name of files) {
+    if (!name.startsWith("independent-ranks-")) continue;
+    const match = /^independent-ranks-(\\d+)-(\\d+)-drafts\\.json$/.exec(name);
+    if (!match) {
+      issues.push("Malformed NGSL draft batch name: " + name);
+      continue;
+    }
+    const start = Number(match[1]);
+    const end = Number(match[2]);
+    if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) ||
+        end !== start + 19 || start < 21 || end > 900) {
+      issues.push("Invalid NGSL 20-item rank interval: " + name);
+      continue;
+    }
+    ranges.push({ name, start, end });
+  }
+  ranges.sort((a, b) => a.start - b.start || a.name.localeCompare(b.name));
+  let expected = 21;
+  for (const range of ranges) {
+    if (range.start !== expected) {
+      issues.push("Missing, overlapping or out-of-order NGSL rank interval: expected " +
+        expected + " but found " + range.start);
+    }
+    expected = range.end + 1;
+  }
+  return {
+    filenames: files.includes(first) ? [first, ...ranges.map(x => x.name)] : ranges.map(x => x.name),
+    issues,
+  };
+}
+
 const faLetters = /[آ-ی]/u;
 const normalize = (s: string) =>
   s.replace(/ي/g, "ی").replace(/ك/g, "ک")
