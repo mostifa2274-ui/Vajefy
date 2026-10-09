@@ -13,11 +13,12 @@ type Row = {
   mappingKind: "EXACT_HEADWORD" | "PARTIAL_MULTI_FORM" | "RELATED_LEMMA_ONLY" |
     "GRAMMATICAL_FORM" | "BRITISH_US_VARIANT" | "PHRASE_COMPONENT_ONLY" | "NO_SOURCE_MATCH";
   matchStatus: string; rightsStatus: string; requiresIndependentLessonRebuild: boolean;
+  proposedReplacement?: { ngslLemma: string; coreRank: number; relation: string; approval: string };
 };
 type Source = { file: string; url: string; upstreamGitBlob: string };
 type Mapping = {
   schemaVersion: 1; license: string; sources: Source[];
-  counts: Record<string, number>; entries: Row[];
+  counts: Record<string, number>; replacementProposals: number; entries: Row[];
 };
 const expectedBlobs = new Map([
   ["core.csv", "b8705be6c208eb39a5be4dea8f63"],
@@ -89,6 +90,12 @@ const roster = new Map(catalogue.map(item => [item.id, item.w]));
 if (catalogue.length !== 900 || roster.size !== 900 || mapping.entries.length !== 900) {
   fail("900-item catalogue coverage changed");
 }
+const replacements = new Map([
+  ["lex:A1:cd", "music"],
+  ["lex:A1:dvd", "video"],
+  ["lex:A1:oh", "well"],
+]);
+if (mapping.replacementProposals !== 3) fail("Missing explicit editorial replacement proposals");
 const visited = new Set<string>();
 const counts: Record<string, number> = {};
 for (const row of mapping.entries) {
@@ -125,6 +132,20 @@ for (const row of mapping.entries) {
              row.frequencyRank !== null) {
     fail("Invented non-NGSL evidence: " + row.entryId);
   }
+  const proposed = replacements.get(row.entryId);
+  if (proposed) {
+    const sourceWord = tiers[0]!.get(proposed);
+    const replacement = row.proposedReplacement;
+    if (row.sourceTier !== "NO_NGSL_SOURCE_MATCH" || !sourceWord ||
+        replacement?.ngslLemma !== sourceWord.lemma ||
+        replacement.coreRank !== sourceWord.rank ||
+        replacement.relation !== "DIFFERENT_LEARNING_TARGET_NOT_A_TRANSLATION_OR_SYNONYM" ||
+        replacement.approval !== "REQUIRES_INDEPENDENT_CURRICULUM_AND_LESSON_REWRITE") {
+      fail("Unverified or missing independent-topic replacement: " + row.entryId);
+    }
+  } else if (row.proposedReplacement !== undefined) {
+    fail("Unapproved replacement inserted into ordinary source-matching item: " + row.entryId);
+  }
   counts[row.mappingKind] = (counts[row.mappingKind] ?? 0) + 1;
   counts[row.sourceTier] = (counts[row.sourceTier] ?? 0) + 1;
 }
@@ -141,10 +162,13 @@ if (JSON.stringify(counts) !== JSON.stringify(mapping.counts)) {
 const header = [
   "entry_id","legacy_headword","ngsl_source_tier","ngsl_lemma",
   "ngsl_frequency_rank","mapping_kind","status","rights_status",
+  "replacement_ngsl_core_word","replacement_ngsl_core_rank","replacement_review_status",
 ].join(",");
 const expectedCsv = [header, ...mapping.entries.map(row =>
   [row.entryId,row.legacyHeadword,row.sourceTier,row.ngslLemma,
-   row.frequencyRank,row.mappingKind,row.matchStatus,row.rightsStatus]
+   row.frequencyRank,row.mappingKind,row.matchStatus,row.rightsStatus,
+   row.proposedReplacement?.ngslLemma ?? "",row.proposedReplacement?.coreRank ?? "",
+   row.proposedReplacement?.approval ?? ""]
     .map(escapeCell).join(","),
 )].join("\n") + "\n";
 if (fs.readFileSync(CSV, "utf8") !== expectedCsv) {
