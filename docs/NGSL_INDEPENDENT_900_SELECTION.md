@@ -60,3 +60,32 @@ Neither this source selection nor the user's report about AI-authored text
 establishes a right to redistribute Oxford list selections or their
 derivatives, or to release current public media. No public deploy, Gate 0
 clearance or rights-holder consent is claimed here.
+
+## First 20 draft lesson records (editorial staging only)
+
+`content/rights-staging/ngsl-1.2/independent-first-20-drafts.json`
+contains **20 newly written, bilingual English/Persian teaching drafts**
+associated strictly with NGSL frequency ranks 1–20. Each has a draft English
+meaning, explanatory Persian guidance and two paired example sentences.
+The draft texts were written for the NGSL source-led candidates; no existing
+Oxford-derived lesson was copied into the staging manifest.
+
+The independent lesson checker `npm run assurance:ngsl:drafts:check`
+requires exact source lemmas/IDs/ranks, all 20 descriptions, two examples per
+draft, Persian-language content and fixed zero-approval status. It also
+performs a separate *anti-reuse comparison* against current inherited content:
+nine-word or longer verbatim English/Persian sequences are rejected.
+This comparison is a guard **after drafting**, not an input into the NGSL
+frequency-based word selection; it cannot prove full non-derivation.
+
+**A draft is not an approved A1 lesson.** All 20 remain AI-authored and
+unreviewed for lexical sense, English grammar, Persian naturalness,
+appropriateness for A1, licence compatibility, and independent rights.
+There are no newly authorised pronunciation files, images, assessments or
+published lesson bundles. The list of **900** lexical candidates is unchanged;
+the source-selection manifest still correctly records **0 production
+authored lessons**, since these 20 are editorial drafts, not cleared lessons.
+
+A future release must independently verify and rewrite where necessary each
+candidate, fully rebuild all derived runtime assets, and record exact rights
+evidence for every distributed byte before updating Gate 0.
