@@ -8,7 +8,6 @@ import {
 
 const root = process.cwd();
 const output = path.join(root, "content/rights-staging/legacy-full-lineage");
-const data = path.join(root, "public/data");
 const read = (f: string) => JSON.parse(fs.readFileSync(path.join(root, f), "utf8")) as unknown;
 const hash = (value: unknown) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 const quote = (v: unknown) => {
