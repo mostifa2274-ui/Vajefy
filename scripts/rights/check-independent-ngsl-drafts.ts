@@ -19,6 +19,9 @@ const drafts = read<NgslDraftManifest>(
 const nextDrafts = read<NgslDraftManifest>(
   "content/rights-staging/ngsl-1.2/independent-ranks-21-40-drafts.json",
 );
+const thirdDrafts = read<NgslDraftManifest>(
+  "content/rights-staging/ngsl-1.2/independent-ranks-41-60-drafts.json",
+);
 
 
 const inheritedEnglish: string[] = [];
@@ -66,13 +69,31 @@ issues.push(...auditUnreviewedNgslDrafts(
   [...inheritedPersian, ...firstDraftPersian],
 ).map(issue => "NGSL ranks 21-40: " + issue));
 
+// Preserve a third distinct NGSL-only contiguous slice, with a cross-batch
+// anti-reuse comparison against BOTH earlier independently drafted batches.
+// Drafts are never promoted or assigned inherited source rights here.
+if (thirdDrafts.lessons?.length !== 20 ||
+    thirdDrafts.lessons[0]?.sourceRank !== 41 ||
+    thirdDrafts.lessons[19]?.sourceRank !== 60) {
+  issues.push("NGSL third batch must cover exactly ranks 41–60");
+}
+const previousEnglish = [...firstDraftEnglish, ...nextDrafts.lessons.flatMap(x => x.examples.map(e => e.en))];
+const previousPersian = [...firstDraftPersian, ...nextDrafts.lessons.flatMap(x => x.examples.map(e => e.fa))];
+issues.push(...auditUnreviewedNgslDrafts(
+  thirdDrafts,
+  { ...selection, entries: selection.entries.slice(40, 60) },
+  [...inheritedEnglish, ...previousEnglish],
+  [...inheritedPersian, ...previousPersian],
+).map(issue => "NGSL ranks 41-60: " + issue));
+
 if (process.argv.includes("--json")) {
   console.log(JSON.stringify({
     status: drafts.status,
     sourceCandidates: selection.entries.length,
-    drafts: drafts.lessons.length + nextDrafts.lessons.length,
+    drafts: drafts.lessons.length + nextDrafts.lessons.length + thirdDrafts.lessons.length,
     firstBatch: drafts.lessons.length,
     secondBatch: nextDrafts.lessons.length,
+    thirdBatch: thirdDrafts.lessons.length,
     independentlyReviewed: 0,
     rightsCleared: 0,
     publicRelease: 0,
@@ -82,7 +103,7 @@ if (process.argv.includes("--json")) {
   }, null, 2));
 } else {
   console.log("NGSL original lesson staging: " + (issues.length ? "FAIL" : "PASS") +
-    " (40 unreviewed bilingual drafts in two source-pinned batches; 0 semantic approvals; 0 rights clearances; 0 public releases).");
+    " (60 unreviewed bilingual drafts in three source-pinned batches; 0 semantic approvals; 0 rights clearances; 0 public releases).");
   for (const issue of issues) console.error("! " + issue);
 }
 if (issues.length) process.exitCode = 1;
