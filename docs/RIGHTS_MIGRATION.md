@@ -187,3 +187,16 @@ prove a clean-room process, or decide copyright/database-right questions.
 
 Gate 0 must remain BLOCKED until legally supported, artifact-specific clearance
 exists for every distributed canonical source and associated media.
+
+
+### Independent lexical re-key shortlist — 25/50 drafts (2026-10-09)
+
+A new SHA-bound, model-authored **proposal-only** manifest,
+`content/rights-staging/oewn-2025-sense-proposals.json`, gives 25 contextual
+WordNet alternatives to the known misaligned initial sense keys. This is not
+an expert review, licensed replacement teaching pack or public migration.
+It preserves 0 approved alternatives, 0 independently approved bilingual
+drafts and 0 cleared legacy source items. Reviewers must independently verify
+English lexical sense, Persian meaning, A1 suitability, originality and the
+applicable OEWN/Princeton attribution and licence conditions. Published
+learner-facing text, audio, images and bundled media remain blocked.
