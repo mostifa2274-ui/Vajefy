@@ -97,7 +97,7 @@ export function checkUnapprovedSenseProposals(
         fail(prefix + ": missing proposed sense");
         continue;
       }
-      const alt = group.alternatives?.find(a => a.wordNetSenseKey === item.proposal!.wordNetSenseKey);
+      const alt = group.alternatives?.find((a: Alternative) => a.wordNetSenseKey === item.proposal!.wordNetSenseKey);
       if (!alt ||
           alt.senseNumber !== item.proposal.senseNumber ||
           alt.glossSha256 !== item.proposal.sourceGlossSha256 ||
