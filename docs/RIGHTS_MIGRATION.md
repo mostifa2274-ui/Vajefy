@@ -138,6 +138,28 @@ source licence/attribution notice applies only to the OEWN-derived staging
 synsets, **not** to existing Oxford-derived content. Source rights and all
 existing learner-facing audio and content remain uncleared.
 
+## Production deployment safety while Gate 0 remains blocked
+
+The repository's production npm command now runs `assurance:gate0` **before**
+building or uploading with Wrangler. A missing/invalid source or item licence,
+derivative-work permission, media approval, or SHA-bound clearance causes
+`npm run deploy` to refuse publication. Development builds, CI, and private
+editorial staging remain usable so the independent OEWN migration can continue.
+
+**Cloudflare Workers Builds requires an external dashboard setting.** Its
+default deploy command is `npx wrangler deploy`, which **does not execute**
+the npm `predeploy` hook. Configure the connected Worker's **Deploy command**
+as `npm run deploy` (and keep the Build command as needed). The code change
+cannot verify or change that external setting. Any other direct Wrangler,
+Dashboard, or CI deploy path must be protected separately. No claim is made
+that an already-active public Worker or public GitHub history has been removed
+or is legally cleared.
+
+Once source, item, and public-media evidence is genuinely complete, a successful
+`npm run assurance:gate0` will permit the original production command again.
+Do **not** set an override/bypass environment variable or fabricate a clearance
+to get a deployment through.
+
 ## Machine checks
 
 - `npm run assurance:rights:inventory -- --check` verifies no entry, authored scene/contrast, or
