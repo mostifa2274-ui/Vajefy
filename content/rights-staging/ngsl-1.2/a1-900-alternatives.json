@@ -29,7 +29,7 @@
       "upstreamGitBlob": "2d58298e6eda10e7204abb52722efbc840db2390"
     }
   ],
-  "scope": "900 current A1 catalogue IDs; staged evidence only; source word matches are NOT rights clearance for legacy content",
+  "scope": "900 current A1 catalogue IDs; staged evidence only; source word matches are NOT rights clearance for legacy content; CD/DVD/oh have separate non-equivalent core-word replacement suggestions",
   "counts": {
     "NGSL_1_2_CORE": 787,
     "PARTIAL_MULTI_FORM": 1,
@@ -1461,7 +1461,13 @@
       "mappingKind": "NO_SOURCE_MATCH",
       "matchStatus": "UNREVIEWED_SOURCE_CANDIDATE",
       "rightsStatus": "NOT_CLEARED",
-      "requiresIndependentLessonRebuild": true
+      "requiresIndependentLessonRebuild": true,
+      "proposedReplacement": {
+        "ngslLemma": "music",
+        "coreRank": 392,
+        "relation": "DIFFERENT_LEARNING_TARGET_NOT_A_TRANSLATION_OR_SYNONYM",
+        "approval": "REQUIRES_INDEPENDENT_CURRICULUM_AND_LESSON_REWRITE"
+      }
     },
     {
       "entryId": "lex:A1:cent",
@@ -2506,7 +2512,13 @@
       "mappingKind": "NO_SOURCE_MATCH",
       "matchStatus": "UNREVIEWED_SOURCE_CANDIDATE",
       "rightsStatus": "NOT_CLEARED",
-      "requiresIndependentLessonRebuild": true
+      "requiresIndependentLessonRebuild": true,
+      "proposedReplacement": {
+        "ngslLemma": "video",
+        "coreRank": 1065,
+        "relation": "DIFFERENT_LEARNING_TARGET_NOT_A_TRANSLATION_OR_SYNONYM",
+        "approval": "REQUIRES_INDEPENDENT_CURRICULUM_AND_LESSON_REWRITE"
+      }
     },
     {
       "entryId": "lex:A1:each",
@@ -5982,7 +5994,13 @@
       "mappingKind": "NO_SOURCE_MATCH",
       "matchStatus": "UNREVIEWED_SOURCE_CANDIDATE",
       "rightsStatus": "NOT_CLEARED",
-      "requiresIndependentLessonRebuild": true
+      "requiresIndependentLessonRebuild": true,
+      "proposedReplacement": {
+        "ngslLemma": "well",
+        "coreRank": 61,
+        "relation": "DIFFERENT_LEARNING_TARGET_NOT_A_TRANSLATION_OR_SYNONYM",
+        "approval": "REQUIRES_INDEPENDENT_CURRICULUM_AND_LESSON_REWRITE"
+      }
     },
     {
       "entryId": "lex:A1:ok",
@@ -9944,5 +9962,6 @@
       "rightsStatus": "NOT_CLEARED",
       "requiresIndependentLessonRebuild": true
     }
-  ]
+  ],
+  "replacementProposals": 3
 }
