@@ -3,6 +3,7 @@ import test from "node:test";
 import { independentNgslSelection } from "./rights-independent-ngsl";
 import {
   auditUnreviewedNgslDrafts,
+  ngslDraftBatchFiles,
   type NgslDraftManifest,
 } from "./rights-independent-ngsl-drafts";
 
@@ -134,4 +135,43 @@ test("third NGSL batch rejects long copying from either earlier draft batch", ()
   assert.ok(auditUnreviewedNgslDrafts(third, slice, [fromFirst]).some(s => s.includes("verbatim overlap")));
   third.lessons[0]!.examples[0] = { en: "A different simple sentence.", fa: fromSecond };
   assert.ok(auditUnreviewedNgslDrafts(third, slice, [], [fromSecond]).some(s => s.includes("verbatim overlap")));
+});
+
+test("NGSL draft-batch discovery preserves contiguous 20-item source windows", () => {
+  const valid = ngslDraftBatchFiles([
+    "independent-ranks-41-60-drafts.json",
+    "independent-first-900-selection.json",
+    "independent-first-20-drafts.json",
+    "independent-ranks-21-40-drafts.json",
+  ]);
+  assert.deepEqual(valid.issues, []);
+  assert.deepEqual(valid.filenames, [
+    "independent-first-20-drafts.json",
+    "independent-ranks-21-40-drafts.json",
+    "independent-ranks-41-60-drafts.json",
+  ]);
+  const missingMiddle = ngslDraftBatchFiles([
+    "independent-first-20-drafts.json",
+    "independent-ranks-41-60-drafts.json",
+  ]);
+  assert.ok(missingMiddle.issues.some(issue => issue.includes("expected 21")));
+  const overlapping = ngslDraftBatchFiles([
+    "independent-first-20-drafts.json",
+    "independent-ranks-21-40-drafts.json",
+    "independent-ranks-21-40-drafts.json",
+  ]);
+  assert.ok(overlapping.issues.some(issue => issue.includes("out-of-order")));
+});
+
+test("NGSL draft-batch discovery rejects malformed ranges and missing first batch", () => {
+  const bad = ngslDraftBatchFiles([
+    "independent-ranks-21-30-drafts.json",
+    "independent-ranks-41-60-drafts.json",
+    "independent-ranks-foo-80-drafts.json",
+    "independent-ranks-901-920-drafts.json",
+  ]);
+  assert.ok(bad.issues.some(issue => issue.includes("Missing NGSL first-20")));
+  assert.ok(bad.issues.some(issue => issue.includes("Invalid NGSL 20-item rank interval")));
+  assert.ok(bad.issues.some(issue => issue.includes("Malformed NGSL draft batch name")));
+  assert.ok(bad.issues.some(issue => issue.includes("900-source") ) === false);
 });
