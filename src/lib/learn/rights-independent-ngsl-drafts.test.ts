@@ -100,3 +100,38 @@ test("separate NGSL follow-up drafts reject fabricated approvals and cross-batch
   (next.lessons[0] as unknown as { rightsCleared: boolean }).rightsCleared = true;
   assert.ok(auditUnreviewedNgslDrafts(next, secondSlice).some(s => s.includes("unauthorized approval")));
 });
+
+test("third NGSL batch accepts only source ranks 41-60 and blocks approval claims", () => {
+  const third = fixture();
+  third.lessons = third.lessons.map((item, i) => ({
+    ...item,
+    selectionId: selection.entries[i + 40]!.selectionId,
+    lemma: selection.entries[i + 40]!.lemma,
+    sourceRank: selection.entries[i + 40]!.sourceRank,
+  }));
+  const thirdSlice = { ...selection, entries: selection.entries.slice(40, 60) };
+  assert.deepEqual(auditUnreviewedNgslDrafts(third, thirdSlice), []);
+  assert.ok(auditUnreviewedNgslDrafts(third, selection).some(s => s.includes("wrongly sourced")));
+  third.lessons[0]!.sourceRank = 41_000;
+  assert.ok(auditUnreviewedNgslDrafts(third, thirdSlice).some(s => s.includes("wrongly sourced")));
+  third.lessons[0]!.sourceRank = 41;
+  (third.lessons[0] as unknown as { semanticApproved: boolean }).semanticApproved = true;
+  assert.ok(auditUnreviewedNgslDrafts(third, thirdSlice).some(s => s.includes("unauthorized approval")));
+});
+
+test("third NGSL batch rejects long copying from either earlier draft batch", () => {
+  const third = fixture();
+  third.lessons = third.lessons.map((item, i) => ({
+    ...item,
+    selectionId: selection.entries[i + 40]!.selectionId,
+    lemma: selection.entries[i + 40]!.lemma,
+    sourceRank: selection.entries[i + 40]!.sourceRank,
+  }));
+  const slice = { ...selection, entries: selection.entries.slice(40, 60) };
+  const fromFirst = "A small green bicycle stands beside the old river bridge today";
+  const fromSecond = "پسرک با کیف سرمه‌ای تازه از در پشتی باغ بیرون رفت";
+  third.lessons[0]!.examples[0] = { en: fromFirst, fa: "برای آزمون یک جملهٔ ساده داریم." };
+  assert.ok(auditUnreviewedNgslDrafts(third, slice, [fromFirst]).some(s => s.includes("verbatim overlap")));
+  third.lessons[0]!.examples[0] = { en: "A different simple sentence.", fa: fromSecond };
+  assert.ok(auditUnreviewedNgslDrafts(third, slice, [], [fromSecond]).some(s => s.includes("verbatim overlap")));
+});
