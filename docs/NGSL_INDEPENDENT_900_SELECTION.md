@@ -117,3 +117,11 @@ This work does not alter the existing production curriculum, public JSON,
 audio, artwork, Git history or Gate 0. All 40 drafts still require full
 editorial, licensed-source, legal and media review before an actual
 clean-source release can replace the inherited course.
+
+## Third 20 original bilingual drafts (ranks 41–60; unreviewed staging)
+
+`content/rights-staging/ngsl-1.2/independent-ranks-41-60-drafts.json` adds **20 newly authored editorial entries** for the pinned NGSL 1.2 core ranks 41–60, bringing the cumulative staging count to **60 of 900**. Each entry includes exactly one specified English sense, original Persian instructional guidance and two bilingual example pairs. Polysemous lemmas such as `get`, `like`, `think`, `up`, `take`, `other`, and `no` have a narrowly described sense; this does **not** assert complete dictionary coverage or A1 suitability.
+
+The third batch uses fresh source-selection IDs and frequency ranks. The existing `assurance:ngsl:drafts:check` now checks all **three** pinned, contiguous 20-item batches and screens the new examples for nine-word-or-longer verbatim overlap against the inherited A1 English/Persian material **and both earlier independent draft batches**. New unit tests reject wrong rank bindings, cross-batch long-form copying and fabricated semantic approvals. The inherited corpus was not an input to composing these drafts and was used only in the mechanical post-authoring comparison.
+
+**All 60 remain STAGING_ONLY_AI_DRAFT_UNREVIEWED.** There is still no independent English-sense, Persian, CEFR/pedagogical, legal, audio or artwork clearance; zero NGSL lessons have been promoted into the public A1 curriculum. The original public catalogue, source-rights lineage, provenance and legacy deployment prohibition remain unchanged. A source licence alone does not license AI-authored lesson texts or inherited lessons without a full provenance/derivation audit.
