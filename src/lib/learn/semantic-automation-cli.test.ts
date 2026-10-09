@@ -216,9 +216,15 @@ test("gateway faults and interrupted repeats are charged in full but never rejec
     // Global next-role ordering can change as other judges are calibrated.
     // Charge this test against its explicit adversarial role, not whichever
     // different role currently has the oldest unattended calibration turn.
-    const planned = space.run("plan", "--role", ROLE, "--today", "2026-10-07").output;
-    const campaignCharge = Number(planned.match(/Next: calibrate .* \(≤ (\d+) Neurons\)/)?.[1]);
-    assert.ok(campaignCharge > 0, planned);
+    const planned = space.run("plan", "--today", "2026-10-07");
+    assert.equal(planned.status, 0, planned.output);
+    // The global planner may legitimately block this role on an earlier
+    // judge family. Reservations and charges must use the *role-specific*
+    // pinned, generated upper bound, independent of scheduling order.
+    const campaignCharge = space.json<{ roles: Record<string, { neuronsUpperBound: number }> }>(
+      path.join(CALIBRATION, "v1", "neuron-budget.json"),
+    ).roles[ROLE]!.neuronsUpperBound;
+    assert.ok(campaignCharge > 0);
     const runs = ["none-1.json", "none-2.json", "none-3.json"];
     for (const [index, today] of ["2026-10-07", "2026-10-07", "2026-10-08", "2026-10-09"].entries()) {
       const attempts = [
@@ -279,9 +285,15 @@ test("a reservation charges the campaign before inference and the record replace
     space.run("plan", "--today", "2026-10-07");
     // Fix the role when estimating the reservation: the global planner may
     // schedule a different ready role with a different maximum charge.
-    const planned = space.run("plan", "--role", ROLE, "--today", "2026-10-07").output;
-    const campaignCharge = Number(planned.match(/Next: calibrate .* \(≤ (\d+) Neurons\)/)?.[1]);
-    assert.ok(campaignCharge > 0, planned);
+    const planned = space.run("plan", "--today", "2026-10-07");
+    assert.equal(planned.status, 0, planned.output);
+    // The global planner may legitimately block this role on an earlier
+    // judge family. Reservations and charges must use the *role-specific*
+    // pinned, generated upper bound, independent of scheduling order.
+    const campaignCharge = space.json<{ roles: Record<string, { neuronsUpperBound: number }> }>(
+      path.join(CALIBRATION, "v1", "neuron-budget.json"),
+    ).roles[ROLE]!.neuronsUpperBound;
+    assert.ok(campaignCharge > 0);
     assert.equal(space.run("reserve", "--role", "adversarial", "--run-id", "500.1", "--neurons", String(campaignCharge), "--today", "2026-10-07").status, 0);
     assert.equal(space.run("reserve", "--role", "adversarial", "--run-id", "500.1", "--neurons", String(campaignCharge), "--today", "2026-10-07").status, 1);
     assert.deepEqual(
