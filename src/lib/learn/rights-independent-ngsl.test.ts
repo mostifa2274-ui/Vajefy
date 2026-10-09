@@ -36,8 +36,8 @@ test("stage manifest cannot pretend frequency rank determines A1 or distribution
   const fake = structuredClone(expected) as unknown as Record<string, unknown>;
   fake.verifiedA1Words = 900;
   assert.notDeepEqual(checkIndependentNgslSelection(fake, expected), []);
-  const fake2 = structuredClone(expected);
-  fake2.entries[7]!.releaseApproved = true as false;
+  const fake2 = structuredClone(expected) as unknown as { entries: { releaseApproved: boolean }[] };
+  fake2.entries[7]!.releaseApproved = true;
   assert.notDeepEqual(checkIndependentNgslSelection(fake2, expected), []);
   const fake3 = structuredClone(expected);
   fake3.entries[0]!.lemma = "Oxford-import";
