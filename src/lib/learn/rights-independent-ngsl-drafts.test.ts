@@ -54,7 +54,7 @@ test("rejects invented approvals and renamed source candidates", () => {
   const x = fixture();
   const y = structuredClone(x) as unknown as { lessons: { rightsCleared: boolean }[] };
   y.lessons[4]!.rightsCleared = true;
-  assert.ok(auditUnreviewedNgslDrafts(y as NgslDraftManifest, selection).some(s => s.includes("unauthorized approval")));
+  assert.ok(auditUnreviewedNgslDrafts(y as unknown as NgslDraftManifest, selection).some(s => s.includes("unauthorized approval")));
   x.lessons[2]!.lemma = "legacy-only-title";
   assert.ok(auditUnreviewedNgslDrafts(x, selection).some(s => s.includes("wrongly sourced")));
 });
