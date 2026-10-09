@@ -141,3 +141,20 @@ This removes a manual validator code edit for future 20-entry drafting batches;
 merely adding a new file cannot make it disappear from the audit. It does not
 change the current 60/900 count, grant independent editorial approval or alter
 the blocked public-release status.
+
+## Fourth 20 bilingual source-led drafts (NGSL ranks 61–80)
+
+`content/rights-staging/ngsl-1.2/independent-ranks-61-80-drafts.json`
+holds a further **20 freshly authored, unreviewed** English–Persian draft
+lessons, following the pinned frequency ranks 61–80 exactly. Staging now
+contains **80 of 900** candidate words with one explicitly delimited meaning,
+Persian guidance and two new example pairs each. Polysemous words including
+`just`, `could`, `work`, `way`, and `only` deliberately cover a single
+sense, not a purported complete dictionary entry or independent CEFR review.
+
+The contiguous-batch checker discovers this fourth file automatically and
+compares it with the pinned source roster, the inherited course and all 60
+previous source-led drafts. Its zero-review, zero-rights-approval and
+zero-publication requirements remain unchanged. These files are drafts and
+are not compiled into learner-facing content; the licensed source-selection
+record is not a licence for inherited Oxford-based material.
