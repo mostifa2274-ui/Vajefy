@@ -104,8 +104,9 @@ test("a batch plan abstains on unknown codes and never certifies", () => {
     { code: "NOT_A_CODE", where: "a1.take.01.gloss" },
   ]);
   assert.equal(plan[0].status, "AWAITING_REGENERATION");
+  assert.equal(plan[0].findingStatus, "FAIL");
   assert.equal(plan[1].status, "QUARANTINED_AUTOMATICALLY");
-  assert.equal(plan.some((item) => item.status === "PASS"), false);
+  assert.equal(plan[1].findingStatus, "UNCERTAIN");
 });
 
 test("every catalog action is a known fail-closed action", () => {

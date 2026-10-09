@@ -213,7 +213,18 @@ export function proposeDeterministicRepair(value: string, code: string): string 
   return null;
 }
 
-export type RepairPlanItem = RepairDiagnosis & RepairTransition;
+export type RepairPlanItem = {
+  code: string;
+  where: string;
+  targetId: string;
+  field: string;
+  action: RepairAction | "unsupported";
+  preserve: readonly string[];
+  findingStatus: "FAIL" | "UNCERTAIN";
+  status: RepairStatus;
+  attempts: number;
+  reason: string;
+};
 
 /** Diagnose a batch. Unsupported and quarantine items abstain. Never emits PASS. */
 export function planRepairs(findings: readonly RepairFinding[]): RepairPlanItem[] {
@@ -224,7 +235,18 @@ export function planRepairs(findings: readonly RepairFinding[]): RepairPlanItem[
       attemptsAlreadyUsed: 0,
       verification: "not_run",
     });
-    return { ...diagnosis, ...transition };
+    return {
+      code: diagnosis.code,
+      where: diagnosis.where,
+      targetId: diagnosis.targetId,
+      field: diagnosis.field,
+      action: diagnosis.action,
+      preserve: diagnosis.preserve,
+      findingStatus: diagnosis.status,
+      status: transition.status,
+      attempts: transition.attempts,
+      reason: transition.reason,
+    };
   });
 }
 
