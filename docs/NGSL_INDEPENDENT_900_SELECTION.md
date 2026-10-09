@@ -244,3 +244,11 @@ earlier NGSL draft. This is mechanical drafting evidence only: all
 `rightsCleared`, and `publicRelease` flags are false.
 No old course bundle, Git history, source-rights assignment, audio or
 artwork is replaced; public release remains forbidden and **Gate 0 BLOCKED**.
+
+## Original bilingual editorial drafts — ranks 201–240 (2026-10-10)
+
+Two new, separately staged 20-item source-rank batches (`independent-ranks-201-220-drafts.json` and `independent-ranks-221-240-drafts.json`) add 40 *new model-authored* bilingual draft entries with 80 paired example sentences. The cumulative independent, NGSL-ranked authoring track is now **240/900 drafts**. Each record pins its NGSL lemma, source rank and independent selection ID, and describes **one** usage sense without claiming full dictionary coverage.
+
+Every record keeps `semanticApproved`, `persianApproved`, `cefrApproved`, `rightsCleared` and `publicRelease` set to `false`. The 40 drafts are checked against the legacy-content and preceding draft batches for nine-word verbatim reuse by `npm run assurance:ngsl:drafts:check`, and are assessed only for mechanical consistency. The source rank is **not** proof of CEFR A1 appropriateness; for example `government`, `however` and `though` may require deferral to later proficiency levels.
+
+No public lesson data, rights-assignment evidence, audio, artwork, scene/contrast content or runtime curriculum is changed. The existing Oxford-derived source remains unverified and Gate 0 remains **BLOCKED**. Independent semantic/Persian/pedagogical/rights review, clean content compilation and separate media licensing are still prerequisites to public release.
