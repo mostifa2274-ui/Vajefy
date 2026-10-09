@@ -97,3 +97,32 @@ and exact SHA-256. All 50 remain unapproved in the current staging system,
 and no existing learner-facing corpus, audio, public artwork, or Gate 0 status
 has been changed.
 
+## Model-authored sense review packet (2026-10-09)
+
+`content/rights-staging/oewn-2025-editorial-sense-proposals.json` is a
+**read-only, unapproved correction queue** covering all 50 existing bilingual
+independent-authoring drafts. The source-intake tie-breaker often selected an
+unrelated sense. The packet preserves each originally pinned key and meaning,
+then references a different *existing* OEWN 2025 alternative key, exact WNDB
+synset offset and upstream gloss SHA-256 for **46 preliminary matches**.
+The remaining **four** (`be`, `have`, `make`, `take`) combine multiple
+meaning categories in one authored definition; the packet requires splitting
+these meanings before any lexical key can be chosen. No source key is changed
+in the underlying draft manifest, and no original/rewritten lesson has been
+deployed.
+
+Examples requiring follow-up comparison include `run` (foot movement, not
+routing), `plate` (food dish, not quantity on the dish), and `draw`
+(represent a picture, not just pull an object). The suggestions are an
+AI-authored editorial starting point, **not independent semantic judgments**.
+They do not establish CEFR A1 level, correct Persian translations, clean-room
+independence, or licensing of any legacy material. A future lexical reviewer
+must read the *full* attributed original source gloss and verify the new
+English/Persian examples for every item. If the WordNet source gloss cannot
+support the intended sense, the draft must be split or reauthored.
+
+`npm run assurance:rights:sense-proposals:check` runs in
+`validate:data`; its unit tests fail on substituted sense keys, modified
+source hashes, invented rights/CEFR/reviewer approvals, draft drift, and a
+false proposal that reuses the old mismatched key. All 50 remain unreleased;
+Gate 0 is still BLOCKED.
