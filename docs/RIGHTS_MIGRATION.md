@@ -1,7 +1,15 @@
 # Gate 0 — redistribution rights and clean-source migration
 
-Updated 2026-10-08. **Status: BLOCKED.** This is an evidence and engineering
+Updated 2026-10-09. **Status: BLOCKED.** This is an evidence and engineering
 procedure, not a legal opinion or an assertion that the existing material is licensed.
+
+## Owner statement on ChatGPT-generated content — 2026-10-09
+
+The project owner states: **“All lessons, existing audio, artwork, or historical repository content are made by chatgpt.”** The exact statement is preserved in `content/assurance/owner-authorship-attestation.json`. Its scope includes teaching materials, audio, artwork and historical repository content, but its evidence type is **owner-reported, not independently verified against per-item prompt/media histories**. The existing 5,322-word legacy selection plus 2,950 supplemental-record authorship inventory remains separately tracked and is not replaced by this record.
+
+OpenAI's Terms of Use give users ownership of output **as between users and OpenAI, to the extent permitted by law**, while explicitly excluding others' outputs and third-party material. The user remains responsible for having permissions for the inputs. See https://openai.com/policies/terms-of-use/ (Content / Ownership of content). This statement therefore does **not** confirm whether protected third-party descriptions, selections, images or recordings were supplied as inputs. Some audio build evidence also documents separate offline synthesis models/voices, so each audio file and the model/voice redistribution terms require their own validation.
+
+The owner statement is **not a licence grant, independent generation-history proof, or item-level release clearance**. `npm run assurance:rights:owner:check` validates this distinction, including the explicit categories, and runs inside `npm run validate:data`; its regression tests refuse fabricated permissions. The SHA-256-bound `content/assurance/rights-lineage.json` item evidence and `content/assurance/provenance.json` source permissions continue to determine Gate 0. The existing NGSL clean-source reconstruction remains necessary unless separately sufficient source-specific licences are obtained.
 
 ## What is known, and what is not
 
