@@ -4,7 +4,7 @@ import path from "node:path";
 import {
   AI_AUTHORSHIP_REPORT, LIST_SOURCE, RIGHTS_PENDING,
   authoredFieldsOf, requireUncleared, selectionFieldsOf,
-} from "../src/lib/learn/rights-field-lineage";
+} from "../../src/lib/learn/rights-field-lineage";
 
 const root = process.cwd();
 const output = path.join(root, "content/rights-staging/legacy-full-lineage");
