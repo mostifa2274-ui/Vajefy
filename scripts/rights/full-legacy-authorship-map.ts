@@ -17,7 +17,7 @@ const quote = (v: unknown) => {
 };
 const COLUMN_NAMES = [
   "record_id", "corpus_level", "source_file", "legacy_headword_or_subject",
-  "selection_fields", "reported_chatgpt_authored_fields", "record_sha256",
+  "selection_fields", "reported_chatgpt_authored_fields", "record_sha256", "oxford_list_membership",
   "selection_provenance", "authorship_evidence", "redistribution_rights",
 ] as const;
 type RecordRow = {
@@ -44,7 +44,7 @@ function mapRow(id: string, level: string, file: string, subject: string,
 function csv(rows: RecordRow[]): string {
   return [COLUMN_NAMES.join(","), ...rows.map(r => [
     r.recordId, r.level, r.sourceFile, r.subject,
-    r.selectionFields.join("|"), r.aiFields.join("|"), r.sha256,
+    r.selectionFields.join("|"), r.aiFields.join("|"), r.sha256, "UNVERIFIED_PER_RECORD",
     r.selectionProvenance, r.aiAuthorship, r.rightsStatus,
   ].map(quote).join(","))].join("\n") + "\n";
 }
