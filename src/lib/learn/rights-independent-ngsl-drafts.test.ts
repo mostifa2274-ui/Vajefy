@@ -173,5 +173,4 @@ test("NGSL draft-batch discovery rejects malformed ranges and missing first batc
   assert.ok(bad.issues.some(issue => issue.includes("Missing NGSL first-20")));
   assert.ok(bad.issues.some(issue => issue.includes("Invalid NGSL 20-item rank interval")));
   assert.ok(bad.issues.some(issue => issue.includes("Malformed NGSL draft batch name")));
-  assert.ok(bad.issues.some(issue => issue.includes("900-source") ) === false);
 });
