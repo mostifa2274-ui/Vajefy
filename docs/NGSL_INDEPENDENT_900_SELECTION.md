@@ -89,3 +89,31 @@ authored lessons**, since these 20 are editorial drafts, not cleared lessons.
 A future release must independently verify and rewrite where necessary each
 candidate, fully rebuild all derived runtime assets, and record exact rights
 evidence for every distributed byte before updating Gate 0.
+
+
+## Second 20 original lesson drafts (ranks 21–40; still NOT approved)
+
+`content/rights-staging/ngsl-1.2/independent-ranks-21-40-drafts.json`
+adds **20 freshly authored bilingual editorial drafts**, continuing the pinned
+NGSL source selection exactly from rank 21 through 40, for a cumulative **40/900
+unreviewed drafts**. Each draft keeps the immutable source selection ID/rank,
+states a narrowly scoped meaning and usage in Persian, and includes two new
+English/Persian example pairs. Potentially polysemous words such as `at`, `by`,
+`would` and `there` explicitly teach just one sense; further senses are not
+silently certified.
+
+The existing `npm run assurance:ngsl:drafts:check` now checks **both** batches:
+the exact original first-20 source roster, the exact next-20 source slice,
+complete bilingual fields, zero-approval flags, and English/Persian long-phrase
+overlap with legacy lessons and with the previous independent batch. New unit
+tests reject wrong source ranks, copy-paste reuse and forged clearance.
+No legacy content is an authoring input; it is inspected only by the anti-reuse
+guard after drafting. A nine-word overlap test is not a legal opinion or proof
+of independent creation.
+
+**Still 0 verified semantic/Persian/CEFR reviews, 0 rights-cleared replacement
+lessons, 0 public NGSL lessons and 900 legacy entries remain unverified.**
+This work does not alter the existing production curriculum, public JSON,
+audio, artwork, Git history or Gate 0. All 40 drafts still require full
+editorial, licensed-source, legal and media review before an actual
+clean-source release can replace the inherited course.
