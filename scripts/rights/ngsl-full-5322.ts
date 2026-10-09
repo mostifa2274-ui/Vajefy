@@ -7,8 +7,8 @@ const DIR = path.join(ROOT, "content/rights-staging/ngsl-1.2");
 const read = (file: string) => JSON.parse(fs.readFileSync(path.join(ROOT, file), "utf8")) as unknown;
 const blobSha1 = (content: Buffer) => createHash("sha1")
   .update("blob " + content.length + "\0").update(content).digest("hex");
-const normalize = (v: string) => v.toLowerCase().normalize("NFKC")
-  .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, "").replace(/\s*\([^)]*\)/g, "").trim();
+const normalize = (v: string) => v.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, "")
+  .toLowerCase().normalize("NFKC").replace(/\s*\([^)]*\)/g, "").trim();
 const pins = {
   "core.csv": "b8705be6c208bbee4450a208eb39a5be4dea8f63",
   "supplementary.csv": "34c8d351411ee2bd53ade193a9308c0326b7c7e3",
