@@ -174,3 +174,27 @@ test("NGSL draft-batch discovery rejects malformed ranges and missing first batc
   assert.ok(bad.issues.some(issue => issue.includes("Invalid NGSL 20-item rank interval")));
   assert.ok(bad.issues.some(issue => issue.includes("Malformed NGSL draft batch name")));
 });
+
+test("independent NGSL drafts require distinct examples in both languages", () => {
+  const batch = fixture();
+  batch.lessons[0]!.examples[1] = {
+    en: "there IS a test HERE!",
+    fa: "اینجا یک آزمایش وجود دارد.",
+  };
+  assert.ok(
+    auditUnreviewedNgslDrafts(batch, selection).some(issue =>
+      issue.includes("duplicate English examples")),
+  );
+  assert.ok(
+    auditUnreviewedNgslDrafts(batch, selection).some(issue =>
+      issue.includes("duplicate Persian examples")),
+  );
+  batch.lessons[0]!.examples[1] = {
+    en: "Another example about a different place.",
+    fa: "این بار دربارهٔ جای دیگری می‌نویسیم.",
+  };
+  assert.ok(
+    !auditUnreviewedNgslDrafts(batch, selection).some(issue =>
+      issue.includes("duplicate")),
+  );
+});
