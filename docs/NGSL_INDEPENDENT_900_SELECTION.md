@@ -191,3 +191,30 @@ permissions and historically published content remain unverified. **Gate 0
 remains BLOCKED, with zero new rights approvals and zero published replacement
 lessons.** Do not use these draft files for a public release until their
 source rights and editorial dependencies are independently resolved.
+
+## Ninth independently drafted batch — NGSL ranks 161–180 (unreviewed)
+
+`content/rights-staging/ngsl-1.2/independent-ranks-161-180-drafts.json`
+adds **20 further, original model-authored English–Persian lesson drafts**
+with **40 bilingual example pairs**. The replacement-writing inventory is now
+**180 of 900 independent-frequency-selection candidates drafted**, with
+**360 paired examples**. Every record is bound to its own immutable
+`ngsl:freq:0161–0180` source rank and lemma.
+
+Each draft explicitly describes *one* sense: for example, `home` as a
+place of residence rather than a building, `kind` as a type rather than
+kindness, `book` as a printed work rather than a booking verb, `case`
+as an instance rather than a container, and `around` as a surrounding
+position. The teaching guidance marks common grammatical restrictions
+(`every` + singular noun, `let` + object + bare infinitive,
+`never` placement, `seem` + adjective). Sense choices, CEFR level,
+translations, example naturalness and legal independence **are not
+independently reviewed or approved**.
+
+The existing dynamically discovered `assurance:ngsl:drafts:check`
+pipeline must verify contiguous NGSL rank/lemma mappings, the unchanged
+zero-approval flags, distinct bilingual examples and the inherited/prior-batch
+nine-word overlap guard. This check only rejects detectable reuse; it does
+not authenticate ownership or license a derivative. The source workbook,
+canonical A1 learner lessons, scenes, media and public assets are unchanged.
+**Gate 0 stays BLOCKED; no new source, item or media rights have been cleared.**
