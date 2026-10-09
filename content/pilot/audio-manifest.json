@@ -6,7 +6,7 @@
  },
  "speed": 0.95,
  "bitrate": "40k",
- "totalBytes": 50615136,
+ "totalBytes": 50615496,
  "clips": {
   "001fc4768ecbbb6a18bc.mp3": {
    "duration": 2.005,
@@ -21240,14 +21240,6 @@
    "text": "upstairs",
    "accent": "us"
   },
-  "763dbc46c6e72d736e24.mp3": {
-   "duration": 0.735,
-   "peak": 0.6636,
-   "rms": 0.0949,
-   "bytes": 4197,
-   "text": "shower",
-   "accent": "gb"
-  },
   "76426f47d17327f5d7f1.mp3": {
    "duration": 1.922,
    "peak": 0.6891,
@@ -25926,14 +25918,6 @@
    "rms": 0.0895,
    "bytes": 8637,
    "text": "We talked about our holiday.",
-   "accent": "us"
-  },
-  "90ae32e65fc3b74cffbc.mp3": {
-   "duration": 0.834,
-   "peak": 0.7937,
-   "rms": 0.1041,
-   "bytes": 4677,
-   "text": "century",
    "accent": "us"
   },
   "90af8f884936f5846724.mp3": {
@@ -48493,14 +48477,6 @@
    "text": "you",
    "accent": "gb"
   },
-  "15c10beee44b964d3635.mp3": {
-   "duration": 0.849,
-   "peak": 0.5291,
-   "rms": 0.1,
-   "bytes": 4797,
-   "text": "parent",
-   "accent": "gb"
-  },
   "c49896024a09f5dae51a.mp3": {
    "duration": 0.681,
    "peak": 0.5625,
@@ -48508,6 +48484,63 @@
    "bytes": 3957,
    "text": "new",
    "accent": "gb"
+  },
+  "1c2534dc08dc7c450312e4c7.mp3": {
+   "duration": 0.819,
+   "peak": 0.7951,
+   "rms": 0.0795,
+   "bytes": 4677,
+   "text": "parent",
+   "accent": "gb",
+   "generation": {
+    "model": "kokoro-v1.0",
+    "modelSha256": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+    "voicesSha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d",
+    "packageVersion": "0.6.1",
+    "voice": "bm_lewis",
+    "lang": "en-gb",
+    "speed": 0.95,
+    "bitrate": "40k"
+   },
+   "repairPolicyVersion": "kokoro-v1-unit123-r1"
+  },
+  "56c2433dac7fb25ac19fd40b.mp3": {
+   "duration": 0.852,
+   "peak": 0.5346,
+   "rms": 0.0992,
+   "bytes": 4797,
+   "text": "shower",
+   "accent": "gb",
+   "generation": {
+    "model": "kokoro-v1.0",
+    "modelSha256": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+    "voicesSha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d",
+    "packageVersion": "0.6.1",
+    "voice": "bf_isabella",
+    "lang": "en-gb",
+    "speed": 0.95,
+    "bitrate": "40k"
+   },
+   "repairPolicyVersion": "kokoro-v1-unit123-r1"
+  },
+  "4390ec0179daf98797d856d3.mp3": {
+   "duration": 0.796,
+   "peak": 0.6141,
+   "rms": 0.1044,
+   "bytes": 4557,
+   "text": "century",
+   "accent": "us",
+   "generation": {
+    "model": "kokoro-v1.0",
+    "modelSha256": "7d5df8ecf7d4b1878015a32686053fd0eebe2bc377234608764cc0ef3636a6c5",
+    "voicesSha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d",
+    "packageVersion": "0.6.1",
+    "voice": "af_bella",
+    "lang": "en-us",
+    "speed": 0.95,
+    "bitrate": "40k"
+   },
+   "repairPolicyVersion": "kokoro-v1-unit123-r1"
   }
  },
  "senses": {
@@ -50545,7 +50578,7 @@
    "gb": {
     "word": {
      "text": "parent",
-     "file": "pilot/15c10beee44b964d3635.mp3"
+     "file": "pilot/1c2534dc08dc7c450312e4c7.mp3"
     },
     "examples": [
      {
@@ -53571,7 +53604,7 @@
    "gb": {
     "word": {
      "text": "shower",
-     "file": "pilot/763dbc46c6e72d736e24.mp3"
+     "file": "pilot/56c2433dac7fb25ac19fd40b.mp3"
     },
     "examples": [
      {
@@ -55185,7 +55218,7 @@
    "us": {
     "word": {
      "text": "century",
-     "file": "pilot/90ae32e65fc3b74cffbc.mp3"
+     "file": "pilot/4390ec0179daf98797d856d3.mp3"
     },
     "examples": [
      {

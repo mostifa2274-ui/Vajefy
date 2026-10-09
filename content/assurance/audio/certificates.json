@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "evidenceVersion": "vajefy-audio-v1",
-  "generatedAt": "2026-10-08T19:44:49.100189Z",
+  "generatedAt": "2026-10-09T02:12:38.939688Z",
   "status": "PARTIAL",
   "scope": {
     "units": [
@@ -13,15 +13,15 @@
   "sourceHashes": {
     "curriculumSha256": "29a3eb88ce766837bea0d767b4e46f9d7df3bffeb7c551a2983d05462373c0c6",
     "enhancedSha256": "f0e177e59c79c2b7763380cc9a8b49faa2af5cbb6c660e537a5f5404925f06d8",
-    "audioManifestSha256": "241ebbef845b45b0eb156072173a6d6968d6840d378977bafcaa3a8f41ec3d01",
-    "audioReportSha256": "27d87b4d915a79b4ec5a05bad026b15ba5a42f89c1aae3ec3479834b4ecfab62"
+    "audioManifestSha256": "b45289f99dff20a8e8fe1c5976551e571677700e25ac9a332efffe0dcebd6fb7",
+    "audioReportSha256": "c50d3245d57ed88ee3bffcec5aa634b06b75adac3e8d2c7066e08cff73d8bb4f"
   },
-  "recognitionHash": "37683b15e176fd6a0dc7b57208b3bc0fa7e68dcf8ad23318084c450878def5de",
+  "recognitionHash": "10747cd3e933fb5b78acd7890b4e99a2b03dfe5f66c02c2afe7f153ef193db79",
   "summary": {
     "targets": 386,
-    "certified": 325,
+    "certified": 328,
     "uncertain": 0,
-    "quarantined": 61
+    "quarantined": 58
   },
   "records": [
     {
@@ -2556,24 +2556,21 @@
       "entryId": "lex:A1:parent",
       "senseId": "lex:A1:parent",
       "accent": "gb",
-      "clipFile": "pilot/15c10beee44b964d3635.mp3",
-      "clipSha256": "3f00eae0285e4f2dfffffbf32536233a3a3de8314ac13362ab76f5f5da33d2a8",
+      "clipFile": "pilot/1c2534dc08dc7c450312e4c7.mp3",
+      "clipSha256": "2c083c82b57d0664ac1f9bedffdf654a619aec98dd17b4dde33aa5a800935df1",
       "expectedText": "parent",
       "pronunciation": "/ˈpeərənt/",
-      "status": "QUARANTINED",
+      "status": "CERTIFIED",
       "criteria": {
         "sourceIdentity": true,
         "signalIntegrity": true,
         "whisperLexical": true,
-        "voskLexical": false,
+        "voskLexical": true,
         "forcedAlignment": true,
-        "multiSystemAgreement": false
+        "multiSystemAgreement": true
       },
       "legacyIssues": [],
-      "blockers": [
-        "vosk-lexical",
-        "multi-system-disagreement"
-      ]
+      "blockers": []
     },
     {
       "targetId": "lex:A1:parent:us",
@@ -6614,24 +6611,21 @@
       "entryId": "lex:A1:shower",
       "senseId": "lex:A1:shower",
       "accent": "gb",
-      "clipFile": "pilot/763dbc46c6e72d736e24.mp3",
-      "clipSha256": "5dbca3e9a33d94d1468a1be1ae84a9237e32fda168f3f09e2fca345bb7cf9bdd",
+      "clipFile": "pilot/56c2433dac7fb25ac19fd40b.mp3",
+      "clipSha256": "eb5087d51a7a86e4210b70259311699f3fd88e6044eacf626f2d1b6a892cb0eb",
       "expectedText": "shower",
       "pronunciation": "/ˈʃaʊə/",
-      "status": "QUARANTINED",
+      "status": "CERTIFIED",
       "criteria": {
         "sourceIdentity": true,
         "signalIntegrity": true,
         "whisperLexical": true,
-        "voskLexical": false,
+        "voskLexical": true,
         "forcedAlignment": true,
-        "multiSystemAgreement": false
+        "multiSystemAgreement": true
       },
       "legacyIssues": [],
-      "blockers": [
-        "vosk-lexical",
-        "multi-system-disagreement"
-      ]
+      "blockers": []
     },
     {
       "targetId": "lex:A1:shower:us",
@@ -8740,26 +8734,21 @@
       "entryId": "lex:A1:century",
       "senseId": "lex:A1:century",
       "accent": "us",
-      "clipFile": "pilot/90ae32e65fc3b74cffbc.mp3",
-      "clipSha256": "9c71fd864c14cc85f4c742880c4a052c477ccb000c355fb581fe370ea12b3482",
+      "clipFile": "pilot/4390ec0179daf98797d856d3.mp3",
+      "clipSha256": "cee7db13c6261b179a599cee67c66ac374bf6b5d4b67dee2cb59e7849a4e7a7c",
       "expectedText": "century",
       "pronunciation": "/ˈsentʃəri/",
-      "status": "QUARANTINED",
+      "status": "CERTIFIED",
       "criteria": {
         "sourceIdentity": true,
         "signalIntegrity": true,
         "whisperLexical": true,
-        "voskLexical": false,
+        "voskLexical": true,
         "forcedAlignment": true,
-        "multiSystemAgreement": false
+        "multiSystemAgreement": true
       },
-      "legacyIssues": [
-        "pronunciation differs from IPA: synthesized /sˈɛntʃɚɹi/, entry /ˈsentʃəri/"
-      ],
-      "blockers": [
-        "vosk-lexical",
-        "multi-system-disagreement"
-      ]
+      "legacyIssues": [],
+      "blockers": []
     },
     {
       "targetId": "lex:A1:period:gb",
