@@ -13,12 +13,12 @@ The complete row-by-row mapping is in:
 |---|---:|---|
 | Exact headword (including one multi-form entry) | 838 | English headword appears directly in a pinned NGSL-related source; **lexical match only** |
 | Related lemma / spelling / grammatical or phrase component | 59 | **Unreviewed suggestion**; may have different POS, sense, form, or phrase meaning |
-| No literal NGSL-family source match | 3 | CD, DVD, oh — needs a separate independently sourced or independently authored entry |
+| No literal NGSL-family source match | 3 | CD, DVD, oh — require different lesson targets, not false synonyms |
 | **A1 IDs accounted for** | **900** | All retain existing internal IDs; **0 rights approvals** |
 
 Across direct matches and **unreviewed** suggestions, 787 entries are associated with the NGSL 1.2 core, 49 with its supplemental days/months/numbers, and 61 with the much broader NGSL-associated SFI 31k frequency extension. **The SFI extension is not the NGSL core and is not a CEFR A1 word list.** A frequency rank also never certifies a learner level or a particular sense.
 
-These are *source candidates*, not legal or pedagogical equivalents. For example, `bored → bore`, `born → bear`, `her → she` and `have to → have` cannot be copied as definitions or assumed to be interchangeable. The mapping explicitly identifies such cases and forbids automatic source-clearance. Only a genuinely rebuilt and appropriately attributed source item can become eligible for review.
+**All 900 now also have a proposed NGSL-family direction:** the three with no literal source match have **different-topic, unapproved NGSL core replacement targets** — `CD → music` (core rank 392), `DVD → video` (core rank 1065), and `oh → well` (core rank 61). These are **not translations or synonyms**. They require replacement lesson goals, new explanations, new assessments, and independent pedagogical review before they can be substituted. Original entry IDs are retained in the *staging report* only; no production word has been changed.\n\nThese are *source candidates*, not legal or pedagogical equivalents. For example, `bored → bore`, `born → bear`, `her → she` and `have to → have` cannot be copied as definitions or assumed to be interchangeable. The mapping explicitly identifies such cases and forbids automatic source-clearance. Only a genuinely rebuilt and appropriately attributed source item can become eligible for review.
 
 ## Original source, licensing, and pinned bytes
 
