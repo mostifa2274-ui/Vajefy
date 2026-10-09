@@ -15,27 +15,27 @@
   "campaignPolicy": "One role campaign at a time. A candidate is eligible only if it needs no paid billing and its full campaign fits the safety ceiling; the automation's usage log keeps each UTC day under the ceiling.",
   "requiredRunsPerRole": 3,
   "activeJudgesTotalRequests": 84,
-  "activeJudgesNeuronsUpperBound": 25266,
+  "activeJudgesNeuronsUpperBound": 26463,
   "roles": {
     "english": {
-      "model": "@cf/meta/llama-4-scout-17b-16e-instruct",
-      "modelVersion": "@cf/meta/llama-4-scout-17b-16e-instruct@cloudflare-catalog-2026-10-06",
-      "maxOutputTokensPerRequest": 600,
+      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "modelVersion": "@cf/meta/llama-3.3-70b-instruct-fp8-fast@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 500,
       "requestsPerRun": 6,
       "repeats": 3,
       "totalRequests": 18,
       "maxRequestUtf8Bytes": 4933,
       "maxInputTokensUpperBound": 5445,
       "inputTokensUpperBoundTotal": 88755,
-      "outputTokensUpperBoundTotal": 10800,
+      "outputTokensUpperBoundTotal": 9000,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 24545,
-        "outputNeuronsPerMillionTokens": 77273,
+        "inputNeuronsPerMillionTokens": 26668,
+        "outputNeuronsPerMillionTokens": 204805,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 181,
-      "neuronsUpperBound": 3021,
+      "maxRequestNeuronsUpperBound": 248,
+      "neuronsUpperBound": 4218,
       "candidates": [
         {
           "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
