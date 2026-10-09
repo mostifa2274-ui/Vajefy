@@ -32,7 +32,7 @@ export function ngslDraftBatchFiles(files: readonly string[]): {
   const ranges: { name: string; start: number; end: number }[] = [];
   for (const name of files) {
     if (!name.startsWith("independent-ranks-")) continue;
-    const match = /^independent-ranks-(\\d+)-(\\d+)-drafts\\.json$/.exec(name);
+    const match = /^independent-ranks-(\d+)-(\d+)-drafts\.json$/.exec(name);
     if (!match) {
       issues.push("Malformed NGSL draft batch name: " + name);
       continue;
