@@ -70,3 +70,33 @@ test("rejects long verbatim English or Persian reuse from inherited lessons", ()
   assert.ok(auditUnreviewedNgslDrafts(x, selection, inheritedEnglish).some(s => s.includes("verbatim overlap")));
   assert.ok(auditUnreviewedNgslDrafts(x, selection, [], inheritedPersian).some(s => s.includes("verbatim overlap")));
 });
+
+test("follow-up ranks 21–40 must match their exact separate source slice", () => {
+  const next = fixture();
+  next.lessons = next.lessons.map((item, i) => ({
+    ...item,
+    selectionId: selection.entries[i + 20]!.selectionId,
+    lemma: selection.entries[i + 20]!.lemma,
+    sourceRank: selection.entries[i + 20]!.sourceRank,
+  }));
+  const secondSlice = { ...selection, entries: selection.entries.slice(20, 40) };
+  assert.deepEqual(auditUnreviewedNgslDrafts(next, secondSlice), []);
+  assert.ok(auditUnreviewedNgslDrafts(next, selection).some(s => s.includes("wrongly sourced")));
+  next.lessons[3]!.sourceRank = 200;
+  assert.ok(auditUnreviewedNgslDrafts(next, secondSlice).some(s => s.includes("wrongly sourced")));
+});
+
+test("separate NGSL follow-up drafts reject fabricated approvals and cross-batch reuse", () => {
+  const next = fixture();
+  next.lessons = next.lessons.map((item, i) => ({
+    ...item, ...selection.entries[i + 20],
+    sourceRank: selection.entries[i + 20]!.sourceRank,
+  }));
+  const secondSlice = { ...selection, entries: selection.entries.slice(20, 40) };
+  const prior = "Every bright little bird comes back to the same tree each morning";
+  next.lessons[0]!.examples[0] = { en: prior, fa: "این فقط یک جملهٔ آزمایشی است." };
+  assert.ok(auditUnreviewedNgslDrafts(next, secondSlice, [prior]).some(s => s.includes("verbatim overlap")));
+  next.lessons[0]!.examples[0] = { en: "She walks to the shop.", fa: "او به مغازه می‌رود." };
+  (next.lessons[0] as unknown as { rightsCleared: boolean }).rightsCleared = true;
+  assert.ok(auditUnreviewedNgslDrafts(next, secondSlice).some(s => s.includes("unauthorized approval")));
+});
