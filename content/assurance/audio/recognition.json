@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "evidenceVersion": "vajefy-audio-v1",
-  "generatedAt": "2026-10-08T19:44:49.100189Z",
+  "generatedAt": "2026-10-09T02:12:38.939688Z",
   "scope": {
     "units": [
       "01-introductions",
@@ -12,8 +12,8 @@
   "sourceHashes": {
     "curriculumSha256": "29a3eb88ce766837bea0d767b4e46f9d7df3bffeb7c551a2983d05462373c0c6",
     "enhancedSha256": "f0e177e59c79c2b7763380cc9a8b49faa2af5cbb6c660e537a5f5404925f06d8",
-    "audioManifestSha256": "241ebbef845b45b0eb156072173a6d6968d6840d378977bafcaa3a8f41ec3d01",
-    "audioReportSha256": "27d87b4d915a79b4ec5a05bad026b15ba5a42f89c1aae3ec3479834b4ecfab62"
+    "audioManifestSha256": "b45289f99dff20a8e8fe1c5976551e571677700e25ac9a332efffe0dcebd6fb7",
+    "audioReportSha256": "c50d3245d57ed88ee3bffcec5aa634b06b75adac3e8d2c7066e08cff73d8bb4f"
   },
   "systems": {
     "whisper": {
@@ -2974,8 +2974,8 @@
         "rms": 0.0949
       },
       "whisper": {
-        "transcript": "That.",
-        "avgLogProb": -1.008313,
+        "transcript": "that",
+        "avgLogProb": -0.976226,
         "noSpeechProb": 0.179302
       },
       "vosk": {
@@ -6610,8 +6610,8 @@
         "rms": 0.1016
       },
       "whisper": {
-        "transcript": "aren't.",
-        "avgLogProb": -1.123257,
+        "transcript": "Aren't.",
+        "avgLogProb": -1.121231,
         "noSpeechProb": 0.008289
       },
       "vosk": {
@@ -7600,22 +7600,22 @@
       "entryId": "lex:A1:parent",
       "senseId": "lex:A1:parent",
       "accent": "gb",
-      "clipFile": "pilot/15c10beee44b964d3635.mp3",
+      "clipFile": "pilot/1c2534dc08dc7c450312e4c7.mp3",
       "expectedText": "parent",
       "pronunciation": "/ˈpeərənt/",
-      "clipSha256": "3f00eae0285e4f2dfffffbf32536233a3a3de8314ac13362ab76f5f5da33d2a8",
+      "clipSha256": "2c083c82b57d0664ac1f9bedffdf654a619aec98dd17b4dde33aa5a800935df1",
       "signal": {
-        "duration": 0.849,
-        "peak": 0.5006,
-        "rms": 0.095
+        "duration": 0.819,
+        "peak": 0.7256,
+        "rms": 0.0748
       },
       "whisper": {
         "transcript": "parent",
-        "avgLogProb": -0.61756,
-        "noSpeechProb": 0.087125
+        "avgLogProb": -0.346302,
+        "noSpeechProb": 0.057789
       },
       "vosk": {
-        "transcript": "the parent"
+        "transcript": "parent"
       },
       "alignment": {
         "status": "ok",
@@ -7623,54 +7623,54 @@
           {
             "name": "parent",
             "start": 0,
-            "duration": 69,
+            "duration": 60,
             "phones": [
               {
                 "name": "P",
                 "start": 0,
-                "duration": 16
+                "duration": 9
               },
               {
                 "name": "EH",
-                "start": 16,
-                "duration": 18
+                "start": 9,
+                "duration": 19
               },
               {
                 "name": "R",
-                "start": 34,
-                "duration": 8
+                "start": 28,
+                "duration": 6
               },
               {
                 "name": "AH",
-                "start": 42,
+                "start": 34,
                 "duration": 4
               },
               {
                 "name": "N",
-                "start": 46,
-                "duration": 9
+                "start": 38,
+                "duration": 10
               },
               {
                 "name": "T",
-                "start": 55,
-                "duration": 14
+                "start": 48,
+                "duration": 12
               }
             ]
           },
           {
             "name": "<sil>",
-            "start": 69,
-            "duration": 15,
+            "start": 60,
+            "duration": 21,
             "phones": [
               {
                 "name": "SIL",
-                "start": 69,
-                "duration": 15
+                "start": 60,
+                "duration": 21
               }
             ]
           }
         ],
-        "coverage": 0.98889,
+        "coverage": 0.98886,
         "reason": null
       }
     },
@@ -10775,7 +10775,7 @@
         "noSpeechProb": 0.017907
       },
       "vosk": {
-        "transcript": "that's"
+        "transcript": "that's a"
       },
       "alignment": {
         "status": "ok",
@@ -11295,7 +11295,7 @@
         "noSpeechProb": 0.157123
       },
       "vosk": {
-        "transcript": "there with"
+        "transcript": "the with"
       },
       "alignment": {
         "status": "ok",
@@ -18902,7 +18902,7 @@
         "noSpeechProb": 0.129459
       },
       "vosk": {
-        "transcript": "now it"
+        "transcript": "thou it"
       },
       "alignment": {
         "status": "ok",
@@ -20792,22 +20792,22 @@
       "entryId": "lex:A1:shower",
       "senseId": "lex:A1:shower",
       "accent": "gb",
-      "clipFile": "pilot/763dbc46c6e72d736e24.mp3",
+      "clipFile": "pilot/56c2433dac7fb25ac19fd40b.mp3",
       "expectedText": "shower",
       "pronunciation": "/ˈʃaʊə/",
-      "clipSha256": "5dbca3e9a33d94d1468a1be1ae84a9237e32fda168f3f09e2fca345bb7cf9bdd",
+      "clipSha256": "eb5087d51a7a86e4210b70259311699f3fd88e6044eacf626f2d1b6a892cb0eb",
       "signal": {
-        "duration": 0.735,
-        "peak": 0.6086,
-        "rms": 0.0899
+        "duration": 0.852,
+        "peak": 0.4976,
+        "rms": 0.0933
       },
       "whisper": {
         "transcript": "Shower",
-        "avgLogProb": -0.349332,
-        "noSpeechProb": 0.069231
+        "avgLogProb": -0.566471,
+        "noSpeechProb": 0.122122
       },
       "vosk": {
-        "transcript": "the shower"
+        "transcript": "shower"
       },
       "alignment": {
         "status": "ok",
@@ -20815,39 +20815,39 @@
           {
             "name": "shower",
             "start": 0,
-            "duration": 53,
+            "duration": 56,
             "phones": [
               {
                 "name": "SH",
                 "start": 0,
-                "duration": 20
+                "duration": 21
               },
               {
                 "name": "AW",
-                "start": 20,
+                "start": 21,
                 "duration": 20
               },
               {
                 "name": "ER",
-                "start": 40,
-                "duration": 13
+                "start": 41,
+                "duration": 15
               }
             ]
           },
           {
             "name": "<sil>",
-            "start": 53,
-            "duration": 19,
+            "start": 56,
+            "duration": 28,
             "phones": [
               {
                 "name": "SIL",
-                "start": 53,
-                "duration": 19
+                "start": 56,
+                "duration": 28
               }
             ]
           }
         ],
-        "coverage": 0.979092,
+        "coverage": 0.985626,
         "reason": null
       }
     },
@@ -27898,22 +27898,22 @@
       "entryId": "lex:A1:century",
       "senseId": "lex:A1:century",
       "accent": "us",
-      "clipFile": "pilot/90ae32e65fc3b74cffbc.mp3",
+      "clipFile": "pilot/4390ec0179daf98797d856d3.mp3",
       "expectedText": "century",
       "pronunciation": "/ˈsentʃəri/",
-      "clipSha256": "9c71fd864c14cc85f4c742880c4a052c477ccb000c355fb581fe370ea12b3482",
+      "clipSha256": "cee7db13c6261b179a599cee67c66ac374bf6b5d4b67dee2cb59e7849a4e7a7c",
       "signal": {
-        "duration": 0.834,
-        "peak": 0.7403,
-        "rms": 0.0966
+        "duration": 0.796,
+        "peak": 0.5896,
+        "rms": 0.0967
       },
       "whisper": {
         "transcript": "century.",
-        "avgLogProb": -0.900908,
-        "noSpeechProb": 0.115705
+        "avgLogProb": -0.843709,
+        "noSpeechProb": 0.100973
       },
       "vosk": {
-        "transcript": "the century"
+        "transcript": "century"
       },
       "alignment": {
         "status": "ok",
@@ -27921,54 +27921,54 @@
           {
             "name": "century",
             "start": 0,
-            "duration": 67,
+            "duration": 62,
             "phones": [
               {
                 "name": "S",
                 "start": 0,
-                "duration": 13
+                "duration": 11
               },
               {
                 "name": "EH",
-                "start": 13,
-                "duration": 7
+                "start": 11,
+                "duration": 6
               },
               {
                 "name": "N",
-                "start": 20,
-                "duration": 7
+                "start": 17,
+                "duration": 8
               },
               {
                 "name": "CH",
-                "start": 27,
+                "start": 25,
                 "duration": 9
               },
               {
                 "name": "ER",
-                "start": 36,
-                "duration": 9
+                "start": 34,
+                "duration": 10
               },
               {
                 "name": "IY",
-                "start": 45,
-                "duration": 22
+                "start": 44,
+                "duration": 18
               }
             ]
           },
           {
             "name": "<sil>",
-            "start": 67,
-            "duration": 15,
+            "start": 62,
+            "duration": 17,
             "phones": [
               {
                 "name": "SIL",
-                "start": 67,
-                "duration": 15
+                "start": 62,
+                "duration": 17
               }
             ]
           }
         ],
-        "coverage": 0.983361,
+        "coverage": 0.992384,
         "reason": null
       }
     },

@@ -1033,6 +1033,15 @@
       "blockers": []
     },
     {
+      "targetId": "lex:A1:century:us",
+      "sourceClipSha256": "9c71fd864c14cc85f4c742880c4a052c477ccb000c355fb581fe370ea12b3482",
+      "candidateId": "us-af-bella-095",
+      "candidateClipSha256": "cee7db13c6261b179a599cee67c66ac374bf6b5d4b67dee2cb59e7849a4e7a7c",
+      "at": "2026-10-09T01:55:45.303Z",
+      "outcome": "CERTIFIED",
+      "blockers": []
+    },
+    {
       "targetId": "lex:A1:chair:gb",
       "sourceClipSha256": "a19cb56b27499822a0320d0455cfe8d09b1282c9d63f30f1f00318f90e31f307",
       "candidateId": "gb-bf-isabella-095",
@@ -3428,6 +3437,19 @@
     {
       "targetId": "lex:A1:new:gb",
       "sourceClipSha256": "5d227136a91defc552ecb97daed4ffe00d73f40d86c4cda40e5b165e23184895",
+      "candidateId": "gb-bf-emma-090",
+      "candidateClipSha256": "0c03ad9370a00e9701b53b0e36b76f3ba98bfcabdccca1d5ebcdb6fa06c08c8f",
+      "at": "2026-10-09T01:55:58.529Z",
+      "outcome": "QUARANTINED",
+      "blockers": [
+        "whisper-lexical",
+        "vosk-lexical",
+        "multi-system-disagreement"
+      ]
+    },
+    {
+      "targetId": "lex:A1:new:gb",
+      "sourceClipSha256": "5d227136a91defc552ecb97daed4ffe00d73f40d86c4cda40e5b165e23184895",
       "candidateId": "gb-bf-isabella-095",
       "candidateClipSha256": "de0e26a5a1e1890fbc681a3bc7cbbca2b4da05a5977b494ac137d651c22c1208",
       "at": "2026-10-08T18:35:47.292Z",
@@ -3446,6 +3468,19 @@
       "at": "2026-10-08T18:44:31.754Z",
       "outcome": "CERTIFIED",
       "blockers": []
+    },
+    {
+      "targetId": "lex:A1:new:gb",
+      "sourceClipSha256": "5d227136a91defc552ecb97daed4ffe00d73f40d86c4cda40e5b165e23184895",
+      "candidateId": "gb-bm-lewis-095",
+      "candidateClipSha256": "061c60d223ed2a1e732848a1292ae742d878131af820d6a02f454dd3780643b9",
+      "at": "2026-10-09T01:55:45.303Z",
+      "outcome": "QUARANTINED",
+      "blockers": [
+        "whisper-lexical",
+        "vosk-lexical",
+        "multi-system-disagreement"
+      ]
     },
     {
       "targetId": "lex:A1:next#adverb:gb",
@@ -3975,6 +4010,19 @@
     {
       "targetId": "lex:A1:parent:gb",
       "sourceClipSha256": "3f00eae0285e4f2dfffffbf32536233a3a3de8314ac13362ab76f5f5da33d2a8",
+      "candidateId": "gb-bf-emma-090",
+      "candidateClipSha256": "321458f041e62f588e36e4a27cc0b0855d6f0072472ac25be409c10034046212",
+      "at": "2026-10-09T01:55:58.529Z",
+      "outcome": "QUARANTINED",
+      "blockers": [
+        "whisper-lexical",
+        "vosk-lexical",
+        "multi-system-disagreement"
+      ]
+    },
+    {
+      "targetId": "lex:A1:parent:gb",
+      "sourceClipSha256": "3f00eae0285e4f2dfffffbf32536233a3a3de8314ac13362ab76f5f5da33d2a8",
       "candidateId": "gb-bf-isabella-095",
       "candidateClipSha256": "95357537c5bc92e14e63400370f695fdc91ec839576c86326c598d38eeb38a96",
       "at": "2026-10-08T18:35:47.292Z",
@@ -3991,6 +4039,15 @@
       "candidateId": "gb-bm-george-095",
       "candidateClipSha256": "4bf92d9c686b0bff264b432f37006e47e5ff7a7a966959bed59f50babe4cc0be",
       "at": "2026-10-08T18:44:31.754Z",
+      "outcome": "CERTIFIED",
+      "blockers": []
+    },
+    {
+      "targetId": "lex:A1:parent:gb",
+      "sourceClipSha256": "3f00eae0285e4f2dfffffbf32536233a3a3de8314ac13362ab76f5f5da33d2a8",
+      "candidateId": "gb-bm-lewis-095",
+      "candidateClipSha256": "2c083c82b57d0664ac1f9bedffdf654a619aec98dd17b4dde33aa5a800935df1",
+      "at": "2026-10-09T01:55:45.303Z",
       "outcome": "CERTIFIED",
       "blockers": []
     },
@@ -4381,6 +4438,15 @@
       "candidateId": "us-am-michael-095",
       "candidateClipSha256": "6d4cdb505107980d3373be58322914614af4566af53e052cbab022975f2fbddf",
       "at": "2026-10-08T18:49:54.716Z",
+      "outcome": "CERTIFIED",
+      "blockers": []
+    },
+    {
+      "targetId": "lex:A1:shower:gb",
+      "sourceClipSha256": "5dbca3e9a33d94d1468a1be1ae84a9237e32fda168f3f09e2fca345bb7cf9bdd",
+      "candidateId": "gb-bf-isabella-095",
+      "candidateClipSha256": "eb5087d51a7a86e4210b70259311699f3fd88e6044eacf626f2d1b6a892cb0eb",
+      "at": "2026-10-09T01:55:45.303Z",
       "outcome": "CERTIFIED",
       "blockers": []
     },
@@ -5645,6 +5711,19 @@
     {
       "targetId": "lex:A1:you:gb",
       "sourceClipSha256": "aba9c15838416d06e87a5576a8886154f276daeabccd21c798e8fc508556e80a",
+      "candidateId": "gb-bf-emma-090",
+      "candidateClipSha256": "c95a8caa6a2c3a3e135e5908d59cf432cfd75e954ed769188e53e70b72cb2d75",
+      "at": "2026-10-09T01:55:58.529Z",
+      "outcome": "QUARANTINED",
+      "blockers": [
+        "whisper-lexical",
+        "vosk-lexical",
+        "multi-system-disagreement"
+      ]
+    },
+    {
+      "targetId": "lex:A1:you:gb",
+      "sourceClipSha256": "aba9c15838416d06e87a5576a8886154f276daeabccd21c798e8fc508556e80a",
       "candidateId": "gb-bf-isabella-095",
       "candidateClipSha256": "4acc4ccef05f1d62abfa6889a1ec57ac0f1c4fddb26f1bbeb04cf6ed81db6517",
       "at": "2026-10-08T18:35:47.292Z",
@@ -5662,6 +5741,18 @@
       "at": "2026-10-08T18:44:31.754Z",
       "outcome": "CERTIFIED",
       "blockers": []
+    },
+    {
+      "targetId": "lex:A1:you:gb",
+      "sourceClipSha256": "aba9c15838416d06e87a5576a8886154f276daeabccd21c798e8fc508556e80a",
+      "candidateId": "gb-bm-lewis-095",
+      "candidateClipSha256": "d915709db9e7fc406269966e99eef9c245ecf91960d91f85f0385f2d663febba",
+      "at": "2026-10-09T01:55:45.303Z",
+      "outcome": "QUARANTINED",
+      "blockers": [
+        "vosk-lexical",
+        "multi-system-disagreement"
+      ]
     },
     {
       "targetId": "lex:A1:your:gb",
@@ -5922,6 +6013,18 @@
       "certified": 325,
       "targets": 386,
       "recognitionGeneratedAt": "2026-10-08T19:44:49.100189Z"
+    },
+    {
+      "runId": "37870655459",
+      "runAttempt": 1,
+      "at": "2026-10-09T02:12:46.999Z",
+      "event": "workflow_dispatch",
+      "headSha": "afd02bcc21fe74996ea28673486a73271afb93ff",
+      "jobStatus": "failure",
+      "certificateStatus": "PARTIAL",
+      "certified": 328,
+      "targets": 386,
+      "recognitionGeneratedAt": "2026-10-09T02:12:38.939688Z"
     }
   ]
 }
