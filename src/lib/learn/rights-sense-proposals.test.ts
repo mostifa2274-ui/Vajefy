@@ -66,7 +66,7 @@ test("staged model proposals are structurally valid without granting any review"
 test("reject modified pinned candidate, alternative SHA and teaching meaning", () => {
   const a = sample();
   a.manifest.proposals[0]!.sourceGlossSha256 = "a".repeat(64);
-  assert.match(auditSenseProposals(a.manifest, a.drafts, a.alternatives).join(), /source\/gloss hash/);
+  assert.match(auditSenseProposals(a.manifest, a.drafts, a.alternatives).join(), /alternative sense\/gloss hash/);
   const b = sample();
   b.manifest.proposals[0]!.candidate.wordNetSenseKey = "run%2:42:99::";
   assert.match(auditSenseProposals(b.manifest, b.drafts, b.alternatives).join(), /no matching pinned/);
