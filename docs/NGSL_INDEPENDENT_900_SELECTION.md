@@ -218,3 +218,29 @@ nine-word overlap guard. This check only rejects detectable reuse; it does
 not authenticate ownership or license a derivative. The source workbook,
 canonical A1 learner lessons, scenes, media and public assets are unchanged.
 **Gate 0 stays BLOCKED; no new source, item or media rights have been cleared.**
+
+## Tenth independent bilingual staging batch — NGSL ranks 181–200
+
+`content/rights-staging/ngsl-1.2/independent-ranks-181-200-drafts.json`
+adds another **20 original, unreviewed** sense-scoped bilingual lessons and
+40 original English–Persian example pairs for source ranks 181 through 200.
+This brings the independent replacement-authoring inventory to **200/900
+draft lessons and 400 paired bilingual examples**. Each record preserves the
+exact lemma/rank from the separately licensed, pinned NGSL 1.2 source
+selection without reading the Oxford A1 roster to select entries.
+
+The authored sense scopes distinguish `run` (movement on foot),
+`set` (adjusting a value), `turn` (direction change), `hand`
+(the body part), and `state` (a political subdivision); modal and
+function-word usage is described without asserting complete dictionary
+coverage. All English/Persian meaning and example text still requires
+independent linguistic and teaching-quality review. NGSL frequency rank
+is **not** evidence of CEFR A1 suitability.
+
+The existing rank-contiguous file discovery, source ID verification and
+long-phrase copy guard cover this tenth file, including against every
+earlier NGSL draft. This is mechanical drafting evidence only: all
+`semanticApproved`, `persianApproved`, `cefrApproved`,
+`rightsCleared`, and `publicRelease` flags are false.
+No old course bundle, Git history, source-rights assignment, audio or
+artwork is replaced; public release remains forbidden and **Gate 0 BLOCKED**.
