@@ -1,0 +1,36 @@
+name: One-use NGSL full 5322 alternatives generation
+on:
+  push:
+    branches: [codex/ngsl-full-5322-open-alternatives-20261009]
+permissions:
+  contents: write
+jobs:
+  generate:
+    if: ${{ github.repository == 'mostifa2274-ui/Vajefy' && startsWith(github.event.head_commit.message, '[generate-full-ngsl-candidates]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Produce all 5322 pinned source-candidate mappings
+        run: |
+          set -euo pipefail
+          node --experimental-strip-types --no-warnings --import ./scripts/ts-test-register.mjs scripts/rights/ngsl-full-5322.ts --write
+          npm run assurance:ngsl:full:check
+          npm run validate:data
+      - name: Commit source-candidate evidence and remove temporary job
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/one-use-ngsl-full-5322.yml
+          git add --             content/rights-staging/ngsl-1.2/full-5322-alternatives.csv             content/rights-staging/ngsl-1.2/full-5322-alternatives.json             content/rights-staging/ngsl-1.2/full-5322-summary.json
+          git diff --cached --quiet && { echo "Full NGSL mapping was not generated"; exit 1; }
+          git commit -m "Map all 5322 legacy Oxford rows to pinned NGSL source candidates"
+          git push origin HEAD:codex/ngsl-full-5322-open-alternatives-20261009
