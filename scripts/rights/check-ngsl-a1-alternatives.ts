@@ -21,7 +21,7 @@ type Mapping = {
   counts: Record<string, number>; replacementProposals: number; entries: Row[];
 };
 const expectedBlobs = new Map([
-  ["core.csv", "b8705be6c208eb39a5be4dea8f63"],
+  ["core.csv", "b8705be6c208bbee4450a208eb39a5be4dea8f63"],
   ["supplementary.csv", "34c8d351411ee2bd53ade193a9308c0326b7c7e3"],
   ["frequency-extension-31k.csv", "469e1e6922c5ff8bf15b5cc040c0d7d1f2e537ef"],
   ["CC-BY-SA-4.0-LICENSE.txt", "2d58298e6eda10e7204abb52722efbc840db2390"],
