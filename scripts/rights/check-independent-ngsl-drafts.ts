@@ -16,6 +16,10 @@ const selection = read<IndependentNgslSelection>(
 const drafts = read<NgslDraftManifest>(
   "content/rights-staging/ngsl-1.2/independent-first-20-drafts.json",
 );
+const nextDrafts = read<NgslDraftManifest>(
+  "content/rights-staging/ngsl-1.2/independent-ranks-21-40-drafts.json",
+);
+
 
 const inheritedEnglish: string[] = [];
 const inheritedPersian: string[] = [];
@@ -43,11 +47,32 @@ for (const file of ["scenes.json", "contrasts.json"]) {
 const issues = auditUnreviewedNgslDrafts(
   drafts, selection, inheritedEnglish, inheritedPersian,
 );
+// Rank 21–40 is *not* a new selection. Audit against the exact pinned
+// second contiguous slice, then against inherited texts and earlier
+// independent drafts. A changed source rank, forged approval, or missing
+// lesson must fail rather than silently excluding the new batch.
+if (selection.entries.length !== 900 ||
+    nextDrafts.lessons?.length !== 20 ||
+    nextDrafts.lessons[0]?.sourceRank !== 21 ||
+    nextDrafts.lessons[19]?.sourceRank !== 40) {
+  issues.push("NGSL follow-up batch must cover exactly ranks 21–40");
+}
+const firstDraftEnglish = drafts.lessons.flatMap(x => x.examples.map(e => e.en));
+const firstDraftPersian = drafts.lessons.flatMap(x => x.examples.map(e => e.fa));
+issues.push(...auditUnreviewedNgslDrafts(
+  nextDrafts,
+  { ...selection, entries: selection.entries.slice(20, 40) },
+  [...inheritedEnglish, ...firstDraftEnglish],
+  [...inheritedPersian, ...firstDraftPersian],
+).map(issue => "NGSL ranks 21-40: " + issue));
+
 if (process.argv.includes("--json")) {
   console.log(JSON.stringify({
     status: drafts.status,
     sourceCandidates: selection.entries.length,
-    drafts: drafts.lessons.length,
+    drafts: drafts.lessons.length + nextDrafts.lessons.length,
+    firstBatch: drafts.lessons.length,
+    secondBatch: nextDrafts.lessons.length,
     independentlyReviewed: 0,
     rightsCleared: 0,
     publicRelease: 0,
@@ -57,7 +82,7 @@ if (process.argv.includes("--json")) {
   }, null, 2));
 } else {
   console.log("NGSL original lesson staging: " + (issues.length ? "FAIL" : "PASS") +
-    " (20 unreviewed bilingual drafts; 0 semantic approvals; 0 rights clearances; 0 public releases).");
+    " (40 unreviewed bilingual drafts in two source-pinned batches; 0 semantic approvals; 0 rights clearances; 0 public releases).");
   for (const issue of issues) console.error("! " + issue);
 }
 if (issues.length) process.exitCode = 1;
