@@ -213,7 +213,10 @@ test("gateway faults and interrupted repeats are charged in full but never rejec
   try {
     space.run("plan", "--today", "2026-10-07");
     const judge = space.active();
-    const planned = space.run("plan", "--today", "2026-10-07").output;
+    // Global next-role ordering can change as other judges are calibrated.
+    // Charge this test against its explicit adversarial role, not whichever
+    // different role currently has the oldest unattended calibration turn.
+    const planned = space.run("plan", "--role", ROLE, "--today", "2026-10-07").output;
     const campaignCharge = Number(planned.match(/Next: calibrate .* \(≤ (\d+) Neurons\)/)?.[1]);
     assert.ok(campaignCharge > 0, planned);
     const runs = ["none-1.json", "none-2.json", "none-3.json"];
@@ -274,7 +277,9 @@ test("a reservation charges the campaign before inference and the record replace
   const space = workspace();
   try {
     space.run("plan", "--today", "2026-10-07");
-    const planned = space.run("plan", "--today", "2026-10-07").output;
+    // Fix the role when estimating the reservation: the global planner may
+    // schedule a different ready role with a different maximum charge.
+    const planned = space.run("plan", "--role", ROLE, "--today", "2026-10-07").output;
     const campaignCharge = Number(planned.match(/Next: calibrate .* \(≤ (\d+) Neurons\)/)?.[1]);
     assert.ok(campaignCharge > 0, planned);
     assert.equal(space.run("reserve", "--role", "adversarial", "--run-id", "500.1", "--neurons", String(campaignCharge), "--today", "2026-10-07").status, 0);
