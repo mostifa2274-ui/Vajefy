@@ -4,6 +4,7 @@ import {
   diagnoseFinding,
   MAX_AUTOMATIC_REPAIR_ATTEMPTS,
   nextRepairState,
+  planRepairs,
   proposeDeterministicRepair,
   repairCatalog,
 } from "./repair-loop";
@@ -67,7 +68,9 @@ test("malformed Unicode quarantines immediately and NFC is a pure proposal", () 
   );
 
   assert.equal(proposeDeterministicRepair("cafe\u0301", "UNICODE_NOT_NFC"), "caf\u00e9");
+  assert.equal(proposeDeterministicRepair("caf\u00e9", "UNICODE_NOT_NFC"), null);
   assert.equal(proposeDeterministicRepair("go \u202ehome", "BIDI_CONTROL"), "go home");
+  assert.equal(proposeDeterministicRepair("\u202e", "BIDI_CONTROL"), null);
   assert.equal(proposeDeterministicRepair("گربه", "PERSIAN_GLOSS"), null);
 });
 
@@ -93,6 +96,16 @@ test("a cleared field is pending revalidation, never a certificate, and retries 
   }
   assert.equal(attempts, MAX_AUTOMATIC_REPAIR_ATTEMPTS);
   assert.equal(status, "QUARANTINED_AUTOMATICALLY");
+});
+
+test("a batch plan abstains on unknown codes and never certifies", () => {
+  const plan = planRepairs([
+    { code: "MISTAKE_FA_IDENTICAL", where: "a1.take.01.mistake" },
+    { code: "NOT_A_CODE", where: "a1.take.01.gloss" },
+  ]);
+  assert.equal(plan[0].status, "AWAITING_REGENERATION");
+  assert.equal(plan[1].status, "QUARANTINED_AUTOMATICALLY");
+  assert.equal(plan.some((item) => item.status === "PASS"), false);
 });
 
 test("every catalog action is a known fail-closed action", () => {

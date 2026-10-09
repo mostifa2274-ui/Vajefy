@@ -196,13 +196,36 @@ function specificField(whereField: string, ruleField: string): string {
 const BIDI_CONTROL = /[\u202A-\u202E\u2066-\u2069]/gu;
 
 /**
- * Pure proposal. Returns null when the code is not a deterministic repair.
- * Does not invent wording.
+ * Pure proposal. Returns null when the code is not a deterministic repair,
+ * when the value is already compliant, or when the only change would empty
+ * the field. Does not invent wording.
  */
 export function proposeDeterministicRepair(value: string, code: string): string | null {
-  if (code === "UNICODE_NOT_NFC") return value.normalize("NFC");
-  if (code === "BIDI_CONTROL") return value.replace(BIDI_CONTROL, "");
+  if (code === "UNICODE_NOT_NFC") {
+    const normalized = value.normalize("NFC");
+    return normalized === value ? null : normalized;
+  }
+  if (code === "BIDI_CONTROL") {
+    const stripped = value.replace(BIDI_CONTROL, "");
+    if (stripped === value || stripped.trim() === "") return null;
+    return stripped;
+  }
   return null;
+}
+
+export type RepairPlanItem = RepairDiagnosis & RepairTransition;
+
+/** Diagnose a batch. Unsupported and quarantine items abstain. Never emits PASS. */
+export function planRepairs(findings: readonly RepairFinding[]): RepairPlanItem[] {
+  return findings.map((finding) => {
+    const diagnosis = diagnoseFinding(finding);
+    const transition = nextRepairState({
+      action: diagnosis.action,
+      attemptsAlreadyUsed: 0,
+      verification: "not_run",
+    });
+    return { ...diagnosis, ...transition };
+  });
 }
 
 export type VerificationOutcome = "still_failing" | "deterministic_cleared" | "not_run";
