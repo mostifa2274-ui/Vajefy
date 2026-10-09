@@ -214,7 +214,7 @@ test("gateway faults and interrupted repeats are charged in full but never rejec
     space.run("plan", "--today", "2026-10-07");
     const judge = space.active();
     const planned = space.run("plan", "--today", "2026-10-07").output;
-    const campaignCharge = Number(planned.match(/≤ (\d+) Neurons/)?.[1]);
+    const campaignCharge = Number(planned.match(/Next: calibrate .* \(≤ (\d+) Neurons\)/)?.[1]);
     assert.ok(campaignCharge > 0, planned);
     const runs = ["none-1.json", "none-2.json", "none-3.json"];
     for (const [index, today] of ["2026-10-07", "2026-10-07", "2026-10-08", "2026-10-09"].entries()) {
@@ -275,7 +275,7 @@ test("a reservation charges the campaign before inference and the record replace
   try {
     space.run("plan", "--today", "2026-10-07");
     const planned = space.run("plan", "--today", "2026-10-07").output;
-    const campaignCharge = Number(planned.match(/≤ (\d+) Neurons/)?.[1]);
+    const campaignCharge = Number(planned.match(/Next: calibrate .* \(≤ (\d+) Neurons\)/)?.[1]);
     assert.ok(campaignCharge > 0, planned);
     assert.equal(space.run("reserve", "--role", "adversarial", "--run-id", "500.1", "--neurons", String(campaignCharge), "--today", "2026-10-07").status, 0);
     assert.equal(space.run("reserve", "--role", "adversarial", "--run-id", "500.1", "--neurons", String(campaignCharge), "--today", "2026-10-07").status, 1);
