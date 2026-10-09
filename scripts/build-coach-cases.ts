@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import type { Pilot } from "../src/lib/learn/content.ts";
+import { coachCaseContentVersion } from "../src/lib/learn/coach-case-version.ts";
 
 /**
  * The coach's evaluation set (docs/COACH.md), built from the teaching content:
@@ -52,7 +53,7 @@ const output = `${JSON.stringify(
     // The content is unreviewed, so the set is too: it becomes the release gate
     // only after bilingual review confirms every expected verdict.
     status: pilot.entries.every((entry) => entry.released) ? "reviewed" : "draft",
-    contentVersion: pilot.version,
+    contentVersion: coachCaseContentVersion(cases),
     cases,
   },
   null,

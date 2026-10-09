@@ -1002,3 +1002,15 @@ The first unattended runs (2026-10-07) showed two problems.
 - **Starvation.** English, first in role order, went first every day, and its
   failed attempts left too little of the day for Persian's 8,202-Neuron
   campaign. Among ready roles, the least recently attempted now goes first.
+
+## Started — automatic repair loop (plan §8)
+
+`src/lib/learn/repair-loop.ts` classifies every deterministic finding code as
+field-only regeneration, a pure Unicode normalization, or immediate quarantine.
+Unknown codes abstain and quarantine. Three failed attempts become
+`QUARANTINED_AUTOMATICALLY`. A cleared field is `PENDING_REVERIFICATION`, not a
+certificate and not a semantic PASS.
+
+No learner-facing entry is rewritten. Regeneration is not executed, because no
+model is authorized to invent teaching text from this loop. `npm run assurance:repair:check`
+fails if `scripts/content-assurance.ts` emits a code the catalog does not cover.
