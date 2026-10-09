@@ -97,3 +97,11 @@ and exact SHA-256. All 50 remain unapproved in the current staging system,
 and no existing learner-facing corpus, audio, public artwork, or Gate 0 status
 has been changed.
 
+
+## 2026-10-09: 25 model-authored sense re-key proposals — NOT APPROVED
+
+`content/rights-staging/oewn-2025-sense-proposals.json` records **25 context-specific lexical-sense proposals** for the first 50 independent draft lessons. The source pins, exact WordNet sense keys, and upstream source-gloss SHA-256 digests are matched to `oewn-2025-draft-alternatives.json`. Each proposed key is deliberately distinct from the original unverified intake key. Examples include `run` (moving quickly on foot rather than routing), `foot` (body part, not distance unit) and `work` (employment rather than a generic outcome).
+
+The suggestions were drafted by an AI from original teaching examples and the pinned upstream alternatives. They **are not independent expert judgments**, editorial approvals, Persian-language audits, or CEFR classifications. Potentially ambiguous scope is captured in the per-proposal caveat. They do **not** overwrite the editorial drafts' original identifiers, select any alternative in the source catalogue, change the public course or certify any redistribution rights. All 25 require independent lexical, Persian, pedagogical and legal/source-rights review before a separately authored revision can be promoted; the other 25 drafts do not yet have proposals.
+
+`npm run assurance:rights:proposals:check` enforces source archive/version pins, exact draft identity and English meaning, membership in the authoritative alternative-sense list, source gloss hashes, mandatory caveats, zero approvals and the staging-only status. Unit tests reject approval laundering, source-hash tampering, original-sense reuse and duplicates. This is a way to prioritize genuine independent reconstruction, not a rights release.
