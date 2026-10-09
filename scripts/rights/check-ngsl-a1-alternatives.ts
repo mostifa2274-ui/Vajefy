@@ -69,7 +69,7 @@ for (const source of mapping.sources) {
     fail("Source citation/blob was replaced: " + name);
   }
   const buffer = fs.readFileSync(path.join(ROOT, source.file));
-  if (sha1Blob(buffer) !== expected) fail("Pinned upstream Git blob mismatch: " + name);
+  if (sha1Blob(buffer) !== expected) fail("Pinned upstream Git blob mismatch: " + name + " (actual " + sha1Blob(buffer) + "; bytes " + buffer.length + "; CRLF " + buffer.toString("utf8").split("\\r\\n").length + ")");
   textByFile.set(name, buffer.toString("utf8"));
 }
 const tiers = [
