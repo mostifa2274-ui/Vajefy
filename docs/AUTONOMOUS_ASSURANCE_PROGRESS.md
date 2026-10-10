@@ -16,12 +16,14 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #191: `9556da47a635d706ede0bb794de9cd1f9d0643ed`.
+- Verified main after PR #193: `571f7f9c243869de797f3bdf6b60994ca278effb`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
-- Remaining: 9,983 deterministic findings; 360/900 unreviewed independent
+- Mistake-pair Persian covers course Units 4–6 (279 senses); Units 7–12 still
+  lack 725 `wrongFa`/`rightFa` pairs.
+- Remaining: 9,425 deterministic findings; 360/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -1138,3 +1140,27 @@ GPT-OSS 120B. v1 thresholds and gold labels are unchanged.
 
 The new allowlist reaches the Worker with the next deploy of `main`. The next
 scheduled run that fits the daily ceiling calibrates English with Gemma 4.
+
+PR #193 merged as `571f7f9c243869de797f3bdf6b60994ca278effb` after check,
+browser, Workers build contract, Workers Builds and rollback rehearsal passed.
+
+## Mistake-pair translations, Units 4–6 — 2026-10-10
+
+All 279 senses in course Units 4–6 now have Persian lines under both the
+mistake and its correction. Membership comes from `content/curriculum/A1.json`.
+`rightFa` is a natural translation. `wrongFa` takes one of two forms:
+- the intended meaning (`منظور: …`) plus a short clause naming the English error;
+- a literal reading (`ترجمهٔ تحت‌اللفظی: …`) when the wrong word changes the
+  meaning.
+
+Missing pairs fell from 1,004 to 725 each. Total findings fell from 9,983 to
+9,425. No other code changed, and the baseline was lowered to these counts.
+Frozen Units 1–3, audio, curriculum and scenes are unchanged.
+
+The following were regenerated: compiled content, agent provenance, hashed
+public chunk names in the rights lineage, the authorship map and the records.
+
+This is deterministic coverage with no semantic certificate. See
+[the evidence](MISTAKE_TRANSLATIONS_2026-10-10.md).
+
+Next: Units 7–12, with the same pattern and in unit order.
