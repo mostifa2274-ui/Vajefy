@@ -24,16 +24,39 @@ export const ownerAuthorshipAttestation = z.object({
   legalEffect: z.literal("NO_RIGHTS_CLEARANCE_OR_LICENSE_GRANT"),
   gate0Effect: z.literal("GATE0_REMAINS_SUBJECT_TO_INDEPENDENT_SOURCE_AND_ITEM_EVIDENCE"),
   notes: z.array(z.string().trim().min(15)).min(3),
-  /** Later owner statements, kept verbatim. Each is testimony, never a licence. */
-  laterStatements: z.array(z.object({
-    declaredOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-    declarant: z.literal("Project owner (user statement in Claude Code session)"),
-    statement: z.string().trim().min(15),
-    answers: z.array(z.object({ question: z.string().trim().min(10), answer: z.string().trim().min(2) }).strict()),
-    scope: z.string().trim().min(15),
-    claimKind: z.literal("OWNER_SELF_REPORTED_AUTHORSHIP_NOT_INDEPENDENTLY_VERIFIED"),
-    legalEffect: z.literal("NO_RIGHTS_CLEARANCE_OR_LICENSE_GRANT"),
-  }).strict()).optional(),
+  /**
+   * Later owner statements, kept verbatim. The 2026-10-10 statement and its answers are
+   * bound exactly, so a deleted or reworded record fails validation. Each is testimony,
+   * never a licence.
+   */
+  laterStatements: z.tuple([
+    z.object({
+      declaredOn: z.literal("2026-10-10"),
+      declarant: z.literal("Project owner (user statement in Claude Code session)"),
+      statement: z.literal("Map all words to ngsl list, all other materials except words are made of chatgpt"),
+      answers: z.tuple([
+        z.object({
+          question: z.literal("When the lessons were made with ChatGPT, was any Oxford text (definitions, example sentences, exercises) pasted in as input?"),
+          answer: z.literal("No, only the words"),
+        }).strict(),
+        z.object({
+          question: z.literal("How should the app's word list be based on NGSL?"),
+          answer: z.literal("Rebuild by an NGSL rule"),
+        }).strict(),
+        z.object({
+          question: z.literal("Which rule should choose the A1 words?"),
+          answer: z.literal("All CEFR-J A1 (~1,060)"),
+        }).strict(),
+        z.object({
+          question: z.literal("Frozen Units 1–3 lose about 18 words under the new rule. May I edit them?"),
+          answer: z.literal("Yes, unfreeze them"),
+        }).strict(),
+      ]),
+      scope: z.string().trim().min(15),
+      claimKind: z.literal("OWNER_SELF_REPORTED_AUTHORSHIP_NOT_INDEPENDENTLY_VERIFIED"),
+      legalEffect: z.literal("NO_RIGHTS_CLEARANCE_OR_LICENSE_GRANT"),
+    }).strict(),
+  ]),
 }).strict();
 
 export type OwnerAuthorshipAttestation = z.infer<typeof ownerAuthorshipAttestation>;

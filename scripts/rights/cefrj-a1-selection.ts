@@ -53,8 +53,9 @@ if (!readme.includes("can be used for research and commercial purposes with no c
 }
 
 const catalogue: CatalogueEntry[] = fs.readdirSync(rel("content/pilot/entries")).filter((f) => f.endsWith(".json")).sort()
-  .flatMap((f) => (JSON.parse(fs.readFileSync(rel("content/pilot/entries/" + f), "utf8")) as { id: string; headword: string }[])
-    .map(({ id, headword }) => ({ id, headword })));
+  .flatMap((f) => (JSON.parse(fs.readFileSync(rel("content/pilot/entries/" + f), "utf8")) as
+    { id: string; headword: string; senses: { pos: string }[] }[])
+    .map(({ id, headword, senses }) => ({ id, headword, partsOfSpeech: [...new Set(senses.map((x) => x.pos))] })));
 if (catalogue.length !== 900) fail("expected the 900-entry A1 catalogue, found " + catalogue.length);
 
 const cefrj = readCefrjRows(text.get(SOURCES[0].file)!);
@@ -70,7 +71,7 @@ const result = buildCefrjSelection({
 const doc = {
   schemaVersion: 1,
   status: CEFRJ_SELECTION_STATUS,
-  rule: "Every headword that the CEFR-J Wordlist 1.5 grades A1 (any part of speech) is selected. NGSL 1.2 supplies frequency order and attribution only. The current catalogue is compared, never used to select.",
+  rule: "Every CEFR-J Wordlist 1.5 record (headword and part of speech) graded A1 is selected. NGSL 1.2 supplies frequency order and attribution only. A current lesson is kept when CEFR-J grades its spelling (capitals kept) A1; part of speech is reported, not used to retire. The catalogue is compared, never used to select.",
   ownerDecision: {
     decidedOn: "2026-10-10",
     decision: "All CEFR-J A1 (~1,060)",
@@ -90,10 +91,10 @@ const doc = {
 };
 const json = JSON.stringify(doc, null, 2) + "\n";
 const cell = (v: unknown) => { const s = String(v ?? ""); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
-const csv = ["selection_id,cefrj_headword,a1_pos,ngsl_tier,ngsl_lemma,ngsl_rank,course_status,entry_ids"]
-  .concat(result.selected.map((s) => [s.selectionId, s.cefrjHeadword, s.a1PartsOfSpeech.join("|"), s.ngsl.tier,
-    s.ngsl.lemma, s.ngsl.rank, s.courseStatus, s.entryIds.join("|")].map(cell).join(",")))
-  .concat(result.retired.map((r) => ["", r.headword, "", "", "", "", "RETIRED_" + r.bestCefrjLevel, r.entryId].map(cell).join(",")))
+const csv = ["selection_id,cefrj_headword,pos,ngsl_tier,ngsl_lemma,ngsl_rank,course_status,pos_taught,entry_ids"]
+  .concat(result.selected.map((s) => [s.selectionId, s.cefrjHeadword, s.pos, s.ngsl.tier,
+    s.ngsl.lemma, s.ngsl.rank, s.courseStatus, s.posTaught, s.entryIds.join("|")].map(cell).join(",")))
+  .concat(result.retired.map((r) => ["", r.headword, "", "", "", "", "RETIRED_" + r.bestCefrjLevel, "", r.entryId].map(cell).join(",")))
   .join("\n") + "\n";
 
 if (process.argv.includes("--write")) {
@@ -109,8 +110,9 @@ if (process.argv.includes("--write")) {
 }
 const c = result.counts;
 console.log(
-  "CEFR-J A1 selection: " + c.selected + " headwords (" + c.retained + " retained, " + c.new + " new); " +
-  c.retiredEntries + " current entries retire. NGSL: " + c.byNgslTier.NGSL_1_2_CORE + " core, " +
+  "CEFR-J A1 selection: " + c.headwords + " headwords in " + c.records + " records (" + c.retained + " retained, " +
+  c.new + " new; " + c.posNotTaught + " A1 parts of speech to review); " +
+  c.retiredEntries + " current entries retire. NGSL by record: " + c.byNgslTier.NGSL_1_2_CORE + " core, " +
   c.byNgslTier.NGSL_1_2_SUPPLEMENT + " supplement, " + c.byNgslTier.NGSL_SFI_31K_EXTENSION + " 31k extension, " +
   c.byNgslTier.NO_NGSL_MATCH + " unmatched. 0 rights cleared.",
 );

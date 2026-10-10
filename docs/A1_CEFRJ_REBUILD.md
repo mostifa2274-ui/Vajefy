@@ -59,11 +59,20 @@ Output: `content/rights-staging/a1-rebuild/cefrj-a1-selection.json` and `.csv`.
 
 | Measure | Count |
 |---|---|
-| CEFR-J A1 headwords selected | **1,066** |
-| Already taught by a current entry (RETAINED) | 730 |
-| Not yet taught (NEW) | 336 |
+| CEFR-J A1 headwords selected (in 1,164 headword + part-of-speech records) | **1,066** |
+| Headwords already taught by a kept entry (RETAINED) | 728 |
+| Headwords not yet taught (NEW) | 338 |
+| A1 parts of speech of taught words that no lesson covers yet (to review) | 80 |
 | Current entries that leave the course (RETIRED) | 171 |
 | Selected headwords in NGSL core / supplement / 31k extension / unmatched | 809 / 43 / 132 / 82 |
+
+**How words are matched.** Spelling is compared with capitals kept, so the
+month *May* and the title *Miss* never stand in for the modal *may* or the
+verb *miss*. A current lesson stays when CEFR-J grades its spelling A1 in any
+part of speech. Part of speech decides `posTaught`, not retirement, because
+CEFR-J's labels often differ from the catalogue's. It files *hello* as a noun,
+and it grades *try* A1 only as a noun. A `posTaught: false` record means
+"review in phase 2", not "missing".
 
 Of the 171 retired entries, CEFR-J grades 143 as A2, 21 as B1 and 2 as B2, and
 5 are not in CEFR-J at all: *born, cannot, fourth, goodbye* and *oh*. Of these, *cannot*, *goodbye* and *fourth* can still be taught inside the
@@ -76,18 +85,18 @@ Unit 6: 22, Unit 7: 21, Unit 8: 23, Unit 9: 9, Unit 10: 9, Unit 11: 20,
 Unit 12: 15.
 
 The 82 unmatched headwords are mostly word forms and fixed phrases that NGSL
-counts under a base word (*my, was, 'm, ice cream, good morning*). Among the 336
+counts under a base word (*my, was, 'm, ice cream, good morning*). Among the 338
 NEW headwords:
 - 48 are such forms or phrases, which will be taught inside the base word's
   lesson or as a short phrase lesson;
-- 63 already have a staged NGSL draft that can be reused;
+- 65 already have a staged NGSL draft that can be reused;
 - about 225 need new lessons.
 
 ## Phases
 
 1. **Selection and records (this phase).** Pin CEFR-J, record the owner
-   statement, generate and check the selection, and document the plan. No app
-   content changes.
+   statement (bound verbatim by the attestation schema), generate and check the
+   selection, and document the plan. No app content changes.
 2. **Lessons for NEW words.** Author full catalogue entries in batches: meaning,
    Persian, grammar, examples, collocations, a mistake pair, pronunciation,
    checks and usage. Reuse the staged NGSL drafts where they exist and fold

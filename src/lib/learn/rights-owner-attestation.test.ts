@@ -3,6 +3,33 @@ import test from "node:test";
 import { attestationCannotClearRights, ownerAuthorshipAttestation } from "./rights-owner-attestation";
 import { provenanceBlockers, provenanceManifest } from "./assurance";
 
+const later = {
+  "declaredOn": "2026-10-10",
+  "declarant": "Project owner (user statement in Claude Code session)",
+  "statement": "Map all words to ngsl list, all other materials except words are made of chatgpt",
+  "answers": [
+    {
+      "question": "When the lessons were made with ChatGPT, was any Oxford text (definitions, example sentences, exercises) pasted in as input?",
+      "answer": "No, only the words"
+    },
+    {
+      "question": "How should the app's word list be based on NGSL?",
+      "answer": "Rebuild by an NGSL rule"
+    },
+    {
+      "question": "Which rule should choose the A1 words?",
+      "answer": "All CEFR-J A1 (~1,060)"
+    },
+    {
+      "question": "Frozen Units 1–3 lose about 18 words under the new rule. May I edit them?",
+      "answer": "Yes, unfreeze them"
+    }
+  ],
+  "scope": "Only the headword list came from the Oxford-derived workbook. Definitions, Persian text, examples, exercises and other teaching material were written with ChatGPT without Oxford text as input. The headword list is being replaced by the CEFR-J A1 selection (content/rights-staging/a1-rebuild/cefrj-a1-selection.json).",
+  "claimKind": "OWNER_SELF_REPORTED_AUTHORSHIP_NOT_INDEPENDENTLY_VERIFIED",
+  "legalEffect": "NO_RIGHTS_CLEARANCE_OR_LICENSE_GRANT"
+};
+
 const base = {
   schemaVersion: 1,
   declaredOn: "2026-10-09",
@@ -23,6 +50,7 @@ const base = {
     "Output origin has not been checked against historical generation logs.",
     "Rights lineage and content hashes must still be approved separately.",
   ],
+  laterStatements: [later],
 } as const;
 
 test("accepts owner-reported ChatGPT production without inventing a licence", () => {
@@ -68,23 +96,17 @@ test("separate unverified Oxford input rights still block Gate 0", () => {
   assert.ok(provenanceBlockers(rights).length > 0);
 });
 
-test("records a later owner statement verbatim without granting rights", () => {
-  const later = {
-    declaredOn: "2026-10-10",
-    declarant: "Project owner (user statement in Claude Code session)",
-    statement: "Only the headwords came from the Oxford list.",
-    answers: [{ question: "Was any Oxford text pasted in?", answer: "No, only the words" }],
-    scope: "Lessons other than the headword list.",
-    claimKind: "OWNER_SELF_REPORTED_AUTHORSHIP_NOT_INDEPENDENTLY_VERIFIED",
-    legalEffect: "NO_RIGHTS_CLEARANCE_OR_LICENSE_GRANT",
-  };
+test("binds the 2026-10-10 owner statement verbatim and grants no rights", () => {
   const raw = { ...base, categories: [...base.categories], notes: [...base.notes] };
-  const value = ownerAuthorshipAttestation.parse({ ...raw, laterStatements: [later] });
+  const value = ownerAuthorshipAttestation.parse(raw);
   assert.equal(attestationCannotClearRights(value), true);
-  assert.equal(ownerAuthorshipAttestation.safeParse({
-    ...raw, laterStatements: [{ ...later, legalEffect: "RIGHTS_CLEARED" }],
-  }).success, false);
-  assert.equal(ownerAuthorshipAttestation.safeParse({
-    ...raw, laterStatements: [{ ...later, licence: "granted" }],
-  }).success, false);
+  const reject = (changed: unknown) =>
+    assert.equal(ownerAuthorshipAttestation.safeParse({ ...raw, laterStatements: changed }).success, false);
+  reject(undefined);
+  reject([]);
+  reject([{ ...later, statement: "All words come from NGSL." }]);
+  reject([{ ...later, answers: later.answers.slice(1) }]);
+  reject([{ ...later, answers: [{ ...later.answers[0], answer: "Yes, some Oxford text" }, ...later.answers.slice(1)] }]);
+  reject([{ ...later, legalEffect: "RIGHTS_CLEARED" }]);
+  reject([{ ...later, licence: "granted" }]);
 });

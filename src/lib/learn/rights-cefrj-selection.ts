@@ -13,15 +13,22 @@ export const CEFRJ_SELECTION_STATUS =
 
 export type CefrjRow = { headword: string; pos: string; level: string };
 export type NgslTier = "NGSL_1_2_CORE" | "NGSL_1_2_SUPPLEMENT" | "NGSL_SFI_31K_EXTENSION" | "NO_NGSL_MATCH";
-export type CatalogueEntry = { id: string; headword: string };
+export type CatalogueEntry = { id: string; headword: string; partsOfSpeech: string[] };
 
-export type SelectedHeadword = {
+export type SelectedRecord = {
   selectionId: string;
   cefrjHeadword: string;
+  pos: string;
   forms: string[];
-  a1PartsOfSpeech: string[];
   ngsl: { tier: NgslTier; lemma: string | null; rank: number | null };
+  /** RETAINED: a kept lesson teaches this spelling. NEW: no lesson teaches it. */
   courseStatus: "RETAINED" | "NEW";
+  /**
+   * Whether a kept lesson teaches this part of speech. CEFR-J labels are not always
+   * the catalogue's (it files *hello* as a noun), so false means "review in phase 2",
+   * not "missing".
+   */
+  posTaught: boolean;
   entryIds: string[];
 };
 export type RetiredEntry = {
@@ -30,12 +37,23 @@ export type RetiredEntry = {
   bestCefrjLevel: "A2" | "B1" | "B2" | "NOT_IN_CEFRJ";
 };
 export type CefrjSelection = {
-  selected: SelectedHeadword[];
+  selected: SelectedRecord[];
   retired: RetiredEntry[];
-  counts: { selected: number; retained: number; new: number; retiredEntries: number; byNgslTier: Record<NgslTier, number> };
+  counts: {
+    records: number; headwords: number; retained: number; new: number; posNotTaught: number;
+    retiredEntries: number; byNgslTier: Record<NgslTier, number>;
+  };
 };
 
 const LEVELS = ["A1", "A2", "B1", "B2"] as const;
+/** CEFR-J part-of-speech labels and the catalogue labels that teach the same use. */
+const POS_MATCH: Record<string, string[]> = {
+  noun: ["noun"], verb: ["verb"], adjective: ["adjective"], adverb: ["adverb"],
+  pronoun: ["pronoun"], preposition: ["preposition"], conjunction: ["conjunction"],
+  determiner: ["determiner", "article"], number: ["number", "determiner"],
+  "modal auxiliary": ["modal"], "be-verb": ["verb"], "do-verb": ["verb"], "have-verb": ["verb"],
+  interjection: ["exclamation"], "infinitive-to": ["particle"],
+};
 /** British and US spellings are the same word for matching purposes. */
 const SPELLING_VARIANTS: Record<string, string> = {
   colour: "color", centre: "center", favourite: "favorite", grey: "gray",
@@ -50,6 +68,15 @@ for (const [gb, us] of Object.entries(SPELLING_VARIANTS)) { VARIANT_OF.set(gb, u
 export function normalizeHeadword(value: string): string {
   return value.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, "").normalize("NFKC").replace(/\s*\([^)]*\)/g, "")
     .replace(/[’‘]/g, "'").trim().toLowerCase();
+}
+/**
+ * The matching key keeps capitals when the spelling has them, so the month *May*
+ * and the title *Miss* never match the modal *may* or the verb *miss*.
+ */
+export function matchKey(value: string): string {
+  const folded = value.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, "").normalize("NFKC").replace(/\s*\([^)]*\)/g, "")
+    .replace(/[’‘]/g, "'").trim();
+  return /[A-Z]/.test(folded) ? folded : folded.toLowerCase();
 }
 function withVariants(forms: Iterable<string>): Set<string> {
   const out = new Set<string>();
@@ -104,7 +131,7 @@ export function readNgslList(text: string, ranked: boolean): Map<string, number 
 }
 
 function formsOf(cefrjHeadword: string): string[] {
-  return [...new Set(cefrjHeadword.split("/").map(normalizeHeadword).filter(Boolean))];
+  return [...new Set(cefrjHeadword.split("/").map(matchKey).filter(Boolean))];
 }
 
 export function buildCefrjSelection(input: {
@@ -114,12 +141,19 @@ export function buildCefrjSelection(input: {
   ngslExtension: Map<string, number | null>;
   catalogue: CatalogueEntry[];
 }): CefrjSelection {
-  // One group per distinct CEFR-J headword string; its rows carry the POS and levels.
-  const groups = new Map<string, CefrjRow[]>();
-  for (const row of input.cefrj) groups.set(row.headword, [...(groups.get(row.headword) ?? []), row]);
+  // One record per distinct CEFR-J (headword, part of speech); duplicates keep the lowest level.
+  const records = new Map<string, CefrjRow>();
+  for (const row of input.cefrj) {
+    const key = row.headword + "\u0000" + row.pos;
+    const prev = records.get(key);
+    if (!prev || LEVELS.indexOf(row.level as typeof LEVELS[number]) < LEVELS.indexOf(prev.level as typeof LEVELS[number])) records.set(key, row);
+  }
+  for (const row of records.values()) {
+    if (!POS_MATCH[row.pos]) throw new Error("CEFR-J part of speech has no catalogue mapping: " + row.pos);
+  }
 
-  const ngslFor = (forms: string[]): SelectedHeadword["ngsl"] => {
-    const all = [...withVariants(forms)];
+  const ngslFor = (forms: string[]): SelectedRecord["ngsl"] => {
+    const all = [...withVariants(forms.map((f) => f.toLowerCase()))];
     const core = all.filter((f) => input.ngslCore.has(f))
       .map((f) => ({ f, r: input.ngslCore.get(f)! })).sort((a, b) => (a.r ?? 0) - (b.r ?? 0))[0];
     if (core) return { tier: "NGSL_1_2_CORE", lemma: core.f, rank: core.r };
@@ -131,24 +165,27 @@ export function buildCefrjSelection(input: {
     return { tier: "NO_NGSL_MATCH", lemma: null, rank: null };
   };
 
-  // Index every CEFR-J form (with spelling variants) to the groups that contain it.
-  const groupsByForm = new Map<string, string[]>();
-  for (const key of groups.keys()) {
-    for (const f of withVariants(formsOf(key))) groupsByForm.set(f, [...(groupsByForm.get(f) ?? []), key]);
+  // Index every CEFR-J form (with spelling variants) to the records that contain it.
+  const recordsByForm = new Map<string, string[]>();
+  for (const [key, row] of records) {
+    for (const f of withVariants(formsOf(row.headword))) recordsByForm.set(f, [...(recordsByForm.get(f) ?? []), key]);
   }
-  const entryForms = (headword: string) =>
-    withVariants(headword.split(",").map(normalizeHeadword).filter(Boolean));
+  const entryForms = (headword: string) => withVariants(headword.split(",").map(matchKey).filter(Boolean));
+  const teaches = (entry: CatalogueEntry, row: CefrjRow) =>
+    entry.partsOfSpeech.some((p) => POS_MATCH[row.pos]!.includes(p));
 
-  const isA1 = (key: string) => groups.get(key)!.some((r) => r.level === "A1");
-  const entriesByGroup = new Map<string, string[]>();
+  // A lesson stays when CEFR-J grades its spelling (capitals kept) A1 in any part of
+  // speech; part of speech only reports which A1 uses a kept lesson already covers.
+  const isA1 = (k: string) => records.get(k)!.level === "A1";
+  const kept = new Map<string, CatalogueEntry[]>(); // record key -> kept entries with that spelling
   const retired: RetiredEntry[] = [];
   for (const entry of input.catalogue) {
     const matched = new Set<string>();
-    for (const f of entryForms(entry.headword)) for (const g of groupsByForm.get(f) ?? []) matched.add(g);
-    const a1 = [...matched].filter(isA1);
-    for (const g of a1) entriesByGroup.set(g, [...(entriesByGroup.get(g) ?? []), entry.id]);
-    if (a1.length === 0) {
-      const levels = [...matched].flatMap((g) => groups.get(g)!.map((r) => r.level));
+    for (const f of entryForms(entry.headword)) for (const k of recordsByForm.get(f) ?? []) matched.add(k);
+    if ([...matched].some(isA1)) {
+      for (const k of matched) kept.set(k, [...(kept.get(k) ?? []), entry]);
+    } else {
+      const levels = [...matched].map((k) => records.get(k)!.level);
       const best = LEVELS.find((l) => levels.includes(l));
       retired.push({
         entryId: entry.id, headword: entry.headword,
@@ -158,22 +195,22 @@ export function buildCefrjSelection(input: {
   }
 
   const tierOrder: NgslTier[] = ["NGSL_1_2_CORE", "NGSL_1_2_SUPPLEMENT", "NGSL_SFI_31K_EXTENSION", "NO_NGSL_MATCH"];
-  const unsorted = [...groups.keys()].filter(isA1).map((key) => {
-    const forms = formsOf(key);
-    const entryIds = [...new Set(entriesByGroup.get(key) ?? [])].sort();
+  const unsorted = [...records].filter(([k]) => isA1(k)).map(([key, row]) => {
+    const forms = formsOf(row.headword);
+    const entries = kept.get(key) ?? [];
     return {
-      cefrjHeadword: key, forms,
-      a1PartsOfSpeech: [...new Set(groups.get(key)!.filter((r) => r.level === "A1").map((r) => r.pos))].sort(),
+      cefrjHeadword: row.headword, pos: row.pos, forms,
       ngsl: ngslFor(forms),
-      courseStatus: entryIds.length > 0 ? "RETAINED" as const : "NEW" as const,
-      entryIds,
+      courseStatus: entries.length > 0 ? "RETAINED" as const : "NEW" as const,
+      posTaught: entries.some((e) => teaches(e, row)),
+      entryIds: [...new Set(entries.map((e) => e.id))].sort(),
     };
   });
   unsorted.sort((a, b) =>
     tierOrder.indexOf(a.ngsl.tier) - tierOrder.indexOf(b.ngsl.tier) ||
     (a.ngsl.rank ?? Number.MAX_SAFE_INTEGER) - (b.ngsl.rank ?? Number.MAX_SAFE_INTEGER) ||
-    a.cefrjHeadword.localeCompare(b.cefrjHeadword, "en"));
-  const selected: SelectedHeadword[] = unsorted.map((s, i) => ({
+    a.cefrjHeadword.localeCompare(b.cefrjHeadword, "en") || a.pos.localeCompare(b.pos, "en"));
+  const selected: SelectedRecord[] = unsorted.map((s, i) => ({
     selectionId: "cefrj-a1:" + String(i + 1).padStart(4, "0"), ...s,
   }));
 
@@ -182,9 +219,11 @@ export function buildCefrjSelection(input: {
     selected,
     retired: retired.sort((a, b) => a.entryId.localeCompare(b.entryId)),
     counts: {
-      selected: selected.length,
-      retained: selected.filter((s) => s.courseStatus === "RETAINED").length,
-      new: selected.filter((s) => s.courseStatus === "NEW").length,
+      records: selected.length,
+      headwords: new Set(selected.map((s) => s.cefrjHeadword)).size,
+      retained: new Set(selected.filter((s) => s.courseStatus === "RETAINED").map((s) => s.cefrjHeadword)).size,
+      new: new Set(selected.filter((s) => s.courseStatus === "NEW").map((s) => s.cefrjHeadword)).size,
+      posNotTaught: selected.filter((s) => s.courseStatus === "RETAINED" && !s.posTaught).length,
       retiredEntries: retired.length,
       byNgslTier,
     },

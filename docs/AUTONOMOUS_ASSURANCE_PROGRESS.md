@@ -1374,6 +1374,6 @@ softened for absolute claims before applying.
   A1 headword, using NGSL for order and attribution, and to unfreeze
   Units 1–3. The statement is kept verbatim in the owner attestation.
 - `npm run assurance:a1:cefrj` builds and checks the selection (inside
-  `validate:data`): 1,066 headwords, 730 already taught, 336 new, 171
+  `validate:data`): 1,066 headwords, 728 already taught, 338 new, 171
   current entries retire. Plan: `docs/A1_CEFRJ_REBUILD.md`.
 - No rights are cleared and no lesson is approved. Gate 0 stays BLOCKED.
