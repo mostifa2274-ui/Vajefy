@@ -368,6 +368,18 @@ before this work.
 - **No repeated sentences.** 19 example lines that exactly repeated a course
   sentence were rewritten. One Persian line that the nine-token overlap
   guard caught was also rewritten.
+- **Review fixes.** Review found that the exact comparison had covered only
+  the course entries, not the legacy catalogue in `public/data/`. The
+  comparison now covers every string in `content/pilot/`,
+  `content/compiled/`, `public/data/*.json` and
+  `public/data/enhanced/*.json`, about 95,000 strings. It found 15 more lines
+  in 11 examples across ranks 361–520, three of them already merged in #200
+  (*town*, *sound*, *agree*). All 11 are rewritten, and ranks 361–520 now
+  have no exact match anywhere. Review also caught *May* translated as
+  اردیبهشت, which only overlaps it, so it is now «ماه مه».
+- **Ranks 1–360.** The same comparison finds seven lines in six lessons
+  drafted earlier by another agent: ranks 8, 10, 36, 63, 66 and 290. They are
+  left for an owner decision rather than rewritten under that agent's name.
 
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**

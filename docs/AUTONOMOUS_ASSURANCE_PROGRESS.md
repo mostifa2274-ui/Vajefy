@@ -1280,5 +1280,10 @@ softened for absolute claims before applying.
   artifact in the pinned CSV, and its usage note explains the casing.
 - 19 example lines that repeated a course sentence were rewritten. One
   Persian line that tripped the nine-token overlap guard was also rewritten.
+  After review, the exact comparison was widened to every legacy string in
+  `public/data/` and `content/`. That rewrote 11 more examples, three of them
+  in the merged ranks 361–440, so ranks 361–520 have no exact legacy match.
+  Seven matching lines remain in another agent's ranks 1–360 (ranks 8, 10,
+  36, 63, 66 and 290) and wait for an owner decision.
 - Every approval, rights and release count stays zero.
 
