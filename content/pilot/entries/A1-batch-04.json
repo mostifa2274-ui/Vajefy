@@ -3363,22 +3363,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "«نهم» به انگلیسی کدام است؟",
+      "prompt": "عدد ۹ به انگلیسی کدام است؟",
       "options": [
        {
-        "text": "ninth",
+        "text": "nine",
         "ok": true,
-        "why": "ninth، بدون e."
+        "why": "nine = نه (۹)."
        },
        {
-        "text": "nineth",
+        "text": "five",
         "ok": false,
-        "why": "e در ninth حذف می‌شود."
+        "why": "five یعنی پنج (۵)."
        },
        {
-        "text": "nineteenth",
+        "text": "seven",
         "ok": false,
-        "why": "nineteenth یعنی نوزدهم."
+        "why": "seven یعنی هفت (۷)."
        }
       ]
      },
@@ -5490,22 +5490,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "«هفتم» به انگلیسی کدام است؟",
+      "prompt": "عدد ۷ به انگلیسی کدام است؟",
       "options": [
        {
-        "text": "seventh",
+        "text": "seven",
         "ok": true,
-        "why": "seventh = هفتم."
+        "why": "seven = هفت (۷)."
        },
        {
-        "text": "sevenst",
+        "text": "six",
         "ok": false,
-        "why": "عدد ترتیبیِ seven با th ساخته می‌شود."
+        "why": "six یعنی شش (۶)."
        },
        {
-        "text": "seventeenth",
+        "text": "five",
         "ok": false,
-        "why": "seventeenth یعنی هفدهم."
+        "why": "five یعنی پنج (۵)."
        }
       ]
      },
@@ -9467,22 +9467,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Can you ___ the ball to me?",
+      "prompt": "Let's play with the ___ in the garden.",
       "options": [
        {
-        "text": "throw",
+        "text": "ball",
         "ok": true,
-        "why": "throw = پرتاب کردن."
+        "why": "ball = توپ."
        },
        {
-        "text": "through",
+        "text": "bell",
         "ok": false,
-        "why": "through یعنی «از میانِ»."
+        "why": "bell یعنی زنگ."
        },
        {
-        "text": "thrown",
+        "text": "bowl",
         "ok": false,
-        "why": "thrown اسم مفعول است."
+        "why": "bowl یعنی کاسه."
        }
       ]
      },

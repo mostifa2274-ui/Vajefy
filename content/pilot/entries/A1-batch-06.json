@@ -9910,22 +9910,22 @@
           {
             "type": "choice",
             "id": "q1",
-            "prompt": "The baby didn't stop ___ all night.",
+            "prompt": "Stop ___ chocolate before dinner.",
             "options": [
               {
-                "text": "crying",
+                "text": "eating",
                 "ok": true,
-                "why": "بعد از stop برای دست کشیدن از کار، فعل ing: stop + -ing."
+                "why": "برای دست کشیدن از کاری، بعد از stop فعل ing می‌آید: stop eating."
               },
               {
-                "text": "cried",
+                "text": "eat",
                 "ok": false,
-                "why": "بعد از stop، -ing لازم است."
+                "why": "در این معنا بعد از stop فعل ing لازم است."
               },
               {
-                "text": "cry",
+                "text": "ate",
                 "ok": false,
-                "why": "بعد از stop، -ing لازم است."
+                "why": "ate گذشتهٔ eat است؛ اینجا بعد از stop فعل ing می‌آید."
               }
             ]
           },

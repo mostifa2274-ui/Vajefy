@@ -78,7 +78,7 @@
       "prompt": "A: What's your new flat like? B: ___",
       "options": [
        {
-        "text": "It's small but bright.",
+        "text": "It's small and quiet.",
         "ok": true,
         "why": "توصیف ویژگی‌ها."
        },
@@ -1015,22 +1015,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Which sentence uses «bank» for money?",
+      "prompt": "I have my money in the ___.",
       "options": [
        {
-        "text": "I opened an account at the bank.",
+        "text": "bank",
         "ok": true,
-        "why": "حساب بانکی."
+        "why": "پول را در بانک نگه می‌داریم: in the bank."
        },
        {
-        "text": "We had a picnic on the river bank.",
+        "text": "shop",
         "ok": false,
-        "why": "اینجا یعنی کنارهٔ رود."
+        "why": "shop فروشگاه است؛ پول را آنجا نگه نمی‌داریم."
        },
        {
-        "text": "The plane banked left.",
+        "text": "market",
         "ok": false,
-        "why": "اینجا فعل و معنای دیگری است."
+        "why": "market بازار است؛ پول را آنجا نگه نمی‌داریم."
        }
       ]
      },
@@ -3264,22 +3264,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "The cat is ___ in the sun.",
+      "prompt": "Every afternoon she ___ on the bed for an hour.",
       "options": [
        {
-        "text": "lying",
+        "text": "lies",
         "ok": true,
-        "why": "شکل ing فعل lie."
+        "why": "lie = دراز کشیدن؛ با she فعل s می‌گیرد: she lies."
        },
        {
-        "text": "laying",
+        "text": "lays",
         "ok": false,
-        "why": "lay یعنی گذاشتن چیزی."
+        "why": "در انگلیسی معیار، lay یعنی چیزی را جایی گذاشتن؛ برای دراز کشیدن lie می‌گوییم."
        },
        {
-        "text": "lieing",
+        "text": "lie",
         "ok": false,
-        "why": "املای ing می‌شود lying."
+        "why": "با she فعل s می‌گیرد: lies."
        }
       ]
      },
@@ -3441,17 +3441,17 @@
       "prompt": "Where is the stress in «present» (هدیه)?",
       "options": [
        {
-        "text": "PRE-sent",
+        "text": "PREsent",
         "ok": true,
         "why": "اسم: تأکید روی بخش اول."
        },
        {
-        "text": "pre-SENT",
+        "text": "preSENT",
         "ok": false,
         "why": "این تلفظ فعل است."
        },
        {
-        "text": "on both parts",
+        "text": "روی هر دو بخش به یک اندازه",
         "ok": false,
         "why": "یک هجا تأکید دارد."
        }
@@ -3623,19 +3623,25 @@
       "prompt": "Where is the stress in «present» (ارائه دادن)?",
       "options": [
        {
-        "text": "pre-SENT",
+        "text": "preSENT",
         "ok": true,
         "why": "فعل: تأکید روی بخش دوم."
        },
        {
-        "text": "PRE-sent",
+        "text": "PREsent",
         "ok": false,
         "why": "این تلفظ اسم و صفت است."
        },
        {
-        "text": "no stress",
+        "text": "هیچ بخشی تکیه ندارد",
         "ok": false,
         "why": "هر کلمهٔ دوهجایی یک هجای تأکیددار دارد."
+       }
+      ],
+      "support": [
+       {
+        "en": "stress",
+        "fa": "تکیهٔ واژه (بخش برجسته در تلفظ)"
        }
       ]
      },
@@ -4100,32 +4106,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "I wanted pizza, but now I want pasta. I ___.",
+      "prompt": "My old room was small. We ___. Now my room is big.",
       "options": [
        {
-        "text": "changed my mind",
+        "text": "changed rooms",
         "ok": true,
-        "why": "عبارت ثابت: نظرم عوض شد."
+        "why": "change rooms = اتاق عوض کردن؛ اسم جمع می‌آید، مثل change trains."
        },
        {
-        "text": "changed my idea",
+        "text": "changed room",
         "ok": false,
-        "why": "طبیعی نیست."
+        "why": "در این عبارت اسم جمع لازم است: change rooms."
        },
        {
-        "text": "changed my head",
+        "text": "changed the room",
         "ok": false,
-        "why": "معنی ندارد."
-       }
-      ],
-      "support": [
-       {
-        "en": "pasta",
-        "fa": "پاستا؛ ماکارونی"
-       },
-       {
-        "en": "pizza",
-        "fa": "پیتزا"
+        "why": "change the room یعنی ظاهر همان اتاق را تغییر دادن، نه رفتن به اتاق دیگر."
        }
       ]
      },
@@ -4630,22 +4626,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "«She hardly works» means ___.",
+      "prompt": "«She works hard» یعنی چه؟",
       "options": [
        {
-        "text": "she works very little",
+        "text": "خیلی تلاش می‌کند و زیاد کار می‌کند",
         "ok": true,
-        "why": "hardly = تقریباً اصلاً."
+        "why": "work hard = با تلاش زیاد کار کردن؛ hard اینجا قید است."
        },
        {
-        "text": "she works a lot",
+        "text": "خیلی کم کار می‌کند",
         "ok": false,
-        "why": "این معنای works hard است."
+        "why": "این معنای She hardly works است؛ hardly یعنی «تقریباً اصلاً» و با hard فرق دارد."
        },
        {
-        "text": "her work is difficult",
+        "text": "کارش سخت است",
         "ok": false,
-        "why": "معنای دیگری است."
+        "why": "hard اینجا دربارهٔ تلاشِ اوست، نه سختیِ کارش: Her work is hard."
        }
       ]
      },
@@ -4727,22 +4723,17 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "A: I can't swim. B: I can't ___.",
+      "prompt": "A: I'm hungry. B: I'm hungry ___.",
       "options": [
        {
-        "text": "either",
-        "ok": true,
-        "why": "در منفی either."
-       },
-       {
         "text": "too",
-        "ok": false,
-        "why": "too در جملهٔ منفی به کار نمی‌رود."
+        "ok": true,
+        "why": "در جملهٔ مثبت، too یعنی «هم» و معمولاً آخر جمله می‌آید."
        },
        {
-        "text": "also",
+        "text": "either",
         "ok": false,
-        "why": "also معمولاً آخر جملهٔ منفی نمی‌آید."
+        "why": "either به معنای «هم» در جملهٔ منفی می‌آید: I'm not hungry either."
        }
       ]
      },

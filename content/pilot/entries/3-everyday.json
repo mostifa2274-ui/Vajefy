@@ -2497,22 +2497,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "I'd like ___, please.",
+      "prompt": "I want some ___ with my tea.",
       "options": [
        {
-        "text": "a loaf of bread",
+        "text": "bread",
         "ok": true,
-        "why": "واحد شمارش نان."
+        "why": "bread غیرقابل‌شمارش است: some bread."
        },
        {
         "text": "a bread",
         "ok": false,
-        "why": "bread a نمی‌گیرد."
+        "why": "bread غیرقابل‌شمارش است و a نمی‌گیرد؛ برای یک عدد a loaf of bread."
        },
        {
-        "text": "one breads",
+        "text": "breads",
         "ok": false,
-        "why": "جمع نمی‌آید."
+        "why": "bread جمع بسته نمی‌شود."
        }
       ]
      },
@@ -3297,22 +3297,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "My cold is ___ today than yesterday.",
+      "prompt": "The weather is ___ today. Let's stay at home.",
       "options": [
        {
-        "text": "worse",
+        "text": "bad",
         "ok": true,
-        "why": "تفضیلی bad: worse."
+        "why": "بعد از be صفت می‌آید: The weather is bad."
        },
        {
-        "text": "badder",
+        "text": "badly",
         "ok": false,
-        "why": "شکل بی‌قاعده است."
+        "why": "badly قید است؛ بعد از be صفت لازم است."
        },
        {
-        "text": "more bad",
+        "text": "a bad",
         "ok": false,
-        "why": "شکل بی‌قاعده است."
+        "why": "پیش از صفتِ تنها a نمی‌آید."
        }
       ]
      },
@@ -4132,17 +4132,17 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "The journey was long and ___.",
+      "prompt": "I worked a lot today. I'm very ___.",
       "options": [
        {
-        "text": "tiring",
+        "text": "tired",
         "ok": true,
-        "why": "صفتِ سفر: خسته‌کننده."
+        "why": "حالِ آدم: tired = خسته."
        },
        {
-        "text": "tired",
+        "text": "tiring",
         "ok": false,
-        "why": "سفر خسته نمی‌شود؛ آدم خسته می‌شود."
+        "why": "tiring یعنی «خسته‌کننده» و چیزی را توصیف می‌کند که آدم را خسته می‌کند؛ اینجا حالِ خودِ گوینده مطرح است."
        },
        {
         "text": "tire",
