@@ -16,10 +16,10 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #205: `77efc696be2d6403a5366cb477f1fd8bade5d49f`.
+- Verified main after PR #206: `96550577a16e93e4c9f1453ba1387bad4c678ce4`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#205 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#206 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
@@ -1363,3 +1363,17 @@ softened for absolute claims before applying.
   361–900 have no exact legacy match.
 - Every approval, rights and release count stays zero. The next NGSL step
   is independent review, which needs a real reviewer.
+
+## 2026-10-10 — A1 rebuild on CEFR-J A1 (phase 1)
+
+- PR #206 (ranks 841–900) merged as `9655057`, completing NGSL staging at
+  900/900 drafts.
+- The owner stated that only the headword list came from the Oxford
+  workbook, and that ChatGPT wrote everything else without Oxford text as
+  input. The owner chose to replace the headword list with every CEFR-J 1.5
+  A1 headword, using NGSL for order and attribution, and to unfreeze
+  Units 1–3. The statement is kept verbatim in the owner attestation.
+- `npm run assurance:a1:cefrj` builds and checks the selection (inside
+  `validate:data`): 1,066 headwords, 730 already taught, 336 new, 171
+  current entries retire. Plan: `docs/A1_CEFRJ_REBUILD.md`.
+- No rights are cleared and no lesson is approved. Gate 0 stays BLOCKED.

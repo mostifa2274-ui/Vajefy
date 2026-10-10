@@ -78,7 +78,7 @@ export function parseCsv(text: string): string[][] {
 }
 
 export function readCefrjRows(text: string): CefrjRow[] {
-  const [header, ...body] = parseCsv(text.replace(/^﻿/, ""));
+  const [header, ...body] = parseCsv(text.replace(/^\uFEFF/, ""));
   if (!header || header[0] !== "headword" || header[1] !== "pos" || header[2] !== "CEFR") {
     throw new Error("CEFR-J CSV: unexpected header");
   }
@@ -92,7 +92,7 @@ export function readCefrjRows(text: string): CefrjRow[] {
 
 /** `word,rank` (core and extension) or one word per line (supplement). */
 export function readNgslList(text: string, ranked: boolean): Map<string, number | null> {
-  const lines = text.replace(/^﻿/, "").split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  const lines = text.replace(/^\uFEFF/, "").split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
   const out = new Map<string, number | null>();
   for (const line of ranked ? lines.slice(1) : lines) {
     const [word = "", rank] = line.split(",");
