@@ -456,6 +456,18 @@ before this work.
   | `press` | pushing a button |
   | `key` | a door key |
 
+- **Review fixes.** Review caught three issues, all fixed:
+  - *met his wife* was translated as "saw" and now reads «آشنا شد»;
+  - *simply furnished* (plainly) sat outside the declared sense of `simply`
+    and was replaced with a clarity example;
+  - *Whatever you decide* uses the "no matter what" sense rather than the
+    declared pronoun sense, so it was replaced, and the usage note now names
+    that sense.
+
+  A sweep of the batch's Persian found three more meaning shifts, also
+  fixed: *I cut myself* had been rendered as "my hand was cut", *wonder* as
+  "I don't know", and *will represent* in the present tense.
+
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
