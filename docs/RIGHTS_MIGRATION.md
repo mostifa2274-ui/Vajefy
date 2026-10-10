@@ -11,6 +11,21 @@ OpenAI's Terms of Use give users ownership of output **as between users and Open
 
 The owner statement is **not a licence grant, independent generation-history proof, or item-level release clearance**. `npm run assurance:rights:owner:check` validates this distinction, including the explicit categories, and runs inside `npm run validate:data`; its regression tests refuse fabricated permissions. The SHA-256-bound `content/assurance/rights-lineage.json` item evidence and `content/assurance/provenance.json` source permissions continue to determine Gate 0. The existing NGSL clean-source reconstruction remains necessary unless separately sufficient source-specific licences are obtained.
 
+## Owner statement and rebuild decision — 2026-10-10
+
+The owner states that **only the headword list** came from the
+Oxford-derived workbook. All other teaching material was written with
+ChatGPT, and no Oxford text was given as input. The owner chose to replace the
+headword list with **every CEFR-J Wordlist 1.5 A1 headword** (1,066),
+using NGSL 1.2 for frequency order and attribution, and to unfreeze Units 1–3.
+The statement and answers are kept verbatim in
+`content/assurance/owner-authorship-attestation.json` (`laterStatements`).
+The selection, its sources and the three-phase plan are in
+`docs/A1_CEFRJ_REBUILD.md`. This is the Path B reconstruction below, with the
+selection made by a written rule over open sources rather than by relabelling
+the Oxford roster. Gate 0 stays BLOCKED until the item, media and source
+evidence is complete.
+
 ## What is known, and what is not
 
 The repository's `content/assurance/provenance.json` lists an

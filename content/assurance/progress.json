@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-10",
-  "authoritativeMain": "77efc696be2d6403a5366cb477f1fd8bade5d49f",
+  "authoritativeMain": "96550577a16e93e4c9f1453ba1387bad4c678ce4",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -227,7 +227,7 @@
   "currentWork": {
     "blocked": false,
     "branch": "main",
-    "objective": "Continue safe later-unit deterministic repairs and independent NGSL reconstruction from the merged state; release gates remain open.",
+    "objective": "Rebuild the A1 course on the owner-chosen CEFR-J A1 selection (docs/A1_CEFRJ_REBUILD.md): phase 1 selection is done; write lessons for the 338 new headwords, then rebuild the curriculum. Release gates remain open.",
     "completedInMain": [
       "PR #188: authenticated pinned NGSL selection/draft/review sources and 360 unreviewed bilingual drafts.",
       "PR #189: 140 contextual Persian supports across 133 tasks; task/scene frontier counts 4966/59.",
@@ -245,10 +245,12 @@
       "PR #202: independent NGSL drafts for ranks 521–600 (600/900 staged), revised after review; merged as d5f0439a63ccc71dc012da5b09d5ec985754bae1.",
       "PR #203: independent NGSL drafts for ranks 601–680 (680/900 staged), revised after review; merged as 11781e38af4cc977d9fc4dd6581beae3f1321eda.",
       "PR #204: independent NGSL drafts for ranks 681–760 (760/900 staged), revised after review; merged as 0d203e920701a77f7f00e43a81854fb7981720df.",
-      "PR #205: independent NGSL drafts for ranks 761–840 (840/900 staged), revised after review; merged as 77efc696be2d6403a5366cb477f1fd8bade5d49f."
+      "PR #205: independent NGSL drafts for ranks 761–840 (840/900 staged), revised after review; merged as 77efc696be2d6403a5366cb477f1fd8bade5d49f.",
+      "PR #206: independent NGSL drafts for ranks 841–900 (900/900 staged), revised after review; merged as 96550577a16e93e4c9f1453ba1387bad4c678ce4."
     ],
     "nextSteps": [
-      "Continue from 6640 deterministic findings. The non-promotable frontier queue is 71 cases, all in frozen Units 1–3; all 34 later-unit rewording cases were reworded (docs/FRONTIER_REWORDING_2026-10-10.md), and the remaining frontier findings need core-word promotion into the frozen roster, an owner decision. Persian mistake-pair translations now cover every sense in course Units 4–12 (831; docs/MISTAKE_TRANSLATIONS_2026-10-10.md). Usage notes now cover all 61 function-word senses in Units 4–12 (docs/USAGE_NOTES_2026-10-10.md). Grammar notes in Units 4–12 now open with a Persian explanation (docs/GRAMMAR_NOTES_2026-10-10.md). Answer feedback in Units 4–12 now opens with a Persian reason (docs/CHECK_FEEDBACK_2026-10-10.md). The remaining 173 wrongFa/rightFa pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are all in frozen Units 1–3 and wait for an owner study/audio scope decision. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without that decision.",
+      "A1 rebuild phase 2 (docs/A1_CEFRJ_REBUILD.md): write full catalogue lessons for the 338 NEW CEFR-J A1 headwords in content/rights-staging/a1-rebuild/cefrj-a1-selection.json, in batches. Fold the 48 word forms and phrases into their base word lessons, reuse the 65 staged NGSL drafts, review the 80 posTaught:false records, and write fresh text with no Oxford input. Phase 3 then rebuilds the curriculum, retires the 171 non-selected entries and redefines the study roster; the owner unfroze Units 1–3 on 2026-10-10.",
+      "Continue from 6640 deterministic findings. The non-promotable frontier queue is 71 cases, all in frozen Units 1–3; all 34 later-unit rewording cases were reworded (docs/FRONTIER_REWORDING_2026-10-10.md), and the remaining frontier findings need core-word promotion into the frozen roster, an owner decision. Persian mistake-pair translations now cover every sense in course Units 4–12 (831; docs/MISTAKE_TRANSLATIONS_2026-10-10.md). Usage notes now cover all 61 function-word senses in Units 4–12 (docs/USAGE_NOTES_2026-10-10.md). Grammar notes in Units 4–12 now open with a Persian explanation (docs/GRAMMAR_NOTES_2026-10-10.md). Answer feedback in Units 4–12 now opens with a Persian reason (docs/CHECK_FEEDBACK_2026-10-10.md). The remaining 173 wrongFa/rightFa pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are all in frozen Units 1–3 and wait for an owner study/audio scope decision. Select later-unit source fields using actual curriculum membership; Units 1–3 were unfrozen by the owner on 2026-10-10 for the CEFR-J rebuild; repair them as part of rebuild phase 3, not before, because 18 of their entries retire.",
       "Independent NGSL authoring is complete (900/900 staged drafts). Every draft requires independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement; build packets with npm run assurance:ngsl:review:packets -- --json --from N --limit M and never record approvals without a real independent reviewer.",
       "Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates; on 2026-10-10 Gemma 4 26B and GLM 4.7 Flash (both +no-thinking) were appended to the end of its list, and the planner selects Gemma 4. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.",
       "Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence."
