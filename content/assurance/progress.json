@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-10",
-  "authoritativeMain": "b00a9fa0f452333e9838e3470a1e188df8921dce",
+  "authoritativeMain": "bf0f19f444066424d367cc8b67cccc4904dc4146",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -135,6 +135,12 @@
       "pr": 189,
       "mergeCommit": "b00a9fa0f452333e9838e3470a1e188df8921dce",
       "summary": "140 contextual Persian supports across 133 tasks lowered task/scene frontier counts to 4966/59 and the complete corpus to 9994 findings. Frozen Units 1–3 and audio/curriculum stayed unchanged; full CI and rollback passed."
+    },
+    {
+      "id": "a1-linked-read-only-references-and-review-scope",
+      "pr": 190,
+      "mergeCommit": "bf0f19f444066424d367cc8b67cccc4904dc4146",
+      "summary": "853 reference notes linked from 417 actual A1 plan entries, exact word links, course-only Review enrolment/due/data loading, saved mixed-session preservation and offline index. Full 535-unit/95-browser CI and rollback passed."
     }
   ],
   "doNotRepeat": [
@@ -212,19 +218,20 @@
   },
   "currentWork": {
     "blocked": false,
-    "branch": "codex/a1-reference-scope-20261010",
-    "objective": "Complete P1-CHUNK-DECKS with exact A1 course-linked read-only references and course-only Review scheduling while retaining older saved progress.",
+    "branch": "codex/a1-language-fields-20261010",
+    "objective": "Remove later-unit Persian text from English fields and restore bilingual mistake/grammar explanations without changing frozen pilot entries.",
     "completedOnBranch": [
-      "Generated a freshness-checked manifest of 853 unique reference notes linked from 417 actual A1 plan entries; word details open exact note IDs.",
-      "Limited A1 Library membership, removed A1 reference enrolment, scoped due counts and study face loads, and archived mixed interrupted sessions without deleting cards, queues or answers.",
-      "Installed the A1 reference index for offline use; full reference decks remain on-demand and saved higher-level behaviour is preserved.",
-      "Added structural, enrolment, scheduling and browser regressions; new public manifest retains conservative UNVERIFIED rights lineage."
+      "Repaired too#excess, miss#feel-sad, hard#solid and afraid in actual course Units 4, 7, 10 and 11; authored by Codex (GPT-6), with no independent semantic certificate.",
+      "Moved intended meanings into Persian explanations, supplied six literal wrong/right sentence translations and added one Persian grammar explanation.",
+      "Lowered Persian-in-English findings 4 to 0, missing wrong/right Persian translations 1007 to 1004 each, grammar-note findings 943 to 942, and total findings 9994 to 9983; no code increased.",
+      "Verified all 180 frozen source entries plus audio, curriculum and scene sources remain unchanged; rebuilt content, coach cases, agent provenance, unverified derivative assignments/authorship hashes and records.",
+      "Complete local validate:data, typecheck, lint, 535 unit tests and production build pass."
     ],
     "pending": [
-      "Complete exact-head GitHub CI, browser, Workers build contract and rollback rehearsal; merge only after success, then record the completion merge SHA in the status ledger.",
-      "Resume from the 105-case non-promotable triage queue: 71 frozen, 2 context-sensitive gloss candidates, 32 reword/review cases; do not repeat the 140 merged glosses.",
-      "Continue independent NGSL authoring at rank 361/900; all 360 staged drafts still require independent sense, Persian, pedagogy and rights review.",
-      "Do not change frozen pilot prerequisite scope, semantic gold/thresholds or release gates. Judge qualification remains 0/4 and Gate 0 remains BLOCKED."
+      "Publish the language-field repair on current main, complete exact-head CI/browser/Workers/rollback checks, and record its actual merge SHA in both progress files. PR #190 is merged and P1-CHUNK-DECKS is DONE.",
+      "Continue from 9983 remaining deterministic findings and the 105-case non-promotable frontier triage queue; do not change frozen Units 1–3 without a separate study/audio scope decision.",
+      "Continue independent NGSL authoring at rank 361/900; all 360 staged drafts remain independently unreviewed.",
+      "Judge qualification remains 0/4; Gate 0 remains BLOCKED, and committed audio remains 328/386 certified with 58 quarantined. No release approval is claimed."
     ]
   },
   "endpointResolution": {

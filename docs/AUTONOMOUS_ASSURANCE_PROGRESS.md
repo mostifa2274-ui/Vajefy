@@ -1062,6 +1062,33 @@ or semantic qualification was invented.
 
 Unit and browser regressions cover manifest integrity, new enrolment, due
 scope, exact note links, failed loading, higher-level compatibility and
-preservation of a mixed interrupted review. Exact-head CI and merge are pending.
-After merge, record its completion SHA in the A1 ledger before resuming the
-remaining content/rights queue.
+preservation of a mixed interrupted review. PR #190 merged as
+`bf0f19f444066424d367cc8b67cccc4904dc4146` after full CI 38019526492
+(535 unit tests and all 95 browser tests), Workers contract and rollback
+38019526393 passed. P1-CHUNK-DECKS is DONE; this follow-up records its actual
+completion merge in the A1 ledger. Do not repeat the reference scope work.
+
+
+## Later-unit language field repairs — 2026-10-10
+
+All four Persian-in-English findings have been repaired in too, miss, hard
+and afraid (actual course Units 4, 7, 10 and 11). Intended meaning explanations
+now occupy the Persian notes; three mistake pairs have six literal translations,
+and afraid has a Persian grammar-position explanation. These are Codex (GPT-6)
+authoring changes without independent semantic certificates.
+
+The complete deterministic corpus fell from 9,994 to 9,983 findings: Persian
+in English 4 → 0, missing wrong/right Persian translations 1,007 → 1,004 each,
+and grammar notes lacking Persian 943 → 942. No other code increased. All 180
+frozen Units 1–3 source entries, audio, curriculum and scene sources are unchanged.
+Generated content, coach cases, agent provenance, current UNVERIFIED rights
+derivative names/authorship hashes and assurance records are refreshed. See
+[the field repair evidence](LANGUAGE_FIELD_REPAIRS_2026-10-10.md).
+
+Complete local validation, typecheck, lint, 535 unit tests and build pass.
+Publication/CI/merge remain pending. PR #190's first browser run exposed an
+ambiguous selector matching the global and Library search inputs; the selector
+now targets the main Library search, without removing or weakening assertions.
+The exact-head full browser rerun passed all 95 tests; PR #190 merged as
+`bf0f19f444066424d367cc8b67cccc4904dc4146`. Record the language-field repair
+merge in both progress files before resuming the remaining content/rights work.
