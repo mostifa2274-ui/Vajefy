@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-10",
-  "authoritativeMain": "bf0f19f444066424d367cc8b67cccc4904dc4146",
+  "authoritativeMain": "9556da47a635d706ede0bb794de9cd1f9d0643ed",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -141,6 +141,12 @@
       "pr": 190,
       "mergeCommit": "bf0f19f444066424d367cc8b67cccc4904dc4146",
       "summary": "853 reference notes linked from 417 actual A1 plan entries, exact word links, course-only Review enrolment/due/data loading, saved mixed-session preservation and offline index. Full 535-unit/95-browser CI and rollback passed."
+    },
+    {
+      "id": "later-unit-language-field-repairs",
+      "pr": 191,
+      "mergeCommit": "9556da47a635d706ede0bb794de9cd1f9d0643ed",
+      "summary": "Four later-unit Persian-in-English repairs, six literal mistake translations and one Persian grammar explanation reduced deterministic findings from 9994 to 9983. Frozen source entries and audio/curriculum/scene sources are unchanged. Integrated scheduled calibration evidence; full CI 38043997584 (535 units, 95 browser tests), Workers contract and rollback 38043997585 passed."
     }
   ],
   "doNotRepeat": [
@@ -175,7 +181,9 @@
     "Do not dispatch calibration by hand to work around the planner's order or the daily ceiling, and do not edit presets roles by hand; run npm run assurance:semantic:automation -- plan.",
     "Do not re-order or remove pre-registered candidates after they have produced results; add new ones at the end, or create a new calibration version.",
     "Do not re-enable model reasoning for free-budget judges: Nemotron 3 with reasoning on used all 1,200 output tokens and returned no answer on three runs (2026-10-07). Candidates whose catalog documents chat_template_kwargs.enable_thinking run with +no-thinking.",
-    "Do not treat a model id as the model that answers: Cloudflare aliases retired models (kimi-k2.5 has been served and billed as the paid-only kimi-k2.6 since 2026-05-30). Record aliases in workers-ai-neuron-rates.json servedBy, and check a run's charged Neurons against the rate before trusting the id."
+    "Do not treat a model id as the model that answers: Cloudflare aliases retired models (kimi-k2.5 has been served and billed as the paid-only kimi-k2.6 since 2026-05-30). Record aliases in workers-ai-neuron-rates.json servedBy, and check a run's charged Neurons against the rate before trusting the id.",
+    "Do not redo the authenticated NGSL loader/export checks or the 360 completed author-only draft records from PR #188; continue at rank 361 and retain zero approval flags.",
+    "Do not repeat the 140 contextual supports from PR #189, the read-only A1 reference/Review scope from PR #190, or the four language-field repairs from PR #191 unless changed source or CI shows a regression."
   ],
   "blockers": [
     {
@@ -218,20 +226,19 @@
   },
   "currentWork": {
     "blocked": false,
-    "branch": "codex/a1-language-fields-20261010",
-    "objective": "Remove later-unit Persian text from English fields and restore bilingual mistake/grammar explanations without changing frozen pilot entries.",
-    "completedOnBranch": [
-      "Repaired too#excess, miss#feel-sad, hard#solid and afraid in actual course Units 4, 7, 10 and 11; authored by Codex (GPT-6), with no independent semantic certificate.",
-      "Moved intended meanings into Persian explanations, supplied six literal wrong/right sentence translations and added one Persian grammar explanation.",
-      "Lowered Persian-in-English findings 4 to 0, missing wrong/right Persian translations 1007 to 1004 each, grammar-note findings 943 to 942, and total findings 9994 to 9983; no code increased.",
-      "Verified all 180 frozen source entries plus audio, curriculum and scene sources remain unchanged; rebuilt content, coach cases, agent provenance, unverified derivative assignments/authorship hashes and records.",
-      "Complete local validate:data, typecheck, lint, 535 unit tests and production build pass."
+    "branch": "main",
+    "objective": "Continue safe later-unit deterministic repairs and independent NGSL reconstruction from the merged state; release gates remain open.",
+    "completedInMain": [
+      "PR #188: authenticated pinned NGSL selection/draft/review sources and 360 unreviewed bilingual drafts.",
+      "PR #189: 140 contextual Persian supports across 133 tasks; task/scene frontier counts 4966/59.",
+      "PR #190: course-linked read-only A1 references and course-only Review scope; P1-CHUNK-DECKS is DONE.",
+      "PR #191: four language-field repairs, 9983 findings, 535 unit and 95 browser tests passed; merged as 9556da47a635d706ede0bb794de9cd1f9d0643ed."
     ],
-    "pending": [
-      "Publish the language-field repair on current main, complete exact-head CI/browser/Workers/rollback checks, and record its actual merge SHA in both progress files. PR #190 is merged and P1-CHUNK-DECKS is DONE.",
-      "Continue from 9983 remaining deterministic findings and the 105-case non-promotable frontier triage queue; do not change frozen Units 1–3 without a separate study/audio scope decision.",
-      "Continue independent NGSL authoring at rank 361/900; all 360 staged drafts remain independently unreviewed.",
-      "Judge qualification remains 0/4; Gate 0 remains BLOCKED, and committed audio remains 328/386 certified with 58 quarantined. No release approval is claimed."
+    "nextSteps": [
+      "Continue from 9983 deterministic findings and the 105-case non-promotable frontier queue. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without a separate study/audio scope decision.",
+      "Continue independent NGSL frequency-first authoring at rank 361; 540 candidates still need drafts. All 360 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.",
+      "Check the scheduled calibration ledgers before doing semantic work. English is candidates-exhausted and needs a separately preregistered eligible free candidate or a justified new calibration version; preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget/order bypass.",
+      "Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence."
     ]
   },
   "endpointResolution": {
@@ -375,7 +382,8 @@
         },
         "note": "No repeat produced FAIL on a defect case's expected criterion. Overall FAIL statuses on cal-en-grammar-agreement (repeats 2-3) and cal-en-sense-live (repeat 1) do not count toward recall, which is criterion-level.",
         "qualificationRecorded": false
-      }
+      },
+      "evidenceScope": "Historical first English v1 campaigns. Read latestSnapshot and the calibration ledgers for current attempts and candidate exhaustion."
     },
     "automation": {
       "status": "RUNNING",
@@ -384,9 +392,9 @@
       "dailyNeuronCeiling": 8500,
       "failurePolicy": "Reject as no-valid-output after 3 model-output failures on at least 2 UTC days; gateway faults never reject.",
       "activeJudges": {
-        "english": "@cf/nvidia/nemotron-3-120b-a12b",
-        "persian": "@cf/zai-org/glm-4.7-flash",
-        "pedagogical": "@cf/google/gemma-4-26b-a4b-it",
+        "english": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "persian": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+        "pedagogical": "@cf/nvidia/nemotron-3-120b-a12b",
         "adversarial": "@cf/qwen/qwen3-30b-a3b-fp8"
       },
       "ledgers": [
@@ -394,7 +402,87 @@
         "content/assurance/semantic/calibration/rejected.json",
         "content/assurance/semantic/calibration/automation-log.json"
       ],
-      "observed": "2026-10-07: three English Nemotron 3 runs failed with empty-model-content (1,200/1,200 completion tokens spent reasoning); Persian never ran because English went first each day. 2026-10-08: reasoning switched off for Nemotron 3, Gemma 4, GLM 4.7 Flash and Qwen 3.8, and the least-recently-attempted ready role now goes first. Later on 2026-10-08 the first Persian run (Kimi K2.5) also returned no answer (700/700 completion tokens) and was charged 354.9 Neurons, exactly Kimi K2.6's rate: Cloudflare has served kimi-k2.5 as kimi-k2.6 since 2026-05-30, and K2.6 needs paid billing. workers-ai-neuron-rates.json now records that alias (servedBy), the rates refresh prices K2.5 as K2.6, and the planner skips Kimi as paid-billing-required; Persian moves to GLM 4.7 Flash (+no-thinking)."
+      "observed": "2026-10-07: three English Nemotron 3 runs failed with empty-model-content (1,200/1,200 completion tokens spent reasoning); Persian never ran because English went first each day. 2026-10-08: reasoning switched off for Nemotron 3, Gemma 4, GLM 4.7 Flash and Qwen 3.8, and the least-recently-attempted ready role now goes first. Later on 2026-10-08 the first Persian run (Kimi K2.5) also returned no answer (700/700 completion tokens) and was charged 354.9 Neurons, exactly Kimi K2.6's rate: Cloudflare has served kimi-k2.5 as kimi-k2.6 since 2026-05-30, and K2.6 needs paid billing. workers-ai-neuron-rates.json now records that alias (servedBy), the rates refresh prices K2.5 as K2.6, and the planner skips Kimi as paid-billing-required; Persian moves to GLM 4.7 Flash (+no-thinking). Latest verified 2026-10-10 state: English candidates are exhausted; Persian Qwen 3.8 +no-thinking was rejected on run 38029252396.1 (defect recall 8/9, abstain accuracy 0, expected-label stability 5/6). The planner selects Persian Mistral Small 3.1, pedagogical Nemotron 3 +no-thinking and adversarial Qwen3 30B; none is qualified."
+    },
+    "latestSnapshot": {
+      "observedAt": "2026-10-10",
+      "sourceMain": "9556da47a635d706ede0bb794de9cd1f9d0643ed",
+      "qualifiedRoleCount": 0,
+      "selectedRoles": {
+        "english": {
+          "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+          "modelVersion": "@cf/meta/llama-3.3-70b-instruct-fp8-fast@cloudflare-catalog-2026-10-06",
+          "status": "exhausted"
+        },
+        "persian": {
+          "model": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+          "modelVersion": "@cf/mistralai/mistral-small-3.1-24b-instruct@cloudflare-catalog-2026-10-06",
+          "status": "calibrating"
+        },
+        "pedagogical": {
+          "model": "@cf/nvidia/nemotron-3-120b-a12b",
+          "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
+          "status": "calibrating"
+        },
+        "adversarial": {
+          "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+          "modelVersion": "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
+          "status": "calibrating"
+        }
+      },
+      "latestScoredCampaigns": {
+        "english": {
+          "role": "english",
+          "model": "@cf/meta/llama-4-scout-17b-16e-instruct",
+          "modelVersion": "@cf/meta/llama-4-scout-17b-16e-instruct@cloudflare-catalog-2026-10-06",
+          "maxTokens": 600,
+          "promptVersion": "english-a1-prompt-v1",
+          "rubricVersion": "english-a1-v1",
+          "reason": "did-not-promote",
+          "rejectedAt": "2026-10-09",
+          "runIds": [
+            "37936744749.1"
+          ],
+          "detail": "Missed the frozen vajefy-semantic-v1 gate on: defectRecall.",
+          "metrics": {
+            "requestedRuns": 3,
+            "validRuns": 3,
+            "requiredRuns": 3,
+            "schemaComplianceRate": 1,
+            "defectRecall": 0,
+            "cleanFalsePositiveRate": 0,
+            "cleanUncertainRate": 0,
+            "abstainAccuracy": 1,
+            "expectedLabelStability": 1
+          }
+        },
+        "persian": {
+          "role": "persian",
+          "model": "@cf/qwen/qwen3.8-27b",
+          "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06+no-thinking",
+          "maxTokens": 800,
+          "promptVersion": "persian-a1-prompt-v1",
+          "rubricVersion": "persian-a1-v1",
+          "reason": "did-not-promote",
+          "rejectedAt": "2026-10-10",
+          "runIds": [
+            "38029252396.1"
+          ],
+          "detail": "Missed the frozen vajefy-semantic-v1 gate on: defectRecall, abstainAccuracy, stability.",
+          "metrics": {
+            "requestedRuns": 3,
+            "validRuns": 3,
+            "requiredRuns": 3,
+            "schemaComplianceRate": 1,
+            "defectRecall": 0.8888888888888888,
+            "cleanFalsePositiveRate": 0,
+            "cleanUncertainRate": 0,
+            "abstainAccuracy": 0,
+            "expectedLabelStability": 0.8333333333333334
+          }
+        }
+      },
+      "note": "Selected models are planner state, not qualified champions. English is an exhausted placeholder. The source calibration ledgers override this dated handoff snapshot."
     }
   },
   "statusLedger": {

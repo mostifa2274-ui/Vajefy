@@ -33,3 +33,10 @@ legacy authorship hashes and assurance records were regenerated. The public
 inventory still has 60 JSON artifacts with UNVERIFIED lineage and zero approvals.
 Semantic judge qualification remains 0/4 and Gate 0 remains BLOCKED. Structural
 improvements are not a linguistic review, audio certificate or public release.
+
+Merged as PR #191 (`9556da47a635d706ede0bb794de9cd1f9d0643ed`). Final tested head
+`2f7ce7223e4ff25867183d21fc5d51f9bc9478f2` includes the intervening scheduled
+calibration evidence; its tree is `18a5b9840fdbfc15b7c8df598206186824990157`.
+Full CI 38043997584 passed all 535 unit and 95 browser tests plus the Workers
+contract; rollback rehearsal 38043997585 passed. The final tree was matched
+to locally validated bytes, and both progress files record this actual merge.
