@@ -16,10 +16,16 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Main at start of this slice: `b8da6dcfd154df32082157f26ebd084944bc01b9`
-- Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`
-- Current branch: `codex/unit1-autonomous-certification`
-- Current objective: repair and deterministically certify A1 Unit 1 (`01-introductions`).
+- Verified main after PR #191: `9556da47a635d706ede0bb794de9cd1f9d0643ed`.
+- Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
+- Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
+- PRs #188–#191 are merged. Source authentication, 140 contextual supports,
+  A1 reference/Review scope and four language-field repairs are complete.
+- Remaining: 9,983 deterministic findings; 360/900 unreviewed independent
+  NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
+
+Earlier checkpoints below are historical evidence. Their branch names and
+resume instructions describe that earlier point, not unfinished current work.
 
 ## Completed — do not repeat
 
@@ -72,18 +78,12 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 
 ## Current next actions
 
-1. Repair Unit 1 grammar-note Persian.
-2. Add pedagogically distinct third examples where required.
-3. Repair identical wrong/right Persian mistake translations.
-4. Add usage guidance where the deterministic rule requires it.
-5. Add a Unit 1 zero-defect gate.
-6. Rebuild and commit derived learning artifacts.
-7. Pass generated-content consistency, `validate:data`, typecheck, lint, unit tests, production build, Playwright and Workers build contract.
-8. Merge.
-9. Update this ledger with the merge commit and the next unrepeated objective.
+1. Continue from 9983 deterministic findings and the 105-case non-promotable frontier queue. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without a separate study/audio scope decision.
+2. Continue independent NGSL frequency-first authoring at rank 361; 540 candidates still need drafts. All 360 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.
+3. Check the scheduled calibration ledgers before doing semantic work. English is candidates-exhausted and needs a separately preregistered eligible free candidate or a justified new calibration version; preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget/order bypass.
+4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.
 
-
-## In-progress checkpoint — Unit 1 certification
+## Historical checkpoint — Unit 1 certification
 
 On branch `codex/unit1-autonomous-certification`:
 
@@ -103,7 +103,7 @@ The repository compiler regenerated the derived enhanced-content outputs and com
 
 The one-use regeneration workflow was then removed in `edfbfeff4c3a810ba82a8d3ad54b6cae71f80f22`.
 
-Current resume point: **final exact-head CI for PR #84**. Do not regenerate Unit 1 source content or derived artifacts again unless CI reports them stale or a later source edit changes them.
+Resume point at that historical checkpoint: **final exact-head CI for PR #84**. Do not regenerate Unit 1 source content or derived artifacts again unless CI reports them stale or a later source edit changes them.
 
 ## Checkpoint — Unit 1 controlled audio complete
 
@@ -121,7 +121,7 @@ Evidence from the successful job:
 
 The temporary audio workflow was removed in `f3f53e16564ba5e60090c3361fd35bc1ea801909`.
 
-Current resume point: **final exact-head CI for PR #84**. Do not rerun Unit 1 audio generation unless content or CI proves the manifests are stale/incomplete.
+Resume point at that historical checkpoint: **final exact-head CI for PR #84**. Do not rerun Unit 1 audio generation unless content or CI proves the manifests are stale/incomplete.
 
 ## Checkpoint — version-bound derived artifacts refreshed
 
@@ -137,7 +137,7 @@ Refreshed writers:
 
 The temporary workflow was removed in `598e14b0a09cd2db9e82dbea533415324ba425de`.
 
-Current resume point: **exact-head CI for PR #84**. Do not regenerate these artifacts again unless a source edit or CI explicitly reports them stale.
+Resume point at that historical checkpoint: **exact-head CI for PR #84**. Do not regenerate these artifacts again unless a source edit or CI explicitly reports them stale.
 
 ## Completed — PR #84 Unit 1 deterministic certification
 
@@ -182,7 +182,7 @@ On branch `codex/semantic-assurance-foundation`:
 - CI now validates any committed semantic evidence for consistency, but semantic PASS is **not** claimed because no independent Unit 1 judge evidence has been committed yet;
 - a strict semantic command exists for the later certification gate and will fail until every Unit 1 sense has complete independent evidence.
 
-Current resume point: validate this foundation in CI, merge it if green, then produce independent Unit 1 judge evidence without editing the deterministically certified source content.
+Resume point at that historical checkpoint: validate this foundation in CI, merge it if green, then produce independent Unit 1 judge evidence without editing the deterministically certified source content.
 
 ## Completed — PR #85 semantic assurance foundation
 
@@ -210,7 +210,7 @@ Provider-independent execution infrastructure is present but **no model inferenc
 
 GitHub Models is not a candidate: the standalone inference service was retired on 30 July 2026. No paid endpoint should be invoked without explicit authorization.
 
-Current resume point: CI/merge this infrastructure, then resolve actual independent model endpoints before producing evidence. Do not rebuild the packet unless source/rubric/prompt drift makes its CI check fail.
+Resume point at that historical checkpoint: CI/merge this infrastructure, then resolve actual independent model endpoints before producing evidence. Do not rebuild the packet unless source/rubric/prompt drift makes its CI check fail.
 
 ## Completed — PR #86 reproducible semantic judge packets and runner
 
@@ -238,7 +238,7 @@ Completed on this branch:
 - JSON response-format mode can be disabled for compatible endpoints that do not implement that OpenAI extension;
 - the no-inference preflight is exercised by `validate:data`.
 
-Current resume point: full CI/merge this hardening branch. After merge, actual judge execution remains blocked only on selecting/connecting explicit independent model endpoints; do not repeat packet, runner or ingestion infrastructure.
+Resume point at that historical checkpoint: full CI/merge this hardening branch. After merge, actual judge execution remains blocked only on selecting/connecting explicit independent model endpoints; do not repeat packet, runner or ingestion infrastructure.
 
 ## Completed — PR #87 semantic evidence ingestion hardening
 
@@ -271,7 +271,7 @@ Implemented on this branch:
 - CI safety checker that forbids push/pull_request/schedule/workflow_run triggers and `contents: write`;
 - endpoint variables/secrets and resume sequence documented in `content/assurance/semantic/ENDPOINT_RESOLUTION.md`.
 
-No model inference has been run. Current resume point: CI/merge this slice, then wait for explicit endpoint configuration/authorization before evidence execution.
+No model inference has been run. Resume point at that historical checkpoint: CI/merge this slice, then wait for explicit endpoint configuration/authorization before evidence execution.
 
 
 ## Completed — PR #88 manual semantic judge execution
@@ -338,7 +338,7 @@ Remaining external setup is only free credentials:
 
 No inference has been run and no semantic evidence has been fabricated.
 
-Current resume point: CI/merge this zero-cost provider slice, then configure the
+Resume point at that historical checkpoint: CI/merge this zero-cost provider slice, then configure the
 free credentials and execute the existing manual judge workflow. Do not repeat
 provider research unless availability/pricing changes or the preset verification
 date is intentionally refreshed.
@@ -461,7 +461,7 @@ Calibration packet generation commit:
 
 No model inference has been run and no semantic qualification has been fabricated.
 
-Current resume point: full CI/merge this branch. After merge, configure the free
+Resume point at that historical checkpoint: full CI/merge this branch. After merge, configure the free
 credentials and run calibration first. Do not run release-bound Unit 1 semantic
 judging before qualification.
 
@@ -486,7 +486,7 @@ The judge-calibration gate is now authoritative on `main`:
 Do not modify calibration v1 after seeing candidate outputs. Any justified gold
 or threshold correction must create a new calibration version.
 
-Current resume point: inspect free credential/variable availability, run
+Resume point at that historical checkpoint: inspect free credential/variable availability, run
 `calibration_v1` first, qualify passing champions, then and only then run Unit
 1 semantic judging.
 
@@ -580,7 +580,7 @@ serving platform is Cloudflare for all four candidates. The frozen
 
 No model inference has been run on this branch.
 
-Current resume point: full CI -> merge -> exact production revision check ->
+Resume point at that historical checkpoint: full CI -> merge -> exact production revision check ->
 OIDC no-inference gateway smoke -> keyless calibration.
 
 
@@ -1085,10 +1085,27 @@ Generated content, coach cases, agent provenance, current UNVERIFIED rights
 derivative names/authorship hashes and assurance records are refreshed. See
 [the field repair evidence](LANGUAGE_FIELD_REPAIRS_2026-10-10.md).
 
-Complete local validation, typecheck, lint, 535 unit tests and build pass.
-Publication/CI/merge remain pending. PR #190's first browser run exposed an
-ambiguous selector matching the global and Library search inputs; the selector
-now targets the main Library search, without removing or weakening assertions.
-The exact-head full browser rerun passed all 95 tests; PR #190 merged as
-`bf0f19f444066424d367cc8b67cccc4904dc4146`. Record the language-field repair
-merge in both progress files before resuming the remaining content/rights work.
+PR #191 merged as `9556da47a635d706ede0bb794de9cd1f9d0643ed`. Its final head incorporated the scheduled
+calibration commits through `6b731cb517f71c89b761dc014de6b5f261687d20`;
+full CI 38043997584 passed 535 unit and all 95 browser tests, the Workers
+contract passed, and rollback rehearsal 38043997585 passed. Both progress
+files record the actual merge. The earlier PR #190 browser selector correction
+scoped the Library search without weakening assertions; its final rerun passed.
+
+## Latest calibration and audio evidence — 2026-10-10
+
+English has exhausted its preregistered v1 candidates; its selected Llama 3.3
+placeholder is not qualified or eligible for repeated inference. Latest English
+Llama 4 Scout run 37936744749.1 was rejected with defect recall 0. Persian
+Qwen 3.8 +no-thinking run 38029252396.1 was rejected with defect recall 8/9,
+abstain accuracy 0 and expected-label stability 5/6. The planner now selects
+Persian Mistral Small 3.1, pedagogy Nemotron 3 +no-thinking and adversarial
+Qwen3 30B. These are selected candidates, not certificates. Qualification is
+still 0/4. Continue through the authorised free-allocation schedule; never
+hand-edit active roles, bypass the planner or change frozen v1 gold/thresholds.
+
+Committed audio remains PARTIAL: 328/386 certified, 58 quarantined and 0
+uncertain (generated 2026-10-09T02:12:38.939688Z). Scheduled run 38043072498
+completed successfully by skipping a duplicate certification attempt, so it
+provides no new listening/certification evidence and changes no audio count.
+The strict 386/386 release gate remains unchanged.
