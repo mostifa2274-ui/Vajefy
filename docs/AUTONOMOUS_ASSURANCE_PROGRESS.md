@@ -16,15 +16,16 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #195: `d7635deabe4d6a71f4cfb871c27c48a1510fa3d5`.
+- Verified main after PR #196: `adab88e599209452eb92d785ec4f1eeb1e6651b7`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#195 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#196 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
-  remaining pairs and 36 usage notes are in frozen Units 1–3 and wait for an
-  owner scope decision. Usage notes cover all 61 later-unit function words.
-- Remaining: 8,260 deterministic findings; 360/900 unreviewed independent
+  remaining pairs, 36 usage notes and 161 grammar notes are in frozen Units 1–3
+  and wait for an owner scope decision. Later-unit usage and grammar notes are
+  complete.
+- Remaining: 7,479 deterministic findings; 360/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -1202,3 +1203,20 @@ before applying.
 
 `USAGE_REQUIRED` fell from 97 to 36, and total findings from 8,321 to 8,260.
 The 36 left are in frozen Units 1–3. See [the evidence](USAGE_NOTES_2026-10-10.md).
+
+PR #196 merged as `adab88e599209452eb92d785ec4f1eeb1e6651b7` after check,
+browser, Workers build contract, Workers Builds and rollback rehearsal passed.
+Codex found five notes that stated a tendency as a rule: *both*/*neither*,
+the comma before *but*, *next to*, *between* and *under*/*below*. All five were
+fixed before the merge.
+
+## Persian explanations for later-unit grammar notes — 2026-10-10
+
+781 grammar notes in Units 4–12 held only English examples. Each now opens with
+a short Persian explanation of what the pattern does, and the English examples
+follow unchanged. Seven drafts were softened or corrected for absolute claims
+before applying.
+
+`PERSIAN_GRAMMAR_NOTE` fell from 942 to 161, and total findings from 8,260 to
+7,479. The 161 left are in frozen Units 1–3. See
+[the evidence](GRAMMAR_NOTES_2026-10-10.md).
