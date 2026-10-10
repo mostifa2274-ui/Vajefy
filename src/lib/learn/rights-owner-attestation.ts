@@ -24,6 +24,16 @@ export const ownerAuthorshipAttestation = z.object({
   legalEffect: z.literal("NO_RIGHTS_CLEARANCE_OR_LICENSE_GRANT"),
   gate0Effect: z.literal("GATE0_REMAINS_SUBJECT_TO_INDEPENDENT_SOURCE_AND_ITEM_EVIDENCE"),
   notes: z.array(z.string().trim().min(15)).min(3),
+  /** Later owner statements, kept verbatim. Each is testimony, never a licence. */
+  laterStatements: z.array(z.object({
+    declaredOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    declarant: z.literal("Project owner (user statement in Claude Code session)"),
+    statement: z.string().trim().min(15),
+    answers: z.array(z.object({ question: z.string().trim().min(10), answer: z.string().trim().min(2) }).strict()),
+    scope: z.string().trim().min(15),
+    claimKind: z.literal("OWNER_SELF_REPORTED_AUTHORSHIP_NOT_INDEPENDENTLY_VERIFIED"),
+    legalEffect: z.literal("NO_RIGHTS_CLEARANCE_OR_LICENSE_GRANT"),
+  }).strict()).optional(),
 }).strict();
 
 export type OwnerAuthorshipAttestation = z.infer<typeof ownerAuthorshipAttestation>;

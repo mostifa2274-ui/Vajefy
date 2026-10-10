@@ -67,3 +67,24 @@ test("separate unverified Oxford input rights still block Gate 0", () => {
   });
   assert.ok(provenanceBlockers(rights).length > 0);
 });
+
+test("records a later owner statement verbatim without granting rights", () => {
+  const later = {
+    declaredOn: "2026-10-10",
+    declarant: "Project owner (user statement in Claude Code session)",
+    statement: "Only the headwords came from the Oxford list.",
+    answers: [{ question: "Was any Oxford text pasted in?", answer: "No, only the words" }],
+    scope: "Lessons other than the headword list.",
+    claimKind: "OWNER_SELF_REPORTED_AUTHORSHIP_NOT_INDEPENDENTLY_VERIFIED",
+    legalEffect: "NO_RIGHTS_CLEARANCE_OR_LICENSE_GRANT",
+  };
+  const raw = { ...base, categories: [...base.categories], notes: [...base.notes] };
+  const value = ownerAuthorshipAttestation.parse({ ...raw, laterStatements: [later] });
+  assert.equal(attestationCannotClearRights(value), true);
+  assert.equal(ownerAuthorshipAttestation.safeParse({
+    ...raw, laterStatements: [{ ...later, legalEffect: "RIGHTS_CLEARED" }],
+  }).success, false);
+  assert.equal(ownerAuthorshipAttestation.safeParse({
+    ...raw, laterStatements: [{ ...later, licence: "granted" }],
+  }).success, false);
+});
