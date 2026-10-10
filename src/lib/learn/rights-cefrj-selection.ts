@@ -5,7 +5,8 @@
  *
  * The selection is decided by CEFR-J alone. The current catalogue is read only
  * to report which selected words already have lessons (RETAINED), which still
- * need lessons (NEW) and which current entries leave the course (RETIRED).
+ * need lessons (NEW), which current entries move up to a higher CEFR-J level and
+ * which CEFR-J does not list (kept in A1 by the owner's "no drop out" decision).
  * Nothing here clears rights, assesses a sense or approves a lesson.
  */
 export const CEFRJ_SELECTION_STATUS =
@@ -31,17 +32,17 @@ export type SelectedRecord = {
   posTaught: boolean;
   entryIds: string[];
 };
-export type RetiredEntry = {
-  entryId: string;
-  headword: string;
-  bestCefrjLevel: "A2" | "B1" | "B2" | "NOT_IN_CEFRJ";
-};
+/** A current A1 entry that CEFR-J grades higher: it leaves A1 for that level. */
+export type MovedUpEntry = { entryId: string; headword: string; cefrjLevel: "A2" | "B1" | "B2" };
+/** A current A1 entry that CEFR-J does not list: kept in A1 ("no drop out", 2026-10-10). */
+export type OwnerKeptEntry = { entryId: string; headword: string };
 export type CefrjSelection = {
   selected: SelectedRecord[];
-  retired: RetiredEntry[];
+  movedUp: MovedUpEntry[];
+  ownerKept: OwnerKeptEntry[];
   counts: {
     records: number; headwords: number; retained: number; new: number; posNotTaught: number;
-    retiredEntries: number; byNgslTier: Record<NgslTier, number>;
+    movedUpEntries: number; ownerKeptEntries: number; byNgslTier: Record<NgslTier, number>;
   };
 };
 
@@ -78,7 +79,7 @@ export function matchKey(value: string): string {
     .replace(/[’‘]/g, "'").trim();
   return /[A-Z]/.test(folded) ? folded : folded.toLowerCase();
 }
-function withVariants(forms: Iterable<string>): Set<string> {
+export function withVariants(forms: Iterable<string>): Set<string> {
   const out = new Set<string>();
   for (const f of forms) { out.add(f); const v = VARIANT_OF.get(f); if (v) out.add(v); }
   return out;
@@ -104,16 +105,17 @@ export function parseCsv(text: string): string[][] {
   return rows.filter((r) => r.length > 1 || r[0] !== "");
 }
 
-export function readCefrjRows(text: string): CefrjRow[] {
+/** Octanove leaves one part of speech blank; `allowBlankPos` records it as "unspecified". */
+export function readCefrjRows(text: string, levels: readonly string[] = LEVELS, allowBlankPos = false): CefrjRow[] {
   const [header, ...body] = parseCsv(text.replace(/^\uFEFF/, ""));
   if (!header || header[0] !== "headword" || header[1] !== "pos" || header[2] !== "CEFR") {
     throw new Error("CEFR-J CSV: unexpected header");
   }
   return body.map((r, i) => {
     const [headword = "", pos = "", level = ""] = r;
-    if (!headword.trim() || !pos.trim()) throw new Error("CEFR-J CSV: empty headword or POS at row " + (i + 2));
-    if (!(LEVELS as readonly string[]).includes(level)) throw new Error("CEFR-J CSV: unknown level " + level + " at row " + (i + 2));
-    return { headword: headword.trim(), pos: pos.trim(), level };
+    if (!headword.trim() || (!pos.trim() && !allowBlankPos)) throw new Error("CEFR-J CSV: empty headword or POS at row " + (i + 2));
+    if (!levels.includes(level)) throw new Error("CEFR-J CSV: unknown level " + level + " at row " + (i + 2));
+    return { headword: headword.trim(), pos: pos.trim() || "unspecified", level };
   });
 }
 
@@ -178,19 +180,19 @@ export function buildCefrjSelection(input: {
   // speech; part of speech only reports which A1 uses a kept lesson already covers.
   const isA1 = (k: string) => records.get(k)!.level === "A1";
   const kept = new Map<string, CatalogueEntry[]>(); // record key -> kept entries with that spelling
-  const retired: RetiredEntry[] = [];
+  const movedUp: MovedUpEntry[] = [];
+  const ownerKept: OwnerKeptEntry[] = [];
   for (const entry of input.catalogue) {
     const matched = new Set<string>();
     for (const f of entryForms(entry.headword)) for (const k of recordsByForm.get(f) ?? []) matched.add(k);
     if ([...matched].some(isA1)) {
       for (const k of matched) kept.set(k, [...(kept.get(k) ?? []), entry]);
+    } else if (matched.size === 0) {
+      ownerKept.push({ entryId: entry.id, headword: entry.headword });
     } else {
       const levels = [...matched].map((k) => records.get(k)!.level);
-      const best = LEVELS.find((l) => levels.includes(l));
-      retired.push({
-        entryId: entry.id, headword: entry.headword,
-        bestCefrjLevel: (best ?? "NOT_IN_CEFRJ") as RetiredEntry["bestCefrjLevel"],
-      });
+      const best = LEVELS.find((l) => levels.includes(l))!;
+      movedUp.push({ entryId: entry.id, headword: entry.headword, cefrjLevel: best as MovedUpEntry["cefrjLevel"] });
     }
   }
 
@@ -217,14 +219,16 @@ export function buildCefrjSelection(input: {
   const byNgslTier = Object.fromEntries(tierOrder.map((t) => [t, selected.filter((s) => s.ngsl.tier === t).length])) as Record<NgslTier, number>;
   return {
     selected,
-    retired: retired.sort((a, b) => a.entryId.localeCompare(b.entryId)),
+    movedUp: movedUp.sort((a, b) => a.entryId.localeCompare(b.entryId)),
+    ownerKept: ownerKept.sort((a, b) => a.entryId.localeCompare(b.entryId)),
     counts: {
       records: selected.length,
       headwords: new Set(selected.map((s) => s.cefrjHeadword)).size,
       retained: new Set(selected.filter((s) => s.courseStatus === "RETAINED").map((s) => s.cefrjHeadword)).size,
       new: new Set(selected.filter((s) => s.courseStatus === "NEW").map((s) => s.cefrjHeadword)).size,
       posNotTaught: selected.filter((s) => s.courseStatus === "RETAINED" && !s.posTaught).length,
-      retiredEntries: retired.length,
+      movedUpEntries: movedUp.length,
+      ownerKeptEntries: ownerKept.length,
       byNgslTier,
     },
   };

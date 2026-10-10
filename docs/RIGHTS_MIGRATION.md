@@ -20,8 +20,10 @@ headword list with **every CEFR-J Wordlist 1.5 A1 headword** (1,066),
 using NGSL 1.2 for frequency order and attribution, and to unfreeze Units 1–3.
 The statement and answers are kept verbatim in
 `content/assurance/owner-authorship-attestation.json` (`laterStatements`).
-The selection, its sources and the three-phase plan are in
-`docs/A1_CEFRJ_REBUILD.md`. This is the Path B reconstruction below, with the
+The owner then extended the rule to every level: each word in CEFR-J (A1–B2)
+or the Octanove profile (C1–C2, CC BY-SA 4.0) goes to its lowest level, the
+app's levels become A1–C2, and no current word drops out. The selections,
+sources and the three-phase plan are in `docs/A1_CEFRJ_REBUILD.md`. This is the Path B reconstruction below, with the
 selection made by a written rule over open sources rather than by relabelling
 the Oxford roster. Gate 0 stays BLOCKED until the item, media and source
 evidence is complete.

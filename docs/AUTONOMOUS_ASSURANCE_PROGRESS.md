@@ -16,10 +16,10 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #206: `96550577a16e93e4c9f1453ba1387bad4c678ce4`.
+- Verified main after PR #207: `af0cc6d4df5c12b71df03229d1462740691dcd1d`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#206 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#207 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
@@ -1377,3 +1377,17 @@ softened for absolute claims before applying.
   `validate:data`): 1,066 headwords, 728 already taught, 338 new, 171
   current entries retire. Plan: `docs/A1_CEFRJ_REBUILD.md`.
 - No rights are cleared and no lesson is approved. Gate 0 stays BLOCKED.
+
+## 2026-10-10 — whole-app level placement
+
+- PR #207 (A1 selection) merged as `af0cc6d`. Review fixes kept CEFR-J words
+  apart by capitals (May ≠ may) and bound the owner statement verbatim.
+- The owner asked to "Do for all words in the app". Every CEFR-J (A1–B2) and
+  Octanove (C1–C2) word goes to its lowest level, the app's levels become
+  A1–C2 (B2+ merges into B2, C2 added), and no current word drops out.
+- `npm run assurance:levels` (inside `validate:data`) builds the placement:
+  8,649 listed words, 4,258 new to the app. Of the 5,322 current entries,
+  1,961 stay, 2,798 move and 563 are owner-kept outside the lists.
+- The A1 selection now reports 166 entries moving up and 5 owner-kept,
+  instead of 171 retired.
+- No rights are cleared. Gate 0 stays BLOCKED.
