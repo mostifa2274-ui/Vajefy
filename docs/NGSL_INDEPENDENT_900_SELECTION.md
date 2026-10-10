@@ -626,6 +626,13 @@ before this work.
 - **No legacy text.** The exact comparison rewrote 10 lines in 8 examples.
   Ranks 361–900 have no exact legacy match.
 
+- **Review fixes.** Review caught two issues, both fixed:
+  - *My phone can't find a network here* used *network* for mobile
+    service, outside the declared connected-devices sense. It was replaced
+    with a home-network example;
+  - *sold the car at a profit* went beyond a business-only *profit*
+    definition. The definition now also covers gain from a sale.
+
 All 60 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
