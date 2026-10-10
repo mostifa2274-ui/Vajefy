@@ -422,6 +422,55 @@ before this work.
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
-**Continuation checkpoint:** continue new authoring at **rank 601**, with
-**300** candidates still to draft.
+**Continuation checkpoint:** superseded below.
+
+## Ranks 601–680 (10 October 2026)
+
+Four more original English/Persian draft batches cover NGSL ranks 601–620,
+621–640, 641–660 and 661–680. Claude Code wrote them in this session. The
+staging corpus now contains **680/900 draft entries, 1,360 paired examples
+and 34 contiguous batches**. PR #202 (ranks 521–600) was merged as `d5f0439`
+before this work.
+
+- **Pre-PR checks.** Review of earlier batches kept finding the same three
+  faults, so all three were checked before the PR:
+  - examples outside the declared sense or part of speech;
+  - definitions that contradict their own examples;
+  - exact legacy matches.
+
+  Two examples were reworded: *a private school*, which is privately run
+  rather than "for one person or group", and intransitive *relate to*. The
+  legacy comparison rewrote 14 lines in 12 examples. Ranks 361–680 have no
+  exact legacy match.
+- **Scoped senses.** Polysemous words teach one sense, and the others are
+  named in the usage note:
+
+  | Lemma | Sense taught |
+  |---|---|
+  | `court` | a law court |
+  | `cell` | a living cell |
+  | `firm` | a company |
+  | `pretty` | the adverb *fairly* |
+  | `miss` | arriving too late |
+  | `plant` | a living plant |
+  | `press` | pushing a button |
+  | `key` | a door key |
+
+- **Review fixes.** Review caught three issues, all fixed:
+  - *met his wife* was translated as "saw" and now reads «آشنا شد»;
+  - *simply furnished* (plainly) sat outside the declared sense of `simply`
+    and was replaced with a clarity example;
+  - *Whatever you decide* uses the "no matter what" sense rather than the
+    declared pronoun sense, so it was replaced, and the usage note now names
+    that sense.
+
+  A sweep of the batch's Persian found three more meaning shifts, also
+  fixed: *I cut myself* had been rendered as "my hand was cut", *wonder* as
+  "I don't know", and *will represent* in the present tense.
+
+All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
+**Gate 0 is BLOCKED.**
+
+**Continuation checkpoint:** continue new authoring at **rank 681**, with
+**220** candidates still to draft.
 
