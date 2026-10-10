@@ -55,7 +55,7 @@
     "prompt": "Why does Mina say «I'd like», not «I want»?",
     "options": [
      {
-      "text": "It's more polite.",
+      "text": "It sounds nicer.",
       "ok": true,
       "why": "در رستوران I'd like مؤدبانه‌تر است."
      },
@@ -588,7 +588,7 @@
     "prompt": "Which sentence is advice, not a strong rule?",
     "options": [
      {
-      "text": "You should drink less coffee.",
+      "text": "You should drink more water.",
       "ok": true,
       "why": "should = توصیه."
      },
@@ -816,20 +816,20 @@
    {
     "type": "choice",
     "id": "q2",
-    "prompt": "The teacher says «Listen», not «Hear», because ___.",
+    "prompt": "چرا معلم می‌گوید «Listen» و نه «Hear»؟",
     "options": [
      {
-      "text": "the student must pay attention",
+      "text": "چون شاگرد باید با دقت و توجه گوش کند",
       "ok": true,
       "why": "گوش دادن عمدی: listen."
      },
      {
-      "text": "«hear» is only for music",
+      "text": "چون «شنیدن» فقط برای موسیقی است",
       "ok": false,
       "why": "hear برای هر صدایی است، اما بی‌تلاش."
      },
      {
-      "text": "«listen» is louder",
+      "text": "چون «گوش دادن» صدای بلندتری دارد",
       "ok": false,
       "why": "دلیلش توجه است، نه بلندی."
      }
@@ -924,20 +924,20 @@
    {
     "type": "choice",
     "id": "q2",
-    "prompt": "«They are still children» means ___.",
+    "prompt": "«They are still children» یعنی چه؟",
     "options": [
      {
-      "text": "they are children now, not adults yet",
+      "text": "هنوز بچه‌اند و بزرگ نشده‌اند",
       "ok": true,
       "why": "still = هنوز."
      },
      {
-      "text": "they are quiet children",
+      "text": "بچه‌های آرامی هستند",
       "ok": false,
       "why": "still اینجا یعنی هنوز، نه آرام."
      },
      {
-      "text": "they were children",
+      "text": "قبلاً بچه بودند",
       "ok": false,
       "why": "زمان حال است."
      }
@@ -1024,15 +1024,15 @@
    {
     "type": "choice",
     "id": "q2",
-    "prompt": "«I don't have much time» – why «much», not «many»?",
+    "prompt": "چرا در «I don't have much time» می‌گوییم much و نه many؟",
     "options": [
      {
-      "text": "«time» here is uncountable",
+      "text": "چون «وقت» در این معنا غیرقابل‌شمارش است",
       "ok": true,
       "why": "time در معنای وقت غیرقابل‌شمارش است."
      },
      {
-      "text": "«much» is more polite",
+      "text": "چون مؤدبانه‌تر است",
       "ok": false,
       "why": "دلیلش شمارش‌پذیری است."
      }
@@ -1122,7 +1122,7 @@
     "prompt": "Why «leave it in the taxi», not «forget it in the taxi»?",
     "options": [
      {
-      "text": "With a place, English uses «leave».",
+      "text": "With a place, we use «leave».",
       "ok": true,
       "why": "leave something somewhere."
      },
@@ -1207,15 +1207,15 @@
    {
     "type": "choice",
     "id": "q1",
-    "prompt": "«You don't have to print it» means ___.",
+    "prompt": "«You don't have to print it» یعنی چه؟",
     "options": [
      {
-      "text": "printing is not necessary",
+      "text": "لازم نیست چاپش کنی",
       "ok": true,
       "why": "don't have to = لازم نیست."
      },
      {
-      "text": "printing is not allowed",
+      "text": "اجازه نداری چاپش کنی",
       "ok": false,
       "why": "این معنای mustn't است."
      }
@@ -1420,12 +1420,12 @@
     "prompt": "How is «present» (هدیه) pronounced?",
     "options": [
      {
-      "text": "PRE-sent",
+      "text": "PREsent",
       "ok": true,
       "why": "اسم: تأکید روی بخش اول."
      },
      {
-      "text": "pre-SENT",
+      "text": "preSENT",
       "ok": false,
       "why": "تلفظ فعل است."
      }

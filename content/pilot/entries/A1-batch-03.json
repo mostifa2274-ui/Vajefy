@@ -2678,22 +2678,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "Take your jacket, or you'll ___ a cold.",
+      "prompt": "I ___ a cold. I need to stay in bed.",
       "options": [
        {
-        "text": "catch",
+        "text": "have",
         "ok": true,
-        "why": "catch a cold = سرما خوردن."
+        "why": "برای «سرما خوردن» have a cold می‌گوییم."
        },
        {
-        "text": "take",
+        "text": "am",
         "ok": false,
-        "why": "take a cold غلط است."
+        "why": "I am a cold معنا ندارد؛ I am cold (بدون a) یعنی «سردم است». برای بیماری have a cold."
        },
        {
         "text": "eat",
         "ok": false,
-        "why": "eat a cold ترجمهٔ تحت‌اللفظی و غلط است."
+        "why": "«سرما خوردن» در انگلیسی با eat نیست؛ have a cold."
        }
       ]
      },
@@ -3162,22 +3162,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "The roads are dangerous after ___ rain.",
+      "prompt": "We had a lot of ___ yesterday.",
       "options": [
        {
-        "text": "heavy",
+        "text": "rain",
         "ok": true,
-        "why": "heavy rain = باران شدید."
+        "why": "rain اینجا غیرقابل‌شمارش است: a lot of rain."
        },
        {
-        "text": "strong",
+        "text": "rains",
         "ok": false,
-        "why": "strong rain طبیعی نیست."
+        "why": "rain در این معنا جمع بسته نمی‌شود."
        },
        {
-        "text": "big",
+        "text": "raining",
         "ok": false,
-        "why": "big rain طبیعی نیست."
+        "why": "بعد از a lot of اسم می‌آید، نه فعل ing."
        }
       ]
      },
@@ -3959,22 +3959,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "My aunt has a very ___ business.",
+      "prompt": "Our new shop was a big ___.",
       "options": [
        {
-        "text": "successful",
+        "text": "success",
         "ok": true,
-        "why": "صفت لازم است."
+        "why": "بعد از a big اسم لازم است: a big success = موفقیت بزرگ."
        },
        {
-        "text": "success",
+        "text": "successful",
         "ok": false,
-        "why": "success اسم است."
+        "why": "successful صفت است؛ بعد از a big اسم می‌آید."
        },
        {
         "text": "succeed",
         "ok": false,
-        "why": "succeed فعل است."
+        "why": "succeed فعل است؛ اینجا اسم لازم است."
        }
       ]
      },
@@ -4357,22 +4357,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "I studied hard, so I ___ the exam.",
+      "prompt": "I have an ___ tomorrow. I need to study tonight.",
       "options": [
        {
-        "text": "passed",
+        "text": "exam",
         "ok": true,
-        "why": "pass an exam = قبول شدن."
+        "why": "بعد از an اسم مفرد می‌آید: an exam = یک امتحان."
        },
        {
-        "text": "gave",
+        "text": "exams",
         "ok": false,
-        "why": "give an exam کار معلم است."
+        "why": "بعد از an اسم مفرد می‌آید، نه جمع."
        },
        {
-        "text": "won",
+        "text": "examine",
         "ok": false,
-        "why": "win برای مسابقه است."
+        "why": "examine فعل است (بررسی کردن)؛ اینجا اسم لازم است."
        }
       ]
      },
@@ -5791,22 +5791,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "This soup is too ___. Can I have some water?",
+      "prompt": "I want some ___ in my soup.",
       "options": [
        {
-        "text": "salty",
-        "ok": true,
-        "why": "صفت: شور."
-       },
-       {
         "text": "salt",
-        "ok": false,
-        "why": "salt اسم است."
+        "ok": true,
+        "why": "اینجا اسم لازم است: some salt = کمی نمک."
        },
        {
-        "text": "salting",
+        "text": "salty",
         "ok": false,
-        "why": "salting معنای «شور» ندارد."
+        "why": "salty صفت است (شور)؛ بعد از some اسم می‌آید."
+       },
+       {
+        "text": "salts",
+        "ok": false,
+        "why": "salt غیرقابل‌شمارش است و s جمع نمی‌گیرد."
        }
       ]
      },
@@ -6779,22 +6779,22 @@
      {
       "type": "choice",
       "id": "q1",
-      "prompt": "We walked ___ the river for an hour.",
+      "prompt": "There are a lot of fish in this ___.",
       "options": [
        {
-        "text": "along",
+        "text": "river",
         "ok": true,
-        "why": "در امتداد رودخانه."
+        "why": "ماهی در رودخانه زندگی می‌کند: river = رودخانه."
        },
        {
-        "text": "on",
+        "text": "road",
         "ok": false,
-        "why": "on the river یعنی روی آب."
+        "why": "road یعنی جاده؛ ماهی در جاده نیست."
        },
        {
-        "text": "through",
+        "text": "street",
         "ok": false,
-        "why": "through the river یعنی از داخل آب."
+        "why": "street یعنی خیابان؛ ماهی در خیابان نیست."
        }
       ]
      },

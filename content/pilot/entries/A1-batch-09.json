@@ -2434,22 +2434,22 @@
           {
             "type": "choice",
             "id": "q1",
-            "prompt": "There are three ___ outside the bank.",
+            "prompt": "There is one ___ outside the bank.",
             "options": [
               {
-                "text": "policemen",
+                "text": "policeman",
                 "ok": true,
-                "why": "جمعِ policeman: policemen."
+                "why": "با one اسم مفرد می‌آید: one policeman."
+              },
+              {
+                "text": "policemen",
+                "ok": false,
+                "why": "policemen جمع است؛ با one مفرد لازم است."
               },
               {
                 "text": "policemans",
                 "ok": false,
-                "why": "جمعِ policeman بی‌قاعده است."
-              },
-              {
-                "text": "policeman",
-                "ok": false,
-                "why": "با three جمع لازم است."
+                "why": "جمعِ policeman بی‌قاعده است (policemen)، و اینجا مفرد لازم است."
               }
             ]
           },

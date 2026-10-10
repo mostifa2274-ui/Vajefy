@@ -16,16 +16,17 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #197: `e9bb980c45973ff92e4cf60ee66bdf87cdbc415c`.
+- Verified main after PR #198: `f1f18420b4aa925b80da977a8cf0b81649fe0a93`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#197 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#198 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
   in frozen Units 1–3 and wait for an owner scope decision. Later-unit usage
-  notes, grammar notes and answer feedback are complete.
-- Remaining: 6,721 deterministic findings; 360/900 unreviewed independent
+  notes, grammar notes and answer feedback are complete. The frontier triage
+  queue holds only frozen Units 1–3 cases (71); later-unit rewording is done.
+- Remaining: 6,640 deterministic findings; 360/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -1237,3 +1238,18 @@ softened for absolute claims before applying.
 `PERSIAN_CHECK_FEEDBACK` fell from 872 to 114, and total findings from 7,479 to
 6,721. The 114 left are in frozen Units 1–3. See
 [the evidence](CHECK_FEEDBACK_2026-10-10.md).
+
+## 2026-10-10 — Later-unit frontier task rewording
+
+- PR #198 (answer feedback) merged as `f1f1842`.
+- The 34 later-unit tasks left in the frontier triage queue were reworded with
+  vocabulary taught by their frontier. They were 32 needing rewording or
+  review, plus the deferred *hardly* and *pick up* gloss candidates. The
+  generator is `claude-code-2026-10-10-frontier-rewording`.
+- Task-frontier findings fell 4,966 → 4,897, scene-frontier 59 → 47, and
+  total findings 6,721 → 6,640. The baseline was lowered and no other code rose.
+- The triage queue is 71, all in frozen Units 1–3. The remaining task
+  findings need core-word promotion into the frozen roster, which is an owner
+  decision.
+- Evidence: `docs/FRONTIER_REWORDING_2026-10-10.md`. There is no semantic
+  certificate.
