@@ -12,6 +12,7 @@ import {
 import { CONTENT_CHANNEL } from "./channel";
 import { loadPilot, loadPilotOrder, pilotFace } from "./pilot";
 import { useProgress } from "./store";
+import { inLearningScope } from "./course-scope";
 import { bareHeadword, levelOf } from "./text";
 import type {
   Antonym,
@@ -234,9 +235,10 @@ export async function loadStudyFaces(
   copy: Copy,
 ): Promise<Map<string, StudyFace>> {
   const map = new Map<string, StudyFace>();
+  const scopedIds = extraIds.filter(id => inLearningScope(id, focus));
   const levels = new Set<LevelId>([focus]);
   const decks = new Set<LibDeckId>();
-  for (const id of extraIds) {
+  for (const id of scopedIds) {
     const level = levelOf(id);
     if (level) levels.add(level);
     else {
@@ -256,7 +258,7 @@ export async function loadStudyFaces(
       for (const face of faces) map.set(face.id, face);
     }),
   ]);
-  await addPilotFaces(map, extraIds);
+  await addPilotFaces(map, scopedIds);
   return map;
 }
 

@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { PilotEntryDetail } from "@/components/pilot-entry";
+import { ReferenceLinks } from "@/components/reference-links";
+import { inLearningScope } from "@/lib/learn/course-scope";
 import { PageHeader, Sep, SpeakButton } from "@/components/ui";
 import { introducible, loadPilot, type PilotIndex } from "@/lib/learn/pilot";
 import { cn } from "@/lib/cn";
@@ -305,6 +307,7 @@ function LexiconPage() {
                   </p>
                 </>
               )}
+              <ReferenceLinks key={selected.id} entry={selected.id} copy={copy} />
               <div className="mt-4 flex flex-wrap gap-2">
                 <button
                   type="button"
@@ -314,14 +317,14 @@ function LexiconPage() {
                 >
                   {bookmarks.includes(selected.id) ? copy.bookmarked : copy.bookmark}
                 </button>
-                <button
+                {inLearningScope(selected.id, focus) ? <button
                   type="button"
                   disabled={!hydrated || Boolean(cards[selected.id])}
                   onClick={() => addToReview(selected.id)}
                   className="min-h-11 rounded-md border border-line px-3 text-sm disabled:opacity-40"
                 >
                   {cards[selected.id] ? copy.added : copy.learnThis}
-                </button>
+                </button> : null}
               </div>
             </article>
           ) : (

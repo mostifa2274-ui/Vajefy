@@ -1,17 +1,18 @@
 import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
-import { LEGACY_KEY } from "./progress-db";
+import { LEGACY_KEY, readProgress } from "./progress-db";
 
 // Fixtures are served in place of the real data files, so service workers are
 // blocked to let every request reach the route.
 test.use({ serviceWorkers: "block" });
 
-function seed(page: Page, focus: string) {
+function seed(page: Page, focus: string, patch: Record<string, unknown> = {}) {
   const progress = {
     cards: {}, logs: [], lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
     streak: 0, lastStudyDate: null, xp: 0, lang: "en", focus, sessionSize: 20, newPerDay: 10,
     voice: false, accent: "en-GB", bookmarks: [], dailyGoal: 20, requestRetention: 0.9,
     reviewHistory: [], practiceSkills: {}, onboarded: true,
+    ...patch,
   };
   return page.addInitScript(({ key, raw }) => {
     if (!sessionStorage.getItem("seeded")) {
@@ -83,6 +84,104 @@ test("reference notes a bilingual reviewer approved are marked as reviewed", asy
   await expect(detail.getByText("Reviewed", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Back", exact: true }).first().click();
   await page.goto("/library?d=conf");
-  await page.getByRole("button", { name: /raise \/ rise/ }).first().click();
+  await page.getByRole("button", { name: /bring \/ take \/ fetch/ }).first().click();
   await expect(page.locator("article").getByText("Reviewed", { exact: true })).toHaveCount(0);
+});
+
+test("A1 reference links open the exact course-linked note without enrolling it", async ({ page }) => {
+  await seed(page, "A1");
+  await page.goto("/lexicon?q=make");
+  await page.locator("html[data-progress-ready]").waitFor({ state: "attached" });
+  await page.getByRole("button", { name: /^make\s/ }).first().click();
+  await page.getByText("Related reference notes", { exact: true }).click();
+  await page.getByRole("link", { name: "do / make", exact: true }).click();
+  await expect.poll(() => new URL(page.url()).searchParams.get("n")).toBe("conf:do-make");
+  await expect(page.locator("article h2")).toHaveText("do / make");
+  await expect(page.getByRole("button", { name: "Add to review", exact: true })).toHaveCount(0);
+  const saved = await readProgress(page);
+  expect(saved.state.cards).toEqual({});
+  expect(saved.state.logs.reduce((sum: number, log: { introduced: number }) => sum + log.introduced, 0)).toBe(0);
+  await expect.poll(async () => (await readProgress(page)).events.some(event => event.type === "exposure" && event.item === "conf:do-make")).toBe(true);
+});
+
+test("an A1 direct link cannot display an unlinked reference note", async ({ page }) => {
+  await seed(page, "A1");
+  await page.goto("/library?d=conf&n=conf:raise-rise");
+  await expect(page.getByRole("button", { name: /do \/ make/ }).first()).toBeVisible();
+  await expect(page.locator("article")).toHaveCount(0);
+  await page.getByRole("textbox", { name: "Search", exact: true }).fill("raise");
+  await expect(page.getByText("Nothing matches that search.", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /raise \/ rise/ })).toHaveCount(0);
+});
+
+test("A1 reference loading fails closed when its course links are unavailable", async ({ page }) => {
+  const deckRequests: string[] = [];
+  page.on("request", request => {
+    if (request.url().endsWith("/data/confusing.json")) deckRequests.push(request.url());
+  });
+  await page.route("**/data/a1-reference-links.json", route => route.fulfill({ status: 503, body: "unavailable" }));
+  await seed(page, "A1");
+  await page.goto("/library?d=conf&n=conf:do-make");
+  await expect(page.getByRole("status")).toHaveText("The data could not be loaded.");
+  await expect(page.locator("article")).toHaveCount(0);
+  expect(deckRequests).toEqual([]);
+});
+
+test("a saved higher-level learner can still read and enrol an unlinked reference note", async ({ page }) => {
+  await seed(page, "A2");
+  await page.goto("/library?d=conf&n=conf:raise-rise");
+  await expect(page.locator("article h2")).toHaveText("raise / rise");
+  await page.getByRole("button", { name: "Add to review", exact: true }).click();
+  await expect.poll(async () => Boolean((await readProgress(page)).state.cards["conf:raise-rise"])).toBe(true);
+});
+
+test("A1 replaces a mixed interrupted review without deleting its saved cards or history", async ({ page }) => {
+  const now = Date.now();
+  const last = now - 15 * 86_400_000;
+  const card = {
+    ease: 2.5, interval: 15, due: now - 60_000, reps: 5, lapses: 0, state: "review", step: 0, last,
+    fsrs: { model: "fsrs6", stability: 15, difficulty: 5, scheduledDays: 15, learningSteps: 0, state: "review", lastReview: last },
+  };
+  await seed(page, "A1", {
+    newPerDay: 0,
+    cards: Object.fromEntries(["lex:A1:about", "lex:A2:ability", "conf:do-make"].map(id => [id, card])),
+  });
+  await page.goto("/");
+  const before = await readProgress(page);
+  const mixed = {
+    id: "legacy-mixed-review", kind: "review", status: "active", createdAt: now, updatedAt: now, focus: "A1",
+    queue: [{ id: "conf:do-make", isNew: false, dueAt: 0 }, { id: "lex:A1:about", isNew: false, dueAt: 0 }],
+    taught: [], revealed: false, answers: [{ op: "past-answer", item: "lex:A2:ability", grade: "good", at: now - 100 }], total: 3,
+  };
+  await page.evaluate(async session => {
+    const db = await new Promise<IDBDatabase>((resolve, reject) => {
+      const open = indexedDB.open("vajefy");
+      open.onsuccess = () => resolve(open.result);
+      open.onerror = () => reject(open.error);
+    });
+    await new Promise<void>((resolve, reject) => {
+      const tx = db.transaction("sessions", "readwrite");
+      tx.objectStore("sessions").put(session);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+      tx.onabort = () => reject(tx.error);
+    });
+    db.close();
+  }, mixed);
+  await page.reload();
+  await expect(page.getByRole("link", { name: /Continue your review/ })).toHaveCount(0);
+  const requests: string[] = [];
+  page.on("request", request => requests.push(new URL(request.url()).pathname));
+  await page.goto("/study");
+  await expect(page.locator("main h2[lang=en]").first()).toHaveText("about");
+  await expect.poll(async () => (await readProgress(page)).sessions.find(session => session.id === mixed.id)?.status).toBe("done");
+  await expect.poll(async () => (await readProgress(page)).sessions.filter(session => session.status === "active").length).toBe(1);
+  const after = await readProgress(page);
+  expect(after.state.cards).toEqual(before.state.cards);
+  expect(after.events.filter(event => event.type === "review")).toEqual(before.events.filter(event => event.type === "review"));
+  const archived = after.sessions.find(session => session.id === mixed.id);
+  expect(archived.queue).toEqual(mixed.queue);
+  expect(archived.answers).toEqual(mixed.answers);
+  expect(after.sessions.find(session => session.status === "active").queue.map((item: { id: string }) => item.id)).toEqual(["lex:A1:about"]);
+  expect(requests.filter(path => path === "/data/lex-a2.json" || path === "/data/confusing.json")).toEqual([]);
 });

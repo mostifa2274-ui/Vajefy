@@ -10,6 +10,7 @@ const SHELL = ["/manifest.json", "/favicon.svg", "/icon-192.png", "/icon-512.png
 const DATA = [
   "/data/meta.json",
   "/data/lex-a1.json",
+  "/data/a1-reference-links.json",
   "/data/enhanced/index.json",
   "/data/enhanced/audio-pack.json",
   "/data/enhanced-order.json",

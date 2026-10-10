@@ -60,7 +60,7 @@ function LearnPage() {
   const [opened] = useState(() => Date.now());
 
   const unfinished = resumable(sessions, "lesson", opened);
-  const due = dueIds(cards, opened).length;
+  const due = dueIds(cards, opened, focus).length;
   const secondsPerNew = measuredSecondsPerNew(Object.values(sessions));
   const plan = dailyPlan({
     due,

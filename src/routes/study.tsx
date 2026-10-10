@@ -12,6 +12,7 @@ import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
 import { introductionOrder, loadPilot, loadPilotOrder } from "@/lib/learn/pilot";
 import { entryIdOf } from "@/lib/learn/targets";
 import { dailyPlan } from "@/lib/learn/planner";
+import { reviewSessionInScope } from "@/lib/learn/course-scope";
 import { levelOf, shuffle } from "@/lib/learn/text";
 import type { CardProg, LevelId, StudyFace } from "@/lib/learn/types";
 
@@ -107,7 +108,7 @@ function StudyPage() {
         const state = useProgress.getState();
         const now = Date.now();
         const existing = resumable(state.sessions, "review", now);
-        if (existing && !startNew.current) {
+        if (existing && !startNew.current && reviewSessionInScope(existing, state.focus)) {
           const faces = await loadStudyFaces(existing.focus, existing.queue.map((item) => item.id), meta, copy);
           if (!alive) return;
           const queue = existing.queue.filter(
@@ -124,7 +125,7 @@ function StudyPage() {
         }
         if (existing) saveSession({ ...existing, status: "done", updatedAt: now });
 
-        const due = dueIds(state.cards);
+        const due = dueIds(state.cards, now, state.focus);
         const faces = await loadStudyFaces(state.focus, due, meta, copy);
         if (!alive) return;
         // Every file these ids point to loaded, so a due id still missing has

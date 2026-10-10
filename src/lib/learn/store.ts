@@ -7,6 +7,7 @@ import { planFor } from "./planner";
 import { newId, type SessionRecord } from "./session";
 import { isMastered } from "./srs";
 import { todayKey } from "./text";
+import { inLearningScope } from "./course-scope";
 import type { CardProg, Grade, Lang, LevelId, PracticeSkill } from "./types";
 
 export {
@@ -132,7 +133,7 @@ export const useProgress = create<ProgressState>()((set, get) => {
     },
     undo: (target, sessionState) => void dispatch({ id: newId(), type: "undo", at: Date.now(), target, sessionState }),
     addToReview: (id) => {
-      if (get().cards[id]) return;
+      if (!inLearningScope(id, get().focus) || get().cards[id]) return;
       dispatch({ id: newId(), type: "introduce", at: Date.now(), item: id });
     },
     forget: (ids) => {
@@ -191,9 +192,9 @@ export function liveStreak(streak: number, lastStudyDate: string | null, now = n
   return 0;
 }
 
-export function dueIds(cards: Record<string, CardProg>, now = Date.now()): string[] {
+export function dueIds(cards: Record<string, CardProg>, now = Date.now(), focus?: LevelId): string[] {
   return Object.entries(cards)
-    .filter(([, card]) => card.due <= now)
+    .filter(([id, card]) => card.due <= now && (!focus || inLearningScope(id, focus)))
     .sort((a, b) => a[1].due - b[1].due)
     .map(([id]) => id);
 }

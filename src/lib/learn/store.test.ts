@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { beforeEach, mock, test } from "node:test";
-import { liveStreak, migrateProgress, todayLog, useProgress } from "./store";
+import { dueIds, liveStreak, migrateProgress, todayLog, useProgress } from "./store";
+import { reviewSessionInScope } from "./course-scope";
+import { startReview } from "./session";
 import type { CardProg } from "./types";
 
 const DAY = 86400000;
@@ -21,6 +23,7 @@ beforeEach(() => {
   mock.timers.reset();
   mock.timers.enable({ apis: ["Date"], now: NOW });
   useProgress.setState({
+    focus: "A1",
     cards: {},
     logs: [],
     lifetime: { reviews: 0, correct: 0, practice: 0, practiceCorrect: 0 },
@@ -31,6 +34,49 @@ beforeEach(() => {
     reviewHistory: [],
     practiceSkills: {},
   });
+});
+
+test("A1 enrolment rejects reference and higher-level items without deleting saved cards", () => {
+  const legacy = { ...mature, due: NOW };
+  useProgress.setState({ cards: { "conf:do-make": legacy } });
+  const add = useProgress.getState().addToReview;
+  add("conf:do-make");
+  add("pv:get-up");
+  add("lex:A2:ability");
+  assert.deepEqual(useProgress.getState().cards, { "conf:do-make": legacy });
+  assert.equal(todayLog(useProgress.getState().logs).introduced, 0);
+  add("lex:A1:about#topic");
+  assert.ok(useProgress.getState().cards["lex:A1:about#topic"]);
+  assert.equal(todayLog(useProgress.getState().logs).introduced, 1);
+  assert.deepEqual(useProgress.getState().cards["conf:do-make"], legacy);
+});
+
+test("A1 due planning excludes saved out-of-course cards while higher-level behaviour is preserved", () => {
+  const cards = {
+    "conf:do-make": { ...mature, due: NOW - 30 },
+    "lex:A2:ability": { ...mature, due: NOW - 20 },
+    "lex:A1:about": { ...mature, due: NOW - 10 },
+    "lex:A1:above": { ...mature, due: NOW + DAY },
+  };
+  const original = structuredClone(cards);
+  assert.deepEqual(dueIds(cards, NOW, "A1"), ["lex:A1:about"]);
+  assert.deepEqual(dueIds(cards, NOW, "A2"), ["conf:do-make", "lex:A2:ability", "lex:A1:about"]);
+  assert.deepEqual(cards, original);
+  useProgress.setState({ focus: "A2" });
+  useProgress.getState().addToReview("pv:get-up");
+  assert.ok(useProgress.getState().cards["pv:get-up"]);
+});
+
+test("mixed legacy reviews cannot resume in A1 but their queues and answers remain intact", () => {
+  const mixed = startReview([{ id: "lex:A1:about", isNew: false }, { id: "conf:do-make", isNew: false }], "A1", NOW);
+  mixed.answers = [{ op: "old", item: "conf:do-make", grade: "good", at: NOW - 100 }];
+  const original = structuredClone(mixed);
+  assert.equal(reviewSessionInScope(mixed, "A1"), false);
+  assert.equal(reviewSessionInScope(mixed, "A2"), true);
+  assert.deepEqual(mixed, original);
+  const a1 = startReview([{ id: "lex:A1:about", isNew: false }], "A1", NOW);
+  assert.equal(reviewSessionInScope(a1, "A1"), true);
+  assert.equal(reviewSessionInScope({ ...a1, focus: "A2" }, "A1"), false);
 });
 
 test("practice never adds a word to the schedule", () => {
