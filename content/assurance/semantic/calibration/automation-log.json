@@ -170,6 +170,26 @@
         "outputTokens": 5084,
         "neurons": 836
       }
+    },
+    {
+      "kind": "calibration",
+      "date": "2026-10-10",
+      "at": "2026-10-10T06:02:06.070Z",
+      "runId": "38029252396.1",
+      "role": "persian",
+      "model": "@cf/qwen/qwen3.8-27b",
+      "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 800,
+      "promptVersion": "persian-a1-prompt-v1",
+      "rubricVersion": "persian-a1-v1",
+      "outcome": "rejected",
+      "requestsSent": 18,
+      "neuronsCharged": 7767,
+      "measured": {
+        "inputTokens": 18630,
+        "outputTokens": 9761,
+        "neurons": 3602
+      }
     }
   ]
 }
