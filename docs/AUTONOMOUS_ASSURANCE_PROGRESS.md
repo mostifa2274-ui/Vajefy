@@ -16,16 +16,16 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #196: `adab88e599209452eb92d785ec4f1eeb1e6651b7`.
+- Verified main after PR #197: `e9bb980c45973ff92e4cf60ee66bdf87cdbc415c`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#196 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#197 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
-  remaining pairs, 36 usage notes and 161 grammar notes are in frozen Units 1–3
-  and wait for an owner scope decision. Later-unit usage and grammar notes are
-  complete.
-- Remaining: 7,479 deterministic findings; 360/900 unreviewed independent
+  remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
+  in frozen Units 1–3 and wait for an owner scope decision. Later-unit usage
+  notes, grammar notes and answer feedback are complete.
+- Remaining: 6,721 deterministic findings; 360/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -1220,3 +1220,20 @@ before applying.
 `PERSIAN_GRAMMAR_NOTE` fell from 942 to 161, and total findings from 8,260 to
 7,479. The 161 left are in frozen Units 1–3. See
 [the evidence](GRAMMAR_NOTES_2026-10-10.md).
+
+PR #197 merged as `e9bb980c45973ff92e4cf60ee66bdf87cdbc415c` after check,
+browser, Workers build contract, Workers Builds and rollback rehearsal passed.
+Codex found the *-ing* adjectives described as things-only and *a box of*
+restricted to plurals. Both were fixed, and five similar notes were corrected
+before the merge.
+
+## Persian reasons for later-unit answer feedback — 2026-10-10
+
+758 check feedback lines in Units 4–12 held only an English fragment that
+repeated the answer. Each now opens with a short Persian reason for why that
+answer is right, and the English fragment follows unchanged. Five drafts were
+softened for absolute claims before applying.
+
+`PERSIAN_CHECK_FEEDBACK` fell from 872 to 114, and total findings from 7,479 to
+6,721. The 114 left are in frozen Units 1–3. See
+[the evidence](CHECK_FEEDBACK_2026-10-10.md).

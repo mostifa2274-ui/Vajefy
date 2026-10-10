@@ -63,7 +63,7 @@
             "answer": "dollars",
             "accept": [],
             "fa": "در آمریکا مردم با دلار پرداخت می‌کنند.",
-            "why": "pay in dollars.",
+            "why": "برای واحد پول pay in + جمع: pay in dollars.",
             "support": [
               {
                 "en": "USA",
@@ -100,7 +100,7 @@
             "frame": "I have a hundred ___.",
             "answer": "dollars",
             "accept": [],
-            "why": "a hundred dollars."
+            "why": "بعد از عدد بزرگ‌تر از یک dollars جمع است: a hundred dollars."
           }
         ]
       }
@@ -173,7 +173,7 @@
               "start"
             ],
             "fa": "دوست داری به کلاسِ انگلیسیِ ما بیایی؟ دوشنبه شروع می‌شود.",
-            "why": "join a class.",
+            "why": "join مفعول مستقیم می‌گیرد، بدون to: join a class.",
             "support": [
               {
                 "en": "English",
@@ -210,7 +210,7 @@
             "frame": "I want to ___ the club.",
             "answer": "join",
             "accept": [],
-            "why": "join the club."
+            "why": "join مفعول مستقیم می‌گیرد، بدون to: join the club."
           }
         ]
       }
@@ -315,7 +315,7 @@
               "kilometers",
               "km"
             ],
-            "why": "five kilometres."
+            "why": "بعد از عدد بزرگ‌تر از یک kilometres جمع است: five kilometres."
           }
         ]
       }
@@ -525,7 +525,7 @@
             "frame": "The school is a ___ away.",
             "answer": "mile",
             "accept": [],
-            "why": "a mile away."
+            "why": "برای فاصله a mile away: a mile away."
           }
         ]
       }
@@ -624,7 +624,7 @@
             "frame": "There's a ___ under the table.",
             "answer": "mouse",
             "accept": [],
-            "why": "a mouse."
+            "why": "mouse مفرد است و a می‌گیرد: a mouse."
           }
         ]
       },
@@ -1399,7 +1399,7 @@
               "alright"
             ],
             "fa": "ناراحت به نظر می‌رسی. حالت خوب است؟",
-            "why": "Are you OK?"
+            "why": "برای پرسیدن حال Are you OK?: Are you OK?"
           },
           {
             "type": "choice",
@@ -1436,7 +1436,7 @@
               "all right",
               "alright"
             ],
-            "why": "I'm OK."
+            "why": "در جواب احوال‌پرسی I'm OK: I'm OK."
           }
         ]
       }
@@ -1716,7 +1716,7 @@
             "answer": "opposite",
             "accept": [],
             "fa": "متضادِ بلند کوتاه است.",
-            "why": "the opposite of."
+            "why": "the opposite of یعنی «متضادِ …»: the opposite of."
           },
           {
             "type": "choice",
@@ -1726,7 +1726,7 @@
               {
                 "text": "of",
                 "ok": true,
-                "why": "the opposite of."
+                "why": "the opposite of یعنی «متضادِ …»: the opposite of."
               },
               {
                 "text": "from",
@@ -1747,7 +1747,7 @@
             "frame": "What's the ___ of big?",
             "answer": "opposite",
             "accept": [],
-            "why": "the opposite of."
+            "why": "the opposite of یعنی «متضادِ …»: the opposite of."
           }
         ]
       }
@@ -1914,7 +1914,7 @@
               "pen"
             ],
             "fa": "برای نقاشی یک مداد و کمی کاغذ لازم دارم.",
-            "why": "a pencil."
+            "why": "pencil قابل‌شمارش است و a می‌گیرد: a pencil."
           },
           {
             "type": "choice",
@@ -1945,7 +1945,7 @@
             "frame": "I lost my ___.",
             "answer": "pencil",
             "accept": [],
-            "why": "my pencil."
+            "why": "pencil با صفت ملکی می‌آید: my pencil."
           }
         ]
       }
@@ -2013,7 +2013,7 @@
             "answer": "pepper",
             "accept": [],
             "fa": "می‌شود نمک و فلفل را بدهی؟",
-            "why": "salt and pepper.",
+            "why": "عبارت رایج «نمک و فلفل»: salt and pepper.",
             "support": [
               {
                 "en": "pass",
@@ -2029,7 +2029,7 @@
               {
                 "text": "pepper",
                 "ok": true,
-                "why": "salt and pepper."
+                "why": "عبارت رایج «نمک و فلفل»: salt and pepper."
               },
               {
                 "text": "paper",
@@ -2050,7 +2050,7 @@
             "frame": "Add some ___.",
             "answer": "pepper",
             "accept": [],
-            "why": "some pepper."
+            "why": "pepper به معنای پودر فلفل غیرقابل‌شمارش است: some pepper."
           }
         ]
       }
@@ -2121,7 +2121,7 @@
               "sentences"
             ],
             "fa": "کلمه‌ها و عبارت‌های جدیدِ درس را یاد بگیر.",
-            "why": "words and phrases."
+            "why": "words and phrases یعنی «کلمه‌ها و عبارت‌ها»: words and phrases."
           },
           {
             "type": "choice",
@@ -2154,7 +2154,7 @@
             "accept": [
               "sentence"
             ],
-            "why": "this phrase."
+            "why": "this با اسم مفرد می‌آید: this phrase."
           }
         ]
       }
@@ -2253,7 +2253,7 @@
             "frame": "A ___ is a clever animal.",
             "answer": "pig",
             "accept": [],
-            "why": "a pig.",
+            "why": "pig مفرد است و a می‌گیرد: a pig.",
             "support": [
               {
                 "en": "clever",
@@ -2358,7 +2358,7 @@
             "frame": "She bought a ___ dress.",
             "answer": "pink",
             "accept": [],
-            "why": "a pink dress."
+            "why": "رنگ پیش از اسم می‌آید: a pink dress."
           }
         ]
       }
@@ -2462,7 +2462,7 @@
             "accept": [
               "police officer"
             ],
-            "why": "a policeman."
+            "why": "پیش از شغل a می‌آید: a policeman."
           }
         ]
       }
@@ -2639,7 +2639,7 @@
             "answer": "pounds",
             "accept": [],
             "fa": "در بریتانیا مردم با پوند پرداخت می‌کنند.",
-            "why": "pay in pounds.",
+            "why": "برای واحد پول pay in + جمع: pay in pounds.",
             "support": [
               {
                 "en": "UK",
@@ -2676,7 +2676,7 @@
             "frame": "I need twenty ___.",
             "answer": "pounds",
             "accept": [],
-            "why": "twenty pounds."
+            "why": "بعد از عدد بزرگ‌تر از یک pounds جمع است: twenty pounds."
           }
         ]
       }
@@ -2963,7 +2963,7 @@
               {
                 "text": "reader",
                 "ok": true,
-                "why": "read → reader."
+                "why": "کسی که می‌خواند reader است: read → reader."
               },
               {
                 "text": "reading",
@@ -2984,7 +2984,7 @@
             "frame": "He's a good ___.",
             "answer": "reader",
             "accept": [],
-            "why": "a good reader."
+            "why": "کسی که می‌خواند reader است: a good reader."
           }
         ]
       }
@@ -3684,7 +3684,7 @@
             "answer": "south",
             "accept": [],
             "fa": "متضادِ شمال جنوب است.",
-            "why": "north ↔ south."
+            "why": "متضاد north، south است: north ↔ south."
           },
           {
             "type": "choice",
@@ -3694,7 +3694,7 @@
               {
                 "text": "in",
                 "ok": true,
-                "why": "in the south of."
+                "why": "جهت با in the می‌آید: in the south of."
               },
               {
                 "text": "on",
@@ -3721,7 +3721,7 @@
             "frame": "We live in the ___ of the city.",
             "answer": "south",
             "accept": [],
-            "why": "in the south of."
+            "why": "جهت با the می‌آید؛ in the south of: in the south of."
           }
         ]
       }
@@ -3789,7 +3789,7 @@
             "answer": "spelling",
             "accept": [],
             "fa": "در این کلمه یک غلطِ املایی هست.",
-            "why": "a spelling mistake."
+            "why": "spelling پیش از mistake یعنی «غلط املایی»: a spelling mistake."
           },
           {
             "type": "choice",
@@ -3901,7 +3901,7 @@
               {
                 "text": "style",
                 "ok": true,
-                "why": "an old style."
+                "why": "old با واکه شروع می‌شود و an می‌گیرد: an old style."
               },
               {
                 "text": "styles",
@@ -3922,7 +3922,7 @@
             "frame": "I like her ___.",
             "answer": "style",
             "accept": [],
-            "why": "her style."
+            "why": "style با صفت ملکی می‌آید: her style."
           }
         ]
       }
@@ -3993,7 +3993,7 @@
               "tee shirt"
             ],
             "fa": "امروز گرم است. شلوارک و تی‌شرت می‌پوشم.",
-            "why": "a T-shirt."
+            "why": "T-shirt قابل‌شمارش است و a می‌گیرد: a T-shirt."
           },
           {
             "type": "choice",
@@ -4024,7 +4024,7 @@
             "frame": "He's wearing a white ___.",
             "answer": "T-shirt",
             "accept": [],
-            "why": "a white T-shirt."
+            "why": "رنگ پیش از اسم می‌آید: a white T-shirt."
           }
         ]
       }
@@ -4123,7 +4123,7 @@
             "frame": "They have two ___.",
             "answer": "teenagers",
             "accept": [],
-            "why": "two teenagers."
+            "why": "بعد از two اسم جمع می‌آید: two teenagers."
           }
         ]
       }
@@ -4223,7 +4223,7 @@
             "frame": "I'm ___.",
             "answer": "thirsty",
             "accept": [],
-            "why": "I'm thirsty."
+            "why": "تشنه بودن با be است، نه have: I'm thirsty."
           }
         ]
       }
@@ -4503,7 +4503,7 @@
               "end"
             ],
             "fa": "هر داستانی یک عنوانِ خوب لازم دارد.",
-            "why": "a good title."
+            "why": "a + صفت + title: a good title."
           },
           {
             "type": "choice",
@@ -4536,7 +4536,7 @@
             "accept": [
               "name"
             ],
-            "why": "the title of."
+            "why": "the title of یعنی «عنوانِ …»: the title of."
           }
         ]
       }
@@ -4826,7 +4826,7 @@
               "holidays"
             ],
             "fa": "بچه‌ها برای تعطیلاتِ تابستان مدرسه نمی‌روند.",
-            "why": "summer vacation."
+            "why": "summer vacation یعنی «تعطیلات تابستانی»: summer vacation."
           },
           {
             "type": "choice",
@@ -4836,7 +4836,7 @@
               {
                 "text": "on",
                 "ok": true,
-                "why": "go on vacation."
+                "why": "برای به تعطیلات رفتن go on vacation: go on vacation."
               },
               {
                 "text": "in",
@@ -4865,7 +4865,7 @@
             "accept": [
               "holiday"
             ],
-            "why": "go on vacation."
+            "why": "برای به تعطیلات رفتن go on vacation: go on vacation."
           }
         ]
       }
@@ -5035,7 +5035,7 @@
             "answer": "west",
             "accept": [],
             "fa": "متضادِ شرق غرب است.",
-            "why": "east ↔ west."
+            "why": "متضاد east، west است: east ↔ west."
           },
           {
             "type": "choice",
@@ -5066,7 +5066,7 @@
             "frame": "He works in the ___ of the city.",
             "answer": "west",
             "accept": [],
-            "why": "in the west of."
+            "why": "جهت با the می‌آید؛ in the west of: in the west of."
           }
         ]
       }
@@ -5231,7 +5231,7 @@
             "answer": "wine",
             "accept": [],
             "fa": "شرابِ قرمز می‌خواهی یا سفید؟",
-            "why": "red / white wine."
+            "why": "رنگ شراب پیش از wine می‌آید: red / white wine."
           },
           {
             "type": "choice",
@@ -5241,7 +5241,7 @@
               {
                 "text": "glass",
                 "ok": true,
-                "why": "a glass of wine."
+                "why": "مایع را با لیوانش می‌شماریم: a glass of wine."
               },
               {
                 "text": "slice",
@@ -5487,7 +5487,7 @@
             "frame": "___, please.",
             "answer": "Yes",
             "accept": [],
-            "why": "Yes, please."
+            "why": "برای پذیرفتن تعارف Yes, please: Yes, please."
           }
         ]
       }
