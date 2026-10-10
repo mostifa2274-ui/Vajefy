@@ -583,6 +583,53 @@ before this work.
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
-**Continuation checkpoint:** continue new authoring at **rank 841**, with
-**60** candidates still to draft.
+**Continuation checkpoint:** superseded below.
+
+## Ranks 841–900 (10 October 2026) — staging complete
+
+Three more original English/Persian draft batches cover NGSL ranks 841–860,
+861–880 and 881–900. Claude Code wrote them in this session. The staging
+corpus now contains all **900/900 draft entries, 1,800 paired examples and
+45 contiguous batches**. PR #205 (ranks 761–840) was merged as `77efc69`
+before this work.
+
+- **Self-review before the PR.** Each example was checked against its
+  declared sense and part of speech, each definition against its examples,
+  and each Persian line against its English. Ten lines changed:
+  - *take a seat* is an idiom outside the noun sense, so it was replaced
+    with *the seat next to me*;
+  - a casual *theory* example was replaced with a scientific one;
+  - the *fly* definition now covers travel by plane, which one example
+    uses;
+  - *except my cousin* forced a gendered Persian kinship term and now
+    names a person;
+  - an awkward *advance* example and an over-general *obviously* example
+    were replaced;
+  - four Persian renderings were made closer to the English (*operation*,
+    *associate*, *career*, *pattern*).
+- **Scoped senses.** Polysemous words teach one sense, and the others are
+  named in the usage note:
+
+  | Lemma | Sense taught |
+  |---|---|
+  | `operation` | a medical operation |
+  | `match` | a sports game |
+  | `network` | connected computers or phones |
+  | `argument` | an angry disagreement |
+  | `document` | an official paper |
+  | `application` | a formal request |
+  | `bill` | a request for payment |
+  | `officer` | a police officer |
+  | `oil` | cooking oil |
+  | `star` | a star in the sky |
+
+- **No legacy text.** The exact comparison rewrote 10 lines in 8 examples.
+  Ranks 361–900 have no exact legacy match.
+
+All 60 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
+**Gate 0 is BLOCKED.**
+
+**Continuation checkpoint:** authoring is complete. The next step is
+independent review of all 900 drafts by a real reviewer. Approvals must not
+be recorded without one.
 
