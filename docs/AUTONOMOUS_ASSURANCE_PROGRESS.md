@@ -1037,5 +1037,31 @@ inventory/authorship hashes and fail-closed assurance records are refreshed.
 The existing scheduled calibration ledgers remain authoritative: 0/4 judges
 qualified. No threshold, gold label, active judge role or release gate changed.
 
-Resume after exact-head CI and merge from the current triage queue and rights
-staging rank 361; do not repeat the 140 completed glosses.
+PR #189 merged as `b00a9fa0f452333e9838e3470a1e188df8921dce` after full CI
+(run 38012675795) and rollback rehearsal (38012675867) passed. PR #188
+merged as `b6b43d82017648f49585ec31e43f555f96a73e5b`; its source authentication
+and 360 staged drafts also passed full CI and rollback. Resume content repair
+from the current triage queue and independent rights staging at rank 361;
+do not repeat the 140 completed glosses.
+
+
+## A1 reference and Review scope — 2026-10-10
+
+P1-CHUNK-DECKS now uses a generated manifest of 853 unique reference notes
+linked from 417 actual A1 catalogue entries. The Library is read-only in A1,
+word details open exact note IDs, and direct links cannot expose unlinked
+notes. A missing or invalid manifest fails closed. The manifest is installed
+for offline use while full decks remain cached only when opened.
+
+A1 enrolment rejects new reference and higher-level cards. Today, Learn and
+Review count only A1 due cards; Review loads only their data. Mixed interrupted
+reviews are archived with their queues and answer history intact, and existing
+reference/higher-level cards remain saved. Higher-level behaviour is unchanged.
+The public manifest has conservative UNVERIFIED lineage; no rights evidence
+or semantic qualification was invented.
+
+Unit and browser regressions cover manifest integrity, new enrolment, due
+scope, exact note links, failed loading, higher-level compatibility and
+preservation of a mixed interrupted review. Exact-head CI and merge are pending.
+After merge, record its completion SHA in the A1 ledger before resuming the
+remaining content/rights queue.

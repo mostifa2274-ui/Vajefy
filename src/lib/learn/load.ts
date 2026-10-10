@@ -1,3 +1,4 @@
+import { a1ReferenceLinks } from "./a1-reference-links";
 import type {
   Antonym,
   Family,
@@ -32,6 +33,10 @@ export function loadJson<T>(file: string): Promise<T> {
 
 export function loadMeta() {
   return loadJson<Meta>("meta.json");
+}
+
+export function loadA1ReferenceLinks() {
+  return loadJson<unknown>("a1-reference-links.json").then(value => a1ReferenceLinks.parse(value));
 }
 
 const LEVEL_FILE: Record<LevelId, string> = {

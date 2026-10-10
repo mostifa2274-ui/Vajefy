@@ -106,6 +106,7 @@ function build(level, existing) {
 const check = process.argv.includes("--check");
 const failures = [];
 const summary = [];
+let a1Plan;
 for (const { id: level } of meta.levels) {
   const file = path.join(PLANS, `${level}.json`);
   const existing = fs.existsSync(file) ? read(file) : null;
@@ -137,8 +138,47 @@ for (const { id: level } of meta.levels) {
     fs.writeFileSync(file, output);
   }
   const plan = JSON.parse(output);
+  if (level === "A1") a1Plan = plan;
   const entries = plan.batches.flatMap((batch) => batch.entries);
   summary.push(`${level} ${entries.length} in ${plan.batches.length}, ${entries.filter((item) => item.flags?.includes("split-senses")).length} to split, ${entries.filter((item) => item.refs).length} with notes`);
+}
+
+// The learner's Library scope is the actual A1 plan's reference links. Do not
+// infer membership from a note's title, band or an arbitrary search query.
+if (a1Plan) {
+  const linkedEntries = Object.fromEntries(a1Plan.batches.flatMap(batch => batch.entries)
+    .filter(entry => entry.refs?.length)
+    .map(entry => [entry.id, entry.refs])
+    .sort(([a], [b]) => a.localeCompare(b)));
+  const wanted = new Set(Object.values(linkedEntries).flat());
+  const notes = {};
+  for (const [deck, file] of [
+    ["irr", "irregular.json"], ["pv", "phrasal.json"], ["col", "collocations.json"],
+    ["prep", "prepositions.json"], ["vp", "verb-patterns.json"], ["fam", "families.json"],
+    ["wf", "formation.json"], ["syn", "synonyms.json"], ["conf", "confusing.json"],
+    ["ant", "antonyms.json"], ["occ", "occupations.json"],
+  ]) {
+    for (const row of read(path.join(DATA, file))) {
+      if (!wanted.has(row.id)) continue;
+      const title = row.w ?? row.pair ?? row.group ?? row.base ?? row.root ?? row.affix ?? `${row.a} / ${row.b}`;
+      if (!row.id.startsWith(deck + ":") || !title || title.includes("undefined")) {
+        failures.push("A1 reference note lacks its title/deck: " + row.id);
+      }
+      notes[row.id] = { deck, title };
+    }
+  }
+  for (const id of wanted) if (!notes[id]) failures.push("A1 reference note is missing: " + id);
+  const links = {
+    schemaVersion: 1, level: "A1", entries: linkedEntries,
+    notes: Object.fromEntries(Object.entries(notes).sort(([a], [b]) => a.localeCompare(b))),
+  };
+  const file = path.join(DATA, "a1-reference-links.json");
+  const output = JSON.stringify(links) + "\n";
+  if (check) {
+    if (!fs.existsSync(file) || fs.readFileSync(file, "utf8") !== output) {
+      failures.push("public/data/a1-reference-links.json is out of date (run node scripts/plan-catalogue.mjs)");
+    }
+  } else if (!failures.length) fs.writeFileSync(file, output);
 }
 
 if (failures.length) {

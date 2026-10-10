@@ -15,6 +15,7 @@ import { CONTENT_CHANNEL, introducibleIn } from "@/lib/learn/channel";
 import { loadPilotOrder } from "@/lib/learn/pilot";
 import { readyToIntroduce } from "@/lib/learn/targets";
 import { resumable } from "@/lib/learn/session";
+import { reviewSessionInScope } from "@/lib/learn/course-scope";
 import { dayNumber } from "@/lib/learn/text";
 import type { LexWord, Meta, PairNote } from "@/lib/learn/types";
 import { Fa } from "@/components/mixed-text";
@@ -51,7 +52,8 @@ function Home() {
   const reviewHistory = useProgress((state) => state.reviewHistory);
   const copy = useCopy(lang);
   const [opened] = useState(() => Date.now());
-  const unfinishedReview = hydrated ? resumable(sessions, "review", opened) : undefined;
+  const savedReview = hydrated ? resumable(sessions, "review", opened) : undefined;
+  const unfinishedReview = savedReview && reviewSessionInScope(savedReview, focus) ? savedReview : undefined;
   const unfinishedQuiz = hydrated ? resumable(sessions, "quiz", opened) : undefined;
   const unfinishedLesson = hydrated ? resumable(sessions, "lesson", opened) : undefined;
   const goal = useProgress((state) => state.goal);
@@ -123,7 +125,7 @@ function Home() {
   // page never redraws its first card or shifts under the learner's thumb.
   if (!hydrated || meta === null || order === null) return <TodayPlaceholder label={copy.loading} />;
 
-  const due = hydrated ? dueIds(cards).length : 0;
+  const due = hydrated ? dueIds(cards, opened, focus).length : 0;
   const introducedToday = hydrated ? todayLog(logs).introduced : 0;
   const reviewsToday = hydrated ? todayLog(logs).reviews : 0;
   const secondsPerNew = measuredSecondsPerNew(Object.values(sessions));

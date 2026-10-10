@@ -5,17 +5,19 @@ import { Num, PageHeader, SpeakButton } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { loadDeckEntries } from "@/lib/learn/faces";
 import { useCopy, type CopyKey } from "@/lib/learn/i18n";
-import { loadJson, loadMeta } from "@/lib/learn/load";
+import { loadA1ReferenceLinks, loadJson, loadMeta } from "@/lib/learn/load";
+import type { A1ReferenceLinks } from "@/lib/learn/a1-reference-links";
 import { searchKey } from "@/lib/learn/text";
 import { useProgress } from "@/lib/learn/store";
 import type { LibDeckId, Meta, RefEntry } from "@/lib/learn/types";
 import { Fa } from "@/components/mixed-text";
 
 export const Route = createFileRoute("/library")({
-  validateSearch: (search: Record<string, unknown>): { d?: string; q?: string } => {
-    const next: { d?: string; q?: string } = {};
+  validateSearch: (search: Record<string, unknown>): { d?: string; q?: string; n?: string } => {
+    const next: { d?: string; q?: string; n?: string } = {};
     if (typeof search.d === "string" && search.d) next.d = search.d;
     if (typeof search.q === "string" && search.q.trim()) next.q = search.q.trim().slice(0, 80);
+    if (typeof search.n === "string" && search.n.trim()) next.n = search.n.trim().slice(0, 120);
     return next;
   },
   component: LibraryPage,
@@ -43,10 +45,13 @@ function LibraryPage() {
   const search = Route.useSearch();
   const lang = useProgress((state) => state.lang);
   const hydrated = useProgress((state) => state.hydrated);
+  const focus = useProgress((state) => state.focus);
   const cards = useProgress((state) => state.cards);
   const addToReview = useProgress((state) => state.addToReview);
   const copy = useCopy(lang);
   const [meta, setMeta] = useState<Meta | null>(null);
+  const [links, setLinks] = useState<A1ReferenceLinks | null>(null);
+  const [scopeError, setScopeError] = useState(false);
   const [deck, setDeck] = useState<LibDeckId | null>(isDeck(search.d) ? search.d : null);
   const [loaded, setLoaded] = useState<{ deck: LibDeckId; entries: RefEntry[] } | null>(null);
   const [errorDeck, setErrorDeck] = useState<LibDeckId | null>(null);
@@ -64,6 +69,23 @@ function LibraryPage() {
   const [reviewed, setReviewed] = useState<Set<string>>(() => new Set());
 
   useEffect(() => {
+    if (!hydrated || focus !== "A1") return;
+    let alive = true;
+    void loadA1ReferenceLinks().then(value => {
+      if (alive) { setLinks(value); setScopeError(false); }
+    }).catch(() => { if (alive) setScopeError(true); });
+    return () => { alive = false; };
+  }, [hydrated, focus]);
+
+  const scopedCounts = useMemo(() => {
+    const counts = new Map<LibDeckId, number>();
+    for (const note of Object.values(links?.notes ?? {})) {
+      counts.set(note.deck, (counts.get(note.deck) ?? 0) + 1);
+    }
+    return counts;
+  }, [links]);
+
+  useEffect(() => {
     void loadMeta()
       .then(setMeta)
       .catch(() => undefined);
@@ -73,16 +95,19 @@ function LibraryPage() {
   }, []);
 
   useEffect(() => {
-    if (!deck) return;
+    if (!hydrated || !deck || (focus === "A1" && !links)) return;
     let alive = true;
     void loadDeckEntries(deck, copy)
       .then((rows) => {
         if (!alive) return;
-        setLoaded({ deck, entries: rows });
+        const scoped = focus === "A1" ? rows.filter(row => Boolean(links!.notes[row.id])) : rows;
+        setLoaded({ deck, entries: scoped });
         setErrorDeck((failed) => (failed === deck ? null : failed));
-        if (search.q) {
+        if (search.n) {
+          setSelectedId(scoped.find(row => row.id === search.n)?.id ?? null);
+        } else if (search.q) {
           const wanted = searchKey(search.q);
-          const hit = rows.find((row) => row.title === search.q || searchKey(row.search).includes(wanted));
+          const hit = scoped.find((row) => row.title === search.q || searchKey(row.search).includes(wanted));
           if (hit) setSelectedId(hit.id);
         }
       })
@@ -92,9 +117,15 @@ function LibraryPage() {
     return () => {
       alive = false;
     };
-  }, [deck, copy, search.q]);
+  }, [deck, copy, search.q, search.n, hydrated, focus, links]);
 
-  const entries = deck && loaded?.deck === deck ? loaded.entries : null;
+  // Also filter synchronously when a learner switches from a higher level to
+  // A1, before the asynchronous deck effect replaces its previously loaded rows.
+  const entries = useMemo(() => {
+    const rows = deck && loaded?.deck === deck ? loaded.entries : null;
+    if (focus !== "A1") return rows;
+    return links ? rows?.filter(row => Boolean(links.notes[row.id])) ?? null : null;
+  }, [deck, loaded, focus, links]);
   const error = Boolean(deck && errorDeck === deck);
   const pageKey = `${deck ?? ""}\u0000${q}\u0000${band ?? ""}`;
   const limit = page.key === pageKey ? page.limit : 40;
@@ -112,12 +143,21 @@ function LibraryPage() {
 
   const selected = filtered.find((entry) => entry.id === selectedId) ?? entries?.find((entry) => entry.id === selectedId) ?? null;
 
+  if (!hydrated || (focus === "A1" && !links)) {
+    return (
+      <div>
+        <PageHeader title={copy.library} lede={copy.a1LibraryLead} />
+        <p role="status" className="mt-6 text-sm text-muted">{scopeError ? copy.loadFailed : copy.loading}</p>
+      </div>
+    );
+  }
+
   if (!deck) {
     return (
       <div>
-        <PageHeader title={copy.library} lede={copy.libraryLead} />
+        <PageHeader title={copy.library} lede={focus === "A1" ? copy.a1LibraryLead : copy.libraryLead} />
         <div className="grid gap-3 sm:grid-cols-2">
-          {DECKS.map((item) => (
+          {DECKS.filter(item => focus !== "A1" || scopedCounts.has(item.id)).map((item) => (
             <button
               key={item.id}
               type="button"
@@ -130,7 +170,8 @@ function LibraryPage() {
               <span className="flex items-baseline justify-between gap-3">
                 <span className="font-medium">{copy[item.title]}</span>
                 <span className="text-sm text-muted tabular-nums">
-                  {meta?.counts[item.countKey] != null ? <Num value={meta.counts[item.countKey]!} /> : null}
+                  {focus === "A1" ? <Num value={scopedCounts.get(item.id)!} />
+                    : meta?.counts[item.countKey] != null ? <Num value={meta.counts[item.countKey]!} /> : null}
                 </span>
               </span>
               <span className="mt-1 block text-sm text-pretty text-muted"><Fa text={copy[item.hint]} /></span>
@@ -242,14 +283,14 @@ function LibraryPage() {
                   </div>
                 ))}
               </div>
-              <button
+              {focus !== "A1" ? <button
                 type="button"
                 disabled={!hydrated || Boolean(cards[selected.id])}
                 onClick={() => addToReview(selected.id)}
                 className="mt-4 min-h-11 text-sm text-accent disabled:opacity-40"
               >
                 {cards[selected.id] ? copy.added : copy.learnThis}
-              </button>
+              </button> : null}
             </article>
           ) : (
             <p className="hidden text-sm text-muted lg:block">{copy.detailEmpty}</p>

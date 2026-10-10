@@ -157,6 +157,10 @@ test("a complete install is marked without forcing activation over open tabs", a
   assert.equal(app.skipped(), false, "the browser activates only after old controlled tabs have gone");
   const marker = await (await app.caches.open(CURRENT)).match(COMPLETE);
   assert.equal(await marker?.text(), "dev");
+  const cache = await app.caches.open(CURRENT);
+  assert.ok(await cache.match("/data/a1-reference-links.json"), "A1 reference links are available on first offline use");
+  assert.equal(await cache.match("/data/lex-a2.json"), undefined);
+  assert.equal(await cache.match("/data/confusing.json"), undefined, "reference decks remain cached on demand");
 });
 
 test("an install reusing a pre-existing complete release is a safe no-op", async () => {
