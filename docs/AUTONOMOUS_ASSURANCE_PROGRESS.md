@@ -16,17 +16,17 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #198: `f1f18420b4aa925b80da977a8cf0b81649fe0a93`.
+- Verified main after PR #199: `52f1429ef38781fe9776f544e1b0ba42cfb58802`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#198 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#199 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
   in frozen Units 1–3 and wait for an owner scope decision. Later-unit usage
   notes, grammar notes and answer feedback are complete. The frontier triage
   queue holds only frozen Units 1–3 cases (71); later-unit rewording is done.
-- Remaining: 6,640 deterministic findings; 360/900 unreviewed independent
+- Remaining: 6,640 deterministic findings; 440/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -85,7 +85,7 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 ## Current next actions
 
 1. Continue from 9983 deterministic findings and the 105-case non-promotable frontier queue. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without a separate study/audio scope decision.
-2. Continue independent NGSL frequency-first authoring at rank 361; 540 candidates still need drafts. All 360 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.
+2. Continue independent NGSL frequency-first authoring at rank 441; 460 candidates still need drafts. All 440 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.
 3. Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates. On 2026-10-10 (PR #193) Gemma 4 26B and GLM 4.7 Flash, both +no-thinking, were appended to the end of its list, and the planner selects Gemma 4. Do not register more English candidates while these are untried; let the scheduled runs calibrate them. Only if both are rejected does English need another candidate or a justified new calibration version. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.
 4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.
 
@@ -1253,3 +1253,19 @@ softened for absolute claims before applying.
   decision.
 - Evidence: `docs/FRONTIER_REWORDING_2026-10-10.md`. There is no semantic
   certificate.
+
+## 2026-10-10 — NGSL ranks 361–440
+
+- PR #199 (frontier rewording) merged as `52f1429`.
+- Four new original English/Persian staging batches cover NGSL ranks 361–380,
+  381–400, 401–420 and 421–440, written by Claude Code in this session.
+  Staging now holds 440/900 drafts and 880 paired examples in 22 contiguous
+  batches.
+- Each lesson scopes one sense explicitly. Usage notes were hedged before
+  writing (*usually*, *in this sense*), the fault review found in earlier PRs.
+- 25 short examples that exactly matched a sentence already in the course
+  (for example *Someone is at the door.*) were replaced, so no new example
+  repeats course or earlier draft text.
+- `assurance:ngsl:drafts:check` and the review-packet integrity check pass.
+  Every approval, rights and release count stays zero.
+

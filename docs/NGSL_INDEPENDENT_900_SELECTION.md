@@ -309,3 +309,41 @@ Validation for this continuation: complete `validate:data`, TypeScript, lint,
 authentication regressions run in isolated temporary directories. Browser,
 Workers build-contract and rollback evidence must pass on the pull request
 before merge; no pending check is counted as a pass.
+
+## Ranks 361–440 (10 October 2026)
+
+Four new original English/Persian draft batches cover NGSL ranks 361–380,
+381–400, 401–420 and 421–440. Claude Code wrote them in this session. The
+independent staging corpus now contains **440/900 draft entries, 880 paired
+examples and 22 contiguous batches**. The authoring input was the pinned
+source's lemmas and ranks, and no legacy teaching text was imported.
+
+- **One sense per lesson.** Each lesson scopes one sense explicitly, for
+  example `break` as separating into pieces, `free` as costing nothing,
+  `appear` as *seem*, `pass` as going past and `account` as a bank account.
+  The usage note names the other common sense where a learner may meet it.
+- **Hedged notes.** Usage notes describe tendencies as tendencies (*usually*,
+  *in this sense*), the fault review found in earlier PRs.
+- **No repeated sentences.** The nine-token overlap guard cannot see short
+  sentences, so the new examples were also compared exactly with every
+  course string and every earlier draft. 25 lines that matched a course
+  sentence (for example *Someone is at the door.*) were rewritten. No new
+  example now repeats course or draft text.
+
+- **Examples in the declared sense.** Review found three lessons whose
+  second example left the declared sense: *further help* (an adjective in an
+  adverb lesson), *make sense* beside *sense of humour*, and *a long
+  history* in a lesson on history as a subject. A sweep of all 80 found five
+  more: *wait a minute*, *at the moment*, *in general*, *black coffee* and
+  *drive someone*. All eight now use the declared sense. *sense* is now
+  scoped to a natural ability, as in *sense of humour* and *sense of
+  direction*.
+
+Every new entry is still unreviewed for English sense and grammar, Persian
+naturalness, CEFR and pedagogy, and rights. NGSL frequency is not an A1
+label. **Gate 0 is BLOCKED.**
+
+**Continuation checkpoint:** PR #199 was merged as `52f1429` before this
+work. Continue new authoring at **rank 441**, with **460** candidates still to
+draft.
+
