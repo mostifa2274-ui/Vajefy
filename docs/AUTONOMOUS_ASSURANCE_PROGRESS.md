@@ -23,6 +23,7 @@ Do **not** restart from chat memory when repository evidence exists.
   A1 reference/Review scope and four language-field repairs are complete.
 - Remaining: 9,983 deterministic findings; 360/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
+- English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
 Earlier checkpoints below are historical evidence. Their branch names and
 resume instructions describe that earlier point, not unfinished current work.
@@ -80,7 +81,7 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 
 1. Continue from 9983 deterministic findings and the 105-case non-promotable frontier queue. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without a separate study/audio scope decision.
 2. Continue independent NGSL frequency-first authoring at rank 361; 540 candidates still need drafts. All 360 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.
-3. Check the scheduled calibration ledgers before doing semantic work. English is candidates-exhausted and needs a separately preregistered eligible free candidate or a justified new calibration version; preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget/order bypass.
+3. Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates. On 2026-10-10 (PR #193) Gemma 4 26B and GLM 4.7 Flash, both +no-thinking, were appended to the end of its list, and the planner selects Gemma 4. Do not register more English candidates while these are untried; let the scheduled runs calibrate them. Only if both are rejected does English need another candidate or a justified new calibration version. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.
 4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.
 
 ## Historical checkpoint — Unit 1 certification
@@ -1109,3 +1110,31 @@ uncertain (generated 2026-10-09T02:12:38.939688Z). Scheduled run 38043072498
 completed successfully by skipping a duplicate certification attempt, so it
 provides no new listening/certification evidence and changes no audio count.
 The strict 386/386 release gate remains unchanged.
+
+## English: two candidates appended — 2026-10-10
+
+English had rejected all four of its v1 candidates:
+- Llama 3.3 70B did not promote;
+- Nemotron 3 with reasoning off: defect recall 2/3;
+- Mistral Small 3.1: defect recall 0;
+- Llama 4 Scout: defect recall 0.
+
+GPT-OSS 120B was rejected earlier for giving no valid output.
+
+The scorer counts a defect only when the seeded criterion is marked FAIL, as the
+frozen manifest says, and every rejected campaign had full schema compliance.
+These are model misses, not transport failures.
+
+Two free candidates are appended to the end of the English list. The earlier
+order is unchanged:
+- Gemma 4 26B (`google-gemma`, reasoning off, 800 tokens, ≤ 1,212 Neurons per campaign);
+- GLM 4.7 Flash (`zhipu-glm`, reasoning off, 800 tokens).
+
+Neither has been calibrated for English; GLM's Persian rejection is a different
+role. Qwen models stay off the English list while the adversarial judge holds
+the Qwen family. Other free text models were left off: QwQ 32B and the DeepSeek
+R1 distill are reasoning-only, and GPT-OSS 20B is the sibling of the rejected
+GPT-OSS 120B. v1 thresholds and gold labels are unchanged.
+
+The new allowlist reaches the Worker with the next deploy of `main`. The next
+scheduled run that fits the daily ceiling calibrates English with Gemma 4.

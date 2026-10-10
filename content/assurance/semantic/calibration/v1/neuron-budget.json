@@ -15,27 +15,27 @@
   "campaignPolicy": "One role campaign at a time. A candidate is eligible only if it needs no paid billing and its full campaign fits the safety ceiling; the automation's usage log keeps each UTC day under the ceiling.",
   "requiredRunsPerRole": 3,
   "activeJudgesTotalRequests": 84,
-  "activeJudgesNeuronsUpperBound": 17280,
+  "activeJudgesNeuronsUpperBound": 14274,
   "roles": {
     "english": {
-      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-      "modelVersion": "@cf/meta/llama-3.3-70b-instruct-fp8-fast@cloudflare-catalog-2026-10-06",
-      "maxOutputTokensPerRequest": 500,
+      "model": "@cf/google/gemma-4-26b-a4b-it",
+      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxOutputTokensPerRequest": 800,
       "requestsPerRun": 6,
       "repeats": 3,
       "totalRequests": 18,
       "maxRequestUtf8Bytes": 4933,
       "maxInputTokensUpperBound": 5445,
       "inputTokensUpperBoundTotal": 88755,
-      "outputTokensUpperBoundTotal": 9000,
+      "outputTokensUpperBoundTotal": 14400,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 26668,
-        "outputNeuronsPerMillionTokens": 204805,
+        "inputNeuronsPerMillionTokens": 9091,
+        "outputNeuronsPerMillionTokens": 27273,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 248,
-      "neuronsUpperBound": 4218,
+      "maxRequestNeuronsUpperBound": 72,
+      "neuronsUpperBound": 1212,
       "candidates": [
         {
           "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
@@ -67,6 +67,22 @@
           "totalRequests": 18,
           "maxRequestNeuronsUpperBound": 181,
           "neuronsUpperBound": 3021,
+          "eligible": true
+        },
+        {
+          "model": "@cf/google/gemma-4-26b-a4b-it",
+          "maxOutputTokensPerRequest": 800,
+          "totalRequests": 18,
+          "maxRequestNeuronsUpperBound": 72,
+          "neuronsUpperBound": 1212,
+          "eligible": true
+        },
+        {
+          "model": "@cf/zai-org/glm-4.7-flash",
+          "maxOutputTokensPerRequest": 800,
+          "totalRequests": 18,
+          "maxRequestNeuronsUpperBound": 60,
+          "neuronsUpperBound": 1020,
           "eligible": true
         }
       ]

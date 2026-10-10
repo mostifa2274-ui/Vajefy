@@ -89,6 +89,9 @@ export const KEYLESS_SEMANTIC_CANDIDATES = {
     candidate("nvidia-nemotron", "@cf/nvidia/nemotron-3-120b-a12b", 1200, { thinking: false }),
     candidate("mistral", "@cf/mistralai/mistral-small-3.1-24b-instruct", 600),
     candidate("meta-llama", "@cf/meta/llama-4-scout-17b-16e-instruct", 600),
+    // Registered 2026-10-10, after the four above were rejected.
+    candidate("google-gemma", "@cf/google/gemma-4-26b-a4b-it", 800, { thinking: false }),
+    candidate("zhipu-glm", "@cf/zai-org/glm-4.7-flash", 800, { thinking: false }),
   ],
   persian: [
     candidate("moonshot-kimi", "@cf/moonshotai/kimi-k2.5", 700),
