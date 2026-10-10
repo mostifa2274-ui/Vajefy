@@ -562,6 +562,15 @@ before this work.
 - **No legacy text.** The exact comparison rewrote 19 lines in 13 examples.
   Ranks 361–840 have no exact legacy match.
 
+- **Review fixes.** Review caught three issues, all fixed:
+  - *Did you make this cake yourself?* used emphatic *yourself* in a
+    reflexive lesson. It was replaced with a reflexive example, and the
+    usage note now names the emphatic use;
+  - the *investment* definition allowed only profit, while an example spoke
+    of investment in schools. The definition now covers a profit or a
+    benefit later;
+  - the cat's *fur* had been translated «پوست» ("skin") and is now «مو».
+
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
