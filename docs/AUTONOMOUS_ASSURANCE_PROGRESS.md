@@ -16,17 +16,17 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #204: `0d203e920701a77f7f00e43a81854fb7981720df`.
+- Verified main after PR #205: `77efc696be2d6403a5366cb477f1fd8bade5d49f`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#204 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#205 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
   in frozen Units 1–3 and wait for an owner scope decision. Later-unit usage
   notes, grammar notes and answer feedback are complete. The frontier triage
   queue holds only frozen Units 1–3 cases (71); later-unit rewording is done.
-- Remaining: 6,640 deterministic findings; 840/900 unreviewed independent
+- Remaining: 6,640 deterministic findings; 900/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -85,7 +85,7 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 ## Current next actions
 
 1. Continue from 9983 deterministic findings and the 105-case non-promotable frontier queue. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without a separate study/audio scope decision.
-2. Continue independent NGSL frequency-first authoring at rank 841; 60 candidates still need drafts. All 840 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.
+2. Independent NGSL authoring is complete: all 900 candidates have staged drafts. Every draft requires independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement; build review packets with `npm run assurance:ngsl:review:packets -- --json --from N --limit M`. Do not record approvals without a real independent reviewer.
 3. Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates. On 2026-10-10 (PR #193) Gemma 4 26B and GLM 4.7 Flash, both +no-thinking, were appended to the end of its list, and the planner selects Gemma 4. Do not register more English candidates while these are untried; let the scheduled runs calibrate them. Only if both are rejected does English need another candidate or a justified new calibration version. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.
 4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.
 
@@ -1342,3 +1342,24 @@ softened for absolute claims before applying.
 - The exact legacy comparison rewrote 19 lines in 13 examples. Ranks
   361–840 have no exact legacy match.
 - Every approval, rights and release count stays zero.
+
+## 2026-10-10 — NGSL ranks 841–900 (staging complete)
+
+- PR #205 (ranks 761–840) merged as `77efc69`. Review fixes covered
+  emphatic *yourself*, a profit-only *investment* definition, *fur*
+  translated as «پوست», a stray ezafe in «پایین‌تر از», *worth seeing* and
+  *close the computer*.
+- Three more original staging batches cover ranks 841–900. Staging now
+  holds all **900/900 drafts** and 1,800 paired examples in 45 batches.
+- Before the PR, each example was checked against its declared sense, each
+  definition against its examples, and each Persian line against its English.
+  Ten lines changed:
+  - an idiomatic *take a seat* was replaced with a noun-sense *seat*;
+  - an informal *theory* example was replaced;
+  - *fly* now defines travel by plane as well;
+  - three other examples were replaced;
+  - four Persian renderings were tightened.
+- The exact legacy comparison rewrote 10 lines in 8 examples. Ranks
+  361–900 have no exact legacy match.
+- Every approval, rights and release count stays zero. The next NGSL step
+  is independent review, which needs a real reviewer.

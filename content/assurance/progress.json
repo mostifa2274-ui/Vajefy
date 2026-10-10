@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-10",
-  "authoritativeMain": "0d203e920701a77f7f00e43a81854fb7981720df",
+  "authoritativeMain": "77efc696be2d6403a5366cb477f1fd8bade5d49f",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -182,7 +182,7 @@
     "Do not re-order or remove pre-registered candidates after they have produced results; add new ones at the end, or create a new calibration version.",
     "Do not re-enable model reasoning for free-budget judges: Nemotron 3 with reasoning on used all 1,200 output tokens and returned no answer on three runs (2026-10-07). Candidates whose catalog documents chat_template_kwargs.enable_thinking run with +no-thinking.",
     "Do not treat a model id as the model that answers: Cloudflare aliases retired models (kimi-k2.5 has been served and billed as the paid-only kimi-k2.6 since 2026-05-30). Record aliases in workers-ai-neuron-rates.json servedBy, and check a run's charged Neurons against the rate before trusting the id.",
-    "Do not redo the authenticated NGSL loader/export checks or the 360 completed author-only draft records from PR #188; continue at rank 841 (ranks 361–840 are drafted) and retain zero approval flags.",
+    "Do not redo the authenticated NGSL loader/export checks or the 360 completed author-only draft records from PR #188; do not redraft ranks 361–900 (all 900 candidates are drafted) and retain zero approval flags.",
     "Do not repeat the 140 contextual supports from PR #189, the read-only A1 reference/Review scope from PR #190, or the four language-field repairs from PR #191 unless changed source or CI shows a regression."
   ],
   "blockers": [
@@ -244,11 +244,12 @@
       "PR #201: independent NGSL drafts for ranks 441–520 (520/900 staged), with every exact legacy match removed after review; merged as ed9dc05df0aa0481bc74d44307de7e9b817a6ea4.",
       "PR #202: independent NGSL drafts for ranks 521–600 (600/900 staged), revised after review; merged as d5f0439a63ccc71dc012da5b09d5ec985754bae1.",
       "PR #203: independent NGSL drafts for ranks 601–680 (680/900 staged), revised after review; merged as 11781e38af4cc977d9fc4dd6581beae3f1321eda.",
-      "PR #204: independent NGSL drafts for ranks 681–760 (760/900 staged), revised after review; merged as 0d203e920701a77f7f00e43a81854fb7981720df."
+      "PR #204: independent NGSL drafts for ranks 681–760 (760/900 staged), revised after review; merged as 0d203e920701a77f7f00e43a81854fb7981720df.",
+      "PR #205: independent NGSL drafts for ranks 761–840 (840/900 staged), revised after review; merged as 77efc696be2d6403a5366cb477f1fd8bade5d49f."
     ],
     "nextSteps": [
       "Continue from 6640 deterministic findings. The non-promotable frontier queue is 71 cases, all in frozen Units 1–3; all 34 later-unit rewording cases were reworded (docs/FRONTIER_REWORDING_2026-10-10.md), and the remaining frontier findings need core-word promotion into the frozen roster, an owner decision. Persian mistake-pair translations now cover every sense in course Units 4–12 (831; docs/MISTAKE_TRANSLATIONS_2026-10-10.md). Usage notes now cover all 61 function-word senses in Units 4–12 (docs/USAGE_NOTES_2026-10-10.md). Grammar notes in Units 4–12 now open with a Persian explanation (docs/GRAMMAR_NOTES_2026-10-10.md). Answer feedback in Units 4–12 now opens with a Persian reason (docs/CHECK_FEEDBACK_2026-10-10.md). The remaining 173 wrongFa/rightFa pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are all in frozen Units 1–3 and wait for an owner study/audio scope decision. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without that decision.",
-      "Continue independent NGSL frequency-first authoring at rank 841; 60 candidates still need drafts. All 840 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.",
+      "Independent NGSL authoring is complete (900/900 staged drafts). Every draft requires independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement; build packets with npm run assurance:ngsl:review:packets -- --json --from N --limit M and never record approvals without a real independent reviewer.",
       "Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates; on 2026-10-10 Gemma 4 26B and GLM 4.7 Flash (both +no-thinking) were appended to the end of its list, and the planner selects Gemma 4. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.",
       "Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence."
     ]
