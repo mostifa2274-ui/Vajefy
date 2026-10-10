@@ -176,6 +176,12 @@
         "ok": false,
         "why": "way یعنی راه یا روش."
        }
+      ],
+      "support": [
+       {
+        "en": "whose",
+        "fa": "متعلق به چه کسی"
+       }
       ]
      },
      {
@@ -1126,7 +1132,13 @@
       "answer": "hot",
       "accept": [],
       "fa": "به فنجان دست نزن. خیلی داغ است.",
-      "why": "hot = داغ."
+      "why": "hot = داغ.",
+      "support": [
+       {
+        "en": "touch",
+        "fa": "لمس کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1147,6 +1159,12 @@
         "text": "cold",
         "ok": false,
         "why": "cold یعنی سرد."
+       }
+      ],
+      "support": [
+       {
+        "en": "degrees",
+        "fa": "درجه"
        }
       ]
      },
@@ -3070,7 +3088,13 @@
       "answer": "floor",
       "accept": [],
       "fa": "با آسانسور به طبقهٔ پنجم برو.",
-      "why": "the fifth floor = طبقهٔ پنجم."
+      "why": "the fifth floor = طبقهٔ پنجم.",
+      "support": [
+       {
+        "en": "lift",
+        "fa": "آسانسور"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5737,7 +5761,13 @@
       "answer": "sun",
       "accept": [],
       "fa": "امروز صبح آفتاب خیلی درخشان است.",
-      "why": "the sun = خورشید."
+      "why": "the sun = خورشید.",
+      "support": [
+       {
+        "en": "bright",
+        "fa": "درخشان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6351,6 +6381,10 @@
        {
         "en": "sky",
         "fa": "آسمان"
+       },
+       {
+        "en": "clouds",
+        "fa": "ابرها"
        }
       ]
      },
@@ -6449,7 +6483,17 @@
       "answer": "bottle",
       "accept": [],
       "fa": "آن بطری پلاستیکی را دور نینداز. می‌توانیم دوباره استفاده‌اش کنیم.",
-      "why": "a plastic bottle."
+      "why": "a plastic bottle.",
+      "support": [
+       {
+        "en": "throw",
+        "fa": "انداختن"
+       },
+       {
+        "en": "plastic",
+        "fa": "پلاستیکی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7233,7 +7277,13 @@
       "answer": "find",
       "accept": [],
       "fa": "همه‌جا را گشتم، اما گوشی‌ام را پیدا نمی‌کنم.",
-      "why": "can't find."
+      "why": "can't find.",
+      "support": [
+       {
+        "en": "everywhere",
+        "fa": "همه‌جا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7926,7 +7976,13 @@
       "answer": "mountain",
       "accept": [],
       "fa": "روی قلهٔ کوه برف هست.",
-      "why": "the top of the mountain."
+      "why": "the top of the mountain.",
+      "support": [
+       {
+        "en": "top",
+        "fa": "قله؛ بالاترین قسمت"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8437,7 +8493,13 @@
       "answer": "rule",
       "accept": [],
       "fa": "در این بازی قانون ساده است: نمی‌توانی از دست‌هایت استفاده کنی.",
-      "why": "rule = قانون."
+      "why": "rule = قانون.",
+      "support": [
+       {
+        "en": "simple",
+        "fa": "ساده"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9260,7 +9322,13 @@
       "frame": "Catch the ___!",
       "answer": "ball",
       "accept": [],
-      "why": "catch the ball."
+      "why": "catch the ball.",
+      "support": [
+       {
+        "en": "catch",
+        "fa": "بگیر"
+       }
+      ]
      }
     ]
    }
@@ -9348,6 +9416,12 @@
         "text": "beard",
         "ok": false,
         "why": "beard یعنی ریش."
+       }
+      ],
+      "support": [
+       {
+        "en": "roof",
+        "fa": "سقف؛ بام"
        }
       ]
      },
@@ -9619,7 +9693,13 @@
       "answer": "face",
       "accept": [],
       "fa": "چرا لبخند می‌زنی؟ چهره‌ات شاد است.",
-      "why": "a happy face."
+      "why": "a happy face.",
+      "support": [
+       {
+        "en": "smiling",
+        "fa": "لبخند می‌زنی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10903,7 +10983,13 @@
       "answer": "ready",
       "accept": [],
       "fa": "یک لحظه صبر کن. هنوز آماده نیستم.",
-      "why": "ready = آماده."
+      "why": "ready = آماده.",
+      "support": [
+       {
+        "en": "yet",
+        "fa": "هنوز"
+       }
+      ]
      },
      {
       "type": "choice",

@@ -2208,7 +2208,13 @@
       "frame": "He is in the basketball ___.",
       "answer": "team",
       "accept": [],
-      "why": "basketball team."
+      "why": "basketball team.",
+      "support": [
+       {
+        "en": "basketball",
+        "fa": "بسکتبال"
+       }
+      ]
      }
     ]
    }
@@ -3353,6 +3359,12 @@
         "ok": false,
         "why": "on حرکت رو به بالا را نشان نمی‌دهد."
        }
+      ],
+      "support": [
+       {
+        "en": "hill",
+        "fa": "تپه"
+       }
       ]
      },
      {
@@ -3546,6 +3558,12 @@
         "text": "of",
         "ok": false,
         "why": "of به‌تنهایی معنای حرکت ندارد."
+       }
+      ],
+      "support": [
+       {
+        "en": "jumped",
+        "fa": "پرید"
        }
       ]
      },
@@ -4048,7 +4066,13 @@
       "accept": [
        "in"
       ],
-      "why": "put into = داخل چیزی گذاشتن."
+      "why": "put into = داخل چیزی گذاشتن.",
+      "support": [
+       {
+        "en": "pocket",
+        "fa": "جیب"
+       }
+      ]
      }
     ]
    }
@@ -4700,6 +4724,12 @@
         "text": "big",
         "ok": false,
         "why": "big wind طبیعی نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "wind",
+        "fa": "باد"
        }
       ]
      },
@@ -6375,6 +6405,12 @@
         "ok": false,
         "why": "in the door طبیعی نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "knocking",
+        "fa": "در می‌زند"
+       }
       ]
      },
      {
@@ -7680,7 +7716,13 @@
       "frame": "This grammar ___ is easy.",
       "answer": "exercise",
       "accept": [],
-      "why": "grammar exercise = تمرین گرامر."
+      "why": "grammar exercise = تمرین گرامر.",
+      "support": [
+       {
+        "en": "grammar",
+        "fa": "دستور زبان"
+       }
+      ]
      }
     ]
    }
@@ -8259,7 +8301,13 @@
       "answer": "cost",
       "accept": [],
       "fa": "هزینهٔ کل پنجاه دلار بود.",
-      "why": "total cost = هزینهٔ کل."
+      "why": "total cost = هزینهٔ کل.",
+      "support": [
+       {
+        "en": "total",
+        "fa": "کل؛ مجموع"
+       }
+      ]
      }
     ]
    }
@@ -8438,6 +8486,12 @@
         "ok": false,
         "why": "could با did نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "noise",
+        "fa": "سر و صدا"
+       }
       ]
      },
      {
@@ -8609,7 +8663,13 @@
       "answer": "weather",
       "accept": [],
       "fa": "امروز هوا عالی است. بیا به پارک برویم.",
-      "why": "weather = وضع هوا."
+      "why": "weather = وضع هوا.",
+      "support": [
+       {
+        "en": "lovely",
+        "fa": "دل‌انگیز؛ زیبا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9327,7 +9387,13 @@
       "answer": "over",
       "accept": [],
       "fa": "گربه از روی دیوار پرید.",
-      "why": "حرکت از بالای چیزی به آن طرف: over."
+      "why": "حرکت از بالای چیزی به آن طرف: over.",
+      "support": [
+       {
+        "en": "jumped",
+        "fa": "پرید"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9354,6 +9420,10 @@
        {
         "en": "lamp",
         "fa": "چراغ"
+       },
+       {
+        "en": "touch",
+        "fa": "تماس داشتن"
        }
       ]
      },
@@ -9626,6 +9696,12 @@
         "text": "station bus",
         "ok": false,
         "why": "ترتیب کلمه‌ها غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "corner",
+        "fa": "گوشه"
        }
       ]
      },

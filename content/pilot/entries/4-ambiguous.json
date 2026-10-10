@@ -61,7 +61,13 @@
       "answer": "like",
       "accept": [],
       "fa": "مزه‌اش مثل مرغ است.",
-      "why": "taste like = مزهٔ چیزی را دادن."
+      "why": "taste like = مزهٔ چیزی را دادن.",
+      "support": [
+       {
+        "en": "tastes",
+        "fa": "مزه می‌دهد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -817,6 +823,12 @@
         "ok": false,
         "why": "اینجا یعنی «جفت کردن»."
        }
+      ],
+      "support": [
+       {
+        "en": "contest",
+        "fa": "مسابقه"
+       }
       ]
      },
      {
@@ -877,7 +889,13 @@
       "answer": "match",
       "accept": [],
       "fa": "این کراوات به پیراهنم می‌آید؟",
-      "why": "هماهنگ بودن."
+      "why": "هماهنگ بودن.",
+      "support": [
+       {
+        "en": "tie",
+        "fa": "کراوات"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -1008,7 +1026,13 @@
       "frame": "I opened a ___ account.",
       "answer": "bank",
       "accept": [],
-      "why": "bank account."
+      "why": "bank account.",
+      "support": [
+       {
+        "en": "account",
+        "fa": "حساب"
+       }
+      ]
      }
     ]
    }
@@ -1778,6 +1802,12 @@
         "ok": false,
         "why": "معنی ندارد."
        }
+      ],
+      "support": [
+       {
+        "en": "instead",
+        "fa": "به‌جای"
+       }
       ]
      },
      {
@@ -2016,6 +2046,12 @@
         "ok": false,
         "why": "اینجا یعنی «منظورم این است»."
        }
+      ],
+      "support": [
+       {
+        "en": "adjective",
+        "fa": "صفت (نوع کلمه)"
+       }
       ]
      },
      {
@@ -2101,7 +2137,13 @@
       "answer": "play",
       "accept": [],
       "fa": "می‌خواهی با من شطرنج بازی کنی؟",
-      "why": "بازی کردن."
+      "why": "بازی کردن.",
+      "support": [
+       {
+        "en": "chess",
+        "fa": "شطرنج"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2184,6 +2226,10 @@
        {
         "en": "beautifully",
         "fa": "به زیبایی"
+       },
+       {
+        "en": "santour",
+        "fa": "سنتور"
        }
       ]
      },
@@ -2281,6 +2327,12 @@
         "text": "She plays the flute.",
         "ok": false,
         "why": "فعل: نواختن."
+       }
+      ],
+      "support": [
+       {
+        "en": "noun",
+        "fa": "اسم (نوع کلمه)"
        }
       ]
      },
@@ -2986,6 +3038,10 @@
        {
         "en": "Tehran",
         "fa": "تهران"
+       },
+       {
+        "en": "noon",
+        "fa": "ظهر"
        }
       ]
      },
@@ -3138,7 +3194,13 @@
       "answer": "lie",
       "accept": [],
       "fa": "دکتر گفت مدتی دراز بکشم.",
-      "why": "lie down."
+      "why": "lie down.",
+      "support": [
+       {
+        "en": "while",
+        "fa": "مدتی (در عبارت for a while)"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3330,6 +3392,12 @@
         "ok": false,
         "why": "یک هجا تأکید دارد."
        }
+      ],
+      "support": [
+       {
+        "en": "stress",
+        "fa": "تکیهٔ واژه (بخش برجسته در تلفظ)"
+       }
       ]
      },
      {
@@ -3474,7 +3542,13 @@
        "reads"
       ],
       "fa": "چه کسی اخبار این شبکه را اجرا می‌کند؟",
-      "why": "ارائه دادن برنامه."
+      "why": "ارائه دادن برنامه.",
+      "support": [
+       {
+        "en": "channel",
+        "fa": "شبکهٔ تلویزیونی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3663,7 +3737,13 @@
       "frame": "The names are in alphabetical ___.",
       "answer": "order",
       "accept": [],
-      "why": "in alphabetical order."
+      "why": "in alphabetical order.",
+      "support": [
+       {
+        "en": "alphabetical",
+        "fa": "بر اساس حروف الفبا"
+       }
+      ]
      },
      {
       "type": "cloze",
@@ -3960,6 +4040,16 @@
         "ok": false,
         "why": "معنی ندارد."
        }
+      ],
+      "support": [
+       {
+        "en": "pasta",
+        "fa": "پاستا؛ ماکارونی"
+       },
+       {
+        "en": "pizza",
+        "fa": "پیتزا"
+       }
       ]
      },
      {
@@ -4038,7 +4128,13 @@
       "answer": "change",
       "accept": [],
       "fa": "صندوقدار پنج دلار بقیهٔ پول به من داد.",
-      "why": "in change یعنی به‌صورت بقیهٔ پول / پول خرد."
+      "why": "in change یعنی به‌صورت بقیهٔ پول / پول خرد.",
+      "support": [
+       {
+        "en": "cashier",
+        "fa": "صندوق‌دار"
+       }
+      ]
      }
     ]
    }
@@ -4353,7 +4449,13 @@
       "answer": "hard",
       "accept": [],
       "fa": "متضاد نرم، سفت است.",
-      "why": "متضاد soft."
+      "why": "متضاد soft.",
+      "support": [
+       {
+        "en": "soft",
+        "fa": "نرم"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -4371,7 +4473,13 @@
       "answer": "hard",
       "accept": [],
       "fa": "کف سفت است، نه نرم.",
-      "why": "hard در برابر soft یعنی «سفت»."
+      "why": "hard در برابر soft یعنی «سفت».",
+      "support": [
+       {
+        "en": "soft",
+        "fa": "نرم"
+       }
+      ]
      }
     ]
    },

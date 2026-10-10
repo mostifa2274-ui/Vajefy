@@ -885,6 +885,12 @@
         "ok": false,
         "why": "say به معنای تماس گرفتن نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "service",
+        "fa": "خدمات (fire service: آتش‌نشانی)"
+       }
       ]
      },
      {
@@ -1618,7 +1624,13 @@
       "answer": "down",
       "accept": [],
       "fa": "بچه‌ها از تپه پایین دویدند تا رودخانه.",
-      "why": "down the hill."
+      "why": "down the hill.",
+      "support": [
+       {
+        "en": "hill",
+        "fa": "تپه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2445,6 +2457,12 @@
         "ok": false,
         "why": "can با do منفی نمی‌شود."
        }
+      ],
+      "support": [
+       {
+        "en": "smoke",
+        "fa": "سیگار کشیدن"
+       }
       ]
      },
      {
@@ -2726,6 +2744,10 @@
        {
         "en": "lamp",
         "fa": "چراغ"
+       },
+       {
+        "en": "simple",
+        "fa": "ساده"
        }
       ]
      },
@@ -2736,7 +2758,13 @@
       "frame": "I like the ___ of this carpet.",
       "answer": "design",
       "accept": [],
-      "why": "the design of."
+      "why": "the design of.",
+      "support": [
+       {
+        "en": "carpet",
+        "fa": "فرش"
+       }
+      ]
      }
     ]
    },
@@ -3845,7 +3873,17 @@
       "answer": "success",
       "accept": [],
       "fa": "در امتحانت موفق باشی. برایت آرزوی موفقیت دارم!",
-      "why": "success = موفقیت."
+      "why": "success = موفقیت.",
+      "support": [
+       {
+        "en": "luck",
+        "fa": "شانس"
+       },
+       {
+        "en": "wish",
+        "fa": "آرزو دارم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4233,7 +4271,13 @@
       "answer": "exam",
       "accept": [],
       "fa": "برای امتحان فردا موفق باشی!",
-      "why": "exam = امتحان."
+      "why": "exam = امتحان.",
+      "support": [
+       {
+        "en": "luck",
+        "fa": "شانس"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4953,7 +4997,13 @@
       "frame": "We ___ a uniform at school.",
       "answer": "wear",
       "accept": [],
-      "why": "wear = به تن داشتن."
+      "why": "wear = به تن داشتن.",
+      "support": [
+       {
+        "en": "uniform",
+        "fa": "لباس فرم"
+       }
+      ]
      }
     ]
    }
@@ -5458,6 +5508,12 @@
         "ok": false,
         "why": "most و -est با هم به کار نمی‌روند."
        }
+      ],
+      "support": [
+       {
+        "en": "correctly",
+        "fa": "به‌درستی"
+       }
       ]
      }
     ]
@@ -5622,7 +5678,13 @@
       "answer": "soup",
       "accept": [],
       "fa": "سردم است. یک کاسه سوپ داغ خوب است.",
-      "why": "a bowl of soup."
+      "why": "a bowl of soup.",
+      "support": [
+       {
+        "en": "bowl",
+        "fa": "کاسه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6838,7 +6900,13 @@
       "frame": "I want to study medicine at ___.",
       "answer": "university",
       "accept": [],
-      "why": "at university."
+      "why": "at university.",
+      "support": [
+       {
+        "en": "medicine",
+        "fa": "پزشکی (رشتهٔ تحصیلی)"
+       }
+      ]
      }
     ]
    }
@@ -7030,7 +7098,13 @@
       "frame": "Let's walk ___ the lake.",
       "answer": "around",
       "accept": [],
-      "why": "walk around."
+      "why": "walk around.",
+      "support": [
+       {
+        "en": "lake",
+        "fa": "دریاچه"
+       }
+      ]
      }
     ]
    },
@@ -7178,7 +7252,13 @@
       "answer": "box",
       "accept": [],
       "fa": "اسباب‌بازی‌ها را دوباره در جعبه بگذار.",
-      "why": "box = جعبه."
+      "why": "box = جعبه.",
+      "support": [
+       {
+        "en": "toys",
+        "fa": "اسباب‌بازی‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8175,6 +8255,12 @@
         "ok": false,
         "why": "post house معنایی ندارد."
        }
+      ],
+      "support": [
+       {
+        "en": "stamps",
+        "fa": "تمبرها"
+       }
       ]
      },
      {
@@ -8447,7 +8533,13 @@
       "answer": "few",
       "accept": [],
       "fa": "لطفاً چند دقیقه صبر کن. تقریباً آماده‌ام.",
-      "why": "a few + اسم جمع."
+      "why": "a few + اسم جمع.",
+      "support": [
+       {
+        "en": "almost",
+        "fa": "تقریباً"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8562,6 +8654,12 @@
         "text": "little",
         "ok": false,
         "why": "little برای غیرقابل‌شمارش است."
+       }
+      ],
+      "support": [
+       {
+        "en": "empty",
+        "fa": "خالی"
        }
       ]
      },
@@ -10881,7 +10979,13 @@
       "frame": "Learning a foreign ___ is hard.",
       "answer": "language",
       "accept": [],
-      "why": "a foreign language."
+      "why": "a foreign language.",
+      "support": [
+       {
+        "en": "foreign",
+        "fa": "خارجی"
+       }
+      ]
      }
     ]
    }
