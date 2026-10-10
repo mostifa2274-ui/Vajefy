@@ -471,6 +471,55 @@ before this work.
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
-**Continuation checkpoint:** continue new authoring at **rank 681**, with
-**220** candidates still to draft.
+**Continuation checkpoint:** superseded below.
+
+## Ranks 681–760 (10 October 2026)
+
+Four more original English/Persian draft batches cover NGSL ranks 681–700,
+701–720, 721–740 and 741–760. Claude Code wrote them in this session. The
+staging corpus now contains **760/900 draft entries, 1,520 paired examples
+and 38 contiguous batches**. PR #203 (ranks 601–680) was merged as `11781e3`
+before this work.
+
+- **Persian meaning checked line by line.** Review of #203 found a Persian
+  line that changed the event (*met* translated as "saw"). The pre-PR
+  self-review therefore now also compares each Persian line with its English
+  for tense, verb choice and nuance. It fixed four lines: *Is anyone
+  sitting here?*, which had been rendered "will anyone sit here?", and three
+  awkward or ambiguous renderings. An ambiguous *old teacher* was reworded.
+- **Scoped senses.** Polysemous words teach one sense, and the others are
+  named in the usage note:
+
+  | Lemma | Sense taught |
+  |---|---|
+  | `catch` | catching something in the air |
+  | `stock` | goods in a shop |
+  | `character` | a person in a story |
+  | `fit` | being the right size |
+  | `drug` | a medicine |
+  | `series` | a TV series |
+  | `race` | a speed contest |
+  | `board` | a flat surface |
+  | `mark` | a school mark |
+  | `argue` | quarrelling |
+
+- **No legacy text.** The exact comparison rewrote 9 lines in 8 examples.
+  Ranks 361–760 have no exact legacy match.
+
+- **Review fixes.** Review caught three issues, all fixed:
+  - *rainy season* sat outside the declared four-seasons sense and was
+    replaced;
+  - *lives alone* uses *alone* adverbially in an adjective lesson, so the
+    example now uses *is alone* and the usage note separates the two uses;
+  - *all evening* had been translated «تمام شب» ("all night") and is now
+    «تمام عصر».
+
+  A scan of every draft from rank 361 onward found no other evening/night
+  mismatch.
+
+All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
+**Gate 0 is BLOCKED.**
+
+**Continuation checkpoint:** continue new authoring at **rank 761**, with
+**140** candidates still to draft.
 
