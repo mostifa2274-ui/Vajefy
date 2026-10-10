@@ -64,7 +64,7 @@
               "actor"
             ],
             "fa": "در فیلم و تلویزیون بازی می‌کند. بازیگر است.",
-            "why": "an actress."
+            "why": "actress با واکه شروع می‌شود و an می‌گیرد: an actress."
           },
           {
             "type": "choice",
@@ -97,7 +97,7 @@
             "accept": [
               "actor"
             ],
-            "why": "a good actress."
+            "why": "a + صفت + actress: a good actress."
           }
         ]
       }
@@ -170,7 +170,7 @@
               "pear"
             ],
             "fa": "یک موز و یک سیب می‌خواهم، لطفاً.",
-            "why": "a banana."
+            "why": "banana قابل‌شمارش است و مفردش اینجا a می‌گیرد: a banana."
           },
           {
             "type": "choice",
@@ -375,7 +375,7 @@
             "answer": "blog",
             "accept": [],
             "fa": "برادرم وبلاگی دربارهٔ فوتبال می‌نویسد. خیلی‌ها آن را می‌خوانند.",
-            "why": "a blog about."
+            "why": "موضوع وبلاگ با about می‌آید: a blog about."
           },
           {
             "type": "choice",
@@ -385,7 +385,7 @@
               {
                 "text": "on",
                 "ok": true,
-                "why": "on a blog."
+                "why": "در وبلاگ on: on a blog."
               },
               {
                 "text": "at",
@@ -406,7 +406,7 @@
             "frame": "I have a ___ about travel.",
             "answer": "blog",
             "accept": [],
-            "why": "a blog about."
+            "why": "موضوع وبلاگ با about می‌آید: a blog about."
           }
         ]
       }
@@ -725,7 +725,7 @@
             "frame": "It's a ___ job.",
             "answer": "boring",
             "accept": [],
-            "why": "a boring job."
+            "why": "boring برای کار یعنی «کسل‌کننده»: a boring job."
           }
         ]
       }
@@ -795,7 +795,7 @@
             "answer": "born",
             "accept": [],
             "fa": "دخترم در مارس به دنیا آمد.",
-            "why": "was born."
+            "why": "برای به دنیا آمدن was born: was born."
           },
           {
             "type": "choice",
@@ -805,7 +805,7 @@
               {
                 "text": "were",
                 "ok": true,
-                "why": "be born: were you born."
+                "why": "با you فعل be جمع است؛ were you born: be born: were you born."
               },
               {
                 "text": "did",
@@ -826,7 +826,7 @@
             "frame": "I was ___ in Tehran.",
             "answer": "born",
             "accept": [],
-            "why": "was born.",
+            "why": "برای به دنیا آمدن was born: was born.",
             "support": [
               {
                 "en": "Tehran",
@@ -1117,7 +1117,7 @@
               {
                 "text": "on",
                 "ok": true,
-                "why": "on CD."
+                "why": "برای رسانهٔ ضبط on CD: on CD."
               },
               {
                 "text": "in",
@@ -1138,7 +1138,7 @@
             "frame": "I bought a music ___.",
             "answer": "CD",
             "accept": [],
-            "why": "a music CD."
+            "why": "نوع محتوا پیش از CD می‌آید: a music CD."
           }
         ]
       }
@@ -1519,7 +1519,7 @@
             "answer": "dance",
             "accept": [],
             "fa": "موسیقی عالی است! بیا برقصیم!",
-            "why": "Let's + dance."
+            "why": "بعد از Let's فعل ساده می‌آید: Let's + dance."
           },
           {
             "type": "choice",
@@ -1550,7 +1550,7 @@
             "frame": "Will you ___ with me?",
             "answer": "dance",
             "accept": [],
-            "why": "dance with."
+            "why": "برای رقصیدن با کسی dance with: dance with."
           }
         ]
       },
@@ -1613,7 +1613,7 @@
               "song"
             ],
             "fa": "امروز سرِ کلاس یک رقص جدید یاد گرفتیم.",
-            "why": "a new dance."
+            "why": "dance به معنای «یک رقص» قابل‌شمارش است: a new dance."
           },
           {
             "type": "choice",
@@ -1644,7 +1644,7 @@
             "frame": "Their traditional ___ is beautiful.",
             "answer": "dance",
             "accept": [],
-            "why": "a traditional dance.",
+            "why": "a + صفت + dance: a traditional dance.",
             "support": [
               {
                 "en": "traditional",
@@ -1758,7 +1758,7 @@
             "frame": "He's a good ___.",
             "answer": "dancer",
             "accept": [],
-            "why": "a good dancer."
+            "why": "کسی که می‌رقصد dancer است: a good dancer."
           }
         ]
       }
@@ -2127,7 +2127,7 @@
             "answer": "die",
             "accept": [],
             "fa": "به گیاه‌هایت آب بده وگرنه می‌میرند.",
-            "why": "will + die."
+            "why": "بعد از will فعل ساده می‌آید: will + die."
           },
           {
             "type": "choice",
@@ -2226,7 +2226,7 @@
             "answer": "dirty",
             "accept": [],
             "fa": "ضدِ تمیز کثیف است.",
-            "why": "dirty ↔ clean."
+            "why": "متضاد clean، dirty است: dirty ↔ clean."
           },
           {
             "type": "choice",
@@ -2325,7 +2325,7 @@
             "answer": "DVD",
             "accept": [],
             "fa": "می‌توانی فیلم را روی دی‌وی‌دی بخری یا آنلاین ببینی.",
-            "why": "on DVD."
+            "why": "برای رسانهٔ ضبط on DVD: on DVD."
           },
           {
             "type": "choice",
@@ -2335,7 +2335,7 @@
               {
                 "text": "DVD",
                 "ok": true,
-                "why": "a DVD player."
+                "why": "DVD پیش از player یعنی «دستگاه پخش دی‌وی‌دی»: a DVD player."
               },
               {
                 "text": "DVDs",
@@ -2359,7 +2359,7 @@
               "film",
               "movie"
             ],
-            "why": "a DVD."
+            "why": "DVD با صدای «دی» شروع می‌شود و a می‌گیرد: a DVD."
           }
         ]
       }
@@ -2969,7 +2969,7 @@
             "frame": "Open your ___.",
             "answer": "eyes",
             "accept": [],
-            "why": "open your eyes."
+            "why": "چشم‌ها جمع‌اند؛ open your eyes: open your eyes."
           }
         ]
       }
@@ -3084,7 +3084,7 @@
               "wonderful",
               "amazing"
             ],
-            "why": "fantastic news."
+            "why": "news غیرقابل‌شمارش است و a نمی‌گیرد: fantastic news."
           }
         ]
       }
@@ -3154,7 +3154,7 @@
             "answer": "feeling",
             "accept": [],
             "fa": "حس عجیبی دارم که کسی دارد ما را نگاه می‌کند.",
-            "why": "a strange feeling.",
+            "why": "feeling به معنای «حس» قابل‌شمارش است: a strange feeling.",
             "support": [
               {
                 "en": "strange",
@@ -3170,7 +3170,7 @@
               {
                 "text": "feelings",
                 "ok": true,
-                "why": "hurt someone's feelings."
+                "why": "برای رنجاندن کسی hurt someone's feelings: hurt someone's feelings."
               },
               {
                 "text": "feels",
@@ -3197,7 +3197,7 @@
             "frame": "I have a good ___.",
             "answer": "feeling",
             "accept": [],
-            "why": "a good feeling."
+            "why": "feeling به معنای «حس» قابل‌شمارش است: a good feeling."
           }
         ]
       }
@@ -3269,7 +3269,7 @@
               "5th"
             ],
             "fa": "مه ماهِ پنجمِ سال است.",
-            "why": "the fifth month."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the fifth month."
           },
           {
             "type": "choice",
@@ -3302,7 +3302,7 @@
             "accept": [
               "5th"
             ],
-            "why": "the fifth time."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the fifth time."
           }
         ]
       }
@@ -3588,7 +3588,7 @@
               "4th"
             ],
             "fa": "اگر یکشنبه روز اولِ هفته باشد، چهارشنبه روزِ چهارم است.",
-            "why": "the fourth."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the fourth."
           },
           {
             "type": "choice",
@@ -3621,7 +3621,7 @@
             "accept": [
               "4th"
             ],
-            "why": "the fourth child."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the fourth child."
           }
         ]
       }
@@ -4194,7 +4194,7 @@
             "answer": "gym",
             "accept": [],
             "fa": "خیلی قوی است. هر روز به باشگاه می‌رود.",
-            "why": "go to the gym."
+            "why": "برای رفتن به باشگاه go to the gym: go to the gym."
           },
           {
             "type": "choice",
@@ -4204,7 +4204,7 @@
               {
                 "text": "at",
                 "ok": true,
-                "why": "at the gym."
+                "why": "برای بودن در باشگاه at the gym: at the gym."
               },
               {
                 "text": "on",
@@ -4225,7 +4225,7 @@
             "frame": "I'm going to the ___.",
             "answer": "gym",
             "accept": [],
-            "why": "go to the gym."
+            "why": "برای رفتن به باشگاه go to the gym: go to the gym."
           }
         ]
       }
@@ -4307,7 +4307,7 @@
               {
                 "text": "happened",
                 "ok": true,
-                "why": "What happened to …?"
+                "why": "برای پرسیدن اتفاق What happened to …?: What happened to …?"
               },
               {
                 "text": "was happened",
@@ -4328,7 +4328,7 @@
             "frame": "What ___?",
             "answer": "happened",
             "accept": [],
-            "why": "What happened?"
+            "why": "happen مجهول نمی‌شود؛ What happened?: What happened?"
           }
         ]
       }
@@ -4429,7 +4429,7 @@
             "frame": "Take off your ___.",
             "answer": "hat",
             "accept": [],
-            "why": "take off your hat."
+            "why": "برای برداشتن کلاه take off: take off your hat."
           }
         ]
       }
@@ -4750,7 +4750,7 @@
               "Hi",
               "Hello"
             ],
-            "why": "Hey, everybody!"
+            "why": "سلامِ خودمانی به جمع Hey, everybody: Hey, everybody!"
           }
         ]
       }
@@ -4939,7 +4939,7 @@
               {
                 "text": "hobbys",
                 "ok": false,
-                "why": "y → ies."
+                "why": "جمع hobby می‌شود hobbies: y → ies."
               },
               {
                 "text": "hobby",
@@ -5033,7 +5033,7 @@
               {
                 "text": "horse",
                 "ok": true,
-                "why": "fell off her horse."
+                "why": "برای افتادن از اسب fall off: fell off her horse."
               },
               {
                 "text": "house",
@@ -5466,7 +5466,7 @@
             "frame": "I want a pair of blue ___.",
             "answer": "jeans",
             "accept": [],
-            "why": "a pair of jeans."
+            "why": "jeans جمع است؛ a pair of jeans: a pair of jeans."
           }
         ]
       }
@@ -5734,7 +5734,7 @@
               "time"
             ],
             "fa": "داستان خنده‌داری گفت و همه حسابی خندیدند.",
-            "why": "have a good laugh."
+            "why": "برای حسابی خندیدن have a good laugh: have a good laugh."
           },
           {
             "type": "choice",
@@ -5765,7 +5765,7 @@
             "frame": "He has a loud ___.",
             "answer": "laugh",
             "accept": [],
-            "why": "a loud laugh.",
+            "why": "laugh به معنای «خنده» قابل‌شمارش است: a loud laugh.",
             "support": [
               {
                 "en": "loud",
@@ -5872,7 +5872,7 @@
             "frame": "Make a shopping ___.",
             "answer": "list",
             "accept": [],
-            "why": "make a list."
+            "why": "برای فهرست نوشتن make a list: make a list."
           }
         ]
       },
@@ -6040,7 +6040,7 @@
               "book"
             ],
             "fa": "دربارهٔ گوشی جدید در یک مجلهٔ کامپیوتری خواندم.",
-            "why": "a computer magazine."
+            "why": "موضوع مجله پیش از magazine می‌آید: a computer magazine."
           },
           {
             "type": "choice",
@@ -6071,7 +6071,7 @@
             "frame": "I read it in a ___.",
             "answer": "magazine",
             "accept": [],
-            "why": "in a magazine."
+            "why": "برای مطلب مجله in a magazine: in a magazine."
           }
         ]
       }
@@ -6247,7 +6247,7 @@
               "m"
             ],
             "fa": "می‌توانم صد متر شنا کنم.",
-            "why": "a hundred + metres."
+            "why": "بعد از عدد بزرگ‌تر از یک metres جمع است: a hundred + metres."
           },
           {
             "type": "choice",
@@ -6281,7 +6281,7 @@
               "meters",
               "m"
             ],
-            "why": "twenty-five metres."
+            "why": "بعد از عدد بزرگ‌تر از یک metres جمع است: twenty-five metres."
           }
         ]
       }
@@ -6382,7 +6382,7 @@
             "frame": "Close your ___.",
             "answer": "mouth",
             "accept": [],
-            "why": "close your mouth."
+            "why": "برای بستن دهان close your mouth: close your mouth."
           }
         ]
       }
@@ -6559,7 +6559,7 @@
               "message"
             ],
             "fa": "مامان خانه نیست. یک یادداشت روی در گذاشته.",
-            "why": "leave a note."
+            "why": "برای گذاشتن یادداشت leave a note: leave a note."
           },
           {
             "type": "choice",
@@ -6592,7 +6592,7 @@
             "accept": [
               "message"
             ],
-            "why": "leave a note."
+            "why": "برای گذاشتن یادداشت leave a note: leave a note."
           }
         ]
       }
@@ -6895,7 +6895,7 @@
             "frame": "___, I see.",
             "answer": "Oh",
             "accept": [],
-            "why": "Oh, I see."
+            "why": "برای «آهان، فهمیدم» Oh, I see: Oh, I see."
           }
         ]
       }
@@ -6996,7 +6996,7 @@
             "frame": "I ate an ___.",
             "answer": "orange",
             "accept": [],
-            "why": "an orange."
+            "why": "orange با صدای واکه شروع می‌شود و an می‌گیرد: an orange."
           }
         ]
       },
@@ -7085,7 +7085,7 @@
             "frame": "He has an ___ car.",
             "answer": "orange",
             "accept": [],
-            "why": "an orange car."
+            "why": "رنگ پیش از اسم می‌آید و با واکه an می‌گیرد: an orange car."
           }
         ]
       }
@@ -7382,7 +7382,7 @@
             "frame": "I bought a ___ of socks.",
             "answer": "pair",
             "accept": [],
-            "why": "a pair of socks.",
+            "why": "a pair of + اسم جمع یعنی «یک جفت»: a pair of socks.",
             "support": [
               {
                 "en": "socks",
@@ -7490,7 +7490,7 @@
             "frame": "Read the first ___.",
             "answer": "paragraph",
             "accept": [],
-            "why": "the first paragraph."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the first paragraph."
           }
         ]
       }
@@ -7661,7 +7661,7 @@
               "drums"
             ],
             "fa": "او پیانو می‌زند و برادرش گیتار.",
-            "why": "play the piano."
+            "why": "برای ساز زدن play the + ساز: play the piano."
           },
           {
             "type": "choice",
@@ -7671,7 +7671,7 @@
               {
                 "text": "the",
                 "ok": true,
-                "why": "play the piano."
+                "why": "برای ساز زدن play the + ساز: play the piano."
               },
               {
                 "text": "at",
@@ -7692,7 +7692,7 @@
             "frame": "I play the ___.",
             "answer": "piano",
             "accept": [],
-            "why": "play the piano."
+            "why": "برای ساز زدن play the + ساز: play the piano."
           }
         ]
       }
@@ -7795,7 +7795,7 @@
             "accept": [
               "practice"
             ],
-            "why": "practise + -ing.",
+            "why": "بعد از practise فعل ing می‌آید: practise + -ing.",
             "support": [
               {
                 "en": "English",
@@ -7909,7 +7909,7 @@
               "nice",
               "lovely"
             ],
-            "why": "a pretty dress."
+            "why": "What a + صفت + اسم!: a pretty dress."
           }
         ]
       },
@@ -8214,7 +8214,7 @@
             "accept": [
               "part"
             ],
-            "why": "the second section."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the second section."
           }
         ]
       }
@@ -8730,7 +8730,7 @@
             "frame": "I bought a red ___.",
             "answer": "skirt",
             "accept": [],
-            "why": "a red skirt."
+            "why": "رنگ پیش از اسم می‌آید: a red skirt."
           }
         ]
       }
@@ -8808,7 +8808,7 @@
               {
                 "text": "of",
                 "ok": true,
-                "why": "afraid of."
+                "why": "ترسیدن از چیزی afraid of: afraid of."
               },
               {
                 "text": "from",
@@ -8829,7 +8829,7 @@
             "frame": "I saw a ___!",
             "answer": "snake",
             "accept": [],
-            "why": "a snake."
+            "why": "snake قابل‌شمارش است و مفردش اینجا a می‌گیرد: a snake."
           }
         ]
       }
@@ -8903,7 +8903,7 @@
               "food"
             ],
             "fa": "گرسنه‌ام. باید چیزی بخورم.",
-            "why": "something to eat."
+            "why": "something to + فعل یعنی «چیزی برای …»: something to eat."
           },
           {
             "type": "choice",
@@ -9100,7 +9100,7 @@
             "answer": "stars",
             "accept": [],
             "fa": "شب می‌توانی ماه و ستاره‌ها را ببینی.",
-            "why": "the moon and the stars.",
+            "why": "اینجا ستاره‌های آسمانِ همین شب منظور است، پس the stars: the moon and the stars.",
             "support": [
               {
                 "en": "moon",
@@ -9143,7 +9143,7 @@
             "frame": "Look at the ___!",
             "answer": "stars",
             "accept": [],
-            "why": "the stars."
+            "why": "اینجا ستاره‌های آسمانِ همین شب منظور است، پس the stars: the stars."
           }
         ]
       },
@@ -9203,7 +9203,7 @@
               "singer"
             ],
             "fa": "همه آهنگ‌هایش را می‌شناسند. او ستارهٔ پاپ است.",
-            "why": "a pop star.",
+            "why": "نوع کار پیش از star می‌آید: a pop star.",
             "support": [
               {
                 "en": "pop",
@@ -9240,7 +9240,7 @@
             "frame": "He's a football ___.",
             "answer": "star",
             "accept": [],
-            "why": "a football star."
+            "why": "نوع کار پیش از star می‌آید: a football star."
           }
         ]
       }
@@ -9414,7 +9414,7 @@
               "store"
             ],
             "fa": "شیر و نان لازم داریم. برویم سوپرمارکت.",
-            "why": "go to the supermarket."
+            "why": "go to the supermarket با the: go to the supermarket."
           },
           {
             "type": "choice",
@@ -9424,7 +9424,7 @@
               {
                 "text": "at",
                 "ok": true,
-                "why": "at the supermarket."
+                "why": "برای جای خرید at the supermarket: at the supermarket."
               },
               {
                 "text": "on",
@@ -9445,7 +9445,7 @@
             "frame": "I'm at the ___.",
             "answer": "supermarket",
             "accept": [],
-            "why": "at the supermarket."
+            "why": "برای بودن در فروشگاه at the supermarket: at the supermarket."
           }
         ]
       }
@@ -9518,7 +9518,7 @@
               "jacket"
             ],
             "fa": "بیرون سرد است. یک ژاکتِ گرم بپوش.",
-            "why": "a warm sweater."
+            "why": "a + صفت + sweater: a warm sweater."
           },
           {
             "type": "choice",
@@ -9551,7 +9551,7 @@
             "accept": [
               "jumper"
             ],
-            "why": "put on your sweater."
+            "why": "برای پوشیدن لباس put on: put on your sweater."
           }
         ]
       }
@@ -9629,7 +9629,7 @@
               {
                 "text": "play",
                 "ok": true,
-                "why": "play tennis."
+                "why": "برای بازی کردن ورزش play: play tennis."
               },
               {
                 "text": "do",
@@ -9650,7 +9650,7 @@
             "frame": "Do you play ___?",
             "answer": "tennis",
             "accept": [],
-            "why": "play tennis."
+            "why": "برای بازی کردن ورزش play، بدون the: play tennis."
           }
         ]
       }
@@ -9761,7 +9761,7 @@
             "accept": [
               "Thank you"
             ],
-            "why": "Thanks for + -ing."
+            "why": "بعد از Thanks for فعل ing می‌آید: Thanks for + -ing."
           }
         ]
       }
@@ -9865,7 +9865,7 @@
             "frame": "I bought a lot of ___.",
             "answer": "things",
             "accept": [],
-            "why": "a lot of things."
+            "why": "a lot of + اسم جمع: a lot of things."
           }
         ]
       }
@@ -9966,7 +9966,7 @@
             "frame": "He's the ___ child in the family.",
             "answer": "third",
             "accept": [],
-            "why": "the third child."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the third child."
           }
         ]
       }
@@ -10077,7 +10077,7 @@
             "frame": "Buy two ___.",
             "answer": "tomatoes",
             "accept": [],
-            "why": "two tomatoes."
+            "why": "جمع tomato با es است: two tomatoes."
           }
         ]
       }
@@ -10187,7 +10187,7 @@
             "accept": [
               "pants"
             ],
-            "why": "trousers + are."
+            "why": "trousers جمع است و فعل جمع می‌گیرد: trousers + are."
           }
         ]
       }
@@ -10260,7 +10260,7 @@
               "sort"
             ],
             "fa": "چه نوع فیلمی دوست داری؟ — خنده‌دار.",
-            "why": "What type of …?"
+            "why": "برای پرسیدن نوع What type of …?: What type of …?"
           },
           {
             "type": "choice",
@@ -10294,7 +10294,7 @@
               "kind",
               "sort"
             ],
-            "why": "What type of …?"
+            "why": "برای پرسیدن نوع What type of …?: What type of …?"
           }
         ]
       }
@@ -10362,7 +10362,7 @@
             "answer": "umbrella",
             "accept": [],
             "fa": "باران می‌بارد. یک چتر بردار.",
-            "why": "an umbrella."
+            "why": "umbrella با واکه شروع می‌شود و an می‌گیرد: an umbrella."
           },
           {
             "type": "choice",
@@ -10393,7 +10393,7 @@
             "frame": "I forgot my ___.",
             "answer": "umbrella",
             "accept": [],
-            "why": "my umbrella."
+            "why": "umbrella قابل‌شمارش است: my umbrella."
           }
         ]
       }
@@ -10893,7 +10893,7 @@
               "fantastic",
               "lovely"
             ],
-            "why": "a wonderful day."
+            "why": "a + صفت + اسم: a wonderful day."
           }
         ]
       }
@@ -10962,7 +10962,7 @@
             "answer": "world",
             "accept": [],
             "fa": "در دنیا بیش از دویست کشور هست.",
-            "why": "in the world."
+            "why": "world با the می‌آید: in the world."
           },
           {
             "type": "choice",
@@ -10972,7 +10972,7 @@
               {
                 "text": "the",
                 "ok": true,
-                "why": "the world."
+                "why": "world با the می‌آید: the world."
               },
               {
                 "text": "a",
@@ -10993,7 +10993,7 @@
             "frame": "You're the best mum in the ___!",
             "answer": "world",
             "accept": [],
-            "why": "in the world."
+            "why": "world با the می‌آید: in the world."
           }
         ]
       }
