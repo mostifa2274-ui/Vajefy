@@ -22,6 +22,11 @@ The pattern follows the existing pairs in Units 1–3:
     word changes the meaning, for example *bench* for bank, *cooker* for cook or
     *get up the bus*.
 
+  - When the "wrong" sentence is acceptable English but less usual, `wrongFa`
+    says so, for example the emphatic *I very much like it* or *product* for
+    a harvest. It names the more natural choice and does not call the sentence
+    an error. Thirteen lines were revised this way after review.
+
 The `why` explanation is unchanged.
 
 ## Scope
