@@ -16,14 +16,15 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #194: `2853619dcb273e46cb5067bba6b11b54f6199139`.
+- Verified main after PR #195: `d7635deabe4d6a71f4cfb871c27c48a1510fa3d5`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191, #193 and #194 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#195 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
-  remaining pairs are in frozen Units 1–3 and wait for an owner scope decision.
-- Remaining: 8,321 deterministic findings; 360/900 unreviewed independent
+  remaining pairs and 36 usage notes are in frozen Units 1–3 and wait for an
+  owner scope decision. Usage notes cover all 61 later-unit function words.
+- Remaining: 8,260 deterministic findings; 360/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -1184,3 +1185,20 @@ Missing pairs fell from 725 to 173 each, and total findings from 9,425 to
 The 180 frozen Units 1–3 entries were verified byte-identical. The 173
 remaining pairs are all in them, so changing them needs an owner decision on
 the frozen study and audio scope.
+
+PR #195 merged as `d7635deabe4d6a71f4cfb871c27c48a1510fa3d5` after check,
+browser, Workers build contract, Workers Builds and rollback rehearsal passed.
+Codex found two literal readings that ignored context (*a paper to write on*,
+*happy for my new job*). Both were fixed, and an audit corrected eight similar
+lines before the merge.
+
+## Usage notes for later-unit function words — 2026-10-10
+
+All 61 function-word senses in Units 4–12 (prepositions, conjunctions,
+pronouns, determiners, modals, particles) now have a Persian `usage` note. Each
+note adds a contrast, register point, fixed phrase or tense form, and does not
+repeat the meaning or mistake. Five drafts were softened for overstated rules
+before applying.
+
+`USAGE_REQUIRED` fell from 97 to 36, and total findings from 8,321 to 8,260.
+The 36 left are in frozen Units 1–3. See [the evidence](USAGE_NOTES_2026-10-10.md).

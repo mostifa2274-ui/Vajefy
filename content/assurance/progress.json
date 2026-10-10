@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-10",
-  "authoritativeMain": "2853619dcb273e46cb5067bba6b11b54f6199139",
+  "authoritativeMain": "d7635deabe4d6a71f4cfb871c27c48a1510fa3d5",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -234,10 +234,11 @@
       "PR #190: course-linked read-only A1 references and course-only Review scope; P1-CHUNK-DECKS is DONE.",
       "PR #191: four language-field repairs, 9983 findings, 535 unit and 95 browser tests passed; merged as 9556da47a635d706ede0bb794de9cd1f9d0643ed.",
       "PR #193: Gemma 4 26B and GLM 4.7 Flash appended to the English judge candidates; merged as 571f7f9c243869de797f3bdf6b60994ca278effb.",
-      "PR #194: Persian mistake-pair translations for course Units 4–6 (279 senses), revised after review; merged as 2853619dcb273e46cb5067bba6b11b54f6199139."
+      "PR #194: Persian mistake-pair translations for course Units 4–6 (279 senses), revised after review; merged as 2853619dcb273e46cb5067bba6b11b54f6199139.",
+      "PR #195: Persian mistake-pair translations for course Units 7–12 (552 senses), revised after review; merged as d7635deabe4d6a71f4cfb871c27c48a1510fa3d5."
     ],
     "nextSteps": [
-      "Continue from 8321 deterministic findings and the 105-case non-promotable frontier queue. Persian mistake-pair translations now cover every sense in course Units 4–12 (831; docs/MISTAKE_TRANSLATIONS_2026-10-10.md). The remaining 173 wrongFa/rightFa pairs are all in frozen Units 1–3 and wait for an owner study/audio scope decision. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without that decision.",
+      "Continue from 8260 deterministic findings and the 105-case non-promotable frontier queue. Persian mistake-pair translations now cover every sense in course Units 4–12 (831; docs/MISTAKE_TRANSLATIONS_2026-10-10.md). Usage notes now cover all 61 function-word senses in Units 4–12 (docs/USAGE_NOTES_2026-10-10.md). The remaining 173 wrongFa/rightFa pairs and 36 usage notes are all in frozen Units 1–3 and wait for an owner study/audio scope decision. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without that decision.",
       "Continue independent NGSL frequency-first authoring at rank 361; 540 candidates still need drafts. All 360 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.",
       "Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates; on 2026-10-10 Gemma 4 26B and GLM 4.7 Flash (both +no-thinking) were appended to the end of its list, and the planner selects Gemma 4. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.",
       "Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence."
