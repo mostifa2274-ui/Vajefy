@@ -109,7 +109,7 @@ test("an A1 direct link cannot display an unlinked reference note", async ({ pag
   await page.goto("/library?d=conf&n=conf:raise-rise");
   await expect(page.getByRole("button", { name: /do \/ make/ }).first()).toBeVisible();
   await expect(page.locator("article")).toHaveCount(0);
-  await page.getByRole("textbox", { name: "Search", exact: true }).fill("raise");
+  await page.locator("main").getByRole("textbox", { name: "Search", exact: true }).fill("raise");
   await expect(page.getByText("Nothing matches that search.", { exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: /raise \/ rise/ })).toHaveCount(0);
 });
