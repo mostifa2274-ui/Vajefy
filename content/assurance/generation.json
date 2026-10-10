@@ -45,6 +45,14 @@
       "session": "Vajefy continuation, 2026-10-10; context-checked later-unit task glosses",
       "promptVersion": "frontier-context-support-v3",
       "contextKey": "a1-frontier-contextual-vocabulary-glosses-2026-10-10"
+    },
+    "codex-gpt6-2026-10-10-language-fields": {
+      "kind": "agent",
+      "provider": "openai",
+      "tool": "Codex (GPT-6)",
+      "session": "Vajefy continuation, 2026-10-10; later-unit English/Persian field repairs",
+      "promptVersion": "a1-language-field-placement-v1",
+      "contextKey": "a1-later-unit-language-field-repairs-2026-10-10"
     }
   },
   "entries": {
@@ -60,7 +68,7 @@
     "lex:A1:address": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"915550463a866580afc9db228ed3581b0e15ef0c37ce47e3fc535c9fd8407298"},
     "lex:A1:adult": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"3474eaa21b4f6417d6586d9cea127092edb635c315ef33fcf30e7bb73655931e"},
     "lex:A1:advice": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"f2856dd9dae2a45923b26cd77c9d3d3dd8b7f8620c356b5e59dd868f90445c5c"},
-    "lex:A1:afraid": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"cd63e083eb8f45a620e62f8a67dc1e4f4cc9ed875b93393f4bef36e70cd63207"},
+    "lex:A1:afraid": {"generator":"codex-gpt6-2026-10-10-language-fields","recordedAt":"2026-10-10","sourceHash":"cd63e083eb8f45a620e62f8a67dc1e4f4cc9ed875b93393f4bef36e70cd63207","outputHash":"0669e969cab1154a2b44c75c50eb0b4e8e3349c3d6d2ca3a478bc6ab4eb73010"},
     "lex:A1:after": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"ca9e2d1b80a3910bb552eb20f4a621daff5a2aa4d2a6748ab902ab98d96db6d7"},
     "lex:A1:afternoon": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"257e10f63d358781382c4a3cc39179623dd77125dc702bb9109207bb2bcd03d9"},
     "lex:A1:again": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"e9f970dbb94c0c8a3be914dbb8b3a70da1048463e2080c82f7c61520efb2b4c3"},
@@ -393,7 +401,7 @@
     "lex:A1:hand": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"b11bd9e8d6414e8a0dfae00eea8d34425ad2c77bf3ec5382d2540b5c2a80301d"},
     "lex:A1:happen": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"c4e6e47277ebed31beb3d6e48b182cb85e3b8932f1a0e4a4398a2ba60b9b0b55"},
     "lex:A1:happy": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"d373a42eb0c20ba9b85927e3d240342257e3df41f37a3fc949308d2cfd1673de"},
-    "lex:A1:hard": {"generator":"codex-gpt6-2026-10-10-frontier-context-glosses","recordedAt":"2026-10-10","sourceHash":"6a13a25280a9ddde05d807ef9a4921bda5ae52e3181c9cdf85185715195a9ccd","outputHash":"c3273daa865b88230a88f7cfd2b44623448a8433c493a494e48c7cdab5481f27"},
+    "lex:A1:hard": {"generator":"codex-gpt6-2026-10-10-language-fields","recordedAt":"2026-10-10","sourceHash":"c3273daa865b88230a88f7cfd2b44623448a8433c493a494e48c7cdab5481f27","outputHash":"2273e980a14f7bde705c1599c98def8030bc46be411081e2666f932e14cf5702"},
     "lex:A1:hat": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"965845c326812d3d2ef15c940e33e570d3e2bbb44500bff242e7f7b56fee7809"},
     "lex:A1:hate": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"2d61975d132b8d15829448cea3e30b3642fdbe698e64a298d3c8e08daecf60e3"},
     "lex:A1:have": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"4a3c700987081f85ccfb926d1f032af5970105567a0ac53b6944c6fc32fdc2c5"},
@@ -528,7 +536,7 @@
     "lex:A1:milk": {"generator":"chatgpt-2026-10-08-frontier-common-glosses","recordedAt":"2026-10-08","sourceHash":"91848d3b76078de1e347ddf923430a34ab735d564f3dc287e5455b5a745ae03b","outputHash":"4e93da473b16f95a6ccf0529c440b7ce1c62e4ff4dc0a2d3f71e527f9ce68f08"},
     "lex:A1:million": {"generator":"chatgpt-2026-10-08-frontier-common-glosses","recordedAt":"2026-10-08","sourceHash":"7535d98a2901109ff68048dc4d5937c223493589c39af5d1385f27a7abc2b7fa","outputHash":"0433c59af32fe930b9cbfed5c498605327363586fd1235bd4935f3c0d320fff4"},
     "lex:A1:minute": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"076de1d684f6e2a22e876e542af8cf01979fd63333800c1aecdc9e05a9854f98"},
-    "lex:A1:miss": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"976ad633681ca98126e6cee3614d07d02931cb1e806875a403c10032bc6c7bae"},
+    "lex:A1:miss": {"generator":"codex-gpt6-2026-10-10-language-fields","recordedAt":"2026-10-10","sourceHash":"976ad633681ca98126e6cee3614d07d02931cb1e806875a403c10032bc6c7bae","outputHash":"ff6e162ac1b0146435f12d36731aedf1685835a5d3cbd1af36cf86e9b22c14e2"},
     "lex:A1:mistake": {"generator":"chatgpt-2026-10-08-frontier-context-glosses-batch2","recordedAt":"2026-10-08","sourceHash":"1bcb3e4363485a2fb2af16f3741cb8aa921a11529869d26b811350bfc5bec0c3","outputHash":"ee0f6eece51eafbb2808773c10ffe56ffc656c37155ac1261eb5cf5af0b73d65"},
     "lex:A1:model": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"f23ad81f3dc7cc657eae783b2afefb50a72dcf8dfc82050851bdf91803d842e7"},
     "lex:A1:modern": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"aee3f093401cd9e168f5d692cea9d1baf53a53d34c9671ecdd4a68ca2cceb8f4"},
@@ -852,7 +860,7 @@
     "lex:A1:tomato": {"generator":"codex-gpt6-2026-10-10-frontier-context-glosses","recordedAt":"2026-10-10","sourceHash":"a6af3e2ffc10425df6fe77708d4df7f0005c6e6a5987a43888c79bfeacfd0cf6","outputHash":"c4f25eed24467ab288cf106d77d88ca84e89f9b9702927bd0e9bfb4e44f733ec"},
     "lex:A1:tomorrow": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"a9d1adf39cfe0b966bb5aae0710fe9db521580707fb7578eabd42682d7316c2a"},
     "lex:A1:tonight": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"60af7bb2f8816c6712d182322ecffd476d371931f9baf4d602f6ee81805de06c"},
-    "lex:A1:too": {"generator":"chatgpt-2026-10-08-frontier-common-glosses","recordedAt":"2026-10-08","sourceHash":"cfdc116316d47a839692e6797d051ec60e498bb5629589be7e737501402805b3","outputHash":"a25d9d0a8e6159f75fcd947cdc57f12c5f362bc08b41f1392a943c159efe8ad0"},
+    "lex:A1:too": {"generator":"codex-gpt6-2026-10-10-language-fields","recordedAt":"2026-10-10","sourceHash":"a25d9d0a8e6159f75fcd947cdc57f12c5f362bc08b41f1392a943c159efe8ad0","outputHash":"1915f5e9a59645960474fec5497389f170cd23330923abadb3417de0b2c4fded"},
     "lex:A1:tooth": {"generator":"codex-gpt6-2026-10-10-frontier-context-glosses","recordedAt":"2026-10-10","sourceHash":"9bd892c33a3e381bb78310471e889f72a049e06c0a3404de7330810f2763290b","outputHash":"7004174906641211b683476c6955f1b26955b54c9769fc6198693025d4690ce2"},
     "lex:A1:topic": {"generator":"chatgpt-2026-10-08-persian-grammar-why-seven","recordedAt":"2026-10-08","sourceHash":"ba729f6f495523e7579853a944a9c25d817e2a19c9501430bcf0ae6c360b5ce0","outputHash":"4b42c87a44a3ccac1979850450aea1dd7aca41d0c43ebcdb15e1970b9181e5f3"},
     "lex:A1:tourist": {"generator":"historical-unknown","recordedAt":"2026-10-06","sourceHash":null,"outputHash":"0065f4c7c0b719b637c75decfe8761750a0ce5637b9ad55a497c4b0df6c44257"},
