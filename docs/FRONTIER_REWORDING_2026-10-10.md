@@ -46,7 +46,7 @@ words taught by its frontier, which is the target's place in
   - *bad* after *be*.
 - **Bank.** The *bank* (money) choice no longer contrasts senses, because the
   river-bank and aircraft senses need words not yet taught. It now tests *bank*
-  against *shop* and *market*.
+  against the sound-alike *bench* and the verb *bake*.
 - **Distractors.** Wrong forms that are not A1 words (*tiring*, *successful*,
   *policemen*, *either*) remain as distractors, which the check allows. Their
   Persian reasons still explain the contrast.
@@ -54,6 +54,12 @@ words taught by its frontier, which is the target's place in
   claims, the fault review found in #194–#198. *too* "usually" comes last.
   *lay* for *lie* is non-standard rather than impossible. *tiring* describes
   what makes someone tired.
+
+Review of the PR found two distractors that context did not rule out:
+*changed the room* (if the room was rebuilt) and *play with the bell*. *change*
+now offers the ungrammatical *changing rooms*, and *ball* asks what you need
+"to play football". The same sweep replaced *shop* and *market* in the *bank*
+task, because a shop owner may keep money in the shop.
 
 The *present* (verb) prompt gained the same *stress* support gloss as its noun
 twin, because its old option "no stress" had excused the word.
