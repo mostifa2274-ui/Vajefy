@@ -520,6 +520,69 @@ before this work.
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
-**Continuation checkpoint:** continue new authoring at **rank 761**, with
-**140** candidates still to draft.
+**Continuation checkpoint:** superseded below.
+
+## Ranks 761–840 (10 October 2026)
+
+Four more original English/Persian draft batches cover NGSL ranks 761–780,
+781–800, 801–820 and 821–840. Claude Code wrote them in this session. The
+staging corpus now contains **840/900 draft entries, 1,680 paired examples
+and 42 contiguous batches**. PR #204 (ranks 681–760) was merged as `0d203e9`
+before this work.
+
+- **Self-review before the PR.** Each example was checked against its
+  declared sense and part of speech, each definition against its examples,
+  and each Persian line against its English for tense, verb choice and
+  nuance. It made fifteen edits, including:
+  - Persian lines that dropped the progressive (*are studying*, *am
+    taking*), shifted the subject (*Are you ready to leave?*) or changed the
+    noun to a verb (*has a fear of*, *had trouble*) were rendered closer to
+    the English;
+  - two usage notes stated a rule too absolutely (*solution to*, *attend*)
+    and are now hedged;
+  - the *village* definition called a village a town;
+  - both *loss* examples now stay in the declared "no longer having" sense,
+    and *made a loss* moved to the usage note.
+- **Scoped senses.** Polysemous words teach one sense, and the others are
+  named in the usage note:
+
+  | Lemma | Sense taught |
+  |---|---|
+  | `link` | a connection |
+  | `strike` | hitting |
+  | `unit` | part of a book or course |
+  | `card` | a greeting card |
+  | `capital` | a capital city |
+  | `degree` | a unit of temperature |
+  | `treat` | behaving towards someone |
+  | `file` | a computer file |
+  | `bar` | a long piece of something hard |
+  | `release` | setting free |
+
+- **No legacy text.** The exact comparison rewrote 19 lines in 13 examples.
+  Ranks 361–840 have no exact legacy match.
+
+- **Review fixes.** Review caught six issues, all fixed:
+  - *Did you make this cake yourself?* used emphatic *yourself* in a
+    reflexive lesson. It was replaced with a reflexive example, and the
+    usage note now names the emphatic use;
+  - the *investment* definition allowed only profit, while an example spoke
+    of investment in schools. The definition now covers a profit or a
+    benefit later;
+  - the cat's *fur* had been translated «پوست» ("skin") and is now «مو».
+  - the gloss for *below* carried a stray ezafe («پایین‌ترِ از») and now
+    reads «پایین‌تر از»;
+  - *worth seeing* sat outside the monetary *worth* sense and was replaced
+    with *How much is your old bike worth?*;
+  - *close the computer* was translated as "switch off the computer"; the
+    English now says *turn off*.
+
+  A scan of every staged draft found no other ezafe before «از» and no
+  other *close the computer*.
+
+All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
+**Gate 0 is BLOCKED.**
+
+**Continuation checkpoint:** continue new authoring at **rank 841**, with
+**60** candidates still to draft.
 
