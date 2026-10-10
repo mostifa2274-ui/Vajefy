@@ -24,7 +24,7 @@ does not repeat them. It is a practical point:
 Before applying, the drafts were checked for overstated rules, the fault review
 found in the mistake translations. Five notes were softened: "only" for
 *than*, the frequency of *no*, and the wording of *near*, *enough* and
-*behind*.
+*behind*. Review then found five more that stated a tendency as a rule: *both* / *neither*, the comma before *but*, *next to*, *between* and *under* / *below*. Those now describe the usual case.
 
 ## Scope and result
 
