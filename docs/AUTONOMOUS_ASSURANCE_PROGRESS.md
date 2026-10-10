@@ -23,6 +23,7 @@ Do **not** restart from chat memory when repository evidence exists.
   A1 reference/Review scope and four language-field repairs are complete.
 - Remaining: 9,983 deterministic findings; 360/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
+- English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
 Earlier checkpoints below are historical evidence. Their branch names and
 resume instructions describe that earlier point, not unfinished current work.
@@ -80,7 +81,7 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 
 1. Continue from 9983 deterministic findings and the 105-case non-promotable frontier queue. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without a separate study/audio scope decision.
 2. Continue independent NGSL frequency-first authoring at rank 361; 540 candidates still need drafts. All 360 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.
-3. Check the scheduled calibration ledgers before doing semantic work. English is candidates-exhausted and needs a separately preregistered eligible free candidate or a justified new calibration version; preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget/order bypass.
+3. Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates. On 2026-10-10 (PR #193) Gemma 4 26B and GLM 4.7 Flash, both +no-thinking, were appended to the end of its list, and the planner selects Gemma 4. Do not register more English candidates while these are untried; let the scheduled runs calibrate them. Only if both are rejected does English need another candidate or a justified new calibration version. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.
 4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.
 
 ## Historical checkpoint — Unit 1 certification
