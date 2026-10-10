@@ -27,6 +27,14 @@ There is no independent semantic certificate.
   - *match*, *put*, *same* and *best*, which now say "usually";
   - *too* at the end of a sentence;
   - *an ice cream*, which is countable for one serving.
+- Review then found ten more lines that restricted a pattern too far:
+  - the *-ing* adjectives (*interesting*, *amazing*, *exciting*, *boring*), which
+    now describe whoever or whatever causes the feeling, set against *-ed* for
+    the person who feels it;
+  - *a box of*, *most*, *all* and *all kinds of*, which also take uncountable
+    nouns;
+  - *between*, which is not limited to two;
+  - *different*, which also takes singular nouns.
 
 ## Scope and result
 
