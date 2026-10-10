@@ -1109,3 +1109,31 @@ uncertain (generated 2026-10-09T02:12:38.939688Z). Scheduled run 38043072498
 completed successfully by skipping a duplicate certification attempt, so it
 provides no new listening/certification evidence and changes no audio count.
 The strict 386/386 release gate remains unchanged.
+
+## English: two candidates appended — 2026-10-10
+
+English had rejected all four of its v1 candidates:
+- Llama 3.3 70B did not promote;
+- Nemotron 3 with reasoning off: defect recall 2/3;
+- Mistral Small 3.1: defect recall 0;
+- Llama 4 Scout: defect recall 0.
+
+GPT-OSS 120B was rejected earlier for giving no valid output.
+
+The scorer counts a defect only when the seeded criterion is marked FAIL, as the
+frozen manifest says, and every rejected campaign had full schema compliance.
+These are model misses, not transport failures.
+
+Two free candidates are appended to the end of the English list. The earlier
+order is unchanged:
+- Gemma 4 26B (`google-gemma`, reasoning off, 800 tokens, ≤ 1,212 Neurons per campaign);
+- GLM 4.7 Flash (`zhipu-glm`, reasoning off, 800 tokens).
+
+Neither has been calibrated for English; GLM's Persian rejection is a different
+role. Qwen models stay off the English list while the adversarial judge holds
+the Qwen family. Other free text models were left off: QwQ 32B and the DeepSeek
+R1 distill are reasoning-only, and GPT-OSS 20B is the sibling of the rejected
+GPT-OSS 120B. v1 thresholds and gold labels are unchanged.
+
+The new allowlist reaches the Worker with the next deploy of `main`. The next
+scheduled run that fits the daily ceiling calibrates English with Gemma 4.

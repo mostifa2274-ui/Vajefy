@@ -8,12 +8,12 @@
   "roles": {
     "english": {
       "provider": "cloudflare-workers-ai",
-      "modelFamily": "meta-llama",
-      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-      "modelVersion": "@cf/meta/llama-3.3-70b-instruct-fp8-fast@cloudflare-catalog-2026-10-06",
-      "maxTokens": 500,
-      "status": "exhausted",
-      "rationale": "No candidate is left to calibrate; this placeholder keeps the judges' model families distinct and is never qualified. Pre-register a new candidate or calibration version. Skipped: @cf/meta/llama-3.3-70b-instruct-fp8-fast (rejected: did-not-promote); @cf/nvidia/nemotron-3-120b-a12b (rejected: did-not-promote); @cf/mistralai/mistral-small-3.1-24b-instruct (rejected: did-not-promote); @cf/meta/llama-4-scout-17b-16e-instruct (rejected: did-not-promote)."
+      "modelFamily": "google-gemma",
+      "model": "@cf/google/gemma-4-26b-a4b-it",
+      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 800,
+      "status": "calibrating",
+      "rationale": "Next to calibrate: candidate 5 of 6 in the pre-registered order, strongest first. Skipped: @cf/meta/llama-3.3-70b-instruct-fp8-fast (rejected: did-not-promote); @cf/nvidia/nemotron-3-120b-a12b (rejected: did-not-promote); @cf/mistralai/mistral-small-3.1-24b-instruct (rejected: did-not-promote); @cf/meta/llama-4-scout-17b-16e-instruct (rejected: did-not-promote)."
     },
     "persian": {
       "provider": "cloudflare-workers-ai",
@@ -72,6 +72,20 @@
         "model": "@cf/meta/llama-4-scout-17b-16e-instruct",
         "modelVersion": "@cf/meta/llama-4-scout-17b-16e-instruct@cloudflare-catalog-2026-10-06",
         "maxTokens": 600
+      },
+      {
+        "provider": "cloudflare-workers-ai",
+        "modelFamily": "google-gemma",
+        "model": "@cf/google/gemma-4-26b-a4b-it",
+        "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
+        "maxTokens": 800
+      },
+      {
+        "provider": "cloudflare-workers-ai",
+        "modelFamily": "zhipu-glm",
+        "model": "@cf/zai-org/glm-4.7-flash",
+        "modelVersion": "@cf/zai-org/glm-4.7-flash@cloudflare-catalog-2026-10-06+no-thinking",
+        "maxTokens": 800
       }
     ],
     "persian": [
@@ -186,5 +200,5 @@
       }
     ]
   },
-  "candidateOrder": "Pre-registered on 2026-10-06, before any fallback produced results: each role's free Workers AI candidates, strongest first. Calibration activates, for each role not yet qualified, the first candidate that is not rejected, whose model family no other active judge uses, and whose full calibration fits the daily free Neuron ceiling. A qualified role keeps its judge. On 2026-10-08 the candidates whose Workers AI catalog entry documents chat_template_kwargs.enable_thinking (Nemotron 3, Gemma 4, GLM 4.7 Flash, Qwen 3.8) were switched to reasoning off (+no-thinking): with reasoning on by default, Nemotron 3 spent all 1,200 output tokens reasoning and gave no answer on three runs, so no judgement was ever observed. Order is unchanged."
+  "candidateOrder": "Pre-registered on 2026-10-06, before any fallback produced results: each role's free Workers AI candidates, strongest first. Calibration activates, for each role not yet qualified, the first candidate that is not rejected, whose model family no other active judge uses, and whose full calibration fits the daily free Neuron ceiling. A qualified role keeps its judge. On 2026-10-08 the candidates whose Workers AI catalog entry documents chat_template_kwargs.enable_thinking (Nemotron 3, Gemma 4, GLM 4.7 Flash, Qwen 3.8) were switched to reasoning off (+no-thinking): with reasoning on by default, Nemotron 3 spent all 1,200 output tokens reasoning and gave no answer on three runs, so no judgement was ever observed. Order is unchanged. On 2026-10-10, after English had rejected all four of its candidates under frozen v1, two free candidates were appended to the end of the English list, leaving the earlier order unchanged: Gemma 4 26B and GLM 4.7 Flash, both with reasoning off. Neither had been calibrated for English. Qwen models stay off this list while the adversarial judge uses the Qwen family."
 }
