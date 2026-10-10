@@ -49,7 +49,9 @@ zero-based units 3–11), not the source file names.
 
 Before the Units 7–12 pass, its drafts were audited for the faults review found
 in #194. Seventeen lines were softened where the "wrong" sentence is acceptable
-but less usual.
+but less usual. Review of the Units 7–12 pass then found two literal readings that
+ignored context (*a paper to write on*, *happy for my new job*). Those two and
+eight similar lines now give the intended meaning first.
 
 None of the 180 frozen Units 1–3 entries changed. Audio, curriculum and scene
 sources are unchanged.
