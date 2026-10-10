@@ -16,17 +16,17 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #200: `a12621cae9dde2c942cd502989eb7639ccd3944a`.
+- Verified main after PR #201: `ed9dc05df0aa0481bc74d44307de7e9b817a6ea4`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#200 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#201 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
   in frozen Units 1–3 and wait for an owner scope decision. Later-unit usage
   notes, grammar notes and answer feedback are complete. The frontier triage
   queue holds only frozen Units 1–3 cases (71); later-unit rewording is done.
-- Remaining: 6,640 deterministic findings; 520/900 unreviewed independent
+- Remaining: 6,640 deterministic findings; 600/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -85,7 +85,7 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 ## Current next actions
 
 1. Continue from 9983 deterministic findings and the 105-case non-promotable frontier queue. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without a separate study/audio scope decision.
-2. Continue independent NGSL frequency-first authoring at rank 521; 380 candidates still need drafts. All 520 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.
+2. Continue independent NGSL frequency-first authoring at rank 601; 300 candidates still need drafts. All 600 staged drafts require independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement.
 3. Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates. On 2026-10-10 (PR #193) Gemma 4 26B and GLM 4.7 Flash, both +no-thinking, were appended to the end of its list, and the planner selects Gemma 4. Do not register more English candidates while these are untried; let the scheduled runs calibrate them. Only if both are rejected does English need another candidate or a justified new calibration version. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.
 4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.
 
@@ -1285,5 +1285,19 @@ softened for absolute claims before applying.
   in the merged ranks 361–440, so ranks 361–520 have no exact legacy match.
   Seven matching lines remain in another agent's ranks 1–360 (ranks 8, 10,
   36, 63, 66 and 290) and wait for an owner decision.
+- Every approval, rights and release count stays zero.
+
+## 2026-10-10 — NGSL ranks 521–600
+
+- PR #201 (ranks 441–520) merged as `ed9dc05` after review fixes: a month
+  translated as Gregorian, and every exact legacy match removed.
+- Four more original staging batches cover ranks 521–600. Staging now holds
+  600/900 drafts and 1,200 paired examples in 30 batches.
+- Each example was checked against its lesson's sense and part of speech
+  while drafting. Rank 522 `accord` teaches *according to*, the use that
+  gives it its frequency.
+- The exact comparison against all ~95,000 legacy strings ran before the PR.
+  It rewrote 9 matching lines, and 3 examples caught by the nine-token guard
+  were also rewritten. Ranks 361–600 have no exact legacy match.
 - Every approval, rights and release count stays zero.
 

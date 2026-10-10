@@ -384,6 +384,33 @@ before this work.
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
-**Continuation checkpoint:** continue new authoring at **rank 521**, with
-**380** candidates still to draft.
+**Continuation checkpoint:** superseded below.
+
+## Ranks 521–600 (10 October 2026)
+
+Four more original English/Persian draft batches cover NGSL ranks 521–540,
+541–560, 561–580 and 581–600. Claude Code wrote them in this session. The
+staging corpus now contains **600/900 draft entries, 1,200 paired examples
+and 30 contiguous batches**. PR #201 (ranks 441–520) was merged as `ed9dc05`
+before this work.
+
+- **Sense and part of speech checked while drafting.** Polysemous words
+  are scoped to one sense: `rest` as relaxing, `field` as farm land, `stage`
+  as a step in a process, `chance` as possibility, `save` as keeping money,
+  `pick` as choosing, `lie` as lying down and `patient` as a person getting
+  care. `instead` keeps adverb examples; *instead of* is named only in the
+  usage note.
+- **Rank 522.** `accord` appears in the frequency list mainly through
+  *according to*, so the lesson teaches that phrase. The usage note says the
+  noun is formal and rare.
+- **No legacy text.** Before the PR, the exact comparison against every
+  legacy string (about 95,000) ran over the new examples. It rewrote 9
+  matching lines and 3 examples the nine-token guard caught. Ranks 361–600
+  have no exact legacy match.
+
+All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
+**Gate 0 is BLOCKED.**
+
+**Continuation checkpoint:** continue new authoring at **rank 601**, with
+**300** candidates still to draft.
 
