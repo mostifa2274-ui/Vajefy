@@ -25,6 +25,17 @@ There is no independent semantic certificate.
   review found in #194–#197. Five were softened: *juice*, *sugar* and *snow*
   are usually uncountable; *practice* is uncountable in the sense of
   practising; and *turn left* usually has no *to the*.
+- Review then found feedback that presented the choice in one sentence as a
+  general rule. 53 lines were rewritten to describe why the answer fits this
+  sentence:
+  - *-ing* after *love*, *like* and *hate*, where *to* + verb is also
+    correct;
+  - *the* with ordinals and directions;
+  - *the stars*;
+  - *the* attributed to *main*;
+  - *quickly* and *slowly* after the verb;
+  - "countable, so takes *a*";
+  - *the* with *same*, *theatre* and instruments.
 
 ## Scope and result
 
