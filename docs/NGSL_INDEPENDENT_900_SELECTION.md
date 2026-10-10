@@ -407,6 +407,17 @@ before this work.
   legacy string (about 95,000) ran over the new examples. It rewrote 9
   matching lines and 3 examples the nine-token guard caught. Ranks 361–600
   have no exact legacy match.
+- **Review fixes.** Review caught three issues, all fixed:
+  - the `road` definition said "wide" while an example said "narrow", so the
+    definition now names a hard surface instead;
+  - the `fine` definition said "in a good condition" and now says "in good
+    condition";
+  - the Persian for "What material is this bag made of?" mixed two
+    constructions and is now «این کیف از چه جنسی است؟».
+
+  A sweep of the batch found that the `road` usage note implied roads exist
+  only outside towns, so it was corrected. The sweep also added «سال» before
+  a year.
 
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
