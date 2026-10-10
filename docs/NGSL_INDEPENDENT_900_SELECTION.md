@@ -506,6 +506,17 @@ before this work.
 - **No legacy text.** The exact comparison rewrote 9 lines in 8 examples.
   Ranks 361–760 have no exact legacy match.
 
+- **Review fixes.** Review caught three issues, all fixed:
+  - *rainy season* sat outside the declared four-seasons sense and was
+    replaced;
+  - *lives alone* uses *alone* adverbially in an adjective lesson, so the
+    example now uses *is alone* and the usage note separates the two uses;
+  - *all evening* had been translated «تمام شب» ("all night") and is now
+    «تمام عصر».
+
+  A scan of every draft from rank 361 onward found no other evening/night
+  mismatch.
+
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
 
