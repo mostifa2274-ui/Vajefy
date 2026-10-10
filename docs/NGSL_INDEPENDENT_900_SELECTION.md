@@ -347,3 +347,31 @@ label. **Gate 0 is BLOCKED.**
 work. Continue new authoring at **rank 441**, with **460** candidates still to
 draft.
 
+## Ranks 441–520 (10 October 2026)
+
+Four more original English/Persian draft batches cover NGSL ranks 441–460,
+461–480, 481–500 and 501–520. Claude Code wrote them in this session. The
+staging corpus now contains **520/900 draft entries, 1,040 paired examples
+and 26 contiguous batches**. PR #200 (ranks 361–440) was merged as `a12621c`
+before this work.
+
+- **Examples checked against their sense while drafting.** Review of PR
+  #200 found examples outside the declared sense, so this time each example
+  was checked against its lesson's sense as it was written. Polysemous words
+  are scoped explicitly: `bear` as *tolerate*, `step` as a movement of the
+  foot, `model` as a product type, `approach` as a way of dealing with
+  something, `couple` as two people together and `act` as taking action. The
+  other common sense is named only in the usage note.
+- **Rank 478.** The source writes this lemma as `TRUE`, a spreadsheet
+  artifact in the pinned CSV. The draft keeps that exact lemma so its source
+  binding verifies, and the usage note explains the casing.
+- **No repeated sentences.** 19 example lines that exactly repeated a course
+  sentence were rewritten. One Persian line that the nine-token overlap
+  guard caught was also rewritten.
+
+All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
+**Gate 0 is BLOCKED.**
+
+**Continuation checkpoint:** continue new authoring at **rank 521**, with
+**380** candidates still to draft.
+
