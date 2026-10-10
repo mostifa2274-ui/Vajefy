@@ -1014,3 +1014,28 @@ certificate and not a semantic PASS.
 No learner-facing entry is rewritten. Regeneration is not executed, because no
 model is authorized to invent teaching text from this loop. `npm run assurance:repair:check`
 fails if `scripts/content-assurance.ts` emits a code the catalog does not cover.
+
+
+## Contextual frontier repair — 2026-10-10
+
+Codex (GPT-6) added 140 original Persian support glosses to 133 later-unit
+entry/scene tasks. These are machine-authored teaching supports, not independent
+semantic certificates. Task-frontier findings fell from 5,100 to 4,966 and
+scene-frontier findings from 65 to 59; all other deterministic codes stayed
+unchanged. The complete corpus has 9,994 findings.
+
+All 180 source entries in frozen Units 1–3, the curriculum and the audio source
+files remain unchanged. The non-promotable triage queue has 105 cases: 71 frozen,
+2 context-sensitive gloss candidates and 32 requiring rewording or review. A
+Persian gloss for `hardly` would answer the hard/hardly contrast task; glossing
+`Pick ___` in isolation risks translating the entire tested pick-up expression.
+Both therefore remain deferred. See
+[the repair evidence](FRONTIER_CONTEXT_GLOSSES_2026-10-10.md).
+
+Generated lessons, coach cases, real agent provenance, unverified rights
+inventory/authorship hashes and fail-closed assurance records are refreshed.
+The existing scheduled calibration ledgers remain authoritative: 0/4 judges
+qualified. No threshold, gold label, active judge role or release gate changed.
+
+Resume after exact-head CI and merge from the current triage queue and rights
+staging rank 361; do not repeat the 140 completed glosses.

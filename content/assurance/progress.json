@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06",
-  "authoritativeMain": "34a26354f10b73c9918f98db6b841e37a1e58f96",
+  "updatedAt": "2026-10-10",
+  "authoritativeMain": "b6b43d82017648f49585ec31e43f555f96a73e5b",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -200,16 +200,19 @@
   },
   "currentWork": {
     "blocked": false,
-    "branch": "codex/semantic-unit-scoped-packet",
-    "objective": "Scope Unit 1 semantic packet identity to Unit 1 inputs so later-unit curriculum reordering does not invalidate unchanged Unit 1 semantic evidence.",
+    "branch": "codex/a1-frontier-library-20261010",
+    "objective": "Repair non-promotable later-unit vocabulary gaps with context-checked Persian task support while preserving the frozen pilot roster and fail-closed assurance gates.",
     "completedOnBranch": [
-      "Removed the global compiled-content version from the Unit 1 semantic packet identity.",
-      "Packet identity remains bound to Unit 1 target source state, prerequisites, rubric manifest and prompt/rubric hashes.",
-      "Unit 1 packet freshness CI now ignores unrelated Units 4-12 reorderings while still failing on Unit 1 semantic-input drift."
+      "Added 140 support glosses across 133 exact tasks in 111 entries (118 senses) and six scenes; authored by Codex (GPT-6), not independently semantically certified.",
+      "Lowered task-frontier findings 5100 to 4966 and scene-frontier findings 65 to 59; every other deterministic code is unchanged.",
+      "Rebuilt content, coach cases, generation provenance, current unverified rights derivative assignments/authorship hashes, and machine assurance records.",
+      "Verified all 180 Units 1–3 source entries and audio/curriculum files are unchanged."
     ],
     "pending": [
-      "Merge PR #138 after exact-head CI.",
-      "Continue P2 calibration/qualification from the existing automation ledgers; do not regenerate Unit 1 semantic evidence unless scoped Unit 1 inputs change."
+      "Complete exact-head GitHub CI, browser, Workers build contract and rollback rehearsal; merge only after success.",
+      "Resume from the 105-case non-promotable triage queue: 71 frozen, 2 context-sensitive gloss candidates, 32 reword/review cases.",
+      "Do not move core prerequisite words into frozen Units 1–3 without the separate study/audio scope decision.",
+      "Judge qualification remains 0/4; Gate 0 remains blocked and no semantic/public-release approval is claimed."
     ]
   },
   "endpointResolution": {

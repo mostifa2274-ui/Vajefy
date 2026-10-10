@@ -375,7 +375,13 @@
             "answer": "lion",
             "accept": [],
             "fa": "به شیر می‌گویند پادشاهِ حیوانات.",
-            "why": "lion = شیر (حیوان)."
+            "why": "lion = شیر (حیوان).",
+            "support": [
+              {
+                "en": "king",
+                "fa": "پادشاه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -396,6 +402,12 @@
                 "text": "milk",
                 "ok": false,
                 "why": "milk شیرِ خوردنی است."
+              }
+            ],
+            "support": [
+              {
+                "en": "wild",
+                "fa": "وحشی"
               }
             ]
           },
@@ -860,7 +872,13 @@
             "answer": "nose",
             "accept": [],
             "fa": "بینی‌ات وسطِ صورتت است.",
-            "why": "nose = بینی."
+            "why": "nose = بینی.",
+            "support": [
+              {
+                "en": "middle",
+                "fa": "وسط"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -881,6 +899,12 @@
                 "text": "mouth",
                 "ok": false,
                 "why": "با دهان می‌خوریم."
+              }
+            ],
+            "support": [
+              {
+                "en": "smell",
+                "fa": "بو کردن"
               }
             ]
           },
@@ -1568,7 +1592,13 @@
               "across from"
             ],
             "fa": "ایستگاهِ اتوبوس روبه‌روی مدرسه است، آن طرفِ خیابان.",
-            "why": "opposite = روبه‌روی."
+            "why": "opposite = روبه‌روی.",
+            "support": [
+              {
+                "en": "side",
+                "fa": "سمت"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2186,7 +2216,13 @@
             "frame": "A ___ is a clever animal.",
             "answer": "pig",
             "accept": [],
-            "why": "a pig."
+            "why": "a pig.",
+            "support": [
+              {
+                "en": "clever",
+                "fa": "باهوش"
+              }
+            ]
           }
         ]
       }
@@ -2453,7 +2489,13 @@
               "potato"
             ],
             "fa": "چیپس از سیب‌زمینی درست می‌شود.",
-            "why": "potatoes = سیب‌زمینی‌ها."
+            "why": "potatoes = سیب‌زمینی‌ها.",
+            "support": [
+              {
+                "en": "chips",
+                "fa": "سیب‌زمینی سرخ‌کرده"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3266,7 +3308,13 @@
             "answer": "sings",
             "accept": [],
             "fa": "صدای قشنگی دارد. خیلی خوب آواز می‌خواند.",
-            "why": "حالِ ساده با she: sings."
+            "why": "حالِ ساده با she: sings.",
+            "support": [
+              {
+                "en": "voice",
+                "fa": "صدا (صدای شخص)"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4580,7 +4628,13 @@
             "answer": "teeth",
             "accept": [],
             "fa": "دندان‌پزشک از دندان‌هایت مراقبت می‌کند.",
-            "why": "جمعِ tooth: teeth."
+            "why": "جمعِ tooth: teeth.",
+            "support": [
+              {
+                "en": "dentist",
+                "fa": "دندان‌پزشک"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4601,6 +4655,12 @@
                 "text": "tooth",
                 "ok": false,
                 "why": "با all your جمع لازم است."
+              }
+            ],
+            "support": [
+              {
+                "en": "brush",
+                "fa": "مسواک بزن"
               }
             ]
           },
@@ -5213,6 +5273,12 @@
                 "text": "year",
                 "ok": false,
                 "why": "year یعنی سال."
+              }
+            ],
+            "support": [
+              {
+                "en": "informal",
+                "fa": "غیررسمی؛ خودمانی"
               }
             ]
           },
