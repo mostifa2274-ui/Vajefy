@@ -562,7 +562,7 @@ before this work.
 - **No legacy text.** The exact comparison rewrote 19 lines in 13 examples.
   Ranks 361–840 have no exact legacy match.
 
-- **Review fixes.** Review caught three issues, all fixed:
+- **Review fixes.** Review caught six issues, all fixed:
   - *Did you make this cake yourself?* used emphatic *yourself* in a
     reflexive lesson. It was replaced with a reflexive example, and the
     usage note now names the emphatic use;
@@ -570,6 +570,15 @@ before this work.
     of investment in schools. The definition now covers a profit or a
     benefit later;
   - the cat's *fur* had been translated «پوست» ("skin") and is now «مو».
+  - the gloss for *below* carried a stray ezafe («پایین‌ترِ از») and now
+    reads «پایین‌تر از»;
+  - *worth seeing* sat outside the monetary *worth* sense and was replaced
+    with *How much is your old bike worth?*;
+  - *close the computer* was translated as "switch off the computer"; the
+    English now says *turn off*.
+
+  A scan of every staged draft found no other ezafe before «از» and no
+  other *close the computer*.
 
 All 80 entries are unreviewed for sense, Persian, CEFR, pedagogy and rights.
 **Gate 0 is BLOCKED.**
