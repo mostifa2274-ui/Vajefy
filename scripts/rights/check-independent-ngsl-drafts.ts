@@ -6,14 +6,13 @@ import {
   type NgslDraftManifest,
 } from "../../src/lib/learn/rights-independent-ngsl-drafts";
 import type { IndependentNgslSelection } from "../../src/lib/learn/rights-independent-ngsl";
+import { readVerifiedNgslSelection } from "./pinned-ngsl-source";
 
 const ROOT = process.cwd();
 function read<T>(p: string): T {
   return JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8")) as T;
 }
-const selection = read<IndependentNgslSelection>(
-  "content/rights-staging/ngsl-1.2/independent-first-900-selection.json",
-);
+const selection = readVerifiedNgslSelection(ROOT);
 const dirOfDrafts = "content/rights-staging/ngsl-1.2";
 const sequence = ngslDraftBatchFiles(
   fs.readdirSync(path.join(ROOT, dirOfDrafts)),

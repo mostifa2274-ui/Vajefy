@@ -7,7 +7,7 @@ import {
   type NgslDraftManifest,
   type NgslEditorialDraft,
 } from "../../src/lib/learn/rights-independent-ngsl-drafts";
-import type { IndependentNgslSelection } from "../../src/lib/learn/rights-independent-ngsl";
+import { readVerifiedNgslSelection } from "./pinned-ngsl-source";
 
 /**
  * Read-only, exact-draft review packets for an eventual independent reviewer.
@@ -21,13 +21,7 @@ const ROOT = process.cwd();
 const PREFIX = "content/rights-staging/ngsl-1.2";
 const read = <T>(relative: string): T =>
   JSON.parse(fs.readFileSync(path.join(ROOT, relative), "utf8")) as T;
-const source = read<IndependentNgslSelection>(PREFIX + "/independent-first-900-selection.json");
-if (source.status !== "STAGING_ONLY_NOT_A1_ASSESSED_NOT_RIGHTS_CLEARED" ||
-    source.selected !== 900 || source.rightsClearedItems !== 0 ||
-    source.releasedItems !== 0 || source.verifiedA1Words !== 0 ||
-    source.source.license !== "CC BY-SA 4.0") {
-  throw new Error("Independent NGSL source selection was changed or purportedly cleared");
-}
+const source = readVerifiedNgslSelection(ROOT);
 
 const sequence = ngslDraftBatchFiles(fs.readdirSync(path.join(ROOT, PREFIX)));
 if (sequence.issues.length) throw new Error(sequence.issues.join("\n"));

@@ -264,3 +264,48 @@ The separate clean-source authoring stage contains **280 of 900** proposed lesso
 `npm run assurance:ngsl:review:packets -- --json --from 241 --limit 20` emits a **read-only** machine-readable package for each separately drafted NGSL entry. Every package includes its pinned source rank and lemma, exact source Git blob identifiers, original model authoring metadata, a SHA-256 of the exact draft and author, the original English/Persian draft text and **five PENDING checks**: independent English sense; independent Persian accuracy; pedagogical/CEFR placement; licence/ShareAlike; and rights for public derivatives/media. A packet contains no review result and cannot approve or publish content. A later independent evaluator must not be the model/context that authored the text.
 
 `npm run assurance:ngsl:review:packets -- --check` is integrated into `validate:data` and rejects forged source-rank bindings, changed approvals, missing contiguous draft batches and partial-scope integrity checks. Regression tests verify fail-closed behaviour and the release status of one exact item. **No third-party judge was run or qualified** by this exporter: verified reviews, Gate 0 item clearances and clean-source production rebuilds remain **zero**. The exporter does not touch public A1 artefacts or waive CC BY-SA obligations.
+
+
+## Ranks 281–360 and standalone source verification (10 October 2026)
+
+Four new original English/Persian draft batches cover NGSL ranks 281–300,
+301–320, 321–340 and 341–360. The independent staging corpus now contains
+**360/900 draft entries, 720 paired examples and 18 contiguous batches**.
+The authoring input for these batches was the pinned source's lemmas and
+ranks. No legacy teaching text was imported into them. Polysemous words
+are scoped explicitly (for example, `party` as a social gathering, `past`
+as a movement preposition and `figure` as a numerical amount).
+
+Every new entry is still unreviewed for English sense/grammar, Persian
+naturalness, CEFR/pedagogy and rights. NGSL frequency is not an A1 label.
+No independent reviewer result, media right, lesson clearance or public
+replacement is asserted by this authoring batch. **Gate 0 is BLOCKED.**
+
+The standalone review-packet command previously accepted source and licence
+references from the selection manifest without authenticating their bytes.
+Although the full validation pipeline checked those files separately, a
+standalone export could therefore attach unverified source claims to a draft
+hash. `scripts/rights/pinned-ngsl-source.ts` now authenticates both upstream
+files against fixed Git blob pins, rebuilds the complete 900-candidate
+selection and rejects any manifest deviation. The selection checker,
+bilingual draft checker and packet exporter share this verification path.
+No packet or success output is produced before source verification.
+
+Isolated temporary-directory tests exercise changed CSV/licence bytes,
+forged source URL/path/hash references and a forged lemma changed consistently
+in both the selection and its draft. They do not mutate the repository's
+canonical source files. Source integrity establishes which bytes are used;
+it does not grant a lesson or legacy artifact permission to be distributed.
+
+**Continuation checkpoint:** PR #187 was verified merged at `cd8da10` with
+CI, rollback rehearsal and gateway smoke successful before this work.
+Continue new authoring at **rank 361**, with **540** candidates still to draft.
+Independent review of ranks 1–360, complete task/scene/assessment authoring,
+verified media provenance and a fresh release graph are still outstanding.
+The inherited Oxford-related rights gate remains unresolved.
+
+Validation for this continuation: complete `validate:data`, TypeScript, lint,
+**529 unit tests** and the production build pass locally. The new source
+authentication regressions run in isolated temporary directories. Browser,
+Workers build-contract and rollback evidence must pass on the pull request
+before merge; no pending check is counted as a pass.
