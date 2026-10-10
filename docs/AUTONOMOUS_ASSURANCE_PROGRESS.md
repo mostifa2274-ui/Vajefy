@@ -16,14 +16,14 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #193: `571f7f9c243869de797f3bdf6b60994ca278effb`.
+- Verified main after PR #194: `2853619dcb273e46cb5067bba6b11b54f6199139`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191, #193 and #194 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
-- Mistake-pair Persian covers course Units 4–6 (279 senses); Units 7–12 still
-  lack 725 `wrongFa`/`rightFa` pairs.
-- Remaining: 9,425 deterministic findings; 360/900 unreviewed independent
+- Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
+  remaining pairs are in frozen Units 1–3 and wait for an owner scope decision.
+- Remaining: 8,321 deterministic findings; 360/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 
@@ -1164,3 +1164,23 @@ This is deterministic coverage with no semantic certificate. See
 [the evidence](MISTAKE_TRANSLATIONS_2026-10-10.md).
 
 Next: Units 7–12, with the same pattern and in unit order.
+
+PR #194 merged as `2853619dcb273e46cb5067bba6b11b54f6199139` after check,
+browser, Workers build contract, Workers Builds and rollback rehearsal passed.
+Codex found three overstated lines: emphatic *very much*, *product* for a
+harvest, and an ungrammatical gloss for *share*. All three were fixed, and an
+audit softened ten more before the merge.
+
+## Mistake-pair translations, Units 7–12 — 2026-10-10
+
+The remaining 552 senses in course Units 7–12 now have both Persian lines, in
+the same pattern. Before applying them, the drafts were audited for the faults
+found in #194, and 17 lines were softened where the "wrong" sentence is
+acceptable but less usual.
+
+Missing pairs fell from 725 to 173 each, and total findings from 9,425 to
+8,321. No other code changed, and the baseline was lowered to match.
+
+The 180 frozen Units 1–3 entries were verified byte-identical. The 173
+remaining pairs are all in them, so changing them needs an owner decision on
+the frozen study and audio scope.
