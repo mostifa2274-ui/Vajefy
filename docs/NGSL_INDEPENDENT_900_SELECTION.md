@@ -330,6 +330,15 @@ source's lemmas and ranks, and no legacy teaching text was imported.
   sentence (for example *Someone is at the door.*) were rewritten. No new
   example now repeats course or draft text.
 
+- **Examples in the declared sense.** Review found three lessons whose
+  second example left the declared sense: *further help* (an adjective in an
+  adverb lesson), *make sense* beside *sense of humour*, and *a long
+  history* in a lesson on history as a subject. A sweep of all 80 found five
+  more: *wait a minute*, *at the moment*, *in general*, *black coffee* and
+  *drive someone*. All eight now use the declared sense. *sense* is now
+  scoped to a natural ability, as in *sense of humour* and *sense of
+  direction*.
+
 Every new entry is still unreviewed for English sense and grammar, Persian
 naturalness, CEFR and pedagogy, and rights. NGSL frequency is not an A1
 label. **Gate 0 is BLOCKED.**
