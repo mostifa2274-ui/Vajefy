@@ -154,6 +154,31 @@
         "abstainAccuracy": 0,
         "expectedLabelStability": 0.8333333333333334
       }
+    },
+    {
+      "role": "english",
+      "model": "@cf/google/gemma-4-26b-a4b-it",
+      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 800,
+      "promptVersion": "english-a1-prompt-v1",
+      "rubricVersion": "english-a1-v1",
+      "reason": "did-not-promote",
+      "rejectedAt": "2026-10-11",
+      "runIds": [
+        "38116188166.1"
+      ],
+      "detail": "Missed the frozen vajefy-semantic-v1 gate on: defectRecall, abstainAccuracy.",
+      "metrics": {
+        "requestedRuns": 3,
+        "validRuns": 3,
+        "requiredRuns": 3,
+        "schemaComplianceRate": 1,
+        "defectRecall": 0.3333333333333333,
+        "cleanFalsePositiveRate": 0,
+        "cleanUncertainRate": 0,
+        "abstainAccuracy": 0,
+        "expectedLabelStability": 1
+      }
     }
   ]
 }
