@@ -238,7 +238,10 @@ so that batch has 21 senses. CEFR-J tags the forms of *be*, *do* and *have* as
 `be-verb`, `do-verb` and `have-verb`; the lesson checker now teaches them as
 `verb` senses (and `infinitive-to` as `particle`), as the selection matcher
 already did. Self-review made the *waitress* prompts name a woman, because Persian
-«پیشخدمت» is not gendered. The fifteen batches total **300/338 drafted, 38 still
+«پیشخدمت» is not gendered. Codex review then removed a singular *grape* accept
+from a frame that needs *grapes*, made the `broken` definition read "damaged, in
+pieces, or not working", and fixed Persian number agreement in a `snowy` example.
+The fifteen batches total **300/338 drafted, 38 still
 to write**, with 912 bilingual examples and 912 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
