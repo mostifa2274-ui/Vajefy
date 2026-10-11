@@ -1786,9 +1786,7 @@
                 "id": "c1",
                 "text": "Please bring a chair for our ___.",
                 "answer": "guest",
-                "accept": [
-                  "guests"
-                ],
+                "accept": [],
                 "fa": "لطفاً برای مهمانمان یک صندلی بیاور.",
                 "why": "پس از our اینجا اسمِ مفردِ guest می‌آید."
               },
@@ -1916,17 +1914,17 @@
               {
                 "type": "choice",
                 "id": "q1",
-                "prompt": "در جملهٔ منفی کدام درست است؟ «I didn't call ___.»",
+                "prompt": "«به هیچ‌کس زنگ نزدم.» کدام واژه جای خالی را درست پر می‌کند؟ «I didn't call ___.»",
                 "options": [
                   {
                     "text": "anybody",
                     "ok": true,
-                    "why": "در جملهٔ منفی anybody می‌آید."
+                    "why": "not … anybody یعنی «هیچ‌کس»؛ همان معنای جملهٔ فارسی."
                   },
                   {
                     "text": "somebody",
                     "ok": false,
-                    "why": "somebody بیشتر در جملهٔ مثبت به کار می‌رود."
+                    "why": "I didn't call somebody یعنی کسِ مشخصی هست که به او زنگ نزدم، نه «به هیچ‌کس»."
                   }
                 ]
               },
