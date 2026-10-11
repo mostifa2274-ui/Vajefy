@@ -211,7 +211,11 @@ must not teach false claims. PR #220 merged it as
 foreigner, pizza, ruler, leaf, monkey, surf, picnic, bee, awake, headache, cute,
 super, doll and cartoon. Self-review replaced distractors with a valid reading
 (*believe on*, *do a picnic*, *I am a headache*, *plays by a doll*) and a
-disputed *forget … at home* mistake. The twelve batches total **240/338
+disputed *forget … at home* mistake. Codex review of PR #221 found accept lists
+that marked broader or unrelated words correct (*little* for cute, *visitor* and
+*tourist* for foreigner, *toy* for doll). The same rule removed *plane* for jet,
+*book* for notebook and *white* for blank from lessons 201–220, and *water*,
+*sea*, *lovely* and *perfect* from lessons 221–240. The twelve batches total **240/338
 drafted, 98 still to write**, with 729 bilingual examples and 729 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
