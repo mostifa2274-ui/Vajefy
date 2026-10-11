@@ -172,9 +172,15 @@ that rules out *somebody*.
 `lessons-new-121-140.json` continues with bright, hole, birth, factory,
 bridge, grade, lovely, row, celebrate, shoulder, careful, mail, yard, hill,
 ideal, kiss, thin, circle, sky and kick. `kick` has two CEFR-J records, a noun
-and a verb, so this batch has 21 senses. The seven batches total **140/338
-drafted, 198 still to write**, with 426 bilingual examples and 426 checks.
-These are draft counts, not approved or published lessons. The same pull request adds
+and a verb, so this batch has 21 senses. PR #216 merged it as
+`96c48e98f68e15923219f23564667c4af0dd1be6`, after its review replaced
+*What a lovely!*, which is grammatical with lovely as a noun.
+
+`lessons-new-141-160.json` continues with mobile, everywhere, medicine,
+sweet, smell, habit, self, bone, pocket, lucky, king, borrow, reporter,
+breathe, excuse, luck, neck, wheel, drama and toy. The eight batches total
+**160/338 drafted, 178 still to write**, with 486 bilingual examples and 486
+checks. These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
 narrower than the word: wind is any moving air, a cry can be quiet, and smoke
@@ -225,7 +231,9 @@ and pop as pop music. The sixth batch keeps the B1 adjective `glad`, the B1 noun
 sports trainer, sight as the ability to see, sum as a simple calculation,
 shake as a quick movement (`lex:B1:shake`) and gold as made of gold. The seventh batch keeps the B1 nouns `grade`, `row`, `yard` and `kiss`, and
 `lex:B1:kick` with its verb sense at `lex:B1:kick#verb`; it teaches grade as a
-school mark and row as a line of seats or things. Source-level A1 grading does not certify
+school mark and row as a line of seats or things. The eighth batch keeps the B2 nouns `self` and
+`excuse` and the B1 verb `breathe`; it teaches mobile as a mobile phone,
+sweet as a taste, and drama as a play or the school subject. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
