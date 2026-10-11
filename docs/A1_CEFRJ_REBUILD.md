@@ -1,6 +1,6 @@
 # Word-list rebuild on CEFR-J, Octanove and NGSL
 
-Started 2026-10-10. **Status: phase 1 of 3 done.** This plan replaces the
+Started 2026-10-10. **Status: phases 1 and 2 done; phase 3 under way.** This plan replaces the
 Oxford-derived headword lists, A1 first and then every level, with selections
 made by a written rule from openly usable sources. It is an engineering record, not a legal opinion.
 Gate 0 stays BLOCKED until the evidence described below is complete.
@@ -352,6 +352,56 @@ Do not repeat the first 40 drafts or import them into the public course before
 curriculum, audio and assurance work is complete. PR #208's actual merge is
 `76cabbca412648a61fe7cc9dbd84c134304c03b2`.
 
+## Phase 3: the staged A1 curriculum
+
+PR #224 merged the last lesson drafts as
+`917ecafcd597a9078d83e98dae05e276231e4bfc`.
+
+**Design: entry IDs never change.** The app stores learner progress (cards,
+answer history, sync and exports) by entry ID, and today it reads an entry's
+level from the ID prefix (`lex:A1:…`). Renaming IDs would mean migrating every
+saved record. Instead, every ID stays as it is, and an entry's level will come
+from where the curriculum and level lists place it. A current A1 entry that
+moves to A2 keeps `lex:A1:film`; a drafted NEW entry such as `lex:A2:pet` or
+`lex:A1:cefrj-zoo` joins A1 under its own ID. Learners keep all progress
+without a data migration. The code still has to stop treating the ID prefix as
+the level before the staged curriculum can go live; that is the next step.
+
+`npm run assurance:a1:cefrj:curriculum` composes
+`content/rights-staging/a1-rebuild/curriculum-a1-cefrj.json` from the live
+curriculum, the A1 selection's moved-up entries, the drafted lessons and
+`curriculum-assignments.json`, and fails in `validate:data` when the committed
+file is stale or a check fails. It binds each input by SHA-256.
+
+| Measure | Count |
+|---|---|
+| Staged A1 entries, in the same 12 units | **1,072** |
+| Current entries kept, in their unit and order | 734 |
+| Drafted NEW entries added | 338 |
+| Current entries moved above A1 (143 to A2, 21 to B1, 2 to B2) | 166 |
+| Prerequisites dropped because they named a moved entry | 24 |
+
+Each NEW entry is placed by theme at the start or end of a unit, with up to
+two prerequisites that appear earlier: retained A1 entries or earlier NEW
+entries. The forms of *be* (*am, is, are, 'm, 're, 's*) open Unit 2, straight
+after *be* in Unit 1; *was, were, does, did, doing* and *had* join the daily
+routine; animals join the weather unit, which already teaches *bird, horse* and
+*lion*. Unit 1 stays exactly as it is, because its 20 entries are the frozen
+semantic-calibration slice. Units now hold 76 to 118 entries (Unit 1: 20).
+
+The staged file is **not live**: `curriculumApproved` and `liveInApp` are
+`false`, and the app still uses `content/curriculum/A1.json`. Before the
+switch:
+
+1. read each entry's level from its placement instead of its ID prefix
+   (`course-scope.ts`, the store, Today, Study and Drill);
+2. promote the 338 drafts into `content/pilot/entries` only after independent
+   semantic, Persian, CEFR and rights review and certified GB and US audio;
+3. move the 166 entries to their CEFR-J level lists;
+4. redefine the study roster (`content/study-a1.json`) and rebuild scenes,
+   the frontier, provenance, assurance records and rights lineage for the new
+   unit contents.
+
 ## The whole-app placement
 
 `npm run assurance:levels` builds `content/rights-staging/level-rebuild/level-selection.json`
@@ -394,7 +444,8 @@ other unknown part of speech fails the build.
    pronunciation, example) for the 4,169 words that are new to the app; this
    A2–C2 part is deferred by the A1 freeze (see Scope above). All writing is
    new and does not use Oxford text.
-3. **New levels and curriculum.** In the app code:
+3. **New levels and curriculum (under way).** The staged A1 curriculum is
+   built (see Phase 3 above). In the app code:
    - merge B2+ into B2 and add C2, with a migration for learners whose focus or
      saved progress uses B2+ (deferred by the A1 freeze, see Scope above);
    - move each entry to its new level;
