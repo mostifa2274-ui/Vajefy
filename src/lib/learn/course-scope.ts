@@ -1,9 +1,10 @@
 import type { ReviewSession } from "./session";
+import { levelOf } from "./text";
 import type { LevelId } from "./types";
 
 /** A1 learning stays within the course; older saves retain their other cards. */
 export function inLearningScope(id: string, focus: LevelId): boolean {
-  return focus !== "A1" || (id.startsWith("lex:A1:") && id.length > 7);
+  return focus !== "A1" || (levelOf(id) === "A1" && id.length > 7);
 }
 
 /** A mixed legacy session must be archived before starting a course-only one. */

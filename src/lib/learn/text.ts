@@ -1,3 +1,4 @@
+import { LEVEL_PLACEMENT } from "./level-placement";
 import type { LevelId } from "./types";
 
 const LEVELS: LevelId[] = ["A1", "A2", "B1", "B2", "B2x", "C1"];
@@ -24,7 +25,13 @@ export function dayNumber(): number {
   return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
 }
 
-export function levelOf(id: string): LevelId | null {
+/**
+ * The level an entry or sense is taught at: its placement when the CEFR-J
+ * rebuild moved it (level-placement.ts), otherwise the level in its stable ID.
+ */
+export function levelOf(id: string, placement: Readonly<Record<string, LevelId>> = LEVEL_PLACEMENT): LevelId | null {
+  const placed = placement[id.replace(/#.*$/, "")];
+  if (placed) return placed;
   const match = /^lex:([^:]+):/.exec(id);
   if (!match || !isLevel(match[1])) return null;
   return match[1];

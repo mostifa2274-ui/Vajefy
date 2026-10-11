@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { loadA1ReferenceLinks } from "@/lib/learn/load";
 import type { A1ReferenceLinks } from "@/lib/learn/a1-reference-links";
 import type { Copy } from "@/lib/learn/i18n";
+import { levelOf } from "@/lib/learn/text";
 
 /** Optional course-linked reference, opened from the word it supports. */
 export function ReferenceLinks({ entry, copy }: { entry: string; copy: Copy }) {
   const [links, setLinks] = useState<A1ReferenceLinks | null>(null);
   useEffect(() => {
-    if (!entry.startsWith("lex:A1:")) return;
+    if (levelOf(entry) !== "A1") return;
     let alive = true;
     void loadA1ReferenceLinks().then(value => {
       if (alive) setLinks(value);

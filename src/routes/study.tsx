@@ -50,7 +50,7 @@ async function newWords(
   const order = await loadJson<Partial<Record<LevelId, string[]>>>("usefulness.json")
     .then((lists) => lists[focus])
     .catch(() => undefined);
-  const levelIds = order ?? shuffle([...faces.keys()].filter((id) => id.startsWith(`lex:${focus}:`) && !id.includes("#")));
+  const levelIds = order ?? shuffle([...faces.keys()].filter((id) => levelOf(id) === focus && !id.includes("#")));
   let excluded = new Set<string>();
   if (focus === "A1" && CONTENT_CHANNEL === "none") {
     // The study's comparison arm meets the same pilot words, here in Review,

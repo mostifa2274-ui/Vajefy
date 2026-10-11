@@ -11,7 +11,7 @@ import { loadPilot, pronunciationFor, senseAudio } from "@/lib/learn/pilot";
 import { lexQuestion } from "@/lib/learn/quiz";
 import { resumable, startQuiz, type QuizSession } from "@/lib/learn/session";
 import { useProgress } from "@/lib/learn/store";
-import { shuffle } from "@/lib/learn/text";
+import { levelOf, shuffle } from "@/lib/learn/text";
 import type { Lang, LevelId, Question } from "@/lib/learn/types";
 import { Fa } from "@/components/mixed-text";
 
@@ -78,7 +78,7 @@ function DrillPage() {
         const now = Date.now();
         const ranked = rankSmartPractice(current.cards, now, current.requestRetention, current.practiceSkills);
         const candidateIds = ranked.slice(0, Math.max(20, count * 4)).map((candidate) => candidate.id);
-        const levels = LEVELS.filter((id) => candidateIds.some((key) => key.startsWith(`lex:${id}:`)));
+        const levels = LEVELS.filter((id) => candidateIds.some((key) => levelOf(key) === id));
         const words = (await Promise.all(levels.map(loadLevel))).flat();
 
         const targets: Record<string, SmartPracticeTarget> = {};
@@ -259,7 +259,7 @@ function Choice({ active, onClick, children, disabled }: { active: boolean; onCl
 async function studiedQuestions(mode: "listen" | "spell", count: number, copy: Copy, lang: Lang): Promise<Question[]> {
   const cards = useProgress.getState().cards;
   const studied = Object.keys(cards);
-  const levels = LEVELS.filter((id) => studied.some((key) => key.startsWith(`lex:${id}:`)));
+  const levels = LEVELS.filter((id) => studied.some((key) => levelOf(key) === id));
   const pool = (await Promise.all(levels.map(loadLevel))).flat();
   const questions: Question[] = [];
   for (const word of shuffle(pool.filter((item) => cards[item.id]))) {
