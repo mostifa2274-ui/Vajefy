@@ -201,7 +201,10 @@ jet, palace, cloth, bat, soccer, corn, blank, airplane/aeroplane, sunny, bean,
 notebook, temple, lonely, poster and drum. Self-review replaced a `by a bat`
 mistake that has a valid place reading, gave the `by a plane` choice a travel
 context, dropped a `write on your notebook` distractor (writing on the cover is
-valid), and widened `cloth` to cover a cleaning or table cloth. The eleven
+valid), and widened `cloth` to cover a cleaning or table cloth. Codex review
+returned for PR #220: it widened `clever` to clever ideas and plans, and replaced
+an example that presented height as a basketball requirement, since examples
+must not teach false claims. The eleven
 batches total **220/338 drafted, 118 still to write**, with 669 bilingual
 examples and 669 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
