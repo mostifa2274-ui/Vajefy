@@ -212,13 +212,24 @@
       }
     },
     {
-      "kind": "reservation",
+      "kind": "calibration",
       "date": "2026-10-11",
+      "at": "2026-10-11T13:00:02.854Z",
       "runId": "38141158884.1",
       "role": "persian",
-      "at": "2026-10-11T12:56:25.890Z",
+      "model": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+      "modelVersion": "@cf/mistralai/mistral-small-3.1-24b-instruct@cloudflare-catalog-2026-10-06",
+      "maxTokens": 800,
+      "promptVersion": "persian-a1-prompt-v1",
+      "rubricVersion": "persian-a1-v1",
+      "outcome": "rejected",
+      "requestsSent": 18,
       "neuronsCharged": 3519,
-      "note": "Calibration run 38141158884.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
+      "measured": {
+        "inputTokens": 18747,
+        "outputTokens": 7800,
+        "neurons": 992
+      }
     }
   ]
 }
