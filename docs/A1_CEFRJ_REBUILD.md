@@ -192,8 +192,21 @@ review was unavailable.
 `lessons-new-181-200.json` continues with cap, opera, contest, brush,
 celebration, shelf, strict, flag, moon, greet, pray, knife, hurry, grammar,
 bell, rat, ugly, rose, lazy and baseball. `brush` has two CEFR-J records, a
-noun and a verb, so this batch has 21 senses. The ten batches total **200/338
-drafted, 138 still to write**, with 609 bilingual examples and 609 checks.
+noun and a verb, so this batch has 21 senses. PR #219 merged it as
+`8d9bc4fa7c5c0ad8bdd254a740e4e3fef094d34a`, self-reviewed while Codex review was
+unavailable.
+
+`lessons-new-201-220.json` continues with basketball, pet, clever, zoo, rabbit,
+jet, palace, cloth, bat, soccer, corn, blank, airplane/aeroplane, sunny, bean,
+notebook, temple, lonely, poster and drum. Self-review replaced a `by a bat`
+mistake that has a valid place reading, gave the `by a plane` choice a travel
+context, dropped a `write on your notebook` distractor (writing on the cover is
+valid), and widened `cloth` to cover a cleaning or table cloth. Codex review
+returned for PR #220: it widened `clever` to clever ideas and plans, and replaced
+an example that presented height as a basketball requirement, since examples
+must not teach false claims. The eleven
+batches total **220/338 drafted, 118 still to write**, with 669 bilingual
+examples and 669 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
@@ -253,7 +266,11 @@ sweet as a taste, and drama as a play or the school subject. The ninth batch kee
 a verb) get new `lex:A1:cefrj-` IDs. The tenth batch keeps compatible noun entries at B1
 to B2+ (for example `cap`, `opera`, `contest`, `shelf`, `rat` and `rose`) and
 `lex:A2:brush` with its verb sense at `lex:A2:brush#verb`; `grammar` has no
-entry and gets a new ID. Source-level A1 grading does not certify
+entry and gets a new ID. The eleventh batch keeps compatible entries at A2 to
+B2+ (for example `pet`, `jet`, `cloth`, `bat`, `notebook` and `lonely`; `bat`
+is taught as the sports bat). `zoo`, `rabbit`, `corn`, `sunny` and the
+slash headword `airplane/aeroplane` (`lex:A1:cefrj-airplane`) have no entry and
+get new IDs. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
