@@ -215,8 +215,16 @@ disputed *forget … at home* mistake. Codex review of PR #221 found accept list
 that marked broader or unrelated words correct (*little* for cute, *visitor* and
 *tourist* for foreigner, *toy* for doll). The same rule removed *plane* for jet,
 *book* for notebook and *white* for blank from lessons 201–220, and *water*,
-*sea*, *lovely* and *perfect* from lessons 221–240. The twelve batches total **240/338
-drafted, 98 still to write**, with 729 bilingual examples and 729 checks.
+*sea*, *lovely* and *perfect* from lessons 221–240. PR #221 merged it as
+`008e8d3ef76d9322b491731f39babf53bf16d18e`.
+
+`lessons-new-241-260.json` continues with jewelry/jewellery, fever, sofa,
+elementary, towel, prince, sailor, pardon, rude, couch, bucket, sunshine,
+butterfly, underline, tiger, cookie, classmate, biscuit, garbage and turkey.
+Self-review replaced two mistake pairs with a valid reading (*sleeping in the
+sofa*, *a bucket with water*) and dropped *light* for sunshine and *friend* for
+classmate from the accept lists. The thirteen batches total **260/338 drafted,
+78 still to write**, with 789 bilingual examples and 789 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
@@ -283,7 +291,11 @@ slash headword `airplane/aeroplane` (`lex:A1:cefrj-airplane`) have no entry and
 get new IDs. The twelfth batch keeps compatible noun and adjective entries at A2
 to C1 (for example `ghost`, `spy`, `cop`, `foreigner`, `leaf`, `cute` and
 `super`); `handsome`, `pizza`, `ruler` (the measuring tool), `surf` (the waves),
-`picnic`, `awake` and `doll` get new IDs. Source-level A1 grading does not certify
+`picnic`, `awake` and `doll` get new IDs. The thirteenth batch keeps compatible
+noun and adjective entries at A2 to B2+ (for example `jewellery` for the slash
+headword, `fever`, `elementary`, `prince`, `rude` and `biscuit`); `sofa`,
+`pardon`, `couch`, `bucket`, `sunshine`, `butterfly`, the noun `underline`,
+`tiger`, `cookie`, `classmate`, `garbage` and `turkey` get new IDs. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
