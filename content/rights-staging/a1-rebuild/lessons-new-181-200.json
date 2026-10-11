@@ -1,0 +1,2521 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 181–200 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 181,
+    "lastNewHeadword": 200
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "cap",
+      "levelWordId": "level:A1:0771",
+      "existingEntryIds": [
+        "lex:B1:cap"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0860",
+          "senseId": "lex:B1:cap",
+          "meaningEn": "A soft hat with a hard curved part at the front."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:cap",
+        "headword": "cap",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:cap",
+            "pos": "noun",
+            "gloss": "کلاه لبه‌دار",
+            "meaning": "کلاهی نرم که جلویش یک لبهٔ سفت و خمیده دارد.",
+            "grammar": [
+              {
+                "pattern": "wear / put on a cap",
+                "note": "برای کلاه گذاشتن wear a cap یا put on a cap می‌گوییم."
+              },
+              {
+                "pattern": "a cap / caps",
+                "note": "cap قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "He always wears a baseball cap.",
+                "fa": "او همیشه کلاهِ بیسبال سر می‌گذارد."
+              },
+              {
+                "en": "Take your cap off inside the classroom.",
+                "fa": "داخلِ کلاس کلاهت را بردار."
+              },
+              {
+                "en": "My cap keeps the sun out of my eyes.",
+                "fa": "کلاهم جلوی آفتاب را از چشم‌هایم می‌گیرد."
+              }
+            ],
+            "collocations": [
+              "a baseball cap",
+              "wear a cap"
+            ],
+            "collocationFa": {
+              "a baseball cap": "کلاهِ بیسبال",
+              "wear a cap": "کلاه سر گذاشتن"
+            },
+            "usage": "cap نوعی hat (کلاه) است که لبهٔ جلو دارد. cap به معنای «درِ بطری یا خودکار» کاربردِ دیگری است.",
+            "mistake": {
+              "wrong": "He put on his cap on.",
+              "wrongFa": "او کلاهش را سر گذاشت؛ اما on دو بار آمده است.",
+              "right": "He put on his cap.",
+              "rightFa": "او کلاهش را سر گذاشت.",
+              "why": "در put on فقط یک on لازم است."
+            },
+            "pronunciation": {
+              "gb": "/kæp/",
+              "us": "/kæp/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Don't forget your ___; it's very sunny.",
+                "answer": "cap",
+                "accept": [
+                  "hat"
+                ],
+                "fa": "کلاهت را فراموش نکن؛ هوا خیلی آفتابی است.",
+                "why": "cap کلاهی برای آفتاب است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "put on a cap",
+                    "ok": true,
+                    "why": "put on a cap یعنی کلاه سر گذاشتن."
+                  },
+                  {
+                    "text": "put on a cap on",
+                    "ok": false,
+                    "why": "on دو بار نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کلاهِ قرمزم را گم کردم.",
+                "frame": "I lost my red ___.",
+                "answer": "cap",
+                "accept": [
+                  "hat"
+                ],
+                "why": "پس از my red اسمِ cap می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "opera",
+      "levelWordId": "level:A1:0775",
+      "existingEntryIds": [
+        "lex:B2x:opera"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0864",
+          "senseId": "lex:B2x:opera",
+          "meaningEn": "A play in which most of the words are sung to music."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:opera",
+        "headword": "opera",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:opera",
+            "pos": "noun",
+            "gloss": "اپرا",
+            "meaning": "نمایشی که بیشترِ کلماتش با موسیقی خوانده می‌شود.",
+            "grammar": [
+              {
+                "pattern": "an opera",
+                "note": "opera با صدای صدادار شروع می‌شود، پس an opera."
+              },
+              {
+                "pattern": "go to the opera",
+                "note": "برای رفتن به اجرای اپرا go to the opera می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We saw an opera in Italian last night.",
+                "fa": "دیشب یک اپرا به زبانِ ایتالیایی دیدیم."
+              },
+              {
+                "en": "She sings in the city opera.",
+                "fa": "او در اپرای شهر آواز می‌خواند."
+              },
+              {
+                "en": "The opera lasted three hours.",
+                "fa": "اپرا سه ساعت طول کشید."
+              }
+            ],
+            "collocations": [
+              "an opera singer",
+              "an opera house"
+            ],
+            "collocationFa": {
+              "an opera singer": "خوانندهٔ اپرا",
+              "an opera house": "سالنِ اپرا"
+            },
+            "usage": "opera نوعی نمایش است. opera house ساختمانی است که در آن اپرا اجرا می‌شود.",
+            "mistake": {
+              "wrong": "She sings in a opera.",
+              "wrongFa": "او در یک اپرا آواز می‌خواند؛ اما حرفِ تعریف درست نیست.",
+              "right": "She sings in an opera.",
+              "rightFa": "او در یک اپرا آواز می‌خواند.",
+              "why": "opera با صدای صدادار شروع می‌شود، پس an می‌آید نه a."
+            },
+            "pronunciation": {
+              "gb": "/ˈɒprə/",
+              "us": "/ˈɑːprə/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My aunt is an ___ singer.",
+                "answer": "opera",
+                "accept": [],
+                "fa": "خاله‌ام خوانندهٔ اپراست.",
+                "why": "opera singer یعنی خوانندهٔ اپرا."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام درست است؟",
+                "options": [
+                  {
+                    "text": "an opera",
+                    "ok": true,
+                    "why": "opera با صدای صدادار شروع می‌شود."
+                  },
+                  {
+                    "text": "a opera",
+                    "ok": false,
+                    "why": "پیش از صدای صدادار a نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ما به سالنِ اپرا رفتیم.",
+                "frame": "We went to the ___ house.",
+                "answer": "opera",
+                "accept": [],
+                "why": "opera house یعنی سالنِ اپرا."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "contest",
+      "levelWordId": "level:A1:0776",
+      "existingEntryIds": [
+        "lex:B2:contest"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0865",
+          "senseId": "lex:B2:contest",
+          "meaningEn": "A competition in which people try to win a prize."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2:contest",
+        "headword": "contest",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2:contest",
+            "pos": "noun",
+            "gloss": "مسابقه",
+            "meaning": "رقابتی که در آن مردم برای بردنِ جایزه تلاش می‌کنند.",
+            "grammar": [
+              {
+                "pattern": "take part in a contest",
+                "note": "برای شرکت در مسابقه take part in a contest می‌گوییم."
+              },
+              {
+                "pattern": "win a contest",
+                "note": "برای برنده شدن win a contest می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "She won a singing contest at school.",
+                "fa": "او در مدرسه یک مسابقهٔ آواز را برد."
+              },
+              {
+                "en": "There is a drawing contest for children.",
+                "fa": "یک مسابقهٔ نقاشی برای بچه‌ها هست."
+              },
+              {
+                "en": "Ten people took part in the contest.",
+                "fa": "ده نفر در مسابقه شرکت کردند."
+              }
+            ],
+            "collocations": [
+              "win a contest",
+              "a singing contest"
+            ],
+            "collocationFa": {
+              "win a contest": "مسابقه را بردن",
+              "a singing contest": "مسابقهٔ آواز"
+            },
+            "usage": "contest و competition هم‌معنا هستند. در این درس contest اسم است.",
+            "mistake": {
+              "wrong": "He took part on a singing contest.",
+              "wrongFa": "او روی یک مسابقهٔ آواز شرکت کرد؛ اما حرفِ اضافه درست نیست.",
+              "right": "He took part in a singing contest.",
+              "rightFa": "او در یک مسابقهٔ آواز شرکت کرد.",
+              "why": "با take part حرفِ اضافهٔ in می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈkɒntest/",
+              "us": "/ˈkɑːntest/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Who won the cooking ___?",
+                "answer": "contest",
+                "accept": [
+                  "competition"
+                ],
+                "fa": "چه کسی مسابقهٔ آشپزی را برد؟",
+                "why": "contest یعنی مسابقه."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «در مسابقه شرکت کردن»؟",
+                "options": [
+                  {
+                    "text": "take part on a contest",
+                    "ok": false,
+                    "why": "با take part حرفِ اضافهٔ on نمی‌آید."
+                  },
+                  {
+                    "text": "take part in a contest",
+                    "ok": true,
+                    "why": "take part in یعنی شرکت کردن در."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او مسابقهٔ نقاشی را برد.",
+                "frame": "She won the drawing ___.",
+                "answer": "contest",
+                "accept": [
+                  "competition"
+                ],
+                "why": "drawing contest یعنی مسابقهٔ نقاشی."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "brush",
+      "levelWordId": "level:A1:0777",
+      "existingEntryIds": [
+        "lex:A2:brush"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0866",
+          "senseId": "lex:A2:brush",
+          "meaningEn": "An object with many short hairs or bristles on a handle, used for cleaning, painting or making your hair tidy."
+        },
+        {
+          "selectionId": "cefrj-a1:0867",
+          "senseId": "lex:A2:brush#verb",
+          "meaningEn": "To clean or tidy something with a brush."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:brush",
+        "headword": "brush",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:brush",
+            "pos": "noun",
+            "gloss": "برس؛ قلم‌مو؛ مسواک",
+            "meaning": "وسیله‌ای با موهای کوتاهِ زیاد روی یک دسته، برای تمیز کردن، رنگ کردن یا مرتب کردنِ مو.",
+            "grammar": [
+              {
+                "pattern": "a brush / brushes",
+                "note": "جمعِ brush با es است: brushes."
+              },
+              {
+                "pattern": "hairbrush / toothbrush",
+                "note": "نوعِ برس می‌تواند با brush یک واژه شود: toothbrush."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I need a new toothbrush.",
+                "fa": "یک مسواکِ نو لازم دارم."
+              },
+              {
+                "en": "Paint the wall with a big brush.",
+                "fa": "دیوار را با یک قلم‌موی بزرگ رنگ کن."
+              },
+              {
+                "en": "Her hairbrush is on the table.",
+                "fa": "برسِ موی او روی میز است."
+              }
+            ],
+            "collocations": [
+              "a toothbrush",
+              "a paint brush"
+            ],
+            "collocationFa": {
+              "a toothbrush": "مسواک",
+              "a paint brush": "قلم‌موی رنگ"
+            },
+            "usage": "toothbrush مسواک است، hairbrush برسِ مو، و paintbrush قلم‌موی نقاشی.",
+            "mistake": {
+              "wrong": "I need a new teeth brush.",
+              "wrongFa": "یک برسِ دندان‌ها لازم دارم؛ اما نامِ این وسیله درست نیست.",
+              "right": "I need a new toothbrush.",
+              "rightFa": "یک مسواکِ نو لازم دارم.",
+              "why": "نامِ مسواک toothbrush است؛ در این واژه tooth مفرد می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/brʌʃ/",
+              "us": "/brʌʃ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The artist cleaned her ___ after painting.",
+                "answer": "brush",
+                "accept": [
+                  "paintbrush"
+                ],
+                "fa": "نقاش بعد از نقاشی قلم‌مویش را تمیز کرد.",
+                "why": "brush اینجا قلم‌موی نقاشی است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "مسواک در انگلیسی چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "teeth brush",
+                    "ok": false,
+                    "why": "در این واژه teeth جمع نمی‌آید."
+                  },
+                  {
+                    "text": "toothbrush",
+                    "ok": true,
+                    "why": "toothbrush یعنی مسواک."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "برسِ مویم کجاست؟",
+                "frame": "Where is my hair ___?",
+                "answer": "brush",
+                "accept": [],
+                "why": "hair brush یعنی برسِ مو."
+              }
+            ]
+          },
+          {
+            "id": "lex:A2:brush#verb",
+            "pos": "verb",
+            "gloss": "مسواک زدن؛ برس زدن",
+            "meaning": "با برس یا مسواک چیزی را تمیز یا مرتب کردن.",
+            "grammar": [
+              {
+                "pattern": "brush + teeth/hair",
+                "note": "brush your teeth یعنی مسواک زدن و brush your hair یعنی شانه کردنِ مو با برس."
+              },
+              {
+                "pattern": "brush / brushes / brushed",
+                "note": "پس از sh برای سوم‌شخص es می‌آید: she brushes."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The children brush their teeth after breakfast.",
+                "fa": "بچه‌ها بعد از صبحانه مسواک می‌زنند."
+              },
+              {
+                "en": "She brushed the dog's long hair.",
+                "fa": "او موهای بلندِ سگ را برس کشید."
+              },
+              {
+                "en": "I brush my shoes every Sunday.",
+                "fa": "هر یکشنبه کفش‌هایم را برس می‌زنم."
+              }
+            ],
+            "collocations": [
+              "brush your teeth",
+              "brush your hair"
+            ],
+            "collocationFa": {
+              "brush your teeth": "مسواک زدن",
+              "brush your hair": "مو را برس زدن"
+            },
+            "usage": "در فارسی «مسواک زدن» یک فعل است؛ در انگلیسی brush your teeth می‌گوییم.",
+            "mistake": {
+              "wrong": "She brushs her hair every morning.",
+              "wrongFa": "او هر صبح موهایش را برس می‌زند؛ اما شکلِ سوم‌شخص غلط نوشته شده است.",
+              "right": "She brushes her hair every morning.",
+              "rightFa": "او هر صبح موهایش را برس می‌زند.",
+              "why": "فعل‌هایی که به sh ختم می‌شوند برای سوم‌شخص es می‌گیرند."
+            },
+            "pronunciation": {
+              "gb": "/brʌʃ/",
+              "us": "/brʌʃ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Don't forget to ___ your teeth.",
+                "answer": "brush",
+                "accept": [
+                  "clean"
+                ],
+                "fa": "مسواک زدن را فراموش نکن.",
+                "why": "brush your teeth یعنی مسواک زدن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام شکل برای «او مسواک می‌زند» درست است؟",
+                "options": [
+                  {
+                    "text": "He brushes his teeth.",
+                    "ok": true,
+                    "why": "پس از sh برای سوم‌شخص es می‌آید."
+                  },
+                  {
+                    "text": "He brushs his teeth.",
+                    "ok": false,
+                    "why": "این املا نادرست است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من دو بار در روز مسواک می‌زنم.",
+                "frame": "I ___ my teeth twice a day.",
+                "answer": "brush",
+                "accept": [
+                  "clean"
+                ],
+                "why": "با فاعلِ I فعلِ brush بدونِ s می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "celebration",
+      "levelWordId": "level:A1:0778",
+      "existingEntryIds": [
+        "lex:B1:celebration"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0868",
+          "senseId": "lex:B1:celebration",
+          "meaningEn": "A special event, such as a party, that people have because something good has happened."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:celebration",
+        "headword": "celebration",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:celebration",
+            "pos": "noun",
+            "gloss": "جشن",
+            "meaning": "مراسمِ خاصی، مثلِ مهمانی، که به خاطرِ یک اتفاقِ خوب برگزار می‌شود.",
+            "grammar": [
+              {
+                "pattern": "a celebration for + event",
+                "note": "برای مناسبت for می‌آید: a celebration for her birthday."
+              },
+              {
+                "pattern": "have a celebration",
+                "note": "برای جشن گرفتن have a celebration می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Our class held a little celebration for the new teacher.",
+                "fa": "کلاسِ ما برای معلمِ جدید یک جشنِ کوچک گرفت."
+              },
+              {
+                "en": "The Nowruz celebrations last two weeks.",
+                "fa": "جشن‌های نوروز دو هفته طول می‌کشد."
+              },
+              {
+                "en": "There was music and dancing at the celebration.",
+                "fa": "در جشن موسیقی و رقص بود."
+              }
+            ],
+            "collocations": [
+              "a birthday celebration",
+              "have a celebration"
+            ],
+            "collocationFa": {
+              "a birthday celebration": "جشنِ تولد",
+              "have a celebration": "جشن گرفتن"
+            },
+            "usage": "celebration اسم است و فعلش celebrate (جشن گرفتن) است.",
+            "mistake": {
+              "wrong": "We had a celebration to his birthday.",
+              "wrongFa": "ما به تولدش جشن گرفتیم؛ اما حرفِ اضافه درست نیست.",
+              "right": "We had a celebration for his birthday.",
+              "rightFa": "ما برای تولدش جشن گرفتیم.",
+              "why": "برای مناسبتِ جشن for می‌آید، نه to."
+            },
+            "pronunciation": {
+              "gb": "/ˌseləˈbreɪʃn/",
+              "us": "/ˌseləˈbreɪʃn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The whole family came to the ___.",
+                "answer": "celebration",
+                "accept": [
+                  "party"
+                ],
+                "fa": "همهٔ خانواده به جشن آمدند.",
+                "why": "celebration یعنی جشن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه اسم است و یعنی «جشن»؟",
+                "options": [
+                  {
+                    "text": "celebrate",
+                    "ok": false,
+                    "why": "celebrate فعل است."
+                  },
+                  {
+                    "text": "celebration",
+                    "ok": true,
+                    "why": "celebration اسم است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک جشنِ بزرگ برای پیروزی بود.",
+                "frame": "There was a big ___ for the win.",
+                "answer": "celebration",
+                "accept": [
+                  "party"
+                ],
+                "why": "پس از a big اسمِ celebration می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "shelf",
+      "levelWordId": "level:A1:0781",
+      "existingEntryIds": [
+        "lex:B1:shelf"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0872",
+          "senseId": "lex:B1:shelf",
+          "meaningEn": "A flat board fixed to a wall or in a cupboard, used for putting things on."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:shelf",
+        "headword": "shelf",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:shelf",
+            "pos": "noun",
+            "gloss": "قفسه؛ طاقچه",
+            "meaning": "تختهٔ صافی که به دیوار یا داخلِ کمد وصل است و چیزها را روی آن می‌گذاریم.",
+            "grammar": [
+              {
+                "pattern": "on a shelf",
+                "note": "برای چیزی که روی قفسه است on می‌آید: on the top shelf."
+              },
+              {
+                "pattern": "shelf / shelves",
+                "note": "جمعِ shelf، shelves است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The books are on the top shelf.",
+                "fa": "کتاب‌ها روی قفسهٔ بالایی هستند."
+              },
+              {
+                "en": "He put up a new shelf in the kitchen.",
+                "fa": "او در آشپزخانه یک قفسهٔ جدید نصب کرد."
+              },
+              {
+                "en": "The shop shelves were empty.",
+                "fa": "قفسه‌های فروشگاه خالی بودند."
+              }
+            ],
+            "collocations": [
+              "the top shelf",
+              "a book shelf"
+            ],
+            "collocationFa": {
+              "the top shelf": "قفسهٔ بالایی",
+              "a book shelf": "قفسهٔ کتاب"
+            },
+            "usage": "shelf جمعِ بی‌قاعده دارد: shelves (f به v تبدیل می‌شود).",
+            "mistake": {
+              "wrong": "The plates are on the shelfs.",
+              "wrongFa": "بشقاب‌ها روی قفسه‌ها هستند؛ اما جمعِ shelf غلط نوشته شده است.",
+              "right": "The plates are on the shelves.",
+              "rightFa": "بشقاب‌ها روی قفسه‌ها هستند.",
+              "why": "جمعِ shelf به شکلِ shelves نوشته می‌شود."
+            },
+            "pronunciation": {
+              "gb": "/ʃelf/",
+              "us": "/ʃelf/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Put the jar back on the ___, please.",
+                "answer": "shelf",
+                "accept": [],
+                "fa": "لطفاً شیشه را دوباره روی قفسه بگذار.",
+                "why": "on the shelf یعنی روی قفسه."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ shelf کدام است؟",
+                "options": [
+                  {
+                    "text": "shelfs",
+                    "ok": false,
+                    "why": "این املا نادرست است."
+                  },
+                  {
+                    "text": "shelves",
+                    "ok": true,
+                    "why": "جمعِ shelf، shelves است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این اتاق سه قفسه دارد.",
+                "frame": "This room has three ___.",
+                "answer": "shelves",
+                "accept": [],
+                "why": "پس از three جمعِ بی‌قاعدهٔ shelves می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "strict",
+      "levelWordId": "level:A1:0783",
+      "existingEntryIds": [
+        "lex:B2:strict"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0874",
+          "senseId": "lex:B2:strict",
+          "meaningEn": "Making people obey rules and behave well."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2:strict",
+        "headword": "strict",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2:strict",
+            "pos": "adjective",
+            "gloss": "سخت‌گیر",
+            "meaning": "کسی که دیگران را وادار می‌کند قانون‌ها را رعایت کنند و درست رفتار کنند.",
+            "grammar": [
+              {
+                "pattern": "strict with + person",
+                "note": "برای کسی که با او سخت‌گیر هستیم with می‌آید: strict with us."
+              },
+              {
+                "pattern": "a strict + noun",
+                "note": "strict پیش از اسم می‌آید: a strict teacher."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Our maths teacher is very strict.",
+                "fa": "معلمِ ریاضیِ ما خیلی سخت‌گیر است."
+              },
+              {
+                "en": "My parents are strict about bedtime.",
+                "fa": "پدر و مادرم دربارهٔ ساعتِ خواب سخت‌گیرند."
+              },
+              {
+                "en": "The school has strict rules about phones.",
+                "fa": "مدرسه قانون‌های سخت‌گیرانه‌ای دربارهٔ گوشی دارد."
+              }
+            ],
+            "collocations": [
+              "a strict teacher",
+              "strict rules"
+            ],
+            "collocationFa": {
+              "a strict teacher": "معلمِ سخت‌گیر",
+              "strict rules": "قانون‌های سخت‌گیرانه"
+            },
+            "usage": "برای کسی with و برای موضوع about می‌آید: strict with children, strict about homework.",
+            "mistake": {
+              "wrong": "Our coach is very strict to us.",
+              "wrongFa": "مربیِ ما با ما خیلی سخت‌گیر است؛ اما حرفِ اضافه درست نیست.",
+              "right": "Our coach is very strict with us.",
+              "rightFa": "مربیِ ما با ما خیلی سخت‌گیر است.",
+              "why": "برای کسی که با او سخت‌گیر هستیم with می‌آید، نه to."
+            },
+            "pronunciation": {
+              "gb": "/strɪkt/",
+              "us": "/strɪkt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The library has ___ rules: no food and no talking.",
+                "answer": "strict",
+                "accept": [],
+                "fa": "کتابخانه قانون‌های سخت‌گیرانه دارد: نه غذا و نه حرف زدن.",
+                "why": "strict rules یعنی قانون‌های سخت‌گیرانه."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "حرفِ اضافهٔ درست کدام است؟ «She is strict ___ her students.»",
+                "options": [
+                  {
+                    "text": "with",
+                    "ok": true,
+                    "why": "برای کسی با strict، with می‌آید."
+                  },
+                  {
+                    "text": "to",
+                    "ok": false,
+                    "why": "با strict برای کسی to نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پدرش خیلی سخت‌گیر است.",
+                "frame": "His father is very ___.",
+                "answer": "strict",
+                "accept": [],
+                "why": "پس از very صفتِ strict می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "flag",
+      "levelWordId": "level:A1:0786",
+      "existingEntryIds": [
+        "lex:B1:flag"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0877",
+          "senseId": "lex:B1:flag",
+          "meaningEn": "A piece of cloth with a coloured pattern that is the symbol of a country or group."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:flag",
+        "headword": "flag",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:flag",
+            "pos": "noun",
+            "gloss": "پرچم",
+            "meaning": "پارچه‌ای با طرحی رنگی که نمادِ یک کشور یا گروه است.",
+            "grammar": [
+              {
+                "pattern": "the flag of + country",
+                "note": "پیش از کشور of می‌آید: the flag of Iran."
+              },
+              {
+                "pattern": "a flag / flags",
+                "note": "flag قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The flag of Iran is green, white and red.",
+                "fa": "پرچمِ ایران سبز، سفید و قرمز است."
+              },
+              {
+                "en": "Fans waved flags at the match.",
+                "fa": "طرفدارها در مسابقه پرچم تکان دادند."
+              },
+              {
+                "en": "There is a flag on top of the building.",
+                "fa": "بالای ساختمان یک پرچم هست."
+              }
+            ],
+            "collocations": [
+              "wave a flag",
+              "the national flag"
+            ],
+            "collocationFa": {
+              "wave a flag": "پرچم تکان دادن",
+              "the national flag": "پرچمِ ملی"
+            },
+            "usage": "flag قابل‌شمارش است. the national flag یعنی پرچمِ ملیِ یک کشور.",
+            "mistake": {
+              "wrong": "The flag of Japan have a red circle.",
+              "wrongFa": "پرچمِ ژاپن یک دایرهٔ قرمز دارند؛ اما فعل با فاعل جور نیست.",
+              "right": "The flag of Japan has a red circle.",
+              "rightFa": "پرچمِ ژاپن یک دایرهٔ قرمز دارد.",
+              "why": "فاعل the flag مفرد است، پس has می‌آید نه have."
+            },
+            "pronunciation": {
+              "gb": "/flæɡ/",
+              "us": "/flæɡ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The children drew the ___ of their country.",
+                "answer": "flag",
+                "accept": [],
+                "fa": "بچه‌ها پرچمِ کشورشان را کشیدند.",
+                "why": "flag نمادِ یک کشور است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "The flag has three colours.",
+                    "ok": true,
+                    "why": "flag مفرد است و has می‌گیرد."
+                  },
+                  {
+                    "text": "The flag have three colours.",
+                    "ok": false,
+                    "why": "با فاعلِ مفرد have نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک پرچمِ بزرگ روی مدرسه است.",
+                "frame": "There is a big ___ on the school.",
+                "answer": "flag",
+                "accept": [],
+                "why": "پس از a big اسمِ flag می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "moon",
+      "levelWordId": "level:A1:0788",
+      "existingEntryIds": [
+        "lex:A2:moon"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0879",
+          "senseId": "lex:A2:moon",
+          "meaningEn": "The large round object that moves around the earth and shines in the sky at night."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:moon",
+        "headword": "moon",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:moon",
+            "pos": "noun",
+            "gloss": "ماه (کرهٔ ماه)",
+            "meaning": "جسمِ بزرگ و گردی که دورِ زمین می‌چرخد و شب‌ها در آسمان می‌درخشد.",
+            "grammar": [
+              {
+                "pattern": "the moon",
+                "note": "moon معمولاً با the می‌آید: the moon."
+              },
+              {
+                "pattern": "a full moon",
+                "note": "برای ماهِ کامل a full moon می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The moon is very bright tonight.",
+                "fa": "ماه امشب خیلی درخشان است."
+              },
+              {
+                "en": "People first walked on the moon in 1969.",
+                "fa": "انسان‌ها نخستین بار در سالِ ۱۹۶۹ روی ماه راه رفتند."
+              },
+              {
+                "en": "There is a full moon this week.",
+                "fa": "این هفته ماهِ کامل است."
+              }
+            ],
+            "collocations": [
+              "the full moon",
+              "the moon and stars"
+            ],
+            "collocationFa": {
+              "the full moon": "ماهِ کامل",
+              "the moon and stars": "ماه و ستاره‌ها"
+            },
+            "usage": "moon کرهٔ ماه است. «ماه» به معنای بخشی از سال در انگلیسی month است.",
+            "mistake": {
+              "wrong": "Moon is behind the clouds now.",
+              "wrongFa": "ماه حالا پشتِ ابرهاست؛ اما the نیامده است.",
+              "right": "The moon is behind the clouds now.",
+              "rightFa": "ماه حالا پشتِ ابرهاست.",
+              "why": "پیش از moon حرفِ تعریفِ the لازم است."
+            },
+            "pronunciation": {
+              "gb": "/muːn/",
+              "us": "/muːn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Look at the ___; it's so big and round!",
+                "answer": "moon",
+                "accept": [],
+                "fa": "به ماه نگاه کن؛ چه بزرگ و گرد است!",
+                "why": "the moon یعنی کرهٔ ماه."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«ماه» به معنای بخشی از سال در انگلیسی کدام است؟",
+                "options": [
+                  {
+                    "text": "moon",
+                    "ok": false,
+                    "why": "moon کرهٔ ماه است."
+                  },
+                  {
+                    "text": "month",
+                    "ok": true,
+                    "why": "month یعنی ماه (بخشی از سال)."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ماه امشب نارنجی است.",
+                "frame": "The ___ is orange tonight.",
+                "answer": "moon",
+                "accept": [],
+                "why": "پس از The اسمِ moon می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "greet",
+      "levelWordId": "level:A1:0790",
+      "existingEntryIds": [
+        "lex:A2:greet"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0881",
+          "senseId": "lex:A2:greet",
+          "meaningEn": "To say hello to someone or welcome them when you meet them."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:greet",
+        "headword": "greet",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:greet",
+            "pos": "verb",
+            "gloss": "سلام کردن؛ خوشامد گفتن",
+            "meaning": "هنگامِ دیدنِ کسی به او سلام کردن یا خوشامد گفتن.",
+            "grammar": [
+              {
+                "pattern": "greet + person",
+                "note": "کسی که به او سلام می‌کنیم مستقیم پس از greet می‌آید: greet the guests."
+              },
+              {
+                "pattern": "greet / greeted",
+                "note": "گذشتهٔ greet با ed ساخته می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The teacher greeted each student at the door.",
+                "fa": "معلم دمِ در به هر دانش‌آموز سلام کرد."
+              },
+              {
+                "en": "They greeted us with a smile.",
+                "fa": "آن‌ها با لبخند به ما خوشامد گفتند."
+              },
+              {
+                "en": "In Iran, people often greet guests with tea.",
+                "fa": "در ایران اغلب با چای از مهمانان پذیرایی و استقبال می‌کنند."
+              }
+            ],
+            "collocations": [
+              "greet the guests",
+              "greet someone warmly"
+            ],
+            "collocationFa": {
+              "greet the guests": "به مهمان‌ها خوشامد گفتن",
+              "greet someone warmly": "گرم به کسی خوشامد گفتن"
+            },
+            "usage": "greet مفعولِ مستقیم می‌گیرد. اسمِ آن greeting (سلام؛ احوال‌پرسی) است.",
+            "mistake": {
+              "wrong": "She greeted to the guests.",
+              "wrongFa": "او به مهمان‌ها خوشامد گفت؛ اما to اضافه است.",
+              "right": "She greeted the guests.",
+              "rightFa": "او به مهمان‌ها خوشامد گفت.",
+              "why": "در فارسی «به» کسی سلام می‌کنیم، اما greet مفعولِ مستقیم می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ɡriːt/",
+              "us": "/ɡriːt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Stand up and ___ your grandparents.",
+                "answer": "greet",
+                "accept": [
+                  "welcome"
+                ],
+                "fa": "بلند شو و به پدربزرگ و مادربزرگت سلام کن.",
+                "why": "greet یعنی سلام کردن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "He greeted to me.",
+                    "ok": false,
+                    "why": "پس از greet حرفِ اضافهٔ to نمی‌آید."
+                  },
+                  {
+                    "text": "He greeted me.",
+                    "ok": true,
+                    "why": "greet مفعولِ مستقیم می‌گیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "مدیر به والدین خوشامد گفت.",
+                "frame": "The head teacher ___ the parents.",
+                "answer": "greeted",
+                "accept": [
+                  "welcomed"
+                ],
+                "why": "برای گذشته greeted به کار می‌رود."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "pray",
+      "levelWordId": "level:A1:0794",
+      "existingEntryIds": [
+        "lex:B1:pray"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0885",
+          "senseId": "lex:B1:pray",
+          "meaningEn": "To speak to God, for example to give thanks or to ask for help."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:pray",
+        "headword": "pray",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:pray",
+            "pos": "verb",
+            "gloss": "دعا کردن؛ نماز خواندن",
+            "meaning": "با خدا سخن گفتن، مثلاً برای شکر یا درخواستِ کمک.",
+            "grammar": [
+              {
+                "pattern": "pray for + person/thing",
+                "note": "برای کسی یا چیزی که برایش دعا می‌کنیم for می‌آید: pray for peace."
+              },
+              {
+                "pattern": "pray / prays / prayed",
+                "note": "گذشتهٔ pray با ed ساخته می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My grandmother prays every morning.",
+                "fa": "مادربزرگم هر صبح نماز می‌خواند."
+              },
+              {
+                "en": "We prayed for rain.",
+                "fa": "برای باران دعا کردیم."
+              },
+              {
+                "en": "Many people pray in the mosque on Friday.",
+                "fa": "بسیاری از مردم روزِ جمعه در مسجد نماز می‌خوانند."
+              }
+            ],
+            "collocations": [
+              "pray for someone",
+              "pray every day"
+            ],
+            "collocationFa": {
+              "pray for someone": "برای کسی دعا کردن",
+              "pray every day": "هر روز دعا کردن"
+            },
+            "usage": "pray فعل است. اسمِ آن prayer (دعا؛ نماز) است.",
+            "mistake": {
+              "wrong": "They prays together every evening.",
+              "wrongFa": "آن‌ها هر عصر با هم دعا می‌کند؛ اما فعل با فاعل جور نیست.",
+              "right": "They pray together every evening.",
+              "rightFa": "آن‌ها هر عصر با هم دعا می‌کنند.",
+              "why": "با فاعلِ they فعل بدونِ s می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/preɪ/",
+              "us": "/preɪ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Let's ___ for everyone who is ill.",
+                "answer": "pray",
+                "accept": [],
+                "fa": "بیا برای همهٔ بیماران دعا کنیم.",
+                "why": "پس از Let's فعلِ سادهٔ pray می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "اسمِ pray کدام است؟",
+                "options": [
+                  {
+                    "text": "prayer",
+                    "ok": true,
+                    "why": "prayer یعنی دعا یا نماز."
+                  },
+                  {
+                    "text": "player",
+                    "ok": false,
+                    "why": "player یعنی بازیکن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او برای سلامتیِ مادرش دعا کرد.",
+                "frame": "She ___ for her mother's health.",
+                "answer": "prayed",
+                "accept": [],
+                "why": "برای گذشته prayed به کار می‌رود."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "knife",
+      "levelWordId": "level:A1:0795",
+      "existingEntryIds": [
+        "lex:A2:knife"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0886",
+          "senseId": "lex:A2:knife",
+          "meaningEn": "A tool with a sharp edge for cutting, used for food or other things."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:knife",
+        "headword": "knife",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:knife",
+            "pos": "noun",
+            "gloss": "چاقو؛ کارد",
+            "meaning": "ابزاری با لبهٔ تیز برای بریدن، مثلاً برای غذا.",
+            "grammar": [
+              {
+                "pattern": "knife / knives",
+                "note": "جمعِ knife، knives است."
+              },
+              {
+                "pattern": "a knife and fork",
+                "note": "برای کارد و چنگال a knife and fork می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Cut the bread with this knife.",
+                "fa": "نان را با این چاقو ببُر."
+              },
+              {
+                "en": "Be careful, that knife is very sharp.",
+                "fa": "مراقب باش، آن چاقو خیلی تیز است."
+              },
+              {
+                "en": "Put a knife and fork next to each plate.",
+                "fa": "کنارِ هر بشقاب یک کارد و چنگال بگذار."
+              }
+            ],
+            "collocations": [
+              "a sharp knife",
+              "a knife and fork"
+            ],
+            "collocationFa": {
+              "a sharp knife": "چاقوی تیز",
+              "a knife and fork": "کارد و چنگال"
+            },
+            "usage": "در knife حرفِ k خوانده نمی‌شود: /naɪf/. جمعش knives است.",
+            "mistake": {
+              "wrong": "Put the knifes in the drawer.",
+              "wrongFa": "چاقوها را در کشو بگذار؛ اما جمعِ knife غلط نوشته شده است.",
+              "right": "Put the knives in the drawer.",
+              "rightFa": "چاقوها را در کشو بگذار.",
+              "why": "جمعِ knife به شکلِ knives نوشته می‌شود."
+            },
+            "pronunciation": {
+              "gb": "/naɪf/",
+              "us": "/naɪf/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I need a sharp ___ to cut this melon.",
+                "answer": "knife",
+                "accept": [],
+                "fa": "برای بریدنِ این طالبی یک چاقوی تیز لازم دارم.",
+                "why": "knife ابزاری برای بریدن است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ knife کدام است؟",
+                "options": [
+                  {
+                    "text": "knives",
+                    "ok": true,
+                    "why": "f به v تبدیل می‌شود و es می‌گیرد."
+                  },
+                  {
+                    "text": "knifes",
+                    "ok": false,
+                    "why": "این شکل برای اسمِ knife درست نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "در کشو پنج چاقو هست.",
+                "frame": "There are five ___ in the drawer.",
+                "answer": "knives",
+                "accept": [],
+                "why": "پس از five جمعِ بی‌قاعدهٔ knives می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "hurry",
+      "levelWordId": "level:A1:0796",
+      "existingEntryIds": [
+        "lex:B1:hurry"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0887",
+          "senseId": "lex:B1:hurry",
+          "meaningEn": "A need to do something or go somewhere quickly."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:hurry",
+        "headword": "hurry",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:hurry",
+            "pos": "noun",
+            "gloss": "عجله",
+            "meaning": "نیاز به انجام دادنِ کاری یا رفتن به جایی با سرعت.",
+            "grammar": [
+              {
+                "pattern": "be in a hurry",
+                "note": "برای عجله داشتن be in a hurry می‌گوییم."
+              },
+              {
+                "pattern": "There's no hurry",
+                "note": "برای «عجله‌ای نیست» There's no hurry می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I can't stop to chat because I'm in a hurry.",
+                "fa": "نمی‌توانم بایستم و گپ بزنم چون عجله دارم."
+              },
+              {
+                "en": "He left in a hurry and forgot his phone.",
+                "fa": "او با عجله رفت و گوشی‌اش را جا گذاشت."
+              },
+              {
+                "en": "You can finish it tomorrow, so there is no hurry at all.",
+                "fa": "می‌توانی فردا تمامش کنی، پس اصلاً عجله‌ای نیست."
+              }
+            ],
+            "collocations": [
+              "in a hurry",
+              "no hurry"
+            ],
+            "collocationFa": {
+              "in a hurry": "با عجله؛ عجله داشتن",
+              "no hurry": "عجله‌ای نیست"
+            },
+            "usage": "در این درس hurry اسم است. فعلِ hurry (عجله کردن) مثل Hurry up! جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "I am in hurry today.",
+              "wrongFa": "امروز عجله دارم؛ اما حرفِ تعریف نیامده است.",
+              "right": "I am in a hurry today.",
+              "rightFa": "امروز عجله دارم.",
+              "why": "در عبارتِ ثابتِ in a hurry، حرفِ تعریفِ a لازم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈhʌri/",
+              "us": "/ˈhɜːri/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "We ate in a ___ because the train was leaving.",
+                "answer": "hurry",
+                "accept": [],
+                "fa": "با عجله غذا خوردیم چون قطار داشت حرکت می‌کرد.",
+                "why": "in a hurry یعنی با عجله."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "I'm in hurry.",
+                    "ok": false,
+                    "why": "اینجا a لازم است."
+                  },
+                  {
+                    "text": "I'm in a hurry.",
+                    "ok": true,
+                    "why": "in a hurry عبارتِ ثابت است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "عجله‌ای نیست؛ آرام راه برو.",
+                "frame": "There's no ___; walk slowly.",
+                "answer": "hurry",
+                "accept": [
+                  "rush"
+                ],
+                "why": "There's no hurry یعنی عجله‌ای نیست."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "grammar",
+      "levelWordId": "level:A1:0797",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0888",
+          "senseId": "lex:A1:cefrj-grammar",
+          "meaningEn": "The rules of a language about how words change and are put together in sentences."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-grammar",
+        "headword": "grammar",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-grammar",
+            "pos": "noun",
+            "gloss": "دستورِ زبان",
+            "meaning": "قاعده‌های یک زبان دربارهٔ تغییرِ واژه‌ها و کنارِ هم گذاشتنِ آن‌ها در جمله.",
+            "grammar": [
+              {
+                "pattern": "grammar",
+                "note": "grammar غیرقابل‌شمارش است و فعلِ مفرد می‌گیرد: The grammar is easy."
+              },
+              {
+                "pattern": "English grammar",
+                "note": "نامِ زبان پیش از grammar می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "English grammar is not very hard.",
+                "fa": "دستورِ زبانِ انگلیسی خیلی سخت نیست."
+              },
+              {
+                "en": "We practise grammar every Tuesday.",
+                "fa": "هر سه‌شنبه دستورِ زبان تمرین می‌کنیم."
+              },
+              {
+                "en": "Check your grammar before you send the email.",
+                "fa": "پیش از فرستادنِ ایمیل، دستورِ زبانش را بررسی کن."
+              }
+            ],
+            "collocations": [
+              "English grammar",
+              "a grammar book"
+            ],
+            "collocationFa": {
+              "English grammar": "دستورِ زبانِ انگلیسی",
+              "a grammar book": "کتابِ دستورِ زبان"
+            },
+            "usage": "grammar غیرقابل‌شمارش است. a grammar book یعنی کتابی دربارهٔ دستورِ زبان.",
+            "mistake": {
+              "wrong": "The grammar are easy in this lesson.",
+              "wrongFa": "دستورِ زبان در این درس آسان هستند؛ اما فعل جمع آمده است.",
+              "right": "The grammar is easy in this lesson.",
+              "rightFa": "دستورِ زبان در این درس آسان است.",
+              "why": "grammar غیرقابل‌شمارش است و فعلِ مفرد (is) می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈɡræmə/",
+              "us": "/ˈɡræmər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I need more ___ practice before the test.",
+                "answer": "grammar",
+                "accept": [],
+                "fa": "پیش از آزمون تمرینِ بیشتری روی دستورِ زبان لازم دارم.",
+                "why": "grammar practice یعنی تمرینِ دستورِ زبان."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Grammar is important.",
+                    "ok": true,
+                    "why": "grammar فعلِ مفرد می‌گیرد."
+                  },
+                  {
+                    "text": "Grammar are important.",
+                    "ok": false,
+                    "why": "grammar غیرقابل‌شمارش است و are نمی‌گیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این کتابِ دستورِ زبان خیلی مفید است.",
+                "frame": "This ___ book is very useful.",
+                "answer": "grammar",
+                "accept": [],
+                "why": "grammar book یعنی کتابِ دستورِ زبان."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "bell",
+      "levelWordId": "level:A1:0798",
+      "existingEntryIds": [
+        "lex:B1:bell"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0889",
+          "senseId": "lex:B1:bell",
+          "meaningEn": "An object that makes a ringing sound, for example on a door or in a school."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:bell",
+        "headword": "bell",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:bell",
+            "pos": "noun",
+            "gloss": "زنگ",
+            "meaning": "وسیله‌ای که صدای زنگ می‌دهد، مثلاً روی در یا در مدرسه.",
+            "grammar": [
+              {
+                "pattern": "the bell rings",
+                "note": "برای به صدا درآمدنِ زنگ the bell rings می‌گوییم."
+              },
+              {
+                "pattern": "ring the bell",
+                "note": "برای زدنِ زنگ ring the bell می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The school bell rings at eight.",
+                "fa": "زنگِ مدرسه ساعتِ هشت به صدا درمی‌آید."
+              },
+              {
+                "en": "Someone rang the bell, so I opened the door.",
+                "fa": "کسی زنگ را زد، پس در را باز کردم."
+              },
+              {
+                "en": "My bike has a small bell.",
+                "fa": "دوچرخه‌ام یک زنگِ کوچک دارد."
+              }
+            ],
+            "collocations": [
+              "ring the bell",
+              "the school bell"
+            ],
+            "collocationFa": {
+              "ring the bell": "زنگ زدن (زنگِ در)",
+              "the school bell": "زنگِ مدرسه"
+            },
+            "usage": "bell زنگِ فیزیکی است. برای تلفن زدن call یا ring someone به کار می‌رود.",
+            "mistake": {
+              "wrong": "The church bells is ringing.",
+              "wrongFa": "زنگ‌های کلیسا به صدا درمی‌آید؛ اما فعل مفرد آمده است.",
+              "right": "The church bells are ringing.",
+              "rightFa": "زنگ‌های کلیسا به صدا درمی‌آیند.",
+              "why": "bells جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/bel/",
+              "us": "/bel/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "When the ___ rings, the lesson ends.",
+                "answer": "bell",
+                "accept": [],
+                "fa": "وقتی زنگ به صدا درمی‌آید، درس تمام می‌شود.",
+                "why": "bell وسیله‌ای است که صدای زنگ می‌دهد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «زنگِ در را زدن»؟",
+                "options": [
+                  {
+                    "text": "ring the bell",
+                    "ok": true,
+                    "why": "ring the bell یعنی زنگ را زدن."
+                  },
+                  {
+                    "text": "call the bell",
+                    "ok": false,
+                    "why": "با bell فعلِ call به کار نمی‌رود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "زنگِ دوچرخه‌ام خراب است.",
+                "frame": "My bike ___ is broken.",
+                "answer": "bell",
+                "accept": [],
+                "why": "bike bell یعنی زنگِ دوچرخه."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "rat",
+      "levelWordId": "level:A1:0802",
+      "existingEntryIds": [
+        "lex:B2x:rat"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0893",
+          "senseId": "lex:B2x:rat",
+          "meaningEn": "An animal like a large mouse, with a long tail."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:rat",
+        "headword": "rat",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:rat",
+            "pos": "noun",
+            "gloss": "موشِ صحرایی؛ موشِ بزرگ",
+            "meaning": "جانوری شبیهِ موشِ بزرگ با دُمِ دراز.",
+            "grammar": [
+              {
+                "pattern": "a rat / rats",
+                "note": "rat قابل‌شمارش است."
+              },
+              {
+                "pattern": "rat / mouse",
+                "note": "rat از mouse بزرگ‌تر است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "A rat ran across the street.",
+                "fa": "یک موشِ بزرگ از عرضِ خیابان دوید."
+              },
+              {
+                "en": "Rats live near the river.",
+                "fa": "موش‌های بزرگ نزدیکِ رودخانه زندگی می‌کنند."
+              },
+              {
+                "en": "The farmer has a cat to catch rats.",
+                "fa": "کشاورز یک گربه دارد تا موش‌ها را بگیرد."
+              }
+            ],
+            "collocations": [
+              "a big rat",
+              "catch a rat"
+            ],
+            "collocationFa": {
+              "a big rat": "موشِ بزرگ",
+              "catch a rat": "موش گرفتن"
+            },
+            "usage": "rat بزرگ‌تر از mouse است. جمعِ mouse بی‌قاعده (mice) است، اما جمعِ rat باقاعده (rats) است.",
+            "mistake": {
+              "wrong": "There is a rat in garden.",
+              "wrongFa": "یک موشِ بزرگ در باغ هست؛ اما the نیامده است.",
+              "right": "There is a rat in the garden.",
+              "rightFa": "یک موشِ بزرگ در باغ هست.",
+              "why": "garden قابل‌شمارش است و اینجا the لازم دارد: in the garden."
+            },
+            "pronunciation": {
+              "gb": "/ræt/",
+              "us": "/ræt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The cat chased a ___ out of the barn.",
+                "answer": "rat",
+                "accept": [],
+                "fa": "گربه یک موشِ بزرگ را از انبار بیرون کرد.",
+                "why": "rat جانوری شبیهِ موشِ بزرگ است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام بزرگ‌تر است؟",
+                "options": [
+                  {
+                    "text": "rat",
+                    "ok": true,
+                    "why": "rat از mouse بزرگ‌تر است."
+                  },
+                  {
+                    "text": "mouse",
+                    "ok": false,
+                    "why": "mouse کوچک‌تر است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک موشِ بزرگ زیرِ ماشین بود.",
+                "frame": "There was a ___ under the car.",
+                "answer": "rat",
+                "accept": [],
+                "why": "پس از a اسمِ مفردِ rat می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "ugly",
+      "levelWordId": "level:A1:0804",
+      "existingEntryIds": [
+        "lex:B1:ugly"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0895",
+          "senseId": "lex:B1:ugly",
+          "meaningEn": "Not nice to look at."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:ugly",
+        "headword": "ugly",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:ugly",
+            "pos": "adjective",
+            "gloss": "زشت",
+            "meaning": "چیزی که دیدنش خوشایند نیست.",
+            "grammar": [
+              {
+                "pattern": "ugly / uglier / ugliest",
+                "note": "در مقایسه y به i تبدیل می‌شود: uglier, ugliest."
+              },
+              {
+                "pattern": "ugly + noun",
+                "note": "ugly پیش از اسم می‌آید: an ugly building."
+              }
+            ],
+            "examples": [
+              {
+                "en": "That old building is quite ugly.",
+                "fa": "آن ساختمانِ قدیمی نسبتاً زشت است."
+              },
+              {
+                "en": "I don't like this ugly brown carpet.",
+                "fa": "این فرشِ قهوه‌ایِ زشت را دوست ندارم."
+              },
+              {
+                "en": "In the story, the ugly duckling becomes a swan.",
+                "fa": "در داستان، جوجه‌اردکِ زشت به قو تبدیل می‌شود."
+              }
+            ],
+            "collocations": [
+              "an ugly building",
+              "an ugly colour"
+            ],
+            "collocationFa": {
+              "an ugly building": "ساختمانِ زشت",
+              "an ugly colour": "رنگِ زشت"
+            },
+            "usage": "متضادِ ugly واژهٔ beautiful یا pretty است. برای آدم‌ها ugly می‌تواند بی‌ادبانه باشد.",
+            "mistake": {
+              "wrong": "This is the uglyest chair in the shop.",
+              "wrongFa": "این زشت‌ترین صندلیِ فروشگاه است؛ اما املای صفتِ عالی غلط است.",
+              "right": "This is the ugliest chair in the shop.",
+              "rightFa": "این زشت‌ترین صندلیِ فروشگاه است.",
+              "why": "در صفتِ عالیِ ugly حرفِ y به i تبدیل می‌شود: ugliest."
+            },
+            "pronunciation": {
+              "gb": "/ˈʌɡli/",
+              "us": "/ˈʌɡli/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I don't want this ___ jumper; it has a strange colour.",
+                "answer": "ugly",
+                "accept": [],
+                "fa": "این ژاکتِ زشت را نمی‌خواهم؛ رنگِ عجیبی دارد.",
+                "why": "ugly یعنی زشت."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "متضادِ ugly کدام است؟",
+                "options": [
+                  {
+                    "text": "beautiful",
+                    "ok": true,
+                    "why": "beautiful یعنی زیبا."
+                  },
+                  {
+                    "text": "busy",
+                    "ok": false,
+                    "why": "busy یعنی پرمشغله."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این کفش‌ها زشت‌اند.",
+                "frame": "These shoes are ___.",
+                "answer": "ugly",
+                "accept": [],
+                "why": "پس از are صفتِ ugly می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "rose",
+      "levelWordId": "level:A1:0806",
+      "existingEntryIds": [
+        "lex:B2x:rose"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0897",
+          "senseId": "lex:B2x:rose",
+          "meaningEn": "A flower with a sweet smell, often red, pink, white or yellow, that grows on a bush with sharp points on its stems."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:rose",
+        "headword": "rose",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:rose",
+            "pos": "noun",
+            "gloss": "گلِ رز؛ گلِ سرخ",
+            "meaning": "گلی خوشبو، اغلب قرمز، صورتی، سفید یا زرد، که روی بوته‌ای با ساقه‌های خاردار می‌روید.",
+            "grammar": [
+              {
+                "pattern": "a rose / roses",
+                "note": "rose قابل‌شمارش است: a red rose, ten roses."
+              },
+              {
+                "pattern": "a bunch of roses",
+                "note": "برای دسته‌گل a bunch of roses می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "He gave his mother a red rose.",
+                "fa": "او یک گلِ رزِ قرمز به مادرش داد."
+              },
+              {
+                "en": "The roses in our garden smell lovely.",
+                "fa": "گل‌های رزِ باغِ ما بوی خوبی دارند."
+              },
+              {
+                "en": "Kashan is famous for its rose water.",
+                "fa": "کاشان به گلابش مشهور است."
+              }
+            ],
+            "collocations": [
+              "a red rose",
+              "a bunch of roses"
+            ],
+            "collocationFa": {
+              "a red rose": "رزِ قرمز",
+              "a bunch of roses": "یک دسته گلِ رز"
+            },
+            "usage": "rose نامِ گل است. rose به‌عنوانِ گذشتهٔ فعلِ rise (بالا آمدن) واژهٔ دیگری است. rose water یعنی گلاب.",
+            "mistake": {
+              "wrong": "She bought a pink roses.",
+              "wrongFa": "او یک گل‌های رزِ صورتی خرید؛ اما پس از a اسم جمع آمده است.",
+              "right": "She bought a pink rose.",
+              "rightFa": "او یک گلِ رزِ صورتی خرید.",
+              "why": "پس از a اسمِ مفرد می‌آید: a pink rose."
+            },
+            "pronunciation": {
+              "gb": "/rəʊz/",
+              "us": "/roʊz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "A ___ has a lovely smell but sharp points on its stem.",
+                "answer": "rose",
+                "accept": [],
+                "fa": "گلِ رز بوی خوبی دارد اما ساقه‌اش خار دارد.",
+                "why": "rose گلِ خوشبوی خاردار است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "a white rose",
+                    "ok": true,
+                    "why": "پس از a اسمِ مفرد می‌آید."
+                  },
+                  {
+                    "text": "a white roses",
+                    "ok": false,
+                    "why": "پس از a اسمِ جمع نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک دسته گلِ رز خریدم.",
+                "frame": "I bought a bunch of ___.",
+                "answer": "roses",
+                "accept": [],
+                "why": "پس از a bunch of شکلِ جمعِ roses می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "lazy",
+      "levelWordId": "level:A1:0807",
+      "existingEntryIds": [
+        "lex:A2:lazy"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0898",
+          "senseId": "lex:A2:lazy",
+          "meaningEn": "Not wanting to work or make an effort."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:lazy",
+        "headword": "lazy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:lazy",
+            "pos": "adjective",
+            "gloss": "تنبل",
+            "meaning": "کسی که نمی‌خواهد کار کند یا تلاش کند.",
+            "grammar": [
+              {
+                "pattern": "be lazy",
+                "note": "lazy صفت است و پس از be می‌آید: Don't be lazy."
+              },
+              {
+                "pattern": "lazy / lazier / laziest",
+                "note": "در مقایسه y به i تبدیل می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My brother is too lazy to clean his room.",
+                "fa": "برادرم تنبل‌تر از آن است که اتاقش را تمیز کند."
+              },
+              {
+                "en": "We had a lazy Sunday at home.",
+                "fa": "یک یکشنبهٔ آرام و بی‌کار در خانه داشتیم."
+              },
+              {
+                "en": "The lazy cat slept all day.",
+                "fa": "گربهٔ تنبل تمامِ روز خوابید."
+              }
+            ],
+            "collocations": [
+              "a lazy day",
+              "too lazy to"
+            ],
+            "collocationFa": {
+              "a lazy day": "روزِ بی‌کار و آرام",
+              "too lazy to": "تنبل‌تر از آنکه"
+            },
+            "usage": "lazy برای آدم یعنی تنبل؛ برای روز (a lazy day) یعنی روزی آرام بدونِ کار.",
+            "mistake": {
+              "wrong": "Don't be lazily!",
+              "wrongFa": "تنبلانه نباش! اما پس از be قید آمده است.",
+              "right": "Don't be lazy!",
+              "rightFa": "تنبل نباش!",
+              "why": "پس از be صفتِ lazy می‌آید؛ lazily قید است."
+            },
+            "pronunciation": {
+              "gb": "/ˈleɪzi/",
+              "us": "/ˈleɪzi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "He never does his homework; he is very ___.",
+                "answer": "lazy",
+                "accept": [],
+                "fa": "او هیچ‌وقت تکلیفش را انجام نمی‌دهد؛ خیلی تنبل است.",
+                "why": "lazy یعنی تنبل."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Don't be lazily.",
+                    "ok": false,
+                    "why": "پس از be قید نمی‌آید."
+                  },
+                  {
+                    "text": "Don't be lazy.",
+                    "ok": true,
+                    "why": "پس از be صفتِ lazy می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سگِ ما تنبل است.",
+                "frame": "Our dog is ___.",
+                "answer": "lazy",
+                "accept": [],
+                "why": "پس از is صفتِ lazy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "baseball",
+      "levelWordId": "level:A1:0858",
+      "existingEntryIds": [
+        "lex:A2:baseball"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0949",
+          "senseId": "lex:A2:baseball",
+          "meaningEn": "A ball game played by two teams, in which players hit a ball with a bat and run around four bases."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:baseball",
+        "headword": "baseball",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:baseball",
+            "pos": "noun",
+            "gloss": "بیسبال",
+            "meaning": "بازیِ توپی بینِ دو تیم که بازیکنان با چوب به توپ می‌زنند و دورِ چهار پایگاه می‌دوند.",
+            "grammar": [
+              {
+                "pattern": "play baseball",
+                "note": "نامِ ورزش بدونِ the می‌آید: play baseball."
+              },
+              {
+                "pattern": "baseball + noun",
+                "note": "baseball پیش از اسم می‌آید: a baseball cap."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Baseball is very popular in the USA and Japan.",
+                "fa": "بیسبال در آمریکا و ژاپن خیلی محبوب است."
+              },
+              {
+                "en": "They play baseball in the park on Sundays.",
+                "fa": "آن‌ها یکشنبه‌ها در پارک بیسبال بازی می‌کنند."
+              },
+              {
+                "en": "He hit the baseball over the fence.",
+                "fa": "او توپِ بیسبال را از روی نرده بیرون زد."
+              }
+            ],
+            "collocations": [
+              "play baseball",
+              "a baseball bat"
+            ],
+            "collocationFa": {
+              "play baseball": "بیسبال بازی کردن",
+              "a baseball bat": "چوبِ بیسبال"
+            },
+            "usage": "نامِ ورزش‌ها بدونِ the می‌آید: play baseball, play football.",
+            "mistake": {
+              "wrong": "He is a good baseball's player.",
+              "wrongFa": "او بازیکنِ خوبِ بیسبال است؛ اما 's اضافه است.",
+              "right": "He is a good baseball player.",
+              "rightFa": "او بازیکنِ خوبِ بیسبال است.",
+              "why": "baseball پیش از player مثلِ صفت می‌آید و 's نمی‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈbeɪsbɔːl/",
+              "us": "/ˈbeɪsbɔːl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "We watched a ___ game on TV.",
+                "answer": "baseball",
+                "accept": [],
+                "fa": "یک بازیِ بیسبال را از تلویزیون تماشا کردیم.",
+                "why": "baseball نوعی ورزشِ توپی است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "a baseball's bat",
+                    "ok": false,
+                    "why": "اینجا 's لازم نیست."
+                  },
+                  {
+                    "text": "a baseball bat",
+                    "ok": true,
+                    "why": "baseball پیش از bat مثلِ صفت می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بچه‌ها بیسبال بازی می‌کنند.",
+                "frame": "The children are playing ___.",
+                "answer": "baseball",
+                "accept": [],
+                "why": "نامِ ورزش پس از playing بدونِ the می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}

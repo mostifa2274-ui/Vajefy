@@ -185,9 +185,16 @@ rules; that found and fixed an overbroad *do medicine* explanation.
 
 `lessons-new-161-180.json` continues with thick, smart, tight, cloud, truck,
 beside, mom, sir, everyday, pollution, album, grass, poem, knee, button, bowl,
-tube, tower, dig and musician. The nine batches total **180/338 drafted, 158
-still to write**, with 546 bilingual examples and 546 checks. These are draft
-counts, not approved or published lessons. The same pull request adds
+tube, tower, dig and musician. PR #218 merged it as
+`7c563498ccaeaca09deb2ee7f805aed2c4670796`, also self-reviewed while Codex
+review was unavailable.
+
+`lessons-new-181-200.json` continues with cap, opera, contest, brush,
+celebration, shelf, strict, flag, moon, greet, pray, knife, hurry, grammar,
+bell, rat, ugly, rose, lazy and baseball. `brush` has two CEFR-J records, a
+noun and a verb, so this batch has 21 senses. The ten batches total **200/338
+drafted, 138 still to write**, with 609 bilingual examples and 609 checks.
+These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
 narrower than the word: wind is any moving air, a cry can be quiet, and smoke
@@ -243,7 +250,10 @@ school mark and row as a line of seats or things. The eighth batch keeps the B2 
 sweet as a taste, and drama as a play or the school subject. The ninth batch keeps the B1 adjectives `smart` and
 `tight`, the B2+ preposition `beside` and the B1 nouns `album`, `poem` and
 `tube`; `mom` and the noun `dig` (an archaeological dig; the existing entry is
-a verb) get new `lex:A1:cefrj-` IDs. Source-level A1 grading does not certify
+a verb) get new `lex:A1:cefrj-` IDs. The tenth batch keeps compatible noun entries at B1
+to B2+ (for example `cap`, `opera`, `contest`, `shelf`, `rat` and `rose`) and
+`lex:A2:brush` with its verb sense at `lex:A2:brush#verb`; `grammar` has no
+entry and gets a new ID. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
