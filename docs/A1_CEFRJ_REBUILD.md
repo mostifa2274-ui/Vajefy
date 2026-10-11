@@ -164,15 +164,25 @@ Persian for *clean up after their dogs*.
 
 `lessons-new-101-120.json` continues with fan, engineer, jump, coach, strange,
 code, blow, glad, stone, sum, carefully, hurt, sight, gift, guest, anybody,
-noise, gold, shake and hall. The six batches total **120/338 drafted, 218
-still to write**, with 363 bilingual examples and 363 checks. These are draft
-counts, not approved or published lessons. The same pull request adds
+noise, gold, shake and hall. PR #215 merged it as
+`6d6eb4dfeec17fe9b2d479b2a10f96491b237936`, after its review removed a plural
+answer from a singular prompt and gave the *anybody* choice a Persian meaning
+that rules out *somebody*.
+
+`lessons-new-121-140.json` continues with bright, hole, birth, factory,
+bridge, grade, lovely, row, celebrate, shoulder, careful, mail, yard, hill,
+ideal, kiss, thin, circle, sky and kick. `kick` has two CEFR-J records, a noun
+and a verb, so this batch has 21 senses. The seven batches total **140/338
+drafted, 198 still to write**, with 426 bilingual examples and 426 checks.
+These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
 narrower than the word: wind is any moving air, a cry can be quiet, and smoke
 is often, not always, grey or black. Cloze and production items list correct synonyms in
 `accept` (for example *woman* for lady and *food* in *fish feed*), so that a
-correct answer is never marked wrong. Choice answers are balanced across
+correct answer is never marked wrong. An accepted answer must also match the prompt's number: a
+singular Persian prompt does not accept a plural, and a choice item gives
+enough context that the distractor is wrong in that context. Choice answers are balanced across
 both option positions. Every "wrong" sentence must be wrong under any reading,
 not merely odd: a missing article, a wrong plural or irregular past, or a
 verb used with the wrong pattern (for example *Yesterday I fell my phone* for
@@ -213,7 +223,9 @@ spot as a place, feed as food for animals, cry as a sound such as a shout,
 and pop as pop music. The sixth batch keeps the B1 adjective `glad`, the B1 noun
 `sight`, the B2 noun `sum` and the A2 noun `coach`; it teaches coach as a
 sports trainer, sight as the ability to see, sum as a simple calculation,
-shake as a quick movement (`lex:B1:shake`) and gold as made of gold. Source-level A1 grading does not certify
+shake as a quick movement (`lex:B1:shake`) and gold as made of gold. The seventh batch keeps the B1 nouns `grade`, `row`, `yard` and `kiss`, and
+`lex:B1:kick` with its verb sense at `lex:B1:kick#verb`; it teaches grade as a
+school mark and row as a line of seats or things. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
