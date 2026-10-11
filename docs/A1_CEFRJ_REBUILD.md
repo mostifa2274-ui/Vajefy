@@ -162,7 +162,9 @@ lady, pleasure, suggestion and pop. The five batches total **100/338 drafted,
 238 still to write**, with 303 bilingual examples and 303 checks. These are
 draft counts, not approved or published lessons. Definitions must not be
 narrower than the word: wind is any moving air, a cry can be quiet, and smoke
-is often, not always, grey or black. Choice answers are balanced across
+is often, not always, grey or black. Cloze and production items list correct synonyms in
+`accept` (for example *woman* for lady and *food* in *fish feed*), so that a
+correct answer is never marked wrong. Choice answers are balanced across
 both option positions. Every "wrong" sentence must be wrong under any reading,
 not merely odd: a missing article, a wrong plural or irregular past, or a
 verb used with the wrong pattern (for example *Yesterday I fell my phone* for
