@@ -131,8 +131,17 @@ NEW A1 headwords:
 On 2026-10-11, `lessons-new-001-020.json` stages full lessons for the first
 20 NEW A1 headwords in selection order: may, case, set, hold, side, already,
 almost, yet, care, matter, mind, either, top, social, along, sale, cover, war,
-bear and role. This is **20/338 drafted, 318 still to write**, not a count of
-approved or published lessons.
+bear and role. PR #209 merged that batch and the source/identity validator as
+`ac406a5ba870914694a2fb489089f81da7fdd292`; its main CI passed 558 unit tests
+and 95 browser tests, plus the Workers build, rollback and gateway checks.
+
+`lessons-new-021-040.json` continues with step, site, sign, wish, kid, kill,
+field, vote, focus, stage, technology, save, due, pick, ground, fight, leader,
+store, heart and foreign. The two batches total **40/338 drafted, 298 still
+to write**, with 120 bilingual examples and 120 checks. These are draft counts,
+not approved or published lessons. Choice answers in the second batch are
+balanced across both option positions; its production sentences differ from
+examples, mistake pairs and cloze items.
 
 Each lesson uses the existing enhanced-entry schema and contains a Persian
 meaning and explanation, grammar notes, three bilingual examples, translated
@@ -146,6 +155,12 @@ legacy definitions or examples. Existing short-entry **identity metadata** is
 used to retain compatible IDs: `set` uses the existing verb `set-put`, `hold`
 uses its noun entry, `cover` uses its noun entry, and `bear` uses its animal
 entry. The modal `may` keeps its A2 ID; the A1 month `May` is a different word.
+The second batch also uses the existing **verb** `lex:B2:step`, not the A2
+noun, and teaches wish, vote and fight as the selected nouns, focus and pick
+as verbs, and due and foreign as adjectives. Meanings are deliberately scoped:
+save teaches money kept for later; stage teaches the performance platform;
+other meanings need separate review. Source-level A1 grading does not certify
+that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
 
@@ -158,8 +173,8 @@ and all six short-entry lists for exact English or nine-word phrase reuse.
 These limited overlap checks do not establish semantic correctness or rights.
 
 Every independent-review, rights-clearance, audio-certificate and release count
-for the new drafts remains **zero**. Continue at NEW headword **21, step**. Do
-not repeat the first 20 drafts or import them into the public course before
+for the new drafts remains **zero**. Continue at NEW headword **41, surprise**.
+Do not repeat the first 40 drafts or import them into the public course before
 curriculum, audio and assurance work is complete. PR #208's actual merge is
 `76cabbca412648a61fe7cc9dbd84c134304c03b2`.
 
