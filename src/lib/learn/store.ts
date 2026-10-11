@@ -6,7 +6,7 @@ import { DEFAULT_PROGRESS, savedProgress, type DayLog, type LearningGoal, type S
 import { planFor } from "./planner";
 import { newId, type SessionRecord } from "./session";
 import { isMastered } from "./srs";
-import { todayKey } from "./text";
+import { levelOf, todayKey } from "./text";
 import { inLearningScope } from "./course-scope";
 import type { CardProg, Grade, Lang, LevelId, PracticeSkill } from "./types";
 
@@ -205,11 +205,10 @@ export function dueIds(cards: Record<string, CardProg>, now = Date.now(), focus?
  * is per entry, so an entry counts once and is mastered by its main sense.
  */
 export function countLevel(cards: Record<string, CardProg>, level: LevelId) {
-  const prefix = `lex:${level}:`;
   const seen = new Set<string>();
   let mastered = 0;
   for (const [id, card] of Object.entries(cards)) {
-    if (!id.startsWith(prefix)) continue;
+    if (levelOf(id) !== level) continue;
     seen.add(entryIdOf(id));
     if (!id.includes("#") && isMastered(card)) mastered += 1;
   }

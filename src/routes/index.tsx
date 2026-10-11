@@ -16,7 +16,7 @@ import { loadPilotOrder } from "@/lib/learn/pilot";
 import { readyToIntroduce } from "@/lib/learn/targets";
 import { resumable } from "@/lib/learn/session";
 import { reviewSessionInScope } from "@/lib/learn/course-scope";
-import { dayNumber } from "@/lib/learn/text";
+import { dayNumber, levelOf } from "@/lib/learn/text";
 import type { LexWord, Meta, PairNote } from "@/lib/learn/types";
 import { Fa } from "@/components/mixed-text";
 
@@ -144,7 +144,7 @@ function Home() {
     ? order.order[goal ?? "general"]
         .filter(
           (id) =>
-            id.startsWith(`lex:${focus}:`) &&
+            levelOf(id) === focus &&
             !cards[id] &&
             readyToIntroduce(id, (entry) => Boolean(cards[entry])) &&
             introducibleIn(CONTENT_CHANNEL, released.has(id)),
