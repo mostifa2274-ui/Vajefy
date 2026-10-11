@@ -1,0 +1,2411 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code (https://claude.ai/code/session_01AkYqw2BqgiTuGvudgJwaku), 2026-10-11; original full lessons from pinned CEFR-J headwords and part-of-speech metadata; no independent semantic, Persian, CEFR, audio or rights review",
+  "window": {
+    "firstNewHeadword": 21,
+    "lastNewHeadword": 40
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "step",
+      "levelWordId": "level:A1:0344",
+      "existingEntryIds": [
+        "lex:A2:step",
+        "lex:B2:step"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0404",
+          "senseId": "lex:B2:step",
+          "meaningEn": "To move by lifting one foot and putting it down in a new place."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2:step",
+        "headword": "step",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2:step",
+            "pos": "verb",
+            "gloss": "قدم گذاشتن؛ پا گذاشتن",
+            "meaning": "با بلند کردن یک پا و گذاشتنِ آن در جای تازه، کمی جابه‌جا شدن.",
+            "grammar": [
+              {
+                "pattern": "step + into/onto/back",
+                "note": "بعد از step معمولاً جهت می‌آید: step into یعنی به داخل قدم گذاشتن."
+              },
+              {
+                "pattern": "step / stepped / stepped",
+                "note": "گذشتهٔ step با دو p نوشته می‌شود: stepped."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Please step back from the door.",
+                "fa": "لطفاً از کنار در یک قدم عقب بروید."
+              },
+              {
+                "en": "She stepped into the room quietly.",
+                "fa": "او آرام به داخل اتاق قدم گذاشت."
+              },
+              {
+                "en": "Don't step on the flowers.",
+                "fa": "پا روی گل‌ها نگذار."
+              }
+            ],
+            "collocations": [
+              "step back",
+              "step on something"
+            ],
+            "collocationFa": {
+              "step back": "یک قدم عقب رفتن",
+              "step on something": "پا روی چیزی گذاشتن"
+            },
+            "usage": "در این درس step فعل است. اسمِ step (قدم، پله) معنای جداگانه‌ای است.",
+            "mistake": {
+              "wrong": "He steped outside.",
+              "wrongFa": "او بیرون رفت؛ اما گذشتهٔ step غلط نوشته شده است.",
+              "right": "He stepped outside.",
+              "rightFa": "او قدم به بیرون گذاشت.",
+              "why": "در گذشتهٔ step حرف p دوبار می‌آید: stepped."
+            },
+            "pronunciation": {
+              "gb": "/stɛp/",
+              "us": "/stɛp/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Please ___ to the left so I can pass.",
+                "answer": "step",
+                "accept": [],
+                "fa": "لطفاً به سمت چپ قدم بگذار تا رد شوم.",
+                "why": "step یعنی با پا کمی جابه‌جا شدن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام فعل یعنی «قدم گذاشتن»؟",
+                "options": [
+                  {
+                    "text": "step",
+                    "ok": true,
+                    "why": "step یعنی با پا جلو یا عقب رفتن."
+                  },
+                  {
+                    "text": "stop",
+                    "ok": false,
+                    "why": "stop یعنی ایستادن یا متوقف شدن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او به داخل آسانسور قدم گذاشت.",
+                "frame": "She ___ into the lift.",
+                "answer": "stepped",
+                "accept": [],
+                "why": "گذشتهٔ step با دو p است: stepped."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "site",
+      "levelWordId": "level:A1:0355",
+      "existingEntryIds": [
+        "lex:A2:site"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0419",
+          "senseId": "lex:A2:site",
+          "meaningEn": "A website; a place on the internet with pages about something."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:site",
+        "headword": "site",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:site",
+            "pos": "noun",
+            "gloss": "سایت؛ وب‌سایت",
+            "meaning": "مجموعه‌ای از صفحه‌ها در اینترنت که دربارهٔ یک موضوع یا یک شرکت است.",
+            "grammar": [
+              {
+                "pattern": "on a site",
+                "note": "برای سایت از on استفاده می‌کنیم: on this site."
+              },
+              {
+                "pattern": "a site / sites",
+                "note": "site اسم قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I found the recipe on a cooking site.",
+                "fa": "دستور پخت را در یک سایت آشپزی پیدا کردم."
+              },
+              {
+                "en": "This site has free English lessons.",
+                "fa": "این سایت درس‌های رایگان انگلیسی دارد."
+              },
+              {
+                "en": "Is the school's site working today?",
+                "fa": "سایت مدرسه امروز کار می‌کند؟"
+              }
+            ],
+            "collocations": [
+              "a news site",
+              "visit a site"
+            ],
+            "collocationFa": {
+              "a news site": "سایت خبری",
+              "visit a site": "به سایتی سر زدن"
+            },
+            "usage": "در این درس site یعنی وب‌سایت. معنای «محلِ ساخت‌وساز یا مکان» (building site) جداگانه آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "I read it in a site.",
+              "wrongFa": "آن را در یک سایت خواندم؛ اما حرف اضافه درست نیست.",
+              "right": "I read it on a site.",
+              "rightFa": "آن را در یک سایت خواندم.",
+              "why": "با site و website حرف اضافهٔ on می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/saɪt/",
+              "us": "/saɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "You can buy tickets on this ___.",
+                "answer": "site",
+                "accept": [],
+                "fa": "می‌توانی بلیت را در این سایت بخری.",
+                "why": "site اینجا یعنی وب‌سایت."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «وب‌سایت»؟",
+                "options": [
+                  {
+                    "text": "site",
+                    "ok": true,
+                    "why": "site کوتاه‌شدهٔ website است."
+                  },
+                  {
+                    "text": "sight",
+                    "ok": false,
+                    "why": "sight یعنی دید یا منظره و تلفظ مشابهی دارد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این سایت خیلی مفید است.",
+                "frame": "This ___ is very useful.",
+                "answer": "site",
+                "accept": [],
+                "why": "برای وب‌سایت از site استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "sign",
+      "levelWordId": "level:A1:0357",
+      "existingEntryIds": [
+        "lex:A2:sign"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0421",
+          "senseId": "lex:A2:sign",
+          "meaningEn": "A board or notice with words or a picture that gives information."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:sign",
+        "headword": "sign",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:sign",
+            "pos": "noun",
+            "gloss": "تابلو؛ علامت",
+            "meaning": "صفحه یا نوشته‌ای در خیابان یا ساختمان که با کلمه یا تصویر چیزی را به مردم می‌گوید.",
+            "grammar": [
+              {
+                "pattern": "the sign says ...",
+                "note": "برای محتوای تابلو می‌گوییم: The sign says 'Exit'."
+              },
+              {
+                "pattern": "follow the signs",
+                "note": "یعنی طبق تابلوها راه رفتن."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The sign on the gate says 'Closed'.",
+                "fa": "روی تابلوی دروازه نوشته «بسته است»."
+              },
+              {
+                "en": "Follow the signs to the station.",
+                "fa": "تابلوها را دنبال کن تا به ایستگاه برسی."
+              },
+              {
+                "en": "There is a big sign above the shop.",
+                "fa": "بالای مغازه یک تابلوی بزرگ هست."
+              }
+            ],
+            "collocations": [
+              "a road sign",
+              "an exit sign"
+            ],
+            "collocationFa": {
+              "a road sign": "تابلوی جاده",
+              "an exit sign": "تابلوی خروج"
+            },
+            "usage": "در این درس sign اسم است. فعلِ sign (امضا کردن) معنای جداگانه‌ای دارد. حرف g در sign خوانده نمی‌شود.",
+            "mistake": {
+              "wrong": "Read the sing on the door.",
+              "wrongFa": "نوشتهٔ روی در را بخوان؛ اما sing یعنی آواز خواندن.",
+              "right": "Read the sign on the door.",
+              "rightFa": "تابلوی روی در را بخوان.",
+              "why": "sign با g خاموش نوشته می‌شود؛ sing فعلی دیگر است."
+            },
+            "pronunciation": {
+              "gb": "/saɪn/",
+              "us": "/saɪn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ on the wall shows the way out.",
+                "answer": "sign",
+                "accept": [],
+                "fa": "تابلوی روی دیوار راه خروج را نشان می‌دهد.",
+                "why": "sign تابلویی است که اطلاعات می‌دهد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «تابلو» در خیابان؟",
+                "options": [
+                  {
+                    "text": "sign",
+                    "ok": true,
+                    "why": "sign نوشته یا تصویری است که چیزی را اعلام می‌کند."
+                  },
+                  {
+                    "text": "song",
+                    "ok": false,
+                    "why": "song یعنی آهنگ."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این تابلو را نمی‌توانم بخوانم.",
+                "frame": "I can't read this ___.",
+                "answer": "sign",
+                "accept": [],
+                "why": "برای تابلو از sign استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "wish",
+      "levelWordId": "level:A1:0365",
+      "existingEntryIds": [
+        "lex:A2:wish"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0429",
+          "senseId": "lex:A2:wish",
+          "meaningEn": "A feeling of wanting something to happen; a hope."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:wish",
+        "headword": "wish",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:wish",
+            "pos": "noun",
+            "gloss": "آرزو",
+            "meaning": "چیزی که دوست داری اتفاق بیفتد یا داشته باشی.",
+            "grammar": [
+              {
+                "pattern": "make a wish",
+                "note": "برای آرزو کردن، مثلاً قبل از فوت کردن شمع، می‌گوییم make a wish."
+              },
+              {
+                "pattern": "best wishes",
+                "note": "در پایان نامه یا تبریک، شکل جمع wishes می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Make a wish before you blow out the candles.",
+                "fa": "قبل از فوت کردن شمع‌ها آرزو کن."
+              },
+              {
+                "en": "My wish is to visit Japan one day.",
+                "fa": "آرزوی من این است که روزی به ژاپن بروم."
+              },
+              {
+                "en": "She sent me her best wishes.",
+                "fa": "او بهترین آرزوهایش را برایم فرستاد."
+              }
+            ],
+            "collocations": [
+              "make a wish",
+              "best wishes"
+            ],
+            "collocationFa": {
+              "make a wish": "آرزو کردن",
+              "best wishes": "با بهترین آرزوها"
+            },
+            "usage": "در این درس wish اسم است. فعلِ wish (آرزو داشتن) معنای جداگانه‌ای است.",
+            "mistake": {
+              "wrong": "Best wish for your birthday!",
+              "wrongFa": "برای تولدت بهترین آرزو را دارم؛ اما در تبریک شکل جمع لازم است.",
+              "right": "Best wishes for your birthday!",
+              "rightFa": "برای تولدت بهترین آرزوها را دارم!",
+              "why": "در تبریک‌ها همیشه best wishes می‌گوییم."
+            },
+            "pronunciation": {
+              "gb": "/wɪʃ/",
+              "us": "/wɪʃ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Close your eyes and make a ___.",
+                "answer": "wish",
+                "accept": [],
+                "fa": "چشم‌هایت را ببند و آرزو کن.",
+                "why": "در make a wish، wish یعنی آرزو."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «آرزو»؟",
+                "options": [
+                  {
+                    "text": "wish",
+                    "ok": true,
+                    "why": "wish یعنی چیزی که دوست داری اتفاق بیفتد."
+                  },
+                  {
+                    "text": "wash",
+                    "ok": false,
+                    "why": "wash یعنی شستن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آرزوی بزرگ او یک خانهٔ کوچک است.",
+                "frame": "Her big ___ is a small house.",
+                "answer": "wish",
+                "accept": [],
+                "why": "wish در این جمله اسم است و یعنی آرزو."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "kid",
+      "levelWordId": "level:A1:0367",
+      "existingEntryIds": [
+        "lex:A2:kid"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0431",
+          "senseId": "lex:A2:kid",
+          "meaningEn": "A child (informal)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:kid",
+        "headword": "kid",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:kid",
+            "pos": "noun",
+            "gloss": "بچه",
+            "meaning": "یک پسر یا دختر کوچک؛ کلمه‌ای خودمانی به جای child.",
+            "grammar": [
+              {
+                "pattern": "a kid / kids",
+                "note": "kid اسم قابل‌شمارش است و جمعش kids است."
+              },
+              {
+                "pattern": "my kids",
+                "note": "برای فرزندان خود هم در گفتار kids می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The kids are playing in the park.",
+                "fa": "بچه‌ها در پارک بازی می‌کنند."
+              },
+              {
+                "en": "How many kids do you have?",
+                "fa": "چند تا بچه داری؟"
+              },
+              {
+                "en": "Our neighbour has two small kids.",
+                "fa": "همسایهٔ ما دو بچهٔ کوچک دارد."
+              }
+            ],
+            "collocations": [
+              "small kids",
+              "school kids"
+            ],
+            "collocationFa": {
+              "small kids": "بچه‌های کوچک",
+              "school kids": "بچه‌مدرسه‌ای‌ها"
+            },
+            "usage": "kid خودمانی است؛ در نوشته‌های رسمی child یا children بهتر است.",
+            "mistake": {
+              "wrong": "She has three kid.",
+              "wrongFa": "او سه بچه دارد؛ اما kid باید جمع باشد.",
+              "right": "She has three kids.",
+              "rightFa": "او سه بچه دارد.",
+              "why": "بعد از three اسم جمع لازم است: kids."
+            },
+            "pronunciation": {
+              "gb": "/kɪd/",
+              "us": "/kɪd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ love ice cream.",
+                "answer": "kids",
+                "accept": [],
+                "fa": "بچه‌ها بستنی را دوست دارند.",
+                "why": "kids جمعِ kid است و یعنی بچه‌ها."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه خودمانی و به معنای «بچه» است؟",
+                "options": [
+                  {
+                    "text": "kid",
+                    "ok": true,
+                    "why": "kid در گفتار یعنی بچه."
+                  },
+                  {
+                    "text": "king",
+                    "ok": false,
+                    "why": "king یعنی پادشاه."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بچه‌ها خوابیده‌اند.",
+                "frame": "The ___ are asleep.",
+                "answer": "kids",
+                "accept": [],
+                "why": "برای چند بچه شکل جمع kids می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "kill",
+      "levelWordId": "level:A1:0368",
+      "existingEntryIds": [
+        "lex:A2:kill"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0432",
+          "senseId": "lex:A2:kill",
+          "meaningEn": "To make a person, animal or plant die."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:kill",
+        "headword": "kill",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:kill",
+            "pos": "verb",
+            "gloss": "کشتن؛ از بین بردن",
+            "meaning": "کاری کردن که انسان، حیوان یا گیاهی بمیرد.",
+            "grammar": [
+              {
+                "pattern": "kill + something",
+                "note": "kill مفعول می‌خواهد: kill a plant."
+              },
+              {
+                "pattern": "be killed",
+                "note": "در مجهول: The plants were killed by the cold."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The cold weather killed the plants.",
+                "fa": "هوای سرد گیاهان را از بین برد."
+              },
+              {
+                "en": "Don't kill the spider; put it outside.",
+                "fa": "عنکبوت را نکش؛ بیرون بگذارش."
+              },
+              {
+                "en": "Too much water can kill a small plant.",
+                "fa": "آب زیاد می‌تواند یک گیاه کوچک را بکشد."
+              }
+            ],
+            "collocations": [
+              "kill a plant",
+              "kill an insect"
+            ],
+            "collocationFa": {
+              "kill a plant": "گیاهی را از بین بردن",
+              "kill an insect": "حشره‌ای را کشتن"
+            },
+            "usage": "kill معنای جدی دارد. در گفتار عبارت‌هایی مثل My feet are killing me هم هست که در این درس آموزش داده نمی‌شود.",
+            "mistake": {
+              "wrong": "The cat killed.",
+              "wrongFa": "گربه کشت؛ اما معلوم نیست چه چیزی را.",
+              "right": "The cat killed a mouse.",
+              "rightFa": "گربه یک موش را کشت.",
+              "why": "kill فعل متعدی است و به مفعول نیاز دارد."
+            },
+            "pronunciation": {
+              "gb": "/kɪl/",
+              "us": "/kɪl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "No sun and no water will ___ these flowers.",
+                "answer": "kill",
+                "accept": [],
+                "fa": "نبودِ آفتاب و آب این گل‌ها را از بین می‌برد.",
+                "why": "kill یعنی کاری کردن که چیزی بمیرد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام فعل یعنی «کشتن»؟",
+                "options": [
+                  {
+                    "text": "kill",
+                    "ok": true,
+                    "why": "kill یعنی باعث مرگ شدن."
+                  },
+                  {
+                    "text": "keep",
+                    "ok": false,
+                    "why": "keep یعنی نگه داشتن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن حشره را نکش.",
+                "frame": "Don't ___ that insect.",
+                "answer": "kill",
+                "accept": [],
+                "why": "برای کشتن از kill استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "field",
+      "levelWordId": "level:A1:0370",
+      "existingEntryIds": [
+        "lex:A2:field"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0434",
+          "senseId": "lex:A2:field",
+          "meaningEn": "An area of land with grass or crops, often with a fence or hedge around it."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:field",
+        "headword": "field",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:field",
+            "pos": "noun",
+            "gloss": "مزرعه؛ زمینِ باز",
+            "meaning": "قطعه‌زمینی در بیرون شهر که در آن علف یا محصول می‌روید یا حیوانات می‌چرند.",
+            "grammar": [
+              {
+                "pattern": "in a field",
+                "note": "برای مزرعه از in استفاده می‌کنیم: in the field."
+              },
+              {
+                "pattern": "a field / fields",
+                "note": "field اسم قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Cows are eating grass in the field.",
+                "fa": "گاوها در مزرعه علف می‌خورند."
+              },
+              {
+                "en": "The farmer works in his fields all day.",
+                "fa": "کشاورز تمام روز در مزرعه‌هایش کار می‌کند."
+              },
+              {
+                "en": "We walked across a green field.",
+                "fa": "از میان یک زمینِ سبز گذشتیم."
+              }
+            ],
+            "collocations": [
+              "a green field",
+              "a wheat field"
+            ],
+            "collocationFa": {
+              "a green field": "زمینِ سبز",
+              "a wheat field": "مزرعهٔ گندم"
+            },
+            "usage": "در این درس field زمینِ کشاورزی یا علفزار است. معنای «زمینِ ورزش» یا «رشتهٔ کاری» جداگانه است.",
+            "mistake": {
+              "wrong": "There are sheep in the feild.",
+              "wrongFa": "در مزرعه گوسفند هست؛ اما املای field غلط است.",
+              "right": "There are sheep in the field.",
+              "rightFa": "در مزرعه گوسفند هست.",
+              "why": "field با ie نوشته می‌شود: f-i-e-l-d."
+            },
+            "pronunciation": {
+              "gb": "/fiːld/",
+              "us": "/fild/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The horses run in the ___ behind the farm.",
+                "answer": "field",
+                "accept": [],
+                "fa": "اسب‌ها در زمینِ پشت مزرعه می‌دوند.",
+                "why": "field زمینِ باز و علفزار است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «مزرعه یا زمینِ باز»؟",
+                "options": [
+                  {
+                    "text": "field",
+                    "ok": true,
+                    "why": "field زمینِ علف یا محصول است."
+                  },
+                  {
+                    "text": "feel",
+                    "ok": false,
+                    "why": "feel یعنی احساس کردن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "مزرعه پر از گل است.",
+                "frame": "The ___ is full of flowers.",
+                "answer": "field",
+                "accept": [],
+                "why": "برای زمینِ باز از field استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "vote",
+      "levelWordId": "level:A1:0372",
+      "existingEntryIds": [
+        "lex:B1:vote"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0436",
+          "senseId": "lex:B1:vote",
+          "meaningEn": "A formal choice that you make in an election or at a meeting."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:vote",
+        "headword": "vote",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:vote",
+            "pos": "noun",
+            "gloss": "رأی",
+            "meaning": "انتخابی که هر نفر در یک انتخابات یا جلسه اعلام می‌کند.",
+            "grammar": [
+              {
+                "pattern": "have a vote",
+                "note": "برای رأی‌گیری می‌گوییم have a vote on something."
+              },
+              {
+                "pattern": "get votes",
+                "note": "تعداد رأی‌ها: She got ten votes."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Every person has one vote.",
+                "fa": "هر نفر یک رأی دارد."
+              },
+              {
+                "en": "The class had a vote on the trip.",
+                "fa": "کلاس دربارهٔ اردو رأی‌گیری کرد."
+              },
+              {
+                "en": "She got the most votes.",
+                "fa": "او بیشترین رأی را آورد."
+              }
+            ],
+            "collocations": [
+              "have a vote",
+              "the most votes"
+            ],
+            "collocationFa": {
+              "have a vote": "رأی‌گیری کردن",
+              "the most votes": "بیشترین رأی"
+            },
+            "usage": "در این درس vote اسم است. فعلِ vote (رأی دادن) جداگانه آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "Let's make a vote.",
+              "wrongFa": "بیایید رأی‌گیری کنیم؛ اما فعل همراهِ vote درست نیست.",
+              "right": "Let's have a vote.",
+              "rightFa": "بیایید رأی‌گیری کنیم.",
+              "why": "با vote معمولاً have یا take می‌آید، نه make."
+            },
+            "pronunciation": {
+              "gb": "/vəʊt/",
+              "us": "/voʊt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Each student has one ___.",
+                "answer": "vote",
+                "accept": [],
+                "fa": "هر دانش‌آموز یک رأی دارد.",
+                "why": "vote یعنی رأی هر نفر."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «رأی»؟",
+                "options": [
+                  {
+                    "text": "vote",
+                    "ok": true,
+                    "why": "vote انتخابِ هر نفر در رأی‌گیری است."
+                  },
+                  {
+                    "text": "note",
+                    "ok": false,
+                    "why": "note یعنی یادداشت."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بیایید دربارهٔ آن رأی‌گیری کنیم.",
+                "frame": "Let's have a ___ on it.",
+                "answer": "vote",
+                "accept": [],
+                "why": "در عبارت have a vote، vote اسم است."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "focus",
+      "levelWordId": "level:A1:0373",
+      "existingEntryIds": [
+        "lex:A2:focus"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0437",
+          "senseId": "lex:A2:focus",
+          "meaningEn": "To give all your attention to one thing."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:focus",
+        "headword": "focus",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:focus",
+            "pos": "verb",
+            "gloss": "تمرکز کردن",
+            "meaning": "همهٔ توجهت را روی یک کار یا یک چیز گذاشتن.",
+            "grammar": [
+              {
+                "pattern": "focus on + something",
+                "note": "بعد از focus حرف اضافهٔ on می‌آید."
+              },
+              {
+                "pattern": "can't focus",
+                "note": "برای ناتوانی در تمرکز: I can't focus."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Turn off the TV so you can focus.",
+                "fa": "تلویزیون را خاموش کن تا بتوانی تمرکز کنی."
+              },
+              {
+                "en": "I can't focus when it's noisy.",
+                "fa": "وقتی سروصدا هست نمی‌توانم تمرکز کنم."
+              },
+              {
+                "en": "Let's focus on the first question.",
+                "fa": "بیایید روی سؤال اول تمرکز کنیم."
+              }
+            ],
+            "collocations": [
+              "focus on",
+              "focus on your work"
+            ],
+            "collocationFa": {
+              "focus on": "روی چیزی تمرکز کردن",
+              "focus on your work": "روی کارت تمرکز کن"
+            },
+            "usage": "در این درس focus فعل است. اسمِ focus (تمرکز، کانون) معنای جداگانه‌ای است.",
+            "mistake": {
+              "wrong": "Focus to your work.",
+              "wrongFa": "روی کارت تمرکز کن؛ اما حرف اضافه غلط است.",
+              "right": "Focus on your work.",
+              "rightFa": "روی کارت تمرکز کن.",
+              "why": "focus همیشه با on می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈfəʊkəs/",
+              "us": "/ˈfoʊkəs/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Please ___ on the teacher now.",
+                "answer": "focus",
+                "accept": [],
+                "fa": "لطفاً الان روی معلم تمرکز کنید.",
+                "why": "focus on یعنی تمرکز کردن روی چیزی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام فعل یعنی «تمرکز کردن»؟",
+                "options": [
+                  {
+                    "text": "focus",
+                    "ok": true,
+                    "why": "focus یعنی توجه کامل به یک چیز."
+                  },
+                  {
+                    "text": "forget",
+                    "ok": false,
+                    "why": "forget یعنی فراموش کردن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من روی درس‌هایم تمرکز می‌کنم.",
+                "frame": "I ___ on my lessons.",
+                "answer": "focus",
+                "accept": [],
+                "why": "focus on یعنی روی چیزی تمرکز کردن."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "stage",
+      "levelWordId": "level:A1:0374",
+      "existingEntryIds": [
+        "lex:A2:stage",
+        "lex:B2:stage"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0438",
+          "senseId": "lex:A2:stage",
+          "meaningEn": "The raised area in a theatre or hall where people perform."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:stage",
+        "headword": "stage",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:stage",
+            "pos": "noun",
+            "gloss": "صحنه",
+            "meaning": "جایِ بلندتر در تئاتر یا سالن که بازیگران، خواننده‌ها یا سخنران‌ها روی آن اجرا می‌کنند.",
+            "grammar": [
+              {
+                "pattern": "on (the) stage",
+                "note": "برای بودن روی صحنه از on استفاده می‌کنیم."
+              },
+              {
+                "pattern": "go on stage",
+                "note": "یعنی برای اجرا روی صحنه رفتن."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The singer walked onto the stage.",
+                "fa": "خواننده روی صحنه رفت."
+              },
+              {
+                "en": "The children sang on the stage.",
+                "fa": "بچه‌ها روی صحنه آواز خواندند."
+              },
+              {
+                "en": "There is a piano on the stage.",
+                "fa": "روی صحنه یک پیانو هست."
+              }
+            ],
+            "collocations": [
+              "on stage",
+              "a big stage"
+            ],
+            "collocationFa": {
+              "on stage": "روی صحنه",
+              "a big stage": "صحنهٔ بزرگ"
+            },
+            "usage": "در این درس stage صحنهٔ اجراست. معنای «مرحله» (the first stage) جداگانه آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "She is in the stage.",
+              "wrongFa": "او روی صحنه است؛ اما حرف اضافه درست نیست.",
+              "right": "She is on the stage.",
+              "rightFa": "او روی صحنه است.",
+              "why": "با stage حرف اضافهٔ on می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/steɪdʒ/",
+              "us": "/steɪdʒ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The actors are on the ___ now.",
+                "answer": "stage",
+                "accept": [],
+                "fa": "بازیگران الان روی صحنه هستند.",
+                "why": "stage جای اجرای بازیگران است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «صحنهٔ تئاتر»؟",
+                "options": [
+                  {
+                    "text": "stage",
+                    "ok": true,
+                    "why": "stage جای اجرا در تئاتر است."
+                  },
+                  {
+                    "text": "page",
+                    "ok": false,
+                    "why": "page یعنی صفحهٔ کتاب."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "معلم روی صحنه ایستاد.",
+                "frame": "The teacher stood on the ___.",
+                "answer": "stage",
+                "accept": [],
+                "why": "برای صحنهٔ اجرا از stage استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "technology",
+      "levelWordId": "level:A1:0377",
+      "existingEntryIds": [
+        "lex:A2:technology"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0441",
+          "senseId": "lex:A2:technology",
+          "meaningEn": "New machines, computers and ways of doing things that use science."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:technology",
+        "headword": "technology",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:technology",
+            "pos": "noun",
+            "gloss": "فناوری",
+            "meaning": "دستگاه‌ها، رایانه‌ها و روش‌های تازه‌ای که از علم ساخته شده‌اند.",
+            "grammar": [
+              {
+                "pattern": "technology (uncountable)",
+                "note": "در معنای کلی بدون a و بدون جمع می‌آید: Technology helps us."
+              },
+              {
+                "pattern": "new technology",
+                "note": "صفت قبل از آن می‌آید: modern technology."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Technology helps us learn at home.",
+                "fa": "فناوری به ما کمک می‌کند در خانه یاد بگیریم."
+              },
+              {
+                "en": "My grandfather doesn't like new technology.",
+                "fa": "پدربزرگم فناوریِ جدید را دوست ندارد."
+              },
+              {
+                "en": "This phone uses new technology.",
+                "fa": "این گوشی از فناوری جدید استفاده می‌کند."
+              }
+            ],
+            "collocations": [
+              "new technology",
+              "modern technology"
+            ],
+            "collocationFa": {
+              "new technology": "فناوری جدید",
+              "modern technology": "فناوری مدرن"
+            },
+            "usage": "در این سطح technology را بیشتر بدون a و به معنای کلی به کار ببرید.",
+            "mistake": {
+              "wrong": "I am good with a technology.",
+              "wrongFa": "من با فناوری خوب کار می‌کنم؛ اما a لازم نیست.",
+              "right": "I am good with technology.",
+              "rightFa": "من با فناوری خوب کار می‌کنم.",
+              "why": "technology در معنای کلی بدون a می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/tɛkˈnɒlədʒi/",
+              "us": "/tɛkˈnɑlədʒi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Computers and phones are kinds of ___.",
+                "answer": "technology",
+                "accept": [],
+                "fa": "رایانه و گوشی از انواع فناوری هستند.",
+                "why": "technology یعنی دستگاه‌ها و روش‌های علمی جدید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «فناوری»؟",
+                "options": [
+                  {
+                    "text": "technology",
+                    "ok": true,
+                    "why": "technology یعنی فناوری."
+                  },
+                  {
+                    "text": "teacher",
+                    "ok": false,
+                    "why": "teacher یعنی معلم."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "فناوری هر سال تغییر می‌کند.",
+                "frame": "___ changes every year.",
+                "answer": "Technology",
+                "accept": [],
+                "why": "در اول جمله Technology با حرف بزرگ و بدون a می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "save",
+      "levelWordId": "level:A1:0378",
+      "existingEntryIds": [
+        "lex:A2:save"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0442",
+          "senseId": "lex:A2:save",
+          "meaningEn": "To keep money and not spend it, so you can use it later."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:save",
+        "headword": "save",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:save",
+            "pos": "verb",
+            "gloss": "پس‌انداز کردن",
+            "meaning": "پولی را خرج نکردن و نگه داشتن برای بعد.",
+            "grammar": [
+              {
+                "pattern": "save (money) for something",
+                "note": "برای هدف پس‌انداز: save for a bike."
+              },
+              {
+                "pattern": "save money to + verb",
+                "note": "برای کاری پس‌انداز: save money to buy a car."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I save some money every month.",
+                "fa": "هر ماه کمی پول پس‌انداز می‌کنم."
+              },
+              {
+                "en": "She is saving for a new bike.",
+                "fa": "او برای یک دوچرخهٔ نو پس‌انداز می‌کند."
+              },
+              {
+                "en": "We saved enough money for the trip.",
+                "fa": "به اندازهٔ کافی برای سفر پول پس‌انداز کردیم."
+              }
+            ],
+            "collocations": [
+              "save money",
+              "save for something"
+            ],
+            "collocationFa": {
+              "save money": "پول پس‌انداز کردن",
+              "save for something": "برای چیزی پس‌انداز کردن"
+            },
+            "usage": "در این درس save یعنی پس‌انداز کردن. معناهای «نجات دادن» و «ذخیره کردن فایل» جداگانه‌اند.",
+            "mistake": {
+              "wrong": "I save money for buy a car.",
+              "wrongFa": "برای خرید ماشین پول پس‌انداز می‌کنم؛ اما بعد از for فعل ساده نمی‌آید.",
+              "right": "I save money to buy a car.",
+              "rightFa": "پول پس‌انداز می‌کنم تا ماشین بخرم.",
+              "why": "برای هدف با فعل از to + فعل استفاده می‌کنیم."
+            },
+            "pronunciation": {
+              "gb": "/seɪv/",
+              "us": "/seɪv/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "He wants to ___ money for a holiday.",
+                "answer": "save",
+                "accept": [],
+                "fa": "او می‌خواهد برای تعطیلات پول پس‌انداز کند.",
+                "why": "save money یعنی پول را نگه داشتن برای بعد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام فعل یعنی «پس‌انداز کردن»؟",
+                "options": [
+                  {
+                    "text": "save",
+                    "ok": true,
+                    "why": "save money یعنی پول را خرج نکردن و نگه داشتن."
+                  },
+                  {
+                    "text": "spend",
+                    "ok": false,
+                    "why": "spend یعنی خرج کردن؛ برعکسِ save."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ما برای یک خانه پس‌انداز می‌کنیم.",
+                "frame": "We are ___ for a house.",
+                "answer": "saving",
+                "accept": [],
+                "why": "در زمان حال استمراری save به saving تبدیل می‌شود."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "due",
+      "levelWordId": "level:A1:0381",
+      "existingEntryIds": [
+        "lex:B1:due"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0445",
+          "senseId": "lex:B1:due",
+          "meaningEn": "Expected to happen, arrive or be finished at a particular time."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:due",
+        "headword": "due",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:due",
+            "pos": "adjective",
+            "gloss": "موعدِ مقرر؛ قرار است",
+            "meaning": "وقتی کاری باید تا زمان مشخصی تمام شود یا چیزی قرار است در زمان مشخصی برسد.",
+            "grammar": [
+              {
+                "pattern": "be due on/at + time",
+                "note": "روز با on و ساعت با at می‌آید: due on Monday, due at six."
+              },
+              {
+                "pattern": "be due in + time",
+                "note": "برای مدت باقی‌مانده: The bus is due in five minutes."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The homework is due on Monday.",
+                "fa": "مهلت تکلیف دوشنبه است."
+              },
+              {
+                "en": "The train is due at six.",
+                "fa": "قطار قرار است ساعت شش برسد."
+              },
+              {
+                "en": "The next bus is due in ten minutes.",
+                "fa": "اتوبوس بعدی ده دقیقهٔ دیگر می‌رسد."
+              }
+            ],
+            "collocations": [
+              "due on Monday",
+              "due at six"
+            ],
+            "collocationFa": {
+              "due on Monday": "مهلتش دوشنبه",
+              "due at six": "قرار است ساعت شش"
+            },
+            "usage": "due بعد از فعل be می‌آید و زمانِ مشخص را نشان می‌دهد.",
+            "mistake": {
+              "wrong": "The essay is due in Monday.",
+              "wrongFa": "مهلت انشا دوشنبه است؛ اما حرف اضافهٔ روز غلط است.",
+              "right": "The essay is due on Monday.",
+              "rightFa": "مهلت انشا دوشنبه است.",
+              "why": "برای روز هفته on لازم است."
+            },
+            "pronunciation": {
+              "gb": "/djuː/",
+              "us": "/duː/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Your project is ___ next Friday.",
+                "answer": "due",
+                "accept": [],
+                "fa": "مهلت پروژه‌ات جمعهٔ آینده است.",
+                "why": "due یعنی موعدی که کار باید تا آن تمام شود."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در جملهٔ «مهلت کتاب فرداست» کدام کلمه لازم است؟",
+                "options": [
+                  {
+                    "text": "due",
+                    "ok": true,
+                    "why": "due زمانِ مقرر را نشان می‌دهد."
+                  },
+                  {
+                    "text": "dew",
+                    "ok": false,
+                    "why": "dew یعنی شبنم."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "هواپیما قرار است ساعت نه برسد.",
+                "frame": "The plane is ___ at nine.",
+                "answer": "due",
+                "accept": [],
+                "why": "due یعنی قرار است در زمان مشخصی برسد."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "pick",
+      "levelWordId": "level:A1:0384",
+      "existingEntryIds": [
+        "lex:A2:pick",
+        "lex:B2:pick"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0448",
+          "senseId": "lex:A2:pick",
+          "meaningEn": "To choose someone or something from a group."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:pick",
+        "headword": "pick",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:pick",
+            "pos": "verb",
+            "gloss": "انتخاب کردن؛ برگزیدن",
+            "meaning": "از میان چند چیز یا چند نفر، یکی را برداشتن یا انتخاب کردن.",
+            "grammar": [
+              {
+                "pattern": "pick + something",
+                "note": "pick مفعول می‌خواهد: pick a card."
+              },
+              {
+                "pattern": "pick / picked / picked",
+                "note": "گذشتهٔ pick با ed است: picked."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Pick a card, any card.",
+                "fa": "یک کارت بردار، هر کارتی که خواستی."
+              },
+              {
+                "en": "She picked the red dress.",
+                "fa": "او پیراهن قرمز را انتخاب کرد."
+              },
+              {
+                "en": "Which book did you pick?",
+                "fa": "کدام کتاب را انتخاب کردی؟"
+              }
+            ],
+            "collocations": [
+              "pick a number",
+              "pick a team"
+            ],
+            "collocationFa": {
+              "pick a number": "عددی انتخاب کردن",
+              "pick a team": "تیمی را انتخاب کردن"
+            },
+            "usage": "در این درس pick یعنی انتخاب کردن. pick up (برداشتن، دنبال کسی رفتن) و pick flowers (گل چیدن) جداگانه‌اند.",
+            "mistake": {
+              "wrong": "Yesterday she pick the red dress.",
+              "wrongFa": "دیروز او پیراهن قرمز را انتخاب کرد؛ اما فعل گذشته نیست.",
+              "right": "Yesterday she picked the red dress.",
+              "rightFa": "دیروز او پیراهن قرمز را انتخاب کرد.",
+              "why": "برای گذشته picked لازم است."
+            },
+            "pronunciation": {
+              "gb": "/pɪk/",
+              "us": "/pɪk/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "You can ___ one cake from the box.",
+                "answer": "pick",
+                "accept": [],
+                "fa": "می‌توانی یک کیک از جعبه انتخاب کنی.",
+                "why": "pick یعنی از میان چند چیز یکی را برگزیدن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام فعل یعنی «انتخاب کردن»؟",
+                "options": [
+                  {
+                    "text": "pick",
+                    "ok": true,
+                    "why": "pick یعنی برگزیدن."
+                  },
+                  {
+                    "text": "pack",
+                    "ok": false,
+                    "why": "pack یعنی بستن چمدان."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او کتاب آبی را انتخاب کرد.",
+                "frame": "He ___ the blue book.",
+                "answer": "picked",
+                "accept": [],
+                "why": "گذشتهٔ pick می‌شود picked."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "ground",
+      "levelWordId": "level:A1:0386",
+      "existingEntryIds": [
+        "lex:A2:ground"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0450",
+          "senseId": "lex:A2:ground",
+          "meaningEn": "The surface of the earth that you stand or walk on."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:ground",
+        "headword": "ground",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:ground",
+            "pos": "noun",
+            "gloss": "زمین (کفِ زیرِ پا)",
+            "meaning": "سطحِ زمین در بیرون که روی آن می‌ایستیم یا راه می‌رویم.",
+            "grammar": [
+              {
+                "pattern": "on the ground",
+                "note": "برای روی زمین بودن: on the ground."
+              },
+              {
+                "pattern": "fall to the ground",
+                "note": "برای افتادن روی زمین: fall to the ground."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My phone fell on the ground.",
+                "fa": "گوشی‌ام روی زمین افتاد."
+              },
+              {
+                "en": "Don't sit on the wet ground.",
+                "fa": "روی زمینِ خیس ننشین."
+              },
+              {
+                "en": "There is snow on the ground.",
+                "fa": "روی زمین برف هست."
+              }
+            ],
+            "collocations": [
+              "on the ground",
+              "wet ground"
+            ],
+            "collocationFa": {
+              "on the ground": "روی زمین",
+              "wet ground": "زمین خیس"
+            },
+            "usage": "برای کفِ زیرِ پا در بیرون ground می‌گوییم. Earth (با حرف بزرگ) سیارهٔ زمین است و floor کفِ داخلِ ساختمان.",
+            "mistake": {
+              "wrong": "He dropped his keys on the earth.",
+              "wrongFa": "کلیدهایش روی زمین افتاد؛ اما earth برای کفِ زیر پا مناسب نیست.",
+              "right": "He dropped his keys on the ground.",
+              "rightFa": "کلیدهایش را روی زمین انداخت.",
+              "why": "سطحِ زیر پا در بیرون ground است، نه earth."
+            },
+            "pronunciation": {
+              "gb": "/ɡraʊnd/",
+              "us": "/ɡraʊnd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The leaves are lying on the ___.",
+                "answer": "ground",
+                "accept": [],
+                "fa": "برگ‌ها روی زمین افتاده‌اند.",
+                "why": "ground سطحِ زمین در بیرون است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کفِ زیر پا در پارک را چه می‌نامیم؟",
+                "options": [
+                  {
+                    "text": "ground",
+                    "ok": true,
+                    "why": "ground سطح زمین در بیرون است."
+                  },
+                  {
+                    "text": "ceiling",
+                    "ok": false,
+                    "why": "ceiling یعنی سقف."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کیفت روی زمین است.",
+                "frame": "Your bag is on the ___.",
+                "answer": "ground",
+                "accept": [],
+                "why": "برای روی زمینِ بیرون از on the ground استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "fight",
+      "levelWordId": "level:A1:0389",
+      "existingEntryIds": [
+        "lex:A2:fight"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0453",
+          "senseId": "lex:A2:fight",
+          "meaningEn": "A situation in which people hit each other or argue angrily."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:fight",
+        "headword": "fight",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:fight",
+            "pos": "noun",
+            "gloss": "دعوا",
+            "meaning": "وقتی دو نفر یا دو گروه با عصبانیت با هم بحث می‌کنند یا یکدیگر را می‌زنند.",
+            "grammar": [
+              {
+                "pattern": "have a fight",
+                "note": "برای دعوا کردن می‌گوییم have a fight."
+              },
+              {
+                "pattern": "a fight with someone",
+                "note": "طرفِ دعوا با with می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "There was a fight in the street.",
+                "fa": "در خیابان دعوایی شد."
+              },
+              {
+                "en": "The two boys had a fight at school.",
+                "fa": "دو پسر در مدرسه دعوا کردند."
+              },
+              {
+                "en": "Don't start a fight with your sister.",
+                "fa": "با خواهرت دعوا راه نینداز."
+              }
+            ],
+            "collocations": [
+              "have a fight",
+              "start a fight"
+            ],
+            "collocationFa": {
+              "have a fight": "دعوا کردن",
+              "start a fight": "دعوا راه انداختن"
+            },
+            "usage": "در این درس fight اسم است. فعلِ fight (جنگیدن، دعوا کردن) جداگانه آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "They did a fight.",
+              "wrongFa": "آن‌ها دعوا کردند؛ اما فعل همراه درست نیست.",
+              "right": "They had a fight.",
+              "rightFa": "آن‌ها دعوا کردند.",
+              "why": "با fight فعل have می‌آید، نه do."
+            },
+            "pronunciation": {
+              "gb": "/faɪt/",
+              "us": "/faɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The cats had a ___ in the garden.",
+                "answer": "fight",
+                "accept": [],
+                "fa": "گربه‌ها در باغ دعوا کردند.",
+                "why": "fight یعنی دعوا."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «دعوا»؟",
+                "options": [
+                  {
+                    "text": "fight",
+                    "ok": true,
+                    "why": "fight یعنی دعوا یا زد و خورد."
+                  },
+                  {
+                    "text": "flight",
+                    "ok": false,
+                    "why": "flight یعنی پرواز."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دیروز با برادرم دعوا کردم.",
+                "frame": "I had a ___ with my brother yesterday.",
+                "answer": "fight",
+                "accept": [],
+                "why": "have a fight یعنی دعوا کردن."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "leader",
+      "levelWordId": "level:A1:0390",
+      "existingEntryIds": [
+        "lex:A2:leader"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0454",
+          "senseId": "lex:A2:leader",
+          "meaningEn": "A person who leads or is in charge of a group."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:leader",
+        "headword": "leader",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:leader",
+            "pos": "noun",
+            "gloss": "رهبر؛ سرگروه",
+            "meaning": "کسی که یک گروه، تیم یا کشور را هدایت می‌کند و تصمیم می‌گیرد.",
+            "grammar": [
+              {
+                "pattern": "the leader of + group",
+                "note": "برای سرپرستِ گروه: the leader of the team."
+              },
+              {
+                "pattern": "a leader / leaders",
+                "note": "leader اسم قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "She is the leader of our team.",
+                "fa": "او سرگروهِ تیم ماست."
+              },
+              {
+                "en": "Every group needs a good leader.",
+                "fa": "هر گروهی به یک رهبر خوب نیاز دارد."
+              },
+              {
+                "en": "The leader spoke to the people.",
+                "fa": "رهبر با مردم صحبت کرد."
+              }
+            ],
+            "collocations": [
+              "team leader",
+              "a good leader"
+            ],
+            "collocationFa": {
+              "team leader": "سرگروه",
+              "a good leader": "رهبر خوب"
+            },
+            "usage": "leader برای سرگروهِ کوچک و رهبرِ کشور، هر دو، به کار می‌رود.",
+            "mistake": {
+              "wrong": "He is a good lead of the group.",
+              "wrongFa": "او سرگروه خوبی است؛ اما lead اینجا فعل است، نه شخص.",
+              "right": "He is a good leader of the group.",
+              "rightFa": "او رهبر خوبِ گروه است.",
+              "why": "برای شخص از leader استفاده می‌کنیم."
+            },
+            "pronunciation": {
+              "gb": "/ˈliːdə/",
+              "us": "/ˈlidər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Who is the ___ of this group?",
+                "answer": "leader",
+                "accept": [],
+                "fa": "رهبرِ این گروه کیست؟",
+                "why": "leader کسی است که گروه را هدایت می‌کند."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «رهبر»؟",
+                "options": [
+                  {
+                    "text": "leader",
+                    "ok": true,
+                    "why": "leader کسی است که گروه را هدایت می‌کند."
+                  },
+                  {
+                    "text": "letter",
+                    "ok": false,
+                    "why": "letter یعنی نامه یا حرف."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سرگروه ما خیلی مهربان است.",
+                "frame": "Our team ___ is very kind.",
+                "answer": "leader",
+                "accept": [],
+                "why": "team leader یعنی سرگروه."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "store",
+      "levelWordId": "level:A1:0399",
+      "existingEntryIds": [
+        "lex:A2:store",
+        "lex:B1:store"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0464",
+          "senseId": "lex:A2:store",
+          "meaningEn": "A shop, especially a large one (mainly American English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:store",
+        "headword": "store",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:store",
+            "pos": "noun",
+            "gloss": "فروشگاه؛ مغازه",
+            "meaning": "جایی که در آن چیزها را می‌فروشند؛ در انگلیسی آمریکایی به جای shop زیاد گفته می‌شود.",
+            "grammar": [
+              {
+                "pattern": "at the store",
+                "note": "برای خرید از جایی: at the store."
+              },
+              {
+                "pattern": "a ... store",
+                "note": "نوع فروشگاه قبل از store می‌آید: a shoe store."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I bought milk at the store.",
+                "fa": "از فروشگاه شیر خریدم."
+              },
+              {
+                "en": "The store opens at nine.",
+                "fa": "فروشگاه ساعت نه باز می‌شود."
+              },
+              {
+                "en": "Is there a shoe store near here?",
+                "fa": "این نزدیکی کفش‌فروشی هست؟"
+              }
+            ],
+            "collocations": [
+              "a shoe store",
+              "a big store"
+            ],
+            "collocationFa": {
+              "a shoe store": "کفش‌فروشی",
+              "a big store": "فروشگاه بزرگ"
+            },
+            "usage": "در انگلیسی بریتانیایی بیشتر shop می‌گویند. فعلِ store (نگه داشتن، انبار کردن) معنای جداگانه‌ای است.",
+            "mistake": {
+              "wrong": "I went to store.",
+              "wrongFa": "به فروشگاه رفتم؛ اما حرف تعریف جا افتاده است.",
+              "right": "I went to the store.",
+              "rightFa": "به فروشگاه رفتم.",
+              "why": "قبل از store معمولاً the یا a لازم است."
+            },
+            "pronunciation": {
+              "gb": "/stɔː/",
+              "us": "/stɔr/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "We need bread, so let's go to the ___.",
+                "answer": "store",
+                "accept": [],
+                "fa": "نان لازم داریم، پس برویم فروشگاه.",
+                "why": "store یعنی فروشگاه."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه هم‌معنای shop است؟",
+                "options": [
+                  {
+                    "text": "store",
+                    "ok": true,
+                    "why": "store و shop هر دو یعنی فروشگاه."
+                  },
+                  {
+                    "text": "story",
+                    "ok": false,
+                    "why": "story یعنی داستان."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "فروشگاه یکشنبه‌ها بسته است.",
+                "frame": "The ___ is closed on Sundays.",
+                "answer": "store",
+                "accept": [],
+                "why": "برای فروشگاه از store استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "heart",
+      "levelWordId": "level:A1:0403",
+      "existingEntryIds": [
+        "lex:A2:heart"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0468",
+          "senseId": "lex:A2:heart",
+          "meaningEn": "The organ in your chest that sends blood around your body."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:heart",
+        "headword": "heart",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:heart",
+            "pos": "noun",
+            "gloss": "قلب",
+            "meaning": "عضوی در سینه که خون را در بدن به حرکت درمی‌آورد.",
+            "grammar": [
+              {
+                "pattern": "your heart beats",
+                "note": "برای تپیدن قلب فعل beat می‌آید."
+              },
+              {
+                "pattern": "a heart / hearts",
+                "note": "heart اسم قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Your heart beats faster when you run.",
+                "fa": "وقتی می‌دوی قلبت تندتر می‌زند."
+              },
+              {
+                "en": "The doctor listened to my heart.",
+                "fa": "دکتر به صدای قلبم گوش داد."
+              },
+              {
+                "en": "She drew a red heart on the card.",
+                "fa": "او روی کارت یک قلب قرمز کشید."
+              }
+            ],
+            "collocations": [
+              "a strong heart",
+              "a red heart"
+            ],
+            "collocationFa": {
+              "a strong heart": "قلب سالم و قوی",
+              "a red heart": "قلب قرمز"
+            },
+            "usage": "heart برای عضو بدن و برای شکل قلب به کار می‌رود. معناهای «دل» در عبارت‌ها بعدها می‌آیند.",
+            "mistake": {
+              "wrong": "He has a strong hearth.",
+              "wrongFa": "او قلب قوی‌ای دارد؛ اما hearth یعنی اجاق.",
+              "right": "He has a strong heart.",
+              "rightFa": "او قلب قوی‌ای دارد.",
+              "why": "قلب heart است؛ hearth کلمهٔ دیگری است."
+            },
+            "pronunciation": {
+              "gb": "/hɑːt/",
+              "us": "/hɑrt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Exercise is good for your ___.",
+                "answer": "heart",
+                "accept": [],
+                "fa": "ورزش برای قلبت خوب است.",
+                "why": "heart یعنی قلب."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «قلب»؟",
+                "options": [
+                  {
+                    "text": "heart",
+                    "ok": true,
+                    "why": "heart عضوی است که خون را جابه‌جا می‌کند."
+                  },
+                  {
+                    "text": "hurt",
+                    "ok": false,
+                    "why": "hurt یعنی آسیب زدن یا درد کردن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "قلبِ بچه خیلی تند می‌زند.",
+                "frame": "The baby's ___ is beating fast.",
+                "answer": "heart",
+                "accept": [],
+                "why": "برای قلب از heart استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "foreign",
+      "levelWordId": "level:A1:0407",
+      "existingEntryIds": [
+        "lex:A2:foreign"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0473",
+          "senseId": "lex:A2:foreign",
+          "meaningEn": "From or relating to another country."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:foreign",
+        "headword": "foreign",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:foreign",
+            "pos": "adjective",
+            "gloss": "خارجی",
+            "meaning": "مربوط به کشوری غیر از کشور خودت.",
+            "grammar": [
+              {
+                "pattern": "foreign + noun",
+                "note": "foreign صفت است و قبل از اسم می‌آید: a foreign language."
+              },
+              {
+                "pattern": "foreigner",
+                "note": "برای شخص خارجی از اسم foreigner استفاده می‌کنیم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I want to learn a foreign language.",
+                "fa": "می‌خواهم یک زبان خارجی یاد بگیرم."
+              },
+              {
+                "en": "There are many foreign students at our school.",
+                "fa": "در مدرسهٔ ما دانش‌آموزان خارجی زیادی هستند."
+              },
+              {
+                "en": "Do you like foreign films?",
+                "fa": "فیلم‌های خارجی را دوست داری؟"
+              }
+            ],
+            "collocations": [
+              "a foreign language",
+              "a foreign country"
+            ],
+            "collocationFa": {
+              "a foreign language": "زبان خارجی",
+              "a foreign country": "کشور خارجی"
+            },
+            "usage": "foreign صفت است. به شخص نمی‌گوییم a foreign؛ می‌گوییم a foreigner یا someone from another country.",
+            "mistake": {
+              "wrong": "He is a foreign.",
+              "wrongFa": "او خارجی است؛ اما foreign به تنهایی اسم نیست.",
+              "right": "He is a foreigner.",
+              "rightFa": "او یک خارجی است.",
+              "why": "برای شخص از foreigner استفاده می‌کنیم؛ foreign صفت است."
+            },
+            "pronunciation": {
+              "gb": "/ˈfɒrɪn/",
+              "us": "/ˈfɔrən/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "English is a ___ language for me.",
+                "answer": "foreign",
+                "accept": [],
+                "fa": "انگلیسی برای من زبان خارجی است.",
+                "why": "foreign یعنی مربوط به کشوری دیگر."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام کلمه یعنی «خارجی»؟",
+                "options": [
+                  {
+                    "text": "foreign",
+                    "ok": true,
+                    "why": "foreign یعنی از کشوری دیگر."
+                  },
+                  {
+                    "text": "forest",
+                    "ok": false,
+                    "why": "forest یعنی جنگل."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او به یک کشور خارجی سفر کرد.",
+                "frame": "She travelled to a ___ country.",
+                "answer": "foreign",
+                "accept": [],
+                "why": "foreign صفت است و قبل از country می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}

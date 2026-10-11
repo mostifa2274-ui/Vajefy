@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-11",
-  "authoritativeMain": "76cabbca412648a61fe7cc9dbd84c134304c03b2",
+  "authoritativeMain": "ac406a5ba870914694a2fb489089f81da7fdd292",
   "roadmap": "docs/AUTONOMOUS_ASSURANCE_PLAN.md",
   "completed": [
     {
@@ -184,7 +184,7 @@
     "Do not treat a model id as the model that answers: Cloudflare aliases retired models (kimi-k2.5 has been served and billed as the paid-only kimi-k2.6 since 2026-05-30). Record aliases in workers-ai-neuron-rates.json servedBy, and check a run's charged Neurons against the rate before trusting the id.",
     "Do not redo the authenticated NGSL loader/export checks or the 360 completed author-only draft records from PR #188; do not redraft ranks 361–900 (all 900 candidates are drafted) and retain zero approval flags.",
     "Do not repeat the 140 contextual supports from PR #189, the read-only A1 reference/Review scope from PR #190, or the four language-field repairs from PR #191 unless changed source or CI shows a regression.",
-    "Do not redraft CEFR-J NEW headwords 1–20 (may through role). Full source-bound lessons are staged in lessons-new-001-020.json; continue at NEW headword 21. A structurally valid draft is not an independent approval or public release."
+    "Do not redraft CEFR-J NEW headwords 1–40 (may through foreign). Full source-bound lessons are staged in lessons-new-001-020.json and lessons-new-021-040.json; continue at NEW headword 41 (surprise). A structurally valid draft is not an independent approval or public release."
   ],
   "blockers": [
     {
@@ -228,7 +228,7 @@
   "currentWork": {
     "blocked": false,
     "branch": "codex/a1-cefrj-lessons-20261011",
-    "objective": "Continue CEFR-J A1 rebuild phase 2: 20/338 NEW headwords now have full source-bound unreviewed lesson drafts; author the remaining 318, then rebuild curriculum and study scope in phase 3. Higher-level implementation remains deferred until A1 completion. Gate 0 remains BLOCKED.",
+    "objective": "Continue CEFR-J A1 rebuild phase 2: 40/338 NEW headwords now have full source-bound unreviewed lesson drafts; author the remaining 298, then rebuild curriculum and study scope in phase 3. Higher-level implementation remains deferred until A1 completion. Gate 0 remains BLOCKED.",
     "completedInMain": [
       "PR #188: authenticated pinned NGSL selection/draft/review sources and 360 unreviewed bilingual drafts.",
       "PR #189: 140 contextual Persian supports across 133 tasks; task/scene frontier counts 4966/59.",
@@ -249,10 +249,11 @@
       "PR #205: independent NGSL drafts for ranks 761–840 (840/900 staged), revised after review; merged as 77efc696be2d6403a5366cb477f1fd8bade5d49f.",
       "PR #206: independent NGSL drafts for ranks 841–900 (900/900 staged), revised after review; merged as 96550577a16e93e4c9f1453ba1387bad4c678ce4.",
       "PR #207: CEFR-J A1 selection with NGSL mapping and the owner statement, revised after review; merged as af0cc6d4df5c12b71df03229d1462740691dcd1d.",
-      "PR #208: whole-app CEFR-J/Octanove placement, no-drop-out records and A1-first scope; merged as 76cabbca412648a61fe7cc9dbd84c134304c03b2 after exact-head CI, browser, Workers build and rollback checks passed."
+      "PR #208: whole-app CEFR-J/Octanove placement, no-drop-out records and A1-first scope; merged as 76cabbca412648a61fe7cc9dbd84c134304c03b2 after exact-head CI, browser, Workers build and rollback checks passed.",
+      "PR #209: first 20 full CEFR-J A1 lesson drafts with source and identity checks; merged as ac406a5ba870914694a2fb489089f81da7fdd292."
     ],
     "nextSteps": [
-      "Continue rebuild phase 2 from NEW headword 21 (step) in the pinned CEFR-J A1 selection: first 20 NEW headwords (may through role) have full unreviewed lesson drafts in content/rights-staging/a1-rebuild/lessons-new-001-020.json. Draft the remaining 318 NEW headwords in contiguous source-bound batches. Keep existing IDs only when spelling and part-of-speech metadata match; never copy the verb hold/cover/bear or noun set into the selected A1 noun/verb sense. The drafts use the existing enhanced-entry schema, have three fresh bilingual examples and three checks including a held-out production item, and have zero semantic/Persian/CEFR/rights/audio/curriculum approvals or releases. Run npm run assurance:a1:cefrj:drafts. Then rebuild the A1 curriculum, scenes, prerequisite order and study roster under the recorded Units 1–3 unfreeze. A2–C2 content and the B2+/C2 runtime migration remain deferred under the A1-first plan.",
+      "Continue rebuild phase 2 from NEW headword 41 (surprise) in the pinned CEFR-J A1 selection: the first 40 NEW headwords (may through foreign) have full unreviewed lesson drafts in content/rights-staging/a1-rebuild/lessons-new-001-020.json and lessons-new-021-040.json. Draft the remaining 298 NEW headwords in contiguous source-bound batches. Keep existing IDs only when spelling and part-of-speech metadata match; never copy the verb hold/cover/bear or noun set into the selected A1 noun/verb sense. The drafts use the existing enhanced-entry schema, have three fresh bilingual examples and three checks including a held-out production item, and have zero semantic/Persian/CEFR/rights/audio/curriculum approvals or releases. Run npm run assurance:a1:cefrj:drafts. Then rebuild the A1 curriculum, scenes, prerequisite order and study roster under the recorded Units 1–3 unfreeze. A2–C2 content and the B2+/C2 runtime migration remain deferred under the A1-first plan.",
       "Continue from 6640 deterministic findings. The non-promotable frontier queue is 71 cases, all in frozen Units 1–3; all 34 later-unit rewording cases were reworded (docs/FRONTIER_REWORDING_2026-10-10.md), and the remaining frontier findings need core-word promotion into the frozen roster, an owner decision. Persian mistake-pair translations now cover every sense in course Units 4–12 (831; docs/MISTAKE_TRANSLATIONS_2026-10-10.md). Usage notes now cover all 61 function-word senses in Units 4–12 (docs/USAGE_NOTES_2026-10-10.md). Grammar notes in Units 4–12 now open with a Persian explanation (docs/GRAMMAR_NOTES_2026-10-10.md). Answer feedback in Units 4–12 now opens with a Persian reason (docs/CHECK_FEEDBACK_2026-10-10.md). The remaining 173 wrongFa/rightFa pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are all in frozen Units 1–3 and wait for an owner study/audio scope decision. Select later-unit source fields using actual curriculum membership; Units 1–3 were unfrozen by the owner on 2026-10-10 for the CEFR-J rebuild; repair them as part of rebuild phase 3, not before, because 18 of their entries leave A1.",
       "Independent NGSL authoring is complete (900/900 staged drafts). Every draft requires independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement; build packets with npm run assurance:ngsl:review:packets -- --json --from N --limit M and never record approvals without a real independent reviewer.",
       "Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates; on 2026-10-10 Gemma 4 26B and GLM 4.7 Flash (both +no-thinking) were appended to the end of its list, and the planner selects Gemma 4. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.",

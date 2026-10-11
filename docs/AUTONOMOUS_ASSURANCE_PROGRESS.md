@@ -16,10 +16,10 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #208: `76cabbca412648a61fe7cc9dbd84c134304c03b2`.
+- Verified main after PR #209: `ac406a5ba870914694a2fb489089f81da7fdd292`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#208 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#209 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
@@ -31,10 +31,10 @@ Do **not** restart from chat memory when repository evidence exists.
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 - CEFR-J rebuild phase 1 is merged, including whole-app placement and no-drop-out
-  records. Phase 2 now stages full lessons for **20/338 NEW A1 headwords**, from
-  may through role: 60 bilingual examples, 60 checks and existing compatible
-  entry IDs. They remain unreviewed and unreleased. Continue at **21, step**;
-  318 NEW A1 headwords remain. `npm run assurance:a1:cefrj:drafts` checks source
+  records. Phase 2 now stages full lessons for **40/338 NEW A1 headwords**, from
+  may through foreign: 120 bilingual examples, 120 checks and existing compatible
+  entry IDs. They remain unreviewed and unreleased. Continue at **41, surprise**;
+  298 NEW A1 headwords remain. `npm run assurance:a1:cefrj:drafts` checks source
   hashes, part-of-speech identity, Persian coverage and assessment separation.
   Audio/curriculum/semantic certification and Gate 0 remain open.
 
@@ -1402,3 +1402,15 @@ softened for absolute claims before applying.
   shipped. A2–C2 content and the level-structure change are deferred by the
   plan's A2–C1 freeze (§4, §32) until the A1 gate passes or the owner lifts it.
 - No rights are cleared. Gate 0 stays BLOCKED.
+
+## 2026-10-11 — CEFR-J A1 lessons 21–40
+
+- PR #209 (lessons 1–20) merged as `ac406a5`.
+- `lessons-new-021-040.json` stages full lessons for NEW headwords 21–40, from
+  *step* to *foreign*. Each lesson teaches the CEFR-J part of speech, and other
+  senses are named in its usage note. Existing compatible IDs are kept; for
+  example, verb *step* uses `lex:B2:step`.
+- Before the PR, the legacy-overlap check rewrote two examples (*sign*,
+  *ground*), and a self-review fixed three Persian or English lines.
+- Staging: 40/338 NEW headwords drafted. Every review, audio, rights and
+  release count stays zero.

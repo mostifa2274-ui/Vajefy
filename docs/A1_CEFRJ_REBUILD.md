@@ -131,8 +131,10 @@ NEW A1 headwords:
 On 2026-10-11, `lessons-new-001-020.json` stages full lessons for the first
 20 NEW A1 headwords in selection order: may, case, set, hold, side, already,
 almost, yet, care, matter, mind, either, top, social, along, sale, cover, war,
-bear and role. This is **20/338 drafted, 318 still to write**, not a count of
-approved or published lessons.
+bear and role. `lessons-new-021-040.json` (Claude Code) adds headwords 21–40:
+step, site, sign, wish, kid, kill, field, vote, focus, stage, technology, save,
+due, pick, ground, fight, leader, store, heart and foreign. This is **40/338
+drafted, 298 still to write**, not a count of approved or published lessons.
 
 Each lesson uses the existing enhanced-entry schema and contains a Persian
 meaning and explanation, grammar notes, three bilingual examples, translated
@@ -158,8 +160,8 @@ and all six short-entry lists for exact English or nine-word phrase reuse.
 These limited overlap checks do not establish semantic correctness or rights.
 
 Every independent-review, rights-clearance, audio-certificate and release count
-for the new drafts remains **zero**. Continue at NEW headword **21, step**. Do
-not repeat the first 20 drafts or import them into the public course before
+for the new drafts remains **zero**. Continue at NEW headword **41, surprise**.
+Do not repeat the first 40 drafts or import them into the public course before
 curriculum, audio and assurance work is complete. PR #208's actual merge is
 `76cabbca412648a61fe7cc9dbd84c134304c03b2`.
 
