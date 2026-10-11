@@ -16,10 +16,10 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #209: `ac406a5ba870914694a2fb489089f81da7fdd292`.
+- Verified main after PR #210: `a27bc143b8d80d4448c971efe92a21cd72b2e6fa`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#209 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#210 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
@@ -31,11 +31,12 @@ Do **not** restart from chat memory when repository evidence exists.
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 - CEFR-J rebuild phase 1 is merged, including whole-app placement and no-drop-out
-  records. Phase 2 now stages full lessons for **40/338 NEW A1 headwords**, from
-  may through foreign: 120 bilingual examples, 120 checks and existing compatible
-  entry IDs. The first 20 and their validator are merged in #209; the next 20
-  are in `lessons-new-021-040.json`. They remain unreviewed and unreleased.
-  Continue at **41, surprise**; 298 NEW A1 headwords remain.
+  records. Phase 2 now stages full lessons for **60/338 NEW A1 headwords**, from
+  may through throw: 183 bilingual examples, 183 checks and existing compatible
+  entry IDs. The first 20 and their validator are merged in #209 and the next
+  20 in #210; lessons 41–60 are in `lessons-new-041-060.json`. All remain
+  unreviewed and unreleased. Continue at **61, goal**; 278 NEW A1 headwords
+  remain.
   `npm run assurance:a1:cefrj:drafts` checks source
   hashes, part-of-speech identity, Persian coverage and assessment separation.
   Audio/curriculum/semantic certification and Gate 0 remain open.
@@ -94,7 +95,7 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 
 ## Current next actions
 
-1. Continue CEFR-J phase 2 at NEW headword 41 (surprise), after the 40 full unreviewed lesson drafts in the first two source windows. Preserve compatible spelling/part-of-speech IDs and zero approval flags. All 338 NEW headwords need drafts before phase 3 rebuilds the curriculum, scenes and study scope. The owner unfroze Units 1–3 for that rebuild; their 71 frontier cases and remaining Persian fields are deferred to phase 3. The legacy deterministic count is 6,640; later-unit repairs are complete.
+1. Continue CEFR-J phase 2 at NEW headword 61 (goal), after the 60 full unreviewed lesson drafts in the first three source windows. Preserve compatible spelling/part-of-speech IDs and zero approval flags. All 338 NEW headwords need drafts before phase 3 rebuilds the curriculum, scenes and study scope. The owner unfroze Units 1–3 for that rebuild; their 71 frontier cases and remaining Persian fields are deferred to phase 3. The legacy deterministic count is 6,640; later-unit repairs are complete.
 2. Independent NGSL authoring is complete: all 900 candidates have staged drafts. Every draft requires independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement; build review packets with `npm run assurance:ngsl:review:packets -- --json --from N --limit M`. Do not record approvals without a real independent reviewer.
 3. Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates. On 2026-10-10 (PR #193) Gemma 4 26B and GLM 4.7 Flash, both +no-thinking, were appended to the end of its list, and the planner selects Gemma 4. Do not register more English candidates while these are untried; let the scheduled runs calibrate them. Only if both are rejected does English need another candidate or a justified new calibration version. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.
 4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.

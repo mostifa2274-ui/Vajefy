@@ -1,0 +1,2505 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 41–60 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 41,
+    "lastNewHeadword": 60
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "surprise",
+      "levelWordId": "level:A1:0408",
+      "existingEntryIds": [
+        "lex:A2:surprise"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0474",
+          "senseId": "lex:A2:surprise",
+          "meaningEn": "Something you did not expect, often something nice that someone plans for you."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:surprise",
+        "headword": "surprise",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:surprise",
+            "pos": "noun",
+            "gloss": "غافلگیری؛ سورپرایز",
+            "meaning": "چیزی که انتظارش را نداشتیم؛ گاهی هدیه یا برنامه‌ای که کسی پنهانی برای ما آماده می‌کند.",
+            "grammar": [
+              {
+                "pattern": "a surprise / surprises",
+                "note": "surprise اسم قابل‌شمارش است: a big surprise."
+              },
+              {
+                "pattern": "a surprise for someone",
+                "note": "برای گفتنِ اینکه غافلگیری برای چه کسی است، for می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The party was a surprise for Dad.",
+                "fa": "مهمانی برای بابا یک غافلگیری بود."
+              },
+              {
+                "en": "What a nice surprise to see you here!",
+                "fa": "چه غافلگیریِ خوبی که تو را اینجا می‌بینم!"
+              },
+              {
+                "en": "Don't tell her, it's a surprise.",
+                "fa": "به او نگو؛ این یک سورپرایز است."
+              }
+            ],
+            "collocations": [
+              "a big surprise",
+              "a surprise party"
+            ],
+            "collocationFa": {
+              "a big surprise": "یک غافلگیریِ بزرگ",
+              "a surprise party": "مهمانیِ غافلگیرانه"
+            },
+            "usage": "در این درس surprise اسم است. فعلِ surprise (غافلگیر کردن) و صفتِ surprised (متعجب) جدا آموزش داده می‌شوند.",
+            "mistake": {
+              "wrong": "I have a surprise to you.",
+              "wrongFa": "من یک سورپرایز به تو دارم.",
+              "right": "I have a surprise for you.",
+              "rightFa": "یک سورپرایز برای تو دارم.",
+              "why": "بعد از surprise برای کسی که غافلگیر می‌شود for می‌آید، نه to."
+            },
+            "pronunciation": {
+              "gb": "/səˈpraɪz/",
+              "us": "/sərˈpraɪz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "We made a cake as a ___ for Mum.",
+                "answer": "surprise",
+                "accept": [],
+                "fa": "یک کیک به‌عنوانِ غافلگیری برای مامان درست کردیم.",
+                "why": "surprise اسمِ چیزی است که مامان انتظارش را ندارد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه یعنی «چیزی که انتظارش را نداشتیم»؟",
+                "options": [
+                  {
+                    "text": "surprise",
+                    "ok": true,
+                    "why": "surprise یعنی اتفاق یا هدیه‌ای غیرمنتظره."
+                  },
+                  {
+                    "text": "sunrise",
+                    "ok": false,
+                    "why": "sunrise یعنی طلوعِ خورشید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این هدیه یک غافلگیریِ بزرگ بود.",
+                "frame": "This gift was a big ___.",
+                "answer": "surprise",
+                "accept": [],
+                "why": "بعد از a big اسمِ مفردِ surprise می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "drop",
+      "levelWordId": "level:A1:0410",
+      "existingEntryIds": [
+        "lex:A2:drop",
+        "lex:B1:drop"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0476",
+          "senseId": "lex:A2:drop",
+          "meaningEn": "To let something fall, by accident or on purpose."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:drop",
+        "headword": "drop",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:drop",
+            "pos": "verb",
+            "gloss": "انداختن؛ از دست انداختن",
+            "meaning": "رها کردنِ چیزی که در دست داریم تا پایین بیفتد؛ گاهی ناخواسته و گاهی عمداً.",
+            "grammar": [
+              {
+                "pattern": "drop + something",
+                "note": "چیزی که می‌افتد مستقیم بعد از drop می‌آید: drop a cup."
+              },
+              {
+                "pattern": "drop / dropped",
+                "note": "گذشتهٔ drop با دو p نوشته می‌شود: dropped."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Be careful, don't drop the eggs.",
+                "fa": "مراقب باش؛ تخم‌مرغ‌ها را نینداز."
+              },
+              {
+                "en": "He dropped his keys in the street.",
+                "fa": "او کلیدهایش را در خیابان انداخت."
+              },
+              {
+                "en": "The baby drops her spoon at every meal.",
+                "fa": "بچه سرِ هر وعدهٔ غذا قاشقش را می‌اندازد."
+              }
+            ],
+            "collocations": [
+              "drop a glass",
+              "drop something on the floor"
+            ],
+            "collocationFa": {
+              "drop a glass": "لیوانی را انداختن",
+              "drop something on the floor": "چیزی را روی زمین انداختن"
+            },
+            "usage": "در این درس drop فعل است و یعنی انداختن یا رها کردنِ چیزی. اسمِ drop (قطره) معنای جداگانه‌ای است.",
+            "mistake": {
+              "wrong": "Yesterday I fell my phone.",
+              "wrongFa": "دیروز گوشی‌ام را افتادم.",
+              "right": "Yesterday I dropped my phone.",
+              "rightFa": "دیروز گوشی‌ام را انداختم.",
+              "why": "fall مفعول نمی‌گیرد. وقتی چیزی از دستمان می‌افتد، می‌گوییم dropped."
+            },
+            "pronunciation": {
+              "gb": "/drɒp/",
+              "us": "/drɑːp/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Hold the box with two hands or you will ___ it.",
+                "answer": "drop",
+                "accept": [],
+                "fa": "جعبه را با دو دست بگیر وگرنه آن را می‌اندازی.",
+                "why": "بعد از will فعلِ سادهٔ drop می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "She fell her bag.",
+                    "ok": false,
+                    "why": "fall مفعول نمی‌گیرد."
+                  },
+                  {
+                    "text": "She dropped her bag.",
+                    "ok": true,
+                    "why": "dropped یعنی کیفش را انداخت."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او لیوانِ آبش را انداخت.",
+                "frame": "He ___ his glass of water.",
+                "answer": "dropped",
+                "accept": [],
+                "why": "برای گذشته dropped با دو p می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "Miss",
+      "levelWordId": "level:A1:0412",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0478",
+          "senseId": "lex:A1:cefrj-miss",
+          "meaningEn": "A title before the family name of a girl or a woman who is not married; also used to speak to a female teacher."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-miss",
+        "headword": "Miss",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-miss",
+            "pos": "noun",
+            "gloss": "دوشیزه؛ خانم (عنوان)",
+            "meaning": "عنوانی که پیش از نامِ خانوادگیِ دختر یا زنِ مجرد می‌آید؛ در بریتانیا دانش‌آموزان معلمِ زن را هم Miss صدا می‌زنند.",
+            "grammar": [
+              {
+                "pattern": "Miss + family name",
+                "note": "Miss با حرفِ بزرگ نوشته می‌شود و پیش از نامِ خانوادگی می‌آید: Miss Brown."
+              },
+              {
+                "pattern": "Excuse me, Miss",
+                "note": "دانش‌آموز می‌تواند فقط با واژهٔ Miss معلمش را صدا بزند."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Miss Green teaches us music.",
+                "fa": "دوشیزه گرین به ما موسیقی درس می‌دهد."
+              },
+              {
+                "en": "Excuse me, Miss, can I open the window?",
+                "fa": "ببخشید خانم، می‌توانم پنجره را باز کنم؟"
+              },
+              {
+                "en": "This letter is for Miss Patel.",
+                "fa": "این نامه برای دوشیزه پاتل است."
+              }
+            ],
+            "collocations": [
+              "Miss + family name",
+              "Excuse me, Miss"
+            ],
+            "collocationFa": {
+              "Miss + family name": "دوشیزه + نامِ خانوادگی",
+              "Excuse me, Miss": "ببخشید خانم"
+            },
+            "usage": "Miss برای زنِ مجرد است، Mrs برای زنِ متأهل، و Ms برای هر زنی بدونِ اشاره به ازدواج. miss با حرفِ کوچک فعلی جداست (دلتنگ شدن؛ از دست دادن).",
+            "mistake": {
+              "wrong": "This is miss Brown.",
+              "wrongFa": "این دوشیزه براون است؛ اما عنوان با حرفِ کوچک نوشته شده است.",
+              "right": "This is Miss Brown.",
+              "rightFa": "این دوشیزه براون است.",
+              "why": "عنوانِ Miss پیش از نام همیشه با M بزرگ نوشته می‌شود."
+            },
+            "pronunciation": {
+              "gb": "/mɪs/",
+              "us": "/mɪs/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Our new teacher is ___ Jones.",
+                "answer": "Miss",
+                "accept": [],
+                "fa": "معلمِ جدیدِ ما دوشیزه جونز است.",
+                "why": "عنوانِ Miss با حرفِ بزرگ پیش از نامِ خانوادگی می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عنوان برای زنِ مجرد است؟",
+                "options": [
+                  {
+                    "text": "Mrs",
+                    "ok": false,
+                    "why": "Mrs برای زنِ متأهل است."
+                  },
+                  {
+                    "text": "Miss",
+                    "ok": true,
+                    "why": "Miss عنوانِ زنِ مجرد است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دوشیزه وایت در کتابخانه است.",
+                "frame": "___ White is in the library.",
+                "answer": "Miss",
+                "accept": [],
+                "why": "عنوانِ Miss پیش از نامِ خانوادگی و با M بزرگ می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "worry",
+      "levelWordId": "level:A1:0417",
+      "existingEntryIds": [
+        "lex:A2:worry",
+        "lex:B1:worry"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0483",
+          "senseId": "lex:B1:worry",
+          "meaningEn": "A feeling of being afraid that something bad may happen, or a thing that makes you feel this."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:worry",
+        "headword": "worry",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:worry",
+            "pos": "noun",
+            "gloss": "نگرانی",
+            "meaning": "حسِ ترس از اینکه اتفاقِ بدی بیفتد، یا چیزی که این حس را در ما ایجاد می‌کند.",
+            "grammar": [
+              {
+                "pattern": "a worry / worries",
+                "note": "worry قابل‌شمارش است؛ جمعِ آن worries است و y به ies تبدیل می‌شود."
+              },
+              {
+                "pattern": "a worry for someone",
+                "note": "برای کسی که نگران است for می‌آید: a worry for parents."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Money is a big worry for them.",
+                "fa": "پول برای آن‌ها یک نگرانیِ بزرگ است."
+              },
+              {
+                "en": "Tell me about your worries.",
+                "fa": "دربارهٔ نگرانی‌هایت به من بگو."
+              },
+              {
+                "en": "Her only worry was the long drive.",
+                "fa": "تنها نگرانیِ او رانندگیِ طولانی بود."
+              }
+            ],
+            "collocations": [
+              "a big worry",
+              "no worries"
+            ],
+            "collocationFa": {
+              "a big worry": "یک نگرانیِ بزرگ",
+              "no worries": "اشکالی ندارد؛ نگران نباش"
+            },
+            "usage": "در این درس worry اسم است. فعلِ worry (نگران بودن)، مثل Don't worry، جدا آموزش داده می‌شود. No worries در گفت‌وگوی دوستانه یعنی «اشکالی ندارد».",
+            "mistake": {
+              "wrong": "I have many worrys.",
+              "wrongFa": "من نگرانی‌های زیادی دارم؛ اما جمعِ worry غلط نوشته شده است.",
+              "right": "I have many worries.",
+              "rightFa": "من نگرانی‌های زیادی دارم.",
+              "why": "چون پیش از y یک حرفِ بی‌صدا آمده، جمعِ worry با ies نوشته می‌شود."
+            },
+            "pronunciation": {
+              "gb": "/ˈwʌri/",
+              "us": "/ˈwɜːri/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My biggest ___ is the exam tomorrow.",
+                "answer": "worry",
+                "accept": [],
+                "fa": "بزرگ‌ترین نگرانیِ من امتحانِ فرداست.",
+                "why": "بعد از my biggest اسمِ مفردِ worry می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ درستِ worry کدام است؟",
+                "options": [
+                  {
+                    "text": "worries",
+                    "ok": true,
+                    "why": "y بعد از حرفِ بی‌صدا به ies تبدیل می‌شود."
+                  },
+                  {
+                    "text": "worrys",
+                    "ok": false,
+                    "why": "این املا نادرست است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آب‌وهوا نگرانیِ اصلیِ ما بود.",
+                "frame": "The weather was our main ___.",
+                "answer": "worry",
+                "accept": [],
+                "why": "بعد از our main اسمِ مفردِ worry می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "inside",
+      "levelWordId": "level:A1:0422",
+      "existingEntryIds": [
+        "lex:A2:inside"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0490",
+          "senseId": "lex:A2:inside",
+          "meaningEn": "In or into a room, building, container or other closed space."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:inside",
+        "headword": "inside",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:inside",
+            "pos": "preposition",
+            "gloss": "داخلِ؛ درونِ",
+            "meaning": "در داخل یا به داخلِ یک جای بسته، مثل اتاق، ساختمان یا جعبه.",
+            "grammar": [
+              {
+                "pattern": "inside + place/thing",
+                "note": "اسم مستقیم بعد از inside می‌آید: inside the box."
+              },
+              {
+                "pattern": "inside / outside",
+                "note": "outside متضادِ inside است: inside the house / outside the house."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The cat is sleeping inside the box.",
+                "fa": "گربه داخلِ جعبه خوابیده است."
+              },
+              {
+                "en": "It is warm inside the car.",
+                "fa": "داخلِ ماشین گرم است."
+              },
+              {
+                "en": "Put your phone inside your bag.",
+                "fa": "گوشی‌ات را داخلِ کیفت بگذار."
+              }
+            ],
+            "collocations": [
+              "inside the house",
+              "inside a bag"
+            ],
+            "collocationFa": {
+              "inside the house": "داخلِ خانه",
+              "inside a bag": "داخلِ یک کیف"
+            },
+            "usage": "inside تأکید می‌کند که چیزی کاملاً درونِ یک فضای بسته است. inside در نقشِ قید (مثل Come inside) هم به کار می‌رود، اما این درس حرفِ اضافه را آموزش می‌دهد.",
+            "mistake": {
+              "wrong": "The money is in inside the box.",
+              "wrongFa": "پول در داخلِ جعبه است؛ اما in اضافه آمده است.",
+              "right": "The money is inside the box.",
+              "rightFa": "پول داخلِ جعبه است.",
+              "why": "inside خودش حرفِ اضافه است؛ in را پیش از آن نمی‌آوریم."
+            },
+            "pronunciation": {
+              "gb": "/ˌɪnˈsaɪd/",
+              "us": "/ˌɪnˈsaɪd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Let's eat ___ the restaurant; it is cold outside.",
+                "answer": "inside",
+                "accept": [],
+                "fa": "بیا داخلِ رستوران غذا بخوریم؛ بیرون سرد است.",
+                "why": "inside یعنی درونِ ساختمان، در برابرِ outside."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه یعنی «داخلِ»؟",
+                "options": [
+                  {
+                    "text": "outside",
+                    "ok": false,
+                    "why": "outside یعنی بیرونِ."
+                  },
+                  {
+                    "text": "inside",
+                    "ok": true,
+                    "why": "inside یعنی درونِ یک جای بسته."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کفش‌ها داخلِ کمد هستند.",
+                "frame": "The shoes are ___ the cupboard.",
+                "answer": "inside",
+                "accept": [],
+                "why": "inside پیش از اسمِ مکان می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "catch",
+      "levelWordId": "level:A1:0427",
+      "existingEntryIds": [
+        "lex:A2:catch",
+        "lex:B2:catch"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0496",
+          "senseId": "lex:B2:catch",
+          "meaningEn": "The act of catching something, such as a ball, before it falls."
+        },
+        {
+          "selectionId": "cefrj-a1:0497",
+          "senseId": "lex:B2:catch#verb",
+          "meaningEn": "To take and hold something that is moving, such as a ball."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2:catch",
+        "headword": "catch",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2:catch",
+            "pos": "noun",
+            "gloss": "گرفتن (توپ)؛ توپ‌گیری",
+            "meaning": "کارِ گرفتنِ چیزی، مثل توپ، پیش از آنکه به زمین بیفتد.",
+            "grammar": [
+              {
+                "pattern": "a catch",
+                "note": "این اسم قابل‌شمارش است: a good catch."
+              },
+              {
+                "pattern": "make a catch",
+                "note": "برای انجام دادنِ این کار، make a catch می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "That was a great catch!",
+                "fa": "چه توپ‌گیریِ عالی‌ای بود!"
+              },
+              {
+                "en": "The boy made an easy catch with one hand.",
+                "fa": "پسر با یک دست توپ را راحت گرفت."
+              },
+              {
+                "en": "Good catch, Sam!",
+                "fa": "خوب گرفتی، سم!"
+              }
+            ],
+            "collocations": [
+              "a good catch",
+              "make a catch"
+            ],
+            "collocationFa": {
+              "a good catch": "یک توپ‌گیریِ خوب",
+              "make a catch": "توپ را گرفتن"
+            },
+            "usage": "اسمِ catch بیشتر در بازی‌های توپی به کار می‌رود. در گفت‌وگو Good catch! یعنی «خوب گرفتی» یا «خوب متوجه شدی».",
+            "mistake": {
+              "wrong": "He did a good catch.",
+              "wrongFa": "او یک توپ‌گیریِ خوب انجام داد؛ اما فعل درست نیست.",
+              "right": "He made a good catch.",
+              "rightFa": "او توپ را خوب گرفت.",
+              "why": "با اسمِ catch فعلِ make می‌آید، نه do."
+            },
+            "pronunciation": {
+              "gb": "/kætʃ/",
+              "us": "/kætʃ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The crowd cheered after her amazing ___.",
+                "answer": "catch",
+                "accept": [],
+                "fa": "تماشاگران بعد از توپ‌گیریِ شگفت‌انگیزِ او تشویق کردند.",
+                "why": "بعد از her amazing یک اسم لازم است: catch."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در کدام جمله catch اسم است؟",
+                "options": [
+                  {
+                    "text": "What a catch!",
+                    "ok": true,
+                    "why": "بعد از What a یک اسم می‌آید."
+                  },
+                  {
+                    "text": "Catch the ball!",
+                    "ok": false,
+                    "why": "اینجا catch فعلِ امری است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن یک توپ‌گیریِ سخت بود.",
+                "frame": "That was a difficult ___.",
+                "answer": "catch",
+                "accept": [],
+                "why": "بعد از a difficult اسمِ catch می‌آید."
+              }
+            ]
+          },
+          {
+            "id": "lex:B2:catch#verb",
+            "pos": "verb",
+            "gloss": "گرفتن؛ قاپیدن",
+            "meaning": "گرفتن و نگه داشتنِ چیزی که در حرکت است، مثل توپی که به سمتِ ما می‌آید.",
+            "grammar": [
+              {
+                "pattern": "catch + something",
+                "note": "چیزی که گرفته می‌شود مستقیم بعد از catch می‌آید."
+              },
+              {
+                "pattern": "catch / caught / caught",
+                "note": "گذشتهٔ catch بی‌قاعده است: caught."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Can you catch this ball?",
+                "fa": "می‌توانی این توپ را بگیری؟"
+              },
+              {
+                "en": "The dog caught the stick in its mouth.",
+                "fa": "سگ چوب را با دهانش گرفت."
+              },
+              {
+                "en": "I throw the ball, and you catch it.",
+                "fa": "من توپ را پرتاب می‌کنم و تو آن را بگیر."
+              }
+            ],
+            "collocations": [
+              "catch a ball",
+              "catch a fish"
+            ],
+            "collocationFa": {
+              "catch a ball": "توپی را گرفتن",
+              "catch a fish": "ماهی گرفتن"
+            },
+            "usage": "catch برای چیزِ در حالِ حرکت است؛ برای گرفتنِ چیزی که ثابت است معمولاً take یا hold به کار می‌رود. catch a bus (به اتوبوس رسیدن) معنای دیگری است و جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "She catched the ball.",
+              "wrongFa": "او توپ را گرفت؛ اما گذشتهٔ catch غلط ساخته شده است.",
+              "right": "She caught the ball.",
+              "rightFa": "او توپ را گرفت.",
+              "why": "catch بی‌قاعده است و گذشته‌اش caught است."
+            },
+            "pronunciation": {
+              "gb": "/kætʃ/",
+              "us": "/kætʃ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Throw me the keys and I will ___ them.",
+                "answer": "catch",
+                "accept": [],
+                "fa": "کلیدها را به سمتم پرت کن تا آن‌ها را بگیرم.",
+                "why": "بعد از will فعلِ سادهٔ catch می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "گذشتهٔ catch کدام است؟",
+                "options": [
+                  {
+                    "text": "catched",
+                    "ok": false,
+                    "why": "catch فعلِ باقاعده نیست."
+                  },
+                  {
+                    "text": "caught",
+                    "ok": true,
+                    "why": "گذشتهٔ بی‌قاعدهٔ catch، caught است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پدرم دیروز یک ماهیِ بزرگ گرفت.",
+                "frame": "My father ___ a big fish yesterday.",
+                "answer": "caught",
+                "accept": [],
+                "why": "yesterday زمانِ گذشته را لازم دارد: caught."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "character",
+      "levelWordId": "level:A1:0430",
+      "existingEntryIds": [
+        "lex:A2:character"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0500",
+          "senseId": "lex:A2:character",
+          "meaningEn": "A person in a story, film or play."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:character",
+        "headword": "character",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:character",
+            "pos": "noun",
+            "gloss": "شخصیت (داستان یا فیلم)",
+            "meaning": "یکی از آدم‌ها یا موجوداتی که در یک داستان، فیلم یا نمایش هستند.",
+            "grammar": [
+              {
+                "pattern": "a character in + story/film",
+                "note": "برای داستان یا فیلم از in استفاده می‌کنیم: a character in the book."
+              },
+              {
+                "pattern": "the main character",
+                "note": "شخصیتِ اصلیِ یک داستان را the main character می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The main character is a young doctor.",
+                "fa": "شخصیتِ اصلی یک پزشکِ جوان است."
+              },
+              {
+                "en": "Which character do you like best?",
+                "fa": "کدام شخصیت را بیشتر دوست داری؟"
+              },
+              {
+                "en": "There are only three characters in this play.",
+                "fa": "در این نمایش فقط سه شخصیت هست."
+              }
+            ],
+            "collocations": [
+              "the main character",
+              "a cartoon character"
+            ],
+            "collocationFa": {
+              "the main character": "شخصیتِ اصلی",
+              "a cartoon character": "شخصیتِ کارتونی"
+            },
+            "usage": "در این درس character یعنی آدمِ داستان. معنای «اخلاق و منش» (a strong character) و «حرف یا نویسه» جدا آموزش داده می‌شوند.",
+            "mistake": {
+              "wrong": "Harry is main character in the book.",
+              "wrongFa": "هری شخصیتِ اصلیِ کتاب است؛ اما حرفِ تعریف نیامده است.",
+              "right": "Harry is the main character in the book.",
+              "rightFa": "هری شخصیتِ اصلیِ این کتاب است.",
+              "why": "پیش از main character حرفِ تعریفِ the لازم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈkærəktə/",
+              "us": "/ˈkerəktər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The bad ___ in the film wears a black hat.",
+                "answer": "character",
+                "accept": [],
+                "fa": "شخصیتِ بدِ فیلم یک کلاهِ سیاه سر می‌گذارد.",
+                "why": "character آدمِ داستان یا فیلم است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه برای «آدمِ داستان» است؟",
+                "options": [
+                  {
+                    "text": "character",
+                    "ok": true,
+                    "why": "character یعنی شخصیتی در داستان یا فیلم."
+                  },
+                  {
+                    "text": "actor",
+                    "ok": false,
+                    "why": "actor کسی است که نقش را بازی می‌کند، نه خودِ شخصیت."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن شخصیتِ کارتونی خیلی بامزه است.",
+                "frame": "That cartoon ___ is very funny.",
+                "answer": "character",
+                "accept": [],
+                "why": "بعد از cartoon اسمِ character می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "guy",
+      "levelWordId": "level:A1:0432",
+      "existingEntryIds": [
+        "lex:A2:guy"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0502",
+          "senseId": "lex:A2:guy",
+          "meaningEn": "An informal word for a man."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:guy",
+        "headword": "guy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:guy",
+            "pos": "noun",
+            "gloss": "مرد؛ پسر (خودمانی)",
+            "meaning": "واژه‌ای خودمانی برای یک مرد؛ در گفت‌وگوی روزمره به کار می‌رود، نه در نوشتهٔ رسمی.",
+            "grammar": [
+              {
+                "pattern": "a guy / guys",
+                "note": "guy قابل‌شمارش است: a nice guy, two guys."
+              },
+              {
+                "pattern": "you guys",
+                "note": "در گفت‌وگوی دوستانه you guys یعنی «شما» برای یک گروه، حتی اگر زن هم در آن باشد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "He is a really nice guy.",
+                "fa": "او واقعاً آدمِ خوبی است."
+              },
+              {
+                "en": "Who is that guy with the red bag?",
+                "fa": "آن مردی که کیفِ قرمز دارد کیست؟"
+              },
+              {
+                "en": "Hi guys, dinner is ready!",
+                "fa": "سلام بچه‌ها، شام آماده است!"
+              }
+            ],
+            "collocations": [
+              "a nice guy",
+              "you guys"
+            ],
+            "collocationFa": {
+              "a nice guy": "آدمِ خوب",
+              "you guys": "شما بچه‌ها"
+            },
+            "usage": "guy غیررسمی است. در نامه یا گفتارِ رسمی به جای آن man به کار می‌بریم.",
+            "mistake": {
+              "wrong": "Two guy are at the door.",
+              "wrongFa": "دو مرد دمِ در هستند؛ اما اسم باید جمع باشد.",
+              "right": "Two guys are at the door.",
+              "rightFa": "دو مرد دمِ در هستند.",
+              "why": "بعد از عددِ بیشتر از یک، اسم جمع می‌شود: guys."
+            },
+            "pronunciation": {
+              "gb": "/ɡaɪ/",
+              "us": "/ɡaɪ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ at the shop helped me find a pen.",
+                "answer": "guy",
+                "accept": [],
+                "fa": "مردی که در فروشگاه بود کمکم کرد یک خودکار پیدا کنم.",
+                "why": "guy در گفت‌وگوی خودمانی یعنی یک مرد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در یک نامهٔ رسمی کدام واژه بهتر است؟",
+                "options": [
+                  {
+                    "text": "man",
+                    "ok": true,
+                    "why": "man رسمی‌تر است و در هر موقعیتی درست است."
+                  },
+                  {
+                    "text": "guy",
+                    "ok": false,
+                    "why": "guy خودمانی است و برای نوشتهٔ رسمی مناسب نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن پسرها دوستانِ من هستند.",
+                "frame": "Those ___ are my friends.",
+                "answer": "guys",
+                "accept": [],
+                "why": "بعد از those اسمِ جمعِ guys می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "size",
+      "levelWordId": "level:A1:0434",
+      "existingEntryIds": [
+        "lex:A2:size"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0504",
+          "senseId": "lex:A2:size",
+          "meaningEn": "How big or small something is; also a fixed measure for clothes and shoes."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:size",
+        "headword": "size",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:size",
+            "pos": "noun",
+            "gloss": "اندازه؛ سایز",
+            "meaning": "اینکه چیزی چقدر بزرگ یا کوچک است؛ برای لباس و کفش هم اندازه‌های ثابتی به نامِ سایز داریم.",
+            "grammar": [
+              {
+                "pattern": "What size …?",
+                "note": "برای پرسیدنِ اندازهٔ لباس یا کفش می‌گوییم: What size are you?"
+              },
+              {
+                "pattern": "the same size",
+                "note": "برای دو چیزِ هم‌اندازه the same size به کار می‌رود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "These shoes are the wrong size.",
+                "fa": "این کفش‌ها اندازهٔ درستی نیستند."
+              },
+              {
+                "en": "Do you have this shirt in a bigger size?",
+                "fa": "این پیراهن را در سایزِ بزرگ‌تر دارید؟"
+              },
+              {
+                "en": "The two rooms are the same size.",
+                "fa": "دو اتاق هم‌اندازه‌اند."
+              }
+            ],
+            "collocations": [
+              "the same size",
+              "shoe size"
+            ],
+            "collocationFa": {
+              "the same size": "هم‌اندازه",
+              "shoe size": "سایزِ کفش"
+            },
+            "usage": "size برای لباس، کفش و هر چیزی که بزرگی یا کوچکی دارد به کار می‌رود. برای قدِ آدم معمولاً height گفته می‌شود.",
+            "mistake": {
+              "wrong": "My shoes size is 40.",
+              "wrongFa": "سایزِ کفشم ۴۰ است؛ اما shoes نباید جمع باشد.",
+              "right": "My shoe size is 40.",
+              "rightFa": "سایزِ کفشم ۴۰ است.",
+              "why": "پیش از size، واژهٔ shoe مثلِ صفت به کار می‌رود و s نمی‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/saɪz/",
+              "us": "/saɪz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Can I try a smaller ___? This one is too big.",
+                "answer": "size",
+                "accept": [],
+                "fa": "می‌توانم یک سایزِ کوچک‌تر را امتحان کنم؟ این یکی خیلی بزرگ است.",
+                "why": "size اندازهٔ لباس یا کفش است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "برای پرسیدنِ سایزِ کفش کدام درست است؟",
+                "options": [
+                  {
+                    "text": "What size are your shoes?",
+                    "ok": true,
+                    "why": "What size برای پرسیدنِ اندازه به کار می‌رود."
+                  },
+                  {
+                    "text": "How size are your shoes?",
+                    "ok": false,
+                    "why": "How size در انگلیسی درست نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سایزِ کفشِ تو چند است؟",
+                "frame": "What is your shoe ___?",
+                "answer": "size",
+                "accept": [],
+                "why": "shoe size یعنی اندازهٔ کفش."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "alone",
+      "levelWordId": "level:A1:0437",
+      "existingEntryIds": [
+        "lex:A2:alone"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0507",
+          "senseId": "lex:A2:alone",
+          "meaningEn": "Without other people; on your own."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:alone",
+        "headword": "alone",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:alone",
+            "pos": "adverb",
+            "gloss": "تنها؛ به‌تنهایی",
+            "meaning": "بدونِ آدم‌های دیگر؛ وقتی کسی کاری را بی‌همراه انجام می‌دهد یا جایی بی‌همراه است.",
+            "grammar": [
+              {
+                "pattern": "verb + alone",
+                "note": "alone معمولاً بعد از فعل می‌آید: live alone, travel alone."
+              },
+              {
+                "pattern": "all alone",
+                "note": "برای تأکید all alone می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Uncle Ali lives alone in a small flat.",
+                "fa": "عمو علی در یک آپارتمانِ کوچک تنها زندگی می‌کند."
+              },
+              {
+                "en": "He walked home alone in the rain.",
+                "fa": "او زیرِ باران تنها به خانه رفت."
+              },
+              {
+                "en": "I like to read alone in my room.",
+                "fa": "دوست دارم تنها در اتاقم مطالعه کنم."
+              }
+            ],
+            "collocations": [
+              "live alone",
+              "travel alone"
+            ],
+            "collocationFa": {
+              "live alone": "تنها زندگی کردن",
+              "travel alone": "تنها سفر کردن"
+            },
+            "usage": "alone فقط یعنی «بدونِ دیگران» و لزوماً غمگین نیست. برای حسِ تنهایی و غم، lonely به کار می‌رود.",
+            "mistake": {
+              "wrong": "He is an alone man.",
+              "wrongFa": "او یک مردِ تنهاست؛ اما alone پیش از اسم آمده است.",
+              "right": "He is a man who lives alone.",
+              "rightFa": "او مردی است که تنها زندگی می‌کند.",
+              "why": "alone پیش از اسم نمی‌آید؛ آن را بعد از فعل به کار می‌بریم."
+            },
+            "pronunciation": {
+              "gb": "/əˈləʊn/",
+              "us": "/əˈloʊn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "She does not like going to the cinema ___.",
+                "answer": "alone",
+                "accept": [],
+                "fa": "او دوست ندارد تنها به سینما برود.",
+                "why": "alone بعد از فعل یعنی بدونِ همراه."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "I am an alone student.",
+                    "ok": false,
+                    "why": "alone پیش از اسم نمی‌آید."
+                  },
+                  {
+                    "text": "I study alone.",
+                    "ok": true,
+                    "why": "alone بعد از فعل می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پسرم هرگز تنها سفر نمی‌کند.",
+                "frame": "My son never travels ___.",
+                "answer": "alone",
+                "accept": [],
+                "why": "alone بعد از فعلِ travels می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "review",
+      "levelWordId": "level:A1:0440",
+      "existingEntryIds": [
+        "lex:A2:review"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0511",
+          "senseId": "lex:A2:review",
+          "meaningEn": "A piece of writing in which someone says what they think of a book, film, product or place."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:review",
+        "headword": "review",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:review",
+            "pos": "noun",
+            "gloss": "نقد؛ نظر (دربارهٔ کتاب، فیلم یا کالا)",
+            "meaning": "نوشته‌ای که در آن کسی نظرش را دربارهٔ یک کتاب، فیلم، کالا یا مکان می‌گوید.",
+            "grammar": [
+              {
+                "pattern": "a review of + thing",
+                "note": "پیش از چیزی که نقد می‌شود of می‌آید: a review of the film."
+              },
+              {
+                "pattern": "good / bad reviews",
+                "note": "برای نظرهای مثبت یا منفی good reviews و bad reviews می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I read a review of the new phone.",
+                "fa": "یک نقد دربارهٔ گوشیِ جدید خواندم."
+              },
+              {
+                "en": "The hotel has very good reviews.",
+                "fa": "این هتل نظرهای خیلی خوبی دارد."
+              },
+              {
+                "en": "She wrote a short review of the book.",
+                "fa": "او یک نقدِ کوتاه دربارهٔ آن کتاب نوشت."
+              }
+            ],
+            "collocations": [
+              "write a review",
+              "a good review"
+            ],
+            "collocationFa": {
+              "write a review": "نقد نوشتن",
+              "a good review": "نظرِ مثبت"
+            },
+            "usage": "در این درس review یعنی نقد یا نظر. معنای «مرورِ درس» و فعلِ review جدا آموزش داده می‌شوند.",
+            "mistake": {
+              "wrong": "The restaurant has many good review.",
+              "wrongFa": "رستوران نظرهای خوبِ زیادی دارد؛ اما اسم باید جمع باشد.",
+              "right": "The restaurant has many good reviews.",
+              "rightFa": "رستوران نظرهای خوبِ زیادی دارد.",
+              "why": "بعد از many اسمِ جمع می‌آید: reviews."
+            },
+            "pronunciation": {
+              "gb": "/rɪˈvjuː/",
+              "us": "/rɪˈvjuː/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Before I buy something, I always read a ___ online.",
+                "answer": "review",
+                "accept": [],
+                "fa": "پیش از خریدنِ چیزی، همیشه یک نقد را در اینترنت می‌خوانم.",
+                "why": "review نوشته‌ای با نظرِ دیگران است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه یعنی «نوشته‌ای با نظرِ کسی دربارهٔ یک فیلم»؟",
+                "options": [
+                  {
+                    "text": "review",
+                    "ok": true,
+                    "why": "review نظر یا نقدی دربارهٔ چیزی است."
+                  },
+                  {
+                    "text": "ticket",
+                    "ok": false,
+                    "why": "ticket بلیت است، نه نوشته‌ای با نظر."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "فیلم نقدهای بدی گرفت.",
+                "frame": "The film got bad ___.",
+                "answer": "reviews",
+                "accept": [],
+                "why": "بعد از bad در این جمله شکلِ جمعِ reviews می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "board",
+      "levelWordId": "level:A1:0444",
+      "existingEntryIds": [
+        "lex:A2:board",
+        "lex:B1:board"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0515",
+          "senseId": "lex:A2:board",
+          "meaningEn": "A flat piece of wood or other material on a wall, where a teacher writes or where notices are put."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:board",
+        "headword": "board",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:board",
+            "pos": "noun",
+            "gloss": "تخته (کلاس)؛ تابلو (اعلانات)",
+            "meaning": "صفحه‌ای صاف روی دیوار که معلم روی آن می‌نویسد یا اعلان‌ها را روی آن می‌چسبانند.",
+            "grammar": [
+              {
+                "pattern": "on the board",
+                "note": "برای نوشتن یا چیزی که روی تخته است on می‌آید: write on the board."
+              },
+              {
+                "pattern": "a board / boards",
+                "note": "board قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The teacher wrote the new words on the board.",
+                "fa": "معلم واژه‌های جدید را روی تخته نوشت."
+              },
+              {
+                "en": "Copy the sentence from the board.",
+                "fa": "جمله را از روی تخته در دفترت بنویس."
+              },
+              {
+                "en": "There is a notice on the board near the stairs.",
+                "fa": "روی تابلوی کنارِ پله‌ها یک اطلاعیه هست."
+              }
+            ],
+            "collocations": [
+              "on the board",
+              "a notice board"
+            ],
+            "collocationFa": {
+              "on the board": "روی تخته",
+              "a notice board": "تابلوی اعلانات"
+            },
+            "usage": "در این درس board یعنی تخته یا تابلو. معناهای دیگر، مثل «هیئت‌مدیره» یا on board (سوارِ هواپیما)، جدا آموزش داده می‌شوند.",
+            "mistake": {
+              "wrong": "Write your name in the board.",
+              "wrongFa": "اسمت را داخلِ تخته بنویس.",
+              "right": "Write your name on the board.",
+              "rightFa": "اسمت را روی تخته بنویس.",
+              "why": "برای نوشتن روی سطحِ تخته on به کار می‌رود، نه in."
+            },
+            "pronunciation": {
+              "gb": "/bɔːd/",
+              "us": "/bɔːrd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Please clean the ___ after class.",
+                "answer": "board",
+                "accept": [],
+                "fa": "لطفاً بعد از کلاس تخته را پاک کن.",
+                "why": "board تخته‌ای است که روی آن می‌نویسیم."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "حرفِ اضافهٔ درست کدام است؟ «The answer is ___ the board.»",
+                "options": [
+                  {
+                    "text": "in",
+                    "ok": false,
+                    "why": "in یعنی داخل و برای سطحِ تخته درست نیست."
+                  },
+                  {
+                    "text": "on",
+                    "ok": true,
+                    "why": "on برای سطحِ تخته به کار می‌رود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "تاریخ روی تخته است.",
+                "frame": "The date is on the ___.",
+                "answer": "board",
+                "accept": [],
+                "why": "board تخته‌ای در کلاس است."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "church",
+      "levelWordId": "level:A1:0446",
+      "existingEntryIds": [
+        "lex:A2:church"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0517",
+          "senseId": "lex:A2:church",
+          "meaningEn": "A building where Christians go to pray."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:church",
+        "headword": "church",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:church",
+            "pos": "noun",
+            "gloss": "کلیسا",
+            "meaning": "ساختمانی که مسیحیان برای عبادت به آن می‌روند.",
+            "grammar": [
+              {
+                "pattern": "a church / churches",
+                "note": "جمعِ church با es است: churches."
+              },
+              {
+                "pattern": "go to church",
+                "note": "برای رفتن به مراسمِ عبادت، go to church بدونِ the به کار می‌رود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "There is an old church in the village.",
+                "fa": "در روستا یک کلیسای قدیمی هست."
+              },
+              {
+                "en": "The church has a tall tower.",
+                "fa": "کلیسا یک برجِ بلند دارد."
+              },
+              {
+                "en": "Many tourists visit this church in summer.",
+                "fa": "گردشگرانِ زیادی تابستان از این کلیسا دیدن می‌کنند."
+              }
+            ],
+            "collocations": [
+              "an old church",
+              "go to church"
+            ],
+            "collocationFa": {
+              "an old church": "کلیسای قدیمی",
+              "go to church": "به کلیسا رفتن (برای عبادت)"
+            },
+            "usage": "go to church (بدونِ the) یعنی برای عبادت رفتن؛ go to the church یعنی رفتن به ساختمانِ آن کلیسا، مثلاً برای دیدن. مسجد mosque است.",
+            "mistake": {
+              "wrong": "There are two churchs in our town.",
+              "wrongFa": "در شهرِ ما دو کلیسا هست؛ اما جمعِ church غلط نوشته شده است.",
+              "right": "There are two churches in our town.",
+              "rightFa": "در شهرِ ما دو کلیسا هست.",
+              "why": "اسم‌هایی که به ch ختم می‌شوند با es جمع بسته می‌شوند."
+            },
+            "pronunciation": {
+              "gb": "/tʃɜːtʃ/",
+              "us": "/tʃɜːrtʃ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ bells ring every Sunday.",
+                "answer": "church",
+                "accept": [],
+                "fa": "زنگ‌های کلیسا هر یکشنبه به صدا درمی‌آیند.",
+                "why": "church اینجا مثلِ صفت پیش از bells آمده است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ church کدام است؟",
+                "options": [
+                  {
+                    "text": "churches",
+                    "ok": true,
+                    "why": "بعد از ch برای جمع es می‌آید."
+                  },
+                  {
+                    "text": "churchs",
+                    "ok": false,
+                    "why": "این املا نادرست است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن کلیسا خیلی بزرگ است.",
+                "frame": "That ___ is very big.",
+                "answer": "church",
+                "accept": [],
+                "why": "بعد از that اسمِ مفردِ church می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "item",
+      "levelWordId": "level:A1:0448",
+      "existingEntryIds": [
+        "lex:A2:item"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0519",
+          "senseId": "lex:A2:item",
+          "meaningEn": "One thing in a list or in a group of things, for example in a shop."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:item",
+        "headword": "item",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:item",
+            "pos": "noun",
+            "gloss": "مورد؛ قلم (جنس)",
+            "meaning": "یک چیز از میانِ یک فهرست یا گروهی از چیزها، مثلاً یک جنس در فروشگاه.",
+            "grammar": [
+              {
+                "pattern": "an item / items",
+                "note": "item با صدای صدادار شروع می‌شود، پس an item می‌گوییم."
+              },
+              {
+                "pattern": "an item on a list",
+                "note": "برای فهرست on به کار می‌رود: the first item on the list."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Each item in this shop costs two pounds.",
+                "fa": "هر جنس در این فروشگاه دو پوند است."
+              },
+              {
+                "en": "I have five items on my list.",
+                "fa": "در فهرستم پنج مورد دارم."
+              },
+              {
+                "en": "Please check every item before you pay.",
+                "fa": "لطفاً پیش از پرداخت هر قلم را بررسی کنید."
+              }
+            ],
+            "collocations": [
+              "an item on the list",
+              "a sale item"
+            ],
+            "collocationFa": {
+              "an item on the list": "موردی در فهرست",
+              "a sale item": "جنسِ حراجی"
+            },
+            "usage": "item رسمی‌تر از thing است و برای فهرست‌ها، فروشگاه‌ها و رسیدها زیاد به کار می‌رود.",
+            "mistake": {
+              "wrong": "I bought a item.",
+              "wrongFa": "من یک جنس خریدم؛ اما پیش از item حرفِ تعریفِ درست نیامده است.",
+              "right": "I bought an item.",
+              "rightFa": "من یک جنس خریدم.",
+              "why": "item با صدای صدادار شروع می‌شود، پس an می‌آید نه a."
+            },
+            "pronunciation": {
+              "gb": "/ˈaɪtəm/",
+              "us": "/ˈaɪt̬əm/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Milk is the first ___ on my shopping list.",
+                "answer": "item",
+                "accept": [],
+                "fa": "شیر اولین مورد در فهرستِ خریدِ من است.",
+                "why": "item یک مورد از یک فهرست است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام درست است؟",
+                "options": [
+                  {
+                    "text": "a item",
+                    "ok": false,
+                    "why": "پیش از صدای صدادار a نمی‌آید."
+                  },
+                  {
+                    "text": "an item",
+                    "ok": true,
+                    "why": "item با صدای صدادار شروع می‌شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این فروشگاه کالاهای ارزانِ زیادی دارد.",
+                "frame": "This shop has many cheap ___.",
+                "answer": "items",
+                "accept": [],
+                "why": "بعد از many اسمِ جمعِ items می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "touch",
+      "levelWordId": "level:A1:0473",
+      "existingEntryIds": [
+        "lex:A2:touch",
+        "lex:B1:touch"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0545",
+          "senseId": "lex:B1:touch",
+          "meaningEn": "The act of putting your hand or finger lightly on someone or something."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:touch",
+        "headword": "touch",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:touch",
+            "pos": "noun",
+            "gloss": "لمس",
+            "meaning": "گذاشتنِ آرامِ دست یا انگشت روی کسی یا چیزی.",
+            "grammar": [
+              {
+                "pattern": "a touch",
+                "note": "touch در این درس اسمِ قابل‌شمارش است: a light touch."
+              },
+              {
+                "pattern": "keep in touch",
+                "note": "keep in touch یعنی «در ارتباط ماندن»؛ این عبارت ثابت است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I felt a touch on my arm.",
+                "fa": "لمسی را روی بازویم حس کردم."
+              },
+              {
+                "en": "The screen works with a light touch.",
+                "fa": "صفحه با یک لمسِ آرام کار می‌کند."
+              },
+              {
+                "en": "We keep in touch by email.",
+                "fa": "ما با ایمیل در ارتباط می‌مانیم."
+              }
+            ],
+            "collocations": [
+              "a light touch",
+              "keep in touch"
+            ],
+            "collocationFa": {
+              "a light touch": "لمسِ آرام",
+              "keep in touch": "در ارتباط ماندن"
+            },
+            "usage": "در این درس touch اسم است. فعلِ touch (لمس کردن)، مثل Don't touch it، جدا آموزش داده می‌شود. keep in touch یک عبارتِ ثابت است.",
+            "mistake": {
+              "wrong": "Let's keep in the touch.",
+              "wrongFa": "بیا در ارتباط بمانیم؛ اما the اضافه آمده است.",
+              "right": "Let's keep in touch.",
+              "rightFa": "بیا در ارتباط بمانیم.",
+              "why": "در عبارتِ keep in touch پیش از touch، the نمی‌آید."
+            },
+            "pronunciation": {
+              "gb": "/tʌtʃ/",
+              "us": "/tʌtʃ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "A soft ___ on the shoulder woke me up.",
+                "answer": "touch",
+                "accept": [],
+                "fa": "لمسی آرام روی شانه‌ام بیدارم کرد.",
+                "why": "بعد از a soft یک اسم لازم است: touch."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «در ارتباط ماندن»؟",
+                "options": [
+                  {
+                    "text": "keep in touch",
+                    "ok": true,
+                    "why": "این عبارتِ ثابت یعنی در ارتباط ماندن."
+                  },
+                  {
+                    "text": "keep in the touch",
+                    "ok": false,
+                    "why": "در این عبارت the نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "با یک لمسِ دکمه، چراغ روشن می‌شود.",
+                "frame": "With one ___ of the button, the light comes on.",
+                "answer": "touch",
+                "accept": [],
+                "why": "بعد از one اسمِ مفردِ touch می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "file",
+      "levelWordId": "level:A1:0474",
+      "existingEntryIds": [
+        "lex:B1:file",
+        "lex:B2:file"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0546",
+          "senseId": "lex:B1:file",
+          "meaningEn": "A collection of information on a computer that has its own name."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:file",
+        "headword": "file",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:file",
+            "pos": "noun",
+            "gloss": "فایل (رایانه)",
+            "meaning": "مجموعه‌ای از اطلاعات در رایانه یا گوشی که نامِ مشخصی دارد، مثل یک عکس یا یک متن.",
+            "grammar": [
+              {
+                "pattern": "open / save / send a file",
+                "note": "با file فعل‌هایی مثلِ open، save و send می‌آیند."
+              },
+              {
+                "pattern": "a file / files",
+                "note": "file قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I can't open this file on my phone.",
+                "fa": "نمی‌توانم این فایل را روی گوشی‌ام باز کنم."
+              },
+              {
+                "en": "Please send me the file by email.",
+                "fa": "لطفاً فایل را با ایمیل برایم بفرست."
+              },
+              {
+                "en": "She saved the photo in a new file.",
+                "fa": "او عکس را در یک فایلِ جدید ذخیره کرد."
+              }
+            ],
+            "collocations": [
+              "open a file",
+              "save a file"
+            ],
+            "collocationFa": {
+              "open a file": "فایلی را باز کردن",
+              "save a file": "فایلی را ذخیره کردن"
+            },
+            "usage": "در این درس file یعنی فایلِ رایانه. معنای «پوشه یا پروندهٔ کاغذی» هم وجود دارد و جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "I saved two file today.",
+              "wrongFa": "امروز دو فایل ذخیره کردم؛ اما اسم باید جمع باشد.",
+              "right": "I saved two files today.",
+              "rightFa": "امروز دو فایل ذخیره کردم.",
+              "why": "پس از two اسمِ قابل‌شمارش جمع می‌شود: files."
+            },
+            "pronunciation": {
+              "gb": "/faɪl/",
+              "us": "/faɪl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Click on the ___ to open it.",
+                "answer": "file",
+                "accept": [],
+                "fa": "روی فایل کلیک کن تا باز شود.",
+                "why": "file چیزی است که در رایانه باز می‌کنیم."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه برای «فایلِ رایانه» است؟",
+                "options": [
+                  {
+                    "text": "fill",
+                    "ok": false,
+                    "why": "fill یعنی پر کردن."
+                  },
+                  {
+                    "text": "file",
+                    "ok": true,
+                    "why": "file اطلاعاتی با نامِ مشخص در رایانه است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "لطفاً این فایل را ذخیره کن.",
+                "frame": "Please save this ___.",
+                "answer": "file",
+                "accept": [],
+                "why": "بعد از this اسمِ مفردِ file می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "middle",
+      "levelWordId": "level:A1:0475",
+      "existingEntryIds": [
+        "lex:A2:middle"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0547",
+          "senseId": "lex:A2:middle",
+          "meaningEn": "In the centre, with the same number of things or the same distance on each side."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:middle",
+        "headword": "middle",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:middle",
+            "pos": "adjective",
+            "gloss": "وسطی؛ میانی",
+            "meaning": "چیزی که در وسط است، با همان فاصله یا همان تعداد چیز در دو طرفش.",
+            "grammar": [
+              {
+                "pattern": "the middle + noun",
+                "note": "middle پیش از اسم می‌آید و معمولاً با the است: the middle door."
+              },
+              {
+                "pattern": "middle / medium",
+                "note": "middle دربارهٔ جایگاه است؛ medium دربارهٔ اندازهٔ متوسط."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I sit in the middle row.",
+                "fa": "من در ردیفِ وسط می‌نشینم."
+              },
+              {
+                "en": "She is the middle child of three.",
+                "fa": "او بچهٔ وسطیِ سه بچه است."
+              },
+              {
+                "en": "Take the middle book from the shelf.",
+                "fa": "کتابِ وسطی را از قفسه بردار."
+              }
+            ],
+            "collocations": [
+              "the middle seat",
+              "the middle child"
+            ],
+            "collocationFa": {
+              "the middle seat": "صندلیِ وسط",
+              "the middle child": "بچهٔ وسطی"
+            },
+            "usage": "در این درس middle صفت است و پیش از اسم می‌آید. اسمِ middle در عبارتِ in the middle of (در وسطِ) جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "I always sit in middle seat.",
+              "wrongFa": "من همیشه در صندلیِ وسط می‌نشینم؛ اما حرفِ تعریف نیامده است.",
+              "right": "I always sit in the middle seat.",
+              "rightFa": "من همیشه روی صندلیِ وسط می‌نشینم.",
+              "why": "پیش از middle و اسمِ مفردِ پس از آن، حرفِ تعریفِ the لازم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈmɪdl/",
+              "us": "/ˈmɪdl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ room is the biggest of the three.",
+                "answer": "middle",
+                "accept": [],
+                "fa": "اتاقِ وسطی بزرگ‌ترینِ آن سه اتاق است.",
+                "why": "middle یعنی وسطی و پیش از اسم می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "برای جایگاهِ وسط کدام درست است؟",
+                "options": [
+                  {
+                    "text": "the middle door",
+                    "ok": true,
+                    "why": "middle جایگاهِ وسط را نشان می‌دهد."
+                  },
+                  {
+                    "text": "the medium door",
+                    "ok": false,
+                    "why": "medium دربارهٔ اندازه است، نه جایگاه."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "صندلیِ وسطی خالی است.",
+                "frame": "The ___ chair is empty.",
+                "answer": "middle",
+                "accept": [],
+                "why": "middle پیش از اسم می‌آید و جایگاه را نشان می‌دهد."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "bar",
+      "levelWordId": "level:A1:0476",
+      "existingEntryIds": [
+        "lex:A2:bar",
+        "lex:B2:bar"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0548",
+          "senseId": "lex:A2:bar",
+          "meaningEn": "A long, flat, hard piece of something, such as chocolate or soap."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:bar",
+        "headword": "bar",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:bar",
+            "pos": "noun",
+            "gloss": "قالب؛ تکه (شکلات یا صابون)",
+            "meaning": "تکه‌ای دراز، صاف و سفت از چیزی مثلِ شکلات یا صابون.",
+            "grammar": [
+              {
+                "pattern": "a bar of + thing",
+                "note": "برای مقدار، bar of به کار می‌رود: a bar of soap."
+              },
+              {
+                "pattern": "a chocolate bar",
+                "note": "اسمِ جنس می‌تواند پیش از bar بیاید: a chocolate bar."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I bought a bar of chocolate for the trip.",
+                "fa": "برای سفر یک شکلاتِ تخته‌ای خریدم."
+              },
+              {
+                "en": "There is a new bar of soap in the bathroom.",
+                "fa": "در حمام یک قالب صابونِ نو هست."
+              },
+              {
+                "en": "He ate half a chocolate bar.",
+                "fa": "او نصفِ یک شکلاتِ تخته‌ای را خورد."
+              }
+            ],
+            "collocations": [
+              "a bar of soap",
+              "a chocolate bar"
+            ],
+            "collocationFa": {
+              "a bar of soap": "یک قالب صابون",
+              "a chocolate bar": "شکلاتِ تخته‌ای"
+            },
+            "usage": "در این درس bar یعنی تکهٔ دراز و صافِ چیزی. bar معناهای دیگری هم دارد، مثلِ جایی برای نوشیدنی یا میلهٔ فلزی، که جدا آموزش داده می‌شوند.",
+            "mistake": {
+              "wrong": "I ate two bar of chocolate.",
+              "wrongFa": "دو تخته شکلات خوردم؛ اما bar باید جمع باشد.",
+              "right": "I ate two bars of chocolate.",
+              "rightFa": "دو تخته شکلات خوردم.",
+              "why": "پس از two اسمِ bar جمع می‌شود: two bars of chocolate."
+            },
+            "pronunciation": {
+              "gb": "/bɑː/",
+              "us": "/bɑːr/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "She keeps a ___ of chocolate in her bag.",
+                "answer": "bar",
+                "accept": [],
+                "fa": "او یک شکلاتِ تخته‌ای در کیفش نگه می‌دارد.",
+                "why": "a bar of chocolate یعنی یک شکلاتِ تخته‌ای."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "a bar of water",
+                    "ok": false,
+                    "why": "آب مایع است و bar برای چیزهای سفت است."
+                  },
+                  {
+                    "text": "a bar of soap",
+                    "ok": true,
+                    "why": "صابون سفت است و به شکلِ قالب می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من دو شکلاتِ تخته‌ای خریدم.",
+                "frame": "I bought two chocolate ___.",
+                "answer": "bars",
+                "accept": [],
+                "why": "بعد از two اسمِ جمعِ bars می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "seat",
+      "levelWordId": "level:A1:0481",
+      "existingEntryIds": [
+        "lex:A2:seat",
+        "lex:B2:seat"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0554",
+          "senseId": "lex:A2:seat",
+          "meaningEn": "A place to sit, especially in a car, bus, train, cinema or classroom."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:seat",
+        "headword": "seat",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:seat",
+            "pos": "noun",
+            "gloss": "صندلی؛ جای نشستن",
+            "meaning": "جایی برای نشستن، به‌خصوص در ماشین، اتوبوس، قطار، سینما یا کلاس.",
+            "grammar": [
+              {
+                "pattern": "take a seat",
+                "note": "take a seat یعنی «بنشینید» و مؤدبانه است."
+              },
+              {
+                "pattern": "a seat / seats",
+                "note": "seat قابل‌شمارش است: two seats."
+              }
+            ],
+            "examples": [
+              {
+                "en": "There is a free seat next to me.",
+                "fa": "کنارِ من یک صندلیِ خالی هست."
+              },
+              {
+                "en": "Come in and take a seat.",
+                "fa": "بفرمایید داخل و بنشینید."
+              },
+              {
+                "en": "We had good seats at the concert.",
+                "fa": "در کنسرت جاهای خوبی داشتیم."
+              }
+            ],
+            "collocations": [
+              "take a seat",
+              "a window seat"
+            ],
+            "collocationFa": {
+              "take a seat": "نشستن (مؤدبانه)",
+              "a window seat": "صندلیِ کنارِ پنجره"
+            },
+            "usage": "seat جای نشستن است و می‌تواند صندلی، نیمکت یا جای ماشین باشد. chair یک نوع صندلیِ جداگانه با پشتی است.",
+            "mistake": {
+              "wrong": "You can sit a seat here.",
+              "wrongFa": "می‌توانی اینجا یک صندلی بنشینی.",
+              "right": "You can take a seat here.",
+              "rightFa": "می‌توانی اینجا بنشینی.",
+              "why": "در این عبارت با seat فعلِ take می‌آید؛ sit مفعول نمی‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/siːt/",
+              "us": "/siːt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I always ask for a window ___ on the plane.",
+                "answer": "seat",
+                "accept": [],
+                "fa": "در هواپیما همیشه صندلیِ کنارِ پنجره را می‌خواهم.",
+                "why": "a window seat یعنی صندلیِ کنارِ پنجره."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «بنشینید»؟",
+                "options": [
+                  {
+                    "text": "Take a seat.",
+                    "ok": true,
+                    "why": "take a seat یعنی بنشینید."
+                  },
+                  {
+                    "text": "Make a seat.",
+                    "ok": false,
+                    "why": "make a seat یعنی صندلی ساختن، نه نشستن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "در اتوبوس جای خالی نبود.",
+                "frame": "There were no free ___ on the bus.",
+                "answer": "seats",
+                "accept": [],
+                "why": "در اینجا بعد از no free شکلِ جمعِ seats می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "throw",
+      "levelWordId": "level:A1:0482",
+      "existingEntryIds": [
+        "lex:A2:throw"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0555",
+          "senseId": "lex:A1:cefrj-throw",
+          "meaningEn": "The act of throwing something, such as a ball."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-throw",
+        "headword": "throw",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-throw",
+            "pos": "noun",
+            "gloss": "پرتاب",
+            "meaning": "کارِ پرتاب کردنِ چیزی، مثلِ توپ یا سنگ.",
+            "grammar": [
+              {
+                "pattern": "a throw",
+                "note": "throw در این درس اسمِ قابل‌شمارش است: a long throw."
+              },
+              {
+                "pattern": "a good / long throw",
+                "note": "برای توصیفِ پرتاب، صفت پیش از throw می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "That was a long throw!",
+                "fa": "چه پرتابِ بلندی بود!"
+              },
+              {
+                "en": "Her first throw hit the target.",
+                "fa": "اولین پرتابِ او به هدف خورد."
+              },
+              {
+                "en": "Each player gets three throws.",
+                "fa": "هر بازیکن سه پرتاب دارد."
+              }
+            ],
+            "collocations": [
+              "a long throw",
+              "a good throw"
+            ],
+            "collocationFa": {
+              "a long throw": "پرتابِ بلند",
+              "a good throw": "پرتابِ خوب"
+            },
+            "usage": "در این درس throw اسم است. فعلِ throw (پرتاب کردن) با گذشتهٔ بی‌قاعدهٔ threw جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "What a long throwing!",
+              "wrongFa": "چه پرتاب‌کردنِ بلندی!",
+              "right": "What a long throw!",
+              "rightFa": "چه پرتابِ بلندی!",
+              "why": "برای خودِ پرتاب اسمِ throw به کار می‌رود، نه throwing."
+            },
+            "pronunciation": {
+              "gb": "/θrəʊ/",
+              "us": "/θroʊ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "You have one more ___; try to hit the box.",
+                "answer": "throw",
+                "accept": [],
+                "fa": "یک پرتابِ دیگر داری؛ سعی کن به جعبه بزنی.",
+                "why": "بعد از one more اسمِ مفردِ throw می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در کدام جمله throw اسم است؟",
+                "options": [
+                  {
+                    "text": "Throw the ball to me.",
+                    "ok": false,
+                    "why": "اینجا throw فعلِ امری است."
+                  },
+                  {
+                    "text": "That was a good throw.",
+                    "ok": true,
+                    "why": "بعد از a good اسم می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پرتابِ دومِ او بهتر بود.",
+                "frame": "His second ___ was better.",
+                "answer": "throw",
+                "accept": [],
+                "why": "بعد از his second اسمِ مفردِ throw می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}
