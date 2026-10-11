@@ -1,0 +1,2424 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 301–320 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 301,
+    "lastNewHeadword": 320
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "credit card",
+      "levelWordId": "level:A1:0997",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1091",
+          "senseId": "lex:A1:cefrj-credit-card",
+          "meaningEn": "A small plastic card that you use to buy things now and pay for them later."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-credit-card",
+        "headword": "credit card",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-credit-card",
+            "pos": "noun",
+            "gloss": "کارتِ اعتباری",
+            "meaning": "کارتِ پلاستیکیِ کوچکی که با آن الان چیزی می‌خری و پولش را بعداً می‌پردازی.",
+            "grammar": [
+              {
+                "pattern": "pay by credit card",
+                "note": "برای پرداخت با کارتِ اعتباری pay by credit card می‌گوییم."
+              },
+              {
+                "pattern": "pay with a credit card",
+                "note": "با with حرفِ a لازم است: pay with a credit card."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Can I pay by credit card?",
+                "fa": "می‌توانم با کارتِ اعتباری پرداخت کنم؟"
+              },
+              {
+                "en": "She lost her credit card at the airport.",
+                "fa": "او کارتِ اعتباری‌اش را در فرودگاه گم کرد."
+              },
+              {
+                "en": "This shop doesn't take credit cards.",
+                "fa": "این مغازه کارتِ اعتباری قبول نمی‌کند."
+              }
+            ],
+            "collocations": [
+              "pay by credit card",
+              "a credit card number"
+            ],
+            "collocationFa": {
+              "pay by credit card": "با کارتِ اعتباری پرداختن",
+              "a credit card number": "شمارهٔ کارتِ اعتباری"
+            },
+            "usage": "credit card قابل‌شمارش است. کارتی که پول را فوراً از حساب برمی‌دارد debit card یا bank card است.",
+            "mistake": {
+              "wrong": "I paid with credit card.",
+              "wrongFa": "با کارتِ اعتباری پرداختم؛ اما پس از with حرفِ a نیامده است.",
+              "right": "I paid with a credit card.",
+              "rightFa": "با کارتِ اعتباری پرداختم.",
+              "why": "پس از with حرفِ a لازم است؛ یا بگو by credit card."
+            },
+            "pronunciation": {
+              "gb": "/ˈkredɪt kɑːd/",
+              "us": "/ˈkredɪt kɑːrd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I don't have any cash. Can I pay by ___?",
+                "answer": "credit card",
+                "accept": [],
+                "fa": "پولِ نقد ندارم. می‌توانم با کارتِ اعتباری پرداخت کنم؟",
+                "why": "pay by credit card یعنی با کارتِ اعتباری پرداختن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "pay by credit card",
+                    "ok": true,
+                    "why": "پس از by برای روشِ پرداخت a نمی‌آید."
+                  },
+                  {
+                    "text": "pay by a credit card",
+                    "ok": false,
+                    "why": "پس از by برای روشِ پرداخت حرفِ تعریف نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کارتِ اعتباری‌ام را در خانه جا گذاشتم.",
+                "frame": "I left my ___ at home.",
+                "answer": "credit card",
+                "accept": [],
+                "why": "پس از my اسمِ مرکبِ credit card می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "daddy",
+      "levelWordId": "level:A1:0998",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1092",
+          "senseId": "lex:A1:cefrj-daddy",
+          "meaningEn": "A word for father, used especially by children."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-daddy",
+        "headword": "daddy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-daddy",
+            "pos": "noun",
+            "gloss": "بابا (به زبانِ بچه‌ها)",
+            "meaning": "واژه‌ای برای پدر که بیشتر بچه‌ها به کار می‌برند.",
+            "grammar": [
+              {
+                "pattern": "Daddy (name)",
+                "note": "وقتی مستقیم صدایش می‌کنیم با حرفِ بزرگ می‌آید: Daddy, look!"
+              },
+              {
+                "pattern": "my daddy",
+                "note": "برای اشاره به او my daddy می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Daddy, can you read me a story?",
+                "fa": "بابایی، می‌توانی برایم قصه بخوانی؟"
+              },
+              {
+                "en": "The little girl ran to her daddy.",
+                "fa": "دخترِ کوچک به طرفِ باباش دوید."
+              },
+              {
+                "en": "My son says, “I want to be tall like Daddy.”",
+                "fa": "پسرم می‌گوید: «می‌خواهم مثلِ بابا قدبلند باشم.»"
+              }
+            ],
+            "collocations": [
+              "Daddy's girl",
+              "ask Daddy"
+            ],
+            "collocationFa": {
+              "Daddy's girl": "دخترِ بابایی",
+              "ask Daddy": "از بابا پرسیدن"
+            },
+            "usage": "daddy زبانِ بچه‌گانه و خودمانی است. dad خودمانی و father رسمی است.",
+            "mistake": {
+              "wrong": "My daddy work in a bank.",
+              "wrongFa": "بابام در بانک کار می‌کنند؛ اما فعل s ندارد.",
+              "right": "My daddy works in a bank.",
+              "rightFa": "بابام در بانک کار می‌کند.",
+              "why": "فاعلِ سوم‌شخصِ مفرد در زمانِ حال فعل را با s می‌خواهد: works."
+            },
+            "pronunciation": {
+              "gb": "/ˈdædi/",
+              "us": "/ˈdædi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The baby smiled when ___ came home from work.",
+                "answer": "Daddy",
+                "accept": [
+                  "daddy",
+                  "Dad",
+                  "dad"
+                ],
+                "fa": "وقتی بابا از سرِ کار به خانه آمد، بچه لبخند زد.",
+                "why": "Daddy همان پدر است، به زبانِ بچه‌ها."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه رسمی‌تر است؟",
+                "options": [
+                  {
+                    "text": "father",
+                    "ok": true,
+                    "why": "father رسمی است."
+                  },
+                  {
+                    "text": "daddy",
+                    "ok": false,
+                    "why": "daddy زبانِ بچه‌گانه است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بابام خیلی بامزه است.",
+                "frame": "My ___ is very funny.",
+                "answer": "daddy",
+                "accept": [
+                  "dad",
+                  "father"
+                ],
+                "why": "پس از my اسمِ daddy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "did",
+      "levelWordId": "level:A1:1000",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1094",
+          "senseId": "lex:A1:cefrj-did",
+          "meaningEn": "The past form of “do”; also used to make questions and negatives in the past simple."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-did",
+        "headword": "did",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-did",
+            "pos": "verb",
+            "gloss": "گذشتهٔ do؛ فعلِ کمکیِ گذشته",
+            "meaning": "شکلِ گذشتهٔ do؛ همچنین برای ساختنِ پرسش و منفی در گذشتهٔ ساده به کار می‌رود.",
+            "grammar": [
+              {
+                "pattern": "Did + subject + base verb?",
+                "note": "در پرسشِ گذشته پس از did شکلِ سادهٔ فعل می‌آید: Did you see it?"
+              },
+              {
+                "pattern": "didn't + base verb",
+                "note": "برای منفی didn't + شکلِ سادهٔ فعل: I didn't go."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Did you see the football match last night?",
+                "fa": "دیشب مسابقهٔ فوتبال را دیدی؟"
+              },
+              {
+                "en": "I didn't eat breakfast this morning.",
+                "fa": "امروز صبح صبحانه نخوردم."
+              },
+              {
+                "en": "She did all the washing-up after dinner.",
+                "fa": "او بعد از شام همهٔ ظرف‌ها را شست."
+              }
+            ],
+            "collocations": [
+              "did my homework",
+              "didn't know"
+            ],
+            "collocationFa": {
+              "did my homework": "تکلیفم را انجام دادم",
+              "didn't know": "نمی‌دانستم"
+            },
+            "usage": "پس از did و didn't فعل همیشه شکلِ ساده دارد: Did you go? (نه Did you went?)",
+            "mistake": {
+              "wrong": "Did you went to school yesterday?",
+              "wrongFa": "دیروز مدرسه رفتی؟ اما پس از did فعلِ گذشته آمده است.",
+              "right": "Did you go to school yesterday?",
+              "rightFa": "دیروز مدرسه رفتی؟",
+              "why": "پس از did شکلِ سادهٔ فعل می‌آید: go، نه went."
+            },
+            "pronunciation": {
+              "gb": "/dɪd/",
+              "us": "/dɪd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "___ you call your grandmother on her birthday?",
+                "answer": "Did",
+                "accept": [
+                  "did"
+                ],
+                "fa": "روزِ تولدِ مادربزرگت به او زنگ زدی؟",
+                "why": "برای پرسش در گذشته did می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«او زنگ زد؟» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "Did she call?",
+                    "ok": true,
+                    "why": "پس از did شکلِ سادهٔ فعل می‌آید."
+                  },
+                  {
+                    "text": "Did she called?",
+                    "ok": false,
+                    "why": "پس از did فعلِ گذشته نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دیروز تکلیفم را انجام دادم.",
+                "frame": "I ___ my homework yesterday.",
+                "answer": "did",
+                "accept": [],
+                "why": "گذشتهٔ do فعلِ did است."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "dining room",
+      "levelWordId": "level:A1:1001",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1095",
+          "senseId": "lex:A1:cefrj-dining-room",
+          "meaningEn": "A room in a house or hotel where people eat their meals."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-dining-room",
+        "headword": "dining room",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-dining-room",
+            "pos": "noun",
+            "gloss": "اتاقِ ناهارخوری",
+            "meaning": "اتاقی در خانه یا هتل که مردم در آن غذا می‌خورند.",
+            "grammar": [
+              {
+                "pattern": "in the dining room",
+                "note": "برای بودن در این اتاق in the dining room می‌گوییم."
+              },
+              {
+                "pattern": "a dining room table",
+                "note": "پیش از اسمِ دیگر هم می‌آید: the dining room table."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We have dinner in the dining room on Fridays.",
+                "fa": "جمعه‌ها شام را در اتاقِ ناهارخوری می‌خوریم."
+              },
+              {
+                "en": "The hotel dining room opens at seven.",
+                "fa": "ناهارخوریِ هتل ساعتِ هفت باز می‌شود."
+              },
+              {
+                "en": "There are eight chairs around the dining room table.",
+                "fa": "دورِ میزِ ناهارخوری هشت صندلی هست."
+              }
+            ],
+            "collocations": [
+              "the dining room table",
+              "in the dining room"
+            ],
+            "collocationFa": {
+              "the dining room table": "میزِ ناهارخوری",
+              "in the dining room": "در اتاقِ ناهارخوری"
+            },
+            "usage": "dining room اسمِ مرکب و قابل‌شمارش است. اتاقِ نشیمن living room است.",
+            "mistake": {
+              "wrong": "The dining room are next to the kitchen.",
+              "wrongFa": "اتاقِ ناهارخوری کنارِ آشپزخانه هستند؛ اما فعل جمع آمده است.",
+              "right": "The dining room is next to the kitchen.",
+              "rightFa": "اتاقِ ناهارخوری کنارِ آشپزخانه است.",
+              "why": "the dining room مفرد است و فعلِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈdaɪnɪŋ ruːm/",
+              "us": "/ˈdaɪnɪŋ ruːm/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Please set the table in the ___; the guests are coming.",
+                "answer": "dining room",
+                "accept": [],
+                "fa": "لطفاً میز را در اتاقِ ناهارخوری بچین؛ مهمان‌ها دارند می‌آیند.",
+                "why": "dining room اتاقِ غذا خوردن است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در کدام اتاق غذا می‌خوریم؟",
+                "options": [
+                  {
+                    "text": "the dining room",
+                    "ok": true,
+                    "why": "dining room اتاقِ ناهارخوری است."
+                  },
+                  {
+                    "text": "the bathroom",
+                    "ok": false,
+                    "why": "bathroom حمام و دستشویی است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "اتاقِ ناهارخوری‌مان خیلی روشن است.",
+                "frame": "Our ___ is very bright.",
+                "answer": "dining room",
+                "accept": [],
+                "why": "پس از our اسمِ مرکبِ dining room می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "does",
+      "levelWordId": "level:A1:1002",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1096",
+          "senseId": "lex:A1:cefrj-does",
+          "meaningEn": "The form of “do” used with he, she, it and singular nouns in the present simple; also used to make their questions and negatives."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-does",
+        "headword": "does",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-does",
+            "pos": "verb",
+            "gloss": "شکلِ do برای سوم‌شخصِ مفرد",
+            "meaning": "شکلی از do که در حالِ ساده با he، she، it و اسمِ مفرد می‌آید؛ برای پرسش و منفیِ آن‌ها هم به کار می‌رود.",
+            "grammar": [
+              {
+                "pattern": "Does + he/she/it + base verb?",
+                "note": "در پرسش پس از does شکلِ سادهٔ فعل می‌آید: Does she like tea?"
+              },
+              {
+                "pattern": "doesn't + base verb",
+                "note": "برای منفی doesn't + شکلِ سادهٔ فعل: He doesn't eat meat."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Does your brother play the guitar?",
+                "fa": "برادرت گیتار می‌زند؟"
+              },
+              {
+                "en": "My mother doesn't drink coffee.",
+                "fa": "مادرم قهوه نمی‌نوشد."
+              },
+              {
+                "en": "He does the shopping every Saturday.",
+                "fa": "او هر شنبه خرید می‌کند."
+              }
+            ],
+            "collocations": [
+              "does the cooking",
+              "doesn't know"
+            ],
+            "collocationFa": {
+              "does the cooking": "آشپزی می‌کند",
+              "doesn't know": "نمی‌داند"
+            },
+            "usage": "پس از does و doesn't فعل s نمی‌گیرد: Does she like…? (نه Does she likes…?)",
+            "mistake": {
+              "wrong": "Does she likes chocolate?",
+              "wrongFa": "او شکلات دوست دارد؟ اما پس از does فعل s گرفته است.",
+              "right": "Does she like chocolate?",
+              "rightFa": "او شکلات دوست دارد؟",
+              "why": "پس از does شکلِ سادهٔ فعل می‌آید: like، نه likes."
+            },
+            "pronunciation": {
+              "gb": "/dʌz/",
+              "us": "/dʌz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "___ your sister speak English?",
+                "answer": "Does",
+                "accept": [
+                  "does"
+                ],
+                "fa": "خواهرت انگلیسی حرف می‌زند؟",
+                "why": "با فاعلِ سوم‌شخصِ مفرد برای پرسش does می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«او قهوه نمی‌نوشد.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "He doesn't drink coffee.",
+                    "ok": true,
+                    "why": "پس از doesn't شکلِ سادهٔ فعل می‌آید."
+                  },
+                  {
+                    "text": "He don't drink coffee.",
+                    "ok": false,
+                    "why": "با he از doesn't استفاده می‌کنیم."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او هر روز تکلیفش را انجام می‌دهد.",
+                "frame": "She ___ her homework every day.",
+                "answer": "does",
+                "accept": [],
+                "why": "با she در حالِ ساده does می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "doing",
+      "levelWordId": "level:A1:1003",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1097",
+          "senseId": "lex:A1:cefrj-doing",
+          "meaningEn": "The -ing form of “do”, used in continuous tenses, as in “What are you doing?”."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-doing",
+        "headword": "doing",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-doing",
+            "pos": "verb",
+            "gloss": "شکلِ ingدارِ do (در حالِ انجام دادن)",
+            "meaning": "شکلِ ingدارِ do که در زمان‌های استمراری به کار می‌رود، مثلِ «What are you doing?» (چه کار می‌کنی؟).",
+            "grammar": [
+              {
+                "pattern": "be + doing",
+                "note": "برای کارِ در حالِ انجام be + doing: I am doing my homework."
+              },
+              {
+                "pattern": "What are you doing?",
+                "note": "برای پرسیدنِ کارِ کسی What are you doing? می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "What are you doing this weekend?",
+                "fa": "این آخرِ هفته چه کار می‌کنی؟"
+              },
+              {
+                "en": "I'm doing the dishes right now.",
+                "fa": "الان دارم ظرف‌ها را می‌شویم."
+              },
+              {
+                "en": "How are you doing?",
+                "fa": "حالت چطور است؟"
+              }
+            ],
+            "collocations": [
+              "doing homework",
+              "How are you doing?"
+            ],
+            "collocationFa": {
+              "doing homework": "در حالِ انجامِ تکلیف",
+              "How are you doing?": "حالت چطور است؟"
+            },
+            "usage": "How are you doing? پرسشِ خودمانیِ «حالت چطور است؟» است.",
+            "mistake": {
+              "wrong": "I am do my homework.",
+              "wrongFa": "من تکلیفم را انجام دادن هستم؛ اما پس از am شکلِ سادهٔ فعل آمده است.",
+              "right": "I am doing my homework.",
+              "rightFa": "دارم تکلیفم را انجام می‌دهم.",
+              "why": "پس از am/is/are برای کارِ در حالِ انجام، فعلِ ingدار می‌آید: doing."
+            },
+            "pronunciation": {
+              "gb": "/ˈduːɪŋ/",
+              "us": "/ˈduːɪŋ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Hi, Sara! What are you ___ here?",
+                "answer": "doing",
+                "accept": [],
+                "fa": "سلام سارا! اینجا چه کار می‌کنی؟",
+                "why": "What are you doing? یعنی چه کار می‌کنی؟"
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«چه کار می‌کنی؟» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "What are you doing?",
+                    "ok": true,
+                    "why": "پس از are شکلِ doing می‌آید."
+                  },
+                  {
+                    "text": "What are you do?",
+                    "ok": false,
+                    "why": "پس از are فعلِ ingدار لازم است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دارم تکالیفم را انجام می‌دهم.",
+                "frame": "I am ___ my homework.",
+                "answer": "doing",
+                "accept": [],
+                "why": "پس از am فعلِ ingدار می‌آید: doing."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "each other",
+      "levelWordId": "level:A1:1005",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1099",
+          "senseId": "lex:A1:cefrj-each-other",
+          "meaningEn": "Used to show that each person in a group does something to or for the other person or people."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-each-other",
+        "headword": "each other",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-each-other",
+            "pos": "pronoun",
+            "gloss": "یکدیگر؛ همدیگر",
+            "meaning": "نشان می‌دهد هر کس در یک گروه کاری را برای دیگری یا دیگران انجام می‌دهد؛ همدیگر.",
+            "grammar": [
+              {
+                "pattern": "verb + each other",
+                "note": "each other پس از فعل می‌آید: They love each other."
+              },
+              {
+                "pattern": "preposition + each other",
+                "note": "پس از حرفِ اضافه هم می‌آید: talk to each other."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Ali and Reza help each other with homework.",
+                "fa": "علی و رضا در تکلیف به همدیگر کمک می‌کنند."
+              },
+              {
+                "en": "We send each other messages every day.",
+                "fa": "ما هر روز به همدیگر پیام می‌فرستیم."
+              },
+              {
+                "en": "The two sisters look like each other.",
+                "fa": "آن دو خواهر شبیهِ همدیگرند."
+              }
+            ],
+            "collocations": [
+              "help each other",
+              "talk to each other"
+            ],
+            "collocationFa": {
+              "help each other": "به همدیگر کمک کردن",
+              "talk to each other": "با همدیگر حرف زدن"
+            },
+            "usage": "each other همیشه دو واژه است و جمع بسته نمی‌شود.",
+            "mistake": {
+              "wrong": "They helped each others.",
+              "wrongFa": "آن‌ها به همدیگرها کمک کردند؛ اما other جمع بسته شده است.",
+              "right": "They helped each other.",
+              "rightFa": "آن‌ها به همدیگر کمک کردند.",
+              "why": "each other جمع بسته نمی‌شود؛ s نمی‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˌiːtʃ ˈʌðə/",
+              "us": "/ˌiːtʃ ˈʌðər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The two friends hugged ___ at the airport.",
+                "answer": "each other",
+                "accept": [
+                  "one another"
+                ],
+                "fa": "آن دو دوست در فرودگاه همدیگر را بغل کردند.",
+                "why": "each other یعنی همدیگر."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«آن‌ها همدیگر را دوست دارند.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "They love each other.",
+                    "ok": true,
+                    "why": "each other یعنی همدیگر."
+                  },
+                  {
+                    "text": "They love each others.",
+                    "ok": false,
+                    "why": "each other جمع بسته نمی‌شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ما همدیگر را خوب می‌شناسیم.",
+                "frame": "We know ___ well.",
+                "answer": "each other",
+                "accept": [
+                  "one another"
+                ],
+                "why": "پس از know مفعولِ each other می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "fishing",
+      "levelWordId": "level:A1:1009",
+      "existingEntryIds": [
+        "lex:A2:fishing"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1103",
+          "senseId": "lex:A2:fishing",
+          "meaningEn": "The sport or job of catching fish."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:fishing",
+        "headword": "fishing",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:fishing",
+            "pos": "noun",
+            "gloss": "ماهیگیری",
+            "meaning": "ورزش یا شغلِ گرفتنِ ماهی.",
+            "grammar": [
+              {
+                "pattern": "go fishing",
+                "note": "برای رفتن به ماهیگیری go fishing می‌گوییم."
+              },
+              {
+                "pattern": "fishing + noun",
+                "note": "fishing پیش از اسم هم می‌آید: a fishing boat."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My grandfather and I go fishing on the lake.",
+                "fa": "من و پدربزرگم روی دریاچه به ماهیگیری می‌رویم."
+              },
+              {
+                "en": "Fishing is a quiet and relaxing hobby.",
+                "fa": "ماهیگیری سرگرمیِ آرام و آرامش‌بخشی است."
+              },
+              {
+                "en": "We saw a small fishing boat near the beach.",
+                "fa": "یک قایقِ ماهیگیریِ کوچک نزدیکِ ساحل دیدیم."
+              }
+            ],
+            "collocations": [
+              "go fishing",
+              "a fishing boat"
+            ],
+            "collocationFa": {
+              "go fishing": "به ماهیگیری رفتن",
+              "a fishing boat": "قایقِ ماهیگیری"
+            },
+            "usage": "fishing غیرقابل‌شمارش است. ماهیگیر fisherman است.",
+            "mistake": {
+              "wrong": "Let's go to fishing on Friday.",
+              "wrongFa": "بیا جمعه به ماهیگیری برویم؛ اما پیش از fishing حرفِ to آمده است.",
+              "right": "Let's go fishing on Friday.",
+              "rightFa": "بیا جمعه برویم ماهیگیری.",
+              "why": "با go و فعالیت‌های ingدار to نمی‌آید: go fishing, go swimming."
+            },
+            "pronunciation": {
+              "gb": "/ˈfɪʃɪŋ/",
+              "us": "/ˈfɪʃɪŋ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My uncle loves ___; he goes to the river every weekend.",
+                "answer": "fishing",
+                "accept": [],
+                "fa": "عمویم عاشقِ ماهیگیری است؛ هر آخرِ هفته کنارِ رودخانه می‌رود.",
+                "why": "fishing یعنی ماهیگیری."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«به ماهیگیری رفتیم.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "We went fishing.",
+                    "ok": true,
+                    "why": "go fishing بدونِ to می‌آید."
+                  },
+                  {
+                    "text": "We went to fishing.",
+                    "ok": false,
+                    "why": "با go fishing حرفِ to نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سرگرمیِ پدرم ماهیگیری است.",
+                "frame": "My father's hobby is ___.",
+                "answer": "fishing",
+                "accept": [],
+                "why": "fishing اسمِ فعالیت است و بدونِ a می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "following",
+      "levelWordId": "level:A1:1010",
+      "existingEntryIds": [
+        "lex:A2:following",
+        "lex:B1:following",
+        "lex:B2:following"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1104",
+          "senseId": "lex:A2:following",
+          "meaningEn": "Next; coming immediately after something."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:following",
+        "headword": "following",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:following",
+            "pos": "adjective",
+            "gloss": "بعدی؛ پس از آن",
+            "meaning": "بعدی؛ چیزی که درست پس از چیزِ دیگر می‌آید.",
+            "grammar": [
+              {
+                "pattern": "the following + time",
+                "note": "با the پیش از زمان می‌آید: the following day."
+              },
+              {
+                "pattern": "the following + noun",
+                "note": "برای «موارد زیر» هم: the following questions."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We arrived on Monday and left the following day.",
+                "fa": "دوشنبه رسیدیم و روزِ بعد رفتیم."
+              },
+              {
+                "en": "Answer the following questions.",
+                "fa": "به سؤال‌های زیر جواب بده."
+              },
+              {
+                "en": "He was ill, but the following week he was back at school.",
+                "fa": "او مریض بود، اما هفتهٔ بعد به مدرسه برگشت."
+              }
+            ],
+            "collocations": [
+              "the following day",
+              "the following questions"
+            ],
+            "collocationFa": {
+              "the following day": "روزِ بعد",
+              "the following questions": "سؤال‌های زیر"
+            },
+            "usage": "following معمولاً با the می‌آید. the following day یعنی روزِ بعد از روزی که درباره‌اش حرف می‌زنیم.",
+            "mistake": {
+              "wrong": "We met again in following day.",
+              "wrongFa": "در روزِ بعد دوباره همدیگر را دیدیم؛ اما the نیامده است.",
+              "right": "We met again the following day.",
+              "rightFa": "روزِ بعد دوباره همدیگر را دیدیم.",
+              "why": "following پیش از زمان با the می‌آید: the following day."
+            },
+            "pronunciation": {
+              "gb": "/ˈfɒləʊɪŋ/",
+              "us": "/ˈfɑːloʊɪŋ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "She called me on Friday and visited the ___ day.",
+                "answer": "following",
+                "accept": [
+                  "next"
+                ],
+                "fa": "او جمعه به من زنگ زد و روزِ بعد به دیدنم آمد.",
+                "why": "the following day یعنی روزِ بعد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام هم‌معنای the following day است؟",
+                "options": [
+                  {
+                    "text": "the next day",
+                    "ok": true,
+                    "why": "the next day هم یعنی روزِ بعد."
+                  },
+                  {
+                    "text": "the day before",
+                    "ok": false,
+                    "why": "the day before یعنی روزِ قبل."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "هفتهٔ بعد به تهران برگشتیم.",
+                "frame": "We went back to Tehran the ___ week.",
+                "answer": "following",
+                "accept": [
+                  "next"
+                ],
+                "why": "the following week یعنی هفتهٔ بعد."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "glasses",
+      "levelWordId": "level:A1:1011",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1105",
+          "senseId": "lex:A1:cefrj-glasses",
+          "meaningEn": "Two pieces of glass or plastic in a frame that you wear in front of your eyes to help you see better."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-glasses",
+        "headword": "glasses",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-glasses",
+            "pos": "noun",
+            "gloss": "عینک",
+            "meaning": "دو تکه شیشه یا پلاستیک در یک قاب که جلوی چشم می‌زنیم تا بهتر ببینیم.",
+            "grammar": [
+              {
+                "pattern": "glasses (plural)",
+                "note": "glasses همیشه جمع است و فعلِ جمع می‌گیرد: My glasses are new."
+              },
+              {
+                "pattern": "a pair of glasses",
+                "note": "برای یک عینک a pair of glasses می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I can't read without my glasses.",
+                "fa": "بدونِ عینکم نمی‌توانم بخوانم."
+              },
+              {
+                "en": "She wears glasses with red frames.",
+                "fa": "او عینکی با قابِ قرمز می‌زند."
+              },
+              {
+                "en": "I need a new pair of glasses.",
+                "fa": "یک عینکِ جدید لازم دارم."
+              }
+            ],
+            "collocations": [
+              "wear glasses",
+              "a pair of glasses"
+            ],
+            "collocationFa": {
+              "wear glasses": "عینک زدن",
+              "a pair of glasses": "یک عینک"
+            },
+            "usage": "glasses به معنای عینک همیشه جمع است. عینکِ آفتابی sunglasses است. glass (مفرد) یعنی شیشه یا لیوان.",
+            "mistake": {
+              "wrong": "My glasses is on the table.",
+              "wrongFa": "عینکم روی میز است؛ اما فعل مفرد آمده است.",
+              "right": "My glasses are on the table.",
+              "rightFa": "عینکم روی میز است.",
+              "why": "glasses جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈɡlɑːsɪz/",
+              "us": "/ˈɡlæsɪz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My grandfather puts on his ___ to read the newspaper.",
+                "answer": "glasses",
+                "accept": [
+                  "spectacles"
+                ],
+                "fa": "پدربزرگم برای خواندنِ روزنامه عینکش را می‌زند.",
+                "why": "glasses یعنی عینک."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«یک عینک خریدم.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "I bought a pair of glasses.",
+                    "ok": true,
+                    "why": "برای یک عینک a pair of glasses می‌گوییم."
+                  },
+                  {
+                    "text": "I bought a glasses.",
+                    "ok": false,
+                    "why": "glasses جمع است و a نمی‌گیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "عینکم کجاست؟",
+                "frame": "Where are my ___?",
+                "answer": "glasses",
+                "accept": [
+                  "spectacles"
+                ],
+                "why": "are نشان می‌دهد اسم جمع است: glasses."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "good afternoon",
+      "levelWordId": "level:A1:1012",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1106",
+          "senseId": "lex:A1:cefrj-good-afternoon",
+          "meaningEn": "A polite greeting used in the afternoon, between about 12 noon and 6 p.m."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-good-afternoon",
+        "headword": "good afternoon",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-good-afternoon",
+            "pos": "exclamation",
+            "gloss": "عصر بخیر؛ ظهر بخیر",
+            "meaning": "سلامِ مؤدبانه‌ای که بعدازظهر، حدودِ ساعتِ دوازده تا شش، به کار می‌رود.",
+            "grammar": [
+              {
+                "pattern": "Good afternoon!",
+                "note": "به‌تنهایی یا پیش از نام می‌آید: Good afternoon, Mr Ahmadi."
+              },
+              {
+                "pattern": "Good afternoon, everyone.",
+                "note": "برای سلام به گروه هم به کار می‌رود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Good afternoon! How can I help you?",
+                "fa": "عصر بخیر! چه کمکی از دستم برمی‌آید؟"
+              },
+              {
+                "en": "Good afternoon, class. Please sit down.",
+                "fa": "بعدازظهر بخیر، بچه‌ها. لطفاً بنشینید."
+              },
+              {
+                "en": "The teacher said “Good afternoon” as she came in.",
+                "fa": "معلم وقتی وارد شد گفت «بعدازظهر بخیر»."
+              }
+            ],
+            "collocations": [
+              "say good afternoon",
+              "Good afternoon, sir."
+            ],
+            "collocationFa": {
+              "say good afternoon": "عصر بخیر گفتن",
+              "Good afternoon, sir.": "عصر بخیر، آقا."
+            },
+            "usage": "good afternoon رسمی‌تر از hello است. صبح good morning و غروب good evening گفته می‌شود.",
+            "mistake": {
+              "wrong": "It's three o'clock. Good morning, everyone!",
+              "wrongFa": "ساعت سه است. صبح بخیر، همگی!؛ اما سلامِ صبح برای بعدازظهر آمده است.",
+              "right": "It's three o'clock. Good afternoon, everyone!",
+              "rightFa": "ساعت سه است. عصر بخیر، همگی!",
+              "why": "ساعتِ سهٔ بعدازظهر good afternoon می‌گوییم، نه good morning."
+            },
+            "pronunciation": {
+              "gb": "/ɡʊd ˌɑːftəˈnuːn/",
+              "us": "/ɡʊd ˌæftərˈnuːn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It's 2 p.m. The receptionist says, “Good ___!”",
+                "answer": "afternoon",
+                "accept": [],
+                "fa": "ساعت دوِ بعدازظهر است. منشی می‌گوید: «عصر بخیر!»",
+                "why": "بعدازظهر good afternoon می‌گوییم."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "ساعتِ چهارِ بعدازظهر چه سلامی می‌کنیم؟",
+                "options": [
+                  {
+                    "text": "Good afternoon!",
+                    "ok": true,
+                    "why": "بعدازظهر good afternoon گفته می‌شود."
+                  },
+                  {
+                    "text": "Good night!",
+                    "ok": false,
+                    "why": "good night برای خداحافظیِ شب است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "عصر بخیر، خانمِ رضایی.",
+                "frame": "___, Mrs Rezaei.",
+                "answer": "Good afternoon",
+                "accept": [
+                  "good afternoon"
+                ],
+                "why": "بعدازظهر good afternoon می‌گوییم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "good morning",
+      "levelWordId": "level:A1:1013",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1107",
+          "senseId": "lex:A1:cefrj-good-morning",
+          "meaningEn": "A polite greeting used in the morning, before about 12 noon."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-good-morning",
+        "headword": "good morning",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-good-morning",
+            "pos": "exclamation",
+            "gloss": "صبح بخیر",
+            "meaning": "سلامِ مؤدبانه‌ای که صبح، پیش از حدودِ ساعتِ دوازده، به کار می‌رود.",
+            "grammar": [
+              {
+                "pattern": "Good morning!",
+                "note": "به‌تنهایی یا پیش از نام می‌آید: Good morning, Dad."
+              },
+              {
+                "pattern": "say good morning to someone",
+                "note": "برای صبح بخیر گفتن به کسی say good morning to می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Good morning, Mum! Is breakfast ready?",
+                "fa": "صبح بخیر مامان! صبحانه آماده است؟"
+              },
+              {
+                "en": "She says good morning to the bus driver every day.",
+                "fa": "او هر روز به رانندهٔ اتوبوس صبح بخیر می‌گوید."
+              },
+              {
+                "en": "Good morning, everyone. Let's start the lesson.",
+                "fa": "صبح بخیر همگی. بیایید درس را شروع کنیم."
+              }
+            ],
+            "collocations": [
+              "say good morning",
+              "Good morning, everyone."
+            ],
+            "collocationFa": {
+              "say good morning": "صبح بخیر گفتن",
+              "Good morning, everyone.": "صبح بخیر، همگی."
+            },
+            "usage": "good morning تا حدودِ ظهر گفته می‌شود. در گفتارِ خودمانی گاهی فقط Morning! می‌گویند.",
+            "mistake": {
+              "wrong": "Good mornings, class!",
+              "wrongFa": "صبح‌ها بخیر، بچه‌ها!؛ اما morning جمع بسته شده است.",
+              "right": "Good morning, class!",
+              "rightFa": "صبح بخیر، بچه‌ها!",
+              "why": "در سلامِ good morning واژهٔ morning جمع بسته نمی‌شود."
+            },
+            "pronunciation": {
+              "gb": "/ɡʊd ˈmɔːnɪŋ/",
+              "us": "/ɡʊd ˈmɔːrnɪŋ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It's 8 a.m. The teacher comes in and says, “Good ___, children!”",
+                "answer": "morning",
+                "accept": [],
+                "fa": "ساعت هشتِ صبح است. معلم وارد می‌شود و می‌گوید: «صبح بخیر بچه‌ها!»",
+                "why": "صبح good morning می‌گوییم."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "ساعتِ هفتِ صبح چه سلامی می‌کنیم؟",
+                "options": [
+                  {
+                    "text": "Good morning!",
+                    "ok": true,
+                    "why": "صبح good morning گفته می‌شود."
+                  },
+                  {
+                    "text": "Good evening!",
+                    "ok": false,
+                    "why": "good evening برای غروب و شب است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "صبح بخیر، بابا!",
+                "frame": "___, Dad!",
+                "answer": "Good morning",
+                "accept": [
+                  "good morning",
+                  "Morning",
+                  "morning"
+                ],
+                "why": "صبح good morning می‌گوییم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "good night",
+      "levelWordId": "level:A1:1014",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1108",
+          "senseId": "lex:A1:cefrj-good-night",
+          "meaningEn": "Said when you leave someone in the evening or before you go to bed."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-good-night",
+        "headword": "good night",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-good-night",
+            "pos": "exclamation",
+            "gloss": "شب بخیر (هنگامِ رفتن یا خوابیدن)",
+            "meaning": "جمله‌ای که شب هنگامِ خداحافظی یا پیش از خوابیدن می‌گوییم.",
+            "grammar": [
+              {
+                "pattern": "Good night!",
+                "note": "برای خداحافظی در شب یا پیش از خواب می‌آید."
+              },
+              {
+                "pattern": "say good night to someone",
+                "note": "برای شب بخیر گفتن به کسی say good night to می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Good night, Grandma. See you tomorrow!",
+                "fa": "شب بخیر مادربزرگ. فردا می‌بینمت!"
+              },
+              {
+                "en": "The children said good night and went to bed.",
+                "fa": "بچه‌ها شب بخیر گفتند و به رختخواب رفتند."
+              },
+              {
+                "en": "It was late, so we said good night to our hosts.",
+                "fa": "دیر شده بود، پس از میزبان‌ها خداحافظی کردیم و شب بخیر گفتیم."
+              }
+            ],
+            "collocations": [
+              "say good night",
+              "kiss someone good night"
+            ],
+            "collocationFa": {
+              "say good night": "شب بخیر گفتن",
+              "kiss someone good night": "شب بخیر گفتن با بوسه"
+            },
+            "usage": "good night برای خداحافظی است؛ برای سلام کردن در شب good evening می‌گوییم.",
+            "mistake": {
+              "wrong": "Good night, everyone! Welcome to the party.",
+              "wrongFa": "شب بخیر همگی! به مهمانی خوش آمدید؛ اما good night برای سلام آمده است.",
+              "right": "Good evening, everyone! Welcome to the party.",
+              "rightFa": "عصر بخیر همگی! به مهمانی خوش آمدید.",
+              "why": "good night برای خداحافظی است؛ برای سلام در شب good evening می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ɡʊd ˈnaɪt/",
+              "us": "/ɡʊd ˈnaɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Before she went to bed, she said “Good ___” to her parents.",
+                "answer": "night",
+                "accept": [],
+                "fa": "پیش از خوابیدن به پدر و مادرش گفت «شب بخیر».",
+                "why": "پیش از خواب good night می‌گوییم."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "شب وقتی به مهمانی می‌رسی چه می‌گویی؟",
+                "options": [
+                  {
+                    "text": "Good evening!",
+                    "ok": true,
+                    "why": "برای سلام در شب good evening می‌گوییم."
+                  },
+                  {
+                    "text": "Good night!",
+                    "ok": false,
+                    "why": "good night برای خداحافظی است، نه سلام."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "شب بخیر، مامان!",
+                "frame": "___, Mum!",
+                "answer": "Good night",
+                "accept": [
+                  "good night",
+                  "Goodnight",
+                  "goodnight",
+                  "Night",
+                  "night"
+                ],
+                "why": "پیش از خواب good night می‌گوییم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "had",
+      "levelWordId": "level:A1:1015",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1109",
+          "senseId": "lex:A1:cefrj-had",
+          "meaningEn": "The past form of “have”."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-had",
+        "headword": "had",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-had",
+            "pos": "verb",
+            "gloss": "گذشتهٔ have (داشت؛ خورد…)",
+            "meaning": "شکلِ گذشتهٔ have.",
+            "grammar": [
+              {
+                "pattern": "had + noun",
+                "note": "برای داشتن در گذشته: I had a cat."
+              },
+              {
+                "pattern": "had + meal",
+                "note": "با وعده‌های غذا: We had lunch at one."
+              }
+            ],
+            "examples": [
+              {
+                "en": "When I was a child, I had a red bicycle.",
+                "fa": "وقتی بچه بودم یک دوچرخهٔ قرمز داشتم."
+              },
+              {
+                "en": "We had pizza for dinner last night.",
+                "fa": "دیشب شام پیتزا خوردیم."
+              },
+              {
+                "en": "She had a bad cold last week.",
+                "fa": "هفتهٔ پیش سرماخوردگیِ بدی داشت."
+              }
+            ],
+            "collocations": [
+              "had breakfast",
+              "had a good time"
+            ],
+            "collocationFa": {
+              "had breakfast": "صبحانه خورد",
+              "had a good time": "خوش گذشت"
+            },
+            "usage": "had گذشتهٔ have و has است و برای همهٔ فاعل‌ها یکی است.",
+            "mistake": {
+              "wrong": "I haved breakfast at seven.",
+              "wrongFa": "ساعتِ هفت صبحانه خوردیدم؛ اما گذشتهٔ have درست نیست.",
+              "right": "I had breakfast at seven.",
+              "rightFa": "ساعتِ هفت صبحانه خوردم.",
+              "why": "have بی‌قاعده است: have → had."
+            },
+            "pronunciation": {
+              "gb": "/hæd/",
+              "us": "/hæd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Yesterday we ___ a picnic in the park.",
+                "answer": "had",
+                "accept": [],
+                "fa": "دیروز در پارک پیک‌نیک کردیم.",
+                "why": "گذشتهٔ have فعلِ had است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "گذشتهٔ has کدام است؟",
+                "options": [
+                  {
+                    "text": "had",
+                    "ok": true,
+                    "why": "گذشتهٔ have و has، had است."
+                  },
+                  {
+                    "text": "hased",
+                    "ok": false,
+                    "why": "چنین شکلی وجود ندارد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سالِ پیش یک سگ داشتیم.",
+                "frame": "Last year we ___ a dog.",
+                "answer": "had",
+                "accept": [],
+                "why": "با last year گذشتهٔ have، یعنی had، می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "has",
+      "levelWordId": "level:A1:1016",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1110",
+          "senseId": "lex:A1:cefrj-has",
+          "meaningEn": "The form of “have” used with he, she, it and singular nouns in the present simple."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-has",
+        "headword": "has",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-has",
+            "pos": "verb",
+            "gloss": "دارد (شکلِ have برای سوم‌شخصِ مفرد)",
+            "meaning": "شکلی از have که در حالِ ساده با he، she، it و اسمِ مفرد می‌آید.",
+            "grammar": [
+              {
+                "pattern": "he/she/it has",
+                "note": "با فاعلِ سوم‌شخصِ مفرد has می‌آید: She has a car."
+              },
+              {
+                "pattern": "has + meal",
+                "note": "با وعده‌های غذا: He has breakfast at seven."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My sister has long black hair.",
+                "fa": "خواهرم موهای بلندِ مشکی دارد."
+              },
+              {
+                "en": "Our school has a big library.",
+                "fa": "مدرسهٔ ما یک کتابخانهٔ بزرگ دارد."
+              },
+              {
+                "en": "He has lunch at the office.",
+                "fa": "او ناهار را در دفتر می‌خورد."
+              }
+            ],
+            "collocations": [
+              "has a cold",
+              "has breakfast"
+            ],
+            "collocationFa": {
+              "has a cold": "سرما خورده است",
+              "has breakfast": "صبحانه می‌خورد"
+            },
+            "usage": "has با he، she، it و اسم‌های مفرد می‌آید؛ با I، you، we و they از have استفاده می‌کنیم.",
+            "mistake": {
+              "wrong": "My brother have a new phone.",
+              "wrongFa": "برادرم یک گوشیِ جدید دارند؛ اما با فاعلِ مفرد have آمده است.",
+              "right": "My brother has a new phone.",
+              "rightFa": "برادرم یک گوشیِ جدید دارد.",
+              "why": "با فاعلِ سوم‌شخصِ مفرد has می‌آید، نه have."
+            },
+            "pronunciation": {
+              "gb": "/hæz/",
+              "us": "/hæz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Mina ___ two brothers and one sister.",
+                "answer": "has",
+                "accept": [],
+                "fa": "مینا دو برادر و یک خواهر دارد.",
+                "why": "با اسمِ مفرد (Mina) فعلِ has می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«او یک گربه دارد.» She ___ a cat.",
+                "options": [
+                  {
+                    "text": "has",
+                    "ok": true,
+                    "why": "با she فعلِ has می‌آید."
+                  },
+                  {
+                    "text": "have",
+                    "ok": false,
+                    "why": "have با I، you، we و they می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پدرم یک ماشینِ آبی دارد.",
+                "frame": "My father ___ a blue car.",
+                "answer": "has",
+                "accept": [],
+                "why": "با فاعلِ سوم‌شخصِ مفرد has می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "hers",
+      "levelWordId": "level:A1:1019",
+      "existingEntryIds": [
+        "lex:A2:hers"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1114",
+          "senseId": "lex:A2:hers",
+          "meaningEn": "Used to show that something belongs to a woman or girl already mentioned; her one or her ones."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:hers",
+        "headword": "hers",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:hers",
+            "pos": "pronoun",
+            "gloss": "مالِ او (زن)",
+            "meaning": "نشان می‌دهد چیزی مالِ زن یا دختری است که پیش‌تر از او حرف زده‌ایم؛ مالِ او.",
+            "grammar": [
+              {
+                "pattern": "This is hers.",
+                "note": "hers به‌تنهایی و بدونِ اسم می‌آید: The bag is hers."
+              },
+              {
+                "pattern": "her + noun / hers",
+                "note": "her پیش از اسم می‌آید (her bag) و hers بدونِ اسم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "That blue bag is hers, not mine.",
+                "fa": "آن کیفِ آبی مالِ اوست، نه مالِ من."
+              },
+              {
+                "en": "I forgot my pen, so Sara lent me hers.",
+                "fa": "خودکارم را فراموش کرده بودم، پس سارا خودکارش را به من قرض داد."
+              },
+              {
+                "en": "Is this coat yours or hers?",
+                "fa": "این کت مالِ توست یا مالِ او؟"
+              }
+            ],
+            "collocations": [
+              "a friend of hers",
+              "it's hers"
+            ],
+            "collocationFa": {
+              "a friend of hers": "یکی از دوستانِ او",
+              "it's hers": "مالِ اوست"
+            },
+            "usage": "hers هیچ‌وقت آپوستروف ندارد (her's غلط است) و پیش از اسم نمی‌آید.",
+            "mistake": {
+              "wrong": "This is hers bag.",
+              "wrongFa": "این مالِ او کیف است؛ اما پیش از اسم hers آمده است.",
+              "right": "This is her bag.",
+              "rightFa": "این کیفِ اوست.",
+              "why": "پیش از اسم her می‌آید؛ hers بدونِ اسم به کار می‌رود."
+            },
+            "pronunciation": {
+              "gb": "/hɜːz/",
+              "us": "/hɝːz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Maryam says the red umbrella is ___.",
+                "answer": "hers",
+                "accept": [],
+                "fa": "مریم می‌گوید چترِ قرمز مالِ اوست.",
+                "why": "hers یعنی مالِ او (زن) و بدونِ اسم می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«این کتاب مالِ اوست (زن).» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "This book is hers.",
+                    "ok": true,
+                    "why": "بدونِ اسم hers می‌آید."
+                  },
+                  {
+                    "text": "This book is her.",
+                    "ok": false,
+                    "why": "her بدونِ اسم به معنای مالکیت نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این گوشی مالِ من نیست؛ مالِ اوست (زن).",
+                "frame": "This phone isn't mine; it's ___.",
+                "answer": "hers",
+                "accept": [],
+                "why": "بدونِ اسم برای مالِ او (زن) hers می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "is",
+      "levelWordId": "level:A1:1025",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1121",
+          "senseId": "lex:A1:cefrj-is",
+          "meaningEn": "The form of “be” used with he, she, it and singular nouns in the present tense."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-is",
+        "headword": "is",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-is",
+            "pos": "verb",
+            "gloss": "است؛ هست (is)",
+            "meaning": "شکلی از فعلِ be که در زمانِ حال با he، she، it و اسمِ مفرد می‌آید.",
+            "grammar": [
+              {
+                "pattern": "he/she/it is",
+                "note": "با فاعلِ مفرد is می‌آید: She is a doctor."
+              },
+              {
+                "pattern": "Is + subject…?",
+                "note": "برای پرسش is پیش از فاعل می‌آید: Is he at home?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "My uncle is a bus driver in Rasht.",
+                "fa": "عمویم در رشت رانندهٔ اتوبوس است."
+              },
+              {
+                "en": "Is the museum open today?",
+                "fa": "موزه امروز باز است؟"
+              },
+              {
+                "en": "The weather is lovely this morning.",
+                "fa": "هوا امروز صبح عالی است."
+              }
+            ],
+            "collocations": [
+              "it is time",
+              "what is"
+            ],
+            "collocationFa": {
+              "it is time": "وقتش است",
+              "what is": "چه چیزی است"
+            },
+            "usage": "is کوتاه‌شده‌اش 's است: he's, it's. با I از am و با you/we/they از are استفاده می‌کنیم.",
+            "mistake": {
+              "wrong": "Where the bank is?",
+              "wrongFa": "بانک کجا هست؟ اما ترتیبِ پرسش درست نیست.",
+              "right": "Where is the bank?",
+              "rightFa": "بانک کجاست؟",
+              "why": "در پرسش is پیش از فاعل می‌آید: Where is the bank?"
+            },
+            "pronunciation": {
+              "gb": "/ɪz/",
+              "us": "/ɪz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My brother ___ twenty years old.",
+                "answer": "is",
+                "accept": [],
+                "fa": "برادرم بیست سال دارد.",
+                "why": "با اسمِ مفرد (my brother) فعلِ is می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«گربه زیرِ میز است.» The cat ___ under the table.",
+                "options": [
+                  {
+                    "text": "is",
+                    "ok": true,
+                    "why": "با اسمِ مفرد is می‌آید."
+                  },
+                  {
+                    "text": "are",
+                    "ok": false,
+                    "why": "are با فاعلِ جمع می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این خانه خیلی قدیمی است.",
+                "frame": "This house ___ very old.",
+                "answer": "is",
+                "accept": [],
+                "why": "با this house (مفرد) فعلِ is می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "last name",
+      "levelWordId": "level:A1:1027",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1124",
+          "senseId": "lex:A1:cefrj-last-name",
+          "meaningEn": "Your family name, which in English comes after your first name."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-last-name",
+        "headword": "last name",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-last-name",
+            "pos": "noun",
+            "gloss": "نامِ خانوادگی",
+            "meaning": "نامِ خانوادگیِ تو که در انگلیسی پس از نامِ کوچک می‌آید.",
+            "grammar": [
+              {
+                "pattern": "What's your last name?",
+                "note": "برای پرسیدنِ نامِ خانوادگی What's your last name? می‌گوییم."
+              },
+              {
+                "pattern": "first name / last name",
+                "note": "نامِ کوچک first name و نامِ خانوادگی last name است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My first name is Neda and my last name is Karimi.",
+                "fa": "نامِ کوچکِ من نداست و نامِ خانوادگی‌ام کریمی."
+              },
+              {
+                "en": "Please spell your last name for me.",
+                "fa": "لطفاً نامِ خانوادگی‌ات را برایم هجی کن."
+              },
+              {
+                "en": "Write your last name in capital letters.",
+                "fa": "نامِ خانوادگی‌ات را با حروفِ بزرگ بنویس."
+              }
+            ],
+            "collocations": [
+              "spell your last name",
+              "first and last name"
+            ],
+            "collocationFa": {
+              "spell your last name": "نامِ خانوادگی را هجی کردن",
+              "first and last name": "نام و نامِ خانوادگی"
+            },
+            "usage": "last name هم‌معنای surname و family name است.",
+            "mistake": {
+              "wrong": "Her last name Karimi.",
+              "wrongFa": "نامِ خانوادگی‌اش کریمی؛ اما فعلِ is نیامده است.",
+              "right": "Her last name is Karimi.",
+              "rightFa": "نامِ خانوادگی‌اش کریمی است.",
+              "why": "جملهٔ انگلیسی فعل لازم دارد: is."
+            },
+            "pronunciation": {
+              "gb": "/ˌlɑːst ˈneɪm/",
+              "us": "/ˌlæst ˈneɪm/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "“What's your ___?” “It's Mohammadi.”",
+                "answer": "last name",
+                "accept": [
+                  "surname",
+                  "family name"
+                ],
+                "fa": "«نامِ خانوادگی‌ات چیست؟» «محمدی است.»",
+                "why": "last name یعنی نامِ خانوادگی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام هم‌معنای last name است؟",
+                "options": [
+                  {
+                    "text": "surname",
+                    "ok": true,
+                    "why": "surname هم یعنی نامِ خانوادگی."
+                  },
+                  {
+                    "text": "first name",
+                    "ok": false,
+                    "why": "first name نامِ کوچک است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "نامِ خانوادگی‌ات را اینجا بنویس.",
+                "frame": "Write your ___ here.",
+                "answer": "last name",
+                "accept": [
+                  "surname",
+                  "family name"
+                ],
+                "why": "پس از your اسمِ مرکبِ last name می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "living",
+      "levelWordId": "level:A1:1029",
+      "existingEntryIds": [
+        "lex:B1:living"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1126",
+          "senseId": "lex:B1:living",
+          "meaningEn": "Alive now."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:living",
+        "headword": "living",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:living",
+            "pos": "adjective",
+            "gloss": "زنده",
+            "meaning": "کسی یا چیزی که اکنون زنده است.",
+            "grammar": [
+              {
+                "pattern": "living + noun",
+                "note": "living پیش از اسم می‌آید: living things."
+              },
+              {
+                "pattern": "be still living",
+                "note": "برای «هنوز زنده بودن» be still living هم گفته می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Plants and animals are living things.",
+                "fa": "گیاهان و جانوران موجوداتِ زنده‌اند."
+              },
+              {
+                "en": "She is the oldest living person in our village.",
+                "fa": "او پیرترین آدمِ زندهٔ روستای ماست."
+              },
+              {
+                "en": "Are any of your grandparents still living?",
+                "fa": "هیچ‌کدام از پدربزرگ و مادربزرگ‌هایت هنوز زنده‌اند؟"
+              }
+            ],
+            "collocations": [
+              "living things",
+              "a living language"
+            ],
+            "collocationFa": {
+              "living things": "موجوداتِ زنده",
+              "a living language": "زبانِ زنده"
+            },
+            "usage": "living معمولاً پیش از اسم می‌آید؛ پس از فعل alive رایج‌تر است: The fish is alive.",
+            "mistake": {
+              "wrong": "Trees are livings things.",
+              "wrongFa": "درختان زندها موجودات‌اند؛ اما صفت جمع بسته شده است.",
+              "right": "Trees are living things.",
+              "rightFa": "درختان موجوداتِ زنده‌اند.",
+              "why": "صفت در انگلیسی جمع بسته نمی‌شود: living things."
+            },
+            "pronunciation": {
+              "gb": "/ˈlɪvɪŋ/",
+              "us": "/ˈlɪvɪŋ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "All ___ things need water.",
+                "answer": "living",
+                "accept": [],
+                "fa": "همهٔ موجوداتِ زنده به آب نیاز دارند.",
+                "why": "living things یعنی موجوداتِ زنده."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام برعکسِ living است؟",
+                "options": [
+                  {
+                    "text": "dead",
+                    "ok": true,
+                    "why": "dead یعنی مرده."
+                  },
+                  {
+                    "text": "young",
+                    "ok": false,
+                    "why": "young یعنی جوان."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "انگلیسی یک زبانِ زنده است.",
+                "frame": "English is a ___ language.",
+                "answer": "living",
+                "accept": [],
+                "why": "پیش از language صفتِ living می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "living room",
+      "levelWordId": "level:A1:1030",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1127",
+          "senseId": "lex:A1:cefrj-living-room",
+          "meaningEn": "The room in a house where people sit together, relax and watch TV."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-living-room",
+        "headword": "living room",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-living-room",
+            "pos": "noun",
+            "gloss": "اتاقِ نشیمن؛ هال",
+            "meaning": "اتاقی در خانه که اعضای خانواده با هم می‌نشینند، استراحت می‌کنند و تلویزیون می‌بینند.",
+            "grammar": [
+              {
+                "pattern": "in the living room",
+                "note": "برای بودن در این اتاق in the living room می‌گوییم."
+              },
+              {
+                "pattern": "a living room / living rooms",
+                "note": "living room اسمِ مرکب و قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We watch TV together in the living room.",
+                "fa": "با هم در اتاقِ نشیمن تلویزیون می‌بینیم."
+              },
+              {
+                "en": "Our living room has a big window.",
+                "fa": "اتاقِ نشیمنِ ما یک پنجرهٔ بزرگ دارد."
+              },
+              {
+                "en": "The guests are waiting in the living room.",
+                "fa": "مهمان‌ها در اتاقِ نشیمن منتظرند."
+              }
+            ],
+            "collocations": [
+              "in the living room",
+              "living room furniture"
+            ],
+            "collocationFa": {
+              "in the living room": "در اتاقِ نشیمن",
+              "living room furniture": "مبلمانِ اتاقِ نشیمن"
+            },
+            "usage": "living room در بریتانیا sitting room یا lounge هم نامیده می‌شود.",
+            "mistake": {
+              "wrong": "We are sitting at the living room.",
+              "wrongFa": "ما پیشِ اتاقِ نشیمن نشسته‌ایم؛ اما حرفِ اضافه درست نیست.",
+              "right": "We are sitting in the living room.",
+              "rightFa": "ما در اتاقِ نشیمن نشسته‌ایم.",
+              "why": "برای بودن داخلِ اتاق in می‌آید: in the living room."
+            },
+            "pronunciation": {
+              "gb": "/ˈlɪvɪŋ ruːm/",
+              "us": "/ˈlɪvɪŋ ruːm/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The sofa and the TV are in the ___.",
+                "answer": "living room",
+                "accept": [
+                  "sitting room",
+                  "lounge"
+                ],
+                "fa": "مبل و تلویزیون در اتاقِ نشیمن هستند.",
+                "why": "living room اتاقِ نشیمن است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "in the living room",
+                    "ok": true,
+                    "why": "برای داخلِ اتاق in می‌آید."
+                  },
+                  {
+                    "text": "on the living room",
+                    "ok": false,
+                    "why": "برای داخلِ اتاق on نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "اتاقِ نشیمنِ ما خیلی بزرگ نیست.",
+                "frame": "Our ___ isn't very big.",
+                "answer": "living room",
+                "accept": [
+                  "sitting room",
+                  "lounge"
+                ],
+                "why": "پس از our اسمِ مرکبِ living room می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}
