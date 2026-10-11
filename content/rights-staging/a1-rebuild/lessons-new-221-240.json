@@ -1,0 +1,2427 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 221–240 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 221,
+    "lastNewHeadword": 240
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "ghost",
+      "levelWordId": "level:A1:0899",
+      "existingEntryIds": [
+        "lex:B1:ghost"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0990",
+          "senseId": "lex:B1:ghost",
+          "meaningEn": "The spirit of a dead person that some people believe they can see or hear."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:ghost",
+        "headword": "ghost",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:ghost",
+            "pos": "noun",
+            "gloss": "روح؛ شبح",
+            "meaning": "روحِ آدمِ مرده که بعضی‌ها باور دارند می‌توانند آن را ببینند یا صدایش را بشنوند.",
+            "grammar": [
+              {
+                "pattern": "believe in ghosts",
+                "note": "برای باور داشتن به روح believe in ghosts می‌گوییم."
+              },
+              {
+                "pattern": "a ghost story",
+                "note": "ghost پیش از اسم هم می‌آید: a ghost story."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My little sister thinks there is a ghost in the attic.",
+                "fa": "خواهرِ کوچکم فکر می‌کند در اتاقِ زیرِ شیروانی روحی هست."
+              },
+              {
+                "en": "Do you believe in ghosts?",
+                "fa": "به روح باور داری؟"
+              },
+              {
+                "en": "Grandpa told us a scary ghost story.",
+                "fa": "پدربزرگ برایمان یک داستانِ ترسناکِ ارواح تعریف کرد."
+              }
+            ],
+            "collocations": [
+              "a ghost story",
+              "believe in ghosts"
+            ],
+            "collocationFa": {
+              "a ghost story": "داستانِ ارواح",
+              "believe in ghosts": "به روح باور داشتن"
+            },
+            "usage": "ghost قابل‌شمارش است: a ghost, ghosts. حرفِ h در ghost تلفظ نمی‌شود.",
+            "mistake": {
+              "wrong": "I am scared from ghosts.",
+              "wrongFa": "من از روح‌ها می‌ترسم؛ اما پس از scared حرفِ اضافهٔ from آمده است.",
+              "right": "I am scared of ghosts.",
+              "rightFa": "من از روح می‌ترسم.",
+              "why": "پس از scared برای چیزی که از آن می‌ترسیم of می‌آید، نه from."
+            },
+            "pronunciation": {
+              "gb": "/ɡəʊst/",
+              "us": "/ɡoʊst/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The children dressed up as a ___ with a white sheet.",
+                "answer": "ghost",
+                "accept": [],
+                "fa": "بچه‌ها با یک ملافهٔ سفید لباسِ روح پوشیدند.",
+                "why": "ghost روحِ آدمِ مرده است و در قصه‌ها اغلب سفید نشان داده می‌شود."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«آیا به روح باور داری؟» Do you believe ___ ghosts?",
+                "options": [
+                  {
+                    "text": "in",
+                    "ok": true,
+                    "why": "believe in یعنی به وجودِ چیزی باور داشتن."
+                  },
+                  {
+                    "text": "to",
+                    "ok": false,
+                    "why": "believe to درست نیست؛ believe in می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این خانهٔ قدیمی یک روح دارد.",
+                "frame": "This old house has a ___.",
+                "answer": "ghost",
+                "accept": [],
+                "why": "پس از a اسمِ مفردِ ghost می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "beef",
+      "levelWordId": "level:A1:0900",
+      "existingEntryIds": [
+        "lex:A2:beef"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0991",
+          "senseId": "lex:A2:beef",
+          "meaningEn": "Meat from a cow."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:beef",
+        "headword": "beef",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:beef",
+            "pos": "noun",
+            "gloss": "گوشتِ گاو",
+            "meaning": "گوشتی که از گاو به دست می‌آید.",
+            "grammar": [
+              {
+                "pattern": "beef",
+                "note": "beef غیرقابل‌شمارش است و فعلِ مفرد می‌گیرد: Beef is expensive."
+              },
+              {
+                "pattern": "a kilo of beef",
+                "note": "برای مقدار a kilo of beef یا some beef می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We had beef and rice for lunch.",
+                "fa": "ناهار گوشتِ گاو و برنج خوردیم."
+              },
+              {
+                "en": "My mother bought a kilo of beef.",
+                "fa": "مادرم یک کیلو گوشتِ گاو خرید."
+              },
+              {
+                "en": "Some people don't eat beef.",
+                "fa": "بعضی‌ها گوشتِ گاو نمی‌خورند."
+              }
+            ],
+            "collocations": [
+              "roast beef",
+              "a beef burger"
+            ],
+            "collocationFa": {
+              "roast beef": "گوشتِ گاوِ کبابی",
+              "a beef burger": "همبرگرِ گوشتِ گاو"
+            },
+            "usage": "نامِ گوشت با نامِ حیوان فرق دارد: گاو cow است و گوشتش beef. گوشتِ گوسفند lamb است.",
+            "mistake": {
+              "wrong": "This beef are delicious.",
+              "wrongFa": "این گوشتِ گاو خوشمزه هستند؛ اما فعل جمع آمده است.",
+              "right": "This beef is delicious.",
+              "rightFa": "این گوشتِ گاو خوشمزه است.",
+              "why": "beef غیرقابل‌شمارش است و فعلِ مفردِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/biːf/",
+              "us": "/biːf/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "A hamburger is usually made of ___.",
+                "answer": "beef",
+                "accept": [],
+                "fa": "همبرگر معمولاً از گوشتِ گاو درست می‌شود.",
+                "why": "beef گوشتِ گاو است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "گوشتِ گاو در انگلیسی چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "beef",
+                    "ok": true,
+                    "why": "beef یعنی گوشتِ گاو."
+                  },
+                  {
+                    "text": "cow",
+                    "ok": false,
+                    "why": "cow خودِ حیوان است، نه گوشتش."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من گوشتِ گاو را بیشتر از مرغ دوست دارم.",
+                "frame": "I like ___ more than chicken.",
+                "answer": "beef",
+                "accept": [],
+                "why": "beef غیرقابل‌شمارش است و بدونِ a می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "spy",
+      "levelWordId": "level:A1:0902",
+      "existingEntryIds": [
+        "lex:C1:spy"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0993",
+          "senseId": "lex:C1:spy",
+          "meaningEn": "A person whose job is to find out secret information about another country or organization."
+        }
+      ],
+      "entry": {
+        "id": "lex:C1:spy",
+        "headword": "spy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:C1:spy",
+            "pos": "noun",
+            "gloss": "جاسوس",
+            "meaning": "کسی که کارش پیدا کردنِ اطلاعاتِ مخفی دربارهٔ کشور یا سازمانی دیگر است.",
+            "grammar": [
+              {
+                "pattern": "a spy / spies",
+                "note": "spy قابل‌شمارش است و جمعش spies است."
+              },
+              {
+                "pattern": "a spy film",
+                "note": "spy پیش از اسم هم می‌آید: a spy film."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The spy wore dark glasses and a hat.",
+                "fa": "جاسوس عینکِ تیره و کلاه زده بود."
+              },
+              {
+                "en": "My dad loves old spy films.",
+                "fa": "پدرم فیلم‌های جاسوسیِ قدیمی را خیلی دوست دارد."
+              },
+              {
+                "en": "The police caught two spies at the border.",
+                "fa": "پلیس دو جاسوس را در مرز گرفت."
+              }
+            ],
+            "collocations": [
+              "a spy film",
+              "a secret spy"
+            ],
+            "collocationFa": {
+              "a spy film": "فیلمِ جاسوسی",
+              "a secret spy": "جاسوسِ مخفی"
+            },
+            "usage": "spy قابل‌شمارش است. فعلِ spy (جاسوسی کردن) جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "In the film, she works as spy.",
+              "wrongFa": "در فیلم او به‌عنوانِ جاسوس کار می‌کند؛ اما پیش از spy حرفِ تعریف نیامده است.",
+              "right": "In the film, she works as a spy.",
+              "rightFa": "در فیلم او جاسوس است.",
+              "why": "پس از as برای شغل a لازم است: as a spy."
+            },
+            "pronunciation": {
+              "gb": "/spaɪ/",
+              "us": "/spaɪ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ sent a secret message to his country.",
+                "answer": "spy",
+                "accept": [],
+                "fa": "جاسوس یک پیامِ مخفی برای کشورش فرستاد.",
+                "why": "spy کسی است که اطلاعاتِ مخفی جمع می‌کند."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ spy کدام است؟",
+                "options": [
+                  {
+                    "text": "spies",
+                    "ok": true,
+                    "why": "y پس از حرفِ بی‌صدا به ies تبدیل می‌شود."
+                  },
+                  {
+                    "text": "spys",
+                    "ok": false,
+                    "why": "جمعِ درست spies است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او در فیلم یک جاسوس است.",
+                "frame": "He is a ___ in the film.",
+                "answer": "spy",
+                "accept": [],
+                "why": "پس از a اسمِ مفردِ spy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "cop",
+      "levelWordId": "level:A1:0904",
+      "existingEntryIds": [
+        "lex:C1:cop"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0995",
+          "senseId": "lex:C1:cop",
+          "meaningEn": "A police officer (informal)."
+        }
+      ],
+      "entry": {
+        "id": "lex:C1:cop",
+        "headword": "cop",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:C1:cop",
+            "pos": "noun",
+            "gloss": "پلیس (غیررسمی)",
+            "meaning": "مأمورِ پلیس؛ واژه‌ای خودمانی و غیررسمی.",
+            "grammar": [
+              {
+                "pattern": "a cop / cops",
+                "note": "cop قابل‌شمارش است."
+              },
+              {
+                "pattern": "the cops",
+                "note": "the cops یعنی پلیس به‌طورِ کلی: Call the cops!"
+              }
+            ],
+            "examples": [
+              {
+                "en": "A cop stopped the car on the corner.",
+                "fa": "یک پلیس ماشین را سرِ نبش نگه داشت."
+              },
+              {
+                "en": "My cousin wants to be a cop.",
+                "fa": "پسرعمویم می‌خواهد پلیس بشود."
+              },
+              {
+                "en": "The cops arrived very quickly.",
+                "fa": "پلیس‌ها خیلی سریع رسیدند."
+              }
+            ],
+            "collocations": [
+              "call the cops",
+              "a cop car"
+            ],
+            "collocationFa": {
+              "call the cops": "به پلیس زنگ زدن",
+              "a cop car": "ماشینِ پلیس"
+            },
+            "usage": "cop غیررسمی است و بیشتر در انگلیسیِ آمریکایی و فیلم‌ها شنیده می‌شود. در نوشتهٔ رسمی police officer بگویید.",
+            "mistake": {
+              "wrong": "The cops is coming.",
+              "wrongFa": "پلیس‌ها دارد می‌آید؛ اما فعل مفرد آمده است.",
+              "right": "The cops are coming.",
+              "rightFa": "پلیس‌ها دارند می‌آیند.",
+              "why": "the cops جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/kɒp/",
+              "us": "/kɑːp/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Someone took my bike, so I called the ___.",
+                "answer": "cops",
+                "accept": [
+                  "police"
+                ],
+                "fa": "کسی دوچرخه‌ام را برد، پس به پلیس زنگ زدم.",
+                "why": "call the cops یعنی به پلیس زنگ زدن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه رسمی‌تر است؟",
+                "options": [
+                  {
+                    "text": "police officer",
+                    "ok": true,
+                    "why": "police officer واژهٔ رسمی است."
+                  },
+                  {
+                    "text": "cop",
+                    "ok": false,
+                    "why": "cop غیررسمی است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن پلیس خیلی مهربان بود.",
+                "frame": "That ___ was very kind.",
+                "answer": "cop",
+                "accept": [
+                  "police officer",
+                  "policeman",
+                  "policewoman"
+                ],
+                "why": "پس از that اسمِ مفردِ cop می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "shy",
+      "levelWordId": "level:A1:0905",
+      "existingEntryIds": [
+        "lex:B1:shy"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0996",
+          "senseId": "lex:B1:shy",
+          "meaningEn": "Nervous and uncomfortable with other people, especially people you do not know."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:shy",
+        "headword": "shy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:shy",
+            "pos": "adjective",
+            "gloss": "خجالتی",
+            "meaning": "کسی که کنارِ دیگران، به‌خصوص آدم‌های ناآشنا، معذب است و راحت حرف نمی‌زند.",
+            "grammar": [
+              {
+                "pattern": "be shy",
+                "note": "shy صفت است: He is shy."
+              },
+              {
+                "pattern": "a shy + noun",
+                "note": "shy پیش از اسم می‌آید: a shy boy."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Our new classmate is very shy.",
+                "fa": "هم‌کلاسیِ جدیدمان خیلی خجالتی است."
+              },
+              {
+                "en": "The shy girl hid behind her mother.",
+                "fa": "دخترِ خجالتی پشتِ مادرش قایم شد."
+              },
+              {
+                "en": "Don't be shy; come and say hello.",
+                "fa": "خجالت نکش؛ بیا و سلام کن."
+              }
+            ],
+            "collocations": [
+              "a shy smile",
+              "feel shy"
+            ],
+            "collocationFa": {
+              "a shy smile": "لبخندِ خجالتی",
+              "feel shy": "خجالت کشیدن"
+            },
+            "usage": "shy صفت است. اسمش shyness (خجالت) است. برعکسِ آن confident یا outgoing است.",
+            "mistake": {
+              "wrong": "My sister is very shyness.",
+              "wrongFa": "خواهرم خیلی خجالت است؛ اما اسم آمده است.",
+              "right": "My sister is very shy.",
+              "rightFa": "خواهرم خیلی خجالتی است.",
+              "why": "پس از very صفتِ shy می‌آید؛ shyness اسم است."
+            },
+            "pronunciation": {
+              "gb": "/ʃaɪ/",
+              "us": "/ʃaɪ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "He is too ___ to speak in front of the class.",
+                "answer": "shy",
+                "accept": [],
+                "fa": "او بیش از حد خجالتی است که جلوی کلاس حرف بزند.",
+                "why": "too shy to یعنی بیش از حد خجالتی برای انجامِ کاری."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "برعکسِ shy کدام است؟",
+                "options": [
+                  {
+                    "text": "confident",
+                    "ok": true,
+                    "why": "confident یعنی با اعتمادبه‌نفس."
+                  },
+                  {
+                    "text": "quiet",
+                    "ok": false,
+                    "why": "quiet به shy نزدیک است، نه برعکسِ آن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پسرم با آدم‌های جدید خجالتی است.",
+                "frame": "My son is ___ with new people.",
+                "answer": "shy",
+                "accept": [],
+                "why": "پس از is صفتِ shy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "handsome",
+      "levelWordId": "level:A1:0907",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0998",
+          "senseId": "lex:A1:cefrj-handsome",
+          "meaningEn": "Good-looking; attractive (used especially about men)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-handsome",
+        "headword": "handsome",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-handsome",
+            "pos": "adjective",
+            "gloss": "خوش‌قیافه؛ خوش‌تیپ",
+            "meaning": "خوش‌چهره و جذاب؛ بیشتر برای مردها به کار می‌رود.",
+            "grammar": [
+              {
+                "pattern": "be handsome",
+                "note": "handsome صفت است: He is handsome."
+              },
+              {
+                "pattern": "a handsome + noun",
+                "note": "handsome پیش از اسم می‌آید: a handsome man."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The actor is tall and handsome.",
+                "fa": "آن بازیگر قدبلند و خوش‌قیافه است."
+              },
+              {
+                "en": "You look very handsome in that suit.",
+                "fa": "با آن کت‌وشلوار خیلی خوش‌تیپ شده‌ای."
+              },
+              {
+                "en": "Her son is a handsome young man.",
+                "fa": "پسرش مردِ جوانِ خوش‌قیافه‌ای است."
+              }
+            ],
+            "collocations": [
+              "a handsome man",
+              "look handsome"
+            ],
+            "collocationFa": {
+              "a handsome man": "مردِ خوش‌قیافه",
+              "look handsome": "خوش‌تیپ به نظر رسیدن"
+            },
+            "usage": "handsome بیشتر برای مردها و pretty یا beautiful بیشتر برای زن‌ها و بچه‌ها به کار می‌رود.",
+            "mistake": {
+              "wrong": "Your brother is very handsome man.",
+              "wrongFa": "برادرت مردِ خیلی خوش‌قیافه است؛ اما پیش از very حرفِ تعریف نیامده است.",
+              "right": "Your brother is a very handsome man.",
+              "rightFa": "برادرت مردِ خیلی خوش‌قیافه‌ای است.",
+              "why": "man قابل‌شمارش است و پیش از very handsome man حرفِ a لازم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈhænsəm/",
+              "us": "/ˈhænsəm/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The prince in the story was young and ___.",
+                "answer": "handsome",
+                "accept": [
+                  "good-looking"
+                ],
+                "fa": "شاهزادهٔ قصه جوان و خوش‌قیافه بود.",
+                "why": "handsome یعنی خوش‌قیافه، به‌خصوص برای مرد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه هم‌معنای handsome است؟",
+                "options": [
+                  {
+                    "text": "good-looking",
+                    "ok": true,
+                    "why": "good-looking یعنی خوش‌قیافه."
+                  },
+                  {
+                    "text": "hungry",
+                    "ok": false,
+                    "why": "hungry یعنی گرسنه."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پدرت مردِ خوش‌قیافه‌ای است.",
+                "frame": "Your father is a ___ man.",
+                "answer": "handsome",
+                "accept": [
+                  "good-looking"
+                ],
+                "why": "پیش از man صفتِ handsome می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "foreigner",
+      "levelWordId": "level:A1:0908",
+      "existingEntryIds": [
+        "lex:C1:foreigner"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0999",
+          "senseId": "lex:C1:foreigner",
+          "meaningEn": "A person who comes from another country."
+        }
+      ],
+      "entry": {
+        "id": "lex:C1:foreigner",
+        "headword": "foreigner",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:C1:foreigner",
+            "pos": "noun",
+            "gloss": "خارجی؛ اهلِ کشوری دیگر",
+            "meaning": "کسی که اهلِ کشوری دیگر است.",
+            "grammar": [
+              {
+                "pattern": "a foreigner / foreigners",
+                "note": "foreigner قابل‌شمارش است."
+              },
+              {
+                "pattern": "foreign / foreigner",
+                "note": "foreign صفت است (a foreign language) و foreigner اسم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Many foreigners visit Isfahan every spring.",
+                "fa": "هر بهار خارجی‌های زیادی از اصفهان دیدن می‌کنند."
+              },
+              {
+                "en": "He was the only foreigner on the bus.",
+                "fa": "او تنها خارجیِ داخلِ اتوبوس بود."
+              },
+              {
+                "en": "As a foreigner, she found the language hard at first.",
+                "fa": "او که خارجی بود، اول زبان را سخت می‌دید."
+              }
+            ],
+            "collocations": [
+              "a lot of foreigners",
+              "feel like a foreigner"
+            ],
+            "collocationFa": {
+              "a lot of foreigners": "خارجی‌های زیاد",
+              "feel like a foreigner": "احساسِ غریبگی کردن"
+            },
+            "usage": "foreigner گاهی سرد یا غیردوستانه به نظر می‌رسد؛ visitor یا someone from another country مؤدبانه‌تر است.",
+            "mistake": {
+              "wrong": "He is foreigner in this city.",
+              "wrongFa": "او در این شهر خارجی است؛ اما پیش از foreigner حرفِ تعریف نیامده است.",
+              "right": "He is a foreigner in this city.",
+              "rightFa": "او در این شهر یک خارجی است.",
+              "why": "foreigner اسمِ قابل‌شمارش است و a لازم دارد."
+            },
+            "pronunciation": {
+              "gb": "/ˈfɒrənə/",
+              "us": "/ˈfɔːrənər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The waiter spoke English to the ___.",
+                "answer": "foreigner",
+                "accept": [],
+                "fa": "پیشخدمت با آن خارجی انگلیسی حرف زد.",
+                "why": "foreigner کسی است که از کشوری دیگر آمده."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "She speaks a foreign language.",
+                    "ok": true,
+                    "why": "پیش از language صفتِ foreign می‌آید."
+                  },
+                  {
+                    "text": "She speaks a foreigner language.",
+                    "ok": false,
+                    "why": "foreigner اسم است و پیش از language نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من اینجا یک خارجی هستم.",
+                "frame": "I am a ___ here.",
+                "answer": "foreigner",
+                "accept": [],
+                "why": "پس از a اسمِ foreigner می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "pizza",
+      "levelWordId": "level:A1:0910",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1001",
+          "senseId": "lex:A1:cefrj-pizza",
+          "meaningEn": "A flat round bread baked with cheese, tomato and other food on top."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-pizza",
+        "headword": "pizza",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-pizza",
+            "pos": "noun",
+            "gloss": "پیتزا",
+            "meaning": "نانِ گرد و پهنی که با پنیر، گوجه و خوراکی‌های دیگر رویش پخته می‌شود.",
+            "grammar": [
+              {
+                "pattern": "a pizza / pizzas",
+                "note": "یک پیتزای کامل قابل‌شمارش است: a pizza."
+              },
+              {
+                "pattern": "a slice of pizza",
+                "note": "برای یک تکه a slice of pizza می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We ordered a big pizza for the family.",
+                "fa": "یک پیتزای بزرگ برای خانواده سفارش دادیم."
+              },
+              {
+                "en": "Can I have another slice of pizza?",
+                "fa": "می‌توانم یک تکهٔ دیگر پیتزا بردارم؟"
+              },
+              {
+                "en": "This pizza has mushrooms and cheese on it.",
+                "fa": "این پیتزا قارچ و پنیر رویش دارد."
+              }
+            ],
+            "collocations": [
+              "order a pizza",
+              "a slice of pizza"
+            ],
+            "collocationFa": {
+              "order a pizza": "پیتزا سفارش دادن",
+              "a slice of pizza": "یک تکه پیتزا"
+            },
+            "usage": "pizza هم قابل‌شمارش است (a pizza) و هم برای مقدار بدونِ a می‌آید: I love pizza.",
+            "mistake": {
+              "wrong": "Let's order a pizzas tonight.",
+              "wrongFa": "امشب یک پیتزاها سفارش بدهیم؛ اما a با جمع آمده است.",
+              "right": "Let's order a pizza tonight.",
+              "rightFa": "امشب یک پیتزا سفارش بدهیم.",
+              "why": "پس از a اسمِ مفرد می‌آید: a pizza."
+            },
+            "pronunciation": {
+              "gb": "/ˈpiːtsə/",
+              "us": "/ˈpiːtsə/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I'm hungry. Let's get a ___ with extra cheese.",
+                "answer": "pizza",
+                "accept": [],
+                "fa": "گرسنه‌ام. بیا یک پیتزا با پنیرِ اضافه بگیریم.",
+                "why": "pizza غذایی گرد با پنیر و گوجه است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«یک تکه پیتزا» کدام است؟",
+                "options": [
+                  {
+                    "text": "a slice of pizza",
+                    "ok": true,
+                    "why": "a slice of یعنی یک تکه از."
+                  },
+                  {
+                    "text": "a pizzas slice",
+                    "ok": false,
+                    "why": "pizza اینجا جمع بسته نمی‌شود و ترتیب درست نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من پیتزا خیلی دوست دارم.",
+                "frame": "I love ___.",
+                "answer": "pizza",
+                "accept": [],
+                "why": "برای پیتزا به‌طورِ کلی pizza بدونِ a می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "ruler",
+      "levelWordId": "level:A1:0912",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1003",
+          "senseId": "lex:A1:cefrj-ruler",
+          "meaningEn": "A long flat piece of plastic, wood or metal with straight edges, used for measuring and drawing straight lines."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-ruler",
+        "headword": "ruler",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-ruler",
+            "pos": "noun",
+            "gloss": "خط‌کش",
+            "meaning": "تکه‌ای دراز و صاف از پلاستیک، چوب یا فلز با لبه‌های صاف که برای اندازه‌گیری و کشیدنِ خطِ صاف است.",
+            "grammar": [
+              {
+                "pattern": "a ruler / rulers",
+                "note": "ruler قابل‌شمارش است."
+              },
+              {
+                "pattern": "with a ruler",
+                "note": "برای کشیدن یا اندازه گرفتن با خط‌کش with a ruler می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Draw a straight line with your ruler.",
+                "fa": "با خط‌کشت یک خطِ صاف بکش."
+              },
+              {
+                "en": "My ruler is thirty centimetres long.",
+                "fa": "خط‌کشم سی سانتی‌متر است."
+              },
+              {
+                "en": "Can I borrow your ruler for a minute?",
+                "fa": "می‌توانم یک دقیقه خط‌کشت را قرض بگیرم؟"
+              }
+            ],
+            "collocations": [
+              "a plastic ruler",
+              "draw with a ruler"
+            ],
+            "collocationFa": {
+              "a plastic ruler": "خط‌کشِ پلاستیکی",
+              "draw with a ruler": "با خط‌کش کشیدن"
+            },
+            "usage": "در این درس ruler یعنی خط‌کش. ruler به معنای «فرمانروا» هم هست که جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "I need a ruler for draw a straight line.",
+              "wrongFa": "برای کشیدن یک خطِ صاف خط‌کش لازم دارم؛ اما پس از for شکلِ سادهٔ فعل آمده است.",
+              "right": "I need a ruler to draw a straight line.",
+              "rightFa": "برای کشیدنِ یک خطِ صاف خط‌کش لازم دارم.",
+              "why": "برای هدف to + فعل می‌آید: to draw. پس از for شکلِ سادهٔ فعل نمی‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈruːlə/",
+              "us": "/ˈruːlər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Measure the box with a ___.",
+                "answer": "ruler",
+                "accept": [
+                  "tape measure"
+                ],
+                "fa": "جعبه را با خط‌کش اندازه بگیر.",
+                "why": "ruler برای اندازه گرفتن است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "با کدام وسیله خطِ صاف می‌کشیم؟",
+                "options": [
+                  {
+                    "text": "a ruler",
+                    "ok": true,
+                    "why": "ruler یعنی خط‌کش."
+                  },
+                  {
+                    "text": "a rubber",
+                    "ok": false,
+                    "why": "rubber (پاک‌کن) برای پاک کردن است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "خط‌کشم شکست.",
+                "frame": "My ___ broke.",
+                "answer": "ruler",
+                "accept": [],
+                "why": "پس از my اسمِ ruler می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "leaf",
+      "levelWordId": "level:A1:0913",
+      "existingEntryIds": [
+        "lex:B1:leaf"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1004",
+          "senseId": "lex:B1:leaf",
+          "meaningEn": "One of the flat green parts of a plant or tree that grow from its branches or stem."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:leaf",
+        "headword": "leaf",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:leaf",
+            "pos": "noun",
+            "gloss": "برگ",
+            "meaning": "هر یک از بخش‌های پهن و سبزِ گیاه یا درخت که از شاخه یا ساقه می‌رویند.",
+            "grammar": [
+              {
+                "pattern": "a leaf / leaves",
+                "note": "جمعِ leaf بی‌قاعده است: leaves."
+              },
+              {
+                "pattern": "fall / turn",
+                "note": "برگ‌ها fall (می‌ریزند) و در پاییز turn yellow (زرد می‌شوند)."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The leaves turn red and yellow in autumn.",
+                "fa": "برگ‌ها در پاییز سرخ و زرد می‌شوند."
+              },
+              {
+                "en": "A small leaf fell into my tea.",
+                "fa": "یک برگِ کوچک توی چایم افتاد."
+              },
+              {
+                "en": "This plant has big, shiny leaves.",
+                "fa": "این گیاه برگ‌های بزرگ و براق دارد."
+              }
+            ],
+            "collocations": [
+              "green leaves",
+              "fallen leaves"
+            ],
+            "collocationFa": {
+              "green leaves": "برگ‌های سبز",
+              "fallen leaves": "برگ‌های ریخته"
+            },
+            "usage": "leaf قابل‌شمارش است و جمعش leaves است، مثلِ knife → knives.",
+            "mistake": {
+              "wrong": "The leafs on our tree are yellow now.",
+              "wrongFa": "برگ‌های درختمان حالا زرد هستند؛ اما جمع درست نیست.",
+              "right": "The leaves on our tree are yellow now.",
+              "rightFa": "برگ‌های درختمان حالا زردند.",
+              "why": "جمعِ leaf بی‌قاعده است: leaves."
+            },
+            "pronunciation": {
+              "gb": "/liːf/",
+              "us": "/liːf/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "In winter, this tree has no ___.",
+                "answer": "leaves",
+                "accept": [],
+                "fa": "در زمستان این درخت هیچ برگی ندارد.",
+                "why": "پس از no اینجا جمعِ leaves می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ leaf کدام است؟",
+                "options": [
+                  {
+                    "text": "leaves",
+                    "ok": true,
+                    "why": "f به ves تبدیل می‌شود."
+                  },
+                  {
+                    "text": "leafs",
+                    "ok": false,
+                    "why": "اسمِ leaf جمعِ بی‌قاعده دارد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک برگ روی ماشین است.",
+                "frame": "There is a ___ on the car.",
+                "answer": "leaf",
+                "accept": [],
+                "why": "پس از a اسمِ مفردِ leaf می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "monkey",
+      "levelWordId": "level:A1:0914",
+      "existingEntryIds": [
+        "lex:A2:monkey"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1005",
+          "senseId": "lex:A2:monkey",
+          "meaningEn": "An animal with a long tail that lives in trees in hot countries and is good at climbing."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:monkey",
+        "headword": "monkey",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:monkey",
+            "pos": "noun",
+            "gloss": "میمون",
+            "meaning": "حیوانی با دمِ دراز که در کشورهای گرم روی درخت زندگی می‌کند و خوب از درخت بالا می‌رود.",
+            "grammar": [
+              {
+                "pattern": "a monkey / monkeys",
+                "note": "جمعِ monkey با s ساخته می‌شود: monkeys."
+              },
+              {
+                "pattern": "like a monkey",
+                "note": "برای شباهت like a monkey می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The monkey ate a banana in the tree.",
+                "fa": "میمون روی درخت یک موز خورد."
+              },
+              {
+                "en": "Monkeys are very good at climbing.",
+                "fa": "میمون‌ها در بالا رفتن خیلی ماهرند."
+              },
+              {
+                "en": "My son climbs everything like a little monkey.",
+                "fa": "پسرم مثلِ یک میمونِ کوچک از همه‌چیز بالا می‌رود."
+              }
+            ],
+            "collocations": [
+              "a baby monkey",
+              "climb like a monkey"
+            ],
+            "collocationFa": {
+              "a baby monkey": "بچه‌میمون",
+              "climb like a monkey": "مثلِ میمون بالا رفتن"
+            },
+            "usage": "monkey قابل‌شمارش است. چون پیش از y حرفِ صدادار (e) آمده، جمعش monkeys است، نه monkies.",
+            "mistake": {
+              "wrong": "We saw three monkies at the zoo.",
+              "wrongFa": "در باغ‌وحش سه میمون دیدیم؛ اما جمع درست نیست.",
+              "right": "We saw three monkeys at the zoo.",
+              "rightFa": "در باغ‌وحش سه میمون دیدیم.",
+              "why": "وقتی پیش از y حرفِ صدادار بیاید، فقط s اضافه می‌شود: monkeys."
+            },
+            "pronunciation": {
+              "gb": "/ˈmʌŋki/",
+              "us": "/ˈmʌŋki/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ jumped from branch to branch.",
+                "answer": "monkey",
+                "accept": [],
+                "fa": "میمون از شاخه‌ای به شاخهٔ دیگر پرید.",
+                "why": "monkey حیوانی است که روی درخت می‌پرد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ monkey کدام است؟",
+                "options": [
+                  {
+                    "text": "monkeys",
+                    "ok": true,
+                    "why": "پس از e و y فقط s می‌آید."
+                  },
+                  {
+                    "text": "monkies",
+                    "ok": false,
+                    "why": "جمعِ درست monkeys است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "میمون‌ها دارند از درخت بالا می‌روند.",
+                "frame": "The ___ are climbing the tree.",
+                "answer": "monkeys",
+                "accept": [],
+                "why": "فعلِ are نشان می‌دهد فاعل جمع است: monkeys."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "surf",
+      "levelWordId": "level:A1:0916",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1007",
+          "senseId": "lex:A1:cefrj-surf",
+          "meaningEn": "The large waves that break on the beach, and the white foam they make."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-surf",
+        "headword": "surf",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-surf",
+            "pos": "noun",
+            "gloss": "موج‌های ساحلی؛ کفِ موج",
+            "meaning": "موج‌های بزرگی که به ساحل می‌خورند و کفِ سفیدی که درست می‌کنند.",
+            "grammar": [
+              {
+                "pattern": "the surf",
+                "note": "surf غیرقابل‌شمارش است و معمولاً با the می‌آید: the surf."
+              },
+              {
+                "pattern": "in the surf",
+                "note": "برای بازی یا شنا در موج‌ها in the surf می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The children played in the surf all afternoon.",
+                "fa": "بچه‌ها تمامِ بعدازظهر در موج‌های ساحل بازی کردند."
+              },
+              {
+                "en": "The surf is too big for swimming today.",
+                "fa": "امروز موج‌ها برای شنا بیش از حد بزرگ‌اند."
+              },
+              {
+                "en": "We listened to the sound of the surf at night.",
+                "fa": "شب به صدای موج‌های ساحل گوش دادیم."
+              }
+            ],
+            "collocations": [
+              "in the surf",
+              "the sound of the surf"
+            ],
+            "collocationFa": {
+              "in the surf": "در موج‌های ساحل",
+              "the sound of the surf": "صدای موج‌ها"
+            },
+            "usage": "surf اینجا اسم است. فعلِ surf (موج‌سواری کردن) و surfing جدا آموزش داده می‌شوند.",
+            "mistake": {
+              "wrong": "The surfs are very big this morning.",
+              "wrongFa": "موج‌ها امروز صبح خیلی بزرگ‌اند؛ اما surf جمع بسته شده است.",
+              "right": "The surf is very big this morning.",
+              "rightFa": "امروز صبح موج‌ها خیلی بزرگ‌اند.",
+              "why": "surf غیرقابل‌شمارش است؛ جمع بسته نمی‌شود و فعلِ مفرد می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/sɜːf/",
+              "us": "/sɝːf/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The dog ran into the ___ to get the ball.",
+                "answer": "surf",
+                "accept": [
+                  "waves"
+                ],
+                "fa": "سگ برای آوردنِ توپ به داخلِ موج‌ها دوید.",
+                "why": "the surf موج‌های کنارِ ساحل است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "The surf is high today.",
+                    "ok": true,
+                    "why": "surf غیرقابل‌شمارش است و is می‌گیرد."
+                  },
+                  {
+                    "text": "The surfs are high today.",
+                    "ok": false,
+                    "why": "surf جمع بسته نمی‌شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "صدای موج‌ها را می‌شنوم.",
+                "frame": "I can hear the ___.",
+                "answer": "surf",
+                "accept": [
+                  "waves"
+                ],
+                "why": "the surf یعنی موج‌های ساحل."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "picnic",
+      "levelWordId": "level:A1:0917",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1008",
+          "senseId": "lex:A1:cefrj-picnic",
+          "meaningEn": "A meal that you take with you and eat outside, for example in a park."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-picnic",
+        "headword": "picnic",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-picnic",
+            "pos": "noun",
+            "gloss": "پیک‌نیک",
+            "meaning": "غذایی که با خود می‌بریم و بیرون، مثلاً در پارک، می‌خوریم.",
+            "grammar": [
+              {
+                "pattern": "have a picnic",
+                "note": "برای پیک‌نیک کردن have a picnic می‌گوییم."
+              },
+              {
+                "pattern": "go for / on a picnic",
+                "note": "برای رفتن به پیک‌نیک go for a picnic یا go on a picnic می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We had a picnic under a big tree.",
+                "fa": "زیرِ یک درختِ بزرگ پیک‌نیک کردیم."
+              },
+              {
+                "en": "On Friday, let's go for a picnic in the mountains.",
+                "fa": "جمعه بیا برای پیک‌نیک به کوه برویم."
+              },
+              {
+                "en": "Mum packed sandwiches and fruit for the picnic.",
+                "fa": "مامان برای پیک‌نیک ساندویچ و میوه آماده کرد."
+              }
+            ],
+            "collocations": [
+              "have a picnic",
+              "a picnic basket"
+            ],
+            "collocationFa": {
+              "have a picnic": "پیک‌نیک کردن",
+              "a picnic basket": "سبدِ پیک‌نیک"
+            },
+            "usage": "picnic قابل‌شمارش است. در ایران سیزده‌به‌در روزِ پیک‌نیک است.",
+            "mistake": {
+              "wrong": "We had picnic by the river.",
+              "wrongFa": "کنارِ رودخانه پیک‌نیک کردیم؛ اما پیش از picnic حرفِ تعریف نیامده است.",
+              "right": "We had a picnic by the river.",
+              "rightFa": "کنارِ رودخانه پیک‌نیک کردیم.",
+              "why": "picnic قابل‌شمارش است: have a picnic."
+            },
+            "pronunciation": {
+              "gb": "/ˈpɪknɪk/",
+              "us": "/ˈpɪknɪk/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It's a sunny day. Let's take some food and have a ___ in the park.",
+                "answer": "picnic",
+                "accept": [],
+                "fa": "روزِ آفتابی است. بیا غذا ببریم و در پارک پیک‌نیک کنیم.",
+                "why": "have a picnic یعنی پیک‌نیک کردن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«پیک‌نیک کردیم.» We ___ a picnic.",
+                "options": [
+                  {
+                    "text": "had",
+                    "ok": true,
+                    "why": "have a picnic درست است."
+                  },
+                  {
+                    "text": "went",
+                    "ok": false,
+                    "why": "go پیش از a picnic به on یا for نیاز دارد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سبدِ پیک‌نیک را فراموش نکن.",
+                "frame": "Don't forget the ___ basket.",
+                "answer": "picnic",
+                "accept": [],
+                "why": "picnic basket یعنی سبدِ پیک‌نیک."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "bee",
+      "levelWordId": "level:A1:0918",
+      "existingEntryIds": [
+        "lex:B1:bee"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1009",
+          "senseId": "lex:B1:bee",
+          "meaningEn": "A flying insect with black and yellow stripes that makes honey and can sting."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:bee",
+        "headword": "bee",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:bee",
+            "pos": "noun",
+            "gloss": "زنبور (زنبورِ عسل)",
+            "meaning": "حشرهٔ پرنده‌ای با راه‌راهِ سیاه و زرد که عسل درست می‌کند و می‌تواند نیش بزند.",
+            "grammar": [
+              {
+                "pattern": "a bee / bees",
+                "note": "bee قابل‌شمارش است."
+              },
+              {
+                "pattern": "sting / stung",
+                "note": "زنبور sting می‌کند؛ گذشته‌اش stung است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "A bee was buzzing around my head in the garden.",
+                "fa": "در باغ یک زنبور دورِ سرم وزوز می‌کرد."
+              },
+              {
+                "en": "Bees make honey.",
+                "fa": "زنبورها عسل درست می‌کنند."
+              },
+              {
+                "en": "My little brother is afraid of bees.",
+                "fa": "برادرِ کوچکم از زنبور می‌ترسد."
+              }
+            ],
+            "collocations": [
+              "a bee sting",
+              "busy as a bee"
+            ],
+            "collocationFa": {
+              "a bee sting": "نیشِ زنبور",
+              "busy as a bee": "سرگرمِ کار مثلِ زنبور"
+            },
+            "usage": "bee قابل‌شمارش است. زنبوری که عسل درست نمی‌کند و زردتر است wasp نام دارد.",
+            "mistake": {
+              "wrong": "A bee stinged me on the arm.",
+              "wrongFa": "یک زنبور دستم را نیش زد؛ اما گذشتهٔ sting درست نیست.",
+              "right": "A bee stung me on the arm.",
+              "rightFa": "یک زنبور دستم را نیش زد.",
+              "why": "sting فعلِ بی‌قاعده است: sting → stung."
+            },
+            "pronunciation": {
+              "gb": "/biː/",
+              "us": "/biː/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ flew from flower to flower.",
+                "answer": "bee",
+                "accept": [],
+                "fa": "زنبور از گلی به گلِ دیگر پرید.",
+                "why": "bee حشره‌ای است که روی گل‌ها می‌نشیند."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام حشره عسل درست می‌کند؟",
+                "options": [
+                  {
+                    "text": "a bee",
+                    "ok": true,
+                    "why": "bee زنبورِ عسل است."
+                  },
+                  {
+                    "text": "a fly",
+                    "ok": false,
+                    "why": "fly (مگس) عسل درست نمی‌کند."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "زنبورها روی گل‌ها هستند.",
+                "frame": "The ___ are on the flowers.",
+                "answer": "bees",
+                "accept": [],
+                "why": "فعلِ are نشان می‌دهد فاعل جمع است: bees."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "awake",
+      "levelWordId": "level:A1:0919",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1010",
+          "senseId": "lex:A1:cefrj-awake",
+          "meaningEn": "Not sleeping."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-awake",
+        "headword": "awake",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-awake",
+            "pos": "adjective",
+            "gloss": "بیدار",
+            "meaning": "در حالِ خواب نبودن؛ بیدار.",
+            "grammar": [
+              {
+                "pattern": "be awake",
+                "note": "awake معمولاً پس از فعل می‌آید: I am awake."
+              },
+              {
+                "pattern": "stay awake",
+                "note": "برای بیدار ماندن stay awake می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Are you still awake?",
+                "fa": "هنوز بیداری؟"
+              },
+              {
+                "en": "I drank coffee to stay awake.",
+                "fa": "قهوه خوردم تا بیدار بمانم."
+              },
+              {
+                "en": "The baby is awake and smiling.",
+                "fa": "بچه بیدار است و لبخند می‌زند."
+              }
+            ],
+            "collocations": [
+              "stay awake",
+              "wide awake"
+            ],
+            "collocationFa": {
+              "stay awake": "بیدار ماندن",
+              "wide awake": "کاملاً بیدار"
+            },
+            "usage": "awake برعکسِ asleep است. wake up فعل است: I wake up at seven.",
+            "mistake": {
+              "wrong": "Are you wake?",
+              "wrongFa": "بیدار هستی؟ اما wake فعل است و صفت نیست.",
+              "right": "Are you awake?",
+              "rightFa": "بیداری؟",
+              "why": "پس از are صفتِ awake می‌آید؛ wake فعل است."
+            },
+            "pronunciation": {
+              "gb": "/əˈweɪk/",
+              "us": "/əˈweɪk/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It's midnight, but the children are still ___.",
+                "answer": "awake",
+                "accept": [
+                  "up"
+                ],
+                "fa": "نیمه‌شب است، اما بچه‌ها هنوز بیدارند.",
+                "why": "awake یعنی بیدار."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "برعکسِ awake کدام است؟",
+                "options": [
+                  {
+                    "text": "asleep",
+                    "ok": true,
+                    "why": "asleep یعنی خواب."
+                  },
+                  {
+                    "text": "alone",
+                    "ok": false,
+                    "why": "alone یعنی تنها."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دیشب تا ساعتِ دو بیدار بودم.",
+                "frame": "Last night I was ___ until two.",
+                "answer": "awake",
+                "accept": [
+                  "up"
+                ],
+                "why": "پس از was صفتِ awake می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "headache",
+      "levelWordId": "level:A1:0921",
+      "existingEntryIds": [
+        "lex:A2:headache"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1012",
+          "senseId": "lex:A2:headache",
+          "meaningEn": "A pain in your head."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:headache",
+        "headword": "headache",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:headache",
+            "pos": "noun",
+            "gloss": "سردرد",
+            "meaning": "دردی در سر.",
+            "grammar": [
+              {
+                "pattern": "have a headache",
+                "note": "برای سردرد داشتن have a headache می‌گوییم."
+              },
+              {
+                "pattern": "a bad headache",
+                "note": "برای سردردِ شدید a bad headache می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I have a headache, so I'm going to bed early.",
+                "fa": "سرم درد می‌کند، پس زود می‌خوابم."
+              },
+              {
+                "en": "Loud music gives me a headache.",
+                "fa": "موسیقیِ بلند سرم را به درد می‌آورد."
+              },
+              {
+                "en": "She took a pill for her headache.",
+                "fa": "او برای سردردش یک قرص خورد."
+              }
+            ],
+            "collocations": [
+              "have a headache",
+              "a terrible headache"
+            ],
+            "collocationFa": {
+              "have a headache": "سردرد داشتن",
+              "a terrible headache": "سردردِ وحشتناک"
+            },
+            "usage": "headache قابل‌شمارش است و با a می‌آید. دل‌درد stomach ache و دندان‌درد toothache است.",
+            "mistake": {
+              "wrong": "I have headache today.",
+              "wrongFa": "امروز سردرد دارم؛ اما پیش از headache حرفِ تعریف نیامده است.",
+              "right": "I have a headache today.",
+              "rightFa": "امروز سرم درد می‌کند.",
+              "why": "در انگلیسیِ معیار headache با a می‌آید: have a headache."
+            },
+            "pronunciation": {
+              "gb": "/ˈhedeɪk/",
+              "us": "/ˈhedeɪk/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Too much screen time gives me a ___.",
+                "answer": "headache",
+                "accept": [],
+                "fa": "نگاه کردنِ زیاد به صفحه سرم را به درد می‌آورد.",
+                "why": "give someone a headache یعنی سرِ کسی را به درد آوردن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«سرم درد می‌کند.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "I have a headache.",
+                    "ok": true,
+                    "why": "have a headache یعنی سردرد داشتن."
+                  },
+                  {
+                    "text": "I am headache.",
+                    "ok": false,
+                    "why": "با be نمی‌گوییم؛ have a headache درست است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سردردِ بدی دارم.",
+                "frame": "I have a bad ___.",
+                "answer": "headache",
+                "accept": [],
+                "why": "پس از a bad اسمِ headache می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "cute",
+      "levelWordId": "level:A1:0922",
+      "existingEntryIds": [
+        "lex:B2x:cute"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1013",
+          "senseId": "lex:B2x:cute",
+          "meaningEn": "Pretty and attractive, especially in a way that makes you want to look after it."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:cute",
+        "headword": "cute",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:cute",
+            "pos": "adjective",
+            "gloss": "بامزه؛ ناز",
+            "meaning": "زیبا و دوست‌داشتنی، به‌خصوص طوری که دلت بخواهد از آن مراقبت کنی.",
+            "grammar": [
+              {
+                "pattern": "so cute",
+                "note": "برای تأکید so cute یا really cute می‌گوییم."
+              },
+              {
+                "pattern": "a cute + noun",
+                "note": "cute پیش از اسم می‌آید: a cute puppy."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Look at that cute little kitten!",
+                "fa": "آن بچه‌گربهٔ نازِ کوچولو را ببین!"
+              },
+              {
+                "en": "The baby looks so cute in her new hat.",
+                "fa": "بچه با کلاهِ جدیدش خیلی بامزه شده است."
+              },
+              {
+                "en": "He drew a cute picture of a bear.",
+                "fa": "او یک نقاشیِ بامزه از یک خرس کشید."
+              }
+            ],
+            "collocations": [
+              "a cute puppy",
+              "look cute"
+            ],
+            "collocationFa": {
+              "a cute puppy": "تولهٔ ناز",
+              "look cute": "بامزه به نظر رسیدن"
+            },
+            "usage": "cute غیررسمی است و بیشتر برای بچه‌ها، حیوان‌های کوچک و چیزهای کوچک به کار می‌رود.",
+            "mistake": {
+              "wrong": "The baby is very cutely.",
+              "wrongFa": "بچه خیلی به‌طورِ بامزه است؛ اما قید آمده است.",
+              "right": "The baby is very cute.",
+              "rightFa": "بچه خیلی ناز است.",
+              "why": "پس از is صفتِ cute می‌آید؛ cutely قید است."
+            },
+            "pronunciation": {
+              "gb": "/kjuːt/",
+              "us": "/kjuːt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "What a ___ puppy! Can I hold it?",
+                "answer": "cute",
+                "accept": [
+                  "sweet"
+                ],
+                "fa": "چه تولهٔ نازی! می‌توانم بغلش کنم؟",
+                "why": "cute یعنی ناز و بامزه."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه هم‌معنای cute است؟",
+                "options": [
+                  {
+                    "text": "sweet",
+                    "ok": true,
+                    "why": "sweet در این معنا یعنی ناز و دوست‌داشتنی."
+                  },
+                  {
+                    "text": "angry",
+                    "ok": false,
+                    "why": "angry یعنی عصبانی."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بچه‌گربه‌ات خیلی ناز است.",
+                "frame": "Your kitten is so ___.",
+                "answer": "cute",
+                "accept": [
+                  "sweet"
+                ],
+                "why": "پس از so صفتِ cute می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "super",
+      "levelWordId": "level:A1:0923",
+      "existingEntryIds": [
+        "lex:B2x:super"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1014",
+          "senseId": "lex:B2x:super",
+          "meaningEn": "Very good; excellent (informal)."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:super",
+        "headword": "super",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:super",
+            "pos": "adjective",
+            "gloss": "عالی؛ فوق‌العاده (غیررسمی)",
+            "meaning": "خیلی خوب؛ عالی؛ واژه‌ای خودمانی.",
+            "grammar": [
+              {
+                "pattern": "a super + noun",
+                "note": "super پیش از اسم می‌آید: a super idea."
+              },
+              {
+                "pattern": "be super",
+                "note": "super پس از فعل هم می‌آید: The party was super."
+              }
+            ],
+            "examples": [
+              {
+                "en": "That's a super idea!",
+                "fa": "فکرِ فوق‌العاده‌ای است!"
+              },
+              {
+                "en": "We had a super time at the beach.",
+                "fa": "در ساحل خیلی خوش گذشت."
+              },
+              {
+                "en": "Your drawing is super.",
+                "fa": "نقاشی‌ات عالی است."
+              }
+            ],
+            "collocations": [
+              "a super idea",
+              "a super time"
+            ],
+            "collocationFa": {
+              "a super idea": "فکرِ عالی",
+              "a super time": "وقتِ خیلی خوش"
+            },
+            "usage": "super غیررسمی است؛ در نوشتهٔ رسمی excellent یا very good بگویید.",
+            "mistake": {
+              "wrong": "We had super time at the party.",
+              "wrongFa": "در مهمانی وقتِ عالی داشتیم؛ اما پیش از super time حرفِ تعریف نیامده است.",
+              "right": "We had a super time at the party.",
+              "rightFa": "در مهمانی خیلی خوش گذشت.",
+              "why": "have a good/super time همیشه با a می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈsuːpə/",
+              "us": "/ˈsuːpər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Thank you for the gift. It's ___!",
+                "answer": "super",
+                "accept": [
+                  "great",
+                  "wonderful",
+                  "excellent",
+                  "amazing"
+                ],
+                "fa": "ممنون بابتِ هدیه. عالی است!",
+                "why": "super یعنی عالی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه رسمی‌تر از super است؟",
+                "options": [
+                  {
+                    "text": "excellent",
+                    "ok": true,
+                    "why": "excellent رسمی‌تر است."
+                  },
+                  {
+                    "text": "cool",
+                    "ok": false,
+                    "why": "cool هم غیررسمی است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "فیلم عالی بود!",
+                "frame": "The film was ___!",
+                "answer": "super",
+                "accept": [
+                  "great",
+                  "excellent",
+                  "wonderful",
+                  "amazing"
+                ],
+                "why": "پس از was صفتِ super می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "doll",
+      "levelWordId": "level:A1:0924",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1015",
+          "senseId": "lex:A1:cefrj-doll",
+          "meaningEn": "A toy in the shape of a small person or baby."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-doll",
+        "headword": "doll",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-doll",
+            "pos": "noun",
+            "gloss": "عروسک",
+            "meaning": "اسباب‌بازی‌ای به شکلِ آدم یا نوزادِ کوچک.",
+            "grammar": [
+              {
+                "pattern": "a doll / dolls",
+                "note": "doll قابل‌شمارش است."
+              },
+              {
+                "pattern": "play with dolls",
+                "note": "برای بازی با عروسک play with dolls می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My niece plays with her dolls every day.",
+                "fa": "خواهرزاده‌ام هر روز با عروسک‌هایش بازی می‌کند."
+              },
+              {
+                "en": "The doll has long brown hair and a red dress.",
+                "fa": "عروسک موی بلندِ قهوه‌ای و لباسِ قرمز دارد."
+              },
+              {
+                "en": "Grandma made a doll from old cloth.",
+                "fa": "مادربزرگ از پارچهٔ کهنه یک عروسک درست کرد."
+              }
+            ],
+            "collocations": [
+              "play with a doll",
+              "a rag doll"
+            ],
+            "collocationFa": {
+              "play with a doll": "با عروسک بازی کردن",
+              "a rag doll": "عروسکِ پارچه‌ای"
+            },
+            "usage": "doll به عروسک‌هایی به شکلِ آدم گفته می‌شود. عروسکِ پشمالوی حیوانی soft toy یا teddy bear است.",
+            "mistake": {
+              "wrong": "She has five doll on her bed.",
+              "wrongFa": "او پنج عروسک روی تختش دارد؛ اما اسم باید جمع باشد.",
+              "right": "She has five dolls on her bed.",
+              "rightFa": "او پنج عروسک روی تختش دارد.",
+              "why": "پس از five اسمِ doll جمع می‌شود: dolls."
+            },
+            "pronunciation": {
+              "gb": "/dɒl/",
+              "us": "/dɑːl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "For her birthday, my daughter got a ___ with blue eyes.",
+                "answer": "doll",
+                "accept": [],
+                "fa": "دخترم برای تولدش یک عروسک با چشم‌های آبی گرفت.",
+                "why": "doll اسباب‌بازی‌ای به شکلِ آدم است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«با عروسک‌هایش بازی می‌کند.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "She plays with her dolls.",
+                    "ok": true,
+                    "why": "play with یعنی با چیزی بازی کردن."
+                  },
+                  {
+                    "text": "She plays her dolls.",
+                    "ok": false,
+                    "why": "برای بازی با اسباب‌بازی with لازم است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این عروسک خیلی قدیمی است.",
+                "frame": "This ___ is very old.",
+                "answer": "doll",
+                "accept": [],
+                "why": "پس از this اسمِ مفردِ doll می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "cartoon",
+      "levelWordId": "level:A1:0925",
+      "existingEntryIds": [
+        "lex:A2:cartoon"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1016",
+          "senseId": "lex:A2:cartoon",
+          "meaningEn": "A film or TV programme made with drawings instead of real people; also a funny drawing in a newspaper or magazine."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:cartoon",
+        "headword": "cartoon",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:cartoon",
+            "pos": "noun",
+            "gloss": "کارتون؛ کاریکاتور",
+            "meaning": "فیلم یا برنامهٔ تلویزیونی‌ای که با نقاشی ساخته شده، نه با آدم‌های واقعی؛ و همچنین نقاشیِ خنده‌دار در روزنامه یا مجله.",
+            "grammar": [
+              {
+                "pattern": "watch cartoons",
+                "note": "برای تماشای کارتون watch cartoons می‌گوییم."
+              },
+              {
+                "pattern": "a cartoon + noun",
+                "note": "cartoon پیش از اسم هم می‌آید: a cartoon character."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My son watches cartoons on Saturday morning.",
+                "fa": "پسرم شنبه صبح کارتون تماشا می‌کند."
+              },
+              {
+                "en": "Tom and Jerry is a very old cartoon.",
+                "fa": "تام و جری کارتونِ خیلی قدیمی‌ای است."
+              },
+              {
+                "en": "There's a funny cartoon on the back page of the newspaper.",
+                "fa": "در صفحهٔ آخرِ روزنامه یک کاریکاتورِ خنده‌دار هست."
+              }
+            ],
+            "collocations": [
+              "watch cartoons",
+              "a cartoon character"
+            ],
+            "collocationFa": {
+              "watch cartoons": "کارتون تماشا کردن",
+              "a cartoon character": "شخصیتِ کارتونی"
+            },
+            "usage": "cartoon قابل‌شمارش است. برای فیلم‌های کارتونیِ بلند animated film یا animation هم می‌گویند.",
+            "mistake": {
+              "wrong": "There is a funny cartoons on TV.",
+              "wrongFa": "یک کارتون‌های خنده‌دار در تلویزیون هست؛ اما a با جمع آمده است.",
+              "right": "There is a funny cartoon on TV.",
+              "rightFa": "یک کارتونِ خنده‌دار در تلویزیون پخش می‌شود.",
+              "why": "پس از a اسمِ مفرد می‌آید: a cartoon."
+            },
+            "pronunciation": {
+              "gb": "/kɑːˈtuːn/",
+              "us": "/kɑːrˈtuːn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Mickey Mouse is a famous ___ character.",
+                "answer": "cartoon",
+                "accept": [],
+                "fa": "میکی‌موس یک شخصیتِ کارتونیِ معروف است.",
+                "why": "cartoon character یعنی شخصیتِ کارتونی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«کارتون تماشا می‌کنند.» They ___ cartoons.",
+                "options": [
+                  {
+                    "text": "watch",
+                    "ok": true,
+                    "why": "برای تلویزیون و فیلم watch می‌آید."
+                  },
+                  {
+                    "text": "look",
+                    "ok": false,
+                    "why": "look بدونِ at مفعول نمی‌گیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بچه‌ها کارتون دوست دارند.",
+                "frame": "Children love ___.",
+                "answer": "cartoons",
+                "accept": [],
+                "why": "به‌طورِ کلی جمعِ cartoons می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}

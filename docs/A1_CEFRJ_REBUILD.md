@@ -204,9 +204,19 @@ context, dropped a `write on your notebook` distractor (writing on the cover is
 valid), and widened `cloth` to cover a cleaning or table cloth. Codex review
 returned for PR #220: it widened `clever` to clever ideas and plans, and replaced
 an example that presented height as a basketball requirement, since examples
-must not teach false claims. The eleven
-batches total **220/338 drafted, 118 still to write**, with 669 bilingual
-examples and 669 checks.
+must not teach false claims. PR #220 merged it as
+`9208172eb4d43d09374e26487524a84a0ef9b53c`.
+
+`lessons-new-221-240.json` continues with ghost, beef, spy, cop, shy, handsome,
+foreigner, pizza, ruler, leaf, monkey, surf, picnic, bee, awake, headache, cute,
+super, doll and cartoon. Self-review replaced distractors with a valid reading
+(*believe on*, *do a picnic*, *I am a headache*, *plays by a doll*) and a
+disputed *forget … at home* mistake. Codex review of PR #221 found accept lists
+that marked broader or unrelated words correct (*little* for cute, *visitor* and
+*tourist* for foreigner, *toy* for doll). The same rule removed *plane* for jet,
+*book* for notebook and *white* for blank from lessons 201–220, and *water*,
+*sea*, *lovely* and *perfect* from lessons 221–240. The twelve batches total **240/338
+drafted, 98 still to write**, with 729 bilingual examples and 729 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
@@ -270,7 +280,10 @@ entry and gets a new ID. The eleventh batch keeps compatible entries at A2 to
 B2+ (for example `pet`, `jet`, `cloth`, `bat`, `notebook` and `lonely`; `bat`
 is taught as the sports bat). `zoo`, `rabbit`, `corn`, `sunny` and the
 slash headword `airplane/aeroplane` (`lex:A1:cefrj-airplane`) have no entry and
-get new IDs. Source-level A1 grading does not certify
+get new IDs. The twelfth batch keeps compatible noun and adjective entries at A2
+to C1 (for example `ghost`, `spy`, `cop`, `foreigner`, `leaf`, `cute` and
+`super`); `handsome`, `pizza`, `ruler` (the measuring tool), `surf` (the waves),
+`picnic`, `awake` and `doll` get new IDs. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
