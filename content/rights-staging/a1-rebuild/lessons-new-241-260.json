@@ -811,7 +811,7 @@
               "a young sailor": "ملوانِ جوان",
               "a sailor's hat": "کلاهِ ملوانی"
             },
-            "usage": "sailor با or نوشته می‌شود، نه er. کاپیتانِ کشتی captain است.",
+            "usage": "ملوان sailor با or نوشته می‌شود. کاپیتانِ کشتی captain است.",
             "mistake": {
               "wrong": "He works as sailor on a big ship.",
               "wrongFa": "او به‌عنوانِ ملوان روی یک کشتیِ بزرگ کار می‌کند؛ اما پیش از sailor حرفِ تعریف نیامده است.",
@@ -836,17 +836,17 @@
               {
                 "type": "choice",
                 "id": "q1",
-                "prompt": "املای درست کدام است؟",
+                "prompt": "«ملوان» در انگلیسی چگونه نوشته می‌شود؟",
                 "options": [
                   {
                     "text": "sailor",
                     "ok": true,
-                    "why": "این واژه با or نوشته می‌شود."
+                    "why": "ملوان sailor با or نوشته می‌شود."
                   },
                   {
-                    "text": "sailer",
+                    "text": "sailar",
                     "ok": false,
-                    "why": "املای درست sailor است."
+                    "why": "چنین واژه‌ای در انگلیسی نیست؛ املای درست sailor است."
                   }
                 ]
               },

@@ -223,7 +223,9 @@ elementary, towel, prince, sailor, pardon, rude, couch, bucket, sunshine,
 butterfly, underline, tiger, cookie, classmate, biscuit, garbage and turkey.
 Self-review replaced two mistake pairs with a valid reading (*sleeping in the
 sofa*, *a bucket with water*) and dropped *light* for sunshine and *friend* for
-classmate from the accept lists. The thirteen batches total **260/338 drafted,
+classmate from the accept lists. Codex review replaced a spelling distractor,
+*sailer*, that is a real word (a sailing vessel) with a non-word; spelling
+distractors must not be real words. The thirteen batches total **260/338 drafted,
 78 still to write**, with 789 bilingual examples and 789 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
