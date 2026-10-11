@@ -326,9 +326,9 @@
             "usage": "در فارسی «دارو خوردن» می‌گوییم، اما در انگلیسی take medicine رایج است. medicine به معنای «علمِ پزشکی» هم هست که جدا آموزش داده می‌شود.",
             "mistake": {
               "wrong": "She has took her medicine.",
-              "wrongFa": "او داروی‌اش را خورده است؛ اما شکلِ فعل درست نیست.",
+              "wrongFa": "او دارویش را خورده است؛ اما شکلِ فعل درست نیست.",
               "right": "She has taken her medicine.",
-              "rightFa": "او داروی‌اش را خورده است.",
+              "rightFa": "او دارویش را خورده است.",
               "why": "پس از has شکلِ سومِ take، یعنی taken، می‌آید."
             },
             "pronunciation": {
@@ -358,7 +358,7 @@
                   {
                     "text": "do medicine",
                     "ok": false,
-                    "why": "با medicine فعلِ do به کار نمی‌رود."
+                    "why": "do medicine در بریتانیا یعنی «پزشکی خواندن»، نه دارو خوردن."
                   }
                 ]
               },
@@ -368,7 +368,9 @@
                 "prompt": "داروی سرفه در کمد است.",
                 "frame": "The cough ___ is in the cupboard.",
                 "answer": "medicine",
-                "accept": [],
+                "accept": [
+                  "syrup"
+                ],
                 "why": "cough medicine یعنی داروی سرفه."
               }
             ]
@@ -608,7 +610,9 @@
                 "prompt": "بوی قهوه را دوست دارم.",
                 "frame": "I like the ___ of coffee.",
                 "answer": "smell",
-                "accept": [],
+                "accept": [
+                  "scent"
+                ],
                 "why": "the smell of یعنی بوی چیزی."
               }
             ]
