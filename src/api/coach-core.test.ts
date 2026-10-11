@@ -23,6 +23,10 @@ test("requests are bounded and validated", () => {
   assert.equal(coachRequest.safeParse({ task: "sentence", senses: ["lex:A1:bring"], text: "x".repeat(301), lang: "fa" }).success, false);
   assert.equal(coachRequest.safeParse({ task: "sentence", senses: ["javascript:alert(1)"], text: "hi", lang: "fa" }).success, false);
   assert.equal(coachRequest.safeParse({ task: "sentence", senses: [], text: "hi", lang: "fa" }).success, false);
+  // Senses must be taught at A1, by placement or ID prefix, and well formed.
+  assert.equal(coachRequest.safeParse({ task: "sentence", senses: ["lex:A2:pet"], text: "hi", lang: "fa" }).success, false);
+  assert.equal(coachRequest.safeParse({ task: "sentence", senses: ["lex:A1:"], text: "hi", lang: "fa" }).success, false);
+  assert.equal(coachRequest.safeParse({ task: "sentence", senses: ["lex:A1:Bring"], text: "hi", lang: "fa" }).success, false);
 });
 
 test("only a well-formed tool answer is shown, and low confidence is shown as uncertainty", () => {

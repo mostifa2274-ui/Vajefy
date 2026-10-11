@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { Contrast, Pilot, Sense } from "../lib/learn/content";
+import { levelOf } from "../lib/learn/text";
 
 /**
  * The AI coach's grounding, prompt and output contract (docs/COACH.md). Pure
@@ -12,8 +13,15 @@ export type CoachTask = (typeof COACH_TASKS)[number];
 
 export const coachRequest = z.object({
   task: z.enum(COACH_TASKS),
-  /** Sense ids the question is about (one to three). */
-  senses: z.array(z.string().regex(/^lex:A1:[a-z0-9-]+(#[a-z0-9-]+)?$/)).min(1).max(3),
+  /**
+   * Sense ids the question is about (one to three), all taught at A1. The
+   * level comes from levelOf, so an entry placed at A1 under another ID
+   * prefix is accepted and an A1-prefixed entry placed higher is not.
+   */
+  senses: z
+    .array(z.string().regex(/^lex:[A-Za-z0-9]+:[a-z0-9-]+(#[a-z0-9-]+)?$/).refine((id) => levelOf(id) === "A1", "Not an A1 sense"))
+    .min(1)
+    .max(3),
   /** The learner's sentence (sentence), or the sentence with its answer (fit). */
   text: z.string().trim().min(1).max(300).optional(),
   /** A contrast lesson id, for "difference". */

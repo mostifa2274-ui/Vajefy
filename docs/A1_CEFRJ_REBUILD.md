@@ -371,7 +371,10 @@ curriculum as `199724c430ec6d000d6cb5344970274c5e9d5af9`.
 The app now reads an entry's level through `levelOf` (`src/lib/learn/text.ts`),
 which checks `LEVEL_PLACEMENT` (`src/lib/learn/level-placement.ts`) before the
 ID prefix. Course scope, the store, Today, Study, Drill and reference links use
-it. The map is empty until the switch, so behaviour is unchanged.
+it (PR #226, merged as `02f22e4f544abe14ff9b7acd575d8ca4aacfa4f2`), and so do the coach's sense check
+(`src/api/coach-core.ts`) and the A1 reference-link key schema
+(`src/lib/learn/a1-reference-links.ts`). The map is empty until the switch, so
+behaviour is unchanged.
 
 `npm run assurance:a1:cefrj:curriculum` composes
 `content/rights-staging/a1-rebuild/curriculum-a1-cefrj.json` from the live
@@ -399,9 +402,8 @@ The staged file is **not live**: `curriculumApproved` and `liveInApp` are
 `false`, and the app still uses `content/curriculum/A1.json`. Before the
 switch:
 
-1. list each moved entry in `LEVEL_PLACEMENT`, and widen the coach's sense
-   pattern (`src/api/coach-core.ts`) and the A1 reference-link key schema
-   (`src/lib/learn/a1-reference-links.ts`), which still require `lex:A1:` IDs;
+1. list each moved entry in `LEVEL_PLACEMENT`, and regenerate the A1 plan
+   (`content/plans/A1.json`) and its reference links from the new curriculum;
 2. promote the 338 drafts into `content/pilot/entries` only after independent
    semantic, Persian, CEFR and rights review and certified GB and US audio;
 3. move the 166 entries to their CEFR-J level lists;

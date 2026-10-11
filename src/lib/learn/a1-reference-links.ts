@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { levelOf } from "./text";
 
 const deck = z.enum(["irr", "pv", "col", "prep", "vp", "fam", "wf", "syn", "conf", "ant", "occ"]);
 
@@ -6,7 +7,11 @@ const deck = z.enum(["irr", "pv", "col", "prep", "vp", "fam", "wf", "syn", "conf
 export const a1ReferenceLinks = z.object({
   schemaVersion: z.literal(1),
   level: z.literal("A1"),
-  entries: z.record(z.string().startsWith("lex:A1:").min(8), z.array(z.string().min(1)).min(1)),
+  // Keys are entries taught at A1 (levelOf: placement first, then the ID prefix).
+  entries: z.record(
+    z.string().regex(/^lex:[A-Za-z0-9]+:.+/).refine((id) => levelOf(id) === "A1", "Not an A1 entry"),
+    z.array(z.string().min(1)).min(1),
+  ),
   notes: z.record(z.string().min(1), z.object({ deck, title: z.string().min(1) }).strict()),
 }).strict().superRefine((value, ctx) => {
   const referenced = new Set<string>();

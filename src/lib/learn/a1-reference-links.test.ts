@@ -25,6 +25,7 @@ test("the distributed reference scope matches exactly the actual A1 catalogue li
 test("reference scope rejects foreign-level entries and unlinked notes", () => {
   const foreign = { ...fixture(), entries: { "lex:A2:raise": ["conf:do-make"] } };
   assert.equal(a1ReferenceLinks.safeParse(foreign).success, false);
+  assert.equal(a1ReferenceLinks.safeParse({ ...fixture(), entries: { "lex:A1:": ["conf:do-make"] } }).success, false);
   const extra = { ...fixture(), notes: { ...fixture().notes, "conf:raise-rise": { deck: "conf", title: "raise / rise" } } };
   assert.equal(a1ReferenceLinks.safeParse(extra).success, false);
 });
