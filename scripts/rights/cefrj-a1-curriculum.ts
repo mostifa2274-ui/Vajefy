@@ -67,7 +67,9 @@ if (staged) {
   if (process.argv.includes("--check")) {
     if (current !== text) issues.push(`${OUT} is stale; run npm run assurance:a1:cefrj:curriculum -- --write`);
   } else if (process.argv.includes("--write")) {
-    fs.writeFileSync(path.join(root, OUT), text);
+    // Keep the last valid staged curriculum when an input is wrong.
+    if (issues.length) issues.push(`${OUT} was not written because of the issues above`);
+    else fs.writeFileSync(path.join(root, OUT), text);
   }
   const c = staged.counts;
   console.log(`CEFR-J A1 staged curriculum: ${issues.length ? "FAIL" : "PASS"} (${c.entries} entries in ${c.units} units: ` +
