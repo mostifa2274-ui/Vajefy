@@ -126,6 +126,43 @@ NEW A1 headwords:
   lesson or as a short phrase lesson;
 - 65 have a staged NGSL draft that can be reused.
 
+## Phase 2: full A1 lesson drafts
+
+On 2026-10-11, `lessons-new-001-020.json` stages full lessons for the first
+20 NEW A1 headwords in selection order: may, case, set, hold, side, already,
+almost, yet, care, matter, mind, either, top, social, along, sale, cover, war,
+bear and role. This is **20/338 drafted, 318 still to write**, not a count of
+approved or published lessons.
+
+Each lesson uses the existing enhanced-entry schema and contains a Persian
+meaning and explanation, grammar notes, three bilingual examples, translated
+collocations, usage guidance, a translated mistake pair, candidate GB/US
+pronunciations, and three checks. The final check is a fresh held-out production
+item. Audio has not been generated or certified; curriculum placement and
+frontier certification wait for phase 3.
+
+The authoring input was the selected headword and part of speech, not the
+legacy definitions or examples. Existing short-entry **identity metadata** is
+used to retain compatible IDs: `set` uses the existing verb `set-put`, `hold`
+uses its noun entry, `cover` uses its noun entry, and `bear` uses its animal
+entry. The modal `may` keeps its A2 ID; the A1 month `May` is a different word.
+Part-of-speech matching is structural metadata, not proof of sense equivalence;
+independent semantic checks and a progress-preserving migration remain required.
+
+Run `npm run assurance:a1:cefrj:drafts`. The command is part of
+`validate:data` and checks exact selection-file hashes, consecutive source
+windows, every selected part of speech, canonical entry structure, Persian
+coverage, compatible stable IDs, example/assessment separation and zero approval
+flags. It compares examples against legacy enhanced content, scenes, contrasts
+and all six short-entry lists for exact English or nine-word phrase reuse.
+These limited overlap checks do not establish semantic correctness or rights.
+
+Every independent-review, rights-clearance, audio-certificate and release count
+for the new drafts remains **zero**. Continue at NEW headword **21, step**. Do
+not repeat the first 20 drafts or import them into the public course before
+curriculum, audio and assurance work is complete. PR #208's actual merge is
+`76cabbca412648a61fe7cc9dbd84c134304c03b2`.
+
 ## The whole-app placement
 
 `npm run assurance:levels` builds `content/rights-staging/level-rebuild/level-selection.json`

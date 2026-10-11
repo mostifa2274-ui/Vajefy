@@ -1,0 +1,2437 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "ChatGPT Codex, 2026-10-11; original full lessons from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 1,
+    "lastNewHeadword": 20
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "may",
+      "levelWordId": "level:A1:0096",
+      "existingEntryIds": [
+        "lex:A2:may"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0122",
+          "senseId": "lex:A2:may",
+          "meaningEn": "A modal that marks a possible event or politely asks for permission."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:may",
+        "headword": "may",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:may",
+            "pos": "modal",
+            "gloss": "ممکن است؛ اجازه دارم؟",
+            "meaning": "برای گفتن اینکه اتفاقی ممکن است بیفتد، یا برای اجازه گرفتن به شکل مؤدبانه، پیش از فعل ساده می‌آید.",
+            "grammar": [
+              {
+                "pattern": "subject + may + base verb",
+                "note": "بعد از may شکل سادهٔ فعل می‌آید؛ to و s به آن اضافه نمی‌کنیم."
+              },
+              {
+                "pattern": "May I + base verb?",
+                "note": "برای اجازه گرفتن، پرسش را با May I شروع می‌کنیم. این کاربرد رسمی‌تر از Can I است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We may eat outside today.",
+                "fa": "ممکن است امروز بیرون غذا بخوریم."
+              },
+              {
+                "en": "May I open this window?",
+                "fa": "اجازه دارم این پنجره را باز کنم؟"
+              },
+              {
+                "en": "Her bus may be late.",
+                "fa": "ممکن است اتوبوس او دیر برسد."
+              }
+            ],
+            "collocations": [
+              "may be late",
+              "May I sit here?"
+            ],
+            "collocationFa": {
+              "may be late": "ممکن است دیر برسد",
+              "May I sit here?": "اجازه دارم اینجا بنشینم؟"
+            },
+            "usage": "در معنیِ احتمال، may قول یا قطعیت نمی‌دهد. در پرسش May I…? از مخاطب اجازه می‌خواهیم؛ ماهِ May واژهٔ دیگری است.",
+            "mistake": {
+              "wrong": "She may to come.",
+              "wrongFa": "او ممکن است برای آمدن.",
+              "right": "She may come.",
+              "rightFa": "او ممکن است بیاید.",
+              "why": "بعد از may فعل ساده می‌آید؛ to come را به come تبدیل می‌کنیم."
+            },
+            "pronunciation": {
+              "gb": "/meɪ/",
+              "us": "/meɪ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It ___ rain after lunch.",
+                "answer": "may",
+                "accept": [],
+                "fa": "ممکن است بعد از ناهار باران ببارد.",
+                "why": "may پیش از فعل rain احتمال بارش را نشان می‌دهد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "برای اجازه گرفتن مؤدبانه کدام پرسش درست است؟",
+                "options": [
+                  {
+                    "text": "May I leave now?",
+                    "ok": true,
+                    "why": "May I همراه فعل ساده برای اجازه گرفتن به کار می‌رود."
+                  },
+                  {
+                    "text": "May I to leave now?",
+                    "ok": false,
+                    "why": "بعد از may نباید to اضافه شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ممکن است فردا به ما سر بزنند.",
+                "frame": "They ___ visit us tomorrow.",
+                "answer": "may",
+                "accept": [],
+                "why": "may همراه visit احتمالِ سر زدن را نشان می‌دهد."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "case",
+      "levelWordId": "level:A1:0157",
+      "existingEntryIds": [
+        "lex:A2:case"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0196",
+          "senseId": "lex:A2:case",
+          "meaningEn": "A particular situation considered as one example."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:case",
+        "headword": "case",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:case",
+            "pos": "noun",
+            "gloss": "مورد؛ وضعیت مشخص",
+            "meaning": "وقتی دربارهٔ یک وضعیت یا نمونهٔ مشخص صحبت می‌کنیم، آن را یک case می‌نامیم.",
+            "grammar": [
+              {
+                "pattern": "a case / two cases",
+                "note": "در این معنی اسم قابل‌شمارش است؛ برای یک مورد a case و برای چند مورد cases می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "In this case, we need more time.",
+                "fa": "در این مورد به زمان بیشتری نیاز داریم."
+              },
+              {
+                "en": "Each case is different.",
+                "fa": "هر مورد متفاوت است."
+              },
+              {
+                "en": "The teacher looked at three cases.",
+                "fa": "معلم سه مورد را بررسی کرد."
+              }
+            ],
+            "collocations": [
+              "in this case",
+              "a special case"
+            ],
+            "collocationFa": {
+              "in this case": "در این مورد",
+              "a special case": "یک مورد ویژه"
+            },
+            "usage": "در این درس case به وضعیت یا مورد اشاره دارد. معنیِ کیف، جعبه یا پرونده باید به عنوان معنی جداگانه آموزش داده شود.",
+            "mistake": {
+              "wrong": "In this box, we need help.",
+              "wrongFa": "در این جعبه به کمک نیاز داریم.",
+              "right": "In this case, we need help.",
+              "rightFa": "در این مورد به کمک نیاز داریم.",
+              "why": "برای اشاره به یک وضعیت از in this case استفاده می‌کنیم؛ box به معنی جعبه است."
+            },
+            "pronunciation": {
+              "gb": "/keɪs/",
+              "us": "/keɪs/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "This ___ is easy to understand.",
+                "answer": "case",
+                "accept": [],
+                "fa": "فهمیدن این مورد آسان است.",
+                "why": "اسم case به این وضعیت مشخص اشاره می‌کند."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «در این مورد»؟",
+                "options": [
+                  {
+                    "text": "in this case",
+                    "ok": true,
+                    "why": "case در این عبارت به موردی که درباره‌اش صحبت می‌کنیم اشاره دارد."
+                  },
+                  {
+                    "text": "in this box",
+                    "ok": false,
+                    "why": "box یعنی جعبه و منظورِ وضعیت را نمی‌رساند."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "در آن مورد، با من تماس بگیر.",
+                "frame": "In that ___, call me.",
+                "answer": "case",
+                "accept": [],
+                "why": "در عبارت in that case دربارهٔ آن وضعیت مشخص صحبت می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "set",
+      "levelWordId": "level:A1:0171",
+      "existingEntryIds": [
+        "lex:B1:set-group",
+        "lex:B1:set-put"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0210",
+          "senseId": "lex:B1:set-put",
+          "meaningEn": "To place something deliberately in a chosen position."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:set-put",
+        "headword": "set",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:set-put",
+            "pos": "verb",
+            "gloss": "گذاشتن؛ قرار دادن",
+            "meaning": "چیزی را با قصد در جای مشخصی می‌گذاریم، مثلاً لیوان را روی میز یا کیف را روی زمین.",
+            "grammar": [
+              {
+                "pattern": "set + object + place",
+                "note": "پس از set چیزی را که می‌گذاریم و سپس جای آن را می‌آوریم."
+              },
+              {
+                "pattern": "set / set / set",
+                "note": "شکل گذشته و قسمت سوم این فعل نیز set است؛ sets برای فاعل سوم‌شخصِ مفردِ زمان حال می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Set your cup beside my plate.",
+                "fa": "فنجانت را کنار بشقاب من بگذار."
+              },
+              {
+                "en": "He set the bag down by the door.",
+                "fa": "او کیف را کنار در روی زمین گذاشت."
+              },
+              {
+                "en": "We set the flowers on a small table.",
+                "fa": "گل‌ها را روی یک میز کوچک گذاشتیم."
+              }
+            ],
+            "collocations": [
+              "set a bag down",
+              "set a bowl on the table"
+            ],
+            "collocationFa": {
+              "set a bag down": "کیفی را زمین گذاشتن",
+              "set a bowl on the table": "کاسه‌ای را روی میز گذاشتن"
+            },
+            "usage": "این معنیِ set دربارهٔ قرار دادن است. معنیِ تنظیم کردنِ ساعت یا دستگاه، و اسمِ set به معنی مجموعه، جدا هستند.",
+            "mistake": {
+              "wrong": "She set the glass in the table.",
+              "wrongFa": "او لیوان را داخل میز گذاشت.",
+              "right": "She set the glass on the table.",
+              "rightFa": "او لیوان را روی میز گذاشت.",
+              "why": "برای قرار دادن روی سطح میز از on استفاده می‌کنیم؛ in به داخل اشاره می‌کند."
+            },
+            "pronunciation": {
+              "gb": "/set/",
+              "us": "/set/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Please ___ the box near the chair.",
+                "answer": "set",
+                "accept": [],
+                "fa": "لطفاً جعبه را نزدیک صندلی بگذار.",
+                "why": "بعد از please، فعل سادهٔ set برای درخواست قرار دادن چیزی می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "گذشتهٔ set در معنیِ «گذاشتن» چیست؟",
+                "options": [
+                  {
+                    "text": "set",
+                    "ok": true,
+                    "why": "شکل گذشتهٔ این فعل عوض نمی‌شود."
+                  },
+                  {
+                    "text": "setted",
+                    "ok": false,
+                    "why": "set فعل بی‌قاعده است و گذشتهٔ آن setted نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کتاب را روی تخت بگذار.",
+                "frame": "___ the book on the bed.",
+                "answer": "set",
+                "accept": [],
+                "why": "set در این درخواست یعنی کتاب را در جای گفته‌شده قرار بده."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "hold",
+      "levelWordId": "level:A1:0196",
+      "existingEntryIds": [
+        "lex:A2:hold",
+        "lex:B2:hold"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0239",
+          "senseId": "lex:B2:hold",
+          "meaningEn": "A grip that keeps something firmly in a hand."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2:hold",
+        "headword": "hold",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2:hold",
+            "pos": "noun",
+            "gloss": "گرفتنِ محکم؛ چنگ",
+            "meaning": "اسمِ hold در این معنی به گرفتنِ چیزی اشاره دارد؛ مثلاً گرفتنِ طناب برای اینکه از دست رها نشود.",
+            "grammar": [
+              {
+                "pattern": "a hold on + noun",
+                "note": "بعد از اسم hold، برای گفتنِ چیزی که گرفته شده از on استفاده می‌کنیم."
+              },
+              {
+                "pattern": "keep / get a hold on",
+                "note": "keep a hold یعنی گرفتن را حفظ کردن؛ get a hold یعنی چیزی را گرفتن."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Keep a hold on the rope.",
+                "fa": "طناب را در دستت نگه دار."
+              },
+              {
+                "en": "Her hold on the bag was strong.",
+                "fa": "او کیف را محکم گرفته بود."
+              },
+              {
+                "en": "I got a hold on the small handle.",
+                "fa": "دستهٔ کوچک را گرفتم."
+              }
+            ],
+            "collocations": [
+              "a strong hold",
+              "keep a hold on"
+            ],
+            "collocationFa": {
+              "a strong hold": "گرفتنِ محکم",
+              "keep a hold on": "چیزی را همچنان گرفته نگه داشتن"
+            },
+            "usage": "اینجا hold اسم است. فعلِ hold به معنی نگه داشتن، باید در یک معنیِ جدا بررسی شود؛ مدخل فعلی را به این معنیِ اسمی تبدیل نمی‌کنیم.",
+            "mistake": {
+              "wrong": "Keep a hold in the rope.",
+              "wrongFa": "گرفتن را در طناب نگه دار.",
+              "right": "Keep a hold on the rope.",
+              "rightFa": "طناب را در دستت نگه دار.",
+              "why": "در عبارت اسمی a hold on، چیزی که می‌گیریم بعد از on می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/həʊld/",
+              "us": "/hoʊld/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "He kept a ___ on my hand.",
+                "answer": "hold",
+                "accept": [],
+                "fa": "او همچنان دست مرا گرفته بود.",
+                "why": "در a hold on، hold اسمِ گرفتن است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در عبارت a hold on the rope، واژهٔ hold چه نقشی دارد؟",
+                "options": [
+                  {
+                    "text": "اسمِ گرفتن",
+                    "ok": true,
+                    "why": "a پیش از hold نشان می‌دهد که اینجا اسم به کار رفته است."
+                  },
+                  {
+                    "text": "فعلِ نگه داشتن",
+                    "ok": false,
+                    "why": "فعل با a نمی‌آید؛ معنیِ فعلی در این درس هدف نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سارا دسته را محکم گرفته است.",
+                "frame": "Sara has a strong ___ on the handle.",
+                "answer": "hold",
+                "accept": [],
+                "why": "a strong hold on یعنی گرفتنِ محکمِ دسته."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "side",
+      "levelWordId": "level:A1:0233",
+      "existingEntryIds": [
+        "lex:A2:side"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0279",
+          "senseId": "lex:A2:side",
+          "meaningEn": "A part or edge to the left or right of something."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:side",
+        "headword": "side",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:side",
+            "pos": "noun",
+            "gloss": "طرف؛ سمت",
+            "meaning": "به یک طرفِ چیزی، مانند سمت چپِ اتوبوس یا طرفِ پنجرهٔ اتاق، side می‌گوییم.",
+            "grammar": [
+              {
+                "pattern": "the left / right side",
+                "note": "left و right پیش از side می‌آیند تا جهت مشخص شود."
+              },
+              {
+                "pattern": "one side / both sides",
+                "note": "برای یک طرف side و برای دو طرف sides به کار می‌رود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The key is on the right side of the desk.",
+                "fa": "کلید در سمت راست میز است."
+              },
+              {
+                "en": "Both sides of the street have trees.",
+                "fa": "هر دو طرف خیابان درخت دارند."
+              },
+              {
+                "en": "Please stand at my side.",
+                "fa": "لطفاً کنار من بایست."
+              }
+            ],
+            "collocations": [
+              "the left side",
+              "both sides"
+            ],
+            "collocationFa": {
+              "the left side": "سمت چپ",
+              "both sides": "هر دو طرف"
+            },
+            "usage": "on the left side of یعنی در سمت چپِ چیزی. at my side یعنی کنار من؛ این عبارت‌ها را با هم جابه‌جا نمی‌کنیم.",
+            "mistake": {
+              "wrong": "The shop is in the side of the bank.",
+              "wrongFa": "فروشگاه داخلِ سمتِ بانک است.",
+              "right": "The shop is at the side of the bank.",
+              "rightFa": "فروشگاه کنار بانک است.",
+              "why": "برای جایگاهِ کنار بانک at the side به کار می‌رود؛ in معنیِ داخل می‌دهد."
+            },
+            "pronunciation": {
+              "gb": "/saɪd/",
+              "us": "/saɪd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Use the other ___ of this paper.",
+                "answer": "side",
+                "accept": [],
+                "fa": "از طرف دیگر این کاغذ استفاده کن.",
+                "why": "side برای یک طرفِ کاغذ به کار می‌رود."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «هر دو طرف»؟",
+                "options": [
+                  {
+                    "text": "both sides",
+                    "ok": true,
+                    "why": "بعد از both اسم جمع sides می‌آید."
+                  },
+                  {
+                    "text": "both side",
+                    "ok": false,
+                    "why": "side مفرد است؛ با both باید sides باشد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کیفت در سمت چپ صندلی است.",
+                "frame": "Your bag is on the left ___ of the chair.",
+                "answer": "side",
+                "accept": [],
+                "why": "left side جهتِ سمت چپِ صندلی را مشخص می‌کند."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "already",
+      "levelWordId": "level:A1:0244",
+      "existingEntryIds": [
+        "lex:A2:already"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0291",
+          "senseId": "lex:A2:already",
+          "meaningEn": "Earlier than now or earlier than an expected time."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:already",
+        "headword": "already",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:already",
+            "pos": "adverb",
+            "gloss": "قبلاً؛ پیش از این",
+            "meaning": "نشان می‌دهد کاری پیش از زمانِ مورد بحث انجام شده، یا وضعیتی زودتر از انتظار برقرار است.",
+            "grammar": [
+              {
+                "pattern": "be + already",
+                "note": "با فعل be، already معمولاً پس از am/is/are می‌آید."
+              },
+              {
+                "pattern": "have / has + already + past participle",
+                "note": "در حال کامل، already معمولاً بین have/has و قسمت سومِ فعل قرار می‌گیرد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The children are already in bed.",
+                "fa": "بچه‌ها از قبل در تخت هستند."
+              },
+              {
+                "en": "I have already washed these plates.",
+                "fa": "من این بشقاب‌ها را قبلاً شسته‌ام."
+              },
+              {
+                "en": "She already knows your name.",
+                "fa": "او از قبل نام تو را می‌داند."
+              }
+            ],
+            "collocations": [
+              "already here",
+              "have already finished"
+            ],
+            "collocationFa": {
+              "already here": "از قبل اینجا",
+              "have already finished": "قبلاً تمام کرده‌ام"
+            },
+            "usage": "already یعنی «پیش از این». all ready دو واژه است و یعنی «کاملاً آماده»؛ این دو معنی یکسان نیستند.",
+            "mistake": {
+              "wrong": "She is all ready.",
+              "wrongFa": "او کاملاً آماده است.",
+              "right": "She is already here.",
+              "rightFa": "او از قبل اینجاست.",
+              "why": "برای گفتنِ «پیش‌تر اینجا رسیده» از already استفاده می‌کنیم؛ all ready فقط آمادگی را بیان می‌کند."
+            },
+            "pronunciation": {
+              "gb": "/ɔːlˈredi/",
+              "us": "/ɔːlˈredi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It is ___ dark outside.",
+                "answer": "already",
+                "accept": [],
+                "fa": "بیرون از قبل تاریک شده است.",
+                "why": "already نشان می‌دهد تاریکی پیش از اکنون برقرار شده است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «قبلاً انجام شده»؟",
+                "options": [
+                  {
+                    "text": "already done",
+                    "ok": true,
+                    "why": "already انجام شدن پیش از زمان مورد بحث را می‌رساند."
+                  },
+                  {
+                    "text": "all ready",
+                    "ok": false,
+                    "why": "all ready یعنی کاملاً آماده، نه انجام‌شده."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او از قبل در خانه است.",
+                "frame": "He is ___ at home.",
+                "answer": "already",
+                "accept": [],
+                "why": "already پس از is می‌آید و رسیدن پیش از اکنون را نشان می‌دهد."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "almost",
+      "levelWordId": "level:A1:0246",
+      "existingEntryIds": [
+        "lex:A2:almost"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0293",
+          "senseId": "lex:A2:almost",
+          "meaningEn": "Very close to a state, amount or completion, but short of it."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:almost",
+        "headword": "almost",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:almost",
+            "pos": "adverb",
+            "gloss": "تقریباً؛ نزدیک به",
+            "meaning": "چیزی نزدیک به یک حالت یا مقدار است، ولی هنوز کاملاً به آن نرسیده است.",
+            "grammar": [
+              {
+                "pattern": "almost + adjective / number",
+                "note": "almost پیش از صفت یا عدد می‌آید، مانند almost full یا almost ten."
+              },
+              {
+                "pattern": "almost + main verb",
+                "note": "می‌تواند پیش از فعل اصلی بیاید تا نزدیک بودنِ اتفاق را نشان دهد؛ I almost fell یعنی نزدیک بود بیفتم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The bowl is almost empty.",
+                "fa": "کاسه تقریباً خالی است."
+              },
+              {
+                "en": "Almost ten people came to the class.",
+                "fa": "نزدیک به ده نفر به کلاس آمدند."
+              },
+              {
+                "en": "I almost forgot my bag today.",
+                "fa": "امروز نزدیک بود کیفم را فراموش کنم."
+              }
+            ],
+            "collocations": [
+              "almost ready",
+              "almost all"
+            ],
+            "collocationFa": {
+              "almost ready": "تقریباً آماده",
+              "almost all": "تقریباً همه"
+            },
+            "usage": "almost دربارهٔ «نزدیک بودن، ولی کامل نبودن» است. always یعنی همیشه و about در بعضی عبارت‌های عددی فقط مقدار تقریبی را می‌رساند.",
+            "mistake": {
+              "wrong": "The bottle is always full.",
+              "wrongFa": "بطری همیشه پر است.",
+              "right": "The bottle is almost full.",
+              "rightFa": "بطری تقریباً پر است.",
+              "why": "برای گفتنِ «نزدیک به پر شدن» از almost استفاده می‌کنیم؛ always دربارهٔ تکرار همیشگی است."
+            },
+            "pronunciation": {
+              "gb": "/ˈɔːlməʊst/",
+              "us": "/ˈɔːlmoʊst/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Our food is ___ ready.",
+                "answer": "almost",
+                "accept": [],
+                "fa": "غذای ما تقریباً آماده است.",
+                "why": "almost پیش از ready یعنی آماده شدن نزدیک است، ولی هنوز کامل نیست."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "almost empty یعنی چه؟",
+                "options": [
+                  {
+                    "text": "تقریباً خالی، ولی نه کاملاً",
+                    "ok": true,
+                    "why": "almost نشان می‌دهد هنوز کمی مانده تا کاملاً خالی شود."
+                  },
+                  {
+                    "text": "همیشه خالی",
+                    "ok": false,
+                    "why": "همیشه معنیِ always است، نه almost."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "لیوان تقریباً پر است.",
+                "frame": "The glass is ___ full.",
+                "answer": "almost",
+                "accept": [],
+                "why": "almost پیش از full، نزدیک بودن به حالتِ کاملاً پر را نشان می‌دهد."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "yet",
+      "levelWordId": "level:A1:0248",
+      "existingEntryIds": [
+        "lex:A2:yet",
+        "lex:B2:yet"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0295",
+          "senseId": "lex:A2:yet",
+          "meaningEn": "Up to this time, especially when an expected event has not happened."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:yet",
+        "headword": "yet",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:yet",
+            "pos": "adverb",
+            "gloss": "هنوز؛ تا الان",
+            "meaning": "در جملهٔ منفی می‌گوید کاری که انتظارش را داریم تا الان انجام نشده؛ در پرسش می‌پرسد آیا تا الان انجام شده است.",
+            "grammar": [
+              {
+                "pattern": "negative sentence + yet",
+                "note": "در این معنی، yet معمولاً در پایانِ جملهٔ منفی می‌آید."
+              },
+              {
+                "pattern": "question + yet?",
+                "note": "در پرسش، yet معمولاً آخر جمله است و انجام شدن تا الان را می‌پرسد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The shop is not open yet.",
+                "fa": "فروشگاه هنوز باز نشده است."
+              },
+              {
+                "en": "Is your brother home yet?",
+                "fa": "برادرت تا الان به خانه رسیده است؟"
+              },
+              {
+                "en": "We have not eaten yet.",
+                "fa": "ما هنوز غذا نخورده‌ایم."
+              }
+            ],
+            "collocations": [
+              "not yet",
+              "not ready yet"
+            ],
+            "collocationFa": {
+              "not yet": "هنوز نه",
+              "not ready yet": "هنوز آماده نیست"
+            },
+            "usage": "در این درس yet قیدِ زمان است. معنیِ حرف ربطِ «با این حال» جداست. برای «از قبل» در جملهٔ مثبت معمولاً already به کار می‌رود.",
+            "mistake": {
+              "wrong": "She is here yet.",
+              "wrongFa": "او تا الان اینجاست.",
+              "right": "She is not here yet.",
+              "rightFa": "او هنوز اینجا نیست.",
+              "why": "برای گفتنِ اینکه تا الان نرسیده، جمله منفی است و yet در پایان می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/jet/",
+              "us": "/jet/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The bus is not here ___.",
+                "answer": "yet",
+                "accept": [],
+                "fa": "اتوبوس هنوز اینجا نیست.",
+                "why": "yet در پایان جملهٔ منفی می‌گوید رسیدن تا الان اتفاق نیفتاده است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله می‌گوید غذا هنوز آماده نشده است؟",
+                "options": [
+                  {
+                    "text": "The food is not ready yet.",
+                    "ok": true,
+                    "why": "not ready همراه yet یعنی تا الان آماده نشده است."
+                  },
+                  {
+                    "text": "The food is already ready.",
+                    "ok": false,
+                    "why": "already ready می‌گوید غذا پیش از این آماده شده است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "نامه هنوز نرسیده است.",
+                "frame": "The letter has not arrived ___.",
+                "answer": "yet",
+                "accept": [],
+                "why": "yet پس از arrived در پایان جملهٔ منفی می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "care",
+      "levelWordId": "level:A1:0249",
+      "existingEntryIds": [
+        "lex:A2:care"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0296",
+          "senseId": "lex:A2:care",
+          "meaningEn": "Help and attention given to keep a person or thing well."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:care",
+        "headword": "care",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:care",
+            "pos": "noun",
+            "gloss": "مراقبت؛ رسیدگی",
+            "meaning": "توجه و کمکی که برای سلامت یا وضعیت خوبِ کسی یا چیزی انجام می‌دهیم، care نام دارد.",
+            "grammar": [
+              {
+                "pattern": "take care of + person / thing",
+                "note": "برای مراقبت کردن از کسی یا چیزی، take care of می‌گوییم."
+              },
+              {
+                "pattern": "care: uncountable in this sense",
+                "note": "در معنیِ مراقبت، care معمولاً غیرقابل‌شمارش است؛ a care و cares برای این معنی به کار نمی‌روند."
+              }
+            ],
+            "examples": [
+              {
+                "en": "This little plant needs care.",
+                "fa": "این گیاه کوچک به رسیدگی نیاز دارد."
+              },
+              {
+                "en": "My aunt takes care of our cat.",
+                "fa": "خاله‌ام از گربهٔ ما مراقبت می‌کند."
+              },
+              {
+                "en": "Good care helps sick people.",
+                "fa": "مراقبت خوب به افراد بیمار کمک می‌کند."
+              }
+            ],
+            "collocations": [
+              "take care of",
+              "good care"
+            ],
+            "collocationFa": {
+              "take care of": "مراقبت کردن از",
+              "good care": "مراقبت خوب"
+            },
+            "usage": "care اینجا اسمِ مراقبت است. Take care! به تنهایی در خداحافظی می‌تواند یعنی «مراقب خودت باش».",
+            "mistake": {
+              "wrong": "Take care from the baby.",
+              "wrongFa": "از سمتِ بچه مراقبت کن.",
+              "right": "Take care of the baby.",
+              "rightFa": "از بچه مراقبت کن.",
+              "why": "در عبارت take care of، شخصی که از او مراقبت می‌کنیم بعد از of می‌آید، نه from."
+            },
+            "pronunciation": {
+              "gb": "/keə/",
+              "us": "/ker/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "These flowers need good ___.",
+                "answer": "care",
+                "accept": [],
+                "fa": "این گل‌ها به رسیدگی خوب نیاز دارند.",
+                "why": "care اسمِ رسیدگی است و پس از need در این جمله می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «از مادربزرگ مراقبت کردن»؟",
+                "options": [
+                  {
+                    "text": "take care of Grandma",
+                    "ok": true,
+                    "why": "بعد از take care از of برای معرفی شخص استفاده می‌کنیم."
+                  },
+                  {
+                    "text": "take care from Grandma",
+                    "ok": false,
+                    "why": "from شخصِ مورد مراقبت را در این عبارت معرفی نمی‌کند."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من از سگمان مراقبت می‌کنم.",
+                "frame": "I take ___ of our dog.",
+                "answer": "care",
+                "accept": [],
+                "why": "care بخشِ اسمیِ عبارت take care of است."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "matter",
+      "levelWordId": "level:A1:0261",
+      "existingEntryIds": [
+        "lex:A2:matter"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0312",
+          "senseId": "lex:A2:matter",
+          "meaningEn": "A subject or situation that someone needs to consider."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:matter",
+        "headword": "matter",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:matter",
+            "pos": "noun",
+            "gloss": "موضوع؛ مسئله",
+            "meaning": "به موضوع یا وضعیتی که درباره‌اش صحبت می‌کنیم یا باید به آن رسیدگی کنیم، matter می‌گوییم.",
+            "grammar": [
+              {
+                "pattern": "a matter / two matters",
+                "note": "در معنیِ موضوع، matter قابل‌شمارش است؛ برای چند موضوع matters می‌آید."
+              },
+              {
+                "pattern": "a private / important matter",
+                "note": "صفتی مانند private یا important پیش از اسمِ matter قرار می‌گیرد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "This is a private matter.",
+                "fa": "این یک موضوع شخصی است."
+              },
+              {
+                "en": "We can talk about that matter later.",
+                "fa": "می‌توانیم بعداً دربارهٔ آن موضوع صحبت کنیم."
+              },
+              {
+                "en": "There are two small matters to discuss.",
+                "fa": "دو موضوع کوچک برای گفتگو هست."
+              }
+            ],
+            "collocations": [
+              "an important matter",
+              "a family matter"
+            ],
+            "collocationFa": {
+              "an important matter": "یک موضوع مهم",
+              "a family matter": "یک مسئلهٔ خانوادگی"
+            },
+            "usage": "اینجا matter اسمِ موضوع است. معنیِ «ماده» و فعلِ matter به معنیِ اهمیت داشتن جدا هستند.",
+            "mistake": {
+              "wrong": "This is a private material.",
+              "wrongFa": "این یک مادهٔ شخصی است.",
+              "right": "This is a private matter.",
+              "rightFa": "این یک موضوع شخصی است.",
+              "why": "برای یک موضوع شخصی matter می‌گوییم؛ material معنیِ موضوعِ گفتگو را نمی‌رساند."
+            },
+            "pronunciation": {
+              "gb": "/ˈmætə/",
+              "us": "/ˈmætər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It is an important ___ for our family.",
+                "answer": "matter",
+                "accept": [],
+                "fa": "این برای خانوادهٔ ما یک موضوع مهم است.",
+                "why": "matter اسمِ موضوعی است که نیاز به توجه دارد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در a family matter، واژهٔ matter چه معنی دارد؟",
+                "options": [
+                  {
+                    "text": "موضوع یا مسئله",
+                    "ok": true,
+                    "why": "صفت family نشان می‌دهد موضوع مربوط به خانواده است."
+                  },
+                  {
+                    "text": "مادهٔ فیزیکی",
+                    "ok": false,
+                    "why": "در این عبارت دربارهٔ موضوع خانواده صحبت می‌کنیم، نه مادهٔ فیزیکی."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این یک موضوع ساده است.",
+                "frame": "This is a simple ___.",
+                "answer": "matter",
+                "accept": [],
+                "why": "بعد از a simple اسمِ مفرد matter می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "mind",
+      "levelWordId": "level:A1:0262",
+      "existingEntryIds": [
+        "lex:A2:mind"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0313",
+          "senseId": "lex:A2:mind",
+          "meaningEn": "The part of a person associated with thoughts and memory."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:mind",
+        "headword": "mind",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:mind",
+            "pos": "noun",
+            "gloss": "ذهن؛ فکر",
+            "meaning": "برای فکرها، یادآوری‌ها و تصمیم‌های یک شخص از mind استفاده می‌کنیم؛ این واژه در این درس اسم است.",
+            "grammar": [
+              {
+                "pattern": "my / your / her mind",
+                "note": "اسمِ mind می‌تواند بعد از صفت ملکی بیاید؛ my mind یعنی ذهن یا فکرِ من."
+              },
+              {
+                "pattern": "change your mind",
+                "note": "این عبارت ثابت یعنی نظرت را عوض کنی؛ منظور عوض کردنِ عضوِ بدن نیست."
+              }
+            ],
+            "examples": [
+              {
+                "en": "That picture is still in my mind.",
+                "fa": "آن تصویر هنوز در ذهنم است."
+              },
+              {
+                "en": "A good sleep helps your mind.",
+                "fa": "خواب خوب به ذهنت کمک می‌کند."
+              },
+              {
+                "en": "He changed his mind about the trip.",
+                "fa": "او دربارهٔ سفر نظرش را عوض کرد."
+              }
+            ],
+            "collocations": [
+              "in my mind",
+              "change your mind"
+            ],
+            "collocationFa": {
+              "in my mind": "در ذهن من",
+              "change your mind": "نظرت را عوض کردن"
+            },
+            "usage": "mind دربارهٔ فکر و تصمیم است. brain اسمِ عضوِ فیزیکیِ مغز است؛ فعلِ mind به معنیِ مخالفت داشتن یا اهمیت دادن، معنی جداگانه‌ای دارد.",
+            "mistake": {
+              "wrong": "I changed my brain.",
+              "wrongFa": "من مغزم را عوض کردم.",
+              "right": "I changed my mind.",
+              "rightFa": "من نظرم را عوض کردم.",
+              "why": "برای عوض کردن نظر، عبارت change my mind به کار می‌رود؛ brain عضوِ بدن است."
+            },
+            "pronunciation": {
+              "gb": "/maɪnd/",
+              "us": "/maɪnd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The song stayed in her ___.",
+                "answer": "mind",
+                "accept": [],
+                "fa": "آن آهنگ در ذهن او ماند.",
+                "why": "mind اسمِ ذهن است؛ in her mind یعنی در ذهن او."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «نظرم را عوض کردم»؟",
+                "options": [
+                  {
+                    "text": "I changed my mind.",
+                    "ok": true,
+                    "why": "change my mind عبارتِ رایج برای تغییرِ تصمیم یا نظر است."
+                  },
+                  {
+                    "text": "I changed my brain.",
+                    "ok": false,
+                    "why": "brain عضو بدن است و این عبارت معنیِ تغییر نظر نمی‌دهد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این نام در ذهنم است.",
+                "frame": "This name is in my ___.",
+                "answer": "mind",
+                "accept": [],
+                "why": "mind در این جمله به چیزی که به یاد داریم مربوط است."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "either",
+      "levelWordId": "level:A1:0282",
+      "existingEntryIds": [
+        "lex:A2:either"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0337",
+          "senseId": "lex:A2:either",
+          "meaningEn": "Also, at the end of a negative statement."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:either",
+        "headword": "either",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:either",
+            "pos": "adverb",
+            "gloss": "هم؛ همچنین، در جملهٔ منفی",
+            "meaning": "وقتی دربارهٔ یک نفر یا چیز دیگر هم جملهٔ منفی می‌گوییم، either در پایان می‌آید؛ مثل «من هم نمی‌خواهم».",
+            "grammar": [
+              {
+                "pattern": "negative sentence + either",
+                "note": "برای معنیِ «هم» در این کاربرد، either در پایان جملهٔ منفی قرار می‌گیرد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I do not want tea either.",
+                "fa": "من هم چای نمی‌خواهم."
+              },
+              {
+                "en": "Her sister cannot swim either.",
+                "fa": "خواهر او هم نمی‌تواند شنا کند."
+              },
+              {
+                "en": "The small shop is not open either.",
+                "fa": "فروشگاه کوچک هم باز نیست."
+              }
+            ],
+            "collocations": [
+              "not … either",
+              "cannot … either"
+            ],
+            "collocationFa": {
+              "not … either": "هم … نه",
+              "cannot … either": "هم نمی‌تواند …"
+            },
+            "usage": "اینجا either قیدِ «هم» در جملهٔ منفی است. معنیِ «یکی از دو» و ساختار either…or جدا هستند. در جملهٔ مثبت برای «هم» معمولاً too می‌آید.",
+            "mistake": {
+              "wrong": "I like it either.",
+              "wrongFa": "من هم آن را دوست دارم.",
+              "right": "I do not like it either.",
+              "rightFa": "من هم آن را دوست ندارم.",
+              "why": "برای گفتنِ «من هم دوست ندارم»، جمله باید منفی باشد؛ either در این کاربرد پس از آن می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈaɪðə/; /ˈiːðə/",
+              "us": "/ˈiːðər/; /ˈaɪðər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My father does not eat meat ___.",
+                "answer": "either",
+                "accept": [],
+                "fa": "پدرم هم گوشت نمی‌خورد.",
+                "why": "either در پایان این جملهٔ منفی معنیِ «هم» می‌دهد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "برای «او هم آماده نیست» کدام جمله مناسب است؟",
+                "options": [
+                  {
+                    "text": "She is not ready either.",
+                    "ok": true,
+                    "why": "either در پایان جملهٔ منفی برای افزودنِ موردِ مشابه می‌آید."
+                  },
+                  {
+                    "text": "She is ready either.",
+                    "ok": false,
+                    "why": "این جمله مثبت است و معنیِ «آماده نیست» را نمی‌رساند؛ either برای این کاربرد مثبت مناسب نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ما هم نمی‌توانیم بیاییم.",
+                "frame": "We cannot come ___.",
+                "answer": "either",
+                "accept": [],
+                "why": "cannot جمله را منفی می‌کند و either در پایان معنیِ «هم» می‌دهد."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "top",
+      "levelWordId": "level:A1:0284",
+      "existingEntryIds": [
+        "lex:A2:top",
+        "lex:C1:top"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0339",
+          "senseId": "lex:A2:top",
+          "meaningEn": "The highest part or surface of something."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:top",
+        "headword": "top",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:top",
+            "pos": "noun",
+            "gloss": "بالا؛ بالاترین قسمت",
+            "meaning": "به قسمتِ بالاییِ چیزی، مثل بالای صفحه یا سطحِ بالای جعبه، top می‌گوییم.",
+            "grammar": [
+              {
+                "pattern": "the top of + noun",
+                "note": "برای بالاترین قسمتِ چیزی از the top of استفاده می‌کنیم."
+              },
+              {
+                "pattern": "on top of + noun",
+                "note": "برای قرار داشتن روی سطحِ بالای چیزی، on top of می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Write your name at the top of the page.",
+                "fa": "نامت را بالای صفحه بنویس."
+              },
+              {
+                "en": "A small bird sat on top of the box.",
+                "fa": "پرنده‌ای کوچک روی جعبه نشست."
+              },
+              {
+                "en": "We reached the top of the hill.",
+                "fa": "ما به بالای تپه رسیدیم."
+              }
+            ],
+            "collocations": [
+              "at the top",
+              "on top of"
+            ],
+            "collocationFa": {
+              "at the top": "در بالا",
+              "on top of": "رویِ؛ بر بالایِ"
+            },
+            "usage": "top در این درس اسمِ قسمتِ بالا است. معنیِ صفتِ top به معنیِ بهترین، و اسمِ لباسِ بالاتنه، جدا هستند.",
+            "mistake": {
+              "wrong": "The cat is under the box.",
+              "wrongFa": "گربه زیر جعبه است.",
+              "right": "The cat is on top of the box.",
+              "rightFa": "گربه روی جعبه است.",
+              "why": "اگر منظور روی سطحِ جعبه است، on top of می‌آید؛ under جایِ زیر را نشان می‌دهد."
+            },
+            "pronunciation": {
+              "gb": "/tɒp/",
+              "us": "/tɑːp/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The date is at the ___ of the letter.",
+                "answer": "top",
+                "accept": [],
+                "fa": "تاریخ بالای نامه است.",
+                "why": "در عبارت at the top of، top بالاترین قسمت را نشان می‌دهد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "on top of the table یعنی چه؟",
+                "options": [
+                  {
+                    "text": "روی سطح بالای میز",
+                    "ok": true,
+                    "why": "on top of دربارهٔ قرار گرفتن روی سطحِ بالا است."
+                  },
+                  {
+                    "text": "زیر میز",
+                    "ok": false,
+                    "why": "زیر با under بیان می‌شود، نه on top of."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "نام مدرسه بالای صفحه است.",
+                "frame": "The school name is at the ___ of the page.",
+                "answer": "top",
+                "accept": [],
+                "why": "top در این عبارت به قسمتِ بالای صفحه اشاره دارد."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "social",
+      "levelWordId": "level:A1:0287",
+      "existingEntryIds": [
+        "lex:A2:social"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0343",
+          "senseId": "lex:A2:social",
+          "meaningEn": "Connected with meeting people or spending time together."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:social",
+        "headword": "social",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:social",
+            "pos": "adjective",
+            "gloss": "اجتماعی؛ مربوط به معاشرت",
+            "meaning": "چیزی که به دیدار و وقت گذراندن با دیگران مربوط است، social است؛ یک شخصِ social از بودن با دیگران لذت می‌برد.",
+            "grammar": [
+              {
+                "pattern": "social + noun",
+                "note": "social صفت است و پیش از اسمی مانند life یا event می‌آید."
+              },
+              {
+                "pattern": "be social",
+                "note": "وقتی دربارهٔ یک شخص به کار می‌رود، پس از be می‌تواند علاقهٔ او به معاشرت را نشان دهد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The class has a social event on Friday.",
+                "fa": "کلاس روز جمعه یک برنامهٔ دورهمی دارد."
+              },
+              {
+                "en": "My uncle enjoys a busy social life.",
+                "fa": "عمویم از معاشرتِ زیاد لذت می‌برد."
+              },
+              {
+                "en": "She is social and likes meeting new people.",
+                "fa": "او اجتماعی است و دوست دارد با افراد تازه آشنا شود."
+              }
+            ],
+            "collocations": [
+              "social life",
+              "a social event"
+            ],
+            "collocationFa": {
+              "social life": "زندگی اجتماعی؛ معاشرت‌ها",
+              "a social event": "یک برنامهٔ دورهمی"
+            },
+            "usage": "social در این درس صفت است. به معنی‌های مربوط به جامعه هم می‌آید، اما sociable معمولاً مستقیم‌تر علاقهٔ شخص به معاشرت را بیان می‌کند.",
+            "mistake": {
+              "wrong": "She is a social.",
+              "wrongFa": "او یک اجتماعی است.",
+              "right": "She is social.",
+              "rightFa": "او اجتماعی است.",
+              "why": "وقتی social صفتِ یک شخص است، به تنهایی با a به اسمِ شخص تبدیل نمی‌شود."
+            },
+            "pronunciation": {
+              "gb": "/ˈsəʊʃəl/",
+              "us": "/ˈsoʊʃəl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "They have a busy ___ life.",
+                "answer": "social",
+                "accept": [],
+                "fa": "آن‌ها زندگی اجتماعی پررفت‌وآمدی دارند.",
+                "why": "صفت social پیش از اسم life می‌آید و معاشرت با دیگران را توصیف می‌کند."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در social life، واژهٔ social چه نقش دارد؟",
+                "options": [
+                  {
+                    "text": "صفت",
+                    "ok": true,
+                    "why": "social اسمِ life را توصیف می‌کند."
+                  },
+                  {
+                    "text": "فعل",
+                    "ok": false,
+                    "why": "اینجا social عملی را بیان نمی‌کند و فعل نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این یک برنامهٔ دورهمی است.",
+                "frame": "This is a ___ event.",
+                "answer": "social",
+                "accept": [],
+                "why": "social پیش از event، ماهیتِ دورهمیِ برنامه را توصیف می‌کند."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "along",
+      "levelWordId": "level:A1:0292",
+      "existingEntryIds": [
+        "lex:A2:along"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0349",
+          "senseId": "lex:A2:along",
+          "meaningEn": "Together with someone, especially when going to a place."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:along",
+        "headword": "along",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:along",
+            "pos": "adverb",
+            "gloss": "همراه؛ با بقیه",
+            "meaning": "در عبارتی مانند come along یعنی همراهِ کسی یا گروهی رفتن؛ بعد از along در این کاربرد اسمِ یک مسیر نمی‌آید.",
+            "grammar": [
+              {
+                "pattern": "come / go along",
+                "note": "در این معنی، along قید است و پس از فعلِ حرکت می‌آید؛ همراه رفتن را نشان می‌دهد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We are going to the park. Come along!",
+                "fa": "داریم به پارک می‌رویم. همراه بیا!"
+              },
+              {
+                "en": "My little brother came along too.",
+                "fa": "برادر کوچکم هم همراه آمد."
+              },
+              {
+                "en": "Can I bring my cousin along?",
+                "fa": "می‌توانم پسرعمویم را هم همراه بیاورم؟"
+              }
+            ],
+            "collocations": [
+              "come along",
+              "bring someone along"
+            ],
+            "collocationFa": {
+              "come along": "همراه آمدن",
+              "bring someone along": "کسی را همراه آوردن"
+            },
+            "usage": "این معنیِ قیدیِ along به همراه آمدن مربوط است. معنیِ حرف اضافهٔ «در امتدادِ»، مثل along the road، جداست؛ alone یعنی تنها.",
+            "mistake": {
+              "wrong": "She came alone.",
+              "wrongFa": "او تنها آمد.",
+              "right": "She came along.",
+              "rightFa": "او همراه آمد.",
+              "why": "اگر منظور همراه آمدن است، along می‌گوییم؛ alone یعنی بدون همراه."
+            },
+            "pronunciation": {
+              "gb": "/əˈlɒŋ/",
+              "us": "/əˈlɔːŋ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "We are leaving now. Would you like to come ___?",
+                "answer": "along",
+                "accept": [],
+                "fa": "ما الان می‌رویم. دوست داری همراه بیایی؟",
+                "why": "come along یعنی همراهِ دیگران آمدن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "come along در دعوت به رفتن یعنی چه؟",
+                "options": [
+                  {
+                    "text": "همراه بیا",
+                    "ok": true,
+                    "why": "along در این کاربرد همراهی با گروه را نشان می‌دهد."
+                  },
+                  {
+                    "text": "تنها بیا",
+                    "ok": false,
+                    "why": "تنها معنیِ alone است، نه along."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "لطفاً دوستت را هم همراه بیاور.",
+                "frame": "Please bring your friend ___.",
+                "answer": "along",
+                "accept": [],
+                "why": "bring someone along یعنی کسی را همراه آوردن."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "sale",
+      "levelWordId": "level:A1:0299",
+      "existingEntryIds": [
+        "lex:A2:sale"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0356",
+          "senseId": "lex:A2:sale",
+          "meaningEn": "An event or period when a shop offers reduced prices."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:sale",
+        "headword": "sale",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:sale",
+            "pos": "noun",
+            "gloss": "حراج؛ فروش با تخفیف",
+            "meaning": "زمان یا برنامه‌ای که فروشگاه کالاها را با قیمت کمتر می‌فروشد، a sale نام دارد.",
+            "grammar": [
+              {
+                "pattern": "a sale / sales",
+                "note": "در این معنی sale اسم قابل‌شمارش است؛ a sale برای یک برنامهٔ حراج می‌آید."
+              },
+              {
+                "pattern": "for sale",
+                "note": "for sale فقط می‌گوید چیزی برای فروش عرضه شده؛ لزوماً به معنی تخفیف نیست."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The shoe shop has a sale this week.",
+                "fa": "فروشگاه کفش این هفته حراج دارد."
+              },
+              {
+                "en": "I bought a coat in the winter sale.",
+                "fa": "من در حراج زمستانی یک پالتو خریدم."
+              },
+              {
+                "en": "Their next sale starts on Monday.",
+                "fa": "حراج بعدی آن‌ها دوشنبه شروع می‌شود."
+              }
+            ],
+            "collocations": [
+              "a winter sale",
+              "a shop sale"
+            ],
+            "collocationFa": {
+              "a winter sale": "حراج زمستانی",
+              "a shop sale": "حراجِ فروشگاه"
+            },
+            "usage": "sale اسم است و sell فعلِ فروختن. on sale بسته به گونهٔ انگلیسی و موقعیت می‌تواند «با تخفیف» یا «در دسترس برای خرید» باشد؛ for sale به معنی برای فروش است.",
+            "mistake": {
+              "wrong": "The shop has a sell this week.",
+              "wrongFa": "فروشگاه این هفته یک فروختن دارد.",
+              "right": "The shop has a sale this week.",
+              "rightFa": "فروشگاه این هفته حراج دارد.",
+              "why": "پس از a به اسم نیاز داریم؛ sale اسمِ حراج است، ولی sell فعلِ فروختن است."
+            },
+            "pronunciation": {
+              "gb": "/seɪl/",
+              "us": "/seɪl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The summer ___ ends tomorrow.",
+                "answer": "sale",
+                "accept": [],
+                "fa": "حراج تابستانی فردا تمام می‌شود.",
+                "why": "sale در این جمله اسمِ برنامهٔ حراج است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "آیا for sale همیشه یعنی با تخفیف؟",
+                "options": [
+                  {
+                    "text": "نه؛ یعنی برای فروش",
+                    "ok": true,
+                    "why": "چیزی می‌تواند برای فروش باشد، حتی اگر تخفیف نداشته باشد."
+                  },
+                  {
+                    "text": "بله؛ همیشه با تخفیف",
+                    "ok": false,
+                    "why": "for sale عرضه برای فروش را بیان می‌کند و تخفیف را تضمین نمی‌کند."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این فروشگاه امروز حراج دارد.",
+                "frame": "This shop has a ___ today.",
+                "answer": "sale",
+                "accept": [],
+                "why": "پس از a از اسم sale برای یک برنامهٔ حراج استفاده می‌کنیم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "cover",
+      "levelWordId": "level:A1:0312",
+      "existingEntryIds": [
+        "lex:A2:cover",
+        "lex:B1:cover"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0371",
+          "senseId": "lex:B1:cover",
+          "meaningEn": "An outer part that protects a book or another object."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:cover",
+        "headword": "cover",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:cover",
+            "pos": "noun",
+            "gloss": "جلد؛ پوشش",
+            "meaning": "چیزی که بیرونِ یک شیء قرار می‌گیرد و آن را می‌پوشاند یا محافظت می‌کند؛ برای کتاب، cover یعنی جلد.",
+            "grammar": [
+              {
+                "pattern": "a cover / covers",
+                "note": "cover در این معنی اسم قابل‌شمارش است؛ چند جلد یا پوشش را covers می‌گوییم."
+              },
+              {
+                "pattern": "the cover of + noun",
+                "note": "برای جلد یا پوششِ یک چیز از the cover of استفاده می‌کنیم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The blue book has a yellow cover.",
+                "fa": "کتاب آبی جلد زرد دارد."
+              },
+              {
+                "en": "There is a flower on the cover of my notebook.",
+                "fa": "روی جلد دفترم یک گل هست."
+              },
+              {
+                "en": "Put this cover over the chair.",
+                "fa": "این پوشش را روی صندلی بینداز."
+              }
+            ],
+            "collocations": [
+              "a book cover",
+              "a chair cover"
+            ],
+            "collocationFa": {
+              "a book cover": "جلد کتاب",
+              "a chair cover": "روکش صندلی"
+            },
+            "usage": "در این درس cover اسم است. فعلِ cover به معنیِ پوشاندن، معنیِ جداگانه‌ای است؛ مدخل اسمیِ موجود برای این درس نگه داشته می‌شود.",
+            "mistake": {
+              "wrong": "These covers is red.",
+              "wrongFa": "این جلدها قرمز است.",
+              "right": "These covers are red.",
+              "rightFa": "این جلدها قرمز هستند.",
+              "why": "covers جمع است و در این جمله با are می‌آید، نه is."
+            },
+            "pronunciation": {
+              "gb": "/ˈkʌvə/",
+              "us": "/ˈkʌvər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ of this book is green.",
+                "answer": "cover",
+                "accept": [],
+                "fa": "جلد این کتاب سبز است.",
+                "why": "cover اسمِ بخشِ بیرونیِ کتاب است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در a book cover، واژهٔ cover چه نقش دارد؟",
+                "options": [
+                  {
+                    "text": "اسمِ جلد",
+                    "ok": true,
+                    "why": "در این عبارت cover نامِ بخش بیرونی کتاب است."
+                  },
+                  {
+                    "text": "فعلِ پوشاندن",
+                    "ok": false,
+                    "why": "فعلِ پوشاندن یک معنی جداست؛ a book cover عبارتِ اسمی است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این کتاب جلدِ سفید دارد.",
+                "frame": "This book has a white ___.",
+                "answer": "cover",
+                "accept": [],
+                "why": "a white cover یعنی یک جلد سفید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "war",
+      "levelWordId": "level:A1:0318",
+      "existingEntryIds": [
+        "lex:A2:war"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0377",
+          "senseId": "lex:A2:war",
+          "meaningEn": "A period of armed fighting between countries or large groups."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:war",
+        "headword": "war",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:war",
+            "pos": "noun",
+            "gloss": "جنگ",
+            "meaning": "نبرد با سلاح میان کشورها یا گروه‌های بزرگ؛ برای دعوای معمولیِ دو نفر از این واژه استفاده نمی‌کنیم.",
+            "grammar": [
+              {
+                "pattern": "a war / wars",
+                "note": "برای یک جنگ مشخص a war و برای چند جنگ wars می‌آید."
+              },
+              {
+                "pattern": "at war / during the war",
+                "note": "at war یعنی در حال جنگ؛ during the war یعنی در طول آن جنگ مشخص."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The war lasted for three years.",
+                "fa": "جنگ سه سال طول کشید."
+              },
+              {
+                "en": "Many families left during the war.",
+                "fa": "خانواده‌های زیادی در طول جنگ رفتند."
+              },
+              {
+                "en": "The two countries were at war.",
+                "fa": "دو کشور در حال جنگ بودند."
+              }
+            ],
+            "collocations": [
+              "at war",
+              "during the war"
+            ],
+            "collocationFa": {
+              "at war": "در حال جنگ",
+              "during the war": "در طول جنگ"
+            },
+            "usage": "war برای جنگ میان کشورها یا گروه‌های بزرگ به کار می‌رود. fight واژهٔ گسترده‌تری است و می‌تواند به یک دعوای کوچک هم اشاره کند.",
+            "mistake": {
+              "wrong": "The countries are at a war.",
+              "wrongFa": "کشورها در یک جنگ هستند.",
+              "right": "The countries are at war.",
+              "rightFa": "کشورها در حال جنگ هستند.",
+              "why": "در عبارت ثابت at war حرف تعریف a نمی‌آوریم."
+            },
+            "pronunciation": {
+              "gb": "/wɔː/",
+              "us": "/wɔːr/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "People wanted the ___ to end.",
+                "answer": "war",
+                "accept": [],
+                "fa": "مردم می‌خواستند جنگ تمام شود.",
+                "why": "war اسمِ نبرد میان کشورها یا گروه‌های بزرگ است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارتِ ثابت یعنی «در حال جنگ»؟",
+                "options": [
+                  {
+                    "text": "at war",
+                    "ok": true,
+                    "why": "در عبارت at war حرف تعریف نمی‌آید."
+                  },
+                  {
+                    "text": "at a war",
+                    "ok": false,
+                    "why": "اضافه کردن a ساختارِ رایجِ at war را تغییر می‌دهد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "جنگ در زمستان تمام شد.",
+                "frame": "The ___ ended in winter.",
+                "answer": "war",
+                "accept": [],
+                "why": "war در این جمله اسمِ جنگی است که تمام شده است."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "bear",
+      "levelWordId": "level:A1:0329",
+      "existingEntryIds": [
+        "lex:A2:bear-animal",
+        "lex:B2:bear-deal-with"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0389",
+          "senseId": "lex:A2:bear-animal",
+          "meaningEn": "A large, heavy animal with thick fur and strong legs."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:bear-animal",
+        "headword": "bear",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:bear-animal",
+            "pos": "noun",
+            "gloss": "خرس",
+            "meaning": "حیوانی بزرگ و سنگین با موهای ضخیم و پاهای نیرومند؛ در این درس bear اسمِ حیوان است.",
+            "grammar": [
+              {
+                "pattern": "a bear / bears",
+                "note": "bear اسم قابل‌شمارش است؛ یک خرس a bear و چند خرس bears می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "A brown bear stood near the river.",
+                "fa": "یک خرس قهوه‌ای نزدیک رودخانه ایستاده بود."
+              },
+              {
+                "en": "The bear looked for food under the trees.",
+                "fa": "خرس زیر درخت‌ها دنبال غذا گشت."
+              },
+              {
+                "en": "Two bears were sleeping in the snow.",
+                "fa": "دو خرس در برف خوابیده بودند."
+              }
+            ],
+            "collocations": [
+              "a brown bear",
+              "a polar bear"
+            ],
+            "collocationFa": {
+              "a brown bear": "خرس قهوه‌ای",
+              "a polar bear": "خرس قطبی"
+            },
+            "usage": "bear در این درس حیوانِ خرس است؛ معنیِ فعلیِ «تحمل کردن» جداست. bare تقریباً هم‌آواست، اما می‌تواند یعنی برهنه یا بدون پوشش.",
+            "mistake": {
+              "wrong": "There is a bare in the park.",
+              "wrongFa": "یک برهنه در پارک هست.",
+              "right": "There is a bear in the park.",
+              "rightFa": "یک خرس در پارک هست.",
+              "why": "برای نامِ حیوان از bear استفاده می‌کنیم؛ bare نامِ خرس نیست."
+            },
+            "pronunciation": {
+              "gb": "/beə/",
+              "us": "/ber/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "We saw a ___ near the forest.",
+                "answer": "bear",
+                "accept": [],
+                "fa": "ما نزدیک جنگل یک خرس دیدیم.",
+                "why": "بعد از a، اسمِ حیوان bear می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه اسمِ حیوانِ خرس است؟",
+                "options": [
+                  {
+                    "text": "bear",
+                    "ok": true,
+                    "why": "bear در این معنی اسمِ خرس است."
+                  },
+                  {
+                    "text": "bare",
+                    "ok": false,
+                    "why": "bare نامِ حیوان نیست و معنی‌هایی مثل بدون پوشش دارد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "خرس خواب است.",
+                "frame": "The ___ is asleep.",
+                "answer": "bear",
+                "accept": [],
+                "why": "bear در این جمله اسمِ حیوان است."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "role",
+      "levelWordId": "level:A1:0336",
+      "existingEntryIds": [
+        "lex:A2:role"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0396",
+          "senseId": "lex:A2:role",
+          "meaningEn": "A job or part that someone has in an activity or group."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:role",
+        "headword": "role",
+        "goals": [
+          "everyday",
+          "work",
+          "study",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:role",
+            "pos": "noun",
+            "gloss": "نقش؛ وظیفه",
+            "meaning": "بخشی از یک کار یا فعالیت که بر عهدهٔ کسی است؛ مثلاً نقشِ یک نفر در گروهِ کلاس.",
+            "grammar": [
+              {
+                "pattern": "a role in + noun",
+                "note": "برای گفتنِ نقش در یک کار یا گروه، a role in می‌آید."
+              },
+              {
+                "pattern": "play a role",
+                "note": "play a role می‌تواند یعنی نقش داشتن؛ همیشه دربارهٔ بازیگری نیست."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My role is to welcome new students.",
+                "fa": "نقش من خوشامد گفتن به دانش‌آموزان تازه است."
+              },
+              {
+                "en": "Each person has a role in the team.",
+                "fa": "هر شخص در گروه نقشی دارد."
+              },
+              {
+                "en": "Parents play an important role at home.",
+                "fa": "والدین در خانه نقش مهمی دارند."
+              }
+            ],
+            "collocations": [
+              "a role in the team",
+              "play an important role"
+            ],
+            "collocationFa": {
+              "a role in the team": "نقشی در گروه",
+              "play an important role": "نقش مهمی داشتن"
+            },
+            "usage": "role دربارهٔ نقش یا وظیفه است و برای نقشِ بازیگر هم به کار می‌رود. roll هم‌آواست، اما می‌تواند به چرخش یا نوعی نان اشاره کند.",
+            "mistake": {
+              "wrong": "His roll is to help the teacher.",
+              "wrongFa": "رولِ او کمک کردن به معلم است.",
+              "right": "His role is to help the teacher.",
+              "rightFa": "نقش او کمک کردن به معلم است.",
+              "why": "وقتی منظور وظیفه یا نقش است، role نوشته می‌شود؛ roll معنیِ نقش نمی‌دهد."
+            },
+            "pronunciation": {
+              "gb": "/rəʊl/",
+              "us": "/roʊl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "What is your ___ in this group?",
+                "answer": "role",
+                "accept": [],
+                "fa": "نقش تو در این گروه چیست؟",
+                "why": "role اسمِ وظیفه یا سهمِ یک شخص در گروه است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت دربارهٔ نقش داشتن است؟",
+                "options": [
+                  {
+                    "text": "play a role",
+                    "ok": true,
+                    "why": "role در این عبارت به سهم یا وظیفه اشاره دارد."
+                  },
+                  {
+                    "text": "play a roll",
+                    "ok": false,
+                    "why": "roll به معنیِ نقش نیست، هرچند تلفظش شبیه role است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او در مدرسه نقش مهمی دارد.",
+                "frame": "She plays an important ___ at school.",
+                "answer": "role",
+                "accept": [],
+                "why": "role در عبارت play an important role نقش مهم داشتن را می‌رساند."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}

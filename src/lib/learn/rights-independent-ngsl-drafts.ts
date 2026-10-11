@@ -68,7 +68,7 @@ const normalize = (s: string) =>
     .replace(/[^\p{L}\p{N}\s]/gu, " ")
     .replace(/\s+/g, " ").trim();
 
-function overlapsDraft(
+export function overlapsDraft(
   text: string,
   inherited: readonly string[],
   tokenThreshold: number,
