@@ -1,0 +1,8002 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_UNREVIEWED_CURRICULUM_PROPOSAL",
+  "description": "Staged A1 curriculum for the CEFR-J rebuild. Current A1 entries that CEFR-J grades A1 keep their unit, order and ID; the 166 that it places higher are removed with their destination level; the 338 drafted NEW entries are added where curriculum-assignments.json puts them. Prerequisites that pointed to removed entries are dropped and listed. Not live: the app still uses content/curriculum/A1.json.",
+  "sources": {
+    "curriculum": {
+      "file": "content/curriculum/A1.json",
+      "sha256": "2a71e18f553db830a9a634096c46122572e48c9a91b8fc91ea6eff15ca65ffb2"
+    },
+    "selection": {
+      "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+      "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+    },
+    "assignments": {
+      "file": "content/rights-staging/a1-rebuild/curriculum-assignments.json",
+      "sha256": "bb15062d83a86b729bc6902292efb9a9b35b3aec904a8af3cc9f86a073214002"
+    },
+    "lessonDrafts": {
+      "lessons-new-001-020.json": "cb30b3e58d89c6920d425e54f059a64a0d8c80773ad80ef3f6996fc6afa867b9",
+      "lessons-new-021-040.json": "c71701fe8686c25e7f25ce223c2e5c4d77b59795d38942f2d797fd4da62efd82",
+      "lessons-new-041-060.json": "b3917d3c9b73c6741712d947696e51845c91d54cf94181a43d9bd50ad7534ac6",
+      "lessons-new-061-080.json": "477b498550dda2090c5dd2394fc4343732aaab50c2cb170bfd0aeb9fddd02d1d",
+      "lessons-new-081-100.json": "2d6a03564b2829b4210399b3c7b76d00df12a9aef6ac776421232a0e423f832f",
+      "lessons-new-101-120.json": "a78eb25b8ecdf54d9e4d859738ce5b833ad7bc6d6ec13151f98ebd8b9ea188b0",
+      "lessons-new-121-140.json": "c164ed5b7163e1d62f592e3a5f96265817caec810d6fdc7f5dde2a6f708cf686",
+      "lessons-new-141-160.json": "77f72379c41ac8f07d1eaeec82eacabaf6b29a4b72f0515fba71d78000cd983f",
+      "lessons-new-161-180.json": "10cd335ea16fef554624dc48835d44244973a240ad622f4e6e44a5e47bd1c01a",
+      "lessons-new-181-200.json": "25f6dd25621db309eb2c8ce0c6dfc477a534864a6c00f50e54b9e2ab2a5eaf65",
+      "lessons-new-201-220.json": "e2e176fb9a704801c900212b250ff4a5d205826fe9d68fb1459246a1d6cfce9a",
+      "lessons-new-221-240.json": "04cd3a728579ad3f481d6a375ab6a94000cc1d0cf2664e76c167369695df28c2",
+      "lessons-new-241-260.json": "1ec00061fc573f7888d6b13b79024bad525bcef0c53062111e30926418d1436d",
+      "lessons-new-261-280.json": "81514f18275b914b8d79e33692c7a36b28908453368a3a0eb214d7198a2f6441",
+      "lessons-new-281-300.json": "ac5af52d4bb6a1e49819117eba28c670bfb643d10c2dcf7b84cd5768ac6788fd",
+      "lessons-new-301-320.json": "aa2450296b51d6b4ea422628fa92e69f117206dacb0d36b7faa3f52d441ed50c",
+      "lessons-new-321-338.json": "ec7a683deebdb735d5355c2ff139067d833f3c306ad2202b76ff2cac6519610d"
+    }
+  },
+  "curriculumApproved": false,
+  "liveInApp": false,
+  "counts": {
+    "units": 12,
+    "entries": 1072,
+    "retained": 734,
+    "added": 338,
+    "removed": 166,
+    "droppedPrerequisites": 24
+  },
+  "removed": [
+    {
+      "id": "lex:A1:adult",
+      "headword": "adult",
+      "fromUnit": "02-family-home",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:apartment",
+      "headword": "apartment",
+      "fromUnit": "02-family-home",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:downstairs",
+      "headword": "downstairs",
+      "fromUnit": "02-family-home",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:no-one",
+      "headword": "no one",
+      "fromUnit": "02-family-home",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:married",
+      "headword": "married",
+      "fromUnit": "02-family-home",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:member",
+      "headword": "member",
+      "fromUnit": "02-family-home",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:somebody",
+      "headword": "somebody",
+      "fromUnit": "02-family-home",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:nobody",
+      "headword": "nobody",
+      "fromUnit": "02-family-home",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:sometimes",
+      "headword": "sometimes",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:routine",
+      "headword": "routine",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:during",
+      "headword": "during",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:midnight",
+      "headword": "midnight",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:next",
+      "headword": "next",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:last-final",
+      "headword": "last",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:twice",
+      "headword": "twice",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:beginning",
+      "headword": "beginning",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:ever",
+      "headword": "ever",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:century",
+      "headword": "century",
+      "fromUnit": "03-daily-routine",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:thirsty",
+      "headword": "thirsty",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:menu",
+      "headword": "menu",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:salt",
+      "headword": "salt",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:beer",
+      "headword": "beer",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:carrot",
+      "headword": "carrot",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:cooking",
+      "headword": "cooking",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:onion",
+      "headword": "onion",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:pepper",
+      "headword": "pepper",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:wine",
+      "headword": "wine",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:few",
+      "headword": "few",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:enough",
+      "headword": "enough",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:prefer",
+      "headword": "prefer",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:quite",
+      "headword": "quite",
+      "fromUnit": "04-food-drink",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:market",
+      "headword": "market",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:pound",
+      "headword": "pound",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:cost",
+      "headword": "cost",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:cheap",
+      "headword": "cheap",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:hundred",
+      "headword": "hundred",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:euro",
+      "headword": "euro",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:cent",
+      "headword": "cent",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:bill",
+      "headword": "bill",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:customer",
+      "headword": "customer",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:million",
+      "headword": "million",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:thousand",
+      "headword": "thousand",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:product",
+      "headword": "product",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:model",
+      "headword": "model",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:object",
+      "headword": "object",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:final",
+      "headword": "final",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:useful",
+      "headword": "useful",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:third",
+      "headword": "third",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:fifth",
+      "headword": "fifth",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:send",
+      "headword": "send",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:part",
+      "headword": "part",
+      "fromUnit": "05-shopping-money",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:road",
+      "headword": "road",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:centre",
+      "headword": "centre",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:far",
+      "headword": "far",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:opposite",
+      "headword": "opposite",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:country",
+      "headword": "country",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:across",
+      "headword": "across",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:village",
+      "headword": "village",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:north",
+      "headword": "north",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:east",
+      "headword": "east",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:south",
+      "headword": "south",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:area",
+      "headword": "area",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:capital",
+      "headword": "capital",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:local",
+      "headword": "local",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:next-to",
+      "headword": "next to",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:west",
+      "headword": "west",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:museum",
+      "headword": "museum",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:plant",
+      "headword": "plant",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:space",
+      "headword": "space",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:fall",
+      "headword": "fall",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:upstairs",
+      "headword": "upstairs",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:policeman",
+      "headword": "policeman",
+      "fromUnit": "06-places-directions",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:main",
+      "headword": "main",
+      "fromUnit": "06-places-directions",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:journey",
+      "headword": "journey",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:passport",
+      "headword": "passport",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:flight",
+      "headword": "flight",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:tourist",
+      "headword": "tourist",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:traffic",
+      "headword": "traffic",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:kilometre",
+      "headword": "kilometre",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:mile",
+      "headword": "mile",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:return",
+      "headword": "return",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:land",
+      "headword": "land",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:visitor",
+      "headword": "visitor",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:air",
+      "headword": "air",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:follow",
+      "headword": "follow",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:metre",
+      "headword": "metre",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:prepare",
+      "headword": "prepare",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:quick",
+      "headword": "quick",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:without",
+      "headword": "without",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:dangerous",
+      "headword": "dangerous",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:situation",
+      "headword": "situation",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:extra",
+      "headword": "extra",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:probably",
+      "headword": "probably",
+      "fromUnit": "07-travel-transport",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:company",
+      "headword": "company",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:detail",
+      "headword": "detail",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:exam",
+      "headword": "exam",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:university",
+      "headword": "university",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:website",
+      "headword": "website",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:compare",
+      "headword": "compare",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:complete",
+      "headword": "complete",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:explain",
+      "headword": "explain",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:geography",
+      "headword": "geography",
+      "fromUnit": "08-work-study",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:chart",
+      "headword": "chart",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:common",
+      "headword": "common",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:create",
+      "headword": "create",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:description",
+      "headword": "description",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:dialogue",
+      "headword": "dialogue",
+      "fromUnit": "08-work-study",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:fact",
+      "headword": "fact",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:improve",
+      "headword": "improve",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:include",
+      "headword": "include",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:online",
+      "headword": "online",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:project",
+      "headword": "project",
+      "fromUnit": "08-work-study",
+      "toLevel": "B2"
+    },
+    {
+      "id": "lex:A1:report",
+      "headword": "report",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:success",
+      "headword": "success",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:writing",
+      "headword": "writing",
+      "fromUnit": "08-work-study",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:career",
+      "headword": "career",
+      "fromUnit": "08-work-study",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:film",
+      "headword": "film",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:gym",
+      "headword": "gym",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:actress",
+      "headword": "actress",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:artist",
+      "headword": "artist",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:blog",
+      "headword": "blog",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:dancer",
+      "headword": "dancer",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:popular",
+      "headword": "popular",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:interest",
+      "headword": "interest",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:relax",
+      "headword": "relax",
+      "fromUnit": "09-leisure-people",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:boot",
+      "headword": "boot",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:sweater",
+      "headword": "sweater",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:style",
+      "headword": "style",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:blonde",
+      "headword": "blonde",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:natural",
+      "headword": "natural",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:modern",
+      "headword": "modern",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:similar",
+      "headword": "similar",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:elephant",
+      "headword": "elephant",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:photograph",
+      "headword": "photograph",
+      "fromUnit": "10-weather-clothes",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:foot",
+      "headword": "foot",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:bored",
+      "headword": "bored",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:hate",
+      "headword": "hate",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:perfect",
+      "headword": "perfect",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:diet",
+      "headword": "diet",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:die",
+      "headword": "die",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:positive",
+      "headword": "positive",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:negative",
+      "headword": "negative",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:amazing",
+      "headword": "amazing",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:fantastic",
+      "headword": "fantastic",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:lie",
+      "headword": "lie",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:friendly",
+      "headword": "friendly",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "B2"
+    },
+    {
+      "id": "lex:A1:sound",
+      "headword": "sound",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:opinion",
+      "headword": "opinion",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:even",
+      "headword": "even",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:teenager",
+      "headword": "teenager",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:however",
+      "headword": "however",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:yeah",
+      "headword": "yeah",
+      "fromUnit": "11-health-feelings",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:understand",
+      "headword": "understand",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:police",
+      "headword": "police",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:advice",
+      "headword": "advice",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:mistake",
+      "headword": "mistake",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:lose",
+      "headword": "lose",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:possible",
+      "headword": "possible",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:decide",
+      "headword": "decide",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:meaning",
+      "headword": "meaning",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:text",
+      "headword": "text",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:spelling",
+      "headword": "spelling",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:statement",
+      "headword": "statement",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:phrase",
+      "headword": "phrase",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "B1"
+    },
+    {
+      "id": "lex:A1:title",
+      "headword": "title",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    },
+    {
+      "id": "lex:A1:hey",
+      "headword": "hey",
+      "fromUnit": "12-help-everyday-problems",
+      "toLevel": "A2"
+    }
+  ],
+  "droppedPrerequisites": [
+    {
+      "id": "lex:A1:waiter",
+      "prerequisite": "lex:A1:menu"
+    },
+    {
+      "id": "lex:A1:pay",
+      "prerequisite": "lex:A1:cost"
+    },
+    {
+      "id": "lex:A1:street",
+      "prerequisite": "lex:A1:road"
+    },
+    {
+      "id": "lex:A1:world",
+      "prerequisite": "lex:A1:country"
+    },
+    {
+      "id": "lex:A1:farm",
+      "prerequisite": "lex:A1:country"
+    },
+    {
+      "id": "lex:A1:car",
+      "prerequisite": "lex:A1:road"
+    },
+    {
+      "id": "lex:A1:drive",
+      "prerequisite": "lex:A1:road"
+    },
+    {
+      "id": "lex:A1:bike",
+      "prerequisite": "lex:A1:road"
+    },
+    {
+      "id": "lex:A1:walk",
+      "prerequisite": "lex:A1:road"
+    },
+    {
+      "id": "lex:A1:long",
+      "prerequisite": "lex:A1:journey"
+    },
+    {
+      "id": "lex:A1:business",
+      "prerequisite": "lex:A1:company"
+    },
+    {
+      "id": "lex:A1:cinema",
+      "prerequisite": "lex:A1:film"
+    },
+    {
+      "id": "lex:A1:actor",
+      "prerequisite": "lex:A1:film"
+    },
+    {
+      "id": "lex:A1:dvd",
+      "prerequisite": "lex:A1:film"
+    },
+    {
+      "id": "lex:A1:boring",
+      "prerequisite": "lex:A1:bored"
+    },
+    {
+      "id": "lex:A1:cannot",
+      "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:language",
+      "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:should",
+      "prerequisite": "lex:A1:advice"
+    },
+    {
+      "id": "lex:A1:mean",
+      "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:sure",
+      "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:agree",
+      "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:also",
+      "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:know",
+      "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:not",
+      "prerequisite": "lex:A1:understand"
+    }
+  ],
+  "curriculum": {
+    "version": 1,
+    "level": "A1",
+    "units": [
+      {
+        "id": "01-introductions",
+        "titleEn": "Introductions and personal information",
+        "titleFa": "معرفی و اطلاعات شخصی",
+        "status": "calibration",
+        "objectiveEn": "Introduce yourself, ask basic personal questions, and say where you live or study.",
+        "objectiveFa": "خودت را معرفی کن، سؤال‌های سادهٔ شخصی بپرس و بگو کجا زندگی یا تحصیل می‌کنی.",
+        "entries": [
+          {
+            "id": "lex:A1:i",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:you",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:a-an",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:be",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:you"
+            ]
+          },
+          {
+            "id": "lex:A1:my",
+            "prerequisites": [
+              "lex:A1:i"
+            ]
+          },
+          {
+            "id": "lex:A1:your",
+            "prerequisites": [
+              "lex:A1:you"
+            ]
+          },
+          {
+            "id": "lex:A1:name",
+            "prerequisites": [
+              "lex:A1:my",
+              "lex:A1:your",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:what",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:your",
+              "lex:A1:name"
+            ]
+          },
+          {
+            "id": "lex:A1:this",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:he",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:who",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:he"
+            ]
+          },
+          {
+            "id": "lex:A1:where",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:from",
+            "prerequisites": [
+              "lex:A1:where",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:in",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:school",
+            "prerequisites": [
+              "lex:A1:a-an",
+              "lex:A1:in"
+            ]
+          },
+          {
+            "id": "lex:A1:city",
+            "prerequisites": [
+              "lex:A1:in"
+            ]
+          },
+          {
+            "id": "lex:A1:live",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:in",
+              "lex:A1:city"
+            ]
+          },
+          {
+            "id": "lex:A1:family",
+            "prerequisites": [
+              "lex:A1:my",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:friend",
+            "prerequisites": [
+              "lex:A1:a-an",
+              "lex:A1:my",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:how",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:you"
+            ]
+          }
+        ],
+        "targetEntries": 20
+      },
+      {
+        "id": "02-family-home",
+        "titleEn": "Family and home",
+        "titleFa": "خانواده و خانه",
+        "status": "planned",
+        "objectiveEn": "Talk about close family, people, rooms, and everyday things at home.",
+        "objectiveFa": "دربارهٔ خانوادهٔ نزدیک، افراد، اتاق‌ها و چیزهای روزمرهٔ خانه صحبت کن.",
+        "entries": [
+          {
+            "id": "lex:A1:cefrj-am",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:i"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-are",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:you"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-is",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:he"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-short-m",
+            "prerequisites": [
+              "lex:A1:cefrj-am"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-short-re",
+            "prerequisites": [
+              "lex:A1:cefrj-are"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-short-s",
+            "prerequisites": [
+              "lex:A1:cefrj-is"
+            ]
+          },
+          {
+            "id": "lex:A1:the",
+            "prerequisites": [
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:that",
+            "prerequisites": [
+              "lex:A1:this",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:she",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:it",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:we",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:you",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:they",
+            "prerequisites": [
+              "lex:A1:he",
+              "lex:A1:she",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:and",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:you"
+            ]
+          },
+          {
+            "id": "lex:A1:have",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:you"
+            ]
+          },
+          {
+            "id": "lex:A1:with",
+            "prerequisites": [
+              "lex:A1:friend"
+            ]
+          },
+          {
+            "id": "lex:A1:of",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:mother",
+            "prerequisites": [
+              "lex:A1:my",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:father",
+            "prerequisites": [
+              "lex:A1:my",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:child",
+            "prerequisites": [
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:home",
+            "prerequisites": [
+              "lex:A1:my"
+            ]
+          },
+          {
+            "id": "lex:A1:house",
+            "prerequisites": [
+              "lex:A1:a-an",
+              "lex:A1:my"
+            ]
+          },
+          {
+            "id": "lex:A1:room",
+            "prerequisites": [
+              "lex:A1:a-an",
+              "lex:A1:in"
+            ]
+          },
+          {
+            "id": "lex:A1:big",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:small",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:old",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:new",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:brother",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:sister",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:baby",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:grandfather",
+            "prerequisites": [
+              "lex:A1:family",
+              "lex:A1:old"
+            ]
+          },
+          {
+            "id": "lex:A1:grandmother",
+            "prerequisites": [
+              "lex:A1:family",
+              "lex:A1:old"
+            ]
+          },
+          {
+            "id": "lex:A1:aunt",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:uncle",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:cousin",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:son",
+            "prerequisites": [
+              "lex:A1:family",
+              "lex:A1:child"
+            ]
+          },
+          {
+            "id": "lex:A1:daughter",
+            "prerequisites": [
+              "lex:A1:family",
+              "lex:A1:child"
+            ]
+          },
+          {
+            "id": "lex:A1:husband",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:wife",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:parent",
+            "prerequisites": [
+              "lex:A1:family",
+              "lex:A1:child"
+            ]
+          },
+          {
+            "id": "lex:A1:kitchen",
+            "prerequisites": [
+              "lex:A1:home",
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:bathroom",
+            "prerequisites": [
+              "lex:A1:home",
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:bedroom",
+            "prerequisites": [
+              "lex:A1:home",
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:garden",
+            "prerequisites": [
+              "lex:A1:house",
+              "lex:A1:home"
+            ]
+          },
+          {
+            "id": "lex:A1:bed",
+            "prerequisites": [
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:table",
+            "prerequisites": [
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:window",
+            "prerequisites": [
+              "lex:A1:house",
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:bath",
+            "prerequisites": [
+              "lex:A1:bathroom",
+              "lex:A1:home"
+            ]
+          },
+          {
+            "id": "lex:A1:chair",
+            "prerequisites": [
+              "lex:A1:room",
+              "lex:A1:table"
+            ]
+          },
+          {
+            "id": "lex:A1:dad",
+            "prerequisites": [
+              "lex:A1:father",
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:flat",
+            "prerequisites": [
+              "lex:A1:home",
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:girlfriend",
+            "prerequisites": [
+              "lex:A1:friend",
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:grandparent",
+            "prerequisites": [
+              "lex:A1:family",
+              "lex:A1:grandfather",
+              "lex:A1:grandmother"
+            ]
+          },
+          {
+            "id": "lex:A1:her",
+            "prerequisites": [
+              "lex:A1:she"
+            ]
+          },
+          {
+            "id": "lex:A1:him",
+            "prerequisites": [
+              "lex:A1:he"
+            ]
+          },
+          {
+            "id": "lex:A1:his",
+            "prerequisites": [
+              "lex:A1:he"
+            ]
+          },
+          {
+            "id": "lex:A1:its",
+            "prerequisites": [
+              "lex:A1:it"
+            ]
+          },
+          {
+            "id": "lex:A1:me",
+            "prerequisites": [
+              "lex:A1:i"
+            ]
+          },
+          {
+            "id": "lex:A1:mum",
+            "prerequisites": [
+              "lex:A1:mother",
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:neighbour",
+            "prerequisites": [
+              "lex:A1:home",
+              "lex:A1:friend"
+            ]
+          },
+          {
+            "id": "lex:A1:our",
+            "prerequisites": [
+              "lex:A1:we"
+            ]
+          },
+          {
+            "id": "lex:A1:partner",
+            "prerequisites": [
+              "lex:A1:friend",
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:toilet",
+            "prerequisites": [
+              "lex:A1:bathroom",
+              "lex:A1:home"
+            ]
+          },
+          {
+            "id": "lex:A1:wall",
+            "prerequisites": [
+              "lex:A1:house",
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:their",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:us",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:everyone",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:own",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:personal",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:someone",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:them",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:introduce",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:yourself",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:dear",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:everything",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:nothing",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:everybody",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:boyfriend",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:welcome",
+            "prerequisites": [
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-has",
+            "prerequisites": [
+              "lex:A1:have"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-these",
+            "prerequisites": [
+              "lex:A1:this"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-those",
+            "prerequisites": [
+              "lex:A1:that"
+            ]
+          },
+          {
+            "id": "lex:A2:mine-belongs-to-me",
+            "prerequisites": [
+              "lex:A1:my"
+            ]
+          },
+          {
+            "id": "lex:A2:yours",
+            "prerequisites": [
+              "lex:A1:your"
+            ]
+          },
+          {
+            "id": "lex:A2:hers",
+            "prerequisites": [
+              "lex:A1:her"
+            ]
+          },
+          {
+            "id": "lex:B1:ours",
+            "prerequisites": [
+              "lex:A1:our"
+            ]
+          },
+          {
+            "id": "lex:A2:whose",
+            "prerequisites": [
+              "lex:A1:who"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-each-other",
+            "prerequisites": [
+              "lex:A1:they"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-miss",
+            "prerequisites": [
+              "lex:A1:name"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-mr",
+            "prerequisites": [
+              "lex:A1:name"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-mrs",
+            "prerequisites": [
+              "lex:A1:name"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-last-name",
+            "prerequisites": [
+              "lex:A1:name"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-mom",
+            "prerequisites": [
+              "lex:A1:mother"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-mommy",
+            "prerequisites": [
+              "lex:A1:mother"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-daddy",
+            "prerequisites": [
+              "lex:A1:dad"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-grandma",
+            "prerequisites": [
+              "lex:A1:grandmother"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-grandpa",
+            "prerequisites": [
+              "lex:A1:grandfather"
+            ]
+          },
+          {
+            "id": "lex:A2:kid",
+            "prerequisites": [
+              "lex:A1:child"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-nationality",
+            "prerequisites": [
+              "lex:A1:from"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-hometown",
+            "prerequisites": [
+              "lex:A1:home",
+              "lex:A1:city"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-living-room",
+            "prerequisites": [
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-dining-room",
+            "prerequisites": [
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-sofa",
+            "prerequisites": [
+              "lex:A1:cefrj-living-room"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-couch",
+            "prerequisites": [
+              "lex:A1:cefrj-sofa"
+            ]
+          },
+          {
+            "id": "lex:B1:shelf",
+            "prerequisites": [
+              "lex:A1:wall"
+            ]
+          },
+          {
+            "id": "lex:A2:towel",
+            "prerequisites": [
+              "lex:A1:bathroom"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-apron",
+            "prerequisites": [
+              "lex:A1:kitchen"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-garbage",
+            "prerequisites": [
+              "lex:A1:kitchen"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-bucket",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:B1:yard",
+            "prerequisites": [
+              "lex:A1:garden"
+            ]
+          },
+          {
+            "id": "lex:A2:corner",
+            "prerequisites": [
+              "lex:A1:room"
+            ]
+          },
+          {
+            "id": "lex:A2:inside",
+            "prerequisites": [
+              "lex:A1:house"
+            ]
+          },
+          {
+            "id": "lex:A2:owner",
+            "prerequisites": [
+              "lex:A1:own"
+            ]
+          },
+          {
+            "id": "lex:A2:guest",
+            "prerequisites": [
+              "lex:A1:home"
+            ]
+          },
+          {
+            "id": "lex:B2:self",
+            "prerequisites": [
+              "lex:A1:yourself"
+            ]
+          },
+          {
+            "id": "lex:A2:sir",
+            "prerequisites": [
+              "lex:A1:name"
+            ]
+          }
+        ],
+        "targetEntries": 115
+      },
+      {
+        "id": "03-daily-routine",
+        "titleEn": "Daily routine and time",
+        "titleFa": "کارهای روزانه و زمان",
+        "status": "planned",
+        "objectiveEn": "Describe a simple day, times, frequency, and common routine actions.",
+        "objectiveFa": "یک روز ساده، زمان‌ها، تکرار و کارهای معمول روزانه را بیان کن.",
+        "entries": [
+          {
+            "id": "lex:A1:time",
+            "prerequisites": [
+              "lex:A1:what",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:day",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:morning",
+            "prerequisites": [
+              "lex:A1:day",
+              "lex:A1:in"
+            ]
+          },
+          {
+            "id": "lex:A1:afternoon",
+            "prerequisites": [
+              "lex:A1:day",
+              "lex:A1:in"
+            ]
+          },
+          {
+            "id": "lex:A1:evening",
+            "prerequisites": [
+              "lex:A1:day",
+              "lex:A1:in"
+            ]
+          },
+          {
+            "id": "lex:A1:night",
+            "prerequisites": [
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:today",
+            "prerequisites": [
+              "lex:A1:day",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:every",
+            "prerequisites": [
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:always",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:usually",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:never",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:before",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:after",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:start",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:finish",
+            "prerequisites": [
+              "lex:A1:start"
+            ]
+          },
+          {
+            "id": "lex:A1:early",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:late",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:wake",
+            "prerequisites": [
+              "lex:A1:morning"
+            ]
+          },
+          {
+            "id": "lex:A1:sleep",
+            "prerequisites": [
+              "lex:A1:night"
+            ]
+          },
+          {
+            "id": "lex:A1:week",
+            "prerequisites": [
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:year",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:tomorrow",
+            "prerequisites": [
+              "lex:A1:today",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:yesterday",
+            "prerequisites": [
+              "lex:A1:today",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:month",
+            "prerequisites": [
+              "lex:A1:year",
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:hour",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:monday",
+            "prerequisites": [
+              "lex:A1:week",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:tuesday",
+            "prerequisites": [
+              "lex:A1:week",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:wednesday",
+            "prerequisites": [
+              "lex:A1:week",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:thursday",
+            "prerequisites": [
+              "lex:A1:week",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:friday",
+            "prerequisites": [
+              "lex:A1:week",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:saturday",
+            "prerequisites": [
+              "lex:A1:week",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:sunday",
+            "prerequisites": [
+              "lex:A1:week",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:now",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:later",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:after"
+            ]
+          },
+          {
+            "id": "lex:A1:soon",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:then",
+            "prerequisites": [
+              "lex:A1:after",
+              "lex:A1:before"
+            ]
+          },
+          {
+            "id": "lex:A1:wash",
+            "prerequisites": [
+              "lex:A1:morning"
+            ]
+          },
+          {
+            "id": "lex:A1:shower",
+            "prerequisites": [
+              "lex:A1:wash",
+              "lex:A1:morning"
+            ]
+          },
+          {
+            "id": "lex:A1:ago",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:yesterday"
+            ]
+          },
+          {
+            "id": "lex:A1:april",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:august",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:date",
+            "prerequisites": [
+              "lex:A1:day",
+              "lex:A1:month"
+            ]
+          },
+          {
+            "id": "lex:A1:december",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:end",
+            "prerequisites": [
+              "lex:A1:start",
+              "lex:A1:finish"
+            ]
+          },
+          {
+            "id": "lex:A1:february",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:first",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:before"
+            ]
+          },
+          {
+            "id": "lex:A1:future",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:today"
+            ]
+          },
+          {
+            "id": "lex:A1:half",
+            "prerequisites": [
+              "lex:A1:hour",
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:january",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:july",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:june",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:march",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:may",
+            "prerequisites": [
+              "lex:A1:month",
+              "lex:A1:year"
+            ]
+          },
+          {
+            "id": "lex:A1:minute",
+            "prerequisites": [
+              "lex:A1:hour",
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:tonight",
+            "prerequisites": [
+              "lex:A1:night",
+              "lex:A1:today"
+            ]
+          },
+          {
+            "id": "lex:A1:second-unit-of-time",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:second-next-after-the-first",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:still",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:just",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:often",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:once",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:clock",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:spend",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:moment",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:quarter",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:september",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:november",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:october",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:o-clock",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:period",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-was",
+            "prerequisites": [
+              "lex:A1:cefrj-is"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-were",
+            "prerequisites": [
+              "lex:A1:cefrj-are"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-does",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:cefrj-did",
+            "prerequisites": [
+              "lex:A1:cefrj-does"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-doing",
+            "prerequisites": [
+              "lex:A1:cefrj-does"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-had",
+            "prerequisites": [
+              "lex:A1:cefrj-has"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-a-m",
+            "prerequisites": [
+              "lex:A1:o-clock"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-p-m",
+            "prerequisites": [
+              "lex:A1:cefrj-a-m"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-good-morning",
+            "prerequisites": [
+              "lex:A1:morning"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-good-afternoon",
+            "prerequisites": [
+              "lex:A1:afternoon"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-good-night",
+            "prerequisites": [
+              "lex:A1:night"
+            ]
+          },
+          {
+            "id": "lex:A2:already",
+            "prerequisites": [
+              "lex:A1:now"
+            ]
+          },
+          {
+            "id": "lex:A2:yet",
+            "prerequisites": [
+              "lex:A1:still"
+            ]
+          },
+          {
+            "id": "lex:A2:almost",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:cefrj-awake",
+            "prerequisites": [
+              "lex:A1:wake"
+            ]
+          },
+          {
+            "id": "lex:A2:dream",
+            "prerequisites": [
+              "lex:A1:sleep"
+            ]
+          },
+          {
+            "id": "lex:B1:hurry",
+            "prerequisites": [
+              "lex:A1:late"
+            ]
+          },
+          {
+            "id": "lex:A2:habit",
+            "prerequisites": [
+              "lex:A1:every"
+            ]
+          },
+          {
+            "id": "lex:A2:everyday",
+            "prerequisites": [
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A2:following",
+            "prerequisites": [
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A2:birth",
+            "prerequisites": [
+              "lex:A1:date"
+            ]
+          },
+          {
+            "id": "lex:A2:brush",
+            "prerequisites": [
+              "lex:A1:wash"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-haircut",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:cefrj-mobile-phone",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A2:mobile",
+            "prerequisites": [
+              "lex:A1:cefrj-mobile-phone"
+            ]
+          }
+        ],
+        "targetEntries": 95
+      },
+      {
+        "id": "04-food-drink",
+        "titleEn": "Food and drink",
+        "titleFa": "خوراکی و نوشیدنی",
+        "status": "planned",
+        "objectiveEn": "Ask for, choose, and talk about basic food and drink.",
+        "objectiveFa": "خوراکی و نوشیدنی ساده را درخواست، انتخاب و توصیف کن.",
+        "entries": [
+          {
+            "id": "lex:A1:food",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:water",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:eat",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:drink",
+            "prerequisites": [
+              "lex:A1:water"
+            ]
+          },
+          {
+            "id": "lex:A1:want",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:you",
+              "lex:A1:food",
+              "lex:A1:water"
+            ]
+          },
+          {
+            "id": "lex:A1:rice",
+            "prerequisites": [
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:some",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:water"
+            ]
+          },
+          {
+            "id": "lex:A1:tea",
+            "prerequisites": [
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:cafe",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:coffee",
+            "prerequisites": [
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:milk",
+            "prerequisites": [
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:cheese",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:bread",
+            "prerequisites": [
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:fruit",
+            "prerequisites": [
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:apple",
+            "prerequisites": [
+              "lex:A1:fruit",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:breakfast",
+            "prerequisites": [
+              "lex:A1:eat",
+              "lex:A1:morning"
+            ]
+          },
+          {
+            "id": "lex:A1:lunch",
+            "prerequisites": [
+              "lex:A1:eat",
+              "lex:A1:afternoon"
+            ]
+          },
+          {
+            "id": "lex:A1:dinner",
+            "prerequisites": [
+              "lex:A1:eat",
+              "lex:A1:evening"
+            ]
+          },
+          {
+            "id": "lex:A1:hungry",
+            "prerequisites": [
+              "lex:A1:be",
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:restaurant",
+            "prerequisites": [
+              "lex:A1:a-an",
+              "lex:A1:eat",
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:glass",
+            "prerequisites": [
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:bottle",
+            "prerequisites": [
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:sugar",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:meal",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:cup",
+            "prerequisites": [
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:fish",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:juice",
+            "prerequisites": [
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:meat",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:chicken",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:delicious",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:meal"
+            ]
+          },
+          {
+            "id": "lex:A1:cook",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:meal"
+            ]
+          },
+          {
+            "id": "lex:A1:orange",
+            "prerequisites": [
+              "lex:A1:fruit"
+            ]
+          },
+          {
+            "id": "lex:A1:tomato",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:banana",
+            "prerequisites": [
+              "lex:A1:fruit"
+            ]
+          },
+          {
+            "id": "lex:A1:egg",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:potato",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:vegetable",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:salad",
+            "prerequisites": [
+              "lex:A1:vegetable",
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:sandwich",
+            "prerequisites": [
+              "lex:A1:bread",
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:soup",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:meal"
+            ]
+          },
+          {
+            "id": "lex:A1:butter",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:bread"
+            ]
+          },
+          {
+            "id": "lex:A1:cake",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:chocolate",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:A1:cow",
+            "prerequisites": [
+              "lex:A1:milk",
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:cream",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:milk"
+            ]
+          },
+          {
+            "id": "lex:A1:cut",
+            "prerequisites": [
+              "lex:A1:cook",
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:dish",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:meal"
+            ]
+          },
+          {
+            "id": "lex:A1:ice",
+            "prerequisites": [
+              "lex:A1:water",
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A1:other",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:each",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:ice-cream",
+            "prerequisites": [
+              "lex:A1:food",
+              "lex:A1:milk"
+            ]
+          },
+          {
+            "id": "lex:A1:piece",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:waiter",
+            "prerequisites": [
+              "lex:A1:restaurant"
+            ]
+          },
+          {
+            "id": "lex:A1:or",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:like-find-sb-sth-pleasant",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:order",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:more",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:many",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:much",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:both",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:full",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:too",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:very",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:lot",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:only",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:really",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:thank",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A2:bowl",
+            "prerequisites": [
+              "lex:A1:dish"
+            ]
+          },
+          {
+            "id": "lex:A2:knife",
+            "prerequisites": [
+              "lex:A1:cut"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-pizza",
+            "prerequisites": [
+              "lex:A1:cheese"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-hamburger",
+            "prerequisites": [
+              "lex:A1:meat"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-burger",
+            "prerequisites": [
+              "lex:A1:cefrj-hamburger"
+            ]
+          },
+          {
+            "id": "lex:A2:beef",
+            "prerequisites": [
+              "lex:A1:meat"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-turkey",
+            "prerequisites": [
+              "lex:A1:chicken"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-corn",
+            "prerequisites": [
+              "lex:A1:vegetable"
+            ]
+          },
+          {
+            "id": "lex:A2:bean",
+            "prerequisites": [
+              "lex:A1:vegetable"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-grape",
+            "prerequisites": [
+              "lex:A1:fruit"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-cookie",
+            "prerequisites": [
+              "lex:A1:cake"
+            ]
+          },
+          {
+            "id": "lex:A2:biscuit",
+            "prerequisites": [
+              "lex:A1:cefrj-cookie"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-candy",
+            "prerequisites": [
+              "lex:A1:sugar"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-yogurt",
+            "prerequisites": [
+              "lex:A1:milk"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-coke",
+            "prerequisites": [
+              "lex:A1:drink"
+            ]
+          },
+          {
+            "id": "lex:A2:sweet",
+            "prerequisites": [
+              "lex:A1:sugar"
+            ]
+          },
+          {
+            "id": "lex:A2:smell",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-picnic",
+            "prerequisites": [
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A2:bar",
+            "prerequisites": [
+              "lex:A1:chocolate"
+            ]
+          },
+          {
+            "id": "lex:B2:feed",
+            "prerequisites": [
+              "lex:A1:eat"
+            ]
+          },
+          {
+            "id": "lex:B1:set-put",
+            "prerequisites": [
+              "lex:A1:table"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-waitress",
+            "prerequisites": [
+              "lex:A1:waiter"
+            ]
+          }
+        ],
+        "targetEntries": 89
+      },
+      {
+        "id": "05-shopping-money",
+        "titleEn": "Shopping and money",
+        "titleFa": "خرید و پول",
+        "status": "planned",
+        "objectiveEn": "Ask about prices, quantities, sizes, and simple purchases.",
+        "objectiveFa": "دربارهٔ قیمت، مقدار، اندازه و خریدهای ساده سؤال کن.",
+        "entries": [
+          {
+            "id": "lex:A1:money",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:buy",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:sell",
+            "prerequisites": [
+              "lex:A1:buy",
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:need",
+            "prerequisites": [
+              "lex:A1:want"
+            ]
+          },
+          {
+            "id": "lex:A1:shop",
+            "prerequisites": [
+              "lex:A1:buy",
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:shopping",
+            "prerequisites": [
+              "lex:A1:shop"
+            ]
+          },
+          {
+            "id": "lex:A1:supermarket",
+            "prerequisites": [
+              "lex:A1:shop",
+              "lex:A1:food"
+            ]
+          },
+          {
+            "id": "lex:A1:price",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:expensive",
+            "prerequisites": [
+              "lex:A1:price"
+            ]
+          },
+          {
+            "id": "lex:A1:pay",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:bank-money",
+            "prerequisites": [
+              "lex:A1:money",
+              "lex:A1:pay"
+            ]
+          },
+          {
+            "id": "lex:A1:card",
+            "prerequisites": [
+              "lex:A1:pay"
+            ]
+          },
+          {
+            "id": "lex:A1:change",
+            "prerequisites": [
+              "lex:A1:money",
+              "lex:A1:pay"
+            ]
+          },
+          {
+            "id": "lex:A1:clothes",
+            "prerequisites": [
+              "lex:A1:shop"
+            ]
+          },
+          {
+            "id": "lex:A1:shirt",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:shoe",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:dress",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:one",
+            "prerequisites": [
+              "lex:A1:this"
+            ]
+          },
+          {
+            "id": "lex:A1:open",
+            "prerequisites": [
+              "lex:A1:shop",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:two",
+            "prerequisites": [
+              "lex:A1:one"
+            ]
+          },
+          {
+            "id": "lex:A1:bag",
+            "prerequisites": [
+              "lex:A1:shopping"
+            ]
+          },
+          {
+            "id": "lex:A1:three",
+            "prerequisites": [
+              "lex:A1:two"
+            ]
+          },
+          {
+            "id": "lex:A1:ten",
+            "prerequisites": [
+              "lex:A1:three"
+            ]
+          },
+          {
+            "id": "lex:A1:five",
+            "prerequisites": [
+              "lex:A1:three"
+            ]
+          },
+          {
+            "id": "lex:A1:four",
+            "prerequisites": [
+              "lex:A1:three"
+            ]
+          },
+          {
+            "id": "lex:A1:eight",
+            "prerequisites": [
+              "lex:A1:five"
+            ]
+          },
+          {
+            "id": "lex:A1:six",
+            "prerequisites": [
+              "lex:A1:five"
+            ]
+          },
+          {
+            "id": "lex:A1:seven",
+            "prerequisites": [
+              "lex:A1:six"
+            ]
+          },
+          {
+            "id": "lex:A1:nine",
+            "prerequisites": [
+              "lex:A1:eight"
+            ]
+          },
+          {
+            "id": "lex:A1:twenty",
+            "prerequisites": [
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:fifty",
+            "prerequisites": [
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:dollar",
+            "prerequisites": [
+              "lex:A1:money",
+              "lex:A1:price"
+            ]
+          },
+          {
+            "id": "lex:A1:ninety",
+            "prerequisites": [
+              "lex:A1:nine",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:box",
+            "prerequisites": [
+              "lex:A1:shopping",
+              "lex:A1:buy"
+            ]
+          },
+          {
+            "id": "lex:A1:choose",
+            "prerequisites": [
+              "lex:A1:shop",
+              "lex:A1:buy"
+            ]
+          },
+          {
+            "id": "lex:A1:eleven",
+            "prerequisites": [
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:eighteen",
+            "prerequisites": [
+              "lex:A1:ten",
+              "lex:A1:eight"
+            ]
+          },
+          {
+            "id": "lex:A1:eighty",
+            "prerequisites": [
+              "lex:A1:eight",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:fifteen",
+            "prerequisites": [
+              "lex:A1:five",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:forty",
+            "prerequisites": [
+              "lex:A1:four",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:fourteen",
+            "prerequisites": [
+              "lex:A1:four",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:fourth",
+            "prerequisites": [
+              "lex:A1:four"
+            ]
+          },
+          {
+            "id": "lex:A1:nineteen",
+            "prerequisites": [
+              "lex:A1:nine",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:seventeen",
+            "prerequisites": [
+              "lex:A1:seven",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:seventy",
+            "prerequisites": [
+              "lex:A1:seven",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:sixteen",
+            "prerequisites": [
+              "lex:A1:six",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:sixty",
+            "prerequisites": [
+              "lex:A1:six",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:thirteen",
+            "prerequisites": [
+              "lex:A1:three",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:thirty",
+            "prerequisites": [
+              "lex:A1:three",
+              "lex:A1:ten"
+            ]
+          },
+          {
+            "id": "lex:A1:present",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:give",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:type",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:thing",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:real",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:difference",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:show",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:use",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:twelve",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:camera",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:share",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A2:sale",
+            "prerequisites": [
+              "lex:A1:sell"
+            ]
+          },
+          {
+            "id": "lex:A2:store",
+            "prerequisites": [
+              "lex:A1:shop"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-credit-card",
+            "prerequisites": [
+              "lex:A1:card"
+            ]
+          },
+          {
+            "id": "lex:A2:size",
+            "prerequisites": [
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A2:item",
+            "prerequisites": [
+              "lex:A1:thing"
+            ]
+          },
+          {
+            "id": "lex:A2:pick",
+            "prerequisites": [
+              "lex:A1:choose"
+            ]
+          },
+          {
+            "id": "lex:A2:gift",
+            "prerequisites": [
+              "lex:A1:present"
+            ]
+          },
+          {
+            "id": "lex:A2:save",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:B2:sum",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A2:button",
+            "prerequisites": [
+              "lex:A1:shirt"
+            ]
+          },
+          {
+            "id": "lex:B1:cloth",
+            "prerequisites": [
+              "lex:A1:dress"
+            ]
+          },
+          {
+            "id": "lex:A2:jewellery",
+            "prerequisites": [
+              "lex:A1:buy"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-bookstore",
+            "prerequisites": [
+              "lex:A2:store"
+            ]
+          },
+          {
+            "id": "lex:B1:collection",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A2:pants",
+            "prerequisites": [
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A2:borrow",
+            "prerequisites": [
+              "lex:A1:money"
+            ]
+          }
+        ],
+        "targetEntries": 76
+      },
+      {
+        "id": "06-places-directions",
+        "titleEn": "Places and directions",
+        "titleFa": "مکان‌ها و مسیر",
+        "status": "planned",
+        "objectiveEn": "Identify common places and ask for or follow simple directions.",
+        "objectiveFa": "مکان‌های رایج را بشناس و مسیر ساده را بپرس یا دنبال کن.",
+        "entries": [
+          {
+            "id": "lex:A1:place",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:here",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:there",
+            "prerequisites": [
+              "lex:A1:here"
+            ]
+          },
+          {
+            "id": "lex:A1:street",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:address",
+            "prerequisites": [
+              "lex:A1:street"
+            ]
+          },
+          {
+            "id": "lex:A1:building",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:hotel",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:A1:hospital",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:A1:park",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:way",
+            "prerequisites": [
+              "lex:A1:where",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:map",
+            "prerequisites": [
+              "lex:A1:way"
+            ]
+          },
+          {
+            "id": "lex:A1:near",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:beach",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:between",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:front",
+            "prerequisites": [
+              "lex:A1:building",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:left",
+            "prerequisites": [
+              "lex:A1:map"
+            ]
+          },
+          {
+            "id": "lex:A1:right",
+            "prerequisites": [
+              "lex:A1:left",
+              "lex:A1:map"
+            ]
+          },
+          {
+            "id": "lex:A1:turn",
+            "prerequisites": [
+              "lex:A1:left",
+              "lex:A1:right",
+              "lex:A1:way"
+            ]
+          },
+          {
+            "id": "lex:A1:up",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:over",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:tree",
+            "prerequisites": [
+              "lex:A1:park",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:under",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:outside",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:down",
+            "prerequisites": [
+              "lex:A1:up"
+            ]
+          },
+          {
+            "id": "lex:A1:river",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:world",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:around",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:town",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:city"
+            ]
+          },
+          {
+            "id": "lex:A1:floor",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:A1:behind",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:mountain",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:sea",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:beach"
+            ]
+          },
+          {
+            "id": "lex:A1:below",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:under"
+            ]
+          },
+          {
+            "id": "lex:A1:draw",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:line",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:above",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:over"
+            ]
+          },
+          {
+            "id": "lex:A1:climb",
+            "prerequisites": [
+              "lex:A1:mountain",
+              "lex:A1:up"
+            ]
+          },
+          {
+            "id": "lex:A1:farm",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:high",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:up"
+            ]
+          },
+          {
+            "id": "lex:A1:into",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:in"
+            ]
+          },
+          {
+            "id": "lex:A1:island",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:sea"
+            ]
+          },
+          {
+            "id": "lex:A1:out",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:outside"
+            ]
+          },
+          {
+            "id": "lex:A1:library",
+            "prerequisites": [
+              "lex:A1:building",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:flower",
+            "prerequisites": [
+              "lex:A1:garden",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:see",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:look",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:close",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:quiet",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:sit",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:stand",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:point",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:which",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:section",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:build",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:join",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:begin",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:reader",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:newspaper",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A2:side",
+            "prerequisites": [
+              "lex:A1:left"
+            ]
+          },
+          {
+            "id": "lex:A2:top",
+            "prerequisites": [
+              "lex:A1:up"
+            ]
+          },
+          {
+            "id": "lex:A2:bottom",
+            "prerequisites": [
+              "lex:A1:down"
+            ]
+          },
+          {
+            "id": "lex:A2:middle",
+            "prerequisites": [
+              "lex:A1:between"
+            ]
+          },
+          {
+            "id": "lex:A2:along",
+            "prerequisites": [
+              "lex:A1:street"
+            ]
+          },
+          {
+            "id": "lex:B2x:beside",
+            "prerequisites": [
+              "lex:A1:near"
+            ]
+          },
+          {
+            "id": "lex:A2:straight",
+            "prerequisites": [
+              "lex:A1:turn"
+            ]
+          },
+          {
+            "id": "lex:A2:everywhere",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A2:site",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:B1:spot",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A2:sign",
+            "prerequisites": [
+              "lex:A1:street"
+            ]
+          },
+          {
+            "id": "lex:A2:field",
+            "prerequisites": [
+              "lex:A1:farm"
+            ]
+          },
+          {
+            "id": "lex:A2:ground",
+            "prerequisites": [
+              "lex:A1:floor"
+            ]
+          },
+          {
+            "id": "lex:A2:hill",
+            "prerequisites": [
+              "lex:A1:mountain"
+            ]
+          },
+          {
+            "id": "lex:A2:bridge",
+            "prerequisites": [
+              "lex:A1:river"
+            ]
+          },
+          {
+            "id": "lex:A2:tower",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:B1:block",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:A2:factory",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:A2:church",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:B2x:temple",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:A2:palace",
+            "prerequisites": [
+              "lex:A1:building"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-zoo",
+            "prerequisites": [
+              "lex:A1:park"
+            ]
+          },
+          {
+            "id": "lex:A2:camp",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A2:hole",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A2:circle",
+            "prerequisites": [
+              "lex:A1:line"
+            ]
+          },
+          {
+            "id": "lex:A2:stone",
+            "prerequisites": [
+              "lex:A1:mountain"
+            ]
+          },
+          {
+            "id": "lex:B1:row",
+            "prerequisites": [
+              "lex:A1:line"
+            ]
+          }
+        ],
+        "targetEntries": 85
+      },
+      {
+        "id": "07-travel-transport",
+        "titleEn": "Travel and transport",
+        "titleFa": "سفر و حمل‌ونقل",
+        "status": "planned",
+        "objectiveEn": "Handle basic travel, tickets, vehicles, arrivals, and departures.",
+        "objectiveFa": "موقعیت‌های سادهٔ سفر، بلیت، وسیلهٔ نقلیه، رسیدن و رفتن را مدیریت کن.",
+        "entries": [
+          {
+            "id": "lex:A1:go",
+            "prerequisites": [
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:come",
+            "prerequisites": [
+              "lex:A1:go",
+              "lex:A1:here"
+            ]
+          },
+          {
+            "id": "lex:A1:travel",
+            "prerequisites": [
+              "lex:A1:go"
+            ]
+          },
+          {
+            "id": "lex:A1:trip",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:leave",
+            "prerequisites": [
+              "lex:A1:go",
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:arrive",
+            "prerequisites": [
+              "lex:A1:leave",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:ticket",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:buy"
+            ]
+          },
+          {
+            "id": "lex:A1:station",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:stop",
+            "prerequisites": [
+              "lex:A1:station",
+              "lex:A1:go"
+            ]
+          },
+          {
+            "id": "lex:A1:bus",
+            "prerequisites": [
+              "lex:A1:station",
+              "lex:A1:ticket"
+            ]
+          },
+          {
+            "id": "lex:A1:train",
+            "prerequisites": [
+              "lex:A1:station",
+              "lex:A1:ticket"
+            ]
+          },
+          {
+            "id": "lex:A1:car",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:taxi",
+            "prerequisites": [
+              "lex:A1:car",
+              "lex:A1:money"
+            ]
+          },
+          {
+            "id": "lex:A1:airport",
+            "prerequisites": [
+              "lex:A1:place",
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:plane",
+            "prerequisites": [
+              "lex:A1:airport",
+              "lex:A1:ticket"
+            ]
+          },
+          {
+            "id": "lex:A1:drive",
+            "prerequisites": [
+              "lex:A1:car"
+            ]
+          },
+          {
+            "id": "lex:A1:ride",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:bike",
+            "prerequisites": [
+              "lex:A1:ride"
+            ]
+          },
+          {
+            "id": "lex:A1:boat",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:holiday",
+            "prerequisites": [
+              "lex:A1:trip",
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:to",
+            "prerequisites": [
+              "lex:A1:go",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:get",
+            "prerequisites": [
+              "lex:A1:go",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:take",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:walk",
+            "prerequisites": [
+              "lex:A1:go"
+            ]
+          },
+          {
+            "id": "lex:A1:driver",
+            "prerequisites": [
+              "lex:A1:car",
+              "lex:A1:drive"
+            ]
+          },
+          {
+            "id": "lex:A1:bicycle",
+            "prerequisites": [
+              "lex:A1:bike",
+              "lex:A1:ride"
+            ]
+          },
+          {
+            "id": "lex:A1:fly",
+            "prerequisites": [
+              "lex:A1:plane",
+              "lex:A1:airport"
+            ]
+          },
+          {
+            "id": "lex:A1:vacation",
+            "prerequisites": [
+              "lex:A1:holiday",
+              "lex:A1:trip"
+            ]
+          },
+          {
+            "id": "lex:A1:stay",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:hotel"
+            ]
+          },
+          {
+            "id": "lex:A1:away",
+            "prerequisites": [
+              "lex:A1:go",
+              "lex:A1:from"
+            ]
+          },
+          {
+            "id": "lex:A1:at",
+            "prerequisites": [
+              "lex:A1:station",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:by",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:go"
+            ]
+          },
+          {
+            "id": "lex:A1:carry",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:bag"
+            ]
+          },
+          {
+            "id": "lex:A1:rule",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:for",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:fast",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:car"
+            ]
+          },
+          {
+            "id": "lex:A1:long",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:miss",
+            "prerequisites": [
+              "lex:A1:bus",
+              "lex:A1:train"
+            ]
+          },
+          {
+            "id": "lex:A1:move",
+            "prerequisites": [
+              "lex:A1:go",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:past",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:plan",
+            "prerequisites": [
+              "lex:A1:trip",
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:quickly",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:fast"
+            ]
+          },
+          {
+            "id": "lex:A1:ready",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:trip"
+            ]
+          },
+          {
+            "id": "lex:A1:through",
+            "prerequisites": [
+              "lex:A1:travel",
+              "lex:A1:place"
+            ]
+          },
+          {
+            "id": "lex:A1:until",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:when",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:will",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:would",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:keep",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:let",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:busy",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:telephone",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:post",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:goodbye",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:bye",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:maybe",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:happen",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:ok",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:yes",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:thanks",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-subway",
+            "prerequisites": [
+              "lex:A1:train"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-airplane",
+            "prerequisites": [
+              "lex:A1:plane"
+            ]
+          },
+          {
+            "id": "lex:B2x:jet",
+            "prerequisites": [
+              "lex:A1:plane"
+            ]
+          },
+          {
+            "id": "lex:A2:ship",
+            "prerequisites": [
+              "lex:A1:boat"
+            ]
+          },
+          {
+            "id": "lex:B1:sailor",
+            "prerequisites": [
+              "lex:A2:ship"
+            ]
+          },
+          {
+            "id": "lex:A2:truck",
+            "prerequisites": [
+              "lex:A1:car"
+            ]
+          },
+          {
+            "id": "lex:A2:wheel",
+            "prerequisites": [
+              "lex:A1:car"
+            ]
+          },
+          {
+            "id": "lex:A2:mail",
+            "prerequisites": [
+              "lex:A1:post"
+            ]
+          },
+          {
+            "id": "lex:A2:foreign",
+            "prerequisites": [
+              "lex:A1:travel"
+            ]
+          },
+          {
+            "id": "lex:C1:foreigner",
+            "prerequisites": [
+              "lex:A2:foreign"
+            ]
+          },
+          {
+            "id": "lex:A2:ring-2",
+            "prerequisites": [
+              "lex:A1:telephone"
+            ]
+          },
+          {
+            "id": "lex:B2:step",
+            "prerequisites": [
+              "lex:A1:walk"
+            ]
+          },
+          {
+            "id": "lex:A2:push",
+            "prerequisites": [
+              "lex:A1:move"
+            ]
+          },
+          {
+            "id": "lex:A2:drop",
+            "prerequisites": [
+              "lex:A1:carry"
+            ]
+          },
+          {
+            "id": "lex:B1:due",
+            "prerequisites": [
+              "lex:A1:arrive"
+            ]
+          },
+          {
+            "id": "lex:A2:seat",
+            "prerequisites": [
+              "lex:A1:bus"
+            ]
+          }
+        ],
+        "targetEntries": 76
+      },
+      {
+        "id": "08-work-study",
+        "titleEn": "Work and study",
+        "titleFa": "کار و تحصیل",
+        "status": "planned",
+        "objectiveEn": "Talk about simple work, school, study, schedules, and tasks.",
+        "objectiveFa": "دربارهٔ کار، مدرسه، مطالعه، برنامه و وظایف ساده صحبت کن.",
+        "entries": [
+          {
+            "id": "lex:A1:work",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:job",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:office",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:study",
+            "prerequisites": [
+              "lex:A1:school"
+            ]
+          },
+          {
+            "id": "lex:A1:student",
+            "prerequisites": [
+              "lex:A1:school",
+              "lex:A1:study"
+            ]
+          },
+          {
+            "id": "lex:A1:teacher",
+            "prerequisites": [
+              "lex:A1:school",
+              "lex:A1:student"
+            ]
+          },
+          {
+            "id": "lex:A1:class",
+            "prerequisites": [
+              "lex:A1:school",
+              "lex:A1:teacher"
+            ]
+          },
+          {
+            "id": "lex:A1:lesson",
+            "prerequisites": [
+              "lex:A1:class"
+            ]
+          },
+          {
+            "id": "lex:A1:course",
+            "prerequisites": [
+              "lex:A1:class",
+              "lex:A1:study"
+            ]
+          },
+          {
+            "id": "lex:A1:learn",
+            "prerequisites": [
+              "lex:A1:study",
+              "lex:A1:lesson"
+            ]
+          },
+          {
+            "id": "lex:A1:history",
+            "prerequisites": [
+              "lex:A1:school",
+              "lex:A1:class"
+            ]
+          },
+          {
+            "id": "lex:A1:book",
+            "prerequisites": [
+              "lex:A1:school"
+            ]
+          },
+          {
+            "id": "lex:A1:read",
+            "prerequisites": [
+              "lex:A1:book"
+            ]
+          },
+          {
+            "id": "lex:A1:write",
+            "prerequisites": [
+              "lex:A1:read"
+            ]
+          },
+          {
+            "id": "lex:A1:computer",
+            "prerequisites": [
+              "lex:A1:work",
+              "lex:A1:study"
+            ]
+          },
+          {
+            "id": "lex:A1:email",
+            "prerequisites": [
+              "lex:A1:computer",
+              "lex:A1:write"
+            ]
+          },
+          {
+            "id": "lex:A1:question",
+            "prerequisites": [
+              "lex:A1:class"
+            ]
+          },
+          {
+            "id": "lex:A1:answer",
+            "prerequisites": [
+              "lex:A1:question"
+            ]
+          },
+          {
+            "id": "lex:A1:test",
+            "prerequisites": [
+              "lex:A1:question",
+              "lex:A1:answer"
+            ]
+          },
+          {
+            "id": "lex:A1:homework",
+            "prerequisites": [
+              "lex:A1:lesson",
+              "lex:A1:write"
+            ]
+          },
+          {
+            "id": "lex:A1:meeting",
+            "prerequisites": [
+              "lex:A1:work",
+              "lex:A1:office"
+            ]
+          },
+          {
+            "id": "lex:A1:business",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:paper",
+            "prerequisites": [
+              "lex:A1:write",
+              "lex:A1:read"
+            ]
+          },
+          {
+            "id": "lex:A1:desk",
+            "prerequisites": [
+              "lex:A1:office",
+              "lex:A1:class"
+            ]
+          },
+          {
+            "id": "lex:A1:pen",
+            "prerequisites": [
+              "lex:A1:write"
+            ]
+          },
+          {
+            "id": "lex:A1:teach",
+            "prerequisites": [
+              "lex:A1:teacher",
+              "lex:A1:student"
+            ]
+          },
+          {
+            "id": "lex:A1:worker",
+            "prerequisites": [
+              "lex:A1:work",
+              "lex:A1:job"
+            ]
+          },
+          {
+            "id": "lex:A1:college",
+            "prerequisites": [
+              "lex:A1:study",
+              "lex:A1:student"
+            ]
+          },
+          {
+            "id": "lex:A1:article",
+            "prerequisites": [
+              "lex:A1:read",
+              "lex:A1:write"
+            ]
+          },
+          {
+            "id": "lex:A1:classroom",
+            "prerequisites": [
+              "lex:A1:class",
+              "lex:A1:school"
+            ]
+          },
+          {
+            "id": "lex:A1:discuss",
+            "prerequisites": [
+              "lex:A1:class",
+              "lex:A1:question"
+            ]
+          },
+          {
+            "id": "lex:A1:dictionary",
+            "prerequisites": [
+              "lex:A1:study",
+              "lex:A1:book"
+            ]
+          },
+          {
+            "id": "lex:A1:form",
+            "prerequisites": [
+              "lex:A1:write",
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:add",
+            "prerequisites": [
+              "lex:A1:study",
+              "lex:A1:write"
+            ]
+          },
+          {
+            "id": "lex:A1:conversation",
+            "prerequisites": [
+              "lex:A1:class",
+              "lex:A1:question",
+              "lex:A1:answer"
+            ]
+          },
+          {
+            "id": "lex:A1:easy",
+            "prerequisites": [
+              "lex:A1:study",
+              "lex:A1:test"
+            ]
+          },
+          {
+            "id": "lex:A1:example",
+            "prerequisites": [
+              "lex:A1:study",
+              "lex:A1:question"
+            ]
+          },
+          {
+            "id": "lex:A1:false",
+            "prerequisites": [
+              "lex:A1:answer",
+              "lex:A1:test"
+            ]
+          },
+          {
+            "id": "lex:A1:information",
+            "prerequisites": [
+              "lex:A1:study",
+              "lex:A1:read"
+            ]
+          },
+          {
+            "id": "lex:A1:interview",
+            "prerequisites": [
+              "lex:A1:work",
+              "lex:A1:job"
+            ]
+          },
+          {
+            "id": "lex:A1:letter",
+            "prerequisites": [
+              "lex:A1:write",
+              "lex:A1:read"
+            ]
+          },
+          {
+            "id": "lex:A1:list",
+            "prerequisites": [
+              "lex:A1:write",
+              "lex:A1:study"
+            ]
+          },
+          {
+            "id": "lex:A1:note",
+            "prerequisites": [
+              "lex:A1:write",
+              "lex:A1:study"
+            ]
+          },
+          {
+            "id": "lex:A1:important",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:team",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:result",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:design",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:machine",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:idea",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:practice",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:science",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:scientist",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:subject",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:word",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:page",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:skill",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:writer",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-grammar",
+            "prerequisites": [
+              "lex:A1:lesson"
+            ]
+          },
+          {
+            "id": "lex:B2x:notebook",
+            "prerequisites": [
+              "lex:A1:book"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-ruler",
+            "prerequisites": [
+              "lex:A1:pen"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-underline",
+            "prerequisites": [
+              "lex:A1:line"
+            ]
+          },
+          {
+            "id": "lex:A2:board",
+            "prerequisites": [
+              "lex:A1:classroom"
+            ]
+          },
+          {
+            "id": "lex:A2:blank",
+            "prerequisites": [
+              "lex:A1:page"
+            ]
+          },
+          {
+            "id": "lex:B1:grade",
+            "prerequisites": [
+              "lex:A1:test"
+            ]
+          },
+          {
+            "id": "lex:B2x:elementary",
+            "prerequisites": [
+              "lex:A1:class"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-classmate",
+            "prerequisites": [
+              "lex:A1:class"
+            ]
+          },
+          {
+            "id": "lex:A2:review",
+            "prerequisites": [
+              "lex:A1:write"
+            ]
+          },
+          {
+            "id": "lex:B1:file",
+            "prerequisites": [
+              "lex:A1:computer"
+            ]
+          },
+          {
+            "id": "lex:A2:copy",
+            "prerequisites": [
+              "lex:A1:paper"
+            ]
+          },
+          {
+            "id": "lex:A2:code",
+            "prerequisites": [
+              "lex:A1:computer"
+            ]
+          },
+          {
+            "id": "lex:A2:technology",
+            "prerequisites": [
+              "lex:A1:computer"
+            ]
+          },
+          {
+            "id": "lex:A2:tool",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A2:engineer",
+            "prerequisites": [
+              "lex:A1:job"
+            ]
+          },
+          {
+            "id": "lex:A2:reporter",
+            "prerequisites": [
+              "lex:A1:newspaper"
+            ]
+          },
+          {
+            "id": "lex:A2:officer",
+            "prerequisites": [
+              "lex:A1:job"
+            ]
+          },
+          {
+            "id": "lex:A2:leader",
+            "prerequisites": [
+              "lex:A1:team"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-smith",
+            "prerequisites": [
+              "lex:A1:job"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-interviewer",
+            "prerequisites": [
+              "lex:A1:interview"
+            ]
+          },
+          {
+            "id": "lex:A2:speech",
+            "prerequisites": [
+              "lex:A1:class"
+            ]
+          },
+          {
+            "id": "lex:A2:survey",
+            "prerequisites": [
+              "lex:A1:question"
+            ]
+          },
+          {
+            "id": "lex:A2:suggestion",
+            "prerequisites": [
+              "lex:A1:idea"
+            ]
+          },
+          {
+            "id": "lex:A2:focus",
+            "prerequisites": [
+              "lex:A1:study"
+            ]
+          },
+          {
+            "id": "lex:A2:successful",
+            "prerequisites": [
+              "lex:A1:work"
+            ]
+          },
+          {
+            "id": "lex:A2:role",
+            "prerequisites": [
+              "lex:A1:job"
+            ]
+          },
+          {
+            "id": "lex:B1:poem",
+            "prerequisites": [
+              "lex:A1:write"
+            ]
+          },
+          {
+            "id": "lex:A2:poster",
+            "prerequisites": [
+              "lex:A1:paper"
+            ]
+          },
+          {
+            "id": "lex:A2:solve",
+            "prerequisites": [
+              "lex:A1:answer"
+            ]
+          },
+          {
+            "id": "lex:A2:maths",
+            "prerequisites": [
+              "lex:A1:subject"
+            ]
+          }
+        ],
+        "targetEntries": 88
+      },
+      {
+        "id": "09-leisure-people",
+        "titleEn": "Leisure and people",
+        "titleFa": "اوقات فراغت و آدم‌ها",
+        "status": "planned",
+        "objectiveEn": "Talk about friends, interests, sports, media, and simple plans.",
+        "objectiveFa": "دربارهٔ دوستان، علایق، ورزش، رسانه و برنامه‌های ساده صحبت کن.",
+        "entries": [
+          {
+            "id": "lex:A1:person",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:people",
+            "prerequisites": [
+              "lex:A1:person"
+            ]
+          },
+          {
+            "id": "lex:A1:young",
+            "prerequisites": [
+              "lex:A1:person"
+            ]
+          },
+          {
+            "id": "lex:A1:man",
+            "prerequisites": [
+              "lex:A1:person"
+            ]
+          },
+          {
+            "id": "lex:A1:woman",
+            "prerequisites": [
+              "lex:A1:person"
+            ]
+          },
+          {
+            "id": "lex:A1:boy",
+            "prerequisites": [
+              "lex:A1:person",
+              "lex:A1:young"
+            ]
+          },
+          {
+            "id": "lex:A1:girl",
+            "prerequisites": [
+              "lex:A1:person",
+              "lex:A1:young"
+            ]
+          },
+          {
+            "id": "lex:A1:meet",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:together",
+            "prerequisites": [
+              "lex:A1:meet",
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:free",
+            "prerequisites": [
+              "lex:A1:time"
+            ]
+          },
+          {
+            "id": "lex:A1:fun",
+            "prerequisites": [
+              "lex:A1:free"
+            ]
+          },
+          {
+            "id": "lex:A1:listen",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:music",
+            "prerequisites": [
+              "lex:A1:listen"
+            ]
+          },
+          {
+            "id": "lex:A1:song",
+            "prerequisites": [
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:A1:watch",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:play",
+            "prerequisites": [
+              "lex:A1:free",
+              "lex:A1:fun"
+            ]
+          },
+          {
+            "id": "lex:A1:game",
+            "prerequisites": [
+              "lex:A1:play"
+            ]
+          },
+          {
+            "id": "lex:A1:sport",
+            "prerequisites": [
+              "lex:A1:play"
+            ]
+          },
+          {
+            "id": "lex:A1:football",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:A1:photo",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:weekend",
+            "prerequisites": [
+              "lex:A1:free",
+              "lex:A1:day"
+            ]
+          },
+          {
+            "id": "lex:A1:picture",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:internet",
+            "prerequisites": [
+              "lex:A1:free",
+              "lex:A1:computer"
+            ]
+          },
+          {
+            "id": "lex:A1:run",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:A1:tv",
+            "prerequisites": [
+              "lex:A1:watch"
+            ]
+          },
+          {
+            "id": "lex:A1:visit",
+            "prerequisites": [
+              "lex:A1:meet",
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:television",
+            "prerequisites": [
+              "lex:A1:watch"
+            ]
+          },
+          {
+            "id": "lex:A1:party",
+            "prerequisites": [
+              "lex:A1:people",
+              "lex:A1:together"
+            ]
+          },
+          {
+            "id": "lex:A1:radio",
+            "prerequisites": [
+              "lex:A1:listen",
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:A1:swim",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:A1:ball",
+            "prerequisites": [
+              "lex:A1:game",
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:A1:tennis",
+            "prerequisites": [
+              "lex:A1:sport",
+              "lex:A1:game"
+            ]
+          },
+          {
+            "id": "lex:A1:dance",
+            "prerequisites": [
+              "lex:A1:music",
+              "lex:A1:fun"
+            ]
+          },
+          {
+            "id": "lex:A1:sing",
+            "prerequisites": [
+              "lex:A1:music",
+              "lex:A1:song"
+            ]
+          },
+          {
+            "id": "lex:A1:cinema",
+            "prerequisites": [
+              "lex:A1:watch"
+            ]
+          },
+          {
+            "id": "lex:A1:band",
+            "prerequisites": [
+              "lex:A1:music",
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:concert",
+            "prerequisites": [
+              "lex:A1:music",
+              "lex:A1:listen"
+            ]
+          },
+          {
+            "id": "lex:A1:guitar",
+            "prerequisites": [
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:A1:hobby",
+            "prerequisites": [
+              "lex:A1:free",
+              "lex:A1:fun"
+            ]
+          },
+          {
+            "id": "lex:A1:theatre",
+            "prerequisites": [
+              "lex:A1:watch",
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:action",
+            "prerequisites": [
+              "lex:A1:play",
+              "lex:A1:game"
+            ]
+          },
+          {
+            "id": "lex:A1:activity",
+            "prerequisites": [
+              "lex:A1:free",
+              "lex:A1:fun"
+            ]
+          },
+          {
+            "id": "lex:A1:actor",
+            "prerequisites": [
+              "lex:A1:person"
+            ]
+          },
+          {
+            "id": "lex:A1:animal",
+            "prerequisites": [
+              "lex:A1:park",
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:art",
+            "prerequisites": [
+              "lex:A1:free",
+              "lex:A1:fun"
+            ]
+          },
+          {
+            "id": "lex:A1:birthday",
+            "prerequisites": [
+              "lex:A1:party",
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:cat",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:A1:player",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:cd",
+            "prerequisites": [
+              "lex:A1:music",
+              "lex:A1:listen"
+            ]
+          },
+          {
+            "id": "lex:A1:club",
+            "prerequisites": [
+              "lex:A1:people",
+              "lex:A1:free"
+            ]
+          },
+          {
+            "id": "lex:A1:culture",
+            "prerequisites": [
+              "lex:A1:people",
+              "lex:A1:art"
+            ]
+          },
+          {
+            "id": "lex:A1:dancing",
+            "prerequisites": [
+              "lex:A1:dance",
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:A1:dog",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:A1:dvd",
+            "prerequisites": [
+              "lex:A1:watch"
+            ]
+          },
+          {
+            "id": "lex:A1:enjoy",
+            "prerequisites": [
+              "lex:A1:fun",
+              "lex:A1:free"
+            ]
+          },
+          {
+            "id": "lex:A1:story",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:event",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:programme",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:news",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:famous",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:festival",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:swimming",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:group",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:pool",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:movie",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:singer",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:video",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:win",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:laugh",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:piano",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A1:magazine",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A2:toy",
+            "prerequisites": [
+              "lex:A1:play"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-doll",
+            "prerequisites": [
+              "lex:A2:toy"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-kite",
+            "prerequisites": [
+              "lex:A1:play"
+            ]
+          },
+          {
+            "id": "lex:A2:cartoon",
+            "prerequisites": [
+              "lex:A1:tv"
+            ]
+          },
+          {
+            "id": "lex:A2:drama",
+            "prerequisites": [
+              "lex:A1:theatre"
+            ]
+          },
+          {
+            "id": "lex:A2:character",
+            "prerequisites": [
+              "lex:A1:story"
+            ]
+          },
+          {
+            "id": "lex:A2:stage",
+            "prerequisites": [
+              "lex:A1:theatre"
+            ]
+          },
+          {
+            "id": "lex:B2x:opera",
+            "prerequisites": [
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:B1:album",
+            "prerequisites": [
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:A2:pop",
+            "prerequisites": [
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:B1:drum",
+            "prerequisites": [
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:A2:musician",
+            "prerequisites": [
+              "lex:A1:music"
+            ]
+          },
+          {
+            "id": "lex:A2:fan",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:A2:coach",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:A2:goal",
+            "prerequisites": [
+              "lex:A1:football"
+            ]
+          },
+          {
+            "id": "lex:A2:soccer",
+            "prerequisites": [
+              "lex:A1:football"
+            ]
+          },
+          {
+            "id": "lex:A2:basketball",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:A2:baseball",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-volleyball",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:B2x:bat",
+            "prerequisites": [
+              "lex:A2:baseball"
+            ]
+          },
+          {
+            "id": "lex:B2:contest",
+            "prerequisites": [
+              "lex:A1:win"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-olympics",
+            "prerequisites": [
+              "lex:A1:sport"
+            ]
+          },
+          {
+            "id": "lex:B2:catch",
+            "prerequisites": [
+              "lex:A1:ball"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-throw",
+            "prerequisites": [
+              "lex:A1:ball"
+            ]
+          },
+          {
+            "id": "lex:B1:kick",
+            "prerequisites": [
+              "lex:A1:ball"
+            ]
+          },
+          {
+            "id": "lex:A2:jump",
+            "prerequisites": [
+              "lex:A1:run"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-swimming-pool",
+            "prerequisites": [
+              "lex:A1:swim"
+            ]
+          },
+          {
+            "id": "lex:A2:fishing",
+            "prerequisites": [
+              "lex:A1:hobby"
+            ]
+          },
+          {
+            "id": "lex:A2:collect",
+            "prerequisites": [
+              "lex:B1:collection"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-surf",
+            "prerequisites": [
+              "lex:A1:sea"
+            ]
+          },
+          {
+            "id": "lex:A2:social",
+            "prerequisites": [
+              "lex:A1:people"
+            ]
+          },
+          {
+            "id": "lex:A2:lady",
+            "prerequisites": [
+              "lex:A1:woman"
+            ]
+          },
+          {
+            "id": "lex:A2:guy",
+            "prerequisites": [
+              "lex:A1:man"
+            ]
+          },
+          {
+            "id": "lex:A2:king",
+            "prerequisites": [
+              "lex:A1:man"
+            ]
+          },
+          {
+            "id": "lex:B1:prince",
+            "prerequisites": [
+              "lex:A2:king"
+            ]
+          },
+          {
+            "id": "lex:B1:princess",
+            "prerequisites": [
+              "lex:B1:prince"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-fairy",
+            "prerequisites": [
+              "lex:A1:story"
+            ]
+          },
+          {
+            "id": "lex:B1:ghost",
+            "prerequisites": [
+              "lex:A1:story"
+            ]
+          },
+          {
+            "id": "lex:C1:spy",
+            "prerequisites": [
+              "lex:A1:movie"
+            ]
+          },
+          {
+            "id": "lex:C1:cop",
+            "prerequisites": [
+              "lex:A1:man"
+            ]
+          },
+          {
+            "id": "lex:A2:celebrate",
+            "prerequisites": [
+              "lex:A1:party"
+            ]
+          },
+          {
+            "id": "lex:B1:celebration",
+            "prerequisites": [
+              "lex:A2:celebrate"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-merry",
+            "prerequisites": [
+              "lex:A1:party"
+            ]
+          },
+          {
+            "id": "lex:A2:smile",
+            "prerequisites": [
+              "lex:A1:laugh"
+            ]
+          },
+          {
+            "id": "lex:B1:bell",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A2:hall",
+            "prerequisites": [
+              "lex:A1:concert"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-cd-player",
+            "prerequisites": [
+              "lex:A1:cd"
+            ]
+          }
+        ],
+        "targetEntries": 118
+      },
+      {
+        "id": "10-weather-clothes",
+        "titleEn": "Weather and clothes",
+        "titleFa": "هوا و لباس",
+        "status": "planned",
+        "objectiveEn": "Describe basic weather and choose or describe everyday clothing.",
+        "objectiveFa": "هوای ساده را توصیف کن و لباس روزمره را انتخاب یا توصیف کن.",
+        "entries": [
+          {
+            "id": "lex:A1:weather",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:hot",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:cold",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:warm",
+            "prerequisites": [
+              "lex:A1:hot",
+              "lex:A1:cold"
+            ]
+          },
+          {
+            "id": "lex:A1:cool",
+            "prerequisites": [
+              "lex:A1:warm",
+              "lex:A1:cold"
+            ]
+          },
+          {
+            "id": "lex:A1:sun",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:rain",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:winter",
+            "prerequisites": [
+              "lex:A1:weather",
+              "lex:A1:cold"
+            ]
+          },
+          {
+            "id": "lex:A1:snow",
+            "prerequisites": [
+              "lex:A1:weather",
+              "lex:A1:cold"
+            ]
+          },
+          {
+            "id": "lex:A1:colour",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:red",
+            "prerequisites": [
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A1:blue",
+            "prerequisites": [
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A1:coat",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:cold"
+            ]
+          },
+          {
+            "id": "lex:A1:jacket",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:cold"
+            ]
+          },
+          {
+            "id": "lex:A1:hat",
+            "prerequisites": [
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:skirt",
+            "prerequisites": [
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:trousers",
+            "prerequisites": [
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:wear",
+            "prerequisites": [
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:put",
+            "prerequisites": [
+              "lex:A1:wear"
+            ]
+          },
+          {
+            "id": "lex:A1:on",
+            "prerequisites": [
+              "lex:A1:put"
+            ]
+          },
+          {
+            "id": "lex:A1:off",
+            "prerequisites": [
+              "lex:A1:on"
+            ]
+          },
+          {
+            "id": "lex:A1:summer",
+            "prerequisites": [
+              "lex:A1:weather",
+              "lex:A1:hot"
+            ]
+          },
+          {
+            "id": "lex:A1:spring",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:autumn",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:black",
+            "prerequisites": [
+              "lex:A1:colour",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:white",
+            "prerequisites": [
+              "lex:A1:colour",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:brown",
+            "prerequisites": [
+              "lex:A1:colour",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:grey",
+            "prerequisites": [
+              "lex:A1:colour",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:green",
+            "prerequisites": [
+              "lex:A1:colour",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:purple",
+            "prerequisites": [
+              "lex:A1:colour",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:yellow",
+            "prerequisites": [
+              "lex:A1:colour",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:pink",
+            "prerequisites": [
+              "lex:A1:colour",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:jeans",
+            "prerequisites": [
+              "lex:A1:trousers",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:t-shirt",
+            "prerequisites": [
+              "lex:A1:shirt",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:umbrella",
+            "prerequisites": [
+              "lex:A1:rain",
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:dark",
+            "prerequisites": [
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A1:pair",
+            "prerequisites": [
+              "lex:A1:shoe",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:light-from-the-sun-a-lamp",
+            "prerequisites": [
+              "lex:A1:weather",
+              "lex:A1:sun"
+            ]
+          },
+          {
+            "id": "lex:A1:dirty",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:wear"
+            ]
+          },
+          {
+            "id": "lex:A1:clean",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:wear"
+            ]
+          },
+          {
+            "id": "lex:A1:large",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:big"
+            ]
+          },
+          {
+            "id": "lex:A1:little",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:small"
+            ]
+          },
+          {
+            "id": "lex:A1:short",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:trousers"
+            ]
+          },
+          {
+            "id": "lex:A1:tall",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:person"
+            ]
+          },
+          {
+            "id": "lex:A1:pretty",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A1:same",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A1:different",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A1:kind-type",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:what"
+            ]
+          },
+          {
+            "id": "lex:A1:best",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A1:favourite",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A1:special",
+            "prerequisites": [
+              "lex:A1:clothes",
+              "lex:A1:wear"
+            ]
+          },
+          {
+            "id": "lex:A1:bad",
+            "prerequisites": [
+              "lex:A1:weather",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:good",
+            "prerequisites": [
+              "lex:A1:weather",
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A1:like-similar",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:match-contest-correspond",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:hard",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:as",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:most",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:bird",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:grow",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:paint",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:sheep",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:snake",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:wonderful",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:horse",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:lion",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:mouse",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:pig",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:painting",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:star",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:farmer",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A2:cloud",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-cloudy",
+            "prerequisites": [
+              "lex:A2:cloud"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-sunny",
+            "prerequisites": [
+              "lex:A1:sun"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-rainy",
+            "prerequisites": [
+              "lex:A1:rain"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-snowy",
+            "prerequisites": [
+              "lex:A1:snow"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-foggy",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-sunshine",
+            "prerequisites": [
+              "lex:A1:sun"
+            ]
+          },
+          {
+            "id": "lex:A2:wind",
+            "prerequisites": [
+              "lex:A1:weather"
+            ]
+          },
+          {
+            "id": "lex:A2:blow",
+            "prerequisites": [
+              "lex:A2:wind"
+            ]
+          },
+          {
+            "id": "lex:A2:sky",
+            "prerequisites": [
+              "lex:A1:sun"
+            ]
+          },
+          {
+            "id": "lex:A2:moon",
+            "prerequisites": [
+              "lex:A2:sky"
+            ]
+          },
+          {
+            "id": "lex:A2:bright",
+            "prerequisites": [
+              "lex:A1:sun"
+            ]
+          },
+          {
+            "id": "lex:A2:dry",
+            "prerequisites": [
+              "lex:A1:rain"
+            ]
+          },
+          {
+            "id": "lex:B1:leaf",
+            "prerequisites": [
+              "lex:A1:tree"
+            ]
+          },
+          {
+            "id": "lex:A2:grass",
+            "prerequisites": [
+              "lex:A1:green"
+            ]
+          },
+          {
+            "id": "lex:B2x:rose",
+            "prerequisites": [
+              "lex:A1:flower"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-lily",
+            "prerequisites": [
+              "lex:A1:flower"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-vase",
+            "prerequisites": [
+              "lex:A1:flower"
+            ]
+          },
+          {
+            "id": "lex:B1:flag",
+            "prerequisites": [
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:B1:cap",
+            "prerequisites": [
+              "lex:A1:hat"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-glasses",
+            "prerequisites": [
+              "lex:A1:wear"
+            ]
+          },
+          {
+            "id": "lex:A2:pocket",
+            "prerequisites": [
+              "lex:A1:jacket"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-ribbon",
+            "prerequisites": [
+              "lex:A1:colour"
+            ]
+          },
+          {
+            "id": "lex:A2:thick",
+            "prerequisites": [
+              "lex:A1:coat"
+            ]
+          },
+          {
+            "id": "lex:A2:thin",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:B1:tight",
+            "prerequisites": [
+              "lex:A1:clothes"
+            ]
+          },
+          {
+            "id": "lex:A2:heavy",
+            "prerequisites": [
+              "lex:A1:coat"
+            ]
+          },
+          {
+            "id": "lex:A2:pet",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-rabbit",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:A2:monkey",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-tiger",
+            "prerequisites": [
+              "lex:A1:lion"
+            ]
+          },
+          {
+            "id": "lex:A2:bear-animal",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:A2:frog",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:B2x:rat",
+            "prerequisites": [
+              "lex:A1:mouse"
+            ]
+          },
+          {
+            "id": "lex:B1:bee",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-butterfly",
+            "prerequisites": [
+              "lex:A1:animal"
+            ]
+          },
+          {
+            "id": "lex:A2:pollution",
+            "prerequisites": [
+              "lex:A1:dirty"
+            ]
+          }
+        ],
+        "targetEntries": 108
+      },
+      {
+        "id": "11-health-feelings",
+        "titleEn": "Health and feelings",
+        "titleFa": "سلامت و احساسات",
+        "status": "planned",
+        "objectiveEn": "Describe basic feelings, needs, body states, and simple health problems.",
+        "objectiveFa": "احساسات، نیازها، وضعیت بدن و مشکل‌های سادهٔ سلامتی را بیان کن.",
+        "entries": [
+          {
+            "id": "lex:A1:health",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:healthy",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:sick",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:well",
+            "prerequisites": [
+              "lex:A1:health",
+              "lex:A1:sick"
+            ]
+          },
+          {
+            "id": "lex:A1:doctor",
+            "prerequisites": [
+              "lex:A1:health",
+              "lex:A1:sick"
+            ]
+          },
+          {
+            "id": "lex:A1:feel",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:happy",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:sad",
+            "prerequisites": [
+              "lex:A1:feel",
+              "lex:A1:happy"
+            ]
+          },
+          {
+            "id": "lex:A1:angry",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:tired",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:afraid",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:body",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:head",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:face",
+            "prerequisites": [
+              "lex:A1:head"
+            ]
+          },
+          {
+            "id": "lex:A1:eye",
+            "prerequisites": [
+              "lex:A1:face"
+            ]
+          },
+          {
+            "id": "lex:A1:ear",
+            "prerequisites": [
+              "lex:A1:head"
+            ]
+          },
+          {
+            "id": "lex:A1:mouth",
+            "prerequisites": [
+              "lex:A1:face"
+            ]
+          },
+          {
+            "id": "lex:A1:hand",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:leg",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:back",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:hair",
+            "prerequisites": [
+              "lex:A1:head",
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:nurse",
+            "prerequisites": [
+              "lex:A1:doctor",
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:arm",
+            "prerequisites": [
+              "lex:A1:body",
+              "lex:A1:hand"
+            ]
+          },
+          {
+            "id": "lex:A1:nose",
+            "prerequisites": [
+              "lex:A1:face",
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:tooth",
+            "prerequisites": [
+              "lex:A1:mouth",
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:feeling",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:excited",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:fine",
+            "prerequisites": [
+              "lex:A1:feel",
+              "lex:A1:well"
+            ]
+          },
+          {
+            "id": "lex:A1:better",
+            "prerequisites": [
+              "lex:A1:well",
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:fat",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:strong",
+            "prerequisites": [
+              "lex:A1:body",
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:hope",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:love",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:terrible",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:beautiful",
+            "prerequisites": [
+              "lex:A1:feel",
+              "lex:A1:person"
+            ]
+          },
+          {
+            "id": "lex:A1:funny",
+            "prerequisites": [
+              "lex:A1:feel",
+              "lex:A1:person"
+            ]
+          },
+          {
+            "id": "lex:A1:age",
+            "prerequisites": [
+              "lex:A1:old",
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:born",
+            "prerequisites": [
+              "lex:A1:family",
+              "lex:A1:child"
+            ]
+          },
+          {
+            "id": "lex:A1:exercise",
+            "prerequisites": [
+              "lex:A1:health",
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A1:life",
+            "prerequisites": [
+              "lex:A1:health",
+              "lex:A1:family"
+            ]
+          },
+          {
+            "id": "lex:A1:become",
+            "prerequisites": [
+              "lex:A1:feel",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:believe",
+            "prerequisites": [
+              "lex:A1:feel",
+              "lex:A1:hope"
+            ]
+          },
+          {
+            "id": "lex:A1:boring",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:exciting",
+            "prerequisites": [
+              "lex:A1:feel",
+              "lex:A1:excited"
+            ]
+          },
+          {
+            "id": "lex:A1:interested",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:interesting",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:rich",
+            "prerequisites": [
+              "lex:A1:health",
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:poor",
+            "prerequisites": [
+              "lex:A1:health",
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:great",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:nice",
+            "prerequisites": [
+              "lex:A1:feel"
+            ]
+          },
+          {
+            "id": "lex:A1:so",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:than",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:why",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:make",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:think",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:reason",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:true",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:imagine",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:guess",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:oh",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:practise",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A1:something",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:A2:medicine",
+            "prerequisites": [
+              "lex:A1:doctor"
+            ]
+          },
+          {
+            "id": "lex:B2x:fever",
+            "prerequisites": [
+              "lex:A1:sick"
+            ]
+          },
+          {
+            "id": "lex:A2:headache",
+            "prerequisites": [
+              "lex:A1:head"
+            ]
+          },
+          {
+            "id": "lex:A2:hurt",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A2:brain",
+            "prerequisites": [
+              "lex:A1:head"
+            ]
+          },
+          {
+            "id": "lex:A2:neck",
+            "prerequisites": [
+              "lex:A1:head"
+            ]
+          },
+          {
+            "id": "lex:A2:shoulder",
+            "prerequisites": [
+              "lex:A1:arm"
+            ]
+          },
+          {
+            "id": "lex:A2:knee",
+            "prerequisites": [
+              "lex:A1:leg"
+            ]
+          },
+          {
+            "id": "lex:A2:bone",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:A2:heart",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:B1:breathe",
+            "prerequisites": [
+              "lex:A1:body"
+            ]
+          },
+          {
+            "id": "lex:B1:sight",
+            "prerequisites": [
+              "lex:A1:eye"
+            ]
+          },
+          {
+            "id": "lex:A2:mind",
+            "prerequisites": [
+              "lex:A1:think"
+            ]
+          },
+          {
+            "id": "lex:A2:memory",
+            "prerequisites": [
+              "lex:A1:think"
+            ]
+          },
+          {
+            "id": "lex:B1:worry",
+            "prerequisites": [
+              "lex:A1:afraid"
+            ]
+          },
+          {
+            "id": "lex:B1:lonely",
+            "prerequisites": [
+              "lex:A1:sad"
+            ]
+          },
+          {
+            "id": "lex:A2:alone",
+            "prerequisites": [
+              "lex:B1:lonely"
+            ]
+          },
+          {
+            "id": "lex:B1:glad",
+            "prerequisites": [
+              "lex:A1:happy"
+            ]
+          },
+          {
+            "id": "lex:A2:lucky",
+            "prerequisites": [
+              "lex:A1:happy"
+            ]
+          },
+          {
+            "id": "lex:A2:luck",
+            "prerequisites": [
+              "lex:A2:lucky"
+            ]
+          },
+          {
+            "id": "lex:B1:shy",
+            "prerequisites": [
+              "lex:A1:afraid"
+            ]
+          },
+          {
+            "id": "lex:A2:strange",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:B1:ugly",
+            "prerequisites": [
+              "lex:A1:beautiful"
+            ]
+          },
+          {
+            "id": "lex:B2x:cute",
+            "prerequisites": [
+              "lex:A1:pretty"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-handsome",
+            "prerequisites": [
+              "lex:A1:beautiful"
+            ]
+          },
+          {
+            "id": "lex:A2:lazy",
+            "prerequisites": [
+              "lex:A1:tired"
+            ]
+          },
+          {
+            "id": "lex:A2:rude",
+            "prerequisites": [
+              "lex:A1:nice"
+            ]
+          },
+          {
+            "id": "lex:B2:strict",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A2:clever",
+            "prerequisites": [
+              "lex:A1:think"
+            ]
+          },
+          {
+            "id": "lex:B1:smart",
+            "prerequisites": [
+              "lex:A2:clever"
+            ]
+          },
+          {
+            "id": "lex:B2x:super",
+            "prerequisites": [
+              "lex:A1:great"
+            ]
+          },
+          {
+            "id": "lex:A2:excellent",
+            "prerequisites": [
+              "lex:A1:great"
+            ]
+          },
+          {
+            "id": "lex:A2:lovely",
+            "prerequisites": [
+              "lex:A1:nice"
+            ]
+          },
+          {
+            "id": "lex:B1:pleasure",
+            "prerequisites": [
+              "lex:A1:happy"
+            ]
+          },
+          {
+            "id": "lex:A2:ideal",
+            "prerequisites": [
+              "lex:A1:great"
+            ]
+          },
+          {
+            "id": "lex:A2:fair",
+            "prerequisites": [
+              "lex:A1:true"
+            ]
+          },
+          {
+            "id": "lex:A2:peace",
+            "prerequisites": [
+              "lex:A1:life"
+            ]
+          },
+          {
+            "id": "lex:A2:war",
+            "prerequisites": [
+              "lex:A2:peace"
+            ]
+          },
+          {
+            "id": "lex:A2:fight",
+            "prerequisites": [
+              "lex:A1:angry"
+            ]
+          },
+          {
+            "id": "lex:A2:kill",
+            "prerequisites": [
+              "lex:A1:life"
+            ]
+          },
+          {
+            "id": "lex:A2:smoking",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:B1:pray",
+            "prerequisites": [
+              "lex:A1:believe"
+            ]
+          },
+          {
+            "id": "lex:A2:surprise",
+            "prerequisites": [
+              "lex:A1:excited"
+            ]
+          },
+          {
+            "id": "lex:A2:care",
+            "prerequisites": [
+              "lex:A1:health"
+            ]
+          },
+          {
+            "id": "lex:B1:touch",
+            "prerequisites": [
+              "lex:A1:hand"
+            ]
+          },
+          {
+            "id": "lex:B1:shake",
+            "prerequisites": [
+              "lex:A1:hand"
+            ]
+          },
+          {
+            "id": "lex:B2:cry",
+            "prerequisites": [
+              "lex:A1:sad"
+            ]
+          },
+          {
+            "id": "lex:B1:kiss",
+            "prerequisites": [
+              "lex:A1:love"
+            ]
+          },
+          {
+            "id": "lex:B1:living",
+            "prerequisites": [
+              "lex:A1:life"
+            ]
+          }
+        ],
+        "targetEntries": 111
+      },
+      {
+        "id": "12-help-everyday-problems",
+        "titleEn": "Help and everyday problems",
+        "titleFa": "کمک و مشکل‌های روزمره",
+        "status": "planned",
+        "objectiveEn": "Ask for help, clarify misunderstandings, and handle common everyday problems.",
+        "objectiveFa": "کمک بخواه، سوءتفاهم ساده را روشن کن و مشکل‌های روزمره را مدیریت کن.",
+        "entries": [
+          {
+            "id": "lex:A1:help",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:problem",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:wrong",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:sorry",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:please",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:cannot",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:language",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:speak",
+            "prerequisites": [
+              "lex:A1:language"
+            ]
+          },
+          {
+            "id": "lex:A1:slow",
+            "prerequisites": [
+              "lex:A1:speak"
+            ]
+          },
+          {
+            "id": "lex:A1:again",
+            "prerequisites": [
+              "lex:A1:speak"
+            ]
+          },
+          {
+            "id": "lex:A1:repeat",
+            "prerequisites": [
+              "lex:A1:again",
+              "lex:A1:please"
+            ]
+          },
+          {
+            "id": "lex:A1:ask",
+            "prerequisites": [
+              "lex:A1:please"
+            ]
+          },
+          {
+            "id": "lex:A1:find",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:call",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:phone",
+            "prerequisites": [
+              "lex:A1:call"
+            ]
+          },
+          {
+            "id": "lex:A1:number",
+            "prerequisites": [
+              "lex:A1:phone"
+            ]
+          },
+          {
+            "id": "lex:A1:door",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:key",
+            "prerequisites": [
+              "lex:A1:door"
+            ]
+          },
+          {
+            "id": "lex:A1:fire",
+            "prerequisites": [
+              "lex:A1:help",
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:wait",
+            "prerequisites": [
+              "lex:A1:time",
+              "lex:A1:please"
+            ]
+          },
+          {
+            "id": "lex:A1:remember",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:break",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:forget",
+            "prerequisites": [
+              "lex:A1:remember",
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:check",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:wrong"
+            ]
+          },
+          {
+            "id": "lex:A1:correct",
+            "prerequisites": [
+              "lex:A1:wrong"
+            ]
+          },
+          {
+            "id": "lex:A1:could",
+            "prerequisites": [
+              "lex:A1:please",
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:should",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:must",
+            "prerequisites": [
+              "lex:A1:help",
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:have-to",
+            "prerequisites": [
+              "lex:A1:must",
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:hear",
+            "prerequisites": [
+              "lex:A1:speak",
+              "lex:A1:repeat"
+            ]
+          },
+          {
+            "id": "lex:A1:mean",
+            "prerequisites": [
+              "lex:A1:language"
+            ]
+          },
+          {
+            "id": "lex:A1:message",
+            "prerequisites": [
+              "lex:A1:phone",
+              "lex:A1:call"
+            ]
+          },
+          {
+            "id": "lex:A1:sure",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:try",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:about",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:speak"
+            ]
+          },
+          {
+            "id": "lex:A1:agree",
+            "prerequisites": [
+              "lex:A1:speak"
+            ]
+          },
+          {
+            "id": "lex:A1:all",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:also",
+            "prerequisites": [
+              "lex:A1:speak"
+            ]
+          },
+          {
+            "id": "lex:A1:another",
+            "prerequisites": [
+              "lex:A1:again",
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:any",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:anyone",
+            "prerequisites": [
+              "lex:A1:help",
+              "lex:A1:friend"
+            ]
+          },
+          {
+            "id": "lex:A1:else",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:what"
+            ]
+          },
+          {
+            "id": "lex:A1:anything",
+            "prerequisites": [
+              "lex:A1:help",
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:because",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:speak"
+            ]
+          },
+          {
+            "id": "lex:A1:bring",
+            "prerequisites": [
+              "lex:A1:help",
+              "lex:A1:take"
+            ]
+          },
+          {
+            "id": "lex:A1:but",
+            "prerequisites": [
+              "lex:A1:speak",
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:can",
+            "prerequisites": [
+              "lex:A1:help",
+              "lex:A1:speak"
+            ]
+          },
+          {
+            "id": "lex:A1:difficult",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:do",
+            "prerequisites": [
+              "lex:A1:help",
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:if",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:know",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:no",
+            "prerequisites": [
+              "lex:A1:problem",
+              "lex:A1:answer"
+            ]
+          },
+          {
+            "id": "lex:A1:not",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A1:say",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:tell",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:talk",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:sentence",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:describe",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:fill",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:reading",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:spell",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:topic",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:hello",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:paragraph",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:pencil",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:A1:hi",
+            "prerequisites": [
+              "lex:A1:help"
+            ]
+          },
+          {
+            "id": "lex:B2:excuse",
+            "prerequisites": [
+              "lex:A1:sorry"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-pardon",
+            "prerequisites": [
+              "lex:A1:sorry"
+            ]
+          },
+          {
+            "id": "lex:A2:matter",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:A2:case",
+            "prerequisites": [
+              "lex:A1:problem"
+            ]
+          },
+          {
+            "id": "lex:B2:hold",
+            "prerequisites": [
+              "lex:A1:hand"
+            ]
+          },
+          {
+            "id": "lex:B1:cover",
+            "prerequisites": [
+              "lex:A1:book"
+            ]
+          },
+          {
+            "id": "lex:A2:either",
+            "prerequisites": [
+              "lex:A1:or"
+            ]
+          },
+          {
+            "id": "lex:A2:may",
+            "prerequisites": [
+              "lex:A1:can"
+            ]
+          },
+          {
+            "id": "lex:A2:all-right",
+            "prerequisites": [
+              "lex:A1:ok"
+            ]
+          },
+          {
+            "id": "lex:A2:anybody",
+            "prerequisites": [
+              "lex:A1:anyone"
+            ]
+          },
+          {
+            "id": "lex:B1:vote",
+            "prerequisites": [
+              "lex:A1:agree"
+            ]
+          },
+          {
+            "id": "lex:B1:judge",
+            "prerequisites": [
+              "lex:A1:think"
+            ]
+          },
+          {
+            "id": "lex:A2:wish",
+            "prerequisites": [
+              "lex:A1:hope"
+            ]
+          },
+          {
+            "id": "lex:B1:tube",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:cefrj-saw",
+            "prerequisites": [
+              "lex:A1:cut"
+            ]
+          },
+          {
+            "id": "lex:A2:hide",
+            "prerequisites": [
+              "lex:A1:find"
+            ]
+          },
+          {
+            "id": "lex:A2:careful",
+            "prerequisites": [
+              "lex:A1:check"
+            ]
+          },
+          {
+            "id": "lex:A2:carefully",
+            "prerequisites": [
+              "lex:A2:careful"
+            ]
+          },
+          {
+            "id": "lex:A2:noise",
+            "prerequisites": [
+              "lex:A1:hear"
+            ]
+          },
+          {
+            "id": "lex:A2:smoke",
+            "prerequisites": [
+              "lex:A1:fire"
+            ]
+          },
+          {
+            "id": "lex:A2:broken",
+            "prerequisites": [
+              "lex:A1:break"
+            ]
+          },
+          {
+            "id": "lex:A2:closed",
+            "prerequisites": [
+              "lex:A1:close"
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-dig",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A2:gold",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A2:greet",
+            "prerequisites": [
+              "lex:A1:hello"
+            ]
+          }
+        ],
+        "targetEntries": 91
+      }
+    ],
+    "calibrationSlice": {
+      "unit": "01-introductions",
+      "entries": [
+        "lex:A1:i",
+        "lex:A1:you",
+        "lex:A1:a-an",
+        "lex:A1:be",
+        "lex:A1:my",
+        "lex:A1:your",
+        "lex:A1:name",
+        "lex:A1:what",
+        "lex:A1:this",
+        "lex:A1:he",
+        "lex:A1:who",
+        "lex:A1:where",
+        "lex:A1:from",
+        "lex:A1:in",
+        "lex:A1:school",
+        "lex:A1:city",
+        "lex:A1:live",
+        "lex:A1:family",
+        "lex:A1:friend",
+        "lex:A1:how"
+      ]
+    }
+  }
+}
