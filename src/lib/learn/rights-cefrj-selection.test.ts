@@ -78,12 +78,12 @@ test("capitals keep different words apart", () => {
   assert.deepEqual(find(s, "May", "noun").entryIds, ["lex:A1:may"]);
   assert.equal(find(s, "may", "modal auxiliary").courseStatus, "NEW");
   assert.equal(find(s, "Miss", "noun").courseStatus, "NEW");
-  assert.deepEqual(s.retired.find((r) => r.entryId === "lex:A1:miss"), {
-    entryId: "lex:A1:miss", headword: "miss", bestCefrjLevel: "A2",
+  assert.deepEqual(s.movedUp.find((r) => r.entryId === "lex:A1:miss"), {
+    entryId: "lex:A1:miss", headword: "miss", cefrjLevel: "A2",
   });
 });
 
-test("marks retained, new and retired, and reports untaught A1 parts of speech", () => {
+test("marks retained, new, moved-up and owner-kept entries, and reports untaught A1 parts of speech", () => {
   const s = buildCefrjSelection(input());
   assert.deepEqual(find(s, "like", "verb").entryIds, ["lex:A1:like-1", "lex:A1:like-2"]);
   assert.equal(find(s, "like", "preposition").posTaught, true);
@@ -91,12 +91,13 @@ test("marks retained, new and retired, and reports untaught A1 parts of speech",
   assert.equal(find(s, "about", "adverb").courseStatus, "RETAINED");
   assert.equal(find(s, "about", "adverb").posTaught, false);
   assert.equal(find(s, "house", "noun").courseStatus, "NEW");
-  assert.deepEqual(s.retired.map((r) => [r.entryId, r.bestCefrjLevel]), [
-    ["lex:A1:film", "A2"], ["lex:A1:foot", "B1"], ["lex:A1:miss", "A2"], ["lex:A1:oh", "NOT_IN_CEFRJ"],
+  assert.deepEqual(s.movedUp.map((r) => [r.entryId, r.cefrjLevel]), [
+    ["lex:A1:film", "A2"], ["lex:A1:foot", "B1"], ["lex:A1:miss", "A2"],
   ]);
+  assert.deepEqual(s.ownerKept, [{ entryId: "lex:A1:oh", headword: "oh" }]);
   assert.deepEqual(
-    { retained: s.counts.retained, new: s.counts.new, posNotTaught: s.counts.posNotTaught, retired: s.counts.retiredEntries },
-    { retained: 4, new: 4, posNotTaught: 1, retired: 4 },
+    { retained: s.counts.retained, new: s.counts.new, posNotTaught: s.counts.posNotTaught, movedUp: s.counts.movedUpEntries, ownerKept: s.counts.ownerKeptEntries },
+    { retained: 4, new: 4, posNotTaught: 1, movedUp: 3, ownerKept: 1 },
   );
 });
 
@@ -109,7 +110,7 @@ test("a lesson whose part of speech CEFR-J labels differently is kept", () => {
       { id: "lex:A1:try", headword: "try", partsOfSpeech: ["verb"] },
     ],
   });
-  assert.deepEqual(s.retired, []);
+  assert.deepEqual([s.movedUp, s.ownerKept], [[], []]);
   assert.equal(find(s, "try", "noun").courseStatus, "RETAINED");
   assert.equal(find(s, "try", "noun").posTaught, false);
 });

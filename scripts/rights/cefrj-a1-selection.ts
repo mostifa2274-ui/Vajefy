@@ -75,6 +75,7 @@ const doc = {
   ownerDecision: {
     decidedOn: "2026-10-10",
     decision: "All CEFR-J A1 (~1,060)",
+    noDropOut: "All listed words no drop out",
     unfreezeUnits1to3: true,
     record: "docs/A1_CEFRJ_REBUILD.md",
   },
@@ -87,14 +88,16 @@ const doc = {
   rightsCleared: 0,
   lessonsApproved: 0,
   selected: result.selected,
-  retired: result.retired,
+  movedUp: result.movedUp,
+  ownerKept: result.ownerKept,
 };
 const json = JSON.stringify(doc, null, 2) + "\n";
 const cell = (v: unknown) => { const s = String(v ?? ""); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 const csv = ["selection_id,cefrj_headword,pos,ngsl_tier,ngsl_lemma,ngsl_rank,course_status,pos_taught,entry_ids"]
   .concat(result.selected.map((s) => [s.selectionId, s.cefrjHeadword, s.pos, s.ngsl.tier,
     s.ngsl.lemma, s.ngsl.rank, s.courseStatus, s.posTaught, s.entryIds.join("|")].map(cell).join(",")))
-  .concat(result.retired.map((r) => ["", r.headword, "", "", "", "", "RETIRED_" + r.bestCefrjLevel, "", r.entryId].map(cell).join(",")))
+  .concat(result.movedUp.map((r) => ["", r.headword, "", "", "", "", "MOVED_UP_" + r.cefrjLevel, "", r.entryId].map(cell).join(",")))
+  .concat(result.ownerKept.map((r) => ["", r.headword, "", "", "", "", "OWNER_KEPT_A1", "", r.entryId].map(cell).join(",")))
   .join("\n") + "\n";
 
 if (process.argv.includes("--write")) {
@@ -112,7 +115,7 @@ const c = result.counts;
 console.log(
   "CEFR-J A1 selection: " + c.headwords + " headwords in " + c.records + " records (" + c.retained + " retained, " +
   c.new + " new; " + c.posNotTaught + " A1 parts of speech to review); " +
-  c.retiredEntries + " current entries retire. NGSL by record: " + c.byNgslTier.NGSL_1_2_CORE + " core, " +
+  c.movedUpEntries + " current entries move up, " + c.ownerKeptEntries + " owner-kept outside CEFR-J. NGSL by record: " + c.byNgslTier.NGSL_1_2_CORE + " core, " +
   c.byNgslTier.NGSL_1_2_SUPPLEMENT + " supplement, " + c.byNgslTier.NGSL_SFI_31K_EXTENSION + " 31k extension, " +
   c.byNgslTier.NO_NGSL_MATCH + " unmatched. 0 rights cleared.",
 );
