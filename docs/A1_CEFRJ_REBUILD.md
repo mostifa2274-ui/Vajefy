@@ -151,9 +151,18 @@ so this batch has 21 senses. PR #212 merged it as
 
 `lessons-new-061-080.json` continues with goal, push, successful, speech,
 officer, mine, memory, ring, dream, smile, judge, survey, wind, block, copy,
-heavy, collect, straight, fair and collection. The four batches total
-**80/338 drafted, 258 still to write**, with 243 bilingual examples and 243
-checks. These are draft counts, not approved or published lessons. Choice answers are balanced across
+heavy, collect, straight, fair and collection. PR #213 merged it as
+`e9f65c25583ab14e5157fbbdf6a6ee0dc6f1a91e`, after its review fixed the
+definition of wind (moving air, not only fast air) and translated *too* as
+«بیش از حد» rather than «خیلی» (*very*).
+
+`lessons-new-081-100.json` continues with ship, peace, dry, spot, feed,
+excellent, camp, corner, cry, solve, tool, smoke, brain, bottom, hide, owner,
+lady, pleasure, suggestion and pop. The five batches total **100/338 drafted,
+238 still to write**, with 303 bilingual examples and 303 checks. These are
+draft counts, not approved or published lessons. Definitions must not be
+narrower than the word: wind is any moving air, a cry can be quiet, and smoke
+is often, not always, grey or black. Choice answers are balanced across
 both option positions. Every "wrong" sentence must be wrong under any reading,
 not merely odd: a missing article, a wrong plural or irregular past, or a
 verb used with the wrong pattern (for example *Yesterday I fell my phone* for
@@ -188,7 +197,10 @@ entry `lex:A2:ring-2` (not the A2 noun for a finger ring), the pronoun entry
 entries for survey and wind, not their B2 verbs. It teaches goal as a point in
 football, ring as phoning (British English), dream as a dream while asleep,
 memory as something remembered, and block as a block of flats or an office
-block. Source-level A1 grading does not certify
+block. The fifth batch keeps the noun entries `lex:B1:spot`, `lex:B2:feed` and
+`lex:B2:cry` (not the A2 verbs feed and cry) and the A2 noun `pop`; it teaches
+spot as a place, feed as food for animals, cry as a sound such as a shout,
+and pop as pop music. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
