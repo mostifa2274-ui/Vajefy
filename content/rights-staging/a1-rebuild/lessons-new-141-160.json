@@ -1,0 +1,2419 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 141–160 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 141,
+    "lastNewHeadword": 160
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "mobile",
+      "levelWordId": "level:A1:0696",
+      "existingEntryIds": [
+        "lex:A2:mobile"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0783",
+          "senseId": "lex:A2:mobile",
+          "meaningEn": "A phone that you can carry with you (British English; mobile phone)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:mobile",
+        "headword": "mobile",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:mobile",
+            "pos": "noun",
+            "gloss": "گوشی موبایل؛ تلفن همراه",
+            "meaning": "تلفنی که می‌توانیم همه‌جا با خود ببریم؛ در انگلیسیِ بریتانیایی به آن mobile یا mobile phone می‌گویند.",
+            "grammar": [
+              {
+                "pattern": "on + mobile",
+                "note": "برای تماس با موبایل on می‌آید: Call me on my mobile."
+              },
+              {
+                "pattern": "a mobile / mobiles",
+                "note": "mobile در این معنا اسمِ قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Call me on my mobile after six.",
+                "fa": "بعد از ساعتِ شش با موبایلم تماس بگیر."
+              },
+              {
+                "en": "Please turn off your mobile in class.",
+                "fa": "لطفاً سرِ کلاس موبایلت را خاموش کن."
+              },
+              {
+                "en": "My mobile has a new cover.",
+                "fa": "موبایلم یک قابِ جدید دارد."
+              }
+            ],
+            "collocations": [
+              "a mobile number",
+              "on my mobile"
+            ],
+            "collocationFa": {
+              "a mobile number": "شمارهٔ موبایل",
+              "on my mobile": "روی موبایلم؛ با موبایلم"
+            },
+            "usage": "در انگلیسیِ آمریکایی به جای mobile معمولاً cell phone یا phone گفته می‌شود. صفتِ mobile (متحرک) جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "My mobile are on the table.",
+              "wrongFa": "موبایلم روی میز هستند؛ اما فعل جمع آمده است.",
+              "right": "My mobile is on the table.",
+              "rightFa": "موبایلم روی میز است.",
+              "why": "my mobile مفرد است و فعلِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈməʊbaɪl/",
+              "us": "/ˈmoʊbl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "What is your ___ number?",
+                "answer": "mobile",
+                "accept": [
+                  "phone"
+                ],
+                "fa": "شمارهٔ موبایلت چند است؟",
+                "why": "mobile number یعنی شمارهٔ موبایل."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در آمریکا به mobile معمولاً چه می‌گویند؟",
+                "options": [
+                  {
+                    "text": "cell phone",
+                    "ok": true,
+                    "why": "در آمریکا cell phone رایج است."
+                  },
+                  {
+                    "text": "telephone box",
+                    "ok": false,
+                    "why": "telephone box یعنی باجهٔ تلفن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "موبایلم را در ماشین جا گذاشتم.",
+                "frame": "I left my ___ in the car.",
+                "answer": "mobile",
+                "accept": [
+                  "phone"
+                ],
+                "why": "پس از my اسمِ mobile می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "everywhere",
+      "levelWordId": "level:A1:0697",
+      "existingEntryIds": [
+        "lex:A2:everywhere"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0784",
+          "senseId": "lex:A2:everywhere",
+          "meaningEn": "In or to every place."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:everywhere",
+        "headword": "everywhere",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:everywhere",
+            "pos": "adverb",
+            "gloss": "همه‌جا",
+            "meaning": "در همهٔ جاها یا به همهٔ جاها.",
+            "grammar": [
+              {
+                "pattern": "verb + everywhere",
+                "note": "everywhere معمولاً پس از فعل یا مفعول می‌آید: I looked everywhere."
+              },
+              {
+                "pattern": "everywhere",
+                "note": "everywhere خودش قید است و پیش از آن حرفِ اضافه نمی‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I looked everywhere for my glasses.",
+                "fa": "همه‌جا را دنبالِ عینکم گشتم."
+              },
+              {
+                "en": "There are flowers everywhere in spring.",
+                "fa": "بهار همه‌جا گل هست."
+              },
+              {
+                "en": "My little brother follows me everywhere.",
+                "fa": "برادرِ کوچکم همه‌جا دنبالم می‌آید."
+              }
+            ],
+            "collocations": [
+              "look everywhere",
+              "everywhere you go"
+            ],
+            "collocationFa": {
+              "look everywhere": "همه‌جا را گشتن",
+              "everywhere you go": "هر جا که بروی"
+            },
+            "usage": "everywhere یعنی همه‌جا؛ برای «هیچ‌جا» nowhere و برای «یک جایی» somewhere به کار می‌رود.",
+            "mistake": {
+              "wrong": "I searched in everywhere.",
+              "wrongFa": "در همه‌جا گشتم؛ اما in اضافه است.",
+              "right": "I searched everywhere.",
+              "rightFa": "همه‌جا را گشتم.",
+              "why": "everywhere خودش قید است و in پیش از آن نمی‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈevriweə/",
+              "us": "/ˈevriwer/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "After the party, there was paper ___.",
+                "answer": "everywhere",
+                "accept": [],
+                "fa": "بعد از مهمانی همه‌جا کاغذ ریخته بود.",
+                "why": "everywhere یعنی در همهٔ جاها."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "متضادِ everywhere کدام است؟",
+                "options": [
+                  {
+                    "text": "nowhere",
+                    "ok": true,
+                    "why": "nowhere یعنی هیچ‌جا."
+                  },
+                  {
+                    "text": "somewhere",
+                    "ok": false,
+                    "why": "somewhere یعنی یک جایی، نه متضادِ کامل."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سگم همه‌جا با من می‌آید.",
+                "frame": "My dog goes ___ with me.",
+                "answer": "everywhere",
+                "accept": [],
+                "why": "everywhere پس از فعل می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "medicine",
+      "levelWordId": "level:A1:0699",
+      "existingEntryIds": [
+        "lex:A2:medicine"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0786",
+          "senseId": "lex:A2:medicine",
+          "meaningEn": "Something that you take when you are ill to make you better."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:medicine",
+        "headword": "medicine",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:medicine",
+            "pos": "noun",
+            "gloss": "دارو",
+            "meaning": "چیزی که هنگامِ بیماری مصرف می‌کنیم تا حالمان بهتر شود.",
+            "grammar": [
+              {
+                "pattern": "take medicine",
+                "note": "برای مصرفِ دارو take medicine می‌گوییم، نه eat."
+              },
+              {
+                "pattern": "medicine for + illness",
+                "note": "پیش از بیماری for می‌آید: medicine for a cold."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Take this medicine after dinner.",
+                "fa": "این دارو را بعد از شام بخور."
+              },
+              {
+                "en": "Is there any medicine for a sore throat?",
+                "fa": "دارویی برای گلودرد هست؟"
+              },
+              {
+                "en": "Keep all medicine away from children.",
+                "fa": "همهٔ داروها را دور از دسترسِ بچه‌ها نگه دارید."
+              }
+            ],
+            "collocations": [
+              "take medicine",
+              "cough medicine"
+            ],
+            "collocationFa": {
+              "take medicine": "دارو مصرف کردن",
+              "cough medicine": "داروی سرفه"
+            },
+            "usage": "در فارسی «دارو خوردن» می‌گوییم، اما در انگلیسی take medicine رایج است. medicine به معنای «علمِ پزشکی» هم هست که جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "She has took her medicine.",
+              "wrongFa": "او داروی‌اش را خورده است؛ اما شکلِ فعل درست نیست.",
+              "right": "She has taken her medicine.",
+              "rightFa": "او داروی‌اش را خورده است.",
+              "why": "پس از has شکلِ سومِ take، یعنی taken، می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈmedsn/",
+              "us": "/ˈmedɪsn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The doctor gave me some ___ for my cough.",
+                "answer": "medicine",
+                "accept": [],
+                "fa": "پزشک برای سرفه‌ام کمی دارو به من داد.",
+                "why": "medicine چیزی است که برای درمان مصرف می‌کنیم."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت برای «دارو خوردن» رایج است؟",
+                "options": [
+                  {
+                    "text": "take medicine",
+                    "ok": true,
+                    "why": "در انگلیسی take medicine می‌گوییم."
+                  },
+                  {
+                    "text": "do medicine",
+                    "ok": false,
+                    "why": "با medicine فعلِ do به کار نمی‌رود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "داروی سرفه در کمد است.",
+                "frame": "The cough ___ is in the cupboard.",
+                "answer": "medicine",
+                "accept": [],
+                "why": "cough medicine یعنی داروی سرفه."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "sweet",
+      "levelWordId": "level:A1:0700",
+      "existingEntryIds": [
+        "lex:A2:sweet"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0787",
+          "senseId": "lex:A2:sweet",
+          "meaningEn": "Tasting of sugar or honey."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:sweet",
+        "headword": "sweet",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:sweet",
+            "pos": "adjective",
+            "gloss": "شیرین",
+            "meaning": "دارای مزهٔ شکر یا عسل.",
+            "grammar": [
+              {
+                "pattern": "sweet + noun",
+                "note": "sweet پیش از اسم می‌آید: sweet tea."
+              },
+              {
+                "pattern": "too sweet",
+                "note": "برای شیرینیِ بیش از حد too sweet می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "These grapes are very sweet.",
+                "fa": "این انگورها خیلی شیرین‌اند."
+              },
+              {
+                "en": "I don't like sweet tea.",
+                "fa": "چایِ شیرین دوست ندارم."
+              },
+              {
+                "en": "Add a little sugar if you like it sweet.",
+                "fa": "اگر شیرین دوست داری کمی شکر اضافه کن."
+              }
+            ],
+            "collocations": [
+              "sweet tea",
+              "a sweet taste"
+            ],
+            "collocationFa": {
+              "sweet tea": "چایِ شیرین",
+              "a sweet taste": "مزهٔ شیرین"
+            },
+            "usage": "sweet در این درس دربارهٔ مزه است. برای آدم یا رفتارِ مهربان و بامزه هم sweet به کار می‌رود (She is so sweet). اسمِ sweets در بریتانیا یعنی آبنبات و شیرینی.",
+            "mistake": {
+              "wrong": "This cake is too much sweet.",
+              "wrongFa": "این کیک بیش از حد زیاد شیرین است.",
+              "right": "This cake is too sweet.",
+              "rightFa": "این کیک بیش از حد شیرین است.",
+              "why": "پیش از صفت too به تنهایی می‌آید؛ too much پیش از اسمِ غیرقابل‌شمارش است."
+            },
+            "pronunciation": {
+              "gb": "/swiːt/",
+              "us": "/swiːt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Honey is very ___.",
+                "answer": "sweet",
+                "accept": [],
+                "fa": "عسل خیلی شیرین است.",
+                "why": "sweet یعنی دارای مزهٔ شکر یا عسل."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "The juice is too much sweet.",
+                    "ok": false,
+                    "why": "پیش از صفت too much نمی‌آید."
+                  },
+                  {
+                    "text": "The juice is too sweet.",
+                    "ok": true,
+                    "why": "too پیش از صفت می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این هندوانه شیرین است.",
+                "frame": "This watermelon is ___.",
+                "answer": "sweet",
+                "accept": [],
+                "why": "پس از is صفتِ sweet می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "smell",
+      "levelWordId": "level:A1:0703",
+      "existingEntryIds": [
+        "lex:A2:smell"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0790",
+          "senseId": "lex:A2:smell",
+          "meaningEn": "Something that you notice with your nose."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:smell",
+        "headword": "smell",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:smell",
+            "pos": "noun",
+            "gloss": "بو",
+            "meaning": "چیزی که آن را با بینی حس می‌کنیم، خوب یا بد.",
+            "grammar": [
+              {
+                "pattern": "the smell of + thing",
+                "note": "برای منبعِ بو of می‌آید: the smell of coffee."
+              },
+              {
+                "pattern": "a nice / bad smell",
+                "note": "صفت پیش از smell می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I love the smell of fresh bread.",
+                "fa": "بوی نانِ تازه را خیلی دوست دارم."
+              },
+              {
+                "en": "There is a strange smell in the fridge.",
+                "fa": "در یخچال یک بوی عجیب هست."
+              },
+              {
+                "en": "The smell of the sea reminds me of summer.",
+                "fa": "بوی دریا مرا یادِ تابستان می‌اندازد."
+              }
+            ],
+            "collocations": [
+              "the smell of something",
+              "a bad smell"
+            ],
+            "collocationFa": {
+              "the smell of something": "بوی چیزی",
+              "a bad smell": "بوی بد"
+            },
+            "usage": "در این درس smell اسم است. فعلِ smell (بوییدن؛ بو دادن) مثل It smells good جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "What is that smell bad?",
+              "wrongFa": "آن بوی بد چیست؟ اما جای صفت درست نیست.",
+              "right": "What is that bad smell?",
+              "rightFa": "آن بوی بد چیست؟",
+              "why": "در انگلیسی صفت پیش از اسم می‌آید: that bad smell."
+            },
+            "pronunciation": {
+              "gb": "/smel/",
+              "us": "/smel/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ of the flowers filled the room.",
+                "answer": "smell",
+                "accept": [
+                  "scent"
+                ],
+                "fa": "بوی گل‌ها اتاق را پر کرد.",
+                "why": "the smell of یعنی بوی چیزی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام ترتیب درست است؟",
+                "options": [
+                  {
+                    "text": "a lovely smell",
+                    "ok": true,
+                    "why": "صفت پیش از smell می‌آید."
+                  },
+                  {
+                    "text": "a smell lovely",
+                    "ok": false,
+                    "why": "صفت پس از اسم نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بوی قهوه را دوست دارم.",
+                "frame": "I like the ___ of coffee.",
+                "answer": "smell",
+                "accept": [],
+                "why": "the smell of یعنی بوی چیزی."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "habit",
+      "levelWordId": "level:A1:0708",
+      "existingEntryIds": [
+        "lex:A2:habit"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0796",
+          "senseId": "lex:A2:habit",
+          "meaningEn": "Something that you do often and regularly, sometimes without thinking."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:habit",
+        "headword": "habit",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:habit",
+            "pos": "noun",
+            "gloss": "عادت",
+            "meaning": "کاری که اغلب و مرتب انجام می‌دهیم، گاهی بدونِ فکر کردن.",
+            "grammar": [
+              {
+                "pattern": "a good / bad habit",
+                "note": "صفت پیش از habit می‌آید: a bad habit."
+              },
+              {
+                "pattern": "a habit of + -ing",
+                "note": "برای کار، of و فعل با ing می‌آید: a habit of reading at night."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Brushing your teeth is a good habit.",
+                "fa": "مسواک زدن عادتِ خوبی است."
+              },
+              {
+                "en": "He has a habit of biting his nails.",
+                "fa": "او عادت دارد ناخن‌هایش را بجود."
+              },
+              {
+                "en": "It is hard to change old habits.",
+                "fa": "تغییرِ عادت‌های قدیمی سخت است."
+              }
+            ],
+            "collocations": [
+              "a good habit",
+              "a bad habit"
+            ],
+            "collocationFa": {
+              "a good habit": "عادتِ خوب",
+              "a bad habit": "عادتِ بد"
+            },
+            "usage": "habit عادتِ یک شخص است. برای رسم و رسومِ یک جامعه custom به کار می‌رود.",
+            "mistake": {
+              "wrong": "Eating late is a bad habits.",
+              "wrongFa": "دیر غذا خوردن یک عادت‌های بد است.",
+              "right": "Eating late is a bad habit.",
+              "rightFa": "دیر غذا خوردن عادتِ بدی است.",
+              "why": "پس از a اسمِ مفرد می‌آید: a bad habit."
+            },
+            "pronunciation": {
+              "gb": "/ˈhæbɪt/",
+              "us": "/ˈhæbɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Walking every day is a healthy ___.",
+                "answer": "habit",
+                "accept": [],
+                "fa": "پیاده‌رویِ روزانه عادتی سالم است.",
+                "why": "habit کاری است که مرتب انجام می‌دهیم."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه یعنی «عادت»؟",
+                "options": [
+                  {
+                    "text": "habit",
+                    "ok": true,
+                    "why": "habit یعنی عادت."
+                  },
+                  {
+                    "text": "hobby",
+                    "ok": false,
+                    "why": "hobby یعنی سرگرمی."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او عادت‌های خوبی دارد.",
+                "frame": "She has good ___.",
+                "answer": "habits",
+                "accept": [],
+                "why": "پس از good در اینجا شکلِ جمعِ habits می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "self",
+      "levelWordId": "level:A1:0709",
+      "existingEntryIds": [
+        "lex:B2:self"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0797",
+          "senseId": "lex:B2:self",
+          "meaningEn": "The person that you are, especially your usual character and feelings."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2:self",
+        "headword": "self",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2:self",
+            "pos": "noun",
+            "gloss": "خود؛ حالِ همیشگی",
+            "meaning": "آدمی که هستیم، به‌ویژه شخصیت و حالِ همیشگیِ ما.",
+            "grammar": [
+              {
+                "pattern": "your old self",
+                "note": "برای برگشتن به حالِ همیشگی می‌گوییم: He is his old self again."
+              },
+              {
+                "pattern": "self / selves",
+                "note": "جمعِ self، selves است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "After a long sleep, I felt like my old self again.",
+                "fa": "بعد از یک خوابِ طولانی دوباره حالِ همیشگی‌ام را داشتم."
+              },
+              {
+                "en": "She is back to her happy self.",
+                "fa": "او دوباره همان آدمِ شادِ همیشگی شده است."
+              },
+              {
+                "en": "Be your true self with your friends.",
+                "fa": "با دوستانت همان خودِ واقعی‌ات باش."
+              }
+            ],
+            "collocations": [
+              "your old self",
+              "your true self"
+            ],
+            "collocationFa": {
+              "your old self": "خودِ همیشگی‌ات",
+              "your true self": "خودِ واقعی‌ات"
+            },
+            "usage": "self بیشتر در واژه‌هایی مثل myself و yourself دیده می‌شود. به‌عنوانِ اسم در عبارت‌هایی مثل your old self به کار می‌رود.",
+            "mistake": {
+              "wrong": "They are back to their happy selfs.",
+              "wrongFa": "آن‌ها دوباره همان آدم‌های شادِ همیشگی شده‌اند؛ اما جمعِ self غلط نوشته شده است.",
+              "right": "They are back to their happy selves.",
+              "rightFa": "آن‌ها دوباره همان آدم‌های شادِ همیشگی شده‌اند.",
+              "why": "جمعِ self به شکلِ selves نوشته می‌شود."
+            },
+            "pronunciation": {
+              "gb": "/self/",
+              "us": "/self/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "He was ill last week, but now he is his old ___ again.",
+                "answer": "self",
+                "accept": [],
+                "fa": "هفتهٔ پیش بیمار بود، اما حالا دوباره حالِ همیشگی‌اش را دارد.",
+                "why": "his old self یعنی حالِ همیشگیِ او."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ self کدام است؟",
+                "options": [
+                  {
+                    "text": "selfs",
+                    "ok": false,
+                    "why": "این املا نادرست است."
+                  },
+                  {
+                    "text": "selves",
+                    "ok": true,
+                    "why": "جمعِ self، selves است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او دوباره همان خودِ شادِ همیشگی است.",
+                "frame": "She is her happy ___ again.",
+                "answer": "self",
+                "accept": [],
+                "why": "her happy self یعنی خودِ شادِ همیشگی‌اش."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "bone",
+      "levelWordId": "level:A1:0710",
+      "existingEntryIds": [
+        "lex:A2:bone"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0798",
+          "senseId": "lex:A2:bone",
+          "meaningEn": "One of the hard white parts inside the body of a person or an animal."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:bone",
+        "headword": "bone",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:bone",
+            "pos": "noun",
+            "gloss": "استخوان",
+            "meaning": "یکی از بخش‌های سخت و سفیدِ درونِ بدنِ انسان یا حیوان.",
+            "grammar": [
+              {
+                "pattern": "break a bone",
+                "note": "برای شکستنِ استخوان break a bone می‌گوییم."
+              },
+              {
+                "pattern": "a bone / bones",
+                "note": "bone قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The dog is chewing a big bone.",
+                "fa": "سگ دارد یک استخوانِ بزرگ را می‌جود."
+              },
+              {
+                "en": "She broke a bone in her foot.",
+                "fa": "یکی از استخوان‌های پایش شکست."
+              },
+              {
+                "en": "Milk is good for your bones.",
+                "fa": "شیر برای استخوان‌هایت خوب است."
+              }
+            ],
+            "collocations": [
+              "break a bone",
+              "strong bones"
+            ],
+            "collocationFa": {
+              "break a bone": "استخوان شکستن",
+              "strong bones": "استخوان‌های محکم"
+            },
+            "usage": "bone قابل‌شمارش است. ماهی هم استخوان‌های ریز دارد که fish bones نامیده می‌شوند.",
+            "mistake": {
+              "wrong": "Our body has many bone.",
+              "wrongFa": "بدنِ ما استخوانِ زیادی دارد؛ اما اسم باید جمع باشد.",
+              "right": "Our body has many bones.",
+              "rightFa": "بدنِ ما استخوان‌های زیادی دارد.",
+              "why": "پس از many اسمِ قابل‌شمارش جمع می‌شود: bones."
+            },
+            "pronunciation": {
+              "gb": "/bəʊn/",
+              "us": "/boʊn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Be careful; this fish has small ___.",
+                "answer": "bones",
+                "accept": [],
+                "fa": "مراقب باش؛ این ماهی استخوان‌های ریز دارد.",
+                "why": "پس از small اینجا جمعِ bones می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «استخوان شکستن»؟",
+                "options": [
+                  {
+                    "text": "break a bone",
+                    "ok": true,
+                    "why": "break a bone یعنی استخوان شکستن."
+                  },
+                  {
+                    "text": "cut a bone",
+                    "ok": false,
+                    "why": "این عبارت برای آسیب به استخوانِ بدن به کار نمی‌رود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سگ استخوان را در باغ پنهان کرد.",
+                "frame": "The dog hid the ___ in the garden.",
+                "answer": "bone",
+                "accept": [],
+                "why": "پس از the اسمِ مفردِ bone می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "pocket",
+      "levelWordId": "level:A1:0713",
+      "existingEntryIds": [
+        "lex:A2:pocket"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0802",
+          "senseId": "lex:A2:pocket",
+          "meaningEn": "A small bag sewn into clothes where you can keep things."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:pocket",
+        "headword": "pocket",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:pocket",
+            "pos": "noun",
+            "gloss": "جیب",
+            "meaning": "کیسهٔ کوچکی که روی لباس دوخته شده و چیزها را در آن نگه می‌داریم.",
+            "grammar": [
+              {
+                "pattern": "in + pocket",
+                "note": "برای چیزی که در جیب است in می‌آید: in my pocket."
+              },
+              {
+                "pattern": "a pocket / pockets",
+                "note": "pocket قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I always keep a tissue in my jacket pocket.",
+                "fa": "همیشه یک دستمال‌کاغذی در جیبِ کاپشنم نگه می‌دارم."
+              },
+              {
+                "en": "He took a pen out of his pocket.",
+                "fa": "او یک خودکار از جیبش درآورد."
+              },
+              {
+                "en": "These trousers have four pockets.",
+                "fa": "این شلوار چهار جیب دارد."
+              }
+            ],
+            "collocations": [
+              "in your pocket",
+              "pocket money"
+            ],
+            "collocationFa": {
+              "in your pocket": "در جیبت",
+              "pocket money": "پول توجیبی"
+            },
+            "usage": "pocket money یعنی پولی که پدر و مادر به بچه‌ها می‌دهند (پول توجیبی).",
+            "mistake": {
+              "wrong": "The money is on my pocket.",
+              "wrongFa": "پول روی جیبم است؛ اما حرفِ اضافه درست نیست.",
+              "right": "The money is in my pocket.",
+              "rightFa": "پول در جیبم است.",
+              "why": "برای چیزی که درونِ جیب است in به کار می‌رود، نه on."
+            },
+            "pronunciation": {
+              "gb": "/ˈpɒkɪt/",
+              "us": "/ˈpɑːkɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Put your phone in your ___.",
+                "answer": "pocket",
+                "accept": [],
+                "fa": "گوشی‌ات را در جیبت بگذار.",
+                "why": "pocket جیبِ لباس است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "in my pocket",
+                    "ok": true,
+                    "why": "برای درونِ جیب in می‌آید."
+                  },
+                  {
+                    "text": "on my pocket",
+                    "ok": false,
+                    "why": "برای درونِ جیب on درست نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک سکه در جیبم دارم.",
+                "frame": "I have a coin in my ___.",
+                "answer": "pocket",
+                "accept": [],
+                "why": "in my pocket یعنی در جیبم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "lucky",
+      "levelWordId": "level:A1:0714",
+      "existingEntryIds": [
+        "lex:A2:lucky"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0803",
+          "senseId": "lex:A2:lucky",
+          "meaningEn": "Having good things happen to you by chance."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:lucky",
+        "headword": "lucky",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:lucky",
+            "pos": "adjective",
+            "gloss": "خوش‌شانس",
+            "meaning": "کسی که به‌طورِ اتفاقی چیزهای خوب برایش پیش می‌آید.",
+            "grammar": [
+              {
+                "pattern": "be lucky",
+                "note": "پس از be می‌آید: You are lucky."
+              },
+              {
+                "pattern": "lucky to + verb",
+                "note": "برای کاری که از سرِ شانس رخ داد to + فعل می‌آید: lucky to win."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We were lucky with the weather.",
+                "fa": "با آب‌وهوا خوش‌شانس بودیم."
+              },
+              {
+                "en": "He is lucky to have such good friends.",
+                "fa": "او خوش‌شانس است که چنین دوستانِ خوبی دارد."
+              },
+              {
+                "en": "Seven is my lucky number.",
+                "fa": "هفت عددِ شانسِ من است."
+              }
+            ],
+            "collocations": [
+              "a lucky number",
+              "lucky to be alive"
+            ],
+            "collocationFa": {
+              "a lucky number": "عددِ شانس",
+              "lucky to be alive": "خوش‌شانس که زنده است"
+            },
+            "usage": "lucky صفت است و اسمش luck است. متضادش unlucky است.",
+            "mistake": {
+              "wrong": "You are very luck!",
+              "wrongFa": "تو خیلی شانس هستی! اما پس از very اسم آمده است.",
+              "right": "You are very lucky!",
+              "rightFa": "تو خیلی خوش‌شانسی!",
+              "why": "پس از very صفتِ lucky می‌آید؛ luck اسم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈlʌki/",
+              "us": "/ˈlʌki/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "She found money in the street; she is very ___.",
+                "answer": "lucky",
+                "accept": [],
+                "fa": "او در خیابان پول پیدا کرد؛ خیلی خوش‌شانس است.",
+                "why": "پس از very صفتِ lucky می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "متضادِ lucky کدام است؟",
+                "options": [
+                  {
+                    "text": "unlucky",
+                    "ok": true,
+                    "why": "unlucky یعنی بدشانس."
+                  },
+                  {
+                    "text": "unhappy",
+                    "ok": false,
+                    "why": "unhappy یعنی ناراحت."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ما امروز خوش‌شانس بودیم.",
+                "frame": "We were ___ today.",
+                "answer": "lucky",
+                "accept": [],
+                "why": "پس از were صفتِ lucky می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "king",
+      "levelWordId": "level:A1:0716",
+      "existingEntryIds": [
+        "lex:A2:king"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0805",
+          "senseId": "lex:A2:king",
+          "meaningEn": "A man from a royal family who rules a country."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:king",
+        "headword": "king",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:king",
+            "pos": "noun",
+            "gloss": "پادشاه؛ شاه",
+            "meaning": "مردی از خانوادهٔ سلطنتی که فرمانروای یک کشور است.",
+            "grammar": [
+              {
+                "pattern": "the king of + country",
+                "note": "پیش از کشور of می‌آید: the king of Spain."
+              },
+              {
+                "pattern": "King + name",
+                "note": "پیش از نام با K بزرگ: King Charles."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The king lives in a big palace.",
+                "fa": "پادشاه در یک کاخِ بزرگ زندگی می‌کند."
+              },
+              {
+                "en": "In the story, the king had three daughters.",
+                "fa": "در داستان، پادشاه سه دختر داشت."
+              },
+              {
+                "en": "The people waved to the king.",
+                "fa": "مردم برای پادشاه دست تکان دادند."
+              }
+            ],
+            "collocations": [
+              "the king and queen",
+              "the king of a country"
+            ],
+            "collocationFa": {
+              "the king and queen": "پادشاه و ملکه",
+              "the king of a country": "پادشاهِ یک کشور"
+            },
+            "usage": "همسرِ king، queen (ملکه) است.",
+            "mistake": {
+              "wrong": "The king live in a castle.",
+              "wrongFa": "پادشاه در یک قلعه زندگی می‌کنند؛ اما فعل s ندارد.",
+              "right": "The king lives in a castle.",
+              "rightFa": "پادشاه در یک قلعه زندگی می‌کند.",
+              "why": "فاعلِ سوم‌شخصِ مفرد در زمانِ حال فعل را با s می‌خواهد: lives."
+            },
+            "pronunciation": {
+              "gb": "/kɪŋ/",
+              "us": "/kɪŋ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ and the queen came to the city.",
+                "answer": "king",
+                "accept": [],
+                "fa": "پادشاه و ملکه به شهر آمدند.",
+                "why": "king همسرِ queen است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "همسرِ king چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "prince",
+                    "ok": false,
+                    "why": "prince شاهزاده است."
+                  },
+                  {
+                    "text": "queen",
+                    "ok": true,
+                    "why": "queen ملکه است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پادشاه یک تاجِ طلا دارد.",
+                "frame": "The ___ has a gold crown.",
+                "answer": "king",
+                "accept": [],
+                "why": "پس از The اسمِ king می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "borrow",
+      "levelWordId": "level:A1:0717",
+      "existingEntryIds": [
+        "lex:A2:borrow"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0806",
+          "senseId": "lex:A2:borrow",
+          "meaningEn": "To take something from someone that you will give back later."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:borrow",
+        "headword": "borrow",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:borrow",
+            "pos": "verb",
+            "gloss": "قرض گرفتن؛ امانت گرفتن",
+            "meaning": "چیزی را از کسی گرفتن که بعداً به او پس می‌دهیم.",
+            "grammar": [
+              {
+                "pattern": "borrow + thing + from + person",
+                "note": "برای کسی که از او می‌گیریم from می‌آید: borrow a pen from Ali."
+              },
+              {
+                "pattern": "borrow / lend",
+                "note": "borrow یعنی گرفتن؛ lend یعنی دادنِ امانت."
+              }
+            ],
+            "examples": [
+              {
+                "en": "May I borrow your charger tonight?",
+                "fa": "می‌توانم امشب شارژرت را قرض بگیرم؟"
+              },
+              {
+                "en": "I borrowed this book from the library.",
+                "fa": "این کتاب را از کتابخانه امانت گرفتم."
+              },
+              {
+                "en": "She borrowed some money from her brother.",
+                "fa": "او کمی پول از برادرش قرض گرفت."
+              }
+            ],
+            "collocations": [
+              "borrow a book",
+              "borrow money"
+            ],
+            "collocationFa": {
+              "borrow a book": "کتاب امانت گرفتن",
+              "borrow money": "پول قرض گرفتن"
+            },
+            "usage": "borrow یعنی گرفتن، lend یعنی دادن. در فارسی هر دو را «قرض» می‌گوییم، اما در انگلیسی فرق دارند.",
+            "mistake": {
+              "wrong": "Can you borrow me your bike?",
+              "wrongFa": "می‌توانی دوچرخه‌ات را به من قرض بگیری؟",
+              "right": "Can you lend me your bike?",
+              "rightFa": "می‌توانی دوچرخه‌ات را به من قرض بدهی؟",
+              "why": "وقتی کسی چیزی را به ما می‌دهد lend به کار می‌رود؛ borrow یعنی گرفتن."
+            },
+            "pronunciation": {
+              "gb": "/ˈbɒrəʊ/",
+              "us": "/ˈbɑːroʊ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Can I ___ your umbrella? It's raining.",
+                "answer": "borrow",
+                "accept": [],
+                "fa": "می‌توانم چترت را قرض بگیرم؟ باران می‌آید.",
+                "why": "borrow یعنی گرفتن و بعداً پس دادن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«آیا می‌توانی ماشین‌حسابت را به من قرض بدهی؟» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "Can you borrow me your calculator?",
+                    "ok": false,
+                    "why": "برای دادن به کسی borrow به کار نمی‌رود."
+                  },
+                  {
+                    "text": "Can you lend me your calculator?",
+                    "ok": true,
+                    "why": "lend یعنی قرض دادن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من از دوستم یک دیکشنری قرض گرفتم.",
+                "frame": "I ___ a dictionary from my friend.",
+                "answer": "borrowed",
+                "accept": [],
+                "why": "برای گذشته borrowed به کار می‌رود."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "reporter",
+      "levelWordId": "level:A1:0719",
+      "existingEntryIds": [
+        "lex:A2:reporter"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0808",
+          "senseId": "lex:A2:reporter",
+          "meaningEn": "A person whose job is to find out news and write or talk about it."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:reporter",
+        "headword": "reporter",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:reporter",
+            "pos": "noun",
+            "gloss": "خبرنگار",
+            "meaning": "کسی که کارش پیدا کردنِ خبر و نوشتن یا گفتنِ آن است.",
+            "grammar": [
+              {
+                "pattern": "a reporter for + newspaper/TV",
+                "note": "برای جایی که خبرنگار در آن کار می‌کند for می‌آید."
+              },
+              {
+                "pattern": "work as a reporter",
+                "note": "برای شغل می‌گوییم: She works as a reporter."
+              }
+            ],
+            "examples": [
+              {
+                "en": "A reporter asked the players some questions.",
+                "fa": "یک خبرنگار از بازیکنان چند سؤال پرسید."
+              },
+              {
+                "en": "My cousin is a reporter for a local newspaper.",
+                "fa": "دخترعمه‌ام خبرنگارِ یک روزنامهٔ محلی است."
+              },
+              {
+                "en": "The reporters waited outside the hospital.",
+                "fa": "خبرنگارها بیرونِ بیمارستان منتظر ماندند."
+              }
+            ],
+            "collocations": [
+              "a news reporter",
+              "a sports reporter"
+            ],
+            "collocationFa": {
+              "a news reporter": "خبرنگارِ خبری",
+              "a sports reporter": "خبرنگارِ ورزشی"
+            },
+            "usage": "reporter از فعلِ report (گزارش دادن) ساخته شده است. journalist واژهٔ کلی‌تری برای روزنامه‌نگار است.",
+            "mistake": {
+              "wrong": "She works as reporter.",
+              "wrongFa": "او به‌عنوانِ خبرنگار کار می‌کند؛ اما حرفِ تعریف نیامده است.",
+              "right": "She works as a reporter.",
+              "rightFa": "او به‌عنوانِ خبرنگار کار می‌کند.",
+              "why": "پس از works as پیش از شغلِ مفرد a لازم است."
+            },
+            "pronunciation": {
+              "gb": "/rɪˈpɔːtə/",
+              "us": "/rɪˈpɔːrtər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The TV ___ spoke from the stadium.",
+                "answer": "reporter",
+                "accept": [
+                  "journalist"
+                ],
+                "fa": "خبرنگارِ تلویزیون از ورزشگاه صحبت کرد.",
+                "why": "reporter کسی است که خبر را گزارش می‌دهد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کسی که خبر را گزارش می‌دهد چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "reporter",
+                    "ok": true,
+                    "why": "reporter یعنی خبرنگار."
+                  },
+                  {
+                    "text": "repeater",
+                    "ok": false,
+                    "why": "repeater به معنای خبرنگار نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او خبرنگارِ ورزشی است.",
+                "frame": "He is a sports ___.",
+                "answer": "reporter",
+                "accept": [
+                  "journalist"
+                ],
+                "why": "sports reporter یعنی خبرنگارِ ورزشی."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "breathe",
+      "levelWordId": "level:A1:0722",
+      "existingEntryIds": [
+        "lex:B1:breathe"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0811",
+          "senseId": "lex:B1:breathe",
+          "meaningEn": "To take air into your body and let it out again."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:breathe",
+        "headword": "breathe",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:breathe",
+            "pos": "verb",
+            "gloss": "نفس کشیدن",
+            "meaning": "هوا را به درونِ بدن بردن و دوباره بیرون دادن.",
+            "grammar": [
+              {
+                "pattern": "breathe in / out",
+                "note": "برای دم و بازدم breathe in و breathe out می‌گوییم."
+              },
+              {
+                "pattern": "breathe (verb) / breath (noun)",
+                "note": "breathe فعل است؛ breath (بدونِ e) اسم است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Breathe in slowly through your nose.",
+                "fa": "آرام از راهِ بینی نفس بکش."
+              },
+              {
+                "en": "Fish breathe under water.",
+                "fa": "ماهی‌ها زیرِ آب نفس می‌کشند."
+              },
+              {
+                "en": "It was hard to breathe in the smoky room.",
+                "fa": "در آن اتاقِ پر از دود نفس کشیدن سخت بود."
+              }
+            ],
+            "collocations": [
+              "breathe in",
+              "breathe deeply"
+            ],
+            "collocationFa": {
+              "breathe in": "دم گرفتن",
+              "breathe deeply": "عمیق نفس کشیدن"
+            },
+            "usage": "breathe فعل و breath اسم است: Take a deep breath (یک نفسِ عمیق بکش).",
+            "mistake": {
+              "wrong": "Take a deep breathe.",
+              "wrongFa": "یک نفس‌کشیدنِ عمیق بکش؛ اما پس از a deep اسم لازم است.",
+              "right": "Take a deep breath.",
+              "rightFa": "یک نفسِ عمیق بکش.",
+              "why": "پس از a deep اسمِ breath (بدونِ e) می‌آید؛ breathe فعل است."
+            },
+            "pronunciation": {
+              "gb": "/briːð/",
+              "us": "/briːð/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Close your eyes and ___ deeply.",
+                "answer": "breathe",
+                "accept": [],
+                "fa": "چشم‌هایت را ببند و عمیق نفس بکش.",
+                "why": "در جملهٔ امری فعلِ breathe می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Breathe out slowly.",
+                    "ok": true,
+                    "why": "breathe فعل است و در امر می‌آید."
+                  },
+                  {
+                    "text": "Breath out slowly.",
+                    "ok": false,
+                    "why": "breath اسم است، نه فعل."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "نوزاد آرام نفس می‌کشد.",
+                "frame": "The baby ___ quietly.",
+                "answer": "breathes",
+                "accept": [],
+                "why": "the baby سوم‌شخصِ مفرد است، پس breathes می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "excuse",
+      "levelWordId": "level:A1:0723",
+      "existingEntryIds": [
+        "lex:B2:excuse"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0812",
+          "senseId": "lex:B2:excuse",
+          "meaningEn": "A reason that you give to explain why you did something wrong or did not do something."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2:excuse",
+        "headword": "excuse",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2:excuse",
+            "pos": "noun",
+            "gloss": "بهانه؛ عذر",
+            "meaning": "دلیلی که می‌آوریم تا توضیح دهیم چرا کاری را اشتباه انجام دادیم یا انجام ندادیم.",
+            "grammar": [
+              {
+                "pattern": "make an excuse",
+                "note": "برای بهانه آوردن make an excuse می‌گوییم."
+              },
+              {
+                "pattern": "an excuse for + thing",
+                "note": "پیش از کارِ اشتباه for می‌آید: an excuse for being late."
+              }
+            ],
+            "examples": [
+              {
+                "en": "He always has an excuse for being late.",
+                "fa": "او همیشه برای دیر آمدن بهانه دارد."
+              },
+              {
+                "en": "That is not a good excuse.",
+                "fa": "آن بهانهٔ خوبی نیست."
+              },
+              {
+                "en": "She made an excuse and left early.",
+                "fa": "او بهانه‌ای آورد و زود رفت."
+              }
+            ],
+            "collocations": [
+              "make an excuse",
+              "a good excuse"
+            ],
+            "collocationFa": {
+              "make an excuse": "بهانه آوردن",
+              "a good excuse": "بهانهٔ خوب"
+            },
+            "usage": "اسمِ excuse با صدای /s/ آخر تلفظ می‌شود و فعلِ excuse (ببخشید) مثل Excuse me با صدای /z/. Excuse me جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "He did an excuse for his homework.",
+              "wrongFa": "او برای تکلیفش یک بهانه انجام داد.",
+              "right": "He made an excuse for his homework.",
+              "rightFa": "او برای تکلیفش بهانه آورد.",
+              "why": "با excuse فعلِ make می‌آید، نه do."
+            },
+            "pronunciation": {
+              "gb": "/ɪkˈskjuːs/",
+              "us": "/ɪkˈskjuːs/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Being tired is no ___ for being rude.",
+                "answer": "excuse",
+                "accept": [],
+                "fa": "خسته بودن بهانه‌ای برای بی‌ادبی نیست.",
+                "why": "excuse دلیلی برای توجیهِ کارِ اشتباه است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «بهانه آوردن»؟",
+                "options": [
+                  {
+                    "text": "do an excuse",
+                    "ok": false,
+                    "why": "با excuse فعلِ do نمی‌آید."
+                  },
+                  {
+                    "text": "make an excuse",
+                    "ok": true,
+                    "why": "make an excuse یعنی بهانه آوردن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او همیشه بهانه دارد.",
+                "frame": "He always has an ___.",
+                "answer": "excuse",
+                "accept": [],
+                "why": "پس از an اسمِ excuse می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "luck",
+      "levelWordId": "level:A1:0726",
+      "existingEntryIds": [
+        "lex:A2:luck"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0815",
+          "senseId": "lex:A2:luck",
+          "meaningEn": "Good or bad things that happen to you by chance."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:luck",
+        "headword": "luck",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:luck",
+            "pos": "noun",
+            "gloss": "شانس",
+            "meaning": "چیزهای خوب یا بدی که به‌طورِ اتفاقی برایمان پیش می‌آید.",
+            "grammar": [
+              {
+                "pattern": "Good luck!",
+                "note": "برای آرزوی موفقیت می‌گوییم: Good luck!"
+              },
+              {
+                "pattern": "luck",
+                "note": "luck غیرقابل‌شمارش است و a نمی‌گیرد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Good luck with your exam tomorrow!",
+                "fa": "برای امتحانِ فردایت موفق باشی!"
+              },
+              {
+                "en": "We had bad luck with the weather.",
+                "fa": "با آب‌وهوا بدشانسی آوردیم."
+              },
+              {
+                "en": "Some people believe this stone brings luck.",
+                "fa": "بعضی‌ها باور دارند این سنگ شانس می‌آورد."
+              }
+            ],
+            "collocations": [
+              "Good luck!",
+              "bad luck"
+            ],
+            "collocationFa": {
+              "Good luck!": "موفق باشی!",
+              "bad luck": "بدشانسی"
+            },
+            "usage": "luck اسم و lucky صفت است. Good luck! جملهٔ رایجی برای آرزوی موفقیت است.",
+            "mistake": {
+              "wrong": "Good lucky in your new job!",
+              "wrongFa": "خوش‌شانس در کارِ جدیدت! اما پس از Good اسم لازم است.",
+              "right": "Good luck in your new job!",
+              "rightFa": "در کارِ جدیدت موفق باشی!",
+              "why": "در عبارتِ Good luck اسمِ luck می‌آید؛ lucky صفت است."
+            },
+            "pronunciation": {
+              "gb": "/lʌk/",
+              "us": "/lʌk/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Good ___ in the race!",
+                "answer": "luck",
+                "accept": [],
+                "fa": "در مسابقه موفق باشی!",
+                "why": "Good luck یعنی موفق باشی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Good luck!",
+                    "ok": true,
+                    "why": "Good luck عبارتِ ثابتِ آرزوی موفقیت است."
+                  },
+                  {
+                    "text": "Good lucky!",
+                    "ok": false,
+                    "why": "lucky صفت است و اینجا اسم لازم است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دیروز بدشانسی آوردم؛ کیفم را گم کردم.",
+                "frame": "I had bad ___ yesterday; I lost my bag.",
+                "answer": "luck",
+                "accept": [],
+                "why": "bad luck یعنی بدشانسی."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "neck",
+      "levelWordId": "level:A1:0728",
+      "existingEntryIds": [
+        "lex:A2:neck"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0817",
+          "senseId": "lex:A2:neck",
+          "meaningEn": "The part of the body between the head and the shoulders."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:neck",
+        "headword": "neck",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:neck",
+            "pos": "noun",
+            "gloss": "گردن",
+            "meaning": "بخشی از بدن میانِ سر و شانه‌ها.",
+            "grammar": [
+              {
+                "pattern": "around + neck",
+                "note": "برای چیزی که دورِ گردن است around می‌آید: a scarf around her neck."
+              },
+              {
+                "pattern": "a neck / necks",
+                "note": "neck قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "She wore a red scarf around her neck.",
+                "fa": "او یک شالِ قرمز دورِ گردنش بسته بود."
+              },
+              {
+                "en": "My neck hurts from sitting at the computer.",
+                "fa": "از نشستن پشتِ رایانه گردنم درد می‌کند."
+              },
+              {
+                "en": "A swan has a long white neck.",
+                "fa": "قو گردنِ بلند و سفیدی دارد."
+              }
+            ],
+            "collocations": [
+              "a long neck",
+              "around your neck"
+            ],
+            "collocationFa": {
+              "a long neck": "گردنِ بلند",
+              "around your neck": "دورِ گردنت"
+            },
+            "usage": "neck عضوی از بدن است. گلوی درونِ گردن throat نام دارد.",
+            "mistake": {
+              "wrong": "Giraffes have very long neck.",
+              "wrongFa": "زرافه‌ها گردنِ خیلی بلند دارند؛ اما اسم باید جمع باشد.",
+              "right": "Giraffes have very long necks.",
+              "rightFa": "زرافه‌ها گردن‌های خیلی بلندی دارند.",
+              "why": "هر زرافه یک گردن دارد، پس برای چند زرافه necks می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/nek/",
+              "us": "/nek/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "He wears a gold chain around his ___.",
+                "answer": "neck",
+                "accept": [],
+                "fa": "او یک زنجیرِ طلا دورِ گردنش دارد.",
+                "why": "around his neck یعنی دورِ گردنش."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه برای «گلو» است؟",
+                "options": [
+                  {
+                    "text": "throat",
+                    "ok": true,
+                    "why": "throat گلوی درونِ گردن است."
+                  },
+                  {
+                    "text": "neck",
+                    "ok": false,
+                    "why": "neck کلِ گردن است، نه گلو."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "گردنم درد می‌کند.",
+                "frame": "My ___ hurts.",
+                "answer": "neck",
+                "accept": [],
+                "why": "پس از my اسمِ neck می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "wheel",
+      "levelWordId": "level:A1:0731",
+      "existingEntryIds": [
+        "lex:A2:wheel"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0820",
+          "senseId": "lex:A2:wheel",
+          "meaningEn": "A round object that turns, used to make cars, bicycles and other things move."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:wheel",
+        "headword": "wheel",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:wheel",
+            "pos": "noun",
+            "gloss": "چرخ",
+            "meaning": "جسمی گرد که می‌چرخد و باعثِ حرکتِ ماشین، دوچرخه و چیزهای دیگر می‌شود.",
+            "grammar": [
+              {
+                "pattern": "a wheel / wheels",
+                "note": "wheel قابل‌شمارش است: four wheels."
+              },
+              {
+                "pattern": "the front / back wheel",
+                "note": "برای جای چرخ front یا back پیش از wheel می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "A car has four wheels.",
+                "fa": "یک ماشین چهار چرخ دارد."
+              },
+              {
+                "en": "The back wheel of my bike is flat.",
+                "fa": "چرخِ عقبِ دوچرخه‌ام پنچر است."
+              },
+              {
+                "en": "This suitcase has small wheels.",
+                "fa": "این چمدان چرخ‌های کوچکی دارد."
+              }
+            ],
+            "collocations": [
+              "the front wheel",
+              "a flat wheel"
+            ],
+            "collocationFa": {
+              "the front wheel": "چرخِ جلو",
+              "a flat wheel": "چرخِ پنچر"
+            },
+            "usage": "steering wheel یعنی فرمانِ ماشین و جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "A bicycle has two wheel.",
+              "wrongFa": "دوچرخه دو چرخ دارد؛ اما اسم باید جمع باشد.",
+              "right": "A bicycle has two wheels.",
+              "rightFa": "دوچرخه دو چرخ دارد.",
+              "why": "پس از two اسمِ wheel جمع می‌شود: wheels."
+            },
+            "pronunciation": {
+              "gb": "/wiːl/",
+              "us": "/wiːl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The front ___ of the car hit a stone.",
+                "answer": "wheel",
+                "accept": [],
+                "fa": "چرخِ جلوی ماشین به یک سنگ خورد.",
+                "why": "front wheel یعنی چرخِ جلو."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه یعنی «چرخ»؟",
+                "options": [
+                  {
+                    "text": "whale",
+                    "ok": false,
+                    "why": "whale یعنی نهنگ."
+                  },
+                  {
+                    "text": "wheel",
+                    "ok": true,
+                    "why": "wheel یعنی چرخ."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این صندلی چرخ دارد.",
+                "frame": "This chair has ___.",
+                "answer": "wheels",
+                "accept": [],
+                "why": "در اینجا شکلِ جمعِ wheels می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "drama",
+      "levelWordId": "level:A1:0732",
+      "existingEntryIds": [
+        "lex:A2:drama"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0821",
+          "senseId": "lex:A2:drama",
+          "meaningEn": "A play or a story for the theatre, television or radio; also the study of acting at school."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:drama",
+        "headword": "drama",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:drama",
+            "pos": "noun",
+            "gloss": "نمایش؛ درام؛ درسِ نمایش",
+            "meaning": "یک نمایش یا داستان برای تئاتر، تلویزیون یا رادیو؛ و همچنین درسِ بازیگری در مدرسه.",
+            "grammar": [
+              {
+                "pattern": "a TV drama",
+                "note": "برای سریال یا نمایشِ تلویزیونی a TV drama می‌گوییم."
+              },
+              {
+                "pattern": "drama (school subject)",
+                "note": "به‌عنوانِ درس، drama بدونِ a می‌آید: We have drama on Monday."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We have drama on Wednesday afternoon.",
+                "fa": "بعدازظهرِ چهارشنبه درسِ نمایش داریم."
+              },
+              {
+                "en": "She watches a hospital drama every evening.",
+                "fa": "او هر شب یک سریالِ بیمارستانی می‌بیند."
+              },
+              {
+                "en": "The school drama club is putting on a play.",
+                "fa": "باشگاهِ نمایشِ مدرسه یک نمایش اجرا می‌کند."
+              }
+            ],
+            "collocations": [
+              "a TV drama",
+              "drama club"
+            ],
+            "collocationFa": {
+              "a TV drama": "سریالِ تلویزیونی",
+              "drama club": "باشگاهِ نمایش"
+            },
+            "usage": "drama هم نوعی برنامه یا نمایش است و هم درسِ بازیگری. در گفت‌وگو drama به «ماجرا و هیاهو» هم گفته می‌شود که جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "We have drama lesson on Monday.",
+              "wrongFa": "دوشنبه درسِ نمایش داریم؛ اما حرفِ تعریف نیامده است.",
+              "right": "We have a drama lesson on Monday.",
+              "rightFa": "دوشنبه یک کلاسِ نمایش داریم.",
+              "why": "lesson قابل‌شمارش است و در حالتِ مفرد a لازم دارد."
+            },
+            "pronunciation": {
+              "gb": "/ˈdrɑːmə/",
+              "us": "/ˈdrɑːmə/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My sister joined the school ___ club.",
+                "answer": "drama",
+                "accept": [],
+                "fa": "خواهرم عضوِ باشگاهِ نمایشِ مدرسه شد.",
+                "why": "drama club باشگاهِ نمایش است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت یعنی «سریالِ تلویزیونی»؟",
+                "options": [
+                  {
+                    "text": "a TV drama",
+                    "ok": true,
+                    "why": "a TV drama یعنی سریال یا نمایشِ تلویزیونی."
+                  },
+                  {
+                    "text": "a TV dream",
+                    "ok": false,
+                    "why": "dream یعنی خواب یا رؤیا."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ما در کلاسِ نمایش یک داستان اجرا کردیم.",
+                "frame": "We acted out a story in ___.",
+                "answer": "drama",
+                "accept": [
+                  "drama class"
+                ],
+                "why": "drama در اینجا نامِ درس است و بدونِ a می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "toy",
+      "levelWordId": "level:A1:0733",
+      "existingEntryIds": [
+        "lex:A2:toy"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0822",
+          "senseId": "lex:A2:toy",
+          "meaningEn": "An object that children play with."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:toy",
+        "headword": "toy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:toy",
+            "pos": "noun",
+            "gloss": "اسباب‌بازی",
+            "meaning": "چیزی که بچه‌ها با آن بازی می‌کنند.",
+            "grammar": [
+              {
+                "pattern": "play with + toys",
+                "note": "برای بازی با اسباب‌بازی play with می‌گوییم."
+              },
+              {
+                "pattern": "toy + noun",
+                "note": "toy پیش از اسم نوعِ اسباب‌بازی را نشان می‌دهد: a toy car."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The baby is playing with a soft toy.",
+                "fa": "بچه دارد با یک عروسکِ پارچه‌ای بازی می‌کند."
+              },
+              {
+                "en": "Please put your toys in the box.",
+                "fa": "لطفاً اسباب‌بازی‌هایت را در جعبه بگذار."
+              },
+              {
+                "en": "He got a toy train for his birthday.",
+                "fa": "او برای تولدش یک قطارِ اسباب‌بازی گرفت."
+              }
+            ],
+            "collocations": [
+              "a toy car",
+              "a toy shop"
+            ],
+            "collocationFa": {
+              "a toy car": "ماشینِ اسباب‌بازی",
+              "a toy shop": "فروشگاهِ اسباب‌بازی"
+            },
+            "usage": "toy قابل‌شمارش است و جمعش toys است.",
+            "mistake": {
+              "wrong": "The children are playing with they toys.",
+              "wrongFa": "بچه‌ها با آن‌ها اسباب‌بازی بازی می‌کنند؛ اما ضمیرِ ملکی درست نیست.",
+              "right": "The children are playing with their toys.",
+              "rightFa": "بچه‌ها با اسباب‌بازی‌هایشان بازی می‌کنند.",
+              "why": "برای مالکیت پیش از اسم their می‌آید، نه they."
+            },
+            "pronunciation": {
+              "gb": "/tɔɪ/",
+              "us": "/tɔɪ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My little brother has a new ___ car.",
+                "answer": "toy",
+                "accept": [],
+                "fa": "برادرِ کوچکم یک ماشینِ اسباب‌بازیِ جدید دارد.",
+                "why": "toy car یعنی ماشینِ اسباب‌بازی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "play with their toys",
+                    "ok": true,
+                    "why": "پیش از اسم their می‌آید."
+                  },
+                  {
+                    "text": "play with they toys",
+                    "ok": false,
+                    "why": "they ضمیرِ فاعلی است، نه ملکی."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "اسباب‌بازی‌ها زیرِ تخت هستند.",
+                "frame": "The ___ are under the bed.",
+                "answer": "toys",
+                "accept": [],
+                "why": "فعلِ are نشان می‌دهد فاعل جمع است: toys."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}
