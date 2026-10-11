@@ -1390,4 +1390,7 @@ softened for absolute claims before applying.
   1,961 stay, 2,798 move and 563 are owner-kept outside the lists.
 - The A1 selection now reports 166 entries moving up and 5 owner-kept,
   instead of 171 retired.
+- Scope: the placement is a Gate 0 rights record for the level lists already
+  shipped. A2–C2 content and the level-structure change are deferred by the
+  plan's A2–C1 freeze (§4, §32) until the A1 gate passes or the owner lifts it.
 - No rights are cleared. Gate 0 stays BLOCKED.

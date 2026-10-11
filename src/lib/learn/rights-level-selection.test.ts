@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readCefrjRows, readNgslList } from "./rights-cefrj-selection";
-import { buildLevelSelection, type LevelledRow } from "./rights-level-selection";
+import { buildLevelSelection, correctPartsOfSpeech, type LevelledRow } from "./rights-level-selection";
 
 const cefrj = readCefrjRows([
   "headword,pos,CEFR,CoreInventory 1,CoreInventory 2,Threshold",
@@ -84,4 +84,15 @@ test("a blank Octanove part of speech is recorded as unspecified", () => {
 
 test("rejects an unknown level", () => {
   assert.throws(() => buildLevelSelection(input([{ headword: "x", pos: "noun", level: "C3", source: "CEFR-J" }])), /unknown level/);
+});
+
+test("corrects the known Octanove typo and rejects any other unknown part of speech", () => {
+  const rows: LevelledRow[] = [
+    { headword: "remonstrate", pos: "vern", level: "C2", source: "Octanove" },
+    { headword: "batter", pos: "unspecified", level: "C1", source: "Octanove" },
+  ];
+  const fixed = correctPartsOfSpeech(rows);
+  assert.equal(fixed.rows[0]!.pos, "verb");
+  assert.deepEqual(fixed.corrections, [{ headword: "remonstrate", level: "C2", upstreamPos: "vern", correctedPos: "verb" }]);
+  assert.throws(() => correctPartsOfSpeech([{ headword: "x", pos: "nuon", level: "C1", source: "Octanove" }]), /unknown part of speech/);
 });

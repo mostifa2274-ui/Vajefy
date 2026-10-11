@@ -55,6 +55,8 @@ const POS_MATCH: Record<string, string[]> = {
   "modal auxiliary": ["modal"], "be-verb": ["verb"], "do-verb": ["verb"], "have-verb": ["verb"],
   interjection: ["exclamation"], "infinitive-to": ["particle"],
 };
+/** Every part-of-speech label CEFR-J uses. */
+export const CEFRJ_PARTS_OF_SPEECH: readonly string[] = Object.keys(POS_MATCH);
 /** British and US spellings are the same word for matching purposes. */
 const SPELLING_VARIANTS: Record<string, string> = {
   colour: "color", centre: "center", favourite: "favorite", grey: "gray",

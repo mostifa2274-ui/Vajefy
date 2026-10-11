@@ -9,6 +9,7 @@
  * rights, assesses a sense or approves an entry.
  */
 import {
+  CEFRJ_PARTS_OF_SPEECH,
   matchKey,
   withVariants,
   type CefrjRow,
@@ -47,6 +48,24 @@ export type PlacedEntry = {
 };
 
 const asTarget = (l: CurrentLevel): TargetLevel => (l === "B2x" ? "B2" : l);
+
+/** Known upstream typos, corrected and reported. Any other unknown label fails. */
+export const POS_CORRECTIONS: Record<string, string> = { vern: "verb" };
+export type PosCorrection = { headword: string; level: string; upstreamPos: string; correctedPos: string };
+
+/** Returns rows with known typos corrected; throws on any other unknown part of speech. */
+export function correctPartsOfSpeech(rows: LevelledRow[]): { rows: LevelledRow[]; corrections: PosCorrection[] } {
+  const known = new Set([...CEFRJ_PARTS_OF_SPEECH, "unspecified"]);
+  const corrections: PosCorrection[] = [];
+  const out = rows.map((r) => {
+    if (known.has(r.pos)) return r;
+    const fixed = POS_CORRECTIONS[r.pos];
+    if (!fixed) throw new Error("Level list: unknown part of speech \"" + r.pos + "\" for " + r.headword);
+    corrections.push({ headword: r.headword, level: r.level, upstreamPos: r.pos, correctedPos: fixed });
+    return { ...r, pos: fixed };
+  });
+  return { rows: out, corrections };
+}
 const rankOf = (l: string) => TARGET_LEVELS.indexOf(l as TargetLevel);
 
 export function buildLevelSelection(input: {

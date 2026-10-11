@@ -12,6 +12,7 @@ import path from "node:path";
 import { readCefrjRows, readNgslList } from "../../src/lib/learn/rights-cefrj-selection";
 import {
   buildLevelSelection,
+  correctPartsOfSpeech,
   LEVEL_SELECTION_STATUS,
   type CurrentLevel,
   type LevelEntry,
@@ -56,8 +57,9 @@ if (catalogue.length !== 5322) fail("expected the 5,322-entry catalogue, found "
 const cefrj = readCefrjRows(text.get(SOURCES[0].file)!).map((r) => ({ ...r, source: "CEFR-J" as const }));
 const octanove = readCefrjRows(text.get(SOURCES[1].file)!, ["C1", "C2"], true).map((r) => ({ ...r, source: "Octanove" as const }));
 if (cefrj.length !== 7799 || octanove.length !== 2136) fail("unexpected row counts " + cefrj.length + "/" + octanove.length);
+const corrected = correctPartsOfSpeech([...cefrj, ...octanove]);
 const result = buildLevelSelection({
-  rows: [...cefrj, ...octanove],
+  rows: corrected.rows,
   ngslCore: readNgslList(text.get(SOURCES[3].file)!, true),
   ngslSupplement: readNgslList(text.get(SOURCES[4].file)!, false),
   ngslExtension: readNgslList(text.get(SOURCES[5].file)!, true),
@@ -89,6 +91,7 @@ const doc = {
     "Octanove Vocabulary Profile C1/C2 1.0, Octanove Labs. CC BY-SA 4.0. Retrieved from https://github.com/openlanguageprofiles/olp-en-cefrj.",
     "Browne, C., Culligan, B. & Phillips, J. (2013). The New General Service List 1.2. CC BY-SA 4.0.",
   ],
+  partOfSpeechCorrections: corrected.corrections,
   counts: result.counts,
   rightsCleared: 0,
   entriesApproved: 0,

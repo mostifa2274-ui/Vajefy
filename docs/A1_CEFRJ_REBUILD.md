@@ -75,6 +75,14 @@ So the app's levels become **A1, A2, B1, B2, C1, C2**. Every word in CEFR-J
 level either list gives it. **No current word drops out**: a current word in
 neither list keeps its current level, with B2+ read as B2.
 
+**Scope.** The plan's restraint rule freezes A2–C1 development until the A1
+completion gate (`docs/AUTONOMOUS_ASSURANCE_PLAN.md` §4 and §32). The
+whole-app placement is still needed now, because the A2–C1 word lists already
+ship in `public/data`, and Gate 0 covers every distributed file. It is a rights
+record only. Writing A2–C2 content, merging B2+ into B2 and adding C2 are
+**deferred** until the A1 gate passes, or until the owner formally lifts the
+freeze in the plan.
+
 ## The A1 selection
 
 `npm run assurance:a1:cefrj` rebuilds the A1 selection from the pinned files and
@@ -142,6 +150,10 @@ the owner-kept words are current C1 words (434) that Octanove does not list.
 The A1 word count here (1,064) differs slightly from the A1 selection (1,066)
 because spellings shared across CEFR-J and Octanove are joined into one word.
 
+Octanove labels *remonstrate* with the typo `vern`. The builder corrects this
+one known typo to `verb` and records it under `partOfSpeechCorrections`. Any
+other unknown part of speech fails the build.
+
 ## Phases
 
 1. **Selection and records (done).** Pin CEFR-J and Octanove, record the owner
@@ -153,11 +165,12 @@ because spellings shared across CEFR-J and Octanove are joined into one word.
    pair, pronunciation, checks and usage. Seed them from existing higher-level
    entries and staged NGSL drafts, fold word forms into their base words, then
    generate audio. For A2–C2, write short entries (meaning, Persian,
-   pronunciation, example) for the 4,169 words that are new to the app. All
-   writing is new and does not use Oxford text.
+   pronunciation, example) for the 4,169 words that are new to the app; this
+   A2–C2 part is deferred by the A1 freeze (see Scope above). All writing is
+   new and does not use Oxford text.
 3. **New levels and curriculum.** In the app code:
    - merge B2+ into B2 and add C2, with a migration for learners whose focus or
-     saved progress uses B2+;
+     saved progress uses B2+ (deferred by the A1 freeze, see Scope above);
    - move each entry to its new level;
    - rebuild the A1 curriculum, lifting the Units 1–3 freeze (owner decision
      above) and redefining the study roster;
