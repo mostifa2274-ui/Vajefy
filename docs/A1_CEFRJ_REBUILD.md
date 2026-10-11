@@ -139,8 +139,9 @@ and 95 browser tests, plus the Workers build, rollback and gateway checks.
 field, vote, focus, stage, technology, save, due, pick, ground, fight, leader,
 store, heart and foreign. PR #210 merged that batch as
 `a27bc143b8d80d4448c971efe92a21cd72b2e6fa`. Its `kill` mistake pair contrasted
-two grammatical sentences; it now shows a real error, *Many trees killed in the
-storm*, corrected to *The storm killed many trees*.
+two grammatical sentences; it now shows an error with no correct reading, *The
+old tree was kill by the storm*, corrected to *The old tree was killed by the
+storm*.
 
 `lessons-new-041-060.json` continues with surprise, drop, Miss, worry, inside,
 catch, character, guy, size, alone, review, board, church, item, touch, file,
@@ -148,10 +149,12 @@ middle, bar, seat and throw. `catch` has two CEFR-J records, a noun and a verb,
 so this batch has 21 senses. The three batches total **60/338 drafted, 278
 still to write**, with 183 bilingual examples and 183 checks. These are draft
 counts, not approved or published lessons. Choice answers are balanced across
-both option positions, and every mistake pair shows a genuine error: a wrong
-preposition, article, plural, irregular past or word choice that a Persian
-speaker is likely to make (for example *I fell my phone* for *I dropped my
-phone*).
+both option positions. Every "wrong" sentence must be wrong under any reading,
+not merely odd: a missing article, a wrong plural or irregular past, or a
+verb used with the wrong pattern (for example *Yesterday I fell my phone* for
+*Yesterday I dropped my phone*). Pairs whose "wrong" side has a grammatical
+reading, such as *Many trees killed in the storm* or *I opened the file at my
+computer*, are not used.
 
 Each lesson uses the existing enhanced-entry schema and contains a Persian
 meaning and explanation, grammar notes, three bilingual examples, translated
