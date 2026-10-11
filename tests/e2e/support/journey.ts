@@ -54,6 +54,12 @@ export async function runJourney(
   for (let step = 0; step < limit; step += 1) {
     await page.locator("html[data-progress-ready]").waitFor({ state: "attached", timeout: 30_000 });
     await page.waitForTimeout(80);
+    // A learner waits for a screen that says it is loading (aria-busy) rather
+    // than tapping whatever else is drawn around it. A screen that stays busy
+    // is still judged after the wait, so a stuck load is not hidden.
+    await page
+      .waitForFunction(() => !document.querySelector("main [aria-busy='true']"), undefined, { timeout: 10_000 })
+      .catch(() => {});
     if (await options.reached()) {
       if (step > options.budget) {
         findings.push({ kind: "interaction-budget", step, detail: `${step} interactions; the budget is ${options.budget}` });
