@@ -1,0 +1,2417 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 261–280 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 261,
+    "lastNewHeadword": 280
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "grape",
+      "levelWordId": "level:A1:0950",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1041",
+          "senseId": "lex:A1:cefrj-grape",
+          "meaningEn": "A small round green or purple fruit that grows in bunches and is used to make wine and juice."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-grape",
+        "headword": "grape",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-grape",
+            "pos": "noun",
+            "gloss": "انگور (یک دانه)",
+            "meaning": "میوهٔ کوچک و گردِ سبز یا بنفش که خوشه‌ای می‌روید و از آن آب‌میوه و شراب درست می‌کنند.",
+            "grammar": [
+              {
+                "pattern": "a grape / grapes",
+                "note": "grape قابل‌شمارش است و معمولاً جمع به کار می‌رود: grapes."
+              },
+              {
+                "pattern": "a bunch of grapes",
+                "note": "برای یک خوشه a bunch of grapes می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "These green grapes are very sweet.",
+                "fa": "این انگورهای سبز خیلی شیرین‌اند."
+              },
+              {
+                "en": "My grandfather grows grapes in his garden in Qazvin.",
+                "fa": "پدربزرگم در باغش در قزوین انگور می‌کارد."
+              },
+              {
+                "en": "She ate a whole bunch of grapes.",
+                "fa": "او یک خوشهٔ کامل انگور خورد."
+              }
+            ],
+            "collocations": [
+              "a bunch of grapes",
+              "grape juice"
+            ],
+            "collocationFa": {
+              "a bunch of grapes": "یک خوشه انگور",
+              "grape juice": "آب‌انگور"
+            },
+            "usage": "در انگلیسی معمولاً grapes (جمع) می‌گوییم، حتی وقتی در فارسی «انگور» مفرد است.",
+            "mistake": {
+              "wrong": "I bought a kilo of grape.",
+              "wrongFa": "یک کیلو انگور خریدم؛ اما grape باید جمع باشد.",
+              "right": "I bought a kilo of grapes.",
+              "rightFa": "یک کیلو انگور خریدم.",
+              "why": "grape قابل‌شمارش است؛ برای مقدار شکلِ جمعِ grapes می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ɡreɪp/",
+              "us": "/ɡreɪp/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Wine and raisins are made from ___.",
+                "answer": "grapes",
+                "accept": [],
+                "fa": "شراب و کشمش از انگور درست می‌شوند.",
+                "why": "اینجا جمعِ grapes می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«یک خوشه انگور» کدام است؟",
+                "options": [
+                  {
+                    "text": "a bunch of grapes",
+                    "ok": true,
+                    "why": "پس از a bunch of اسمِ جمع می‌آید."
+                  },
+                  {
+                    "text": "a bunch of grape",
+                    "ok": false,
+                    "why": "اینجا grapes باید جمع باشد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "انگور میوهٔ محبوبِ من است.",
+                "frame": "My favourite fruit is ___.",
+                "answer": "grapes",
+                "accept": [],
+                "why": "برای انگور به‌طورِ کلی grapes می‌گوییم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "frog",
+      "levelWordId": "level:A1:0951",
+      "existingEntryIds": [
+        "lex:A2:frog"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1042",
+          "senseId": "lex:A2:frog",
+          "meaningEn": "A small green or brown animal with long back legs that lives in or near water and jumps."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:frog",
+        "headword": "frog",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:frog",
+            "pos": "noun",
+            "gloss": "قورباغه",
+            "meaning": "حیوانِ کوچکِ سبز یا قهوه‌ای با پاهای عقبیِ بلند که در آب یا نزدیکِ آب زندگی می‌کند و می‌پرد.",
+            "grammar": [
+              {
+                "pattern": "a frog / frogs",
+                "note": "frog قابل‌شمارش است."
+              },
+              {
+                "pattern": "jump like a frog",
+                "note": "برای شباهت like a frog می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "A frog jumped into the pond.",
+                "fa": "یک قورباغه توی برکه پرید."
+              },
+              {
+                "en": "We heard the frogs at night near the river.",
+                "fa": "شب نزدیکِ رودخانه صدای قورباغه‌ها را شنیدیم."
+              },
+              {
+                "en": "The little frog sat on a big green leaf.",
+                "fa": "قورباغهٔ کوچک روی یک برگِ بزرگِ سبز نشست."
+              }
+            ],
+            "collocations": [
+              "a green frog",
+              "a frog pond"
+            ],
+            "collocationFa": {
+              "a green frog": "قورباغهٔ سبز",
+              "a frog pond": "برکهٔ قورباغه‌ها"
+            },
+            "usage": "frog قابل‌شمارش است. وزغ که پوستِ زبرتری دارد toad نام دارد.",
+            "mistake": {
+              "wrong": "Yesterday the frog jump into the water.",
+              "wrongFa": "دیروز قورباغه توی آب می‌پرد؛ اما فعل گذشته نیست.",
+              "right": "Yesterday the frog jumped into the water.",
+              "rightFa": "دیروز قورباغه توی آب پرید.",
+              "why": "با yesterday فعلِ گذشته می‌آید: jumped."
+            },
+            "pronunciation": {
+              "gb": "/frɒɡ/",
+              "us": "/frɑːɡ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ caught a fly with its long tongue.",
+                "answer": "frog",
+                "accept": [],
+                "fa": "قورباغه با زبانِ درازش یک مگس گرفت.",
+                "why": "frog حیوانی است که در آب زندگی می‌کند و می‌پرد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام حیوان در برکه زندگی می‌کند و می‌پرد؟",
+                "options": [
+                  {
+                    "text": "a frog",
+                    "ok": true,
+                    "why": "frog یعنی قورباغه."
+                  },
+                  {
+                    "text": "a fox",
+                    "ok": false,
+                    "why": "fox (روباه) در برکه زندگی نمی‌کند."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک قورباغه در باغ است.",
+                "frame": "There is a ___ in the garden.",
+                "answer": "frog",
+                "accept": [],
+                "why": "پس از a اسمِ مفردِ frog می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "nationality",
+      "levelWordId": "level:A1:0952",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1043",
+          "senseId": "lex:A1:cefrj-nationality",
+          "meaningEn": "The legal right of belonging to a particular country."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-nationality",
+        "headword": "nationality",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-nationality",
+            "pos": "noun",
+            "gloss": "ملیت",
+            "meaning": "حقِ قانونیِ تعلق داشتن به یک کشور.",
+            "grammar": [
+              {
+                "pattern": "What's your nationality?",
+                "note": "برای پرسیدنِ ملیت What's your nationality? می‌گوییم."
+              },
+              {
+                "pattern": "nationality + adjective",
+                "note": "در جواب صفتِ ملیت می‌آید: I'm Iranian."
+              }
+            ],
+            "examples": [
+              {
+                "en": "What's your nationality? — I'm Iranian.",
+                "fa": "ملیتت چیست؟ — ایرانی هستم."
+              },
+              {
+                "en": "Please write your name and nationality on the form.",
+                "fa": "لطفاً نام و ملیتت را در فرم بنویس."
+              },
+              {
+                "en": "There are students of ten nationalities in our class.",
+                "fa": "در کلاسِ ما دانشجوهایی از ده ملیت هستند."
+              }
+            ],
+            "collocations": [
+              "dual nationality",
+              "of different nationalities"
+            ],
+            "collocationFa": {
+              "dual nationality": "تابعیتِ دوگانه",
+              "of different nationalities": "از ملیت‌های مختلف"
+            },
+            "usage": "برای ملیت صفت به کار می‌رود (Iranian, Turkish)، نه نامِ کشور (Iran, Turkey).",
+            "mistake": {
+              "wrong": "My nationality is Iran.",
+              "wrongFa": "ملیتِ من ایران است؛ اما نامِ کشور آمده است.",
+              "right": "My nationality is Iranian.",
+              "rightFa": "ملیتِ من ایرانی است.",
+              "why": "برای ملیت صفت می‌آید: Iranian؛ Iran نامِ کشور است."
+            },
+            "pronunciation": {
+              "gb": "/ˌnæʃəˈnæləti/",
+              "us": "/ˌnæʃəˈnæləti/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "On the passport, his ___ is Afghan.",
+                "answer": "nationality",
+                "accept": [
+                  "citizenship"
+                ],
+                "fa": "در گذرنامه، ملیتِ او افغان است.",
+                "why": "nationality یعنی ملیت."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«ملیتِ او ترک است.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "Her nationality is Turkish.",
+                    "ok": true,
+                    "why": "برای ملیت صفتِ Turkish می‌آید."
+                  },
+                  {
+                    "text": "Her nationality is Turkey.",
+                    "ok": false,
+                    "why": "Turkey نامِ کشور است، نه ملیت."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ملیتت چیست؟",
+                "frame": "What is your ___?",
+                "answer": "nationality",
+                "accept": [],
+                "why": "پس از your اسمِ nationality می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "ribbon",
+      "levelWordId": "level:A1:0953",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1044",
+          "senseId": "lex:A1:cefrj-ribbon",
+          "meaningEn": "A long narrow piece of cloth used to tie things or to decorate hair or presents."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-ribbon",
+        "headword": "ribbon",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-ribbon",
+            "pos": "noun",
+            "gloss": "روبان",
+            "meaning": "نوارِ پارچه‌ایِ دراز و باریک که برای بستن یا تزیینِ مو و هدیه به کار می‌رود.",
+            "grammar": [
+              {
+                "pattern": "a ribbon / ribbons",
+                "note": "ribbon قابل‌شمارش است."
+              },
+              {
+                "pattern": "tie + with a ribbon",
+                "note": "برای بستن با روبان with a ribbon می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "She has a red ribbon in her hair.",
+                "fa": "او یک روبانِ قرمز به مویش زده است."
+              },
+              {
+                "en": "I tied the present with a gold ribbon.",
+                "fa": "هدیه را با یک روبانِ طلایی بستم."
+              },
+              {
+                "en": "The girls wore white ribbons for the school party.",
+                "fa": "دخترها برای جشنِ مدرسه روبان‌های سفید زدند."
+              }
+            ],
+            "collocations": [
+              "a silk ribbon",
+              "tie a ribbon"
+            ],
+            "collocationFa": {
+              "a silk ribbon": "روبانِ ابریشمی",
+              "tie a ribbon": "روبان بستن"
+            },
+            "usage": "ribbon قابل‌شمارش است. نوارِ چسب tape است، نه ribbon.",
+            "mistake": {
+              "wrong": "She tied her hair with a ribbons.",
+              "wrongFa": "او مویش را با یک روبان‌ها بست؛ اما a با جمع آمده است.",
+              "right": "She tied her hair with a ribbon.",
+              "rightFa": "او مویش را با یک روبان بست.",
+              "why": "پس از a اسمِ مفرد می‌آید: a ribbon."
+            },
+            "pronunciation": {
+              "gb": "/ˈrɪbən/",
+              "us": "/ˈrɪbən/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The box was tied with a pink ___.",
+                "answer": "ribbon",
+                "accept": [],
+                "fa": "جعبه با یک روبانِ صورتی بسته شده بود.",
+                "why": "ribbon نوارِ پارچه‌ای برای تزیین است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "با چه چیزی هدیه را تزیین می‌کنیم؟",
+                "options": [
+                  {
+                    "text": "a ribbon",
+                    "ok": true,
+                    "why": "ribbon یعنی روبان."
+                  },
+                  {
+                    "text": "a robin",
+                    "ok": false,
+                    "why": "robin نامِ یک پرنده است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "روبانِ آبی‌ام را گم کردم.",
+                "frame": "I lost my blue ___.",
+                "answer": "ribbon",
+                "accept": [],
+                "why": "پس از blue اسمِ ribbon می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "candy",
+      "levelWordId": "level:A1:0954",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1045",
+          "senseId": "lex:A1:cefrj-candy",
+          "meaningEn": "Sweet food made of sugar or chocolate (American English; sweets in British English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-candy",
+        "headword": "candy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-candy",
+            "pos": "noun",
+            "gloss": "آب‌نبات؛ شیرینی (شکلات و آب‌نبات)",
+            "meaning": "خوراکیِ شیرینی که از شکر یا شکلات درست می‌شود (در آمریکا candy و در بریتانیا sweets).",
+            "grammar": [
+              {
+                "pattern": "candy",
+                "note": "candy اغلب غیرقابل‌شمارش است: some candy, too much candy."
+              },
+              {
+                "pattern": "a piece of candy",
+                "note": "برای یک دانه a piece of candy یا در آمریکا a candy می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The children got candy at the party.",
+                "fa": "بچه‌ها در مهمانی آب‌نبات گرفتند."
+              },
+              {
+                "en": "Don't eat candy before dinner.",
+                "fa": "پیش از شام آب‌نبات نخور."
+              },
+              {
+                "en": "He gave me a piece of candy.",
+                "fa": "او یک دانه آب‌نبات به من داد."
+              }
+            ],
+            "collocations": [
+              "a piece of candy",
+              "a candy bar"
+            ],
+            "collocationFa": {
+              "a piece of candy": "یک دانه آب‌نبات",
+              "a candy bar": "شکلاتِ بسته‌ای"
+            },
+            "usage": "candy آمریکایی است؛ در بریتانیا sweets می‌گویند. شکلات chocolate است.",
+            "mistake": {
+              "wrong": "Too much candies are bad for your teeth.",
+              "wrongFa": "آب‌نبات‌های بیش از حد برای دندان‌هایت بد هستند؛ اما much با جمع آمده است.",
+              "right": "Too much candy is bad for your teeth.",
+              "rightFa": "آب‌نباتِ بیش از حد برای دندان‌هایت بد است.",
+              "why": "much با اسمِ غیرقابل‌شمارش می‌آید: too much candy is."
+            },
+            "pronunciation": {
+              "gb": "/ˈkændi/",
+              "us": "/ˈkændi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The shop sells chocolate and other ___.",
+                "answer": "candy",
+                "accept": [
+                  "sweets"
+                ],
+                "fa": "مغازه شکلات و دیگر شیرینی‌ها می‌فروشد.",
+                "why": "candy یعنی آب‌نبات و شیرینی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در بریتانیا به candy چه می‌گویند؟",
+                "options": [
+                  {
+                    "text": "sweets",
+                    "ok": true,
+                    "why": "در بریتانیا sweets می‌گویند."
+                  },
+                  {
+                    "text": "biscuits",
+                    "ok": false,
+                    "why": "biscuits بیسکویت است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بچه‌ها آب‌نبات دوست دارند.",
+                "frame": "Children love ___.",
+                "answer": "candy",
+                "accept": [
+                  "sweets"
+                ],
+                "why": "candy اینجا غیرقابل‌شمارش و بدونِ a است."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "vase",
+      "levelWordId": "level:A1:0955",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1046",
+          "senseId": "lex:A1:cefrj-vase",
+          "meaningEn": "A container, often made of glass, used for holding flowers or as a decoration."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-vase",
+        "headword": "vase",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-vase",
+            "pos": "noun",
+            "gloss": "گلدان (برای گلِ بریده)",
+            "meaning": "ظرفی، اغلب شیشه‌ای، که در آن گلِ بریده می‌گذارند یا برای تزیین است.",
+            "grammar": [
+              {
+                "pattern": "a vase of flowers",
+                "note": "برای گلدانِ پر از گل a vase of flowers می‌گوییم."
+              },
+              {
+                "pattern": "in a vase",
+                "note": "گل‌ها را in a vase می‌گذاریم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "There is a vase of roses on the table.",
+                "fa": "یک گلدانِ پر از گلِ رز روی میز است."
+              },
+              {
+                "en": "Be careful! That glass vase is very old.",
+                "fa": "مواظب باش! آن گلدانِ شیشه‌ای خیلی قدیمی است."
+              },
+              {
+                "en": "She put the tulips in a blue vase.",
+                "fa": "او لاله‌ها را در یک گلدانِ آبی گذاشت."
+              }
+            ],
+            "collocations": [
+              "a glass vase",
+              "a vase of flowers"
+            ],
+            "collocationFa": {
+              "a glass vase": "گلدانِ شیشه‌ای",
+              "a vase of flowers": "گلدانِ پر از گل"
+            },
+            "usage": "vase برای گلِ بریده است؛ گلدانِ گیاهِ زنده با خاک (flower) pot نام دارد.",
+            "mistake": {
+              "wrong": "Put the roses in vase, please.",
+              "wrongFa": "لطفاً رزها را در گلدان بگذار؛ اما پیش از vase حرفِ تعریف نیامده است.",
+              "right": "Put the roses in a vase, please.",
+              "rightFa": "لطفاً رزها را در یک گلدان بگذار.",
+              "why": "vase قابل‌شمارش است و a یا the لازم دارد."
+            },
+            "pronunciation": {
+              "gb": "/vɑːz/",
+              "us": "/veɪs/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Fill the ___ with water before you put the flowers in.",
+                "answer": "vase",
+                "accept": [],
+                "fa": "پیش از گذاشتنِ گل‌ها، گلدان را پر از آب کن.",
+                "why": "vase ظرفِ گلِ بریده است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "گلدانِ گیاهِ زنده با خاک چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "a pot",
+                    "ok": true,
+                    "why": "pot (flower pot) برای گیاه با خاک است."
+                  },
+                  {
+                    "text": "a vase",
+                    "ok": false,
+                    "why": "vase برای گلِ بریده است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "گربه گلدان را شکست.",
+                "frame": "The cat broke the ___.",
+                "answer": "vase",
+                "accept": [],
+                "why": "پس از the اسمِ vase می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "subway",
+      "levelWordId": "level:A1:0956",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1047",
+          "senseId": "lex:A1:cefrj-subway",
+          "meaningEn": "An underground railway in a city (American English; the underground or metro in British English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-subway",
+        "headword": "subway",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-subway",
+            "pos": "noun",
+            "gloss": "مترو (قطارِ زیرزمینی)",
+            "meaning": "راه‌آهنِ زیرزمینی در شهر (در آمریکا subway؛ در بریتانیا underground یا metro).",
+            "grammar": [
+              {
+                "pattern": "take the subway",
+                "note": "برای سوار شدنِ مترو take the subway می‌گوییم."
+              },
+              {
+                "pattern": "by subway",
+                "note": "برای وسیلهٔ سفر by subway بدونِ the می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I take the subway to work every day.",
+                "fa": "هر روز با مترو سرِ کار می‌روم."
+              },
+              {
+                "en": "The subway is faster than the bus.",
+                "fa": "مترو از اتوبوس سریع‌تر است."
+              },
+              {
+                "en": "Where is the nearest subway station?",
+                "fa": "نزدیک‌ترین ایستگاهِ مترو کجاست؟"
+              }
+            ],
+            "collocations": [
+              "a subway station",
+              "take the subway"
+            ],
+            "collocationFa": {
+              "a subway station": "ایستگاهِ مترو",
+              "take the subway": "با مترو رفتن"
+            },
+            "usage": "در انگلیسیِ بریتانیایی subway به زیرگذرِ عابرِ پیاده هم گفته می‌شود؛ در این درس معنای آمریکاییِ «مترو» است.",
+            "mistake": {
+              "wrong": "We took subway to the museum.",
+              "wrongFa": "با مترو به موزه رفتیم؛ اما پیش از subway حرفِ تعریف نیامده است.",
+              "right": "We took the subway to the museum.",
+              "rightFa": "با مترو به موزه رفتیم.",
+              "why": "با take حرفِ the لازم است: take the subway."
+            },
+            "pronunciation": {
+              "gb": "/ˈsʌbweɪ/",
+              "us": "/ˈsʌbweɪ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "In New York, many people go to work on the ___.",
+                "answer": "subway",
+                "accept": [
+                  "metro",
+                  "underground"
+                ],
+                "fa": "در نیویورک بسیاری با مترو سرِ کار می‌روند.",
+                "why": "subway یعنی مترو."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«با مترو می‌روم.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "I go by subway.",
+                    "ok": true,
+                    "why": "پس از by برای وسیلهٔ سفر the نمی‌آید."
+                  },
+                  {
+                    "text": "I go by the subway.",
+                    "ok": false,
+                    "why": "برای وسیلهٔ سفر پس از by حرفِ تعریف نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ایستگاهِ مترو نزدیکِ خانهٔ ماست.",
+                "frame": "The ___ station is near our house.",
+                "answer": "subway",
+                "accept": [
+                  "metro",
+                  "underground"
+                ],
+                "why": "subway station یعنی ایستگاهِ مترو."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "fairy",
+      "levelWordId": "level:A1:0957",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1048",
+          "senseId": "lex:A1:cefrj-fairy",
+          "meaningEn": "A very small imaginary person with wings who has magic powers, found in children's stories."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-fairy",
+        "headword": "fairy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-fairy",
+            "pos": "noun",
+            "gloss": "پری",
+            "meaning": "موجودِ خیالیِ خیلی کوچکی با بال که نیروی جادویی دارد و در قصه‌های کودکان می‌آید.",
+            "grammar": [
+              {
+                "pattern": "a fairy / fairies",
+                "note": "جمعِ fairy با ies ساخته می‌شود: fairies."
+              },
+              {
+                "pattern": "a fairy tale",
+                "note": "برای قصهٔ پریان a fairy tale می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "In the story, a good fairy helps the poor girl.",
+                "fa": "در قصه، یک پریِ مهربان به دخترِ فقیر کمک می‌کند."
+              },
+              {
+                "en": "My daughter dressed up as a fairy with pink wings.",
+                "fa": "دخترم با بال‌های صورتی لباسِ پری پوشید."
+              },
+              {
+                "en": "Grandma reads us a fairy tale every night.",
+                "fa": "مادربزرگ هر شب برایمان یک قصهٔ پریان می‌خواند."
+              }
+            ],
+            "collocations": [
+              "a fairy tale",
+              "a good fairy"
+            ],
+            "collocationFa": {
+              "a fairy tale": "قصهٔ پریان",
+              "a good fairy": "پریِ مهربان"
+            },
+            "usage": "fairy قابل‌شمارش است و جمعش fairies است. fairy tale یعنی قصهٔ پریان.",
+            "mistake": {
+              "wrong": "The story has three fairys.",
+              "wrongFa": "قصه سه پری دارد؛ اما جمع درست نیست.",
+              "right": "The story has three fairies.",
+              "rightFa": "قصه سه پری دارد.",
+              "why": "پس از حرفِ بی‌صدا y به ies تبدیل می‌شود: fairies."
+            },
+            "pronunciation": {
+              "gb": "/ˈfeəri/",
+              "us": "/ˈferi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Cinderella is a famous ___ tale.",
+                "answer": "fairy",
+                "accept": [],
+                "fa": "سیندرلا یک قصهٔ پریانِ معروف است.",
+                "why": "fairy tale یعنی قصهٔ پریان."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ fairy کدام است؟",
+                "options": [
+                  {
+                    "text": "fairies",
+                    "ok": true,
+                    "why": "پس از حرفِ بی‌صدا y به ies تبدیل می‌شود."
+                  },
+                  {
+                    "text": "fairys",
+                    "ok": false,
+                    "why": "جمعِ درست fairies است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پری یک چوبِ جادویی داشت.",
+                "frame": "The ___ had a magic wand.",
+                "answer": "fairy",
+                "accept": [],
+                "why": "پس از The اسمِ fairy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "princess",
+      "levelWordId": "level:A1:0958",
+      "existingEntryIds": [
+        "lex:B1:princess"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1049",
+          "senseId": "lex:B1:princess",
+          "meaningEn": "The daughter or granddaughter of a king or queen, or the wife of a prince."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:princess",
+        "headword": "princess",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:princess",
+            "pos": "noun",
+            "gloss": "شاهزاده‌خانم؛ پرنسس",
+            "meaning": "دختر یا نوهٔ دختریِ پادشاه یا ملکه، یا همسرِ شاهزاده.",
+            "grammar": [
+              {
+                "pattern": "Princess + name",
+                "note": "پیش از نام Princess با حرفِ بزرگ می‌آید: Princess Anne."
+              },
+              {
+                "pattern": "a princess / princesses",
+                "note": "جمعِ princess با es ساخته می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The princess lived in a tall tower.",
+                "fa": "شاهزاده‌خانم در یک برجِ بلند زندگی می‌کرد."
+              },
+              {
+                "en": "My little sister wants to be a princess.",
+                "fa": "خواهرِ کوچکم می‌خواهد پرنسس شود."
+              },
+              {
+                "en": "The king had two daughters, both princesses.",
+                "fa": "پادشاه دو دختر داشت که هر دو شاهزاده‌خانم بودند."
+              }
+            ],
+            "collocations": [
+              "a beautiful princess",
+              "a princess dress"
+            ],
+            "collocationFa": {
+              "a beautiful princess": "شاهزاده‌خانمِ زیبا",
+              "a princess dress": "لباسِ پرنسسی"
+            },
+            "usage": "princess برای دختر و prince برای پسر است. جمعش princesses است.",
+            "mistake": {
+              "wrong": "The princess have a golden crown.",
+              "wrongFa": "شاهزاده‌خانم یک تاجِ طلایی دارند؛ اما فعل جمع آمده است.",
+              "right": "The princess has a golden crown.",
+              "rightFa": "شاهزاده‌خانم یک تاجِ طلایی دارد.",
+              "why": "the princess مفرد است و فعلِ has می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˌprɪnˈses/",
+              "us": "/ˈprɪnses/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The king's daughter is a ___.",
+                "answer": "princess",
+                "accept": [],
+                "fa": "دخترِ پادشاه یک شاهزاده‌خانم است.",
+                "why": "princess دخترِ پادشاه است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ princess کدام است؟",
+                "options": [
+                  {
+                    "text": "princesses",
+                    "ok": true,
+                    "why": "پس از ss حرفِ es می‌آید."
+                  },
+                  {
+                    "text": "princesss",
+                    "ok": false,
+                    "why": "جمعِ درست princesses است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پرنسس یک لباسِ آبی پوشیده بود.",
+                "frame": "The ___ wore a blue dress.",
+                "answer": "princess",
+                "accept": [],
+                "why": "پس از The اسمِ princess می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "rainy",
+      "levelWordId": "level:A1:0959",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1050",
+          "senseId": "lex:A1:cefrj-rainy",
+          "meaningEn": "Having a lot of rain."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-rainy",
+        "headword": "rainy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-rainy",
+            "pos": "adjective",
+            "gloss": "بارانی",
+            "meaning": "دارای بارانِ زیاد؛ بارانی.",
+            "grammar": [
+              {
+                "pattern": "a rainy + noun",
+                "note": "rainy پیش از اسم می‌آید: a rainy day."
+              },
+              {
+                "pattern": "rain / rainy",
+                "note": "rain اسم یا فعل است و rainy صفت."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We stayed home on the rainy afternoon.",
+                "fa": "در آن بعدازظهرِ بارانی در خانه ماندیم."
+              },
+              {
+                "en": "Spring in the north of Iran is often rainy.",
+                "fa": "بهار در شمالِ ایران اغلب بارانی است."
+              },
+              {
+                "en": "Take an umbrella; it's a rainy day.",
+                "fa": "چتر بردار؛ روزِ بارانی است."
+              }
+            ],
+            "collocations": [
+              "a rainy day",
+              "the rainy season"
+            ],
+            "collocationFa": {
+              "a rainy day": "روزِ بارانی",
+              "the rainy season": "فصلِ باران‌ها"
+            },
+            "usage": "rainy صفت است. برای «دارد باران می‌بارد» it's raining می‌گوییم.",
+            "mistake": {
+              "wrong": "Yesterday was very rain.",
+              "wrongFa": "دیروز خیلی باران بود؛ اما پس از very اسم آمده است.",
+              "right": "Yesterday was very rainy.",
+              "rightFa": "دیروز خیلی بارانی بود.",
+              "why": "پس از very صفتِ rainy می‌آید؛ rain اسم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈreɪni/",
+              "us": "/ˈreɪni/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Don't forget your coat. It's cold and ___ today.",
+                "answer": "rainy",
+                "accept": [
+                  "wet"
+                ],
+                "fa": "کتت را فراموش نکن. امروز سرد و بارانی است.",
+                "why": "rainy یعنی بارانی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "It was a rainy day.",
+                    "ok": true,
+                    "why": "پیش از day صفتِ rainy می‌آید."
+                  },
+                  {
+                    "text": "It was a rain day.",
+                    "ok": false,
+                    "why": "اینجا صفتِ rainy لازم است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آب‌وهوای لندن اغلب بارانی است.",
+                "frame": "The weather in London is often ___.",
+                "answer": "rainy",
+                "accept": [
+                  "wet"
+                ],
+                "why": "پس از is صفتِ rainy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "interviewer",
+      "levelWordId": "level:A1:0960",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1051",
+          "senseId": "lex:A1:cefrj-interviewer",
+          "meaningEn": "A person who asks someone questions in an interview, for example for a job or on TV."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-interviewer",
+        "headword": "interviewer",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-interviewer",
+            "pos": "noun",
+            "gloss": "مصاحبه‌کننده",
+            "meaning": "کسی که در مصاحبه، مثلاً برای کار یا در تلویزیون، از دیگری سؤال می‌پرسد.",
+            "grammar": [
+              {
+                "pattern": "an interviewer",
+                "note": "interviewer با صدای صدادار شروع می‌شود و an می‌گیرد."
+              },
+              {
+                "pattern": "interviewer / interviewee",
+                "note": "interviewer سؤال می‌پرسد و interviewee جواب می‌دهد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The interviewer asked me about my last job.",
+                "fa": "مصاحبه‌کننده دربارهٔ کارِ قبلی‌ام از من پرسید."
+              },
+              {
+                "en": "She works as an interviewer for a radio station.",
+                "fa": "او مصاحبه‌کنندهٔ یک ایستگاهِ رادیویی است."
+              },
+              {
+                "en": "The interviewer smiled and said, “Please sit down.”",
+                "fa": "مصاحبه‌کننده لبخند زد و گفت: «لطفاً بنشینید.»"
+              }
+            ],
+            "collocations": [
+              "a TV interviewer",
+              "the job interviewer"
+            ],
+            "collocationFa": {
+              "a TV interviewer": "مصاحبه‌کنندهٔ تلویزیونی",
+              "the job interviewer": "مصاحبه‌کنندهٔ استخدام"
+            },
+            "usage": "interviewer کسی است که سؤال می‌پرسد؛ interviewee کسی است که جواب می‌دهد.",
+            "mistake": {
+              "wrong": "The interviewer ask many questions.",
+              "wrongFa": "مصاحبه‌کننده سؤال‌های زیادی می‌پرسند؛ اما فعل s ندارد.",
+              "right": "The interviewer asks many questions.",
+              "rightFa": "مصاحبه‌کننده سؤال‌های زیادی می‌پرسد.",
+              "why": "فاعلِ مفرد در زمانِ حال فعل را با s می‌خواهد: asks."
+            },
+            "pronunciation": {
+              "gb": "/ˈɪntəvjuːə/",
+              "us": "/ˈɪntərvjuːər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ asked the singer about her new song.",
+                "answer": "interviewer",
+                "accept": [],
+                "fa": "مصاحبه‌کننده دربارهٔ آهنگِ جدیدِ خواننده از او پرسید.",
+                "why": "interviewer کسی است که در مصاحبه سؤال می‌پرسد."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کسی که در مصاحبه جواب می‌دهد چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "the interviewee",
+                    "ok": true,
+                    "why": "interviewee جواب می‌دهد."
+                  },
+                  {
+                    "text": "the interviewer",
+                    "ok": false,
+                    "why": "interviewer سؤال می‌پرسد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "مصاحبه‌کننده خیلی مهربان بود.",
+                "frame": "The ___ was very kind.",
+                "answer": "interviewer",
+                "accept": [],
+                "why": "پس از The اسمِ interviewer می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "hamburger",
+      "levelWordId": "level:A1:0961",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1052",
+          "senseId": "lex:A1:cefrj-hamburger",
+          "meaningEn": "A round flat piece of cooked minced beef, usually eaten in a bread roll."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-hamburger",
+        "headword": "hamburger",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-hamburger",
+            "pos": "noun",
+            "gloss": "همبرگر",
+            "meaning": "تکه‌ای گرد و پهن از گوشتِ چرخ‌کردهٔ پخته که معمولاً لای نانِ گرد خورده می‌شود.",
+            "grammar": [
+              {
+                "pattern": "a hamburger / hamburgers",
+                "note": "hamburger قابل‌شمارش است."
+              },
+              {
+                "pattern": "hamburger and chips",
+                "note": "با and چیزهای دیگر کنارش می‌آید: a hamburger and chips."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I'd like a hamburger and a glass of water, please.",
+                "fa": "لطفاً یک همبرگر و یک لیوان آب می‌خواهم."
+              },
+              {
+                "en": "My brother can eat two hamburgers for lunch.",
+                "fa": "برادرم می‌تواند ناهار دو همبرگر بخورد."
+              },
+              {
+                "en": "This hamburger has cheese and tomato in it.",
+                "fa": "این همبرگر پنیر و گوجه لایش دارد."
+              }
+            ],
+            "collocations": [
+              "a cheese hamburger",
+              "a hamburger bun"
+            ],
+            "collocationFa": {
+              "a cheese hamburger": "همبرگرِ پنیری",
+              "a hamburger bun": "نانِ همبرگر"
+            },
+            "usage": "hamburger با وجودِ نامش ژامبون (ham) ندارد و از گوشتِ گاو است. شکلِ کوتاه‌ترش burger است.",
+            "mistake": {
+              "wrong": "Hamburgers is my favourite food.",
+              "wrongFa": "همبرگرها غذای محبوبِ من است؛ اما فعل مفرد آمده است.",
+              "right": "Hamburgers are my favourite food.",
+              "rightFa": "همبرگر غذای محبوبِ من است.",
+              "why": "hamburgers جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈhæmbɜːɡə/",
+              "us": "/ˈhæmbɝːɡər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "He ordered a ___ with cheese and onions.",
+                "answer": "hamburger",
+                "accept": [
+                  "burger"
+                ],
+                "fa": "او یک همبرگر با پنیر و پیاز سفارش داد.",
+                "why": "hamburger گوشتِ چرخ‌کرده لای نان است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Hamburgers are cheap here.",
+                    "ok": true,
+                    "why": "فاعلِ جمع are می‌گیرد."
+                  },
+                  {
+                    "text": "Hamburgers is cheap here.",
+                    "ok": false,
+                    "why": "با فاعلِ جمع is نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک همبرگر می‌خواهم.",
+                "frame": "I want a ___.",
+                "answer": "hamburger",
+                "accept": [
+                  "burger"
+                ],
+                "why": "پس از a اسمِ مفردِ hamburger می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "hometown",
+      "levelWordId": "level:A1:0962",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1053",
+          "senseId": "lex:A1:cefrj-hometown",
+          "meaningEn": "The town or city where you were born or grew up."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-hometown",
+        "headword": "hometown",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-hometown",
+            "pos": "noun",
+            "gloss": "زادگاه؛ شهرِ محلِ تولد",
+            "meaning": "شهری که در آن به دنیا آمده‌ای یا بزرگ شده‌ای.",
+            "grammar": [
+              {
+                "pattern": "my hometown",
+                "note": "معمولاً با my، his و مانندِ آن می‌آید: my hometown."
+              },
+              {
+                "pattern": "go back to + hometown",
+                "note": "برای برگشتن go back to my hometown می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My hometown is Tabriz.",
+                "fa": "زادگاهِ من تبریز است."
+              },
+              {
+                "en": "Every summer we go back to my father's hometown.",
+                "fa": "هر تابستان به زادگاهِ پدرم برمی‌گردیم."
+              },
+              {
+                "en": "She left her hometown to study in Tehran.",
+                "fa": "او زادگاهش را ترک کرد تا در تهران درس بخواند."
+              }
+            ],
+            "collocations": [
+              "my hometown",
+              "return to your hometown"
+            ],
+            "collocationFa": {
+              "my hometown": "زادگاهم",
+              "return to your hometown": "به زادگاهت برگشتن"
+            },
+            "usage": "hometown معمولاً سرهم نوشته می‌شود؛ در بریتانیا home town هم دیده می‌شود.",
+            "mistake": {
+              "wrong": "I really miss the my hometown.",
+              "wrongFa": "واقعاً دلم برای آن زادگاهم تنگ شده؛ اما the و my با هم آمده‌اند.",
+              "right": "I really miss my hometown.",
+              "rightFa": "واقعاً دلم برای زادگاهم تنگ شده است.",
+              "why": "the و my با هم پیش از اسم نمی‌آیند."
+            },
+            "pronunciation": {
+              "gb": "/ˈhəʊmtaʊn/",
+              "us": "/ˈhoʊmtaʊn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Kerman is my ___; I was born there.",
+                "answer": "hometown",
+                "accept": [
+                  "home town"
+                ],
+                "fa": "کرمان زادگاهِ من است؛ آنجا به دنیا آمدم.",
+                "why": "hometown شهرِ محلِ تولد است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«زادگاهت کجاست؟» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "Where is your hometown?",
+                    "ok": true,
+                    "why": "پیش از hometown یک تعیین‌کننده مثلِ your می‌آید."
+                  },
+                  {
+                    "text": "Where is the your hometown?",
+                    "ok": false,
+                    "why": "the و your با هم نمی‌آیند."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "زادگاهم شهرِ کوچکی است.",
+                "frame": "My ___ is a small city.",
+                "answer": "hometown",
+                "accept": [
+                  "home town"
+                ],
+                "why": "پس از my اسمِ hometown می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "grandma",
+      "levelWordId": "level:A1:0963",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1054",
+          "senseId": "lex:A1:cefrj-grandma",
+          "meaningEn": "An informal word for grandmother."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-grandma",
+        "headword": "grandma",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-grandma",
+            "pos": "noun",
+            "gloss": "مادربزرگ (خودمانی)",
+            "meaning": "واژهٔ خودمانی برای grandmother (مادربزرگ).",
+            "grammar": [
+              {
+                "pattern": "Grandma (name)",
+                "note": "وقتی مستقیم صدایش می‌کنیم با حرفِ بزرگ می‌آید: Hi, Grandma!"
+              },
+              {
+                "pattern": "my grandma",
+                "note": "برای اشاره به او my grandma می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My grandma makes the best rice pudding.",
+                "fa": "مادربزرگم بهترین شیربرنج را درست می‌کند."
+              },
+              {
+                "en": "Hi, Grandma! How are you?",
+                "fa": "سلام مادربزرگ! حالت چطور است؟"
+              },
+              {
+                "en": "We visit Grandma every Friday.",
+                "fa": "هر جمعه به دیدنِ مادربزرگ می‌رویم."
+              }
+            ],
+            "collocations": [
+              "visit Grandma",
+              "my grandma's house"
+            ],
+            "collocationFa": {
+              "visit Grandma": "به دیدنِ مادربزرگ رفتن",
+              "my grandma's house": "خانهٔ مادربزرگم"
+            },
+            "usage": "grandma خودمانی است؛ grandmother رسمی‌تر است. پدربزرگ grandpa است.",
+            "mistake": {
+              "wrong": "My grandma live in Yazd.",
+              "wrongFa": "مادربزرگم در یزد زندگی می‌کنند؛ اما فعل s ندارد.",
+              "right": "My grandma lives in Yazd.",
+              "rightFa": "مادربزرگم در یزد زندگی می‌کند.",
+              "why": "فاعلِ سوم‌شخصِ مفرد در زمانِ حال فعل را با s می‌خواهد: lives."
+            },
+            "pronunciation": {
+              "gb": "/ˈɡrænmɑː/",
+              "us": "/ˈɡrænmɑː/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My mum's mother is my ___.",
+                "answer": "grandma",
+                "accept": [
+                  "grandmother",
+                  "granny",
+                  "nan",
+                  "nana"
+                ],
+                "fa": "مادرِ مادرم مادربزرگِ من است.",
+                "why": "grandma یعنی مادربزرگ."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه رسمی‌تر از grandma است؟",
+                "options": [
+                  {
+                    "text": "grandmother",
+                    "ok": true,
+                    "why": "grandmother رسمی‌تر است."
+                  },
+                  {
+                    "text": "granny",
+                    "ok": false,
+                    "why": "granny هم خودمانی است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "مادربزرگم هفتاد سال دارد.",
+                "frame": "My ___ is seventy years old.",
+                "answer": "grandma",
+                "accept": [
+                  "grandmother",
+                  "granny"
+                ],
+                "why": "پس از my اسمِ grandma می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "waitress",
+      "levelWordId": "level:A1:0964",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1055",
+          "senseId": "lex:A1:cefrj-waitress",
+          "meaningEn": "A woman whose job is to bring food and drinks to people in a restaurant or café."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-waitress",
+        "headword": "waitress",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-waitress",
+            "pos": "noun",
+            "gloss": "پیشخدمتِ زن",
+            "meaning": "زنی که کارش آوردنِ غذا و نوشیدنی برای مشتری‌ها در رستوران یا کافه است.",
+            "grammar": [
+              {
+                "pattern": "a waitress / waitresses",
+                "note": "جمعِ waitress با es ساخته می‌شود."
+              },
+              {
+                "pattern": "waiter / waitress",
+                "note": "waiter برای مرد و waitress برای زن است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The waitress brought us two cups of tea.",
+                "fa": "پیشخدمت دو فنجان چای برایمان آورد."
+              },
+              {
+                "en": "My sister works as a waitress in a café.",
+                "fa": "خواهرم در یک کافه پیشخدمت است."
+              },
+              {
+                "en": "The waitress was very friendly and helpful.",
+                "fa": "پیشخدمت خیلی مهربان و کمک‌کننده بود."
+              }
+            ],
+            "collocations": [
+              "ask the waitress",
+              "a friendly waitress"
+            ],
+            "collocationFa": {
+              "ask the waitress": "از پیشخدمت پرسیدن",
+              "a friendly waitress": "پیشخدمتِ مهربان"
+            },
+            "usage": "امروز بسیاری برای زن و مرد هر دو waiter یا server می‌گویند.",
+            "mistake": {
+              "wrong": "There are three waitress in the restaurant.",
+              "wrongFa": "در رستوران سه پیشخدمت هست؛ اما اسم باید جمع باشد.",
+              "right": "There are three waitresses in the restaurant.",
+              "rightFa": "در رستوران سه پیشخدمتِ زن هست.",
+              "why": "پس از three اسمِ waitress جمع می‌شود: waitresses."
+            },
+            "pronunciation": {
+              "gb": "/ˈweɪtrəs/",
+              "us": "/ˈweɪtrəs/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ took our order and brought the menu.",
+                "answer": "waitress",
+                "accept": [],
+                "fa": "خانمِ پیشخدمت سفارشمان را گرفت و منو را آورد.",
+                "why": "waitress پیشخدمتِ زن است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "پیشخدمتِ مرد چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "a waiter",
+                    "ok": true,
+                    "why": "waiter برای مرد است."
+                  },
+                  {
+                    "text": "a waitress",
+                    "ok": false,
+                    "why": "waitress برای زن است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "خانمِ پیشخدمت قهوه‌ام را آورد.",
+                "frame": "The ___ brought my coffee.",
+                "answer": "waitress",
+                "accept": [],
+                "why": "برای پیشخدمتِ زن waitress می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "bookstore",
+      "levelWordId": "level:A1:0966",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1057",
+          "senseId": "lex:A1:cefrj-bookstore",
+          "meaningEn": "A shop that sells books (American English; bookshop in British English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-bookstore",
+        "headword": "bookstore",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-bookstore",
+            "pos": "noun",
+            "gloss": "کتاب‌فروشی",
+            "meaning": "مغازه‌ای که کتاب می‌فروشد (در آمریکا bookstore و در بریتانیا bookshop).",
+            "grammar": [
+              {
+                "pattern": "a bookstore / bookstores",
+                "note": "bookstore قابل‌شمارش است."
+              },
+              {
+                "pattern": "at / in the bookstore",
+                "note": "برای بودن در کتاب‌فروشی at یا in the bookstore می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I bought this dictionary at the bookstore near school.",
+                "fa": "این فرهنگ‌لغت را از کتاب‌فروشیِ نزدیکِ مدرسه خریدم."
+              },
+              {
+                "en": "Enghelab Street has many bookstores.",
+                "fa": "خیابانِ انقلاب کتاب‌فروشی‌های زیادی دارد."
+              },
+              {
+                "en": "The bookstore opens at nine.",
+                "fa": "کتاب‌فروشی ساعتِ نه باز می‌شود."
+              }
+            ],
+            "collocations": [
+              "a used bookstore",
+              "go to the bookstore"
+            ],
+            "collocationFa": {
+              "a used bookstore": "کتاب‌فروشیِ دست‌دوم",
+              "go to the bookstore": "به کتاب‌فروشی رفتن"
+            },
+            "usage": "bookstore آمریکایی است؛ در بریتانیا bookshop می‌گویند. کتابخانه library است، نه bookstore.",
+            "mistake": {
+              "wrong": "There are two bookstore on this street.",
+              "wrongFa": "در این خیابان دو کتاب‌فروشی هست؛ اما اسم باید جمع باشد.",
+              "right": "There are two bookstores on this street.",
+              "rightFa": "در این خیابان دو کتاب‌فروشی هست.",
+              "why": "پس از two اسمِ bookstore جمع می‌شود: bookstores."
+            },
+            "pronunciation": {
+              "gb": "/ˈbʊkstɔː/",
+              "us": "/ˈbʊkstɔːr/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "You can buy that novel at the ___.",
+                "answer": "bookstore",
+                "accept": [
+                  "bookshop"
+                ],
+                "fa": "آن رمان را می‌توانی از کتاب‌فروشی بخری.",
+                "why": "bookstore جایی برای خریدنِ کتاب است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جایی که کتاب امانت می‌گیری چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "a library",
+                    "ok": true,
+                    "why": "library یعنی کتابخانه."
+                  },
+                  {
+                    "text": "a bookstore",
+                    "ok": false,
+                    "why": "در bookstore کتاب می‌خری، نه امانت."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کتاب‌فروشی تا ساعتِ ده باز است.",
+                "frame": "The ___ is open until ten.",
+                "answer": "bookstore",
+                "accept": [
+                  "bookshop"
+                ],
+                "why": "پس از The اسمِ bookstore می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "burger",
+      "levelWordId": "level:A1:0967",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1058",
+          "senseId": "lex:A1:cefrj-burger",
+          "meaningEn": "A hamburger, or a similar round flat piece of food eaten in a bread roll."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-burger",
+        "headword": "burger",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-burger",
+            "pos": "noun",
+            "gloss": "برگر؛ همبرگر",
+            "meaning": "همبرگر، یا تکهٔ گرد و پهنِ مشابهی از خوراک که لای نانِ گرد خورده می‌شود.",
+            "grammar": [
+              {
+                "pattern": "a burger / burgers",
+                "note": "burger قابل‌شمارش است."
+              },
+              {
+                "pattern": "a chicken burger",
+                "note": "پیش از burger نوعش می‌آید: a chicken burger, a veggie burger."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Let's get a burger after the film.",
+                "fa": "بیا بعد از فیلم یک برگر بخوریم."
+              },
+              {
+                "en": "This café makes great chicken burgers.",
+                "fa": "این کافه برگرهای مرغِ عالی درست می‌کند."
+              },
+              {
+                "en": "The burger was too big to eat in one go.",
+                "fa": "برگر بیش از حد بزرگ بود که یکجا خورده شود."
+              }
+            ],
+            "collocations": [
+              "a chicken burger",
+              "a veggie burger"
+            ],
+            "collocationFa": {
+              "a chicken burger": "برگرِ مرغ",
+              "a veggie burger": "برگرِ گیاهی"
+            },
+            "usage": "burger کوتاه‌شدهٔ hamburger است و برای انواعِ دیگر هم به کار می‌رود.",
+            "mistake": {
+              "wrong": "I'd like a burgers and a drink.",
+              "wrongFa": "یک برگرها و یک نوشیدنی می‌خواهم؛ اما a با جمع آمده است.",
+              "right": "I'd like a burger and a drink.",
+              "rightFa": "یک برگر و یک نوشیدنی می‌خواهم.",
+              "why": "پس از a اسمِ مفرد می‌آید: a burger."
+            },
+            "pronunciation": {
+              "gb": "/ˈbɜːɡə/",
+              "us": "/ˈbɝːɡər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "For lunch, I had a chicken ___ and some salad.",
+                "answer": "burger",
+                "accept": [],
+                "fa": "ناهار یک برگرِ مرغ و کمی سالاد خوردم.",
+                "why": "chicken burger یعنی برگرِ مرغ."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "two burgers",
+                    "ok": true,
+                    "why": "پس از two اسمِ جمع می‌آید."
+                  },
+                  {
+                    "text": "two burger",
+                    "ok": false,
+                    "why": "پس از two اسم جمع می‌شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این برگر خیلی خوشمزه است.",
+                "frame": "This ___ is really tasty.",
+                "answer": "burger",
+                "accept": [
+                  "hamburger"
+                ],
+                "why": "پس از this اسمِ مفردِ burger می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "coke",
+      "levelWordId": "level:A1:0968",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1059",
+          "senseId": "lex:A1:cefrj-coke",
+          "meaningEn": "A sweet brown fizzy drink, cola; Coca-Cola (often written Coke, a trade name)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-coke",
+        "headword": "coke",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-coke",
+            "pos": "noun",
+            "gloss": "نوشابهٔ کولا؛ کوکاکولا",
+            "meaning": "نوشابهٔ گازدارِ قهوه‌ای و شیرین؛ کوکاکولا (معمولاً با حرفِ بزرگ Coke نوشته می‌شود).",
+            "grammar": [
+              {
+                "pattern": "a Coke / two Cokes",
+                "note": "برای یک لیوان یا قوطی قابل‌شمارش است: a Coke."
+              },
+              {
+                "pattern": "Coke",
+                "note": "برای خودِ نوشیدنی بدونِ a می‌آید: I don't drink Coke."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Can I have a Coke, please?",
+                "fa": "لطفاً یک کوکا می‌دهید؟"
+              },
+              {
+                "en": "He drinks too much Coke.",
+                "fa": "او بیش از حد کوکا می‌نوشد."
+              },
+              {
+                "en": "We bought two cans of Coke for the trip.",
+                "fa": "برای سفر دو قوطی کوکا خریدیم."
+              }
+            ],
+            "collocations": [
+              "a can of Coke",
+              "Coke with ice"
+            ],
+            "collocationFa": {
+              "a can of Coke": "یک قوطی کوکا",
+              "Coke with ice": "کوکا با یخ"
+            },
+            "usage": "Coke نامِ تجاری است و معمولاً با C بزرگ نوشته می‌شود. نامِ کلیِ این نوشابه cola است.",
+            "mistake": {
+              "wrong": "Two Coke, please.",
+              "wrongFa": "دو کوکا لطفاً؛ اما پس از two اسم جمع نشده است.",
+              "right": "Two Cokes, please.",
+              "rightFa": "دو تا کوکا، لطفاً.",
+              "why": "برای شمردنِ لیوان یا قوطی، Coke جمع بسته می‌شود: two Cokes."
+            },
+            "pronunciation": {
+              "gb": "/kəʊk/",
+              "us": "/koʊk/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I'd like a burger and a ___ with ice, please.",
+                "answer": "Coke",
+                "accept": [
+                  "cola"
+                ],
+                "fa": "لطفاً یک برگر و یک کوکا با یخ می‌خواهم.",
+                "why": "Coke نوشابهٔ کولاست."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "نامِ کلیِ این نوشابه چیست؟",
+                "options": [
+                  {
+                    "text": "cola",
+                    "ok": true,
+                    "why": "cola نامِ کلیِ نوشابه‌های کولاست."
+                  },
+                  {
+                    "text": "coffee",
+                    "ok": false,
+                    "why": "coffee (قهوه) نوشیدنیِ دیگری است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک قوطی کوکا می‌خواهم.",
+                "frame": "I want a can of ___.",
+                "answer": "Coke",
+                "accept": [
+                  "cola"
+                ],
+                "why": "a can of Coke یعنی یک قوطی کوکا."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "yogurt/yoghurt",
+      "levelWordId": "level:A1:0969",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1060",
+          "senseId": "lex:A1:cefrj-yogurt",
+          "meaningEn": "A thick white food made from milk, often eaten cold and sometimes with fruit (yogurt or yoghurt)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-yogurt",
+        "headword": "yogurt/yoghurt",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-yogurt",
+            "pos": "noun",
+            "gloss": "ماست",
+            "meaning": "خوراکیِ سفید و غلیظی که از شیر درست می‌شود و اغلب سرد و گاهی با میوه خورده می‌شود (املای yogurt یا yoghurt).",
+            "grammar": [
+              {
+                "pattern": "yogurt",
+                "note": "yogurt برای خودِ ماده غیرقابل‌شمارش است: some yogurt."
+              },
+              {
+                "pattern": "a yogurt",
+                "note": "برای یک ظرفِ کوچکِ آماده a yogurt هم می‌گویند."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We usually eat rice with yogurt.",
+                "fa": "ما معمولاً برنج را با ماست می‌خوریم."
+              },
+              {
+                "en": "Mix the yogurt with cucumber and mint.",
+                "fa": "ماست را با خیار و نعناع مخلوط کن."
+              },
+              {
+                "en": "I had a strawberry yoghurt for breakfast.",
+                "fa": "صبحانه یک ماستِ توت‌فرنگی خوردم."
+              }
+            ],
+            "collocations": [
+              "plain yogurt",
+              "yogurt and cucumber"
+            ],
+            "collocationFa": {
+              "plain yogurt": "ماستِ ساده",
+              "yogurt and cucumber": "ماست و خیار"
+            },
+            "usage": "yogurt آمریکایی و yoghurt بریتانیایی است. دوغ را در انگلیسی yogurt drink می‌گویند.",
+            "mistake": {
+              "wrong": "This yogurt are very sour.",
+              "wrongFa": "این ماست خیلی ترش هستند؛ اما فعل جمع آمده است.",
+              "right": "This yogurt is very sour.",
+              "rightFa": "این ماست خیلی ترش است.",
+              "why": "this yogurt مفرد است و فعلِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈjɒɡət/",
+              "us": "/ˈjoʊɡərt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Persian salad with ___ and cucumber is called mast-o khiar.",
+                "answer": "yogurt",
+                "accept": [
+                  "yoghurt"
+                ],
+                "fa": "سالادِ ایرانی با ماست و خیار ماست‌وخیار نام دارد.",
+                "why": "yogurt یعنی ماست."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "The yogurt is in the fridge.",
+                    "ok": true,
+                    "why": "the yogurt مفرد است و is می‌گیرد."
+                  },
+                  {
+                    "text": "The yogurt are in the fridge.",
+                    "ok": false,
+                    "why": "با the yogurt فعلِ are نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "خوردنِ ماست برای سلامتی خوب است.",
+                "frame": "Eating ___ is good for your health.",
+                "answer": "yogurt",
+                "accept": [
+                  "yoghurt"
+                ],
+                "why": "ماست به‌طورِ کلی بدونِ a می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "volleyball",
+      "levelWordId": "level:A1:0970",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1061",
+          "senseId": "lex:A1:cefrj-volleyball",
+          "meaningEn": "A game in which two teams hit a large ball over a high net with their hands."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-volleyball",
+        "headword": "volleyball",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-volleyball",
+            "pos": "noun",
+            "gloss": "والیبال",
+            "meaning": "بازی‌ای که در آن دو تیم با دست توپِ بزرگی را از روی تورِ بلند به آن طرف می‌زنند.",
+            "grammar": [
+              {
+                "pattern": "play volleyball",
+                "note": "نامِ ورزش بدونِ a یا the می‌آید: play volleyball."
+              },
+              {
+                "pattern": "volleyball + noun",
+                "note": "volleyball پیش از اسم هم می‌آید: a volleyball team."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We play volleyball on the beach in summer.",
+                "fa": "تابستان در ساحل والیبال بازی می‌کنیم."
+              },
+              {
+                "en": "Iran has a strong volleyball team.",
+                "fa": "ایران تیمِ والیبالِ قوی‌ای دارد."
+              },
+              {
+                "en": "She hit the ball over the volleyball net.",
+                "fa": "او توپ را از روی تورِ والیبال زد."
+              }
+            ],
+            "collocations": [
+              "play volleyball",
+              "beach volleyball"
+            ],
+            "collocationFa": {
+              "play volleyball": "والیبال بازی کردن",
+              "beach volleyball": "والیبالِ ساحلی"
+            },
+            "usage": "نامِ ورزش‌ها بدونِ a و the می‌آید. volleyball به خودِ توپ هم گفته می‌شود: a volleyball.",
+            "mistake": {
+              "wrong": "My brothers play a volleyball every Friday.",
+              "wrongFa": "برادرانم هر جمعه یک والیبال بازی می‌کنند؛ اما a اضافه است.",
+              "right": "My brothers play volleyball every Friday.",
+              "rightFa": "برادرانم هر جمعه والیبال بازی می‌کنند.",
+              "why": "پیش از نامِ ورزش a یا the نمی‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈvɒlibɔːl/",
+              "us": "/ˈvɑːlibɔːl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "In ___, players hit the ball over a high net.",
+                "answer": "volleyball",
+                "accept": [],
+                "fa": "در والیبال بازیکن‌ها توپ را از روی تورِ بلند می‌زنند.",
+                "why": "volleyball بازی با توپ و تورِ بلند است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«والیبال بازی می‌کنیم.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "We play volleyball.",
+                    "ok": true,
+                    "why": "نامِ ورزش بدونِ a می‌آید."
+                  },
+                  {
+                    "text": "We play a volleyball.",
+                    "ok": false,
+                    "why": "پیش از نامِ ورزش a نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او در تیمِ والیبالِ مدرسه است.",
+                "frame": "She is on the school ___ team.",
+                "answer": "volleyball",
+                "accept": [],
+                "why": "volleyball team یعنی تیمِ والیبال."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}

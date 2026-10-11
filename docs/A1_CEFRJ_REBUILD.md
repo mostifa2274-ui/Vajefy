@@ -225,8 +225,24 @@ Self-review replaced two mistake pairs with a valid reading (*sleeping in the
 sofa*, *a bucket with water*) and dropped *light* for sunshine and *friend* for
 classmate from the accept lists. Codex review replaced a spelling distractor,
 *sailer*, that is a real word (a sailing vessel) with a non-word; spelling
-distractors must not be real words. The thirteen batches total **260/338 drafted,
-78 still to write**, with 789 bilingual examples and 789 checks.
+distractors must not be real words. PR #222 merged it as
+`2c52c0d83fa9e493a1eaa85c966b6e3fead80311`.
+
+`lessons-new-261-280.json` continues with grape, frog, nationality, ribbon,
+candy, vase, subway, fairy, princess, rainy, interviewer, hamburger, hometown,
+grandma, waitress, bookstore, burger, coke, yogurt/yoghurt and volleyball.
+`lessons-new-281-300.json` continues with cloudy, haircut, kite, merry, apron,
+lily, snowy, smith, foggy, grandpa, 'm, 're, 's, a.m./A.M./am/AM, all right, am,
+are, broken, CD player and closed. `all right` has adjective and adverb records,
+so that batch has 21 senses. CEFR-J tags the forms of *be*, *do* and *have* as
+`be-verb`, `do-verb` and `have-verb`; the lesson checker now teaches them as
+`verb` senses (and `infinitive-to` as `particle`), as the selection matcher
+already did. Self-review made the *waitress* prompts name a woman, because Persian
+«پیشخدمت» is not gendered. Codex review then removed a singular *grape* accept
+from a frame that needs *grapes*, made the `broken` definition read "damaged, in
+pieces, or not working", and fixed Persian number agreement in a `snowy` example.
+The fifteen batches total **300/338 drafted, 38 still
+to write**, with 912 bilingual examples and 912 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
@@ -297,7 +313,12 @@ to C1 (for example `ghost`, `spy`, `cop`, `foreigner`, `leaf`, `cute` and
 noun and adjective entries at A2 to B2+ (for example `jewellery` for the slash
 headword, `fever`, `elementary`, `prince`, `rude` and `biscuit`); `sofa`,
 `pardon`, `couch`, `bucket`, `sunshine`, `butterfly`, the noun `underline`,
-`tiger`, `cookie`, `classmate`, `garbage` and `turkey` get new IDs. Source-level A1 grading does not certify
+`tiger`, `cookie`, `classmate`, `garbage` and `turkey` get new IDs. The
+fourteenth batch keeps `frog` and `princess`; the other eighteen get new IDs. The
+fifteenth keeps `all right` (with its adverb sense at `lex:A2:all-right#adverb`),
+`broken` and `closed`; the contractions get `lex:A1:cefrj-short-m`, `-short-re`
+and `-short-s`, and `a.m.` gets `lex:A1:cefrj-a-m`, separate from the verb
+`lex:A1:cefrj-am`. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.

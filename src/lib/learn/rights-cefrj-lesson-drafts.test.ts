@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import test from "node:test";
-import { auditCefrjLessonDrafts, identityHasPos, type CefrjLessonDraftManifest } from "./rights-cefrj-lesson-drafts";
+import { auditCefrjLessonDrafts, identityHasPos, lessonPosFor, type CefrjLessonDraftManifest } from "./rights-cefrj-lesson-drafts";
 import type { SelectedRecord } from "./rights-cefrj-selection";
 import type { PlacedWord } from "./rights-level-selection";
 
@@ -78,4 +78,11 @@ test("existing teaching examples and long Persian overlaps are detected", () => 
   assert.match(auditCefrjLessonDrafts(batch, { ...context, inheritedEnglish: [en] }).join("\n"), /overlaps legacy/);
   const changed = clone(); changed.lessons[0]!.entry.senses[0]!.examples[0]!.fa = "این یک جمله طولانی فارسی است که از متن قبلی کپی شده است";
   assert.match(auditCefrjLessonDrafts(changed, { ...context, inheritedPersian: ["این یک جمله طولانی فارسی است که از متن قبلی کپی شده است"] }).join("\n"), /overlaps legacy/);
+});
+
+test("CEFR-J auxiliary labels are taught as catalogue parts of speech", () => {
+  for (const pos of ["be-verb", "do-verb", "have-verb"]) assert.equal(lessonPosFor(pos), "verb");
+  assert.equal(lessonPosFor("infinitive-to"), "particle");
+  assert.equal(lessonPosFor("interjection"), "exclamation");
+  assert.equal(lessonPosFor("noun"), "noun");
 });

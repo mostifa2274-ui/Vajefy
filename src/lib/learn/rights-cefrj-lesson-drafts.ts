@@ -51,6 +51,7 @@ export type CefrjLessonDraftManifest = z.infer<typeof cefrjLessonDraftManifest>;
 export type ExistingEntryIdentity = { id: string; partsOfSpeech: string };
 const posAlias: Record<string, Entry["senses"][number]["pos"]> = {
   "modal auxiliary": "modal", interjection: "exclamation", numeral: "number",
+  "be-verb": "verb", "do-verb": "verb", "have-verb": "verb", "infinitive-to": "particle",
 };
 export const lessonPosFor = (pos: string): string => posAlias[pos] ?? pos;
 const persianPos: Record<string, string> = {

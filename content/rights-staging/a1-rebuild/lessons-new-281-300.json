@@ -1,0 +1,2539 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 281–300 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 281,
+    "lastNewHeadword": 300
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "cloudy",
+      "levelWordId": "level:A1:0971",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1062",
+          "senseId": "lex:A1:cefrj-cloudy",
+          "meaningEn": "With a lot of clouds in the sky."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-cloudy",
+        "headword": "cloudy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-cloudy",
+            "pos": "adjective",
+            "gloss": "ابری",
+            "meaning": "وقتی آسمان ابرِ زیادی دارد؛ ابری.",
+            "grammar": [
+              {
+                "pattern": "It's cloudy",
+                "note": "برای هوا می‌گوییم: It's cloudy today."
+              },
+              {
+                "pattern": "cloud / cloudy",
+                "note": "cloud اسم است و cloudy صفت."
+              }
+            ],
+            "examples": [
+              {
+                "en": "It's cloudy, but it isn't raining.",
+                "fa": "هوا ابری است، اما باران نمی‌بارد."
+              },
+              {
+                "en": "We couldn't see the stars on that cloudy night.",
+                "fa": "در آن شبِ ابری نتوانستیم ستاره‌ها را ببینیم."
+              },
+              {
+                "en": "The weather will be cloudy in the north tomorrow.",
+                "fa": "فردا هوا در شمال ابری خواهد بود."
+              }
+            ],
+            "collocations": [
+              "a cloudy day",
+              "cloudy weather"
+            ],
+            "collocationFa": {
+              "a cloudy day": "روزِ ابری",
+              "cloudy weather": "هوای ابری"
+            },
+            "usage": "cloudy صفت است. وقتی ابرها کنار می‌روند هوا sunny (آفتابی) می‌شود.",
+            "mistake": {
+              "wrong": "Today is very cloud.",
+              "wrongFa": "امروز خیلی ابر است؛ اما پس از very اسم آمده است.",
+              "right": "Today is very cloudy.",
+              "rightFa": "امروز خیلی ابری است.",
+              "why": "پس از very صفتِ cloudy می‌آید؛ cloud اسم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈklaʊdi/",
+              "us": "/ˈklaʊdi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The sky is grey and ___; maybe it will rain.",
+                "answer": "cloudy",
+                "accept": [
+                  "overcast"
+                ],
+                "fa": "آسمان خاکستری و ابری است؛ شاید باران ببارد.",
+                "why": "cloudy یعنی ابری."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "It is cloudy today.",
+                    "ok": true,
+                    "why": "پس از is صفتِ cloudy می‌آید."
+                  },
+                  {
+                    "text": "It is cloud today.",
+                    "ok": false,
+                    "why": "cloud اسم است و اینجا صفت لازم است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "امروز صبح هوا ابری بود.",
+                "frame": "This morning it was ___.",
+                "answer": "cloudy",
+                "accept": [
+                  "overcast"
+                ],
+                "why": "پس از was صفتِ cloudy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "haircut",
+      "levelWordId": "level:A1:0972",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1063",
+          "senseId": "lex:A1:cefrj-haircut",
+          "meaningEn": "The act of cutting someone's hair, or the style in which it is cut."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-haircut",
+        "headword": "haircut",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-haircut",
+            "pos": "noun",
+            "gloss": "اصلاحِ مو؛ مدلِ مو",
+            "meaning": "کوتاه کردنِ موی کسی، یا مدلی که مو کوتاه شده است.",
+            "grammar": [
+              {
+                "pattern": "get / have a haircut",
+                "note": "برای اصلاح کردنِ مو get a haircut یا have a haircut می‌گوییم."
+              },
+              {
+                "pattern": "a haircut / haircuts",
+                "note": "haircut قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I need a haircut; my hair is too long.",
+                "fa": "باید مویم را کوتاه کنم؛ مویم بیش از حد بلند است."
+              },
+              {
+                "en": "He got a short haircut for the summer.",
+                "fa": "او برای تابستان مویش را کوتاه زد."
+              },
+              {
+                "en": "I like your new haircut!",
+                "fa": "مدلِ موی جدیدت را دوست دارم!"
+              }
+            ],
+            "collocations": [
+              "get a haircut",
+              "a new haircut"
+            ],
+            "collocationFa": {
+              "get a haircut": "مو کوتاه کردن",
+              "a new haircut": "مدلِ موی جدید"
+            },
+            "usage": "haircut یک واژه است. آرایشگرِ مردانه barber و آرایشگاه hairdresser's یا barber's است.",
+            "mistake": {
+              "wrong": "I had two haircut this month.",
+              "wrongFa": "این ماه دو بار مو کوتاه کردم؛ اما اسم باید جمع باشد.",
+              "right": "I had two haircuts this month.",
+              "rightFa": "این ماه دو بار مویم را کوتاه کردم.",
+              "why": "پس از two اسمِ haircut جمع می‌شود: haircuts."
+            },
+            "pronunciation": {
+              "gb": "/ˈheəkʌt/",
+              "us": "/ˈherkʌt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My hair is very long. I'm going to get a ___.",
+                "answer": "haircut",
+                "accept": [],
+                "fa": "مویم خیلی بلند است. می‌روم مویم را کوتاه کنم.",
+                "why": "get a haircut یعنی مو کوتاه کردن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«مویم را کوتاه کردم.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "I got a haircut.",
+                    "ok": true,
+                    "why": "get a haircut یعنی مو را کوتاه کردن."
+                  },
+                  {
+                    "text": "I got a hair.",
+                    "ok": false,
+                    "why": "a hair یعنی یک تارِ مو."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "مدلِ موی جدیدش خیلی کوتاه است.",
+                "frame": "His new ___ is very short.",
+                "answer": "haircut",
+                "accept": [],
+                "why": "پس از new اسمِ haircut می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "kite",
+      "levelWordId": "level:A1:0973",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1064",
+          "senseId": "lex:A1:cefrj-kite",
+          "meaningEn": "A light frame covered with paper or cloth that you fly in the wind on a long string."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-kite",
+        "headword": "kite",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-kite",
+            "pos": "noun",
+            "gloss": "بادبادک",
+            "meaning": "قابِ سبکی با کاغذ یا پارچه که آن را با نخِ بلند در باد هوا می‌کنیم.",
+            "grammar": [
+              {
+                "pattern": "fly a kite",
+                "note": "برای هوا کردنِ بادبادک fly a kite می‌گوییم."
+              },
+              {
+                "pattern": "a kite / kites",
+                "note": "kite قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The children are flying kites on the hill.",
+                "fa": "بچه‌ها روی تپه بادبادک هوا می‌کنند."
+              },
+              {
+                "en": "My kite got stuck in a tree.",
+                "fa": "بادبادکم به یک درخت گیر کرد."
+              },
+              {
+                "en": "We made a kite out of paper and sticks.",
+                "fa": "با کاغذ و چوب یک بادبادک درست کردیم."
+              }
+            ],
+            "collocations": [
+              "fly a kite",
+              "a paper kite"
+            ],
+            "collocationFa": {
+              "fly a kite": "بادبادک هوا کردن",
+              "a paper kite": "بادبادکِ کاغذی"
+            },
+            "usage": "kite قابل‌شمارش است. برای بادبادک فعلِ fly به کار می‌رود، نه play.",
+            "mistake": {
+              "wrong": "The children are playing a kite on the beach.",
+              "wrongFa": "بچه‌ها در ساحل بادبادک بازی می‌کنند؛ اما فعل درست نیست.",
+              "right": "The children are flying a kite on the beach.",
+              "rightFa": "بچه‌ها در ساحل بادبادک هوا می‌کنند.",
+              "why": "برای بادبادک fly a kite می‌گوییم، نه play a kite."
+            },
+            "pronunciation": {
+              "gb": "/kaɪt/",
+              "us": "/kaɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It's very windy, so it's a good day to fly a ___.",
+                "answer": "kite",
+                "accept": [],
+                "fa": "باد خیلی می‌وزد، پس روزِ خوبی برای هوا کردنِ بادبادک است.",
+                "why": "fly a kite یعنی بادبادک هوا کردن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«بادبادک هوا کردیم.» We ___ a kite.",
+                "options": [
+                  {
+                    "text": "flew",
+                    "ok": true,
+                    "why": "fly (گذشته flew) برای بادبادک است."
+                  },
+                  {
+                    "text": "played",
+                    "ok": false,
+                    "why": "برای بادبادک فعلِ fly به کار می‌رود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بادبادکِ قرمزم خیلی بالا رفت.",
+                "frame": "My red ___ went very high.",
+                "answer": "kite",
+                "accept": [],
+                "why": "پس از red اسمِ kite می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "merry",
+      "levelWordId": "level:A1:0974",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1065",
+          "senseId": "lex:A1:cefrj-merry",
+          "meaningEn": "Happy and cheerful; used especially in “Merry Christmas”."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-merry",
+        "headword": "merry",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-merry",
+            "pos": "adjective",
+            "gloss": "شاد؛ خوش",
+            "meaning": "شاد و سرحال؛ به‌خصوص در عبارتِ «Merry Christmas» (کریسمس مبارک).",
+            "grammar": [
+              {
+                "pattern": "Merry Christmas!",
+                "note": "برای تبریکِ کریسمس Merry Christmas! می‌گوییم."
+              },
+              {
+                "pattern": "a merry + noun",
+                "note": "merry پیش از اسم می‌آید: a merry song."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Merry Christmas and Happy New Year!",
+                "fa": "کریسمس مبارک و سالِ نو مبارک!"
+              },
+              {
+                "en": "They sang a merry song around the fire.",
+                "fa": "آن‌ها دورِ آتش یک آهنگِ شاد خواندند."
+              },
+              {
+                "en": "We had a merry evening with our friends.",
+                "fa": "با دوستانمان شبِ شادی داشتیم."
+              }
+            ],
+            "collocations": [
+              "Merry Christmas",
+              "a merry song"
+            ],
+            "collocationFa": {
+              "Merry Christmas": "کریسمس مبارک",
+              "a merry song": "آهنگِ شاد"
+            },
+            "usage": "merry امروز بیشتر در Merry Christmas به کار می‌رود؛ در موقعیت‌های دیگر happy رایج‌تر است.",
+            "mistake": {
+              "wrong": "We wish you a merrily Christmas.",
+              "wrongFa": "کریسمسی شادمانانه برایتان آرزو می‌کنیم؛ اما پیش از اسم قید آمده است.",
+              "right": "We wish you a merry Christmas.",
+              "rightFa": "کریسمسی شاد برایتان آرزو می‌کنیم.",
+              "why": "پیش از اسم صفتِ merry می‌آید؛ merrily قید است."
+            },
+            "pronunciation": {
+              "gb": "/ˈmeri/",
+              "us": "/ˈmeri/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "“___ Christmas!” she said and gave me a present.",
+                "answer": "Merry",
+                "accept": [
+                  "merry",
+                  "Happy",
+                  "happy"
+                ],
+                "fa": "گفت «کریسمس مبارک!» و یک هدیه به من داد.",
+                "why": "Merry Christmas تبریکِ کریسمس است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام تبریک برای کریسمس رایج است؟",
+                "options": [
+                  {
+                    "text": "Merry Christmas!",
+                    "ok": true,
+                    "why": "Merry Christmas تبریکِ رایجِ کریسمس است."
+                  },
+                  {
+                    "text": "Merry birthday!",
+                    "ok": false,
+                    "why": "برای تولد Happy birthday می‌گوییم."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن‌ها یک شبِ شاد داشتند.",
+                "frame": "They had a ___ evening.",
+                "answer": "merry",
+                "accept": [
+                  "happy",
+                  "cheerful"
+                ],
+                "why": "پیش از evening صفتِ merry می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "apron",
+      "levelWordId": "level:A1:0975",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1066",
+          "senseId": "lex:A1:cefrj-apron",
+          "meaningEn": "A piece of clothing that you wear over the front of your clothes to keep them clean, for example when you cook."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-apron",
+        "headword": "apron",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-apron",
+            "pos": "noun",
+            "gloss": "پیش‌بند",
+            "meaning": "تکه لباسی که روی جلوی لباس می‌پوشیم تا تمیز بماند، مثلاً وقتِ آشپزی.",
+            "grammar": [
+              {
+                "pattern": "wear an apron",
+                "note": "برای پوشیدنِ پیش‌بند wear an apron یا put on an apron می‌گوییم."
+              },
+              {
+                "pattern": "an apron",
+                "note": "apron با صدای صدادار شروع می‌شود و an می‌گیرد."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Dad always wears an apron when he cooks.",
+                "fa": "بابا همیشه وقتِ آشپزی پیش‌بند می‌بندد."
+              },
+              {
+                "en": "The baker's apron was white with flour.",
+                "fa": "پیش‌بندِ نانوا از آرد سفید شده بود."
+              },
+              {
+                "en": "Put on this apron so you don't get paint on your shirt.",
+                "fa": "این پیش‌بند را ببند تا رنگ به پیراهنت نریزد."
+              }
+            ],
+            "collocations": [
+              "wear an apron",
+              "a kitchen apron"
+            ],
+            "collocationFa": {
+              "wear an apron": "پیش‌بند بستن",
+              "a kitchen apron": "پیش‌بندِ آشپزخانه"
+            },
+            "usage": "apron قابل‌شمارش است و چون با صدای صدادار شروع می‌شود an می‌گیرد.",
+            "mistake": {
+              "wrong": "She put on a apron and started cooking.",
+              "wrongFa": "او یک پیش‌بند بست و آشپزی را شروع کرد؛ اما پیش از صدای صدادار a آمده است.",
+              "right": "She put on an apron and started cooking.",
+              "rightFa": "او پیش‌بند بست و شروع به آشپزی کرد.",
+              "why": "apron با صدای صدادار شروع می‌شود، پس an لازم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈeɪprən/",
+              "us": "/ˈeɪprən/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Wear an ___ so you don't get your clothes dirty.",
+                "answer": "apron",
+                "accept": [],
+                "fa": "پیش‌بند ببند تا لباس‌هایت کثیف نشود.",
+                "why": "apron برای تمیز ماندنِ لباس است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "an apron",
+                    "ok": true,
+                    "why": "پیش از صدای صدادار an می‌آید."
+                  },
+                  {
+                    "text": "a apron",
+                    "ok": false,
+                    "why": "apron با صدای صدادار شروع می‌شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پیش‌بندِ مادرم آبی است.",
+                "frame": "My mother's ___ is blue.",
+                "answer": "apron",
+                "accept": [],
+                "why": "پس از mother's اسمِ apron می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "lily",
+      "levelWordId": "level:A1:0977",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1068",
+          "senseId": "lex:A1:cefrj-lily",
+          "meaningEn": "A tall plant with large, often white, bell-shaped flowers."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-lily",
+        "headword": "lily",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-lily",
+            "pos": "noun",
+            "gloss": "سوسن؛ زنبق",
+            "meaning": "گیاهی بلند با گل‌های بزرگ و اغلب سفید و شیپوری‌شکل.",
+            "grammar": [
+              {
+                "pattern": "a lily / lilies",
+                "note": "جمعِ lily با ies ساخته می‌شود: lilies."
+              },
+              {
+                "pattern": "a water lily",
+                "note": "نیلوفرِ آبی a water lily است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "She gave her mother a bunch of white lilies.",
+                "fa": "او یک دسته سوسنِ سفید به مادرش داد."
+              },
+              {
+                "en": "The lilies in the garden smell lovely.",
+                "fa": "سوسن‌های باغچه بوی خوبی دارند."
+              },
+              {
+                "en": "A frog sat on a water lily in the pond.",
+                "fa": "یک قورباغه روی یک نیلوفرِ آبی در برکه نشست."
+              }
+            ],
+            "collocations": [
+              "white lilies",
+              "a water lily"
+            ],
+            "collocationFa": {
+              "white lilies": "سوسن‌های سفید",
+              "a water lily": "نیلوفرِ آبی"
+            },
+            "usage": "lily قابل‌شمارش است و جمعش lilies است. Lily اسمِ دخترانه هم هست.",
+            "mistake": {
+              "wrong": "There are many lilys in the vase.",
+              "wrongFa": "در گلدان سوسن‌های زیادی هست؛ اما جمع درست نیست.",
+              "right": "There are many lilies in the vase.",
+              "rightFa": "در گلدان سوسن‌های زیادی هست.",
+              "why": "پس از حرفِ بی‌صدا y به ies تبدیل می‌شود: lilies."
+            },
+            "pronunciation": {
+              "gb": "/ˈlɪli/",
+              "us": "/ˈlɪli/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ has big white flowers and a sweet smell.",
+                "answer": "lily",
+                "accept": [],
+                "fa": "سوسن گل‌های بزرگِ سفید و بوی شیرینی دارد.",
+                "why": "lily گلی بلند با گل‌های شیپوری است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ lily کدام است؟",
+                "options": [
+                  {
+                    "text": "lilies",
+                    "ok": true,
+                    "why": "پس از حرفِ بی‌صدا y به ies تبدیل می‌شود."
+                  },
+                  {
+                    "text": "lilys",
+                    "ok": false,
+                    "why": "جمعِ درست lilies است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک سوسنِ صورتی در باغ است.",
+                "frame": "There is a pink ___ in the garden.",
+                "answer": "lily",
+                "accept": [],
+                "why": "پس از pink اسمِ مفردِ lily می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "snowy",
+      "levelWordId": "level:A1:0978",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1069",
+          "senseId": "lex:A1:cefrj-snowy",
+          "meaningEn": "With a lot of snow, or when snow is falling."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-snowy",
+        "headword": "snowy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-snowy",
+            "pos": "adjective",
+            "gloss": "برفی",
+            "meaning": "دارای برفِ زیاد، یا وقتی برف می‌بارد.",
+            "grammar": [
+              {
+                "pattern": "a snowy + noun",
+                "note": "snowy پیش از اسم می‌آید: a snowy day."
+              },
+              {
+                "pattern": "snow / snowy",
+                "note": "snow اسم یا فعل است و snowy صفت."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We built a snowman on a snowy afternoon.",
+                "fa": "در یک بعدازظهرِ برفی آدم‌برفی ساختیم."
+              },
+              {
+                "en": "The roads are dangerous in snowy weather.",
+                "fa": "در هوای برفی جاده‌ها خطرناک‌اند."
+              },
+              {
+                "en": "Winters in Ardabil are long and snowy.",
+                "fa": "زمستان‌های اردبیل طولانی و برفی‌اند."
+              }
+            ],
+            "collocations": [
+              "a snowy day",
+              "snowy mountains"
+            ],
+            "collocationFa": {
+              "a snowy day": "روزِ برفی",
+              "snowy mountains": "کوه‌های برفی"
+            },
+            "usage": "snowy صفت است. برای «دارد برف می‌بارد» it's snowing می‌گوییم.",
+            "mistake": {
+              "wrong": "In winter, the mountains is snowy.",
+              "wrongFa": "در زمستان کوه‌ها برفی است؛ اما فعل مفرد آمده است.",
+              "right": "In winter, the mountains are snowy.",
+              "rightFa": "در زمستان کوه‌ها برفی‌اند.",
+              "why": "the mountains جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈsnəʊi/",
+              "us": "/ˈsnoʊi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Wear your warm boots; it's cold and ___ outside.",
+                "answer": "snowy",
+                "accept": [],
+                "fa": "چکمه‌های گرمت را بپوش؛ بیرون سرد و برفی است.",
+                "why": "snowy یعنی برفی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "It was a snowy day.",
+                    "ok": true,
+                    "why": "پیش از day صفتِ snowy می‌آید."
+                  },
+                  {
+                    "text": "It was a snowly day.",
+                    "ok": false,
+                    "why": "صفتِ درست snowy است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کوه‌ها هنوز برفی‌اند.",
+                "frame": "The mountains are still ___.",
+                "answer": "snowy",
+                "accept": [],
+                "why": "پس از are صفتِ snowy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "smith",
+      "levelWordId": "level:A1:0979",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1070",
+          "senseId": "lex:A1:cefrj-smith",
+          "meaningEn": "A person who makes and repairs things made of metal, especially iron."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-smith",
+        "headword": "smith",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-smith",
+            "pos": "noun",
+            "gloss": "آهنگر؛ فلزکار",
+            "meaning": "کسی که چیزهای فلزی، به‌خصوص آهنی، می‌سازد و تعمیر می‌کند.",
+            "grammar": [
+              {
+                "pattern": "a smith / smiths",
+                "note": "smith قابل‌شمارش است."
+              },
+              {
+                "pattern": "gold + smith",
+                "note": "smith در واژه‌های مرکب هم می‌آید: blacksmith, goldsmith."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The smith made a new gate for the farm.",
+                "fa": "آهنگر یک درِ جدید برای مزرعه ساخت."
+              },
+              {
+                "en": "In the old town, there is a smith who still makes knives.",
+                "fa": "در شهرِ قدیمی آهنگری هست که هنوز چاقو می‌سازد."
+              },
+              {
+                "en": "A goldsmith makes rings and necklaces.",
+                "fa": "زرگر انگشتر و گردنبند می‌سازد."
+              }
+            ],
+            "collocations": [
+              "a village smith",
+              "a goldsmith"
+            ],
+            "collocationFa": {
+              "a village smith": "آهنگرِ روستا",
+              "a goldsmith": "زرگر"
+            },
+            "usage": "smith امروز بیشتر در blacksmith (آهنگر) و goldsmith (زرگر) دیده می‌شود. Smith نامِ خانوادگیِ رایجی هم هست.",
+            "mistake": {
+              "wrong": "My grandfather worked as smith.",
+              "wrongFa": "پدربزرگم به‌عنوانِ آهنگر کار می‌کرد؛ اما پیش از smith حرفِ تعریف نیامده است.",
+              "right": "My grandfather worked as a smith.",
+              "rightFa": "پدربزرگم آهنگر بود.",
+              "why": "پس از as برای شغل a لازم است: as a smith."
+            },
+            "pronunciation": {
+              "gb": "/smɪθ/",
+              "us": "/smɪθ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ heated the iron in the fire.",
+                "answer": "smith",
+                "accept": [
+                  "blacksmith"
+                ],
+                "fa": "آهنگر آهن را در آتش داغ کرد.",
+                "why": "smith با آهن و فلز کار می‌کند."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کسی که انگشترِ طلا می‌سازد چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "a goldsmith",
+                    "ok": true,
+                    "why": "goldsmith یعنی زرگر."
+                  },
+                  {
+                    "text": "a locksmith",
+                    "ok": false,
+                    "why": "locksmith قفل‌ساز است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آهنگر یک چاقوی تیز ساخت.",
+                "frame": "The ___ made a sharp knife.",
+                "answer": "smith",
+                "accept": [
+                  "blacksmith"
+                ],
+                "why": "پس از The اسمِ smith می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "foggy",
+      "levelWordId": "level:A1:0980",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1071",
+          "senseId": "lex:A1:cefrj-foggy",
+          "meaningEn": "With fog in the air, so that it is difficult to see."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-foggy",
+        "headword": "foggy",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-foggy",
+            "pos": "adjective",
+            "gloss": "مه‌آلود",
+            "meaning": "وقتی هوا مه دارد و دیدن سخت است.",
+            "grammar": [
+              {
+                "pattern": "It's foggy",
+                "note": "برای هوا می‌گوییم: It's foggy this morning."
+              },
+              {
+                "pattern": "fog / foggy",
+                "note": "fog اسم است و foggy صفت."
+              }
+            ],
+            "examples": [
+              {
+                "en": "It's foggy, so drive slowly.",
+                "fa": "هوا مه‌آلود است، پس آهسته رانندگی کن."
+              },
+              {
+                "en": "On foggy mornings, I can't see the mountains.",
+                "fa": "صبح‌های مه‌آلود نمی‌توانم کوه‌ها را ببینم."
+              },
+              {
+                "en": "The airport was closed because it was too foggy.",
+                "fa": "فرودگاه بسته بود چون هوا بیش از حد مه‌آلود بود."
+              }
+            ],
+            "collocations": [
+              "a foggy morning",
+              "foggy weather"
+            ],
+            "collocationFa": {
+              "a foggy morning": "صبحِ مه‌آلود",
+              "foggy weather": "هوای مه‌آلود"
+            },
+            "usage": "foggy صفت است. برای مهِ رقیق‌تر misty هم به کار می‌رود.",
+            "mistake": {
+              "wrong": "There is very foggy this morning.",
+              "wrongFa": "امروز صبح خیلی مه‌آلود هست؛ اما ساختِ جمله درست نیست.",
+              "right": "It is very foggy this morning.",
+              "rightFa": "امروز صبح هوا خیلی مه‌آلود است.",
+              "why": "برای هوا it is + صفت می‌گوییم: It is foggy؛ there is با صفت نمی‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈfɒɡi/",
+              "us": "/ˈfɑːɡi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I can't see the road. It's very ___.",
+                "answer": "foggy",
+                "accept": [
+                  "misty"
+                ],
+                "fa": "نمی‌توانم جاده را ببینم. هوا خیلی مه‌آلود است.",
+                "why": "foggy یعنی مه‌آلود."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "It is foggy today.",
+                    "ok": true,
+                    "why": "برای هوا it is + صفت می‌آید."
+                  },
+                  {
+                    "text": "There is foggy today.",
+                    "ok": false,
+                    "why": "there is با صفتِ foggy نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دیروز هوا مه‌آلود بود.",
+                "frame": "Yesterday it was ___.",
+                "answer": "foggy",
+                "accept": [
+                  "misty"
+                ],
+                "why": "پس از was صفتِ foggy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "grandpa",
+      "levelWordId": "level:A1:0981",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1072",
+          "senseId": "lex:A1:cefrj-grandpa",
+          "meaningEn": "An informal word for grandfather."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-grandpa",
+        "headword": "grandpa",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-grandpa",
+            "pos": "noun",
+            "gloss": "پدربزرگ (خودمانی)",
+            "meaning": "واژهٔ خودمانی برای grandfather (پدربزرگ).",
+            "grammar": [
+              {
+                "pattern": "Grandpa (name)",
+                "note": "وقتی مستقیم صدایش می‌کنیم با حرفِ بزرگ می‌آید: Thanks, Grandpa!"
+              },
+              {
+                "pattern": "my grandpa",
+                "note": "برای اشاره به او my grandpa می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My grandpa tells funny stories about his childhood.",
+                "fa": "پدربزرگم داستان‌های خنده‌داری از بچگی‌اش تعریف می‌کند."
+              },
+              {
+                "en": "Thanks for the gift, Grandpa!",
+                "fa": "ممنون بابتِ هدیه، پدربزرگ!"
+              },
+              {
+                "en": "Grandpa walks in the park every morning.",
+                "fa": "پدربزرگ هر صبح در پارک قدم می‌زند."
+              }
+            ],
+            "collocations": [
+              "my grandpa",
+              "Grandpa's house"
+            ],
+            "collocationFa": {
+              "my grandpa": "پدربزرگم",
+              "Grandpa's house": "خانهٔ پدربزرگ"
+            },
+            "usage": "grandpa خودمانی است؛ grandfather رسمی‌تر است. مادربزرگ grandma است.",
+            "mistake": {
+              "wrong": "My grandpa have a big garden.",
+              "wrongFa": "پدربزرگم یک باغِ بزرگ دارند؛ اما فعل درست نیست.",
+              "right": "My grandpa has a big garden.",
+              "rightFa": "پدربزرگم یک باغِ بزرگ دارد.",
+              "why": "با فاعلِ سوم‌شخصِ مفرد has می‌آید، نه have."
+            },
+            "pronunciation": {
+              "gb": "/ˈɡrænpɑː/",
+              "us": "/ˈɡrænpɑː/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My dad's father is my ___.",
+                "answer": "grandpa",
+                "accept": [
+                  "grandfather",
+                  "granddad",
+                  "grandad"
+                ],
+                "fa": "پدرِ پدرم پدربزرگِ من است.",
+                "why": "grandpa یعنی پدربزرگ."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه رسمی‌تر از grandpa است؟",
+                "options": [
+                  {
+                    "text": "grandfather",
+                    "ok": true,
+                    "why": "grandfather رسمی‌تر است."
+                  },
+                  {
+                    "text": "granddad",
+                    "ok": false,
+                    "why": "granddad هم خودمانی است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پدربزرگم هشتاد سال دارد.",
+                "frame": "My ___ is eighty years old.",
+                "answer": "grandpa",
+                "accept": [
+                  "grandfather",
+                  "granddad",
+                  "grandad"
+                ],
+                "why": "پس از my اسمِ grandpa می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "'m",
+      "levelWordId": "level:A1:0984",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1076",
+          "senseId": "lex:A1:cefrj-short-m",
+          "meaningEn": "The short form of “am”, used after “I”."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-short-m",
+        "headword": "'m",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-short-m",
+            "pos": "verb",
+            "gloss": "شکلِ کوتاهِ am (پس از I)",
+            "meaning": "شکلِ کوتاه‌شدهٔ am که پس از I می‌آید: I'm = I am.",
+            "grammar": [
+              {
+                "pattern": "I'm + adjective / noun",
+                "note": "I'm پیش از صفت یا اسم می‌آید: I'm tired. I'm a teacher."
+              },
+              {
+                "pattern": "I'm not",
+                "note": "برای منفی I'm not می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I'm from Isfahan.",
+                "fa": "من اهلِ اصفهانم."
+              },
+              {
+                "en": "I'm sorry I'm late.",
+                "fa": "ببخشید که دیر کردم."
+              },
+              {
+                "en": "I'm not hungry right now.",
+                "fa": "الان گرسنه نیستم."
+              }
+            ],
+            "collocations": [
+              "I'm fine",
+              "I'm sorry"
+            ],
+            "collocationFa": {
+              "I'm fine": "خوبم",
+              "I'm sorry": "متأسفم؛ ببخشید"
+            },
+            "usage": "'m فقط پس از I می‌آید. در گفتار و نوشتهٔ خودمانی I'm رایج‌تر از I am است.",
+            "mistake": {
+              "wrong": "I'm agree with you.",
+              "wrongFa": "من با تو موافق هستم؛ اما پیش از فعلِ agree، am آمده است.",
+              "right": "I agree with you.",
+              "rightFa": "با تو موافقم.",
+              "why": "agree فعل است و am نمی‌خواهد: I agree، نه I'm agree."
+            },
+            "pronunciation": {
+              "gb": "/m/",
+              "us": "/m/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Hello, ___ Sara. Nice to meet you.",
+                "answer": "I'm",
+                "accept": [
+                  "I am"
+                ],
+                "fa": "سلام، من سارا هستم. از آشنایی‌ات خوشحالم.",
+                "why": "I'm کوتاه‌شدهٔ I am است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«با تو موافقم.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "I agree with you.",
+                    "ok": true,
+                    "why": "agree فعل است و am نمی‌خواهد."
+                  },
+                  {
+                    "text": "I'm agree with you.",
+                    "ok": false,
+                    "why": "پیش از فعلِ agree، am نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "خسته‌ام.",
+                "frame": "___ tired.",
+                "answer": "I'm",
+                "accept": [
+                  "I am"
+                ],
+                "why": "I'm (= I am) پیش از صفت می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "'re",
+      "levelWordId": "level:A1:0985",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1077",
+          "senseId": "lex:A1:cefrj-short-re",
+          "meaningEn": "The short form of “are”, used after “you”, “we” and “they”."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-short-re",
+        "headword": "'re",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-short-re",
+            "pos": "verb",
+            "gloss": "شکلِ کوتاهِ are",
+            "meaning": "شکلِ کوتاه‌شدهٔ are که پس از you، we و they می‌آید: you're, we're, they're.",
+            "grammar": [
+              {
+                "pattern": "you're / we're / they're",
+                "note": "'re پس از you، we و they می‌آید."
+              },
+              {
+                "pattern": "you're not / you aren't",
+                "note": "برای منفی you're not یا you aren't می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "You're very kind.",
+                "fa": "تو خیلی مهربانی."
+              },
+              {
+                "en": "We're in the same class.",
+                "fa": "ما در یک کلاسیم."
+              },
+              {
+                "en": "They're at the park now.",
+                "fa": "آن‌ها الان در پارک‌اند."
+              }
+            ],
+            "collocations": [
+              "you're welcome",
+              "we're ready"
+            ],
+            "collocationFa": {
+              "you're welcome": "خواهش می‌کنم",
+              "we're ready": "ما آماده‌ایم"
+            },
+            "usage": "you're (= you are) را با your (مالِ تو) و they're (= they are) را با their (مالِ آن‌ها) اشتباه نکنید.",
+            "mistake": {
+              "wrong": "Your late again!",
+              "wrongFa": "مالِ تو دوباره دیر!؛ اما your به معنای «مالِ تو» آمده است.",
+              "right": "You're late again!",
+              "rightFa": "دوباره دیر کردی!",
+              "why": "برای «تو هستی» you're (= you are) می‌آید؛ your یعنی «مالِ تو»."
+            },
+            "pronunciation": {
+              "gb": "/ə/",
+              "us": "/ər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My cousins live in Mashhad. ___ coming to visit us next week.",
+                "answer": "They're",
+                "accept": [
+                  "They are"
+                ],
+                "fa": "پسرعموهایم در مشهد زندگی می‌کنند. هفتهٔ بعد به دیدنمان می‌آیند.",
+                "why": "they're کوتاه‌شدهٔ they are است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«آن‌ها خوشحال‌اند.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "They're happy.",
+                    "ok": true,
+                    "why": "they're یعنی they are."
+                  },
+                  {
+                    "text": "Their happy.",
+                    "ok": false,
+                    "why": "their یعنی «مالِ آن‌ها» و فعل نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ما آماده‌ایم.",
+                "frame": "___ ready.",
+                "answer": "We're",
+                "accept": [
+                  "We are"
+                ],
+                "why": "we're (= we are) پیش از صفت می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "'s",
+      "levelWordId": "level:A1:0986",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1078",
+          "senseId": "lex:A1:cefrj-short-s",
+          "meaningEn": "The short form of “is”, used after “he”, “she”, “it”, “there”, names and question words."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-short-s",
+        "headword": "'s",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-short-s",
+            "pos": "verb",
+            "gloss": "شکلِ کوتاهِ is",
+            "meaning": "شکلِ کوتاه‌شدهٔ is که پس از he، she، it، there، نام‌ها و واژه‌های پرسشی می‌آید: he's, it's, what's.",
+            "grammar": [
+              {
+                "pattern": "he's / she's / it's",
+                "note": "'s پس از he، she و it می‌آید: It's cold."
+              },
+              {
+                "pattern": "what's / where's / there's",
+                "note": "پس از واژه‌های پرسشی و there هم می‌آید: What's your name?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "She's my cousin from Kerman.",
+                "fa": "او دخترخاله‌ام از کرمان است."
+              },
+              {
+                "en": "It's cold outside today.",
+                "fa": "امروز بیرون سرد است."
+              },
+              {
+                "en": "Where's the nearest bus stop?",
+                "fa": "نزدیک‌ترین ایستگاهِ اتوبوس کجاست؟"
+              }
+            ],
+            "collocations": [
+              "it's OK",
+              "what's up?"
+            ],
+            "collocationFa": {
+              "it's OK": "اشکالی ندارد",
+              "what's up?": "چه خبر؟"
+            },
+            "usage": "'s می‌تواند کوتاهِ is یا has باشد (He's got a car) یا نشانهٔ مالکیت (Ali's book). it's (= it is) با its (مالِ آن) فرق دارد.",
+            "mistake": {
+              "wrong": "Its very hot today.",
+              "wrongFa": "مالِ آن امروز خیلی گرم؛ اما its به معنای «مالِ آن» آمده است.",
+              "right": "It's very hot today.",
+              "rightFa": "امروز هوا خیلی گرم است.",
+              "why": "برای «هست» it's (= it is) با آپوستروف می‌آید؛ its یعنی «مالِ آن»."
+            },
+            "pronunciation": {
+              "gb": "/z/",
+              "us": "/z/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Ali can't come today because ___ ill.",
+                "answer": "he's",
+                "accept": [
+                  "he is"
+                ],
+                "fa": "علی امروز نمی‌تواند بیاید چون مریض است.",
+                "why": "he's کوتاه‌شدهٔ he is است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«ساعت پنج است.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "It's five o'clock.",
+                    "ok": true,
+                    "why": "it's یعنی it is."
+                  },
+                  {
+                    "text": "Its five o'clock.",
+                    "ok": false,
+                    "why": "its یعنی «مالِ آن» و فعل نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او معلمِ من است.",
+                "frame": "___ my teacher.",
+                "answer": "She's",
+                "accept": [
+                  "She is",
+                  "He's",
+                  "He is"
+                ],
+                "why": "she's (= she is) پیش از اسم می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "a.m./A.M./am/AM",
+      "levelWordId": "level:A1:0987",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1079",
+          "senseId": "lex:A1:cefrj-a-m",
+          "meaningEn": "Used after a time to show that it is between midnight and midday; in the morning."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-a-m",
+        "headword": "a.m./A.M./am/AM",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-a-m",
+            "pos": "adverb",
+            "gloss": "قبل از ظهر؛ صبح (پس از ساعت)",
+            "meaning": "پس از ساعت می‌آید و نشان می‌دهد زمان بینِ نیمه‌شب و ظهر است؛ صبح.",
+            "grammar": [
+              {
+                "pattern": "number + a.m.",
+                "note": "a.m. پس از عددِ ساعت می‌آید: 7 a.m."
+              },
+              {
+                "pattern": "at 7 a.m.",
+                "note": "برای ساعتِ کاری at می‌آید: at 7 a.m."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The train leaves at 6 a.m.",
+                "fa": "قطار ساعتِ شش صبح حرکت می‌کند."
+              },
+              {
+                "en": "The bank opens at 8:30 a.m.",
+                "fa": "بانک ساعتِ هشت و نیمِ صبح باز می‌شود."
+              },
+              {
+                "en": "I woke up at 3 a.m. and couldn't sleep again.",
+                "fa": "ساعتِ سه بامداد بیدار شدم و دیگر نتوانستم بخوابم."
+              }
+            ],
+            "collocations": [
+              "at 9 a.m.",
+              "from 8 a.m. to 2 p.m."
+            ],
+            "collocationFa": {
+              "at 9 a.m.": "ساعتِ نهِ صبح",
+              "from 8 a.m. to 2 p.m.": "از هشتِ صبح تا دوِ بعدازظهر"
+            },
+            "usage": "a.m. را a.m.، am یا AM هم می‌نویسند. برای بعد از ظهر p.m. به کار می‌رود.",
+            "mistake": {
+              "wrong": "The shop opens at 9 a.m. o'clock.",
+              "wrongFa": "مغازه ساعتِ نهِ صبحِ سرِ ساعت باز می‌شود؛ اما a.m. و o'clock با هم آمده‌اند.",
+              "right": "The shop opens at 9 a.m.",
+              "rightFa": "مغازه ساعتِ نهِ صبح باز می‌شود.",
+              "why": "a.m. با o'clock با هم نمی‌آیند؛ یکی کافی است."
+            },
+            "pronunciation": {
+              "gb": "/ˌeɪ ˈem/",
+              "us": "/ˌeɪ ˈem/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "School starts at 7:30 ___, so I get up early.",
+                "answer": "a.m.",
+                "accept": [
+                  "am",
+                  "AM",
+                  "A.M."
+                ],
+                "fa": "مدرسه ساعتِ هفت و نیمِ صبح شروع می‌شود، پس زود بیدار می‌شوم.",
+                "why": "a.m. یعنی قبل از ظهر."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "ساعتِ ده شب کدام است؟",
+                "options": [
+                  {
+                    "text": "10 p.m.",
+                    "ok": true,
+                    "why": "p.m. برای بعد از ظهر و شب است."
+                  },
+                  {
+                    "text": "10 a.m.",
+                    "ok": false,
+                    "why": "10 a.m. یعنی ده صبح."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کلاس ساعتِ نهِ صبح است.",
+                "frame": "The class is at 9 ___.",
+                "answer": "a.m.",
+                "accept": [
+                  "am",
+                  "AM",
+                  "A.M."
+                ],
+                "why": "برای ساعتِ صبح a.m. می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "all right",
+      "levelWordId": "level:A1:0988",
+      "existingEntryIds": [
+        "lex:A2:all-right"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1080",
+          "senseId": "lex:A2:all-right",
+          "meaningEn": "Acceptable or good enough; also safe and not hurt or ill."
+        },
+        {
+          "selectionId": "cefrj-a1:1081",
+          "senseId": "lex:A2:all-right#adverb",
+          "meaningEn": "In a way that is acceptable or satisfactory; well enough."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:all-right",
+        "headword": "all right",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:all-right",
+            "pos": "adjective",
+            "gloss": "خوب؛ روبه‌راه؛ سالم",
+            "meaning": "قابلِ قبول یا به اندازهٔ کافی خوب؛ همچنین سالم و بدونِ آسیب یا بیماری.",
+            "grammar": [
+              {
+                "pattern": "be all right",
+                "note": "all right پس از فعل می‌آید: Are you all right?"
+              },
+              {
+                "pattern": "It's all right",
+                "note": "برای «اشکالی ندارد» It's all right می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Are you all right? You look pale.",
+                "fa": "حالت خوب است؟ رنگت پریده."
+              },
+              {
+                "en": "The food was all right, but not great.",
+                "fa": "غذا بد نبود، اما عالی هم نبود."
+              },
+              {
+                "en": "Don't worry, the baby is all right.",
+                "fa": "نگران نباش، بچه حالش خوب است."
+              }
+            ],
+            "collocations": [
+              "Are you all right?",
+              "It's all right."
+            ],
+            "collocationFa": {
+              "Are you all right?": "حالت خوب است؟",
+              "It's all right.": "اشکالی ندارد."
+            },
+            "usage": "all right دو واژه است و با OK هم‌معناست. alright هم دیده می‌شود ولی خودمانی‌تر است.",
+            "mistake": {
+              "wrong": "Is your father all rights now?",
+              "wrongFa": "پدرت الان حالش خوب‌ها است؟ اما all right جمع بسته شده است.",
+              "right": "Is your father all right now?",
+              "rightFa": "پدرت الان حالش خوب است؟",
+              "why": "all right صفت است و s جمع نمی‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˌɔːl ˈraɪt/",
+              "us": "/ˌɔːl ˈraɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "She fell off her bike, but she's ___.",
+                "answer": "all right",
+                "accept": [
+                  "OK",
+                  "okay",
+                  "fine",
+                  "alright"
+                ],
+                "fa": "از دوچرخه افتاد، اما حالش خوب است.",
+                "why": "all right یعنی سالم و بدونِ آسیب."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«حالت خوب است؟» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "Are you all right?",
+                    "ok": true,
+                    "why": "be all right یعنی حالِ کسی خوب بودن."
+                  },
+                  {
+                    "text": "Do you all right?",
+                    "ok": false,
+                    "why": "با all right فعلِ be می‌آید، نه do."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "فیلم بد نبود.",
+                "frame": "The film was ___.",
+                "answer": "all right",
+                "accept": [
+                  "OK",
+                  "okay",
+                  "alright"
+                ],
+                "why": "all right یعنی قابلِ قبول."
+              }
+            ]
+          },
+          {
+            "id": "lex:A2:all-right#adverb",
+            "pos": "adverb",
+            "gloss": "به‌خوبی؛ بدونِ مشکل",
+            "meaning": "به شکلی قابلِ قبول یا رضایت‌بخش؛ به اندازهٔ کافی خوب.",
+            "grammar": [
+              {
+                "pattern": "verb + all right",
+                "note": "all right پس از فعل می‌آید: It went all right."
+              },
+              {
+                "pattern": "go all right",
+                "note": "برای اینکه کاری خوب پیش برود go all right می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Did the interview go all right?",
+                "fa": "مصاحبه خوب پیش رفت؟"
+              },
+              {
+                "en": "The new printer works all right.",
+                "fa": "پرینترِ جدید بدونِ مشکل کار می‌کند."
+              },
+              {
+                "en": "He did all right in his first English test.",
+                "fa": "در اولین امتحانِ انگلیسی‌اش نسبتاً خوب عمل کرد."
+              }
+            ],
+            "collocations": [
+              "go all right",
+              "work all right"
+            ],
+            "collocationFa": {
+              "go all right": "خوب پیش رفتن",
+              "work all right": "درست کار کردن"
+            },
+            "usage": "در این معنا all right قید است و پس از فعل می‌آید؛ هم‌معنای OK و well enough است.",
+            "mistake": {
+              "wrong": "Everything went all rightly.",
+              "wrongFa": "همه‌چیز به‌طورِ خوبی پیش رفت؛ اما all right ly گرفته است.",
+              "right": "Everything went all right.",
+              "rightFa": "همه‌چیز خوب پیش رفت.",
+              "why": "all right خودش قید هم هست و ly نمی‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˌɔːl ˈraɪt/",
+              "us": "/ˌɔːl ˈraɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Don't worry. The meeting went ___.",
+                "answer": "all right",
+                "accept": [
+                  "OK",
+                  "okay",
+                  "fine",
+                  "alright"
+                ],
+                "fa": "نگران نباش. جلسه خوب پیش رفت.",
+                "why": "go all right یعنی خوب پیش رفتن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«خوب پیش رفت.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "It went all right.",
+                    "ok": true,
+                    "why": "all right پس از فعل قید است."
+                  },
+                  {
+                    "text": "It went all rightly.",
+                    "ok": false,
+                    "why": "all right ly نمی‌گیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "تلفنِ قدیمی‌ام هنوز درست کار می‌کند.",
+                "frame": "My old phone still works ___.",
+                "answer": "all right",
+                "accept": [
+                  "OK",
+                  "okay",
+                  "fine",
+                  "alright"
+                ],
+                "why": "پس از works قیدِ all right می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "am",
+      "levelWordId": "level:A1:0987",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1082",
+          "senseId": "lex:A1:cefrj-am",
+          "meaningEn": "The form of “be” used with “I” in the present tense."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-am",
+        "headword": "am",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-am",
+            "pos": "verb",
+            "gloss": "هستم (am)",
+            "meaning": "شکلی از فعلِ be که در زمانِ حال با I می‌آید: I am.",
+            "grammar": [
+              {
+                "pattern": "I am + adjective / noun / place",
+                "note": "I am پیش از صفت، اسم یا مکان می‌آید: I am happy. I am at home."
+              },
+              {
+                "pattern": "I am + verb-ing",
+                "note": "برای کارِ در حالِ انجام: I am reading."
+              }
+            ],
+            "examples": [
+              {
+                "en": "I am a nurse at the city hospital.",
+                "fa": "من پرستارِ بیمارستانِ شهر هستم."
+              },
+              {
+                "en": "I am in the kitchen right now.",
+                "fa": "همین الان در آشپزخانه هستم."
+              },
+              {
+                "en": "I am reading a story to my son.",
+                "fa": "دارم برای پسرم قصه می‌خوانم."
+              }
+            ],
+            "collocations": [
+              "I am fine",
+              "I am not sure"
+            ],
+            "collocationFa": {
+              "I am fine": "خوبم",
+              "I am not sure": "مطمئن نیستم"
+            },
+            "usage": "am فقط با I می‌آید. با he/she/it از is و با you/we/they از are استفاده می‌کنیم.",
+            "mistake": {
+              "wrong": "I am live in Shiraz.",
+              "wrongFa": "من در شیراز زندگی هستم؛ اما am با فعلِ ساده آمده است.",
+              "right": "I live in Shiraz.",
+              "rightFa": "من در شیراز زندگی می‌کنم.",
+              "why": "پیش از فعلِ سادهٔ live، am نمی‌آید: I live."
+            },
+            "pronunciation": {
+              "gb": "/æm/",
+              "us": "/æm/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I ___ twelve years old.",
+                "answer": "am",
+                "accept": [],
+                "fa": "من دوازده سال دارم.",
+                "why": "با I فعلِ am می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«من خسته‌ام.» I ___ tired.",
+                "options": [
+                  {
+                    "text": "am",
+                    "ok": true,
+                    "why": "با I فعلِ am می‌آید."
+                  },
+                  {
+                    "text": "is",
+                    "ok": false,
+                    "why": "is برای he/she/it است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من دانشجو هستم.",
+                "frame": "I ___ a student.",
+                "answer": "am",
+                "accept": [],
+                "why": "با I فعلِ am می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "are",
+      "levelWordId": "level:A1:0990",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1084",
+          "senseId": "lex:A1:cefrj-are",
+          "meaningEn": "The form of “be” used with “you”, “we”, “they” and plural nouns in the present tense."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-are",
+        "headword": "are",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-are",
+            "pos": "verb",
+            "gloss": "هستی؛ هستیم؛ هستند (are)",
+            "meaning": "شکلی از فعلِ be که در زمانِ حال با you، we، they و اسم‌های جمع می‌آید.",
+            "grammar": [
+              {
+                "pattern": "you / we / they are",
+                "note": "با you، we و they فعلِ are می‌آید."
+              },
+              {
+                "pattern": "Are you…?",
+                "note": "برای سؤال are پیش از فاعل می‌آید: Are you ready?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "My parents are teachers.",
+                "fa": "پدر و مادرم معلم هستند."
+              },
+              {
+                "en": "Are you hungry?",
+                "fa": "گرسنه‌ای؟"
+              },
+              {
+                "en": "We are on the bus now.",
+                "fa": "ما الان در اتوبوسیم."
+              }
+            ],
+            "collocations": [
+              "Are you OK?",
+              "they are here"
+            ],
+            "collocationFa": {
+              "Are you OK?": "حالت خوب است؟",
+              "they are here": "آن‌ها اینجا هستند"
+            },
+            "usage": "are با you (مفرد و جمع)، we، they و اسم‌های جمع می‌آید.",
+            "mistake": {
+              "wrong": "They is my friends.",
+              "wrongFa": "آن‌ها دوستانِ من است؛ اما با they فعلِ is آمده است.",
+              "right": "They are my friends.",
+              "rightFa": "آن‌ها دوستانِ من هستند.",
+              "why": "با they فعلِ are می‌آید، نه is."
+            },
+            "pronunciation": {
+              "gb": "/ɑː/",
+              "us": "/ɑːr/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The children ___ in the garden.",
+                "answer": "are",
+                "accept": [],
+                "fa": "بچه‌ها در باغ هستند.",
+                "why": "با اسمِ جمع (the children) فعلِ are می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«ما برادریم.» We ___ brothers.",
+                "options": [
+                  {
+                    "text": "are",
+                    "ok": true,
+                    "why": "با we فعلِ are می‌آید."
+                  },
+                  {
+                    "text": "am",
+                    "ok": false,
+                    "why": "am فقط با I می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کتاب‌ها روی میز هستند.",
+                "frame": "The books ___ on the table.",
+                "answer": "are",
+                "accept": [],
+                "why": "با فاعلِ جمع فعلِ are می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "broken",
+      "levelWordId": "level:A1:0992",
+      "existingEntryIds": [
+        "lex:A2:broken"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1086",
+          "senseId": "lex:A2:broken",
+          "meaningEn": "Damaged, in pieces, or not working correctly."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:broken",
+        "headword": "broken",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:broken",
+            "pos": "adjective",
+            "gloss": "شکسته؛ خراب",
+            "meaning": "آسیب‌دیده یا تکه‌تکه، یا چیزی که درست کار نمی‌کند.",
+            "grammar": [
+              {
+                "pattern": "be broken",
+                "note": "broken پس از فعل می‌آید: The window is broken."
+              },
+              {
+                "pattern": "a broken + noun",
+                "note": "broken پیش از اسم هم می‌آید: a broken cup."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Don't touch the broken glass.",
+                "fa": "به شیشهٔ شکسته دست نزن."
+              },
+              {
+                "en": "My watch is broken, so I don't know the time.",
+                "fa": "ساعتم خراب است، پس نمی‌دانم ساعت چند است."
+              },
+              {
+                "en": "He has a broken arm after the accident.",
+                "fa": "او بعد از تصادف دستش شکسته است."
+              }
+            ],
+            "collocations": [
+              "a broken window",
+              "a broken leg"
+            ],
+            "collocationFa": {
+              "a broken window": "پنجرهٔ شکسته",
+              "a broken leg": "پای شکسته"
+            },
+            "usage": "broken صفت است و از فعلِ break می‌آید. برای دستگاهِ خراب هم broken به کار می‌رود.",
+            "mistake": {
+              "wrong": "My phone is break.",
+              "wrongFa": "تلفنم شکستن است؛ اما فعلِ ساده آمده است.",
+              "right": "My phone is broken.",
+              "rightFa": "تلفنم خراب است.",
+              "why": "پس از is صفتِ broken می‌آید؛ break فعل است."
+            },
+            "pronunciation": {
+              "gb": "/ˈbrəʊkən/",
+              "us": "/ˈbroʊkən/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "We can't use the lift because it's ___.",
+                "answer": "broken",
+                "accept": [
+                  "out of order"
+                ],
+                "fa": "نمی‌توانیم از آسانسور استفاده کنیم چون خراب است.",
+                "why": "broken یعنی خراب."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "The chair is broken.",
+                    "ok": true,
+                    "why": "پس از is صفتِ broken می‌آید."
+                  },
+                  {
+                    "text": "The chair is break.",
+                    "ok": false,
+                    "why": "break فعل است، نه صفت."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "فنجان شکسته است.",
+                "frame": "The cup is ___.",
+                "answer": "broken",
+                "accept": [],
+                "why": "پس از is صفتِ broken می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "CD player",
+      "levelWordId": "level:A1:0995",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1089",
+          "senseId": "lex:A1:cefrj-cd-player",
+          "meaningEn": "A machine that plays CDs (compact discs) so that you can listen to music or other recordings."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-cd-player",
+        "headword": "CD player",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-cd-player",
+            "pos": "noun",
+            "gloss": "سی‌دی‌پلیر؛ دستگاهِ پخشِ سی‌دی",
+            "meaning": "دستگاهی که سی‌دی پخش می‌کند تا به موسیقی یا ضبط‌های دیگر گوش کنیم.",
+            "grammar": [
+              {
+                "pattern": "a CD player / CD players",
+                "note": "در جمع فقط player جمع می‌شود: CD players."
+              },
+              {
+                "pattern": "play a CD on a CD player",
+                "note": "سی‌دی را on a CD player پخش می‌کنیم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My uncle still has an old CD player in his car.",
+                "fa": "عمویم هنوز یک سی‌دی‌پلیرِ قدیمی در ماشینش دارد."
+              },
+              {
+                "en": "Put the disc in the CD player and press play.",
+                "fa": "دیسک را در سی‌دی‌پلیر بگذار و دکمهٔ پخش را بزن."
+              },
+              {
+                "en": "The teacher brought a CD player to the classroom.",
+                "fa": "معلم یک سی‌دی‌پلیر به کلاس آورد."
+              }
+            ],
+            "collocations": [
+              "an old CD player",
+              "a portable CD player"
+            ],
+            "collocationFa": {
+              "an old CD player": "سی‌دی‌پلیرِ قدیمی",
+              "a portable CD player": "سی‌دی‌پلیرِ قابلِ حمل"
+            },
+            "usage": "CD با حرف‌های بزرگ نوشته می‌شود. در جمع، CD ثابت می‌ماند و player جمع می‌شود.",
+            "mistake": {
+              "wrong": "He bought a CDs player.",
+              "wrongFa": "او یک سی‌دی‌ها‌پلیر خرید؛ اما CD جمع بسته شده است.",
+              "right": "He bought a CD player.",
+              "rightFa": "او یک سی‌دی‌پلیر خرید.",
+              "why": "در اسمِ مرکب، بخشِ اول جمع نمی‌شود: a CD player."
+            },
+            "pronunciation": {
+              "gb": "/ˌsiː ˈdiː ˌpleɪə/",
+              "us": "/ˌsiː ˈdiː ˌpleɪər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I put my favourite disc in the ___ and listened to music.",
+                "answer": "CD player",
+                "accept": [],
+                "fa": "دیسکِ محبوبم را در سی‌دی‌پلیر گذاشتم و موسیقی گوش دادم.",
+                "why": "CD player دستگاهِ پخشِ سی‌دی است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "جمعِ CD player کدام است؟",
+                "options": [
+                  {
+                    "text": "CD players",
+                    "ok": true,
+                    "why": "در اسمِ مرکب بخشِ آخر جمع می‌شود."
+                  },
+                  {
+                    "text": "CDs player",
+                    "ok": false,
+                    "why": "بخشِ اول (CD) جمع نمی‌شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سی‌دی‌پلیرم دیگر کار نمی‌کند.",
+                "frame": "My ___ doesn't work any more.",
+                "answer": "CD player",
+                "accept": [],
+                "why": "پس از my اسمِ مرکبِ CD player می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "closed",
+      "levelWordId": "level:A1:0996",
+      "existingEntryIds": [
+        "lex:A2:closed"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1090",
+          "senseId": "lex:A2:closed",
+          "meaningEn": "Not open, so that people cannot go in or use it."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:closed",
+        "headword": "closed",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:closed",
+            "pos": "adjective",
+            "gloss": "بسته؛ تعطیل",
+            "meaning": "باز نبودن، طوری که مردم نمی‌توانند وارد شوند یا از آن استفاده کنند.",
+            "grammar": [
+              {
+                "pattern": "be closed",
+                "note": "closed پس از فعل می‌آید: The shop is closed."
+              },
+              {
+                "pattern": "closed on + day",
+                "note": "برای روزِ تعطیل on می‌آید: closed on Fridays."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The bank is closed on Fridays.",
+                "fa": "بانک جمعه‌ها تعطیل است."
+              },
+              {
+                "en": "Keep your eyes closed until I say “now”.",
+                "fa": "تا نگفته‌ام «حالا» چشم‌هایت را بسته نگه دار."
+              },
+              {
+                "en": "The road was closed because of the snow.",
+                "fa": "جاده به خاطرِ برف بسته بود."
+              }
+            ],
+            "collocations": [
+              "closed on Sundays",
+              "with closed eyes"
+            ],
+            "collocationFa": {
+              "closed on Sundays": "یکشنبه‌ها تعطیل",
+              "with closed eyes": "با چشم‌های بسته"
+            },
+            "usage": "closed صفت است و برعکسِ open. روی درِ مغازه‌ها CLOSED یعنی «تعطیل».",
+            "mistake": {
+              "wrong": "The shops are closeds today.",
+              "wrongFa": "مغازه‌ها امروز تعطیل‌ها هستند؛ اما صفت s جمع گرفته است.",
+              "right": "The shops are closed today.",
+              "rightFa": "مغازه‌ها امروز تعطیل‌اند.",
+              "why": "صفت در انگلیسی جمع بسته نمی‌شود: closed."
+            },
+            "pronunciation": {
+              "gb": "/kləʊzd/",
+              "us": "/kloʊzd/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Sorry, we can't buy bread now. The bakery is ___.",
+                "answer": "closed",
+                "accept": [
+                  "shut"
+                ],
+                "fa": "متأسفم، الان نمی‌توانیم نان بخریم. نانوایی بسته است.",
+                "why": "closed یعنی بسته یا تعطیل."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "برعکسِ closed کدام است؟",
+                "options": [
+                  {
+                    "text": "open",
+                    "ok": true,
+                    "why": "open یعنی باز."
+                  },
+                  {
+                    "text": "empty",
+                    "ok": false,
+                    "why": "empty یعنی خالی."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "موزه دوشنبه‌ها تعطیل است.",
+                "frame": "The museum is ___ on Mondays.",
+                "answer": "closed",
+                "accept": [
+                  "shut"
+                ],
+                "why": "پس از is صفتِ closed می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}
