@@ -1,0 +1,2440 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 201–220 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 201,
+    "lastNewHeadword": 220
+  },
+  "count": 20,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "basketball",
+      "levelWordId": "level:A1:0859",
+      "existingEntryIds": [
+        "lex:A2:basketball"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0950",
+          "senseId": "lex:A2:basketball",
+          "meaningEn": "A game in which two teams try to throw a ball through a high ring with a net."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:basketball",
+        "headword": "basketball",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:basketball",
+            "pos": "noun",
+            "gloss": "بسکتبال",
+            "meaning": "بازی‌ای که در آن دو تیم تلاش می‌کنند توپ را از داخلِ حلقه‌ای بلند با تور بیندازند.",
+            "grammar": [
+              {
+                "pattern": "play basketball",
+                "note": "نامِ ورزش بدونِ the می‌آید: play basketball."
+              },
+              {
+                "pattern": "basketball + noun",
+                "note": "basketball پیش از اسم می‌آید: a basketball court."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My brother plays basketball after school.",
+                "fa": "برادرم بعد از مدرسه بسکتبال بازی می‌کند."
+              },
+              {
+                "en": "You need to be tall to be good at basketball.",
+                "fa": "برای اینکه در بسکتبال خوب باشی باید قدبلند باشی."
+              },
+              {
+                "en": "The basketball team won their first game.",
+                "fa": "تیمِ بسکتبال اولین بازی‌اش را برد."
+              }
+            ],
+            "collocations": [
+              "play basketball",
+              "a basketball court"
+            ],
+            "collocationFa": {
+              "play basketball": "بسکتبال بازی کردن",
+              "a basketball court": "زمینِ بسکتبال"
+            },
+            "usage": "نامِ ورزش‌ها بدونِ the می‌آید. basketball به خودِ توپِ بسکتبال هم گفته می‌شود.",
+            "mistake": {
+              "wrong": "There are two basketball court in the park.",
+              "wrongFa": "در پارک دو زمینِ بسکتبال هست؛ اما court باید جمع باشد.",
+              "right": "There are two basketball courts in the park.",
+              "rightFa": "در پارک دو زمینِ بسکتبال هست.",
+              "why": "پس از two اسمِ اصلی (court) جمع می‌شود؛ basketball مثلِ صفت جمع نمی‌شود."
+            },
+            "pronunciation": {
+              "gb": "/ˈbɑːskɪtbɔːl/",
+              "us": "/ˈbæskɪtbɔːl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "We play ___ in the school gym.",
+                "answer": "basketball",
+                "accept": [],
+                "fa": "ما در سالنِ ورزشِ مدرسه بسکتبال بازی می‌کنیم.",
+                "why": "نامِ ورزش پس از play بدونِ the می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "two basketball courts",
+                    "ok": true,
+                    "why": "court جمع می‌شود و basketball نه."
+                  },
+                  {
+                    "text": "two basketballs court",
+                    "ok": false,
+                    "why": "basketball پیش از اسم جمع بسته نمی‌شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او در تیمِ بسکتبال است.",
+                "frame": "She is on the ___ team.",
+                "answer": "basketball",
+                "accept": [],
+                "why": "basketball team یعنی تیمِ بسکتبال."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "pet",
+      "levelWordId": "level:A1:0867",
+      "existingEntryIds": [
+        "lex:A2:pet"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0958",
+          "senseId": "lex:A2:pet",
+          "meaningEn": "An animal that you keep at home and look after, such as a cat or a dog."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:pet",
+        "headword": "pet",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:pet",
+            "pos": "noun",
+            "gloss": "حیوانِ خانگی",
+            "meaning": "حیوانی که در خانه نگه می‌داریم و از آن مراقبت می‌کنیم، مثلِ گربه یا سگ.",
+            "grammar": [
+              {
+                "pattern": "have a pet",
+                "note": "برای داشتنِ حیوانِ خانگی have a pet می‌گوییم."
+              },
+              {
+                "pattern": "pet + animal",
+                "note": "pet پیش از نامِ حیوان هم می‌آید: a pet rabbit."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Do you have a pet?",
+                "fa": "حیوانِ خانگی داری؟"
+              },
+              {
+                "en": "Our pet cat sleeps on my bed.",
+                "fa": "گربهٔ خانگیِ ما روی تختم می‌خوابد."
+              },
+              {
+                "en": "Pets need food, water and love.",
+                "fa": "حیوان‌های خانگی به غذا، آب و محبت نیاز دارند."
+              }
+            ],
+            "collocations": [
+              "a pet cat",
+              "look after a pet"
+            ],
+            "collocationFa": {
+              "a pet cat": "گربهٔ خانگی",
+              "look after a pet": "از حیوانِ خانگی مراقبت کردن"
+            },
+            "usage": "pet قابل‌شمارش است. pet shop فروشگاهِ حیوان‌های خانگی است.",
+            "mistake": {
+              "wrong": "Do you have any pets animals?",
+              "wrongFa": "حیوان‌های خانگی‌ها داری؟ اما pets و animals با هم آمده‌اند.",
+              "right": "Do you have any pets?",
+              "rightFa": "حیوانِ خانگی داری؟",
+              "why": "pet خودش یعنی حیوانِ خانگی؛ پس از آن animals لازم نیست."
+            },
+            "pronunciation": {
+              "gb": "/pet/",
+              "us": "/pet/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "A dog is a popular ___ in many countries.",
+                "answer": "pet",
+                "accept": [],
+                "fa": "سگ در بسیاری از کشورها حیوانِ خانگیِ محبوبی است.",
+                "why": "pet یعنی حیوانِ خانگی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "I have two pets.",
+                    "ok": true,
+                    "why": "pets خودش یعنی حیوان‌های خانگی."
+                  },
+                  {
+                    "text": "I have two pets animals.",
+                    "ok": false,
+                    "why": "pets و animals با هم نمی‌آیند."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ماهیِ خانگیِ من نارنجی است.",
+                "frame": "My ___ fish is orange.",
+                "answer": "pet",
+                "accept": [],
+                "why": "pet fish یعنی ماهیِ خانگی."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "clever",
+      "levelWordId": "level:A1:0869",
+      "existingEntryIds": [
+        "lex:A2:clever"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0960",
+          "senseId": "lex:A2:clever",
+          "meaningEn": "Quick at learning and understanding things; intelligent."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:clever",
+        "headword": "clever",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:clever",
+            "pos": "adjective",
+            "gloss": "باهوش؛ زیرک",
+            "meaning": "کسی که زود یاد می‌گیرد و می‌فهمد؛ باهوش.",
+            "grammar": [
+              {
+                "pattern": "clever + noun",
+                "note": "clever پیش از اسم می‌آید: a clever idea."
+              },
+              {
+                "pattern": "clever at + activity",
+                "note": "برای مهارت در کاری at می‌آید: clever at maths."
+              }
+            ],
+            "examples": [
+              {
+                "en": "She is a clever girl.",
+                "fa": "او دخترِ باهوشی است."
+              },
+              {
+                "en": "That's a clever way to save money.",
+                "fa": "این روشِ زیرکانه‌ای برای پس‌انداز است."
+              },
+              {
+                "en": "He is very clever at puzzles.",
+                "fa": "او در حلِ معما خیلی باهوش است."
+              }
+            ],
+            "collocations": [
+              "a clever idea",
+              "clever at something"
+            ],
+            "collocationFa": {
+              "a clever idea": "فکرِ زیرکانه",
+              "clever at something": "باهوش در کاری"
+            },
+            "usage": "clever در انگلیسیِ بریتانیایی خیلی رایج است و هم‌معنای smart است.",
+            "mistake": {
+              "wrong": "That is a cleverly idea.",
+              "wrongFa": "آن یک ایدهٔ زیرکانه‌وار است؛ اما پیش از اسم قید آمده است.",
+              "right": "That is a clever idea.",
+              "rightFa": "آن فکرِ زیرکانه‌ای است.",
+              "why": "پیش از اسم صفتِ clever می‌آید؛ cleverly قید است."
+            },
+            "pronunciation": {
+              "gb": "/ˈklevə/",
+              "us": "/ˈklevər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ fox found a way into the garden.",
+                "answer": "clever",
+                "accept": [
+                  "smart"
+                ],
+                "fa": "روباهِ زیرک راهی به داخلِ باغ پیدا کرد.",
+                "why": "clever یعنی باهوش و زیرک."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه هم‌معنای clever است؟",
+                "options": [
+                  {
+                    "text": "smart",
+                    "ok": true,
+                    "why": "smart هم یعنی باهوش."
+                  },
+                  {
+                    "text": "tired",
+                    "ok": false,
+                    "why": "tired یعنی خسته."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دوستم خیلی باهوش است.",
+                "frame": "My friend is very ___.",
+                "answer": "clever",
+                "accept": [
+                  "smart",
+                  "intelligent"
+                ],
+                "why": "پس از very صفتِ clever می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "zoo",
+      "levelWordId": "level:A1:0870",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0961",
+          "senseId": "lex:A1:cefrj-zoo",
+          "meaningEn": "A place where wild animals are kept so that people can go and see them."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-zoo",
+        "headword": "zoo",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-zoo",
+            "pos": "noun",
+            "gloss": "باغ‌وحش",
+            "meaning": "جایی که حیوان‌های وحشی نگهداری می‌شوند تا مردم بروند و آن‌ها را ببینند.",
+            "grammar": [
+              {
+                "pattern": "go to the zoo",
+                "note": "برای رفتن به باغ‌وحش go to the zoo می‌گوییم."
+              },
+              {
+                "pattern": "at the zoo",
+                "note": "برای بودن در باغ‌وحش at the zoo می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We saw lions and monkeys at the zoo.",
+                "fa": "در باغ‌وحش شیرها و میمون‌ها را دیدیم."
+              },
+              {
+                "en": "The children love going to the zoo.",
+                "fa": "بچه‌ها رفتن به باغ‌وحش را خیلی دوست دارند."
+              },
+              {
+                "en": "This zoo has two baby elephants.",
+                "fa": "این باغ‌وحش دو بچه‌فیل دارد."
+              }
+            ],
+            "collocations": [
+              "go to the zoo",
+              "visit the zoo"
+            ],
+            "collocationFa": {
+              "go to the zoo": "به باغ‌وحش رفتن",
+              "visit the zoo": "از باغ‌وحش دیدن کردن"
+            },
+            "usage": "zoo قابل‌شمارش است و معمولاً با the می‌آید: the zoo.",
+            "mistake": {
+              "wrong": "We went to zoo yesterday.",
+              "wrongFa": "دیروز به باغ‌وحش رفتیم؛ اما the نیامده است.",
+              "right": "We went to the zoo yesterday.",
+              "rightFa": "دیروز به باغ‌وحش رفتیم.",
+              "why": "zoo قابل‌شمارش است و اینجا the لازم دارد: to the zoo."
+            },
+            "pronunciation": {
+              "gb": "/zuː/",
+              "us": "/zuː/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The giraffes at the ___ are very tall.",
+                "answer": "zoo",
+                "accept": [],
+                "fa": "زرافه‌های باغ‌وحش خیلی بلندند.",
+                "why": "at the zoo یعنی در باغ‌وحش."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "go to zoo",
+                    "ok": false,
+                    "why": "اینجا the لازم است."
+                  },
+                  {
+                    "text": "go to the zoo",
+                    "ok": true,
+                    "why": "go to the zoo یعنی به باغ‌وحش رفتن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "جمعه به باغ‌وحش می‌رویم.",
+                "frame": "We are going to the ___ on Friday.",
+                "answer": "zoo",
+                "accept": [],
+                "why": "پس از the اسمِ zoo می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "rabbit",
+      "levelWordId": "level:A1:0876",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0967",
+          "senseId": "lex:A1:cefrj-rabbit",
+          "meaningEn": "A small animal with long ears and soft fur that lives in holes in the ground or is kept as a pet."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-rabbit",
+        "headword": "rabbit",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-rabbit",
+            "pos": "noun",
+            "gloss": "خرگوش",
+            "meaning": "حیوانِ کوچکی با گوش‌های دراز و موی نرم که در لانه‌هایی زیرِ زمین زندگی می‌کند یا به‌عنوانِ حیوانِ خانگی نگهداری می‌شود.",
+            "grammar": [
+              {
+                "pattern": "a rabbit / rabbits",
+                "note": "rabbit قابل‌شمارش است."
+              },
+              {
+                "pattern": "a pet rabbit",
+                "note": "برای خرگوشِ خانگی a pet rabbit می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The rabbit has long white ears.",
+                "fa": "خرگوش گوش‌های درازِ سفیدی دارد."
+              },
+              {
+                "en": "We keep a pet rabbit in the garden.",
+                "fa": "ما یک خرگوشِ خانگی در باغ نگه می‌داریم."
+              },
+              {
+                "en": "Rabbits can run very fast.",
+                "fa": "خرگوش‌ها می‌توانند خیلی سریع بدوند."
+              }
+            ],
+            "collocations": [
+              "a pet rabbit",
+              "a baby rabbit"
+            ],
+            "collocationFa": {
+              "a pet rabbit": "خرگوشِ خانگی",
+              "a baby rabbit": "بچه‌خرگوش"
+            },
+            "usage": "rabbit قابل‌شمارش است. خرگوشِ صحرایی و بزرگ‌تر hare نام دارد.",
+            "mistake": {
+              "wrong": "The rabbit are eating a carrot.",
+              "wrongFa": "خرگوش دارند هویج می‌خورند؛ اما فعل جمع آمده است.",
+              "right": "The rabbit is eating a carrot.",
+              "rightFa": "خرگوش دارد هویج می‌خورد.",
+              "why": "the rabbit مفرد است و فعلِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈræbɪt/",
+              "us": "/ˈræbɪt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ jumped into its hole.",
+                "answer": "rabbit",
+                "accept": [
+                  "bunny"
+                ],
+                "fa": "خرگوش به داخلِ لانه‌اش پرید.",
+                "why": "rabbit حیوانی با گوش‌های دراز است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام حیوان گوش‌های دراز دارد و هویج دوست دارد؟",
+                "options": [
+                  {
+                    "text": "rabbit",
+                    "ok": true,
+                    "why": "rabbit یعنی خرگوش."
+                  },
+                  {
+                    "text": "robot",
+                    "ok": false,
+                    "why": "robot یعنی آدم‌آهنی."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "خرگوشم سفید است.",
+                "frame": "My ___ is white.",
+                "answer": "rabbit",
+                "accept": [
+                  "bunny"
+                ],
+                "why": "پس از my اسمِ rabbit می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "jet",
+      "levelWordId": "level:A1:0877",
+      "existingEntryIds": [
+        "lex:B2x:jet"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0968",
+          "senseId": "lex:B2x:jet",
+          "meaningEn": "A fast plane with engines that push out air and gas behind them."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:jet",
+        "headword": "jet",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:jet",
+            "pos": "noun",
+            "gloss": "هواپیمای جت",
+            "meaning": "هواپیمای سریعی که موتورهایش هوا و گاز را به عقب بیرون می‌رانند.",
+            "grammar": [
+              {
+                "pattern": "a jet / jets",
+                "note": "jet قابل‌شمارش است."
+              },
+              {
+                "pattern": "by jet",
+                "note": "برای سفر با جت by jet هم گفته می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "A jet flew low over the city.",
+                "fa": "یک هواپیمای جت در ارتفاعِ کم از روی شهر گذشت."
+              },
+              {
+                "en": "Jets can fly very high and very fast.",
+                "fa": "هواپیماهای جت می‌توانند خیلی بالا و خیلی سریع پرواز کنند."
+              },
+              {
+                "en": "We heard the noise of a jet in the sky.",
+                "fa": "صدای یک جت را در آسمان شنیدیم."
+              }
+            ],
+            "collocations": [
+              "a jet plane",
+              "a private jet"
+            ],
+            "collocationFa": {
+              "a jet plane": "هواپیمای جت",
+              "a private jet": "جتِ شخصی"
+            },
+            "usage": "jet نوعی هواپیماست. jet lag یعنی خستگیِ پس از سفرِ هوایی طولانی و جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "We saw two jet in the sky.",
+              "wrongFa": "در آسمان دو جت دیدیم؛ اما اسم باید جمع باشد.",
+              "right": "We saw two jets in the sky.",
+              "rightFa": "در آسمان دو جت دیدیم.",
+              "why": "پس از two اسمِ jet جمع می‌شود: jets."
+            },
+            "pronunciation": {
+              "gb": "/dʒet/",
+              "us": "/dʒet/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The president flew in a private ___.",
+                "answer": "jet",
+                "accept": [
+                  "plane"
+                ],
+                "fa": "رئیس‌جمهور با یک جتِ شخصی پرواز کرد.",
+                "why": "private jet یعنی جتِ شخصی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه نوعی هواپیماست؟",
+                "options": [
+                  {
+                    "text": "jet",
+                    "ok": true,
+                    "why": "jet هواپیمای سریع است."
+                  },
+                  {
+                    "text": "jeans",
+                    "ok": false,
+                    "why": "jeans یعنی شلوارِ جین."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "یک جت از بالای خانه‌مان گذشت.",
+                "frame": "A ___ flew over our house.",
+                "answer": "jet",
+                "accept": [
+                  "plane"
+                ],
+                "why": "پس از A اسمِ مفردِ jet می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "palace",
+      "levelWordId": "level:A1:0878",
+      "existingEntryIds": [
+        "lex:A2:palace"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0969",
+          "senseId": "lex:A2:palace",
+          "meaningEn": "A very large and beautiful building where a king, queen or president lives or once lived."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:palace",
+        "headword": "palace",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:palace",
+            "pos": "noun",
+            "gloss": "کاخ",
+            "meaning": "ساختمانی بسیار بزرگ و زیبا که پادشاه، ملکه یا رئیس‌جمهور در آن زندگی می‌کند یا زمانی زندگی می‌کرد.",
+            "grammar": [
+              {
+                "pattern": "a palace / palaces",
+                "note": "palace قابل‌شمارش است."
+              },
+              {
+                "pattern": "Name + Palace",
+                "note": "در نامِ کاخ‌ها Palace با حرفِ بزرگ می‌آید: Golestan Palace."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Golestan Palace is in the centre of Tehran.",
+                "fa": "کاخِ گلستان در مرکزِ تهران است."
+              },
+              {
+                "en": "The queen lives in a big palace.",
+                "fa": "ملکه در یک کاخِ بزرگ زندگی می‌کند."
+              },
+              {
+                "en": "The palace has beautiful gardens.",
+                "fa": "کاخ باغ‌های زیبایی دارد."
+              }
+            ],
+            "collocations": [
+              "a royal palace",
+              "palace gardens"
+            ],
+            "collocationFa": {
+              "a royal palace": "کاخِ سلطنتی",
+              "palace gardens": "باغ‌های کاخ"
+            },
+            "usage": "palace بزرگ‌تر و مجلل‌تر از house است. castle (قلعه) ساختمانی محکم برای دفاع است.",
+            "mistake": {
+              "wrong": "Golestan Palace are very old.",
+              "wrongFa": "کاخِ گلستان خیلی قدیمی هستند؛ اما فعل جمع آمده است.",
+              "right": "Golestan Palace is very old.",
+              "rightFa": "کاخِ گلستان خیلی قدیمی است.",
+              "why": "نامِ یک کاخ مفرد است و فعلِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈpæləs/",
+              "us": "/ˈpæləs/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Tourists visit the old ___ every day.",
+                "answer": "palace",
+                "accept": [],
+                "fa": "گردشگران هر روز از کاخِ قدیمی دیدن می‌کنند.",
+                "why": "palace ساختمانِ بزرگِ پادشاه یا ملکه است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "ساختمانِ محکمِ قدیمی برای دفاع چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "palace",
+                    "ok": false,
+                    "why": "palace کاخِ مجلل است."
+                  },
+                  {
+                    "text": "castle",
+                    "ok": true,
+                    "why": "castle قلعهٔ دفاعی است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "کاخ صد اتاق دارد.",
+                "frame": "The ___ has a hundred rooms.",
+                "answer": "palace",
+                "accept": [],
+                "why": "پس از The اسمِ palace می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "cloth",
+      "levelWordId": "level:A1:0881",
+      "existingEntryIds": [
+        "lex:B1:cloth"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0972",
+          "senseId": "lex:B1:cloth",
+          "meaningEn": "Material made from cotton, wool or other fibres, used for making clothes and other things; also a piece of this material used for cleaning or covering something."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:cloth",
+        "headword": "cloth",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:cloth",
+            "pos": "noun",
+            "gloss": "پارچه",
+            "meaning": "ماده‌ای از پنبه، پشم یا الیافِ دیگر که با آن لباس و چیزهای دیگر می‌سازند؛ همچنین تکه‌ای از این پارچه برای تمیز کردن یا پوشاندنِ چیزی.",
+            "grammar": [
+              {
+                "pattern": "cloth",
+                "note": "cloth در این معنا معمولاً غیرقابل‌شمارش است و فعلِ مفرد می‌گیرد."
+              },
+              {
+                "pattern": "a piece of cloth",
+                "note": "برای یک تکه پارچه a piece of cloth می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "This cloth is very soft.",
+                "fa": "این پارچه خیلی نرم است."
+              },
+              {
+                "en": "She made a bag from an old piece of cloth.",
+                "fa": "او از یک تکه پارچهٔ قدیمی کیف درست کرد."
+              },
+              {
+                "en": "The table was covered with a white cloth.",
+                "fa": "روی میز یک پارچهٔ سفید کشیده بودند."
+              }
+            ],
+            "collocations": [
+              "a piece of cloth",
+              "cotton cloth"
+            ],
+            "collocationFa": {
+              "a piece of cloth": "یک تکه پارچه",
+              "cotton cloth": "پارچهٔ نخی"
+            },
+            "usage": "cloth (پارچه) با clothes (لباس‌ها) فرق دارد. a cloth همچنین یعنی دستمالِ پارچه‌ای برای تمیز کردن.",
+            "mistake": {
+              "wrong": "This cloth are made of cotton.",
+              "wrongFa": "این پارچه از نخ ساخته شده‌اند؛ اما فعل جمع آمده است.",
+              "right": "This cloth is made of cotton.",
+              "rightFa": "این پارچه از نخ ساخته شده است.",
+              "why": "this cloth مفرد است و فعلِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/klɒθ/",
+              "us": "/klɔːθ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Wipe the table with a wet ___.",
+                "answer": "cloth",
+                "accept": [],
+                "fa": "میز را با یک دستمالِ خیس پاک کن.",
+                "why": "cloth اینجا دستمالِ پارچه‌ای است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام واژه یعنی «لباس‌ها»؟",
+                "options": [
+                  {
+                    "text": "cloth",
+                    "ok": false,
+                    "why": "cloth یعنی پارچه."
+                  },
+                  {
+                    "text": "clothes",
+                    "ok": true,
+                    "why": "clothes یعنی لباس‌ها."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این پارچهٔ آبی ارزان است.",
+                "frame": "This blue ___ is cheap.",
+                "answer": "cloth",
+                "accept": [
+                  "fabric",
+                  "material"
+                ],
+                "why": "پس از blue اسمِ cloth می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "bat",
+      "levelWordId": "level:A1:0882",
+      "existingEntryIds": [
+        "lex:B2x:bat",
+        "lex:C1:bat"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0973",
+          "senseId": "lex:B2x:bat",
+          "meaningEn": "A piece of wood used for hitting the ball in games such as baseball or cricket."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:bat",
+        "headword": "bat",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:bat",
+            "pos": "noun",
+            "gloss": "چوبِ بازی (بیسبال یا کریکت)",
+            "meaning": "تکه‌ای چوب که در بازی‌هایی مثلِ بیسبال یا کریکت با آن به توپ ضربه می‌زنند.",
+            "grammar": [
+              {
+                "pattern": "a bat / bats",
+                "note": "bat قابل‌شمارش است."
+              },
+              {
+                "pattern": "hit the ball with a bat",
+                "note": "برای ضربه زدن با چوب with a bat می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "He hit the ball hard with his bat.",
+                "fa": "او با چوبش محکم به توپ ضربه زد."
+              },
+              {
+                "en": "I need a new cricket bat.",
+                "fa": "یک چوبِ کریکتِ نو لازم دارم."
+              },
+              {
+                "en": "She held the bat with both hands.",
+                "fa": "او چوب را با دو دست گرفت."
+              }
+            ],
+            "collocations": [
+              "a baseball bat",
+              "a cricket bat"
+            ],
+            "collocationFa": {
+              "a baseball bat": "چوبِ بیسبال",
+              "a cricket bat": "چوبِ کریکت"
+            },
+            "usage": "در این درس bat یعنی چوبِ بازی. bat به معنای «خفاش» (حیوان) واژه‌ای با همین املا است و جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "He hit the ball with bat.",
+              "wrongFa": "او با چوب به توپ زد؛ اما پیش از bat حرفِ تعریف نیامده است.",
+              "right": "He hit the ball with his bat.",
+              "rightFa": "او با چوبش به توپ زد.",
+              "why": "bat قابل‌شمارش است و تنها نمی‌آید: with a bat یا with his bat."
+            },
+            "pronunciation": {
+              "gb": "/bæt/",
+              "us": "/bæt/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "In baseball, you hit the ball with a ___.",
+                "answer": "bat",
+                "accept": [],
+                "fa": "در بیسبال با چوب به توپ ضربه می‌زنی.",
+                "why": "bat چوبِ بازی است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«چوبِ بیسبال» کدام است؟",
+                "options": [
+                  {
+                    "text": "a baseball bat",
+                    "ok": true,
+                    "why": "اسمِ اصلی (bat) در آخر می‌آید."
+                  },
+                  {
+                    "text": "a bat baseball",
+                    "ok": false,
+                    "why": "در انگلیسی اسمِ اصلی در آخر می‌آید: baseball bat."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "چوبِ بیسبالِ من شکست.",
+                "frame": "My baseball ___ broke.",
+                "answer": "bat",
+                "accept": [],
+                "why": "baseball bat یعنی چوبِ بیسبال."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "soccer",
+      "levelWordId": "level:A1:0884",
+      "existingEntryIds": [
+        "lex:A2:soccer"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0975",
+          "senseId": "lex:A2:soccer",
+          "meaningEn": "A game in which two teams of eleven players try to kick a ball into a goal (American English for football)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:soccer",
+        "headword": "soccer",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:soccer",
+            "pos": "noun",
+            "gloss": "فوتبال",
+            "meaning": "بازی‌ای که در آن دو تیمِ یازده‌نفره تلاش می‌کنند توپ را با پا به دروازه بزنند؛ نامِ آمریکاییِ فوتبال.",
+            "grammar": [
+              {
+                "pattern": "play soccer",
+                "note": "نامِ ورزش بدونِ a یا the می‌آید: play soccer."
+              },
+              {
+                "pattern": "soccer + noun",
+                "note": "soccer پیش از اسم می‌آید: a soccer ball."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We play soccer in the park on Fridays.",
+                "fa": "جمعه‌ها در پارک فوتبال بازی می‌کنیم."
+              },
+              {
+                "en": "Soccer is the most popular sport in the world.",
+                "fa": "فوتبال محبوب‌ترین ورزشِ جهان است."
+              },
+              {
+                "en": "He kicked the soccer ball over the wall.",
+                "fa": "او توپِ فوتبال را از روی دیوار شوت کرد."
+              }
+            ],
+            "collocations": [
+              "play soccer",
+              "a soccer team"
+            ],
+            "collocationFa": {
+              "play soccer": "فوتبال بازی کردن",
+              "a soccer team": "تیمِ فوتبال"
+            },
+            "usage": "soccer در آمریکا رایج است؛ در بریتانیا و بیشترِ کشورها به آن football می‌گویند. در آمریکا football به فوتبالِ آمریکایی اشاره دارد.",
+            "mistake": {
+              "wrong": "I play a soccer every weekend.",
+              "wrongFa": "من هر آخرِ هفته یک فوتبال بازی می‌کنم؛ اما a اضافه است.",
+              "right": "I play soccer every weekend.",
+              "rightFa": "من هر آخرِ هفته فوتبال بازی می‌کنم.",
+              "why": "پیش از نامِ ورزش a یا the نمی‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈsɒkə/",
+              "us": "/ˈsɑːkər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Our ___ team won the cup.",
+                "answer": "soccer",
+                "accept": [
+                  "football"
+                ],
+                "fa": "تیمِ فوتبالِ ما جام را برد.",
+                "why": "soccer team یعنی تیمِ فوتبال."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در بریتانیا به soccer چه می‌گویند؟",
+                "options": [
+                  {
+                    "text": "football",
+                    "ok": true,
+                    "why": "در بریتانیا football گفته می‌شود."
+                  },
+                  {
+                    "text": "baseball",
+                    "ok": false,
+                    "why": "baseball ورزشِ دیگری است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بچه‌ها در حیاط فوتبال بازی می‌کنند.",
+                "frame": "The kids are playing ___ in the yard.",
+                "answer": "soccer",
+                "accept": [
+                  "football"
+                ],
+                "why": "نامِ ورزش پس از playing بدونِ a یا the می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "corn",
+      "levelWordId": "level:A1:0885",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0976",
+          "senseId": "lex:A1:cefrj-corn",
+          "meaningEn": "A tall plant with yellow seeds that grow together on a long part called a cob; also the seeds as food (American English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-corn",
+        "headword": "corn",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-corn",
+            "pos": "noun",
+            "gloss": "ذرت",
+            "meaning": "گیاهی بلند با دانه‌های زرد که روی بلالی دراز می‌رویند؛ و همچنین خودِ دانه‌ها به‌عنوانِ غذا.",
+            "grammar": [
+              {
+                "pattern": "corn",
+                "note": "corn غیرقابل‌شمارش است و فعلِ مفرد می‌گیرد: The corn is sweet."
+              },
+              {
+                "pattern": "corn on the cob",
+                "note": "برای بلالِ ذرت corn on the cob می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We grilled some corn on the cob.",
+                "fa": "مقداری بلال کباب کردیم."
+              },
+              {
+                "en": "The farmer grows corn and wheat.",
+                "fa": "کشاورز ذرت و گندم می‌کارد."
+              },
+              {
+                "en": "I like corn in my salad.",
+                "fa": "ذرت را در سالادم دوست دارم."
+              }
+            ],
+            "collocations": [
+              "corn on the cob",
+              "sweet corn"
+            ],
+            "collocationFa": {
+              "corn on the cob": "بلال",
+              "sweet corn": "ذرتِ شیرین"
+            },
+            "usage": "corn در آمریکا رایج است؛ در بریتانیا به آن maize یا sweetcorn هم می‌گویند. popcorn (پاپ‌کورن) از ذرت درست می‌شود.",
+            "mistake": {
+              "wrong": "The corn are very sweet this summer.",
+              "wrongFa": "ذرت‌ها این تابستان خیلی شیرین هستند؛ اما فعل جمع آمده است.",
+              "right": "The corn is very sweet this summer.",
+              "rightFa": "ذرت این تابستان خیلی شیرین است.",
+              "why": "corn غیرقابل‌شمارش است و فعلِ مفرد (is) می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/kɔːn/",
+              "us": "/kɔːrn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Popcorn is made from ___.",
+                "answer": "corn",
+                "accept": [
+                  "maize"
+                ],
+                "fa": "پاپ‌کورن از ذرت درست می‌شود.",
+                "why": "corn یعنی ذرت."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "The corn is ready.",
+                    "ok": true,
+                    "why": "corn غیرقابل‌شمارش است و is می‌گیرد."
+                  },
+                  {
+                    "text": "The corn are ready.",
+                    "ok": false,
+                    "why": "corn فعلِ جمع نمی‌گیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "ذرت در مزرعه بلند است.",
+                "frame": "The ___ in the field is tall.",
+                "answer": "corn",
+                "accept": [
+                  "maize"
+                ],
+                "why": "پس از The اسمِ corn می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "blank",
+      "levelWordId": "level:A1:0887",
+      "existingEntryIds": [
+        "lex:A2:blank"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0978",
+          "senseId": "lex:A2:blank",
+          "meaningEn": "With nothing written, printed, shown or recorded on it; empty."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:blank",
+        "headword": "blank",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:blank",
+            "pos": "adjective",
+            "gloss": "خالی؛ سفید (بدونِ نوشته)",
+            "meaning": "چیزی که رویش چیزی نوشته، چاپ، نمایش داده یا ضبط نشده است؛ خالی.",
+            "grammar": [
+              {
+                "pattern": "a blank + noun",
+                "note": "blank پیش از اسم می‌آید: a blank page."
+              },
+              {
+                "pattern": "leave + something + blank",
+                "note": "برای خالی گذاشتن leave it blank می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Write your story on a blank page.",
+                "fa": "داستانت را روی یک صفحهٔ سفید بنویس."
+              },
+              {
+                "en": "Please don't leave any questions blank.",
+                "fa": "لطفاً هیچ سؤالی را خالی نگذار."
+              },
+              {
+                "en": "The screen went blank for a second.",
+                "fa": "صفحه برای یک لحظه خالی شد."
+              }
+            ],
+            "collocations": [
+              "a blank page",
+              "leave it blank"
+            ],
+            "collocationFa": {
+              "a blank page": "صفحهٔ سفید",
+              "leave it blank": "خالی گذاشتن"
+            },
+            "usage": "در این درس blank صفت است. اسمِ blank (جای خالی، مثلِ تمرینِ «جای خالی را پر کن») جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "Leave the last line blankly.",
+              "wrongFa": "خطِ آخر را به‌صورتِ خالی بگذار؛ اما قید آمده است.",
+              "right": "Leave the last line blank.",
+              "rightFa": "خطِ آخر را خالی بگذار.",
+              "why": "پس از leave + چیز، صفتِ blank می‌آید؛ blankly قید است و معنای دیگری دارد."
+            },
+            "pronunciation": {
+              "gb": "/blæŋk/",
+              "us": "/blæŋk/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I need a ___ sheet of paper.",
+                "answer": "blank",
+                "accept": [
+                  "clean",
+                  "white"
+                ],
+                "fa": "یک برگهٔ کاغذِ سفید لازم دارم.",
+                "why": "blank یعنی بدونِ نوشته."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Leave the box blankly.",
+                    "ok": false,
+                    "why": "اینجا صفت لازم است، نه قید."
+                  },
+                  {
+                    "text": "Leave the box blank.",
+                    "ok": true,
+                    "why": "leave something blank یعنی خالی گذاشتن."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این صفحه خالی است.",
+                "frame": "This page is ___.",
+                "answer": "blank",
+                "accept": [
+                  "empty"
+                ],
+                "why": "پس از is صفتِ blank می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "airplane/aeroplane",
+      "levelWordId": "level:A1:0888",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0979",
+          "senseId": "lex:A1:cefrj-airplane",
+          "meaningEn": "A vehicle with wings and engines that flies through the air (airplane in American English, aeroplane in British English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-airplane",
+        "headword": "airplane/aeroplane",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-airplane",
+            "pos": "noun",
+            "gloss": "هواپیما",
+            "meaning": "وسیلهٔ نقلیه‌ای با بال و موتور که در هوا پرواز می‌کند (در آمریکا airplane و در بریتانیا aeroplane).",
+            "grammar": [
+              {
+                "pattern": "by plane",
+                "note": "برای سفر با هواپیما معمولاً by plane یا by air می‌گوییم."
+              },
+              {
+                "pattern": "get on / off a plane",
+                "note": "برای سوار و پیاده شدن get on و get off می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The airplane landed safely in Shiraz.",
+                "fa": "هواپیما به‌سلامت در شیراز فرود آمد."
+              },
+              {
+                "en": "My little brother is scared of aeroplanes.",
+                "fa": "برادرِ کوچکم از هواپیما می‌ترسد."
+              },
+              {
+                "en": "We waited for the airplane at the gate.",
+                "fa": "دمِ گیت منتظرِ هواپیما ماندیم."
+              }
+            ],
+            "collocations": [
+              "get on an airplane",
+              "by plane"
+            ],
+            "collocationFa": {
+              "get on an airplane": "سوارِ هواپیما شدن",
+              "by plane": "با هواپیما"
+            },
+            "usage": "airplane آمریکایی و aeroplane بریتانیایی است. در گفت‌وگو بیشتر plane گفته می‌شود.",
+            "mistake": {
+              "wrong": "We went to Mashhad by an airplane.",
+              "wrongFa": "با یک هواپیما به مشهد رفتیم؛ اما پس از by حرفِ تعریف نمی‌آید.",
+              "right": "We went to Mashhad by plane.",
+              "rightFa": "با هواپیما به مشهد رفتیم.",
+              "why": "برای وسیلهٔ سفر پس از by اسم بدونِ a می‌آید: by plane."
+            },
+            "pronunciation": {
+              "gb": "/ˈeərəpleɪn/",
+              "us": "/ˈerpleɪn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ flew above the clouds.",
+                "answer": "airplane",
+                "accept": [
+                  "aeroplane",
+                  "plane"
+                ],
+                "fa": "هواپیما بالای ابرها پرواز کرد.",
+                "why": "airplane یعنی هواپیما."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«با هواپیما به شیراز رفتیم.» We went to Shiraz ___.",
+                "options": [
+                  {
+                    "text": "by plane",
+                    "ok": true,
+                    "why": "پس از by برای وسیلهٔ سفر a نمی‌آید."
+                  },
+                  {
+                    "text": "by a plane",
+                    "ok": false,
+                    "why": "برای وسیلهٔ سفر پس از by حرفِ تعریف نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "هواپیما ساعتِ شش پرواز می‌کند.",
+                "frame": "The ___ leaves at six.",
+                "answer": "airplane",
+                "accept": [
+                  "aeroplane",
+                  "plane"
+                ],
+                "why": "پس از The اسمِ airplane می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "sunny",
+      "levelWordId": "level:A1:0890",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0981",
+          "senseId": "lex:A1:cefrj-sunny",
+          "meaningEn": "With a lot of bright light from the sun."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-sunny",
+        "headword": "sunny",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-sunny",
+            "pos": "adjective",
+            "gloss": "آفتابی",
+            "meaning": "دارای نورِ زیاد و درخشانِ خورشید.",
+            "grammar": [
+              {
+                "pattern": "It's sunny",
+                "note": "برای هوا می‌گوییم: It's sunny today."
+              },
+              {
+                "pattern": "sun / sunny",
+                "note": "sun اسم است و sunny صفت."
+              }
+            ],
+            "examples": [
+              {
+                "en": "It's sunny today, so let's go to the beach.",
+                "fa": "امروز آفتابی است، پس بیا به ساحل برویم."
+              },
+              {
+                "en": "Our kitchen is warm and sunny.",
+                "fa": "آشپزخانهٔ ما گرم و آفتابی است."
+              },
+              {
+                "en": "We had a sunny week in Kish.",
+                "fa": "در کیش یک هفتهٔ آفتابی داشتیم."
+              }
+            ],
+            "collocations": [
+              "a sunny day",
+              "sunny weather"
+            ],
+            "collocationFa": {
+              "a sunny day": "روزِ آفتابی",
+              "sunny weather": "هوای آفتابی"
+            },
+            "usage": "sunny صفت است. برای هوای بارانی rainy و برای هوای ابری cloudy به کار می‌رود.",
+            "mistake": {
+              "wrong": "Today is very sun.",
+              "wrongFa": "امروز خیلی خورشید است؛ اما پس از very اسم آمده است.",
+              "right": "Today is very sunny.",
+              "rightFa": "امروز خیلی آفتابی است.",
+              "why": "پس از very صفتِ sunny می‌آید؛ sun اسم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈsʌni/",
+              "us": "/ˈsʌni/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Take your sunglasses; it's very ___.",
+                "answer": "sunny",
+                "accept": [
+                  "bright"
+                ],
+                "fa": "عینکِ آفتابی‌ات را بردار؛ هوا خیلی آفتابی است.",
+                "why": "پس از very صفتِ sunny می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "It is sun today.",
+                    "ok": false,
+                    "why": "sun اسم است و اینجا صفت لازم است."
+                  },
+                  {
+                    "text": "It is sunny today.",
+                    "ok": true,
+                    "why": "sunny صفت است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "فردا آفتابی خواهد بود.",
+                "frame": "Tomorrow will be ___.",
+                "answer": "sunny",
+                "accept": [],
+                "why": "پس از will be صفتِ sunny می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "bean",
+      "levelWordId": "level:A1:0892",
+      "existingEntryIds": [
+        "lex:A2:bean"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0983",
+          "senseId": "lex:A2:bean",
+          "meaningEn": "A seed, or the long case containing seeds, of some plants, eaten as food."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:bean",
+        "headword": "bean",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:bean",
+            "pos": "noun",
+            "gloss": "لوبیا",
+            "meaning": "دانهٔ بعضی گیاهان، یا غلافِ درازی که دانه‌ها در آن است، که به‌عنوانِ غذا خورده می‌شود.",
+            "grammar": [
+              {
+                "pattern": "a bean / beans",
+                "note": "bean قابل‌شمارش است و معمولاً جمع به کار می‌رود: beans."
+              },
+              {
+                "pattern": "green beans",
+                "note": "برای لوبیا سبز green beans می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Beans are good for your health.",
+                "fa": "لوبیا برای سلامتی‌ات خوب است."
+              },
+              {
+                "en": "My grandmother cooks rice with green beans.",
+                "fa": "مادربزرگم لوبیاپلو درست می‌کند."
+              },
+              {
+                "en": "My father grows beans in his garden.",
+                "fa": "پدرم در باغچه‌اش لوبیا می‌کارد."
+              }
+            ],
+            "collocations": [
+              "green beans",
+              "red beans"
+            ],
+            "collocationFa": {
+              "green beans": "لوبیا سبز",
+              "red beans": "لوبیا قرمز"
+            },
+            "usage": "coffee beans یعنی دانه‌های قهوه. bean قابل‌شمارش است و جمعش beans.",
+            "mistake": {
+              "wrong": "Beans is my favourite food.",
+              "wrongFa": "لوبیا غذای محبوبِ من هستند؛ اما فعل مفرد آمده است.",
+              "right": "Beans are my favourite food.",
+              "rightFa": "لوبیا غذای محبوبِ من است.",
+              "why": "beans جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/biːn/",
+              "us": "/biːn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I bought a can of red ___.",
+                "answer": "beans",
+                "accept": [],
+                "fa": "یک قوطی لوبیا قرمز خریدم.",
+                "why": "پس از a can of red اینجا جمعِ beans می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Green beans are healthy.",
+                    "ok": true,
+                    "why": "beans جمع است و are می‌گیرد."
+                  },
+                  {
+                    "text": "Green beans is healthy.",
+                    "ok": false,
+                    "why": "با فاعلِ جمع is نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "لوبیاها در قابلمه هستند.",
+                "frame": "The ___ are in the pot.",
+                "answer": "beans",
+                "accept": [],
+                "why": "فعلِ are نشان می‌دهد فاعل جمع است: beans."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "notebook",
+      "levelWordId": "level:A1:0894",
+      "existingEntryIds": [
+        "lex:B2x:notebook"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0985",
+          "senseId": "lex:B2x:notebook",
+          "meaningEn": "A small book with empty pages for writing notes."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:notebook",
+        "headword": "notebook",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:notebook",
+            "pos": "noun",
+            "gloss": "دفتر؛ دفترچه",
+            "meaning": "کتابِ کوچکی با صفحه‌های خالی برای نوشتنِ یادداشت.",
+            "grammar": [
+              {
+                "pattern": "in a notebook",
+                "note": "برای نوشتن در دفتر in a notebook می‌گوییم."
+              },
+              {
+                "pattern": "a notebook / notebooks",
+                "note": "notebook قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Write the new words in your notebook.",
+                "fa": "واژه‌های جدید را در دفترت بنویس."
+              },
+              {
+                "en": "She carries a small notebook in her bag.",
+                "fa": "او یک دفترچهٔ کوچک در کیفش دارد."
+              },
+              {
+                "en": "My notebook is full of drawings.",
+                "fa": "دفترم پر از نقاشی است."
+              }
+            ],
+            "collocations": [
+              "a small notebook",
+              "write in a notebook"
+            ],
+            "collocationFa": {
+              "a small notebook": "دفترچهٔ کوچک",
+              "write in a notebook": "در دفتر نوشتن"
+            },
+            "usage": "notebook دفترِ کاغذی است. notebook گاهی به لپ‌تاپِ کوچک هم گفته می‌شود که جدا آموزش داده می‌شود.",
+            "mistake": {
+              "wrong": "I need three new notebook for school.",
+              "wrongFa": "برای مدرسه سه دفترِ نو لازم دارم؛ اما اسم باید جمع باشد.",
+              "right": "I need three new notebooks for school.",
+              "rightFa": "برای مدرسه سه دفترِ نو لازم دارم.",
+              "why": "پس از three اسمِ notebook جمع می‌شود: notebooks."
+            },
+            "pronunciation": {
+              "gb": "/ˈnəʊtbʊk/",
+              "us": "/ˈnoʊtbʊk/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Open your ___ and copy the sentence.",
+                "answer": "notebook",
+                "accept": [
+                  "book",
+                  "exercise book"
+                ],
+                "fa": "دفترت را باز کن و جمله را رونویسی کن.",
+                "why": "notebook دفتری برای نوشتن است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "دفتری که در آن یادداشت می‌نویسی چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "notebook",
+                    "ok": true,
+                    "why": "notebook یعنی دفتر."
+                  },
+                  {
+                    "text": "textbook",
+                    "ok": false,
+                    "why": "textbook یعنی کتابِ درسی."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "دفترم را در کلاس جا گذاشتم.",
+                "frame": "I left my ___ in class.",
+                "answer": "notebook",
+                "accept": [],
+                "why": "پس از my اسمِ notebook می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "temple",
+      "levelWordId": "level:A1:0895",
+      "existingEntryIds": [
+        "lex:B2x:temple"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0986",
+          "senseId": "lex:B2x:temple",
+          "meaningEn": "A building where people of some religions go to pray."
+        }
+      ],
+      "entry": {
+        "id": "lex:B2x:temple",
+        "headword": "temple",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B2x:temple",
+            "pos": "noun",
+            "gloss": "معبد",
+            "meaning": "ساختمانی که پیروانِ برخی دین‌ها برای عبادت به آن می‌روند.",
+            "grammar": [
+              {
+                "pattern": "a temple / temples",
+                "note": "temple قابل‌شمارش است."
+              },
+              {
+                "pattern": "an old temple",
+                "note": "صفت پیش از temple می‌آید."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We visited an old temple in Japan.",
+                "fa": "از یک معبدِ قدیمی در ژاپن دیدن کردیم."
+              },
+              {
+                "en": "The temple is on top of a hill.",
+                "fa": "معبد بالای یک تپه است."
+              },
+              {
+                "en": "People take off their shoes before they enter the temple.",
+                "fa": "مردم پیش از ورود به معبد کفش‌هایشان را درمی‌آورند."
+              }
+            ],
+            "collocations": [
+              "an ancient temple",
+              "visit a temple"
+            ],
+            "collocationFa": {
+              "an ancient temple": "معبدِ باستانی",
+              "visit a temple": "از معبد دیدن کردن"
+            },
+            "usage": "temple برای بعضی دین‌ها به کار می‌رود؛ مسجد mosque و کلیسا church است.",
+            "mistake": {
+              "wrong": "There is old temple near the river.",
+              "wrongFa": "نزدیکِ رودخانه معبدِ قدیمی هست؛ اما حرفِ تعریف نیامده است.",
+              "right": "There is an old temple near the river.",
+              "rightFa": "نزدیکِ رودخانه یک معبدِ قدیمی هست.",
+              "why": "temple قابل‌شمارش است؛ پیش از old که با صدای صدادار شروع می‌شود an لازم است."
+            },
+            "pronunciation": {
+              "gb": "/ˈtempl/",
+              "us": "/ˈtempl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ has beautiful gold roofs.",
+                "answer": "temple",
+                "accept": [],
+                "fa": "معبد سقف‌های طلاییِ زیبایی دارد.",
+                "why": "temple ساختمانی برای عبادت است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "مسجد در انگلیسی چه نام دارد؟",
+                "options": [
+                  {
+                    "text": "temple",
+                    "ok": false,
+                    "why": "temple معبد است."
+                  },
+                  {
+                    "text": "mosque",
+                    "ok": true,
+                    "why": "mosque یعنی مسجد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن معبد خیلی قدیمی است.",
+                "frame": "That ___ is very old.",
+                "answer": "temple",
+                "accept": [],
+                "why": "پس از that اسمِ temple می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "lonely",
+      "levelWordId": "level:A1:0896",
+      "existingEntryIds": [
+        "lex:B1:lonely"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0987",
+          "senseId": "lex:B1:lonely",
+          "meaningEn": "Unhappy because you are alone or have no friends."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:lonely",
+        "headword": "lonely",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:lonely",
+            "pos": "adjective",
+            "gloss": "تنها (با حسِ غم)؛ دلتنگ",
+            "meaning": "ناراحت به خاطرِ تنها بودن یا نداشتنِ دوست.",
+            "grammar": [
+              {
+                "pattern": "feel lonely",
+                "note": "برای حسِ تنهایی feel lonely می‌گوییم."
+              },
+              {
+                "pattern": "lonely / alone",
+                "note": "lonely حسِ غمِ تنهایی است؛ alone فقط یعنی بدونِ دیگران."
+              }
+            ],
+            "examples": [
+              {
+                "en": "She felt lonely in the new city.",
+                "fa": "او در شهرِ جدید احساسِ تنهایی می‌کرد."
+              },
+              {
+                "en": "The old man has been lonely since his wife died.",
+                "fa": "پیرمرد از وقتی همسرش درگذشته تنهاست و غمگین است."
+              },
+              {
+                "en": "Weekends can be lonely without friends.",
+                "fa": "آخرِ هفته‌ها بدونِ دوست می‌تواند دلگیر باشد."
+              }
+            ],
+            "collocations": [
+              "feel lonely",
+              "a lonely life"
+            ],
+            "collocationFa": {
+              "feel lonely": "احساسِ تنهایی کردن",
+              "a lonely life": "زندگیِ تنها و غمگین"
+            },
+            "usage": "lonely حسِ ناراحتی است. alone فقط وضعیتِ بدونِ دیگران بودن است و لزوماً غمگین نیست.",
+            "mistake": {
+              "wrong": "My uncle lives lonely in a small flat.",
+              "wrongFa": "عمویم به‌طورِ تنهایی‌آور در یک آپارتمانِ کوچک زندگی می‌کند؛ اما واژه درست نیست.",
+              "right": "My uncle lives alone in a small flat.",
+              "rightFa": "عمویم تنها در یک آپارتمانِ کوچک زندگی می‌کند.",
+              "why": "پس از فعلِ lives برای «بدونِ دیگران» alone می‌آید؛ lonely صفتِ حس است."
+            },
+            "pronunciation": {
+              "gb": "/ˈləʊnli/",
+              "us": "/ˈloʊnli/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I don't have many friends here, so I sometimes feel ___.",
+                "answer": "lonely",
+                "accept": [],
+                "fa": "اینجا دوستِ زیادی ندارم، برای همین گاهی احساسِ تنهایی می‌کنم.",
+                "why": "feel lonely یعنی احساسِ تنهایی کردن."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«او تنها زندگی می‌کند (بدونِ کسِ دیگر).» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "He lives lonely.",
+                    "ok": false,
+                    "why": "lonely صفتِ حس است و پس از lives نمی‌آید."
+                  },
+                  {
+                    "text": "He lives alone.",
+                    "ok": true,
+                    "why": "alone یعنی بدونِ دیگران."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "سگ وقتی ما بیرون هستیم احساسِ تنهایی می‌کند.",
+                "frame": "The dog feels ___ when we are out.",
+                "answer": "lonely",
+                "accept": [],
+                "why": "feel lonely یعنی احساسِ تنهایی کردن."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "poster",
+      "levelWordId": "level:A1:0897",
+      "existingEntryIds": [
+        "lex:A2:poster"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0988",
+          "senseId": "lex:A2:poster",
+          "meaningEn": "A large printed picture or notice that you put on a wall."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:poster",
+        "headword": "poster",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:poster",
+            "pos": "noun",
+            "gloss": "پوستر",
+            "meaning": "تصویر یا اطلاعیهٔ چاپیِ بزرگی که روی دیوار می‌زنیم.",
+            "grammar": [
+              {
+                "pattern": "on the wall",
+                "note": "برای پوستر روی دیوار on می‌آید: a poster on the wall."
+              },
+              {
+                "pattern": "a poster of + thing",
+                "note": "برای تصویرِ پوستر of می‌آید: a poster of a lion."
+              }
+            ],
+            "examples": [
+              {
+                "en": "He has a poster of his favourite team.",
+                "fa": "او یک پوستر از تیمِ محبوبش دارد."
+              },
+              {
+                "en": "The school put up posters about the concert.",
+                "fa": "مدرسه دربارهٔ کنسرت پوستر زد."
+              },
+              {
+                "en": "There is a big map poster in our classroom.",
+                "fa": "در کلاسمان یک پوسترِ بزرگِ نقشه هست."
+              }
+            ],
+            "collocations": [
+              "put up a poster",
+              "a film poster"
+            ],
+            "collocationFa": {
+              "put up a poster": "پوستر زدن",
+              "a film poster": "پوسترِ فیلم"
+            },
+            "usage": "poster قابل‌شمارش است. برای چسباندنِ پوستر put up a poster می‌گوییم.",
+            "mistake": {
+              "wrong": "There is a poster in the wall.",
+              "wrongFa": "یک پوستر داخلِ دیوار هست؛ اما حرفِ اضافه درست نیست.",
+              "right": "There is a poster on the wall.",
+              "rightFa": "یک پوستر روی دیوار هست.",
+              "why": "برای چیزی که روی سطحِ دیوار است on به کار می‌رود، نه in."
+            },
+            "pronunciation": {
+              "gb": "/ˈpəʊstə/",
+              "us": "/ˈpoʊstər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "She put a ___ of a horse above her bed.",
+                "answer": "poster",
+                "accept": [],
+                "fa": "او یک پوسترِ اسب بالای تختش زد.",
+                "why": "poster تصویرِ بزرگی برای دیوار است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "a poster on the wall",
+                    "ok": true,
+                    "why": "برای سطحِ دیوار on می‌آید."
+                  },
+                  {
+                    "text": "a poster in the wall",
+                    "ok": false,
+                    "why": "در این معنا in درست نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پوسترِ فیلم خیلی زیباست.",
+                "frame": "The film ___ is very beautiful.",
+                "answer": "poster",
+                "accept": [],
+                "why": "film poster یعنی پوسترِ فیلم."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "drum",
+      "levelWordId": "level:A1:0898",
+      "existingEntryIds": [
+        "lex:B1:drum"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:0989",
+          "senseId": "lex:B1:drum",
+          "meaningEn": "A musical instrument that you hit with sticks or your hands."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:drum",
+        "headword": "drum",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:drum",
+            "pos": "noun",
+            "gloss": "طبل؛ درام",
+            "meaning": "سازی که با چوب یا دست به آن ضربه می‌زنند.",
+            "grammar": [
+              {
+                "pattern": "play the drums",
+                "note": "برای نواختنِ درام play the drums می‌گوییم."
+              },
+              {
+                "pattern": "a drum / drums",
+                "note": "drum قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My cousin plays the drums in a band.",
+                "fa": "پسرخاله‌ام در یک گروه درام می‌زند."
+              },
+              {
+                "en": "We heard the drums from far away.",
+                "fa": "صدای طبل‌ها را از دور شنیدیم."
+              },
+              {
+                "en": "He hit the drum with two sticks.",
+                "fa": "او با دو چوب به طبل زد."
+              }
+            ],
+            "collocations": [
+              "play the drums",
+              "a big drum"
+            ],
+            "collocationFa": {
+              "play the drums": "درام زدن",
+              "a big drum": "طبلِ بزرگ"
+            },
+            "usage": "برای سازها پس از play معمولاً the می‌آید: play the drums, play the piano.",
+            "mistake": {
+              "wrong": "He play the drums in a band.",
+              "wrongFa": "او در یک گروه درام می‌زنند؛ اما فعل s ندارد.",
+              "right": "He plays the drums in a band.",
+              "rightFa": "او در یک گروه درام می‌زند.",
+              "why": "فاعلِ سوم‌شخصِ مفرد در زمانِ حال فعل را با s می‌خواهد: plays."
+            },
+            "pronunciation": {
+              "gb": "/drʌm/",
+              "us": "/drʌm/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The ___ was so loud that I covered my ears.",
+                "answer": "drum",
+                "accept": [],
+                "fa": "طبل آن‌قدر بلند بود که گوش‌هایم را گرفتم.",
+                "why": "drum سازی است که به آن ضربه می‌زنند."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "She plays the drums.",
+                    "ok": true,
+                    "why": "با he/she فعل s می‌گیرد."
+                  },
+                  {
+                    "text": "She play the drums.",
+                    "ok": false,
+                    "why": "با فاعلِ سوم‌شخص فعل باید s بگیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "من می‌خواهم درام زدن یاد بگیرم.",
+                "frame": "I want to learn to play the ___.",
+                "answer": "drums",
+                "accept": [
+                  "drum"
+                ],
+                "why": "play the drums یعنی درام زدن."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}
