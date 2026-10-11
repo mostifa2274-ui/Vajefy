@@ -158,9 +158,17 @@ definition of wind (moving air, not only fast air) and translated *too* as
 
 `lessons-new-081-100.json` continues with ship, peace, dry, spot, feed,
 excellent, camp, corner, cry, solve, tool, smoke, brain, bottom, hide, owner,
-lady, pleasure, suggestion and pop. The five batches total **100/338 drafted,
-238 still to write**, with 303 bilingual examples and 303 checks. These are
-draft counts, not approved or published lessons. Definitions must not be
+lady, pleasure, suggestion and pop. PR #214 merged it as
+`dfdd802a37794ffb7294a2af01fd8cb70b23208e`, after its review corrected the
+Persian for *clean up after their dogs*.
+
+`lessons-new-101-120.json` continues with fan, engineer, jump, coach, strange,
+code, blow, glad, stone, sum, carefully, hurt, sight, gift, guest, anybody,
+noise, gold, shake and hall. The six batches total **120/338 drafted, 218
+still to write**, with 363 bilingual examples and 363 checks. These are draft
+counts, not approved or published lessons. The same pull request adds
+accepted synonyms to merged lessons 41–80 (for example *call* for ring and
+*man* for guy). Definitions must not be
 narrower than the word: wind is any moving air, a cry can be quiet, and smoke
 is often, not always, grey or black. Cloze and production items list correct synonyms in
 `accept` (for example *woman* for lady and *food* in *fish feed*), so that a
@@ -202,7 +210,10 @@ memory as something remembered, and block as a block of flats or an office
 block. The fifth batch keeps the noun entries `lex:B1:spot`, `lex:B2:feed` and
 `lex:B2:cry` (not the A2 verbs feed and cry) and the A2 noun `pop`; it teaches
 spot as a place, feed as food for animals, cry as a sound such as a shout,
-and pop as pop music. Source-level A1 grading does not certify
+and pop as pop music. The sixth batch keeps the B1 adjective `glad`, the B1 noun
+`sight`, the B2 noun `sum` and the A2 noun `coach`; it teaches coach as a
+sports trainer, sight as the ability to see, sum as a simple calculation,
+shake as a quick movement (`lex:B1:shake`) and gold as made of gold. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.

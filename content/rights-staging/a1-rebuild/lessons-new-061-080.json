@@ -936,7 +936,10 @@
                 "id": "c1",
                 "text": "Can you ___ me when you arrive?",
                 "answer": "ring",
-                "accept": [],
+                "accept": [
+                  "call",
+                  "phone"
+                ],
                 "fa": "وقتی رسیدی می‌توانی به من زنگ بزنی؟",
                 "why": "پس از can فعلِ سادهٔ ring می‌آید."
               },
@@ -963,7 +966,10 @@
                 "prompt": "دیروز به مادربزرگم زنگ زدم.",
                 "frame": "I ___ my grandmother yesterday.",
                 "answer": "rang",
-                "accept": [],
+                "accept": [
+                  "called",
+                  "phoned"
+                ],
                 "why": "yesterday گذشته را لازم دارد: rang."
               }
             ]
@@ -2009,7 +2015,9 @@
                 "id": "c1",
                 "text": "Let's ___ the leaves in the garden.",
                 "answer": "collect",
-                "accept": [],
+                "accept": [
+                  "gather"
+                ],
                 "fa": "بیا برگ‌های باغ را جمع کنیم.",
                 "why": "پس از Let's فعلِ سادهٔ collect می‌آید."
               },
@@ -2036,7 +2044,9 @@
                 "prompt": "بچه‌ها زباله‌های ساحل را جمع کردند.",
                 "frame": "The children ___ the rubbish on the beach.",
                 "answer": "collected",
-                "accept": [],
+                "accept": [
+                  "picked up"
+                ],
                 "why": "برای گذشته collected به کار می‌رود."
               }
             ]
