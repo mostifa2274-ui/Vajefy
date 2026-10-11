@@ -1,0 +1,2500 @@
+{
+  "schemaVersion": 1,
+  "status": "STAGING_ONLY_FULL_A1_LESSONS_UNREVIEWED",
+  "selection": {
+    "file": "content/rights-staging/a1-rebuild/cefrj-a1-selection.json",
+    "sha256": "04fc59f66aec26e66cd844d2d0aaaa8e847e604a521db4ab02eac8eaa2532ddc"
+  },
+  "levelSelection": {
+    "file": "content/rights-staging/level-rebuild/level-selection.json",
+    "sha256": "2bc102e79b1a39deff64b558fee473528a4853e12de51ffc901203f5d9704d93"
+  },
+  "authoringMethod": "MODEL_AUTHORED_FROM_SELECTED_HEADWORDS_NO_LEGACY_TEACHING_TEXT",
+  "authoringAgent": "Claude Code, 2026-10-11; original full lessons 321–338 from pinned CEFR-J headwords and part-of-speech metadata",
+  "window": {
+    "firstNewHeadword": 321,
+    "lastNewHeadword": 338
+  },
+  "count": 18,
+  "semanticallyReviewed": 0,
+  "persianReviewed": 0,
+  "cefrReviewed": 0,
+  "rightsCleared": 0,
+  "audioCertified": 0,
+  "publiclyReleased": 0,
+  "lessons": [
+    {
+      "sourceHeadword": "math/maths",
+      "levelWordId": "level:A1:1031",
+      "existingEntryIds": [
+        "lex:A2:maths"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1128",
+          "senseId": "lex:A2:maths",
+          "meaningEn": "The study of numbers, shapes and quantities (math in American English, maths in British English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:maths",
+        "headword": "math/maths",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:maths",
+            "pos": "noun",
+            "gloss": "ریاضی",
+            "meaning": "علمِ اعداد، شکل‌ها و مقدارها؛ ریاضی (در آمریکا math و در بریتانیا maths).",
+            "grammar": [
+              {
+                "pattern": "maths + singular verb",
+                "note": "maths با وجودِ s مفرد است: Maths is my favourite subject."
+              },
+              {
+                "pattern": "a maths teacher",
+                "note": "پیش از اسم هم می‌آید: a maths class."
+              }
+            ],
+            "examples": [
+              {
+                "en": "We have maths on Sunday and Tuesday.",
+                "fa": "یکشنبه و سه‌شنبه ریاضی داریم."
+              },
+              {
+                "en": "My sister is very good at math.",
+                "fa": "خواهرم در ریاضی خیلی خوب است."
+              },
+              {
+                "en": "Our maths teacher gives us a lot of homework.",
+                "fa": "معلمِ ریاضی‌مان تکلیفِ زیادی به ما می‌دهد."
+              }
+            ],
+            "collocations": [
+              "a maths test",
+              "good at maths"
+            ],
+            "collocationFa": {
+              "a maths test": "امتحانِ ریاضی",
+              "good at maths": "خوب در ریاضی"
+            },
+            "usage": "maths (بریتانیایی) و math (آمریکایی) هر دو کوتاه‌شدهٔ mathematics هستند و فعلِ مفرد می‌گیرند.",
+            "mistake": {
+              "wrong": "Maths are my favourite subject.",
+              "wrongFa": "ریاضی درسِ محبوبِ من هستند؛ اما فعل جمع آمده است.",
+              "right": "Maths is my favourite subject.",
+              "rightFa": "ریاضی درسِ محبوبِ من است.",
+              "why": "maths با وجودِ s مفرد است و فعلِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/mæθs/",
+              "us": "/mæθ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Two plus two is four. We learn this in ___.",
+                "answer": "maths",
+                "accept": [
+                  "math",
+                  "mathematics"
+                ],
+                "fa": "دو به‌علاوهٔ دو می‌شود چهار. این را در ریاضی یاد می‌گیریم.",
+                "why": "maths یعنی ریاضی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Maths is difficult for me.",
+                    "ok": true,
+                    "why": "maths فعلِ مفرد می‌گیرد."
+                  },
+                  {
+                    "text": "Maths are difficult for me.",
+                    "ok": false,
+                    "why": "maths با وجودِ s مفرد است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "امتحانِ ریاضی فردا است.",
+                "frame": "The ___ test is tomorrow.",
+                "answer": "maths",
+                "accept": [
+                  "math"
+                ],
+                "why": "maths test یعنی امتحانِ ریاضی."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "mobile phone",
+      "levelWordId": "level:A1:1034",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1131",
+          "senseId": "lex:A1:cefrj-mobile-phone",
+          "meaningEn": "A small phone that you can carry with you and use anywhere (cell phone in American English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-mobile-phone",
+        "headword": "mobile phone",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-mobile-phone",
+            "pos": "noun",
+            "gloss": "تلفنِ همراه؛ موبایل",
+            "meaning": "تلفنِ کوچکی که با خود همراه داری و همه‌جا از آن استفاده می‌کنی (در آمریکا cell phone).",
+            "grammar": [
+              {
+                "pattern": "on my mobile phone",
+                "note": "برای کار با گوشی on می‌آید: I read it on my mobile phone."
+              },
+              {
+                "pattern": "a mobile phone / mobile phones",
+                "note": "mobile phone اسمِ مرکب و قابل‌شمارش است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Please turn off your mobile phone in the cinema.",
+                "fa": "لطفاً در سینما تلفنِ همراهت را خاموش کن."
+              },
+              {
+                "en": "I watched the news on my mobile phone.",
+                "fa": "اخبار را با گوشی‌ام دیدم."
+              },
+              {
+                "en": "Her new mobile phone has a great camera.",
+                "fa": "گوشیِ جدیدش دوربینِ خیلی خوبی دارد."
+              }
+            ],
+            "collocations": [
+              "a mobile phone number",
+              "turn off your mobile phone"
+            ],
+            "collocationFa": {
+              "a mobile phone number": "شمارهٔ موبایل",
+              "turn off your mobile phone": "گوشی را خاموش کردن"
+            },
+            "usage": "در گفتار بیشتر mobile یا phone می‌گوییم. در آمریکا cell phone یا cellphone رایج است.",
+            "mistake": {
+              "wrong": "We have three mobile phone at home.",
+              "wrongFa": "در خانه سه تلفنِ همراه داریم؛ اما اسم باید جمع باشد.",
+              "right": "We have three mobile phones at home.",
+              "rightFa": "در خانه سه گوشیِ همراه داریم.",
+              "why": "پس از three بخشِ آخرِ اسمِ مرکب جمع می‌شود: mobile phones."
+            },
+            "pronunciation": {
+              "gb": "/ˌməʊbaɪl ˈfəʊn/",
+              "us": "/ˌmoʊbl ˈfoʊn/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I called my mum on my ___ when I arrived.",
+                "answer": "mobile phone",
+                "accept": [
+                  "mobile",
+                  "phone",
+                  "cell phone",
+                  "cellphone"
+                ],
+                "fa": "وقتی رسیدم با تلفنِ همراهم به مامانم زنگ زدم.",
+                "why": "mobile phone یعنی تلفنِ همراه."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در آمریکا به mobile phone چه می‌گویند؟",
+                "options": [
+                  {
+                    "text": "cell phone",
+                    "ok": true,
+                    "why": "در آمریکا cell phone رایج است."
+                  },
+                  {
+                    "text": "home phone",
+                    "ok": false,
+                    "why": "home phone تلفنِ ثابتِ خانه است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "تلفنِ همراهم را گم کردم.",
+                "frame": "I lost my ___.",
+                "answer": "mobile phone",
+                "accept": [
+                  "mobile",
+                  "phone",
+                  "cell phone",
+                  "cellphone"
+                ],
+                "why": "پس از my اسمِ مرکبِ mobile phone می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "mommy/mommie",
+      "levelWordId": "level:A1:1035",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1132",
+          "senseId": "lex:A1:cefrj-mommy",
+          "meaningEn": "A word for mother, used especially by young children (American English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-mommy",
+        "headword": "mommy/mommie",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-mommy",
+            "pos": "noun",
+            "gloss": "مامان (به زبانِ بچه‌ها)",
+            "meaning": "واژه‌ای برای مادر که بیشتر بچه‌های کوچک به کار می‌برند (انگلیسیِ آمریکایی).",
+            "grammar": [
+              {
+                "pattern": "Mommy (name)",
+                "note": "وقتی مستقیم صدایش می‌کنیم با حرفِ بزرگ می‌آید: Mommy, I'm hungry!"
+              },
+              {
+                "pattern": "my mommy",
+                "note": "برای اشاره به او my mommy می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Mommy, can I have some juice?",
+                "fa": "مامانی، می‌توانم کمی آب‌میوه بخورم؟"
+              },
+              {
+                "en": "The little boy held his mommy's hand.",
+                "fa": "پسرِ کوچک دستِ مامانش را گرفت."
+              },
+              {
+                "en": "My daughter drew a picture of Mommy and Daddy.",
+                "fa": "دخترم یک نقاشی از مامان و بابا کشید."
+              }
+            ],
+            "collocations": [
+              "Mommy and Daddy",
+              "ask Mommy"
+            ],
+            "collocationFa": {
+              "Mommy and Daddy": "مامان و بابا",
+              "ask Mommy": "از مامان پرسیدن"
+            },
+            "usage": "mommy آمریکایی و بچه‌گانه است؛ در بریتانیا mummy می‌گویند. mom و mum خودمانی و mother رسمی است.",
+            "mistake": {
+              "wrong": "My mommy make the best cakes.",
+              "wrongFa": "مامانم بهترین کیک‌ها را درست می‌کنند؛ اما فعل s ندارد.",
+              "right": "My mommy makes the best cakes.",
+              "rightFa": "مامانم بهترین کیک‌ها را درست می‌کند.",
+              "why": "فاعلِ سوم‌شخصِ مفرد در زمانِ حال فعل را با s می‌خواهد: makes."
+            },
+            "pronunciation": {
+              "gb": "/ˈmɒmi/",
+              "us": "/ˈmɑːmi/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The baby started to cry, so ___ picked her up.",
+                "answer": "Mommy",
+                "accept": [
+                  "mommy",
+                  "Mummy",
+                  "mummy",
+                  "Mom",
+                  "mom",
+                  "Mum",
+                  "mum"
+                ],
+                "fa": "بچه شروع به گریه کرد، پس مامان بغلش کرد.",
+                "why": "Mommy همان مادر است، به زبانِ بچه‌ها."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در بریتانیا بچه‌ها به مادر چه می‌گویند؟",
+                "options": [
+                  {
+                    "text": "Mummy",
+                    "ok": true,
+                    "why": "در بریتانیا Mummy رایج است."
+                  },
+                  {
+                    "text": "Daddy",
+                    "ok": false,
+                    "why": "Daddy یعنی بابا."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "مامانم پرستار است.",
+                "frame": "My ___ is a nurse.",
+                "answer": "mommy",
+                "accept": [
+                  "mummy",
+                  "mom",
+                  "mum",
+                  "mother"
+                ],
+                "why": "پس از my اسمِ mommy می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "Mr./Mr",
+      "levelWordId": "level:A1:1036",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1133",
+          "senseId": "lex:A1:cefrj-mr",
+          "meaningEn": "A title used before a man's family name or full name."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-mr",
+        "headword": "Mr./Mr",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-mr",
+            "pos": "noun",
+            "gloss": "آقا (پیش از نامِ مرد)",
+            "meaning": "عنوانی که پیش از نامِ خانوادگی یا نامِ کاملِ یک مرد می‌آید.",
+            "grammar": [
+              {
+                "pattern": "Mr + family name",
+                "note": "Mr پیش از نامِ خانوادگی می‌آید: Mr Ahmadi."
+              },
+              {
+                "pattern": "Mr. / Mr",
+                "note": "در آمریکا با نقطه (Mr.) و در بریتانیا بدونِ نقطه (Mr) نوشته می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Mr Hosseini is our new science teacher.",
+                "fa": "آقای حسینی معلمِ جدیدِ علومِ ماست."
+              },
+              {
+                "en": "Good morning, Mr. Smith.",
+                "fa": "صبح بخیر، آقای اسمیت."
+              },
+              {
+                "en": "The letter is for Mr Reza Ahmadi.",
+                "fa": "این نامه برای آقای رضا احمدی است."
+              }
+            ],
+            "collocations": [
+              "Mr and Mrs Karimi",
+              "Dear Mr Ahmadi"
+            ],
+            "collocationFa": {
+              "Mr and Mrs Karimi": "آقا و خانمِ کریمی",
+              "Dear Mr Ahmadi": "آقای احمدیِ گرامی"
+            },
+            "usage": "Mr هیچ‌وقت به‌تنهایی به کار نمی‌رود؛ برای صدا زدنِ مردی که نامش را نمی‌دانیم sir می‌گوییم.",
+            "mistake": {
+              "wrong": "Excuse me, Mr! You dropped your wallet.",
+              "wrongFa": "ببخشید آقا! کیف‌پولتان افتاد؛ اما Mr بدونِ نام آمده است.",
+              "right": "Excuse me, sir! You dropped your wallet.",
+              "rightFa": "ببخشید آقا! کیف‌پولتان افتاد.",
+              "why": "Mr بدونِ نام به کار نمی‌رود؛ به‌تنهایی sir می‌گوییم."
+            },
+            "pronunciation": {
+              "gb": "/ˈmɪstə/",
+              "us": "/ˈmɪstər/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Our head teacher is ___ Rahimi.",
+                "answer": "Mr",
+                "accept": [
+                  "Mr."
+                ],
+                "fa": "مدیرِ مدرسهٔ ما آقای رحیمی است.",
+                "why": "Mr پیش از نامِ خانوادگیِ مرد می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "مردی را که نامش را نمی‌دانی چطور صدا می‌زنی؟",
+                "options": [
+                  {
+                    "text": "sir",
+                    "ok": true,
+                    "why": "sir به‌تنهایی به کار می‌رود."
+                  },
+                  {
+                    "text": "Mr",
+                    "ok": false,
+                    "why": "Mr همیشه پیش از نام می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آقای کریمی امروز اینجا نیست.",
+                "frame": "___ Karimi isn't here today.",
+                "answer": "Mr",
+                "accept": [
+                  "Mr."
+                ],
+                "why": "پیش از نامِ خانوادگیِ مرد Mr می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "Mrs./Mrs",
+      "levelWordId": "level:A1:1037",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1134",
+          "senseId": "lex:A1:cefrj-mrs",
+          "meaningEn": "A title used before the family name or full name of a married woman."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-mrs",
+        "headword": "Mrs./Mrs",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-mrs",
+            "pos": "noun",
+            "gloss": "خانم (پیش از نامِ زنِ متأهل)",
+            "meaning": "عنوانی که پیش از نامِ خانوادگی یا نامِ کاملِ زنِ متأهل می‌آید.",
+            "grammar": [
+              {
+                "pattern": "Mrs + family name",
+                "note": "Mrs پیش از نامِ خانوادگی می‌آید: Mrs Moradi."
+              },
+              {
+                "pattern": "Mrs. / Mrs",
+                "note": "در آمریکا با نقطه (Mrs.) و در بریتانیا بدونِ نقطه (Mrs) نوشته می‌شود."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Mrs Moradi lives next door to us.",
+                "fa": "خانمِ مرادی همسایهٔ دیوار‌به‌دیوارِ ماست."
+              },
+              {
+                "en": "Thank you for the lovely dinner, Mrs. Brown.",
+                "fa": "ممنون بابتِ شامِ عالی، خانمِ براون."
+              },
+              {
+                "en": "Mrs Jafari teaches us English.",
+                "fa": "خانمِ جعفری به ما انگلیسی درس می‌دهد."
+              }
+            ],
+            "collocations": [
+              "Mr and Mrs Ahmadi",
+              "Dear Mrs Moradi"
+            ],
+            "collocationFa": {
+              "Mr and Mrs Ahmadi": "آقا و خانمِ احمدی",
+              "Dear Mrs Moradi": "خانمِ مرادیِ گرامی"
+            },
+            "usage": "Mrs برای زنِ متأهل است؛ Ms برای هر زنی به کار می‌رود و Miss برای دخترِ مجرد. Mrs برای مرد به کار نمی‌رود.",
+            "mistake": {
+              "wrong": "Mrs Reza Ahmadi teaches maths. He is very kind.",
+              "wrongFa": "خانم رضا احمدی ریاضی درس می‌دهد. او خیلی مهربان است؛ اما Mrs برای مرد آمده است.",
+              "right": "Mr Reza Ahmadi teaches maths. He is very kind.",
+              "rightFa": "آقای رضا احمدی ریاضی درس می‌دهد. او خیلی مهربان است.",
+              "why": "Mrs برای زن است؛ برای مرد Mr می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ˈmɪsɪz/",
+              "us": "/ˈmɪsɪz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Her name is Ana Silva and she is married, so we call her ___ Silva.",
+                "answer": "Mrs",
+                "accept": [
+                  "Mrs.",
+                  "Ms",
+                  "Ms."
+                ],
+                "fa": "اسمش آنا سیلوا است و متأهل است، پس او را خانمِ سیلوا صدا می‌زنیم.",
+                "why": "برای زنِ متأهل Mrs پیش از نامِ خانوادگی می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عنوان برای هر زنی، متأهل یا مجرد، به کار می‌رود؟",
+                "options": [
+                  {
+                    "text": "Ms",
+                    "ok": true,
+                    "why": "Ms برای هر زنی به کار می‌رود."
+                  },
+                  {
+                    "text": "Mrs",
+                    "ok": false,
+                    "why": "Mrs برای زنِ متأهل است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "خانمِ رضایی معلمِ من است.",
+                "frame": "___ Rezaei is my teacher.",
+                "answer": "Mrs",
+                "accept": [
+                  "Mrs.",
+                  "Ms",
+                  "Ms.",
+                  "Miss"
+                ],
+                "why": "پیش از نامِ خانوادگیِ زن Mrs می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "Olympics",
+      "levelWordId": "level:A1:1040",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1137",
+          "senseId": "lex:A1:cefrj-olympics",
+          "meaningEn": "An international sports competition held every four years in a different country."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-olympics",
+        "headword": "Olympics",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-olympics",
+            "pos": "noun",
+            "gloss": "المپیک",
+            "meaning": "مسابقاتِ ورزشیِ بین‌المللی که هر چهار سال یک‌بار در کشوری متفاوت برگزار می‌شود.",
+            "grammar": [
+              {
+                "pattern": "the Olympics",
+                "note": "Olympics همیشه با the و حرفِ بزرگ می‌آید: the Olympics."
+              },
+              {
+                "pattern": "at / in the Olympics",
+                "note": "برای شرکت در آن at یا in the Olympics می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "She won a gold medal at the Olympics.",
+                "fa": "او در المپیک مدالِ طلا گرفت."
+              },
+              {
+                "en": "The Olympics take place every four years.",
+                "fa": "المپیک هر چهار سال یک‌بار برگزار می‌شود."
+              },
+              {
+                "en": "Millions of people watch the Olympics on TV.",
+                "fa": "میلیون‌ها نفر المپیک را از تلویزیون تماشا می‌کنند."
+              }
+            ],
+            "collocations": [
+              "win a medal at the Olympics",
+              "the Winter Olympics"
+            ],
+            "collocationFa": {
+              "win a medal at the Olympics": "در المپیک مدال گرفتن",
+              "the Winter Olympics": "المپیکِ زمستانی"
+            },
+            "usage": "the Olympics کوتاه‌شدهٔ the Olympic Games است. صفتش Olympic است: an Olympic champion.",
+            "mistake": {
+              "wrong": "He played in Olympics last year.",
+              "wrongFa": "او پارسال در المپیک بازی کرد؛ اما the نیامده است.",
+              "right": "He played in the Olympics last year.",
+              "rightFa": "او پارسال در المپیک بازی کرد.",
+              "why": "Olympics همیشه با the می‌آید: the Olympics."
+            },
+            "pronunciation": {
+              "gb": "/əˈlɪmpɪks/",
+              "us": "/əˈlɪmpɪks/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Athletes from many countries compete in the ___.",
+                "answer": "Olympics",
+                "accept": [
+                  "Olympic Games"
+                ],
+                "fa": "ورزشکارانی از کشورهای زیاد در المپیک رقابت می‌کنند.",
+                "why": "the Olympics مسابقاتِ ورزشیِ جهانی است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "at the Olympics",
+                    "ok": true,
+                    "why": "Olympics با the می‌آید."
+                  },
+                  {
+                    "text": "at Olympics",
+                    "ok": false,
+                    "why": "پیش از Olympics حرفِ the لازم است."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او می‌خواهد در المپیک شنا کند.",
+                "frame": "She wants to swim in the ___.",
+                "answer": "Olympics",
+                "accept": [
+                  "Olympic Games"
+                ],
+                "why": "پس از the اسمِ Olympics با حرفِ بزرگ می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "ours",
+      "levelWordId": "level:A1:1042",
+      "existingEntryIds": [
+        "lex:B1:ours"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1139",
+          "senseId": "lex:B1:ours",
+          "meaningEn": "Used to show that something belongs to us; our one or our ones."
+        }
+      ],
+      "entry": {
+        "id": "lex:B1:ours",
+        "headword": "ours",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:B1:ours",
+            "pos": "pronoun",
+            "gloss": "مالِ ما",
+            "meaning": "نشان می‌دهد چیزی مالِ ماست؛ مالِ ما.",
+            "grammar": [
+              {
+                "pattern": "It's ours.",
+                "note": "ours به‌تنهایی و بدونِ اسم می‌آید: The house is ours."
+              },
+              {
+                "pattern": "our + noun / ours",
+                "note": "our پیش از اسم می‌آید (our car) و ours بدونِ اسم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "That white car is ours.",
+                "fa": "آن ماشینِ سفید مالِ ماست."
+              },
+              {
+                "en": "Their garden is bigger than ours.",
+                "fa": "باغچهٔ آن‌ها از باغچهٔ ما بزرگ‌تر است."
+              },
+              {
+                "en": "He's a friend of ours from school.",
+                "fa": "او یکی از دوستانِ مدرسه‌مان است."
+              }
+            ],
+            "collocations": [
+              "a friend of ours",
+              "it's ours"
+            ],
+            "collocationFa": {
+              "a friend of ours": "یکی از دوستانِ ما",
+              "it's ours": "مالِ ماست"
+            },
+            "usage": "ours آپوستروف ندارد (our's غلط است) و پیش از اسم نمی‌آید.",
+            "mistake": {
+              "wrong": "This is ours car.",
+              "wrongFa": "این مالِ ما ماشین است؛ اما پیش از اسم ours آمده است.",
+              "right": "This is our car.",
+              "rightFa": "این ماشینِ ماست.",
+              "why": "پیش از اسم our می‌آید؛ ours بدونِ اسم به کار می‌رود."
+            },
+            "pronunciation": {
+              "gb": "/ˈaʊəz/",
+              "us": "/ˈaʊərz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Your house is big, but ___ is small.",
+                "answer": "ours",
+                "accept": [],
+                "fa": "خانهٔ شما بزرگ است، اما خانهٔ ما کوچک است.",
+                "why": "ours یعنی مالِ ما و بدونِ اسم می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«این میز مالِ ماست.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "This table is ours.",
+                    "ok": true,
+                    "why": "بدونِ اسم ours می‌آید."
+                  },
+                  {
+                    "text": "This table is our's.",
+                    "ok": false,
+                    "why": "ours آپوستروف ندارد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این کتاب‌ها مالِ ما نیستند.",
+                "frame": "These books aren't ___.",
+                "answer": "ours",
+                "accept": [],
+                "why": "بدونِ اسم برای مالِ ما ours می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "p.m./P.M./pm/PM",
+      "levelWordId": "level:A1:1043",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1140",
+          "senseId": "lex:A1:cefrj-p-m",
+          "meaningEn": "Used after a time to show that it is between midday and midnight; in the afternoon or evening."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-p-m",
+        "headword": "p.m./P.M./pm/PM",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-p-m",
+            "pos": "adverb",
+            "gloss": "بعد از ظهر؛ عصر یا شب (پس از ساعت)",
+            "meaning": "پس از ساعت می‌آید و نشان می‌دهد زمان بینِ ظهر و نیمه‌شب است؛ بعدازظهر یا شب.",
+            "grammar": [
+              {
+                "pattern": "number + p.m.",
+                "note": "p.m. پس از عددِ ساعت می‌آید: 5 p.m."
+              },
+              {
+                "pattern": "at 5 p.m.",
+                "note": "برای ساعتِ کاری at می‌آید: at 5 p.m."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The shop closes at 9 p.m.",
+                "fa": "مغازه ساعتِ نهِ شب بسته می‌شود."
+              },
+              {
+                "en": "Our flight leaves at 4:15 p.m.",
+                "fa": "پروازمان ساعتِ چهار و ربعِ بعدازظهر است."
+              },
+              {
+                "en": "I usually go to bed at 11 p.m.",
+                "fa": "معمولاً ساعتِ یازدهِ شب می‌خوابم."
+              }
+            ],
+            "collocations": [
+              "at 6 p.m.",
+              "from 2 p.m. to 5 p.m."
+            ],
+            "collocationFa": {
+              "at 6 p.m.": "ساعتِ شش عصر",
+              "from 2 p.m. to 5 p.m.": "از دو تا پنجِ بعدازظهر"
+            },
+            "usage": "p.m. را p.m.، pm یا PM هم می‌نویسند. با p.m. از ساعتِ ۱ تا ۱۲ استفاده می‌شود، نه ساعتِ ۱۳ تا ۲۴.",
+            "mistake": {
+              "wrong": "The museum closes at 18 p.m.",
+              "wrongFa": "موزه ساعتِ هجدهِ بعدازظهر بسته می‌شود؛ اما ساعتِ ۲۴ساعته با p.m. آمده است.",
+              "right": "The museum closes at 6 p.m.",
+              "rightFa": "موزه ساعتِ شش عصر بسته می‌شود.",
+              "why": "با p.m. ساعت از ۱ تا ۱۲ گفته می‌شود: 6 p.m.، نه 18 p.m."
+            },
+            "pronunciation": {
+              "gb": "/ˌpiː ˈem/",
+              "us": "/ˌpiː ˈem/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The film starts at 8:30 ___, after dinner.",
+                "answer": "p.m.",
+                "accept": [
+                  "pm",
+                  "PM",
+                  "P.M."
+                ],
+                "fa": "فیلم ساعتِ هشت و نیمِ شب، بعد از شام، شروع می‌شود.",
+                "why": "p.m. یعنی بعد از ظهر یا شب."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "ساعتِ سهِ بعدازظهر کدام است؟",
+                "options": [
+                  {
+                    "text": "3 p.m.",
+                    "ok": true,
+                    "why": "p.m. برای بعد از ظهر است."
+                  },
+                  {
+                    "text": "15 p.m.",
+                    "ok": false,
+                    "why": "با p.m. ساعت از ۱ تا ۱۲ گفته می‌شود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "جلسه ساعتِ دوِ بعدازظهر است.",
+                "frame": "The meeting is at 2 ___.",
+                "answer": "p.m.",
+                "accept": [
+                  "pm",
+                  "PM",
+                  "P.M."
+                ],
+                "why": "برای ساعتِ بعد از ظهر p.m. می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "pants",
+      "levelWordId": "level:A1:1045",
+      "existingEntryIds": [
+        "lex:A2:pants"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1142",
+          "senseId": "lex:A2:pants",
+          "meaningEn": "A piece of clothing that covers the body from the waist to the feet, with a separate part for each leg (American English; trousers in British English)."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:pants",
+        "headword": "pants",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:pants",
+            "pos": "noun",
+            "gloss": "شلوار",
+            "meaning": "لباسی که بدن را از کمر تا پا می‌پوشاند و برای هر پا یک بخش دارد (در آمریکا pants و در بریتانیا trousers).",
+            "grammar": [
+              {
+                "pattern": "pants (plural)",
+                "note": "pants همیشه جمع است و فعلِ جمع می‌گیرد: My pants are new."
+              },
+              {
+                "pattern": "a pair of pants",
+                "note": "برای یک شلوار a pair of pants می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "He's wearing black pants and a white shirt.",
+                "fa": "او شلوارِ مشکی و پیراهنِ سفید پوشیده است."
+              },
+              {
+                "en": "These pants are too long for me.",
+                "fa": "این شلوار برایم بیش از حد بلند است."
+              },
+              {
+                "en": "I bought two pairs of pants for work.",
+                "fa": "برای کار دو شلوار خریدم."
+              }
+            ],
+            "collocations": [
+              "a pair of pants",
+              "put on your pants"
+            ],
+            "collocationFa": {
+              "a pair of pants": "یک شلوار",
+              "put on your pants": "شلوارت را بپوش"
+            },
+            "usage": "در انگلیسیِ بریتانیایی pants یعنی لباسِ زیر؛ برای شلوار trousers می‌گویند.",
+            "mistake": {
+              "wrong": "My new pants is blue.",
+              "wrongFa": "شلوارِ جدیدم آبی است؛ اما فعل مفرد آمده است.",
+              "right": "My new pants are blue.",
+              "rightFa": "شلوارِ جدیدم آبی است.",
+              "why": "pants جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/pænts/",
+              "us": "/pænts/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "It's cold outside, so wear long ___, not shorts.",
+                "answer": "pants",
+                "accept": [
+                  "trousers"
+                ],
+                "fa": "بیرون سرد است، پس شلوارِ بلند بپوش، نه شلوارک.",
+                "why": "pants یعنی شلوار."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "در بریتانیا به شلوار چه می‌گویند؟",
+                "options": [
+                  {
+                    "text": "trousers",
+                    "ok": true,
+                    "why": "در بریتانیا trousers می‌گویند."
+                  },
+                  {
+                    "text": "shorts",
+                    "ok": false,
+                    "why": "shorts یعنی شلوارک."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "شلوارم کثیف است.",
+                "frame": "My ___ are dirty.",
+                "answer": "pants",
+                "accept": [
+                  "trousers"
+                ],
+                "why": "are نشان می‌دهد اسم جمع است: pants."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "saw",
+      "levelWordId": "level:A1:1047",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1144",
+          "senseId": "lex:A1:cefrj-saw",
+          "meaningEn": "A tool with a long metal blade with sharp teeth, used for cutting wood."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-saw",
+        "headword": "saw",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-saw",
+            "pos": "noun",
+            "gloss": "اره",
+            "meaning": "ابزاری با تیغهٔ فلزیِ دراز و دندانه‌های تیز که برای بریدنِ چوب به کار می‌رود.",
+            "grammar": [
+              {
+                "pattern": "a saw / saws",
+                "note": "saw در این معنا اسمِ قابل‌شمارش است."
+              },
+              {
+                "pattern": "cut + with a saw",
+                "note": "برای بریدن با اره with a saw می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "My father cut the old tree with a saw.",
+                "fa": "پدرم درختِ قدیمی را با اره برید."
+              },
+              {
+                "en": "Be careful, the saw is very sharp.",
+                "fa": "مواظب باش، اره خیلی تیز است."
+              },
+              {
+                "en": "The carpenter keeps his saws on the wall.",
+                "fa": "نجار اره‌هایش را روی دیوار نگه می‌دارد."
+              }
+            ],
+            "collocations": [
+              "an electric saw",
+              "cut with a saw"
+            ],
+            "collocationFa": {
+              "an electric saw": "ارهٔ برقی",
+              "cut with a saw": "با اره بریدن"
+            },
+            "usage": "در این درس saw اسم است (اره). saw همچنین گذشتهٔ see (دیدن) است: I saw a film.",
+            "mistake": {
+              "wrong": "He cut the wood with saw.",
+              "wrongFa": "او چوب را با اره برید؛ اما پیش از saw حرفِ تعریف نیامده است.",
+              "right": "He cut the wood with a saw.",
+              "rightFa": "او چوب را با اره برید.",
+              "why": "saw اسمِ قابل‌شمارش است و a لازم دارد: with a saw."
+            },
+            "pronunciation": {
+              "gb": "/sɔː/",
+              "us": "/sɔː/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "You need a ___ to cut these thick pieces of wood.",
+                "answer": "saw",
+                "accept": [],
+                "fa": "برای بریدنِ این تکه‌چوب‌های کلفت به اره نیاز داری.",
+                "why": "saw ابزارِ بریدنِ چوب است."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "با کدام ابزار چوب را می‌بُرند؟",
+                "options": [
+                  {
+                    "text": "a saw",
+                    "ok": true,
+                    "why": "saw یعنی اره."
+                  },
+                  {
+                    "text": "a spoon",
+                    "ok": false,
+                    "why": "spoon یعنی قاشق."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "اره در جعبه‌ابزار است.",
+                "frame": "The ___ is in the toolbox.",
+                "answer": "saw",
+                "accept": [],
+                "why": "پس از The اسمِ saw می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "smoking",
+      "levelWordId": "level:A1:1049",
+      "existingEntryIds": [
+        "lex:A2:smoking"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1146",
+          "senseId": "lex:A2:smoking",
+          "meaningEn": "The habit or act of breathing in smoke from cigarettes or other tobacco."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:smoking",
+        "headword": "smoking",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:smoking",
+            "pos": "noun",
+            "gloss": "سیگار کشیدن؛ دخانیات",
+            "meaning": "عادت یا عملِ کشیدنِ دودِ سیگار یا دیگر دخانیات.",
+            "grammar": [
+              {
+                "pattern": "smoking + singular verb",
+                "note": "smoking اسم است و فعلِ مفرد می‌گیرد: Smoking is not allowed."
+              },
+              {
+                "pattern": "No smoking",
+                "note": "روی تابلوها No smoking یعنی «سیگار کشیدن ممنوع»."
+              }
+            ],
+            "examples": [
+              {
+                "en": "There is a “No smoking” sign on the door.",
+                "fa": "روی در تابلوی «سیگار کشیدن ممنوع» هست."
+              },
+              {
+                "en": "My uncle stopped smoking ten years ago.",
+                "fa": "عمویم ده سال پیش سیگار را ترک کرد."
+              },
+              {
+                "en": "Smoking is not allowed inside the hospital.",
+                "fa": "سیگار کشیدن داخلِ بیمارستان ممنوع است."
+              }
+            ],
+            "collocations": [
+              "No smoking",
+              "stop smoking"
+            ],
+            "collocationFa": {
+              "No smoking": "سیگار کشیدن ممنوع",
+              "stop smoking": "سیگار را ترک کردن"
+            },
+            "usage": "smoking اسمِ غیرقابل‌شمارش است. کسی که سیگار می‌کشد smoker است.",
+            "mistake": {
+              "wrong": "Smoking are not allowed here.",
+              "wrongFa": "سیگار کشیدن اینجا ممنوع هستند؛ اما فعل جمع آمده است.",
+              "right": "Smoking is not allowed here.",
+              "rightFa": "سیگار کشیدن اینجا ممنوع است.",
+              "why": "smoking مفرد است و فعلِ is می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ˈsməʊkɪŋ/",
+              "us": "/ˈsmoʊkɪŋ/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "The sign says “No ___” because the room is full of children.",
+                "answer": "smoking",
+                "accept": [],
+                "fa": "تابلو می‌گوید «سیگار کشیدن ممنوع» چون اتاق پر از بچه است.",
+                "why": "No smoking یعنی سیگار کشیدن ممنوع."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Smoking is bad for you.",
+                    "ok": true,
+                    "why": "smoking فعلِ مفرد می‌گیرد."
+                  },
+                  {
+                    "text": "Smoking are bad for you.",
+                    "ok": false,
+                    "why": "smoking جمع نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "پدربزرگم پارسال سیگار را ترک کرد.",
+                "frame": "My grandfather stopped ___ last year.",
+                "answer": "smoking",
+                "accept": [],
+                "why": "پس از stop اسمِ ingدار می‌آید: stopped smoking."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "swimming pool",
+      "levelWordId": "level:A1:1051",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1148",
+          "senseId": "lex:A1:cefrj-swimming-pool",
+          "meaningEn": "A large hole or tank filled with water that people swim in."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-swimming-pool",
+        "headword": "swimming pool",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-swimming-pool",
+            "pos": "noun",
+            "gloss": "استخرِ شنا",
+            "meaning": "گودالی بزرگ یا مخزنی پر از آب که مردم در آن شنا می‌کنند.",
+            "grammar": [
+              {
+                "pattern": "in the swimming pool",
+                "note": "برای شنا در استخر in the swimming pool می‌گوییم."
+              },
+              {
+                "pattern": "go to the swimming pool",
+                "note": "برای رفتن به استخر go to the swimming pool می‌گوییم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "The hotel has an outdoor swimming pool.",
+                "fa": "هتل یک استخرِ روباز دارد."
+              },
+              {
+                "en": "We go to the swimming pool every Thursday.",
+                "fa": "هر پنجشنبه به استخر می‌رویم."
+              },
+              {
+                "en": "The children are playing in the swimming pool.",
+                "fa": "بچه‌ها در استخر بازی می‌کنند."
+              }
+            ],
+            "collocations": [
+              "an indoor swimming pool",
+              "go to the swimming pool"
+            ],
+            "collocationFa": {
+              "an indoor swimming pool": "استخرِ سرپوشیده",
+              "go to the swimming pool": "به استخر رفتن"
+            },
+            "usage": "در گفتار اغلب فقط pool می‌گوییم. swimming pool اسمِ مرکب و قابل‌شمارش است.",
+            "mistake": {
+              "wrong": "Let's go to swimming pool after school.",
+              "wrongFa": "بیا بعد از مدرسه به استخر برویم؛ اما the نیامده است.",
+              "right": "Let's go to the swimming pool after school.",
+              "rightFa": "بیا بعد از مدرسه به استخر برویم.",
+              "why": "swimming pool قابل‌شمارش است و اینجا the لازم دارد."
+            },
+            "pronunciation": {
+              "gb": "/ˈswɪmɪŋ puːl/",
+              "us": "/ˈswɪmɪŋ puːl/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Don't run near the ___; the floor is wet.",
+                "answer": "swimming pool",
+                "accept": [
+                  "pool"
+                ],
+                "fa": "نزدیکِ استخر ندو؛ زمین خیس است.",
+                "why": "swimming pool یعنی استخرِ شنا."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«در استخر» کدام است؟",
+                "options": [
+                  {
+                    "text": "in the swimming pool",
+                    "ok": true,
+                    "why": "برای داخلِ آب in می‌آید."
+                  },
+                  {
+                    "text": "on the swimming pool",
+                    "ok": false,
+                    "why": "برای شنا داخلِ استخر in به کار می‌رود."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "استخرِ شنا امروز بسته است.",
+                "frame": "The ___ is closed today.",
+                "answer": "swimming pool",
+                "accept": [
+                  "pool"
+                ],
+                "why": "پس از The اسمِ مرکبِ swimming pool می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "these",
+      "levelWordId": "level:A1:1056",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1153",
+          "senseId": "lex:A1:cefrj-these",
+          "meaningEn": "Used before a plural noun to talk about people or things near you."
+        },
+        {
+          "selectionId": "cefrj-a1:1154",
+          "senseId": "lex:A1:cefrj-these#pronoun",
+          "meaningEn": "Used without a noun to talk about people or things near you that are plural."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-these",
+        "headword": "these",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-these",
+            "pos": "determiner",
+            "gloss": "این (پیش از اسمِ جمع)",
+            "meaning": "پیش از اسمِ جمع می‌آید و به آدم‌ها یا چیزهای نزدیک اشاره می‌کند.",
+            "grammar": [
+              {
+                "pattern": "these + plural noun",
+                "note": "these پیش از اسمِ جمع می‌آید: these shoes."
+              },
+              {
+                "pattern": "this / these",
+                "note": "this برای مفرد و these برای جمع است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "These apples are very sweet.",
+                "fa": "این سیب‌ها خیلی شیرین‌اند."
+              },
+              {
+                "en": "I bought these shoes in Tabriz.",
+                "fa": "این کفش‌ها را در تبریز خریدم."
+              },
+              {
+                "en": "Can you carry these bags for me?",
+                "fa": "می‌توانی این کیسه‌ها را برایم بیاوری؟"
+              }
+            ],
+            "collocations": [
+              "these days",
+              "these people"
+            ],
+            "collocationFa": {
+              "these days": "این روزها",
+              "these people": "این آدم‌ها"
+            },
+            "usage": "these فقط با اسمِ جمع می‌آید؛ با اسمِ مفرد this به کار می‌رود.",
+            "mistake": {
+              "wrong": "These book is mine.",
+              "wrongFa": "این کتاب‌ها مالِ من است؛ اما these با اسمِ مفرد آمده است.",
+              "right": "These books are mine.",
+              "rightFa": "این کتاب‌ها مالِ من‌اند.",
+              "why": "پس از these اسمِ جمع و فعلِ are می‌آید."
+            },
+            "pronunciation": {
+              "gb": "/ðiːz/",
+              "us": "/ðiːz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "___ flowers are for you. Happy birthday!",
+                "answer": "These",
+                "accept": [
+                  "these"
+                ],
+                "fa": "این گل‌ها برای توست. تولدت مبارک!",
+                "why": "پیش از اسمِ جمع (flowers) these می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "these students",
+                    "ok": true,
+                    "why": "these با اسمِ جمع می‌آید."
+                  },
+                  {
+                    "text": "these student",
+                    "ok": false,
+                    "why": "پس از these اسم باید جمع باشد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این کفش‌ها گران‌اند.",
+                "frame": "___ shoes are expensive.",
+                "answer": "These",
+                "accept": [
+                  "these"
+                ],
+                "why": "پیش از اسمِ جمع these می‌آید."
+              }
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-these#pronoun",
+            "pos": "pronoun",
+            "gloss": "این‌ها",
+            "meaning": "بدونِ اسم می‌آید و به آدم‌ها یا چیزهای نزدیکِ جمع اشاره می‌کند؛ این‌ها.",
+            "grammar": [
+              {
+                "pattern": "These are…",
+                "note": "برای معرفی چند چیز نزدیک: These are my friends."
+              },
+              {
+                "pattern": "Are these…?",
+                "note": "برای پرسش: Are these yours?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "These are my classmates, Ali and Hamid.",
+                "fa": "این‌ها هم‌کلاسی‌هایم، علی و حمید، هستند."
+              },
+              {
+                "en": "Are these your keys on the table?",
+                "fa": "این‌ها کلیدهای توست روی میز؟"
+              },
+              {
+                "en": "I made these myself.",
+                "fa": "این‌ها را خودم درست کردم."
+              }
+            ],
+            "collocations": [
+              "these are",
+              "Are these yours?"
+            ],
+            "collocationFa": {
+              "these are": "این‌ها هستند",
+              "Are these yours?": "این‌ها مالِ توست؟"
+            },
+            "usage": "these به‌تنهایی جای اسمِ جمع را می‌گیرد و فعلِ جمع (are) می‌خواهد.",
+            "mistake": {
+              "wrong": "These is my parents.",
+              "wrongFa": "این‌ها پدر و مادرِ من است؛ اما با these فعلِ مفرد آمده است.",
+              "right": "These are my parents.",
+              "rightFa": "این‌ها پدر و مادرِ من هستند.",
+              "why": "these جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ðiːz/",
+              "us": "/ðiːz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Look! ___ are the photos from our trip.",
+                "answer": "These",
+                "accept": [
+                  "these"
+                ],
+                "fa": "ببین! این‌ها عکس‌های سفرمان است.",
+                "why": "these یعنی این‌ها."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«این‌ها مالِ من‌اند.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "These are mine.",
+                    "ok": true,
+                    "why": "these با are می‌آید."
+                  },
+                  {
+                    "text": "These is mine.",
+                    "ok": false,
+                    "why": "these جمع است و is نمی‌گیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این‌ها دوستانِ من‌اند.",
+                "frame": "___ are my friends.",
+                "answer": "These",
+                "accept": [
+                  "these"
+                ],
+                "why": "برای «این‌ها» these می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "those",
+      "levelWordId": "level:A1:1057",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1155",
+          "senseId": "lex:A1:cefrj-those",
+          "meaningEn": "Used before a plural noun to talk about people or things that are not near you."
+        },
+        {
+          "selectionId": "cefrj-a1:1156",
+          "senseId": "lex:A1:cefrj-those#pronoun",
+          "meaningEn": "Used without a noun to talk about people or things that are plural and not near you."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-those",
+        "headword": "those",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-those",
+            "pos": "determiner",
+            "gloss": "آن (پیش از اسمِ جمع)",
+            "meaning": "پیش از اسمِ جمع می‌آید و به آدم‌ها یا چیزهای دور اشاره می‌کند.",
+            "grammar": [
+              {
+                "pattern": "those + plural noun",
+                "note": "those پیش از اسمِ جمع می‌آید: those mountains."
+              },
+              {
+                "pattern": "that / those",
+                "note": "that برای مفرد و those برای جمع است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Look at those birds on the roof!",
+                "fa": "آن پرنده‌ها را روی پشت‌بام ببین!"
+              },
+              {
+                "en": "Those mountains are covered with snow.",
+                "fa": "آن کوه‌ها پوشیده از برف‌اند."
+              },
+              {
+                "en": "Who are those men outside the shop?",
+                "fa": "آن مردهای بیرونِ مغازه کی‌اند؟"
+              }
+            ],
+            "collocations": [
+              "those days",
+              "those people"
+            ],
+            "collocationFa": {
+              "those days": "آن روزها",
+              "those people": "آن آدم‌ها"
+            },
+            "usage": "those فقط با اسمِ جمع می‌آید؛ با اسمِ مفرد that به کار می‌رود.",
+            "mistake": {
+              "wrong": "Those car are very old.",
+              "wrongFa": "آن ماشین‌ها خیلی قدیمی‌اند؛ اما اسم مفرد آمده است.",
+              "right": "Those cars are very old.",
+              "rightFa": "آن ماشین‌ها خیلی قدیمی‌اند.",
+              "why": "پس از those اسمِ جمع می‌آید: those cars."
+            },
+            "pronunciation": {
+              "gb": "/ðəʊz/",
+              "us": "/ðoʊz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Can you see ___ boats far away on the sea?",
+                "answer": "those",
+                "accept": [],
+                "fa": "آن قایق‌های دور روی دریا را می‌بینی؟",
+                "why": "برای چیزهای دورِ جمع those می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام عبارت درست است؟",
+                "options": [
+                  {
+                    "text": "those trees",
+                    "ok": true,
+                    "why": "those با اسمِ جمع می‌آید."
+                  },
+                  {
+                    "text": "those tree",
+                    "ok": false,
+                    "why": "پس از those اسم باید جمع باشد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "آن خانه‌ها خیلی بزرگ‌اند.",
+                "frame": "___ houses are very big.",
+                "answer": "Those",
+                "accept": [
+                  "those"
+                ],
+                "why": "پیش از اسمِ جمعِ دور those می‌آید."
+              }
+            ]
+          },
+          {
+            "id": "lex:A1:cefrj-those#pronoun",
+            "pos": "pronoun",
+            "gloss": "آن‌ها (اشاره به چیزهای دور)",
+            "meaning": "بدونِ اسم می‌آید و به آدم‌ها یا چیزهای دورِ جمع اشاره می‌کند؛ آن‌ها.",
+            "grammar": [
+              {
+                "pattern": "Those are…",
+                "note": "برای اشاره به چند چیزِ دور: Those are my cousins."
+              },
+              {
+                "pattern": "Are those…?",
+                "note": "برای پرسش: Are those your shoes?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "Those are my cousins over there.",
+                "fa": "آن‌ها آنجا پسرعموهای من هستند."
+              },
+              {
+                "en": "Are those your books on the shelf?",
+                "fa": "آن‌ها کتاب‌های توست روی قفسه؟"
+              },
+              {
+                "en": "I like these, but those are cheaper.",
+                "fa": "این‌ها را دوست دارم، اما آن‌ها ارزان‌ترند."
+              }
+            ],
+            "collocations": [
+              "those are",
+              "Are those yours?"
+            ],
+            "collocationFa": {
+              "those are": "آن‌ها هستند",
+              "Are those yours?": "آن‌ها مالِ توست؟"
+            },
+            "usage": "those به‌تنهایی جای اسمِ جمعِ دور را می‌گیرد و فعلِ جمع (are) می‌خواهد.",
+            "mistake": {
+              "wrong": "Those is my brother's books.",
+              "wrongFa": "آن‌ها کتاب‌های برادرم است؛ اما با those فعلِ مفرد آمده است.",
+              "right": "Those are my brother's books.",
+              "rightFa": "آن‌ها کتاب‌های برادرم هستند.",
+              "why": "those جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/ðəʊz/",
+              "us": "/ðoʊz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "These are mine, and ___ over there are yours.",
+                "answer": "those",
+                "accept": [],
+                "fa": "این‌ها مالِ من‌اند و آن‌هایی که آنجاست مالِ تو.",
+                "why": "برای چیزهای دورِ جمع، در برابرِ these، those می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«آن‌ها گران‌اند.» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "Those are expensive.",
+                    "ok": true,
+                    "why": "those با are می‌آید."
+                  },
+                  {
+                    "text": "Those is expensive.",
+                    "ok": false,
+                    "why": "those جمع است و is نمی‌گیرد."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این‌ها مالِ من‌اند، اما آن‌ها (آن دورتری‌ها) مالِ من نیستند.",
+                "frame": "These are mine, but ___ aren't.",
+                "answer": "those",
+                "accept": [],
+                "why": "در برابرِ these، برای چیزهای دورتر those می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "was",
+      "levelWordId": "level:A1:1060",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1159",
+          "senseId": "lex:A1:cefrj-was",
+          "meaningEn": "The past form of “be” used with I, he, she, it and singular nouns."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-was",
+        "headword": "was",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-was",
+            "pos": "verb",
+            "gloss": "بود (was)",
+            "meaning": "شکلِ گذشتهٔ be که با I، he، she، it و اسمِ مفرد می‌آید.",
+            "grammar": [
+              {
+                "pattern": "I/he/she/it was",
+                "note": "با فاعلِ مفرد و I از was استفاده می‌کنیم: She was tired."
+              },
+              {
+                "pattern": "Was + subject…?",
+                "note": "برای پرسش was پیش از فاعل می‌آید: Was he at home?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "I was very tired after the long trip.",
+                "fa": "بعد از سفرِ طولانی خیلی خسته بودم."
+              },
+              {
+                "en": "Was the film good?",
+                "fa": "فیلم خوب بود؟"
+              },
+              {
+                "en": "My grandfather was a farmer near Hamadan.",
+                "fa": "پدربزرگم کشاورزی نزدیکِ همدان بود."
+              }
+            ],
+            "collocations": [
+              "was born",
+              "was late"
+            ],
+            "collocationFa": {
+              "was born": "به دنیا آمد",
+              "was late": "دیر کرد"
+            },
+            "usage": "was با I، he، she، it و اسمِ مفرد می‌آید؛ با you، we و they از were استفاده می‌کنیم.",
+            "mistake": {
+              "wrong": "They was late for the class.",
+              "wrongFa": "آن‌ها برای کلاس دیر بود؛ اما با they فعلِ was آمده است.",
+              "right": "They were late for the class.",
+              "rightFa": "آن‌ها برای کلاس دیر کردند.",
+              "why": "با they فعلِ were می‌آید، نه was."
+            },
+            "pronunciation": {
+              "gb": "/wɒz/",
+              "us": "/wʌz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "Yesterday it ___ very cold, so we stayed home.",
+                "answer": "was",
+                "accept": [],
+                "fa": "دیروز هوا خیلی سرد بود، پس در خانه ماندیم.",
+                "why": "با it در گذشته was می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«من بیمار بودم.» I ___ ill.",
+                "options": [
+                  {
+                    "text": "was",
+                    "ok": true,
+                    "why": "با I در گذشته was می‌آید."
+                  },
+                  {
+                    "text": "were",
+                    "ok": false,
+                    "why": "were با you، we و they می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "او دیروز در مدرسه بود.",
+                "frame": "She ___ at school yesterday.",
+                "answer": "was",
+                "accept": [],
+                "why": "با she در گذشته was می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "were",
+      "levelWordId": "level:A1:1061",
+      "existingEntryIds": [],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1160",
+          "senseId": "lex:A1:cefrj-were",
+          "meaningEn": "The past form of “be” used with you, we, they and plural nouns."
+        }
+      ],
+      "entry": {
+        "id": "lex:A1:cefrj-were",
+        "headword": "were",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A1:cefrj-were",
+            "pos": "verb",
+            "gloss": "بودی؛ بودیم؛ بودند (were)",
+            "meaning": "شکلِ گذشتهٔ be که با you، we، they و اسمِ جمع می‌آید.",
+            "grammar": [
+              {
+                "pattern": "you/we/they were",
+                "note": "با you، we، they و اسمِ جمع were می‌آید: We were happy."
+              },
+              {
+                "pattern": "Were + subject…?",
+                "note": "برای پرسش were پیش از فاعل می‌آید: Were you at home?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "We were at the beach all day.",
+                "fa": "تمامِ روز در ساحل بودیم."
+              },
+              {
+                "en": "Were you busy last night?",
+                "fa": "دیشب سرت شلوغ بود؟"
+              },
+              {
+                "en": "The shops were closed because of the holiday.",
+                "fa": "مغازه‌ها به خاطرِ تعطیلی بسته بودند."
+              }
+            ],
+            "collocations": [
+              "were born",
+              "were you…?"
+            ],
+            "collocationFa": {
+              "were born": "به دنیا آمدند",
+              "were you…?": "آیا تو … بودی؟"
+            },
+            "usage": "were با you (مفرد و جمع)، we، they و اسم‌های جمع می‌آید.",
+            "mistake": {
+              "wrong": "I were at home yesterday.",
+              "wrongFa": "دیروز در خانه بودیم؛ اما با I فعلِ were آمده است.",
+              "right": "I was at home yesterday.",
+              "rightFa": "دیروز در خانه بودم.",
+              "why": "با I در گذشته was می‌آید، نه were."
+            },
+            "pronunciation": {
+              "gb": "/wɜː/",
+              "us": "/wɝː/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "My friends ___ very happy with their exam results.",
+                "answer": "were",
+                "accept": [],
+                "fa": "دوستانم از نتیجهٔ امتحانشان خیلی خوشحال بودند.",
+                "why": "با اسمِ جمع در گذشته were می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«ما خسته بودیم.» We ___ tired.",
+                "options": [
+                  {
+                    "text": "were",
+                    "ok": true,
+                    "why": "با we در گذشته were می‌آید."
+                  },
+                  {
+                    "text": "was",
+                    "ok": false,
+                    "why": "was با I، he، she و it می‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "بچه‌ها دیروز در پارک بودند.",
+                "frame": "The children ___ in the park yesterday.",
+                "answer": "were",
+                "accept": [],
+                "why": "با اسمِ جمع در گذشته were می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "whose",
+      "levelWordId": "level:A1:1062",
+      "existingEntryIds": [
+        "lex:A2:whose"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1161",
+          "senseId": "lex:A2:whose",
+          "meaningEn": "Used before a noun to ask who something belongs to."
+        },
+        {
+          "selectionId": "cefrj-a1:1162",
+          "senseId": "lex:A2:whose#pronoun",
+          "meaningEn": "Used without a noun to ask who something belongs to."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:whose",
+        "headword": "whose",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:whose",
+            "pos": "determiner",
+            "gloss": "مالِ چه کسی (پیش از اسم)",
+            "meaning": "پیش از اسم می‌آید تا بپرسیم چیزی مالِ چه کسی است.",
+            "grammar": [
+              {
+                "pattern": "Whose + noun + is/are…?",
+                "note": "whose پیش از اسم می‌آید: Whose bag is this?"
+              },
+              {
+                "pattern": "whose / who's",
+                "note": "whose یعنی «مالِ چه کسی» و who's کوتاهِ who is است."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Whose phone is ringing?",
+                "fa": "گوشیِ چه کسی دارد زنگ می‌زند؟"
+              },
+              {
+                "en": "Whose jacket is on the chair?",
+                "fa": "کتِ چه کسی روی صندلی است؟"
+              },
+              {
+                "en": "Whose idea was it to go camping?",
+                "fa": "فکرِ چه کسی بود که برویم کمپ؟"
+              }
+            ],
+            "collocations": [
+              "whose turn",
+              "whose idea"
+            ],
+            "collocationFa": {
+              "whose turn": "نوبتِ چه کسی",
+              "whose idea": "فکرِ چه کسی"
+            },
+            "usage": "whose را با who's (= who is) اشتباه نکنید. هر دو یکسان تلفظ می‌شوند.",
+            "mistake": {
+              "wrong": "Who's car is that?",
+              "wrongFa": "کی است ماشین آن؟؛ اما who's (= who is) آمده است.",
+              "right": "Whose car is that?",
+              "rightFa": "آن ماشینِ کیست؟",
+              "why": "برای «مالِ چه کسی» whose می‌آید؛ who's یعنی who is."
+            },
+            "pronunciation": {
+              "gb": "/huːz/",
+              "us": "/huːz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "___ turn is it to wash the dishes?",
+                "answer": "Whose",
+                "accept": [
+                  "whose"
+                ],
+                "fa": "نوبتِ کیست که ظرف‌ها را بشوید؟",
+                "why": "whose turn یعنی نوبتِ چه کسی."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«این کیفِ کیست؟» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "Whose bag is this?",
+                    "ok": true,
+                    "why": "whose پیش از اسم مالکیت را می‌پرسد."
+                  },
+                  {
+                    "text": "Who bag is this?",
+                    "ok": false,
+                    "why": "برای مالکیت whose لازم است، نه who."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این دفترِ کیست؟",
+                "frame": "___ notebook is this?",
+                "answer": "Whose",
+                "accept": [
+                  "whose"
+                ],
+                "why": "برای پرسیدنِ مالکیت پیش از اسم whose می‌آید."
+              }
+            ]
+          },
+          {
+            "id": "lex:A2:whose#pronoun",
+            "pos": "pronoun",
+            "gloss": "مالِ کیست؟",
+            "meaning": "بدونِ اسم می‌آید تا بپرسیم چیزی مالِ چه کسی است.",
+            "grammar": [
+              {
+                "pattern": "Whose is this?",
+                "note": "whose به‌تنهایی می‌آید: Whose is this?"
+              },
+              {
+                "pattern": "Whose are these?",
+                "note": "برای چیزهای جمع: Whose are these?"
+              }
+            ],
+            "examples": [
+              {
+                "en": "This pen was on the floor. Whose is it?",
+                "fa": "این خودکار روی زمین بود. مالِ کیست؟"
+              },
+              {
+                "en": "Whose are these gloves?",
+                "fa": "این دستکش‌ها مالِ کیست؟"
+              },
+              {
+                "en": "I found an umbrella, but I don't know whose it is.",
+                "fa": "یک چتر پیدا کردم، اما نمی‌دانم مالِ کیست."
+              }
+            ],
+            "collocations": [
+              "Whose is it?",
+              "know whose it is"
+            ],
+            "collocationFa": {
+              "Whose is it?": "مالِ کیست؟",
+              "know whose it is": "دانستنِ اینکه مالِ کیست"
+            },
+            "usage": "whose بدونِ اسم هم به کار می‌رود؛ فعلِ پس از آن با چیزی که درباره‌اش می‌پرسیم جور است: Whose is this? Whose are these?",
+            "mistake": {
+              "wrong": "Whose is these shoes?",
+              "wrongFa": "این کفش‌ها مالِ کی است؟ اما با اسمِ جمع فعلِ is آمده است.",
+              "right": "Whose are these shoes?",
+              "rightFa": "این کفش‌ها مالِ کیست؟",
+              "why": "these shoes جمع است و فعلِ are می‌گیرد."
+            },
+            "pronunciation": {
+              "gb": "/huːz/",
+              "us": "/huːz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "There's a red coat in the hall. ___ is it?",
+                "answer": "Whose",
+                "accept": [
+                  "whose"
+                ],
+                "fa": "یک کتِ قرمز در راهرو هست. مالِ کیست؟",
+                "why": "Whose is it? یعنی مالِ کیست؟"
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "«این کلیدها مالِ کیست؟» کدام درست است؟",
+                "options": [
+                  {
+                    "text": "Whose are these keys?",
+                    "ok": true,
+                    "why": "با اسمِ جمع are می‌آید."
+                  },
+                  {
+                    "text": "Who's are these keys?",
+                    "ok": false,
+                    "why": "who's یعنی who is و اینجا درست نیست."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این مالِ کیست؟",
+                "frame": "___ is this?",
+                "answer": "Whose",
+                "accept": [
+                  "whose"
+                ],
+                "why": "برای «مالِ کیست؟» whose می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    },
+    {
+      "sourceHeadword": "yours",
+      "levelWordId": "level:A1:1064",
+      "existingEntryIds": [
+        "lex:A2:yours"
+      ],
+      "sourceRecords": [
+        {
+          "selectionId": "cefrj-a1:1164",
+          "senseId": "lex:A2:yours",
+          "meaningEn": "Used to show that something belongs to the person or people you are talking to; your one or your ones."
+        }
+      ],
+      "entry": {
+        "id": "lex:A2:yours",
+        "headword": "yours",
+        "goals": [
+          "everyday",
+          "general"
+        ],
+        "senses": [
+          {
+            "id": "lex:A2:yours",
+            "pos": "pronoun",
+            "gloss": "مالِ تو؛ مالِ شما",
+            "meaning": "نشان می‌دهد چیزی مالِ کسی است که با او حرف می‌زنیم؛ مالِ تو یا مالِ شما.",
+            "grammar": [
+              {
+                "pattern": "It's yours.",
+                "note": "yours به‌تنهایی و بدونِ اسم می‌آید: Is this yours?"
+              },
+              {
+                "pattern": "your + noun / yours",
+                "note": "your پیش از اسم می‌آید (your bag) و yours بدونِ اسم."
+              }
+            ],
+            "examples": [
+              {
+                "en": "Is this umbrella yours?",
+                "fa": "این چتر مالِ توست؟"
+              },
+              {
+                "en": "My room is small, but yours is big.",
+                "fa": "اتاقِ من کوچک است، اما اتاقِ تو بزرگ است."
+              },
+              {
+                "en": "Our car is old, but yours is new.",
+                "fa": "ماشینِ ما قدیمی است، اما ماشینِ شما نو است."
+              }
+            ],
+            "collocations": [
+              "Is this yours?",
+              "a friend of yours"
+            ],
+            "collocationFa": {
+              "Is this yours?": "این مالِ توست؟",
+              "a friend of yours": "یکی از دوستانِ تو"
+            },
+            "usage": "yours آپوستروف ندارد (your's غلط است). در پایانِ نامه Yours sincerely هم به کار می‌رود.",
+            "mistake": {
+              "wrong": "Is this book your's?",
+              "wrongFa": "این کتاب مالِ توست؟ اما yours آپوستروف گرفته است.",
+              "right": "Is this book yours?",
+              "rightFa": "این کتاب مالِ توست؟",
+              "why": "yours آپوستروف ندارد."
+            },
+            "pronunciation": {
+              "gb": "/jɔːz/",
+              "us": "/jʊrz/"
+            },
+            "check": [
+              {
+                "type": "cloze",
+                "id": "c1",
+                "text": "I have my ticket. Do you have ___?",
+                "answer": "yours",
+                "accept": [],
+                "fa": "من بلیتم را دارم. تو بلیتت را داری؟",
+                "why": "yours یعنی مالِ تو و بدونِ اسم می‌آید."
+              },
+              {
+                "type": "choice",
+                "id": "q1",
+                "prompt": "کدام جمله درست است؟",
+                "options": [
+                  {
+                    "text": "Is this your coat?",
+                    "ok": true,
+                    "why": "پیش از اسم your می‌آید."
+                  },
+                  {
+                    "text": "Is this yours coat?",
+                    "ok": false,
+                    "why": "yours پیش از اسم نمی‌آید."
+                  }
+                ]
+              },
+              {
+                "type": "produce",
+                "id": "p1",
+                "prompt": "این کلیدها مالِ توست؟",
+                "frame": "Are these keys ___?",
+                "answer": "yours",
+                "accept": [],
+                "why": "بدونِ اسم برای مالِ تو yours می‌آید."
+              }
+            ]
+          }
+        ]
+      },
+      "editorialState": "STAGING_ONLY_AI_DRAFT_UNREVIEWED",
+      "semanticApproved": false,
+      "persianApproved": false,
+      "cefrApproved": false,
+      "rightsCleared": false,
+      "audioCertified": false,
+      "curriculumApproved": false,
+      "publicRelease": false
+    }
+  ]
+}

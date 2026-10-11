@@ -241,8 +241,19 @@ already did. Self-review made the *waitress* prompts name a woman, because Persi
 «پیشخدمت» is not gendered. Codex review then removed a singular *grape* accept
 from a frame that needs *grapes*, made the `broken` definition read "damaged, in
 pieces, or not working", and fixed Persian number agreement in a `snowy` example.
-The fifteen batches total **300/338 drafted, 38 still
-to write**, with 912 bilingual examples and 912 checks.
+PR #223 merged both as
+`3b67ebea7a9a07ec9110b4579e31fea84b314583`.
+
+`lessons-new-301-320.json` continues with credit card, daddy, did, dining room,
+does, doing, each other, fishing, following, glasses, good afternoon, good
+morning, good night, had, has, hers, is, last name, living and living room.
+`lessons-new-321-338.json` ends with math/maths, mobile phone, mommy/mommie,
+Mr./Mr, Mrs./Mrs, Olympics, ours, p.m./P.M./pm/PM, pants, saw, smoking, swimming
+pool, these, those, was, were, whose and yours; `these`, `those` and `whose` have
+determiner and pronoun records, so that batch has 21 senses. Self-review made the
+`those` pronoun items contrast with *these*, because *they* also fits a bare
+«آن‌ها». **Phase 2 drafting is complete: all 338/338 NEW headwords have full
+unreviewed lessons**, with 1,035 bilingual examples and 1,035 checks.
 These are draft counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
@@ -318,7 +329,11 @@ fourteenth batch keeps `frog` and `princess`; the other eighteen get new IDs. Th
 fifteenth keeps `all right` (with its adverb sense at `lex:A2:all-right#adverb`),
 `broken` and `closed`; the contractions get `lex:A1:cefrj-short-m`, `-short-re`
 and `-short-s`, and `a.m.` gets `lex:A1:cefrj-a-m`, separate from the verb
-`lex:A1:cefrj-am`. Source-level A1 grading does not certify
+`lex:A1:cefrj-am`. The sixteenth batch keeps `fishing`, the adjective
+`following`, `hers` and the adjective `living`; the seventeenth keeps `maths`,
+`ours`, `pants`, `smoking`, `whose` (pronoun sense at `lex:A2:whose#pronoun`) and
+`yours`. The rest get new IDs, such as `lex:A1:cefrj-p-m` and the noun
+`lex:A1:cefrj-saw` (the tool, not the past of *see*). Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
