@@ -16,10 +16,10 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #208: `76cabbca412648a61fe7cc9dbd84c134304c03b2`.
+- Verified main after PR #209: `ac406a5ba870914694a2fb489089f81da7fdd292`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191 and #193–#208 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191 and #193–#209 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every sense in course Units 4–12 (831). The 173
   remaining pairs, 36 usage notes, 161 grammar notes and 114 feedback lines are
@@ -31,10 +31,12 @@ Do **not** restart from chat memory when repository evidence exists.
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 - CEFR-J rebuild phase 1 is merged, including whole-app placement and no-drop-out
-  records. Phase 2 now stages full lessons for **20/338 NEW A1 headwords**, from
-  may through role: 60 bilingual examples, 60 checks and existing compatible
-  entry IDs. They remain unreviewed and unreleased. Continue at **21, step**;
-  318 NEW A1 headwords remain. `npm run assurance:a1:cefrj:drafts` checks source
+  records. Phase 2 now stages full lessons for **40/338 NEW A1 headwords**, from
+  may through foreign: 120 bilingual examples, 120 checks and existing compatible
+  entry IDs. The first 20 and their validator are merged in #209; the next 20
+  are in `lessons-new-021-040.json`. They remain unreviewed and unreleased.
+  Continue at **41, surprise**; 298 NEW A1 headwords remain.
+  `npm run assurance:a1:cefrj:drafts` checks source
   hashes, part-of-speech identity, Persian coverage and assessment separation.
   Audio/curriculum/semantic certification and Gate 0 remain open.
 
@@ -92,10 +94,20 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 
 ## Current next actions
 
-1. Continue from 9983 deterministic findings and the 105-case non-promotable frontier queue. Select later-unit source fields using actual curriculum membership; all 180 frozen Units 1–3 entries stay untouched without a separate study/audio scope decision.
+1. Continue CEFR-J phase 2 at NEW headword 41 (surprise), after the 40 full unreviewed lesson drafts in the first two source windows. Preserve compatible spelling/part-of-speech IDs and zero approval flags. All 338 NEW headwords need drafts before phase 3 rebuilds the curriculum, scenes and study scope. The owner unfroze Units 1–3 for that rebuild; their 71 frontier cases and remaining Persian fields are deferred to phase 3. The legacy deterministic count is 6,640; later-unit repairs are complete.
 2. Independent NGSL authoring is complete: all 900 candidates have staged drafts. Every draft requires independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement; build review packets with `npm run assurance:ngsl:review:packets -- --json --from N --limit M`. Do not record approvals without a real independent reviewer.
 3. Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates. On 2026-10-10 (PR #193) Gemma 4 26B and GLM 4.7 Flash, both +no-thinking, were appended to the end of its list, and the planner selects Gemma 4. Do not register more English candidates while these are untried; let the scheduled runs calibrate them. Only if both are rejected does English need another candidate or a justified new calibration version. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.
 4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.
+
+### PR #209 — first full CEFR-J A1 lesson batch
+
+Merged as `ac406a5ba870914694a2fb489089f81da7fdd292`. The main tree matches the
+locally tested tree `e254b4dbe5742303c5dbed49adc029cbf632f9b1`.
+Main CI [38099715082](https://github.com/mostifa2274-ui/Vajefy/actions/runs/38099715082)
+passed 558 unit tests and 95 browser tests; Workers Builds, the build contract,
+rollback rehearsal and OIDC gateway smoke also passed. This evidence covers
+engineering checks only, not independent lesson approval or rights clearance.
+Do not repeat NEW headwords 1–20 or the existing draft-checker implementation.
 
 ## Historical checkpoint — Unit 1 certification
 
