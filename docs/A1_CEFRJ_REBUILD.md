@@ -178,9 +178,16 @@ and a verb, so this batch has 21 senses. PR #216 merged it as
 
 `lessons-new-141-160.json` continues with mobile, everywhere, medicine,
 sweet, smell, habit, self, bone, pocket, lucky, king, borrow, reporter,
-breathe, excuse, luck, neck, wheel, drama and toy. The eight batches total
-**160/338 drafted, 178 still to write**, with 486 bilingual examples and 486
-checks. These are draft counts, not approved or published lessons. The same pull request adds
+breathe, excuse, luck, neck, wheel, drama and toy. PR #217 merged it as
+`323f3beb72d47c56aed06765f91e435d6c769780`. Codex review was unavailable
+(usage limit), so the batch was self-reviewed against the earlier review
+rules; that found and fixed an overbroad *do medicine* explanation.
+
+`lessons-new-161-180.json` continues with thick, smart, tight, cloud, truck,
+beside, mom, sir, everyday, pollution, album, grass, poem, knee, button, bowl,
+tube, tower, dig and musician. The nine batches total **180/338 drafted, 158
+still to write**, with 546 bilingual examples and 546 checks. These are draft
+counts, not approved or published lessons. The same pull request adds
 accepted synonyms to merged lessons 41–80 (for example *call* for ring and
 *man* for guy). Definitions must not be
 narrower than the word: wind is any moving air, a cry can be quiet, and smoke
@@ -233,7 +240,10 @@ shake as a quick movement (`lex:B1:shake`) and gold as made of gold. The seventh
 `lex:B1:kick` with its verb sense at `lex:B1:kick#verb`; it teaches grade as a
 school mark and row as a line of seats or things. The eighth batch keeps the B2 nouns `self` and
 `excuse` and the B1 verb `breathe`; it teaches mobile as a mobile phone,
-sweet as a taste, and drama as a play or the school subject. Source-level A1 grading does not certify
+sweet as a taste, and drama as a play or the school subject. The ninth batch keeps the B1 adjectives `smart` and
+`tight`, the B2+ preposition `beside` and the B1 nouns `album`, `poem` and
+`tube`; `mom` and the noun `dig` (an archaeological dig; the existing entry is
+a verb) get new `lex:A1:cefrj-` IDs. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
