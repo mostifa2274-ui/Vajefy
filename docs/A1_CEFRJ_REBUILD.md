@@ -137,11 +137,21 @@ and 95 browser tests, plus the Workers build, rollback and gateway checks.
 
 `lessons-new-021-040.json` continues with step, site, sign, wish, kid, kill,
 field, vote, focus, stage, technology, save, due, pick, ground, fight, leader,
-store, heart and foreign. The two batches total **40/338 drafted, 298 still
-to write**, with 120 bilingual examples and 120 checks. These are draft counts,
-not approved or published lessons. Choice answers in the second batch are
-balanced across both option positions; its production sentences differ from
-examples, mistake pairs and cloze items.
+store, heart and foreign. PR #210 merged that batch as
+`a27bc143b8d80d4448c971efe92a21cd72b2e6fa`. Its `kill` mistake pair contrasted
+two grammatical sentences; it now shows a real error, *Many trees killed in the
+storm*, corrected to *The storm killed many trees*.
+
+`lessons-new-041-060.json` continues with surprise, drop, Miss, worry, inside,
+catch, character, guy, size, alone, review, board, church, item, touch, file,
+middle, bar, seat and throw. `catch` has two CEFR-J records, a noun and a verb,
+so this batch has 21 senses. The three batches total **60/338 drafted, 278
+still to write**, with 183 bilingual examples and 183 checks. These are draft
+counts, not approved or published lessons. Choice answers are balanced across
+both option positions, and every mistake pair shows a genuine error: a wrong
+preposition, article, plural, irregular past or word choice that a Persian
+speaker is likely to make (for example *I fell my phone* for *I dropped my
+phone*).
 
 Each lesson uses the existing enhanced-entry schema and contains a Persian
 meaning and explanation, grammar notes, three bilingual examples, translated
@@ -159,7 +169,12 @@ The second batch also uses the existing **verb** `lex:B2:step`, not the A2
 noun, and teaches wish, vote and fight as the selected nouns, focus and pick
 as verbs, and due and foreign as adjectives. Meanings are deliberately scoped:
 save teaches money kept for later; stage teaches the performance platform;
-other meanings need separate review. Source-level A1 grading does not certify
+other meanings need separate review. The third batch keeps the existing noun
+IDs `lex:B1:worry`, `lex:B1:touch` and `lex:B1:file` and the noun
+`lex:B2:catch`, whose verb sense is `lex:B2:catch#verb`. `Miss` (the title) and
+the noun `throw` have no compatible entry and use new `lex:A1:cefrj-` IDs. It
+teaches bar as a piece of chocolate or soap, review as a written opinion and
+board as a classroom or notice board. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
