@@ -146,9 +146,14 @@ storm*.
 `lessons-new-041-060.json` continues with surprise, drop, Miss, worry, inside,
 catch, character, guy, size, alone, review, board, church, item, touch, file,
 middle, bar, seat and throw. `catch` has two CEFR-J records, a noun and a verb,
-so this batch has 21 senses. The three batches total **60/338 drafted, 278
-still to write**, with 183 bilingual examples and 183 checks. These are draft
-counts, not approved or published lessons. Choice answers are balanced across
+so this batch has 21 senses. PR #212 merged it as
+`e28d8b34a38eede4962e618fda02fcaca70c54fc`.
+
+`lessons-new-061-080.json` continues with goal, push, successful, speech,
+officer, mine, memory, ring, dream, smile, judge, survey, wind, block, copy,
+heavy, collect, straight, fair and collection. The four batches total
+**80/338 drafted, 258 still to write**, with 243 bilingual examples and 243
+checks. These are draft counts, not approved or published lessons. Choice answers are balanced across
 both option positions. Every "wrong" sentence must be wrong under any reading,
 not merely odd: a missing article, a wrong plural or irregular past, or a
 verb used with the wrong pattern (for example *Yesterday I fell my phone* for
@@ -177,7 +182,13 @@ IDs `lex:B1:worry`, `lex:B1:touch` and `lex:B1:file` and the noun
 `lex:B2:catch`, whose verb sense is `lex:B2:catch#verb`. `Miss` (the title) and
 the noun `throw` have no compatible entry and use new `lex:A1:cefrj-` IDs. It
 teaches bar as a piece of chocolate or soap, review as a written opinion and
-board as a classroom or notice board. Source-level A1 grading does not certify
+board as a classroom or notice board. The fourth batch uses the existing verb
+entry `lex:A2:ring-2` (not the A2 noun for a finger ring), the pronoun entry
+`lex:A2:mine-belongs-to-me` (not the B1 noun for a coal mine), and the noun
+entries for survey and wind, not their B2 verbs. It teaches goal as a point in
+football, ring as phoning (British English), dream as a dream while asleep,
+memory as something remembered, and block as a block of flats or an office
+block. Source-level A1 grading does not certify
 that the authored sense or its supporting language is suitable for A1.
 Part-of-speech matching is structural metadata, not proof of sense equivalence;
 independent semantic checks and a progress-preserving migration remain required.
