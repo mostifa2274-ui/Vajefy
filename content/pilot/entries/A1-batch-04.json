@@ -1415,7 +1415,17 @@
       "answer": "interview",
       "accept": [],
       "fa": "شرکت می‌خواهد دوشنبهٔ آینده با شما مصاحبه کند.",
-      "why": "interview + شخص."
+      "why": "interview + شخص.",
+      "support": [
+       {
+        "en": "company",
+        "fa": "شرکت"
+       },
+       {
+        "en": "next",
+        "fa": "بعدی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1446,7 +1456,13 @@
       "answer": "interviewed",
       "accept": [],
       "fa": "شرکت دیروز برای این شغل با دو نفر مصاحبه کرد.",
-      "why": "interview مستقیم مفعول می‌گیرد؛ interviewed شکل گذشته است."
+      "why": "interview مستقیم مفعول می‌گیرد؛ interviewed شکل گذشته است.",
+      "support": [
+       {
+        "en": "company",
+        "fa": "شرکت"
+       }
+      ]
      }
     ]
    }
@@ -1554,7 +1570,13 @@
       "accept": [
        "keys"
       ],
-      "why": "car key = کلید ماشین."
+      "why": "car key = کلید ماشین.",
+      "support": [
+       {
+        "en": "lost",
+        "fa": "گم کردم"
+       }
+      ]
      }
     ]
    }
@@ -1653,6 +1675,12 @@
         "text": "ones",
         "ok": false,
         "why": "ones جمعِ one است؛ «یک بار» once است."
+       }
+      ],
+      "support": [
+       {
+        "en": "gym",
+        "fa": "باشگاه ورزشی"
        }
       ]
      },
@@ -1757,6 +1785,12 @@
         "text": "small",
         "ok": false,
         "why": "small یعنی کوچک."
+       }
+      ],
+      "support": [
+       {
+        "en": "opposite",
+        "fa": "متضاد"
        }
       ]
      },
@@ -1946,7 +1980,13 @@
       "answer": "show",
       "accept": [],
       "fa": "لطفاً گذرنامه‌تان را به من نشان دهید.",
-      "why": "show + شخص + چیز."
+      "why": "show + شخص + چیز.",
+      "support": [
+       {
+        "en": "passport",
+        "fa": "گذرنامه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2064,6 +2104,12 @@
         "ok": false,
         "why": "at TV غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "cooking",
+        "fa": "آشپزی"
+       }
       ]
      },
      {
@@ -2073,7 +2119,13 @@
       "frame": "We saw a great ___ last night.",
       "answer": "show",
       "accept": [],
-      "why": "show می‌تواند به معنی نمایش یا اجرای صحنه‌ای باشد."
+      "why": "show می‌تواند به معنی نمایش یا اجرای صحنه‌ای باشد.",
+      "support": [
+       {
+        "en": "last night",
+        "fa": "دیشب"
+       }
+      ]
      }
     ]
    }
@@ -2565,7 +2617,13 @@
       "answer": "walk",
       "accept": [],
       "fa": "دور نیست. می‌توانیم پیاده برویم.",
-      "why": "walk = پیاده رفتن."
+      "why": "walk = پیاده رفتن.",
+      "support": [
+       {
+        "en": "far",
+        "fa": "دور"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3107,6 +3165,12 @@
         "ok": false,
         "why": "قبل از f، a می‌آید نه an."
        }
+      ],
+      "support": [
+       {
+        "en": "village",
+        "fa": "روستا"
+       }
       ]
      },
      {
@@ -3210,6 +3274,12 @@
         "ok": false,
         "why": "earth یعنی کرهٔ زمین یا خاک."
        }
+      ],
+      "support": [
+       {
+        "en": "fell",
+        "fa": "افتاد"
+       }
       ]
      },
      {
@@ -3286,6 +3356,10 @@
        {
         "en": "lift",
         "fa": "آسانسور"
+       },
+       {
+        "en": "fifth",
+        "fa": "پنجم"
        }
       ]
      },
@@ -3318,7 +3392,13 @@
       "frame": "My office is on the third ___.",
       "answer": "floor",
       "accept": [],
-      "why": "on the third floor = در طبقهٔ سوم."
+      "why": "on the third floor = در طبقهٔ سوم.",
+      "support": [
+       {
+        "en": "third",
+        "fa": "سوم"
+       }
+      ]
      }
     ]
    }
@@ -3925,7 +4005,13 @@
       "answer": "student",
       "accept": [],
       "fa": "او دانشجوی دانشگاه شهر ماست.",
-      "why": "student = دانشجو."
+      "why": "student = دانشجو.",
+      "support": [
+       {
+        "en": "university",
+        "fa": "دانشگاه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4337,7 +4423,13 @@
       "answer": "word",
       "accept": [],
       "fa": "این کلمه را نمی‌فهمم. یعنی چه؟",
-      "why": "word = کلمه."
+      "why": "word = کلمه.",
+      "support": [
+       {
+        "en": "understand",
+        "fa": "نمی‌فهمم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4672,6 +4764,12 @@
         "text": "back",
         "ok": false,
         "why": "back اینجا حرف اضافه نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "opposite",
+        "fa": "متضاد"
        }
       ]
      },
@@ -5188,7 +5286,13 @@
       "answer": "lot",
       "accept": [],
       "fa": "امروز ماشین زیادی در جاده است.",
-      "why": "a lot of + اسم."
+      "why": "a lot of + اسم.",
+      "support": [
+       {
+        "en": "road",
+        "fa": "جاده"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5943,7 +6047,13 @@
       "frame": "It ___ last night.",
       "answer": "snowed",
       "accept": [],
-      "why": "گذشتهٔ snow، snowed است و با فاعل it می‌آید."
+      "why": "گذشتهٔ snow، snowed است و با فاعل it می‌آید.",
+      "support": [
+       {
+        "en": "last night",
+        "fa": "دیشب"
+       }
+      ]
      }
     ]
    }
@@ -7307,7 +7417,13 @@
       "answer": "correct",
       "accept": [],
       "fa": "داستانت را دوباره بخوان و اشتباه‌ها را درست کن.",
-      "why": "برای تصحیح اشتباه correct mistakes: correct mistakes."
+      "why": "برای تصحیح اشتباه correct mistakes: correct mistakes.",
+      "support": [
+       {
+        "en": "mistakes",
+        "fa": "اشتباه‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7329,6 +7445,12 @@
         "ok": false,
         "why": "correction اسم است."
        }
+      ],
+      "support": [
+       {
+        "en": "spelling",
+        "fa": "املا"
+       }
       ]
      },
      {
@@ -7338,7 +7460,13 @@
       "frame": "Please ___ my mistakes.",
       "answer": "correct",
       "accept": [],
-      "why": "correct mistakes = اشتباه‌ها را تصحیح کردن."
+      "why": "correct mistakes = اشتباه‌ها را تصحیح کردن.",
+      "support": [
+       {
+        "en": "mistakes",
+        "fa": "اشتباه‌ها"
+       }
+      ]
      }
     ]
    }
@@ -7947,7 +8075,13 @@
       "answer": "future",
       "accept": [],
       "fa": "در آینده می‌خواهم در کشور دیگری زندگی کنم.",
-      "why": "«در آینده» in the future است: in the future."
+      "why": "«در آینده» in the future است: in the future.",
+      "support": [
+       {
+        "en": "country",
+        "fa": "کشور"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8575,7 +8709,13 @@
       "answer": "painting",
       "accept": [],
       "fa": "این تابلو خیلی قدیمی است. در موزه است.",
-      "why": "a painting = تابلو."
+      "why": "a painting = تابلو.",
+      "support": [
+       {
+        "en": "museum",
+        "fa": "موزه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8791,7 +8931,13 @@
        "air"
       ],
       "fa": "با هواپیما رفتن سریع‌تر از قطار است.",
-      "why": "برای وسیلهٔ سفر by plane، بدون the: by plane."
+      "why": "برای وسیلهٔ سفر by plane، بدون the: by plane.",
+      "support": [
+       {
+        "en": "quicker",
+        "fa": "سریع‌تر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9050,7 +9196,13 @@
       "frame": "Follow the ___.",
       "answer": "rules",
       "accept": [],
-      "why": "برای رعایت قانون follow the rules: follow the rules."
+      "why": "برای رعایت قانون follow the rules: follow the rules.",
+      "support": [
+       {
+        "en": "Follow",
+        "fa": "پیروی کن از"
+       }
+      ]
      }
     ]
    }
@@ -9122,7 +9274,13 @@
       "answer": "sit",
       "accept": [],
       "fa": "اینجا یک صندلی خالی هست. می‌توانی کنار من بنشینی.",
-      "why": "برای نشستن کنار کسی sit next to: sit next to."
+      "why": "برای نشستن کنار کسی sit next to: sit next to.",
+      "support": [
+       {
+        "en": "next to",
+        "fa": "کنارِ"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9246,6 +9404,12 @@
         "text": "sung",
         "ok": false,
         "why": "گذشتهٔ ساده sang است؛ sung اسم مفعول است."
+       }
+      ],
+      "support": [
+       {
+        "en": "last night",
+        "fa": "دیشب"
        }
       ]
      },
@@ -9566,6 +9730,12 @@
         "text": "at last",
         "ok": false,
         "why": "at last یعنی «بالاخره»."
+       }
+      ],
+      "support": [
+       {
+        "en": "last",
+        "fa": "گذشته"
        }
       ]
      },
@@ -10417,6 +10587,12 @@
         "ok": false,
         "why": "برای رفتن به جایی to می‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "Thousands",
+        "fa": "هزاران"
+       }
       ]
      },
      {
@@ -10630,6 +10806,12 @@
         "ok": false,
         "why": "an جا افتاده است."
        }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
       ]
      },
      {
@@ -10809,7 +10991,13 @@
       "answer": "history",
       "accept": [],
       "fa": "این موزه تاریخ شهرمان را نشان می‌دهد.",
-      "why": "the history of یعنی «تاریخِ …»: the history of."
+      "why": "the history of یعنی «تاریخِ …»: the history of.",
+      "support": [
+       {
+        "en": "museum",
+        "fa": "موزه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11231,7 +11419,13 @@
        "text"
       ],
       "fa": "وقتی رسیدم برایت پیام می‌فرستم.",
-      "why": "برای پیام فرستادن send a message: send a message."
+      "why": "برای پیام فرستادن send a message: send a message.",
+      "support": [
+       {
+        "en": "send",
+        "fa": "می‌فرستم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11334,7 +11528,13 @@
       "answer": "page",
       "accept": [],
       "fa": "لطفاً صفحهٔ بعد را بیاورید.",
-      "why": "the next page یعنی «صفحهٔ بعد»: the next page."
+      "why": "the next page یعنی «صفحهٔ بعد»: the next page.",
+      "support": [
+       {
+        "en": "next",
+        "fa": "بعدی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11365,7 +11565,13 @@
       "frame": "This book has a hundred ___.",
       "answer": "pages",
       "accept": [],
-      "why": "جمع: pages."
+      "why": "جمع: pages.",
+      "support": [
+       {
+        "en": "hundred",
+        "fa": "صد"
+       }
+      ]
      }
     ]
    }
@@ -11764,7 +11970,13 @@
       "answer": "red",
       "accept": [],
       "fa": "ماشین را نگه دار! چراغ راهنما قرمز است.",
-      "why": "red = قرمز."
+      "why": "red = قرمز.",
+      "support": [
+       {
+        "en": "traffic light",
+        "fa": "چراغ راهنمایی"
+       }
+      ]
      },
      {
       "type": "choice",

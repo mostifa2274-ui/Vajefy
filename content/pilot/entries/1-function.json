@@ -398,7 +398,13 @@
       "answer": "but",
       "accept": [],
       "fa": "غذا ارزان اما خوشمزه بود.",
-      "why": "معمولاً انتظار نداریم غذای ارزان خوشمزه باشد؛ این تضاد را but نشان می‌دهد."
+      "why": "معمولاً انتظار نداریم غذای ارزان خوشمزه باشد؛ این تضاد را but نشان می‌دهد.",
+      "support": [
+       {
+        "en": "cheap",
+        "fa": "ارزان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -608,6 +614,10 @@
        {
         "en": "passed",
         "fa": "قبول شد"
+       },
+       {
+        "en": "exam",
+        "fa": "امتحان"
        }
       ]
      },
@@ -630,6 +640,12 @@
         "text": "so",
         "ok": false,
         "why": "so نتیجه را می‌گوید، نه علت."
+       }
+      ],
+      "support": [
+       {
+        "en": "flight",
+        "fa": "پرواز"
        }
       ]
      },
@@ -1018,7 +1034,13 @@
       "answer": "than",
       "accept": [],
       "fa": "این کیف از آن یکی ارزان‌تر است.",
-      "why": "بعد از cheaper (تفضیلی) than می‌آید."
+      "why": "بعد از cheaper (تفضیلی) than می‌آید.",
+      "support": [
+       {
+        "en": "cheaper",
+        "fa": "ارزان‌تر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1256,6 +1278,12 @@
         "text": "Those are",
         "ok": false,
         "why": "جمع است، اما اینجا یک خبر داریم."
+       }
+      ],
+      "support": [
+       {
+        "en": "exam",
+        "fa": "امتحان"
        }
       ]
      },
@@ -2647,7 +2675,13 @@
       "answer": "We",
       "accept": [],
       "fa": "من و همسرم فیلم دوست داریم. هر هفته به سینما می‌رویم.",
-      "why": "my wife and I یعنی we."
+      "why": "my wife and I یعنی we.",
+      "support": [
+       {
+        "en": "films",
+        "fa": "فیلم‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3957,6 +3991,12 @@
         "ok": false,
         "why": "have to هم اجبار است."
        }
+      ],
+      "support": [
+       {
+        "en": "advice",
+        "fa": "توصیه"
+       }
       ]
      },
      {
@@ -4179,6 +4219,12 @@
         "text": "have to",
         "ok": false,
         "why": "معنا برعکس است."
+       }
+      ],
+      "support": [
+       {
+        "en": "museum",
+        "fa": "موزه"
        }
       ]
      },
@@ -5254,6 +5300,12 @@
         "ok": false,
         "why": "talk بدون about مفعول نمی‌گیرد."
        }
+      ],
+      "support": [
+       {
+        "en": "natural",
+        "fa": "طبیعی"
+       }
       ]
      },
      {
@@ -5263,7 +5315,13 @@
       "frame": "We talked ___ the film.",
       "answer": "about",
       "accept": [],
-      "why": "talk about + موضوع."
+      "why": "talk about + موضوع.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      }
     ]
    },
@@ -5329,7 +5387,13 @@
       "accept": [
        "Around"
       ],
-      "why": "تقریب پیش از عدد."
+      "why": "تقریب پیش از عدد.",
+      "support": [
+       {
+        "en": "hundred",
+        "fa": "صد"
+       }
+      ]
      },
      {
       "type": "cloze",

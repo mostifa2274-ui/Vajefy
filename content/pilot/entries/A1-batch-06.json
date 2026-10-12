@@ -281,7 +281,13 @@
             "answer": "ago",
             "accept": [],
             "fa": "سه سال پیش در دانشگاه آشنا شدیم.",
-            "why": "زمان + ago."
+            "why": "زمان + ago.",
+            "support": [
+              {
+                "en": "university",
+                "fa": "دانشگاه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1154,6 +1160,10 @@
               {
                 "en": "bridge",
                 "fa": "پل"
+              },
+              {
+                "en": "hundred",
+                "fa": "صد"
               }
             ]
           },
@@ -1177,6 +1187,12 @@
                 "ok": false,
                 "why": "last year فعل گذشته می‌خواهد."
               }
+            ],
+            "support": [
+              {
+                "en": "last year",
+                "fa": "سال گذشته"
+              }
             ]
           },
           {
@@ -1186,7 +1202,13 @@
             "frame": "They are ___ a new road.",
             "answer": "building",
             "accept": [],
-            "why": "حال استمراری؛ be + building: be + -ing: building."
+            "why": "حال استمراری؛ be + building: be + -ing: building.",
+            "support": [
+              {
+                "en": "road",
+                "fa": "جاده"
+              }
+            ]
           }
         ]
       }
@@ -2145,6 +2167,10 @@
               {
                 "en": "British",
                 "fa": "بریتانیایی"
+              },
+              {
+                "en": "part",
+                "fa": "بخش"
               }
             ]
           },
@@ -2155,7 +2181,13 @@
             "frame": "Art is part of ___.",
             "answer": "culture",
             "accept": [],
-            "why": "culture = فرهنگ."
+            "why": "culture = فرهنگ.",
+            "support": [
+              {
+                "en": "part",
+                "fa": "بخش"
+              }
+            ]
           }
         ]
       }
@@ -2878,6 +2910,14 @@
               {
                 "en": "Iran",
                 "fa": "ایران"
+              },
+              {
+                "en": "popular",
+                "fa": "محبوب"
+              },
+              {
+                "en": "north",
+                "fa": "شمال"
               }
             ]
           },
@@ -2900,6 +2940,12 @@
                 "text": "dishes",
                 "ok": false,
                 "why": "the main dish مفرد است."
+              }
+            ],
+            "support": [
+              {
+                "en": "main",
+                "fa": "اصلی"
               }
             ]
           },
@@ -3980,6 +4026,12 @@
                 "ok": false,
                 "why": "Our … is مفرد می‌خواهد."
               }
+            ],
+            "support": [
+              {
+                "en": "fifth",
+                "fa": "پنجم"
+              }
             ]
           },
           {
@@ -4737,7 +4789,13 @@
             "accept": [
               "grandma"
             ],
-            "why": "grandmother = مادربزرگ."
+            "why": "grandmother = مادربزرگ.",
+            "support": [
+              {
+                "en": "cooking",
+                "fa": "آشپزی"
+              }
+            ]
           }
         ]
       }
@@ -5021,7 +5079,13 @@
             "answer": "interesting",
             "accept": [],
             "fa": "موزه واقعاً جالب بود. خیلی چیز یاد گرفتیم.",
-            "why": "برای چیز: interesting."
+            "why": "برای چیز: interesting.",
+            "support": [
+              {
+                "en": "museum",
+                "fa": "موزه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5042,6 +5106,12 @@
                 "text": "interest",
                 "ok": false,
                 "why": "interest اسم یا فعل است."
+              }
+            ],
+            "support": [
+              {
+                "en": "film",
+                "fa": "فیلم"
               }
             ]
           },
@@ -5132,6 +5202,10 @@
               {
                 "en": "fridge",
                 "fa": "یخچال"
+              },
+              {
+                "en": "thirsty",
+                "fa": "تشنه"
               }
             ]
           },
@@ -7383,6 +7457,12 @@
                 "ok": false,
                 "why": "do a party غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "last weekend",
+                "fa": "آخر هفتهٔ گذشته"
+              }
             ]
           },
           {
@@ -7475,7 +7555,13 @@
             "answer": "past",
             "accept": [],
             "fa": "در گذشته در روستای ما ماشین نبود.",
-            "why": "برای «در گذشته» in the past: in the past."
+            "why": "برای «در گذشته» in the past: in the past.",
+            "support": [
+              {
+                "en": "village",
+                "fa": "روستا"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7496,6 +7582,12 @@
                 "text": "pass",
                 "ok": false,
                 "why": "pass فعل است."
+              }
+            ],
+            "support": [
+              {
+                "en": "few",
+                "fa": "چند"
               }
             ]
           },
@@ -8433,7 +8525,13 @@
               "ideas"
             ],
             "fa": "سه نکتهٔ اصلی داستان را بنویس.",
-            "why": "the main points یعنی «نکته‌های اصلی»: the main points."
+            "why": "the main points یعنی «نکته‌های اصلی»: the main points.",
+            "support": [
+              {
+                "en": "main",
+                "fa": "اصلی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8454,6 +8552,12 @@
                 "text": "pointing",
                 "ok": false,
                 "why": "pointing فعل است."
+              }
+            ],
+            "support": [
+              {
+                "en": "roads",
+                "fa": "جاده‌ها"
               }
             ]
           },
@@ -8657,6 +8761,12 @@
                 "text": "reallly",
                 "ok": false,
                 "why": "املای درست: really."
+              }
+            ],
+            "support": [
+              {
+                "en": "film",
+                "fa": "فیلم"
               }
             ]
           },
@@ -9380,7 +9490,13 @@
             "answer": "sentence",
             "accept": [],
             "fa": "جمله با حرف بزرگ شروع می‌شود و با نقطه تمام می‌شود.",
-            "why": "sentence = جمله."
+            "why": "sentence = جمله.",
+            "support": [
+              {
+                "en": "capital letter",
+                "fa": "حرف بزرگ"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10041,7 +10157,13 @@
             "frame": "We ___ the weekend in the north.",
             "answer": "spent",
             "accept": [],
-            "why": "گذشتهٔ spend: spent."
+            "why": "گذشتهٔ spend: spent.",
+            "support": [
+              {
+                "en": "north",
+                "fa": "شمال"
+              }
+            ]
           }
         ]
       }
@@ -10451,7 +10573,13 @@
             "frame": "Where's the next ___?",
             "answer": "stop",
             "accept": [],
-            "why": "the next stop یعنی «ایستگاه بعدی»: the next stop."
+            "why": "the next stop یعنی «ایستگاه بعدی»: the next stop.",
+            "support": [
+              {
+                "en": "next",
+                "fa": "بعدی"
+              }
+            ]
           }
         ]
       }
@@ -10544,6 +10672,12 @@
                 "text": "long",
                 "ok": false,
                 "why": "long برای طولِ چیزهاست."
+              }
+            ],
+            "support": [
+              {
+                "en": "metres",
+                "fa": "متر"
               }
             ]
           },
@@ -10759,6 +10893,12 @@
                 "ok": false,
                 "why": "صفت s نمی‌گیرد."
               }
+            ],
+            "support": [
+              {
+                "en": "film",
+                "fa": "فیلم"
+              }
             ]
           },
           {
@@ -10773,7 +10913,13 @@
               "awful",
               "horrible"
             ],
-            "why": "a + صفت + اسم: a terrible mistake."
+            "why": "a + صفت + اسم: a terrible mistake.",
+            "support": [
+              {
+                "en": "mistake",
+                "fa": "اشتباه"
+              }
+            ]
           }
         ]
       }
@@ -11718,6 +11864,12 @@
                 "text": "at",
                 "ok": false,
                 "why": "come at a visit غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "last month",
+                "fa": "ماه گذشته"
               }
             ]
           },
