@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "coach-text-v1-a38efd6b4f5e6b79",
+ "contentVersion": "coach-text-v1-153205caa08f9d1f",
  "cases": [
   {
    "id": "2b1078906b",
@@ -20439,6 +20439,18 @@
    ]
   },
   {
+   "id": "ac3fc50d28",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:place"
+   ],
+   "text": "Put the book back in its place.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "cb5690d549",
    "split": "dev",
    "source": "mistake-right",
@@ -20482,6 +20494,18 @@
     "lex:A1:here"
    ],
    "text": "Here are your keys. They were on the table.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "f92b7edd07",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:here"
+   ],
+   "text": "Come here, I want to show you something.",
    "expect": [
     "natural"
    ]
@@ -20535,6 +20559,18 @@
    ]
   },
   {
+   "id": "8b12ab0ac9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:there"
+   ],
+   "text": "I left my bag there, under the table.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6bc84456a9",
    "split": "dev",
    "source": "mistake-right",
@@ -20578,6 +20614,18 @@
     "lex:A1:there#there-is"
    ],
    "text": "There are thirty students in my class.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3c81a8a959",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:there#there-is"
+   ],
+   "text": "There are two beds in the room.",
    "expect": [
     "natural"
    ]
@@ -20631,6 +20679,18 @@
    ]
   },
   {
+   "id": "894a62f963",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:road"
+   ],
+   "text": "This road is very busy in the morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "813f5acb73",
    "split": "dev",
    "source": "mistake-right",
@@ -20674,6 +20734,18 @@
     "lex:A1:street"
    ],
    "text": "Look both ways before you cross the street.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4bf4495be6",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:street"
+   ],
+   "text": "There are many shops on this street.",
    "expect": [
     "natural"
    ]
@@ -20727,6 +20799,18 @@
    ]
   },
   {
+   "id": "b043e98ca4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:address"
+   ],
+   "text": "What's the address of the hotel?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7378703aed",
    "split": "dev",
    "source": "mistake-right",
@@ -20770,6 +20854,18 @@
     "lex:A1:building"
    ],
    "text": "My office is in an old building near the river.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8d3eef977d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:building"
+   ],
+   "text": "There are fifty flats in our building.",
    "expect": [
     "natural"
    ]
@@ -20823,6 +20919,18 @@
    ]
   },
   {
+   "id": "f529c53a6b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hotel"
+   ],
+   "text": "Is there a cheap hotel near the station?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7690e29d00",
    "split": "dev",
    "source": "mistake-right",
@@ -20866,6 +20974,18 @@
     "lex:A1:hospital"
    ],
    "text": "My grandfather was in hospital for a week.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dbddd055fd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hospital"
+   ],
+   "text": "The hospital is next to the park.",
    "expect": [
     "natural"
    ]
@@ -20919,6 +21039,18 @@
    ]
   },
   {
+   "id": "c5170b6564",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:park"
+   ],
+   "text": "The children play football in the park after school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c2d4399a3e",
    "split": "dev",
    "source": "mistake-right",
@@ -20962,6 +21094,18 @@
     "lex:A1:park#verb"
    ],
    "text": "I parked the car near the bank.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "40a27b800f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:park#verb"
+   ],
+   "text": "Where can I park my bike?",
    "expect": [
     "natural"
    ]
@@ -21015,6 +21159,18 @@
    ]
   },
   {
+   "id": "30e26fcb5d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:centre"
+   ],
+   "text": "The shopping centre opens at ten.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "5d4b9947b2",
    "split": "dev",
    "source": "mistake-right",
@@ -21058,6 +21214,18 @@
     "lex:A1:way"
    ],
    "text": "I bought some bread on the way home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6736f4432c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:way"
+   ],
+   "text": "Can you tell me the way to the bank?",
    "expect": [
     "natural"
    ]
@@ -21111,6 +21279,18 @@
    ]
   },
   {
+   "id": "3d2226f54f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:way#method"
+   ],
+   "text": "This is the best way to cook rice.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f98530a820",
    "split": "dev",
    "source": "mistake-right",
@@ -21154,6 +21334,18 @@
     "lex:A1:map"
    ],
    "text": "I bought a map of the city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5822f7cf86",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:map"
+   ],
+   "text": "Look at the map. We are here.",
    "expect": [
     "natural"
    ]
@@ -21207,6 +21399,18 @@
    ]
   },
   {
+   "id": "008f72daa6",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:near"
+   ],
+   "text": "Don't stand near the fire.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7b1e8bdd4f",
    "split": "dev",
    "source": "mistake-right",
@@ -21250,6 +21454,18 @@
     "lex:A1:beach"
    ],
    "text": "Our hotel is near the beach.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "829693a92a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:beach"
+   ],
+   "text": "We walked on the beach in the evening.",
    "expect": [
     "natural"
    ]
@@ -21303,6 +21519,18 @@
    ]
   },
   {
+   "id": "9da2665702",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:far"
+   ],
+   "text": "The airport is far from the city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ce6a9e309d",
    "split": "dev",
    "source": "mistake-right",
@@ -21346,6 +21574,18 @@
     "lex:A1:between"
    ],
    "text": "The shop is open between nine and five.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8089008165",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:between"
+   ],
+   "text": "Sit between your brother and your sister.",
    "expect": [
     "natural"
    ]
@@ -21399,6 +21639,18 @@
    ]
   },
   {
+   "id": "a9425ac909",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:front"
+   ],
+   "text": "There's a garden at the front of the house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "3809a187e6",
    "split": "test",
    "source": "mistake-right",
@@ -21442,6 +21694,18 @@
     "lex:A1:opposite"
    ],
    "text": "She sat opposite me at dinner.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "53b13b965d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:opposite"
+   ],
+   "text": "My friend lives opposite me.",
    "expect": [
     "natural"
    ]
@@ -21495,6 +21759,18 @@
    ]
   },
   {
+   "id": "f108068f2f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:opposite#noun"
+   ],
+   "text": "Do the opposite of what I do.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "706c0b12f5",
    "split": "dev",
    "source": "mistake-right",
@@ -21538,6 +21814,18 @@
     "lex:A1:left"
    ],
    "text": "The bathroom is the second door on the left.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "918b3fb5f1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:left"
+   ],
+   "text": "My house is the first one on the left.",
    "expect": [
     "natural"
    ]
@@ -21591,6 +21879,18 @@
    ]
   },
   {
+   "id": "64a95a0b3e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:right"
+   ],
+   "text": "I think your answer is right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "dc3b665230",
    "split": "dev",
    "source": "mistake-right",
@@ -21634,6 +21934,18 @@
     "lex:A1:right#direction"
    ],
    "text": "The pharmacy is on your right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b26d20e6c9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:right#direction"
+   ],
+   "text": "Take the second street on the right.",
    "expect": [
     "natural"
    ]
@@ -21687,6 +21999,18 @@
    ]
   },
   {
+   "id": "19864da3b4",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:right#now"
+   ],
+   "text": "The doctor can see you right now.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "de1c360ff9",
    "split": "dev",
    "source": "mistake-right",
@@ -21730,6 +22054,18 @@
     "lex:A1:turn"
    ],
    "text": "Can you turn off the light, please?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2e6b30325d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:turn"
+   ],
+   "text": "Turn the page, please.",
    "expect": [
     "natural"
    ]
@@ -21783,6 +22119,18 @@
    ]
   },
   {
+   "id": "a647cb58e2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:turn#noun"
+   ],
+   "text": "Wait your turn, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ae3ef35ed6",
    "split": "dev",
    "source": "mistake-right",
@@ -21826,6 +22174,18 @@
     "lex:A1:up"
    ],
    "text": "Look up! There's a plane.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0f341bfb2f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:up"
+   ],
+   "text": "Turn the music up, please.",
    "expect": [
     "natural"
    ]
@@ -21879,6 +22239,18 @@
    ]
   },
   {
+   "id": "e18a808a9a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:up#preposition"
+   ],
+   "text": "The bus goes up the hill slowly.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c7b00f6910",
    "split": "dev",
    "source": "mistake-right",
@@ -21922,6 +22294,18 @@
     "lex:A1:country"
    ],
    "text": "Which country are you from?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "033481f48d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:country"
+   ],
+   "text": "My cousin lives in another country.",
    "expect": [
     "natural"
    ]
@@ -21975,6 +22359,18 @@
    ]
   },
   {
+   "id": "d6d1f937c0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:over"
+   ],
+   "text": "There's a bridge over the river.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c8ea974c9a",
    "split": "dev",
    "source": "mistake-right",
@@ -22018,6 +22414,18 @@
     "lex:A1:over#more-than"
    ],
    "text": "This bridge is over three hundred years old.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dfa9206e99",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:over#more-than"
+   ],
+   "text": "My grandfather is over eighty.",
    "expect": [
     "natural"
    ]
@@ -22071,6 +22479,18 @@
    ]
   },
   {
+   "id": "56cd1aba11",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:tree"
+   ],
+   "text": "Birds are singing in the trees.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "1afdbf9b54",
    "split": "test",
    "source": "mistake-right",
@@ -22114,6 +22534,18 @@
     "lex:A1:under"
    ],
    "text": "Children under five travel free.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9b1bfb07e6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:under"
+   ],
+   "text": "Put your shoes under the bed.",
    "expect": [
     "natural"
    ]
@@ -22169,7 +22601,7 @@
   {
    "id": "a42157a364",
    "split": "dev",
-   "source": "mistake-right",
+   "source": "example",
    "senses": [
     "lex:A1:outside"
    ],
@@ -22210,6 +22642,18 @@
     "lex:A1:down"
    ],
    "text": "Write down the new words on a piece of paper.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ced3368402",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:down"
+   ],
+   "text": "Put your bag down here.",
    "expect": [
     "natural"
    ]
@@ -22263,6 +22707,18 @@
    ]
   },
   {
+   "id": "c08d54df1f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:down#preposition"
+   ],
+   "text": "Go down this street and turn left.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "13373e0357",
    "split": "test",
    "source": "mistake-right",
@@ -22306,6 +22762,18 @@
     "lex:A1:across"
    ],
    "text": "We walked across the bridge to the old town.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b0766275aa",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:across"
+   ],
+   "text": "There's a cafe across the road.",
    "expect": [
     "natural"
    ]
@@ -22359,6 +22827,18 @@
    ]
   },
   {
+   "id": "4c2cef005f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:village"
+   ],
+   "text": "The village has a small school and a shop.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "8e7143a23d",
    "split": "dev",
    "source": "mistake-right",
@@ -22402,6 +22882,18 @@
     "lex:A1:river"
    ],
    "text": "We had lunch by the river.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3056535348",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:river"
+   ],
+   "text": "This river goes to the sea.",
    "expect": [
     "natural"
    ]
@@ -22455,6 +22947,18 @@
    ]
   },
   {
+   "id": "3a7540c894",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:world"
+   ],
+   "text": "There are many languages in the world.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6733270903",
    "split": "dev",
    "source": "mistake-right",
@@ -22498,6 +23002,18 @@
     "lex:A1:around"
    ],
    "text": "I want to travel around Europe.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "31d9ac4639",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:around"
+   ],
+   "text": "There are trees around the lake.",
    "expect": [
     "natural"
    ]
@@ -22551,6 +23067,18 @@
    ]
   },
   {
+   "id": "b797a2438a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:around#about"
+   ],
+   "text": "The bag costs around twenty dollars.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7bf848f8a3",
    "split": "dev",
    "source": "mistake-right",
@@ -22594,6 +23122,18 @@
     "lex:A1:town"
    ],
    "text": "We go into town on Saturdays to do the shopping.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "290d65b5b6",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:town"
+   ],
+   "text": "There's a market in town every Thursday.",
    "expect": [
     "natural"
    ]
@@ -22647,6 +23187,18 @@
    ]
   },
   {
+   "id": "04ef48980b",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:floor"
+   ],
+   "text": "Put the boxes on the floor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6b98eaa2a6",
    "split": "dev",
    "source": "mistake-right",
@@ -22690,6 +23242,18 @@
     "lex:A1:floor#storey"
    ],
    "text": "The toilets are on the ground floor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9962eb128d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:floor#storey"
+   ],
+   "text": "The restaurant is on the top floor.",
    "expect": [
     "natural"
    ]
@@ -22743,6 +23307,18 @@
    ]
   },
   {
+   "id": "e3320ccf8a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:behind"
+   ],
+   "text": "The sun went behind a cloud.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c170b18754",
    "split": "dev",
    "source": "mistake-right",
@@ -22786,6 +23362,18 @@
     "lex:A1:mountain"
    ],
    "text": "My uncle has a small house in the mountains.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "830faca7ba",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:mountain"
+   ],
+   "text": "This mountain is very high and cold.",
    "expect": [
     "natural"
    ]
@@ -22839,6 +23427,18 @@
    ]
   },
   {
+   "id": "ea80863c17",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:sea"
+   ],
+   "text": "The sea is warm in summer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "fbcbc6a26a",
    "split": "dev",
    "source": "mistake-right",
@@ -22882,6 +23482,18 @@
     "lex:A1:north"
    ],
    "text": "We drove north for three hours.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3da21ce570",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:north"
+   ],
+   "text": "The wind is coming from the north.",
    "expect": [
     "natural"
    ]
@@ -22935,6 +23547,18 @@
    ]
   },
   {
+   "id": "795d7c9811",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:east"
+   ],
+   "text": "The new airport is east of the city.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a07b30faa0",
    "split": "dev",
    "source": "mistake-right",
@@ -22978,6 +23602,18 @@
     "lex:A1:south"
    ],
    "text": "Some birds fly south in winter.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "421f350f8d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:south"
+   ],
+   "text": "It's hot in the south in summer.",
    "expect": [
     "natural"
    ]
@@ -23031,6 +23667,18 @@
    ]
   },
   {
+   "id": "77e0d531a0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:below"
+   ],
+   "text": "Look at the picture below.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "0d1d6bd585",
    "split": "test",
    "source": "mistake-right",
@@ -23074,6 +23722,18 @@
     "lex:A1:draw"
    ],
    "text": "He drew a map of the town for me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "88fb9d2977",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:draw"
+   ],
+   "text": "He draws birds on paper.",
    "expect": [
     "natural"
    ]
@@ -23127,6 +23787,18 @@
    ]
   },
   {
+   "id": "27bf6b1c84",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:line"
+   ],
+   "text": "There is a long line at the bank.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "738a6b4186",
    "split": "dev",
    "source": "mistake-right",
@@ -23170,6 +23842,18 @@
     "lex:A1:above"
    ],
    "text": "Our flat is above a small shop.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0159c54c90",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:above"
+   ],
+   "text": "Birds are flying above the house.",
    "expect": [
     "natural"
    ]
@@ -23223,6 +23907,18 @@
    ]
   },
   {
+   "id": "d84e457f7d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:area"
+   ],
+   "text": "This is a good area for families.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "9f5e5c24e9",
    "split": "dev",
    "source": "mistake-right",
@@ -23266,6 +23962,18 @@
     "lex:A1:capital"
    ],
    "text": "Have you ever been to the capital?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "48bfda4a9f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:capital"
+   ],
+   "text": "The capital city is very big and busy.",
    "expect": [
     "natural"
    ]
@@ -23319,6 +24027,18 @@
    ]
   },
   {
+   "id": "7423c1bc9f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:capital#letter"
+   ],
+   "text": "Sentences begin with a capital letter.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "469368df04",
    "split": "test",
    "source": "mistake-right",
@@ -23362,6 +24082,18 @@
     "lex:A1:climb"
    ],
    "text": "We climbed the mountain in five hours.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b78d1e8a5a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:climb"
+   ],
+   "text": "My father climbs mountains every summer.",
    "expect": [
     "natural"
    ]
@@ -23415,6 +24147,18 @@
    ]
   },
   {
+   "id": "c98f0eba88",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:farm"
+   ],
+   "text": "We bought eggs from a farm near the village.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "09d8486eb8",
    "split": "test",
    "source": "mistake-right",
@@ -23458,6 +24202,18 @@
     "lex:A1:high"
    ],
    "text": "Prices are very high in this shop.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5b8cecc54f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:high"
+   ],
+   "text": "This building is fifty metres high.",
    "expect": [
     "natural"
    ]
@@ -23511,6 +24267,18 @@
    ]
   },
   {
+   "id": "60df3b064f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:into"
+   ],
+   "text": "He jumped into the pool.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "666d7628f8",
    "split": "dev",
    "source": "mistake-right",
@@ -23554,6 +24322,18 @@
     "lex:A1:island"
    ],
    "text": "You can only get to the island by boat.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cfd6d0581a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:island"
+   ],
+   "text": "The island has a lot of beautiful beaches.",
    "expect": [
     "natural"
    ]
@@ -23607,6 +24387,18 @@
    ]
   },
   {
+   "id": "81975ea4cc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:local"
+   ],
+   "text": "My children go to the local school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "9f59c94723",
    "split": "dev",
    "source": "mistake-right",
@@ -23650,6 +24442,18 @@
     "lex:A1:next-to"
    ],
    "text": "Can I sit next to you?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dc717dfa59",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:next-to"
+   ],
+   "text": "The cinema is next to a big cafe.",
    "expect": [
     "natural"
    ]
@@ -23703,6 +24507,18 @@
    ]
   },
   {
+   "id": "430382903d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:out"
+   ],
+   "text": "Can I go out and play?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c45e3031f6",
    "split": "dev",
    "source": "mistake-right",
@@ -23746,6 +24562,18 @@
     "lex:A1:out#out-of"
    ],
    "text": "Take the milk out of the fridge, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bcf4e8d80f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:out#out-of"
+   ],
+   "text": "Get out of the water, it's cold!",
    "expect": [
     "natural"
    ]
@@ -23799,6 +24627,18 @@
    ]
   },
   {
+   "id": "c530e8f2e5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:west"
+   ],
+   "text": "There are high mountains in the west.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "2641c6ea72",
    "split": "test",
    "source": "mistake-right",
@@ -23842,6 +24682,18 @@
     "lex:A1:museum"
    ],
    "text": "We visited a car museum in Tehran.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ba718ab382",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:museum"
+   ],
+   "text": "The museum has many old maps.",
    "expect": [
     "natural"
    ]
@@ -23895,6 +24747,18 @@
    ]
   },
   {
+   "id": "2b602a1799",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:library"
+   ],
+   "text": "The library is closed on Fridays.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a9f266fdd4",
    "split": "dev",
    "source": "mistake-right",
@@ -23938,6 +24802,18 @@
     "lex:A1:flower"
    ],
    "text": "There are lots of flowers in the park in spring.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "95d613ae3c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:flower"
+   ],
+   "text": "These flowers smell nice.",
    "expect": [
     "natural"
    ]
@@ -23991,6 +24867,18 @@
    ]
   },
   {
+   "id": "7dca33d68b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:plant"
+   ],
+   "text": "Don't forget to water the plants.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "5f6b774611",
    "split": "dev",
    "source": "mistake-right",
@@ -24034,6 +24922,18 @@
     "lex:A1:space"
    ],
    "text": "Is there space in your car for one more person?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8aa9616a46",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:space"
+   ],
+   "text": "We need more space for our books.",
    "expect": [
     "natural"
    ]
@@ -24087,6 +24987,18 @@
    ]
   },
   {
+   "id": "72fceddba8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:space#universe"
+   ],
+   "text": "There are many stars in space.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "3bfcfc4fcb",
    "split": "test",
    "source": "mistake-right",
@@ -24130,6 +25042,18 @@
     "lex:A1:see"
    ],
    "text": "See you tomorrow!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b19b0c6225",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:see"
+   ],
+   "text": "We saw a good film last night.",
    "expect": [
     "natural"
    ]
@@ -24183,6 +25107,18 @@
    ]
   },
   {
+   "id": "e06d61d58e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:look"
+   ],
+   "text": "Look at this old photo of my parents.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "33d95a319b",
    "split": "test",
    "source": "mistake-right",
@@ -24226,6 +25162,18 @@
     "lex:A1:close"
    ],
    "text": "What time does the shop close?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b4819c9fdd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:close"
+   ],
+   "text": "Don't forget to close the windows.",
    "expect": [
     "natural"
    ]
@@ -24279,6 +25227,18 @@
    ]
   },
   {
+   "id": "104cfa8f43",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:close#near"
+   ],
+   "text": "Is there a bank close to your office?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "fedae4ad46",
    "split": "dev",
    "source": "mistake-right",
@@ -24322,6 +25282,18 @@
     "lex:A1:quiet"
    ],
    "text": "Please be quiet. The baby is asleep.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a09b1af09f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:quiet"
+   ],
+   "text": "My brother is a quiet boy.",
    "expect": [
     "natural"
    ]
@@ -24375,6 +25347,18 @@
    ]
   },
   {
+   "id": "9bd61f78ad",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:sit"
+   ],
+   "text": "Don't sit on the wet chair.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "54c534f991",
    "split": "dev",
    "source": "mistake-right",
@@ -24418,6 +25402,18 @@
     "lex:A1:fall"
    ],
    "text": "He fell off his bike and hurt his knee.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "381b6ec069",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fall"
+   ],
+   "text": "My phone fell into the water.",
    "expect": [
     "natural"
    ]
@@ -24471,6 +25467,18 @@
    ]
   },
   {
+   "id": "8061110261",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:stand"
+   ],
+   "text": "Stand in a line, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "2f0acab216",
    "split": "test",
    "source": "mistake-right",
@@ -24514,6 +25522,18 @@
     "lex:A1:point"
    ],
    "text": "The teacher wrote the main points on the board.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "adb39a00e3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:point"
+   ],
+   "text": "I don't understand your point.",
    "expect": [
     "natural"
    ]
@@ -24567,6 +25587,18 @@
    ]
   },
   {
+   "id": "4f1e6ef45d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:point#score"
+   ],
+   "text": "Our team needs two more points to win.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c86428581f",
    "split": "dev",
    "source": "mistake-right",
@@ -24610,6 +25642,18 @@
     "lex:A1:upstairs"
    ],
    "text": "She ran upstairs to get her bag.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5a1d7a892a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:upstairs"
+   ],
+   "text": "Our neighbours upstairs are very friendly.",
    "expect": [
     "natural"
    ]
@@ -24663,6 +25707,18 @@
    ]
   },
   {
+   "id": "32111684ec",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:which"
+   ],
+   "text": "Which colour do you like best?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "bd97fc4325",
    "split": "dev",
    "source": "mistake-right",
@@ -24706,6 +25762,18 @@
     "lex:A1:policeman"
    ],
    "text": "Ask a policeman if you are lost.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a21bee1de0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:policeman"
+   ],
+   "text": "My uncle is a policeman.",
    "expect": [
     "natural"
    ]
@@ -24759,6 +25827,18 @@
    ]
   },
   {
+   "id": "3ce523be64",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:section"
+   ],
+   "text": "The answers are in the last section of the book.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f06fb32434",
    "split": "dev",
    "source": "mistake-right",
@@ -24802,6 +25882,18 @@
     "lex:A1:main"
    ],
    "text": "The main reason I study English is my job.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a4e94a0ade",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:main"
+   ],
+   "text": "The main street is always busy.",
    "expect": [
     "natural"
    ]
@@ -24855,6 +25947,18 @@
    ]
   },
   {
+   "id": "aa61985655",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:build"
+   ],
+   "text": "Birds build their homes in trees.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6f0d8398c6",
    "split": "dev",
    "source": "mistake-right",
@@ -24898,6 +26002,18 @@
     "lex:A1:join"
    ],
    "text": "Can I join you for lunch?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "64aa3a2b21",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:join"
+   ],
+   "text": "Why don't you join us?",
    "expect": [
     "natural"
    ]
@@ -24951,6 +26067,18 @@
    ]
   },
   {
+   "id": "ca70c70b0f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:begin"
+   ],
+   "text": "The film begins in ten minutes.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "9f70622806",
    "split": "dev",
    "source": "mistake-right",
@@ -24994,6 +26122,18 @@
     "lex:A1:reader"
    ],
    "text": "This magazine has a lot of readers.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6942a0fe1d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:reader"
+   ],
+   "text": "This book is for young readers.",
    "expect": [
     "natural"
    ]
@@ -25047,6 +26187,18 @@
    ]
   },
   {
+   "id": "67831d5adf",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:newspaper"
+   ],
+   "text": "Do you read a newspaper every day?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "cc10069a04",
    "split": "dev",
    "source": "mistake-right",
@@ -25090,6 +26242,18 @@
     "lex:A1:go"
    ],
    "text": "Let's go shopping on Saturday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "00e85eef28",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:go"
+   ],
+   "text": "Where did you go last weekend?",
    "expect": [
     "natural"
    ]
@@ -25143,6 +26307,18 @@
    ]
   },
   {
+   "id": "bfeac295b9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:come"
+   ],
+   "text": "My cousins came to our house for dinner.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c0a5c9c2d4",
    "split": "dev",
    "source": "mistake-right",
@@ -25186,6 +26362,18 @@
     "lex:A1:travel"
    ],
    "text": "They travelled to Turkey last summer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "aba3cb4491",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:travel"
+   ],
+   "text": "My parents like to travel in spring.",
    "expect": [
     "natural"
    ]
@@ -25239,6 +26427,18 @@
    ]
   },
   {
+   "id": "ba3ceb8867",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:travel#noun"
+   ],
+   "text": "Travel by bus is cheaper than by plane.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "45ce61ff2c",
    "split": "test",
    "source": "mistake-right",
@@ -25282,6 +26482,18 @@
     "lex:A1:trip"
    ],
    "text": "We went on a school trip to the museum.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "92f0f38279",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:trip"
+   ],
+   "text": "We had a short trip to the mountains.",
    "expect": [
     "natural"
    ]
@@ -25335,6 +26547,18 @@
    ]
   },
   {
+   "id": "bd27112eeb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:leave"
+   ],
+   "text": "She left the house at seven.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c285295420",
    "split": "dev",
    "source": "mistake-right",
@@ -25378,6 +26602,18 @@
     "lex:A1:leave#somewhere"
    ],
    "text": "You can leave your coat here.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4aaea2cc86",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:leave#somewhere"
+   ],
+   "text": "Leave the keys on the table, please.",
    "expect": [
     "natural"
    ]
@@ -25431,6 +26667,18 @@
    ]
   },
   {
+   "id": "81e7a517f3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:arrive"
+   ],
+   "text": "Your letter arrived this morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ae2e18db51",
    "split": "dev",
    "source": "mistake-right",
@@ -25474,6 +26722,18 @@
     "lex:A1:ticket"
    ],
    "text": "I have two tickets for the football match.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "25b1264c5e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:ticket"
+   ],
+   "text": "I lost my bus ticket.",
    "expect": [
     "natural"
    ]
@@ -25527,6 +26787,18 @@
    ]
   },
   {
+   "id": "0db49b2a0c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:station"
+   ],
+   "text": "The bus station is in the city centre.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "735a334e07",
    "split": "dev",
    "source": "mistake-right",
@@ -25570,6 +26842,18 @@
     "lex:A1:stop"
    ],
    "text": "Please stop talking and listen.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "192d9b8856",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:stop"
+   ],
+   "text": "The car stopped at the traffic lights.",
    "expect": [
     "natural"
    ]
@@ -25623,6 +26907,18 @@
    ]
   },
   {
+   "id": "278a0ce70d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:stop#noun"
+   ],
+   "text": "This bus has ten stops.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "1dbe59eac6",
    "split": "test",
    "source": "mistake-right",
@@ -25666,6 +26962,18 @@
     "lex:A1:bus"
    ],
    "text": "I missed the bus this morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ae97010f76",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bus"
+   ],
+   "text": "The bus was full this morning.",
    "expect": [
     "natural"
    ]
@@ -25719,6 +27027,18 @@
    ]
   },
   {
+   "id": "99b400728a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:train"
+   ],
+   "text": "The train was late because of the snow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "0352571b8a",
    "split": "test",
    "source": "mistake-right",
@@ -25762,6 +27082,18 @@
     "lex:A1:car"
    ],
    "text": "We went to the north by car.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dd054905de",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:car"
+   ],
+   "text": "Where did you park the car?",
    "expect": [
     "natural"
    ]
@@ -25815,6 +27147,18 @@
    ]
   },
   {
+   "id": "b44451945f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:taxi"
+   ],
+   "text": "The taxi is waiting outside.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "dac23e8587",
    "split": "dev",
    "source": "mistake-right",
@@ -25858,6 +27202,18 @@
     "lex:A1:airport"
    ],
    "text": "How do I get to the airport from here?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "aed247972f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:airport"
+   ],
+   "text": "The airport is very busy in summer.",
    "expect": [
     "natural"
    ]
@@ -25911,6 +27267,18 @@
    ]
   },
   {
+   "id": "378abfb55e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:plane"
+   ],
+   "text": "The plane landed at nine o'clock.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "8f164927e5",
    "split": "dev",
    "source": "mistake-right",
@@ -25954,6 +27322,18 @@
     "lex:A1:drive"
    ],
    "text": "Can you drive me to the airport?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dd5c81f79c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:drive"
+   ],
+   "text": "My brother drives very carefully.",
    "expect": [
     "natural"
    ]
@@ -26007,6 +27387,18 @@
    ]
   },
   {
+   "id": "22b32d8ea6",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:ride"
+   ],
+   "text": "The children ride their bikes to school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "d30067ac7a",
    "split": "dev",
    "source": "mistake-right",
@@ -26050,6 +27442,18 @@
     "lex:A1:bike"
    ],
    "text": "Can you ride a bike?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b4fa98f946",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bike"
+   ],
+   "text": "My bike is in the garden.",
    "expect": [
     "natural"
    ]
@@ -26103,6 +27507,18 @@
    ]
   },
   {
+   "id": "2320d823e7",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:boat"
+   ],
+   "text": "My uncle has a small fishing boat.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f9cb652198",
    "split": "dev",
    "source": "mistake-right",
@@ -26146,6 +27562,18 @@
     "lex:A1:holiday"
    ],
    "text": "Where did you go for your holiday?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0cf82d8f99",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:holiday"
+   ],
+   "text": "The summer holiday starts next week.",
    "expect": [
     "natural"
    ]
@@ -26199,6 +27627,18 @@
    ]
   },
   {
+   "id": "146bc0e9ad",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:to"
+   ],
+   "text": "We flew from Tehran to Istanbul.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "1a7d95de62",
    "split": "test",
    "source": "mistake-right",
@@ -26242,6 +27682,18 @@
     "lex:A1:to#infinitive"
    ],
    "text": "She went out to buy some milk.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "32c77d02d5",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:to#infinitive"
+   ],
+   "text": "It's nice to see you again.",
    "expect": [
     "natural"
    ]
@@ -26295,6 +27747,18 @@
    ]
   },
   {
+   "id": "a0feeb47f8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:get"
+   ],
+   "text": "Did you get my email?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "b367bf3856",
    "split": "dev",
    "source": "mistake-right",
@@ -26338,6 +27802,18 @@
     "lex:A1:get#arrive"
    ],
    "text": "I got home at midnight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d299ccea86",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:get#arrive"
+   ],
+   "text": "When you get to the hotel, call me.",
    "expect": [
     "natural"
    ]
@@ -26391,6 +27867,18 @@
    ]
   },
   {
+   "id": "eb456a3321",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:get#become"
+   ],
+   "text": "My father gets angry when we are late.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "5993660432",
    "split": "dev",
    "source": "mistake-right",
@@ -26434,6 +27922,18 @@
     "lex:A1:take"
    ],
    "text": "I take my daughter to school every morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cdb1df259a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:take"
+   ],
+   "text": "Can you take this letter to the post office?",
    "expect": [
     "natural"
    ]
@@ -26487,6 +27987,18 @@
    ]
   },
   {
+   "id": "e7e45ec84f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:take#transport"
+   ],
+   "text": "I usually take the train to Qom.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ca6395f224",
    "split": "dev",
    "source": "mistake-right",
@@ -26530,6 +28042,18 @@
     "lex:A1:walk"
    ],
    "text": "We walked in the park after dinner.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ff3a4d2951",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:walk"
+   ],
+   "text": "My grandfather walks slowly.",
    "expect": [
     "natural"
    ]
@@ -26583,6 +28107,18 @@
    ]
   },
   {
+   "id": "c892b49469",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:walk#noun"
+   ],
+   "text": "We took the dog for a walk.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "00e22776f1",
    "split": "test",
    "source": "mistake-right",
@@ -26626,6 +28162,18 @@
     "lex:A1:journey"
    ],
    "text": "Have a good journey!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e0a7384e0c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:journey"
+   ],
+   "text": "The journey home was very long.",
    "expect": [
     "natural"
    ]
@@ -26679,6 +28227,18 @@
    ]
   },
   {
+   "id": "156ab2d3b9",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:driver"
+   ],
+   "text": "The bus driver is very friendly.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ac08f7cd3c",
    "split": "dev",
    "source": "mistake-right",
@@ -26722,6 +28282,18 @@
     "lex:A1:bicycle"
    ],
    "text": "Can you ride a bicycle?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "dee665f679",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bicycle"
+   ],
+   "text": "I ride my bicycle to the park.",
    "expect": [
     "natural"
    ]
@@ -26775,6 +28347,18 @@
    ]
   },
   {
+   "id": "a5783dca74",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:fly"
+   ],
+   "text": "I want to fly to Paris next year.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "bc384e2095",
    "split": "dev",
    "source": "mistake-right",
@@ -26818,6 +28402,18 @@
     "lex:A1:vacation"
    ],
    "text": "Where did you go on vacation?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "03d3015034",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:vacation"
+   ],
+   "text": "We had a great vacation by the sea.",
    "expect": [
     "natural"
    ]
@@ -26871,6 +28467,18 @@
    ]
   },
   {
+   "id": "88d92f98a6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:passport"
+   ],
+   "text": "Put your passport in a safe place.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "241f8e40d4",
    "split": "test",
    "source": "mistake-right",
@@ -26914,6 +28522,18 @@
     "lex:A1:flight"
    ],
    "text": "It was a long flight, so I slept a lot.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "86e4309473",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:flight"
+   ],
+   "text": "The flight to Mashhad is full.",
    "expect": [
     "natural"
    ]
@@ -26967,6 +28587,18 @@
    ]
   },
   {
+   "id": "a94a434eb6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:tourist"
+   ],
+   "text": "The tourists asked us the way to the museum.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ae7fde95f5",
    "split": "dev",
    "source": "mistake-right",
@@ -27010,6 +28642,18 @@
     "lex:A1:traffic"
    ],
    "text": "I was late because I was in traffic for an hour.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "86db26ec95",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:traffic"
+   ],
+   "text": "There's no traffic on Fridays.",
    "expect": [
     "natural"
    ]
@@ -27063,6 +28707,18 @@
    ]
   },
   {
+   "id": "7366f61687",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:kilometre"
+   ],
+   "text": "The car goes 120 kilometres an hour.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ab44aac274",
    "split": "dev",
    "source": "mistake-right",
@@ -27106,6 +28762,18 @@
     "lex:A1:mile"
    ],
    "text": "In Britain, road signs show miles, not kilometres.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8f4afa98f7",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:mile"
+   ],
+   "text": "It's a ten-mile drive to the beach.",
    "expect": [
     "natural"
    ]
@@ -27159,6 +28827,18 @@
    ]
   },
   {
+   "id": "d6e2a60039",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:return"
+   ],
+   "text": "My father returns from work at six.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7c706f4175",
    "split": "dev",
    "source": "mistake-right",
@@ -27202,6 +28882,18 @@
     "lex:A1:return#give"
    ],
    "text": "I returned the shoes because they were too small.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bad517b300",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:return#give"
+   ],
+   "text": "I need to return this dress to the shop.",
    "expect": [
     "natural"
    ]
@@ -27255,6 +28947,18 @@
    ]
   },
   {
+   "id": "e2e22b69f6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:stay"
+   ],
+   "text": "We stayed in a hotel near the sea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ba044b9453",
    "split": "dev",
    "source": "mistake-right",
@@ -27298,6 +29002,18 @@
     "lex:A1:land"
    ],
    "text": "My uncle has some land near the village.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b3ad07bcaf",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:land"
+   ],
+   "text": "The farmer has a lot of land.",
    "expect": [
     "natural"
    ]
@@ -27351,6 +29067,18 @@
    ]
   },
   {
+   "id": "4d7b1870f0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:away"
+   ],
+   "text": "Go away! I'm busy.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f65200111a",
    "split": "dev",
    "source": "mistake-right",
@@ -27394,6 +29122,18 @@
     "lex:A1:visitor"
    ],
    "text": "Please be quiet. There are visitors in the house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d14d88e904",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:visitor"
+   ],
+   "text": "We have visitors this weekend.",
    "expect": [
     "natural"
    ]
@@ -27447,6 +29187,18 @@
    ]
   },
   {
+   "id": "db65861845",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:air"
+   ],
+   "text": "The air is very clean in the mountains.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "e7c0477bd7",
    "split": "dev",
    "source": "mistake-right",
@@ -27490,6 +29242,18 @@
     "lex:A1:at"
    ],
    "text": "I'm at home all day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "994f3e2bd6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:at"
+   ],
+   "text": "We arrived at the hotel late.",
    "expect": [
     "natural"
    ]
@@ -27543,6 +29307,18 @@
    ]
   },
   {
+   "id": "8bebacff56",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:by"
+   ],
+   "text": "We went to Isfahan by train.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a00ca5af25",
    "split": "dev",
    "source": "mistake-right",
@@ -27586,6 +29362,18 @@
     "lex:A1:by#near"
    ],
    "text": "They have a small house by the sea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c96e93fa68",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:by#near"
+   ],
+   "text": "There's a small cafe by the station.",
    "expect": [
     "natural"
    ]
@@ -27639,6 +29427,18 @@
    ]
   },
   {
+   "id": "d1151679fa",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:carry"
+   ],
+   "text": "I always carry a bottle of water.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "64d3edbd32",
    "split": "dev",
    "source": "mistake-right",
@@ -27682,6 +29482,18 @@
     "lex:A1:follow"
    ],
    "text": "Please follow the teacher's instructions.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d0310d98e4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:follow"
+   ],
+   "text": "Follow this road to the end.",
    "expect": [
     "natural"
    ]
@@ -27735,6 +29547,18 @@
    ]
   },
   {
+   "id": "30944526dd",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:rule"
+   ],
+   "text": "The first rule is: no phones in class.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "903421185e",
    "split": "dev",
    "source": "mistake-right",
@@ -27778,6 +29602,18 @@
     "lex:A1:for"
    ],
    "text": "We waited for twenty minutes.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7f3bed9183",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:for"
+   ],
+   "text": "This present is for you.",
    "expect": [
     "natural"
    ]
@@ -27831,6 +29667,18 @@
    ]
   },
   {
+   "id": "49fd23d199",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fast"
+   ],
+   "text": "He has a fast bike.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "9ea739549b",
    "split": "dev",
    "source": "mistake-right",
@@ -27874,6 +29722,18 @@
     "lex:A1:fast#adverb"
    ],
    "text": "She can run very fast.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "42d7e4db4c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fast#adverb"
+   ],
+   "text": "Time goes fast when you're happy.",
    "expect": [
     "natural"
    ]
@@ -27927,6 +29787,18 @@
    ]
   },
   {
+   "id": "859d070a08",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:long"
+   ],
+   "text": "It was a long day at work.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6bfc72f170",
    "split": "dev",
    "source": "mistake-right",
@@ -27970,6 +29842,18 @@
     "lex:A1:long#how-long"
    ],
    "text": "Please wait. I won't be long.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4fd1820a55",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:long#how-long"
+   ],
+   "text": "How long did you live in Shiraz?",
    "expect": [
     "natural"
    ]
@@ -28023,6 +29907,18 @@
    ]
   },
   {
+   "id": "b9a0eec0c2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:metre"
+   ],
+   "text": "Walk ten metres and turn right.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6a3c9a884d",
    "split": "dev",
    "source": "mistake-right",
@@ -28066,6 +29962,18 @@
     "lex:A1:miss"
    ],
    "text": "I missed the class because I was ill.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "23e6cd3e53",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:miss"
+   ],
+   "text": "Don't miss the last bus home.",
    "expect": [
     "natural"
    ]
@@ -28119,6 +30027,18 @@
    ]
   },
   {
+   "id": "ba9f238442",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:miss#feel-sad"
+   ],
+   "text": "My grandmother misses her old house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "5da29f49c5",
    "split": "dev",
    "source": "mistake-right",
@@ -28162,6 +30082,18 @@
     "lex:A1:move"
    ],
    "text": "We moved to Tehran last year.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b52155d5ed",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:move"
+   ],
+   "text": "Please move your bag. I want to sit down.",
    "expect": [
     "natural"
    ]
@@ -28215,6 +30147,18 @@
    ]
   },
   {
+   "id": "ce38f15da5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:past"
+   ],
+   "text": "My grandmother likes to talk about the past.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "e435a794bf",
    "split": "dev",
    "source": "mistake-right",
@@ -28263,6 +30207,18 @@
    ]
   },
   {
+   "id": "cb33ae8fa5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:past#time"
+   ],
+   "text": "The bus comes at twenty past nine.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "efe318199b",
    "split": "dev",
    "source": "mistake-wrong",
@@ -28294,6 +30250,18 @@
     "lex:A1:plan"
    ],
    "text": "Our plan is to leave at six in the morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "94b557dcd6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:plan"
+   ],
+   "text": "Our plans changed because of the rain.",
    "expect": [
     "natural"
    ]
@@ -28347,6 +30315,18 @@
    ]
   },
   {
+   "id": "d94ff8df54",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:plan#verb"
+   ],
+   "text": "What are you planning to do after school?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "77211a547f",
    "split": "dev",
    "source": "mistake-right",
@@ -28390,6 +30370,18 @@
     "lex:A1:prepare"
    ],
    "text": "We are preparing for the exam.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e679d76d57",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:prepare"
+   ],
+   "text": "The students are preparing a show for their parents.",
    "expect": [
     "natural"
    ]
@@ -28443,6 +30435,18 @@
    ]
   },
   {
+   "id": "bf5606502d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:quick"
+   ],
+   "text": "That was a quick answer!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "8d8e657d9a",
    "split": "dev",
    "source": "mistake-right",
@@ -28486,6 +30490,18 @@
     "lex:A1:quickly"
    ],
    "text": "Please come quickly! Something is wrong.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fcff8fbe01",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:quickly"
+   ],
+   "text": "The weekend went quickly.",
    "expect": [
     "natural"
    ]
@@ -28539,6 +30555,18 @@
    ]
   },
   {
+   "id": "1e05ba3a1d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:ready"
+   ],
+   "text": "Is your passport ready?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f409a2f87d",
    "split": "dev",
    "source": "mistake-right",
@@ -28582,6 +30610,18 @@
     "lex:A1:through"
    ],
    "text": "The train goes through the mountains.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9119ba59fb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:through"
+   ],
+   "text": "Go through the door on the left.",
    "expect": [
     "natural"
    ]
@@ -28635,6 +30675,18 @@
    ]
   },
   {
+   "id": "4f5a36a758",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:until"
+   ],
+   "text": "I lived with my parents until I was twenty-five.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "cdc966d1e8",
    "split": "dev",
    "source": "mistake-right",
@@ -28678,6 +30730,18 @@
     "lex:A1:when"
    ],
    "text": "I was tired when I got home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c34cf2ae79",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:when"
+   ],
+   "text": "When I was a child, I lived in Tabriz.",
    "expect": [
     "natural"
    ]
@@ -28731,6 +30795,18 @@
    ]
   },
   {
+   "id": "a466db1724",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:will"
+   ],
+   "text": "We will visit our grandparents next month.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "bfbb5d58e9",
    "split": "dev",
    "source": "mistake-right",
@@ -28774,6 +30850,18 @@
     "lex:A1:would"
    ],
    "text": "I'd like a table for two, please.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "eb34999d2e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:would"
+   ],
+   "text": "Would you open the door, please?",
    "expect": [
     "natural"
    ]
@@ -28827,6 +30915,18 @@
    ]
   },
   {
+   "id": "eaf50fc3c5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:keep"
+   ],
+   "text": "Can I keep this book for one more week?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "46694168d8",
    "split": "test",
    "source": "mistake-right",
@@ -28870,6 +30970,18 @@
     "lex:A1:without"
    ],
    "text": "She went to school without eating breakfast.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "573da7df8a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:without"
+   ],
+   "text": "I can't live without my phone.",
    "expect": [
     "natural"
    ]
@@ -28923,6 +31035,18 @@
    ]
   },
   {
+   "id": "eb8cc95f6c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:let"
+   ],
+   "text": "Please let me know when you arrive.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "9497e384b2",
    "split": "dev",
    "source": "mistake-right",
@@ -28966,6 +31090,18 @@
     "lex:A1:busy"
    ],
    "text": "This street is very busy in the evening.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "56e3c006cc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:busy"
+   ],
+   "text": "The doctor is busy. Please wait.",
    "expect": [
     "natural"
    ]
@@ -29019,6 +31155,18 @@
    ]
   },
   {
+   "id": "ab51cb87e0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:dangerous"
+   ],
+   "text": "This road is dangerous at night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "54f937e465",
    "split": "dev",
    "source": "mistake-right",
@@ -29062,6 +31210,18 @@
     "lex:A1:situation"
    ],
    "text": "What would you do in my situation?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "64d30c498f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:situation"
+   ],
+   "text": "The situation is better now.",
    "expect": [
     "natural"
    ]
@@ -29115,6 +31275,18 @@
    ]
   },
   {
+   "id": "6a9782ed05",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:extra"
+   ],
+   "text": "Bring some extra money for the trip.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f266e2dddc",
    "split": "dev",
    "source": "mistake-right",
@@ -29158,6 +31330,18 @@
     "lex:A1:telephone"
    ],
    "text": "Write your name and telephone number here.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "994b5e2bc6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:telephone"
+   ],
+   "text": "My grandmother still has an old telephone.",
    "expect": [
     "natural"
    ]
@@ -29211,6 +31395,18 @@
    ]
   },
   {
+   "id": "48f85f77e9",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:post"
+   ],
+   "text": "There's a letter for you in the post.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "56ac0c99c5",
    "split": "dev",
    "source": "mistake-right",
@@ -29254,6 +31450,18 @@
     "lex:A1:post#verb"
    ],
    "text": "She posted a photo of her new house online.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b1c3e35837",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:post#verb"
+   ],
+   "text": "I'll post the photos tonight.",
    "expect": [
     "natural"
    ]
@@ -29307,6 +31515,18 @@
    ]
   },
   {
+   "id": "e48bbd4f4b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:goodbye"
+   ],
+   "text": "Don't go without saying goodbye!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "17949b9ec7",
    "split": "test",
    "source": "mistake-right",
@@ -29350,6 +31570,18 @@
     "lex:A1:bye"
    ],
    "text": "Say bye to your aunt.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3f8ea78414",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:bye"
+   ],
+   "text": "Bye! Have a nice day!",
    "expect": [
     "natural"
    ]
@@ -29403,6 +31635,18 @@
    ]
   },
   {
+   "id": "34cb3ad127",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:maybe"
+   ],
+   "text": "Maybe we can meet next week.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f27bf828aa",
    "split": "dev",
    "source": "mistake-right",
@@ -29446,6 +31690,18 @@
     "lex:A1:probably"
    ],
    "text": "She's probably at home now.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "d226ad3dd0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:probably"
+   ],
+   "text": "I'll probably be late tonight.",
    "expect": [
     "natural"
    ]
@@ -29499,6 +31755,18 @@
    ]
   },
   {
+   "id": "36ef7f1759",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:happen"
+   ],
+   "text": "This happens every year in spring.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "03c32813f0",
    "split": "test",
    "source": "mistake-right",
@@ -29542,6 +31810,18 @@
     "lex:A1:ok"
    ],
    "text": "Close the door, OK?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e4f4b05bae",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:ok"
+   ],
+   "text": "OK, I understand.",
    "expect": [
     "natural"
    ]
@@ -29595,6 +31875,18 @@
    ]
   },
   {
+   "id": "0144b4c968",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:ok#adjective"
+   ],
+   "text": "Is it OK if I sit here?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "24e75657e1",
    "split": "test",
    "source": "mistake-right",
@@ -29643,6 +31935,18 @@
    ]
   },
   {
+   "id": "477585b990",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:yes"
+   ],
+   "text": "Yes, I'd love to come!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "5317a4cdd3",
    "split": "dev",
    "source": "mistake-right",
@@ -29686,6 +31990,18 @@
     "lex:A1:thanks"
    ],
    "text": "Would you like some tea? — No, thanks.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6704f0c3c8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:thanks"
+   ],
+   "text": "Thanks for calling!",
    "expect": [
     "natural"
    ]
