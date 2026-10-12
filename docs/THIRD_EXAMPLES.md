@@ -54,4 +54,16 @@ certification targets (those are word clips), so certification is unchanged.
 | 2 | 06 places and directions, 07 travel and transport (#231) | 194 | 630 | 388 |
 | 3 | 08 work and study, 09 leisure and people, 10 weather and clothes (#232) | 273 | 357 | 546 |
 | 4 | 11 health and feelings, 12 help and everyday problems (#233) | 184 | 173 | 368 |
-| 5 | 02 family and home, 03 daily routine | 173 | 0 | 346 |
+| 5 | 02 family and home, 03 daily routine (#234) | 173 | 0 | 346 |
+
+## Reused examples
+
+With the audio pipeline in place, the 32 `EXAMPLE_REUSED` findings were fixed
+the same way. Each was a sentence that also appears in a sense taught earlier
+(for example *I go to work by bus.* under *to*, *by* and *work*). The copy in
+the later-taught sense was replaced with a new sentence for that sense, and the
+earlier sense keeps its sentence and clips. The new sentences follow the rules
+above and got GB/US clips (64). One first draft (*Would you like to come with
+us?*) was the expected answer to the sense's production task and was replaced.
+Nothing else referenced the GB/US clips for the replaced *You did a great job.*
+under *great*, so those two files were removed. `EXAMPLE_REUSED` is 0.
