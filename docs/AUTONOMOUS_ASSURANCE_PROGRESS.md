@@ -16,10 +16,10 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #232: `12576e1b600ffc61a5cb06125435674d3ebe6b0b`.
+- Verified main after PR #233: `25956328064d4c129391fa8a63f0136976ab0abe`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191, #193–#210 and #212–#232 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191, #193–#210 and #212–#233 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every A1 sense: Units 4–12 (831) and, after the
   owner unfroze Units 1–3, the 173 in Units 2–3 (#228). Units 2–3 also have their
@@ -27,8 +27,8 @@ Do **not** restart from chat memory when repository evidence exists.
   Persian-coverage code is 0 across A1. Later-unit usage
   notes, grammar notes and answer feedback are complete. The frontier triage
   queue holds only frozen Units 1–3 cases (71); later-unit rewording is done.
-- Third examples with GB/US clips are being added unit by unit (`docs/THIRD_EXAMPLES.md`); Units 4–12 are done.
-- Remaining: 5,149 deterministic findings (example count 173, reused examples 32, frontier); 900/900 unreviewed independent
+- Third examples with GB/US clips were added unit by unit (`docs/THIRD_EXAMPLES.md`); Units 2–12 are done and `EXAMPLE_COUNT` is 0.
+- Remaining: 4,976 deterministic findings (reused examples 32, frontier); 900/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 - CEFR-J rebuild phase 1 is merged, including whole-app placement and no-drop-out
