@@ -3,7 +3,8 @@
 The content standard asks for at least three pedagogically distinct examples
 per sense (`EXAMPLE_COUNT`). On 2026-10-12, 1,007 A1 senses had only two. This
 work adds a third example, unit by unit, without changing the two existing
-examples, so no existing audio clip is lost.
+examples, so no existing audio clip is lost. All 1,007 are done, so
+`EXAMPLE_COUNT` is 0. Unit 1, the calibration slice, had none and is unchanged.
 
 Claude Code wrote the examples in this session, recorded as generator
 `claude-code-2026-10-12-third-examples`. They have no independent semantic
@@ -25,7 +26,8 @@ certificate.
   *easiest*, and were replaced so the lint count stayed at 80. In batch 3,
   fourteen first drafts used words outside the lists (*nest*, *zoo*, *gloves*,
   *click*) or nearly repeated a check item, and were replaced. Batch 4 replaced
-  twelve for the same reasons (*shelf*, *staff*, *picnic*, *breathe*).
+  twelve for the same reasons (*shelf*, *staff*, *picnic*, *breathe*), and batch
+  5 five (*mosque* and four near-repeats).
 - It does not repeat a staged CEFR-J lesson draft, which must stay
   independent of existing teaching text. One batch 2 draft (*The road was
   closed because of the snow.*) matched the staged *closed* lesson and was
@@ -51,4 +53,5 @@ certification targets (those are word clips), so certification is unchanged.
 | 1 | 04 food and drink, 05 shopping and money (#230) | 183 | 824 | 366 |
 | 2 | 06 places and directions, 07 travel and transport (#231) | 194 | 630 | 388 |
 | 3 | 08 work and study, 09 leisure and people, 10 weather and clothes (#232) | 273 | 357 | 546 |
-| 4 | 11 health and feelings, 12 help and everyday problems | 184 | 173 | 368 |
+| 4 | 11 health and feelings, 12 help and everyday problems (#233) | 184 | 173 | 368 |
+| 5 | 02 family and home, 03 daily routine | 173 | 0 | 346 |
