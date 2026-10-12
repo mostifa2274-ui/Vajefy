@@ -16,10 +16,10 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #229: `ddf417e7010a04c9f58ff2fb4813e78e3ec42e56`.
+- Verified main after PR #230: `baaa2c94cb2f1e71fffbd3d54652c087f44e7a6d`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191, #193–#210 and #212–#229 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191, #193–#210 and #212–#230 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every A1 sense: Units 4–12 (831) and, after the
   owner unfroze Units 1–3, the 173 in Units 2–3 (#228). Units 2–3 also have their
@@ -27,8 +27,8 @@ Do **not** restart from chat memory when repository evidence exists.
   Persian-coverage code is 0 across A1. Later-unit usage
   notes, grammar notes and answer feedback are complete. The frontier triage
   queue holds only frozen Units 1–3 cases (71); later-unit rewording is done.
-- Third examples with GB/US clips are being added unit by unit (`docs/THIRD_EXAMPLES.md`); Units 4–5 are done.
-- Remaining: 5,800 deterministic findings (example count 824, reused examples 32, frontier); 900/900 unreviewed independent
+- Third examples with GB/US clips are being added unit by unit (`docs/THIRD_EXAMPLES.md`); Units 4–7 are done.
+- Remaining: 5,606 deterministic findings (example count 630, reused examples 32, frontier); 900/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 - CEFR-J rebuild phase 1 is merged, including whole-app placement and no-drop-out
@@ -99,7 +99,7 @@ Draft PR #75 predates the current autonomous-assurance main and must not be used
 
 ## Current next actions
 
-1. Continue CEFR-J phase 3. The staged A1 curriculum (`content/rights-staging/a1-rebuild/curriculum-a1-cefrj.json`) is built and checked; entry IDs never change, so progress keyed by ID survives. The app now reads each entry's level through `levelOf`, which checks `LEVEL_PLACEMENT` (`src/lib/learn/level-placement.ts`) before the ID prefix; the map is empty until the switch. The coach sense check and the A1 reference-link key schema use `levelOf` too. At the switch, fill `LEVEL_PLACEMENT` and regenerate the A1 plan and reference links. Then promote drafts only after real independent review and certified audio, move the 166 entries, redefine the study roster and rebuild scenes. Keep zero approval flags. The owner unfroze Units 1–3 for that rebuild. Units 2–3 mistake pairs, usage notes, grammar notes and feedback are done (2026-10-12); their 71 frontier cases wait for the new curriculum. The deterministic count is 5,800, none of it Persian coverage; third examples continue with Units 6–12.
+1. Continue CEFR-J phase 3. The staged A1 curriculum (`content/rights-staging/a1-rebuild/curriculum-a1-cefrj.json`) is built and checked; entry IDs never change, so progress keyed by ID survives. The app now reads each entry's level through `levelOf`, which checks `LEVEL_PLACEMENT` (`src/lib/learn/level-placement.ts`) before the ID prefix; the map is empty until the switch. The coach sense check and the A1 reference-link key schema use `levelOf` too. At the switch, fill `LEVEL_PLACEMENT` and regenerate the A1 plan and reference links. Then promote drafts only after real independent review and certified audio, move the 166 entries, redefine the study roster and rebuild scenes. Keep zero approval flags. The owner unfroze Units 1–3 for that rebuild. Units 2–3 mistake pairs, usage notes, grammar notes and feedback are done (2026-10-12); their 71 frontier cases wait for the new curriculum. The deterministic count is 5,606, none of it Persian coverage; third examples continue with Units 8–12.
 2. Independent NGSL authoring is complete: all 900 candidates have staged drafts. Every draft requires independent lexical-sense, Persian, pedagogy, CEFR and rights review before any public replacement; build review packets with `npm run assurance:ngsl:review:packets -- --json --from N --limit M`. Do not record approvals without a real independent reviewer.
 3. Check the scheduled calibration ledgers before doing semantic work. English rejected its four original v1 candidates. On 2026-10-10 (PR #193) Gemma 4 26B and GLM 4.7 Flash, both +no-thinking, were appended to the end of its list, and the planner selects Gemma 4. Do not register more English candidates while these are untried; let the scheduled runs calibrate them. Only if both are rejected does English need another candidate or a justified new calibration version. Preserve v1 gold and thresholds. Other roles continue through the authorised planner, with no manual budget or order bypass.
 4. Preserve Gate 0 BLOCKED, 0/4 qualified judges and PARTIAL audio (328/386 certified, 58 quarantined). Live rollback needs the deployed URL and exact revision; learner canary and outcomes need real learner evidence.
