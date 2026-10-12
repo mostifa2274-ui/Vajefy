@@ -95,6 +95,12 @@
                 "ok": false,
                 "why": "با fifteen، a نمی‌آید."
               }
+            ],
+            "support": [
+              {
+                "en": "costs",
+                "fa": "قیمتش ... است"
+              }
             ]
           },
           {
@@ -104,7 +110,13 @@
             "frame": "I have a hundred ___.",
             "answer": "dollars",
             "accept": [],
-            "why": "بعد از عدد بزرگ‌تر از یک dollars جمع است: a hundred dollars."
+            "why": "بعد از عدد بزرگ‌تر از یک dollars جمع است: a hundred dollars.",
+            "support": [
+              {
+                "en": "hundred",
+                "fa": "صد"
+              }
+            ]
           }
         ]
       }
@@ -208,6 +220,12 @@
                 "text": "joins",
                 "ok": false,
                 "why": "با last month گذشته لازم است."
+              }
+            ],
+            "support": [
+              {
+                "en": "last month",
+                "fa": "ماه گذشته"
               }
             ]
           },
@@ -1915,6 +1933,12 @@
                 "ok": false,
                 "why": "اینجا ' لازم نیست."
               }
+            ],
+            "support": [
+              {
+                "en": "village",
+                "fa": "روستا"
+              }
             ]
           },
           {
@@ -2029,7 +2053,13 @@
             "frame": "I lost my ___.",
             "answer": "pencil",
             "accept": [],
-            "why": "اینجا pencil با صفت ملکی آمده: my pencil."
+            "why": "اینجا pencil با صفت ملکی آمده: my pencil.",
+            "support": [
+              {
+                "en": "lost",
+                "fa": "گم کردم"
+              }
+            ]
           }
         ]
       }
@@ -3534,6 +3564,12 @@
                 "text": "singing",
                 "ok": false,
                 "why": "بدون were، شکلِ ing کامل نیست."
+              }
+            ],
+            "support": [
+              {
+                "en": "Last night",
+                "fa": "دیشب"
               }
             ]
           },
@@ -5143,7 +5179,17 @@
             "answer": "vegetables",
             "accept": [],
             "fa": "هویج، پیاز و سیب‌زمینی همه سبزی‌اند.",
-            "why": "vegetables = سبزیجات."
+            "why": "vegetables = سبزیجات.",
+            "support": [
+              {
+                "en": "Carrots",
+                "fa": "هویج‌ها"
+              },
+              {
+                "en": "onions",
+                "fa": "پیازها"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5351,7 +5397,13 @@
             "answer": "wife",
             "accept": [],
             "fa": "همسرش را خیلی دوست دارد. ده سال پیش ازدواج کردند.",
-            "why": "جملهٔ بعد می‌گوید ازدواج کرده‌اند، پس همسرش: his wife."
+            "why": "جملهٔ بعد می‌گوید ازدواج کرده‌اند، پس همسرش: his wife.",
+            "support": [
+              {
+                "en": "got married",
+                "fa": "ازدواج کردند"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5372,6 +5424,12 @@
                 "text": "girlfriend",
                 "ok": false,
                 "why": "با girlfriend ازدواج نکرده است."
+              }
+            ],
+            "support": [
+              {
+                "en": "married to",
+                "fa": "با او ازدواج کرده"
               }
             ]
           },

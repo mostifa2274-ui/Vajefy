@@ -68,7 +68,17 @@
       "answer": "email",
       "accept": [],
       "fa": "لطفاً جزئیات را برایم ایمیل کن.",
-      "why": "email با واکه شروع می‌شود و an می‌گیرد: send someone an email."
+      "why": "email با واکه شروع می‌شود و an می‌گیرد: send someone an email.",
+      "support": [
+       {
+        "en": "send",
+        "fa": "فرستادن"
+       },
+       {
+        "en": "details",
+        "fa": "جزئیات"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -95,6 +105,14 @@
        {
         "en": "boss",
         "fa": "رئیس"
+       },
+       {
+        "en": "sent",
+        "fa": "فرستادم"
+       },
+       {
+        "en": "report",
+        "fa": "گزارش"
        }
       ]
      },
@@ -806,7 +824,13 @@
       "answer": "read",
       "accept": [],
       "fa": "می‌توانی این کلمه را بخوانی؟ نوشته‌اش خیلی کوچک است.",
-      "why": "read = خواندن متن."
+      "why": "read = خواندن متن.",
+      "support": [
+       {
+        "en": "writing",
+        "fa": "نوشته"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -833,6 +857,10 @@
        {
         "en": "whole",
         "fa": "تمام"
+       },
+       {
+        "en": "Last night",
+        "fa": "دیشب"
        }
       ]
      },
@@ -1157,7 +1185,13 @@
       "frame": "I need to make a quick ___.",
       "answer": "call",
       "accept": [],
-      "why": "make a call = تماس گرفتن."
+      "why": "make a call = تماس گرفتن.",
+      "support": [
+       {
+        "en": "quick",
+        "fa": "کوتاه؛ سریع"
+       }
+      ]
      }
     ]
    }
@@ -1370,7 +1404,13 @@
       "frame": "The museum ___ at ten.",
       "answer": "opens",
       "accept": [],
-      "why": "سوم‌شخص مفرد: opens."
+      "why": "سوم‌شخص مفرد: opens.",
+      "support": [
+       {
+        "en": "museum",
+        "fa": "موزه"
+       }
+      ]
      }
     ]
    },
@@ -1536,7 +1576,13 @@
        "result"
       ],
       "fa": "نتیجه‌های امتحان را کی می‌گیریم؟",
-      "why": "exam results یعنی «نتایج امتحان»: exam results."
+      "why": "exam results یعنی «نتایج امتحان»: exam results.",
+      "support": [
+       {
+        "en": "exam",
+        "fa": "امتحان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2167,7 +2213,13 @@
       "answer": "news",
       "accept": [],
       "fa": "دیشب اخبار را دیدی؟",
-      "why": "برای دیدن اخبار watch the news: watch the news."
+      "why": "برای دیدن اخبار watch the news: watch the news.",
+      "support": [
+       {
+        "en": "last night",
+        "fa": "دیشب"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2304,7 +2356,13 @@
       "frame": "We ___ watch films in the evening.",
       "answer": "often",
       "accept": [],
-      "why": "often قبل از فعل اصلی."
+      "why": "often قبل از فعل اصلی.",
+      "support": [
+       {
+        "en": "films",
+        "fa": "فیلم‌ها"
+       }
+      ]
      }
     ]
    }
@@ -2887,7 +2945,13 @@
       "answer": "design",
       "accept": [],
       "fa": "طراحی ایستگاه جدید خیلی مدرن است.",
-      "why": "the design of یعنی «طرحِ …»: the design of."
+      "why": "the design of یعنی «طرحِ …»: the design of.",
+      "support": [
+       {
+        "en": "modern",
+        "fa": "مدرن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3009,6 +3073,12 @@
         "ok": false,
         "why": "فاعل سوم‌شخص مفرد است."
        }
+      ],
+      "support": [
+       {
+        "en": "websites",
+        "fa": "وب‌سایت‌ها"
+       }
       ]
      },
      {
@@ -3018,7 +3088,13 @@
       "answer": "designs",
       "accept": [],
       "fa": "خواهرم برای مغازه‌های کوچک وب‌سایت طراحی می‌کند.",
-      "why": "با فاعل سوم‌شخص مفرد، design به designs تبدیل می‌شود."
+      "why": "با فاعل سوم‌شخص مفرد، design به designs تبدیل می‌شود.",
+      "support": [
+       {
+        "en": "websites",
+        "fa": "وب‌سایت‌ها"
+       }
+      ]
      }
     ]
    }
@@ -3113,6 +3189,12 @@
         "ok": false,
         "why": "بعد از next حرف اضافه نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "next",
+        "fa": "بعدی"
+       }
       ]
      },
      {
@@ -3122,7 +3204,13 @@
       "frame": "We watch a film on ___ night.",
       "answer": "Friday",
       "accept": [],
-      "why": "Friday night = جمعه شب."
+      "why": "Friday night = جمعه شب.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      }
     ]
    }
@@ -3196,7 +3284,13 @@
       "answer": "late",
       "accept": [],
       "fa": "زود باش! برای فیلم دیر کرده‌ایم.",
-      "why": "«برای فیلم دیر کردن» با be late for گفته می‌شود: be late for."
+      "why": "«برای فیلم دیر کردن» با be late for گفته می‌شود: be late for.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3227,7 +3321,13 @@
       "frame": "I stayed up ___ last night.",
       "answer": "late",
       "accept": [],
-      "why": "stay up late = تا دیروقت بیدار ماندن."
+      "why": "stay up late = تا دیروقت بیدار ماندن.",
+      "support": [
+       {
+        "en": "last night",
+        "fa": "دیشب"
+       }
+      ]
      }
     ]
    }
@@ -3405,6 +3505,12 @@
         "text": "was rain",
         "ok": false,
         "why": "ساختار فعل غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Last night",
+        "fa": "دیشب"
        }
       ]
      },
@@ -4247,6 +4353,12 @@
         "ok": false,
         "why": "قبل از tonight حرف اضافه نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
       ]
      },
      {
@@ -4356,6 +4468,12 @@
         "ok": false,
         "why": "water یعنی آب."
        }
+      ],
+      "support": [
+       {
+        "en": "boots",
+        "fa": "چکمه‌ها"
+       }
       ]
      },
      {
@@ -4365,7 +4483,13 @@
       "frame": "Last ___ was very cold.",
       "answer": "winter",
       "accept": [],
-      "why": "last winter، بدون حرف اضافه."
+      "why": "last winter، بدون حرف اضافه.",
+      "support": [
+       {
+        "en": "Last",
+        "fa": "گذشته"
+       }
+      ]
      }
     ]
    }
@@ -4783,6 +4907,10 @@
        {
         "en": "Kish",
         "fa": "کیش"
+       },
+       {
+        "en": "Next",
+        "fa": "بعدی"
        }
       ]
      },
@@ -4877,6 +5005,16 @@
         "ok": false,
         "why": "برای یک سفر مشخص trip می‌گوییم."
        }
+      ],
+      "support": [
+       {
+        "en": "north",
+        "fa": "شمال"
+       },
+       {
+        "en": "last week",
+        "fa": "هفتهٔ گذشته"
+       }
       ]
      },
      {
@@ -4886,7 +5024,13 @@
       "answer": "travel",
       "accept": [],
       "fa": "سفر هوایی در تابستان می‌تواند گران باشد.",
-      "why": "air travel = سفر هوایی؛ travel در این معنا غیرقابل‌شمارش است."
+      "why": "air travel = سفر هوایی؛ travel در این معنا غیرقابل‌شمارش است.",
+      "support": [
+       {
+        "en": "Air",
+        "fa": "هوایی"
+       }
+      ]
      }
     ]
    }
@@ -5092,6 +5236,12 @@
         "text": "five and twenty",
         "ok": false,
         "why": "ترتیب عدد غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "costs",
+        "fa": "قیمتش ... است"
        }
       ]
      },
@@ -5512,6 +5662,12 @@
         "ok": false,
         "why": "last week گذشته می‌خواهد."
        }
+      ],
+      "support": [
+       {
+        "en": "Last week",
+        "fa": "هفتهٔ گذشته"
+       }
       ]
      },
      {
@@ -5826,6 +5982,12 @@
         "ok": false,
         "why": "most و est با هم نمی‌آیند."
        }
+      ],
+      "support": [
+       {
+        "en": "Everest",
+        "fa": "اورست"
+       }
       ]
      },
      {
@@ -5853,6 +6015,10 @@
        {
         "en": "correctly",
         "fa": "به‌درستی"
+       },
+       {
+        "en": "phrase",
+        "fa": "عبارت"
        }
       ]
      }
@@ -6494,7 +6660,13 @@
       "frame": "I watched the film until the ___.",
       "answer": "end",
       "accept": [],
-      "why": "until the end = تا آخر."
+      "why": "until the end = تا آخر.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      }
     ]
    },
@@ -6554,7 +6726,13 @@
        "finishes"
       ],
       "fa": "فیلم ساعت ده تمام می‌شود، پس تا یازده خانه‌ایم.",
-      "why": "سوم‌شخص مفرد: ends."
+      "why": "سوم‌شخص مفرد: ends.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6860,7 +7038,13 @@
       "answer": "park",
       "accept": [],
       "fa": "در مرکز شهر پیدا کردن جای پارک سخت است.",
-      "why": "a place to + فعل یعنی «جایی برای …»: a place to park."
+      "why": "a place to + فعل یعنی «جایی برای …»: a place to park.",
+      "support": [
+       {
+        "en": "city centre",
+        "fa": "مرکز شهر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6987,6 +7171,12 @@
         "ok": false,
         "why": "برای فضای خالی place و places نمی‌گوییم."
        }
+      ],
+      "support": [
+       {
+        "en": "enough",
+        "fa": "کافی"
+       }
       ]
      },
      {
@@ -6996,7 +7186,13 @@
       "frame": "Let's watch a film at my ___.",
       "answer": "place",
       "accept": [],
-      "why": "at my place = خانهٔ من."
+      "why": "at my place = خانهٔ من.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      }
     ]
    }
@@ -7630,7 +7826,13 @@
       "accept": [
        "about"
       ],
-      "why": "around + number = حدودِ یک مقدار."
+      "why": "around + number = حدودِ یک مقدار.",
+      "support": [
+       {
+        "en": "costs",
+        "fa": "قیمتش ... است"
+       }
+      ]
      }
     ]
    }
@@ -7817,7 +8019,13 @@
       "answer": "chairs",
       "accept": [],
       "fa": "برای همه صندلی کافی نیست. بعضی‌ها ایستاده‌اند.",
-      "why": "جمع: chairs."
+      "why": "جمع: chairs.",
+      "support": [
+       {
+        "en": "enough",
+        "fa": "کافی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7848,7 +8056,13 @@
       "frame": "My ___ is next to the window.",
       "answer": "chair",
       "accept": [],
-      "why": "chair = صندلی."
+      "why": "chair = صندلی.",
+      "support": [
+       {
+        "en": "next to",
+        "fa": "کنارِ"
+       }
+      ]
      }
     ]
    }
@@ -8139,6 +8353,12 @@
         "text": "ate",
         "ok": false,
         "why": "برای مایعات drink می‌گوییم."
+       }
+      ],
+      "support": [
+       {
+        "en": "Last night",
+        "fa": "دیشب"
        }
       ]
      },
@@ -8450,7 +8670,13 @@
       "frame": "I filled in the ___ online.",
       "answer": "form",
       "accept": [],
-      "why": "برای پر کردن فرم fill in the form: fill in the form."
+      "why": "برای پر کردن فرم fill in the form: fill in the form.",
+      "support": [
+       {
+        "en": "online",
+        "fa": "آنلاین؛ در اینترنت"
+       }
+      ]
      }
     ]
    }
@@ -8780,7 +9006,13 @@
       "frame": "My ___ is on the third floor.",
       "answer": "office",
       "accept": [],
-      "why": "office = دفتر."
+      "why": "office = دفتر.",
+      "support": [
+       {
+        "en": "third",
+        "fa": "سوم"
+       }
+      ]
      }
     ]
    }
@@ -9374,7 +9606,13 @@
       "answer": "glass",
       "accept": [],
       "fa": "اینجا بدون کفش راه نرو. روی زمین شیشه‌خرده هست.",
-      "why": "glass به معنای شیشه اینجا غیرقابل‌شمارش است: broken glass."
+      "why": "glass به معنای شیشه اینجا غیرقابل‌شمارش است: broken glass.",
+      "support": [
+       {
+        "en": "without",
+        "fa": "بدون"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9485,6 +9723,10 @@
        {
         "en": "passed",
         "fa": "قبول شد"
+       },
+       {
+        "en": "exam",
+        "fa": "امتحان"
        }
       ]
      },
@@ -9517,7 +9759,13 @@
       "frame": "The film was ___!",
       "answer": "great",
       "accept": [],
-      "why": "great = عالی."
+      "why": "great = عالی.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      }
     ]
    }
@@ -10324,7 +10572,13 @@
       "answer": "shop",
       "accept": [],
       "fa": "مادرم دوست دارد از بازار خرید کند.",
-      "why": "shop = خرید کردن."
+      "why": "shop = خرید کردن.",
+      "support": [
+       {
+        "en": "market",
+        "fa": "بازار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10355,7 +10609,13 @@
       "frame": "I ___ online at weekends.",
       "answer": "shop",
       "accept": [],
-      "why": "shop online = آنلاین خرید کردن."
+      "why": "shop online = آنلاین خرید کردن.",
+      "support": [
+       {
+        "en": "online",
+        "fa": "آنلاین؛ در اینترنت"
+       }
+      ]
      }
     ]
    }
@@ -10470,7 +10730,13 @@
       "frame": "The ___ centre is very busy.",
       "answer": "town",
       "accept": [],
-      "why": "town centre = مرکز شهر."
+      "why": "town centre = مرکز شهر.",
+      "support": [
+       {
+        "en": "centre",
+        "fa": "مرکز"
+       }
+      ]
      }
     ]
    }
@@ -10902,7 +11168,13 @@
       "frame": "Send me your new ___.",
       "answer": "address",
       "accept": [],
-      "why": "address = نشانی."
+      "why": "address = نشانی.",
+      "support": [
+       {
+        "en": "Send",
+        "fa": "فرستادن"
+       }
+      ]
      }
     ]
    }
@@ -11102,6 +11374,12 @@
         "text": "the an",
         "ok": false,
         "why": "دو حرف تعریف با هم نمی‌آیند."
+       }
+      ],
+      "support": [
+       {
+        "en": "website",
+        "fa": "وب‌سایت"
        }
       ]
      },
@@ -11872,7 +12150,13 @@
       "frame": "___ in the village is quiet.",
       "answer": "Life",
       "accept": [],
-      "why": "life = زندگی."
+      "why": "life = زندگی.",
+      "support": [
+       {
+        "en": "village",
+        "fa": "روستا"
+       }
+      ]
      }
     ]
    }
@@ -11945,7 +12229,13 @@
       "answer": "Monday",
       "accept": [],
       "fa": "دوشنبهٔ آینده کار جدیدم را شروع می‌کنم.",
-      "why": "next Monday، بدون on."
+      "why": "next Monday، بدون on.",
+      "support": [
+       {
+        "en": "next",
+        "fa": "بعدی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -12077,6 +12367,12 @@
         "text": "out",
         "ok": false,
         "why": "get out of the train لازم است، نه get out the train."
+       }
+      ],
+      "support": [
+       {
+        "en": "next",
+        "fa": "بعدی"
        }
       ]
      },

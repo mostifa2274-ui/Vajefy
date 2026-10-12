@@ -665,7 +665,13 @@
       "answer": "lights",
       "accept": [],
       "fa": "سر چراغ راهنمایی به چپ بپیچ.",
-      "why": "traffic lights یعنی «چراغ راهنمایی»: traffic lights."
+      "why": "traffic lights یعنی «چراغ راهنمایی»: traffic lights.",
+      "support": [
+       {
+        "en": "traffic",
+        "fa": "ترافیک"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -755,7 +761,13 @@
       "answer": "light",
       "accept": [],
       "fa": "در تابستان رنگ‌های روشن را ترجیح می‌دهم.",
-      "why": "رنگ روشن، متضاد dark."
+      "why": "رنگ روشن، متضاد dark.",
+      "support": [
+       {
+        "en": "prefer",
+        "fa": "ترجیح می‌دهم"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -787,6 +799,12 @@
         "text": "bright green",
         "ok": false,
         "why": "bright green معمولاً سبز درخشان و پررنگ است، نه کم‌رنگ."
+       }
+      ],
+      "support": [
+       {
+        "en": "phrase",
+        "fa": "عبارت"
        }
       ]
      }
@@ -896,7 +914,13 @@
       "frame": "We watched a football ___ last night.",
       "answer": "match",
       "accept": [],
-      "why": "football match = مسابقهٔ فوتبال."
+      "why": "football match = مسابقهٔ فوتبال.",
+      "support": [
+       {
+        "en": "last night",
+        "fa": "دیشب"
+       }
+      ]
      }
     ]
    },
@@ -1200,6 +1224,12 @@
         "ok": false,
         "why": "برای مکان به کار نمی‌رود."
        }
+      ],
+      "support": [
+       {
+        "en": "museum",
+        "fa": "موزه"
+       }
       ]
      },
      {
@@ -1402,6 +1432,10 @@
        {
         "en": "passed",
         "fa": "قبول شد"
+       },
+       {
+        "en": "exam",
+        "fa": "امتحان"
        }
       ]
      },
@@ -1573,7 +1607,13 @@
        "well"
       ],
       "fa": "خب، برای تصمیم گرفتن کمی وقت لازم دارم.",
-      "why": "Well در آغاز جمله برای مکث و فکر کردن طبیعی است."
+      "why": "Well در آغاز جمله برای مکث و فکر کردن طبیعی است.",
+      "support": [
+       {
+        "en": "decide",
+        "fa": "تصمیم بگیرم"
+       }
+      ]
      }
     ]
    }
@@ -1831,7 +1871,13 @@
       "answer": "right",
       "accept": [],
       "fa": "همین حالا / فوراً ایمیل را می‌فرستم.",
-      "why": "right away = فوراً."
+      "why": "right away = فوراً.",
+      "support": [
+       {
+        "en": "send",
+        "fa": "می‌فرستم"
+       }
+      ]
      }
     ]
    }
@@ -2092,7 +2138,13 @@
       "answer": "mean",
       "accept": [],
       "fa": "«cheap» چه معنایی دارد؟",
-      "why": "پرسیدن معنی."
+      "why": "پرسیدن معنی.",
+      "support": [
+       {
+        "en": "cheap",
+        "fa": "ارزان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2466,7 +2518,13 @@
       "answer": "play",
       "accept": [],
       "fa": "پسرم در نمایش مدرسه نقش کوچکی دارد.",
-      "why": "نمایش."
+      "why": "نمایش.",
+      "support": [
+       {
+        "en": "part",
+        "fa": "نقش"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3042,7 +3100,13 @@
       "answer": "miss",
       "accept": [],
       "fa": "الان راه بیفت وگرنه از پروازت جا می‌مانی.",
-      "why": "جا ماندن."
+      "why": "جا ماندن.",
+      "support": [
+       {
+        "en": "flight",
+        "fa": "پرواز"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3829,7 +3893,13 @@
       "frame": "She will ___ the report tomorrow.",
       "answer": "present",
       "accept": [],
-      "why": "present a report = گزارش ارائه کردن."
+      "why": "present a report = گزارش ارائه کردن.",
+      "support": [
+       {
+        "en": "report",
+        "fa": "گزارش"
+       }
+      ]
      }
     ]
    }
@@ -4109,6 +4179,12 @@
         "ok": false,
         "why": "عبارت نادرست است."
        }
+      ],
+      "support": [
+       {
+        "en": "flight",
+        "fa": "پرواز"
+       }
       ]
      },
      {
@@ -4118,7 +4194,13 @@
       "frame": "Please ___ the address before you send it.",
       "answer": "check",
       "accept": [],
-      "why": "check = بررسی کردن برای مطمئن شدن."
+      "why": "check = بررسی کردن برای مطمئن شدن.",
+      "support": [
+       {
+        "en": "send",
+        "fa": "فرستادن"
+       }
+      ]
      }
     ]
    },
@@ -4218,6 +4300,10 @@
        {
         "en": "English",
         "fa": "انگلیسی"
+       },
+       {
+        "en": "bill",
+        "fa": "صورت‌حساب"
        }
       ]
      }
@@ -4386,7 +4472,13 @@
       "answer": "change",
       "accept": [],
       "fa": "کرایه ۸ دلار شد. ۱۰ دادم و گفتم «بقیه‌اش مال خودتان».",
-      "why": "بقیهٔ پول."
+      "why": "بقیهٔ پول.",
+      "support": [
+       {
+        "en": "cost",
+        "fa": "کرایه‌اش ... شد"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -4754,6 +4846,10 @@
        {
         "en": "soft",
         "fa": "نرم"
+       },
+       {
+        "en": "opposite",
+        "fa": "متضاد"
        }
       ]
      },
@@ -5058,6 +5154,12 @@
         "text": "too much",
         "ok": false,
         "why": "too much پیش از صفت نمی‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
        }
       ]
      },

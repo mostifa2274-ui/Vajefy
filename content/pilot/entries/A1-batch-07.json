@@ -841,6 +841,12 @@
                 "ok": false,
                 "why": "at autumn غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "fall",
+                "fa": "می‌ریزند"
+              }
             ]
           },
           {
@@ -2646,7 +2652,17 @@
               "theater"
             ],
             "fa": "دیشب در سینما فیلم عالی‌ای دیدیم.",
-            "why": "برای جای فیلم دیدن at the cinema: at the cinema."
+            "why": "برای جای فیلم دیدن at the cinema: at the cinema.",
+            "support": [
+              {
+                "en": "film",
+                "fa": "فیلم"
+              },
+              {
+                "en": "last night",
+                "fa": "دیشب"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2667,6 +2683,12 @@
                 "text": "to",
                 "ok": false,
                 "why": "to برای رفتن است، نه بودن."
+              }
+            ],
+            "support": [
+              {
+                "en": "film",
+                "fa": "فیلم"
               }
             ]
           },
@@ -3391,6 +3413,10 @@
               {
                 "en": "step",
                 "fa": "پا گذاشتن"
+              },
+              {
+                "en": "feet",
+                "fa": "پاها"
               }
             ]
           },
@@ -4694,7 +4720,13 @@
               "amazing"
             ],
             "fa": "خبر هیجان‌انگیزی دارم: دارم ازدواج می‌کنم!",
-            "why": "news غیرقابل‌شمارش است و a نمی‌گیرد: exciting news."
+            "why": "news غیرقابل‌شمارش است و a نمی‌گیرد: exciting news.",
+            "support": [
+              {
+                "en": "getting married",
+                "fa": "ازدواج می‌کنم"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5136,6 +5168,10 @@
               {
                 "en": "thin",
                 "fa": "لاغر"
+              },
+              {
+                "en": "opposite",
+                "fa": "متضاد"
               }
             ]
           },
@@ -5261,6 +5297,12 @@
                 "text": "at",
                 "ok": false,
                 "why": "at February غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "exam",
+                "fa": "امتحان"
               }
             ]
           },
@@ -5485,6 +5527,10 @@
               {
                 "en": "London",
                 "fa": "لندن"
+              },
+              {
+                "en": "Last year",
+                "fa": "سال گذشته"
               }
             ]
           },
@@ -5909,6 +5955,12 @@
                 "text": "grown",
                 "ok": false,
                 "why": "grown بدون have نمی‌آید."
+              }
+            ],
+            "support": [
+              {
+                "en": "last year",
+                "fa": "سال گذشته"
               }
             ]
           },
@@ -7248,7 +7300,13 @@
               "neighbors"
             ],
             "fa": "کسانی که کنار ما زندگی می‌کنند همسایه‌های ما هستند.",
-            "why": "neighbours = همسایه‌ها."
+            "why": "neighbours = همسایه‌ها.",
+            "support": [
+              {
+                "en": "next to",
+                "fa": "کنارِ"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7489,6 +7547,12 @@
                 "ok": false,
                 "why": "in post بدون the غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "send",
+                "fa": "می‌فرستم"
+              }
             ]
           },
           {
@@ -7563,7 +7627,13 @@
               "shared"
             ],
             "fa": "دیروز یک ویدئوی خنده‌دار در اینترنت گذاشتم.",
-            "why": "گذشته: posted."
+            "why": "گذشته: posted.",
+            "support": [
+              {
+                "en": "online",
+                "fa": "آنلاین؛ در اینترنت"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8204,7 +8274,13 @@
             "answer": "rich",
             "accept": [],
             "fa": "ضدِ فقیر ثروتمند است.",
-            "why": "متضاد poor، rich است: rich ↔ poor."
+            "why": "متضاد poor، rich است: rich ↔ poor.",
+            "support": [
+              {
+                "en": "opposite",
+                "fa": "متضاد"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8650,6 +8726,12 @@
                 "ok": false,
                 "why": "last year فعل گذشته می‌خواهد."
               }
+            ],
+            "support": [
+              {
+                "en": "last year",
+                "fa": "سال گذشته"
+              }
             ]
           },
           {
@@ -8739,6 +8821,10 @@
               {
                 "en": "hurt",
                 "fa": "درد می‌آورند"
+              },
+              {
+                "en": "feet",
+                "fa": "پاها"
               }
             ]
           },
@@ -9266,7 +9352,13 @@
               "good"
             ],
             "fa": "امشب شام ویژه‌ای می‌پزیم چون برادرم خانه است.",
-            "why": "special پیش از اسم یعنی «ویژه»: a special dinner."
+            "why": "special پیش از اسم یعنی «ویژه»: a special dinner.",
+            "support": [
+              {
+                "en": "cooking",
+                "fa": "آشپزی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9371,7 +9463,13 @@
               "write"
             ],
             "fa": "وقتی کلمه‌های طولانی را هجی می‌کنم، همیشه اشتباه می‌کنم.",
-            "why": "spell = هجی کردن."
+            "why": "spell = هجی کردن.",
+            "support": [
+              {
+                "en": "mistakes",
+                "fa": "اشتباه‌ها"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9603,6 +9701,12 @@
                 "ok": false,
                 "why": "swum بدون have نمی‌آید."
               }
+            ],
+            "support": [
+              {
+                "en": "Last summer",
+                "fa": "تابستان گذشته"
+              }
             ]
           },
           {
@@ -9707,6 +9811,12 @@
                 "text": "did",
                 "ok": false,
                 "why": "do a taxi غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "last night",
+                "fa": "دیشب"
               }
             ]
           },
@@ -9906,7 +10016,13 @@
               "phone"
             ],
             "fa": "می‌شود تلفن را جواب بدهی؟ دارم آشپزی می‌کنم.",
-            "why": "برای جواب دادن تلفن answer the telephone: answer the telephone."
+            "why": "برای جواب دادن تلفن answer the telephone: answer the telephone.",
+            "support": [
+              {
+                "en": "cooking",
+                "fa": "دارم آشپزی می‌کنم"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10780,7 +10896,13 @@
             "frame": "I sent you a ___.",
             "answer": "video",
             "accept": [],
-            "why": "video قابل‌شمارش است و مفردش اینجا a می‌گیرد: a video."
+            "why": "video قابل‌شمارش است و مفردش اینجا a می‌گیرد: a video.",
+            "support": [
+              {
+                "en": "sent",
+                "fa": "فرستادم"
+              }
+            ]
           }
         ]
       }
@@ -10996,7 +11118,13 @@
             "accept": [
               "waitress"
             ],
-            "why": "waiter = گارسون."
+            "why": "waiter = گارسون.",
+            "support": [
+              {
+                "en": "bill",
+                "fa": "صورت‌حساب"
+              }
+            ]
           }
         ]
       }
@@ -11281,7 +11409,13 @@
             "answer": "won",
             "accept": [],
             "fa": "دیشب کی بازی را برد؟",
-            "why": "گذشتهٔ win: won."
+            "why": "گذشتهٔ win: won.",
+            "support": [
+              {
+                "en": "last night",
+                "fa": "دیشب"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11397,6 +11531,10 @@
               {
                 "en": "factory",
                 "fa": "کارخانه"
+              },
+              {
+                "en": "hundred",
+                "fa": "صد"
               }
             ]
           },

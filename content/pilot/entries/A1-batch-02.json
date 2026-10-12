@@ -289,6 +289,10 @@
        {
         "en": "polite",
         "fa": "مؤدبانه"
+       },
+       {
+        "en": "menu",
+        "fa": "منو"
        }
       ]
      },
@@ -378,7 +382,13 @@
       "answer": "after",
       "accept": [],
       "fa": "بیا بعد از شام فیلم را ببینیم.",
-      "why": "after + اسم یک رویداد."
+      "why": "after + اسم یک رویداد.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1009,6 +1019,10 @@
        {
         "en": "Tabriz",
         "fa": "تبریز"
+       },
+       {
+        "en": "quicker",
+        "fa": "سریع‌تر"
        }
       ]
      },
@@ -1031,6 +1045,12 @@
         "text": "on",
         "ok": false,
         "why": "on email طبیعی نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "sent",
+        "fa": "فرستادم"
        }
       ]
      },
@@ -1236,6 +1256,12 @@
         "text": "him",
         "ok": false,
         "why": "him ضمیر مفعولی است و قبل از اسم نمی‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "lost",
+        "fa": "گم کرد"
        }
       ]
      },
@@ -2968,6 +2994,10 @@
        {
         "en": "Turkey",
         "fa": "ترکیه"
+       },
+       {
+        "en": "Last year",
+        "fa": "سال گذشته"
        }
       ]
      },
@@ -3563,6 +3593,10 @@
        {
         "en": "stairs",
         "fa": "پله‌ها"
+       },
+       {
+        "en": "fifth",
+        "fa": "پنجم"
        }
       ]
      },
@@ -4128,7 +4162,13 @@
       "frame": "That old ___ is a museum.",
       "answer": "building",
       "accept": [],
-      "why": "building = ساختمان."
+      "why": "building = ساختمان.",
+      "support": [
+       {
+        "en": "museum",
+        "fa": "موزه"
+       }
+      ]
      }
     ]
    }
@@ -4510,7 +4550,13 @@
       "answer": "answer",
       "accept": [],
       "fa": "کسی پشت در است. می‌توانی در را باز کنی؟",
-      "why": "answer the door = در را برای کسی که در زده باز کردن."
+      "why": "answer the door = در را برای کسی که در زده باز کردن.",
+      "support": [
+       {
+        "en": "Somebody",
+        "fa": "کسی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5045,6 +5091,10 @@
        {
         "en": "wind",
         "fa": "باد"
+       },
+       {
+        "en": "last night",
+        "fa": "دیشب"
        }
       ]
      },
@@ -5759,7 +5809,13 @@
       "answer": "first",
       "accept": [],
       "fa": "می‌توانی از کامپیوتر استفاده کنی، اما اول باید یک ایمیل بفرستم.",
-      "why": "first = قبل از هر چیز."
+      "why": "first = قبل از هر چیز.",
+      "support": [
+       {
+        "en": "send",
+        "fa": "فرستادن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5867,7 +5923,13 @@
       "answer": "Here",
       "accept": [],
       "fa": "الف: لطفاً نمک را می‌دهی؟ ب: بفرمایید.",
-      "why": "Here you are = بفرمایید."
+      "why": "Here you are = بفرمایید.",
+      "support": [
+       {
+        "en": "salt",
+        "fa": "نمک"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6310,7 +6372,13 @@
       "frame": "How ___ is the flight?",
       "answer": "long",
       "accept": [],
-      "why": "How long برای پرسیدن مدت زمان است."
+      "why": "How long برای پرسیدن مدت زمان است.",
+      "support": [
+       {
+        "en": "flight",
+        "fa": "پرواز"
+       }
+      ]
      }
     ]
    }
@@ -6400,6 +6468,12 @@
         "text": "at",
         "ok": false,
         "why": "at برای ساعت است."
+       }
+      ],
+      "support": [
+       {
+        "en": "exams",
+        "fa": "امتحان‌ها"
        }
       ]
      },
@@ -6943,7 +7017,13 @@
       "frame": "I saw my cousin at the market yesterday and talked to ___.",
       "answer": "him",
       "accept": [],
-      "why": "مفعول talk to مرد است: him."
+      "why": "مفعول talk to مرد است: him.",
+      "support": [
+       {
+        "en": "market",
+        "fa": "بازار"
+       }
+      ]
      }
     ]
    }
@@ -7115,7 +7195,13 @@
       "answer": "study",
       "accept": [],
       "fa": "امشب نمی‌توانم بیرون بیایم. باید برای امتحانم درس بخوانم.",
-      "why": "برای درس خواندن برای امتحان study for: study for an exam."
+      "why": "برای درس خواندن برای امتحان study for: study for an exam.",
+      "support": [
+       {
+        "en": "exam",
+        "fa": "امتحان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7142,6 +7228,10 @@
        {
         "en": "maths",
         "fa": "ریاضی"
+       },
+       {
+        "en": "university",
+        "fa": "دانشگاه"
        }
       ]
      },
@@ -7599,7 +7689,13 @@
       "frame": "We're going to Isfahan next ___.",
       "answer": "month",
       "accept": [],
-      "why": "next month، بدون حرف اضافه."
+      "why": "next month، بدون حرف اضافه.",
+      "support": [
+       {
+        "en": "next",
+        "fa": "بعدی"
+       }
+      ]
      }
     ]
    }
@@ -8428,7 +8524,13 @@
       "frame": "I'm cooking ___.",
       "answer": "dinner",
       "accept": [],
-      "why": "cook dinner، بدون the."
+      "why": "cook dinner، بدون the.",
+      "support": [
+       {
+        "en": "cooking",
+        "fa": "دارم درست می‌کنم"
+       }
+      ]
      }
     ]
    }
@@ -9042,6 +9144,10 @@
        {
         "en": "noise",
         "fa": "سر و صدا"
+       },
+       {
+        "en": "Last night",
+        "fa": "دیشب"
        }
       ]
      },
@@ -9451,7 +9557,13 @@
       "answer": "each",
       "accept": [],
       "fa": "پرتقال‌ها هرکدام بیست سنت است.",
-      "why": "… each = هرکدام."
+      "why": "… each = هرکدام.",
+      "support": [
+       {
+        "en": "cents",
+        "fa": "سنت"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9698,6 +9810,10 @@
        {
         "en": "fridge",
         "fa": "یخچال"
+       },
+       {
+        "en": "Last night",
+        "fa": "دیشب"
        }
       ]
      },
@@ -10099,7 +10215,13 @@
        "more than"
       ],
       "fa": "فیلم طولانی است. بیش از سه ساعت است!",
-      "why": "over + عدد = بیش از."
+      "why": "over + عدد = بیش از.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10121,6 +10243,12 @@
         "ok": false,
         "why": "up به‌تنهایی معنای «بیش از» ندارد."
        }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
       ]
      },
      {
@@ -10132,7 +10260,13 @@
       "accept": [
        "more than"
       ],
-      "why": "over + number = بیش ازِ یک عدد."
+      "why": "over + number = بیش ازِ یک عدد.",
+      "support": [
+       {
+        "en": "hundred",
+        "fa": "صد"
+       }
+      ]
      }
     ]
    }
@@ -10409,7 +10543,13 @@
       "answer": "story",
       "accept": [],
       "fa": "این فیلم یک داستان واقعی است. واقعاً اتفاق افتاده.",
-      "why": "a true story یعنی «داستان واقعی»: a true story."
+      "why": "a true story یعنی «داستان واقعی»: a true story.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10617,7 +10757,13 @@
       "answer": "different",
       "accept": [],
       "fa": "زندگی در روستا با زندگی در شهر خیلی فرق دارد.",
-      "why": "برای تفاوت با چیزی different from: different from."
+      "why": "برای تفاوت با چیزی different from: different from.",
+      "support": [
+       {
+        "en": "village",
+        "fa": "روستا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10648,7 +10794,13 @@
       "frame": "These two words have ___ meanings.",
       "answer": "different",
       "accept": [],
-      "why": "different + اسم جمع."
+      "why": "different + اسم جمع.",
+      "support": [
+       {
+        "en": "meanings",
+        "fa": "معنی‌ها"
+       }
+      ]
      }
     ]
    }
@@ -10822,7 +10974,13 @@
       "answer": "only",
       "accept": [],
       "fa": "زود باش! فقط پنج دقیقه وقت داریم.",
-      "why": "only + عدد = فقط."
+      "why": "only + عدد = فقط.",
+      "support": [
+       {
+        "en": "quick",
+        "fa": "سریع"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10958,7 +11116,13 @@
       "frame": "She is the ___ doctor in the village.",
       "answer": "only",
       "accept": [],
-      "why": "the only + noun یعنی «تنها / یگانه»."
+      "why": "the only + noun یعنی «تنها / یگانه».",
+      "support": [
+       {
+        "en": "village",
+        "fa": "روستا"
+       }
+      ]
      }
     ]
    }
@@ -11897,6 +12061,12 @@
         "ok": false,
         "why": "over یعنی بیش از."
        }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
       ]
      },
      {
@@ -12518,6 +12688,12 @@
         "text": "a minute",
         "ok": false,
         "why": "بعد از عدد a نمی‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
        }
       ]
      },

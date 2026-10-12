@@ -504,6 +504,12 @@
         "ok": false,
         "why": "of اینجا لازم نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
       ]
      },
      {
@@ -587,7 +593,17 @@
       "answer": "action",
       "accept": [],
       "fa": "پلیس سریع اقدام کرد و جلوی آتش را گرفت.",
-      "why": "برای اقدام کردن take action: take action."
+      "why": "برای اقدام کردن take action: take action.",
+      "support": [
+       {
+        "en": "police",
+        "fa": "پلیس"
+       },
+       {
+        "en": "quick",
+        "fa": "سریع"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -614,6 +630,10 @@
        {
         "en": "loud",
         "fa": "بلند"
+       },
+       {
+        "en": "films",
+        "fa": "فیلم‌ها"
        }
       ]
      },
@@ -702,7 +722,13 @@
       "answer": "ask",
       "accept": [],
       "fa": "اگر نمی‌فهمی، از معلمت بپرس.",
-      "why": "ask + شخص."
+      "why": "ask + شخص.",
+      "support": [
+       {
+        "en": "understand",
+        "fa": "نمی‌فهمی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1140,6 +1166,12 @@
         "text": "blank",
         "ok": false,
         "why": "blank یعنی خالی (بی‌نوشته)."
+       }
+      ],
+      "support": [
+       {
+        "en": "opposite",
+        "fa": "متضاد"
        }
       ]
      },
@@ -1789,6 +1821,12 @@
         "ok": false,
         "why": "funnily قید است."
        }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
       ]
      },
      {
@@ -2191,7 +2229,13 @@
       "answer": "map",
       "accept": [],
       "fa": "گم شدیم، پس به نقشه نگاه کردیم.",
-      "why": "برای نگاه کردن به نقشه look at the map: look at the map."
+      "why": "برای نگاه کردن به نقشه look at the map: look at the map.",
+      "support": [
+       {
+        "en": "got lost",
+        "fa": "گم شدیم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3179,6 +3223,16 @@
         "ok": false,
         "why": "artist یعنی هنرمند."
        }
+      ],
+      "support": [
+       {
+        "en": "museum",
+        "fa": "موزه"
+       },
+       {
+        "en": "modern",
+        "fa": "مدرن"
+       }
       ]
      },
      {
@@ -3588,6 +3642,12 @@
         "text": "broken",
         "ok": false,
         "why": "broken یعنی شکسته."
+       }
+      ],
+      "support": [
+       {
+        "en": "during",
+        "fa": "در طولِ"
        }
       ]
      },
@@ -4235,6 +4295,12 @@
         "ok": false,
         "why": "driven اسم مفعول است."
        }
+      ],
+      "support": [
+       {
+        "en": "last weekend",
+        "fa": "آخر هفتهٔ گذشته"
+       }
       ]
      },
      {
@@ -4433,7 +4499,13 @@
        "quick"
       ],
       "fa": "این قطار خیلی سریع است. ساعتی ۳۰۰ کیلومتر می‌رود.",
-      "why": "fast = سریع."
+      "why": "fast = سریع.",
+      "support": [
+       {
+        "en": "kilometres",
+        "fa": "کیلومتر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4533,7 +4605,13 @@
        "quickly"
       ],
       "fa": "لطفاً این‌قدر تند حرف نزن. نمی‌فهمم.",
-      "why": "قید fast خودش fast است: speak fast."
+      "why": "قید fast خودش fast است: speak fast.",
+      "support": [
+       {
+        "en": "understand",
+        "fa": "بفهمم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5106,7 +5184,13 @@
       "accept": [
        "coat"
       ],
-      "why": "jacket = کاپشن."
+      "why": "jacket = کاپشن.",
+      "support": [
+       {
+        "en": "lost",
+        "fa": "گم کردم"
+       }
+      ]
      }
     ]
    }
@@ -6046,7 +6130,13 @@
        "heavy"
       ],
       "fa": "امروز ترافیک خیلی کند است. دیر می‌رسیم.",
-      "why": "slow = کند."
+      "why": "slow = کند.",
+      "support": [
+       {
+        "en": "traffic",
+        "fa": "ترافیک"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6382,7 +6472,13 @@
       "answer": "sure",
       "accept": [],
       "fa": "مطمئن نیستم فیلم ساعت چند شروع می‌شود.",
-      "why": "not sure = مطمئن نیستم."
+      "why": "not sure = مطمئن نیستم.",
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6807,7 +6903,13 @@
       "answer": "band",
       "accept": [],
       "fa": "گروه موسیقی تا نیمه‌شب اجرا کرد.",
-      "why": "band = گروه موسیقی."
+      "why": "band = گروه موسیقی.",
+      "support": [
+       {
+        "en": "midnight",
+        "fa": "نیمه‌شب"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7476,6 +7578,12 @@
         "text": "time",
         "ok": false,
         "why": "time یعنی ساعت."
+       }
+      ],
+      "support": [
+       {
+        "en": "third",
+        "fa": "سوم"
        }
       ]
      },
@@ -8204,7 +8312,13 @@
       "answer": "letter",
       "accept": [],
       "fa": "دارم برای مادربزرگم نامه می‌نویسم.",
-      "why": "گیرندهٔ نامه با to می‌آید: write a letter to."
+      "why": "گیرندهٔ نامه با to می‌آید: write a letter to.",
+      "support": [
+       {
+        "en": "writing",
+        "fa": "دارم می‌نویسم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8225,6 +8339,16 @@
         "text": "litter",
         "ok": false,
         "why": "litter یعنی آشغال."
+       }
+      ],
+      "support": [
+       {
+        "en": "sent",
+        "fa": "فرستادم"
+       },
+       {
+        "en": "last week",
+        "fa": "هفتهٔ گذشته"
        }
       ]
      },
@@ -8619,7 +8743,13 @@
        "film"
       ],
       "fa": "دیشب یک فیلم خنده‌دار در تلویزیون دیدیم.",
-      "why": "movie = فیلم."
+      "why": "movie = فیلم.",
+      "support": [
+       {
+        "en": "last night",
+        "fa": "دیشب"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8853,6 +8983,12 @@
         "ok": false,
         "why": "yesterday فعل گذشته می‌خواهد."
        }
+      ],
+      "support": [
+       {
+        "en": "kilometres",
+        "fa": "کیلومتر"
+       }
       ]
      },
      {
@@ -8937,7 +9073,13 @@
        "biology"
       ],
       "fa": "در درس علوم دربارهٔ گیاهان و حیوانات یاد می‌گیریم.",
-      "why": "science = علوم."
+      "why": "science = علوم.",
+      "support": [
+       {
+        "en": "plants",
+        "fa": "گیاهان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9280,6 +9422,10 @@
        {
         "en": "noise",
         "fa": "سر و صدا"
+       },
+       {
+        "en": "last night",
+        "fa": "دیشب"
        }
       ]
      },
@@ -9720,6 +9866,12 @@
         "ok": false,
         "why": "at TV غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "film",
+        "fa": "فیلم"
+       }
       ]
      },
      {
@@ -10117,7 +10269,13 @@
       "answer": "actor",
       "accept": [],
       "fa": "در فیلم‌های زیادی بازی می‌کند. بازیگر معروفی است.",
-      "why": "actor = بازیگر."
+      "why": "actor = بازیگر.",
+      "support": [
+       {
+        "en": "films",
+        "fa": "فیلم‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10899,6 +11057,10 @@
        {
         "en": "heart",
         "fa": "قلب"
+       },
+       {
+        "en": "part",
+        "fa": "بخش"
        }
       ]
      },

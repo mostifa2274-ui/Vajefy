@@ -165,7 +165,13 @@
       "frame": "Next ___, I'll come with you.",
       "answer": "time",
       "accept": [],
-      "why": "next time = دفعهٔ بعد."
+      "why": "next time = دفعهٔ بعد.",
+      "support": [
+       {
+        "en": "Next",
+        "fa": "بعدی"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -368,6 +374,12 @@
         "ok": false,
         "why": "the last week یعنی «هفتهٔ آخر»، نه «هفتهٔ گذشته»."
        }
+      ],
+      "support": [
+       {
+        "en": "last",
+        "fa": "گذشته"
+       }
       ]
      },
      {
@@ -377,7 +389,17 @@
       "frame": "I have an exam next ___.",
       "answer": "week",
       "accept": [],
-      "why": "«هفتهٔ بعد» با next و بدون in می‌آید: next week."
+      "why": "«هفتهٔ بعد» با next و بدون in می‌آید: next week.",
+      "support": [
+       {
+        "en": "exam",
+        "fa": "امتحان"
+       },
+       {
+        "en": "next",
+        "fa": "بعدی"
+       }
+      ]
      }
     ]
    }
@@ -483,7 +505,17 @@
       "frame": "I'm going to university next ___.",
       "answer": "year",
       "accept": [],
-      "why": "«سال بعد» با next و بدون in می‌آید: next year."
+      "why": "«سال بعد» با next و بدون in می‌آید: next year.",
+      "support": [
+       {
+        "en": "university",
+        "fa": "دانشگاه"
+       },
+       {
+        "en": "next",
+        "fa": "بعدی"
+       }
+      ]
      }
     ]
    }
@@ -991,7 +1023,13 @@
       "frame": "I didn't sleep well last ___.",
       "answer": "night",
       "accept": [],
-      "why": "«دیشب» در انگلیسی last night است: last night."
+      "why": "«دیشب» در انگلیسی last night است: last night.",
+      "support": [
+       {
+        "en": "last",
+        "fa": "گذشته"
+       }
+      ]
      }
     ]
    }
@@ -1296,6 +1334,16 @@
         "text": "my mother birthday",
         "ok": false,
         "why": "'s جا افتاده است."
+       }
+      ],
+      "support": [
+       {
+        "en": "natural",
+        "fa": "طبیعی"
+       },
+       {
+        "en": "phrase",
+        "fa": "عبارت"
        }
       ]
      },
@@ -2091,7 +2139,13 @@
       "answer": "job",
       "accept": [],
       "fa": "او ماه پیش در یک بانک کار پیدا کرد.",
-      "why": "شغل."
+      "why": "شغل.",
+      "support": [
+       {
+        "en": "last month",
+        "fa": "ماه گذشته"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2235,7 +2289,13 @@
       "frame": "I don't have enough ___.",
       "answer": "money",
       "accept": [],
-      "why": "پول."
+      "why": "پول.",
+      "support": [
+       {
+        "en": "enough",
+        "fa": "کافی"
+       }
+      ]
      }
     ]
    }
@@ -2412,7 +2472,13 @@
       "answer": "water",
       "accept": [],
       "fa": "گیاهان به آب و نور نیاز دارند.",
-      "why": "آب."
+      "why": "آب.",
+      "support": [
+       {
+        "en": "Plants",
+        "fa": "گیاهان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2924,7 +2990,13 @@
        "called",
        "rang"
       ],
-      "why": "phone؛ گذشته: phoned."
+      "why": "phone؛ گذشته: phoned.",
+      "support": [
+       {
+        "en": "last night",
+        "fa": "دیشب"
+       }
+      ]
      },
      {
       "type": "cloze",
@@ -3666,6 +3738,12 @@
         "ok": false,
         "why": "littler رایج نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "village",
+        "fa": "روستا"
+       }
       ]
      },
      {
@@ -3773,6 +3851,12 @@
         "text": "The box is a little.",
         "ok": false,
         "why": "a little بدون صفت اینجا معنی ندارد."
+       }
+      ],
+      "support": [
+       {
+        "en": "natural",
+        "fa": "طبیعی"
        }
       ]
      },
@@ -3938,7 +4022,13 @@
       "answer": "new",
       "accept": [],
       "fa": "او هفتهٔ پیش کار جدیدی شروع کرد.",
-      "why": "تازه."
+      "why": "تازه.",
+      "support": [
+       {
+        "en": "last week",
+        "fa": "هفتهٔ گذشته"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3959,6 +4049,12 @@
         "text": "I'm fresh here.",
         "ok": false,
         "why": "fresh برای غذاست."
+       }
+      ],
+      "support": [
+       {
+        "en": "last week",
+        "fa": "هفتهٔ گذشته"
        }
       ]
      },
@@ -4059,6 +4155,12 @@
         "text": "little",
         "ok": false,
         "why": "little دربارهٔ اندازه است."
+       }
+      ],
+      "support": [
+       {
+        "en": "opposite",
+        "fa": "متضاد"
        }
       ]
      },
