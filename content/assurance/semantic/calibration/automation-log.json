@@ -252,13 +252,24 @@
       }
     },
     {
-      "kind": "reservation",
+      "kind": "calibration",
       "date": "2026-10-12",
+      "at": "2026-10-12T06:06:05.661Z",
       "runId": "38210720212.1",
       "role": "persian",
-      "at": "2026-10-12T06:04:01.549Z",
+      "model": "@cf/nvidia/nemotron-3-120b-a12b",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 1200,
+      "promptVersion": "persian-a1-prompt-v1",
+      "rubricVersion": "persian-a1-v1",
+      "outcome": "rejected",
+      "requestsSent": 18,
       "neuronsCharged": 6921,
-      "note": "Calibration run 38210720212.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
+      "measured": {
+        "inputTokens": 18945,
+        "outputTokens": 9318,
+        "neurons": 2132
+      }
     }
   ]
 }

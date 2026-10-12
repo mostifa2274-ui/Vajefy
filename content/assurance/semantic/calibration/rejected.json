@@ -229,6 +229,31 @@
         "abstainAccuracy": 0,
         "expectedLabelStability": 1
       }
+    },
+    {
+      "role": "persian",
+      "model": "@cf/nvidia/nemotron-3-120b-a12b",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 1200,
+      "promptVersion": "persian-a1-prompt-v1",
+      "rubricVersion": "persian-a1-v1",
+      "reason": "did-not-promote",
+      "rejectedAt": "2026-10-12",
+      "runIds": [
+        "38210720212.1"
+      ],
+      "detail": "Missed the frozen vajefy-semantic-v1 gate on: defectRecall, abstainAccuracy.",
+      "metrics": {
+        "requestedRuns": 3,
+        "validRuns": 3,
+        "requiredRuns": 3,
+        "schemaComplianceRate": 1,
+        "defectRecall": 0.6666666666666666,
+        "cleanFalsePositiveRate": 0,
+        "cleanUncertainRate": 0,
+        "abstainAccuracy": 0,
+        "expectedLabelStability": 1
+      }
     }
   ]
 }
