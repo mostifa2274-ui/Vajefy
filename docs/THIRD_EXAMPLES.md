@@ -22,7 +22,9 @@ certificate.
 - The Persian is a natural translation. *too* is translated as «بیش از حد».
 - It names no place or word outside the vocabulary lists. In batch 2, eleven
   first drafts named Iranian cities or used *notebook*, *pharmacy* or
-  *easiest*, and were replaced so the lint count stayed at 80.
+  *easiest*, and were replaced so the lint count stayed at 80. In batch 3,
+  fourteen first drafts used words outside the lists (*nest*, *zoo*, *gloves*,
+  *click*) or nearly repeated a check item, and were replaced.
 - It does not repeat a staged CEFR-J lesson draft, which must stay
   independent of existing teaching text. One batch 2 draft (*The road was
   closed because of the snow.*) matched the staged *closed* lesson and was
@@ -46,4 +48,5 @@ certification targets (those are word clips), so certification is unchanged.
 | Batch | Units | Senses | `EXAMPLE_COUNT` after | New clips |
 |---|---|---:|---:|---:|
 | 1 | 04 food and drink, 05 shopping and money (#230) | 183 | 824 | 366 |
-| 2 | 06 places and directions, 07 travel and transport | 194 | 630 | 388 |
+| 2 | 06 places and directions, 07 travel and transport (#231) | 194 | 630 | 388 |
+| 3 | 08 work and study, 09 leisure and people, 10 weather and clothes | 273 | 357 | 546 |
