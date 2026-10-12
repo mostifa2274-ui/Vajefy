@@ -1,6 +1,6 @@
 {
  "status": "draft",
- "contentVersion": "coach-text-v1-2fafea7bc2f157af",
+ "contentVersion": "coach-text-v1-a38efd6b4f5e6b79",
  "cases": [
   {
    "id": "2b1078906b",
@@ -9507,6 +9507,18 @@
    ]
   },
   {
+   "id": "c3aea43edf",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:food"
+   ],
+   "text": "The food in this cafe is cheap and good.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "d6ae3f2865",
    "split": "dev",
    "source": "mistake-right",
@@ -9555,6 +9567,18 @@
    ]
   },
   {
+   "id": "28887828a3",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:water"
+   ],
+   "text": "The water in the sea is very cold today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7341558d22",
    "split": "dev",
    "source": "mistake-wrong",
@@ -9586,6 +9610,18 @@
     "lex:A1:eat"
    ],
    "text": "Let's eat out tonight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a212a27e9a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:eat"
+   ],
+   "text": "We eat together every evening.",
    "expect": [
     "natural"
    ]
@@ -9639,6 +9675,18 @@
    ]
   },
   {
+   "id": "a8fc05f83e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:drink"
+   ],
+   "text": "Don't drink the water from the river.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "8aef266eec",
    "split": "dev",
    "source": "mistake-right",
@@ -9687,6 +9735,18 @@
    ]
   },
   {
+   "id": "83f172f82f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:drink#noun"
+   ],
+   "text": "We bought food and drinks for the party.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "248b95dbef",
    "split": "test",
    "source": "mistake-wrong",
@@ -9718,6 +9778,18 @@
     "lex:A1:want"
    ],
    "text": "She wants to be a doctor.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7b8e5b43f3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:want"
+   ],
+   "text": "I don't want any more rice, thanks.",
    "expect": [
     "natural"
    ]
@@ -9771,6 +9843,18 @@
    ]
   },
   {
+   "id": "dd9e5bd166",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:rice"
+   ],
+   "text": "Can you buy a bag of rice?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "61ea652cc8",
    "split": "dev",
    "source": "mistake-right",
@@ -9814,6 +9898,18 @@
     "lex:A1:some"
    ],
    "text": "Would you like some cake?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "712bab631f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:some"
+   ],
+   "text": "There is some bread on the table.",
    "expect": [
     "natural"
    ]
@@ -9867,6 +9963,18 @@
    ]
   },
   {
+   "id": "48844c8383",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:tea"
+   ],
+   "text": "My grandfather drinks his tea with sugar.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "73a4a9485a",
    "split": "dev",
    "source": "mistake-right",
@@ -9910,6 +10018,18 @@
     "lex:A1:cafe"
    ],
    "text": "We had coffee and cake in a small cafe.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "003f9d7cc9",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:cafe"
+   ],
+   "text": "This cafe opens at eight in the morning.",
    "expect": [
     "natural"
    ]
@@ -9963,6 +10083,18 @@
    ]
   },
   {
+   "id": "a22af7a3b9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:coffee"
+   ],
+   "text": "My father makes coffee every morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "61e7d4c9e2",
    "split": "dev",
    "source": "mistake-right",
@@ -10006,6 +10138,18 @@
     "lex:A1:milk"
    ],
    "text": "Children need milk for strong bones.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e0687950dd",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:milk"
+   ],
+   "text": "I have a glass of milk before bed.",
    "expect": [
     "natural"
    ]
@@ -10059,6 +10203,18 @@
    ]
   },
   {
+   "id": "9e57a62b09",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cheese"
+   ],
+   "text": "This cheese comes from Tabriz.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "e73358447d",
    "split": "dev",
    "source": "mistake-right",
@@ -10102,6 +10258,18 @@
     "lex:A1:bread"
    ],
    "text": "Can I have a piece of bread?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "385b26a174",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:bread"
+   ],
+   "text": "We need bread and milk from the shop.",
    "expect": [
     "natural"
    ]
@@ -10155,6 +10323,18 @@
    ]
   },
   {
+   "id": "406917cbff",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fruit"
+   ],
+   "text": "Apples and oranges are my favourite fruit.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "4cddc2bd6d",
    "split": "test",
    "source": "mistake-right",
@@ -10198,6 +10378,18 @@
     "lex:A1:apple"
    ],
    "text": "Would you like some apple juice?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "615065cfe6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:apple"
+   ],
+   "text": "These apples are from our garden.",
    "expect": [
     "natural"
    ]
@@ -10251,6 +10443,18 @@
    ]
   },
   {
+   "id": "72422cada4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:breakfast"
+   ],
+   "text": "We have breakfast at seven o'clock.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "d6ac56c1e3",
    "split": "dev",
    "source": "mistake-right",
@@ -10294,6 +10498,18 @@
     "lex:A1:lunch"
    ],
    "text": "I usually take a sandwich for lunch.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "697e9e1df7",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:lunch"
+   ],
+   "text": "Lunch is at half past twelve.",
    "expect": [
     "natural"
    ]
@@ -10347,6 +10563,18 @@
    ]
   },
   {
+   "id": "76727d6859",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:dinner"
+   ],
+   "text": "Dinner is on the table. Come and eat!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "d98f45bb63",
    "split": "dev",
    "source": "mistake-right",
@@ -10390,6 +10618,18 @@
     "lex:A1:thirsty"
    ],
    "text": "After the game, everybody was hot and thirsty.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "01c81a3cd2",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:thirsty"
+   ],
+   "text": "The dog is thirsty. Give it some water.",
    "expect": [
     "natural"
    ]
@@ -10443,6 +10683,18 @@
    ]
   },
   {
+   "id": "ca4971c15c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hungry"
+   ],
+   "text": "I'm not hungry now. I had a big lunch.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6b61b86ce6",
    "split": "dev",
    "source": "mistake-right",
@@ -10486,6 +10738,18 @@
     "lex:A1:restaurant"
    ],
    "text": "This restaurant has very good fish.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8f47b23c85",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:restaurant"
+   ],
+   "text": "The restaurant is closed on Mondays.",
    "expect": [
     "natural"
    ]
@@ -10539,6 +10803,18 @@
    ]
   },
   {
+   "id": "62cfcd49b3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:menu"
+   ],
+   "text": "The menu is in English and Persian.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "0b6440e263",
    "split": "test",
    "source": "mistake-right",
@@ -10582,6 +10858,18 @@
     "lex:A1:glass"
    ],
    "text": "Can I have a glass of orange juice?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ebb10d4a12",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:glass"
+   ],
+   "text": "Put the glasses on the table, please.",
    "expect": [
     "natural"
    ]
@@ -10635,6 +10923,18 @@
    ]
   },
   {
+   "id": "83869f499f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:glass#material"
+   ],
+   "text": "Glass bottles are heavy.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "8abc15ae99",
    "split": "dev",
    "source": "mistake-right",
@@ -10678,6 +10978,18 @@
     "lex:A1:bottle"
    ],
    "text": "Put the empty bottles in the box.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "89adfc74a4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bottle"
+   ],
+   "text": "There's a bottle of milk in the fridge.",
    "expect": [
     "natural"
    ]
@@ -10731,6 +11043,18 @@
    ]
   },
   {
+   "id": "7f0df61e01",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:sugar"
+   ],
+   "text": "Please don't put sugar in my coffee.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "75a34f2bdd",
    "split": "dev",
    "source": "mistake-right",
@@ -10774,6 +11098,18 @@
     "lex:A1:meal"
    ],
    "text": "We had a nice meal at a restaurant.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9e1a068c3b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:meal"
+   ],
+   "text": "We have three meals a day.",
    "expect": [
     "natural"
    ]
@@ -10827,6 +11163,18 @@
    ]
   },
   {
+   "id": "a31d987a6d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cup"
+   ],
+   "text": "Be careful, the cup is hot.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6b59661a3c",
    "split": "dev",
    "source": "mistake-right",
@@ -10870,6 +11218,18 @@
     "lex:A1:fish"
    ],
    "text": "There are many fish in this river.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "22e324ef19",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fish"
+   ],
+   "text": "My uncle catches fish in the sea.",
    "expect": [
     "natural"
    ]
@@ -10923,6 +11283,18 @@
    ]
   },
   {
+   "id": "ef75355f43",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:juice"
+   ],
+   "text": "This juice is very sweet.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "e6bc9f9ea1",
    "split": "dev",
    "source": "mistake-right",
@@ -10966,6 +11338,18 @@
     "lex:A1:meat"
    ],
    "text": "Do you want meat or fish?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9d0ecc78ff",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:meat"
+   ],
+   "text": "My sister doesn't eat meat.",
    "expect": [
     "natural"
    ]
@@ -11019,6 +11403,18 @@
    ]
   },
   {
+   "id": "d2eb621671",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:salt"
+   ],
+   "text": "Add a little salt to the rice.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "0021f505c1",
    "split": "test",
    "source": "mistake-right",
@@ -11062,6 +11458,18 @@
     "lex:A1:chicken"
    ],
    "text": "My grandmother has ten chickens on her farm.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7001b8a2f8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:chicken"
+   ],
+   "text": "We cook chicken with rice on Fridays.",
    "expect": [
     "natural"
    ]
@@ -11115,6 +11523,18 @@
    ]
   },
   {
+   "id": "18ace9e393",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:delicious"
+   ],
+   "text": "The cake looks delicious!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c1de33a521",
    "split": "dev",
    "source": "mistake-right",
@@ -11158,6 +11578,18 @@
     "lex:A1:cook"
    ],
    "text": "Cook the rice for twenty minutes.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a086d65fd4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cook"
+   ],
+   "text": "Who is cooking tonight?",
    "expect": [
     "natural"
    ]
@@ -11211,6 +11643,18 @@
    ]
   },
   {
+   "id": "8267922953",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cook#person"
+   ],
+   "text": "The cook in this restaurant is from Shiraz.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f35b9483fa",
    "split": "dev",
    "source": "mistake-right",
@@ -11254,6 +11698,18 @@
     "lex:A1:orange"
    ],
    "text": "These oranges are very sweet.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "daf4d148c2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:orange"
+   ],
+   "text": "Can you buy some oranges for the children?",
    "expect": [
     "natural"
    ]
@@ -11307,6 +11763,18 @@
    ]
   },
   {
+   "id": "62d222b68c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:orange#colour"
+   ],
+   "text": "My favourite colour is orange.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "2ca384b43c",
    "split": "test",
    "source": "mistake-right",
@@ -11350,6 +11818,18 @@
     "lex:A1:tomato"
    ],
    "text": "Would you like some tomato soup?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "275846519d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:tomato"
+   ],
+   "text": "There are some tomatoes in the fridge.",
    "expect": [
     "natural"
    ]
@@ -11403,6 +11883,18 @@
    ]
   },
   {
+   "id": "e0058e4232",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:banana"
+   ],
+   "text": "Can you buy some bananas at the market?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7b3f375b8c",
    "split": "dev",
    "source": "mistake-right",
@@ -11446,6 +11938,18 @@
     "lex:A1:egg"
    ],
    "text": "We need six eggs for this cake.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "964633c5fa",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:egg"
+   ],
+   "text": "There are no eggs in the fridge.",
    "expect": [
     "natural"
    ]
@@ -11499,6 +12003,18 @@
    ]
   },
   {
+   "id": "aacfa6b3d2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:potato"
+   ],
+   "text": "Do you want rice or potatoes?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "e761d46e2d",
    "split": "dev",
    "source": "mistake-right",
@@ -11542,6 +12058,18 @@
     "lex:A1:vegetable"
    ],
    "text": "Vegetable soup is good for you.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "81260938ef",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:vegetable"
+   ],
+   "text": "We buy vegetables at the market on Fridays.",
    "expect": [
     "natural"
    ]
@@ -11595,6 +12123,18 @@
    ]
   },
   {
+   "id": "2f873b46eb",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:salad"
+   ],
+   "text": "There are tomatoes and onions in this salad.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c805ad4179",
    "split": "dev",
    "source": "mistake-right",
@@ -11638,6 +12178,18 @@
     "lex:A1:sandwich"
    ],
    "text": "She makes sandwiches for the children every morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "60e967b5fc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:sandwich"
+   ],
+   "text": "Let's buy sandwiches and eat in the park.",
    "expect": [
     "natural"
    ]
@@ -11691,6 +12243,18 @@
    ]
   },
   {
+   "id": "a1dfe8bc32",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:soup"
+   ],
+   "text": "The soup is hot, so eat it slowly.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "54e05824fe",
    "split": "dev",
    "source": "mistake-right",
@@ -11734,6 +12298,18 @@
     "lex:A1:beer"
    ],
    "text": "This shop doesn't sell beer.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2df49ed5a3",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:beer"
+   ],
+   "text": "My father doesn't drink beer.",
    "expect": [
     "natural"
    ]
@@ -11787,6 +12363,18 @@
    ]
   },
   {
+   "id": "a5f905c132",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:butter"
+   ],
+   "text": "Put some butter on your bread.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "794c064e69",
    "split": "dev",
    "source": "mistake-right",
@@ -11830,6 +12418,18 @@
     "lex:A1:cake"
    ],
    "text": "Would you like a piece of cake?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ed60857d05",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cake"
+   ],
+   "text": "We bought a big cake for the party.",
    "expect": [
     "natural"
    ]
@@ -11883,6 +12483,18 @@
    ]
   },
   {
+   "id": "2f08b88b12",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:carrot"
+   ],
+   "text": "My son doesn't like carrots.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "2fbcaef1ff",
    "split": "test",
    "source": "mistake-right",
@@ -11926,6 +12538,18 @@
     "lex:A1:chocolate"
    ],
    "text": "She bought a box of chocolates for her mother.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8bdea6b795",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:chocolate"
+   ],
+   "text": "I drink hot chocolate in winter.",
    "expect": [
     "natural"
    ]
@@ -11979,6 +12603,18 @@
    ]
   },
   {
+   "id": "11b02b3c0c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:cooking"
+   ],
+   "text": "Cooking is my favourite hobby.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "6757f0012f",
    "split": "dev",
    "source": "mistake-right",
@@ -12022,6 +12658,18 @@
     "lex:A1:cow"
    ],
    "text": "There are twenty cows on the farm.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7e6ff3ceea",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cow"
+   ],
+   "text": "The farmer has a black and white cow.",
    "expect": [
     "natural"
    ]
@@ -12075,6 +12723,18 @@
    ]
   },
   {
+   "id": "d3e9693e8a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cream"
+   ],
+   "text": "This cake has a lot of cream on it.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f5b292d77b",
    "split": "dev",
    "source": "mistake-right",
@@ -12118,6 +12778,18 @@
     "lex:A1:cut"
    ],
    "text": "I cut my finger in the kitchen.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "de0d2aa4a6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cut"
+   ],
+   "text": "Can you cut the cake, please?",
    "expect": [
     "natural"
    ]
@@ -12171,6 +12843,18 @@
    ]
   },
   {
+   "id": "2c8f06e310",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:dish"
+   ],
+   "text": "Put the dirty dishes in the kitchen.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "70282e883b",
    "split": "dev",
    "source": "mistake-right",
@@ -12214,6 +12898,18 @@
     "lex:A1:dish#food"
    ],
    "text": "What's your favourite dish?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "99d9263951",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:dish#food"
+   ],
+   "text": "This fish dish is from the north of Iran.",
    "expect": [
     "natural"
    ]
@@ -12267,6 +12963,18 @@
    ]
   },
   {
+   "id": "2f8e3f401e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:ice"
+   ],
+   "text": "The children are playing on the ice.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "8d46ad25eb",
    "split": "dev",
    "source": "mistake-right",
@@ -12310,6 +13018,18 @@
     "lex:A1:other"
    ],
    "text": "Some people like tea, and other people like coffee.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a607cf2be9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:other"
+   ],
+   "text": "Where is my other shoe?",
    "expect": [
     "natural"
    ]
@@ -12363,6 +13083,18 @@
    ]
   },
   {
+   "id": "8c176e844b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:each"
+   ],
+   "text": "Each student has a book.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f31ee4cc17",
    "split": "dev",
    "source": "mistake-right",
@@ -12406,6 +13138,18 @@
     "lex:A1:ice-cream"
    ],
    "text": "Chocolate ice cream is my favourite.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fd34043912",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:ice-cream"
+   ],
+   "text": "The children want ice cream after dinner.",
    "expect": [
     "natural"
    ]
@@ -12459,6 +13203,18 @@
    ]
   },
   {
+   "id": "0da2fe0740",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:onion"
+   ],
+   "text": "My mother puts onions in the soup.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "65a142326e",
    "split": "dev",
    "source": "mistake-right",
@@ -12502,6 +13258,18 @@
     "lex:A1:pepper"
    ],
    "text": "This soup needs more pepper.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8052fbe8b3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:pepper"
+   ],
+   "text": "Pass me the salt and pepper, please.",
    "expect": [
     "natural"
    ]
@@ -12555,6 +13323,18 @@
    ]
   },
   {
+   "id": "e6f84a38c0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:piece"
+   ],
+   "text": "Can I have another piece of cake?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c8ff301f54",
    "split": "dev",
    "source": "mistake-right",
@@ -12598,6 +13378,18 @@
     "lex:A1:waiter"
    ],
    "text": "My brother works as a waiter in a cafe.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "874539a819",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:waiter"
+   ],
+   "text": "The waiter was very friendly.",
    "expect": [
     "natural"
    ]
@@ -12651,6 +13443,18 @@
    ]
   },
   {
+   "id": "40a15f73f1",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:wine"
+   ],
+   "text": "They don't drink wine.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "8bb4b9f820",
    "split": "dev",
    "source": "mistake-right",
@@ -12694,6 +13498,18 @@
     "lex:A1:or"
    ],
    "text": "You can pay by card or in cash.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "bfac7bd5f8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:or"
+   ],
+   "text": "Is your brother older or younger than you?",
    "expect": [
     "natural"
    ]
@@ -12747,6 +13563,18 @@
    ]
   },
   {
+   "id": "355f5b1743",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:like-find-sb-sth-pleasant"
+   ],
+   "text": "I don't like cold tea.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a894559921",
    "split": "dev",
    "source": "mistake-right",
@@ -12790,6 +13618,18 @@
     "lex:A1:order"
    ],
    "text": "I ordered a new phone online.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "22180e276c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:order"
+   ],
+   "text": "Are you ready to order?",
    "expect": [
     "natural"
    ]
@@ -12843,6 +13683,18 @@
    ]
   },
   {
+   "id": "8f4d85a2b4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:order#arrangement"
+   ],
+   "text": "Write the days of the week in order.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ee1224143c",
    "split": "dev",
    "source": "mistake-right",
@@ -12886,6 +13738,18 @@
     "lex:A1:more"
    ],
    "text": "We need more chairs for the guests.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1e1a1f3b7e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:more"
+   ],
+   "text": "Please give me two more minutes.",
    "expect": [
     "natural"
    ]
@@ -12939,6 +13803,18 @@
    ]
   },
   {
+   "id": "b47997681e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:more#comparative"
+   ],
+   "text": "Is English more difficult than Persian?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "d72fba0f79",
    "split": "dev",
    "source": "mistake-right",
@@ -12982,6 +13858,18 @@
     "lex:A1:many"
    ],
    "text": "Many of my friends live abroad.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "441050bf85",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:many"
+   ],
+   "text": "There aren't many shops in our street.",
    "expect": [
     "natural"
    ]
@@ -13035,6 +13923,18 @@
    ]
   },
   {
+   "id": "2d3f9bf883",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:much"
+   ],
+   "text": "There isn't much milk in the fridge.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "37d78e8d0c",
    "split": "test",
    "source": "mistake-right",
@@ -13078,6 +13978,18 @@
     "lex:A1:much#adverb"
    ],
    "text": "I feel much better today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cf0cb9a7e8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:much#adverb"
+   ],
+   "text": "My new phone is much better than my old one.",
    "expect": [
     "natural"
    ]
@@ -13131,6 +14043,18 @@
    ]
   },
   {
+   "id": "01b4709f5a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:both"
+   ],
+   "text": "Both my sisters live in Tehran.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "88d9a47f37",
    "split": "dev",
    "source": "mistake-right",
@@ -13174,6 +14098,18 @@
     "lex:A1:few"
    ],
    "text": "We're going to Kish for a few days.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4dd3ab1379",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:few"
+   ],
+   "text": "Wait a few minutes, please.",
    "expect": [
     "natural"
    ]
@@ -13227,6 +14163,18 @@
    ]
   },
   {
+   "id": "fce10440c2",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:few#not-many"
+   ],
+   "text": "Few students came to class because of the snow.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "056c6fbcf4",
    "split": "test",
    "source": "mistake-right",
@@ -13270,6 +14218,18 @@
     "lex:A1:enough"
    ],
    "text": "I don't have enough money for a new phone.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3fc38ca074",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:enough"
+   ],
+   "text": "Is there enough food for six people?",
    "expect": [
     "natural"
    ]
@@ -13323,6 +14283,18 @@
    ]
   },
   {
+   "id": "73b64266b8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:enough#adverb"
+   ],
+   "text": "This bag isn't big enough for my books.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "9bc561e996",
    "split": "dev",
    "source": "mistake-right",
@@ -13366,6 +14338,18 @@
     "lex:A1:full"
    ],
    "text": "Her bag is full of books.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b7617d241b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:full"
+   ],
+   "text": "No more cake for me, thanks. I'm full.",
    "expect": [
     "natural"
    ]
@@ -13421,7 +14405,7 @@
   {
    "id": "2d075ad2d6",
    "split": "test",
-   "source": "mistake-right",
+   "source": "example",
    "senses": [
     "lex:A1:prefer"
    ],
@@ -13462,6 +14446,18 @@
     "lex:A1:too"
    ],
    "text": "My sister speaks French too.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ee99de0dc3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:too"
+   ],
+   "text": "I like cats, and my brother likes them too.",
    "expect": [
     "natural"
    ]
@@ -13515,6 +14511,18 @@
    ]
   },
   {
+   "id": "5738261e6b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:too#excess"
+   ],
+   "text": "These shoes are too small for me.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a0e3527f96",
    "split": "dev",
    "source": "mistake-right",
@@ -13558,6 +14566,18 @@
     "lex:A1:very"
    ],
    "text": "Thank you very much.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "24f268e509",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:very"
+   ],
+   "text": "My grandmother is very kind.",
    "expect": [
     "natural"
    ]
@@ -13611,6 +14631,18 @@
    ]
   },
   {
+   "id": "9f753b14db",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:quite"
+   ],
+   "text": "The restaurant is quite expensive.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "9a1ba592fb",
    "split": "dev",
    "source": "mistake-right",
@@ -13654,6 +14686,18 @@
     "lex:A1:quite#completely"
    ],
    "text": "I'm not quite sure.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6363bd0d0d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:quite#completely"
+   ],
+   "text": "The two words are not quite the same.",
    "expect": [
     "natural"
    ]
@@ -13707,6 +14751,18 @@
    ]
   },
   {
+   "id": "46b47f8b9d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:lot"
+   ],
+   "text": "There are a lot of people in the park today.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "41d6cf6a27",
    "split": "test",
    "source": "mistake-right",
@@ -13750,6 +14806,18 @@
     "lex:A1:lot#adverb"
    ],
    "text": "My new flat is a lot bigger.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1ebfbc916e",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:lot#adverb"
+   ],
+   "text": "He talks a lot in class.",
    "expect": [
     "natural"
    ]
@@ -13803,6 +14871,18 @@
    ]
   },
   {
+   "id": "f29fc707b5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:only"
+   ],
+   "text": "It's only five minutes to the station.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a41b893a82",
    "split": "dev",
    "source": "mistake-right",
@@ -13846,6 +14926,18 @@
     "lex:A1:only#adjective"
    ],
    "text": "I'm an only child, so I have no brothers or sisters.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "33f0548223",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:only#adjective"
+   ],
+   "text": "She was the only woman in the room.",
    "expect": [
     "natural"
    ]
@@ -13899,6 +14991,18 @@
    ]
   },
   {
+   "id": "5475ec3268",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:really"
+   ],
+   "text": "Do you really live near the sea?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "94fb3e0ad9",
    "split": "dev",
    "source": "mistake-right",
@@ -13942,6 +15046,18 @@
     "lex:A1:thank"
    ],
    "text": "I want to thank my teacher for her help.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "81e850703d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:thank"
+   ],
+   "text": "Don't forget to thank your grandmother.",
    "expect": [
     "natural"
    ]
@@ -13995,6 +15111,18 @@
    ]
   },
   {
+   "id": "a325347676",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:money"
+   ],
+   "text": "My brother always asks me for money.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "182e3e3dea",
    "split": "test",
    "source": "mistake-right",
@@ -14038,6 +15166,18 @@
     "lex:A1:buy"
    ],
    "text": "I need to buy some bread.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5bd1a3ca36",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:buy"
+   ],
+   "text": "My parents want to buy a new car.",
    "expect": [
     "natural"
    ]
@@ -14091,6 +15231,18 @@
    ]
   },
   {
+   "id": "cff1d4ae3f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:sell"
+   ],
+   "text": "We sell our old books online.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7939e7f96b",
    "split": "dev",
    "source": "mistake-right",
@@ -14134,6 +15286,18 @@
     "lex:A1:need"
    ],
    "text": "We need to leave at seven.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "51e2bdcd0e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:need"
+   ],
+   "text": "Do you need help with your bags?",
    "expect": [
     "natural"
    ]
@@ -14187,6 +15351,18 @@
    ]
   },
   {
+   "id": "eb296634f8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:shop"
+   ],
+   "text": "My uncle has a shoe shop in the city centre.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a5ea815dee",
    "split": "dev",
    "source": "mistake-right",
@@ -14230,6 +15406,18 @@
     "lex:A1:shop#verb"
    ],
    "text": "I usually shop online for books.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "627dca86a4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:shop#verb"
+   ],
+   "text": "Where do you usually shop for clothes?",
    "expect": [
     "natural"
    ]
@@ -14283,6 +15471,18 @@
    ]
   },
   {
+   "id": "2bd65b2281",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:shopping"
+   ],
+   "text": "I don't like shopping on Fridays because the shops are busy.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "93cd80d3d2",
    "split": "dev",
    "source": "mistake-right",
@@ -14326,6 +15526,18 @@
     "lex:A1:market"
    ],
    "text": "We buy fresh fruit at the market on Saturdays.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3622877cd9",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:market"
+   ],
+   "text": "There's a fish market near the sea.",
    "expect": [
     "natural"
    ]
@@ -14379,6 +15591,18 @@
    ]
   },
   {
+   "id": "2f79286461",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:supermarket"
+   ],
+   "text": "There's a big supermarket near my house.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "e61cf9ca03",
    "split": "dev",
    "source": "mistake-right",
@@ -14422,6 +15646,18 @@
     "lex:A1:price"
    ],
    "text": "The price of fruit goes up in winter.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "4784b6cb9f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:price"
+   ],
+   "text": "Can you tell me the price of this bag?",
    "expect": [
     "natural"
    ]
@@ -14475,6 +15711,18 @@
    ]
   },
   {
+   "id": "3804cf711d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:pound"
+   ],
+   "text": "I have five pounds in my pocket.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "47461909fa",
    "split": "test",
    "source": "mistake-right",
@@ -14518,6 +15766,18 @@
     "lex:A1:cost"
    ],
    "text": "Our trip cost a lot of money.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "97a34fe3b0",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cost"
+   ],
+   "text": "A coffee costs three dollars here.",
    "expect": [
     "natural"
    ]
@@ -14571,6 +15831,18 @@
    ]
   },
   {
+   "id": "9aa6d6d326",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cost#noun"
+   ],
+   "text": "We shared the cost of the taxi.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "d04e33570f",
    "split": "dev",
    "source": "mistake-right",
@@ -14614,6 +15886,18 @@
     "lex:A1:cheap"
    ],
    "text": "We stayed in a cheap hotel near the station.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e5cb868ea1",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cheap"
+   ],
+   "text": "This phone was cheap, but it works well.",
    "expect": [
     "natural"
    ]
@@ -14667,6 +15951,18 @@
    ]
   },
   {
+   "id": "3f8d1bea8d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:expensive"
+   ],
+   "text": "Fruit is expensive in winter.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f2f059e0fd",
    "split": "dev",
    "source": "mistake-right",
@@ -14710,6 +16006,18 @@
     "lex:A1:pay"
    ],
    "text": "I paid ten dollars for this book.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0a950b4679",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:pay"
+   ],
+   "text": "Who will pay for dinner tonight?",
    "expect": [
     "natural"
    ]
@@ -14763,6 +16071,18 @@
    ]
   },
   {
+   "id": "62109dca9c",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:bank-money"
+   ],
+   "text": "My sister works in a bank in Shiraz.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "66cfc4df04",
    "split": "dev",
    "source": "mistake-right",
@@ -14806,6 +16126,18 @@
     "lex:A1:card"
    ],
    "text": "I forgot my bank card at home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "8c3ffa858f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:card"
+   ],
+   "text": "Can I see your student card, please?",
    "expect": [
     "natural"
    ]
@@ -14859,6 +16191,18 @@
    ]
   },
   {
+   "id": "a25e734dfa",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:change"
+   ],
+   "text": "She changed her phone number last month.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "20bb1e0b69",
    "split": "test",
    "source": "mistake-right",
@@ -14907,6 +16251,18 @@
    ]
   },
   {
+   "id": "c48a591116",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:change#money"
+   ],
+   "text": "Sorry, I don't have any change.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "64ac731c5c",
    "split": "dev",
    "source": "mistake-wrong",
@@ -14938,6 +16294,18 @@
     "lex:A1:clothes"
    ],
    "text": "She always wears nice clothes.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "34889cf55c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:clothes"
+   ],
+   "text": "These clothes are for the summer.",
    "expect": [
     "natural"
    ]
@@ -14991,6 +16359,18 @@
    ]
   },
   {
+   "id": "78a189f51d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:shirt"
+   ],
+   "text": "Your shirt is very nice. Is it new?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a7c81d769c",
    "split": "dev",
    "source": "mistake-right",
@@ -15034,6 +16414,18 @@
     "lex:A1:shoe"
    ],
    "text": "Please take off your shoes at the door.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7c4fcef722",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:shoe"
+   ],
+   "text": "My shoes are wet from the rain.",
    "expect": [
     "natural"
    ]
@@ -15087,6 +16479,18 @@
    ]
   },
   {
+   "id": "4cdcce3f27",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:dress"
+   ],
+   "text": "She makes her own dresses.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "3da81540e4",
    "split": "test",
    "source": "mistake-right",
@@ -15130,6 +16534,18 @@
     "lex:A1:dress#verb"
    ],
    "text": "We dressed up for my cousin's party.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "aa41944ffe",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:dress#verb"
+   ],
+   "text": "She dresses her son for school.",
    "expect": [
     "natural"
    ]
@@ -15183,6 +16599,18 @@
    ]
   },
   {
+   "id": "3b870ee33d",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:one"
+   ],
+   "text": "I drink one cup of coffee a day.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "98f2c03598",
    "split": "dev",
    "source": "mistake-right",
@@ -15226,6 +16654,18 @@
     "lex:A1:one#pronoun"
    ],
    "text": "Which bag is yours? – The brown one.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ff4f277e04",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:one#pronoun"
+   ],
+   "text": "This cake is nice, but I prefer the chocolate one.",
    "expect": [
     "natural"
    ]
@@ -15279,6 +16719,18 @@
    ]
   },
   {
+   "id": "300a64c2bf",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:open"
+   ],
+   "text": "Can you open this bottle for me?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "b8e4eac89a",
    "split": "dev",
    "source": "mistake-right",
@@ -15322,6 +16774,18 @@
     "lex:A1:open#adjective"
    ],
    "text": "Is the bank open on Fridays?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "73d68c8afa",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:open#adjective"
+   ],
+   "text": "The shop is open seven days a week.",
    "expect": [
     "natural"
    ]
@@ -15375,6 +16839,18 @@
    ]
   },
   {
+   "id": "b537a0a73a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:two"
+   ],
+   "text": "We waited for two hours at the airport.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "678b36c317",
    "split": "dev",
    "source": "mistake-right",
@@ -15418,6 +16894,18 @@
     "lex:A1:bag"
    ],
    "text": "Do you need a bag for your shopping?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "27d2c90458",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:bag"
+   ],
+   "text": "I always carry a bag with water and fruit.",
    "expect": [
     "natural"
    ]
@@ -15471,6 +16959,18 @@
    ]
   },
   {
+   "id": "e2e15ff688",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:three"
+   ],
+   "text": "The film is three hours long.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "b2156fe414",
    "split": "dev",
    "source": "mistake-right",
@@ -15514,6 +17014,18 @@
     "lex:A1:ten"
    ],
    "text": "The shop opens at ten.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6973534c76",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:ten"
+   ],
+   "text": "Ten people came to the meeting.",
    "expect": [
     "natural"
    ]
@@ -15567,6 +17079,18 @@
    ]
   },
   {
+   "id": "88d1a940bc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:five"
+   ],
+   "text": "Five of my friends came to the party.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "2c9877efed",
    "split": "test",
    "source": "mistake-right",
@@ -15610,6 +17134,18 @@
     "lex:A1:hundred"
    ],
    "text": "Hundreds of birds live near the lake.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9750659fdc",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:hundred"
+   ],
+   "text": "My grandmother is almost a hundred years old.",
    "expect": [
     "natural"
    ]
@@ -15663,6 +17199,18 @@
    ]
   },
   {
+   "id": "bc931fb007",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:four"
+   ],
+   "text": "We have four cats at home.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "73ef8ab969",
    "split": "dev",
    "source": "mistake-right",
@@ -15706,6 +17254,18 @@
     "lex:A1:eight"
    ],
    "text": "School starts at eight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "65bdfe0282",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:eight"
+   ],
+   "text": "The shop closes at eight in the evening.",
    "expect": [
     "natural"
    ]
@@ -15759,6 +17319,18 @@
    ]
   },
   {
+   "id": "8cfc294216",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:six"
+   ],
+   "text": "The class has six new students.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "fef535ec56",
    "split": "dev",
    "source": "mistake-right",
@@ -15802,6 +17374,18 @@
     "lex:A1:seven"
    ],
    "text": "I get up at seven every morning.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "6443e5f28b",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:seven"
+   ],
+   "text": "My son goes to bed at seven.",
    "expect": [
     "natural"
    ]
@@ -15855,6 +17439,18 @@
    ]
   },
   {
+   "id": "31c8a665d8",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:nine"
+   ],
+   "text": "We have nine chairs in the kitchen.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7cdb0fed00",
    "split": "dev",
    "source": "mistake-right",
@@ -15898,6 +17494,18 @@
     "lex:A1:twenty"
    ],
    "text": "My sister is twenty-two.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9607c98799",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:twenty"
+   ],
+   "text": "Twenty people work in this office.",
    "expect": [
     "natural"
    ]
@@ -15951,6 +17559,18 @@
    ]
   },
   {
+   "id": "b33e70400f",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:fifty"
+   ],
+   "text": "Fifty people live in our building.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "e3d1ce01ca",
    "split": "dev",
    "source": "mistake-right",
@@ -15994,6 +17614,18 @@
     "lex:A1:dollar"
    ],
    "text": "How many dollars do you have?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "fe58a9ab2a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:dollar"
+   ],
+   "text": "I changed my dollars at the bank.",
    "expect": [
     "natural"
    ]
@@ -16047,6 +17679,18 @@
    ]
   },
   {
+   "id": "2cd5cf1837",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:euro"
+   ],
+   "text": "The hotel costs eighty euros a night.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "7fd28834f0",
    "split": "dev",
    "source": "mistake-right",
@@ -16090,6 +17734,18 @@
     "lex:A1:ninety"
    ],
    "text": "There are ninety pages in this book.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "3c20fff54f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:ninety"
+   ],
+   "text": "Ninety people work in this factory.",
    "expect": [
     "natural"
    ]
@@ -16143,6 +17799,18 @@
    ]
   },
   {
+   "id": "814bc99175",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:cent"
+   ],
+   "text": "I found ten cents in my pocket.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "8a2882b5b3",
    "split": "dev",
    "source": "mistake-right",
@@ -16186,6 +17854,18 @@
     "lex:A1:bill"
    ],
    "text": "I paid the phone bill online.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "130bea8def",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:bill"
+   ],
+   "text": "The bill for dinner was very high.",
    "expect": [
     "natural"
    ]
@@ -16239,6 +17919,18 @@
    ]
   },
   {
+   "id": "e86efd63a3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:customer"
+   ],
+   "text": "The customer asked for a bag.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "5c03ff2a6f",
    "split": "dev",
    "source": "mistake-right",
@@ -16282,6 +17974,18 @@
     "lex:A1:box"
    ],
    "text": "I bought a box of chocolates for my mother.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "45c68d7f23",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:box"
+   ],
+   "text": "There are old books in this box.",
    "expect": [
     "natural"
    ]
@@ -16335,6 +18039,18 @@
    ]
   },
   {
+   "id": "7c4d08f620",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:choose"
+   ],
+   "text": "You can choose any book you like.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ff18598f13",
    "split": "dev",
    "source": "mistake-right",
@@ -16378,6 +18094,18 @@
     "lex:A1:eleven"
    ],
    "text": "The shop opens at eleven.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "cfe135a671",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:eleven"
+   ],
+   "text": "The film starts at eleven tonight.",
    "expect": [
     "natural"
    ]
@@ -16431,6 +18159,18 @@
    ]
   },
   {
+   "id": "2c7e48c4f1",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:eighteen"
+   ],
+   "text": "You can drive at eighteen in many countries.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "985f7264e2",
    "split": "dev",
    "source": "mistake-right",
@@ -16474,6 +18214,18 @@
     "lex:A1:eighty"
    ],
    "text": "It's eighty kilometres to the next town.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "910b844b15",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:eighty"
+   ],
+   "text": "This old house is eighty years old.",
    "expect": [
     "natural"
    ]
@@ -16527,6 +18279,18 @@
    ]
   },
   {
+   "id": "4b107c8c93",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fifteen"
+   ],
+   "text": "I walk for fifteen minutes to school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "4f79d3f8e5",
    "split": "dev",
    "source": "mistake-right",
@@ -16570,6 +18334,18 @@
     "lex:A1:forty"
    ],
    "text": "There are forty students in the room.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "555c88d288",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:forty"
+   ],
+   "text": "The shop is forty metres from here.",
    "expect": [
     "natural"
    ]
@@ -16623,6 +18399,18 @@
    ]
   },
   {
+   "id": "17b53c9920",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:fourteen"
+   ],
+   "text": "The shop is closed for fourteen days.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "fc9dfe396f",
    "split": "dev",
    "source": "mistake-right",
@@ -16666,6 +18454,18 @@
     "lex:A1:fourth"
    ],
    "text": "This is my fourth time in London.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "affbe65ed4",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:fourth"
+   ],
+   "text": "This is the fourth day of rain.",
    "expect": [
     "natural"
    ]
@@ -16719,6 +18519,18 @@
    ]
   },
   {
+   "id": "c05bfee6c8",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:million"
+   ],
+   "text": "The house costs two million dollars.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "fca45d9350",
    "split": "dev",
    "source": "mistake-right",
@@ -16762,6 +18574,18 @@
     "lex:A1:nineteen"
    ],
    "text": "There are nineteen students in the class.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c82c5a5e0e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:nineteen"
+   ],
+   "text": "Nineteen people are on the bus.",
    "expect": [
     "natural"
    ]
@@ -16815,6 +18639,18 @@
    ]
   },
   {
+   "id": "0347a1ddc2",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:seventeen"
+   ],
+   "text": "She was seventeen when she finished school.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "1318293d51",
    "split": "test",
    "source": "mistake-right",
@@ -16858,6 +18694,18 @@
     "lex:A1:seventy"
    ],
    "text": "The book has seventy pages.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "88ea30e295",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:seventy"
+   ],
+   "text": "Seventy people live in this village.",
    "expect": [
     "natural"
    ]
@@ -16911,6 +18759,18 @@
    ]
   },
   {
+   "id": "03d9ff5175",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:sixteen"
+   ],
+   "text": "There are sixteen eggs in the box.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "39f0fd7f53",
    "split": "test",
    "source": "mistake-right",
@@ -16954,6 +18814,18 @@
     "lex:A1:sixty"
    ],
    "text": "Sixty people came to the wedding.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "338ac23eda",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:sixty"
+   ],
+   "text": "My father is sixty years old.",
    "expect": [
     "natural"
    ]
@@ -17007,6 +18879,18 @@
    ]
   },
   {
+   "id": "527d0b7b60",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:thirteen"
+   ],
+   "text": "My son is thirteen and very tall.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "ec79670de2",
    "split": "dev",
    "source": "mistake-right",
@@ -17050,6 +18934,18 @@
     "lex:A1:thirty"
    ],
    "text": "There are thirty students in my class.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1144bc8b42",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:thirty"
+   ],
+   "text": "The train leaves in thirty minutes.",
    "expect": [
     "natural"
    ]
@@ -17103,6 +18999,18 @@
    ]
   },
   {
+   "id": "1b84f60f3c",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:thousand"
+   ],
+   "text": "There are a thousand books in our school library.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "a5db330b33",
    "split": "dev",
    "source": "mistake-right",
@@ -17146,6 +19054,18 @@
     "lex:A1:present"
    ],
    "text": "Thank you for the lovely present!",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "1f1ee082da",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:present"
+   ],
+   "text": "My aunt always brings presents for us.",
    "expect": [
     "natural"
    ]
@@ -17199,6 +19119,18 @@
    ]
   },
   {
+   "id": "5a868d7eb5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:present#now"
+   ],
+   "text": "All the family were present at the wedding.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "1f4459e492",
    "split": "test",
    "source": "mistake-right",
@@ -17242,6 +19174,18 @@
     "lex:A1:present#verb"
    ],
    "text": "Each student will present a short project.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "7d9f963bb6",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:present#verb"
+   ],
+   "text": "Tomorrow I will present my work to the class.",
    "expect": [
     "natural"
    ]
@@ -17295,6 +19239,18 @@
    ]
   },
   {
+   "id": "feab456cd5",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:give"
+   ],
+   "text": "Please give this letter to your teacher.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "93b77eb45a",
    "split": "dev",
    "source": "mistake-right",
@@ -17338,6 +19294,18 @@
     "lex:A1:product"
    ],
    "text": "The company sells its products online.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "2760172cb8",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:product"
+   ],
+   "text": "We sell our products in many countries.",
    "expect": [
     "natural"
    ]
@@ -17391,6 +19359,18 @@
    ]
   },
   {
+   "id": "97d45e3dc9",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:model"
+   ],
+   "text": "This is the same model as my old phone.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "e316d24575",
    "split": "dev",
    "source": "mistake-right",
@@ -17434,6 +19414,18 @@
     "lex:A1:type"
    ],
    "text": "There are many types of fruit at the market.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "a1640afeba",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:type"
+   ],
+   "text": "This type of phone is very popular.",
    "expect": [
     "natural"
    ]
@@ -17487,6 +19479,18 @@
    ]
   },
   {
+   "id": "ba858cd7af",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:thing"
+   ],
+   "text": "Put your things in the bag.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "1ba2082e2e",
    "split": "test",
    "source": "mistake-right",
@@ -17530,6 +19534,18 @@
     "lex:A1:object"
    ],
    "text": "Find an object that is red.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "ea129bed9d",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:object"
+   ],
+   "text": "This object is very old.",
    "expect": [
     "natural"
    ]
@@ -17583,6 +19599,18 @@
    ]
   },
   {
+   "id": "cbff85f28a",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:real"
+   ],
+   "text": "Are those real flowers?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "20d28fe2a6",
    "split": "test",
    "source": "mistake-right",
@@ -17626,6 +19654,18 @@
     "lex:A1:difference"
    ],
    "text": "There's a big difference in price.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "e04cfe55cb",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:difference"
+   ],
+   "text": "There's no difference between the two answers.",
    "expect": [
     "natural"
    ]
@@ -17679,6 +19719,18 @@
    ]
   },
   {
+   "id": "874405b8f3",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:final"
+   ],
+   "text": "The final bus leaves at midnight.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "fb0658139a",
    "split": "dev",
    "source": "mistake-right",
@@ -17722,6 +19774,18 @@
     "lex:A1:show"
    ],
    "text": "She showed her photos to everyone.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "5717a26d7e",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:show"
+   ],
+   "text": "Show me your new shoes!",
    "expect": [
     "natural"
    ]
@@ -17775,6 +19839,18 @@
    ]
   },
   {
+   "id": "3f612ef7c5",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:show#noun"
+   ],
+   "text": "The show starts at nine o'clock.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "37dc6db771",
    "split": "test",
    "source": "mistake-right",
@@ -17818,6 +19894,18 @@
     "lex:A1:use"
    ],
    "text": "Can I use your pen for a minute?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0fb5d1477f",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:use"
+   ],
+   "text": "We use this room for meetings.",
    "expect": [
     "natural"
    ]
@@ -17871,6 +19959,18 @@
    ]
   },
   {
+   "id": "34fc826a2a",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:useful"
+   ],
+   "text": "Your notes were very useful for the exam.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "9eddcd591c",
    "split": "dev",
    "source": "mistake-right",
@@ -17914,6 +20014,18 @@
     "lex:A1:twelve"
    ],
    "text": "Lunch is at twelve.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "b42cebc444",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:twelve"
+   ],
+   "text": "My daughter is twelve years old.",
    "expect": [
     "natural"
    ]
@@ -17967,6 +20079,18 @@
    ]
   },
   {
+   "id": "1b67b1c6b7",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:third"
+   ],
+   "text": "March is the third month of the year.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "c4ebc8b7e9",
    "split": "dev",
    "source": "mistake-right",
@@ -18010,6 +20134,18 @@
     "lex:A1:fifth"
    ],
    "text": "Today is my son's fifth birthday.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "9028c6af65",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:fifth"
+   ],
+   "text": "He came fifth in the race.",
    "expect": [
     "natural"
    ]
@@ -18063,6 +20199,18 @@
    ]
   },
   {
+   "id": "e3a2927f05",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:camera"
+   ],
+   "text": "My camera is in my bag.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "f43b34a754",
    "split": "dev",
    "source": "mistake-right",
@@ -18106,6 +20254,18 @@
     "lex:A1:send"
    ],
    "text": "She sent a card to her grandmother.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "0d1ac68ed8",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:send"
+   ],
+   "text": "Please send me the address.",
    "expect": [
     "natural"
    ]
@@ -18159,6 +20319,18 @@
    ]
   },
   {
+   "id": "2d5d3e4cf9",
+   "split": "test",
+   "source": "example",
+   "senses": [
+    "lex:A1:part"
+   ],
+   "text": "Which part of Iran are you from?",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
    "id": "89d53017db",
    "split": "dev",
    "source": "mistake-right",
@@ -18202,6 +20374,18 @@
     "lex:A1:share"
    ],
    "text": "We shared the cake between six people.",
+   "expect": [
+    "natural"
+   ]
+  },
+  {
+   "id": "c2d43dc389",
+   "split": "dev",
+   "source": "example",
+   "senses": [
+    "lex:A1:share"
+   ],
+   "text": "My sister and I share our clothes.",
    "expect": [
     "natural"
    ]
