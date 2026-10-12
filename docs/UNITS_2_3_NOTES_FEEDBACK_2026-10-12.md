@@ -43,6 +43,10 @@ independent semantic certificate.
 
 Examples, checks, answers, audio, curriculum and scenes are unchanged.
 
+Codex review was unavailable for this PR because its usage limit was reached, so the
+texts were self-reviewed for absolute claims. One note was softened: *our* is
+usually, not always, pronounced like *hour*.
+
 ## Deterministic report
 
 | Finding | Before | After |
