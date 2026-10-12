@@ -219,11 +219,11 @@
      },
      {
       "pattern": "have + number + sisters",
-      "note": "I have two sisters."
+      "note": "برای تعداد خواهرها: have، عدد و sisters: I have two sisters."
      },
      {
       "pattern": "my sister's + noun",
-      "note": "my sister's room"
+      "note": "برای مالکیتِ خواهر، 's: my sister's room"
      }
     ],
     "examples": [
@@ -261,7 +261,7 @@
       "answer": "sister",
       "accept": [],
       "fa": "خواهرم دو سال از من کوچک‌تر است. ده سالش است.",
-      "why": "she → sister."
+      "why": "جملهٔ بعد با She ادامه می‌دهد، پس منظور خواهر است: she → sister."
      },
      {
       "type": "choice",
@@ -773,7 +773,7 @@
       "answer": "baby",
       "accept": [],
       "fa": "خواهرم اردیبهشت بچه‌دار می‌شود.",
-      "why": "have a baby."
+      "why": "«بچه‌دار شدن» have a baby است: have a baby."
      },
      {
       "type": "choice",
@@ -2523,7 +2523,7 @@
        "Saturday"
       ],
       "fa": "مغازه یکشنبه‌ها بسته است اما شنبه‌ها باز است.",
-      "why": "on Saturdays."
+      "why": "در مقابلِ on Sundays، برای «شنبه‌ها» on Saturdays می‌گوییم: on Saturdays."
      },
      {
       "type": "choice",
@@ -2580,7 +2580,7 @@
     "grammar": [
      {
       "pattern": "soon (end of sentence)",
-      "note": "We'll arrive soon."
+      "note": "soon اغلب آخر جمله می‌آید: We'll arrive soon."
      },
      {
       "pattern": "as soon as possible",
@@ -2628,7 +2628,7 @@
        "later"
       ],
       "fa": "خداحافظ! به‌زودی می‌بینمت.",
-      "why": "see you soon."
+      "why": "در خداحافظی، «به‌زودی می‌بینمت» see you soon است: see you soon."
      },
      {
       "type": "choice",
@@ -5155,7 +5155,7 @@
     "grammar": [
      {
       "pattern": "nobody + singular verb",
-      "note": "Nobody knows."
+      "note": "nobody فعل مفرد و مثبت می‌گیرد: Nobody knows."
      },
      {
       "pattern": "nobody = no one",
@@ -5163,7 +5163,7 @@
      },
      {
       "pattern": "There's nobody + place",
-      "note": "There's nobody here."
+      "note": "برای «هیچ‌کس … نیست»: There's nobody here."
      }
     ],
     "examples": [
@@ -5182,6 +5182,7 @@
      "there's nobody",
      "nobody is perfect"
     ],
+    "usage": "nobody هم فاعل می‌شود و هم مفعول: Nobody called. I saw nobody. در جملهٔ منفی به جایش anybody می‌آید: I didn't see anybody.",
     "mistake": {
      "wrong": "Nobody didn't come.",
      "wrongFa": "منظور: هیچ‌کس نیامد؛ اما در انگلیسی دو منفی با هم نادرست است.",
@@ -5236,7 +5237,7 @@
       "accept": [
        "no one"
       ],
-      "why": "there's nobody."
+      "why": "«اینجا هیچ‌کس نیست» با there's nobody گفته می‌شود: there's nobody."
      }
     ]
    }
@@ -5872,7 +5873,7 @@
     "grammar": [
      {
       "pattern": "someone + singular verb",
-      "note": "Someone is at the door."
+      "note": "someone فعل مفرد می‌گیرد: Someone is at the door."
      },
      {
       "pattern": "someone else",
@@ -5899,6 +5900,7 @@
      "ask someone",
      "someone like you"
     ],
+    "usage": "در درخواست و پیشنهاد، حتی در سؤال، someone طبیعی است، چون انتظار جواب مثبت داریم: Can someone help me?",
     "mistake": {
      "wrong": "Someone are calling you.",
      "wrongFa": "منظور: کسی دارد صدایت می‌زند؛ اما are با someone نادرست است.",
@@ -6970,7 +6972,7 @@
        "time"
       ],
       "fa": "به ساعت نگاه کن. نزدیک ده است.",
-      "why": "look at the clock."
+      "why": "برای دیدن ساعت به ساعتِ دیواری نگاه می‌کنیم، پس clock: look at the clock."
      },
      {
       "type": "choice",
@@ -7131,7 +7133,7 @@
      },
      {
       "pattern": "the date of + noun",
-      "note": "the date of the exam"
+      "note": "برای تاریخِ یک رویداد، of: the date of the exam"
      },
      {
       "pattern": "date of birth",
@@ -7204,7 +7206,7 @@
       "frame": "What's your ___ of birth?",
       "answer": "date",
       "accept": [],
-      "why": "date of birth."
+      "why": "«تاریخ تولد» date of birth است: date of birth."
      }
     ]
    }
@@ -8144,7 +8146,7 @@
     "grammar": [
      {
       "pattern": "number + minutes",
-      "note": "five minutes"
+      "note": "با عددِ بیشتر از یک، minutes: five minutes"
      },
      {
       "pattern": "Wait a minute.",
@@ -8222,7 +8224,7 @@
       "frame": "I'll come in five ___.",
       "answer": "minutes",
       "accept": [],
-      "why": "in five minutes."
+      "why": "«پنج دقیقهٔ دیگر» با in و minutes جمع گفته می‌شود: in five minutes."
      }
     ]
    }
@@ -9158,7 +9160,7 @@
       "accept": [
        "sunday"
       ],
-      "why": "on Sunday."
+      "why": "برای روزِ هفته on می‌آید و نام روز با حرف بزرگ: on Sunday."
      }
     ]
    }
@@ -9182,11 +9184,11 @@
     "grammar": [
      {
       "pattern": "verb + them",
-      "note": "I like them."
+      "note": "بعد از فعل، them مفعول است، نه they: I like them."
      },
      {
       "pattern": "preposition + them",
-      "note": "with them, for them"
+      "note": "بعد از حرف اضافه them می‌آید، نه they: with them, for them"
      },
      {
       "pattern": "they / them / their",
@@ -9209,6 +9211,7 @@
      "all of them",
      "both of them"
     ],
+    "usage": "them برای یک نفر هم به کار می‌رود، وقتی جنسیتش معلوم نیست: If someone calls, tell them I'm out.",
     "mistake": {
      "wrong": "I saw they in the park.",
      "wrongFa": "منظور: آن‌ها را در پارک دیدم؛ اما they بعد از فعل نادرست است.",
@@ -9387,7 +9390,7 @@
     "grammar": [
      {
       "pattern": "wash + noun",
-      "note": "wash your hands"
+      "note": "wash با مفعول، یعنی «شستنِ چیزی»: wash your hands"
      },
      {
       "pattern": "wash the dishes",
@@ -9464,7 +9467,7 @@
       "frame": "I'm going to ___ my clothes.",
       "answer": "wash",
       "accept": [],
-      "why": "wash clothes."
+      "why": "«لباس شستن» wash clothes است: wash clothes."
      }
     ]
    }

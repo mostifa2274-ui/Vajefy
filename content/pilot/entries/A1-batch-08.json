@@ -276,7 +276,7 @@
               "tea"
             ],
             "fa": "سردم است. فکر کنم با آب داغ حمام کنم.",
-            "why": "have a bath."
+            "why": "«در وان حمام کردن» have a bath است: have a bath."
           },
           {
             "type": "choice",
@@ -286,7 +286,7 @@
               {
                 "text": "has",
                 "ok": true,
-                "why": "have a bath."
+                "why": "با فاعل she، have در have a bath به شکل has می‌آید: have a bath."
               },
               {
                 "text": "does",
@@ -307,7 +307,7 @@
             "frame": "I put the baby in the ___.",
             "answer": "bath",
             "accept": [],
-            "why": "in the bath."
+            "why": "«در وان» in the bath است: in the bath."
           }
         ]
       }
@@ -1421,7 +1421,7 @@
               "father"
             ],
             "fa": "مامان و بابایم هر دو معلم‌اند.",
-            "why": "mum and dad."
+            "why": "«مامان و بابا» mum and dad است: mum and dad."
           },
           {
             "type": "choice",
@@ -1889,7 +1889,7 @@
           },
           {
             "pattern": "on + day + December",
-            "note": "on 25 December"
+            "note": "برای تاریخِ کامل on می‌آید: on 25 December"
           },
           {
             "pattern": "December is …",
@@ -2801,7 +2801,7 @@
         "grammar": [
           {
             "pattern": "everybody + singular verb",
-            "note": "Everybody knows."
+            "note": "everybody فعل مفرد می‌گیرد: Everybody knows."
           },
           {
             "pattern": "everybody else",
@@ -2828,6 +2828,7 @@
           "everybody knows",
           "thanks, everybody"
         ],
+        "usage": "everybody برای خطاب به جمع هم به کار می‌رود: Hello, everybody! (سلام به همه). در گفتار، بعد از آن ضمیر جمع their رایج است: Everybody brought their lunch.",
         "mistake": {
           "wrong": "Everybody are happy.",
           "wrongFa": "منظور: همه خوشحال‌اند؛ اما are با everybody نادرست است.",
@@ -2882,7 +2883,7 @@
             "accept": [
               "Everyone"
             ],
-            "why": "Everybody is …"
+            "why": "«همه» everybody است و فعل مفرد is می‌گیرد: Everybody is …"
           }
         ]
       }
@@ -4008,7 +4009,7 @@
             "answer": "grandparents",
             "accept": [],
             "fa": "پدر و مادرِ مادرم پدربزرگ و مادربزرگِ من‌اند.",
-            "why": "grandparents."
+            "why": "پدر و مادرِ مادرم، پدربزرگ و مادربزرگِ من‌اند: grandparents."
           },
           {
             "type": "choice",
@@ -4039,7 +4040,7 @@
             "frame": "My ___ are kind.",
             "answer": "grandparents",
             "accept": [],
-            "why": "grandparents."
+            "why": "«پدربزرگ و مادربزرگ» با هم grandparents است، یک کلمه و جمع: grandparents."
           }
         ]
       }
@@ -6638,15 +6639,15 @@
         "grammar": [
           {
             "pattern": "nothing + positive verb",
-            "note": "I know nothing."
+            "note": "با nothing فعلِ جمله مثبت می‌ماند: I know nothing."
           },
           {
             "pattern": "nothing + singular verb",
-            "note": "Nothing is …"
+            "note": "nothing فعل مفرد می‌گیرد: Nothing is …"
           },
           {
             "pattern": "nothing to + verb",
-            "note": "nothing to do"
+            "note": "nothing و to و فعل، یعنی «چیزی برای … نیست»: nothing to do"
           }
         ],
         "examples": [
@@ -6665,6 +6666,7 @@
           "nothing new",
           "nothing at all"
         ],
+        "usage": "nothing در جواب کوتاه به‌تنهایی می‌آید: What's wrong? — Nothing. (چیزی نیست.) for nothing یعنی «مجانی» یا «بیهوده».",
         "mistake": {
           "wrong": "I don't know nothing about it.",
           "wrongFa": "منظور: هیچ چیز دربارهٔ آن نمی‌دانم؛ اما در انگلیسی دو منفی با هم نادرست است.",
@@ -7585,7 +7587,7 @@
               "friend"
             ],
             "fa": "با یک هم‌گروهی کار کن و گفت‌وگو را تمرین کن.",
-            "why": "work with a partner."
+            "why": "«با یک هم‌گروهی کار کنید» work with a partner است: work with a partner."
           },
           {
             "type": "choice",
@@ -10685,7 +10687,7 @@
             "answer": "welcome",
             "accept": [],
             "fa": "ممنون بابت کمکت! — خواهش می‌کنم.",
-            "why": "You're welcome."
+            "why": "در جوابِ تشکر You're welcome می‌گوییم: You're welcome."
           },
           {
             "type": "choice",
@@ -10716,7 +10718,7 @@
             "frame": "You're ___.",
             "answer": "welcome",
             "accept": [],
-            "why": "You're welcome."
+            "why": "«خواهش می‌کنم» در جوابِ تشکر You're welcome است: You're welcome."
           }
         ]
       }

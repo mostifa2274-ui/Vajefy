@@ -1056,7 +1056,7 @@
         "grammar": [
           {
             "pattern": "number + o'clock",
-            "note": "eight o'clock"
+            "note": "o'clock فقط بعد از ساعتِ کامل می‌آید: eight o'clock"
           },
           {
             "pattern": "at … o'clock",
@@ -1105,7 +1105,7 @@
               "a.m."
             ],
             "fa": "مدرسه ساعتِ هشت شروع می‌شود.",
-            "why": "eight o'clock."
+            "why": "برای ساعتِ کامل، o'clock بعد از عدد می‌آید: eight o'clock."
           },
           {
             "type": "choice",
@@ -1136,7 +1136,7 @@
             "frame": "It's nine ___.",
             "answer": "o'clock",
             "accept": [],
-            "why": "nine o'clock."
+            "why": "برای ساعتِ کامل، o'clock بعد از عدد می‌آید: nine o'clock."
           }
         ]
       }
@@ -1852,7 +1852,7 @@
             "frame": "My ___ live in Tehran.",
             "answer": "parents",
             "accept": [],
-            "why": "my parents."
+            "why": "«پدر و مادر» با هم my parents است: my parents."
           }
         ]
       }
@@ -3276,7 +3276,7 @@
               "bath"
             ],
             "fa": "می‌خواهم دوش بگیرم و بعد بخوابم.",
-            "why": "have a shower."
+            "why": "«دوش گرفتن» have a shower است: have a shower."
           },
           {
             "type": "choice",
@@ -3286,7 +3286,7 @@
               {
                 "text": "take",
                 "ok": true,
-                "why": "take a shower."
+                "why": "take a shower هم درست است و همان معنای have a shower را دارد: take a shower."
               },
               {
                 "text": "do",
@@ -3307,7 +3307,7 @@
             "frame": "I'm having a ___.",
             "answer": "shower",
             "accept": [],
-            "why": "have a shower."
+            "why": "«دوش گرفتن» have a shower است: have a shower."
           }
         ]
       }
@@ -3545,7 +3545,7 @@
         "grammar": [
           {
             "pattern": "somebody + singular verb",
-            "note": "Somebody is …"
+            "note": "somebody فعل مفرد می‌گیرد: Somebody is …"
           },
           {
             "pattern": "somebody = someone",
@@ -3572,6 +3572,7 @@
           "ask somebody",
           "somebody special"
         ],
+        "usage": "در درخواست، حتی در سؤال، somebody طبیعی است: Can somebody open the door? somebody else یعنی «کسِ دیگری».",
         "mistake": {
           "wrong": "Somebody are waiting for you.",
           "wrongFa": "منظور: کسی منتظرت است؛ اما are با somebody نادرست است.",
@@ -4630,7 +4631,7 @@
               {
                 "text": "the",
                 "ok": true,
-                "why": "go to the toilet."
+                "why": "در «دستشویی رفتن» پیش از toilet معمولاً the می‌آید: go to the toilet."
               },
               {
                 "text": "an",
@@ -4653,7 +4654,7 @@
             "accept": [
               "bathroom"
             ],
-            "why": "the toilet."
+            "why": "برای پرسیدنِ جای دستشویی the toilet می‌گوییم: the toilet."
           }
         ]
       }
@@ -5150,7 +5151,7 @@
             "answer": "wife",
             "accept": [],
             "fa": "همسرش را خیلی دوست دارد. ده سال پیش ازدواج کردند.",
-            "why": "his wife."
+            "why": "جملهٔ بعد می‌گوید ازدواج کرده‌اند، پس همسرش: his wife."
           },
           {
             "type": "choice",
@@ -5181,7 +5182,7 @@
             "frame": "His ___ is a nurse.",
             "answer": "wife",
             "accept": [],
-            "why": "his wife."
+            "why": "«همسرش» برای یک مرد his wife است: his wife."
           }
         ]
       }
