@@ -24,7 +24,8 @@ certificate.
   first drafts named Iranian cities or used *notebook*, *pharmacy* or
   *easiest*, and were replaced so the lint count stayed at 80. In batch 3,
   fourteen first drafts used words outside the lists (*nest*, *zoo*, *gloves*,
-  *click*) or nearly repeated a check item, and were replaced.
+  *click*) or nearly repeated a check item, and were replaced. Batch 4 replaced
+  twelve for the same reasons (*shelf*, *staff*, *picnic*, *breathe*).
 - It does not repeat a staged CEFR-J lesson draft, which must stay
   independent of existing teaching text. One batch 2 draft (*The road was
   closed because of the snow.*) matched the staged *closed* lesson and was
@@ -49,4 +50,5 @@ certification targets (those are word clips), so certification is unchanged.
 |---|---|---:|---:|---:|
 | 1 | 04 food and drink, 05 shopping and money (#230) | 183 | 824 | 366 |
 | 2 | 06 places and directions, 07 travel and transport (#231) | 194 | 630 | 388 |
-| 3 | 08 work and study, 09 leisure and people, 10 weather and clothes | 273 | 357 | 546 |
+| 3 | 08 work and study, 09 leisure and people, 10 weather and clothes (#232) | 273 | 357 | 546 |
+| 4 | 11 health and feelings, 12 help and everyday problems | 184 | 173 | 368 |
