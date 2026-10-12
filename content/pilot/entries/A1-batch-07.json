@@ -63,7 +63,7 @@
             "answer": "adult",
             "accept": [],
             "fa": "بچه‌های زیر دوازده سال باید با یک بزرگسال بیایند.",
-            "why": "an adult."
+            "why": "adult با صدای مصوت شروع می‌شود، پس an: an adult."
           },
           {
             "type": "choice",
@@ -94,7 +94,7 @@
             "frame": "Two ___ tickets, please.",
             "answer": "adult",
             "accept": [],
-            "why": "adult tickets."
+            "why": "«بلیت بزرگسال»: adult مثل صفت پیش از اسم می‌آید: adult tickets."
           }
         ]
       }
@@ -441,7 +441,7 @@
           },
           {
             "pattern": "on + day + April",
-            "note": "on 10 April"
+            "note": "برای تاریخِ کامل on می‌آید: on 10 April"
           },
           {
             "pattern": "last / next April",
@@ -514,7 +514,7 @@
             "frame": "The weather is nice in ___.",
             "answer": "April",
             "accept": [],
-            "why": "in April."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in April."
           }
         ]
       }
@@ -540,7 +540,7 @@
           },
           {
             "pattern": "on + day + August",
-            "note": "on 3 August"
+            "note": "برای تاریخِ کامل on می‌آید: on 3 August"
           },
           {
             "pattern": "August is …",
@@ -613,7 +613,7 @@
             "frame": "It's very hot in ___.",
             "answer": "August",
             "accept": [],
-            "why": "in August."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in August."
           }
         ]
       }
@@ -639,7 +639,7 @@
           },
           {
             "pattern": "aunt + name",
-            "note": "Aunt Mina"
+            "note": "پیش از نام، Aunt با حرف بزرگ می‌آید: Aunt Mina"
           },
           {
             "pattern": "aunt / uncle",
@@ -1103,7 +1103,7 @@
               {
                 "text": "at",
                 "ok": true,
-                "why": "at the beginning of."
+                "why": "«اولِ ماه» at the beginning of است: at the beginning of."
               },
               {
                 "text": "on",
@@ -1126,7 +1126,7 @@
             "accept": [
               "start"
             ],
-            "why": "from the beginning."
+            "why": "«از اول» from the beginning است: from the beginning."
           }
         ]
       }
@@ -3321,7 +3321,7 @@
           },
           {
             "pattern": "my dear + noun",
-            "note": "my dear friend"
+            "note": "پیش از اسم، برای ابراز محبت: my dear friend"
           },
           {
             "pattern": "Oh dear!",
@@ -3394,7 +3394,7 @@
             "frame": "My ___ friend, thank you.",
             "answer": "dear",
             "accept": [],
-            "why": "my dear friend."
+            "why": "«دوستِ عزیزم» my dear friend است: my dear friend."
           }
         ]
       }
@@ -3493,7 +3493,7 @@
             "frame": "The children are ___.",
             "answer": "downstairs",
             "accept": [],
-            "why": "be downstairs."
+            "why": "«پایین بودن (در طبقهٔ پایین)» با be downstairs، بدون حرف اضافه: be downstairs."
           }
         ]
       }
@@ -4205,7 +4205,7 @@
             "answer": "ever",
             "accept": [],
             "fa": "تا حالا سوپ ماهی خورده‌ای؟",
-            "why": "Have you ever …?"
+            "why": "برای «تا حالا» در سؤال با have، ever پیش از اسم مفعول می‌آید: Have you ever …?"
           },
           {
             "type": "choice",
@@ -4236,7 +4236,7 @@
             "frame": "Have you ___ been on a plane?",
             "answer": "ever",
             "accept": [],
-            "why": "Have you ever …?"
+            "why": "«تا حالا … شده‌ای؟» با Have you ever می‌آید: Have you ever …?"
           }
         ]
       }
@@ -4260,7 +4260,7 @@
         "grammar": [
           {
             "pattern": "everything + singular verb",
-            "note": "Everything is OK."
+            "note": "everything فعل مفرد می‌گیرد: Everything is OK."
           },
           {
             "pattern": "everything else",
@@ -4287,6 +4287,7 @@
           "everything else",
           "almost everything"
         ],
+        "usage": "everything یک کلمه است. در جوابِ «اوضاع چطور است؟» Everything's fine رایج است. برای آدم‌ها everyone می‌گوییم، نه everything.",
         "mistake": {
           "wrong": "Everything are fine.",
           "wrongFa": "منظور: همه‌چیز خوب است؛ اما are با everything نادرست است.",
@@ -5001,7 +5002,7 @@
           },
           {
             "pattern": "on + day + February",
-            "note": "on 14 February"
+            "note": "برای تاریخِ کامل on می‌آید: on 14 February"
           },
           {
             "pattern": "February is …",
@@ -5074,7 +5075,7 @@
             "frame": "It's very cold in ___.",
             "answer": "February",
             "accept": [],
-            "why": "in February."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in February."
           }
         ]
       }
@@ -6261,7 +6262,7 @@
             "answer": "introduce",
             "accept": [],
             "fa": "روز اول، معلم از ما خواست خودمان را معرفی کنیم.",
-            "why": "introduce yourself."
+            "why": "«خود را معرفی کردن» با introduce و ضمیر انعکاسی است؛ اینجا ourselves: introduce yourself."
           },
           {
             "type": "choice",
@@ -6271,7 +6272,7 @@
               {
                 "text": "to",
                 "ok": true,
-                "why": "introduce … to."
+                "why": "معرفی کردن کسی به کسِ دیگر introduce … to است: introduce … to."
               },
               {
                 "text": "with",
@@ -6292,7 +6293,7 @@
             "frame": "Let me ___ myself.",
             "answer": "introduce",
             "accept": [],
-            "why": "introduce myself."
+            "why": "«خودم را معرفی کنم» introduce myself است: introduce myself."
           }
         ]
       }
@@ -6320,7 +6321,7 @@
           },
           {
             "pattern": "time + later",
-            "note": "two hours later"
+            "note": "بعد از مقدار زمان، یعنی «… بعد»: two hours later"
           },
           {
             "pattern": "later today",
@@ -6374,7 +6375,7 @@
               {
                 "text": "later",
                 "ok": true,
-                "why": "See you later!"
+                "why": "در خداحافظی، «بعداً می‌بینمت» see you later است: See you later!"
               },
               {
                 "text": "late",
@@ -6421,7 +6422,7 @@
           },
           {
             "pattern": "on + day + March",
-            "note": "on 21 March"
+            "note": "برای تاریخِ کامل on می‌آید: on 21 March"
           },
           {
             "pattern": "March is …",
@@ -6494,7 +6495,7 @@
             "frame": "My mother's birthday is in ___.",
             "answer": "March",
             "accept": [],
-            "why": "in March."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in March."
           }
         ]
       }
@@ -6574,7 +6575,7 @@
               {
                 "text": "of",
                 "ok": true,
-                "why": "a member of."
+                "why": "«عضوِ باشگاه» a member of است: a member of."
               },
               {
                 "text": "in",
@@ -6595,7 +6596,7 @@
             "frame": "He's a ___ of our family.",
             "answer": "member",
             "accept": [],
-            "why": "a member of."
+            "why": "«عضوِ خانواده» a member of the family است: a member of."
           }
         ]
       }
@@ -6766,7 +6767,7 @@
               "mother"
             ],
             "fa": "مامان و بابایم هر دو پزشک‌اند.",
-            "why": "mum and dad."
+            "why": "«مامان و بابا» mum and dad است: mum and dad."
           },
           {
             "type": "choice",
@@ -7493,7 +7494,7 @@
             "answer": "quarter",
             "accept": [],
             "fa": "پانزده دقیقه یک ربعِ ساعت است.",
-            "why": "a quarter of an hour."
+            "why": "پانزده دقیقه یک‌چهارمِ ساعت است: a quarter of an hour."
           },
           {
             "type": "choice",
@@ -7524,7 +7525,7 @@
             "frame": "I ate a ___ of the cake.",
             "answer": "quarter",
             "accept": [],
-            "why": "a quarter of."
+            "why": "«یک‌چهارمِ کیک» a quarter of است: a quarter of."
           }
         ]
       }
@@ -8095,7 +8096,7 @@
             "answer": "routine",
             "accept": [],
             "fa": "از برنامهٔ روزانه‌ات بگو. ساعت چند بیدار می‌شوی؟",
-            "why": "daily routine."
+            "why": "«برنامهٔ روزانه» daily routine است: daily routine."
           },
           {
             "type": "choice",
@@ -8105,7 +8106,7 @@
               {
                 "text": "routine",
                 "ok": true,
-                "why": "morning routine."
+                "why": "«کارهای هر صبح» morning routine است: morning routine."
               },
               {
                 "text": "routines",
@@ -8126,7 +8127,7 @@
             "frame": "My daily ___ is very busy.",
             "answer": "routine",
             "accept": [],
-            "why": "daily routine."
+            "why": "«برنامهٔ روزانه» daily routine است: daily routine."
           }
         ]
       }
@@ -9594,7 +9595,7 @@
           },
           {
             "pattern": "then = at that time",
-            "note": "I lived there then."
+            "note": "then به معنای «آن موقع»، در گذشته یا آینده: I lived there then."
           },
           {
             "pattern": "and then",
@@ -9636,7 +9637,7 @@
             "answer": "then",
             "accept": [],
             "fa": "اول صبحانه می‌خورم، و بعد سر کار می‌روم.",
-            "why": "and then."
+            "why": "برای ترتیب، «و بعد» and then است: and then."
           },
           {
             "type": "choice",
@@ -9667,7 +9668,7 @@
             "frame": "First read, ___ write.",
             "answer": "then",
             "accept": [],
-            "why": "First …, then …"
+            "why": "برای ترتیب، First … then می‌گوییم: First …, then …"
           }
         ]
       }
@@ -9971,7 +9972,7 @@
             "frame": "See you on ___.",
             "answer": "Tuesday",
             "accept": [],
-            "why": "on Tuesday."
+            "why": "برای روزِ هفته on می‌آید و نام روز با حرف بزرگ: on Tuesday."
           }
         ]
       }
@@ -10102,7 +10103,7 @@
           },
           {
             "pattern": "uncle + name",
-            "note": "Uncle Reza"
+            "note": "پیش از نام، Uncle با حرف بزرگ می‌آید: Uncle Reza"
           },
           {
             "pattern": "uncle / aunt",
@@ -11024,7 +11025,7 @@
         "grammar": [
           {
             "pattern": "verb + yourself",
-            "note": "Enjoy yourself!"
+            "note": "بعد از فعل، وقتی فاعل و مفعول یکی است: Enjoy yourself!"
           },
           {
             "pattern": "by yourself",
@@ -11051,6 +11052,7 @@
           "by yourself",
           "look after yourself"
         ],
+        "usage": "برای دو نفر که کاری را برای هم می‌کنند each other می‌آید، نه yourselves: You help each other.",
         "mistake": {
           "wrong": "Be careful, you will hurt you.",
           "wrongFa": "منظور: مواظب باش، به خودت آسیب می‌زنی؛ اما you به جای yourself نادرست است.",
@@ -11101,7 +11103,7 @@
             "frame": "Introduce ___.",
             "answer": "yourself",
             "accept": [],
-            "why": "introduce yourself."
+            "why": "«خودت را معرفی کن» introduce yourself است: introduce yourself."
           }
         ]
       }
