@@ -13,7 +13,7 @@
     },
     "assignments": {
       "file": "content/rights-staging/a1-rebuild/curriculum-assignments.json",
-      "sha256": "1f377a89d524692ccfacb70c2b20199370005d0e1e20e805eab9b6379ad01597"
+      "sha256": "65717f2f5f7c7f52ff36a7d2092a3c8528777ddd61d4cd28b541f07fab57543f"
     },
     "lessonDrafts": {
       "lessons-new-001-020.json": "cb30b3e58d89c6920d425e54f059a64a0d8c80773ad80ef3f6996fc6afa867b9",
@@ -1703,6 +1703,71 @@
             ]
           },
           {
+            "id": "lex:A1:the",
+            "prerequisites": [
+              "lex:A1:a-an"
+            ]
+          },
+          {
+            "id": "lex:A1:that",
+            "prerequisites": [
+              "lex:A1:this",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:she",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:it",
+            "prerequisites": [
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:we",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:you",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:they",
+            "prerequisites": [
+              "lex:A1:he",
+              "lex:A1:she",
+              "lex:A1:be"
+            ]
+          },
+          {
+            "id": "lex:A1:and",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:you"
+            ]
+          },
+          {
+            "id": "lex:A1:have",
+            "prerequisites": [
+              "lex:A1:i",
+              "lex:A1:you"
+            ]
+          },
+          {
+            "id": "lex:A1:with",
+            "prerequisites": [
+              "lex:A1:friend"
+            ]
+          },
+          {
+            "id": "lex:A1:of",
+            "prerequisites": []
+          },
+          {
             "id": "lex:A1:do",
             "prerequisites": []
           },
@@ -1835,71 +1900,6 @@
             "prerequisites": [
               "lex:A1:school"
             ]
-          },
-          {
-            "id": "lex:A1:the",
-            "prerequisites": [
-              "lex:A1:a-an"
-            ]
-          },
-          {
-            "id": "lex:A1:that",
-            "prerequisites": [
-              "lex:A1:this",
-              "lex:A1:be"
-            ]
-          },
-          {
-            "id": "lex:A1:she",
-            "prerequisites": [
-              "lex:A1:be"
-            ]
-          },
-          {
-            "id": "lex:A1:it",
-            "prerequisites": [
-              "lex:A1:be"
-            ]
-          },
-          {
-            "id": "lex:A1:we",
-            "prerequisites": [
-              "lex:A1:i",
-              "lex:A1:you",
-              "lex:A1:be"
-            ]
-          },
-          {
-            "id": "lex:A1:they",
-            "prerequisites": [
-              "lex:A1:he",
-              "lex:A1:she",
-              "lex:A1:be"
-            ]
-          },
-          {
-            "id": "lex:A1:and",
-            "prerequisites": [
-              "lex:A1:i",
-              "lex:A1:you"
-            ]
-          },
-          {
-            "id": "lex:A1:have",
-            "prerequisites": [
-              "lex:A1:i",
-              "lex:A1:you"
-            ]
-          },
-          {
-            "id": "lex:A1:with",
-            "prerequisites": [
-              "lex:A1:friend"
-            ]
-          },
-          {
-            "id": "lex:A1:of",
-            "prerequisites": []
           },
           {
             "id": "lex:A1:mother",

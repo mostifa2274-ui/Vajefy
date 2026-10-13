@@ -58,6 +58,21 @@ test("promotes a retained entry to an earlier unit after its NEW start entries, 
   assert.equal(staged!.counts.promoted, 1);
 });
 
+test("places a promoted entry directly after its anchor in the target unit", () => {
+  const { staged, issues } = buildCefrjA1Curriculum({
+    current: three, drafted, movedUp,
+    assignments: { ...ok, promotions: [{ id: "lex:A1:do", unit: "02-home", after: "lex:A1:street", dropPrerequisites: ["lex:A1:shop"] }] },
+  });
+  assert.deepEqual(issues, []);
+  assert.deepEqual(staged!.curriculum.units[1]!.entries.map(e => e.id),
+    ["lex:A1:cefrj-am", "lex:A1:street", "lex:A1:do", "lex:A1:house", "lex:A2:pet"]);
+  const bad = buildCefrjA1Curriculum({
+    current: three, drafted, movedUp,
+    assignments: { ...ok, promotions: [{ id: "lex:A1:do", unit: "02-home", after: "lex:A1:shop", dropPrerequisites: ["lex:A1:shop"] }] },
+  }).issues.join("\n");
+  assert.match(bad, /after lex:A1:shop must name a retained entry that stays in 02-home/);
+});
+
 test("rejects promotions that move later, touch the calibration unit, keep a later prerequisite or drop a non-prerequisite", () => {
   const run = (promotions: unknown[]) =>
     buildCefrjA1Curriculum({ current: three, drafted, movedUp, assignments: { ...ok, promotions } }).issues.join("\n");

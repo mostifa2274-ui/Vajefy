@@ -6,10 +6,11 @@ const text = z.string().trim().min(1);
 const placed = z.object({ headword: text, id: text, prerequisites: z.array(text) }).strict();
 /**
  * A retained entry taught earlier: it moves to an earlier unit, after that
- * unit's NEW start entries. `dropPrerequisites` names the prerequisites it no
- * longer waits for (thematic ones that would now come after it).
+ * unit's NEW start entries, or directly after `after`, a retained entry of
+ * that unit. `dropPrerequisites` names the prerequisites it no longer waits
+ * for (thematic ones that would now come after it).
  */
-const promotion = z.object({ id: text, unit: text, dropPrerequisites: z.array(text) }).strict();
+const promotion = z.object({ id: text, unit: text, after: text.optional(), dropPrerequisites: z.array(text) }).strict();
 export const cefrjCurriculumAssignments = z.object({
   schemaVersion: z.literal(1),
   status: z.literal(CEFRJ_CURRICULUM_STATUS),
@@ -91,7 +92,7 @@ export function buildCefrjA1Curriculum(input: {
 
   const unitIndex = new Map(current.units.map((u, i) => [u.id, i]));
   const homeUnit = new Map(current.units.flatMap(u => u.entries.map(e => [e.id, u.id] as const)));
-  const promotions = new Map<string, { unit: string; drop: Set<string> }>();
+  const promotions = new Map<string, { unit: string; after?: string; drop: Set<string> }>();
   for (const item of plan.promotions ?? []) {
     const from = homeUnit.get(item.id);
     const target = unitIndex.get(item.unit);
@@ -104,7 +105,12 @@ export function buildCefrjA1Curriculum(input: {
     for (const p of item.dropPrerequisites) {
       if (!entry?.prerequisites.includes(p)) issues.push(`${item.id}: cannot drop ${p}, which is not its prerequisite`);
     }
-    promotions.set(item.id, { unit: item.unit, drop: new Set(item.dropPrerequisites) });
+    if (item.after !== undefined) {
+      if (homeUnit.get(item.after) !== item.unit || leaving.has(item.after) || (plan.promotions ?? []).some(p => p.id === item.after)) {
+        issues.push(`${item.id}: after ${item.after} must name a retained entry that stays in ${item.unit}`);
+      }
+    }
+    promotions.set(item.id, { unit: item.unit, after: item.after, drop: new Set(item.dropPrerequisites) });
   }
   const promoted: StagedCurriculum["promoted"] = [];
 
@@ -149,9 +155,13 @@ export function buildCefrjA1Curriculum(input: {
     const assigned = byUnit.get(unit.id);
     const fresh = (items: { id: string; prerequisites: string[] }[]) =>
       items.map(item => ({ id: item.id, prerequisites: [...item.prerequisites] }));
-    const entries = [
-      ...fresh(assigned?.start ?? []), ...promotedTo.get(unit.id)!, ...keptBy.get(unit.id)!, ...fresh(assigned?.end ?? []),
-    ];
+    // Promoted entries without an anchor open the unit; anchored ones follow their anchor.
+    const middle: CurriculumEntry[] = promotedTo.get(unit.id)!.filter(e => !promotions.get(e.id)!.after);
+    for (const entry of keptBy.get(unit.id)!) {
+      middle.push(entry);
+      middle.push(...promotedTo.get(unit.id)!.filter(e => promotions.get(e.id)!.after === entry.id));
+    }
+    const entries = [...fresh(assigned?.start ?? []), ...middle, ...fresh(assigned?.end ?? [])];
     added += (assigned?.start.length ?? 0) + (assigned?.end.length ?? 0);
     for (const entry of entries) {
       const seen = new Set<string>();
