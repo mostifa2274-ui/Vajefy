@@ -199,6 +199,12 @@
         "ok": false,
         "why": "اینجا یعنی «لطف داری»."
        }
+      ],
+      "support": [
+       {
+        "en": "mean",
+        "fa": "معنی می‌دهد"
+       }
       ]
      },
      {
@@ -843,6 +849,10 @@
        {
         "en": "phrase",
         "fa": "عبارت"
+       },
+       {
+        "en": "means",
+        "fa": "یعنی؛ معنی می‌دهد"
        }
       ]
      }
@@ -1052,6 +1062,12 @@
         "ok": false,
         "why": "play این معنا را نمی‌دهد."
        }
+      ],
+      "support": [
+       {
+        "en": "means",
+        "fa": "یعنی؛ معنی می‌دهد"
+       }
       ]
      }
     ]
@@ -1126,6 +1142,10 @@
        {
         "en": "cash",
         "fa": "پول نقد"
+       },
+       {
+        "en": "near",
+        "fa": "نزدیکِ"
        }
       ]
      },
@@ -1163,6 +1183,10 @@
        {
         "en": "account",
         "fa": "حساب"
+       },
+       {
+        "en": "opened",
+        "fa": "باز کردم"
        }
       ]
      }
@@ -1240,7 +1264,13 @@
        "shut"
       ],
       "fa": "سرد است. می‌توانی پنجره را ببندی؟",
-      "why": "بستن پنجره."
+      "why": "بستن پنجره.",
+      "support": [
+       {
+        "en": "cold",
+        "fa": "سرد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1279,7 +1309,13 @@
       "accept": [
        "Shut"
       ],
-      "why": "بستن چشم."
+      "why": "بستن چشم.",
+      "support": [
+       {
+        "en": "eyes",
+        "fa": "چشم‌ها"
+       }
+      ]
      }
     ]
    },
@@ -1343,7 +1379,13 @@
        "near"
       ],
       "fa": "ایستگاه نزدیک اینجاست؟",
-      "why": "close to = نزدیکِ."
+      "why": "close to = نزدیکِ.",
+      "support": [
+       {
+        "en": "station",
+        "fa": "ایستگاه"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -1367,7 +1409,13 @@
       "frame": "The hotel is very ___ to the station.",
       "answer": "close",
       "accept": [],
-      "why": "close to + place = نزدیکِ یک مکان."
+      "why": "close to + place = نزدیکِ یک مکان.",
+      "support": [
+       {
+        "en": "station",
+        "fa": "ایستگاه"
+       }
+      ]
      }
     ]
    }
@@ -1442,6 +1490,14 @@
        {
         "en": "English",
         "fa": "انگلیسی"
+       },
+       {
+        "en": "great",
+        "fa": "عالی"
+       },
+       {
+        "en": "speak",
+        "fa": "صحبت کردن"
        }
       ]
      },
@@ -1559,7 +1615,13 @@
       "frame": "I'm ___ again now.",
       "answer": "well",
       "accept": [],
-      "why": "well بعد از be می‌تواند دربارهٔ سلامت و حال جسمی باشد."
+      "why": "well بعد از be می‌تواند دربارهٔ سلامت و حال جسمی باشد.",
+      "support": [
+       {
+        "en": "again",
+        "fa": "دوباره"
+       }
+      ]
      }
     ]
    },
@@ -1724,7 +1786,17 @@
        "correct"
       ],
       "fa": "این اتوبوسِ درست برای فرودگاه است؟",
-      "why": "درست، مناسب."
+      "why": "درست، مناسب.",
+      "support": [
+       {
+        "en": "bus",
+        "fa": "اتوبوس"
+       },
+       {
+        "en": "airport",
+        "fa": "فرودگاه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1745,6 +1817,16 @@
         "text": "You are rights.",
         "ok": false,
         "why": "right جمع نمی‌گیرد."
+       }
+      ],
+      "support": [
+       {
+        "en": "something",
+        "fa": "چیزی"
+       },
+       {
+        "en": "true",
+        "fa": "راست"
        }
       ]
      },
@@ -1914,6 +1996,10 @@
        {
         "en": "send",
         "fa": "می‌فرستم"
+       },
+       {
+        "en": "email",
+        "fa": "ایمیل"
        }
       ]
      }
@@ -2403,6 +2489,12 @@
         "ok": false,
         "why": "برای yoga معمولاً do می‌آید: do yoga."
        }
+      ],
+      "support": [
+       {
+        "en": "sport",
+        "fa": "ورزش"
+       }
       ]
      },
      {
@@ -2412,7 +2504,13 @@
       "answer": "play",
       "accept": [],
       "fa": "بچه‌ها بعد از مدرسه فوتبال بازی می‌کنند.",
-      "why": "play + نام ورزش، بدون the."
+      "why": "play + نام ورزش، بدون the.",
+      "support": [
+       {
+        "en": "football",
+        "fa": "فوتبال"
+       }
+      ]
      }
     ]
    },
@@ -2599,7 +2697,13 @@
       "answer": "play",
       "accept": [],
       "fa": "در مدرسه یک نمایش خنده‌دار دیدیم.",
-      "why": "a play = نمایش تئاتری."
+      "why": "a play = نمایش تئاتری.",
+      "support": [
+       {
+        "en": "funny",
+        "fa": "خنده‌دار"
+       }
+      ]
      }
     ]
    }
@@ -3398,6 +3502,10 @@
        {
         "en": "hurry",
         "fa": "عجله کن"
+       },
+       {
+        "en": "bus",
+        "fa": "اتوبوس"
        }
       ]
      },
@@ -3506,6 +3614,10 @@
        {
         "en": "Karimi",
         "fa": "کریمی"
+       },
+       {
+        "en": "message",
+        "fa": "پیغام"
        }
       ]
      },
@@ -3525,7 +3637,13 @@
       "answer": "left",
       "accept": [],
       "fa": "دیروز چترم را در اتوبوس جا گذاشتم.",
-      "why": "leave something somewhere = چیزی را جایی جا گذاشتن؛ گذشته left."
+      "why": "leave something somewhere = چیزی را جایی جا گذاشتن؛ گذشته left.",
+      "support": [
+       {
+        "en": "umbrella",
+        "fa": "چتر"
+       }
+      ]
      }
     ]
    }
@@ -3782,7 +3900,13 @@
        "gift"
       ],
       "fa": "برای تولدت چه هدیه‌ای گرفتی؟",
-      "why": "هدیه."
+      "why": "هدیه.",
+      "support": [
+       {
+        "en": "birthday",
+        "fa": "تولد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3884,7 +4008,13 @@
        "there"
       ],
       "fa": "چند نفر در مهمانی حاضر بودند؟",
-      "why": "حاضر بودن."
+      "why": "حاضر بودن.",
+      "support": [
+       {
+        "en": "party",
+        "fa": "مهمانی"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -3893,7 +4023,13 @@
       "frame": "At ___, I don't have a job.",
       "answer": "present",
       "accept": [],
-      "why": "at present = اکنون."
+      "why": "at present = اکنون.",
+      "support": [
+       {
+        "en": "job",
+        "fa": "کار؛ شغل"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -3902,7 +4038,13 @@
       "frame": "All the students are ___ today.",
       "answer": "present",
       "accept": [],
-      "why": "be present = حاضر بودن."
+      "why": "be present = حاضر بودن.",
+      "support": [
+       {
+        "en": "students",
+        "fa": "دانش‌آموزان"
+       }
+      ]
      }
     ]
    },
@@ -3971,6 +4113,10 @@
        {
         "en": "channel",
         "fa": "شبکهٔ تلویزیونی"
+       },
+       {
+        "en": "news",
+        "fa": "خبر"
        }
       ]
      },
@@ -4088,7 +4234,17 @@
       "answer": "order",
       "accept": [],
       "fa": "آماده‌اید سفارش بدهید؟ بله، ماهی می‌خواهم.",
-      "why": "سفارش در رستوران."
+      "why": "سفارش در رستوران.",
+      "support": [
+       {
+        "en": "ready",
+        "fa": "آماده"
+       },
+       {
+        "en": "Yes",
+        "fa": "بله"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4109,6 +4265,16 @@
         "text": "menu",
         "ok": false,
         "why": "take your menu معنای دیگری دارد."
+       }
+      ],
+      "support": [
+       {
+        "en": "asks",
+        "fa": "می‌پرسد"
+       },
+       {
+        "en": "take",
+        "fa": "بگیرم"
        }
       ]
      },
@@ -4176,7 +4342,13 @@
       "answer": "order",
       "accept": [],
       "fa": "دستگاه کار نمی‌کند. خراب است.",
-      "why": "out of order = خراب."
+      "why": "out of order = خراب.",
+      "support": [
+       {
+        "en": "machine",
+        "fa": "دستگاه"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -4200,7 +4372,17 @@
       "answer": "order",
       "accept": [],
       "fa": "این صفحه‌ها ترتیب اشتباهی دارند.",
-      "why": "in the wrong order = با ترتیب اشتباه."
+      "why": "in the wrong order = با ترتیب اشتباه.",
+      "support": [
+       {
+        "en": "pages",
+        "fa": "صفحه‌ها"
+       },
+       {
+        "en": "wrong",
+        "fa": "اشتباه؛ نادرست"
+       }
+      ]
      }
     ]
    }
@@ -4499,6 +4681,10 @@
        {
         "en": "Qom",
         "fa": "قم"
+       },
+       {
+        "en": "trains",
+        "fa": "قطار"
        }
       ]
      },
@@ -4531,7 +4717,13 @@
       "frame": "I ___ my clothes before dinner.",
       "answer": "change",
       "accept": [],
-      "why": "change clothes = لباس عوض کردن."
+      "why": "change clothes = لباس عوض کردن.",
+      "support": [
+       {
+        "en": "clothes",
+        "fa": "لباس‌ها"
+       }
+      ]
      }
     ]
    },
@@ -4593,6 +4785,14 @@
        {
         "en": "cost",
         "fa": "کرایه‌اش ... شد"
+       },
+       {
+        "en": "taxi",
+        "fa": "تاکسی"
+       },
+       {
+        "en": "Keep",
+        "fa": "نگه دارید"
        }
       ]
      },
@@ -4709,6 +4909,12 @@
         "ok": false,
         "why": "اینجا یعنی «آزاد، رها»."
        }
+      ],
+      "support": [
+       {
+        "en": "means",
+        "fa": "یعنی؛ معنی می‌دهد"
+       }
       ]
      },
      {
@@ -4718,7 +4924,13 @@
       "answer": "free",
       "accept": [],
       "fa": "بلیت‌های کنسرت برای کودکان رایگان است.",
-      "why": "free در این معنا یعنی بدون هزینه."
+      "why": "free در این معنا یعنی بدون هزینه.",
+      "support": [
+       {
+        "en": "concert",
+        "fa": "کنسرت"
+       }
+      ]
      }
     ]
    },
@@ -4872,7 +5084,13 @@
        "difficult"
       ],
       "fa": "یاد گرفتن زبان جدید سخت اما لذت‌بخش است.",
-      "why": "سخت."
+      "why": "سخت.",
+      "support": [
+       {
+        "en": "language",
+        "fa": "زبان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4894,6 +5112,12 @@
         "ok": false,
         "why": "اینجا قید و یعنی «با جدیت»."
        }
+      ],
+      "support": [
+       {
+        "en": "means",
+        "fa": "یعنی؛ معنی می‌دهد"
+       }
       ]
      },
      {
@@ -4905,7 +5129,13 @@
       "accept": [
        "difficult"
       ],
-      "why": "hard در اینجا یعنی «دشوار»."
+      "why": "hard در اینجا یعنی «دشوار».",
+      "support": [
+       {
+        "en": "exercise",
+        "fa": "تمرین"
+       }
+      ]
      }
     ]
    },
@@ -5085,7 +5315,13 @@
       "frame": "You need to try ___.",
       "answer": "hard",
       "accept": [],
-      "why": "try hard = با جدیت زیاد تلاش کردن."
+      "why": "try hard = با جدیت زیاد تلاش کردن.",
+      "support": [
+       {
+        "en": "try",
+        "fa": "تلاش کنی"
+       }
+      ]
      }
     ]
    }
@@ -5248,6 +5484,14 @@
        {
         "en": "heavy",
         "fa": "سنگین"
+       },
+       {
+        "en": "carry",
+        "fa": "حمل کردن؛ بردن"
+       },
+       {
+        "en": "box",
+        "fa": "جعبه"
        }
       ]
      },
@@ -5286,7 +5530,13 @@
       "frame": "It's ___ late. There are no more buses.",
       "answer": "too",
       "accept": [],
-      "why": "بیش از حد، با نتیجهٔ منفی."
+      "why": "بیش از حد، با نتیجهٔ منفی.",
+      "support": [
+       {
+        "en": "buses",
+        "fa": "اتوبوس"
+       }
+      ]
      }
     ]
    }
@@ -5380,6 +5630,16 @@
         "ok": false,
         "why": "to حرف اضافه است."
        }
+      ],
+      "support": [
+       {
+        "en": "Which",
+        "fa": "کدام"
+       },
+       {
+        "en": "number",
+        "fa": "عدد"
+       }
       ]
      },
      {
@@ -5391,7 +5651,13 @@
       "accept": [
        "2"
       ],
-      "why": "عدد."
+      "why": "عدد.",
+      "support": [
+       {
+        "en": "tickets",
+        "fa": "بلیت"
+       }
+      ]
      }
     ]
    }
@@ -5469,6 +5735,14 @@
        {
         "en": "passed",
         "fa": "قبول شد"
+       },
+       {
+        "en": "test",
+        "fa": "امتحان"
+       },
+       {
+        "en": "easy",
+        "fa": "آسان"
        }
       ]
      },
@@ -5492,6 +5766,12 @@
         "ok": false,
         "why": "very much پیش از صفت نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "hot",
+        "fa": "داغ"
+       }
       ]
      },
      {
@@ -5501,7 +5781,13 @@
       "frame": "Thank you ___ much.",
       "answer": "very",
       "accept": [],
-      "why": "در تشکر، Thank you very much: very much."
+      "why": "در تشکر، Thank you very much: very much.",
+      "support": [
+       {
+        "en": "Thank you",
+        "fa": "ممنون"
+       }
+      ]
      }
     ]
    }

@@ -2568,6 +2568,10 @@
        {
         "en": "task",
         "fa": "کار؛ وظیفه"
+       },
+       {
+        "en": "difficult",
+        "fa": "سخت"
        }
       ]
      },
@@ -2578,7 +2582,13 @@
       "frame": "I have a ___ interview tomorrow.",
       "answer": "job",
       "accept": [],
-      "why": "job پیش از interview یعنی «مصاحبهٔ کاری»: job interview."
+      "why": "job پیش از interview یعنی «مصاحبهٔ کاری»: job interview.",
+      "support": [
+       {
+        "en": "interview",
+        "fa": "مصاحبه"
+       }
+      ]
      }
     ]
    }
@@ -2768,6 +2778,10 @@
        {
         "en": "serves",
         "fa": "سرو می‌کند"
+       },
+       {
+        "en": "restaurant",
+        "fa": "رستوران"
        }
       ]
      },
@@ -2791,6 +2805,16 @@
         "ok": false,
         "why": "در این جمله طبیعی نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "restaurant",
+        "fa": "رستوران"
+       },
+       {
+        "en": "great",
+        "fa": "عالی"
+       }
       ]
      },
      {
@@ -2800,7 +2824,17 @@
       "frame": "Healthy ___ is important for children.",
       "answer": "food",
       "accept": [],
-      "why": "food اینجا غیرقابل‌شمارش است و بدون a می‌آید: food."
+      "why": "food اینجا غیرقابل‌شمارش است و بدون a می‌آید: food.",
+      "support": [
+       {
+        "en": "Healthy",
+        "fa": "سالم"
+       },
+       {
+        "en": "important",
+        "fa": "مهم"
+       }
+      ]
      }
     ]
    }
@@ -2873,6 +2907,14 @@
        {
         "en": "Plants",
         "fa": "گیاهان"
+       },
+       {
+        "en": "need",
+        "fa": "لازم دارند"
+       },
+       {
+        "en": "light",
+        "fa": "نور"
        }
       ]
      },
@@ -2896,6 +2938,12 @@
         "ok": false,
         "why": "طبیعی و مؤدبانه نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "restaurant",
+        "fa": "رستوران"
+       }
       ]
      },
      {
@@ -2905,7 +2953,17 @@
       "frame": "I bought a bottle of ___.",
       "answer": "water",
       "accept": [],
-      "why": "آب را با ظرفش می‌شماریم: a bottle of water."
+      "why": "آب را با ظرفش می‌شماریم: a bottle of water.",
+      "support": [
+       {
+        "en": "bought",
+        "fa": "خریدم"
+       },
+       {
+        "en": "bottle",
+        "fa": "بطری"
+       }
+      ]
      }
     ]
    }
@@ -2975,7 +3033,25 @@
       "answer": "coffee",
       "accept": [],
       "fa": "بیا در کافهٔ نزدیک اداره همدیگر را ببینیم.",
-      "why": "coffee پیش از shop یعنی «کافه»: coffee shop."
+      "why": "coffee پیش از shop یعنی «کافه»: coffee shop.",
+      "support": [
+       {
+        "en": "meet",
+        "fa": "همدیگر را ببینیم"
+       },
+       {
+        "en": "shop",
+        "fa": "مغازه"
+       },
+       {
+        "en": "near",
+        "fa": "نزدیکِ"
+       },
+       {
+        "en": "office",
+        "fa": "دفتر کار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3006,7 +3082,13 @@
       "frame": "Do you drink your ___ with milk?",
       "answer": "coffee",
       "accept": [],
-      "why": "قهوه."
+      "why": "قهوه.",
+      "support": [
+       {
+        "en": "milk",
+        "fa": "شیر"
+       }
+      ]
      }
     ]
    }
@@ -3074,7 +3156,13 @@
       "answer": "bread",
       "accept": [],
       "fa": "برای صبحانه نان و پنیر خوردیم.",
-      "why": "نان."
+      "why": "نان.",
+      "support": [
+       {
+        "en": "breakfast",
+        "fa": "صبحانه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3105,7 +3193,17 @@
       "frame": "We need to buy some ___.",
       "answer": "bread",
       "accept": [],
-      "why": "bread غیرقابل‌شمارش است و با some می‌آید: some bread."
+      "why": "bread غیرقابل‌شمارش است و با some می‌آید: some bread.",
+      "support": [
+       {
+        "en": "need",
+        "fa": "باید"
+       },
+       {
+        "en": "buy",
+        "fa": "خریدن"
+       }
+      ]
      }
     ]
    }
@@ -3213,7 +3311,13 @@
       "frame": "This ___ is about history.",
       "answer": "book",
       "accept": [],
-      "why": "کتاب."
+      "why": "کتاب.",
+      "support": [
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       }
+      ]
      }
     ]
    }
@@ -3308,6 +3412,12 @@
         "ok": false,
         "why": "with the phone یعنی «با استفاده از گوشی»."
        }
+      ],
+      "support": [
+       {
+        "en": "talk",
+        "fa": "حرف زدن"
+       }
       ]
      },
      {
@@ -3319,7 +3429,13 @@
       "accept": [
        "telephone"
       ],
-      "why": "phone number = شمارهٔ تلفن."
+      "why": "phone number = شمارهٔ تلفن.",
+      "support": [
+       {
+        "en": "number",
+        "fa": "شماره"
+       }
+      ]
      }
     ]
    },
@@ -3477,7 +3593,13 @@
       "answer": "car",
       "accept": [],
       "fa": "می‌توانی در شستن ماشین کمکم کنی؟",
-      "why": "ماشین."
+      "why": "ماشین.",
+      "support": [
+       {
+        "en": "help",
+        "fa": "کمک کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3583,6 +3705,10 @@
        {
         "en": "hurry",
         "fa": "عجله کن"
+       },
+       {
+        "en": "miss",
+        "fa": "جا می‌مانیم از"
        }
       ]
      },
@@ -4365,7 +4491,17 @@
        "bit"
       ],
       "fa": "لطفاً کمی آهسته‌تر صحبت کنید.",
-      "why": "a little پیش از صفت یا قید = کمی."
+      "why": "a little پیش از صفت یا قید = کمی.",
+      "support": [
+       {
+        "en": "Speak",
+        "fa": "صحبت کردن"
+       },
+       {
+        "en": "slower",
+        "fa": "آهسته‌تر"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -4379,6 +4515,10 @@
        {
         "en": "English",
         "fa": "انگلیسی"
+       },
+       {
+        "en": "speak",
+        "fa": "صحبت کردن"
        }
       ]
      },
@@ -5062,6 +5202,16 @@
         "ok": false,
         "why": "thirsty یعنی تشنه."
        }
+      ],
+      "support": [
+       {
+        "en": "Which",
+        "fa": "کدام"
+       },
+       {
+        "en": "means",
+        "fa": "یعنی؛ معنی می‌دهد"
+       }
       ]
      },
      {
@@ -5071,7 +5221,13 @@
       "frame": "I'm not ___, thanks.",
       "answer": "hungry",
       "accept": [],
-      "why": "hungry صفت است و بعد از be می‌آید: be hungry."
+      "why": "hungry صفت است و بعد از be می‌آید: be hungry.",
+      "support": [
+       {
+        "en": "thanks",
+        "fa": "ممنون"
+       }
+      ]
      }
     ]
    }
@@ -5262,6 +5418,16 @@
         "ok": false,
         "why": "most برای عالی است، با than نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "taxi",
+        "fa": "تاکسی"
+       },
+       {
+        "en": "bus",
+        "fa": "اتوبوس"
+       }
       ]
      },
      {
@@ -5271,7 +5437,17 @@
       "frame": "Hotels are ___ in summer.",
       "answer": "expensive",
       "accept": [],
-      "why": "گران."
+      "why": "گران.",
+      "support": [
+       {
+        "en": "Hotels",
+        "fa": "هتل‌ها"
+       },
+       {
+        "en": "summer",
+        "fa": "تابستان"
+       }
+      ]
      }
     ]
    }
@@ -5340,7 +5516,13 @@
       "answer": "easy",
       "accept": [],
       "fa": "سؤال اول آسان بود، اما دومی سخت بود.",
-      "why": "متضاد difficult."
+      "why": "متضاد difficult.",
+      "support": [
+       {
+        "en": "difficult",
+        "fa": "سخت"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5594,6 +5776,12 @@
         "text": "It's a city beautiful.",
         "ok": false,
         "why": "صفت پیش از اسم می‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "correct",
+        "fa": "درست"
        }
       ]
      },

@@ -398,7 +398,13 @@
               "anybody"
             ],
             "fa": "کسی اینجاست؟ سلام؟",
-            "why": "در سؤال: anyone."
+            "why": "در سؤال: anyone.",
+            "support": [
+              {
+                "en": "Hello",
+                "fa": "سلام"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1539,7 +1545,13 @@
             "answer": "boy",
             "accept": [],
             "fa": "بچه پسر است یا دختر؟",
-            "why": "boy = پسر."
+            "why": "boy = پسر.",
+            "support": [
+              {
+                "en": "girl",
+                "fa": "دختر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1664,6 +1676,12 @@
                 "ok": false,
                 "why": "صفت s نمی‌گیرد."
               }
+            ],
+            "support": [
+              {
+                "en": "eyes",
+                "fa": "چشم‌ها"
+              }
             ]
           },
           {
@@ -1747,7 +1765,13 @@
               "jam"
             ],
             "fa": "روی نانم کره و پنیر می‌گذارم.",
-            "why": "butter = کره."
+            "why": "butter = کره.",
+            "support": [
+              {
+                "en": "put",
+                "fa": "گذاشتن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1866,7 +1890,17 @@
               "shop"
             ],
             "fa": "گرسنه‌ام. این نزدیکی کافه هست؟",
-            "why": "cafe قابل‌شمارش است و مفردش اینجا a می‌گیرد: a cafe."
+            "why": "cafe قابل‌شمارش است و مفردش اینجا a می‌گیرد: a cafe.",
+            "support": [
+              {
+                "en": "hungry",
+                "fa": "گرسنه"
+              },
+              {
+                "en": "near",
+                "fa": "نزدیکِ"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2519,7 +2553,13 @@
               "vegetables"
             ],
             "fa": "گوشت قرمز نمی‌خورم، ولی ماهی و مرغ می‌خورم.",
-            "why": "chicken = گوشت مرغ."
+            "why": "chicken = گوشت مرغ.",
+            "support": [
+              {
+                "en": "red meat",
+                "fa": "گوشت قرمز"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2541,6 +2581,16 @@
                 "ok": false,
                 "why": "جمعِ chicken فقط s می‌گیرد."
               }
+            ],
+            "support": [
+              {
+                "en": "How many",
+                "fa": "چند تا"
+              },
+              {
+                "en": "farmer",
+                "fa": "کشاورز"
+              }
             ]
           },
           {
@@ -2550,7 +2600,13 @@
             "frame": "I like ___ soup.",
             "answer": "chicken",
             "accept": [],
-            "why": "chicken پیش از اسم یعنی «… مرغ»: chicken soup."
+            "why": "chicken پیش از اسم یعنی «… مرغ»: chicken soup.",
+            "support": [
+              {
+                "en": "soup",
+                "fa": "سوپ"
+              }
+            ]
           }
         ]
       }
@@ -2626,7 +2682,17 @@
               "drink"
             ],
             "fa": "امروز سرد است. یک شیرکاکائوی داغ می‌خواهم، لطفاً.",
-            "why": "hot chocolate یعنی «شیرکاکائوی داغ»: hot chocolate."
+            "why": "hot chocolate یعنی «شیرکاکائوی داغ»: hot chocolate.",
+            "support": [
+              {
+                "en": "cold",
+                "fa": "سرد"
+              },
+              {
+                "en": "hot",
+                "fa": "داغ"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2647,6 +2713,12 @@
                 "text": "a lot",
                 "ok": false,
                 "why": "too a lot غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "too",
+                "fa": "زیادی؛ بیش از حد"
               }
             ]
           },
@@ -2741,6 +2813,10 @@
               {
                 "en": "last night",
                 "fa": "دیشب"
+              },
+              {
+                "en": "great",
+                "fa": "عالی"
               }
             ]
           },
@@ -2855,7 +2931,13 @@
               "went"
             ],
             "fa": "گربه از درخت بالا رفت و نتوانست پایین بیاید.",
-            "why": "گذشته: climbed."
+            "why": "گذشته: climbed.",
+            "support": [
+              {
+                "en": "cat",
+                "fa": "گربه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2960,7 +3042,13 @@
               "university"
             ],
             "fa": "بعد از مدرسه، برای خواندنِ موسیقی به کالج رفت.",
-            "why": "برای تحصیل go to college، بدون the: go to college."
+            "why": "برای تحصیل go to college، بدون the: go to college.",
+            "support": [
+              {
+                "en": "music",
+                "fa": "موسیقی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3089,6 +3177,12 @@
                 "ok": false,
                 "why": "بعد از how to شکل ساده می‌آید."
               }
+            ],
+            "support": [
+              {
+                "en": "taught",
+                "fa": "یاد داد"
+              }
             ]
           },
           {
@@ -3164,7 +3258,13 @@
               "chef"
             ],
             "fa": "آشپزِ این رستوران بهترین برنج را درست می‌کند.",
-            "why": "cook = آشپز."
+            "why": "cook = آشپز.",
+            "support": [
+              {
+                "en": "best",
+                "fa": "بهترین"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4049,7 +4149,13 @@
               "80"
             ],
             "fa": "چهل و چهل می‌شود هشتاد.",
-            "why": "۴۰ + ۴۰ = ۸۰."
+            "why": "۴۰ + ۴۰ = ۸۰.",
+            "support": [
+              {
+                "en": "Forty",
+                "fa": "چهل"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4082,7 +4188,17 @@
             "accept": [
               "80"
             ],
-            "why": "eighty = هشتاد."
+            "why": "eighty = هشتاد.",
+            "support": [
+              {
+                "en": "About",
+                "fa": "حدود"
+              },
+              {
+                "en": "party",
+                "fa": "مهمانی"
+              }
+            ]
           }
         ]
       }
@@ -4156,7 +4272,13 @@
             "answer": "else",
             "accept": [],
             "fa": "یک قهوه می‌خورم. — چیز دیگری هم می‌خواهید؟",
-            "why": "در سؤال anything else: anything else."
+            "why": "در سؤال anything else: anything else.",
+            "support": [
+              {
+                "en": "Anything",
+                "fa": "چیزی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4777,7 +4899,13 @@
             "frame": "I'm ___ about the holiday.",
             "answer": "excited",
             "accept": [],
-            "why": "برای هیجان دربارهٔ چیزی excited about: excited about."
+            "why": "برای هیجان دربارهٔ چیزی excited about: excited about.",
+            "support": [
+              {
+                "en": "about",
+                "fa": "برای؛ دربارهٔ"
+              }
+            ]
           }
         ]
       }
@@ -5650,7 +5778,13 @@
             "answer": "flying",
             "accept": [],
             "fa": "ببین! یک پرندهٔ بزرگ دارد بالای خانه پرواز می‌کند.",
-            "why": "حال استمراری؛ is + flying: is + -ing: flying."
+            "why": "حال استمراری؛ is + flying: is + -ing: flying.",
+            "support": [
+              {
+                "en": "bird",
+                "fa": "پرنده"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5691,7 +5825,13 @@
             "frame": "Birds can ___.",
             "answer": "fly",
             "accept": [],
-            "why": "بعد از can فعل ساده می‌آید: can + fly."
+            "why": "بعد از can فعل ساده می‌آید: can + fly.",
+            "support": [
+              {
+                "en": "Birds",
+                "fa": "پرنده‌ها"
+              }
+            ]
           }
         ]
       }
@@ -7657,7 +7797,13 @@
               "Glad"
             ],
             "fa": "سلام، من همسایهٔ جدیدتان هستم. — از آشنایی‌تان خوشوقتم!",
-            "why": "هنگام آشنایی Nice to meet you: Nice to meet you."
+            "why": "هنگام آشنایی Nice to meet you: Nice to meet you.",
+            "support": [
+              {
+                "en": "Hello",
+                "fa": "سلام"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7794,6 +7940,10 @@
               {
                 "en": "send",
                 "fa": "می‌فرستم"
+              },
+              {
+                "en": "photos",
+                "fa": "عکس‌ها"
               }
             ]
           },
@@ -7804,7 +7954,13 @@
             "frame": "Where's the ___ office?",
             "answer": "post",
             "accept": [],
-            "why": "post office یعنی «ادارهٔ پست»: post office."
+            "why": "post office یعنی «ادارهٔ پست»: post office.",
+            "support": [
+              {
+                "en": "office",
+                "fa": "اداره"
+              }
+            ]
           }
         ]
       },
@@ -7874,6 +8030,14 @@
               {
                 "en": "online",
                 "fa": "آنلاین؛ در اینترنت"
+              },
+              {
+                "en": "funny",
+                "fa": "خنده‌دار"
+              },
+              {
+                "en": "video",
+                "fa": "ویدیو"
               }
             ]
           },
@@ -7897,6 +8061,16 @@
                 "ok": false,
                 "why": "postman اسم است: نامه‌رسان."
               }
+            ],
+            "support": [
+              {
+                "en": "Don't forget",
+                "fa": "فراموش نکن"
+              },
+              {
+                "en": "letter",
+                "fa": "نامه"
+              }
             ]
           },
           {
@@ -7908,7 +8082,13 @@
             "accept": [
               "sent"
             ],
-            "why": "گذشته: posted."
+            "why": "گذشته: posted.",
+            "support": [
+              {
+                "en": "letter",
+                "fa": "نامه"
+              }
+            ]
           }
         ]
       }
@@ -8247,6 +8427,12 @@
                 "ok": false,
                 "why": "at the radio غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "programme",
+                "fa": "برنامه"
+              }
             ]
           },
           {
@@ -8330,7 +8516,13 @@
               "say"
             ],
             "fa": "ببخشید، نشنیدم. می‌شود تکرار کنید؟",
-            "why": "repeat مفعول مستقیم می‌گیرد: repeat that."
+            "why": "repeat مفعول مستقیم می‌گیرد: repeat that.",
+            "support": [
+              {
+                "en": "hear",
+                "fa": "شنیدن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8435,7 +8627,17 @@
               "potatoes"
             ],
             "fa": "با گوشتت برنج می‌خواهی یا نان؟",
-            "why": "rice = برنج."
+            "why": "rice = برنج.",
+            "support": [
+              {
+                "en": "bread",
+                "fa": "نان"
+              },
+              {
+                "en": "meat",
+                "fa": "گوشت"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8466,7 +8668,13 @@
             "frame": "We had ___ and fish.",
             "answer": "rice",
             "accept": [],
-            "why": "rice = برنج."
+            "why": "rice = برنج.",
+            "support": [
+              {
+                "en": "fish",
+                "fa": "ماهی"
+              }
+            ]
           }
         ]
       }
@@ -8543,6 +8751,10 @@
               {
                 "en": "opposite",
                 "fa": "متضاد"
+              },
+              {
+                "en": "poor",
+                "fa": "فقیر"
               }
             ]
           },
@@ -8647,7 +8859,13 @@
             "answer": "ride",
             "accept": [],
             "fa": "بلدی دوچرخه‌سواری کنی؟",
-            "why": "برای دوچرخه ride می‌گوییم: ride a bike."
+            "why": "برای دوچرخه ride می‌گوییم: ride a bike.",
+            "support": [
+              {
+                "en": "bike",
+                "fa": "دوچرخه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8669,6 +8887,12 @@
                 "ok": false,
                 "why": "ridden بدون have نمی‌آید."
               }
+            ],
+            "support": [
+              {
+                "en": "horse",
+                "fa": "اسب"
+              }
             ]
           },
           {
@@ -8678,7 +8902,13 @@
             "frame": "I like to ___ my bike.",
             "answer": "ride",
             "accept": [],
-            "why": "برای دوچرخه ride می‌گوییم: ride a bike."
+            "why": "برای دوچرخه ride می‌گوییم: ride a bike.",
+            "support": [
+              {
+                "en": "bike",
+                "fa": "دوچرخه"
+              }
+            ]
           }
         ]
       }
@@ -8967,6 +9197,10 @@
               {
                 "en": "fresh",
                 "fa": "تازه"
+              },
+              {
+                "en": "Yes",
+                "fa": "بله"
               }
             ]
           },
@@ -9005,7 +9239,13 @@
             "frame": "She ___ flowers.",
             "answer": "sells",
             "accept": [],
-            "why": "در حال ساده با she فعل s می‌گیرد: she + sells."
+            "why": "در حال ساده با she فعل s می‌گیرد: she + sells.",
+            "support": [
+              {
+                "en": "flowers",
+                "fa": "گل‌ها"
+              }
+            ]
           }
         ]
       }
@@ -9089,6 +9329,10 @@
               {
                 "en": "feet",
                 "fa": "پاها"
+              },
+              {
+                "en": "pair",
+                "fa": "جفت"
               }
             ]
           },
@@ -9121,7 +9365,13 @@
             "frame": "My ___ are dirty.",
             "answer": "shoes",
             "accept": [],
-            "why": "shoes = کفش‌ها."
+            "why": "shoes = کفش‌ها.",
+            "support": [
+              {
+                "en": "dirty",
+                "fa": "کثیف"
+              }
+            ]
           }
         ]
       }
@@ -9621,6 +9871,10 @@
               {
                 "en": "cooking",
                 "fa": "آشپزی"
+              },
+              {
+                "en": "because",
+                "fa": "چون"
               }
             ]
           },
@@ -9838,7 +10092,17 @@
               "game"
             ],
             "fa": "تنیس ورزش مورد علاقهٔ من است.",
-            "why": "my favourite sport مفرد است: my favourite sport."
+            "why": "my favourite sport مفرد است: my favourite sport.",
+            "support": [
+              {
+                "en": "Tennis",
+                "fa": "تنیس"
+              },
+              {
+                "en": "favourite",
+                "fa": "مورد علاقه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9859,6 +10123,12 @@
                 "text": "sporting",
                 "ok": false,
                 "why": "sporting اینجا غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "TV",
+                "fa": "تلویزیون"
               }
             ]
           },
@@ -10054,7 +10324,13 @@
               "cab"
             ],
             "fa": "دیر است و اتوبوس نیست. بیا تاکسی بگیریم.",
-            "why": "برای استفاده از تاکسی take a taxi: take a taxi."
+            "why": "برای استفاده از تاکسی take a taxi: take a taxi.",
+            "support": [
+              {
+                "en": "take",
+                "fa": "بگیریم (سوار شویم)"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10285,6 +10561,10 @@
               {
                 "en": "cooking",
                 "fa": "دارم آشپزی می‌کنم"
+              },
+              {
+                "en": "answer",
+                "fa": "جواب دادن"
               }
             ]
           },
@@ -11171,7 +11451,13 @@
             "answer": "video",
             "accept": [],
             "fa": "بیا تماس تصویری بگیریم تا ببینمت.",
-            "why": "video call یعنی «تماس تصویری»: a video call."
+            "why": "video call یعنی «تماس تصویری»: a video call.",
+            "support": [
+              {
+                "en": "call",
+                "fa": "تماس"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11192,6 +11478,12 @@
                 "text": "vidio",
                 "ok": false,
                 "why": "املای درست: video."
+              }
+            ],
+            "support": [
+              {
+                "en": "great",
+                "fa": "عالی"
               }
             ]
           },
@@ -11391,7 +11683,13 @@
               "waitress"
             ],
             "fa": "از گارسون کمی آب خواستیم.",
-            "why": "waiter = گارسون."
+            "why": "waiter = گارسون.",
+            "support": [
+              {
+                "en": "asked",
+                "fa": "خواستیم"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11413,6 +11711,12 @@
                 "ok": false,
                 "why": "water یعنی آب."
               }
+            ],
+            "support": [
+              {
+                "en": "brings",
+                "fa": "می‌آورد"
+              }
             ]
           },
           {
@@ -11429,6 +11733,10 @@
               {
                 "en": "bill",
                 "fa": "صورت‌حساب"
+              },
+              {
+                "en": "brought",
+                "fa": "آورد"
               }
             ]
           }
@@ -11657,7 +11965,13 @@
             "frame": "___ way is the station?",
             "answer": "Which",
             "accept": [],
-            "why": "برای پرسیدن مسیر Which way: Which way …?"
+            "why": "برای پرسیدن مسیر Which way: Which way …?",
+            "support": [
+              {
+                "en": "station",
+                "fa": "ایستگاه"
+              }
+            ]
           }
         ]
       }
@@ -11764,6 +12078,10 @@
               {
                 "en": "race",
                 "fa": "مسابقه"
+              },
+              {
+                "en": "hope",
+                "fa": "امیدوارم"
               }
             ]
           },
@@ -11879,6 +12197,12 @@
                 "text": "working",
                 "ok": false,
                 "why": "a hard working غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "hard",
+                "fa": "سخت"
               }
             ]
           },

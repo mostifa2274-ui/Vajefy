@@ -383,7 +383,13 @@
       "frame": "___ wait here.",
       "answer": "Please",
       "accept": [],
-      "why": "Please در اول جمله دستور را مؤدبانه می‌کند."
+      "why": "Please در اول جمله دستور را مؤدبانه می‌کند.",
+      "support": [
+       {
+        "en": "wait",
+        "fa": "صبر کنید"
+       }
+      ]
      }
     ]
    }
@@ -835,6 +841,10 @@
        {
         "en": "Mashhad",
         "fa": "مشهد"
+       },
+       {
+        "en": "summer",
+        "fa": "تابستان"
        }
       ]
      },
@@ -858,6 +868,12 @@
         "ok": false,
         "why": "their یعنی «مال آن‌ها» و با there هم‌صداست."
        }
+      ],
+      "support": [
+       {
+        "en": "phone",
+        "fa": "تلفن"
+       }
       ]
      },
      {
@@ -867,7 +883,13 @@
       "frame": "I'll wait for you ___.",
       "answer": "there",
       "accept": [],
-      "why": "there = آنجا."
+      "why": "there = آنجا.",
+      "support": [
+       {
+        "en": "wait",
+        "fa": "منتظر می‌مانم"
+       }
+      ]
      }
     ]
    },
@@ -964,7 +986,13 @@
       "accept": [
        "There's"
       ],
-      "why": "مفرد: there is."
+      "why": "مفرد: there is.",
+      "support": [
+       {
+        "en": "letter",
+        "fa": "نامه"
+       }
+      ]
      }
     ]
    }
@@ -1225,6 +1253,14 @@
        {
         "en": "sent",
         "fa": "فرستادم"
+       },
+       {
+        "en": "photos",
+        "fa": "عکس‌ها"
+       },
+       {
+        "en": "email",
+        "fa": "ایمیل"
        }
       ]
      },
@@ -1293,7 +1329,13 @@
        "near"
       ],
       "fa": "کفش‌هایم را کنار در گذاشتم.",
-      "why": "by the door = کنار در."
+      "why": "by the door = کنار در.",
+      "support": [
+       {
+        "en": "door",
+        "fa": "در"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1664,7 +1706,13 @@
       "answer": "people",
       "accept": [],
       "fa": "چند نفر به مهمانی‌ات می‌آیند؟",
-      "why": "برای تعداد افراد: how many people."
+      "why": "برای تعداد افراد: how many people.",
+      "support": [
+       {
+        "en": "party",
+        "fa": "مهمانی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1685,6 +1733,16 @@
         "text": "is love",
         "ok": false,
         "why": "is و love با هم نمی‌آیند."
+       }
+      ],
+      "support": [
+       {
+        "en": "Young",
+        "fa": "جوان"
+       },
+       {
+        "en": "music",
+        "fa": "موسیقی"
        }
       ]
      },
@@ -1766,7 +1824,13 @@
       "answer": "important",
       "accept": [],
       "fa": "گوش دادن به معلمت مهم است.",
-      "why": "It's important to + فعل."
+      "why": "It's important to + فعل.",
+      "support": [
+       {
+        "en": "listen",
+        "fa": "گوش دادن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1787,6 +1851,20 @@
         "text": "importantly",
         "ok": false,
         "why": "importantly قید است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Health",
+        "fa": "سلامتی"
+       },
+       {
+        "en": "the most",
+        "fa": "ـترین (صفت عالی)"
+       },
+       {
+        "en": "life",
+        "fa": "زندگی"
        }
       ]
      },
@@ -2231,6 +2309,16 @@
         "ok": false,
         "why": "much با اسم جمع (eggs) نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "need",
+        "fa": "لازم داریم"
+       },
+       {
+        "en": "three",
+        "fa": "سه"
+       }
       ]
      },
      {
@@ -2298,7 +2386,17 @@
       "answer": "more",
       "accept": [],
       "fa": "این گوشی از گوشی قبلی‌ام گران‌تر است.",
-      "why": "expensive بلند است، پس more."
+      "why": "expensive بلند است، پس more.",
+      "support": [
+       {
+        "en": "expensive",
+        "fa": "گران"
+       },
+       {
+        "en": "one",
+        "fa": "یکی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2329,7 +2427,17 @@
       "frame": "This book is ___ interesting than that one.",
       "answer": "more",
       "accept": [],
-      "why": "برای صفت بلندِ interesting از more + adjective + than استفاده می‌کنیم."
+      "why": "برای صفت بلندِ interesting از more + adjective + than استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "interesting",
+        "fa": "جالب"
+       },
+       {
+        "en": "one",
+        "fa": "یکی"
+       }
+      ]
      }
     ]
    }
@@ -2425,6 +2533,12 @@
         "ok": false,
         "why": "بعد از one of حرف a نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "doctor",
+        "fa": "دکتر"
+       }
       ]
      },
      {
@@ -2434,7 +2548,13 @@
       "frame": "I have only ___ question.",
       "answer": "one",
       "accept": [],
-      "why": "تأکید بر تعداد: one."
+      "why": "تأکید بر تعداد: one.",
+      "support": [
+       {
+        "en": "question",
+        "fa": "سؤال"
+       }
+      ]
      }
     ]
    },
@@ -2522,6 +2642,20 @@
         "ok": false,
         "why": "بعد از صفت it نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "Which",
+        "fa": "کدام"
+       },
+       {
+        "en": "pen",
+        "fa": "خودکار"
+       },
+       {
+        "en": "black",
+        "fa": "سیاه؛ مشکی"
+       }
       ]
      },
      {
@@ -2600,7 +2734,13 @@
       "answer": "team",
       "accept": [],
       "fa": "کدام تیم فوتبال را دوست داری؟",
-      "why": "football team = تیم فوتبال."
+      "why": "football team = تیم فوتبال.",
+      "support": [
+       {
+        "en": "football",
+        "fa": "فوتبال"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2808,7 +2948,13 @@
       "answer": "problem",
       "accept": [],
       "fa": "الف: می‌توانی کمکم کنی؟ ب: حتماً، اشکالی ندارد.",
-      "why": "No problem = حتماً، اشکالی ندارد."
+      "why": "No problem = حتماً، اشکالی ندارد.",
+      "support": [
+       {
+        "en": "Sure",
+        "fa": "حتماً"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3118,7 +3264,13 @@
       "answer": "plans",
       "accept": [],
       "fa": "برای جمعه برنامه‌ای ندارم. بیا همدیگر را ببینیم!",
-      "why": "have plans = برنامه داشتن."
+      "why": "have plans = برنامه داشتن.",
+      "support": [
+       {
+        "en": "meet",
+        "fa": "همدیگر را ببینیم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3212,6 +3364,10 @@
        {
         "en": "Shiraz",
         "fa": "شیراز"
+       },
+       {
+        "en": "spring",
+        "fa": "بهار"
        }
       ]
      },
@@ -3429,7 +3585,17 @@
       "answer": "course",
       "accept": [],
       "fa": "خواهرم این تابستان یک دورهٔ کامپیوتر می‌گذراند.",
-      "why": "برای گذراندن دوره take a course: take a course."
+      "why": "برای گذراندن دوره take a course: take a course.",
+      "support": [
+       {
+        "en": "computer",
+        "fa": "کامپیوتر"
+       },
+       {
+        "en": "summer",
+        "fa": "تابستان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3471,6 +3637,10 @@
        {
         "en": "English",
         "fa": "انگلیسی"
+       },
+       {
+        "en": "short",
+        "fa": "کوتاه"
        }
       ]
      }
@@ -3555,6 +3725,12 @@
         "text": "Course of",
         "ok": false,
         "why": "ترتیب کلمه‌ها غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "remember",
+        "fa": "یادت می‌آید"
        }
       ]
      },
@@ -3774,7 +3950,21 @@
       "answer": "up",
       "accept": [],
       "fa": "وقتی معلم وارد می‌شود لطفاً بلند شوید.",
-      "why": "stand up = بلند شدن و ایستادن."
+      "why": "stand up = بلند شدن و ایستادن.",
+      "support": [
+       {
+        "en": "stand",
+        "fa": "بایستید"
+       },
+       {
+        "en": "when",
+        "fa": "وقتی"
+       },
+       {
+        "en": "teacher",
+        "fa": "معلم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3869,6 +4059,10 @@
        {
         "en": "fifth",
         "fa": "پنجم"
+       },
+       {
+        "en": "office",
+        "fa": "دفتر کار"
        }
       ]
      },
@@ -3897,6 +4091,10 @@
        {
         "en": "hill",
         "fa": "تپه"
+       },
+       {
+        "en": "ran",
+        "fa": "دویدند"
        }
       ]
      },
@@ -3992,6 +4190,14 @@
        {
         "en": "Mina",
         "fa": "مینا"
+       },
+       {
+        "en": "speak",
+        "fa": "صحبت کردن"
+       },
+       {
+        "en": "Sorry",
+        "fa": "ببخشید"
        }
       ]
      },
@@ -4083,7 +4289,17 @@
       "answer": "out of",
       "accept": [],
       "fa": "او یک خودکار از کیفش بیرون آورد.",
-      "why": "برای بیرون آوردن از جایی out of: take something out of a place."
+      "why": "برای بیرون آوردن از جایی out of: take something out of a place.",
+      "support": [
+       {
+        "en": "took",
+        "fa": "برداشت"
+       },
+       {
+        "en": "pen",
+        "fa": "خودکار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4110,6 +4326,10 @@
        {
         "en": "jumped",
         "fa": "پرید"
+       },
+       {
+        "en": "cat",
+        "fa": "گربه"
        }
       ]
      },
@@ -4441,6 +4661,12 @@
         "ok": false,
         "why": "road جاده است."
        }
+      ],
+      "support": [
+       {
+        "en": "hospital",
+        "fa": "بیمارستان"
+       }
       ]
      },
      {
@@ -4671,6 +4897,10 @@
        {
         "en": "pocket",
         "fa": "جیب"
+       },
+       {
+        "en": "put",
+        "fa": "گذاشتن"
        }
       ]
      }
@@ -4843,6 +5073,10 @@
        {
         "en": "Somebody",
         "fa": "کسی"
+       },
+       {
+        "en": "door",
+        "fa": "در"
        }
       ]
      },
@@ -4865,6 +5099,16 @@
         "text": "reply",
         "ok": false,
         "why": "reply بدون to با مفعول نمی‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "Why",
+        "fa": "چرا"
+       },
+       {
+        "en": "call",
+        "fa": "تماس"
        }
       ]
      },
@@ -4944,7 +5188,13 @@
       "answer": "hotel",
       "accept": [],
       "fa": "اتاق هتل ما طبقهٔ چهارم است.",
-      "why": "hotel room = اتاق هتل."
+      "why": "hotel room = اتاق هتل.",
+      "support": [
+       {
+        "en": "floor",
+        "fa": "طبقه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4966,6 +5216,20 @@
         "ok": false,
         "why": "to برای مقصد حرکت است."
        }
+      ],
+      "support": [
+       {
+        "en": "staying",
+        "fa": "اقامت داریم"
+       },
+       {
+        "en": "near",
+        "fa": "نزدیکِ"
+       },
+       {
+        "en": "station",
+        "fa": "ایستگاه"
+       }
       ]
      },
      {
@@ -4975,7 +5239,13 @@
       "frame": "I booked a ___ for our trip.",
       "answer": "hotel",
       "accept": [],
-      "why": "book a hotel = هتل رزرو کردن."
+      "why": "book a hotel = هتل رزرو کردن.",
+      "support": [
+       {
+        "en": "trip",
+        "fa": "سفر"
+       }
+      ]
      }
     ]
    }
@@ -5461,7 +5731,13 @@
       "answer": "meeting",
       "accept": [],
       "fa": "الان نمی‌توانم حرف بزنم. در جلسه‌ام.",
-      "why": "be in a meeting = در جلسه بودن."
+      "why": "be in a meeting = در جلسه بودن.",
+      "support": [
+       {
+        "en": "talk",
+        "fa": "حرف زدن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5568,7 +5844,13 @@
       "answer": "teacher",
       "accept": [],
       "fa": "معلمم خیلی به ما تکلیف می‌دهد.",
-      "why": "teacher = معلم."
+      "why": "teacher = معلم.",
+      "support": [
+       {
+        "en": "homework",
+        "fa": "تکلیف"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5603,6 +5885,10 @@
        {
         "en": "maths",
         "fa": "ریاضی"
+       },
+       {
+        "en": "teaches",
+        "fa": "درس می‌دهد"
        }
       ]
      },
@@ -5832,7 +6118,13 @@
       "answer": "between",
       "accept": [],
       "fa": "بین ساعت دو تا چهار به دفترم بیا.",
-      "why": "دو زمان با between … and … می‌آیند: between A and B."
+      "why": "دو زمان با between … and … می‌آیند: between A and B.",
+      "support": [
+       {
+        "en": "office",
+        "fa": "دفتر کار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5853,6 +6145,12 @@
         "text": "among",
         "ok": false,
         "why": "among برای میان بیش از دو چیز است و با and نمی‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "letter",
+        "fa": "حرف (الفبا)"
        }
       ]
      },
@@ -5971,7 +6269,13 @@
       "accept": [
        "by"
       ],
-      "why": "near = نزدیکِ."
+      "why": "near = نزدیکِ.",
+      "support": [
+       {
+        "en": "sea",
+        "fa": "دریا"
+       }
+      ]
      }
     ]
    }
@@ -6329,6 +6633,12 @@
         "ok": false,
         "why": "hear یعنی شنیدن و فقط هم‌صداست."
        }
+      ],
+      "support": [
+       {
+        "en": "near",
+        "fa": "نزدیکِ"
+       }
       ]
      },
      {
@@ -6409,7 +6719,13 @@
       "answer": "large",
       "accept": [],
       "fa": "تعداد زیادی از مردم به کنسرت آمدند.",
-      "why": "a large number of = تعداد زیادی."
+      "why": "a large number of = تعداد زیادی.",
+      "support": [
+       {
+        "en": "number",
+        "fa": "تعداد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6624,7 +6940,13 @@
       "answer": "long",
       "accept": [],
       "fa": "مدت زیادی منتظر دکتر ماندیم.",
-      "why": "a long time = مدت زیاد."
+      "why": "a long time = مدت زیاد.",
+      "support": [
+       {
+        "en": "doctor",
+        "fa": "دکتر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6645,6 +6967,12 @@
         "text": "high",
         "ok": false,
         "why": "high برای ارتفاع است."
+       }
+      ],
+      "support": [
+       {
+        "en": "hair",
+        "fa": "مو"
        }
       ]
      },
@@ -7047,7 +7375,17 @@
       "answer": "information",
       "accept": [],
       "fa": "برای اطلاعات بیشتر با این شماره تماس بگیرید.",
-      "why": "more information، بدون s."
+      "why": "more information، بدون s.",
+      "support": [
+       {
+        "en": "call",
+        "fa": "زنگ بزنید"
+       },
+       {
+        "en": "number",
+        "fa": "شماره"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7078,7 +7416,13 @@
       "frame": "Do you have any ___ about the trains?",
       "answer": "information",
       "accept": [],
-      "why": "any information، بدون s."
+      "why": "any information، بدون s.",
+      "support": [
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       }
+      ]
      }
     ]
    }
@@ -7777,6 +8121,12 @@
         "ok": false,
         "why": "of لازم نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "computer",
+        "fa": "کامپیوتر"
+       }
       ]
      },
      {
@@ -7786,7 +8136,13 @@
       "frame": "We ___ this room for studying.",
       "answer": "use",
       "accept": [],
-      "why": "use … for … = از … برای … استفاده کردن."
+      "why": "use … for … = از … برای … استفاده کردن.",
+      "support": [
+       {
+        "en": "studying",
+        "fa": "درس خواندن"
+       }
+      ]
      }
     ]
    }
@@ -8229,7 +8585,13 @@
       "answer": "question",
       "accept": [],
       "fa": "می‌توانم یک سؤال از شما بپرسم؟",
-      "why": "سؤال را ask می‌کنیم: ask a question."
+      "why": "سؤال را ask می‌کنیم: ask a question.",
+      "support": [
+       {
+        "en": "ask",
+        "fa": "پرسیدن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8250,6 +8612,12 @@
         "text": "make",
         "ok": false,
         "why": "make a question طبیعی نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "page",
+        "fa": "صفحه"
        }
       ]
      },
@@ -8340,6 +8708,10 @@
        {
         "en": "passed",
         "fa": "قبول شد"
+       },
+       {
+        "en": "hard",
+        "fa": "سخت؛ با جدیت"
        }
       ]
      },
@@ -8583,7 +8955,13 @@
       "frame": "You should see a ___.",
       "answer": "doctor",
       "accept": [],
-      "why": "برای مراجعه به پزشک see a doctor: see a doctor."
+      "why": "برای مراجعه به پزشک see a doctor: see a doctor.",
+      "support": [
+       {
+        "en": "should",
+        "fa": "بهتر است؛ باید"
+       }
+      ]
      }
     ]
    }
@@ -8973,7 +9351,13 @@
       "answer": "dinner",
       "accept": [],
       "fa": "الف: شام چی داریم؟ ب: مرغ و برنج.",
-      "why": "What's for dinner? = شام چی داریم؟"
+      "why": "What's for dinner? = شام چی داریم؟",
+      "support": [
+       {
+        "en": "Chicken",
+        "fa": "مرغ"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8994,6 +9378,12 @@
         "text": "take",
         "ok": false,
         "why": "take dinner طبیعی نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "eight",
+        "fa": "ساعت هشت"
        }
       ]
      },
@@ -9080,7 +9470,13 @@
       "answer": "through",
       "accept": [],
       "fa": "گربه از پنجره داخل آمد.",
-      "why": "برای عبور از داخل چیزی through: from one side to the other: through."
+      "why": "برای عبور از داخل چیزی through: from one side to the other: through.",
+      "support": [
+       {
+        "en": "cat",
+        "fa": "گربه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9187,6 +9583,10 @@
        {
         "en": "heavy",
         "fa": "سنگین"
+       },
+       {
+        "en": "carry",
+        "fa": "حمل کردن؛ بردن"
        }
       ]
      },
@@ -9210,6 +9610,12 @@
         "ok": false,
         "why": "at my bag طبیعی نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "keys",
+        "fa": "کلیدها"
+       }
       ]
      },
      {
@@ -9219,7 +9625,13 @@
       "frame": "My school ___ is blue.",
       "answer": "bag",
       "accept": [],
-      "why": "school bag = کیف مدرسه."
+      "why": "school bag = کیف مدرسه.",
+      "support": [
+       {
+        "en": "blue",
+        "fa": "آبی"
+       }
+      ]
      }
     ]
    }
@@ -9855,7 +10267,13 @@
       "frame": "The ___ is very hot today.",
       "answer": "weather",
       "accept": [],
-      "why": "weather = هوا (گرما و سرما)."
+      "why": "weather = هوا (گرما و سرما).",
+      "support": [
+       {
+        "en": "hot",
+        "fa": "گرم"
+       }
+      ]
      }
     ]
    }
@@ -9952,6 +10370,12 @@
         "text": "room",
         "ok": false,
         "why": "room اتاق است."
+       }
+      ],
+      "support": [
+       {
+        "en": "swimming",
+        "fa": "شنا"
        }
       ]
      },
@@ -10304,7 +10728,13 @@
       "frame": "___ your shoes by the door.",
       "answer": "Put",
       "accept": [],
-      "why": "put + چیز + جا."
+      "why": "put + چیز + جا.",
+      "support": [
+       {
+        "en": "door",
+        "fa": "در"
+       }
+      ]
      }
     ]
    }
@@ -10528,7 +10958,13 @@
       "answer": "music",
       "accept": [],
       "fa": "چه نوع موسیقی‌ای دوست داری؟",
-      "why": "music غیرقابل‌شمارش است؛ kind of music: kind of music."
+      "why": "music غیرقابل‌شمارش است؛ kind of music: kind of music.",
+      "support": [
+       {
+        "en": "kind",
+        "fa": "نوع"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10639,6 +11075,10 @@
        {
         "en": "jumped",
         "fa": "پرید"
+       },
+       {
+        "en": "cat",
+        "fa": "گربه"
        }
       ]
      },
@@ -10681,7 +11121,13 @@
       "frame": "The class is ___.",
       "answer": "over",
       "accept": [],
-      "why": "be over = تمام شدن."
+      "why": "be over = تمام شدن.",
+      "support": [
+       {
+        "en": "class",
+        "fa": "کلاس"
+       }
+      ]
      }
     ]
    },
@@ -10746,6 +11192,10 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "long",
+        "fa": "طولانی"
        }
       ]
      },
@@ -10774,6 +11224,10 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "watch",
+        "fa": "تماشا کردن"
        }
       ]
      },
@@ -10860,7 +11314,13 @@
       "answer": "short",
       "accept": [],
       "fa": "برای تابستان موهایم را کوتاه می‌خواهم.",
-      "why": "short hair = موی کوتاه."
+      "why": "short hair = موی کوتاه.",
+      "support": [
+       {
+        "en": "hair",
+        "fa": "مو"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10881,6 +11341,12 @@
         "text": "small",
         "ok": false,
         "why": "برای قد آدم short طبیعی‌تر است."
+       }
+      ],
+      "support": [
+       {
+        "en": "tall",
+        "fa": "قدبلند"
        }
       ]
      },
@@ -10959,7 +11425,13 @@
       "answer": "station",
       "accept": [],
       "fa": "قطار ساعت ده از ایستگاه حرکت می‌کند.",
-      "why": "station = ایستگاه قطار."
+      "why": "station = ایستگاه قطار.",
+      "support": [
+       {
+        "en": "train",
+        "fa": "قطار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10986,6 +11458,10 @@
        {
         "en": "corner",
         "fa": "گوشه"
+       },
+       {
+        "en": "bus",
+        "fa": "اتوبوس"
        }
       ]
      },
@@ -10996,7 +11472,13 @@
       "frame": "Where is the train ___?",
       "answer": "station",
       "accept": [],
-      "why": "train station = ایستگاه قطار."
+      "why": "train station = ایستگاه قطار.",
+      "support": [
+       {
+        "en": "train",
+        "fa": "قطار"
+       }
+      ]
      }
     ]
    }
@@ -11074,6 +11556,10 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "true",
+        "fa": "واقعی"
        }
       ]
      },
@@ -11106,7 +11592,13 @@
       "frame": "This ___ is about a dog.",
       "answer": "story",
       "accept": [],
-      "why": "story = داستان."
+      "why": "story = داستان.",
+      "support": [
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       }
+      ]
      }
     ]
    }
@@ -11212,7 +11704,13 @@
       "frame": "I called ___ times.",
       "answer": "three",
       "accept": [],
-      "why": "three times = سه بار."
+      "why": "three times = سه بار.",
+      "support": [
+       {
+        "en": "called",
+        "fa": "زنگ زدم"
+       }
+      ]
      }
     ]
    }
@@ -11288,6 +11786,10 @@
        {
         "en": "village",
         "fa": "روستا"
+       },
+       {
+        "en": "Life",
+        "fa": "زندگی"
        }
       ]
      },
@@ -11505,6 +12007,10 @@
        {
         "en": "quick",
         "fa": "سریع"
+       },
+       {
+        "en": "five",
+        "fa": "پنج"
        }
       ]
      },
@@ -11537,6 +12043,10 @@
        {
         "en": "English",
         "fa": "انگلیسی"
+       },
+       {
+        "en": "speak",
+        "fa": "صحبت کردن"
        }
       ]
      },
@@ -11605,7 +12115,17 @@
       "answer": "only",
       "accept": [],
       "fa": "تو تنها کسی هستی که می‌تواند کمکم کند.",
-      "why": "the only + اسم یعنی «تنها …»: the only person."
+      "why": "the only + اسم یعنی «تنها …»: the only person.",
+      "support": [
+       {
+        "en": "person",
+        "fa": "آدم"
+       },
+       {
+        "en": "help",
+        "fa": "کمک کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11647,6 +12167,10 @@
        {
         "en": "village",
         "fa": "روستا"
+       },
+       {
+        "en": "doctor",
+        "fa": "دکتر"
        }
       ]
      }
@@ -11718,7 +12242,13 @@
       "answer": "quickly",
       "accept": [],
       "fa": "بچه‌ها ناهارشان را خیلی تند خوردند و به بیرون دویدند.",
-      "why": "قید برای فعل eat."
+      "why": "قید برای فعل eat.",
+      "support": [
+       {
+        "en": "ran",
+        "fa": "دویدند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11739,6 +12269,12 @@
         "text": "fastly",
         "ok": false,
         "why": "fastly کلمه نیست؛ fast خودش قید است."
+       }
+      ],
+      "support": [
+       {
+        "en": "homework",
+        "fa": "تکلیف"
        }
       ]
      },
@@ -11823,7 +12359,13 @@
       "answer": "train",
       "accept": [],
       "fa": "زود باش، وگرنه از قطار جا می‌مانیم!",
-      "why": "برای جا ماندن از قطار miss the train: miss the train."
+      "why": "برای جا ماندن از قطار miss the train: miss the train.",
+      "support": [
+       {
+        "en": "miss",
+        "fa": "جا می‌مانیم از"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11844,6 +12386,12 @@
         "text": "at",
         "ok": false,
         "why": "at the train طبیعی نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "met",
+        "fa": "آشنا شدیم"
        }
       ]
      },
@@ -12461,7 +13009,13 @@
        "program"
       ],
       "fa": "برنامهٔ تلویزیونی محبوبم ساعت نه پخش می‌شود.",
-      "why": "TV programme یعنی «برنامهٔ تلویزیونی»: TV programme."
+      "why": "TV programme یعنی «برنامهٔ تلویزیونی»: TV programme.",
+      "support": [
+       {
+        "en": "favourite",
+        "fa": "مورد علاقه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -12494,7 +13048,13 @@
       "accept": [
        "program"
       ],
-      "why": "programme about + موضوع."
+      "why": "programme about + موضوع.",
+      "support": [
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       }
+      ]
      }
     ]
    }
@@ -12785,7 +13345,13 @@
       "answer": "much",
       "accept": [],
       "fa": "این کاپشن چند است؟",
-      "why": "How much = چقدر (قیمت)."
+      "why": "How much = چقدر (قیمت).",
+      "support": [
+       {
+        "en": "jacket",
+        "fa": "کاپشن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -12816,7 +13382,17 @@
       "frame": "We did not spend ___ money on our trip.",
       "answer": "much",
       "accept": [],
-      "why": "much + اسم غیرقابل‌شمارش."
+      "why": "much + اسم غیرقابل‌شمارش.",
+      "support": [
+       {
+        "en": "money",
+        "fa": "پول"
+       },
+       {
+        "en": "trip",
+        "fa": "سفر"
+       }
+      ]
      }
     ]
    },
@@ -12876,7 +13452,17 @@
        "a lot"
       ],
       "fa": "این گوشی جدید خیلی سریع‌تر از گوشی قبلی‌ام است.",
-      "why": "much + صفت تفضیلی."
+      "why": "much + صفت تفضیلی.",
+      "support": [
+       {
+        "en": "faster",
+        "fa": "سریع‌تر"
+       },
+       {
+        "en": "one",
+        "fa": "یکی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -12909,7 +13495,17 @@
       "accept": [
        "a lot"
       ],
-      "why": "much + comparative یعنی «خیلی ...تر»؛ a lot هم پذیرفته است."
+      "why": "much + comparative یعنی «خیلی ...تر»؛ a lot هم پذیرفته است.",
+      "support": [
+       {
+        "en": "train",
+        "fa": "قطار"
+       },
+       {
+        "en": "faster",
+        "fa": "سریع‌تر"
+       }
+      ]
      }
     ]
    }
@@ -13193,7 +13789,13 @@
       "answer": "ten",
       "accept": [],
       "fa": "پنج و پنج می‌شود ده.",
-      "why": "۵ + ۵ = ۱۰."
+      "why": "۵ + ۵ = ۱۰.",
+      "support": [
+       {
+        "en": "Five",
+        "fa": "پنج"
+       }
+      ]
      },
      {
       "type": "choice",

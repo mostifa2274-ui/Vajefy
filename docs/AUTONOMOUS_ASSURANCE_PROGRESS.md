@@ -28,7 +28,7 @@ Do **not** restart from chat memory when repository evidence exists.
   notes, grammar notes and answer feedback are complete. The frontier triage
   queue holds only frozen Units 1–3 cases (71); later-unit rewording is done.
 - Third examples with GB/US clips were added unit by unit (`docs/THIRD_EXAMPLES.md`); Units 2–12 are done and `EXAMPLE_COUNT` is 0.
-- Remaining: 4,093 deterministic findings, all frontier (709 Units 2–3 support glosses: `docs/UNITS_2_3_SUPPORT_GLOSSES_2026-10-13.md`) (reused examples are 0); 296 support glosses prepare tasks for words leaving A1 at the CEFR-J switch (`docs/CEFRJ_SWITCH_SUPPORT_GLOSSES_2026-10-12.md`); 900/900 unreviewed independent
+- Remaining: 3,177 deterministic findings, all frontier (709 Units 2–3 support glosses: `docs/UNITS_2_3_SUPPORT_GLOSSES_2026-10-13.md`; 899 Units 4–12 support glosses: `docs/UNITS_4_12_SUPPORT_GLOSSES_2026-10-13.md`) (reused examples are 0); 296 support glosses prepare tasks for words leaving A1 at the CEFR-J switch (`docs/CEFRJ_SWITCH_SUPPORT_GLOSSES_2026-10-12.md`); 900/900 unreviewed independent
   NGSL drafts; Gate 0 BLOCKED; 0/4 qualified judges; 328/386 certified audio.
 - English judge: two appended candidates are awaiting scheduled calibration (PR #193): Gemma 4 26B first, then GLM 4.7 Flash.
 - CEFR-J rebuild phase 1 is merged, including whole-app placement and no-drop-out

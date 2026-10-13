@@ -200,6 +200,12 @@
                 "ok": false,
                 "why": "جمعِ banana فقط s می‌گیرد."
               }
+            ],
+            "support": [
+              {
+                "en": "How many",
+                "fa": "چند تا"
+              }
             ]
           },
           {
@@ -1095,7 +1101,13 @@
               "Goodbye"
             ],
             "fa": "خب، باید بروم. خداحافظ!",
-            "why": "Bye = خداحافظ."
+            "why": "Bye = خداحافظ.",
+            "support": [
+              {
+                "en": "OK",
+                "fa": "باشه؛ خوب"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1203,7 +1215,13 @@
               "disc"
             ],
             "fa": "سی‌دی را در دستگاه بگذار و به آهنگ اول گوش کن.",
-            "why": "CD = سی‌دی."
+            "why": "CD = سی‌دی.",
+            "support": [
+              {
+                "en": "Put",
+                "fa": "گذاشتن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1308,7 +1326,17 @@
               "chicken"
             ],
             "fa": "یک ساندویچ پنیر و گوجه می‌خواهم، لطفاً.",
-            "why": "cheese = پنیر."
+            "why": "cheese = پنیر.",
+            "support": [
+              {
+                "en": "tomato",
+                "fa": "گوجه‌فرنگی"
+              },
+              {
+                "en": "sandwich",
+                "fa": "ساندویچ"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1329,6 +1357,12 @@
                 "text": "a",
                 "ok": false,
                 "why": "how a cheese غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "need",
+                "fa": "لازم داریم"
               }
             ]
           },
@@ -1441,6 +1475,10 @@
               {
                 "en": "grass",
                 "fa": "علف"
+              },
+              {
+                "en": "gives",
+                "fa": "می‌دهد"
               }
             ]
           },
@@ -1451,7 +1489,17 @@
             "frame": "The ___ is black and white.",
             "answer": "cow",
             "accept": [],
-            "why": "cow = گاو."
+            "why": "cow = گاو.",
+            "support": [
+              {
+                "en": "black",
+                "fa": "سیاه؛ مشکی"
+              },
+              {
+                "en": "white",
+                "fa": "سفید"
+              }
+            ]
           }
         ]
       }
@@ -1647,7 +1695,13 @@
             "answer": "dance",
             "accept": [],
             "fa": "موسیقی عالی است! بیا برقصیم!",
-            "why": "بعد از Let's فعل ساده می‌آید: Let's + dance."
+            "why": "بعد از Let's فعل ساده می‌آید: Let's + dance.",
+            "support": [
+              {
+                "en": "great",
+                "fa": "عالی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1668,6 +1722,12 @@
                 "text": "dances",
                 "ok": false,
                 "why": "بعد از can، s نمی‌آید."
+              }
+            ],
+            "support": [
+              {
+                "en": "well",
+                "fa": "خوب"
               }
             ]
           },
@@ -1781,6 +1841,10 @@
               {
                 "en": "traditional",
                 "fa": "سنتی"
+              },
+              {
+                "en": "beautiful",
+                "fa": "زیبا"
               }
             ]
           }
@@ -2429,6 +2493,10 @@
               {
                 "en": "opposite",
                 "fa": "متضاد"
+              },
+              {
+                "en": "clean",
+                "fa": "تمیز"
               }
             ]
           },
@@ -2649,7 +2717,13 @@
             "answer": "ears",
             "accept": [],
             "fa": "با گوش‌هایمان می‌شنویم.",
-            "why": "ears = گوش‌ها."
+            "why": "ears = گوش‌ها.",
+            "support": [
+              {
+                "en": "hear",
+                "fa": "شنیدن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2670,6 +2744,12 @@
                 "text": "arm",
                 "ok": false,
                 "why": "arm بازوست."
+              }
+            ],
+            "support": [
+              {
+                "en": "hear",
+                "fa": "شنیدن"
               }
             ]
           },
@@ -2758,7 +2838,13 @@
             "answer": "eggs",
             "accept": [],
             "fa": "مرغ به ما تخم‌مرغ می‌دهد.",
-            "why": "eggs = تخم‌مرغ‌ها."
+            "why": "eggs = تخم‌مرغ‌ها.",
+            "support": [
+              {
+                "en": "gives",
+                "fa": "می‌دهد"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3452,6 +3538,10 @@
               {
                 "en": "hurt",
                 "fa": "آزرده کرد"
+              },
+              {
+                "en": "because",
+                "fa": "چون"
               }
             ]
           },
@@ -3669,6 +3759,12 @@
                 "ok": false,
                 "why": "fourteen = ۱۴."
               }
+            ],
+            "support": [
+              {
+                "en": "teacher",
+                "fa": "معلم"
+              }
             ]
           },
           {
@@ -3680,7 +3776,13 @@
             "accept": [
               "40"
             ],
-            "why": "forty = چهل."
+            "why": "forty = چهل.",
+            "support": [
+              {
+                "en": "took",
+                "fa": "طول کشید"
+              }
+            ]
           }
         ]
       }
@@ -3891,6 +3993,12 @@
                 "ok": false,
                 "why": "forth کلمهٔ دیگری است."
               }
+            ],
+            "support": [
+              {
+                "en": "floor",
+                "fa": "طبقه"
+              }
             ]
           },
           {
@@ -3902,7 +4010,13 @@
             "accept": [
               "4th"
             ],
-            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the fourth child."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the fourth child.",
+            "support": [
+              {
+                "en": "girl",
+                "fa": "دختر"
+              }
+            ]
           }
         ]
       }
@@ -4642,7 +4756,13 @@
               "is happening"
             ],
             "fa": "نمی‌دانم چه اتفاقی افتاد. می‌شود به من بگویی؟",
-            "why": "گذشته: happened."
+            "why": "گذشته: happened.",
+            "support": [
+              {
+                "en": "tell",
+                "fa": "گفتن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4663,6 +4783,12 @@
                 "text": "happen",
                 "ok": false,
                 "why": "برای گذشته happened لازم است."
+              }
+            ],
+            "support": [
+              {
+                "en": "arm",
+                "fa": "دست؛ بازو"
               }
             ]
           },
@@ -4747,7 +4873,13 @@
               "scarf"
             ],
             "fa": "سرد است. کت و کلاهت را بپوش.",
-            "why": "hat = کلاه."
+            "why": "hat = کلاه.",
+            "support": [
+              {
+                "en": "Put on",
+                "fa": "بپوش"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4768,6 +4900,16 @@
                 "text": "hate",
                 "ok": false,
                 "why": "hate یعنی متنفر بودن."
+              }
+            ],
+            "support": [
+              {
+                "en": "wearing",
+                "fa": "پوشیده"
+              },
+              {
+                "en": "head",
+                "fa": "سر"
               }
             ]
           },
@@ -5303,7 +5445,17 @@
               "activity"
             ],
             "fa": "کتاب خواندن سرگرمیِ مورد علاقهٔ من است.",
-            "why": "hobby = سرگرمی."
+            "why": "hobby = سرگرمی.",
+            "support": [
+              {
+                "en": "Reading",
+                "fa": "کتاب‌خواندن"
+              },
+              {
+                "en": "favourite",
+                "fa": "مورد علاقه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5437,6 +5589,10 @@
               {
                 "en": "fell off",
                 "fa": "افتاد (از روی)"
+              },
+              {
+                "en": "leg",
+                "fa": "پا"
               }
             ]
           },
@@ -5447,7 +5603,13 @@
             "frame": "It's a beautiful white ___.",
             "answer": "horse",
             "accept": [],
-            "why": "horse = اسب."
+            "why": "horse = اسب.",
+            "support": [
+              {
+                "en": "beautiful",
+                "fa": "زیبا"
+              }
+            ]
           }
         ]
       }
@@ -5896,6 +6058,12 @@
                 "ok": false,
                 "why": "am فقط با I می‌آید."
               }
+            ],
+            "support": [
+              {
+                "en": "dirty",
+                "fa": "کثیف"
+              }
             ]
           },
           {
@@ -5905,7 +6073,13 @@
             "frame": "I want a pair of blue ___.",
             "answer": "jeans",
             "accept": [],
-            "why": "jeans جمع است؛ a pair of jeans: a pair of jeans."
+            "why": "jeans جمع است؛ a pair of jeans: a pair of jeans.",
+            "support": [
+              {
+                "en": "pair",
+                "fa": "جفت"
+              }
+            ]
           }
         ]
       }
@@ -6099,7 +6273,13 @@
               "smile"
             ],
             "fa": "خیلی بامزه است. همیشه مرا می‌خنداند.",
-            "why": "make + شخص + laugh."
+            "why": "make + شخص + laugh.",
+            "support": [
+              {
+                "en": "funny",
+                "fa": "بامزه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6120,6 +6300,12 @@
                 "text": "on",
                 "ok": false,
                 "why": "laugh on غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "Why",
+                "fa": "چرا"
               }
             ]
           },
@@ -6199,7 +6385,17 @@
               "time"
             ],
             "fa": "داستان خنده‌داری گفت و همه حسابی خندیدند.",
-            "why": "برای حسابی خندیدن have a good laugh: have a good laugh."
+            "why": "برای حسابی خندیدن have a good laugh: have a good laugh.",
+            "support": [
+              {
+                "en": "told",
+                "fa": "تعریف کرد"
+              },
+              {
+                "en": "funny",
+                "fa": "خنده‌دار"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6220,6 +6416,12 @@
                 "text": "laughed",
                 "ok": false,
                 "why": "laughed فعلِ گذشته است."
+              }
+            ],
+            "support": [
+              {
+                "en": "little",
+                "fa": "کوچک"
               }
             ]
           },
@@ -6310,7 +6512,13 @@
             "answer": "list",
             "accept": [],
             "fa": "شیر یادت نرود. آن را در فهرست خرید بنویس.",
-            "why": "a shopping list = فهرست خرید."
+            "why": "a shopping list = فهرست خرید.",
+            "support": [
+              {
+                "en": "Don't forget",
+                "fa": "فراموش نکن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6521,7 +6729,13 @@
               "book"
             ],
             "fa": "دربارهٔ گوشی جدید در یک مجلهٔ کامپیوتری خواندم.",
-            "why": "موضوع مجله پیش از magazine می‌آید: a computer magazine."
+            "why": "موضوع مجله پیش از magazine می‌آید: a computer magazine.",
+            "support": [
+              {
+                "en": "about",
+                "fa": "دربارهٔ"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6844,7 +7058,13 @@
               "mouths"
             ],
             "fa": "با دهانمان غذا می‌خوریم و حرف می‌زنیم.",
-            "why": "mouth = دهان."
+            "why": "mouth = دهان.",
+            "support": [
+              {
+                "en": "speak",
+                "fa": "صحبت کردن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6956,6 +7176,14 @@
               {
                 "en": "hundred",
                 "fa": "صد"
+              },
+              {
+                "en": "Seventy",
+                "fa": "هفتاد"
+              },
+              {
+                "en": "eighty",
+                "fa": "هشتاد"
               }
             ]
           },
@@ -7066,7 +7294,13 @@
               "message"
             ],
             "fa": "مامان خانه نیست. یک یادداشت روی در گذاشته.",
-            "why": "برای گذاشتن یادداشت leave a note: leave a note."
+            "why": "برای گذاشتن یادداشت leave a note: leave a note.",
+            "support": [
+              {
+                "en": "door",
+                "fa": "در"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7087,6 +7321,12 @@
                 "text": "noting",
                 "ok": false,
                 "why": "noting شکلِ ing فعل است."
+              }
+            ],
+            "support": [
+              {
+                "en": "short",
+                "fa": "کوتاه"
               }
             ]
           },
@@ -7430,6 +7670,12 @@
                 "ok": false,
                 "why": "of حرف اضافه است."
               }
+            ],
+            "support": [
+              {
+                "en": "telling",
+                "fa": "گفتن"
+              }
             ]
           },
           {
@@ -7606,7 +7852,21 @@
             "answer": "orange",
             "accept": [],
             "fa": "قرمز و زرد با هم نارنجی می‌سازند.",
-            "why": "قرمز + زرد = نارنجی."
+            "why": "قرمز + زرد = نارنجی.",
+            "support": [
+              {
+                "en": "Red",
+                "fa": "قرمز"
+              },
+              {
+                "en": "yellow",
+                "fa": "زرد"
+              },
+              {
+                "en": "together",
+                "fa": "با هم"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7627,6 +7887,12 @@
                 "text": "an orange",
                 "ok": false,
                 "why": "an orange یعنی یک پرتقال."
+              }
+            ],
+            "support": [
+              {
+                "en": "shoes",
+                "fa": "کفش‌ها"
               }
             ]
           },
@@ -7749,7 +8015,13 @@
             "frame": "___ the door white.",
             "answer": "Paint",
             "accept": [],
-            "why": "paint + چیز + رنگ."
+            "why": "paint + چیز + رنگ.",
+            "support": [
+              {
+                "en": "door",
+                "fa": "در"
+              }
+            ]
           }
         ]
       },
@@ -7921,7 +8193,13 @@
             "answer": "pairs",
             "accept": [],
             "fa": "دوتایی کار کنید. این سؤال‌ها را از هم‌گروهی‌تان بپرسید.",
-            "why": "in pairs = دوتایی."
+            "why": "in pairs = دوتایی.",
+            "support": [
+              {
+                "en": "Ask",
+                "fa": "پرسیدن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8380,7 +8658,13 @@
               "practice"
             ],
             "fa": "باید هر روز تمرین کنی تا خوب حرف بزنی.",
-            "why": "practise = تمرین کردن."
+            "why": "practise = تمرین کردن.",
+            "support": [
+              {
+                "en": "speak",
+                "fa": "صحبت کردن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8418,6 +8702,10 @@
               {
                 "en": "English",
                 "fa": "انگلیسی"
+              },
+              {
+                "en": "speaking",
+                "fa": "صحبت کردن"
               }
             ]
           }
@@ -8626,6 +8914,12 @@
                 "ok": false,
                 "why": "prettier صفتِ مقایسه‌ای است."
               }
+            ],
+            "support": [
+              {
+                "en": "sure",
+                "fa": "مطمئن"
+              }
             ]
           },
           {
@@ -8753,7 +9047,13 @@
               "unhappy",
               "upset"
             ],
-            "why": "sad about = ناراحت از."
+            "why": "sad about = ناراحت از.",
+            "support": [
+              {
+                "en": "about",
+                "fa": "به خاطرِ"
+              }
+            ]
           }
         ]
       }
@@ -8854,6 +9154,14 @@
               {
                 "en": "writing",
                 "fa": "نوشتن"
+              },
+              {
+                "en": "test",
+                "fa": "امتحان"
+              },
+              {
+                "en": "reading",
+                "fa": "خواندن"
               }
             ]
           },
@@ -8866,7 +9174,13 @@
             "accept": [
               "part"
             ],
-            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the second section."
+            "why": "اینجا جایگاه مشخصی گفته می‌شود، پس the می‌آید: the second section.",
+            "support": [
+              {
+                "en": "answer",
+                "fa": "جواب"
+              }
+            ]
           }
         ]
       }
@@ -9062,6 +9376,10 @@
               {
                 "en": "hundred",
                 "fa": "صد"
+              },
+              {
+                "en": "farmer",
+                "fa": "کشاورز"
               }
             ]
           },
@@ -9196,6 +9514,12 @@
                 "text": "well",
                 "ok": false,
                 "why": "well اینجا یعنی سالم."
+              }
+            ],
+            "support": [
+              {
+                "en": "because",
+                "fa": "چون"
               }
             ]
           },
@@ -9391,7 +9715,17 @@
               "dress"
             ],
             "fa": "شلوار دوست ندارد. همیشه دامن می‌پوشد.",
-            "why": "skirt = دامن."
+            "why": "skirt = دامن.",
+            "support": [
+              {
+                "en": "trousers",
+                "fa": "شلوار"
+              },
+              {
+                "en": "wears",
+                "fa": "می‌پوشد"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9500,7 +9834,13 @@
             "answer": "snake",
             "accept": [],
             "fa": "مار حیوانی بلند و بدون پاست.",
-            "why": "snake = مار."
+            "why": "snake = مار.",
+            "support": [
+              {
+                "en": "legs",
+                "fa": "پا"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9521,6 +9861,12 @@
                 "text": "to",
                 "ok": false,
                 "why": "afraid to + فعل است، نه اسم."
+              }
+            ],
+            "support": [
+              {
+                "en": "afraid",
+                "fa": "می‌ترسی"
               }
             ]
           },
@@ -10395,7 +10741,13 @@
             "answer": "tennis",
             "accept": [],
             "fa": "تنیس را با یک توپِ کوچکِ زرد بازی می‌کنیم.",
-            "why": "tennis = تنیس."
+            "why": "tennis = تنیس.",
+            "support": [
+              {
+                "en": "yellow",
+                "fa": "زرد"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10618,7 +10970,13 @@
               "object"
             ],
             "fa": "آن چیز در دستت چیست؟",
-            "why": "thing = چیز."
+            "why": "thing = چیز.",
+            "support": [
+              {
+                "en": "hand",
+                "fa": "دست"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10837,6 +11195,14 @@
               {
                 "en": "sauce",
                 "fa": "سس"
+              },
+              {
+                "en": "red",
+                "fa": "قرمز"
+              },
+              {
+                "en": "because",
+                "fa": "چون"
               }
             ]
           },
@@ -10860,6 +11226,20 @@
                 "ok": false,
                 "why": "با three جمع لازم است."
               }
+            ],
+            "support": [
+              {
+                "en": "bought",
+                "fa": "خریدم"
+              },
+              {
+                "en": "three",
+                "fa": "سه"
+              },
+              {
+                "en": "salad",
+                "fa": "سالاد"
+              }
             ]
           },
           {
@@ -10869,7 +11249,13 @@
             "frame": "Buy two ___.",
             "answer": "tomatoes",
             "accept": [],
-            "why": "جمع tomato با es است: two tomatoes."
+            "why": "جمع tomato با es است: two tomatoes.",
+            "support": [
+              {
+                "en": "Buy",
+                "fa": "خریدن"
+              }
+            ]
           }
         ]
       }
@@ -10950,7 +11336,21 @@
               "pants"
             ],
             "fa": "او پیراهنِ سفید و شلوارِ مشکی پوشیده.",
-            "why": "trousers = شلوار."
+            "why": "trousers = شلوار.",
+            "support": [
+              {
+                "en": "wearing",
+                "fa": "پوشیده"
+              },
+              {
+                "en": "white",
+                "fa": "سفید"
+              },
+              {
+                "en": "black",
+                "fa": "سیاه؛ مشکی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10983,7 +11383,13 @@
             "accept": [
               "pants"
             ],
-            "why": "trousers جمع است و فعل جمع می‌گیرد: trousers + are."
+            "why": "trousers جمع است و فعل جمع می‌گیرد: trousers + are.",
+            "support": [
+              {
+                "en": "dirty",
+                "fa": "کثیف"
+              }
+            ]
           }
         ]
       }
@@ -11065,6 +11471,10 @@
               {
                 "en": "films",
                 "fa": "فیلم‌ها"
+              },
+              {
+                "en": "Funny",
+                "fa": "خنده‌دار"
               }
             ]
           },
@@ -11087,6 +11497,12 @@
                 "text": "typing",
                 "ok": false,
                 "why": "typing یعنی تایپ کردن."
+              }
+            ],
+            "support": [
+              {
+                "en": "music",
+                "fa": "موسیقی"
               }
             ]
           },
@@ -11194,6 +11610,12 @@
                 "ok": false,
                 "why": "با two اسمِ جمع لازم است."
               }
+            ],
+            "support": [
+              {
+                "en": "bring",
+                "fa": "آوردی"
+              }
             ]
           },
           {
@@ -11203,7 +11625,13 @@
             "frame": "I forgot my ___.",
             "answer": "umbrella",
             "accept": [],
-            "why": "umbrella قابل‌شمارش است: my umbrella."
+            "why": "umbrella قابل‌شمارش است: my umbrella.",
+            "support": [
+              {
+                "en": "forgot",
+                "fa": "جا گذاشتم"
+              }
+            ]
           }
         ]
       }
@@ -11639,7 +12067,17 @@
             "answer": "women",
             "accept": [],
             "fa": "مردها و زن‌ها هر دو می‌توانند فوتبال بازی کنند.",
-            "why": "جمعِ woman: women."
+            "why": "جمعِ woman: women.",
+            "support": [
+              {
+                "en": "play",
+                "fa": "بازی کردن"
+              },
+              {
+                "en": "football",
+                "fa": "فوتبال"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11901,7 +12339,13 @@
             "frame": "You're the best mum in the ___!",
             "answer": "world",
             "accept": [],
-            "why": "world با the می‌آید: in the world."
+            "why": "world با the می‌آید: in the world.",
+            "support": [
+              {
+                "en": "best",
+                "fa": "بهترین"
+              }
+            ]
           }
         ]
       }

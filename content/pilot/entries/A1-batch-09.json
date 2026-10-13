@@ -100,6 +100,14 @@
               {
                 "en": "costs",
                 "fa": "قیمتش ... است"
+              },
+              {
+                "en": "T-shirt",
+                "fa": "تی‌شرت"
+              },
+              {
+                "en": "fifteen",
+                "fa": "پانزده"
               }
             ]
           },
@@ -198,6 +206,10 @@
               {
                 "en": "English",
                 "fa": "انگلیسی"
+              },
+              {
+                "en": "class",
+                "fa": "کلاس"
               }
             ]
           },
@@ -226,6 +238,10 @@
               {
                 "en": "last month",
                 "fa": "ماه گذشته"
+              },
+              {
+                "en": "team",
+                "fa": "تیم"
               }
             ]
           },
@@ -236,7 +252,13 @@
             "frame": "I want to ___ the club.",
             "answer": "join",
             "accept": [],
-            "why": "join مفعول مستقیم می‌گیرد، بدون to: join the club."
+            "why": "join مفعول مستقیم می‌گیرد، بدون to: join the club.",
+            "support": [
+              {
+                "en": "club",
+                "fa": "باشگاه"
+              }
+            ]
           }
         ]
       }
@@ -422,6 +444,10 @@
               {
                 "en": "king",
                 "fa": "پادشاه"
+              },
+              {
+                "en": "called",
+                "fa": "نامیده می‌شود"
               }
             ]
           },
@@ -1428,7 +1454,13 @@
               "Good"
             ],
             "fa": "ساعتِ شش هم را ببینیم. — باشه، آن موقع می‌بینمت.",
-            "why": "OK = باشه."
+            "why": "OK = باشه.",
+            "support": [
+              {
+                "en": "meet",
+                "fa": "همدیگر را ببینیم"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1449,6 +1481,16 @@
                 "text": "Bye",
                 "ok": false,
                 "why": "bye برای خداحافظی است."
+              }
+            ],
+            "support": [
+              {
+                "en": "help",
+                "fa": "کمک کردن"
+              },
+              {
+                "en": "problem",
+                "fa": "مشکل"
               }
             ]
           },
@@ -1527,7 +1569,13 @@
               "alright"
             ],
             "fa": "ناراحت به نظر می‌رسی. حالت خوب است؟",
-            "why": "برای پرسیدن حال Are you OK?: Are you OK?"
+            "why": "برای پرسیدن حال Are you OK?: Are you OK?",
+            "support": [
+              {
+                "en": "sad",
+                "fa": "غمگین"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1548,6 +1596,12 @@
                 "text": "an OK",
                 "ok": false,
                 "why": "بدون اسم، a / an لازم نیست."
+              }
+            ],
+            "support": [
+              {
+                "en": "great",
+                "fa": "عالی"
               }
             ]
           },
@@ -2402,7 +2456,13 @@
             "answer": "pig",
             "accept": [],
             "fa": "خوک حیوانِ چاق و صورتیِ مزرعه است.",
-            "why": "pig = خوک."
+            "why": "pig = خوک.",
+            "support": [
+              {
+                "en": "fat",
+                "fa": "چاق"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2752,6 +2812,16 @@
                 "ok": false,
                 "why": "بعد از how many جمع لازم است."
               }
+            ],
+            "support": [
+              {
+                "en": "How many",
+                "fa": "چند تا"
+              },
+              {
+                "en": "need",
+                "fa": "لازم داریم"
+              }
             ]
           },
           {
@@ -3088,7 +3158,13 @@
             "frame": "___ is my favourite colour.",
             "answer": "Purple",
             "accept": [],
-            "why": "Purple = بنفش."
+            "why": "Purple = بنفش.",
+            "support": [
+              {
+                "en": "favourite",
+                "fa": "مورد علاقه"
+              }
+            ]
           }
         ]
       }
@@ -3161,7 +3237,17 @@
             "answer": "reader",
             "accept": [],
             "fa": "هفته‌ای سه کتاب می‌خواند. کتاب‌خوانِ فوق‌العاده‌ای است.",
-            "why": "reader = کتاب‌خوان."
+            "why": "reader = کتاب‌خوان.",
+            "support": [
+              {
+                "en": "reads",
+                "fa": "می‌خواند"
+              },
+              {
+                "en": "great",
+                "fa": "عالی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3182,6 +3268,16 @@
                 "text": "singer",
                 "ok": false,
                 "why": "singer کسی است که آواز می‌خواند."
+              }
+            ],
+            "support": [
+              {
+                "en": "person",
+                "fa": "آدم"
+              },
+              {
+                "en": "reads",
+                "fa": "می‌خواند"
               }
             ]
           },
@@ -3381,7 +3477,13 @@
               "70"
             ],
             "fa": "شصت، هفتاد، هشتاد.",
-            "why": "۷۰ = seventy."
+            "why": "۷۰ = seventy.",
+            "support": [
+              {
+                "en": "Sixty",
+                "fa": "شصت"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3596,6 +3698,14 @@
               {
                 "en": "voice",
                 "fa": "صدا (صدای شخص)"
+              },
+              {
+                "en": "beautiful",
+                "fa": "زیبا"
+              },
+              {
+                "en": "well",
+                "fa": "خوب"
               }
             ]
           },
@@ -3624,6 +3734,10 @@
               {
                 "en": "Last night",
                 "fa": "دیشب"
+              },
+              {
+                "en": "fire",
+                "fa": "آتش"
               }
             ]
           },
@@ -4252,7 +4366,13 @@
               "tee shirt"
             ],
             "fa": "امروز گرم است. شلوارک و تی‌شرت می‌پوشم.",
-            "why": "T-shirt قابل‌شمارش است و مفردش اینجا a می‌گیرد: a T-shirt."
+            "why": "T-shirt قابل‌شمارش است و مفردش اینجا a می‌گیرد: a T-shirt.",
+            "support": [
+              {
+                "en": "shorts",
+                "fa": "شلوارک"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5151,7 +5271,13 @@
               "holidays"
             ],
             "fa": "بچه‌ها برای تعطیلاتِ تابستان مدرسه نمی‌روند.",
-            "why": "summer vacation یعنی «تعطیلات تابستانی»: summer vacation."
+            "why": "summer vacation یعنی «تعطیلات تابستانی»: summer vacation.",
+            "support": [
+              {
+                "en": "summer",
+                "fa": "تابستان"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5294,6 +5420,12 @@
                 "text": "banana",
                 "ok": false,
                 "why": "banana میوه است."
+              }
+            ],
+            "support": [
+              {
+                "en": "Which one",
+                "fa": "کدام یکی"
               }
             ]
           },
@@ -5854,6 +5986,14 @@
               {
                 "en": "English",
                 "fa": "انگلیسی"
+              },
+              {
+                "en": "speak",
+                "fa": "صحبت کردن"
+              },
+              {
+                "en": "a little",
+                "fa": "کمی"
               }
             ]
           },
