@@ -39,13 +39,18 @@ A word takes its meaning from the task. *I'd like a cup* is «می‌خواهم�
 یکی»; *about ten hours* is «حدود»; phrases such as *a lot of*, *over there*,
 *turn off*, *looking for*, *Hurry up* and *eat out* are glossed whole.
 
+A past-tense verb takes the task's person: *my girlfriend bought* is «خرید»,
+*I ate* «خوردم», *they met* «آشنا شدند». A self-review of a sample found eight
+glosses that used the wrong person and corrected them; *stayed up* is glossed
+whole as «بیدار ماندم».
+
 ## Result
 
 | Measured result | Before | After |
 |---|---:|---:|
-| Staged `FRONTIER_TASK_VOCABULARY` | 2,383 | 1,667 |
-| Live `FRONTIER_TASK_VOCABULARY` | 4,768 | 4,047 |
-| Live: all deterministic findings | 4,815 | 4,094 |
+| Staged `FRONTIER_TASK_VOCABULARY` | 2,383 | 1,666 |
+| Live `FRONTIER_TASK_VOCABULARY` | 4,768 | 4,046 |
+| Live: all deterministic findings | 4,815 | 4,093 |
 
 No other code rose and the content lint is unchanged. The live ratchet was
 lowered, never raised.
