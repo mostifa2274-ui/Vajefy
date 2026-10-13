@@ -86,3 +86,21 @@ task fixes the form.
 The live count falls by more than the number of glosses because one gloss can
 clear a word that a task uses twice. No other code rose and the content lint is
 unchanged. The live ratchet was lowered, never raised.
+
+## What remains
+
+Of the 3,130 live task findings after this batch, 2,602 are not findings
+under the staged CEFR-J order: they are core words the live order teaches late
+(*do* 224, *on* 221, *not* 198, *can* 168, *to* 154, *at* 143, *please* 94 …).
+Adopting the staged curriculum clears them; glossing them in the live course
+would teach function words poorly and become redundant at the switch.
+
+The other 528 are findings under both orders. 250 are function words. Most of
+the rest are the 205 choice-option cases: 147 deliberate look-alike or
+contrast distractors (*thirteen/thirty*, *hat/hot/hate*, *mouse/mouth*,
+*say/tell/talk*, *much/many/lot*) and 58 tested answers, mostly function
+words (*by*, *much*, *any*, *about*). Rewording them to earlier words would
+remove the contrast the task exists to test, so they are left as they are,
+like the 45 switch cases in `docs/CEFRJ_SWITCH_SUPPORT_GLOSSES_2026-10-12.md`.
+Clearing them needs an owner decision: teach each contrast pair before the
+task, or accept a documented exception for deliberate distractors.
