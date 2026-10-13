@@ -528,7 +528,25 @@
             "answer": "apples",
             "accept": [],
             "fa": "او سه سیب قرمز در کیسه گذاشت.",
-            "why": "سه تا: apples."
+            "why": "سه تا: apples.",
+            "support": [
+              {
+                "en": "put",
+                "fa": "گذاشتن"
+              },
+              {
+                "en": "three",
+                "fa": "سه"
+              },
+              {
+                "en": "red",
+                "fa": "قرمز"
+              },
+              {
+                "en": "bag",
+                "fa": "کیف"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -559,7 +577,13 @@
             "frame": "I like ___ juice.",
             "answer": "apple",
             "accept": [],
-            "why": "apple پیش از juice نوع آن را می‌گوید: apple juice."
+            "why": "apple پیش از juice نوع آن را می‌گوید: apple juice.",
+            "support": [
+              {
+                "en": "juice",
+                "fa": "آب‌میوه"
+              }
+            ]
           }
         ]
       }
@@ -652,6 +676,12 @@
                 "text": "hair",
                 "ok": false,
                 "why": "hair مو است."
+              }
+            ],
+            "support": [
+              {
+                "en": "broke",
+                "fa": "شکست"
               }
             ]
           },
@@ -861,7 +891,13 @@
               "start"
             ],
             "fa": "لطفاً ساکت باشید. امتحان دارد شروع می‌شود.",
-            "why": "بعد از be going to فعل ساده می‌آید: be going to + begin."
+            "why": "بعد از be going to فعل ساده می‌آید: be going to + begin.",
+            "support": [
+              {
+                "en": "test",
+                "fa": "امتحان"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -882,6 +918,12 @@
                 "text": "begins",
                 "ok": false,
                 "why": "ago فعل گذشته می‌خواهد."
+              }
+            ],
+            "support": [
+              {
+                "en": "game",
+                "fa": "بازی"
               }
             ]
           },
@@ -974,7 +1016,13 @@
               "bike"
             ],
             "fa": "او هر روز با دوچرخه سر کار می‌رود. ورزش خوبی است.",
-            "why": "برای وسیلهٔ سفر by bicycle، بدون the: by bicycle."
+            "why": "برای وسیلهٔ سفر by bicycle، بدون the: by bicycle.",
+            "support": [
+              {
+                "en": "exercise",
+                "fa": "ورزش"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1757,6 +1805,12 @@
                 "ok": false,
                 "why": "to the concert برای رفتن است، نه بودن."
               }
+            ],
+            "support": [
+              {
+                "en": "enjoy",
+                "fa": "لذت بردی"
+              }
             ]
           },
           {
@@ -1843,7 +1897,21 @@
               "discussion"
             ],
             "fa": "دربارهٔ موسیقی گفت‌وگوی جالبی داشتیم.",
-            "why": "برای گفت‌وگو کردن have a conversation: have a conversation."
+            "why": "برای گفت‌وگو کردن have a conversation: have a conversation.",
+            "support": [
+              {
+                "en": "interesting",
+                "fa": "جالب"
+              },
+              {
+                "en": "about",
+                "fa": "دربارهٔ"
+              },
+              {
+                "en": "music",
+                "fa": "موسیقی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1876,7 +1944,13 @@
             "accept": [
               "call"
             ],
-            "why": "phone پیش از conversation یعنی «تلفنی»: a phone conversation."
+            "why": "phone پیش از conversation یعنی «تلفنی»: a phone conversation.",
+            "support": [
+              {
+                "en": "short",
+                "fa": "کوتاه"
+              }
+            ]
           }
         ]
       }
@@ -2190,7 +2264,13 @@
               "people"
             ],
             "fa": "وقتی سفر می‌کنی، دربارهٔ فرهنگ‌های دیگر یاد می‌گیری.",
-            "why": "فرهنگ‌های دیگر: other cultures."
+            "why": "فرهنگ‌های دیگر: other cultures.",
+            "support": [
+              {
+                "en": "about",
+                "fa": "دربارهٔ"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2332,6 +2412,12 @@
                 "text": "cupes",
                 "ok": false,
                 "why": "جمع cup فقط s می‌گیرد."
+              }
+            ],
+            "support": [
+              {
+                "en": "three",
+                "fa": "سه"
               }
             ]
           },
@@ -2533,7 +2619,13 @@
               "perfect"
             ],
             "fa": "ممنون بابت شام. خیلی خوشمزه بود!",
-            "why": "delicious = خوشمزه."
+            "why": "delicious = خوشمزه.",
+            "support": [
+              {
+                "en": "Thank you",
+                "fa": "ممنون"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2560,6 +2652,10 @@
               {
                 "en": "tastes",
                 "fa": "مزه می‌دهد"
+              },
+              {
+                "en": "cake",
+                "fa": "کیک"
               }
             ]
           },
@@ -2573,7 +2669,13 @@
               "good",
               "tasty"
             ],
-            "why": "delicious صفت است و بعد از be می‌آید: really delicious."
+            "why": "delicious صفت است و بعد از be می‌آید: really delicious.",
+            "support": [
+              {
+                "en": "really",
+                "fa": "واقعاً"
+              }
+            ]
           }
         ]
       }
@@ -2882,6 +2984,16 @@
                 "ok": false,
                 "why": "بعد از a lot of اسم جمع لازم است."
               }
+            ],
+            "support": [
+              {
+                "en": "a lot of",
+                "fa": "مقدار زیادی"
+              },
+              {
+                "en": "dirty",
+                "fa": "کثیف"
+              }
             ]
           },
           {
@@ -2891,7 +3003,13 @@
             "frame": "The ___ are clean.",
             "answer": "dishes",
             "accept": [],
-            "why": "dishes = ظرف‌ها."
+            "why": "dishes = ظرف‌ها.",
+            "support": [
+              {
+                "en": "clean",
+                "fa": "تمیز"
+              }
+            ]
           }
         ]
       },
@@ -3084,7 +3202,13 @@
               "paint"
             ],
             "fa": "می‌توانی تصویری از خانه‌ات بکشی؟",
-            "why": "برای کشیدن نقاشی draw a picture: draw a picture."
+            "why": "برای کشیدن نقاشی draw a picture: draw a picture.",
+            "support": [
+              {
+                "en": "picture",
+                "fa": "تصویر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3106,6 +3230,12 @@
                 "ok": false,
                 "why": "drawn بدون have نمی‌آید."
               }
+            ],
+            "support": [
+              {
+                "en": "pictures",
+                "fa": "تصویرها"
+              }
             ]
           },
           {
@@ -3117,7 +3247,13 @@
             "accept": [
               "paint"
             ],
-            "why": "بعد از can فعل ساده می‌آید: can + draw."
+            "why": "بعد از can فعل ساده می‌آید: can + draw.",
+            "support": [
+              {
+                "en": "well",
+                "fa": "خوب"
+              }
+            ]
           }
         ]
       }
@@ -3191,7 +3327,21 @@
               "skirt"
             ],
             "fa": "خواهرم برای مهمانی یک پیراهن قرمز قشنگ خرید.",
-            "why": "رنگ پیش از dress می‌آید: a red dress."
+            "why": "رنگ پیش از dress می‌آید: a red dress.",
+            "support": [
+              {
+                "en": "beautiful",
+                "fa": "زیبا"
+              },
+              {
+                "en": "red",
+                "fa": "قرمز"
+              },
+              {
+                "en": "party",
+                "fa": "مهمانی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3213,6 +3363,12 @@
                 "ok": false,
                 "why": "بعد از ss، es می‌آید."
               }
+            ],
+            "support": [
+              {
+                "en": "summer",
+                "fa": "تابستان"
+              }
             ]
           },
           {
@@ -3222,7 +3378,13 @@
             "frame": "This ___ is very pretty.",
             "answer": "dress",
             "accept": [],
-            "why": "dress = پیراهن زنانه."
+            "why": "dress = پیراهن زنانه.",
+            "support": [
+              {
+                "en": "pretty",
+                "fa": "قشنگ"
+              }
+            ]
           }
         ]
       },
@@ -3284,7 +3446,17 @@
             "answer": "dressed",
             "accept": [],
             "fa": "زود لباس بپوش! اتوبوس دارد می‌آید.",
-            "why": "برای لباس پوشیدن get dressed: get dressed."
+            "why": "برای لباس پوشیدن get dressed: get dressed.",
+            "support": [
+              {
+                "en": "quickly",
+                "fa": "سریع"
+              },
+              {
+                "en": "bus",
+                "fa": "اتوبوس"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3398,7 +3570,13 @@
               "liked"
             ],
             "fa": "از سفر خیلی لذت بردیم. عالی بود.",
-            "why": "گذشته: enjoyed."
+            "why": "گذشته: enjoyed.",
+            "support": [
+              {
+                "en": "great",
+                "fa": "عالی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3506,7 +3684,21 @@
               "instance"
             ],
             "fa": "بعضی حیوان‌ها، مثلاً گربه و سگ، با آدم‌ها زندگی می‌کنند.",
-            "why": "for example یعنی «مثلاً»: for example."
+            "why": "for example یعنی «مثلاً»: for example.",
+            "support": [
+              {
+                "en": "animals",
+                "fa": "حیوانات"
+              },
+              {
+                "en": "cats",
+                "fa": "گربه‌ها"
+              },
+              {
+                "en": "dogs",
+                "fa": "سگ‌ها"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3722,7 +3914,17 @@
             "answer": "false",
             "accept": [],
             "fa": "«گربه‌ها می‌توانند پرواز کنند.» درست است یا غلط؟",
-            "why": "متضاد true، false است: true or false."
+            "why": "متضاد true، false است: true or false.",
+            "support": [
+              {
+                "en": "cats",
+                "fa": "گربه‌ها"
+              },
+              {
+                "en": "true",
+                "fa": "درست"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3943,7 +4145,13 @@
               "vegetables"
             ],
             "fa": "گوشت نمی‌خورم، ولی ماهی می‌خورم.",
-            "why": "fish = ماهی."
+            "why": "fish = ماهی.",
+            "support": [
+              {
+                "en": "meat",
+                "fa": "گوشت"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3964,6 +4172,12 @@
                 "text": "a fish",
                 "ok": false,
                 "why": "بعد از three، a نمی‌آید."
+              }
+            ],
+            "support": [
+              {
+                "en": "three",
+                "fa": "سه"
               }
             ]
           },
@@ -4287,7 +4501,17 @@
               "roses"
             ],
             "fa": "باغ پر از گل‌های قرمز و زرد است.",
-            "why": "flowers = گل‌ها."
+            "why": "flowers = گل‌ها.",
+            "support": [
+              {
+                "en": "red",
+                "fa": "قرمز"
+              },
+              {
+                "en": "yellow",
+                "fa": "زرد"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4309,6 +4533,12 @@
                 "ok": false,
                 "why": "املای درست: flowers."
               }
+            ],
+            "support": [
+              {
+                "en": "picture",
+                "fa": "تصویر"
+              }
             ]
           },
           {
@@ -4318,7 +4548,13 @@
             "frame": "The ___ are very beautiful.",
             "answer": "flowers",
             "accept": [],
-            "why": "flowers = گل‌ها."
+            "why": "flowers = گل‌ها.",
+            "support": [
+              {
+                "en": "beautiful",
+                "fa": "زیبا"
+              }
+            ]
           }
         ]
       }
@@ -4532,7 +4768,13 @@
             "accept": [
               "4"
             ],
-            "why": "four = چهار."
+            "why": "four = چهار.",
+            "support": [
+              {
+                "en": "tickets",
+                "fa": "بلیت"
+              }
+            ]
           }
         ]
       }
@@ -4606,7 +4848,13 @@
               "a good time"
             ],
             "fa": "خداحافظ! در مهمانی خوش بگذره!",
-            "why": "برای «خوش بگذره» have fun: have fun."
+            "why": "برای «خوش بگذره» have fun: have fun.",
+            "support": [
+              {
+                "en": "party",
+                "fa": "مهمانی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4628,6 +4876,12 @@
                 "ok": false,
                 "why": "fun غیرقابل‌شمارش است."
               }
+            ],
+            "support": [
+              {
+                "en": "party",
+                "fa": "مهمانی"
+              }
             ]
           },
           {
@@ -4637,7 +4891,17 @@
             "frame": "We play football for ___.",
             "answer": "fun",
             "accept": [],
-            "why": "for fun = برای سرگرمی."
+            "why": "for fun = برای سرگرمی.",
+            "support": [
+              {
+                "en": "play",
+                "fa": "بازی کردن"
+              },
+              {
+                "en": "football",
+                "fa": "فوتبال"
+              }
+            ]
           }
         ]
       }
@@ -4941,7 +5205,13 @@
             "answer": "green",
             "accept": [],
             "fa": "پشت چراغ قرمز بایست و با چراغ سبز برو.",
-            "why": "green light = چراغ سبز."
+            "why": "green light = چراغ سبز.",
+            "support": [
+              {
+                "en": "light",
+                "fa": "چراغ راهنمایی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4962,6 +5232,12 @@
                 "text": "brown",
                 "ok": false,
                 "why": "آبی و زرد قهوه‌ای نمی‌شود."
+              }
+            ],
+            "support": [
+              {
+                "en": "yellow",
+                "fa": "زرد"
               }
             ]
           },
@@ -5638,6 +5914,16 @@
                 "ok": false,
                 "why": "ear گوش است."
               }
+            ],
+            "support": [
+              {
+                "en": "because",
+                "fa": "چون"
+              },
+              {
+                "en": "broke",
+                "fa": "شکست"
+              }
             ]
           },
           {
@@ -6047,7 +6333,13 @@
               "talked about"
             ],
             "fa": "امروز سر کلاس دربارهٔ داستانی که خواندیم بحث کردیم.",
-            "why": "گذشته: discussed."
+            "why": "گذشته: discussed.",
+            "support": [
+              {
+                "en": "story",
+                "fa": "داستان"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6069,6 +6361,12 @@
                 "ok": false,
                 "why": "discuss on غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "problem",
+                "fa": "مشکل"
+              }
             ]
           },
           {
@@ -6078,7 +6376,13 @@
             "frame": "Let's ___ it together.",
             "answer": "discuss",
             "accept": [],
-            "why": "discuss + موضوع."
+            "why": "discuss + موضوع.",
+            "support": [
+              {
+                "en": "together",
+                "fa": "با هم"
+              }
+            ]
           }
         ]
       }
@@ -6275,6 +6579,16 @@
                 "ok": false,
                 "why": "برای وعده‌های غذا meals می‌گوییم."
               }
+            ],
+            "support": [
+              {
+                "en": "Most people",
+                "fa": "بیشترِ مردم"
+              },
+              {
+                "en": "three",
+                "fa": "سه"
+              }
             ]
           },
           {
@@ -6284,7 +6598,13 @@
             "frame": "We had a hot ___.",
             "answer": "meal",
             "accept": [],
-            "why": "meal یعنی «یک وعده غذا» و قابل‌شمارش است: a hot meal."
+            "why": "meal یعنی «یک وعده غذا» و قابل‌شمارش است: a hot meal.",
+            "support": [
+              {
+                "en": "hot",
+                "fa": "داغ"
+              }
+            ]
           }
         ]
       }
@@ -6463,7 +6783,17 @@
               "bird"
             ],
             "fa": "مرغ نوعی گوشت است.",
-            "why": "meat = گوشت."
+            "why": "meat = گوشت.",
+            "support": [
+              {
+                "en": "Chicken",
+                "fa": "مرغ"
+              },
+              {
+                "en": "kind",
+                "fa": "نوع"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6484,6 +6814,12 @@
                 "text": "a",
                 "ok": false,
                 "why": "how a meat غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "need",
+                "fa": "لازم داری"
               }
             ]
           },
@@ -7147,7 +7483,17 @@
               "paper"
             ],
             "fa": "خبرها را در گوشی‌ام می‌خوانم، نه در روزنامه.",
-            "why": "newspaper = روزنامه."
+            "why": "newspaper = روزنامه.",
+            "support": [
+              {
+                "en": "read",
+                "fa": "خواندن"
+              },
+              {
+                "en": "news",
+                "fa": "خبر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7168,6 +7514,16 @@
                 "text": "at",
                 "ok": false,
                 "why": "at the newspaper غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "story",
+                "fa": "داستان"
+              },
+              {
+                "en": "about",
+                "fa": "دربارهٔ"
               }
             ]
           },
@@ -7357,7 +7713,13 @@
             "answer": "nurse",
             "accept": [],
             "fa": "پرستار به پزشک‌ها کمک می‌کند و از بیماران در بیمارستان مراقبت می‌کند.",
-            "why": "nurse = پرستار."
+            "why": "nurse = پرستار.",
+            "support": [
+              {
+                "en": "helps",
+                "fa": "کمک می‌کند"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7572,6 +7934,10 @@
               {
                 "en": "inviting",
                 "fa": "دعوت کردن"
+              },
+              {
+                "en": "birthday",
+                "fa": "تولد"
               }
             ]
           },
@@ -7726,6 +8092,10 @@
               {
                 "en": "few",
                 "fa": "چند"
+              },
+              {
+                "en": "busy",
+                "fa": "پرمشغله"
               }
             ]
           },
@@ -7736,7 +8106,13 @@
             "frame": "These are photos from the ___.",
             "answer": "past",
             "accept": [],
-            "why": "the past = گذشته."
+            "why": "the past = گذشته.",
+            "support": [
+              {
+                "en": "photos",
+                "fa": "عکس‌ها"
+              }
+            ]
           }
         ]
       },
@@ -7928,6 +8304,12 @@
                 "text": "a pen",
                 "ok": false,
                 "why": "a red a pen غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "red",
+                "fa": "قرمز"
               }
             ]
           },
@@ -8366,7 +8748,13 @@
               "slice"
             ],
             "fa": "یک تکهٔ دیگر نان می‌خواهی؟",
-            "why": "برای شمردن چیز غیرقابل‌شمارش a piece of: a piece of bread."
+            "why": "برای شمردن چیز غیرقابل‌شمارش a piece of: a piece of bread.",
+            "support": [
+              {
+                "en": "another",
+                "fa": "یک … دیگر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8387,6 +8775,16 @@
                 "text": "peaces",
                 "ok": false,
                 "why": "peace یعنی صلح."
+              }
+            ],
+            "support": [
+              {
+                "en": "need",
+                "fa": "لازم دارم"
+              },
+              {
+                "en": "paper",
+                "fa": "کاغذ"
               }
             ]
           },
@@ -8694,6 +9092,10 @@
               {
                 "en": "main",
                 "fa": "اصلی"
+              },
+              {
+                "en": "story",
+                "fa": "داستان"
               }
             ]
           },
@@ -8722,6 +9124,14 @@
               {
                 "en": "roads",
                 "fa": "جاده‌ها"
+              },
+              {
+                "en": "leave",
+                "fa": "برویم"
+              },
+              {
+                "en": "busy",
+                "fa": "شلوغ"
               }
             ]
           },
@@ -8732,7 +9142,13 @@
             "frame": "It's an important ___.",
             "answer": "point",
             "accept": [],
-            "why": "important با واکه شروع می‌شود و an می‌گیرد: an important point."
+            "why": "important با واکه شروع می‌شود و an می‌گیرد: an important point.",
+            "support": [
+              {
+                "en": "important",
+                "fa": "مهم"
+              }
+            ]
           }
         ]
       },
@@ -8796,7 +9212,13 @@
               "mark"
             ],
             "fa": "هر جواب درست یک امتیاز می‌گیرد.",
-            "why": "point = امتیاز."
+            "why": "point = امتیاز.",
+            "support": [
+              {
+                "en": "answer",
+                "fa": "جواب"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8817,6 +9239,12 @@
                 "text": "for",
                 "ok": false,
                 "why": "win for five points غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "won",
+                "fa": "بردند"
               }
             ]
           },
@@ -8904,7 +9332,17 @@
               "so"
             ],
             "fa": "ممنون! واقعاً لطف داری.",
-            "why": "really + صفت."
+            "why": "really + صفت.",
+            "support": [
+              {
+                "en": "Thank you",
+                "fa": "ممنون"
+              },
+              {
+                "en": "kind",
+                "fa": "لطف (مهربانی)"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8931,6 +9369,10 @@
               {
                 "en": "film",
                 "fa": "فیلم"
+              },
+              {
+                "en": "enjoyed",
+                "fa": "لذت بردم"
               }
             ]
           },
@@ -8944,7 +9386,13 @@
               "very",
               "so"
             ],
-            "why": "really + صفت."
+            "why": "really + صفت.",
+            "support": [
+              {
+                "en": "tired",
+                "fa": "خسته"
+              }
+            ]
           }
         ]
       }
@@ -9341,7 +9789,13 @@
               "sandwich"
             ],
             "fa": "ناهار سوپ و سالاد خوردم.",
-            "why": "salad قابل‌شمارش است و مفردش اینجا a می‌گیرد: a salad."
+            "why": "salad قابل‌شمارش است و مفردش اینجا a می‌گیرد: a salad.",
+            "support": [
+              {
+                "en": "soup",
+                "fa": "سوپ"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9362,6 +9816,12 @@
                 "text": "cook",
                 "ok": false,
                 "why": "سالاد پخته نمی‌شود."
+              }
+            ],
+            "support": [
+              {
+                "en": "help",
+                "fa": "کمک کردن"
               }
             ]
           },
@@ -9468,6 +9928,20 @@
                 "ok": false,
                 "why": "بعد از three اسم جمع لازم است."
               }
+            ],
+            "support": [
+              {
+                "en": "bought",
+                "fa": "خریدیم"
+              },
+              {
+                "en": "three",
+                "fa": "سه"
+              },
+              {
+                "en": "trip",
+                "fa": "سفر"
+              }
             ]
           },
           {
@@ -9551,7 +10025,13 @@
             "answer": "scientist",
             "accept": [],
             "fa": "دانشمند جهان را مطالعه می‌کند و چیزهای تازه کشف می‌کند.",
-            "why": "scientist = دانشمند."
+            "why": "scientist = دانشمند.",
+            "support": [
+              {
+                "en": "finds out",
+                "fa": "کشف می‌کند"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9572,6 +10052,12 @@
                 "text": "sciences",
                 "ok": false,
                 "why": "بعد از a اسم مفرد؛ و science شغل نیست."
+              }
+            ],
+            "support": [
+              {
+                "en": "grows up",
+                "fa": "بزرگ شود"
               }
             ]
           },
@@ -10008,6 +10494,10 @@
               {
                 "en": "beautifully",
                 "fa": "به زیبایی"
+              },
+              {
+                "en": "great",
+                "fa": "عالی"
               }
             ]
           },
@@ -10447,7 +10937,13 @@
             "answer": "spring",
             "accept": [],
             "fa": "زمستان، بهار، تابستان، پاییز.",
-            "why": "فصلِ بعد از winter: spring."
+            "why": "فصلِ بعد از winter: spring.",
+            "support": [
+              {
+                "en": "autumn",
+                "fa": "پاییز"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10574,6 +11070,12 @@
                 "ok": false,
                 "why": "yesterday فعل گذشته می‌خواهد."
               }
+            ],
+            "support": [
+              {
+                "en": "bus stop",
+                "fa": "ایستگاه اتوبوس"
+              }
             ]
           },
           {
@@ -10659,7 +11161,13 @@
             "answer": "stopped",
             "accept": [],
             "fa": "باران بند آمد، پس بیرون رفتیم.",
-            "why": "گذشته: stopped."
+            "why": "گذشته: stopped.",
+            "support": [
+              {
+                "en": "raining",
+                "fa": "باران آمدن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10863,7 +11371,13 @@
             "answer": "tall",
             "accept": [],
             "fa": "فقط ده سالش است، ولی برای سنش خیلی قدبلند است.",
-            "why": "tall = قدبلند."
+            "why": "tall = قدبلند.",
+            "support": [
+              {
+                "en": "age",
+                "fa": "سن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11976,6 +12490,12 @@
                 "ok": false,
                 "why": "visit at غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "summer",
+                "fa": "تابستان"
+              }
             ]
           },
           {
@@ -12092,7 +12612,13 @@
             "frame": "Your ___ was short.",
             "answer": "visit",
             "accept": [],
-            "why": "visit = دیدار."
+            "why": "visit = دیدار.",
+            "support": [
+              {
+                "en": "short",
+                "fa": "کوتاه"
+              }
+            ]
           }
         ]
       }

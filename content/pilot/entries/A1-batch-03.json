@@ -180,7 +180,13 @@
       "answer": "email",
       "accept": [],
       "fa": "الان وقت حرف زدن ندارم. بعداً برایت ایمیل می‌زنم.",
-      "why": "email + شخص."
+      "why": "email + شخص.",
+      "support": [
+       {
+        "en": "talk",
+        "fa": "حرف زدن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -201,6 +207,12 @@
         "text": "emailing",
         "ok": false,
         "why": "بعد از please فعل ساده می‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "photos",
+        "fa": "عکس‌ها"
        }
       ]
      },
@@ -496,7 +508,17 @@
        "cost"
       ],
       "fa": "قیمت این کت پنجاه دلار است.",
-      "why": "the price of = قیمتِ."
+      "why": "the price of = قیمتِ.",
+      "support": [
+       {
+        "en": "coat",
+        "fa": "پالتو"
+       },
+       {
+        "en": "dollars",
+        "fa": "دلار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -527,7 +549,13 @@
       "frame": "What's the ___ of a ticket?",
       "answer": "price",
       "accept": [],
-      "why": "the price of یعنی «قیمتِ …»: the price of."
+      "why": "the price of یعنی «قیمتِ …»: the price of.",
+      "support": [
+       {
+        "en": "ticket",
+        "fa": "بلیت"
+       }
+      ]
      }
     ]
    }
@@ -638,7 +666,13 @@
       "frame": "I hope you get ___ soon.",
       "answer": "better",
       "accept": [],
-      "why": "get better = بهتر شدن."
+      "why": "get better = بهتر شدن.",
+      "support": [
+       {
+        "en": "hope",
+        "fa": "امیدوارم"
+       }
+      ]
      }
     ]
    }
@@ -871,7 +905,13 @@
       "frame": "I ___ stories to my daughter every night.",
       "answer": "read",
       "accept": [],
-      "why": "برای خواندن برای کسی read to: read to someone."
+      "why": "برای خواندن برای کسی read to: read to someone.",
+      "support": [
+       {
+        "en": "stories",
+        "fa": "قصه‌ها"
+       }
+      ]
      }
     ]
    }
@@ -972,6 +1012,10 @@
        {
         "en": "service",
         "fa": "خدمات (fire service: آتش‌نشانی)"
+       },
+       {
+        "en": "fire",
+        "fa": "آتش‌سوزی"
        }
       ]
      },
@@ -1293,6 +1337,16 @@
         "ok": false,
         "why": "to جهتِ رفتن را نشان می‌دهد، نه محل کار."
        }
+      ],
+      "support": [
+       {
+        "en": "nurse",
+        "fa": "پرستار"
+       },
+       {
+        "en": "town",
+        "fa": "شهر"
+       }
       ]
      },
      {
@@ -1373,7 +1427,13 @@
       "answer": "Open",
       "accept": [],
       "fa": "لطفاً کتاب‌هایتان را صفحهٔ ۲۰ باز کنید.",
-      "why": "برای باز کردن کتاب open مفعول مستقیم می‌گیرد: open a book."
+      "why": "برای باز کردن کتاب open مفعول مستقیم می‌گیرد: open a book.",
+      "support": [
+       {
+        "en": "page",
+        "fa": "صفحهٔ"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1395,6 +1455,16 @@
         "ok": false,
         "why": "make the light غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "dark",
+        "fa": "تاریک"
+       },
+       {
+        "en": "light",
+        "fa": "چراغ"
+       }
       ]
      },
      {
@@ -1409,6 +1479,10 @@
        {
         "en": "museum",
         "fa": "موزه"
+       },
+       {
+        "en": "ten",
+        "fa": "ساعت ده"
        }
       ]
      }
@@ -1468,7 +1542,13 @@
       "answer": "open",
       "accept": [],
       "fa": "سوپرمارکت تا ساعت ده شب باز است.",
-      "why": "حالت باز بودن: open."
+      "why": "حالت باز بودن: open.",
+      "support": [
+       {
+        "en": "until",
+        "fa": "تا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1489,6 +1569,16 @@
         "text": "opening",
         "ok": false,
         "why": "opening معنای «باز» ندارد."
+       }
+      ],
+      "support": [
+       {
+        "en": "leave",
+        "fa": "نگذار"
+       },
+       {
+        "en": "cold",
+        "fa": "سرد"
        }
       ]
      },
@@ -1613,7 +1703,13 @@
       "frame": "What was the ___ of the match?",
       "answer": "result",
       "accept": [],
-      "why": "the result of یعنی «نتیجهٔ …»: the result of."
+      "why": "the result of یعنی «نتیجهٔ …»: the result of.",
+      "support": [
+       {
+        "en": "match",
+        "fa": "مسابقه"
+       }
+      ]
      }
     ]
    }
@@ -1683,7 +1779,13 @@
       "answer": "down",
       "accept": [],
       "fa": "خسته‌ام. باید یک ساعت دراز بکشم.",
-      "why": "lie down = دراز کشیدن."
+      "why": "lie down = دراز کشیدن.",
+      "support": [
+       {
+        "en": "tired",
+        "fa": "خسته"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1705,6 +1807,16 @@
         "ok": false,
         "why": "ترتیب کلمه‌ها غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "number",
+        "fa": "شماره"
+       },
+       {
+        "en": "forget",
+        "fa": "فراموش نکنی"
+       }
       ]
      },
      {
@@ -1714,7 +1826,13 @@
       "frame": "Please sit ___ here.",
       "answer": "down",
       "accept": [],
-      "why": "sit down = نشستن."
+      "why": "sit down = نشستن.",
+      "support": [
+       {
+        "en": "sit",
+        "fa": "نشستن"
+       }
+      ]
      }
     ]
    },
@@ -1778,6 +1896,10 @@
        {
         "en": "hill",
         "fa": "تپه"
+       },
+       {
+        "en": "ran",
+        "fa": "دویدند"
        }
       ]
      },
@@ -1801,6 +1923,12 @@
         "ok": false,
         "why": "from فقط مبدأ است."
        }
+      ],
+      "support": [
+       {
+        "en": "post office",
+        "fa": "ادارهٔ پست"
+       }
       ]
      },
      {
@@ -1815,6 +1943,10 @@
        {
         "en": "stairs",
         "fa": "پله‌ها"
+       },
+       {
+        "en": "Walk",
+        "fa": "راه رفتن"
        }
       ]
      }
@@ -2134,6 +2266,10 @@
        {
         "en": "fridge",
         "fa": "یخچال"
+       },
+       {
+        "en": "go bad",
+        "fa": "خراب شدن"
        }
       ]
      },
@@ -2156,6 +2292,12 @@
         "text": "hold",
         "ok": false,
         "why": "hold یعنی در دست گرفتن، نه نگهداری طولانی."
+       }
+      ],
+      "support": [
+       {
+        "en": "photos",
+        "fa": "عکس‌ها"
        }
       ]
      },
@@ -2278,7 +2420,13 @@
       "frame": "The bad news ___ that the train is late.",
       "answer": "is",
       "accept": [],
-      "why": "news فعل مفرد می‌گیرد."
+      "why": "news فعل مفرد می‌گیرد.",
+      "support": [
+       {
+        "en": "bad",
+        "fa": "بد"
+       }
+      ]
      }
     ]
    }
@@ -2610,7 +2758,13 @@
       "answer": "young",
       "accept": [],
       "fa": "مادربزرگم پیر است، اما احساس جوانی می‌کند.",
-      "why": "young = جوان."
+      "why": "young = جوان.",
+      "support": [
+       {
+        "en": "feels",
+        "fa": "احساس می‌کند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2717,7 +2871,17 @@
        "cannot"
       ],
       "fa": "کلیدهایم را پیدا نمی‌کنم. آن‌ها را دیده‌ای؟",
-      "why": "can't + فعل ساده."
+      "why": "can't + فعل ساده.",
+      "support": [
+       {
+        "en": "find",
+        "fa": "پیدا کردن"
+       },
+       {
+        "en": "keys",
+        "fa": "کلیدها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3123,7 +3287,13 @@
       "answer": "designed",
       "accept": [],
       "fa": "چه کسی این ساختمان زیبا را طراحی کرد؟",
-      "why": "گذشتهٔ design."
+      "why": "گذشتهٔ design.",
+      "support": [
+       {
+        "en": "beautiful",
+        "fa": "زیبا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3511,7 +3681,13 @@
       "answer": "rain",
       "accept": [],
       "fa": "چتر ببر. امروز خیلی باران می‌آید.",
-      "why": "rain غیرقابل‌شمارش است."
+      "why": "rain غیرقابل‌شمارش است.",
+      "support": [
+       {
+        "en": "umbrella",
+        "fa": "چتر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3733,6 +3909,12 @@
         "ok": false,
         "why": "age این‌طور به کار نمی‌رود."
        }
+      ],
+      "support": [
+       {
+        "en": "little",
+        "fa": "کوچک"
+       }
       ]
      },
      {
@@ -3814,7 +3996,13 @@
       "answer": "tea",
       "accept": [],
       "fa": "چای دم می‌کنم. شکر می‌خواهی؟",
-      "why": "برای دم کردن چای make می‌گوییم: make tea."
+      "why": "برای دم کردن چای make می‌گوییم: make tea.",
+      "support": [
+       {
+        "en": "sugar",
+        "fa": "شکر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3836,6 +4024,12 @@
         "ok": false,
         "why": "a cup with tea طبیعی نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "cup",
+        "fa": "فنجان"
+       }
       ]
      },
      {
@@ -3845,7 +4039,13 @@
       "frame": "I like green ___.",
       "answer": "tea",
       "accept": [],
-      "why": "green tea = چای سبز."
+      "why": "green tea = چای سبز.",
+      "support": [
+       {
+        "en": "green",
+        "fa": "سبز"
+       }
+      ]
      }
     ]
    }
@@ -4027,7 +4227,13 @@
       "answer": "lunch",
       "accept": [],
       "fa": "گرسنه‌ام. ناهار چی داریم؟",
-      "why": "برای پرسیدن غذای ناهار؛ What's for lunch?: What's for lunch?"
+      "why": "برای پرسیدن غذای ناهار؛ What's for lunch?: What's for lunch?",
+      "support": [
+       {
+        "en": "hungry",
+        "fa": "گرسنه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4127,7 +4333,13 @@
       "answer": "machine",
       "accept": [],
       "fa": "می‌توانی از دستگاه کنار در بلیت بخری.",
-      "why": "ticket machine = دستگاه بلیت."
+      "why": "ticket machine = دستگاه بلیت.",
+      "support": [
+       {
+        "en": "door",
+        "fa": "در"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4148,6 +4360,16 @@
         "text": "box",
         "ok": false,
         "why": "box جعبه است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Put",
+        "fa": "گذاشتن"
+       },
+       {
+        "en": "dirty",
+        "fa": "کثیف"
        }
       ]
      },
@@ -4593,6 +4815,10 @@
        {
         "en": "Tabriz",
         "fa": "تبریز"
+       },
+       {
+        "en": "snows",
+        "fa": "برف می‌آید"
        }
       ]
      },
@@ -5085,7 +5311,13 @@
       "frame": "We ___ by bus.",
       "answer": "travel",
       "accept": [],
-      "why": "travel by + وسیله."
+      "why": "travel by + وسیله.",
+      "support": [
+       {
+        "en": "bus",
+        "fa": "اتوبوس"
+       }
+      ]
      }
     ]
    },
@@ -5178,6 +5410,10 @@
        {
         "en": "last week",
         "fa": "هفتهٔ گذشته"
+       },
+       {
+        "en": "great",
+        "fa": "عالی"
        }
       ]
      },
@@ -5193,6 +5429,10 @@
        {
         "en": "Air",
         "fa": "هوایی"
+       },
+       {
+        "en": "summer",
+        "fa": "تابستان"
        }
       ]
      }
@@ -5294,6 +5534,12 @@
         "text": "way",
         "ok": false,
         "why": "way یعنی راه."
+       }
+      ],
+      "support": [
+       {
+        "en": "business",
+        "fa": "کاری"
        }
       ]
      },
@@ -5406,6 +5652,10 @@
        {
         "en": "costs",
         "fa": "قیمتش ... است"
+       },
+       {
+        "en": "dollars",
+        "fa": "دلار"
        }
       ]
      },
@@ -5416,7 +5666,13 @@
       "frame": "It takes ___ minutes.",
       "answer": "twenty",
       "accept": [],
-      "why": "بعد از twenty اسم جمع می‌آید: twenty minutes."
+      "why": "بعد از twenty اسم جمع می‌آید: twenty minutes.",
+      "support": [
+       {
+        "en": "takes",
+        "fa": "طول می‌کشد"
+       }
+      ]
      }
     ]
    }
@@ -5589,7 +5845,13 @@
       "answer": "wears",
       "accept": [],
       "fa": "پدرم برای مطالعه عینک می‌زند.",
-      "why": "wear glasses = عینک زدن."
+      "why": "wear glasses = عینک زدن.",
+      "support": [
+       {
+        "en": "reading",
+        "fa": "مطالعه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5804,7 +6066,17 @@
       "answer": "cut",
       "accept": [],
       "fa": "می‌توانی کیک را هشت تکه کنی؟",
-      "why": "برای تکه کردن cut … into: cut into pieces."
+      "why": "برای تکه کردن cut … into: cut into pieces.",
+      "support": [
+       {
+        "en": "eight",
+        "fa": "هشت"
+       },
+       {
+        "en": "pieces",
+        "fa": "تکه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5831,6 +6103,14 @@
        {
         "en": "Last week",
         "fa": "هفتهٔ گذشته"
+       },
+       {
+        "en": "hair",
+        "fa": "مو"
+       },
+       {
+        "en": "short",
+        "fa": "کوتاه"
        }
       ]
      },
@@ -6205,6 +6485,10 @@
        {
         "en": "phrase",
         "fa": "عبارت"
+       },
+       {
+        "en": "means",
+        "fa": "یعنی؛ معنی می‌دهد"
        }
       ]
      }
@@ -6387,6 +6671,14 @@
        {
         "en": "bowl",
         "fa": "کاسه"
+       },
+       {
+        "en": "cold",
+        "fa": "سرد"
+       },
+       {
+        "en": "hot",
+        "fa": "داغ"
        }
       ]
      },
@@ -6516,6 +6808,12 @@
         "ok": false,
         "why": "written بدون has/was به‌تنهایی نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "letter",
+        "fa": "نامه"
+       }
       ]
      },
      {
@@ -6598,7 +6896,13 @@
       "answer": "business",
       "accept": [],
       "fa": "پدر و مادرم یک کسب‌وکار خانوادگی کوچک دارند.",
-      "why": "business به معنای «کسب‌وکار» قابل‌شمارش است: family business."
+      "why": "business به معنای «کسب‌وکار» قابل‌شمارش است: family business.",
+      "support": [
+       {
+        "en": "run",
+        "fa": "اداره می‌کنند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6732,6 +7036,16 @@
         "ok": false,
         "why": "at the computer یعنی پشت میز کامپیوتر، نه بازی روی آن."
        }
+      ],
+      "support": [
+       {
+        "en": "plays",
+        "fa": "بازی می‌کند"
+       },
+       {
+        "en": "games",
+        "fa": "بازی‌ها"
+       }
       ]
      },
      {
@@ -6741,7 +7055,13 @@
       "frame": "My ___ is broken.",
       "answer": "computer",
       "accept": [],
-      "why": "computer = کامپیوتر."
+      "why": "computer = کامپیوتر.",
+      "support": [
+       {
+        "en": "broken",
+        "fa": "خراب"
+       }
+      ]
      }
     ]
    }
@@ -7109,6 +7429,10 @@
        {
         "en": "Sara",
         "fa": "سارا"
+       },
+       {
+        "en": "Hello",
+        "fa": "سلام"
        }
       ]
      },
@@ -7191,7 +7515,13 @@
       "answer": "park",
       "accept": [],
       "fa": "بچه‌هایم پارک بزرگ نزدیک خانه‌مان را خیلی دوست دارند.",
-      "why": "park = پارک."
+      "why": "park = پارک.",
+      "support": [
+       {
+        "en": "near",
+        "fa": "نزدیکِ"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7213,6 +7543,12 @@
         "ok": false,
         "why": "garden باغچه است."
        }
+      ],
+      "support": [
+       {
+        "en": "leave",
+        "fa": "گذاشتی"
+       }
       ]
      },
      {
@@ -7222,7 +7558,13 @@
       "frame": "The children are playing in the ___.",
       "answer": "park",
       "accept": [],
-      "why": "برای بودن در پارک in the park: in the park."
+      "why": "برای بودن در پارک in the park: in the park.",
+      "support": [
+       {
+        "en": "playing",
+        "fa": "بازی می‌کنند"
+       }
+      ]
      }
     ]
    },
@@ -7285,6 +7627,14 @@
        {
         "en": "city centre",
         "fa": "مرکز شهر"
+       },
+       {
+        "en": "hard",
+        "fa": "سخت"
+       },
+       {
+        "en": "find",
+        "fa": "پیدا کردن"
        }
       ]
      },
@@ -7307,6 +7657,12 @@
         "text": "put park",
         "ok": false,
         "why": "این ساختار غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Sorry",
+        "fa": "ببخشید"
        }
       ]
      },
@@ -7391,7 +7747,17 @@
       "answer": "place",
       "accept": [],
       "fa": "اینجا جای خوبی برای نشستن و کتاب خواندن است.",
-      "why": "a place to + فعل."
+      "why": "a place to + فعل.",
+      "support": [
+       {
+        "en": "sit",
+        "fa": "نشستن"
+       },
+       {
+        "en": "read",
+        "fa": "خواندن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7433,6 +7799,10 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "watch",
+        "fa": "تماشا کردن"
        }
       ]
      }
@@ -7506,7 +7876,13 @@
       "answer": "river",
       "accept": [],
       "fa": "بچه‌ها در رودخانه شنا می‌کنند.",
-      "why": "river = رودخانه."
+      "why": "river = رودخانه.",
+      "support": [
+       {
+        "en": "swimming",
+        "fa": "شنا می‌کنند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7609,7 +7985,13 @@
       "answer": "stay",
       "accept": [],
       "fa": "باران می‌آید. بیا خانه بمانیم.",
-      "why": "برای در خانه ماندن stay at home: stay at home."
+      "why": "برای در خانه ماندن stay at home: stay at home.",
+      "support": [
+       {
+        "en": "raining",
+        "fa": "باران می‌آید"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7636,6 +8018,10 @@
        {
         "en": "Tehran",
         "fa": "تهران"
+       },
+       {
+        "en": "When",
+        "fa": "وقتی"
        }
       ]
      },
@@ -7943,7 +8329,13 @@
        "round"
       ],
       "fa": "آن‌ها یک سال دور دنیا سفر کردند.",
-      "why": "برای سفر به جاهای مختلف around the world: around the world."
+      "why": "برای سفر به جاهای مختلف around the world: around the world.",
+      "support": [
+       {
+        "en": "travelled",
+        "fa": "سفر کردند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7979,6 +8371,10 @@
        {
         "en": "lake",
         "fa": "دریاچه"
+       },
+       {
+        "en": "walk",
+        "fa": "قدم بزنیم"
        }
       ]
      }
@@ -8035,7 +8431,17 @@
        "about"
       ],
       "fa": "سفر حدود سه ساعت طول می‌کشد.",
-      "why": "around + عدد = حدود."
+      "why": "around + عدد = حدود.",
+      "support": [
+       {
+        "en": "trip",
+        "fa": "سفر"
+       },
+       {
+        "en": "takes",
+        "fa": "طول می‌کشد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8151,6 +8557,10 @@
        {
         "en": "toys",
         "fa": "اسباب‌بازی‌ها"
+       },
+       {
+        "en": "Put",
+        "fa": "گذاشتن"
        }
       ]
      },
@@ -8390,7 +8800,13 @@
       "answer": "clean",
       "accept": [],
       "fa": "دست‌هایت را بشوی. حالا تمیزند؟",
-      "why": "صفت: clean."
+      "why": "صفت: clean.",
+      "support": [
+       {
+        "en": "hands",
+        "fa": "دست‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8483,7 +8899,13 @@
       "answer": "clean",
       "accept": [],
       "fa": "می‌توانی بعد از شام در تمیز کردن آشپزخانه کمکم کنی؟",
-      "why": "clean + جا."
+      "why": "clean + جا.",
+      "support": [
+       {
+        "en": "help",
+        "fa": "کمک کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8588,7 +9010,17 @@
       "answer": "Drink",
       "accept": [],
       "fa": "هوا گرم است. زیاد آب بخور.",
-      "why": "مایعات: drink."
+      "why": "مایعات: drink.",
+      "support": [
+       {
+        "en": "hot",
+        "fa": "گرم"
+       },
+       {
+        "en": "a lot of",
+        "fa": "مقدار زیادی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8615,6 +9047,10 @@
        {
         "en": "Last night",
         "fa": "دیشب"
+       },
+       {
+        "en": "orange juice",
+        "fa": "آب پرتقال"
        }
       ]
      },
@@ -8625,7 +9061,13 @@
       "frame": "I ___ coffee in the morning.",
       "answer": "drink",
       "accept": [],
-      "why": "drink + نوشیدنی."
+      "why": "drink + نوشیدنی.",
+      "support": [
+       {
+        "en": "coffee",
+        "fa": "قهوه"
+       }
+      ]
      }
     ]
    },
@@ -8687,7 +9129,13 @@
       "answer": "drink",
       "accept": [],
       "fa": "نوشیدنی خنک میل دارید؟ آب‌میوه و آب داریم.",
-      "why": "a drink یعنی «یک نوشیدنی»: a cold drink."
+      "why": "a drink یعنی «یک نوشیدنی»: a cold drink.",
+      "support": [
+       {
+        "en": "cold",
+        "fa": "سرد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8709,6 +9157,16 @@
         "ok": false,
         "why": "drunk معنای دیگری دارد."
        }
+      ],
+      "support": [
+       {
+        "en": "summer",
+        "fa": "تابستان"
+       },
+       {
+        "en": "cold",
+        "fa": "سرد"
+       }
       ]
      },
      {
@@ -8718,7 +9176,13 @@
       "frame": "I'd like a hot ___.",
       "answer": "drink",
       "accept": [],
-      "why": "a hot drink = یک نوشیدنی گرم."
+      "why": "a hot drink = یک نوشیدنی گرم.",
+      "support": [
+       {
+        "en": "hot",
+        "fa": "داغ"
+       }
+      ]
      }
     ]
    }
@@ -8895,7 +9359,13 @@
       "answer": "form",
       "accept": [],
       "fa": "برای عضویت در کتابخانه باید این فرم را پر کنی.",
-      "why": "برای پر کردن فرم fill in a form: fill in a form."
+      "why": "برای پر کردن فرم fill in a form: fill in a form.",
+      "support": [
+       {
+        "en": "fill",
+        "fa": "پر کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8917,6 +9387,16 @@
         "ok": false,
         "why": "fill on غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "fill",
+        "fa": "پر کردن"
+       },
+       {
+        "en": "black",
+        "fa": "سیاه؛ مشکی"
+       }
       ]
      },
      {
@@ -8931,6 +9411,10 @@
        {
         "en": "online",
         "fa": "آنلاین؛ در اینترنت"
+       },
+       {
+        "en": "filled in",
+        "fa": "پر کردم"
        }
       ]
      }
@@ -9029,6 +9513,12 @@
         "ok": false,
         "why": "no opinion یعنی نظری ندارم، نه «نمی‌دانم»."
        }
+      ],
+      "support": [
+       {
+        "en": "Sorry",
+        "fa": "ببخشید"
+       }
       ]
      },
      {
@@ -9115,6 +9605,10 @@
        {
         "en": "straight",
         "fa": "مستقیم"
+       },
+       {
+        "en": "turn",
+        "fa": "بپیچ"
        }
       ]
      },
@@ -9143,6 +9637,10 @@
        {
         "en": "UK",
         "fa": "بریتانیا"
+       },
+       {
+        "en": "drive",
+        "fa": "رانندگی می‌کنند"
        }
       ]
      },
@@ -9153,7 +9651,17 @@
       "frame": "I carry my bag in my ___ hand.",
       "answer": "left",
       "accept": [],
-      "why": "left hand = دست چپ."
+      "why": "left hand = دست چپ.",
+      "support": [
+       {
+        "en": "carry",
+        "fa": "حمل کردن؛ بردن"
+       },
+       {
+        "en": "hand",
+        "fa": "دست"
+       }
+      ]
      }
     ]
    }
@@ -9225,7 +9733,13 @@
       "answer": "office",
       "accept": [],
       "fa": "الان نمی‌توانم حرف بزنم. هنوز سر کارم.",
-      "why": "برای سر کار بودن at the office: at the office."
+      "why": "برای سر کار بودن at the office: at the office.",
+      "support": [
+       {
+        "en": "talk",
+        "fa": "حرف زدن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9496,6 +10010,12 @@
         "text": "Each",
         "ok": false,
         "why": "each با اسم مفرد و فعل مفرد می‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "doctors",
+        "fa": "پزشک"
        }
       ]
      },
@@ -9792,7 +10312,13 @@
       "answer": "glass",
       "accept": [],
       "fa": "لطفاً این لیوان را پر از آب کن.",
-      "why": "glass = لیوان."
+      "why": "glass = لیوان.",
+      "support": [
+       {
+        "en": "Fill",
+        "fa": "پر کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9813,6 +10339,12 @@
         "text": "glass",
         "ok": false,
         "why": "glass بدون s یعنی شیشه یا لیوان."
+       }
+      ],
+      "support": [
+       {
+        "en": "reading",
+        "fa": "مطالعه"
        }
       ]
      },
@@ -9893,6 +10425,22 @@
        {
         "en": "without",
         "fa": "بدون"
+       },
+       {
+        "en": "walk",
+        "fa": "راه رفتن"
+       },
+       {
+        "en": "shoes",
+        "fa": "کفش‌ها"
+       },
+       {
+        "en": "broken",
+        "fa": "شکسته"
+       },
+       {
+        "en": "floor",
+        "fa": "کفِ زمین"
        }
       ]
      },
@@ -9925,7 +10473,13 @@
       "frame": "This door is made of ___.",
       "answer": "glass",
       "accept": [],
-      "why": "made of glass = ساخته‌شده از شیشه."
+      "why": "made of glass = ساخته‌شده از شیشه.",
+      "support": [
+       {
+        "en": "door",
+        "fa": "در"
+       }
+      ]
      }
     ]
    }
@@ -10227,7 +10781,17 @@
       "answer": "other",
       "accept": [],
       "fa": "این لنگهٔ کفش اینجاست. آن یکی کجاست؟",
-      "why": "the other one = آن یکی."
+      "why": "the other one = آن یکی.",
+      "support": [
+       {
+        "en": "shoe",
+        "fa": "لنگه کفش"
+       },
+       {
+        "en": "one",
+        "fa": "یکی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10249,6 +10813,12 @@
         "ok": false,
         "why": "another با اسم مفرد می‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "sport",
+        "fa": "ورزش"
+       }
       ]
      },
      {
@@ -10258,7 +10828,17 @@
       "frame": "Give me your ___ hand.",
       "answer": "other",
       "accept": [],
-      "why": "the/your other = آن یکی."
+      "why": "the/your other = آن یکی.",
+      "support": [
+       {
+        "en": "Give",
+        "fa": "بده"
+       },
+       {
+        "en": "hand",
+        "fa": "دست"
+       }
+      ]
      }
     ]
    }
@@ -10783,6 +11363,20 @@
         "ok": false,
         "why": "closing یعنی در حال تعطیل شدن."
        }
+      ],
+      "support": [
+       {
+        "en": "Sorry",
+        "fa": "ببخشید"
+       },
+       {
+        "en": "opens",
+        "fa": "باز می‌شود"
+       },
+       {
+        "en": "nine",
+        "fa": "ساعت نه"
+       }
       ]
      },
      {
@@ -10792,7 +11386,13 @@
       "frame": "There's a good book ___ in town.",
       "answer": "shop",
       "accept": [],
-      "why": "book shop = کتاب‌فروشی."
+      "why": "book shop = کتاب‌فروشی.",
+      "support": [
+       {
+        "en": "town",
+        "fa": "شهر"
+       }
+      ]
      }
     ]
    },
@@ -10896,6 +11496,10 @@
        {
         "en": "online",
         "fa": "آنلاین؛ در اینترنت"
+       },
+       {
+        "en": "weekends",
+        "fa": "آخر هفته‌ها"
        }
       ]
      }
@@ -10974,6 +11578,10 @@
        {
         "en": "Tabriz",
         "fa": "تبریز"
+       },
+       {
+        "en": "grew up",
+        "fa": "بزرگ شدم"
        }
       ]
      },
@@ -11017,6 +11625,10 @@
        {
         "en": "centre",
         "fa": "مرکز"
+       },
+       {
+        "en": "busy",
+        "fa": "شلوغ"
        }
       ]
      }
@@ -11445,7 +12057,13 @@
       "answer": "address",
       "accept": [],
       "fa": "آدرس ایمیلت چیست؟",
-      "why": "email پیش از address یعنی «نشانی ایمیل»: email address."
+      "why": "email پیش از address یعنی «نشانی ایمیل»: email address.",
+      "support": [
+       {
+        "en": "email",
+        "fa": "ایمیل"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11466,6 +12084,12 @@
         "text": "addres",
         "ok": false,
         "why": "s دوتاست."
+       }
+      ],
+      "support": [
+       {
+        "en": "form",
+        "fa": "فرم"
        }
       ]
      },
@@ -11661,7 +12285,17 @@
       "answer": "article",
       "accept": [],
       "fa": "در روزنامهٔ امروز یک مقالهٔ جالب دربارهٔ غذا هست.",
-      "why": "موضوع مقاله با about می‌آید: an article about."
+      "why": "موضوع مقاله با about می‌آید: an article about.",
+      "support": [
+       {
+        "en": "interesting",
+        "fa": "جالب"
+       },
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11698,7 +12332,17 @@
       "frame": "This ___ is about sport.",
       "answer": "article",
       "accept": [],
-      "why": "article = مقاله."
+      "why": "article = مقاله.",
+      "support": [
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       },
+       {
+        "en": "sport",
+        "fa": "ورزش"
+       }
+      ]
      }
     ]
    }
@@ -11910,6 +12554,12 @@
         "ok": false,
         "why": "take breakfast طبیعی نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "seven",
+        "fa": "ساعت هفت"
+       }
       ]
      },
      {
@@ -11993,7 +12643,13 @@
       "answer": "feel",
       "accept": [],
       "fa": "خوب نخوابیدم. امروز خسته‌ام.",
-      "why": "feel + صفت."
+      "why": "feel + صفت.",
+      "support": [
+       {
+        "en": "tired",
+        "fa": "خسته"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -12014,6 +12670,12 @@
         "text": "am feeling me",
         "ok": false,
         "why": "me لازم نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "better",
+        "fa": "بهتر"
        }
       ]
      },
@@ -12232,6 +12894,12 @@
         "text": "tongues",
         "ok": false,
         "why": "tongue عضو بدن است."
+       }
+      ],
+      "support": [
+       {
+        "en": "speaks",
+        "fa": "صحبت می‌کند"
        }
       ]
      },
@@ -12784,6 +13452,14 @@
        {
         "en": "English",
         "fa": "انگلیسی"
+       },
+       {
+        "en": "Speaking",
+        "fa": "صحبت کردن"
+       },
+       {
+        "en": "hard",
+        "fa": "سخت"
        }
       ]
      },
@@ -12806,6 +13482,12 @@
         "text": "practising",
         "ok": false,
         "why": "اینجا اسم لازم است."
+       }
+      ],
+      "support": [
+       {
+        "en": "piano",
+        "fa": "پیانو"
        }
       ]
      },

@@ -170,7 +170,13 @@
       "answer": "shopping",
       "accept": [],
       "fa": "کفش نو لازم دارم. برویم خرید.",
-      "why": "برای خرید رفتن go shopping، بدون to: go shopping."
+      "why": "برای خرید رفتن go shopping، بدون to: go shopping.",
+      "support": [
+       {
+        "en": "shoes",
+        "fa": "کفش‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -201,7 +207,17 @@
       "frame": "Don't forget the ___ list.",
       "answer": "shopping",
       "accept": [],
-      "why": "shopping پیش از list یعنی «فهرست خرید»: a shopping list."
+      "why": "shopping پیش از list یعنی «فهرست خرید»: a shopping list.",
+      "support": [
+       {
+        "en": "Don't forget",
+        "fa": "فراموش نکن"
+       },
+       {
+        "en": "list",
+        "fa": "فهرست"
+       }
+      ]
      }
     ]
    }
@@ -508,7 +524,13 @@
       "answer": "ticket",
       "accept": [],
       "fa": "برای سوار شدن به قطار بلیت لازم داری.",
-      "why": "ticket قابل‌شمارش است و مفردش اینجا a می‌گیرد: a ticket."
+      "why": "ticket قابل‌شمارش است و مفردش اینجا a می‌گیرد: a ticket.",
+      "support": [
+       {
+        "en": "train",
+        "fa": "قطار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -545,7 +567,13 @@
       "frame": "I bought a train ___.",
       "answer": "ticket",
       "accept": [],
-      "why": "نوع بلیت پیش از ticket می‌آید: a train ticket."
+      "why": "نوع بلیت پیش از ticket می‌آید: a train ticket.",
+      "support": [
+       {
+        "en": "train",
+        "fa": "قطار"
+       }
+      ]
      }
     ]
    }
@@ -628,6 +656,10 @@
        {
         "en": "quick",
         "fa": "سریع"
+       },
+       {
+        "en": "fire",
+        "fa": "آتش"
        }
       ]
      },
@@ -1125,7 +1157,13 @@
       "frame": "Happy ___!",
       "answer": "birthday",
       "accept": [],
-      "why": "تبریک تولد Happy birthday: Happy birthday!"
+      "why": "تبریک تولد Happy birthday: Happy birthday!",
+      "support": [
+       {
+        "en": "Happy",
+        "fa": "مبارک (در تبریک)"
+       }
+      ]
      }
     ]
    }
@@ -1224,6 +1262,10 @@
        {
         "en": "opposite",
         "fa": "متضاد"
+       },
+       {
+        "en": "white",
+        "fa": "سفید"
        }
       ]
      },
@@ -1306,7 +1348,17 @@
       "answer": "card",
       "accept": [],
       "fa": "یادت نرود برای تولد مامان کارت بنویسی.",
-      "why": "مناسبت پیش از card می‌آید: a birthday card."
+      "why": "مناسبت پیش از card می‌آید: a birthday card.",
+      "support": [
+       {
+        "en": "Don't forget",
+        "fa": "فراموش نکن"
+       },
+       {
+        "en": "birthday",
+        "fa": "تولد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1327,6 +1379,12 @@
         "text": "a card",
         "ok": false,
         "why": "ورق‌بازی play cards است، بدون a."
+       }
+      ],
+      "support": [
+       {
+        "en": "play",
+        "fa": "بازی کردن"
        }
       ]
      },
@@ -1412,7 +1470,17 @@
       "answer": "choose",
       "accept": [],
       "fa": "انتخاب بین این دو گوشی سخت است.",
-      "why": "برای انتخاب میان دو چیز choose between: choose between."
+      "why": "برای انتخاب میان دو چیز choose between: choose between.",
+      "support": [
+       {
+        "en": "hard",
+        "fa": "سخت"
+       },
+       {
+        "en": "between",
+        "fa": "بینِ"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1434,6 +1502,12 @@
         "ok": false,
         "why": "chosen اسم مفعول است."
        }
+      ],
+      "support": [
+       {
+        "en": "bike",
+        "fa": "دوچرخه"
+       }
       ]
      },
      {
@@ -1443,7 +1517,13 @@
       "frame": "Which one do you ___?",
       "answer": "choose",
       "accept": [],
-      "why": "choose = انتخاب کردن."
+      "why": "choose = انتخاب کردن.",
+      "support": [
+       {
+        "en": "Which one",
+        "fa": "کدام یکی"
+       }
+      ]
      }
     ]
    }
@@ -1521,6 +1601,14 @@
        {
         "en": "wet",
         "fa": "خیس"
+       },
+       {
+        "en": "Take off",
+        "fa": "دربیاور"
+       },
+       {
+        "en": "hot",
+        "fa": "داغ"
        }
       ]
      },
@@ -1764,6 +1852,16 @@
         "ok": false,
         "why": "to the front حرکت را نشان می‌دهد."
        }
+      ],
+      "support": [
+       {
+        "en": "desk",
+        "fa": "میز (کار)"
+       },
+       {
+        "en": "classroom",
+        "fa": "کلاس درس"
+       }
       ]
      },
      {
@@ -2000,7 +2098,17 @@
       "frame": "The summer ___ are long.",
       "answer": "holidays",
       "accept": [],
-      "why": "the summer holidays، جمع."
+      "why": "the summer holidays، جمع.",
+      "support": [
+       {
+        "en": "summer",
+        "fa": "تابستان"
+       },
+       {
+        "en": "long",
+        "fa": "طولانی"
+       }
+      ]
      }
     ]
    }
@@ -2209,7 +2317,13 @@
       "frame": "We went to the ___ by boat.",
       "answer": "island",
       "accept": [],
-      "why": "island = جزیره."
+      "why": "island = جزیره.",
+      "support": [
+       {
+        "en": "boat",
+        "fa": "قایق"
+       }
+      ]
      }
     ]
    }
@@ -2286,6 +2400,10 @@
        {
         "en": "got lost",
         "fa": "گم شدیم"
+       },
+       {
+        "en": "looked",
+        "fa": "نگاه کردیم"
        }
       ]
      },
@@ -2396,7 +2514,17 @@
       "answer": "milk",
       "accept": [],
       "fa": "گاوها به ما شیر می‌دهند.",
-      "why": "milk = شیر."
+      "why": "milk = شیر.",
+      "support": [
+       {
+        "en": "Cows",
+        "fa": "گاوها"
+       },
+       {
+        "en": "give",
+        "fa": "می‌دهند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2540,7 +2668,13 @@
       "frame": "She is a funny ___.",
       "answer": "person",
       "accept": [],
-      "why": "person مفرد است و اینجا a می‌گیرد: a funny person."
+      "why": "person مفرد است و اینجا a می‌گیرد: a funny person.",
+      "support": [
+       {
+        "en": "funny",
+        "fa": "بامزه"
+       }
+      ]
      }
     ]
    }
@@ -2612,7 +2746,17 @@
       "answer": "pictures",
       "accept": [],
       "fa": "برادر کوچکم دوست دارد نقاشیِ حیوان بکشد.",
-      "why": "برای کشیدن نقاشی draw pictures: draw pictures."
+      "why": "برای کشیدن نقاشی draw pictures: draw pictures.",
+      "support": [
+       {
+        "en": "little",
+        "fa": "کوچک"
+       },
+       {
+        "en": "animals",
+        "fa": "حیوانات"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2633,6 +2777,12 @@
         "text": "at",
         "ok": false,
         "why": "at this picture اینجا غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "dog",
+        "fa": "سگ"
        }
       ]
      },
@@ -3077,7 +3227,13 @@
       "answer": "swimming",
       "accept": [],
       "fa": "هوا گرم است. برویم در دریا شنا کنیم.",
-      "why": "برای شنا رفتن go swimming، بدون to: go swimming."
+      "why": "برای شنا رفتن go swimming، بدون to: go swimming.",
+      "support": [
+       {
+        "en": "hot",
+        "fa": "گرم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3108,7 +3264,13 @@
       "frame": "Where is the ___ pool?",
       "answer": "swimming",
       "accept": [],
-      "why": "swimming pool یعنی «استخر»: a swimming pool."
+      "why": "swimming pool یعنی «استخر»: a swimming pool.",
+      "support": [
+       {
+        "en": "pool",
+        "fa": "استخر"
+       }
+      ]
      }
     ]
    }
@@ -3223,7 +3385,13 @@
       "accept": [
        "over"
       ],
-      "why": "above = بالای."
+      "why": "above = بالای.",
+      "support": [
+       {
+        "en": "painting",
+        "fa": "تابلوی نقاشی"
+       }
+      ]
      }
     ]
    }
@@ -3295,7 +3463,13 @@
       "answer": "art",
       "accept": [],
       "fa": "در کلاس هنر نقاشی می‌کشیم و رنگ می‌کنیم.",
-      "why": "art پیش از class یعنی «کلاس هنر»: an art class."
+      "why": "art پیش از class یعنی «کلاس هنر»: an art class.",
+      "support": [
+       {
+        "en": "paint",
+        "fa": "نقاشی کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3409,7 +3583,17 @@
       "answer": "beach",
       "accept": [],
       "fa": "برویم ساحل و در دریا شنا کنیم.",
-      "why": "برای رفتن به ساحل go to the beach: go to the beach."
+      "why": "برای رفتن به ساحل go to the beach: go to the beach.",
+      "support": [
+       {
+        "en": "swim",
+        "fa": "شنا کردن"
+       },
+       {
+        "en": "sea",
+        "fa": "دریا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3440,7 +3624,13 @@
       "frame": "The ___ is very busy.",
       "answer": "beach",
       "accept": [],
-      "why": "beach = ساحل."
+      "why": "beach = ساحل.",
+      "support": [
+       {
+        "en": "busy",
+        "fa": "شلوغ"
+       }
+      ]
      }
     ]
    }
@@ -3535,6 +3725,12 @@
         "text": "better",
         "ok": false,
         "why": "better برای مقایسهٔ دو چیز است."
+       }
+      ],
+      "support": [
+       {
+        "en": "life",
+        "fa": "زندگی"
        }
       ]
      },
@@ -3968,7 +4164,13 @@
       "frame": "My ___ is white.",
       "answer": "cat",
       "accept": [],
-      "why": "cat = گربه."
+      "why": "cat = گربه.",
+      "support": [
+       {
+        "en": "white",
+        "fa": "سفید"
+       }
+      ]
      }
     ]
    }
@@ -4043,7 +4245,13 @@
        "jacket"
       ],
       "fa": "برف می‌بارد. پالتویت را فراموش نکن.",
-      "why": "coat = پالتو."
+      "why": "coat = پالتو.",
+      "support": [
+       {
+        "en": "Don't forget",
+        "fa": "فراموش نکن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4155,6 +4363,14 @@
        {
         "en": "skin",
         "fa": "پوست"
+       },
+       {
+        "en": "need",
+        "fa": "لازم دارم"
+       },
+       {
+        "en": "face",
+        "fa": "صورت"
        }
       ]
      },
@@ -4262,7 +4478,13 @@
        "table"
       ],
       "fa": "معلم برگه‌های امتحان ما را روی میزش گذاشت.",
-      "why": "desk = میز کار."
+      "why": "desk = میز کار.",
+      "support": [
+       {
+        "en": "put",
+        "fa": "گذاشتن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4367,7 +4589,13 @@
       "answer": "drive",
       "accept": [],
       "fa": "او هجده سالش است و دارد رانندگی یاد می‌گیرد.",
-      "why": "learn to + فعل یعنی «یاد گرفتن …»: learn to drive."
+      "why": "learn to + فعل یعنی «یاد گرفتن …»: learn to drive.",
+      "support": [
+       {
+        "en": "learning",
+        "fa": "یاد می‌گیرد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4704,6 +4932,10 @@
        {
         "en": "understand",
         "fa": "بفهمم"
+       },
+       {
+        "en": "speak",
+        "fa": "صحبت کردن"
        }
       ]
      },
@@ -4726,6 +4958,12 @@
         "text": "faster",
         "ok": false,
         "why": "very faster غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "runs",
+        "fa": "می‌دود"
        }
       ]
      },
@@ -4842,7 +5080,13 @@
       "frame": "We are in the same ___.",
       "answer": "group",
       "accept": [],
-      "why": "the same group یعنی «یک گروه»: the same group."
+      "why": "the same group یعنی «یک گروه»: the same group.",
+      "support": [
+       {
+        "en": "same",
+        "fa": "همان"
+       }
+      ]
      }
     ]
    }
@@ -4914,7 +5158,13 @@
       "answer": "ice",
       "accept": [],
       "fa": "هوا خیلی سرد است. روی پنجره‌ها یخ بسته.",
-      "why": "ice = یخ."
+      "why": "ice = یخ.",
+      "support": [
+       {
+        "en": "cold",
+        "fa": "سرد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5019,7 +5269,17 @@
        "ice-cream"
       ],
       "fa": "خیلی گرم است. برویم بستنی بخریم.",
-      "why": "ice cream، دو کلمه."
+      "why": "ice cream، دو کلمه.",
+      "support": [
+       {
+        "en": "hot",
+        "fa": "گرم"
+       },
+       {
+        "en": "buy",
+        "fa": "خریدن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5147,6 +5407,12 @@
         "text": "at",
         "ok": false,
         "why": "at the internet غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "news",
+        "fa": "خبر"
        }
       ]
      },
@@ -5360,7 +5626,17 @@
        "sentence"
       ],
       "fa": "سطر اول داستان را بخوان.",
-      "why": "line به معنای «سطر» است: the first line."
+      "why": "line به معنای «سطر» است: the first line.",
+      "support": [
+       {
+        "en": "Read",
+        "fa": "خواندن"
+       },
+       {
+        "en": "story",
+        "fa": "داستان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5381,6 +5657,12 @@
         "text": "lane",
         "ok": false,
         "why": "lane یعنی خطِ جاده یا کوچه."
+       }
+      ],
+      "support": [
+       {
+        "en": "answer",
+        "fa": "جواب"
        }
       ]
      },
@@ -5472,7 +5754,13 @@
       "answer": "move",
       "accept": [],
       "fa": "تکان نخور! دارم عکس می‌گیرم.",
-      "why": "move = حرکت کردن."
+      "why": "move = حرکت کردن.",
+      "support": [
+       {
+        "en": "photo",
+        "fa": "عکس"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5509,7 +5797,13 @@
       "frame": "We want to ___ to another city.",
       "answer": "move",
       "accept": [],
-      "why": "move to = اسباب‌کشی به."
+      "why": "move to = اسباب‌کشی به.",
+      "support": [
+       {
+        "en": "another",
+        "fa": "یک … دیگر"
+       }
+      ]
      }
     ]
    }
@@ -5725,7 +6019,13 @@
       "frame": "The water in the ___ is cold.",
       "answer": "pool",
       "accept": [],
-      "why": "در استخر in the pool: in the pool."
+      "why": "در استخر in the pool: in the pool.",
+      "support": [
+       {
+        "en": "cold",
+        "fa": "سرد"
+       }
+      ]
      }
     ]
    }
@@ -6012,7 +6312,13 @@
       "answer": "reason",
       "accept": [],
       "fa": "دلیل دیر آمدنت را به من بگو.",
-      "why": "the reason why + جمله: the reason why."
+      "why": "the reason why + جمله: the reason why.",
+      "support": [
+       {
+        "en": "Tell",
+        "fa": "گفتن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6479,6 +6785,10 @@
        {
         "en": "cross",
         "fa": "عبور کردن"
+       },
+       {
+        "en": "when",
+        "fa": "وقتی"
        }
       ]
      },
@@ -6513,7 +6823,13 @@
       "accept": [
        "road"
       ],
-      "why": "street قابل‌شمارش است: a busy street."
+      "why": "street قابل‌شمارش است: a busy street.",
+      "support": [
+       {
+        "en": "busy",
+        "fa": "شلوغ"
+       }
+      ]
      }
     ]
    }
@@ -6726,6 +7042,16 @@
         "ok": false,
         "why": "for + جمله اینجا غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "feel",
+        "fa": "احساس کنی"
+       },
+       {
+        "en": "better",
+        "fa": "بهتر"
+       }
       ]
      },
      {
@@ -6916,7 +7242,13 @@
        "author"
       ],
       "fa": "او ده کتاب نوشت. نویسندهٔ معروفی است.",
-      "why": "writer = نویسنده."
+      "why": "writer = نویسنده.",
+      "support": [
+       {
+        "en": "famous",
+        "fa": "معروف"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7062,7 +7394,13 @@
       "frame": "Their ___ is very famous.",
       "answer": "band",
       "accept": [],
-      "why": "band = گروه موسیقی."
+      "why": "band = گروه موسیقی.",
+      "support": [
+       {
+        "en": "famous",
+        "fa": "معروف"
+       }
+      ]
      }
     ]
    }
@@ -7134,7 +7472,21 @@
       "answer": "cake",
       "accept": [],
       "fa": "آواز خواندیم و بعد کیک تولد را بریدیم.",
-      "why": "مناسبت پیش از cake می‌آید: a birthday cake."
+      "why": "مناسبت پیش از cake می‌آید: a birthday cake.",
+      "support": [
+       {
+        "en": "sang",
+        "fa": "آواز خواندیم"
+       },
+       {
+        "en": "cut",
+        "fa": "بُریدیم"
+       },
+       {
+        "en": "birthday",
+        "fa": "تولد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7155,6 +7507,12 @@
         "text": "glass",
         "ok": false,
         "why": "a glass of برای نوشیدنی است."
+       }
+      ],
+      "support": [
+       {
+        "en": "another",
+        "fa": "یک … دیگر"
        }
       ]
      },
@@ -7245,6 +7603,14 @@
        {
         "en": "smile",
         "fa": "لبخند بزن"
+       },
+       {
+        "en": "taking",
+        "fa": "می‌گیرم"
+       },
+       {
+        "en": "photo",
+        "fa": "عکس"
        }
       ]
      },
@@ -7268,6 +7634,16 @@
         "ok": false,
         "why": "cinema یعنی سینما."
        }
+      ],
+      "support": [
+       {
+        "en": "takes",
+        "fa": "می‌گیرد"
+       },
+       {
+        "en": "photos",
+        "fa": "عکس‌ها"
+       }
       ]
      },
      {
@@ -7277,7 +7653,13 @@
       "frame": "Bring your ___.",
       "answer": "camera",
       "accept": [],
-      "why": "camera = دوربین."
+      "why": "camera = دوربین.",
+      "support": [
+       {
+        "en": "Bring",
+        "fa": "بیاور"
+       }
+      ]
      }
     ]
    }
@@ -7598,7 +7980,13 @@
        "color"
       ],
       "fa": "چشم‌هایت چه رنگی است؟",
-      "why": "برای پرسیدن رنگ What colour + be: What colour are …?"
+      "why": "برای پرسیدن رنگ What colour + be: What colour are …?",
+      "support": [
+       {
+        "en": "eyes",
+        "fa": "چشم‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7619,6 +8007,16 @@
         "text": "cooler",
         "ok": false,
         "why": "cooler یعنی خنک‌تر یا یخدان."
+       }
+      ],
+      "support": [
+       {
+        "en": "Red",
+        "fa": "قرمز"
+       },
+       {
+        "en": "favourite",
+        "fa": "مورد علاقه"
        }
       ]
      },
@@ -7968,7 +8366,13 @@
       "frame": "The ___ was going very fast.",
       "answer": "driver",
       "accept": [],
-      "why": "driver = راننده."
+      "why": "driver = راننده.",
+      "support": [
+       {
+        "en": "fast",
+        "fa": "تند؛ سریع"
+       }
+      ]
      }
     ]
    }
@@ -8583,7 +8987,13 @@
       "answer": "letters",
       "accept": [],
       "fa": "«cat» سه حرف دارد.",
-      "why": "letters = حروف."
+      "why": "letters = حروف.",
+      "support": [
+       {
+        "en": "cat",
+        "fa": "گربه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8693,7 +9103,13 @@
       "answer": "library",
       "accept": [],
       "fa": "لطفاً ساکت باش. در کتابخانه هستیم.",
-      "why": "library = کتابخانه."
+      "why": "library = کتابخانه.",
+      "support": [
+       {
+        "en": "quiet",
+        "fa": "ساکت"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8715,6 +9131,12 @@
         "ok": false,
         "why": "labour یعنی کار یا کارگر."
        }
+      ],
+      "support": [
+       {
+        "en": "take",
+        "fa": "ببرم"
+       }
       ]
      },
      {
@@ -8724,7 +9146,13 @@
       "frame": "The ___ closes at eight.",
       "answer": "library",
       "accept": [],
-      "why": "library = کتابخانه."
+      "why": "library = کتابخانه.",
+      "support": [
+       {
+        "en": "closes",
+        "fa": "بسته می‌شود"
+       }
+      ]
      }
     ]
    }
@@ -8936,6 +9364,10 @@
        {
         "en": "last night",
         "fa": "دیشب"
+       },
+       {
+        "en": "funny",
+        "fa": "خنده‌دار"
        }
       ]
      },
@@ -9266,6 +9698,14 @@
        {
         "en": "plants",
         "fa": "گیاهان"
+       },
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       },
+       {
+        "en": "animals",
+        "fa": "حیوانات"
        }
       ]
      },
@@ -9373,7 +9813,25 @@
        "jacket"
       ],
       "fa": "او پیراهن آبی و شلوار مشکی پوشیده.",
-      "why": "shirt = پیراهن."
+      "why": "shirt = پیراهن.",
+      "support": [
+       {
+        "en": "wearing",
+        "fa": "پوشیده"
+       },
+       {
+        "en": "blue",
+        "fa": "آبی"
+       },
+       {
+        "en": "black",
+        "fa": "سیاه؛ مشکی"
+       },
+       {
+        "en": "trousers",
+        "fa": "شلوار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9394,6 +9852,16 @@
         "text": "shirts",
         "ok": false,
         "why": "a + مفرد."
+       }
+      ],
+      "support": [
+       {
+        "en": "hot",
+        "fa": "گرم"
+       },
+       {
+        "en": "wear",
+        "fa": "پوشیدن"
        }
       ]
      },
@@ -9478,7 +9946,17 @@
       "answer": "skill",
       "accept": [],
       "fa": "شنیدن برای خیلی از دانشجوها مهارت سختی است.",
-      "why": "skill قابل‌شمارش است: a skill."
+      "why": "skill قابل‌شمارش است: a skill.",
+      "support": [
+       {
+        "en": "Listening",
+        "fa": "گوش دادن (مهارت شنیدن)"
+       },
+       {
+        "en": "difficult",
+        "fa": "سخت"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9583,7 +10061,13 @@
       "answer": "sorry",
       "accept": [],
       "fa": "ببخشید که فنجانت را شکستم.",
-      "why": "I'm sorry + جمله."
+      "why": "I'm sorry + جمله.",
+      "support": [
+       {
+        "en": "broke",
+        "fa": "شکستم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10099,6 +10583,10 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "great",
+        "fa": "عالی"
        }
       ]
      },
@@ -10438,6 +10926,16 @@
         "ok": false,
         "why": "صفت s جمع نمی‌گیرد."
        }
+      ],
+      "support": [
+       {
+        "en": "Try",
+        "fa": "امتحان کن"
+       },
+       {
+        "en": "again",
+        "fa": "دوباره"
+       }
       ]
      },
      {
@@ -10524,6 +11022,10 @@
        {
         "en": "films",
         "fa": "فیلم‌ها"
+       },
+       {
+        "en": "famous",
+        "fa": "معروف"
        }
       ]
      },
@@ -10738,7 +11240,13 @@
       "answer": "angry",
       "accept": [],
       "fa": "چرا این‌قدر عصبانی هستی؟ چه شده؟",
-      "why": "angry = عصبانی."
+      "why": "angry = عصبانی.",
+      "support": [
+       {
+        "en": "Why",
+        "fa": "چرا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10841,7 +11349,13 @@
       "answer": "animal",
       "accept": [],
       "fa": "گربه حیوان کوچکی است.",
-      "why": "animal با واکه شروع می‌شود و an می‌گیرد: an animal."
+      "why": "animal با واکه شروع می‌شود و an می‌گیرد: an animal.",
+      "support": [
+       {
+        "en": "cat",
+        "fa": "گربه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11052,7 +11566,13 @@
       "answer": "believe",
       "accept": [],
       "fa": "راست است! لطفاً باورم کن.",
-      "why": "believe + شخص."
+      "why": "believe + شخص.",
+      "support": [
+       {
+        "en": "true",
+        "fa": "راست"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11073,6 +11593,12 @@
         "text": "belief",
         "ok": false,
         "why": "belief اسم است."
+       }
+      ],
+      "support": [
+       {
+        "en": "true",
+        "fa": "راست"
        }
       ]
      },
@@ -11195,6 +11721,20 @@
         "ok": false,
         "why": "blow یعنی فوت کردن."
        }
+      ],
+      "support": [
+       {
+        "en": "Read",
+        "fa": "خواندن"
+       },
+       {
+        "en": "answer",
+        "fa": "جواب بدهید"
+       },
+       {
+        "en": "questions",
+        "fa": "سؤال‌ها"
+       }
       ]
      },
      {
@@ -11206,7 +11746,17 @@
       "accept": [
        "under"
       ],
-      "why": "below + اسم."
+      "why": "below + اسم.",
+      "support": [
+       {
+        "en": "answer",
+        "fa": "جواب"
+       },
+       {
+        "en": "question",
+        "fa": "سؤال"
+       }
+      ]
      }
     ]
    }

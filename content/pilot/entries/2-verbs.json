@@ -776,6 +776,12 @@
         "ok": false,
         "why": "yesterday گذشته می‌خواهد."
        }
+      ],
+      "support": [
+       {
+        "en": "cinema",
+        "fa": "سینما"
+       }
       ]
      },
      {
@@ -878,6 +884,16 @@
         "ok": false,
         "why": "get in بیشتر برای سوار شدن به ماشین است."
        }
+      ],
+      "support": [
+       {
+        "en": "door",
+        "fa": "در"
+       },
+       {
+        "en": "say",
+        "fa": "می‌گویی"
+       }
       ]
      },
      {
@@ -887,7 +903,13 @@
       "frame": "When are you ___ back?",
       "answer": "coming",
       "accept": [],
-      "why": "come back = برگشتن."
+      "why": "come back = برگشتن.",
+      "support": [
+       {
+        "en": "When",
+        "fa": "کی"
+       }
+      ]
      }
     ]
    }
@@ -961,6 +983,10 @@
        {
         "en": "last month",
         "fa": "ماه گذشته"
+       },
+       {
+        "en": "job",
+        "fa": "کار؛ شغل"
        }
       ]
      },
@@ -993,7 +1019,13 @@
       "frame": "I ___ an email this morning.",
       "answer": "got",
       "accept": [],
-      "why": "گذشتهٔ get، got است."
+      "why": "گذشتهٔ get، got است.",
+      "support": [
+       {
+        "en": "email",
+        "fa": "ایمیل"
+       }
+      ]
      }
     ]
    },
@@ -1122,7 +1154,13 @@
       "answer": "get",
       "accept": [],
       "fa": "همیشه حدود ساعت یازده گرسنه می‌شوم.",
-      "why": "get + صفت = شدن."
+      "why": "get + صفت = شدن.",
+      "support": [
+       {
+        "en": "about",
+        "fa": "حدود"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -1131,7 +1169,17 @@
       "frame": "I hope you ___ better soon.",
       "answer": "get",
       "accept": [],
-      "why": "get better = بهتر شدن."
+      "why": "get better = بهتر شدن.",
+      "support": [
+       {
+        "en": "hope",
+        "fa": "امیدوارم"
+       },
+       {
+        "en": "better",
+        "fa": "بهتر"
+       }
+      ]
      },
      {
       "type": "cloze",
@@ -1140,7 +1188,13 @@
       "answer": "getting",
       "accept": [],
       "fa": "بچه‌ها دارند خسته می‌شوند.",
-      "why": "get + adjective یعنی تغییر حالت؛ در زمان استمراری getting."
+      "why": "get + adjective یعنی تغییر حالت؛ در زمان استمراری getting.",
+      "support": [
+       {
+        "en": "tired",
+        "fa": "خسته"
+       }
+      ]
      }
     ]
    }
@@ -1232,6 +1286,12 @@
         "ok": false,
         "why": "come برای حرکت خودِ آدم است."
        }
+      ],
+      "support": [
+       {
+        "en": "coat",
+        "fa": "پالتو"
+       }
       ]
      },
      {
@@ -1241,7 +1301,13 @@
       "frame": "___ a photo!",
       "answer": "Take",
       "accept": [],
-      "why": "take a photo = عکس گرفتن."
+      "why": "take a photo = عکس گرفتن.",
+      "support": [
+       {
+        "en": "photo",
+        "fa": "عکس"
+       }
+      ]
      }
     ]
    },
@@ -1298,7 +1364,13 @@
       "answer": "takes",
       "accept": [],
       "fa": "رسیدن به آنجا حدود یک ساعت طول می‌کشد.",
-      "why": "it takes + مدت = طول کشیدن."
+      "why": "it takes + مدت = طول کشیدن.",
+      "support": [
+       {
+        "en": "about",
+        "fa": "حدود"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -1386,7 +1458,17 @@
       "answer": "gave",
       "accept": [],
       "fa": "پدر و مادرم برای تولدم یک ساعت به من دادند.",
-      "why": "give + شخص + چیز؛ گذشته: gave."
+      "why": "give + شخص + چیز؛ گذشته: gave.",
+      "support": [
+       {
+        "en": "watch",
+        "fa": "ساعت مچی"
+       },
+       {
+        "en": "birthday",
+        "fa": "تولد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1407,6 +1489,12 @@
         "text": "Please give Ali to the money.",
         "ok": false,
         "why": "معنا برعکس شده است."
+       }
+      ],
+      "support": [
+       {
+        "en": "correct",
+        "fa": "درست"
        }
       ]
      },
@@ -1644,7 +1732,13 @@
       "frame": "___ hello to your father.",
       "answer": "Say",
       "accept": [],
-      "why": "برای سلام رساندن say hello: say hello."
+      "why": "برای سلام رساندن say hello: say hello.",
+      "support": [
+       {
+        "en": "hello",
+        "fa": "سلام"
+       }
+      ]
      }
     ]
    }
@@ -2076,6 +2170,10 @@
        {
         "en": "understand",
         "fa": "می‌فهمی"
+       },
+       {
+        "en": "something",
+        "fa": "چیزی"
        }
       ]
      },
@@ -2086,7 +2184,17 @@
       "frame": "You should ___ a doctor.",
       "answer": "see",
       "accept": [],
-      "why": "برای مراجعه به پزشک see a doctor: see a doctor."
+      "why": "برای مراجعه به پزشک see a doctor: see a doctor.",
+      "support": [
+       {
+        "en": "should",
+        "fa": "بهتر است؛ باید"
+       },
+       {
+        "en": "doctor",
+        "fa": "دکتر"
+       }
+      ]
      }
     ]
    }
@@ -2163,7 +2271,13 @@
        "look"
       ],
       "fa": "به آن ماشین نگاه کن! قشنگ است.",
-      "why": "نگاه کردن عمدی: look at."
+      "why": "نگاه کردن عمدی: look at.",
+      "support": [
+       {
+        "en": "beautiful",
+        "fa": "زیبا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2194,7 +2308,13 @@
       "frame": "You ___ tired.",
       "answer": "look",
       "accept": [],
-      "why": "look + صفت = به نظر رسیدن."
+      "why": "look + صفت = به نظر رسیدن.",
+      "support": [
+       {
+        "en": "tired",
+        "fa": "خسته"
+       }
+      ]
      }
     ]
    }
@@ -2297,6 +2417,10 @@
        {
         "en": "last night",
         "fa": "دیشب"
+       },
+       {
+        "en": "match",
+        "fa": "مسابقه"
        }
       ]
      },
@@ -2369,7 +2493,13 @@
       "answer": "watch",
       "accept": [],
       "fa": "ساعت مچی‌ام را پیدا نمی‌کنم. باید بدانم ساعت چند است.",
-      "why": "ساعتِ مچ دست."
+      "why": "ساعتِ مچ دست.",
+      "support": [
+       {
+        "en": "find",
+        "fa": "پیدا کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2400,7 +2530,13 @@
       "answer": "watch",
       "accept": [],
       "fa": "او برای دیدن ساعت به ساعت مچی‌اش نگاه کرد.",
-      "why": "watch = ساعت مچی."
+      "why": "watch = ساعت مچی.",
+      "support": [
+       {
+        "en": "check",
+        "fa": "ببیند؛ نگاه کند"
+       }
+      ]
      }
     ]
    }
@@ -2497,6 +2633,12 @@
         "ok": false,
         "why": "listen to برای گوش دادن عمدی است."
        }
+      ],
+      "support": [
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       }
       ]
      },
      {
@@ -2581,6 +2723,10 @@
        {
         "en": "while",
         "fa": "در حالی که"
+       },
+       {
+        "en": "music",
+        "fa": "موسیقی"
        }
       ]
      },
@@ -2603,6 +2749,16 @@
         "text": "Look",
         "ok": false,
         "why": "look برای دیدن است."
+       }
+      ],
+      "support": [
+       {
+        "en": "song",
+        "fa": "آهنگ"
+       },
+       {
+        "en": "great",
+        "fa": "عالی"
        }
       ]
      },
@@ -2830,7 +2986,13 @@
       "frame": "I'm ___ about you.",
       "answer": "thinking",
       "accept": [],
-      "why": "برای فکر کردن به کسی think about: think about."
+      "why": "برای فکر کردن به کسی think about: think about.",
+      "support": [
+       {
+        "en": "about",
+        "fa": "دربارهٔ"
+       }
+      ]
      }
     ]
    }
@@ -2904,7 +3066,17 @@
       "answer": "want",
       "accept": [],
       "fa": "می‌خواهم شنا یاد بگیرم.",
-      "why": "want + to + فعل."
+      "why": "want + to + فعل.",
+      "support": [
+       {
+        "en": "learn",
+        "fa": "یاد گرفتن"
+       },
+       {
+        "en": "swim",
+        "fa": "شنا کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2926,6 +3098,12 @@
         "ok": false,
         "why": "to جا افتاده است."
        }
+      ],
+      "support": [
+       {
+        "en": "dishes",
+        "fa": "ظرف‌ها"
+       }
       ]
      },
      {
@@ -2935,7 +3113,17 @@
       "frame": "He ___ a cup of tea.",
       "answer": "wants",
       "accept": [],
-      "why": "want + اسم؛ با he شکل wants."
+      "why": "want + اسم؛ با he شکل wants.",
+      "support": [
+       {
+        "en": "cup",
+        "fa": "فنجان"
+       },
+       {
+        "en": "tea",
+        "fa": "چای"
+       }
+      ]
      }
     ]
    }
@@ -3008,7 +3196,21 @@
       "answer": "need",
       "accept": [],
       "fa": "خسته به نظر می‌رسی. به تعطیلات نیاز داری!",
-      "why": "need + اسم."
+      "why": "need + اسم.",
+      "support": [
+       {
+        "en": "look",
+        "fa": "به نظر می‌رسی"
+       },
+       {
+        "en": "tired",
+        "fa": "خسته"
+       },
+       {
+        "en": "holiday",
+        "fa": "تعطیلات"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3029,6 +3231,20 @@
         "text": "needn't to",
         "ok": false,
         "why": "needn't بدون to می‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "warm",
+        "fa": "گرم"
+       },
+       {
+        "en": "wear",
+        "fa": "پوشیدن"
+       },
+       {
+        "en": "coat",
+        "fa": "پالتو"
        }
       ]
      },
@@ -3112,7 +3328,13 @@
       "answer": "likes",
       "accept": [],
       "fa": "دخترم دوست دارد پیش از خواب کتاب بخواند.",
-      "why": "like + ing؛ با she شکل likes."
+      "why": "like + ing؛ با she شکل likes.",
+      "support": [
+       {
+        "en": "reading",
+        "fa": "کتاب‌خواندن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3133,6 +3355,20 @@
         "text": "I like very this city.",
         "ok": false,
         "why": "very much بعد از مفعول می‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "Choose",
+        "fa": "انتخاب کن"
+       },
+       {
+        "en": "correct",
+        "fa": "درست"
+       },
+       {
+        "en": "sentence",
+        "fa": "جمله"
        }
       ]
      },
@@ -3327,7 +3563,13 @@
       "answer": "help",
       "accept": [],
       "fa": "می‌شود در جابه‌جایی این جعبه‌ها کمکم کنی؟",
-      "why": "help + شخص + with."
+      "why": "help + شخص + with.",
+      "support": [
+       {
+        "en": "Could",
+        "fa": "می‌شود … ؟ (مؤدبانه)"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3434,7 +3676,13 @@
       "answer": "work",
       "accept": [],
       "fa": "کامپیوترم کار نمی‌کند. می‌توانی نگاهی بیندازی؟",
-      "why": "برای وسیله: کار کردن."
+      "why": "برای وسیله: کار کردن.",
+      "support": [
+       {
+        "en": "computer",
+        "fa": "کامپیوتر"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -3552,7 +3800,13 @@
       "answer": "work",
       "accept": [],
       "fa": "او هنوز سرِ کار است، پس بعداً به او زنگ بزن.",
-      "why": "at work = سرِ کار؛ work در این عبارت بدون a می‌آید."
+      "why": "at work = سرِ کار؛ work در این عبارت بدون a می‌آید.",
+      "support": [
+       {
+        "en": "call",
+        "fa": "زنگ بزن"
+       }
+      ]
      }
     ]
    }
@@ -3741,7 +3995,17 @@
       "answer": "eat",
       "accept": [],
       "fa": "گرسنه‌ام. بیا چیزی بخوریم.",
-      "why": "خوردن غذا."
+      "why": "خوردن غذا.",
+      "support": [
+       {
+        "en": "hungry",
+        "fa": "گرسنه"
+       },
+       {
+        "en": "something",
+        "fa": "چیزی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3763,6 +4027,16 @@
         "ok": false,
         "why": "ساختار نادرست است."
        }
+      ],
+      "support": [
+       {
+        "en": "glass",
+        "fa": "لیوان"
+       },
+       {
+        "en": "milk",
+        "fa": "شیر"
+       }
       ]
      },
      {
@@ -3772,7 +4046,13 @@
       "frame": "He doesn't ___ meat.",
       "answer": "eat",
       "accept": [],
-      "why": "eat + غذا."
+      "why": "eat + غذا.",
+      "support": [
+       {
+        "en": "meat",
+        "fa": "گوشت"
+       }
+      ]
      }
     ]
    }
@@ -3842,7 +4122,13 @@
       "answer": "bought",
       "accept": [],
       "fa": "دیروز برای خواهرم یک هدیه خریدم.",
-      "why": "گذشتهٔ buy: bought."
+      "why": "گذشتهٔ buy: bought.",
+      "support": [
+       {
+        "en": "present",
+        "fa": "هدیه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3869,6 +4155,14 @@
        {
         "en": "sounds",
         "fa": "تلفظ می‌شود"
+       },
+       {
+        "en": "Which",
+        "fa": "کدام"
+       },
+       {
+        "en": "same",
+        "fa": "مثلِ"
        }
       ]
      },
@@ -3879,7 +4173,13 @@
       "frame": "Where can I ___ a ticket?",
       "answer": "buy",
       "accept": [],
-      "why": "buy مفعول مستقیم می‌گیرد: buy a ticket."
+      "why": "buy مفعول مستقیم می‌گیرد: buy a ticket.",
+      "support": [
+       {
+        "en": "ticket",
+        "fa": "بلیت"
+       }
+      ]
      }
     ]
    }
