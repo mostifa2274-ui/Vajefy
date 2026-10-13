@@ -16,10 +16,10 @@ Do **not** restart from chat memory when repository evidence exists.
 
 ## Current authoritative state
 
-- Verified main after PR #235 and calibration run 38210720212: `c5de6abb890337227ecfa66a929c426c91e225fc`.
+- Verified main after PR #236: `b4d2aa507afebe10557ce120383c787cb3d3a1d7`.
 - Roadmap: `docs/AUTONOMOUS_ASSURANCE_PLAN.md`; implementation status: `docs/A1_PLAN_STATUS.md`.
 - Current handoff: `content/assurance/progress.json` → `currentWork.nextSteps`.
-- PRs #188–#191, #193–#210 and #212–#235 are merged. Source authentication, 140 contextual supports,
+- PRs #188–#191, #193–#210 and #212–#236 are merged. Source authentication, 140 contextual supports,
   A1 reference/Review scope and four language-field repairs are complete.
 - Mistake-pair Persian covers every A1 sense: Units 4–12 (831) and, after the
   owner unfroze Units 1–3, the 173 in Units 2–3 (#228). Units 2–3 also have their
