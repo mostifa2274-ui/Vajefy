@@ -288,7 +288,21 @@
               "tea"
             ],
             "fa": "سردم است. فکر کنم با آب داغ حمام کنم.",
-            "why": "«در وان حمام کردن» have a bath است: have a bath."
+            "why": "«در وان حمام کردن» have a bath است: have a bath.",
+            "support": [
+              {
+                "en": "cold",
+                "fa": "سرد"
+              },
+              {
+                "en": "think",
+                "fa": "فکر می‌کنم"
+              },
+              {
+                "en": "hot",
+                "fa": "داغ؛ گرم"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -310,6 +324,16 @@
                 "ok": false,
                 "why": "make a bath غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "every",
+                "fa": "هر"
+              },
+              {
+                "en": "evening",
+                "fa": "عصر"
+              }
             ]
           },
           {
@@ -319,7 +343,13 @@
             "frame": "I put the baby in the ___.",
             "answer": "bath",
             "accept": [],
-            "why": "«در وان» in the bath است: in the bath."
+            "why": "«در وان» in the bath است: in the bath.",
+            "support": [
+              {
+                "en": "put",
+                "fa": "گذاشتن"
+              }
+            ]
           }
         ]
       }
@@ -942,7 +972,13 @@
               "cousin"
             ],
             "fa": "آن آقا شوهرت است؟ — نه، دوست‌پسرم است.",
-            "why": "boyfriend = دوست‌پسر."
+            "why": "boyfriend = دوست‌پسر.",
+            "support": [
+              {
+                "en": "man",
+                "fa": "مرد"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -964,6 +1000,12 @@
                 "ok": false,
                 "why": "بعد از a اسم مفرد."
               }
+            ],
+            "support": [
+              {
+                "en": "met",
+                "fa": "آشنا شدیم"
+              }
             ]
           },
           {
@@ -973,7 +1015,13 @@
             "frame": "Her ___ is Italian.",
             "answer": "boyfriend",
             "accept": [],
-            "why": "boyfriend = دوست‌پسر."
+            "why": "boyfriend = دوست‌پسر.",
+            "support": [
+              {
+                "en": "Italian",
+                "fa": "ایتالیایی"
+              }
+            ]
           }
         ]
       }
@@ -1477,7 +1525,21 @@
               "father"
             ],
             "fa": "مامان و بابایم هر دو معلم‌اند.",
-            "why": "«مامان و بابا» mum and dad است: mum and dad."
+            "why": "«مامان و بابا» mum and dad است: mum and dad.",
+            "support": [
+              {
+                "en": "mum",
+                "fa": "مامان"
+              },
+              {
+                "en": "both",
+                "fa": "هر دو"
+              },
+              {
+                "en": "teachers",
+                "fa": "معلم‌ها"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1926,6 +1988,16 @@
                 "ok": false,
                 "why": "املا: daughter، با au."
               }
+            ],
+            "support": [
+              {
+                "en": "ten",
+                "fa": "ده"
+              },
+              {
+                "en": "years",
+                "fa": "سال"
+              }
             ]
           },
           {
@@ -1935,7 +2007,13 @@
             "frame": "My ___ is six.",
             "answer": "daughter",
             "accept": [],
-            "why": "daughter = دختر (فرزند)."
+            "why": "daughter = دختر (فرزند).",
+            "support": [
+              {
+                "en": "six",
+                "fa": "شش"
+              }
+            ]
           }
         ]
       }
@@ -2007,7 +2085,17 @@
             "answer": "December",
             "accept": [],
             "fa": "نوامبر، دسامبر، ژانویه.",
-            "why": "ماهِ بعد از November: December."
+            "why": "ماهِ بعد از November: December.",
+            "support": [
+              {
+                "en": "November",
+                "fa": "نوامبر"
+              },
+              {
+                "en": "January",
+                "fa": "ژانویه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -2990,7 +3078,13 @@
               "everyone"
             ],
             "fa": "همه آماده‌اند؟ برویم!",
-            "why": "everybody = همه."
+            "why": "everybody = همه.",
+            "support": [
+              {
+                "en": "ready",
+                "fa": "آماده"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3011,6 +3105,12 @@
                 "text": "are knowing",
                 "ok": false,
                 "why": "know استمراری نمی‌شود و فعل مفرد لازم است."
+              }
+            ],
+            "support": [
+              {
+                "en": "answer",
+                "fa": "جواب"
               }
             ]
           },
@@ -4112,6 +4212,16 @@
                 "ok": false,
                 "why": "girlfriend یک کلمه است."
               }
+            ],
+            "support": [
+              {
+                "en": "bought",
+                "fa": "خریدم"
+              },
+              {
+                "en": "flowers",
+                "fa": "گل‌ها"
+              }
             ]
           },
           {
@@ -4121,7 +4231,13 @@
             "frame": "His ___ is a student.",
             "answer": "girlfriend",
             "accept": [],
-            "why": "girlfriend = دوست‌دختر."
+            "why": "girlfriend = دوست‌دختر.",
+            "support": [
+              {
+                "en": "student",
+                "fa": "دانش‌آموز"
+              }
+            ]
           }
         ]
       }
@@ -4220,6 +4336,10 @@
               {
                 "en": "last summer",
                 "fa": "تابستان گذشته"
+              },
+              {
+                "en": "stayed",
+                "fa": "ماند"
               }
             ]
           },
@@ -4230,7 +4350,13 @@
             "frame": "My ___ are kind.",
             "answer": "grandparents",
             "accept": [],
-            "why": "«پدربزرگ و مادربزرگ» با هم grandparents است، یک کلمه و جمع: grandparents."
+            "why": "«پدربزرگ و مادربزرگ» با هم grandparents است، یک کلمه و جمع: grandparents.",
+            "support": [
+              {
+                "en": "kind",
+                "fa": "مهربان"
+              }
+            ]
           }
         ]
       }
@@ -5506,7 +5632,13 @@
             "answer": "husband",
             "accept": [],
             "fa": "شوهرِ خواهرم خلبان است.",
-            "why": "husband = شوهر."
+            "why": "husband = شوهر.",
+            "support": [
+              {
+                "en": "pilot",
+                "fa": "خلبان"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5533,6 +5665,10 @@
               {
                 "en": "married to",
                 "fa": "با او ازدواج کرده"
+              },
+              {
+                "en": "man",
+                "fa": "مرد"
               }
             ]
           },
@@ -5543,7 +5679,13 @@
             "frame": "My ___ cooks.",
             "answer": "husband",
             "accept": [],
-            "why": "husband = شوهر."
+            "why": "husband = شوهر.",
+            "support": [
+              {
+                "en": "cooks",
+                "fa": "آشپزی می‌کند"
+              }
+            ]
           }
         ]
       }
@@ -5636,6 +5778,16 @@
                 "text": "at",
                 "ok": false,
                 "why": "at برای ساعت است."
+              }
+            ],
+            "support": [
+              {
+                "en": "often",
+                "fa": "اغلب"
+              },
+              {
+                "en": "snows",
+                "fa": "برف می‌آید"
               }
             ]
           },
@@ -5826,7 +5978,13 @@
             "answer": "July",
             "accept": [],
             "fa": "ژوئن، ژوئیه، اوت.",
-            "why": "ماهِ بعد از June: July."
+            "why": "ماهِ بعد از June: July.",
+            "support": [
+              {
+                "en": "June",
+                "fa": "ژوئن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5857,7 +6015,13 @@
             "frame": "It's usually hot in ___.",
             "answer": "July",
             "accept": [],
-            "why": "July = ژوئیه."
+            "why": "July = ژوئیه.",
+            "support": [
+              {
+                "en": "hot",
+                "fa": "داغ؛ گرم"
+              }
+            ]
           }
         ]
       }
@@ -7011,7 +7175,17 @@
             "answer": "nothing",
             "accept": [],
             "fa": "یخچال خالی است. هیچ چیز داخلش نیست.",
-            "why": "There's nothing = هیچ چیز نیست."
+            "why": "There's nothing = هیچ چیز نیست.",
+            "support": [
+              {
+                "en": "fridge",
+                "fa": "یخچال"
+              },
+              {
+                "en": "empty",
+                "fa": "خالی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7033,6 +7207,12 @@
                 "ok": false,
                 "why": "این ساختار غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "about",
+                "fa": "دربارهٔ"
+              }
             ]
           },
           {
@@ -7042,7 +7222,13 @@
             "frame": "I bought ___.",
             "answer": "nothing",
             "accept": [],
-            "why": "فعل مثبت + nothing."
+            "why": "فعل مثبت + nothing.",
+            "support": [
+              {
+                "en": "bought",
+                "fa": "خریدم"
+              }
+            ]
           }
         ]
       }
@@ -7964,6 +8150,10 @@
               {
                 "en": "dialogue",
                 "fa": "گفت‌وگو"
+              },
+              {
+                "en": "practise",
+                "fa": "تمرین کنید"
               }
             ]
           },
@@ -7992,6 +8182,14 @@
               {
                 "en": "next to",
                 "fa": "کنارِ"
+              },
+              {
+                "en": "Talk",
+                "fa": "حرف زدن"
+              },
+              {
+                "en": "person",
+                "fa": "نفر"
               }
             ]
           },
@@ -8740,7 +8938,13 @@
             "answer": "September",
             "accept": [],
             "fa": "ژوئیه، اوت، سپتامبر، اکتبر.",
-            "why": "ماهِ بعد از August: September."
+            "why": "ماهِ بعد از August: September.",
+            "support": [
+              {
+                "en": "October",
+                "fa": "اکتبر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8761,6 +8965,12 @@
                 "text": "at",
                 "ok": false,
                 "why": "at برای ساعت است."
+              }
+            ],
+            "support": [
+              {
+                "en": "class",
+                "fa": "کلاس"
               }
             ]
           },
@@ -9503,7 +9713,13 @@
             "answer": "son",
             "accept": [],
             "fa": "خاله‌ام یک دختر و یک پسر دارد.",
-            "why": "daughter و son."
+            "why": "daughter و son.",
+            "support": [
+              {
+                "en": "daughter",
+                "fa": "دختر (فرزند)"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -9525,6 +9741,28 @@
                 "ok": false,
                 "why": "sun یعنی خورشید."
               }
+            ],
+            "support": [
+              {
+                "en": "man",
+                "fa": "مرد"
+              },
+              {
+                "en": "walking",
+                "fa": "پیاده می‌روند"
+              },
+              {
+                "en": "park",
+                "fa": "پارک"
+              },
+              {
+                "en": "boy",
+                "fa": "پسر"
+              },
+              {
+                "en": "seven",
+                "fa": "هفت"
+              }
             ]
           },
           {
@@ -9534,7 +9772,13 @@
             "frame": "My ___ is ten.",
             "answer": "son",
             "accept": [],
-            "why": "son = پسر (فرزند)."
+            "why": "son = پسر (فرزند).",
+            "support": [
+              {
+                "en": "ten",
+                "fa": "ده"
+              }
+            ]
           }
         ]
       }
@@ -11032,7 +11276,13 @@
             "answer": "Wednesday",
             "accept": [],
             "fa": "سه‌شنبه، چهارشنبه، پنجشنبه.",
-            "why": "روزِ بعد از Tuesday: Wednesday."
+            "why": "روزِ بعد از Tuesday: Wednesday.",
+            "support": [
+              {
+                "en": "Thursday",
+                "fa": "پنجشنبه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11054,6 +11304,12 @@
                 "ok": false,
                 "why": "at برای ساعت است."
               }
+            ],
+            "support": [
+              {
+                "en": "test",
+                "fa": "امتحان"
+              }
             ]
           },
           {
@@ -11065,7 +11321,17 @@
             "accept": [
               "Wednesday"
             ],
-            "why": "on Wednesdays = چهارشنبه‌ها."
+            "why": "on Wednesdays = چهارشنبه‌ها.",
+            "support": [
+              {
+                "en": "piano",
+                "fa": "پیانو"
+              },
+              {
+                "en": "lessons",
+                "fa": "درس‌ها"
+              }
+            ]
           }
         ]
       }
@@ -11139,7 +11405,17 @@
             "answer": "Welcome",
             "accept": [],
             "fa": "به کلاسِ ما خوش آمدی! لطفاً بنشین.",
-            "why": "Welcome to + مکان."
+            "why": "Welcome to + مکان.",
+            "support": [
+              {
+                "en": "class",
+                "fa": "کلاس"
+              },
+              {
+                "en": "sit",
+                "fa": "نشستن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11160,6 +11436,12 @@
                 "text": "at",
                 "ok": false,
                 "why": "Welcome at غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "London",
+                "fa": "لندن"
               }
             ]
           },
@@ -11233,7 +11515,17 @@
             "answer": "welcome",
             "accept": [],
             "fa": "ممنون بابت کمکت! — خواهش می‌کنم.",
-            "why": "در جوابِ تشکر You're welcome می‌گوییم: You're welcome."
+            "why": "در جوابِ تشکر You're welcome می‌گوییم: You're welcome.",
+            "support": [
+              {
+                "en": "Thanks",
+                "fa": "ممنون"
+              },
+              {
+                "en": "help",
+                "fa": "کمک"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11254,6 +11546,16 @@
                 "text": "You welcome.",
                 "ok": false,
                 "why": "فعل لازم است: You're (You are) welcome."
+              }
+            ],
+            "support": [
+              {
+                "en": "Thank",
+                "fa": "ممنون"
+              },
+              {
+                "en": "very much",
+                "fa": "خیلی زیاد"
               }
             ]
           },

@@ -67,7 +67,17 @@
       "answer": "time",
       "accept": [],
       "fa": "عجله کن! وقت رفتن است.",
-      "why": "it's time to + فعل."
+      "why": "it's time to + فعل.",
+      "support": [
+       {
+        "en": "Hurry up",
+        "fa": "عجله کن"
+       },
+       {
+        "en": "leave",
+        "fa": "رفتن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -89,6 +99,20 @@
         "ok": false,
         "why": "at time نادرست است."
        }
+      ],
+      "support": [
+       {
+        "en": "train",
+        "fa": "قطار"
+       },
+       {
+        "en": "always",
+        "fa": "همیشه"
+       },
+       {
+        "en": "arrives",
+        "fa": "می‌رسد"
+       }
       ]
      },
      {
@@ -98,7 +122,17 @@
       "frame": "I read books in my free ___.",
       "answer": "time",
       "accept": [],
-      "why": "«وقت آزاد» در انگلیسی free time است: free time."
+      "why": "«وقت آزاد» در انگلیسی free time است: free time.",
+      "support": [
+       {
+        "en": "read",
+        "fa": "خواندن"
+       },
+       {
+        "en": "free",
+        "fa": "آزاد"
+       }
+      ]
      }
     ]
    },
@@ -156,7 +190,21 @@
       "answer": "times",
       "accept": [],
       "fa": "هفته‌ای چهار بار کلاس انگلیسی دارم.",
-      "why": "تعداد دفعه‌ها: times."
+      "why": "تعداد دفعه‌ها: times.",
+      "support": [
+       {
+        "en": "English",
+        "fa": "انگلیسی"
+       },
+       {
+        "en": "class",
+        "fa": "کلاس"
+       },
+       {
+        "en": "four",
+        "fa": "چهار"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -180,7 +228,21 @@
       "frame": "Let's try one more ___.",
       "answer": "time",
       "accept": [],
-      "why": "one more time = یک بار دیگر."
+      "why": "one more time = یک بار دیگر.",
+      "support": [
+       {
+        "en": "try",
+        "fa": "امتحان کنیم"
+       },
+       {
+        "en": "one",
+        "fa": "یک"
+       },
+       {
+        "en": "more",
+        "fa": "دیگر"
+       }
+      ]
      }
     ]
    }
@@ -250,7 +312,25 @@
       "answer": "day",
       "accept": [],
       "fa": "هر روز سی دقیقه پیاده‌روی می‌کنیم.",
-      "why": "«هر روز» با every و day گفته می‌شود، بدون حرف اضافه: every day."
+      "why": "«هر روز» با every و day گفته می‌شود، بدون حرف اضافه: every day.",
+      "support": [
+       {
+        "en": "walk",
+        "fa": "پیاده رفتن"
+       },
+       {
+        "en": "thirty",
+        "fa": "سی"
+       },
+       {
+        "en": "minutes",
+        "fa": "دقیقه"
+       },
+       {
+        "en": "every",
+        "fa": "هر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -271,6 +351,16 @@
         "text": "all days",
         "ok": false,
         "why": "all day مفرد است."
+       }
+      ],
+      "support": [
+       {
+        "en": "ill",
+        "fa": "بیمار"
+       },
+       {
+        "en": "stayed",
+        "fa": "ماند"
        }
       ]
      },
@@ -352,7 +442,21 @@
       "answer": "weeks",
       "accept": [],
       "fa": "دوره شش هفته طول می‌کشد.",
-      "why": "جمع week."
+      "why": "جمع week.",
+      "support": [
+       {
+        "en": "course",
+        "fa": "دوره"
+       },
+       {
+        "en": "six",
+        "fa": "شش"
+       },
+       {
+        "en": "long",
+        "fa": "طول؛ طولانی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -379,6 +483,10 @@
        {
         "en": "last",
         "fa": "گذشته"
+       },
+       {
+        "en": "visited",
+        "fa": "دیدن کردم"
        }
       ]
      },
@@ -474,7 +582,13 @@
       "answer": "years",
       "accept": [],
       "fa": "خواهرم پانزده سال دارد.",
-      "why": "برای سن، بعد از عدد years و old می‌آید: … years old."
+      "why": "برای سن، بعد از عدد years و old می‌آید: … years old.",
+      "support": [
+       {
+        "en": "fifteen",
+        "fa": "پانزده"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -495,6 +609,12 @@
         "text": "at",
         "ok": false,
         "why": "at برای ساعت است."
+       }
+      ],
+      "support": [
+       {
+        "en": "born",
+        "fa": "به دنیا آمدم"
        }
       ]
      },
@@ -585,7 +705,17 @@
       "answer": "today",
       "accept": [],
       "fa": "امروز هوا خیلی آفتابی است. بیا به پارک برویم.",
-      "why": "امروز، بدون حرف اضافه."
+      "why": "امروز، بدون حرف اضافه.",
+      "support": [
+       {
+        "en": "sunny",
+        "fa": "آفتابی"
+       },
+       {
+        "en": "park",
+        "fa": "پارک"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -607,6 +737,16 @@
         "ok": false,
         "why": "at لازم نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "Choose",
+        "fa": "انتخاب کن"
+       },
+       {
+        "en": "correct",
+        "fa": "درست"
+       }
       ]
      },
      {
@@ -616,7 +756,13 @@
       "frame": "What's the date ___?",
       "answer": "today",
       "accept": [],
-      "why": "«امروز» today است و اینجا حرف اضافه نمی‌گیرد: today."
+      "why": "«امروز» today است و اینجا حرف اضافه نمی‌گیرد: today.",
+      "support": [
+       {
+        "en": "date",
+        "fa": "تاریخ"
+       }
+      ]
      }
     ]
    }
@@ -686,7 +832,21 @@
       "answer": "tomorrow",
       "accept": [],
       "fa": "مغازه امروز بسته است، اما فردا باز می‌شود.",
-      "why": "روز بعد."
+      "why": "روز بعد.",
+      "support": [
+       {
+        "en": "shop",
+        "fa": "مغازه"
+       },
+       {
+        "en": "closed",
+        "fa": "بسته"
+       },
+       {
+        "en": "opens",
+        "fa": "باز می‌شود"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -708,6 +868,12 @@
         "ok": false,
         "why": "این عبارت وجود ندارد."
        }
+      ],
+      "support": [
+       {
+        "en": "English",
+        "fa": "انگلیسی"
+       }
       ]
      },
      {
@@ -717,7 +883,13 @@
       "frame": "I have a class ___ morning.",
       "answer": "tomorrow",
       "accept": [],
-      "why": "«فردا صبح» با tomorrow و بدون حرف اضافه گفته می‌شود: tomorrow morning."
+      "why": "«فردا صبح» با tomorrow و بدون حرف اضافه گفته می‌شود: tomorrow morning.",
+      "support": [
+       {
+        "en": "class",
+        "fa": "کلاس"
+       }
+      ]
      }
     ]
    }
@@ -786,7 +958,17 @@
       "answer": "yesterday",
       "accept": [],
       "fa": "دیروز سر کار نرفتم چون بیمار بودم.",
-      "why": "روز قبل، با فعل گذشته."
+      "why": "روز قبل، با فعل گذشته.",
+      "support": [
+       {
+        "en": "because",
+        "fa": "چون"
+       },
+       {
+        "en": "ill",
+        "fa": "بیمار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -808,6 +990,12 @@
         "ok": false,
         "why": "این عبارت به کار نمی‌رود."
        }
+      ],
+      "support": [
+       {
+        "en": "English",
+        "fa": "انگلیسی"
+       }
       ]
      },
      {
@@ -817,7 +1005,13 @@
       "frame": "I bought a book ___.",
       "answer": "yesterday",
       "accept": [],
-      "why": "yesterday با گذشته."
+      "why": "yesterday با گذشته.",
+      "support": [
+       {
+        "en": "bought",
+        "fa": "خریدم"
+       }
+      ]
      }
     ]
    }
@@ -890,7 +1084,17 @@
       "answer": "morning",
       "accept": [],
       "fa": "همیشه صبح دوش می‌گیرم.",
-      "why": "برای «صبح» در این جمله in the morning می‌گوییم: in the morning."
+      "why": "برای «صبح» در این جمله in the morning می‌گوییم: in the morning.",
+      "support": [
+       {
+        "en": "always",
+        "fa": "همیشه"
+       },
+       {
+        "en": "shower",
+        "fa": "دوش"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -911,6 +1115,16 @@
         "text": "at",
         "ok": false,
         "why": "at برای ساعت است."
+       }
+      ],
+      "support": [
+       {
+        "en": "meeting",
+        "fa": "جلسه"
+       },
+       {
+        "en": "Tuesday",
+        "fa": "سه‌شنبه"
        }
       ]
      },
@@ -992,7 +1206,21 @@
       "answer": "night",
       "accept": [],
       "fa": "جغدها روز می‌خوابند و شب پرواز می‌کنند.",
-      "why": "در مقابلِ «روز»، برای «شب» at night می‌گوییم: at night."
+      "why": "در مقابلِ «روز»، برای «شب» at night می‌گوییم: at night.",
+      "support": [
+       {
+        "en": "Owls",
+        "fa": "جغدها"
+       },
+       {
+        "en": "sleep",
+        "fa": "خوابیدن"
+       },
+       {
+        "en": "fly",
+        "fa": "پرواز می‌کنند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1014,6 +1242,16 @@
         "ok": false,
         "why": "در انگلیسی امروزی رایج نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "arrive",
+        "fa": "رسیدن"
+       },
+       {
+        "en": "party",
+        "fa": "مهمانی"
+       }
       ]
      },
      {
@@ -1028,6 +1266,14 @@
        {
         "en": "last",
         "fa": "گذشته"
+       },
+       {
+        "en": "sleep",
+        "fa": "خوابیدن"
+       },
+       {
+        "en": "well",
+        "fa": "خوب"
        }
       ]
      }
@@ -1313,7 +1559,17 @@
        "mom"
       ],
       "fa": "مادرم بهترین سوپ را درست می‌کند.",
-      "why": "مادر."
+      "why": "مادر.",
+      "support": [
+       {
+        "en": "best",
+        "fa": "بهترین"
+       },
+       {
+        "en": "soup",
+        "fa": "سوپ"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1344,6 +1600,14 @@
        {
         "en": "phrase",
         "fa": "عبارت"
+       },
+       {
+        "en": "Choose",
+        "fa": "انتخاب کن"
+       },
+       {
+        "en": "birthday",
+        "fa": "تولد"
        }
       ]
      },
@@ -1357,7 +1621,13 @@
        "mum",
        "mom"
       ],
-      "why": "مادر."
+      "why": "مادر.",
+      "support": [
+       {
+        "en": "hospital",
+        "fa": "بیمارستان"
+       }
+      ]
      }
     ]
    }
@@ -1426,7 +1696,21 @@
        "dad"
       ],
       "fa": "پدرم دوچرخه‌سواری را به من یاد داد.",
-      "why": "پدر."
+      "why": "پدر.",
+      "support": [
+       {
+        "en": "taught",
+        "fa": "یاد داد"
+       },
+       {
+        "en": "ride",
+        "fa": "سواری کردن"
+       },
+       {
+        "en": "bike",
+        "fa": "دوچرخه"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -1437,7 +1721,13 @@
       "accept": [
        "dad"
       ],
-      "why": "پدر."
+      "why": "پدر.",
+      "support": [
+       {
+        "en": "fifty",
+        "fa": "پنجاه"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -1516,7 +1806,21 @@
       "answer": "children",
       "accept": [],
       "fa": "پارک پر از بچه‌هایی است که بازی می‌کنند.",
-      "why": "جمع child."
+      "why": "جمع child.",
+      "support": [
+       {
+        "en": "park",
+        "fa": "پارک"
+       },
+       {
+        "en": "full",
+        "fa": "پر"
+       },
+       {
+        "en": "playing",
+        "fa": "بازی می‌کنند"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1538,6 +1842,20 @@
         "ok": false,
         "why": "childs نادرست است."
        }
+      ],
+      "support": [
+       {
+        "en": "Choose",
+        "fa": "انتخاب کن"
+       },
+       {
+        "en": "correct",
+        "fa": "درست"
+       },
+       {
+        "en": "only",
+        "fa": "تنها (تک)"
+       }
       ]
      },
      {
@@ -1547,7 +1865,13 @@
       "frame": "They have three ___.",
       "answer": "children",
       "accept": [],
-      "why": "جمع بی‌قاعده."
+      "why": "جمع بی‌قاعده.",
+      "support": [
+       {
+        "en": "three",
+        "fa": "سه"
+       }
+      ]
      }
     ]
    }
@@ -1735,7 +2059,13 @@
       "answer": "home",
       "accept": [],
       "fa": "دیر است. دارم به خانه می‌روم.",
-      "why": "go home، بدون to."
+      "why": "go home، بدون to.",
+      "support": [
+       {
+        "en": "late",
+        "fa": "دیر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1757,6 +2087,12 @@
         "ok": false,
         "why": "to برای حرکت است."
        }
+      ],
+      "support": [
+       {
+        "en": "anyone",
+        "fa": "کسی"
+       }
       ]
      },
      {
@@ -1766,7 +2102,13 @@
       "frame": "I'm working from ___ today.",
       "answer": "home",
       "accept": [],
-      "why": "«از خانه کار کردن» work from home است، بدون the: work from home."
+      "why": "«از خانه کار کردن» work from home است، بدون the: work from home.",
+      "support": [
+       {
+        "en": "today",
+        "fa": "امروز"
+       }
+      ]
      }
     ]
    }
@@ -1834,7 +2176,17 @@
       "answer": "house",
       "accept": [],
       "fa": "خانه‌شان سه اتاق خواب دارد.",
-      "why": "ساختمان خانه."
+      "why": "ساختمان خانه.",
+      "support": [
+       {
+        "en": "three",
+        "fa": "سه"
+       },
+       {
+        "en": "bedrooms",
+        "fa": "اتاق‌خواب‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1856,6 +2208,20 @@
         "ok": false,
         "why": "family آدم‌ها هستند."
        }
+      ],
+      "support": [
+       {
+        "en": "Which",
+        "fa": "کدام"
+       },
+       {
+        "en": "Which one",
+        "fa": "کدام یکی"
+       },
+       {
+        "en": "building",
+        "fa": "ساختمان"
+       }
       ]
      },
      {
@@ -1865,7 +2231,17 @@
       "frame": "My friend's ___ is near the sea.",
       "answer": "house",
       "accept": [],
-      "why": "ساختمان خانهٔ کسی."
+      "why": "ساختمان خانهٔ کسی.",
+      "support": [
+       {
+        "en": "near",
+        "fa": "نزدیکِ"
+       },
+       {
+        "en": "sea",
+        "fa": "دریا"
+       }
+      ]
      }
     ]
    }
@@ -1933,7 +2309,21 @@
       "answer": "room",
       "accept": [],
       "fa": "می‌توانی پیش از شام اتاقت را تمیز کنی؟",
-      "why": "اتاق."
+      "why": "اتاق.",
+      "support": [
+       {
+        "en": "clean",
+        "fa": "تمیز"
+       },
+       {
+        "en": "before",
+        "fa": "قبل از"
+       },
+       {
+        "en": "dinner",
+        "fa": "شام"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1964,7 +2354,13 @@
       "frame": "I'd like to book a ___ for tonight.",
       "answer": "room",
       "accept": [],
-      "why": "اتاق هتل."
+      "why": "اتاق هتل.",
+      "support": [
+       {
+        "en": "tonight",
+        "fa": "امشب"
+       }
+      ]
      }
     ]
    }
@@ -3615,7 +4011,13 @@
        "large"
       ],
       "fa": "توکیو شهر بسیار بزرگی است.",
-      "why": "اندازه."
+      "why": "اندازه.",
+      "support": [
+       {
+        "en": "Tokyo",
+        "fa": "توکیو"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3637,6 +4039,12 @@
         "ok": false,
         "why": "صفت کوتاه -er می‌گیرد."
        }
+      ],
+      "support": [
+       {
+        "en": "brother",
+        "fa": "برادر"
+       }
       ]
      },
      {
@@ -3646,7 +4054,13 @@
       "frame": "This is a ___ problem.",
       "answer": "big",
       "accept": [],
-      "why": "صفت big پیش از problem می‌آید: big problem."
+      "why": "صفت big پیش از problem می‌آید: big problem.",
+      "support": [
+       {
+        "en": "problem",
+        "fa": "مشکل"
+       }
+      ]
      }
     ]
    }
@@ -3716,7 +4130,21 @@
       "answer": "small",
       "accept": [],
       "fa": "این تی‌شرت خیلی کوچک است. بزرگ‌ترش را دارید؟",
-      "why": "اندازه."
+      "why": "اندازه.",
+      "support": [
+       {
+        "en": "T-shirt",
+        "fa": "تی‌شرت"
+       },
+       {
+        "en": "too",
+        "fa": "بیش از حد"
+       },
+       {
+        "en": "one",
+        "fa": "یکی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3743,6 +4171,10 @@
        {
         "en": "village",
         "fa": "روستا"
+       },
+       {
+        "en": "town",
+        "fa": "شهر"
        }
       ]
      },
@@ -3755,7 +4187,13 @@
       "accept": [
        "little"
       ],
-      "why": "صفت small پیش از town می‌آید: small town."
+      "why": "صفت small پیش از town می‌آید: small town.",
+      "support": [
+       {
+        "en": "town",
+        "fa": "شهر"
+       }
+      ]
      }
     ]
    }
@@ -4027,6 +4465,14 @@
        {
         "en": "last week",
         "fa": "هفتهٔ گذشته"
+       },
+       {
+        "en": "started",
+        "fa": "شروع کرد"
+       },
+       {
+        "en": "job",
+        "fa": "کار؛ شغل"
        }
       ]
      },
@@ -4055,6 +4501,14 @@
        {
         "en": "last week",
         "fa": "هفتهٔ گذشته"
+       },
+       {
+        "en": "moved",
+        "fa": "نقل مکان کردی"
+       },
+       {
+        "en": "Shiraz",
+        "fa": "شیراز"
        }
       ]
      },
@@ -4065,7 +4519,17 @@
       "frame": "Happy ___ Year!",
       "answer": "New",
       "accept": [],
-      "why": "در تبریک سال نو، New با حرف بزرگ می‌آید: Happy New Year."
+      "why": "در تبریک سال نو، New با حرف بزرگ می‌آید: Happy New Year.",
+      "support": [
+       {
+        "en": "Happy",
+        "fa": "مبارک (در تبریک)"
+       },
+       {
+        "en": "Year",
+        "fa": "سال"
+       }
+      ]
      }
     ]
    }
@@ -4134,7 +4598,13 @@
       "answer": "old",
       "accept": [],
       "fa": "خواهرت چند سال دارد؟",
-      "why": "پرسیدن سن."
+      "why": "پرسیدن سن.",
+      "support": [
+       {
+        "en": "sister",
+        "fa": "خواهر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4171,7 +4641,21 @@
       "frame": "My grandmother is eighty years ___.",
       "answer": "old",
       "accept": [],
-      "why": "برای بیان سن از number + years old استفاده می‌کنیم."
+      "why": "برای بیان سن از number + years old استفاده می‌کنیم.",
+      "support": [
+       {
+        "en": "grandmother",
+        "fa": "مادربزرگ"
+       },
+       {
+        "en": "eighty",
+        "fa": "هشتاد"
+       },
+       {
+        "en": "years",
+        "fa": "سال"
+       }
+      ]
      }
     ]
    },
@@ -4228,7 +4712,17 @@
       "answer": "old",
       "accept": [],
       "fa": "گوشی‌ام خیلی کهنه است. یک جدید لازم دارم.",
-      "why": "متضادِ new."
+      "why": "متضادِ new.",
+      "support": [
+       {
+        "en": "need",
+        "fa": "لازم داشتن"
+       },
+       {
+        "en": "one",
+        "fa": "یکی"
+       }
+      ]
      },
      {
       "type": "produce",
@@ -4237,7 +4731,13 @@
       "frame": "I saw an ___ friend yesterday.",
       "answer": "old",
       "accept": [],
-      "why": "«دوست قدیمی» یعنی دوستی از قدیم، با old: an old friend."
+      "why": "«دوست قدیمی» یعنی دوستی از قدیم، با old: an old friend.",
+      "support": [
+       {
+        "en": "yesterday",
+        "fa": "دیروز"
+       }
+      ]
      },
      {
       "type": "cloze",
@@ -4246,7 +4746,29 @@
       "answer": "old",
       "accept": [],
       "fa": "این کت خیلی قدیمی است. ده سال پیش آن را خریدم.",
-      "why": "برای چیزی که مدت زیادی از آن گذشته و دیگر new نیست، old می‌آید."
+      "why": "برای چیزی که مدت زیادی از آن گذشته و دیگر new نیست، old می‌آید.",
+      "support": [
+       {
+        "en": "coat",
+        "fa": "پالتو"
+       },
+       {
+        "en": "bought",
+        "fa": "خریدم"
+       },
+       {
+        "en": "ten",
+        "fa": "ده"
+       },
+       {
+        "en": "years",
+        "fa": "سال"
+       },
+       {
+        "en": "ago",
+        "fa": "پیش"
+       }
+      ]
      }
     ]
    }
