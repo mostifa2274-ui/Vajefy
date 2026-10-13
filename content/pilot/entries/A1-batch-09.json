@@ -1059,7 +1059,13 @@
             "answer": "November",
             "accept": [],
             "fa": "اکتبر، نوامبر، دسامبر.",
-            "why": "ماهِ بعد از October: November."
+            "why": "ماهِ بعد از October: November.",
+            "support": [
+              {
+                "en": "October",
+                "fa": "اکتبر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1081,6 +1087,12 @@
                 "ok": false,
                 "why": "at برای ساعت است."
               }
+            ],
+            "support": [
+              {
+                "en": "moved",
+                "fa": "نقل مکان کردیم"
+              }
             ]
           },
           {
@@ -1090,7 +1102,13 @@
             "frame": "It's cold in ___.",
             "answer": "November",
             "accept": [],
-            "why": "November = نوامبر."
+            "why": "November = نوامبر.",
+            "support": [
+              {
+                "en": "cold",
+                "fa": "سرد"
+              }
+            ]
           }
         ]
       }
@@ -1167,7 +1185,13 @@
               "a.m."
             ],
             "fa": "مدرسه ساعتِ هشت شروع می‌شود.",
-            "why": "برای ساعتِ کامل، o'clock بعد از عدد می‌آید: eight o'clock."
+            "why": "برای ساعتِ کامل، o'clock بعد از عدد می‌آید: eight o'clock.",
+            "support": [
+              {
+                "en": "eight",
+                "fa": "هشت"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1189,6 +1213,12 @@
                 "ok": false,
                 "why": "o'clock جمع بسته نمی‌شود."
               }
+            ],
+            "support": [
+              {
+                "en": "three",
+                "fa": "سه"
+              }
             ]
           },
           {
@@ -1198,7 +1228,13 @@
             "frame": "It's nine ___.",
             "answer": "o'clock",
             "accept": [],
-            "why": "برای ساعتِ کامل، o'clock بعد از عدد می‌آید: nine o'clock."
+            "why": "برای ساعتِ کامل، o'clock بعد از عدد می‌آید: nine o'clock.",
+            "support": [
+              {
+                "en": "nine",
+                "fa": "نه"
+              }
+            ]
           }
         ]
       }
@@ -1292,6 +1328,12 @@
                 "ok": false,
                 "why": "at برای ساعت است."
               }
+            ],
+            "support": [
+              {
+                "en": "birthday",
+                "fa": "تولد"
+              }
             ]
           },
           {
@@ -1301,7 +1343,13 @@
             "frame": "We came to Iran in ___.",
             "answer": "October",
             "accept": [],
-            "why": "October = اکتبر."
+            "why": "October = اکتبر.",
+            "support": [
+              {
+                "en": "Iran",
+                "fa": "ایران"
+              }
+            ]
           }
         ]
       }
@@ -1948,7 +1996,13 @@
             "frame": "My ___ live in Tehran.",
             "answer": "parents",
             "accept": [],
-            "why": "«پدر و مادر» با هم my parents است: my parents."
+            "why": "«پدر و مادر» با هم my parents است: my parents.",
+            "support": [
+              {
+                "en": "Tehran",
+                "fa": "تهران"
+              }
+            ]
           }
         ]
       }
@@ -4621,7 +4675,13 @@
             "answer": "Thursday",
             "accept": [],
             "fa": "چهارشنبه، پنجشنبه، جمعه.",
-            "why": "روزِ بعد از Wednesday: Thursday."
+            "why": "روزِ بعد از Wednesday: Thursday.",
+            "support": [
+              {
+                "en": "Friday",
+                "fa": "جمعه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4642,6 +4702,16 @@
                 "text": "at",
                 "ok": false,
                 "why": "at برای ساعت است."
+              }
+            ],
+            "support": [
+              {
+                "en": "shop",
+                "fa": "مغازه"
+              },
+              {
+                "en": "closed",
+                "fa": "بسته"
               }
             ]
           },
@@ -4837,7 +4907,21 @@
               "bathroom"
             ],
             "fa": "دستشویی کجاست؟ باید دست‌هایم را بشویم.",
-            "why": "toilet = دستشویی."
+            "why": "toilet = دستشویی.",
+            "support": [
+              {
+                "en": "need",
+                "fa": "لازم داشتن"
+              },
+              {
+                "en": "wash",
+                "fa": "شستن"
+              },
+              {
+                "en": "hands",
+                "fa": "دست‌ها"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5402,6 +5486,22 @@
               {
                 "en": "got married",
                 "fa": "ازدواج کردند"
+              },
+              {
+                "en": "very much",
+                "fa": "خیلی زیاد"
+              },
+              {
+                "en": "ten",
+                "fa": "ده"
+              },
+              {
+                "en": "years",
+                "fa": "سال"
+              },
+              {
+                "en": "ago",
+                "fa": "پیش"
               }
             ]
           },
@@ -5430,6 +5530,10 @@
               {
                 "en": "married to",
                 "fa": "با او ازدواج کرده"
+              },
+              {
+                "en": "woman",
+                "fa": "زن"
               }
             ]
           },
@@ -5440,7 +5544,13 @@
             "frame": "His ___ is a nurse.",
             "answer": "wife",
             "accept": [],
-            "why": "«همسرش» برای یک مرد his wife است: his wife."
+            "why": "«همسرش» برای یک مرد his wife است: his wife.",
+            "support": [
+              {
+                "en": "nurse",
+                "fa": "پرستار"
+              }
+            ]
           }
         ]
       }

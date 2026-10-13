@@ -1996,7 +1996,29 @@
       "answer": "hours",
       "accept": [],
       "fa": "قطار تبریز حدود ده ساعت طول می‌کشد.",
-      "why": "مدت: hours."
+      "why": "مدت: hours.",
+      "support": [
+       {
+        "en": "train",
+        "fa": "قطار"
+       },
+       {
+        "en": "Tabriz",
+        "fa": "تبریز"
+       },
+       {
+        "en": "takes",
+        "fa": "طول می‌کشد"
+       },
+       {
+        "en": "about",
+        "fa": "حدود"
+       },
+       {
+        "en": "ten",
+        "fa": "ده"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2027,7 +2049,13 @@
       "frame": "I waited for half an ___.",
       "answer": "hour",
       "accept": [],
-      "why": "half an hour = نیم ساعت."
+      "why": "half an hour = نیم ساعت.",
+      "support": [
+       {
+        "en": "half",
+        "fa": "نیم"
+       }
+      ]
      }
     ]
    }
@@ -2325,7 +2353,13 @@
       "answer": "often",
       "accept": [],
       "fa": "هر چند وقت یک بار شنا می‌روی؟",
-      "why": "How often = هر چند وقت یک بار."
+      "why": "How often = هر چند وقت یک بار.",
+      "support": [
+       {
+        "en": "swimming",
+        "fa": "شنا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2361,6 +2395,10 @@
        {
         "en": "films",
         "fa": "فیلم‌ها"
+       },
+       {
+        "en": "watch",
+        "fa": "تماشا کردن"
        }
       ]
      }
@@ -2436,7 +2474,13 @@
       "answer": "sleeping",
       "accept": [],
       "fa": "بچه خواب است. لطفاً ساکت باش.",
-      "why": "حال استمراری: is sleeping."
+      "why": "حال استمراری: is sleeping.",
+      "support": [
+       {
+        "en": "quiet",
+        "fa": "ساکت"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -2458,6 +2502,24 @@
         "ok": false,
         "why": "به گذشته اشاره دارد."
        }
+      ],
+      "support": [
+       {
+        "en": "badly",
+        "fa": "بد"
+       },
+       {
+        "en": "because",
+        "fa": "چون"
+       },
+       {
+        "en": "hot",
+        "fa": "داغ؛ گرم"
+       },
+       {
+        "en": "weather",
+        "fa": "هوا"
+       }
       ]
      },
      {
@@ -2467,7 +2529,17 @@
       "frame": "I usually ___ for eight hours.",
       "answer": "sleep",
       "accept": [],
-      "why": "sleep for + مدت."
+      "why": "sleep for + مدت.",
+      "support": [
+       {
+        "en": "eight",
+        "fa": "هشت"
+       },
+       {
+        "en": "hours",
+        "fa": "ساعت (مدت)"
+       }
+      ]
      }
     ]
    }
@@ -3167,7 +3239,25 @@
       "answer": "Friday",
       "accept": [],
       "fa": "بسیاری از مغازه‌ها در ایران جمعه تعطیل‌اند.",
-      "why": "on + روز هفته، با حرف بزرگ."
+      "why": "on + روز هفته، با حرف بزرگ.",
+      "support": [
+       {
+        "en": "Many",
+        "fa": "بسیاری از"
+       },
+       {
+        "en": "shops",
+        "fa": "مغازه‌ها"
+       },
+       {
+        "en": "Iran",
+        "fa": "ایران"
+       },
+       {
+        "en": "closed",
+        "fa": "بسته"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3209,6 +3299,10 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "watch",
+        "fa": "تماشا کردن"
        }
       ]
      }
@@ -3312,6 +3406,24 @@
         "ok": false,
         "why": "later یعنی بعداً."
        }
+      ],
+      "support": [
+       {
+        "en": "train",
+        "fa": "قطار"
+       },
+       {
+        "en": "arrived",
+        "fa": "رسید"
+       },
+       {
+        "en": "because",
+        "fa": "چون"
+       },
+       {
+        "en": "snow",
+        "fa": "برف"
+       }
       ]
      },
      {
@@ -3326,6 +3438,10 @@
        {
         "en": "last night",
         "fa": "دیشب"
+       },
+       {
+        "en": "stayed up",
+        "fa": "بیدار ماندم"
        }
       ]
      }
@@ -4116,7 +4232,13 @@
       "answer": "now",
       "accept": [],
       "fa": "الان کجایی؟ – ایستگاهم.",
-      "why": "now = الان."
+      "why": "now = الان.",
+      "support": [
+       {
+        "en": "station",
+        "fa": "ایستگاه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4137,6 +4259,12 @@
         "text": "sleep",
         "ok": false,
         "why": "فاعل سوم‌شخص است و کار در جریان است."
+       }
+      ],
+      "support": [
+       {
+        "en": "quiet",
+        "fa": "ساکت"
        }
       ]
      },
@@ -4331,7 +4459,17 @@
       "answer": "tonight",
       "accept": [],
       "fa": "امشب چه کار می‌کنی؟ می‌خواهی به سینما بیایی؟",
-      "why": "tonight = امشب."
+      "why": "tonight = امشب.",
+      "support": [
+       {
+        "en": "want",
+        "fa": "خواستن"
+       },
+       {
+        "en": "cinema",
+        "fa": "سینما"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4358,6 +4496,10 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "watch",
+        "fa": "تماشا کردن"
        }
       ]
      },
@@ -4368,7 +4510,13 @@
       "frame": "It will rain ___.",
       "answer": "tonight",
       "accept": [],
-      "why": "tonight در آخر جمله."
+      "why": "tonight در آخر جمله.",
+      "support": [
+       {
+        "en": "rain",
+        "fa": "باران"
+       }
+      ]
      }
     ]
    }
@@ -4558,7 +4706,13 @@
       "answer": "brother",
       "accept": [],
       "fa": "برادرم دو سال از من بزرگ‌تر است.",
-      "why": "brother = برادر."
+      "why": "brother = برادر.",
+      "support": [
+       {
+        "en": "years",
+        "fa": "سال"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -4589,7 +4743,17 @@
       "frame": "My younger ___ is eight.",
       "answer": "brother",
       "accept": [],
-      "why": "برای سن، «برادر کوچک‌تر» younger brother است: younger brother."
+      "why": "برای سن، «برادر کوچک‌تر» younger brother است: younger brother.",
+      "support": [
+       {
+        "en": "younger",
+        "fa": "کوچک‌تر"
+       },
+       {
+        "en": "eight",
+        "fa": "هشت"
+       }
+      ]
      }
     ]
    }
@@ -5757,7 +5921,13 @@
       "answer": "finish",
       "accept": [],
       "fa": "تکالیفت را تمام کردی؟",
-      "why": "finish + کار."
+      "why": "finish + کار.",
+      "support": [
+       {
+        "en": "homework",
+        "fa": "تکلیف"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5779,6 +5949,12 @@
         "ok": false,
         "why": "فعل ساده بعد از finish نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "letter",
+        "fa": "نامه"
+       }
       ]
      },
      {
@@ -5790,7 +5966,17 @@
       "accept": [
        "ends"
       ],
-      "why": "سوم‌شخص مفرد."
+      "why": "سوم‌شخص مفرد.",
+      "support": [
+       {
+        "en": "class",
+        "fa": "کلاس"
+       },
+       {
+        "en": "four",
+        "fa": "چهار"
+       }
+      ]
      }
     ]
    }
@@ -6629,7 +6815,13 @@
       "answer": "end",
       "accept": [],
       "fa": "آخر هفته به تو پول می‌دهم.",
-      "why": "«آخرِ هفته» در این جمله at the end of است: at the end of."
+      "why": "«آخرِ هفته» در این جمله at the end of است: at the end of.",
+      "support": [
+       {
+        "en": "pay",
+        "fa": "پرداختن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6651,6 +6843,24 @@
         "ok": false,
         "why": "on the end معنای دیگری دارد."
        }
+      ],
+      "support": [
+       {
+        "en": "lesson",
+        "fa": "درس"
+       },
+       {
+        "en": "teacher",
+        "fa": "معلم"
+       },
+       {
+        "en": "gave",
+        "fa": "داد"
+       },
+       {
+        "en": "homework",
+        "fa": "تکلیف"
+       }
       ]
      },
      {
@@ -6665,6 +6875,14 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "watched",
+        "fa": "تماشا کردم"
+       },
+       {
+        "en": "until",
+        "fa": "تا"
        }
       ]
      }
@@ -6731,6 +6949,14 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "ten",
+        "fa": "ده"
+       },
+       {
+        "en": "eleven",
+        "fa": "یازده"
        }
       ]
      },
@@ -6754,6 +6980,16 @@
         "ok": false,
         "why": "بعد از does فعل ساده می‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "When",
+        "fa": "کی"
+       },
+       {
+        "en": "meeting",
+        "fa": "جلسه"
+       }
       ]
      },
      {
@@ -6765,7 +7001,13 @@
       "accept": [
        "finishes"
       ],
-      "why": "برای فاعل مفرد در زمان حال ساده end به ends تبدیل می‌شود."
+      "why": "برای فاعل مفرد در زمان حال ساده end به ends تبدیل می‌شود.",
+      "support": [
+       {
+        "en": "holiday",
+        "fa": "تعطیلات"
+       }
+      ]
      }
     ]
    }
@@ -8024,6 +8266,14 @@
        {
         "en": "enough",
         "fa": "کافی"
+       },
+       {
+        "en": "everyone",
+        "fa": "همه"
+       },
+       {
+        "en": "standing",
+        "fa": "ایستاده‌اند"
        }
       ]
      },
@@ -8046,6 +8296,12 @@
         "text": "over",
         "ok": false,
         "why": "over یعنی بالای چیزی بدون تماس."
+       }
+      ],
+      "support": [
+       {
+        "en": "sit",
+        "fa": "نشستن"
        }
       ]
      },
@@ -9080,7 +9336,17 @@
       "answer": "wall",
       "accept": [],
       "fa": "می‌توانی این تابلو را به دیوار بزنی؟",
-      "why": "برای چیزی که روی دیوار آویزان می‌شود on the wall: on the wall."
+      "why": "برای چیزی که روی دیوار آویزان می‌شود on the wall: on the wall.",
+      "support": [
+       {
+        "en": "put",
+        "fa": "گذاشتن"
+       },
+       {
+        "en": "picture",
+        "fa": "عکس؛ تصویر"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9102,6 +9368,16 @@
         "ok": false,
         "why": "at the wall یعنی کنارِ دیوار."
        }
+      ],
+      "support": [
+       {
+        "en": "map",
+        "fa": "نقشه"
+       },
+       {
+        "en": "classroom",
+        "fa": "کلاس درس"
+       }
       ]
      },
      {
@@ -9111,7 +9387,13 @@
       "frame": "There is a garden behind the ___.",
       "answer": "wall",
       "accept": [],
-      "why": "wall = دیوار."
+      "why": "wall = دیوار.",
+      "support": [
+       {
+        "en": "behind",
+        "fa": "پشتِ"
+       }
+      ]
      }
     ]
    }
@@ -11031,7 +11313,17 @@
       "answer": "window",
       "accept": [],
       "fa": "اینجا گرم است. می‌توانم پنجره را باز کنم؟",
-      "why": "«پنجره را باز کردن» open the window است: open the window."
+      "why": "«پنجره را باز کردن» open the window است: open the window.",
+      "support": [
+       {
+        "en": "hot",
+        "fa": "داغ؛ گرم"
+       },
+       {
+        "en": "open",
+        "fa": "باز"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11053,6 +11345,16 @@
         "ok": false,
         "why": "door seat معنایی ندارد."
        }
+      ],
+      "support": [
+       {
+        "en": "seat",
+        "fa": "صندلی؛ جا"
+       },
+       {
+        "en": "plane",
+        "fa": "هواپیما"
+       }
       ]
      },
      {
@@ -11062,7 +11364,13 @@
       "frame": "Look out of the ___!",
       "answer": "window",
       "accept": [],
-      "why": "«از پنجره بیرون را نگاه کن» look out of the window است: look out of the window."
+      "why": "«از پنجره بیرون را نگاه کن» look out of the window است: look out of the window.",
+      "support": [
+       {
+        "en": "Look",
+        "fa": "نگاه کن"
+       }
+      ]
      }
     ]
    }
@@ -12234,6 +12542,10 @@
        {
         "en": "next",
         "fa": "بعدی"
+       },
+       {
+        "en": "job",
+        "fa": "کار؛ شغل"
        }
       ]
      },
@@ -12257,6 +12569,12 @@
         "ok": false,
         "why": "at برای ساعت است."
        }
+      ],
+      "support": [
+       {
+        "en": "meeting",
+        "fa": "جلسه"
+       }
       ]
      },
      {
@@ -12268,7 +12586,13 @@
       "accept": [
        "Monday"
       ],
-      "why": "on Mondays = دوشنبه‌ها."
+      "why": "on Mondays = دوشنبه‌ها.",
+      "support": [
+       {
+        "en": "swimming",
+        "fa": "شنا"
+       }
+      ]
      }
     ]
    }
@@ -12568,7 +12892,13 @@
        "begin"
       ],
       "fa": "کنسرت ساعت چند شروع می‌شود؟",
-      "why": "بعد از does فعل ساده."
+      "why": "بعد از does فعل ساده.",
+      "support": [
+       {
+        "en": "concert",
+        "fa": "کنسرت"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -12590,6 +12920,16 @@
         "ok": false,
         "why": "on برای روز است."
        }
+      ],
+      "support": [
+       {
+        "en": "lesson",
+        "fa": "درس"
+       },
+       {
+        "en": "ten",
+        "fa": "ده"
+       }
       ]
      },
      {
@@ -12599,7 +12939,17 @@
       "frame": "I ___ my new job tomorrow.",
       "answer": "start",
       "accept": [],
-      "why": "start + کار."
+      "why": "start + کار.",
+      "support": [
+       {
+        "en": "job",
+        "fa": "کار؛ شغل"
+       },
+       {
+        "en": "tomorrow",
+        "fa": "فردا"
+       }
+      ]
      }
     ]
    }

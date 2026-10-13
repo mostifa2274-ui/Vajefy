@@ -286,6 +286,14 @@
               {
                 "en": "university",
                 "fa": "دانشگاه"
+              },
+              {
+                "en": "met",
+                "fa": "آشنا شدیم"
+              },
+              {
+                "en": "three",
+                "fa": "سه"
               }
             ]
           },
@@ -308,6 +316,20 @@
                 "text": "ago two hours",
                 "ok": false,
                 "why": "ago بعد از زمان می‌آید."
+              }
+            ],
+            "support": [
+              {
+                "en": "When",
+                "fa": "کی"
+              },
+              {
+                "en": "arrive",
+                "fa": "رسیدن"
+              },
+              {
+                "en": "arrived",
+                "fa": "رسیدم"
               }
             ]
           },
@@ -722,7 +744,17 @@
             "answer": "bathroom",
             "accept": [],
             "fa": "در حمام‌مان دوش و توالت داریم.",
-            "why": "bathroom = حمام و دستشویی."
+            "why": "bathroom = حمام و دستشویی.",
+            "support": [
+              {
+                "en": "shower",
+                "fa": "دوش"
+              },
+              {
+                "en": "toilet",
+                "fa": "دستشویی"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1916,7 +1948,13 @@
             "answer": "cousin",
             "accept": [],
             "fa": "دختر عمویم دخترعموی من است.",
-            "why": "فرزندِ عمو: cousin."
+            "why": "فرزندِ عمو: cousin.",
+            "support": [
+              {
+                "en": "daughter",
+                "fa": "دختر (فرزند)"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -1938,6 +1976,12 @@
                 "ok": false,
                 "why": "uncle عمو یا دایی است."
               }
+            ],
+            "support": [
+              {
+                "en": "son",
+                "fa": "پسر (فرزند)"
+              }
             ]
           },
           {
@@ -1947,7 +1991,13 @@
             "frame": "My ___ is a doctor.",
             "answer": "cousin",
             "accept": [],
-            "why": "cousin = پسرعمو، دخترخاله و …"
+            "why": "cousin = پسرعمو، دخترخاله و …",
+            "support": [
+              {
+                "en": "doctor",
+                "fa": "دکتر"
+              }
+            ]
           }
         ]
       }
@@ -4004,7 +4054,13 @@
               "apartment"
             ],
             "fa": "باغچه ندارند چون در آپارتمان زندگی می‌کنند.",
-            "why": "آپارتمان معمولاً حیاط ندارد؛ «در آپارتمان زندگی کردن» live in a flat است: live in a flat."
+            "why": "آپارتمان معمولاً حیاط ندارد؛ «در آپارتمان زندگی کردن» live in a flat است: live in a flat.",
+            "support": [
+              {
+                "en": "because",
+                "fa": "چون"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4043,7 +4099,13 @@
             "accept": [
               "apartment"
             ],
-            "why": "flat = آپارتمان."
+            "why": "flat = آپارتمان.",
+            "support": [
+              {
+                "en": "three",
+                "fa": "سه"
+              }
+            ]
           }
         ]
       }
@@ -4682,7 +4744,13 @@
             "accept": [
               "grandpa"
             ],
-            "why": "grandfather = پدربزرگ."
+            "why": "grandfather = پدربزرگ.",
+            "support": [
+              {
+                "en": "garden",
+                "fa": "باغچه؛ حیاط"
+              }
+            ]
           }
         ]
       }
@@ -4777,6 +4845,12 @@
                 "text": "grandmather",
                 "ok": false,
                 "why": "املای درست: grandmother."
+              }
+            ],
+            "support": [
+              {
+                "en": "seventy",
+                "fa": "هفتاد"
               }
             ]
           },
@@ -5316,7 +5390,13 @@
             "answer": "June",
             "accept": [],
             "fa": "مه، ژوئن، ژوئیه.",
-            "why": "ماهِ بعد از May: June."
+            "why": "ماهِ بعد از May: June.",
+            "support": [
+              {
+                "en": "May",
+                "fa": "مه (ماه پنجم)"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5338,6 +5418,12 @@
                 "ok": false,
                 "why": "at June غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "concert",
+                "fa": "کنسرت"
+              }
             ]
           },
           {
@@ -5347,7 +5433,13 @@
             "frame": "It's hot in ___.",
             "answer": "June",
             "accept": [],
-            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in June."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in June.",
+            "support": [
+              {
+                "en": "hot",
+                "fa": "داغ؛ گرم"
+              }
+            ]
           }
         ]
       }
@@ -6796,7 +6888,21 @@
               "second"
             ],
             "fa": "می‌توانی یک لحظه صبر کنی؟ باید کلیدهایم را پیدا کنم.",
-            "why": "«یک لحظه صبر کن» wait a moment است: wait a moment."
+            "why": "«یک لحظه صبر کن» wait a moment است: wait a moment.",
+            "support": [
+              {
+                "en": "need",
+                "fa": "لازم داشتن"
+              },
+              {
+                "en": "find",
+                "fa": "پیدا کردن"
+              },
+              {
+                "en": "keys",
+                "fa": "کلیدها"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6817,6 +6923,16 @@
                 "text": "on",
                 "ok": false,
                 "why": "on the moment غلط است."
+              }
+            ],
+            "support": [
+              {
+                "en": "sorry",
+                "fa": "ببخشید"
+              },
+              {
+                "en": "manager",
+                "fa": "مدیر"
               }
             ]
           },
@@ -6904,7 +7020,13 @@
             "answer": "never",
             "accept": [],
             "fa": "پدربزرگم هیچ‌وقت از کامپیوتر استفاده نکرده. بلد نیست.",
-            "why": "have never + اسم مفعول."
+            "why": "have never + اسم مفعول.",
+            "support": [
+              {
+                "en": "computer",
+                "fa": "کامپیوتر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6926,6 +7048,12 @@
                 "ok": false,
                 "why": "not و never با هم نمی‌آیند."
               }
+            ],
+            "support": [
+              {
+                "en": "late",
+                "fa": "دیر"
+              }
             ]
           },
           {
@@ -6935,7 +7063,17 @@
             "frame": "I ___ eat meat.",
             "answer": "never",
             "accept": [],
-            "why": "never + فعل."
+            "why": "never + فعل.",
+            "support": [
+              {
+                "en": "eat",
+                "fa": "خوردن"
+              },
+              {
+                "en": "meat",
+                "fa": "گوشت"
+              }
+            ]
           }
         ]
       }
@@ -7982,7 +8120,21 @@
             "answer": "period",
             "accept": [],
             "fa": "مغازه برای مدت کوتاهی بسته است.",
-            "why": "برای «مدتی از زمان» a period of time می‌گوییم: a period of time."
+            "why": "برای «مدتی از زمان» a period of time می‌گوییم: a period of time.",
+            "support": [
+              {
+                "en": "shop",
+                "fa": "مغازه"
+              },
+              {
+                "en": "closed",
+                "fa": "بسته"
+              },
+              {
+                "en": "short",
+                "fa": "کوتاه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -8004,6 +8156,12 @@
                 "ok": false,
                 "why": "املای درست: period."
               }
+            ],
+            "support": [
+              {
+                "en": "difficult",
+                "fa": "سخت"
+              }
             ]
           },
           {
@@ -8015,7 +8173,13 @@
             "accept": [
               "time"
             ],
-            "why": "«مدت کوتاه» a short period است: a short period."
+            "why": "«مدت کوتاه» a short period است: a short period.",
+            "support": [
+              {
+                "en": "short",
+                "fa": "کوتاه"
+              }
+            ]
           }
         ]
       }
@@ -10033,7 +10197,21 @@
             "answer": "spend",
             "accept": [],
             "fa": "در مغازه‌ها چقدر پول خرج کردی؟",
-            "why": "بعد از did شکل سادهٔ فعل (spend) می‌آید: did + spend."
+            "why": "بعد از did شکل سادهٔ فعل (spend) می‌آید: did + spend.",
+            "support": [
+              {
+                "en": "How much",
+                "fa": "چقدر"
+              },
+              {
+                "en": "money",
+                "fa": "پول"
+              },
+              {
+                "en": "shops",
+                "fa": "مغازه‌ها"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10055,6 +10233,20 @@
                 "ok": false,
                 "why": "spend … to غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "a lot of",
+                "fa": "مقدار زیادی"
+              },
+              {
+                "en": "money",
+                "fa": "پول"
+              },
+              {
+                "en": "games",
+                "fa": "بازی‌ها"
+              }
             ]
           },
           {
@@ -10064,7 +10256,17 @@
             "frame": "I ___ a lot of money yesterday.",
             "answer": "spent",
             "accept": [],
-            "why": "گذشتهٔ spend: spent."
+            "why": "گذشتهٔ spend: spent.",
+            "support": [
+              {
+                "en": "a lot of",
+                "fa": "مقدار زیادی"
+              },
+              {
+                "en": "money",
+                "fa": "پول"
+              }
+            ]
           }
         ]
       },
@@ -10126,7 +10328,13 @@
             "answer": "spend",
             "accept": [],
             "fa": "تعطیلاتت را کجا گذراندی؟",
-            "why": "«تعطیلات را گذراندن» spend a holiday است: spend a holiday."
+            "why": "«تعطیلات را گذراندن» spend a holiday است: spend a holiday.",
+            "support": [
+              {
+                "en": "holiday",
+                "fa": "تعطیلات"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10162,6 +10370,10 @@
               {
                 "en": "north",
                 "fa": "شمال"
+              },
+              {
+                "en": "weekend",
+                "fa": "آخر هفته"
               }
             ]
           }

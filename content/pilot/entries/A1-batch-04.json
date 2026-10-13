@@ -385,7 +385,21 @@
       "answer": "always",
       "accept": [],
       "fa": "من همیشه قبل از خواب صورتم را می‌شویم. هر شب!",
-      "why": "هر شب = همیشه."
+      "why": "هر شب = همیشه.",
+      "support": [
+       {
+        "en": "wash",
+        "fa": "شستن"
+       },
+       {
+        "en": "face",
+        "fa": "صورت"
+       },
+       {
+        "en": "before",
+        "fa": "قبل از"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -407,6 +421,12 @@
         "ok": false,
         "why": "با «هیچ‌وقت سر وقت نیستم» جور نیست."
        }
+      ],
+      "support": [
+       {
+        "en": "late",
+        "fa": "دیر"
+       }
       ]
      },
      {
@@ -416,7 +436,13 @@
       "frame": "I ___ walk to work.",
       "answer": "always",
       "accept": [],
-      "why": "always قبل از فعل اصلی."
+      "why": "always قبل از فعل اصلی.",
+      "support": [
+       {
+        "en": "walk",
+        "fa": "پیاده رفتن"
+       }
+      ]
      }
     ]
    }
@@ -1102,7 +1128,25 @@
       "answer": "garden",
       "accept": [],
       "fa": "وقتی هوا خوب است در حیاط پشت خانه‌مان می‌نشینیم.",
-      "why": "برای نشستن داخلِ باغ یا حیاط in می‌آید: in the garden."
+      "why": "برای نشستن داخلِ باغ یا حیاط in می‌آید: in the garden.",
+      "support": [
+       {
+        "en": "sit",
+        "fa": "نشستن"
+       },
+       {
+        "en": "behind",
+        "fa": "پشتِ"
+       },
+       {
+        "en": "when",
+        "fa": "وقتی"
+       },
+       {
+        "en": "weather",
+        "fa": "هوا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1124,6 +1168,16 @@
         "ok": false,
         "why": "برای «داخل» باغچه in می‌گوییم."
        }
+      ],
+      "support": [
+       {
+        "en": "grows",
+        "fa": "می‌کارد؛ پرورش می‌دهد"
+       },
+       {
+        "en": "tomatoes",
+        "fa": "گوجه‌فرنگی‌ها"
+       }
       ]
      },
      {
@@ -1133,7 +1187,17 @@
       "frame": "My mother grows flowers in the ___.",
       "answer": "garden",
       "accept": [],
-      "why": "«در باغچه» in the garden است: in the garden."
+      "why": "«در باغچه» in the garden است: in the garden.",
+      "support": [
+       {
+        "en": "grows",
+        "fa": "می‌کارد؛ پرورش می‌دهد"
+       },
+       {
+        "en": "flowers",
+        "fa": "گل‌ها"
+       }
+      ]
      }
     ]
    }
@@ -1654,7 +1718,13 @@
       "answer": "once",
       "accept": [],
       "fa": "ماهی یک بار بیرون غذا می‌خوریم، معمولاً جمعه.",
-      "why": "once a month = ماهی یک بار."
+      "why": "once a month = ماهی یک بار.",
+      "support": [
+       {
+        "en": "eat out",
+        "fa": "بیرون غذا می‌خوریم"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1681,6 +1751,10 @@
        {
         "en": "gym",
         "fa": "باشگاه ورزشی"
+       },
+       {
+        "en": "only",
+        "fa": "فقط"
        }
       ]
      },
@@ -1691,7 +1765,13 @@
       "frame": "We visit them ___ a year.",
       "answer": "once",
       "accept": [],
-      "why": "once a year = سالی یک بار."
+      "why": "once a year = سالی یک بار.",
+      "support": [
+       {
+        "en": "visit",
+        "fa": "دیدن کردن"
+       }
+      ]
      }
     ]
    }
@@ -5602,7 +5682,17 @@
       "answer": "own",
       "accept": [],
       "fa": "کمک لازم ندارم. خودم تنهایی انجامش می‌دهم.",
-      "why": "on my own = تنهایی."
+      "why": "on my own = تنهایی.",
+      "support": [
+       {
+        "en": "need",
+        "fa": "لازم داشتن"
+       },
+       {
+        "en": "help",
+        "fa": "کمک"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5623,6 +5713,12 @@
         "text": "the",
         "ok": false,
         "why": "قبل از own صفت ملکی لازم است."
+       }
+      ],
+      "support": [
+       {
+        "en": "wants",
+        "fa": "می‌خواهد"
        }
       ]
      },
@@ -6342,7 +6438,21 @@
       "answer": "afternoon",
       "accept": [],
       "fa": "مغازه جمعه‌ها ساعت دو بعدازظهر می‌بندد.",
-      "why": "بعد از ساعت، برای «بعدازظهر» in the afternoon می‌آید: in the afternoon."
+      "why": "بعد از ساعت، برای «بعدازظهر» in the afternoon می‌آید: in the afternoon.",
+      "support": [
+       {
+        "en": "shop",
+        "fa": "مغازه"
+       },
+       {
+        "en": "closes",
+        "fa": "می‌بندد"
+       },
+       {
+        "en": "Fridays",
+        "fa": "جمعه‌ها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6363,6 +6473,16 @@
         "text": "at",
         "ok": false,
         "why": "at Tuesday afternoon غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "meeting",
+        "fa": "جلسه"
+       },
+       {
+        "en": "Tuesday",
+        "fa": "سه‌شنبه"
        }
       ]
      },
@@ -6775,7 +6895,17 @@
       "answer": "bed",
       "accept": [],
       "fa": "دیر است. وقت خواب است!",
-      "why": "«وقتِ خواب» time for bed است، بدون the: time for bed."
+      "why": "«وقتِ خواب» time for bed است، بدون the: time for bed.",
+      "support": [
+       {
+        "en": "late",
+        "fa": "دیر"
+       },
+       {
+        "en": "Time",
+        "fa": "وقت؛ زمان"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -6797,6 +6927,20 @@
         "ok": false,
         "why": "at bed غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "read",
+        "fa": "خواندن"
+       },
+       {
+        "en": "every",
+        "fa": "هر"
+       },
+       {
+        "en": "night",
+        "fa": "شب"
+       }
       ]
      },
      {
@@ -6806,7 +6950,13 @@
       "frame": "I go to ___ at ten.",
       "answer": "bed",
       "accept": [],
-      "why": "«به رختخواب رفتن» go to bed است، بدون the: go to bed."
+      "why": "«به رختخواب رفتن» go to bed است، بدون the: go to bed.",
+      "support": [
+       {
+        "en": "ten",
+        "fa": "ده"
+       }
+      ]
      }
     ]
    }
@@ -8080,6 +8230,14 @@
        {
         "en": "country",
         "fa": "کشور"
+       },
+       {
+        "en": "want",
+        "fa": "خواستن"
+       },
+       {
+        "en": "another",
+        "fa": "یک … دیگر"
        }
       ]
      },
@@ -8103,6 +8261,12 @@
         "ok": false,
         "why": "on the future غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "happen",
+        "fa": "اتفاق می‌افتد"
+       }
       ]
      },
      {
@@ -8112,7 +8276,13 @@
       "frame": "Do you have plans for the ___?",
       "answer": "future",
       "accept": [],
-      "why": "«برنامه برای آینده» plans for the future است: plans for the future."
+      "why": "«برنامه برای آینده» plans for the future است: plans for the future.",
+      "support": [
+       {
+        "en": "plans",
+        "fa": "برنامه‌ها"
+       }
+      ]
      }
     ]
    }
@@ -8288,7 +8458,17 @@
       "answer": "kitchen",
       "accept": [],
       "fa": "بشقاب‌ها در کابینت آشپزخانه‌اند.",
-      "why": "kitchen = آشپزخانه."
+      "why": "kitchen = آشپزخانه.",
+      "support": [
+       {
+        "en": "plates",
+        "fa": "بشقاب‌ها"
+       },
+       {
+        "en": "cupboard",
+        "fa": "کمد"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8309,6 +8489,16 @@
         "text": "bathroom",
         "ok": false,
         "why": "bathroom حمام است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Mum",
+        "fa": "مامان"
+       },
+       {
+        "en": "lunch",
+        "fa": "ناهار"
        }
       ]
      },
@@ -9605,7 +9795,17 @@
        "sometimes"
       ],
       "fa": "جمعه‌ها معمولاً به دیدن پدربزرگ و مادربزرگمان می‌رویم.",
-      "why": "usually قبل از فعل اصلی."
+      "why": "usually قبل از فعل اصلی.",
+      "support": [
+       {
+        "en": "Fridays",
+        "fa": "جمعه‌ها"
+       },
+       {
+        "en": "visit",
+        "fa": "دیدن کردن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9627,6 +9827,16 @@
         "ok": false,
         "why": "use فعل است، نه قید."
        }
+      ],
+      "support": [
+       {
+        "en": "seven",
+        "fa": "هفت"
+       },
+       {
+        "en": "nine",
+        "fa": "نه"
+       }
       ]
      },
      {
@@ -9636,7 +9846,17 @@
       "frame": "We ___ have dinner at seven.",
       "answer": "usually",
       "accept": [],
-      "why": "usually قبل از فعل اصلی."
+      "why": "usually قبل از فعل اصلی.",
+      "support": [
+       {
+        "en": "dinner",
+        "fa": "شام"
+       },
+       {
+        "en": "seven",
+        "fa": "هفت"
+       }
+      ]
      }
     ]
    }
@@ -10352,7 +10572,17 @@
       "answer": "evening",
       "accept": [],
       "fa": "ساعت هشت شب شام می‌خوریم.",
-      "why": "بعد از ساعت، برای «عصر» یا «سرِ شب» in the evening می‌آید: in the evening."
+      "why": "بعد از ساعت، برای «عصر» یا «سرِ شب» in the evening می‌آید: in the evening.",
+      "support": [
+       {
+        "en": "dinner",
+        "fa": "شام"
+       },
+       {
+        "en": "eight",
+        "fa": "هشت"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10373,6 +10603,12 @@
         "text": "at",
         "ok": false,
         "why": "at Saturday evening غلط است."
+       }
+      ],
+      "support": [
+       {
+        "en": "Saturday",
+        "fa": "شنبه"
        }
       ]
      },
@@ -10784,7 +11020,29 @@
       "answer": "half",
       "accept": [],
       "fa": "سیب را از وسط نصف کن و یک تکه را به خواهرت بده.",
-      "why": "in half = دو نیم."
+      "why": "in half = دو نیم.",
+      "support": [
+       {
+        "en": "Cut",
+        "fa": "بِبُر"
+       },
+       {
+        "en": "apple",
+        "fa": "سیب"
+       },
+       {
+        "en": "give",
+        "fa": "دادن"
+       },
+       {
+        "en": "one",
+        "fa": "یک"
+       },
+       {
+        "en": "piece",
+        "fa": "تکه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10823,7 +11081,17 @@
       "accept": [
        "half of"
       ],
-      "why": "«نصفِ کیک» با half the یا half of the گفته می‌شود: half (of) the."
+      "why": "«نصفِ کیک» با half the یا half of the گفته می‌شود: half (of) the.",
+      "support": [
+       {
+        "en": "ate",
+        "fa": "خوردم"
+       },
+       {
+        "en": "cake",
+        "fa": "کیک"
+       }
+      ]
      }
     ]
    },
@@ -10887,7 +11155,17 @@
       "answer": "half",
       "accept": [],
       "fa": "ساعت یک و نیم ناهار می‌خوریم.",
-      "why": "half past one = یک و نیم."
+      "why": "half past one = یک و نیم.",
+      "support": [
+       {
+        "en": "lunch",
+        "fa": "ناهار"
+       },
+       {
+        "en": "one",
+        "fa": "یک"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -10918,7 +11196,13 @@
       "frame": "It's ___ past three.",
       "answer": "half",
       "accept": [],
-      "why": "half past three = سه و نیم."
+      "why": "half past three = سه و نیم.",
+      "support": [
+       {
+        "en": "three",
+        "fa": "سه"
+       }
+      ]
      }
     ]
    }
@@ -11648,7 +11932,17 @@
        "private"
       ],
       "fa": "دفتر خاطراتم را نخوان. شخصی است!",
-      "why": "personal = شخصی."
+      "why": "personal = شخصی.",
+      "support": [
+       {
+        "en": "read",
+        "fa": "خواندن"
+       },
+       {
+        "en": "diary",
+        "fa": "دفتر خاطرات"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -11669,6 +11963,16 @@
         "text": "personally",
         "ok": false,
         "why": "personally قید است."
+       }
+      ],
+      "support": [
+       {
+        "en": "ask",
+        "fa": "پرسیدن"
+       },
+       {
+        "en": "questions",
+        "fa": "سؤال‌ها"
        }
       ]
      },

@@ -65,7 +65,17 @@
       "answer": "her",
       "accept": [],
       "fa": "سارا در آشپزخانه است. می‌توانی کمکش کنی؟",
-      "why": "سارا زن است و مفعول help است، پس her."
+      "why": "سارا زن است و مفعول help است، پس her.",
+      "support": [
+       {
+        "en": "Sara",
+        "fa": "سارا"
+       },
+       {
+        "en": "help",
+        "fa": "کمک"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -87,6 +97,24 @@
         "ok": false,
         "why": "she ضمیر فاعلی است، نه مفعولی."
        }
+      ],
+      "support": [
+       {
+        "en": "Shiraz",
+        "fa": "شیراز"
+       },
+       {
+        "en": "visit",
+        "fa": "دیدن کردن"
+       },
+       {
+        "en": "every",
+        "fa": "هر"
+       },
+       {
+        "en": "summer",
+        "fa": "تابستان"
+       }
       ]
      },
      {
@@ -96,7 +124,21 @@
       "frame": "I called my mother yesterday and talked to ___.",
       "answer": "her",
       "accept": [],
-      "why": "بعد از to ضمیر مفعولی می‌آید و مادر زن است."
+      "why": "بعد از to ضمیر مفعولی می‌آید و مادر زن است.",
+      "support": [
+       {
+        "en": "called",
+        "fa": "زنگ زدم"
+       },
+       {
+        "en": "yesterday",
+        "fa": "دیروز"
+       },
+       {
+        "en": "talked",
+        "fa": "حرف زدم"
+       }
+      ]
      }
     ]
    },
@@ -155,7 +197,21 @@
       "answer": "her",
       "accept": [],
       "fa": "ندا دنبال کلیدهایش می‌گردد.",
-      "why": "ندا زن است و her قبل از اسم می‌آید."
+      "why": "ندا زن است و her قبل از اسم می‌آید.",
+      "support": [
+       {
+        "en": "Neda",
+        "fa": "ندا"
+       },
+       {
+        "en": "looking for",
+        "fa": "دنبالِ … می‌گردد"
+       },
+       {
+        "en": "keys",
+        "fa": "کلیدها"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -177,6 +233,20 @@
         "ok": false,
         "why": "she ضمیر فاعلی است و قبل از اسم نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "Mr",
+        "fa": "آقای"
+       },
+       {
+        "en": "doctor",
+        "fa": "دکتر"
+       },
+       {
+        "en": "Leila",
+        "fa": "لیلا"
+       }
       ]
      },
      {
@@ -186,7 +256,17 @@
       "frame": "Leila put ___ book on the table.",
       "answer": "her",
       "accept": [],
-      "why": "صاحب کتاب لیلاست؛ چون زن است و واژه قبل از اسم می‌آید، her درست است."
+      "why": "صاحب کتاب لیلاست؛ چون زن است و واژه قبل از اسم می‌آید، her درست است.",
+      "support": [
+       {
+        "en": "Leila",
+        "fa": "لیلا"
+       },
+       {
+        "en": "put",
+        "fa": "گذاشتن"
+       }
+      ]
      }
     ]
    }
@@ -387,6 +467,14 @@
        {
         "en": "film",
         "fa": "فیلم"
+       },
+       {
+        "en": "watch",
+        "fa": "تماشا کردن"
+       },
+       {
+        "en": "dinner",
+        "fa": "شام"
        }
       ]
      },
@@ -410,6 +498,12 @@
         "ok": false,
         "why": "بعد از after I فعل صرف‌شده لازم است."
        }
+      ],
+      "support": [
+       {
+        "en": "call",
+        "fa": "زنگ زدن"
+       }
       ]
      },
      {
@@ -419,7 +513,17 @@
       "frame": "I went to the library ___ class.",
       "answer": "after",
       "accept": [],
-      "why": "after class = بعد از کلاس."
+      "why": "after class = بعد از کلاس.",
+      "support": [
+       {
+        "en": "library",
+        "fa": "کتابخانه"
+       },
+       {
+        "en": "class",
+        "fa": "کلاس"
+       }
+      ]
      }
     ]
    }
@@ -600,7 +704,21 @@
       "answer": "me",
       "accept": [],
       "fa": "می‌توانی فردا صبح به من زنگ بزنی؟",
-      "why": "مفعول call خود گوینده است، پس me."
+      "why": "مفعول call خود گوینده است، پس me.",
+      "support": [
+       {
+        "en": "call",
+        "fa": "زنگ زدن"
+       },
+       {
+        "en": "tomorrow",
+        "fa": "فردا"
+       },
+       {
+        "en": "morning",
+        "fa": "صبح"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -621,6 +739,16 @@
         "text": "My",
         "ok": false,
         "why": "my فقط قبل از اسم می‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "song",
+        "fa": "آهنگ"
+       },
+       {
+        "en": "too",
+        "fa": "هم"
        }
       ]
      },
@@ -912,7 +1040,21 @@
       "answer": "before",
       "accept": [],
       "fa": "لطفاً قبل از رفتن چراغ‌ها را خاموش کن.",
-      "why": "before + جملهٔ کامل."
+      "why": "before + جملهٔ کامل.",
+      "support": [
+       {
+        "en": "turn off",
+        "fa": "خاموش کن"
+       },
+       {
+        "en": "lights",
+        "fa": "چراغ‌ها"
+       },
+       {
+        "en": "leave",
+        "fa": "بیرون بروی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -934,6 +1076,32 @@
         "ok": false,
         "why": "during یعنی در طول صبحانه."
        }
+      ],
+      "support": [
+       {
+        "en": "drink",
+        "fa": "نوشیدن"
+       },
+       {
+        "en": "glass",
+        "fa": "لیوان"
+       },
+       {
+        "en": "water",
+        "fa": "آب"
+       },
+       {
+        "en": "breakfast",
+        "fa": "صبحانه"
+       },
+       {
+        "en": "Then",
+        "fa": "بعد"
+       },
+       {
+        "en": "eat",
+        "fa": "خوردن"
+       }
       ]
      },
      {
@@ -943,7 +1111,13 @@
       "frame": "Come home ___ eight.",
       "answer": "before",
       "accept": [],
-      "why": "before + زمان."
+      "why": "before + زمان.",
+      "support": [
+       {
+        "en": "eight",
+        "fa": "هشت"
+       }
+      ]
      }
     ]
    }
@@ -1235,7 +1409,17 @@
       "answer": "his",
       "accept": [],
       "fa": "آقای احمدی با پسرش پیش دکتر است.",
-      "why": "صاحب، آقای احمدی است که مرد است."
+      "why": "صاحب، آقای احمدی است که مرد است.",
+      "support": [
+       {
+        "en": "Mr",
+        "fa": "آقای"
+       },
+       {
+        "en": "Ahmadi",
+        "fa": "احمدی"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1262,6 +1446,10 @@
        {
         "en": "lost",
         "fa": "گم کرد"
+       },
+       {
+        "en": "yesterday",
+        "fa": "دیروز"
        }
       ]
      },
@@ -1272,7 +1460,13 @@
       "frame": "___ name is Arash.",
       "answer": "His",
       "accept": [],
-      "why": "صاحب اسم پسر است، پس His."
+      "why": "صاحب اسم پسر است، پس His.",
+      "support": [
+       {
+        "en": "Arash",
+        "fa": "آرش"
+       }
+      ]
      }
     ]
    }
@@ -1343,7 +1537,13 @@
       "answer": "its",
       "accept": [],
       "fa": "این هتل خوب است، اما اتاق‌هایش خیلی کوچک‌اند.",
-      "why": "اتاق‌ها مال هتل‌اند، پس its."
+      "why": "اتاق‌ها مال هتل‌اند، پس its.",
+      "support": [
+       {
+        "en": "hotel",
+        "fa": "هتل"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1365,6 +1565,12 @@
         "ok": false,
         "why": "it قبل از اسم نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "bird",
+        "fa": "پرنده"
+       }
       ]
      },
      {
@@ -1374,7 +1580,21 @@
       "frame": "This town is small, but ___ streets are clean.",
       "answer": "its",
       "accept": [],
-      "why": "خیابان‌ها مال شهرند، پس its."
+      "why": "خیابان‌ها مال شهرند، پس its.",
+      "support": [
+       {
+        "en": "town",
+        "fa": "شهر"
+       },
+       {
+        "en": "streets",
+        "fa": "خیابان‌ها"
+       },
+       {
+        "en": "clean",
+        "fa": "تمیز"
+       }
+      ]
      }
     ]
    }
@@ -1857,7 +2077,17 @@
       "answer": "Our",
       "accept": [],
       "fa": "امشب نمی‌توانیم بیاییم. پسرمان مریض است.",
-      "why": "our + اسم."
+      "why": "our + اسم.",
+      "support": [
+       {
+        "en": "tonight",
+        "fa": "امشب"
+       },
+       {
+        "en": "ill",
+        "fa": "بیمار"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -1879,6 +2109,12 @@
         "ok": false,
         "why": "us ضمیر مفعولی است و قبل از اسم نمی‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "very much",
+        "fa": "خیلی زیاد"
+       }
       ]
      },
      {
@@ -1888,7 +2124,17 @@
       "frame": "___ teacher is very kind.",
       "answer": "Our",
       "accept": [],
-      "why": "our teacher = معلممان."
+      "why": "our teacher = معلممان.",
+      "support": [
+       {
+        "en": "teacher",
+        "fa": "معلم"
+       },
+       {
+        "en": "kind",
+        "fa": "مهربان"
+       }
+      ]
      }
     ]
    }
@@ -3401,7 +3647,21 @@
       "answer": "every",
       "accept": [],
       "fa": "اتوبوس هر ده دقیقه می‌آید.",
-      "why": "every + عدد + زمان = هر … یک بار."
+      "why": "every + عدد + زمان = هر … یک بار.",
+      "support": [
+       {
+        "en": "bus",
+        "fa": "اتوبوس"
+       },
+       {
+        "en": "ten",
+        "fa": "ده"
+       },
+       {
+        "en": "minutes",
+        "fa": "دقیقه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -3423,6 +3683,12 @@
         "ok": false,
         "why": "این ساختار فعل غلط است."
        }
+      ],
+      "support": [
+       {
+        "en": "present",
+        "fa": "هدیه"
+       }
       ]
      },
      {
@@ -3432,7 +3698,13 @@
       "frame": "I exercise ___ morning.",
       "answer": "every",
       "accept": [],
-      "why": "every morning = هر صبح."
+      "why": "every morning = هر صبح.",
+      "support": [
+       {
+        "en": "exercise",
+        "fa": "تمرین"
+       }
+      ]
      }
     ]
    }
@@ -4052,6 +4324,16 @@
         "ok": false,
         "why": "they're یعنی they are."
        }
+      ],
+      "support": [
+       {
+        "en": "playing",
+        "fa": "بازی می‌کنند"
+       },
+       {
+        "en": "toys",
+        "fa": "اسباب‌بازی‌ها"
+       }
       ]
      },
      {
@@ -4061,7 +4343,13 @@
       "frame": "___ car is red.",
       "answer": "Their",
       "accept": [],
-      "why": "their + اسم."
+      "why": "their + اسم.",
+      "support": [
+       {
+        "en": "red",
+        "fa": "قرمز"
+       }
+      ]
      }
     ]
    }
@@ -5407,7 +5695,17 @@
       "answer": "us",
       "accept": [],
       "fa": "می‌خواهی با ما به سینما بیایی؟",
-      "why": "بعد از with ضمیر مفعولی می‌آید."
+      "why": "بعد از with ضمیر مفعولی می‌آید.",
+      "support": [
+       {
+        "en": "want",
+        "fa": "خواستن"
+       },
+       {
+        "en": "cinema",
+        "fa": "سینما"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5429,6 +5727,24 @@
         "ok": false,
         "why": "our قبل از اسم می‌آید."
        }
+      ],
+      "support": [
+       {
+        "en": "teacher",
+        "fa": "معلم"
+       },
+       {
+        "en": "gave",
+        "fa": "داد"
+       },
+       {
+        "en": "a lot of",
+        "fa": "مقدار زیادی"
+       },
+       {
+        "en": "homework",
+        "fa": "تکلیف"
+       }
       ]
      },
      {
@@ -5438,7 +5754,13 @@
       "frame": "Please call ___.",
       "answer": "us",
       "accept": [],
-      "why": "مفعول call: us."
+      "why": "مفعول call: us.",
+      "support": [
+       {
+        "en": "call",
+        "fa": "زنگ زدن"
+       }
+      ]
      }
     ]
    }
@@ -5720,7 +6042,13 @@
       "answer": "first",
       "accept": [],
       "fa": "ژانویه اولین ماه سال است.",
-      "why": "the first = اولین."
+      "why": "the first = اولین.",
+      "support": [
+       {
+        "en": "January",
+        "fa": "ژانویه"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -5741,6 +6069,16 @@
         "text": "once",
         "ok": false,
         "why": "once یعنی یک بار."
+       }
+      ],
+      "support": [
+       {
+        "en": "visit",
+        "fa": "دیدار؛ سفر"
+       },
+       {
+        "en": "Iran",
+        "fa": "ایران"
        }
       ]
      },
@@ -5814,6 +6152,22 @@
        {
         "en": "send",
         "fa": "فرستادن"
+       },
+       {
+        "en": "use",
+        "fa": "استفاده کنی"
+       },
+       {
+        "en": "computer",
+        "fa": "کامپیوتر"
+       },
+       {
+        "en": "need",
+        "fa": "لازم داشتن"
+       },
+       {
+        "en": "email",
+        "fa": "ایمیل"
        }
       ]
      },
@@ -5837,6 +6191,24 @@
         "ok": false,
         "why": "one معنای «اول» ندارد."
        }
+      ],
+      "support": [
+       {
+        "en": "ask",
+        "fa": "پرسیدن"
+       },
+       {
+        "en": "question",
+        "fa": "سؤال"
+       },
+       {
+        "en": "Yes",
+        "fa": "بله"
+       },
+       {
+        "en": "let me",
+        "fa": "بگذار من"
+       }
       ]
      },
      {
@@ -5848,7 +6220,13 @@
       "accept": [
        "first"
       ],
-      "why": "first در ابتدای جمله یعنی «اول / اول از همه»."
+      "why": "first در ابتدای جمله یعنی «اول / اول از همه».",
+      "support": [
+       {
+        "en": "hands",
+        "fa": "دست‌ها"
+       }
+      ]
      }
     ]
    }
@@ -6484,7 +6862,13 @@
       "frame": "We went to Turkey in ___.",
       "answer": "May",
       "accept": [],
-      "why": "اسم ماه با حرف بزرگ نوشته می‌شود."
+      "why": "اسم ماه با حرف بزرگ نوشته می‌شود.",
+      "support": [
+       {
+        "en": "Turkey",
+        "fa": "ترکیه"
+       }
+      ]
      }
     ]
    }
@@ -6986,7 +7370,33 @@
       "answer": "him",
       "accept": [],
       "fa": "بهترین دوستم رضاست. هر هفته با او فوتبال بازی می‌کنم.",
-      "why": "رضا مرد است و بعد از with ضمیر مفعولی می‌آید."
+      "why": "رضا مرد است و بعد از with ضمیر مفعولی می‌آید.",
+      "support": [
+       {
+        "en": "best",
+        "fa": "بهترین"
+       },
+       {
+        "en": "Reza",
+        "fa": "رضا"
+       },
+       {
+        "en": "play",
+        "fa": "بازی کردن"
+       },
+       {
+        "en": "football",
+        "fa": "فوتبال"
+       },
+       {
+        "en": "every",
+        "fa": "هر"
+       },
+       {
+        "en": "week",
+        "fa": "هفته"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7008,6 +7418,16 @@
         "ok": false,
         "why": "her برای زن است."
        }
+      ],
+      "support": [
+       {
+        "en": "want",
+        "fa": "خواستن"
+       },
+       {
+        "en": "talk",
+        "fa": "حرف زدن"
+       }
       ]
      },
      {
@@ -7022,6 +7442,14 @@
        {
         "en": "market",
         "fa": "بازار"
+       },
+       {
+        "en": "yesterday",
+        "fa": "دیروز"
+       },
+       {
+        "en": "talked",
+        "fa": "حرف زدم"
        }
       ]
      }
@@ -7550,7 +7978,17 @@
        "everybody"
       ],
       "fa": "صبح همگی بخیر! لطفاً بنشینید.",
-      "why": "everyone = همه."
+      "why": "everyone = همه.",
+      "support": [
+       {
+        "en": "morning",
+        "fa": "صبح"
+       },
+       {
+        "en": "sit",
+        "fa": "نشستن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7571,6 +8009,12 @@
         "text": "are drinking",
         "ok": false,
         "why": "everyone با are نمی‌آید."
+       }
+      ],
+      "support": [
+       {
+        "en": "tea",
+        "fa": "چای"
        }
       ]
      },
@@ -7658,7 +8102,13 @@
       "answer": "months",
       "accept": [],
       "fa": "یک سال دوازده ماه دارد.",
-      "why": "بعد از twelve اسم جمع می‌آید."
+      "why": "بعد از twelve اسم جمع می‌آید.",
+      "support": [
+       {
+        "en": "twelve",
+        "fa": "دوازده"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -7680,6 +8130,12 @@
         "ok": false,
         "why": "mouth یعنی دهان."
        }
+      ],
+      "support": [
+       {
+        "en": "pay",
+        "fa": "پرداختن"
+       }
       ]
      },
      {
@@ -7694,6 +8150,10 @@
        {
         "en": "next",
         "fa": "بعدی"
+       },
+       {
+        "en": "Isfahan",
+        "fa": "اصفهان"
        }
       ]
      }
@@ -8390,7 +8850,21 @@
       "answer": "table",
       "accept": [],
       "fa": "شام حاضر است! بیایید سر میز بنشینید.",
-      "why": "برای نشستن سرِ میز at the table می‌گوییم: sit at the table."
+      "why": "برای نشستن سرِ میز at the table می‌گوییم: sit at the table.",
+      "support": [
+       {
+        "en": "Dinner",
+        "fa": "شام"
+       },
+       {
+        "en": "ready",
+        "fa": "آماده"
+       },
+       {
+        "en": "sit",
+        "fa": "نشستن"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -8411,6 +8885,12 @@
         "text": "in",
         "ok": false,
         "why": "in the table طبیعی نیست."
+       }
+      ],
+      "support": [
+       {
+        "en": "glasses",
+        "fa": "عینک"
        }
       ]
      },
@@ -9898,7 +10378,21 @@
       "answer": "early",
       "accept": [],
       "fa": "امشب باید زود بخوابم. فردا امتحان دارم.",
-      "why": "early = زود."
+      "why": "early = زود.",
+      "support": [
+       {
+        "en": "tonight",
+        "fa": "امشب"
+       },
+       {
+        "en": "test",
+        "fa": "امتحان"
+       },
+       {
+        "en": "tomorrow",
+        "fa": "فردا"
+       }
+      ]
      },
      {
       "type": "choice",
@@ -9920,6 +10414,32 @@
         "ok": false,
         "why": "first یعنی اول، در ترتیب."
        }
+      ],
+      "support": [
+       {
+        "en": "shop",
+        "fa": "مغازه"
+       },
+       {
+        "en": "opens",
+        "fa": "باز می‌شود"
+       },
+       {
+        "en": "nine",
+        "fa": "نه"
+       },
+       {
+        "en": "eight",
+        "fa": "هشت"
+       },
+       {
+        "en": "now",
+        "fa": "الان"
+       },
+       {
+        "en": "too",
+        "fa": "بیش از حد"
+       }
       ]
      },
      {
@@ -9929,7 +10449,13 @@
       "frame": "We went to the airport ___ in the morning.",
       "answer": "early",
       "accept": [],
-      "why": "early in the morning = صبح زود."
+      "why": "early in the morning = صبح زود.",
+      "support": [
+       {
+        "en": "airport",
+        "fa": "فرودگاه"
+       }
+      ]
      }
     ]
    }

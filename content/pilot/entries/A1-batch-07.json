@@ -503,7 +503,17 @@
             "answer": "April",
             "accept": [],
             "fa": "مارس، آوریل، مه.",
-            "why": "ماهِ بعد از March: April."
+            "why": "ماهِ بعد از March: April.",
+            "support": [
+              {
+                "en": "March",
+                "fa": "مارس"
+              },
+              {
+                "en": "May",
+                "fa": "مه (ماه پنجم)"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -525,6 +535,12 @@
                 "ok": false,
                 "why": "at April غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "holiday",
+                "fa": "تعطیلات"
+              }
             ]
           },
           {
@@ -534,7 +550,13 @@
             "frame": "The weather is nice in ___.",
             "answer": "April",
             "accept": [],
-            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in April."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in April.",
+            "support": [
+              {
+                "en": "weather",
+                "fa": "هوا"
+              }
+            ]
           }
         ]
       }
@@ -606,7 +628,17 @@
             "answer": "August",
             "accept": [],
             "fa": "ژوئیه، اوت، سپتامبر.",
-            "why": "ماهِ بعد از July: August."
+            "why": "ماهِ بعد از July: August.",
+            "support": [
+              {
+                "en": "July",
+                "fa": "ژوئیه"
+              },
+              {
+                "en": "September",
+                "fa": "سپتامبر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -628,6 +660,12 @@
                 "ok": false,
                 "why": "at August غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "closed",
+                "fa": "بسته"
+              }
             ]
           },
           {
@@ -637,7 +675,13 @@
             "frame": "It's very hot in ___.",
             "answer": "August",
             "accept": [],
-            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in August."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in August.",
+            "support": [
+              {
+                "en": "hot",
+                "fa": "داغ؛ گرم"
+              }
+            ]
           }
         ]
       }
@@ -736,6 +780,16 @@
                 "ok": false,
                 "why": "sister خواهرِ خودت است."
               }
+            ],
+            "support": [
+              {
+                "en": "uncle",
+                "fa": "عمو؛ دایی"
+              },
+              {
+                "en": "wife",
+                "fa": "همسر"
+              }
             ]
           },
           {
@@ -745,7 +799,13 @@
             "frame": "My ___ is a teacher.",
             "answer": "aunt",
             "accept": [],
-            "why": "aunt = خاله؛ عمه."
+            "why": "aunt = خاله؛ عمه.",
+            "support": [
+              {
+                "en": "teacher",
+                "fa": "معلم"
+              }
+            ]
           }
         ]
       }
@@ -930,7 +990,21 @@
             "answer": "bedroom",
             "accept": [],
             "fa": "لباس‌هایم را در کمدی در اتاق خوابم نگه می‌دارم.",
-            "why": "bedroom = اتاق خواب."
+            "why": "bedroom = اتاق خواب.",
+            "support": [
+              {
+                "en": "keep",
+                "fa": "نگه می‌دارم"
+              },
+              {
+                "en": "clothes",
+                "fa": "لباس‌ها"
+              },
+              {
+                "en": "cupboard",
+                "fa": "کمد"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -951,6 +1025,12 @@
                 "text": "bedroom",
                 "ok": false,
                 "why": "بعد از two اسم جمع لازم است."
+              }
+            ],
+            "support": [
+              {
+                "en": "flat",
+                "fa": "آپارتمان"
               }
             ]
           },
@@ -3521,7 +3601,21 @@
             "answer": "Dear",
             "accept": [],
             "fa": "بیشترِ نامه‌ها با کلمهٔ «Dear» شروع می‌شوند.",
-            "why": "Dear + اسم."
+            "why": "Dear + اسم.",
+            "support": [
+              {
+                "en": "Most",
+                "fa": "بیشترِ"
+              },
+              {
+                "en": "letters",
+                "fa": "نامه‌ها"
+              },
+              {
+                "en": "begin",
+                "fa": "شروع می‌شوند"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -3552,7 +3646,13 @@
             "frame": "My ___ friend, thank you.",
             "answer": "dear",
             "accept": [],
-            "why": "«دوستِ عزیزم» my dear friend است: my dear friend."
+            "why": "«دوستِ عزیزم» my dear friend است: my dear friend.",
+            "support": [
+              {
+                "en": "thank",
+                "fa": "ممنون"
+              }
+            ]
           }
         ]
       }
@@ -4501,7 +4601,25 @@
             "answer": "everything",
             "accept": [],
             "fa": "کیفم آماده است. هر چه برای سفر لازم دارم دارم.",
-            "why": "everything = همه چیز."
+            "why": "everything = همه چیز.",
+            "support": [
+              {
+                "en": "bag",
+                "fa": "کیف"
+              },
+              {
+                "en": "ready",
+                "fa": "آماده"
+              },
+              {
+                "en": "need",
+                "fa": "لازم داشتن"
+              },
+              {
+                "en": "trip",
+                "fa": "سفر"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -4523,6 +4641,16 @@
                 "ok": false,
                 "why": "be اینجا غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "OK",
+                "fa": "باشه؛ خوب"
+              },
+              {
+                "en": "now",
+                "fa": "الان"
+              }
             ]
           },
           {
@@ -4532,7 +4660,13 @@
             "frame": "She told me ___.",
             "answer": "everything",
             "accept": [],
-            "why": "everything = همه چیز."
+            "why": "everything = همه چیز.",
+            "support": [
+              {
+                "en": "told",
+                "fa": "گفت"
+              }
+            ]
           }
         ]
       }
@@ -5276,7 +5410,17 @@
             "answer": "February",
             "accept": [],
             "fa": "ژانویه، فوریه، مارس.",
-            "why": "ماهِ بعد از January: February."
+            "why": "ماهِ بعد از January: February.",
+            "support": [
+              {
+                "en": "January",
+                "fa": "ژانویه"
+              },
+              {
+                "en": "March",
+                "fa": "مارس"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -5313,7 +5457,13 @@
             "frame": "It's very cold in ___.",
             "answer": "February",
             "accept": [],
-            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in February."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in February.",
+            "support": [
+              {
+                "en": "cold",
+                "fa": "سرد"
+              }
+            ]
           }
         ]
       }
@@ -6558,7 +6708,29 @@
             "answer": "introduce",
             "accept": [],
             "fa": "روز اول، معلم از ما خواست خودمان را معرفی کنیم.",
-            "why": "«خود را معرفی کردن» با introduce و ضمیر انعکاسی است؛ اینجا ourselves: introduce yourself."
+            "why": "«خود را معرفی کردن» با introduce و ضمیر انعکاسی است؛ اینجا ourselves: introduce yourself.",
+            "support": [
+              {
+                "en": "first",
+                "fa": "اول"
+              },
+              {
+                "en": "day",
+                "fa": "روز"
+              },
+              {
+                "en": "teacher",
+                "fa": "معلم"
+              },
+              {
+                "en": "asked",
+                "fa": "از ما خواست"
+              },
+              {
+                "en": "ourselves",
+                "fa": "خودمان"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6589,7 +6761,17 @@
             "frame": "Let me ___ myself.",
             "answer": "introduce",
             "accept": [],
-            "why": "«خودم را معرفی کنم» introduce myself است: introduce myself."
+            "why": "«خودم را معرفی کنم» introduce myself است: introduce myself.",
+            "support": [
+              {
+                "en": "Let me",
+                "fa": "اجازه بدهید"
+              },
+              {
+                "en": "myself",
+                "fa": "خودم"
+              }
+            ]
           }
         ]
       }
@@ -6665,7 +6847,17 @@
               "back"
             ],
             "fa": "الان نمی‌توانم صحبت کنم. بعداً زنگ بزنم؟",
-            "why": "later = بعداً."
+            "why": "later = بعداً.",
+            "support": [
+              {
+                "en": "talk",
+                "fa": "حرف زدن"
+              },
+              {
+                "en": "call",
+                "fa": "زنگ زدن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -6686,6 +6878,12 @@
                 "text": "lately",
                 "ok": false,
                 "why": "lately یعنی اخیراً."
+              }
+            ],
+            "support": [
+              {
+                "en": "Bye",
+                "fa": "خداحافظ"
               }
             ]
           },
@@ -6790,6 +6988,16 @@
                 "ok": false,
                 "why": "at March غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "weather",
+                "fa": "هوا"
+              },
+              {
+                "en": "warmer",
+                "fa": "گرم‌تر"
+              }
             ]
           },
           {
@@ -6799,7 +7007,13 @@
             "frame": "My mother's birthday is in ___.",
             "answer": "March",
             "accept": [],
-            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in March."
+            "why": "برای ماه in می‌آید و نام ماه با حرف بزرگ: in March.",
+            "support": [
+              {
+                "en": "birthday",
+                "fa": "تولد"
+              }
+            ]
           }
         ]
       }
@@ -7083,7 +7297,17 @@
               "mother"
             ],
             "fa": "مامان و بابایم هر دو پزشک‌اند.",
-            "why": "«مامان و بابا» mum and dad است: mum and dad."
+            "why": "«مامان و بابا» mum and dad است: mum and dad.",
+            "support": [
+              {
+                "en": "both",
+                "fa": "هر دو"
+              },
+              {
+                "en": "doctors",
+                "fa": "پزشک"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7117,7 +7341,13 @@
               "mom",
               "mother"
             ],
-            "why": "mum = مامان."
+            "why": "mum = مامان.",
+            "support": [
+              {
+                "en": "call",
+                "fa": "زنگ زدن"
+              }
+            ]
           }
         ]
       }
@@ -7328,6 +7558,12 @@
                 "ok": false,
                 "why": "املا: neighbours، اول e بعد i."
               }
+            ],
+            "support": [
+              {
+                "en": "kind",
+                "fa": "مهربان"
+              }
             ]
           },
           {
@@ -7339,7 +7575,13 @@
             "accept": [
               "neighbor"
             ],
-            "why": "neighbour = همسایه."
+            "why": "neighbour = همسایه.",
+            "support": [
+              {
+                "en": "doctor",
+                "fa": "دکتر"
+              }
+            ]
           }
         ]
       }
@@ -7856,7 +8098,13 @@
             "answer": "quarter",
             "accept": [],
             "fa": "پانزده دقیقه یک ربعِ ساعت است.",
-            "why": "پانزده دقیقه یک‌چهارمِ ساعت است: a quarter of an hour."
+            "why": "پانزده دقیقه یک‌چهارمِ ساعت است: a quarter of an hour.",
+            "support": [
+              {
+                "en": "Fifteen",
+                "fa": "پانزده"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -7878,6 +8126,12 @@
                 "ok": false,
                 "why": "quarter for غلط است."
               }
+            ],
+            "support": [
+              {
+                "en": "five",
+                "fa": "پنج"
+              }
             ]
           },
           {
@@ -7887,7 +8141,17 @@
             "frame": "I ate a ___ of the cake.",
             "answer": "quarter",
             "accept": [],
-            "why": "«یک‌چهارمِ کیک» a quarter of است: a quarter of."
+            "why": "«یک‌چهارمِ کیک» a quarter of است: a quarter of.",
+            "support": [
+              {
+                "en": "ate",
+                "fa": "خوردم"
+              },
+              {
+                "en": "cake",
+                "fa": "کیک"
+              }
+            ]
           }
         ]
       }
@@ -10129,7 +10393,17 @@
             "answer": "then",
             "accept": [],
             "fa": "اول صبحانه می‌خورم، و بعد سر کار می‌روم.",
-            "why": "برای ترتیب، «و بعد» and then است: and then."
+            "why": "برای ترتیب، «و بعد» and then است: and then.",
+            "support": [
+              {
+                "en": "First",
+                "fa": "اول"
+              },
+              {
+                "en": "breakfast",
+                "fa": "صبحانه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10151,6 +10425,16 @@
                 "ok": false,
                 "why": "them ضمیر است."
               }
+            ],
+            "support": [
+              {
+                "en": "six",
+                "fa": "شش"
+              },
+              {
+                "en": "OK",
+                "fa": "باشه؛ خوب"
+              }
             ]
           },
           {
@@ -10160,7 +10444,17 @@
             "frame": "First read, ___ write.",
             "answer": "then",
             "accept": [],
-            "why": "برای ترتیب، First … then می‌گوییم: First …, then …"
+            "why": "برای ترتیب، First … then می‌گوییم: First …, then …",
+            "support": [
+              {
+                "en": "First",
+                "fa": "اول"
+              },
+              {
+                "en": "read",
+                "fa": "خواندن"
+              }
+            ]
           }
         ]
       }
@@ -10445,7 +10739,13 @@
             "answer": "Tuesday",
             "accept": [],
             "fa": "دوشنبه، سه‌شنبه، چهارشنبه.",
-            "why": "روزِ بعد از Monday: Tuesday."
+            "why": "روزِ بعد از Monday: Tuesday.",
+            "support": [
+              {
+                "en": "Wednesday",
+                "fa": "چهارشنبه"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -10678,6 +10978,12 @@
                 "text": "brother",
                 "ok": false,
                 "why": "brother برادرِ خودت است."
+              }
+            ],
+            "support": [
+              {
+                "en": "husband",
+                "fa": "شوهر"
               }
             ]
           },
@@ -11198,7 +11504,17 @@
             "answer": "wake",
             "accept": [],
             "fa": "می‌شود فردا ساعت شش بیدارم کنی؟",
-            "why": "wake + شخص + up."
+            "why": "wake + شخص + up.",
+            "support": [
+              {
+                "en": "six",
+                "fa": "شش"
+              },
+              {
+                "en": "tomorrow",
+                "fa": "فردا"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11219,6 +11535,12 @@
                 "text": "woken",
                 "ok": false,
                 "why": "woken بدون have نمی‌آید."
+              }
+            ],
+            "support": [
+              {
+                "en": "five",
+                "fa": "پنج"
               }
             ]
           },
@@ -11642,7 +11964,21 @@
             "answer": "yourself",
             "accept": [],
             "fa": "با آن چاقو مراقب باش! دستت را نبُر.",
-            "why": "فاعل و مفعول یکی: yourself."
+            "why": "فاعل و مفعول یکی: yourself.",
+            "support": [
+              {
+                "en": "careful",
+                "fa": "مراقب"
+              },
+              {
+                "en": "knife",
+                "fa": "چاقو"
+              },
+              {
+                "en": "cut",
+                "fa": "زخمی نکن"
+              }
+            ]
           },
           {
             "type": "choice",
@@ -11663,6 +11999,12 @@
                 "text": "yourselfs",
                 "ok": false,
                 "why": "جمعِ yourself: yourselves."
+              }
+            ],
+            "support": [
+              {
+                "en": "homework",
+                "fa": "تکلیف"
               }
             ]
           },
