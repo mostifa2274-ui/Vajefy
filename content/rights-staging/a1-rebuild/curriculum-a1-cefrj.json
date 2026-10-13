@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "STAGING_ONLY_UNREVIEWED_CURRICULUM_PROPOSAL",
-  "description": "Staged A1 curriculum for the CEFR-J rebuild. Current A1 entries that CEFR-J grades A1 keep their unit, order and ID; the 166 that it places higher are removed with their destination level; the 338 drafted NEW entries are added where curriculum-assignments.json puts them. Prerequisites that pointed to removed entries are dropped and listed. Not live: the app still uses content/curriculum/A1.json.",
+  "description": "Staged A1 curriculum for the CEFR-J rebuild. Current A1 entries that CEFR-J grades A1 keep their ID and, unless curriculum-assignments.json promotes them to an earlier unit, their unit and order; the 166 that it places higher are removed with their destination level; the 338 drafted NEW entries are added where curriculum-assignments.json puts them. Prerequisites that pointed to removed entries, or that a promoted entry no longer waits for, are dropped and listed. Not live: the app still uses content/curriculum/A1.json.",
   "sources": {
     "curriculum": {
       "file": "content/curriculum/A1.json",
@@ -13,7 +13,7 @@
     },
     "assignments": {
       "file": "content/rights-staging/a1-rebuild/curriculum-assignments.json",
-      "sha256": "bb15062d83a86b729bc6902292efb9a9b35b3aec904a8af3cc9f86a073214002"
+      "sha256": "1f377a89d524692ccfacb70c2b20199370005d0e1e20e805eab9b6379ad01597"
     },
     "lessonDrafts": {
       "lessons-new-001-020.json": "cb30b3e58d89c6920d425e54f059a64a0d8c80773ad80ef3f6996fc6afa867b9",
@@ -43,7 +43,8 @@
     "retained": 734,
     "added": 338,
     "removed": 166,
-    "droppedPrerequisites": 24
+    "promoted": 34,
+    "droppedPrerequisites": 64
   },
   "removed": [
     {
@@ -1049,8 +1050,33 @@
       "prerequisite": "lex:A1:menu"
     },
     {
+      "id": "lex:A1:like-find-sb-sth-pleasant",
+      "prerequisite": "lex:A1:food",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:very",
+      "prerequisite": "lex:A1:food",
+      "reason": "promoted"
+    },
+    {
       "id": "lex:A1:pay",
       "prerequisite": "lex:A1:cost"
+    },
+    {
+      "id": "lex:A1:two",
+      "prerequisite": "lex:A1:one",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:here",
+      "prerequisite": "lex:A1:place",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:there",
+      "prerequisite": "lex:A1:here",
+      "reason": "promoted"
     },
     {
       "id": "lex:A1:street",
@@ -1065,6 +1091,26 @@
       "prerequisite": "lex:A1:country"
     },
     {
+      "id": "lex:A1:see",
+      "prerequisite": "lex:A1:place",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:go",
+      "prerequisite": "lex:A1:place",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:come",
+      "prerequisite": "lex:A1:go",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:come",
+      "prerequisite": "lex:A1:here",
+      "reason": "promoted"
+    },
+    {
       "id": "lex:A1:car",
       "prerequisite": "lex:A1:road"
     },
@@ -1077,16 +1123,66 @@
       "prerequisite": "lex:A1:road"
     },
     {
+      "id": "lex:A1:to",
+      "prerequisite": "lex:A1:go",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:to",
+      "prerequisite": "lex:A1:place",
+      "reason": "promoted"
+    },
+    {
       "id": "lex:A1:walk",
       "prerequisite": "lex:A1:road"
+    },
+    {
+      "id": "lex:A1:at",
+      "prerequisite": "lex:A1:station",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:at",
+      "prerequisite": "lex:A1:place",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:for",
+      "prerequisite": "lex:A1:travel",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:for",
+      "prerequisite": "lex:A1:time",
+      "reason": "promoted"
     },
     {
       "id": "lex:A1:long",
       "prerequisite": "lex:A1:journey"
     },
     {
+      "id": "lex:A1:will",
+      "prerequisite": "lex:A1:travel",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:write",
+      "prerequisite": "lex:A1:read",
+      "reason": "promoted"
+    },
+    {
       "id": "lex:A1:business",
       "prerequisite": "lex:A1:company"
+    },
+    {
+      "id": "lex:A1:word",
+      "prerequisite": "lex:A1:work",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:people",
+      "prerequisite": "lex:A1:person",
+      "reason": "promoted"
     },
     {
       "id": "lex:A1:cinema",
@@ -1101,8 +1197,38 @@
       "prerequisite": "lex:A1:film"
     },
     {
+      "id": "lex:A1:on",
+      "prerequisite": "lex:A1:put",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:good",
+      "prerequisite": "lex:A1:weather",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:good",
+      "prerequisite": "lex:A1:clothes",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:love",
+      "prerequisite": "lex:A1:feel",
+      "reason": "promoted"
+    },
+    {
       "id": "lex:A1:boring",
       "prerequisite": "lex:A1:bored"
+    },
+    {
+      "id": "lex:A1:nice",
+      "prerequisite": "lex:A1:feel",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:make",
+      "prerequisite": "lex:A1:health",
+      "reason": "promoted"
     },
     {
       "id": "lex:A1:cannot",
@@ -1111,6 +1237,21 @@
     {
       "id": "lex:A1:language",
       "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:phone",
+      "prerequisite": "lex:A1:call",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:wait",
+      "prerequisite": "lex:A1:time",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:wait",
+      "prerequisite": "lex:A1:please",
+      "reason": "promoted"
     },
     {
       "id": "lex:A1:should",
@@ -1133,12 +1274,244 @@
       "prerequisite": "lex:A1:understand"
     },
     {
+      "id": "lex:A1:but",
+      "prerequisite": "lex:A1:speak",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:but",
+      "prerequisite": "lex:A1:problem",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:can",
+      "prerequisite": "lex:A1:help",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:can",
+      "prerequisite": "lex:A1:speak",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:do",
+      "prerequisite": "lex:A1:help",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:do",
+      "prerequisite": "lex:A1:problem",
+      "reason": "promoted"
+    },
+    {
       "id": "lex:A1:know",
       "prerequisite": "lex:A1:understand"
     },
     {
+      "id": "lex:A1:know",
+      "prerequisite": "lex:A1:problem",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:no",
+      "prerequisite": "lex:A1:problem",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:no",
+      "prerequisite": "lex:A1:answer",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:not",
+      "prerequisite": "lex:A1:problem",
+      "reason": "promoted"
+    },
+    {
       "id": "lex:A1:not",
       "prerequisite": "lex:A1:understand"
+    },
+    {
+      "id": "lex:A1:say",
+      "prerequisite": "lex:A1:help",
+      "reason": "promoted"
+    },
+    {
+      "id": "lex:A1:sentence",
+      "prerequisite": "lex:A1:help",
+      "reason": "promoted"
+    }
+  ],
+  "promoted": [
+    {
+      "id": "lex:A1:like-find-sb-sth-pleasant",
+      "fromUnit": "04-food-drink",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:very",
+      "fromUnit": "04-food-drink",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:two",
+      "fromUnit": "05-shopping-money",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:here",
+      "fromUnit": "06-places-directions",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:there",
+      "fromUnit": "06-places-directions",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:see",
+      "fromUnit": "06-places-directions",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:go",
+      "fromUnit": "07-travel-transport",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:come",
+      "fromUnit": "07-travel-transport",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:car",
+      "fromUnit": "07-travel-transport",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:to",
+      "fromUnit": "07-travel-transport",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:at",
+      "fromUnit": "07-travel-transport",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:for",
+      "fromUnit": "07-travel-transport",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:will",
+      "fromUnit": "07-travel-transport",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:work",
+      "fromUnit": "08-work-study",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:book",
+      "fromUnit": "08-work-study",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:write",
+      "fromUnit": "08-work-study",
+      "toUnit": "03-daily-routine"
+    },
+    {
+      "id": "lex:A1:word",
+      "fromUnit": "08-work-study",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:people",
+      "fromUnit": "09-leisure-people",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:on",
+      "fromUnit": "10-weather-clothes",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:good",
+      "fromUnit": "10-weather-clothes",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:love",
+      "fromUnit": "11-health-feelings",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:nice",
+      "fromUnit": "11-health-feelings",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:make",
+      "fromUnit": "11-health-feelings",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:please",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:phone",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:wait",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:but",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:can",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:do",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:know",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:no",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:not",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:say",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
+    },
+    {
+      "id": "lex:A1:sentence",
+      "fromUnit": "12-help-everyday-problems",
+      "toUnit": "02-family-home"
     }
   ],
   "curriculum": {
@@ -1327,6 +1700,140 @@
             "id": "lex:A1:cefrj-short-s",
             "prerequisites": [
               "lex:A1:cefrj-is"
+            ]
+          },
+          {
+            "id": "lex:A1:do",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:on",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:not",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:can",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:to",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:at",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:please",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:for",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:make",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:go",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:good",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:there",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:phone",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:work",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:will",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:but",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:like-find-sb-sth-pleasant",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:love",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:come",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:say",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:no",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:wait",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:people",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:word",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:two",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:sentence",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:know",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:car",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:very",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:here",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:nice",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:see",
+            "prerequisites": []
+          },
+          {
+            "id": "lex:A1:book",
+            "prerequisites": [
+              "lex:A1:school"
             ]
           },
           {
@@ -2018,7 +2525,7 @@
             ]
           }
         ],
-        "targetEntries": 115
+        "targetEntries": 148
       },
       {
         "id": "03-daily-routine",
@@ -2028,6 +2535,10 @@
         "objectiveEn": "Describe a simple day, times, frequency, and common routine actions.",
         "objectiveFa": "یک روز ساده، زمان‌ها، تکرار و کارهای معمول روزانه را بیان کن.",
         "entries": [
+          {
+            "id": "lex:A1:write",
+            "prerequisites": []
+          },
           {
             "id": "lex:A1:time",
             "prerequisites": [
@@ -2626,7 +3137,7 @@
             ]
           }
         ],
-        "targetEntries": 95
+        "targetEntries": 96
       },
       {
         "id": "04-food-drink",
@@ -2988,12 +3499,6 @@
             ]
           },
           {
-            "id": "lex:A1:like-find-sb-sth-pleasant",
-            "prerequisites": [
-              "lex:A1:food"
-            ]
-          },
-          {
             "id": "lex:A1:order",
             "prerequisites": [
               "lex:A1:food"
@@ -3031,12 +3536,6 @@
           },
           {
             "id": "lex:A1:too",
-            "prerequisites": [
-              "lex:A1:food"
-            ]
-          },
-          {
-            "id": "lex:A1:very",
             "prerequisites": [
               "lex:A1:food"
             ]
@@ -3198,7 +3697,7 @@
             ]
           }
         ],
-        "targetEntries": 89
+        "targetEntries": 87
       },
       {
         "id": "05-shopping-money",
@@ -3327,12 +3826,6 @@
             "prerequisites": [
               "lex:A1:shop",
               "lex:A1:be"
-            ]
-          },
-          {
-            "id": "lex:A1:two",
-            "prerequisites": [
-              "lex:A1:one"
             ]
           },
           {
@@ -3686,7 +4179,7 @@
             ]
           }
         ],
-        "targetEntries": 76
+        "targetEntries": 75
       },
       {
         "id": "06-places-directions",
@@ -3699,18 +4192,6 @@
           {
             "id": "lex:A1:place",
             "prerequisites": []
-          },
-          {
-            "id": "lex:A1:here",
-            "prerequisites": [
-              "lex:A1:place"
-            ]
-          },
-          {
-            "id": "lex:A1:there",
-            "prerequisites": [
-              "lex:A1:here"
-            ]
           },
           {
             "id": "lex:A1:street",
@@ -3974,12 +4455,6 @@
             ]
           },
           {
-            "id": "lex:A1:see",
-            "prerequisites": [
-              "lex:A1:place"
-            ]
-          },
-          {
             "id": "lex:A1:look",
             "prerequisites": [
               "lex:A1:place"
@@ -4218,7 +4693,7 @@
             ]
           }
         ],
-        "targetEntries": 85
+        "targetEntries": 82
       },
       {
         "id": "07-travel-transport",
@@ -4228,19 +4703,6 @@
         "objectiveEn": "Handle basic travel, tickets, vehicles, arrivals, and departures.",
         "objectiveFa": "موقعیت‌های سادهٔ سفر، بلیت، وسیلهٔ نقلیه، رسیدن و رفتن را مدیریت کن.",
         "entries": [
-          {
-            "id": "lex:A1:go",
-            "prerequisites": [
-              "lex:A1:place"
-            ]
-          },
-          {
-            "id": "lex:A1:come",
-            "prerequisites": [
-              "lex:A1:go",
-              "lex:A1:here"
-            ]
-          },
           {
             "id": "lex:A1:travel",
             "prerequisites": [
@@ -4303,10 +4765,6 @@
             ]
           },
           {
-            "id": "lex:A1:car",
-            "prerequisites": []
-          },
-          {
             "id": "lex:A1:taxi",
             "prerequisites": [
               "lex:A1:car",
@@ -4356,13 +4814,6 @@
             "prerequisites": [
               "lex:A1:trip",
               "lex:A1:travel"
-            ]
-          },
-          {
-            "id": "lex:A1:to",
-            "prerequisites": [
-              "lex:A1:go",
-              "lex:A1:place"
             ]
           },
           {
@@ -4427,13 +4878,6 @@
             ]
           },
           {
-            "id": "lex:A1:at",
-            "prerequisites": [
-              "lex:A1:station",
-              "lex:A1:place"
-            ]
-          },
-          {
             "id": "lex:A1:by",
             "prerequisites": [
               "lex:A1:travel",
@@ -4451,13 +4895,6 @@
             "id": "lex:A1:rule",
             "prerequisites": [
               "lex:A1:travel"
-            ]
-          },
-          {
-            "id": "lex:A1:for",
-            "prerequisites": [
-              "lex:A1:travel",
-              "lex:A1:time"
             ]
           },
           {
@@ -4533,12 +4970,6 @@
             "id": "lex:A1:when",
             "prerequisites": [
               "lex:A1:time",
-              "lex:A1:travel"
-            ]
-          },
-          {
-            "id": "lex:A1:will",
-            "prerequisites": [
               "lex:A1:travel"
             ]
           },
@@ -4717,7 +5148,7 @@
             ]
           }
         ],
-        "targetEntries": 76
+        "targetEntries": 69
       },
       {
         "id": "08-work-study",
@@ -4727,10 +5158,6 @@
         "objectiveEn": "Talk about simple work, school, study, schedules, and tasks.",
         "objectiveFa": "دربارهٔ کار، مدرسه، مطالعه، برنامه و وظایف ساده صحبت کن.",
         "entries": [
-          {
-            "id": "lex:A1:work",
-            "prerequisites": []
-          },
           {
             "id": "lex:A1:job",
             "prerequisites": [
@@ -4798,21 +5225,9 @@
             ]
           },
           {
-            "id": "lex:A1:book",
-            "prerequisites": [
-              "lex:A1:school"
-            ]
-          },
-          {
             "id": "lex:A1:read",
             "prerequisites": [
               "lex:A1:book"
-            ]
-          },
-          {
-            "id": "lex:A1:write",
-            "prerequisites": [
-              "lex:A1:read"
             ]
           },
           {
@@ -5076,12 +5491,6 @@
             ]
           },
           {
-            "id": "lex:A1:word",
-            "prerequisites": [
-              "lex:A1:work"
-            ]
-          },
-          {
             "id": "lex:A1:page",
             "prerequisites": [
               "lex:A1:work"
@@ -5286,7 +5695,7 @@
             ]
           }
         ],
-        "targetEntries": 88
+        "targetEntries": 84
       },
       {
         "id": "09-leisure-people",
@@ -5299,12 +5708,6 @@
           {
             "id": "lex:A1:person",
             "prerequisites": []
-          },
-          {
-            "id": "lex:A1:people",
-            "prerequisites": [
-              "lex:A1:person"
-            ]
           },
           {
             "id": "lex:A1:young",
@@ -6024,7 +6427,7 @@
             ]
           }
         ],
-        "targetEntries": 118
+        "targetEntries": 117
       },
       {
         "id": "10-weather-clothes",
@@ -6148,12 +6551,6 @@
             "id": "lex:A1:put",
             "prerequisites": [
               "lex:A1:wear"
-            ]
-          },
-          {
-            "id": "lex:A1:on",
-            "prerequisites": [
-              "lex:A1:put"
             ]
           },
           {
@@ -6371,13 +6768,6 @@
           },
           {
             "id": "lex:A1:bad",
-            "prerequisites": [
-              "lex:A1:weather",
-              "lex:A1:clothes"
-            ]
-          },
-          {
-            "id": "lex:A1:good",
             "prerequisites": [
               "lex:A1:weather",
               "lex:A1:clothes"
@@ -6712,7 +7102,7 @@
             ]
           }
         ],
-        "targetEntries": 108
+        "targetEntries": 106
       },
       {
         "id": "11-health-feelings",
@@ -6922,12 +7312,6 @@
             ]
           },
           {
-            "id": "lex:A1:love",
-            "prerequisites": [
-              "lex:A1:feel"
-            ]
-          },
-          {
             "id": "lex:A1:terrible",
             "prerequisites": [
               "lex:A1:feel"
@@ -7035,12 +7419,6 @@
             ]
           },
           {
-            "id": "lex:A1:nice",
-            "prerequisites": [
-              "lex:A1:feel"
-            ]
-          },
-          {
             "id": "lex:A1:so",
             "prerequisites": [
               "lex:A1:health"
@@ -7054,12 +7432,6 @@
           },
           {
             "id": "lex:A1:why",
-            "prerequisites": [
-              "lex:A1:health"
-            ]
-          },
-          {
-            "id": "lex:A1:make",
             "prerequisites": [
               "lex:A1:health"
             ]
@@ -7403,7 +7775,7 @@
             ]
           }
         ],
-        "targetEntries": 111
+        "targetEntries": 108
       },
       {
         "id": "12-help-everyday-problems",
@@ -7434,10 +7806,6 @@
             "prerequisites": [
               "lex:A1:problem"
             ]
-          },
-          {
-            "id": "lex:A1:please",
-            "prerequisites": []
           },
           {
             "id": "lex:A1:cannot",
@@ -7491,12 +7859,6 @@
             ]
           },
           {
-            "id": "lex:A1:phone",
-            "prerequisites": [
-              "lex:A1:call"
-            ]
-          },
-          {
             "id": "lex:A1:number",
             "prerequisites": [
               "lex:A1:phone"
@@ -7519,13 +7881,6 @@
             "prerequisites": [
               "lex:A1:help",
               "lex:A1:problem"
-            ]
-          },
-          {
-            "id": "lex:A1:wait",
-            "prerequisites": [
-              "lex:A1:time",
-              "lex:A1:please"
             ]
           },
           {
@@ -7694,20 +8049,6 @@
             ]
           },
           {
-            "id": "lex:A1:but",
-            "prerequisites": [
-              "lex:A1:speak",
-              "lex:A1:problem"
-            ]
-          },
-          {
-            "id": "lex:A1:can",
-            "prerequisites": [
-              "lex:A1:help",
-              "lex:A1:speak"
-            ]
-          },
-          {
             "id": "lex:A1:difficult",
             "prerequisites": [
               "lex:A1:problem",
@@ -7715,41 +8056,9 @@
             ]
           },
           {
-            "id": "lex:A1:do",
-            "prerequisites": [
-              "lex:A1:help",
-              "lex:A1:problem"
-            ]
-          },
-          {
             "id": "lex:A1:if",
             "prerequisites": [
               "lex:A1:problem",
-              "lex:A1:help"
-            ]
-          },
-          {
-            "id": "lex:A1:know",
-            "prerequisites": [
-              "lex:A1:problem"
-            ]
-          },
-          {
-            "id": "lex:A1:no",
-            "prerequisites": [
-              "lex:A1:problem",
-              "lex:A1:answer"
-            ]
-          },
-          {
-            "id": "lex:A1:not",
-            "prerequisites": [
-              "lex:A1:problem"
-            ]
-          },
-          {
-            "id": "lex:A1:say",
-            "prerequisites": [
               "lex:A1:help"
             ]
           },
@@ -7761,12 +8070,6 @@
           },
           {
             "id": "lex:A1:talk",
-            "prerequisites": [
-              "lex:A1:help"
-            ]
-          },
-          {
-            "id": "lex:A1:sentence",
             "prerequisites": [
               "lex:A1:help"
             ]
@@ -7970,7 +8273,7 @@
             ]
           }
         ],
-        "targetEntries": 91
+        "targetEntries": 80
       }
     ],
     "calibrationSlice": {

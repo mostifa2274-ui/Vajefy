@@ -33,7 +33,40 @@ test("keeps retained entries in place, removes moved-up entries and adds NEW ent
   assert.deepEqual(staged!.droppedPrerequisites, [{ id: "lex:A1:street", prerequisite: "lex:A1:road" }]);
   assert.deepEqual(staged!.removed, [{ id: "lex:A1:road", headword: "road", fromUnit: "02-home", toLevel: "A2" }]);
   assert.equal(staged!.curriculum.assignedMinimum, undefined);
-  assert.deepEqual(staged!.counts, { units: 2, entries: 6, retained: 4, added: 2, removed: 1, droppedPrerequisites: 1 });
+  assert.deepEqual(staged!.counts, {
+    units: 2, entries: 6, retained: 4, added: 2, removed: 1, promoted: 0, droppedPrerequisites: 1,
+  });
+});
+
+const three: Curriculum = {
+  ...current,
+  units: [...current.units, unit("03-town", [["lex:A1:shop", []], ["lex:A1:do", ["lex:A1:shop"]]])],
+};
+
+test("promotes a retained entry to an earlier unit after its NEW start entries, dropping only named prerequisites", () => {
+  const { staged, issues } = buildCefrjA1Curriculum({
+    current: three, drafted, movedUp,
+    assignments: { ...ok, promotions: [{ id: "lex:A1:do", unit: "02-home", dropPrerequisites: ["lex:A1:shop"] }] },
+  });
+  assert.deepEqual(issues, []);
+  assert.deepEqual(staged!.curriculum.units[1]!.entries.map(e => e.id),
+    ["lex:A1:cefrj-am", "lex:A1:do", "lex:A1:street", "lex:A1:house", "lex:A2:pet"]);
+  assert.deepEqual(staged!.curriculum.units[2]!.entries.map(e => e.id), ["lex:A1:shop"]);
+  assert.deepEqual(staged!.curriculum.units[1]!.entries[1]!.prerequisites, []);
+  assert.deepEqual(staged!.promoted, [{ id: "lex:A1:do", fromUnit: "03-town", toUnit: "02-home" }]);
+  assert.deepEqual(staged!.droppedPrerequisites.at(-1), { id: "lex:A1:do", prerequisite: "lex:A1:shop", reason: "promoted" });
+  assert.equal(staged!.counts.promoted, 1);
+});
+
+test("rejects promotions that move later, touch the calibration unit, keep a later prerequisite or drop a non-prerequisite", () => {
+  const run = (promotions: unknown[]) =>
+    buildCefrjA1Curriculum({ current: three, drafted, movedUp, assignments: { ...ok, promotions } }).issues.join("\n");
+  assert.match(run([{ id: "lex:A1:house", unit: "03-town", dropPrerequisites: [] }]), /must move to an earlier unit/);
+  assert.match(run([{ id: "lex:A1:do", unit: "01-intro", dropPrerequisites: ["lex:A1:shop"] }]), /calibration unit is fixed/);
+  assert.match(run([{ id: "lex:A1:do", unit: "02-home", dropPrerequisites: [] }]), /prerequisite lex:A1:shop must appear earlier/);
+  assert.match(run([{ id: "lex:A1:do", unit: "02-home", dropPrerequisites: ["lex:A1:house"] }]), /cannot drop lex:A1:house/);
+  assert.match(run([{ id: "lex:A1:road", unit: "02-home", dropPrerequisites: [] }]), /only a retained current A1 entry/);
+  assert.match(run([{ id: "lex:A1:cefrj-am", unit: "02-home", dropPrerequisites: [] }]), /only a retained current A1 entry/);
 });
 
 test("rejects unplaced, misplaced and later-introduced entries", () => {
