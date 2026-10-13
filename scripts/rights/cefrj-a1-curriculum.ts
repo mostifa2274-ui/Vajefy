@@ -50,7 +50,7 @@ if (staged) {
   const output = {
     schemaVersion: 1,
     status: CEFRJ_CURRICULUM_STATUS,
-    description: "Staged A1 curriculum for the CEFR-J rebuild. Current A1 entries that CEFR-J grades A1 keep their unit, order and ID; the 166 that it places higher are removed with their destination level; the 338 drafted NEW entries are added where curriculum-assignments.json puts them. Prerequisites that pointed to removed entries are dropped and listed. Not live: the app still uses content/curriculum/A1.json.",
+    description: "Staged A1 curriculum for the CEFR-J rebuild. Current A1 entries that CEFR-J grades A1 keep their ID and, unless curriculum-assignments.json promotes them to an earlier unit, their unit and order; the 166 that it places higher are removed with their destination level; the 338 drafted NEW entries are added where curriculum-assignments.json puts them. Prerequisites that pointed to removed entries, or that a promoted entry no longer waits for, are dropped and listed. Not live: the app still uses content/curriculum/A1.json.",
     sources: {
       ...Object.fromEntries(Object.entries(sources).map(([k, f]) => [k, { file: f, sha256: sha256(texts[k as keyof typeof sources]) }])),
       lessonDrafts: draftHashes,
@@ -60,6 +60,7 @@ if (staged) {
     counts: staged.counts,
     removed: staged.removed,
     droppedPrerequisites: staged.droppedPrerequisites,
+    promoted: staged.promoted,
     curriculum: staged.curriculum,
   };
   const text = JSON.stringify(output, null, 2) + "\n";
@@ -73,7 +74,8 @@ if (staged) {
   }
   const c = staged.counts;
   console.log(`CEFR-J A1 staged curriculum: ${issues.length ? "FAIL" : "PASS"} (${c.entries} entries in ${c.units} units: ` +
-    `${c.retained} retained, ${c.added} added, ${c.removed} moved above A1, ${c.droppedPrerequisites} prerequisites dropped; ` +
+    `${c.retained} retained, ${c.added} added, ${c.removed} moved above A1, ${c.promoted} promoted, ` +
+    `${c.droppedPrerequisites} prerequisites dropped; ` +
     "not live, 0 curriculum approvals).");
 }
 for (const issue of issues) console.error("! " + issue);

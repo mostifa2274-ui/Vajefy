@@ -4,11 +4,18 @@ export const CEFRJ_CURRICULUM_STATUS = "STAGING_ONLY_UNREVIEWED_CURRICULUM_PROPO
 
 const text = z.string().trim().min(1);
 const placed = z.object({ headword: text, id: text, prerequisites: z.array(text) }).strict();
+/**
+ * A retained entry taught earlier: it moves to an earlier unit, after that
+ * unit's NEW start entries. `dropPrerequisites` names the prerequisites it no
+ * longer waits for (thematic ones that would now come after it).
+ */
+const promotion = z.object({ id: text, unit: text, dropPrerequisites: z.array(text) }).strict();
 export const cefrjCurriculumAssignments = z.object({
   schemaVersion: z.literal(1),
   status: z.literal(CEFRJ_CURRICULUM_STATUS),
   description: text,
   units: z.array(z.object({ unit: text, start: z.array(placed), end: z.array(placed) }).strict()).min(1),
+  promotions: z.array(promotion).optional(),
 }).strict();
 export type CefrjCurriculumAssignments = z.infer<typeof cefrjCurriculumAssignments>;
 
@@ -29,14 +36,19 @@ export type MovedUpEntry = { entryId: string; headword: string; cefrjLevel: stri
 export type StagedCurriculum = {
   curriculum: Curriculum;
   removed: { id: string; headword: string; fromUnit: string; toLevel: string }[];
-  droppedPrerequisites: { id: string; prerequisite: string }[];
-  counts: { units: number; entries: number; retained: number; added: number; removed: number; droppedPrerequisites: number };
+  droppedPrerequisites: { id: string; prerequisite: string; reason?: "promoted" }[];
+  promoted: { id: string; fromUnit: string; toUnit: string }[];
+  counts: {
+    units: number; entries: number; retained: number; added: number; removed: number;
+    promoted: number; droppedPrerequisites: number;
+  };
 };
 
 /**
  * Compose the staged CEFR-J A1 curriculum: keep every current A1 entry that
- * CEFR-J also grades A1, in its unit and order; remove the entries it places
- * higher; and add each drafted NEW entry where the assignments put it. Entry
+ * CEFR-J also grades A1, in its unit and order unless the assignments promote
+ * it to an earlier unit; remove the entries it places higher; and add each
+ * drafted NEW entry where the assignments put it. Entry
  * IDs never change, so learner progress keyed by ID is untouched.
  * Structural checks only: passing is not pedagogical or semantic approval.
  */
@@ -77,34 +89,69 @@ export function buildCefrjA1Curriculum(input: {
   }
   for (const id of drafted.keys()) if (!placedIds.has(id)) issues.push(`${id}: drafted NEW entry has no unit`);
 
+  const unitIndex = new Map(current.units.map((u, i) => [u.id, i]));
+  const homeUnit = new Map(current.units.flatMap(u => u.entries.map(e => [e.id, u.id] as const)));
+  const promotions = new Map<string, { unit: string; drop: Set<string> }>();
+  for (const item of plan.promotions ?? []) {
+    const from = homeUnit.get(item.id);
+    const target = unitIndex.get(item.unit);
+    if (promotions.has(item.id)) issues.push(`${item.id}: promoted twice`);
+    if (!from || leaving.has(item.id)) issues.push(`${item.id}: only a retained current A1 entry can be promoted`);
+    else if (target === undefined) issues.push(`${item.id}: promotion names an unknown unit ${item.unit}`);
+    else if (item.unit === current.calibrationSlice.unit) issues.push(`${item.id}: the calibration unit is fixed and takes no promoted entries`);
+    else if (target >= unitIndex.get(from)!) issues.push(`${item.id}: a promotion must move to an earlier unit than ${from}`);
+    const entry = current.units.flatMap(u => u.entries).find(e => e.id === item.id);
+    for (const p of item.dropPrerequisites) {
+      if (!entry?.prerequisites.includes(p)) issues.push(`${item.id}: cannot drop ${p}, which is not its prerequisite`);
+    }
+    promotions.set(item.id, { unit: item.unit, drop: new Set(item.dropPrerequisites) });
+  }
+  const promoted: StagedCurriculum["promoted"] = [];
+
   const removed: StagedCurriculum["removed"] = [];
   const droppedPrerequisites: StagedCurriculum["droppedPrerequisites"] = [];
   const introduced = new Set<string>();
   const known = new Set([...currentIds].filter(id => !leaving.has(id)).concat([...placedIds.keys()]));
   let retained = 0;
   let added = 0;
-  const units = current.units.map(unit => {
-    const assigned = byUnit.get(unit.id);
-    const kept: CurriculumEntry[] = [];
+  const keptBy = new Map<string, CurriculumEntry[]>(current.units.map(u => [u.id, []]));
+  const promotedTo = new Map<string, CurriculumEntry[]>(current.units.map(u => [u.id, []]));
+  for (const unit of current.units) {
     for (const entry of unit.entries) {
       const move = leaving.get(entry.id);
       if (move) {
         removed.push({ id: entry.id, headword: move.headword, fromUnit: unit.id, toLevel: move.cefrjLevel });
         continue;
       }
+      const promotion = promotions.get(entry.id);
       const prerequisites = entry.prerequisites.filter(p => {
         if (leaving.has(p)) {
           droppedPrerequisites.push({ id: entry.id, prerequisite: p });
           return false;
         }
+        if (promotion?.drop.has(p)) {
+          droppedPrerequisites.push({ id: entry.id, prerequisite: p, reason: "promoted" });
+          return false;
+        }
         return true;
       });
-      kept.push({ id: entry.id, prerequisites });
+      if (promotion && unitIndex.has(promotion.unit)) {
+        promoted.push({ id: entry.id, fromUnit: unit.id, toUnit: promotion.unit });
+        promotedTo.get(promotion.unit)!.push({ id: entry.id, prerequisites });
+      } else keptBy.get(unit.id)!.push({ id: entry.id, prerequisites });
       retained += 1;
     }
+  }
+  // Promoted entries keep the order the assignments list them in.
+  const order = new Map((plan.promotions ?? []).map((p, i) => [p.id, i]));
+  for (const list of promotedTo.values()) list.sort((a, b) => order.get(a.id)! - order.get(b.id)!);
+  const units = current.units.map(unit => {
+    const assigned = byUnit.get(unit.id);
     const fresh = (items: { id: string; prerequisites: string[] }[]) =>
       items.map(item => ({ id: item.id, prerequisites: [...item.prerequisites] }));
-    const entries = [...fresh(assigned?.start ?? []), ...kept, ...fresh(assigned?.end ?? [])];
+    const entries = [
+      ...fresh(assigned?.start ?? []), ...promotedTo.get(unit.id)!, ...keptBy.get(unit.id)!, ...fresh(assigned?.end ?? []),
+    ];
     added += (assigned?.start.length ?? 0) + (assigned?.end.length ?? 0);
     for (const entry of entries) {
       const seen = new Set<string>();
@@ -133,9 +180,10 @@ export function buildCefrjA1Curriculum(input: {
       curriculum: { version: current.version, level: current.level, units, calibrationSlice: current.calibrationSlice },
       removed,
       droppedPrerequisites,
+      promoted,
       counts: {
-        units: units.length, entries: total, retained, added,
-        removed: removed.length, droppedPrerequisites: droppedPrerequisites.length,
+        units: units.length, entries: total, retained, added, removed: removed.length,
+        promoted: promoted.length, droppedPrerequisites: droppedPrerequisites.length,
       },
     },
   };

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "STAGING_ONLY_UNREVIEWED_CURRICULUM_PROPOSAL",
-  "description": "Unit and prerequisite assignments for the 338 NEW CEFR-J A1 headwords. Each new entry is placed at the start or the end of a current A1 unit; prerequisites name retained A1 entries or earlier new entries by stable ID. Assigned by Claude Code from the drafted senses; not reviewed or approved.",
+  "description": "Unit and prerequisite assignments for the 338 NEW CEFR-J A1 headwords. Each new entry is placed at the start or the end of a current A1 unit; prerequisites name retained A1 entries or earlier new entries by stable ID. Assigned by Claude Code from the drafted senses; not reviewed or approved. Promotions move retained core words to an earlier unit, after that unit's NEW start entries, so later tasks use words already taught; each lists the thematic prerequisites it no longer waits for.",
   "units": [
     {
       "unit": "02-family-home",
@@ -2411,6 +2411,248 @@
           ]
         }
       ]
+    }
+  ],
+  "promotions": [
+    {
+      "id": "lex:A1:do",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:help",
+        "lex:A1:problem"
+      ]
+    },
+    {
+      "id": "lex:A1:on",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:put"
+      ]
+    },
+    {
+      "id": "lex:A1:not",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:problem"
+      ]
+    },
+    {
+      "id": "lex:A1:can",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:help",
+        "lex:A1:speak"
+      ]
+    },
+    {
+      "id": "lex:A1:to",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:go",
+        "lex:A1:place"
+      ]
+    },
+    {
+      "id": "lex:A1:at",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:station",
+        "lex:A1:place"
+      ]
+    },
+    {
+      "id": "lex:A1:please",
+      "unit": "02-family-home",
+      "dropPrerequisites": []
+    },
+    {
+      "id": "lex:A1:for",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:travel",
+        "lex:A1:time"
+      ]
+    },
+    {
+      "id": "lex:A1:make",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:health"
+      ]
+    },
+    {
+      "id": "lex:A1:go",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:place"
+      ]
+    },
+    {
+      "id": "lex:A1:good",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:weather",
+        "lex:A1:clothes"
+      ]
+    },
+    {
+      "id": "lex:A1:there",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:here"
+      ]
+    },
+    {
+      "id": "lex:A1:phone",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:call"
+      ]
+    },
+    {
+      "id": "lex:A1:work",
+      "unit": "02-family-home",
+      "dropPrerequisites": []
+    },
+    {
+      "id": "lex:A1:will",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:travel"
+      ]
+    },
+    {
+      "id": "lex:A1:but",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:speak",
+        "lex:A1:problem"
+      ]
+    },
+    {
+      "id": "lex:A1:like-find-sb-sth-pleasant",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:food"
+      ]
+    },
+    {
+      "id": "lex:A1:love",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:feel"
+      ]
+    },
+    {
+      "id": "lex:A1:come",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:go",
+        "lex:A1:here"
+      ]
+    },
+    {
+      "id": "lex:A1:say",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:help"
+      ]
+    },
+    {
+      "id": "lex:A1:no",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:problem",
+        "lex:A1:answer"
+      ]
+    },
+    {
+      "id": "lex:A1:wait",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:time",
+        "lex:A1:please"
+      ]
+    },
+    {
+      "id": "lex:A1:people",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:person"
+      ]
+    },
+    {
+      "id": "lex:A1:word",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:work"
+      ]
+    },
+    {
+      "id": "lex:A1:write",
+      "unit": "03-daily-routine",
+      "dropPrerequisites": [
+        "lex:A1:read"
+      ]
+    },
+    {
+      "id": "lex:A1:two",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:one"
+      ]
+    },
+    {
+      "id": "lex:A1:sentence",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:help"
+      ]
+    },
+    {
+      "id": "lex:A1:know",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:problem"
+      ]
+    },
+    {
+      "id": "lex:A1:car",
+      "unit": "02-family-home",
+      "dropPrerequisites": []
+    },
+    {
+      "id": "lex:A1:very",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:food"
+      ]
+    },
+    {
+      "id": "lex:A1:here",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:place"
+      ]
+    },
+    {
+      "id": "lex:A1:nice",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:feel"
+      ]
+    },
+    {
+      "id": "lex:A1:see",
+      "unit": "02-family-home",
+      "dropPrerequisites": [
+        "lex:A1:place"
+      ]
+    },
+    {
+      "id": "lex:A1:book",
+      "unit": "02-family-home",
+      "dropPrerequisites": []
     }
   ]
 }
