@@ -12,14 +12,17 @@ and the staged curriculum is still unapproved and not live.
 
 `curriculum-assignments.json` has a new `promotions` list. Each promotion
 moves one retained A1 entry to an earlier unit, after that unit's NEW start
-entries (so *am*, *is* and *are* still come first), and names the
-prerequisites it no longer waits for. The builder
+entries or directly after a named `after` entry of that unit, and names the
+prerequisites it no longer waits for. Unit 2's promotions follow its opening
+grammar block, so it now teaches *am, are, is*, then *the, that, she, it, we,
+they, and, have, with, of*, then *do, on, not, can, to, at* and the rest. The builder
 (`npm run assurance:a1:cefrj:curriculum`) rejects:
 
 - a promotion into the calibration unit (Unit 1 stays exactly as it is);
 - a promotion to a later or the same unit;
 - a promoted entry whose remaining prerequisites still come after it;
 - dropping a prerequisite the entry does not have;
+- an `after` anchor that is not a retained entry staying in the target unit;
 - promoting an entry that leaves A1 or a NEW entry.
 
 Every dropped prerequisite is listed in the staged file with reason
@@ -60,7 +63,7 @@ constantly.
 
 | Measured result | Before | After |
 |---|---:|---:|
-| Staged `FRONTIER_TASK_VOCABULARY` | 3,982 | 2,414 |
+| Staged `FRONTIER_TASK_VOCABULARY` | 3,982 | 2,383 |
 | Staged `FRONTIER_SCENE_VOCABULARY` | 36 | 36 |
 | Unit 2 entries (staged) | 115 | 148 |
 | Live findings | 4,815 | 4,815 |
@@ -68,3 +71,18 @@ constantly.
 Unit sizes in the staged curriculum are now 20, 148, 96, 87, 75, 82, 69, 84,
 117, 106, 108 and 80. This is a structural proposal measured by deterministic
 checks; it is not pedagogical, semantic or curriculum approval.
+
+## Follow-up: placement and where to stop (2026-10-13)
+
+Placing the promoted words at the very start of Unit 2 put *do* and *not*
+before *the* and *it*, and their tasks then used words not yet taught (127
+findings, 34 of them *the*). With the `after` anchor on *of*, staged findings
+are 2,419 instead of 2,450 (the measured 2,450 → 2,419 step is this change).
+
+A second search pass that kept any promotion removing at least five findings
+added 23 more words for only 157 fewer findings (to 2,293) and grew Unit 2 to
+164 entries, so it was not adopted. What remains is a long tail: 560 words,
+most with a handful of findings each, and about 1,050 of the findings are in
+Units 2–3 tasks, where beginner tasks use later words. Those need rewording
+or support glosses, which is a content-design decision rather than a
+curriculum one.
