@@ -317,13 +317,24 @@
       }
     },
     {
-      "kind": "reservation",
+      "kind": "calibration",
       "date": "2026-10-14",
+      "at": "2026-10-14T12:00:49.632Z",
       "runId": "38560331440.1",
       "role": "pedagogical",
-      "at": "2026-10-14T11:58:37.793Z",
+      "model": "@cf/google/gemma-4-26b-a4b-it",
+      "modelVersion": "@cf/google/gemma-4-26b-a4b-it@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 800,
+      "promptVersion": "pedagogy-a1-prompt-v1",
+      "rubricVersion": "pedagogy-a1-v1",
+      "outcome": "rejected",
+      "requestsSent": 21,
       "neuronsCharged": 1398,
-      "note": "Calibration run 38560331440.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
+      "measured": {
+        "inputTokens": 21423,
+        "outputTokens": 5984,
+        "neurons": 358
+      }
     }
   ]
 }
