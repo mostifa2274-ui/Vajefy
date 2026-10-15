@@ -304,6 +304,22 @@
         "abstainAccuracy": 0,
         "expectedLabelStability": 1
       }
+    },
+    {
+      "role": "adversarial",
+      "model": "@cf/nvidia/nemotron-3-120b-a12b",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 600,
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "rubricVersion": "adversarial-a1-v1",
+      "reason": "no-valid-output",
+      "rejectedAt": "2026-10-15",
+      "runIds": [
+        "38514159275.1",
+        "38683143669.1",
+        "38728361363.1"
+      ],
+      "detail": "Failed to produce valid judgments on 3 attempts across 2+ UTC days; last: http-502-empty-model-content."
     }
   ]
 }

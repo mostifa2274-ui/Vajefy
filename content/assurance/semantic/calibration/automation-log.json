@@ -358,13 +358,25 @@
       "measured": null
     },
     {
-      "kind": "reservation",
+      "kind": "calibration",
       "date": "2026-10-15",
+      "at": "2026-10-15T11:35:50.776Z",
       "runId": "38728361363.1",
       "role": "adversarial",
-      "at": "2026-10-15T11:35:26.615Z",
-      "neuronsCharged": 8157,
-      "note": "Calibration run 38728361363.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
+      "model": "@cf/nvidia/nemotron-3-120b-a12b",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxTokens": 600,
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "rubricVersion": "adversarial-a1-v1",
+      "outcome": "failed",
+      "failure": {
+        "kind": "model",
+        "code": "http-502-empty-model-content",
+        "detail": "adversarial judge request failed for cal-adv-clean-school: HTTP 502 {\"error\":\"empty-model-content\",\"diagnostic\":{\"keys\":[\"choices\",\"created\",\"id\",\"kv_transfer_params\",\"model\",\"object\",\"prompt_logprobs\",\"prompt_token_ids\",\"service_tier\",\"system_fingerprint\",\"usage\"],\"status\":null,\"incompleteDetails\":null,\"outputTypes\":[],\"candidateCount\":1,\"canonicalCandidateCount\":0,\"usage\":{\"prompt_tokens\":1076,\"completion_tokens\":600,\"total_tokens\":1676,\"prompt_tokens_details\":{\"cached_tokens\":0},\"neurons\":130"
+      },
+      "requestsSent": 1,
+      "neuronsCharged": 331,
+      "measured": null
     }
   ]
 }
