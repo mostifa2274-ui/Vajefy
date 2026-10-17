@@ -15,27 +15,27 @@
   "campaignPolicy": "One role campaign at a time. A candidate is eligible only if it needs no paid billing and its full campaign fits the safety ceiling; the automation's usage log keeps each UTC day under the ceiling.",
   "requiredRunsPerRole": 3,
   "activeJudgesTotalRequests": 84,
-  "activeJudgesNeuronsUpperBound": 20082,
+  "activeJudgesNeuronsUpperBound": 13269,
   "roles": {
     "english": {
-      "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-      "modelVersion": "@cf/meta/llama-3.3-70b-instruct-fp8-fast@cloudflare-catalog-2026-10-06",
-      "maxOutputTokensPerRequest": 500,
+      "model": "@cf/nvidia/nemotron-3-120b-a12b",
+      "modelVersion": "@cf/nvidia/nemotron-3-120b-a12b@cloudflare-catalog-2026-10-06+no-thinking",
+      "maxOutputTokensPerRequest": 1200,
       "requestsPerRun": 6,
       "repeats": 3,
       "totalRequests": 18,
       "maxRequestUtf8Bytes": 4933,
       "maxInputTokensUpperBound": 5445,
       "inputTokensUpperBoundTotal": 88755,
-      "outputTokensUpperBoundTotal": 9000,
+      "outputTokensUpperBoundTotal": 21600,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 26668,
-        "outputNeuronsPerMillionTokens": 204805,
+        "inputNeuronsPerMillionTokens": 45455,
+        "outputNeuronsPerMillionTokens": 136364,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 248,
-      "neuronsUpperBound": 4218,
+      "maxRequestNeuronsUpperBound": 412,
+      "neuronsUpperBound": 6993,
       "candidates": [
         {
           "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
@@ -151,24 +151,24 @@
       ]
     },
     "pedagogical": {
-      "model": "@cf/qwen/qwen3.8-27b",
-      "modelVersion": "@cf/qwen/qwen3.8-27b@cloudflare-catalog-2026-10-06+no-thinking",
-      "maxOutputTokensPerRequest": 700,
+      "model": "@cf/meta/llama-4-scout-17b-16e-instruct",
+      "modelVersion": "@cf/meta/llama-4-scout-17b-16e-instruct@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 800,
       "requestsPerRun": 7,
       "repeats": 3,
       "totalRequests": 21,
       "maxRequestUtf8Bytes": 4843,
       "maxInputTokensUpperBound": 5355,
       "inputTokensUpperBoundTotal": 102390,
-      "outputTokensUpperBoundTotal": 14700,
+      "outputTokensUpperBoundTotal": 16800,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 40909,
-        "outputNeuronsPerMillionTokens": 290909,
+        "inputNeuronsPerMillionTokens": 24545,
+        "outputNeuronsPerMillionTokens": 77273,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 423,
-      "neuronsUpperBound": 8475,
+      "maxRequestNeuronsUpperBound": 194,
+      "neuronsUpperBound": 3822,
       "candidates": [
         {
           "model": "@cf/nvidia/nemotron-3-120b-a12b",
@@ -213,24 +213,24 @@
       ]
     },
     "adversarial": {
-      "model": "@cf/openai/gpt-oss-120b",
-      "modelVersion": "@cf/openai/gpt-oss-120b@cloudflare-catalog-2026-10-06",
-      "maxOutputTokensPerRequest": 1200,
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "modelVersion": "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 1000,
       "requestsPerRun": 9,
       "repeats": 3,
       "totalRequests": 27,
       "maxRequestUtf8Bytes": 4948,
       "maxInputTokensUpperBound": 5460,
       "inputTokensUpperBoundTotal": 130494,
-      "outputTokensUpperBoundTotal": 32400,
+      "outputTokensUpperBoundTotal": 27000,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 31818,
-        "outputNeuronsPerMillionTokens": 68182,
+        "inputNeuronsPerMillionTokens": 4625,
+        "outputNeuronsPerMillionTokens": 30475,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 256,
-      "neuronsUpperBound": 6375,
+      "maxRequestNeuronsUpperBound": 56,
+      "neuronsUpperBound": 1440,
       "candidates": [
         {
           "model": "@cf/nvidia/nemotron-3-120b-a12b",
