@@ -445,13 +445,24 @@
       "measured": null
     },
     {
-      "kind": "reservation",
+      "kind": "calibration",
       "date": "2026-10-18",
+      "at": "2026-10-18T11:15:24.349Z",
       "runId": "39122302683.1",
       "role": "pedagogical",
-      "at": "2026-10-18T11:12:59.782Z",
+      "model": "@cf/meta/llama-4-scout-17b-16e-instruct",
+      "modelVersion": "@cf/meta/llama-4-scout-17b-16e-instruct@cloudflare-catalog-2026-10-06",
+      "maxTokens": 800,
+      "promptVersion": "pedagogy-a1-prompt-v1",
+      "rubricVersion": "pedagogy-a1-v1",
+      "outcome": "rejected",
+      "requestsSent": 21,
       "neuronsCharged": 3822,
-      "note": "Calibration run 39122302683.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
+      "measured": {
+        "inputTokens": 20742,
+        "outputTokens": 4693,
+        "neurons": 872
+      }
     }
   ]
 }
