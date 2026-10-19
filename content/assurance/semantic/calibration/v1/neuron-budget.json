@@ -15,7 +15,7 @@
   "campaignPolicy": "One role campaign at a time. A candidate is eligible only if it needs no paid billing and its full campaign fits the safety ceiling; the automation's usage log keeps each UTC day under the ceiling.",
   "requiredRunsPerRole": 3,
   "activeJudgesTotalRequests": 84,
-  "activeJudgesNeuronsUpperBound": 14775,
+  "activeJudgesNeuronsUpperBound": 19710,
   "roles": {
     "english": {
       "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
@@ -213,24 +213,24 @@
       ]
     },
     "adversarial": {
-      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
-      "modelVersion": "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
-      "maxOutputTokensPerRequest": 1000,
+      "model": "@cf/openai/gpt-oss-120b",
+      "modelVersion": "@cf/openai/gpt-oss-120b@cloudflare-catalog-2026-10-06",
+      "maxOutputTokensPerRequest": 1200,
       "requestsPerRun": 9,
       "repeats": 3,
       "totalRequests": 27,
       "maxRequestUtf8Bytes": 4948,
       "maxInputTokensUpperBound": 5460,
       "inputTokensUpperBoundTotal": 130494,
-      "outputTokensUpperBoundTotal": 27000,
+      "outputTokensUpperBoundTotal": 32400,
       "eligible": true,
       "rate": {
-        "inputNeuronsPerMillionTokens": 4625,
-        "outputNeuronsPerMillionTokens": 30475,
+        "inputNeuronsPerMillionTokens": 31818,
+        "outputNeuronsPerMillionTokens": 68182,
         "paidBillingRequired": false
       },
-      "maxRequestNeuronsUpperBound": 56,
-      "neuronsUpperBound": 1440,
+      "maxRequestNeuronsUpperBound": 256,
+      "neuronsUpperBound": 6375,
       "candidates": [
         {
           "model": "@cf/nvidia/nemotron-3-120b-a12b",

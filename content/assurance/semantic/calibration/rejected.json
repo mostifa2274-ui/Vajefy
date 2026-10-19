@@ -395,6 +395,22 @@
         "abstainAccuracy": 0,
         "expectedLabelStability": 0.8571428571428571
       }
+    },
+    {
+      "role": "adversarial",
+      "model": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "modelVersion": "@cf/qwen/qwen3-30b-a3b-fp8@cloudflare-catalog-2026-10-06",
+      "maxTokens": 1000,
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "rubricVersion": "adversarial-a1-v1",
+      "reason": "no-valid-output",
+      "rejectedAt": "2026-10-19",
+      "runIds": [
+        "39097814369.1",
+        "39142580703.1",
+        "39201150524.1"
+      ],
+      "detail": "Failed to produce valid judgments on 3 attempts across 2+ UTC days; last: http-502-empty-model-content."
     }
   ]
 }
