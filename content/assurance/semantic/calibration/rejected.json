@@ -427,6 +427,31 @@
         "39372146825.1"
       ],
       "detail": "Failed to produce valid judgments on 3 attempts across 2+ UTC days; last: http-502-empty-model-content."
+    },
+    {
+      "role": "adversarial",
+      "model": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+      "modelVersion": "@cf/mistralai/mistral-small-3.1-24b-instruct@cloudflare-catalog-2026-10-06",
+      "maxTokens": 1000,
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "rubricVersion": "adversarial-a1-v1",
+      "reason": "did-not-promote",
+      "rejectedAt": "2026-10-20",
+      "runIds": [
+        "39417043420.1"
+      ],
+      "detail": "Missed the frozen vajefy-semantic-v1 gate on: defectRecall, cleanFalsePositive, abstainAccuracy, stability.",
+      "metrics": {
+        "requestedRuns": 3,
+        "validRuns": 3,
+        "requiredRuns": 3,
+        "schemaComplianceRate": 1,
+        "defectRecall": 0,
+        "cleanFalsePositiveRate": 0.6666666666666666,
+        "cleanUncertainRate": 0,
+        "abstainAccuracy": 0,
+        "expectedLabelStability": 0.8888888888888888
+      }
     }
   ]
 }
