@@ -588,6 +588,15 @@
       "requestsSent": 1,
       "neuronsCharged": 256,
       "measured": null
+    },
+    {
+      "kind": "reservation",
+      "date": "2026-10-20",
+      "runId": "39417043420.1",
+      "role": "adversarial",
+      "at": "2026-10-20T11:44:24.913Z",
+      "neuronsCharged": 5538,
+      "note": "Calibration run 39417043420.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
     }
   ]
 }
