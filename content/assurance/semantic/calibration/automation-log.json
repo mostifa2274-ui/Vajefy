@@ -569,13 +569,25 @@
       "measured": null
     },
     {
-      "kind": "reservation",
+      "kind": "calibration",
       "date": "2026-10-20",
+      "at": "2026-10-20T04:56:42.208Z",
       "runId": "39372146825.1",
       "role": "adversarial",
-      "at": "2026-10-20T04:56:08.099Z",
-      "neuronsCharged": 6375,
-      "note": "Calibration run 39372146825.1 reserved its full campaign upper bound before inference. If no record replaces this, the whole bound stays charged."
+      "model": "@cf/openai/gpt-oss-120b",
+      "modelVersion": "@cf/openai/gpt-oss-120b@cloudflare-catalog-2026-10-06",
+      "maxTokens": 1200,
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "rubricVersion": "adversarial-a1-v1",
+      "outcome": "failed",
+      "failure": {
+        "kind": "model",
+        "code": "http-502-empty-model-content",
+        "detail": "adversarial judge request failed for cal-adv-clean-school: HTTP 502 {\"error\":\"empty-model-content\",\"diagnostic\":{\"keys\":[\"choices\",\"created\",\"ec_transfer_params\",\"id\",\"kv_transfer_params\",\"metrics\",\"model\",\"object\",\"prompt_logprobs\",\"prompt_text\",\"prompt_token_ids\",\"service_tier\",\"usage\"],\"status\":null,\"incompleteDetails\":null,\"outputTypes\":[],\"candidateCount\":1,\"canonicalCandidateCount\":0,\"usage\":{\"prompt_tokens\":1095,\"completion_tokens\":1200,\"total_tokens\":2295,\"prompt_tokens_details\":{\"cached"
+      },
+      "requestsSent": 1,
+      "neuronsCharged": 256,
+      "measured": null
     }
   ]
 }

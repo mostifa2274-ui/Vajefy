@@ -411,6 +411,22 @@
         "39201150524.1"
       ],
       "detail": "Failed to produce valid judgments on 3 attempts across 2+ UTC days; last: http-502-empty-model-content."
+    },
+    {
+      "role": "adversarial",
+      "model": "@cf/openai/gpt-oss-120b",
+      "modelVersion": "@cf/openai/gpt-oss-120b@cloudflare-catalog-2026-10-06",
+      "maxTokens": 1200,
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "rubricVersion": "adversarial-a1-v1",
+      "reason": "no-valid-output",
+      "rejectedAt": "2026-10-20",
+      "runIds": [
+        "39259848744.1",
+        "39334647388.1",
+        "39372146825.1"
+      ],
+      "detail": "Failed to produce valid judgments on 3 attempts across 2+ UTC days; last: http-502-empty-model-content."
     }
   ]
 }
