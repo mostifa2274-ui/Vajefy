@@ -452,6 +452,31 @@
         "abstainAccuracy": 0,
         "expectedLabelStability": 0.8888888888888888
       }
+    },
+    {
+      "role": "adversarial",
+      "model": "@cf/meta/llama-4-scout-17b-16e-instruct",
+      "modelVersion": "@cf/meta/llama-4-scout-17b-16e-instruct@cloudflare-catalog-2026-10-06",
+      "maxTokens": 1000,
+      "promptVersion": "adversarial-a1-prompt-v1",
+      "rubricVersion": "adversarial-a1-v1",
+      "reason": "did-not-promote",
+      "rejectedAt": "2026-10-21",
+      "runIds": [
+        "39546590300.1"
+      ],
+      "detail": "Missed the frozen vajefy-semantic-v1 gate on: defectRecall, cleanUncertain, abstainAccuracy, stability.",
+      "metrics": {
+        "requestedRuns": 3,
+        "validRuns": 3,
+        "requiredRuns": 3,
+        "schemaComplianceRate": 1,
+        "defectRecall": 0,
+        "cleanFalsePositiveRate": 0,
+        "cleanUncertainRate": 0.16666666666666666,
+        "abstainAccuracy": 0.3333333333333333,
+        "expectedLabelStability": 0.7777777777777778
+      }
     }
   ]
 }
